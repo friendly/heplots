@@ -1,0 +1,42 @@
+\name{Plastic}
+\alias{Plastic}
+\docType{data}
+\title{Plastic Film Data}
+\description{
+An experiment was conducted to determine the optimum conditions for
+extruding plastic film.  Three responses were measured in relation
+to two factors, rate of extrusion and amount of an additive.
+}
+\usage{data(Plastic)}
+\format{
+  A data frame with 20 observations on the following 5 variables.
+  \describe{
+    \item{\code{tear}}{a numeric vector: tear resistance}
+    \item{\code{gloss}}{a numeric vector: film gloss}
+    \item{\code{opacity}}{a numeric vector: film opacity}
+    \item{\code{rate}}{a factor representing change in the rate of extrusion 
+    with levels \code{Low} (-10\%),  \code{High} (10\%)}
+    \item{\code{additive}}{a factor with levels \code{Low} (1.0\%), \code{High} (1.5\%)}
+  }
+}
+\details{
+
+}
+\source{
+Johnson, R.A. & Wichern, D.W. (1992).
+\emph{Applied Multivariate Statistical Analysis}, 3rd ed., Prentice-Hall.
+Example 6.12 (p. 266).
+}
+\references{
+Krzanowski, W. J. (1988). \emph{Principles of Multivariate Analysis. A User's Perspective}. Oxford. 
+(p. 381)
+
+}
+\examples{
+str(Plastic)
+plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
+Anova(plastic.mod)
+
+pairs(plastic.mod)
+}
+\keyword{datasets}

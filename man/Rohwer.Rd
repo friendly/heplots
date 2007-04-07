@@ -1,0 +1,66 @@
+\name{Rohwer}
+\alias{Rohwer}
+\docType{data}
+\title{Rohwer Data Set}
+\description{
+Data from an experiment by William D. Rohwer on kindergarten children
+designed to examine how well performance on a set of paired-associate (PA)
+tasks can predict performance on some measures of aptitude and achievement.
+}
+\usage{data(Rohwer)}
+\format{
+  A data frame with 69 observations on the following 10 variables.
+  \describe{
+    \item{\code{group}}{a numeric vector, corresponding to SES}
+    \item{\code{SES}}{Socioeconomic status, a factor with levels \code{Hi} \code{Lo}}
+    \item{\code{SAT}}{a numeric vector: score on a Student Achievement Test}
+    \item{\code{PPVT}}{a numeric vector: score on the Peabody Picture Vocabulary Test}
+    \item{\code{Raven}}{a numeric vector: score on the Raven Progressive Matrices Test}
+    \item{\code{n}}{a numeric vector: performance on a 'named' PA task}
+    \item{\code{s}}{a numeric vector: performance on a 'still' PA task}
+    \item{\code{ns}}{a numeric vector: performance on a 'named still' PA task}
+    \item{\code{na}}{a numeric vector: performance on a 'named action' PA task}
+    \item{\code{ss}}{a numeric vector: performance on a 'sentence still' PA task}
+  }
+}
+\details{
+The variables \code{SAT}, \code{PPVT} and \code{Raven} are responses to be
+potentially explained by performance on the paired-associate (PA) learning task\code{n}, \code{s}, \code{ns}, \code{na}, and \code{ss}.
+ 
+}
+\source{
+Timm, N.H. 1975). 
+  \emph{Multivariate Analysis with Applications in Education and Psychology}. 
+  Wadsworth (Brooks/Cole), Examples 4.3 (p. 281), 4.7 (p. 313), 4.13 (p. 344).
+
+}
+\references{
+Friendly, M. (2007).
+  HE plots for Multivariate General Linear Models.
+  \emph{Journal of Computational and Graphical Statistics}, 16, in press.
+  \url{http://www.math.yorku.ca/SCS/Papers/heplots.pdf} 
+
+}
+\examples{
+str(Rohwer)
+
+# fit separate models for Lo/Hi SES
+rohwer.ses1 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Lo")
+
+rohwer.ses2 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Lo")
+
+# ANCOVA, assuming equal slopes
+rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, data=Rohwer)
+Anova(rohwer.mod)
+
+# Visualize the ANCOVA model
+heplot(rohwer.mod)
+# Add ellipse to test all 5 regressors
+heplot(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
+# View all pairs
+pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
+# or 3D plot
+ heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
+
+}
+\keyword{datasets}
