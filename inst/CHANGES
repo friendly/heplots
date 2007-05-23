@@ -1,3 +1,8 @@
 Version 0.8-0 (2007-01-31)
 
 Initial version released to CRAN.
+
+Development Version 0.8-0 (2007-05-23)
+
+ o  heplot now passes ... not only to plot() but to calls to text() and points().
+ 

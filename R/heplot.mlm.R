@@ -1,4 +1,16 @@
 # last modified 23 January 2007 by J. Fox
+# last modified 14 May 2007 by M. Friendly -- return xlim, ylim
+# last modified 18 May 2007 by M. Friendly -- fix xlim, ylim return when !add
+# last modified 20 May 2007 by M. Friendly -- pass ... to text
+# last modified 23 May 2007 by J. Fox -- add ... to call to points()
+
+lambda.crit <- function(alpha, p, dfh, dfe){
+    d <- max(p, dfh)
+    nu <- dfe - d + dfh
+    (d/nu) * qf(alpha, d, nu, lower.tail=FALSE)
+    }
+
+
 
 lambda.crit <- function(alpha, p, dfh, dfe){
     d <- max(p, dfh)
@@ -62,7 +74,7 @@ function (
             y <- ellipse[index, 2] - 0.5 * strheight("A")
             adj <- c(0, 1) 
             }
-        text(x, y, label, adj=adj, xpd=TRUE, col=col)
+        text(x, y, label, adj=adj, xpd=TRUE, col=col, ...)
         }
     if (!require(car)) stop("car package is required.")
     type <- match.arg(type)
@@ -195,12 +207,13 @@ function (
     if (!add && (!is.logical(factor.means) || factor.means)){
         for (fac in factors){
             means <- aggregate(Y, list(fac), mean)
-            points(means[,2], means[,3], pch=16, xpd=TRUE)
-            text(means[,2], means[,3], labels=as.character(means[,1]), pos=3, xpd=TRUE)
+            points(means[,2], means[,3], pch=16, xpd=TRUE, ...)
+            text(means[,2], means[,3], labels=as.character(means[,1]), pos=3, xpd=TRUE, ...)
             }
         }
     names(H.ellipse) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
-    result <- list(H=H.ellipse, E=E.ellipse)
-    class(result) <- "heplot"
+    result <- if (!add) list(H=H.ellipse, E=E.ellipse, xlim=xlim, ylim=ylim)	else list(H=H.ellipse, E=E.ellipse)
+		class(result) <- "heplot"
+
     invisible(result)
     }

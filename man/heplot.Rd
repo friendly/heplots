@@ -100,7 +100,8 @@ heplot(mod, ...)
   \item{warn.rank}{if \code{TRUE}, do not suppress warnings about the rank of the
     hypothesis matrix when the ellipse collapses to a line; the default is
     \code{FALSE}.}
-  \item{\dots}{arguments to pass down to \code{plot}.}
+  \item{\dots}{arguments to pass down to \code{plot}, \code{text}, 
+    and \code{points}.}
 }
 
 \details{
@@ -126,7 +127,8 @@ heplot(mod, ...)
 
 \value{
   The function invisibly returns an object of class \code{"heplot"}, with
-  coordinates for the various hypothesis ellipses and the error ellipse.
+  coordinates for the various hypothesis ellipses and the error ellipse, and
+  the limits of the horizontal and vertical axes.
   (No methods for manipulating these objects are currently available.)
 }
 
