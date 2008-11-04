@@ -27,7 +27,7 @@
   \item{\dots}{arguments to pass down to \code{heplot}, which is used to draw
     each panel of the display.}
 }
-}
+
 
 \references{
 Friendly, M. (2006).
@@ -38,8 +38,8 @@ Friendly, M. (2006).
 
 Friendly, M. (2007).
   HE plots for Multivariate General Linear Models.
-  \emph{Journal of Computational and Graphical Statistics}, 16, in press.
-  \url{http://www.math.yorku.ca/SCS/Papers/heplots.pdf} 
+  \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
+  \url{http://www.math.yorku.ca/SCS/Papers/jcgs-heplots.pdf} 
 }
 
 \seealso{

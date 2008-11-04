@@ -16,8 +16,8 @@ error using ellipses (in two dimensions) and ellipsoids (in three dimensions).
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.8-1\cr
-Date: \tab 2007-5-23\cr
+Version: \tab 0.8-2\cr
+Date: \tab 2008-10-22\cr
 License: \tab GPL version 2 or newer\cr
 }
 
@@ -44,8 +44,8 @@ Friendly, M. (2006).
 
 Friendly, M. (2007).
   HE plots for Multivariate General Linear Models.
-  \emph{Journal of Computational and Graphical Statistics}, 16, in press.
-  \url{http://www.math.yorku.ca/SCS/Papers/heplots.pdf} 
+  \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
+  \url{http://www.math.yorku.ca/SCS/Papers/jcgs-heplots.pdf} 
 }
 
 \keyword{package}
