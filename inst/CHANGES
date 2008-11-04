@@ -16,4 +16,15 @@ Version 0.8-2 (2008-10-22)
  o  moved lambda.crit to utility.R
  o  added he.rep to handle common task of repeating HE argument values
 
+* Changes to heplot3d.mlm:
+ o  added shade=, shade.alpha=, wire= parameters
+ o  fixed: grand.mean=FALSE not respected
+ o  replaced sphere at grand.mean with cross3d()
+ o  color means according to the color of the term
+ o  return bounding boxes of the ellipsoids
+ o  replaced rgl.texts with texts3d
+ 
+ * Changes to utility.R:
+ o  Generalized lambda.crit to provide Roy.crit and HLT.crit; only Roy.crit is used
+ 
  

@@ -19,9 +19,8 @@ to two factors, rate of extrusion and amount of an additive.
     \item{\code{additive}}{a factor with levels \code{Low} (1.0\%), \code{High} (1.5\%)}
   }
 }
-\details{
-
-}
+%\details{
+%}
 \source{
 Johnson, R.A. & Wichern, D.W. (1992).
 \emph{Applied Multivariate Statistical Analysis}, 3rd ed., Prentice-Hall.

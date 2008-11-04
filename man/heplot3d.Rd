@@ -6,7 +6,7 @@
 
 \description{
 This function plots ellipsoids in 3D representing the hypothesis and error
-sums-of-squares-and-products matrices for terms aand linear hypotheses in a 
+sums-of-squares-and-products matrices for terms and linear hypotheses in a 
 multivariate linear model.
 }
 
@@ -18,6 +18,7 @@ heplot3d(mod, ...)
     factor.means = !add, grand.mean = !add, remove.intercept = TRUE, 
     type = c("II", "III", "2", "3"), manova, size = c("evidence", "effect.size"),
     level = 0.68, alpha = 0.05,  segments = 40, col = palette()[-1], lwd=c(1, 4),
+    shade=TRUE, shade.alpha=0.1, wire=c(TRUE,FALSE),
     bg.col = c("white", "black"), fogtype = c("none", "exp2", "linear", "exp"), 
     fov = 30, offset = 0.01, xlab, ylab, zlab, add = FALSE, verbose = FALSE, 
     warn.rank = FALSE, ...)
@@ -39,7 +40,7 @@ heplot3d(mod, ...)
   \item{hyp.labels}{logical value or character vector of names for the hypotheses to
     be plotted. If \code{TRUE} (the default) the names of components of the list of
     hypotheses are used; if \code{FALSE}, hypothesis labels are not plotted.}
-  \item{variables}{indices or names of the two response variables to be plotted;
+  \item{variables}{indices or names of the three response variables to be plotted;
     defaults to \code{1:3}.}
   \item{error.ellipsoid}{if \code{TRUE}, plot the error ellipsoid; defaults to \code{TRUE},
     if the argument \code{add} is \code{FALSE} (see below).}
@@ -81,6 +82,14 @@ heplot3d(mod, ...)
     (including those that degenerate to an ellipse) and
     for drawing ellipsoids that degenerate to a line segment. The default
     is \code{c(1, 4)}.}
+  \item{shade}{a logical scalar or vector, indicating whether the ellipsoids should be
+    rendered with \code{\link[rgl]{shade3d}}. Works like \code{col},  except that \code{FALSE}
+    is used for any 1 df degenerate ellipsoid.}
+  \item{shade.alpha}{a numeric value in the range [0,1], or a vector of such values, giving
+    the alpha transparency for ellipsoids rendered with \code{shade=TRUE}.}
+  \item{wire}{a logical scalar or vector, indicating whether the ellipsoids should be
+    rendered with \code{\link[rgl]{wire3d}}. Works like \code{col}, except that \code{TRUE}
+    is used for any 1 df degenerate ellipsoid.}
   \item{bg.col}{background colour, \code{"white"} or \code{"black"}, defaulting
     to \code{"white"}.} 
   \item{fogtype}{type of ``fog'' to use for depth-cueing; the default is 
@@ -107,8 +116,12 @@ heplot3d(mod, ...)
 }
 
 \value{
-  \code{heplot3d} returns nothing useful --- it is used for the side effect of
-  drawing or adding to an rgl graph. The function leaves an object named
+  \code{heplot3d} invisibly returns a list containing the bounding boxes of the error (E)
+  ellipsoid and for each term or linear hypothesis specified in the call.
+  Each of these is a 2 x 3 matrix with rownames "min" and "max" and colnames
+  corresponding to the variables plotted. 
+
+  The function also leaves an object named
   \code{.frame} in the global environment, containing the rgl object IDs for
   the axes, axis labels, and bounding box; these are deleted and the axes, etc.
   redrawn if the plot is added to.
@@ -129,7 +142,7 @@ Friendly, M. (2007).
 
 \seealso{
     \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}},
-    \code{\link{heplot}}, \code{\link{pairs.mlm}}, \code{\link[rgl]{rgl}}.
+    \code{\link{heplot}}, \code{\link{pairs.mlm}}, \code{\link[rgl]{rgl-package}}.
 }
 
 \examples{
@@ -141,6 +154,10 @@ heplot(soils.mod, variables=c("Ca", "Mg"))
 pairs(soils.mod, terms="Depth", variables=c("pH", "N", "P", "Ca", "Mg"))
 
 heplot3d(soils.mod, variables=c("Mg", "Ca", "Na"))
+
+# Plastic data
+plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
+heplot3d(plastic.mod)
 } 
 
 \keyword{hplot}
