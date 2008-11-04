@@ -2,7 +2,18 @@ Version 0.8-0 (2007-01-31)
 
 Initial version released to CRAN.
 
-Development Version 0.8-0 (2007-05-23)
+Development Version 0.8-1 (2007-05-23)
 
  o  heplot now passes ... not only to plot() but to calls to text() and points().
+
+Version 0.8-2 (2008-10-22)
+
+* Package changes
+ o  added suggests: candisc
+ o  added utility.R, cross3d.R
+
+* Changes to heplot.mlm:
+ o  moved lambda.crit to utility.R
+ o  added he.rep to handle common task of repeating HE argument values
+
  

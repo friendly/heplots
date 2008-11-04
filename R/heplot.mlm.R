@@ -3,217 +3,212 @@
 # last modified 18 May 2007 by M. Friendly -- fix xlim, ylim return when !add
 # last modified 20 May 2007 by M. Friendly -- pass ... to text
 # last modified 23 May 2007 by J. Fox -- add ... to call to points()
-
-lambda.crit <- function(alpha, p, dfh, dfe){
-    d <- max(p, dfh)
-    nu <- dfe - d + dfh
-    (d/nu) * qf(alpha, d, nu, lower.tail=FALSE)
-    }
-
-
-
-lambda.crit <- function(alpha, p, dfh, dfe){
-    d <- max(p, dfh)
-    nu <- dfe - d + dfh
-    (d/nu) * qf(alpha, d, nu, lower.tail=FALSE)
-    }
+# last modified 22 Oct 2007 by M. Friendly
+# -- moved lambda.crit to utility.R
+# -- added he.rep to handle common task of repeating HE argument values
 
 `heplot.mlm` <-
-function ( 
-    mod,           # an mlm object
-    terms,         # vector of terms to plot H ellipses
-    hypotheses,    # list of linear hypotheses for which to plot H ellipses
-    term.labels=TRUE,  # TRUE, FALSE or a vector of term labels of length(terms)
-    hyp.labels=TRUE,   # as above for term.labels
-    variables=1:2,     # x,y variables for the plot [variable names or numbers]
-    error.ellipse=!add,
-    factor.means=!add,
-    grand.mean=!add,
-    remove.intercept=TRUE,
-    type=c("II", "III", "2", "3"),
-    manova,        # an optional Anova.mlm object
-    size=c("evidence", "effect.size"),
-    level=0.68,
-    alpha=0.05,
-    segments=40,   # line segments in each ellipse
-    center.pch="+",   # doesn't have to be an argument
-    col=palette()[-1],  # colors for H matrices, E matrix
-    lty=2:1,
-    lwd=1:2,
-    xlab,
-    ylab,
-    main="",
-    xlim,           # min/max for X (override internal min/max calc) 
-    ylim,
-    offset.axes,    # if specified, the proportion by which to expand the axes on each end (e.g., .05)
-    add=FALSE,      # add to existing plot?
-    verbose=FALSE,
-    warn.rank=FALSE,  
-    ...) {
-    ell <- function(center, shape, radius) {
-       angles <- (0:segments)*2*pi/segments
-       circle <- radius * cbind( cos(angles), sin(angles))
-       if (!warn.rank){
-          warn <- options(warn=-1)
-          on.exit(options(warn))
-          }
-       Q <- chol(shape, pivot=TRUE)
-       order <- order(attr(Q, "pivot"))
-       t( c(center) + t( circle %*% Q[,order]))
-       }
-    label.ellipse <- function(ellipse, label, col){
-        if (cor(ellipse)[1,2] > 0){
-            index <- which.max(ellipse[,2])
-            x <- ellipse[index, 1] + 0.5 * strwidth("A")
-            y <- ellipse[index, 2] + 0.5 *strheight("A")
-            adj <- c(1, 0) 
-            }
-        else {
-            index <- which.min(ellipse[,2])
-            x <- ellipse[index, 1] - 0.5 * strwidth("A")
-            y <- ellipse[index, 2] - 0.5 * strheight("A")
-            adj <- c(0, 1) 
-            }
-        text(x, y, label, adj=adj, xpd=TRUE, col=col, ...)
-        }
-    if (!require(car)) stop("car package is required.")
-    type <- match.arg(type)
-    size <- match.arg(size)
-    data <- model.frame(mod)
-    if (missing(manova)) manova <- Anova(mod, type=type)    
-    if (verbose) print(manova)    
-    response.names <- rownames(manova$SSPE)
-    p <- length(response.names)
-    if (!is.numeric(variables)) {
-        vars <- variables
-        variables <- match(vars, response.names)
-        check <- is.na(variables)
-        if (any(check)) stop(paste(vars[check], collapse=", "), 
-           " not among response variables.") 
-        }
-    else {
-         if (any (variables > length(response.names))) stop("There are only ", 
-            length(response.names), " response variables.")
-         vars <- response.names[variables]
-         }
-    if (length(variables) != 2) stop("You may only plot 2 response variables")
-    if (missing(terms) || (is.logical(terms) && terms)) {
-       terms <- manova$terms
-       if (remove.intercept) terms <- terms[terms != "(Intercept)"]
-       }
-    n.terms <- if (!is.logical(terms)) length(terms) else 0 
-                                   # note: if logical here, necessarily FALSE
-    n.hyp <- if (missing(hypotheses)) 0 else length(hypotheses)
-    n.ell <- n.terms + n.hyp
-    if (n.ell == 0) stop("Nothing to plot.")
-    Y <- model.response(data)[,vars]
-    gmean <- if (missing(data))  c(0,0) 
-        else colMeans(Y)
-    if (missing(xlab)) xlab <- vars[1]
-    if (missing(ylab)) ylab <- vars[2] 
-    dfe <- manova$error.df
-    scale <- 1/dfe
-    radius <- sqrt(2 * qf(level, 2, dfe))
-    if (length(lty) < 2) lty <- rep(lty, 2)
-    if (length(lwd) < 2) lwd <- rep(lwd, 2)
-    E.col <- col[1]
-    if (length(col) >= 2) col <- col[-1]
-    col <- rep(col, n.ell)[1:n.ell]
-    lty <- c(rep(lty[-1], n.ell)[1:n.ell], lty[1])
-    lwd <- c(rep(lwd[-1], n.ell)[1:n.ell], lwd[1])
-    H.ellipse <- as.list(rep(0, n.ell))
-    if (n.terms > 0) for (term in 1:n.terms){
-        term.name <- terms[term]
-        H <- manova$SSP[[term.name]]
-        H <- H[variables, variables]
-        dfh <- manova$df[term.name]
-        factor <- if (size == "evidence") lambda.crit(alpha, p, dfh, dfe) else 1
-        H <- H * scale/factor
-        if (verbose){
-          cat(term.name, " H matrix (", dfh, " df):\n")
-          print(H)
-          }
-        H.ellipse[[term]] <- ell(gmean, H, radius)
-        }
-    if (n.hyp > 0) for (hyp in 1:n.hyp){
-        lh <- linear.hypothesis(mod, hypotheses[[hyp]])
-        H <- lh$SSPH[variables, variables]
-        dfh <- lh$df
-        factor <- if (size == "evidence") lambda.crit(alpha, p, dfh, dfe) else 1
-        H <- H * scale/factor
-          if (verbose){
-              cat("\n\n Linear hypothesis: ", names(hypotheses)[[hyp]], "\n") 
-              print(lh)
-              }
-        H.ellipse[[n.terms + hyp]] <- ell(gmean, H, radius)
-        }
-    E <- manova$SSPE
-    E <- E[variables, variables]
-    E <- E * scale[1]
-    E.ellipse <- ell(gmean, E, radius)
-    H.ellipse$E <- E.ellipse     
-    if (!add){
-        max <- apply(sapply(H.ellipse, function(X) apply(X, 2, max)), 1, max)
-        min <- apply(sapply(H.ellipse, function(X) apply(X, 2, min)), 1, min)
-        factors <- data[, sapply(data, is.factor), drop=FALSE]
-        if (!is.logical(factor.means)){
-            factor.names <- colnames(factors) 
-            which <- match(factor.means, factor.names)
-            check <- is.na(which)
-            if (any(check)) stop(paste(factor.means[check], collapse=", "), 
-               " not among factors.")
-            factors <- factors[, which, drop=FALSE]
-            }
-        if (!is.logical(factor.means) || factor.means){   
-            for (fac in factors){
-                means <- aggregate(Y, list(fac), mean)
-                min[1] <- min(min[1], means[,2])
-                max[1] <- max(max[1], means[,2])
-                min[2] <- min(min[2], means[,3])
-                max[2] <- max(max[2], means[,3])
-                }
-            }
-        if (!missing(offset.axes)){
-            range <- max - min
-            min <- min - offset.axes*range
-            max <- max + offset.axes*range
-            }
-        xlim <- if(missing(xlim)) c(min[1], max[1]) else xlim
-        ylim <- if(missing(ylim)) c(min[2], max[2]) else ylim
-        plot(xlim, ylim,  type = "n", xlab=xlab, ylab=ylab, main=main, ...)
-        }
-    H.ellipse$E <- NULL
-    if (grand.mean) 
-        points(gmean[1], gmean[2], pch=center.pch, cex=2, col="black", xpd=TRUE)
-    if (error.ellipse){
-        lines(E.ellipse, col=E.col, lty=lty[length(lty)], lwd=lwd[length(lwd)])
-        label.ellipse(E.ellipse, "Error", col=E.col)
-        }
-    term.labels <- if (n.terms == 0) NULL
-        else if (!is.logical(term.labels)) term.labels
-        else if (term.labels) terms else rep("", n.terms)  
-    if (n.terms > 0) for (term in 1:n.terms){
-        lines(H.ellipse[[term]], col=col[term], lty=lty[term], lwd=lwd[term])
-        label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term]) 
-        }   
-    hyp.labels <- if (n.hyp == 0) NULL
-        else if (!is.logical(hyp.labels)) hyp.labels
-        else if (hyp.labels) names(hypotheses) else rep("", n.hyp)  
-    if (n.hyp > 0) for (hyp in 1:n.hyp){
-        ell <- n.terms + hyp
-        lines(H.ellipse[[ell]], col=col[ell], lty=lty[ell], lwd=lwd[ell])
-        label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell])
-        }
-    if (!add && (!is.logical(factor.means) || factor.means)){
-        for (fac in factors){
-            means <- aggregate(Y, list(fac), mean)
-            points(means[,2], means[,3], pch=16, xpd=TRUE, ...)
-            text(means[,2], means[,3], labels=as.character(means[,1]), pos=3, xpd=TRUE, ...)
-            }
-        }
-    names(H.ellipse) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
-    result <- if (!add) list(H=H.ellipse, E=E.ellipse, xlim=xlim, ylim=ylim)	else list(H=H.ellipse, E=E.ellipse)
-		class(result) <- "heplot"
-
-    invisible(result)
-    }
+		function ( 
+				mod,           # an mlm object
+				terms,         # vector of terms to plot H ellipses
+				hypotheses,    # list of linear hypotheses for which to plot H ellipses
+				term.labels=TRUE,  # TRUE, FALSE or a vector of term labels of length(terms)
+				hyp.labels=TRUE,   # as above for term.labels
+				variables=1:2,     # x,y variables for the plot [variable names or numbers]
+				error.ellipse=!add,
+				factor.means=!add,
+				grand.mean=!add,
+				remove.intercept=TRUE,
+				type=c("II", "III", "2", "3"),
+				manova,        # an optional Anova.mlm object
+				size=c("evidence", "effect.size"),
+				level=0.68,
+				alpha=0.05,
+				segments=40,   # line segments in each ellipse
+				center.pch="+",   # doesn't have to be an argument
+				col=palette()[-1],  # colors for H matrices, E matrix
+				lty=2:1,
+				lwd=1:2,
+				xlab,
+				ylab,
+				main="",
+				xlim,           # min/max for X (override internal min/max calc) 
+				ylim,
+				offset.axes,    # if specified, the proportion by which to expand the axes on each end (e.g., .05)
+				add=FALSE,      # add to existing plot?
+				verbose=FALSE,
+				warn.rank=FALSE,  
+				...) {
+	ell <- function(center, shape, radius) {
+		angles <- (0:segments)*2*pi/segments
+		circle <- radius * cbind( cos(angles), sin(angles))
+		if (!warn.rank){
+			warn <- options(warn=-1)
+			on.exit(options(warn))
+		}
+		Q <- chol(shape, pivot=TRUE)
+		order <- order(attr(Q, "pivot"))
+		t( c(center) + t( circle %*% Q[,order]))
+	}
+	label.ellipse <- function(ellipse, label, col){
+		if (cor(ellipse)[1,2] > 0){
+			index <- which.max(ellipse[,2])
+			x <- ellipse[index, 1] + 0.5 * strwidth("A")
+			y <- ellipse[index, 2] + 0.5 *strheight("A")
+			adj <- c(1, 0) 
+		}
+		else {
+			index <- which.min(ellipse[,2])
+			x <- ellipse[index, 1] - 0.5 * strwidth("A")
+			y <- ellipse[index, 2] - 0.5 * strheight("A")
+			adj <- c(0, 1) 
+		}
+		text(x, y, label, adj=adj, xpd=TRUE, col=col, ...)
+	}
+	if (!require(car)) stop("car package is required.")
+	type <- match.arg(type)
+	size <- match.arg(size)
+	data <- model.frame(mod)
+	if (missing(manova)) manova <- Anova(mod, type=type)    
+	if (verbose) print(manova)    
+	response.names <- rownames(manova$SSPE)
+	p <- length(response.names)
+	if (!is.numeric(variables)) {
+		vars <- variables
+		variables <- match(vars, response.names)
+		check <- is.na(variables)
+		if (any(check)) stop(paste(vars[check], collapse=", "), 
+					" not among response variables.") 
+	}
+	else {
+		if (any (variables > length(response.names))) stop("There are only ", 
+					length(response.names), " response variables.")
+		vars <- response.names[variables]
+	}
+	if (length(variables) != 2) stop("You may only plot 2 response variables")
+	if (missing(terms) || (is.logical(terms) && terms)) {
+		terms <- manova$terms
+		if (remove.intercept) terms <- terms[terms != "(Intercept)"]
+	}
+	n.terms <- if (!is.logical(terms)) length(terms) else 0 
+	# note: if logical here, necessarily FALSE
+	n.hyp <- if (missing(hypotheses)) 0 else length(hypotheses)
+	n.ell <- n.terms + n.hyp
+	if (n.ell == 0) stop("Nothing to plot.")
+	Y <- model.response(data)[,vars]
+	gmean <- if (missing(data))  c(0,0) 
+			else colMeans(Y)
+	if (missing(xlab)) xlab <- vars[1]
+	if (missing(ylab)) ylab <- vars[2] 
+	dfe <- manova$error.df
+	scale <- 1/dfe
+	radius <- sqrt(2 * qf(level, 2, dfe))
+	
+#    E.col <- col[1]
+#    if (length(col) >= 2) col <- col[-1]
+#    col <- rep(col, n.ell)[1:n.ell]
+	
+#    if (length(lty) < 2) lty <- rep(lty, 2)
+#    if (length(lwd) < 2) lwd <- rep(lwd, 2)
+#    lty <- c(rep(lty[-1], n.ell)[1:n.ell], lty[1])
+#    lwd <- c(rep(lwd[-1], n.ell)[1:n.ell], lwd[1])
+	
+	col <- he.rep(col, n.ell); E.col<- col[length(col)]
+	lty <- he.rep(lty, n.ell)
+	lwd <- he.rep(lwd, n.ell)
+	
+	H.ellipse <- as.list(rep(0, n.ell))
+	if (n.terms > 0) for (term in 1:n.terms){
+			term.name <- terms[term]
+			H <- manova$SSP[[term.name]]
+			H <- H[variables, variables]
+			dfh <- manova$df[term.name]
+			factor <- if (size == "evidence") lambda.crit(alpha, p, dfh, dfe) else 1
+			H <- H * scale/factor
+			if (verbose){
+				cat(term.name, " H matrix (", dfh, " df):\n")
+				print(H)
+			}
+			H.ellipse[[term]] <- ell(gmean, H, radius)
+		}
+	if (n.hyp > 0) for (hyp in 1:n.hyp){
+			lh <- linear.hypothesis(mod, hypotheses[[hyp]])
+			H <- lh$SSPH[variables, variables]
+			dfh <- lh$df
+			factor <- if (size == "evidence") lambda.crit(alpha, p, dfh, dfe) else 1
+			H <- H * scale/factor
+			if (verbose){
+				cat("\n\n Linear hypothesis: ", names(hypotheses)[[hyp]], "\n") 
+				print(lh)
+			}
+			H.ellipse[[n.terms + hyp]] <- ell(gmean, H, radius)
+		}
+	E <- manova$SSPE
+	E <- E[variables, variables]
+	E <- E * scale[1]
+	E.ellipse <- ell(gmean, E, radius)
+	H.ellipse$E <- E.ellipse     
+	if (!add){
+		max <- apply(sapply(H.ellipse, function(X) apply(X, 2, max)), 1, max)
+		min <- apply(sapply(H.ellipse, function(X) apply(X, 2, min)), 1, min)
+		factors <- data[, sapply(data, is.factor), drop=FALSE]
+		if (!is.logical(factor.means)){
+			factor.names <- colnames(factors) 
+			which <- match(factor.means, factor.names)
+			check <- is.na(which)
+			if (any(check)) stop(paste(factor.means[check], collapse=", "), 
+						" not among factors.")
+			factors <- factors[, which, drop=FALSE]
+		}
+		if (!is.logical(factor.means) || factor.means){   
+			for (fac in factors){
+				means <- aggregate(Y, list(fac), mean)
+				min[1] <- min(min[1], means[,2])
+				max[1] <- max(max[1], means[,2])
+				min[2] <- min(min[2], means[,3])
+				max[2] <- max(max[2], means[,3])
+			}
+		}
+		if (!missing(offset.axes)){
+			range <- max - min
+			min <- min - offset.axes*range
+			max <- max + offset.axes*range
+		}
+		xlim <- if(missing(xlim)) c(min[1], max[1]) else xlim
+		ylim <- if(missing(ylim)) c(min[2], max[2]) else ylim
+		plot(xlim, ylim,  type = "n", xlab=xlab, ylab=ylab, main=main, ...)
+	}
+	H.ellipse$E <- NULL
+	if (grand.mean) 
+		points(gmean[1], gmean[2], pch=center.pch, cex=2, col="black", xpd=TRUE)
+	if (error.ellipse){
+		lines(E.ellipse, col=E.col, lty=lty[length(lty)], lwd=lwd[length(lwd)])
+		label.ellipse(E.ellipse, "Error", col=E.col)
+	}
+	term.labels <- if (n.terms == 0) NULL
+			else if (!is.logical(term.labels)) term.labels
+			else if (term.labels) terms else rep("", n.terms)  
+	if (n.terms > 0) for (term in 1:n.terms){
+			lines(H.ellipse[[term]], col=col[term], lty=lty[term], lwd=lwd[term])
+			label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term]) 
+		}   
+	hyp.labels <- if (n.hyp == 0) NULL
+			else if (!is.logical(hyp.labels)) hyp.labels
+			else if (hyp.labels) names(hypotheses) else rep("", n.hyp)  
+	if (n.hyp > 0) for (hyp in 1:n.hyp){
+			ell <- n.terms + hyp
+			lines(H.ellipse[[ell]], col=col[ell], lty=lty[ell], lwd=lwd[ell])
+			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell])
+		}
+	if (!add && (!is.logical(factor.means) || factor.means)){
+		for (fac in factors){
+			means <- aggregate(Y, list(fac), mean)
+			points(means[,2], means[,3], pch=16, xpd=TRUE, ...)
+			text(means[,2], means[,3], labels=as.character(means[,1]), pos=3, xpd=TRUE, ...)
+		}
+	}
+	names(H.ellipse) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
+	result <- if (!add) list(H=H.ellipse, E=E.ellipse, xlim=xlim, ylim=ylim)	else list(H=H.ellipse, E=E.ellipse)
+	class(result) <- "heplot"
+	invisible(result)
+}
