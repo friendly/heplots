@@ -20,7 +20,7 @@ heplot3d(mod, ...)
     level = 0.68, alpha = 0.05,  segments = 40, col = palette()[-1], lwd=c(1, 4),
     shade=TRUE, shade.alpha=0.1, wire=c(TRUE,FALSE),
     bg.col = c("white", "black"), fogtype = c("none", "exp2", "linear", "exp"), 
-    fov = 30, offset = 0.01, xlab, ylab, zlab, add = FALSE, verbose = FALSE, 
+    fov = 30, offset = 0.01, xlab, ylab, zlab, xlim, ylim, zlim, add = FALSE, verbose = FALSE, 
     warn.rank = FALSE, ...)
 }
 
@@ -101,6 +101,9 @@ heplot3d(mod, ...)
   \item{xlab}{x-axis label; defaults to name of the x variable.}
   \item{ylab}{y-axis label; defaults to name of the y variable.}
   \item{zlab}{z-axis label; defaults to name of the z variable.}
+  \item{xlim}{x-axis limits; if absent, will be computed from the data.}
+  \item{ylim}{y-axis limits; if absent, will be computed from the data.}
+  \item{zlim}{z-axis limits; if absent, will be computed from the data.}
   \item{add}{if \code{TRUE}, add to the current plot; the default is \code{FALSE}.
     If \code{TRUE}, the error ellipsoid is not plotted}
   \item{verbose}{if \code{TRUE}, print the MANOVA table and details of hypothesis
@@ -113,6 +116,9 @@ heplot3d(mod, ...)
 \details{
 	When the H matrix for a term has rank < 3, the ellipsoid collapses to an 
 	ellipse	(rank(H)=2) or a line (rank(H)=1). 
+
+	Rotating the plot can be particularly revealing, showing views in which H variation
+	is particularly large or small in relation to E variation.
 }
 
 \value{

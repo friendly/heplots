@@ -156,7 +156,8 @@ iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~
 Species, data=iris)
 
 heplot(iris.mod)
-heplot(iris.mod, variables=c(1,3))
+hep <-heplot(iris.mod, variables=c(1,3))
+str(hep)
 pairs(iris.mod)
 
 ## Pottery data, from cars package

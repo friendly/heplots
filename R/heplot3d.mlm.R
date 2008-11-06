@@ -12,9 +12,10 @@
 #    - replaced ellipsoid() with spheres3d() for plotting means
 # last modified 11/4/2008 12:50PM by M. Friendly
 #    - reverted to ellipsoid() for plotting means
+# last modified 11/6/2008 by M. Friendly
+#    - added xlim, ylim, zlim arguments to allow expanding the plot bbox (for candisc)
 
 # TODO:
-#  - add xlim, ylim, zlim arguments to allow expanding the plot bbox (for candisc)
 #  - add aspect argument (for candisc)
 
 `heplot3d.mlm` <-
@@ -47,6 +48,9 @@
 				xlab,
 				ylab,
 				zlab,
+				xlim,
+				ylim,
+				zlim,
 				add=FALSE,      # add to existing plot?
 				verbose=FALSE,
 				warn.rank=FALSE,  
@@ -230,6 +234,17 @@
 					texts=as.character(means[,1]), col=pcol, adj=0)
 		}
 	}
+
+	# handle xlim, ylim, zlim
+	## enforce that the specified limits are at least as large as the bbox
+	if (!missing(xlim) | !missing(ylim) | !missing(zlim)) {
+		bbox <- matrix(par3d("bbox"),3,2,byrow=TRUE)
+		xlim <- if(missing(xlim)) bbox[1,] else c(min(xlim[1],bbox[1,1]), max(xlim[2],bbox[1,2]))
+		ylim <- if(missing(ylim)) bbox[2,] else c(min(ylim[1],bbox[2,1]), max(ylim[2],bbox[2,2]))
+		zlim <- if(missing(zlim)) bbox[3,] else c(min(zlim[1],bbox[3,1]), max(zlim[2],bbox[3,2]))
+		decorate3d(xlim=xlim, ylim=ylim, zlim=zlim, box=FALSE, axes=FALSE, xlab=NULL, ylab=NULL, zlab=NULL, top=FALSE)
+}
+	
 	if (add) rgl.pop(id=.frame)
 	frame <- axis3d("x-", col="black")
 	frame <- c(frame, mtext3d(xlab, "x-", col="black", line=1.5))

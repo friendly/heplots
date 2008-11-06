@@ -16,8 +16,8 @@ error using ellipses (in two dimensions) and ellipsoids (in three dimensions).
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.8-2\cr
-Date: \tab 2008-10-22\cr
+Version: \tab 0.8-3\cr
+Date: \tab 2008-11-6\cr
 License: \tab GPL version 2 or newer\cr
 }
 
