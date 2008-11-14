@@ -119,6 +119,9 @@ heplot3d(mod, ...)
 
 	Rotating the plot can be particularly revealing, showing views in which H variation
 	is particularly large or small in relation to E variation.
+	
+	The arguments \code{xlim}, \code{ylim}, and \code{zlim} can be used to expand the bounding
+	box of the axes, but cannot decrease it.
 }
 
 \value{
@@ -148,7 +151,7 @@ Friendly, M. (2007).
 
 \seealso{
     \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}},
-    \code{\link{heplot}}, \code{\link{pairs.mlm}}, \code{\link[rgl]{rgl-package}}.
+    \code{\link{heplot}}, \code{\link{pairs.mlm}}, \code{\link[rgl]{rgl-package}, \code{\link[candisc]{heplot3d.candisc}}.
 }
 
 \examples{
