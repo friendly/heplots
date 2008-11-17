@@ -1,0 +1,36 @@
+citHeader("To cite package 'heplots' in publications use:")
+
+## R >= 2.8.0 passes package metadata to citation().
+if(!exists("meta") || is.null(meta)) meta <- packageDescription("heplots")
+year <- sub("-.*", "", meta$Date)
+note <- sprintf("R package version %s", meta$Version)
+     
+citEntry(entry = "Manual",
+  title = "{heplots}: Visualizing Tests in Multivariate Linear Models",
+  author = personList(as.person("John Fox"),
+                  as.person("Michael Friendly"),
+                  as.person("Georges Monette")),
+  year = year,
+  note = note,
+  url = "http://CRAN.R-project.org/package=heplots",
+
+  textVersion =
+  paste("John Fox and Michael Friendly and and Georges Monette",
+       sprintf("(%s).", year),
+        "heplots: Visualizing Tests in Multivariate Linear Models.",
+    paste(note, ".", sep = ""),
+        "URL http://CRAN.R-project.org/package=heplots")
+)
+
+#citEntry(entry="Article",
+#  title = 	 "HE plots for Multivariate General Linear Models",
+#  author = 	 "Michael Friendly",
+#  year = 	 "2007",
+#  journal = 	 "Journal of Computational and Graphical Statistics",
+#  volume = "16",
+#  number = "4",
+#  pages = "421-444", 
+#  textVersion = "Friendly, M. (2007). 
+#  HE plots for Multivariate General Linear Models.
+#  Journal of Computational and Graphical Statistics, 2007, 16, 421-444"  
+#)

@@ -8,25 +8,40 @@ Visualizing Tests in Multivariate Linear Models
 }
 
 \description{
-Represents sums-of-squares-and-products matrices for linear hypotheses and for 
+The \code{heplots} package provides functions for visualizing hypothesis tests
+in multivariate linear models. They
+represent sums-of-squares-and-products matrices for linear hypotheses and for 
 error using ellipses (in two dimensions) and ellipsoids (in three dimensions).
+See Fox, Friendly and Monette (2007) for a brief introduction.
 }
 
 \details{
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.8-3\cr
-Date: \tab 2008-11-6\cr
+Version: \tab 0.8-4\cr
+Date: \tab 2008-11-17\cr
 License: \tab GPL version 2 or newer\cr
 }
 
-\code{\link{heplot}} constructs two-dimensional plots for model terms and 
+The graphical functions contained here all display multivariate model
+effects in variable space:
+
+%\begin{itemize}
+  \item \code{\link{heplot}} constructs two-dimensional HE plots for model terms and 
 linear hypotheses for 
 pairs of response variables in multivariate linear models. 
-\code{\link{heplot3d}} constructs analogous 3D plots for triples of response
-variables. \code{\link{pairs.mlm}} constructs a ``matrix'' of
-pairwise HE plots.
+  \item \code{\link{heplot3d}} constructs analogous 3D plots for triples of response
+variables. 
+  \item \code{\link{pairs.mlm}} constructs a ``matrix'' of pairwise HE plots.
+%\end{itemize}
+
+
+The related \code{\link[car]{car-package}} package calculates tests of multivariate
+linear hypotheses. 
+The \code{\link[candisc]{candisc-package}} package provides functions for 
+visualizing effects for model terms in a low-dimensional canonical space
+that shows the largest hypothesis relative to error variation.
 }
 
 \author{
@@ -46,6 +61,12 @@ Friendly, M. (2007).
   HE plots for Multivariate General Linear Models.
   \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
   \url{http://www.math.yorku.ca/SCS/Papers/jcgs-heplots.pdf} 
+
+Fox, J., Friendly, M. & Monette, G. (2007).
+  Visual hypothesis tests in multivariate linear models: The heplots package for R. 
+  \emph{DSC 2007: Directions in Statistical Computing}.
+  \url{http://socserv.socsci.mcmaster.ca/jfox/heplots-dsc-paper.pdf}
+
 }
 
 \keyword{package}

@@ -151,7 +151,7 @@ Friendly, M. (2007).
 
 \seealso{
     \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}},
-    \code{\link{heplot}}, \code{\link{pairs.mlm}}, \code{\link[rgl]{rgl-package}, \code{\link[candisc]{heplot3d.candisc}}.
+    \code{\link{heplot}}, \code{\link{pairs.mlm}}, \code{\link[rgl]{rgl-package}}, \code{\link[candisc]{heplot3d.candisc}}.
 }
 
 \examples{
