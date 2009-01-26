@@ -22,15 +22,19 @@ citEntry(entry = "Manual",
         "URL http://CRAN.R-project.org/package=heplots")
 )
 
-#citEntry(entry="Article",
-#  title = 	 "HE plots for Multivariate General Linear Models",
-#  author = 	 "Michael Friendly",
-#  year = 	 "2007",
-#  journal = 	 "Journal of Computational and Graphical Statistics",
-#  volume = "16",
-#  number = "4",
-#  pages = "421-444", 
-#  textVersion = "Friendly, M. (2007). 
-#  HE plots for Multivariate General Linear Models.
-#  Journal of Computational and Graphical Statistics, 2007, 16, 421-444"  
-#)
+citEntry(header="To refer to the theory on which this package is based, also cite:",
+   entry="Article",
+  title = 	 "HE plots for Multivariate General Linear Models",
+  author = 	 "Michael Friendly",
+  year = 	 "2007",
+  journal = 	 "Journal of Computational and Graphical Statistics",
+  volume = "16",
+  number = "4",
+  pages = "421--444", 
+  textVersion = "Friendly, M. (2007). 
+  HE plots for Multivariate General Linear Models.
+  Journal of Computational and Graphical Statistics, 2007, 16, 421-444"  
+)
+
+citFooter("BibTeX entries for LaTeX users: use\n", sQuote('toBibtex(citation("heplots"))'))
+#toBibtex(citation("heplots"))

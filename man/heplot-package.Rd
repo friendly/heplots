@@ -19,22 +19,23 @@ See Fox, Friendly and Monette (2007) for a brief introduction.
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.8-4\cr
-Date: \tab 2008-11-17\cr
+Version: \tab 0.8-5\cr
+Date: \tab 2009-01-26\cr
 License: \tab GPL version 2 or newer\cr
 }
 
 The graphical functions contained here all display multivariate model
 effects in variable space:
 
-%\begin{itemize}
-  \item \code{\link{heplot}} constructs two-dimensional HE plots for model terms and 
-linear hypotheses for 
-pairs of response variables in multivariate linear models. 
-  \item \code{\link{heplot3d}} constructs analogous 3D plots for triples of response
-variables. 
-  \item \code{\link{pairs.mlm}} constructs a ``matrix'' of pairwise HE plots.
-%\end{itemize}
+%\describe(
+\code{\link{heplot}} constructs two-dimensional HE plots for model terms and 
+linear hypotheses for pairs of response variables in multivariate linear models.
+
+\code{\link{heplot3d}} constructs analogous 3D plots for triples of response
+variables.
+ 
+\code{\link{pairs.mlm}} constructs a ``matrix'' of pairwise HE plots.
+%}
 
 
 The related \code{\link[car]{car-package}} package calculates tests of multivariate
@@ -47,7 +48,7 @@ that shows the largest hypothesis relative to error variation.
 \author{
 John Fox, Michael Friendly, and Georges Monette
 
-Maintainer: John Fox <jfox@mcmaster.ca>
+Maintainer: Michael Friendly <friendly@yorku.ca>
 }
 
 \references{
