@@ -43,7 +43,7 @@ idata <-data.frame(grade=ordered(8:11))
 Anova(Vocab.mod, idata=idata, idesign=~grade)
 
 # calculate Y M, using polynomial contrasts
-trends <- as.matrix(VocabGrowth) %*% poly(8:11, degree=3)
+trends <- as.matrix(VocabGrowth) \%*\% poly(8:11, degree=3)
 colnames(trends)<- c("Linear", "Quad", "Cubic")
 
 within.mod <- lm(trends ~ 1)
