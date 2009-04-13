@@ -46,13 +46,17 @@ Anova(Vocab.mod, idata=idata, idesign=~grade)
 trends <- as.matrix(VocabGrowth) \%*\% poly(8:11, degree=3)
 colnames(trends)<- c("Linear", "Quad", "Cubic")
 
+# test all trend means = 0 == Grade effect
 within.mod <- lm(trends ~ 1)
 
 Manova(within.mod)
 heplot(within.mod, terms="(Intercept)", col=c("red", "blue"), type="3",
-	main="HE plot for Grade effect")
+  term.labels="Grade",
+  main="HE plot for Grade effect")
 points(0,0, cex=2.5, col="green", pch=19)
-text(0,0, col="green", pos=2, labels="H0")
+text(0,0, expression(H[0]), col="green", pos=2)
+abline(h=0, col="green")
+abline(v=0, col="green")
 
 }
 \keyword{datasets}

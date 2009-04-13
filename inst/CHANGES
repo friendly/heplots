@@ -40,6 +40,9 @@ Version 0.8-5 (2009-01-26)
  o Minor documentation changes for Rdoc 2
  o Michael Friendly as maintainer
 
-
+Version 0.8-6 (2009-04-11)
+ o Added VocabGrowth data, with an example of heplot() for a repeated measures design
+ o Fixed label.ellipse in heplot.mlm.R to center the label horizontally
+ 
  
  

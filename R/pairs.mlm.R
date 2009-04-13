@@ -1,5 +1,7 @@
 # last modified 21 December 2006 by J. Fox
 
+# TODO: Fix numerous warnings resulting from axes=FALSE
+
 `pairs.mlm` <-
 function(x, variables,
     type=c("II", "III", "2", "3"),
