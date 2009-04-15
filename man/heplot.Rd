@@ -18,7 +18,7 @@ heplot(mod, ...)
     factor.means = !add, grand.mean = !add, remove.intercept = TRUE,
     type = c("II", "III", "2", "3"), manova, size = c("evidence", "effect.size"),
     level = 0.68, alpha = 0.05, segments = 40, center.pch = "+", col = palette()[-1], 
-    lty = 2:1, lwd = 1:2, xlab, ylab, main = "", xlim, ylim, offset.axes, 
+    lty = 2:1, lwd = 1:2, xlab, ylab, main = "", xlim, ylim, axes=TRUE, offset.axes, 
     add = FALSE, verbose = FALSE, warn.rank = FALSE, ...)
 }
 
@@ -91,6 +91,7 @@ heplot(mod, ...)
   \item{main}{main plot label; defaults to \code{""}.}
   \item{xlim}{x-axis limits; if absent, will be computed from the data.}
   \item{ylim}{y-axis limits; if absent, will be computed from the data.}
+  \item{axes}{Whether to draw the x, y axes; defaults to \code{TRUE}}
   \item{offset.axes}{proportion to extend the axes in each direction if computed 
     from the data; optional.}
   \item{add}{if \code{TRUE}, add to the current plot; the default is \code{FALSE}.
@@ -107,7 +108,8 @@ heplot(mod, ...)
 \details{
    The \code{heplot} function plots a representation of the covariance ellipses
    for hypothesized model terms and linear hypotheses (H) and the corresponding
-   error (E) matrices for two response variables in a multivariate linear model (mlm).  
+   error (E) matrices for two response variables in a multivariate linear model (mlm).
+     
    The plot helps to visualize the nature and dimensionality
    response variation on the two variables jointly
    in relation to error variation that is summarized in the various multivariate
@@ -122,6 +124,9 @@ heplot(mod, ...)
    
    Typically, you fit a mlm with \code{mymlm <- lm(cbind(y1, y2, y3, ...) ~ modelterms)},
    and plot some or all of the \code{modelterms} with \code{heplot(mymlm, ...)}.
+   Arbitrary linear hypotheses related to the terms in the model (e.g., contrasts of
+   an effect) can be included in the plot using the \code{hypotheses} argument. 
+   See \code{\link[car]{linear.hypothesis}} for details.
    
 }
 
@@ -136,12 +141,12 @@ heplot(mod, ...)
 Friendly, M. (2006).
   Data Ellipses, HE Plots and Reduced-Rank Displays for Multivariate Linear 
   Models: SAS Software and Examples 
-  \emph{Journal of Statistical Software}, 17(6), 1-42.
+  \emph{Journal of Statistical Software}, \bold{17}(6), 1--42.
   \url{http://www.jstatsoft.org/v17/i06/}
 
 Friendly, M. (2007).
   HE plots for Multivariate General Linear Models.
-  \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
+  \emph{Journal of Computational and Graphical Statistics}, \bold{16}(2) 421--444.
   \url{http://www.math.yorku.ca/SCS/Papers/jcgs-heplots.pdf} 
 }
 

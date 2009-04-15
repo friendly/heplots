@@ -7,6 +7,7 @@
 # -- moved lambda.crit to utility.R
 # -- added he.rep to handle common task of repeating HE argument values
 # last modified 13 Apr 2009 by M. Friendly -- fix label.ellipse
+# last modified 15 Apr 2009 by M. Friendly -- added axes= to fix warnings from pairs.mlm
 
 
 `heplot.mlm` <-
@@ -36,6 +37,7 @@
 				main="",
 				xlim,           # min/max for X (override internal min/max calc) 
 				ylim,
+				axes=TRUE,      # whether to draw the axes
 				offset.axes,    # if specified, the proportion by which to expand the axes on each end (e.g., .05)
 				add=FALSE,      # add to existing plot?
 				verbose=FALSE,
@@ -173,7 +175,7 @@
 		}
 		xlim <- if(missing(xlim)) c(min[1], max[1]) else xlim
 		ylim <- if(missing(ylim)) c(min[2], max[2]) else ylim
-		plot(xlim, ylim,  type = "n", xlab=xlab, ylab=ylab, main=main, ...)
+		plot(xlim, ylim,  type = "n", xlab=xlab, ylab=ylab, main=main, axes=axes, ...)
 	}
 	H.ellipse$E <- NULL
 	if (grand.mean) 

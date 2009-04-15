@@ -1,6 +1,6 @@
 # last modified 21 December 2006 by J. Fox
+# last modified 15 April 2009 by M. Friendly -- Fixed numerous warnings resulting from axes=FALSE
 
-# TODO: Fix numerous warnings resulting from axes=FALSE
 
 `pairs.mlm` <-
 function(x, variables,
