@@ -1,5 +1,7 @@
 # last modified 21 December 2006 by J. Fox
-# last modified 15 April 2009 by M. Friendly -- Fixed numerous warnings resulting from axes=FALSE
+# last modified 15 April 2009 by M. Friendly 
+#  -- Fixed numerous warnings resulting from axes=FALSE
+#  -- prepare to generalize diagonal panel
 
 
 `pairs.mlm` <-
@@ -29,14 +31,23 @@ function(x, variables,
     max <- 1 + offset.axes
     old.par <- par(mfrow=c(n.resp, n.resp), mar=rep(0,4))
     on.exit(par(old.par))
-    for (i in 1:n.resp){
+
+	panel.label <- function(x, ...) {
+		plot(c(min, max),c(min, max), type="n", axes=FALSE)
+		text(0.5, 0.5, vars[i], cex=2)
+		text(1, 0, signif(range[1, i], digits=digits), adj=c(1, 0))
+		text(0, 1, signif(range[2, i], digits=digits), adj=c(0, 1)) 
+		box()
+	}	
+	for (i in 1:n.resp){
         for (j in 1:n.resp){
             if (i == j){
-                plot(c(min, max),c(min, max), type="n", axes=FALSE)
-                text(0.5, 0.5, vars[i], cex=2)
-                text(1, 0, signif(range[1, i], digits=digits), adj=c(1, 0))
-                text(0, 1, signif(range[2, i], digits=digits), adj=c(0, 1)) 
-                box()
+				panel.label()
+#                plot(c(min, max),c(min, max), type="n", axes=FALSE)
+#                text(0.5, 0.5, vars[i], cex=2)
+#                text(1, 0, signif(range[1, i], digits=digits), adj=c(1, 0))
+#                text(0, 1, signif(range[2, i], digits=digits), adj=c(0, 1)) 
+#                box()
                 }
             else {
                 heplot(x, variables=c(vars[j], vars[i]), manova=manova, axes=FALSE,
