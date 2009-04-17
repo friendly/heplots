@@ -46,4 +46,8 @@ Version 0.8-6 (2009-04-11)
  o Added demo(OBK)
  o Added axes= to heplot.mlm to fix warnings arising from axes=FALSE in pairs.mlm 
  
+ Version 0.8-7 (2009-04-17)
+ o Initial version of heplot1d
+ 
+ 
  

@@ -1,6 +1,8 @@
 # last modified 11 December 2006 by J. Fox
-export(heplot, heplot3d)
+# last modified 17 April 2009 by M. Friendly
+export(heplot, heplot3d, heplot1d)
 S3method(heplot, mlm)
 S3method(heplot3d, mlm)
 S3method(pairs, mlm)
+S3method(heplot1d, mlm)
 
