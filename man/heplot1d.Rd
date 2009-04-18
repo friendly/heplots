@@ -121,7 +121,7 @@ verbose = FALSE, ...)
 }
  \examples{
 plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
-heplot1d.mlm(plastic.mod, col=c(rgb(1,0,0,0.2),"blue"))
+heplot1d(plastic.mod, col=c(rgb(1,0,0,0.2),"blue"))
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

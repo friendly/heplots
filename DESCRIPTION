@@ -6,7 +6,7 @@ Date: 2009-04-17
 Author: John Fox, Michael Friendly, and Georges Monette
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Depends: car, graphics, stats
-Suggests: rgl, candisc
+Suggests: rgl, candisc, effects
 LazyLoad: yes
 LazyData: yes
 Description: Represents sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions).
