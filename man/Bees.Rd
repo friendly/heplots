@@ -7,13 +7,14 @@ Pabalan, Davey and Packe (2000)
 studied the effects of captivity and maltreatment
 on reproductive capabilities of queen and worker bees in a complex factorial design.
 
-Bees were placed in a small tube and either held captive or shaken periodically for
+Bees were placed in a small tube and either held captive (CAP) or shaken periodically (MAL) for
 one of 5, 7.5, 10, 12.5 or 15 minutes, after which they were sacrificed and
-two measures, ovarian development and ovarian reabsorption, were taken.
-A single control group was measured with no such treatment, i.e., at time 0, 
+two measures: ovarian development (\code{Iz}) and ovarian reabsorption (\code{Iy}), were taken.
+A single control group was measured with no such treatment, i.e., at time 0; there are 
 $n=10$ per group.
+
 The design is thus nearly a three-way factorial, with factors
-\code{caste} (Queen, Worker), \code{treat} (Cap, Mal) and \code{time}, 
+\code{caste} (Queen, Worker), \code{treat} (CAP, MAL) and \code{time}, 
 except that there are only 11 combinations of Treatment and Time; 
 we call these \code{trtime} below.
 }
@@ -30,9 +31,18 @@ we call these \code{trtime} below.
   }
 }
 \details{
-%  To handle the additional control group at time=0, while separating the
-%  effects of Treatment and Time, 11 contrasts are defined for the \code{trtime}
-%  factor.
+  Models for the three-way factorial design, using the formula \code{cbind(Iz,Iy) ~ caste*treat*time}
+  ignore the control condition at \code{time==0}, where \code{treat==NA}.
+   
+  To handle the additional control group at \code{time==0}, while separating the
+  effects of Treatment and Time, 10 contrasts can be defined for the \code{trtime}
+  factor in the model \code{cbind(Iz,Iy) ~ caste*trtime}
+  See \code{demo(bees.contrasts)} for details.
+  
+  In the \code{heplot} examples below, the default \code{size="evidence"} displays are
+  too crowded to interpret, because some effects are so highly significant.  The alternative
+  effect-size scaling, \code{size="effect"}, makes the relations clearer.
+  
 }
 \source{
 Pabalan, N., Davey, K. G. & Packe, L. (2000).
@@ -53,13 +63,15 @@ data(Bees)
 
 # 3-way factorial, ignoring 0 group
 bees.mod <- lm(cbind(Iz,Iy) ~ caste*treat*time, data=Bees)
-heplot(bees.mod)
-heplot(bees.mod, size="effect")
+heplot(bees.mod, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption")
+heplot(bees.mod, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+       size="effect")
 
 # two-way design, using trtime
 bees.mod1 <- lm(cbind(Iz,Iy) ~ caste*trtime, data=Bees)
-heplot(bees.mod1)
-heplot(bees.mod1, size="effect")
+heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption")
+heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+       size="effect")
 
 # effect plots for separate responses
 if(require(effects)) {
