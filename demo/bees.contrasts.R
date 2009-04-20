@@ -1,4 +1,5 @@
 # Bees data:
+data(Bees)
 # contrasts to resolve trtime into treat, time, treat:time
 
 cont<-matrix(scan(zz<-textConnection("
@@ -25,4 +26,15 @@ cont
 
 contrasts(Bees$trtime) <-cont
 
-# TODO: show tests of linear hypotheses using these contrasts
+# Tests of linear hypotheses using these contrasts
+bees.mod1 <- lm(cbind(Iz,Iy) ~ caste*trtime, data=Bees)
+coefs <- rownames(coef(bees.mod1))
+linear.hypothesis(bees.mod1,"trtimetreat" , title="Treat")
+
+print(linear.hypothesis(bees.mod1, coefs[grep("^trtimetime", coefs)], title="Time"),SSP=FALSE)
+print(linear.hypothesis(bees.mod1, coefs[grep("^trtimetreat:time", coefs)], title="Treat:Time"),SSP=FALSE)
+
+heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+		size="effect",
+		hypotheses=list(Time=coefs[grep("^trtimetime", coefs)])
+)

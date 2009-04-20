@@ -11,7 +11,7 @@ Bees were placed in a small tube and either held captive (CAP) or shaken periodi
 one of 5, 7.5, 10, 12.5 or 15 minutes, after which they were sacrificed and
 two measures: ovarian development (\code{Iz}) and ovarian reabsorption (\code{Iy}), were taken.
 A single control group was measured with no such treatment, i.e., at time 0; there are 
-$n=10$ per group.
+n=10 per group.
 
 The design is thus nearly a three-way factorial, with factors
 \code{caste} (Queen, Worker), \code{treat} (CAP, MAL) and \code{time}, 
@@ -23,8 +23,8 @@ we call these \code{trtime} below.
   A data frame with 246 observations on the following 6 variables.
   \describe{
     \item{\code{caste}}{a factor with levels \code{Queen} \code{Worker}}
-    \item{\code{treat}}{a factor with levels \code{} \code{CAP} \code{MAL}}
-    \item{\code{time}}{a numeric vector: time of treatment}
+    \item{\code{treat}}{a factor with levels \code{""} \code{CAP} \code{MAL}}
+    \item{\code{time}}{an ordered factor: time of treatment}
     \item{\code{Iz}}{an index of ovarian development}
     \item{\code{Iy}}{an index of ovarian reabsorption}
     \item{\code{trtime}}{a factor with levels \code{0} \code{CAP05} \code{CAP07} \code{CAP10} \code{CAP12} \code{CAP15} \code{MAL05} \code{MAL07} \code{MAL10} \code{MAL12} \code{MAL15}}
@@ -63,26 +63,34 @@ data(Bees)
 
 # 3-way factorial, ignoring 0 group
 bees.mod <- lm(cbind(Iz,Iy) ~ caste*treat*time, data=Bees)
-heplot(bees.mod, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption")
+Anova(bees.mod)
+
+op<-palette(c(palette()[1:4],"brown","magenta", "olivedrab","darkgray"))
 heplot(bees.mod, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
-       size="effect")
+		main="Bees: ~caste*treat*time")
+heplot(bees.mod, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+       main="Bees: ~caste*treat*time", size="effect")
 
 # two-way design, using trtime
 bees.mod1 <- lm(cbind(Iz,Iy) ~ caste*trtime, data=Bees)
-heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption")
+Anova(bees.mod1)
+
 heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
-       size="effect")
+		main="Bees: ~caste*trtime")
+heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+       main="Bees: ~caste*trtime",size="effect")
+palette(op)
 
 # effect plots for separate responses
 if(require(effects)) {
-bees.lm1 <-lm(Iy ~ treat*caste*time, data=Bees)
-bees.lm2 <-lm(Iz ~ treat*caste*time, data=Bees)
-
-bees.eff1 <- allEffects(bees.lm1)
-plot(bees.eff1,multiline=TRUE,ask=FALSE)
-
-bees.eff2 <- allEffects(bees.lm2)
-plot(bees.eff2,multiline=TRUE,ask=FALSE)
+	bees.lm1 <-lm(Iy ~ treat*caste*time, data=Bees)
+	bees.lm2 <-lm(Iz ~ treat*caste*time, data=Bees)
+	
+	bees.eff1 <- allEffects(bees.lm1)
+	plot(bees.eff1,multiline=TRUE,ask=FALSE)
+	
+	bees.eff2 <- allEffects(bees.lm2)
+	plot(bees.eff2,multiline=TRUE,ask=FALSE)
 }
 
 }
