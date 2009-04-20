@@ -155,10 +155,6 @@ function(mod, ...) UseMethod("heplot1d")
 				means <- aggregate(Y, list(fac), mean)
 				min <- min(min, means[,2])
 				max <- max(max, means[,2])
-#				min[1] <- min(min[1], means[,2])
-#				max[1] <- max(max[1], means[,2])
-#				min[2] <- min(min[2], means[,3])
-#				max[2] <- max(max[2], means[,3])
 			}
 		}
 		if (!missing(offset.axes)){
@@ -212,7 +208,7 @@ function(mod, ...) UseMethod("heplot1d")
 
 	names(H.ellipse) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
 	result <- if (!add) list(H=H.ellipse, E=E.ellipse, xlim=xlim)	else list(H=H.ellipse, E=E.ellipse)
-	class(result) <- "heplot"
+	class(result) <- "heplot1d"
 	invisible(result)
 
 }

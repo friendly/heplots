@@ -5,9 +5,18 @@
 \title{One-Dimensional HE Plots}
 
 \description{
-This function plots a 1-dimensional representation of the hypothesis and error
+This function plots a 1-dimensional representation of the hypothesis (H) and error (E)
 sums-of-squares-and-products matrices for terms and linear hypotheses in a 
-multivariate linear model.
+multivariate linear model.  
+
+In particular, for a given response, the 1-D representations of H and E matrices
+correspond to line segments.  The E ``ellipse'' is shown as a filled rectangle
+whose width equals the mean squared error for that response.  The H ``ellipse''
+for each model term is shown as a line segment whose length represents either
+the size of the effect or the evidence for that effect.
+
+\bold{This version is an initial sketch.  Details of the implementation are subject
+to change.}
 }
 
 \usage{
@@ -15,11 +24,10 @@ heplot1d(mod, ...)
 
 \method{heplot1d}{mlm}(mod, terms, hypotheses, term.labels = TRUE, hyp.labels = TRUE, 
 	variables = 1, error.ellipse = !add, factor.means = !add, grand.mean = !add, 
-	remove.intercept = TRUE, 
-	type = c("II", "III", "2", "3"), manova, size = c("evidence", "effect.size"), 
-level = 0.68, alpha = 0.05, segments = 40, center.pch = "|", col = palette()[-1], 
-lty = 2:1, lwd = 1:2, xlab, main = "", xlim, axes = TRUE, offset.axes, add = FALSE, 
-verbose = FALSE, ...)
+	remove.intercept = TRUE, type = c("II", "III", "2", "3"), manova, 
+	size = c("evidence", "effect.size"), level = 0.68, alpha = 0.05, segments = 40, 
+	center.pch = "|", col = palette()[-1], lty = 2:1, lwd = 1:2, xlab, main = "", 
+	xlim, axes = TRUE, offset.axes, add = FALSE, verbose = FALSE, ...)
 }
 
 \arguments{
@@ -72,7 +80,7 @@ verbose = FALSE, ...)
   \item{segments}{number of line segments composing each ellipse; defaults to
     \code{40}.}
   \item{center.pch}{character to use in plotting the centroid of the data;
-    defaults to \code{"+"}.}
+    defaults to \code{"|"}.}
   \item{col}{a colour or vector of colours to use in plotting ellipses; the first
     colour is used for the error ellipse; the remaining colours --- recycled
     as necessary --- are used for the hypothesis ellipses; 
@@ -103,25 +111,36 @@ verbose = FALSE, ...)
   ~~ If necessary, more details than the description above ~~
 }
 \value{
-  ~Describe the value returned
-  If it is a LIST, use
-  \item{comp1 }{Description of 'comp1'}
-  \item{comp2 }{Description of 'comp2'}
-  ...
-}
-\references{ ~put references to the literature/web site here ~ }
-\author{Michael Friendly}
-\note{ ~~further notes~~ 
+  The function invisibly returns an object of class \code{"heplot1d"}, with
+  coordinates for the various hypothesis ellipses and the error ellipse, and
+  the limits of the horizontal and vertical axes.
+  (No methods for manipulating these objects are currently available.)
+  
+  The components are:
+  \item{H}{ranges for the hypothesis terms}
+  \item{E}{range for E}
+  \item{xlim}{x-axis limits}
 
- ~Make other sections like Warning with \section{Warning }{....} ~
 }
+%\references{ ~put references to the literature/web site here ~ }
+\author{Michael Friendly}
+%\note{ ~~further notes~~ 
+% ~Make other sections like Warning with \section{Warning }{....} ~
+%}
 \seealso{
-    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}},
-    \code{\link{heplot}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}}.
+    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}} for hypothesis tests in \code{mlm}s
+    
+    \code{\link{heplot}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}} for other HE plot methods
 }
  \examples{
+## Plastics data
 plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
 heplot1d(plastic.mod, col=c(rgb(1,0,0,0.2),"blue"))
+
+## Bees data
+bees.mod <- lm(cbind(Iz,Iy) ~ caste*treat*time, data=Bees)
+heplot1d(bees.mod)
+heplot1d(bees.mod, variables=2)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

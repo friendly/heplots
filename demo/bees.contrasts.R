@@ -28,6 +28,7 @@ contrasts(Bees$trtime) <-cont
 
 # Tests of linear hypotheses using these contrasts
 bees.mod1 <- lm(cbind(Iz,Iy) ~ caste*trtime, data=Bees)
+# get coefficient names for linear.hypothesis
 coefs <- rownames(coef(bees.mod1))
 linear.hypothesis(bees.mod1,"trtimetreat" , title="Treat")
 
@@ -35,6 +36,6 @@ print(linear.hypothesis(bees.mod1, coefs[grep("^trtimetime", coefs)], title="Tim
 print(linear.hypothesis(bees.mod1, coefs[grep("^trtimetreat:time", coefs)], title="Treat:Time"),SSP=FALSE)
 
 heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
-		size="effect",
+		size="effect", main="Bees: ~caste*trtime",
 		hypotheses=list(Time=coefs[grep("^trtimetime", coefs)])
 )

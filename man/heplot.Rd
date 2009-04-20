@@ -135,6 +135,13 @@ heplot(mod, ...)
   coordinates for the various hypothesis ellipses and the error ellipse, and
   the limits of the horizontal and vertical axes.
   (No methods for manipulating these objects are currently available.)
+
+  The components are:
+  \item{H}{a list containing the coordinates of each ellipse for the hypothesis terms}
+  \item{E}{a matrix containing the coordinates for the error ellipse}
+  \item{xlim}{x-axis limits}
+  \item{ylim}{y-axis limits}
+
 }
 
 \references{
