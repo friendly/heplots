@@ -14,6 +14,7 @@ Roy.crit(alpha, p, dfh, dfe)
 HLT.crit(alpha, p, dfh, dfe)
 he.rep(x, n)
 termInfo(x)
+termMeans(mod, term, label.factors=TRUE)
 }
 
 \arguments{
