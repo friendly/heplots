@@ -32,7 +32,7 @@ function(mod, ...) UseMethod("heplot1d")
 				main="",
 				xlim,           # min/max for X (override internal min/max calc) 
 				axes=TRUE,      # whether to draw the axes
-				offset.axes,    # if specified, the proportion by which to expand the axes on each end (e.g., .05)
+				offset.axes=0.1,    # proportion by which to expand the axes on each end (e.g., .05)
 				add=FALSE,      # add to existing plot?
 				verbose=FALSE,
 				...) {
@@ -115,7 +115,7 @@ function(mod, ...) UseMethod("heplot1d")
 				print(H)
 			}
 			H.ellipse[[term]] <- ell1d(gmean, H, radius)
-			if(verbose) print(H.ellipse[[term]])
+			if(verbose) {cat(term.name, "H range:\n"); print(H.ellipse[[term]])}
 		}
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
 			lh <- linear.hypothesis(mod, hypotheses[[hyp]])
@@ -184,6 +184,18 @@ function(mod, ...) UseMethod("heplot1d")
 			lines(x=H.ellipse[[term]], y=rep(term,2), col=col[term], lty=lty[term], lwd=lwd[term])
 #			label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term]) 
 			text(xlim[1],term, term.labels[term], col=col[term], adj=c(0,0))
+			term.name <- terms[term]
+			means <- termMeans(mod, term.name, label.factors=FALSE)
+			points(means[,vars], rep(term,nrow(means)), pch=16, xpd=TRUE, ...)
+			widths <- strwidth(rownames(means))
+# TODO: determin pos based on whether there is overlap of labels
+			pos <- rep(c(1,3),length=nrow(means))
+			text(means[,vars], rep(term,nrow(means)), labels=rownames(means), 
+					pos=pos, xpd=TRUE, ...)
+			if (verbose){
+				cat("\n",term.name, " means:\n")
+				print(means[,vars,drop=FALSE])
+			}
 		}   
 	hyp.labels <- if (n.hyp == 0) NULL
 			else if (!is.logical(hyp.labels)) hyp.labels
@@ -195,16 +207,20 @@ function(mod, ...) UseMethod("heplot1d")
 			text(xlim[1],term, term.labels[term], col=col[term], adj=c(0,0))
 		}
 
-	if (!add && (!is.logical(factor.means) || factor.means)){
-		line <- 0
-		for (fac in factors){
-			line <- line+1
-			means <- aggregate(Y, list(fac), mean)
-			points(means[,2], rep(line,nrow(means)), pch=16, xpd=TRUE, ...)
-			text(means[,2], rep(line,nrow(means)), labels=as.character(means[,1]), 
-					pos=rep(c(1,3),length=nrow(means)), xpd=TRUE, ...)
-		}
-	}
+#	if (!add && (!is.logical(factor.means) || factor.means)){
+#		line <- 0
+#		for (fac in factors){
+#			line <- line+1
+#			means <- aggregate(Y, list(fac), mean)
+#			if (verbose){
+#				cat(colnames(factors)[fac], " means:\n")
+#				print(means)
+#			}
+#			points(means[,2], rep(line,nrow(means)), pch=16, xpd=TRUE, ...)
+#			text(means[,2], rep(line,nrow(means)), labels=as.character(means[,1]), 
+#					pos=rep(c(1,3),length=nrow(means)), xpd=TRUE, ...)
+#		}
+#	}
 
 	names(H.ellipse) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
 	result <- if (!add) list(H=H.ellipse, E=E.ellipse, xlim=xlim)	else list(H=H.ellipse, E=E.ellipse)

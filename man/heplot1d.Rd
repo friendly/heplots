@@ -135,7 +135,9 @@ heplot1d(mod, ...)
  \examples{
 ## Plastics data
 plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
-heplot1d(plastic.mod, col=c(rgb(1,0,0,0.2),"blue"))
+heplot1d(plastic.mod, col=c("pink","blue"))
+heplot1d(plastic.mod, col=c("pink","blue"),variables=2)
+heplot1d(plastic.mod, col=c("pink","blue"),variables=3)
 
 ## Bees data
 bees.mod <- lm(cbind(Iz,Iy) ~ caste*treat*time, data=Bees)
