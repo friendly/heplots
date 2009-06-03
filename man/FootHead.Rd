@@ -1,5 +1,5 @@
 \name{FootHead}
-\Rdversion{1.1}
+%\Rdversion{1.1}
 \alias{FootHead}
 \docType{data}
 \title{
@@ -31,11 +31,19 @@ High school football players, college players and non-football players.
 Rencher, A. C. (1995), \emph{Methods of Multivariate Analysis},
 New York: Wiley, Table 8.3.
 }
-\references{
+%\references{
 %%  ~~ possibly secondary sources and usages ~~
-}
+%}
 \examples{
 data(FootHead)
 str(FootHead) ; plot(FootHead)
+
+foot.mod <- lm(cbind(width, circum,front.back,eye.top,ear.top,jaw)~group, data=FootHead)
+Manova(foot.mod)
+
+heplot(foot.mod)
+pairs(foot.mod)
+
+
 }
 \keyword{datasets}
