@@ -164,13 +164,23 @@ Friendly, M. (2007).
 
 \examples{
 ## iris data
+contrasts(iris$Species)<-matrix(c(0,-1,1, 2, -1, -1), 3,2)
+contrasts(iris$Species)
+
 iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~
 Species, data=iris)
 
-heplot(iris.mod)
-hep <-heplot(iris.mod, variables=c(1,3))
+hyp <- list("V:V"="Species1","S:VV"="Species2")
+heplot(iris.mod, hypotheses=hyp)
+# compare with effect-size scaling
+heplot(iris.mod, hypotheses=hyp, size="effect", add=TRUE)
+
+hep <-heplot(iris.mod, variables=c(1,3),  hypotheses=hyp)
 str(hep)
-pairs(iris.mod)
+
+# all pairs
+pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE)
+
 
 ## Pottery data, from cars package
 data(Pottery)
