@@ -55,6 +55,10 @@ Version 0.8-8 (2009-06-04)
  o Added data(FootHead)
  o Extended example(FootHead)
 
+Version 0.8-9 (2009-06-19)
+ o Added data(RootStock)
+ o heplot.mlm, heplot3d.mlm now include center in the returned object
+ 
  
  
  

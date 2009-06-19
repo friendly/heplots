@@ -133,12 +133,14 @@ heplot(mod, ...)
 \value{
   The function invisibly returns an object of class \code{"heplot"}, with
   coordinates for the various hypothesis ellipses and the error ellipse, and
-  the limits of the horizontal and vertical axes.
+  the limits of the horizontal and vertical axes.  These may be useful for
+  adding additional annotations to the plot, using standard plotting functions.
   (No methods for manipulating these objects are currently available.)
 
   The components are:
   \item{H}{a list containing the coordinates of each ellipse for the hypothesis terms}
   \item{E}{a matrix containing the coordinates for the error ellipse}
+  \item{center}{x,y coordinates of the centroid}
   \item{xlim}{x-axis limits}
   \item{ylim}{y-axis limits}
 

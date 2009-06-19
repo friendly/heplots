@@ -105,7 +105,7 @@ heplot3d(mod, ...)
   \item{ylim}{y-axis limits; if absent, will be computed from the data.}
   \item{zlim}{z-axis limits; if absent, will be computed from the data.}
   \item{add}{if \code{TRUE}, add to the current plot; the default is \code{FALSE}.
-    If \code{TRUE}, the error ellipsoid is not plotted}
+    If \code{TRUE}, the error ellipsoid is neither plotted nor returned in the output object.}
   \item{verbose}{if \code{TRUE}, print the MANOVA table and details of hypothesis
     tests; the default is \code{FALSE}.}
   \item{warn.rank}{if \code{TRUE}, do not suppress warnings about the rank of the
@@ -118,7 +118,8 @@ heplot3d(mod, ...)
 	ellipse	(rank(H)=2) or a line (rank(H)=1). 
 
 	Rotating the plot can be particularly revealing, showing views in which H variation
-	is particularly large or small in relation to E variation.
+	is particularly large or small in relation to E variation.  See \code{\link[rgl]{play3d}}
+	and \code{\link[rgl]{movie3d}} for details on creating animations.
 	
 	The arguments \code{xlim}, \code{ylim}, and \code{zlim} can be used to expand the bounding
 	box of the axes, but cannot decrease it.
@@ -128,7 +129,8 @@ heplot3d(mod, ...)
   \code{heplot3d} invisibly returns a list containing the bounding boxes of the error (E)
   ellipsoid and for each term or linear hypothesis specified in the call.
   Each of these is a 2 x 3 matrix with rownames "min" and "max" and colnames
-  corresponding to the variables plotted. 
+  corresponding to the variables plotted. An additional component, \code{center},
+  contains the coordinates of the centroid in the plot.
 
   The function also leaves an object named
   \code{.frame} in the global environment, containing the rgl object IDs for
@@ -150,8 +152,14 @@ Friendly, M. (2007).
 }
 
 \seealso{
-    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}},
-    \code{\link{heplot}}, \code{\link{pairs.mlm}}, \code{\link[rgl]{rgl-package}}, \code{\link[candisc]{heplot3d.candisc}}.
+    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}}, for details on MANOVA tests and
+    linear hypotheses
+    
+    \code{\link{heplot}}, \code{\link{pairs.mlm}}, for other plotting methods for \code{mlm} objects
+    
+    \code{\link[rgl]{rgl-package}}, 
+    
+    \code{\link[candisc]{heplot3d.candisc}}.
 }
 
 \examples{

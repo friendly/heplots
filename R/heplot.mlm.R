@@ -207,7 +207,8 @@
 		}
 	}
 	names(H.ellipse) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
-	result <- if (!add) list(H=H.ellipse, E=E.ellipse, xlim=xlim, ylim=ylim)	else list(H=H.ellipse, E=E.ellipse)
+	result <- if (!add) list(H=H.ellipse, E=E.ellipse, center=gmean, xlim=xlim, ylim=ylim)
+			else list(H=H.ellipse, E=E.ellipse, center=gmean)
 	class(result) <- "heplot"
 	invisible(result)
 }

@@ -257,7 +257,8 @@
 	aspect3d(x=1, y=1, z=1)
 	
 	names(H.ellipsoid) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
-	result <- if(error.ellipsoid) list(H=H.ellipsoid, E=E.ellipsoid) else list(H=H.ellipsoid)
+	result <- if(error.ellipsoid) list(H=H.ellipsoid, E=E.ellipsoid, center=gmean) 
+			else list(H=H.ellipsoid, center=gmean)
 	class(result) <- "heplot3d"
 	invisible(result)
 	
