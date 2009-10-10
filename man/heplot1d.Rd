@@ -107,9 +107,7 @@ heplot1d(mod, ...)
   \item{\dots}{arguments to pass down to \code{plot}, \code{text}, 
     and \code{points}.}
 }
-\details{
-  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
   The function invisibly returns an object of class \code{"heplot1d"}, with
   coordinates for the various hypothesis ellipses and the error ellipse, and

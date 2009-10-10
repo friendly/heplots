@@ -45,7 +45,7 @@ by rows.
 \author{Michael Friendly}
 %\note{ ~~further notes~~ 
 %}
-\seealso{\code{\link[rg]{segments3d}}, \code{\link[rg]{text3d3d}}, \code{\link[rg]{ellipse3d}}}
+\seealso{\code{\link[rgl:points3d]{segments3d}}, \code{\link[rgl:texts]{text3d}}, \code{\link[rgl]{ellipse3d}}}
 
 \examples{
 data(iris)

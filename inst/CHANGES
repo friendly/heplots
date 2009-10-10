@@ -59,6 +59,5 @@ Version 0.8-9 (2009-06-19)
  o Added data(RootStock)
  o heplot.mlm, heplot3d.mlm now include center in the returned object
  
- 
- 
- 
+Version 0.8-10 (2009-10-10)
+ o Fixes to cross-references in .Rd files.

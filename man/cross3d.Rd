@@ -27,7 +27,7 @@ containing the end-points of three axes, in pairs.
 %
 % ~Make other sections like Warning with \section{Warning }{....} ~
 %}
-\seealso{ \code{\link[rgl]{segments3d}}}
+\seealso{ \code{\link[rgl:points3d]{segments3d}}}
 %\examples{
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
