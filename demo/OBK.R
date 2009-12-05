@@ -9,6 +9,7 @@ OBK$post <- rowMeans(OBK[,8:12])
 OBK$fup <- rowMeans(OBK[,13:17])
 # remove separate hour scores
 OBK <- OBK[,-(3:17)]
+#contrasts(OBK$treatment) <- matrix(c(-2, 1, 1,  0, -1, 1), ncol=2)
 
 
 # MANOVA model
@@ -20,9 +21,8 @@ phase <- ordered(c("pretest", "posttest", "followup"),
     levels=c("pretest", "posttest", "followup"))
 # for profile contrasts
 contrasts(phase) <- matrix(c(-1,  1, 0,
-		                          0, -1, 1), ncol=2)
-
-#contrasts(treatment) <- matrix(c(-2, 1, 1,  0, -1, 1), ncol=2)
+		                      0, -1, 1), ncol=2}
+#colnames(contrasts(phase)) <- c("Post-Pre", "Fol-Post")
 
 idata <- data.frame(phase)
 
@@ -52,7 +52,7 @@ heplot(mod1.OBK,
 #	remove.intercept=FALSE,
 	main="Within-S effects (profile contrasts): Phase * (Treat*Gender)",
 	xlab="Post-Pre", ylab="Fup-Post",
-	term.labels=c("phase*treatment", "phase*gender", "phase*treatment*gender"),
+	term.labels=c("phase:treatment", "phase:gender", "phase:treatment:gender"),
 	col=c("red", "black", "blue", "brown"),
 	xlim=c(-2,4), ylim=c(-2,3)
 )
