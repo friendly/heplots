@@ -41,5 +41,12 @@ Anova(root.mod)
 
 pairs(root.mod)
 
+# test two orthogonal contrasts among the rootstocks
+hyp <- matrix(c(2,-1,-1,-1,-1,2,  1, 0,0,0,0,-1), 2, 6, byrow=TRUE)
+linear.hypothesis(root.mod, hyp)
+heplot(root.mod, hypotheses=list(Contrasts=hyp, C1=hyp[1,], C2=hyp[2,]))
+
+heplot1d(root.mod, hypotheses=list(Contrasts=hyp, C1=hyp[1,], C2=hyp[2,]))
+
 }
 \keyword{datasets}

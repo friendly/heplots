@@ -9,7 +9,7 @@ Visualizing Tests in Multivariate Linear Models
 
 \description{
 The \code{heplots} package provides functions for visualizing hypothesis tests
-in multivariate linear models. They
+in multivariate linear models (MANOVA, multivariate multiple regression, MANCOVA, etc.). They
 represent sums-of-squares-and-products matrices for linear hypotheses and for 
 error using ellipses (in two dimensions) and ellipsoids (in three dimensions).
 See Fox, Friendly and Monette (2007) for a brief introduction.
@@ -19,8 +19,8 @@ See Fox, Friendly and Monette (2007) for a brief introduction.
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.8-10\cr
-Date: \tab 2009-10-10\cr
+Version: \tab 0.8-11\cr
+Date: \tab 2009-12-08\cr
 License: \tab GPL version 2 or newer\cr
 }
 
@@ -35,11 +35,16 @@ linear hypotheses for pairs of response variables in multivariate linear models.
 variables.
  
 \code{\link{pairs.mlm}} constructs a ``matrix'' of pairwise HE plots.
+
+\code{\link{heplot1d}} constructs 1-dimensional analogs of HE plots for model terms and 
+linear hypotheses for single response variables
 %}
 
 
 The related \code{\link[car]{car-package}} package calculates tests of multivariate
-linear hypotheses. 
+linear hypotheses using the  \code{\link[car]{Anova}} and \code{\link[car]{linear.hypothesis}}
+functions.
+
 The \code{\link[candisc]{candisc-package}} package provides functions for 
 visualizing effects for model terms in a low-dimensional canonical space
 that shows the largest hypothesis relative to error variation.
@@ -76,7 +81,7 @@ Fox, J., Friendly, M. & Monette, G. (2007).
 \keyword{multivariate}
 
 \seealso{
-    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}}
+    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}}, \code{\link[candisc]{candisc-package}}
 }
 
 

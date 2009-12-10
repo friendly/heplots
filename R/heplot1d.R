@@ -1,5 +1,6 @@
 ## 1D representation of an HE plot
 # Initial version 17-Apr-2009
+# Fixed buglet with hyp.labels 8-Dec-2009
 
 
 `heplot1d` <-
@@ -164,7 +165,9 @@ function(mod, ...) UseMethod("heplot1d")
 		}
 		xlim <- if(missing(xlim)) c(min[1], max[1]) else xlim
 #		ylim <- if(missing(ylim)) c(min[2], max[2]) else ylim
-		plot(xlim, range(yvals),  type = "n", xlab=xlab, ylab="", main=main, axes=axes, ...)
+		plot(xlim, range(yvals),  type = "n", xlab=xlab, 
+				ylab=if (n.hyp>0) "Terms and Hypotheses" else "Terms", yaxt="n",
+				main=main, axes=axes, ...)
 	}
 
 	H.ellipse$E <- NULL
@@ -204,7 +207,7 @@ function(mod, ...) UseMethod("heplot1d")
 			term <- n.terms + hyp
 			lines(x=H.ellipse[[term]], y=rep(term,2), col=col[term], lty=lty[term], lwd=lwd[term])
 #			label.ellipse(H.ellipse[[term]], hyp.labels[hyp], col=col[term])
-			text(xlim[1],term, term.labels[term], col=col[term], adj=c(0,0))
+			text(xlim[1],term, hyp.labels[term], col=col[term], adj=c(0,0))
 		}
 
 #	if (!add && (!is.logical(factor.means) || factor.means)){

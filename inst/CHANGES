@@ -61,3 +61,8 @@ Version 0.8-9 (2009-06-19)
  
 Version 0.8-10 (2009-10-10)
  o Fixes to cross-references in .Rd files.
+
+Version 0.8-11 (2009-12-08)
+ o Minor fixes to heplot1d
+ o Added contrasts example to RootStock.Rd
+
