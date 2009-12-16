@@ -17,17 +17,17 @@ mod.OBK <- lm(cbind(pre, post, fup) ~  treatment*gender,  data=OBK)
 
 
 # for linear and quadratic effects of 'Time'
-phase <- ordered(c("pretest", "posttest", "followup"),
+session <- ordered(c("pretest", "posttest", "followup"),
     levels=c("pretest", "posttest", "followup"))
 # for profile contrasts
-contrasts(phase) <- matrix(c(-1,  1, 0,
+contrasts(session) <- matrix(c(-1,  1, 0,
 		                      0, -1, 1), ncol=2}
-#colnames(contrasts(phase)) <- c("Post-Pre", "Fol-Post")
+#colnames(contrasts(session)) <- c("Post-Pre", "Fol-Post")
 
-idata <- data.frame(phase)
+idata <- data.frame(session)
 
 # Multivariate tests for repeated measures
-aov.OBK <- Manova(mod.OBK, idata=idata, idesign=~phase, type="III")
+aov.OBK <- Manova(mod.OBK, idata=idata, idesign=~session, type="III")
 aov.OBK
 
 # Univariate tests for repeated measures
@@ -42,33 +42,34 @@ heplot(mod.OBK, hypotheses=c("treatment1", "treatment2"),
 pairs(mod.OBK, col=c("red", "black", "blue", "brown"))
 
 # Transform to profile contrasts for within-S effects
-OBK$phase.1 <- OBK$post - OBK$pre
-OBK$phase.2 <- OBK$fup - OBK$post
+OBK$session.1 <- OBK$post - OBK$pre
+OBK$session.2 <- OBK$fup - OBK$post
 
+mod1.OBK <- lm(cbind(session.1, session.2) ~ treatment*gender,  data=OBK)
 # HE plots for Within-S effects
-  # why is (Intercept) missing?
-mod1.OBK <- lm(cbind(phase.1, phase.2) ~ treatment*gender,  data=OBK)
 heplot(mod1.OBK,
-#	remove.intercept=FALSE,
-	main="Within-S effects (profile contrasts): Phase * (Treat*Gender)",
+	main="Within-S effects: Session * (Treat*Gender)",
+	remove.intercept=FALSE, type="III",
 	xlab="Post-Pre", ylab="Fup-Post",
-	term.labels=c("phase:treatment", "phase:gender", "phase:treatment:gender"),
+	term.labels=c("session", "treatment:session", "gender:session", 
+				"treatment:gender:session"),
 	col=c("red", "black", "blue", "brown"),
 	xlim=c(-2,4), ylim=c(-2,3)
 )
+
 points(0,0, cex=2.5, col="green", pch=19)
 text(0,0, expression(H[0]), col="green", pos=2)
 abline(v=0, col="green")
 abline(h=0, col="green")
 
-# Main effect of phase tests H0: Intercept=0
-mod2.OBK <- lm(cbind(phase.1, phase.2) ~ 1,  data=OBK)
+# Main effect of session tests H0: Intercept=0
+mod2.OBK <- lm(cbind(session.1, session.2) ~ 1,  data=OBK)
 heplot(mod2.OBK,
 	terms="(Intercept)", col=c("red", "blue"), type="3",
 #	remove.intercept=FALSE,
-	main="Within-S effects (profile contrasts): Phase",
+	main="Within-S effects (profile contrasts): session",
 	xlab="Post-Pre", ylab="Fup-Post",
-	term.labels="phase",
+	term.labels="session",
 	xlim=c(-2,4), ylim=c(-2,3)
 )
 points(0,0, cex=2.5, col="green", pch=19)
