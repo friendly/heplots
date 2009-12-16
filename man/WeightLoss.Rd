@@ -44,5 +44,10 @@ heplot(wl.mod, hypotheses=c("group1", "group2"))
 pairs(wl.mod, variables=1:3)
 pairs(wl.mod, variables=4:6)
 
+# within-S variables
+within <- data.frame(measure=rep(c("Weight loss", "Self esteem"),each=3), month=rep(ordered(1:3),2))
+
+# not-quite-right doubly multivariate Anova
+Anova(wl.mod, idata=within, idesign=~measure*month)
 }
 \keyword{datasets}
