@@ -6,7 +6,7 @@
 Weight Loss Data
 }
 \description{
-Fictitious data on weight loss and self esteem over three months,
+Contrived data on weight loss and self esteem over three months,
 for three groups of individuals: Control, Diet and Diet + Exercise.
 The data constitute a double-multivariate design.
 }
@@ -14,7 +14,7 @@ The data constitute a double-multivariate design.
 \format{
   A data frame with 34 observations on the following 7 variables.
   \describe{
-    \item{\code{group}}{a factor with levels \code{Control} \code{Diet} \code{Diet+Ex}}
+    \item{\code{group}}{a factor with levels \code{Control} \code{Diet} \code{DietEx}.}
     \item{\code{wl1}}{Weight loss at 1 month}
     \item{\code{wl2}}{Weight loss at 2 months}
     \item{\code{wl3}}{Weight loss at 3 months}
@@ -23,11 +23,13 @@ The data constitute a double-multivariate design.
     \item{\code{se3}}{Self esteem at 3 months}
   }
 }
-%\details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-%}
+\details{
+Helmert contrasts are assigned to \code{group}, comparing \code{Control} vs. (\code{Diet} \code{DietEx})
+and \code{Diet} vs. \code{DietEx}.
+}
 \source{
-\url{http://www.csun.edu/~ata20315/psy524/main.htm}
+Originally taken from \url{http://www.csun.edu/~ata20315/psy524/main.htm},
+but modified slightly
 }
 %\references{
 %%  ~~ possibly secondary sources and usages ~~
@@ -49,5 +51,39 @@ within <- data.frame(measure=rep(c("Weight loss", "Self esteem"),each=3), month=
 
 # not-quite-right doubly multivariate Anova
 Anova(wl.mod, idata=within, idesign=~measure*month)
+
+# do the correct analysis 'manually'
+unit <- function(n, prefix="") {
+	J <-matrix(rep(1, n), ncol=1)
+	rownames(J) <- paste(prefix, 1:n, sep="")
+	J
+}                
+
+measure <- kronecker(diag(2), unit(3, 'M')/3, make.dimnames=TRUE)
+colnames(measure)<- c('WL', 'SE')
+
+between <- as.matrix(WeightLoss[,-1]) %*% measure
+
+between.mod <- lm(between ~ group, data=WeightLoss)
+Anova(between.mod)
+
+heplot(between.mod, hypotheses=c("group1", "group2"), 
+	xlab="Weight Loss", ylab="Self Esteem",
+	col=c("red", "blue", "brown"),
+	main="Weight Loss & Self Esteem: Group Effect")
+
+month <- kronecker(diag(2), poly(1:3), make.dimnames=TRUE)
+colnames(month)<- c('WL', 'SE')
+trends <- as.matrix(WeightLoss[,-1]) %*% month
+within.mod <- lm(trends ~ group, data=WeightLoss)
+Anova(within.mod)
+
+heplot(within.mod)
+heplot(within.mod, hypotheses=c("group1", "group2"), 
+	xlab="Weight Loss", ylab="Self Esteem",
+	type="III", remove.intercept=FALSE,
+	term.labels=c("month", "group:month"),
+	main="Weight Loss & Self Esteem: Within-S Effects")
+mark.H0()
 }
 \keyword{datasets}
