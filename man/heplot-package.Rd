@@ -19,8 +19,8 @@ See Fox, Friendly and Monette (2007) for a brief introduction.
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.8-11\cr
-Date: \tab 2009-12-08\cr
+Version: \tab 0.9-0\cr
+Date: \tab 2009-12-25\cr
 License: \tab GPL version 2 or newer\cr
 }
 

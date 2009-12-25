@@ -8,6 +8,7 @@
 # -- added he.rep to handle common task of repeating HE argument values
 # last modified 13 Apr 2009 by M. Friendly -- fix label.ellipse
 # last modified 15 Apr 2009 by M. Friendly -- added axes= to fix warnings from pairs.mlm
+# last modified 24 Dec 2009 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
 
 
 `heplot.mlm` <-
@@ -23,6 +24,11 @@
 				grand.mean=!add,
 				remove.intercept=TRUE,
 				type=c("II", "III", "2", "3"),
+				idata=NULL,
+				idesign=NULL,
+				icontrasts=NULL,
+				imatrix=NULL,
+				iterm=NULL,
 				manova,        # an optional Anova.mlm object
 				size=c("evidence", "effect.size"),
 				level=0.68,
@@ -73,9 +79,25 @@
 	type <- match.arg(type)
 	size <- match.arg(size)
 	data <- model.frame(mod)
-	if (missing(manova)) manova <- Anova(mod, type=type)    
-	if (verbose) print(manova)    
-	response.names <- rownames(manova$SSPE)
+	# TODO: more checking required here
+	if (!is.null(imatrix) && packageDescription("car")[["Version"]] < 2)
+		stop("imatrix argument is not yet implented")
+	if (missing(manova)) manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)    
+	if (verbose) print(manova)
+
+	if (is.null(idata)) {
+		Y <- model.response(data) 
+		SSPE <- manova$SSPE
+	} 
+	else {
+		if (is.null(iterm)) stop("Must specify a within-S iterm for repeated measures designs" )
+#browser()
+#		data <- data %*% manova$P[[iterm]]
+		Y <- model.response(data) %*% manova$P[[iterm]]
+		SSPE <- manova$SSPE[[iterm]]
+	}   
+	response.names <- rownames(SSPE)
+
 	p <- length(response.names)
 	if (!is.numeric(variables)) {
 		vars <- variables
@@ -95,6 +117,7 @@
 	}
 	if (missing(terms) || (is.logical(terms) && terms)) {
 		terms <- manova$terms
+		if (!is.null(iterm)) terms <- terms[grep(iterm, terms)]   ## only include those involving iterm
 		if (remove.intercept) terms <- terms[terms != "(Intercept)"]
 	}
 	n.terms <- if (!is.logical(terms)) length(terms) else 0 
@@ -102,7 +125,10 @@
 	n.hyp <- if (missing(hypotheses)) 0 else length(hypotheses)
 	n.ell <- n.terms + n.hyp
 	if (n.ell == 0) stop("Nothing to plot.")
-	Y <- model.response(data)[,vars]
+
+
+#	Y <- model.response(data)[,vars]
+	Y <- Y[,vars] 
 	gmean <- if (missing(data))  c(0,0) 
 			else colMeans(Y)
 	if (missing(xlab)) xlab <- vars[1]
@@ -115,10 +141,10 @@
 	col <- he.rep(col, n.ell); E.col<- col[length(col)]
 	lty <- he.rep(lty, n.ell)
 	lwd <- he.rep(lwd, n.ell)
-	
 	H.ellipse <- as.list(rep(0, n.ell))
 	if (n.terms > 0) for (term in 1:n.terms){
 			term.name <- terms[term]
+#browser()	
 			H <- manova$SSP[[term.name]]
 			H <- H[variables, variables]
 			dfh <- manova$df[term.name]
@@ -142,7 +168,7 @@
 			}
 			H.ellipse[[n.terms + hyp]] <- ell(gmean, H, radius)
 		}
-	E <- manova$SSPE
+	E <- SSPE
 	E <- E[variables, variables]
 	E <- E * scale[1]
 	E.ellipse <- ell(gmean, E, radius)
