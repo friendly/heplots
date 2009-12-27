@@ -164,7 +164,7 @@
 			term.name <- terms[term]
 			H <- manova$SSP[[term.name]]
 			if (!(all(variables %in% 1:nrow(H)))) {
-				warn(paste("Skipping H term ", term.name, "(size: ", nrow(H), ")", sep=""))
+				warning(paste("Skipping H term ", term.name, "(size: ", nrow(H), ")", sep=""))
 				next
 			}
 			H <- H[variables, variables]
