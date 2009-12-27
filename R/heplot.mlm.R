@@ -10,6 +10,7 @@
 # last modified 15 Apr 2009 by M. Friendly -- added axes= to fix warnings from pairs.mlm
 # last modified 24 Dec 2009 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
 # last modified 26 Dec 2009 by M. Friendly -- workaround for car::Anova buglet
+# last modified 27 Dec 2009 by M. Friendly -- made it work for designes with no between effects
 
 
 `heplot.mlm` <-
@@ -102,7 +103,6 @@
 	} 
 	else {
 		if (is.null(iterm)) stop("Must specify a within-S iterm for repeated measures designs" )
-#browser()
 ### FIXME::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
 		if (is.null(names(manova$P))) names(manova$P) <- names(manova$SSPE)
 		Y <- model.response(data) %*% manova$P[[iterm]]
@@ -111,6 +111,7 @@
 	response.names <- rownames(SSPE)
 
 	p <- length(response.names)
+#browser()
 	if (!is.numeric(variables)) {
 		vars <- variables
 		variables <- match(vars, response.names)
@@ -127,11 +128,15 @@
 		extra <- if (length(variables) == 3) 'heplot3d()' else 'pairs()'
 		stop(paste("You may only plot 2 response variables. Use", extra))
 	}
+
 	if (missing(terms) || (is.logical(terms) && terms)) {
 		terms <- manova$terms
-#browser()
-#FIXME:  This does mot work if the between-S design includes only an intercept
-		if (!is.null(iterm)) terms <- terms[grep(iterm, terms)]   ## only include those involving iterm
+#FIXME:  This does mot work if the between-S design includes only an intercept 
+#        && terms="(Intercept)" is specified
+		if (!is.null(iterm)) {
+#			if (terms=="(Intercept)")  terms <- iterm else 
+			terms <- terms[grep(iterm, terms)]   ## only include those involving iterm
+			}
 		if (remove.intercept) terms <- terms[terms != "(Intercept)"]
 	}
 	n.terms <- if (!is.logical(terms)) length(terms) else 0 
@@ -154,10 +159,14 @@
 	lty <- he.rep(lty, n.ell)
 	lwd <- he.rep(lwd, n.ell)
 	H.ellipse <- as.list(rep(0, n.ell))
+#browser()	
 	if (n.terms > 0) for (term in 1:n.terms){
 			term.name <- terms[term]
-#browser()	
 			H <- manova$SSP[[term.name]]
+			if (!(all(variables %in% 1:nrow(H)))) {
+				warn(paste("Skipping H term ", term.name, "(size: ", nrow(H), ")", sep=""))
+				next
+			}
 			H <- H[variables, variables]
 			dfh <- manova$df[term.name]
 			factor <- if (size == "evidence") lambda.crit(alpha, p, dfh, dfe) else 1

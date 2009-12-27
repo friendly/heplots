@@ -33,13 +33,21 @@ aov.OBK
 # Univariate tests for repeated measures
 summary(aov.OBK, multivariate=FALSE)
 
+
 # HE plots for Between-S effects
 heplot(mod.OBK, hypotheses=c("treatment1", "treatment2"),
 	col=c("red", "black", "blue", "brown", "gray", "gray"),
 	hyp.labels=c("(A,B)-Control", "A-B"),
-	main="Between-S effects"
+	main="Between-S effects: Treat*Gender"
 	)
 pairs(mod.OBK, col=c("red", "black", "blue", "brown"))
+	
+# HE plots for Within-S effects
+	heplot(mod.OBK, idata=idata, idesign=~session, iterm="session",
+		main="Within-S effects: Session: (Treat*Gender)")
+
+
+### Plotting the Within-S effects by 'manually' transforming Y -> Y M
 
 # Transform to profile contrasts for within-S effects
 OBK$session.1 <- OBK$post - OBK$pre
@@ -56,11 +64,7 @@ heplot(mod1.OBK,
 	col=c("red", "black", "blue", "brown"),
 	xlim=c(-2,4), ylim=c(-2,3)
 )
-
-points(0,0, cex=2.5, col="green", pch=19)
-text(0,0, expression(H[0]), col="green", pos=2)
-abline(v=0, col="green")
-abline(h=0, col="green")
+mark.H0()
 
 # Main effect of session tests H0: Intercept=0
 mod2.OBK <- lm(cbind(session.1, session.2) ~ 1,  data=OBK)
@@ -72,7 +76,4 @@ heplot(mod2.OBK,
 	term.labels="session",
 	xlim=c(-2,4), ylim=c(-2,3)
 )
-points(0,0, cex=2.5, col="green", pch=19)
-text(0,0, expression(H[0]), col="green", pos=2)
-abline(v=0, col="green")
-abline(h=0, col="green")
+mark.H0()
