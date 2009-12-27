@@ -9,6 +9,7 @@
 # last modified 13 Apr 2009 by M. Friendly -- fix label.ellipse
 # last modified 15 Apr 2009 by M. Friendly -- added axes= to fix warnings from pairs.mlm
 # last modified 24 Dec 2009 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
+# last modified 26 Dec 2009 by M. Friendly -- workaround for car::Anova buglet
 
 
 `heplot.mlm` <-
@@ -80,9 +81,19 @@
 	size <- match.arg(size)
 	data <- model.frame(mod)
 	# TODO: more checking required here
-	if (!is.null(imatrix) && packageDescription("car")[["Version"]] < 2)
-		stop("imatrix argument is not yet implented")
-	if (missing(manova)) manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)    
+#	if (!is.null(imatrix) && packageDescription("car")[["Version"]] < 2)
+#		stop("imatrix argument is not yet implented")
+
+	if (missing(manova)) {
+		if (is.null(imatrix)) {
+			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
+		}
+		else {
+			if (packageDescription("car")[["Version"]] < 2)
+				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
+			else stop("imatrix argument is not yet implented")
+		} 
+	}   
 	if (verbose) print(manova)
 
 	if (is.null(idata)) {
@@ -92,7 +103,8 @@
 	else {
 		if (is.null(iterm)) stop("Must specify a within-S iterm for repeated measures designs" )
 #browser()
-#		data <- data %*% manova$P[[iterm]]
+### FIXME::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
+		if (is.null(names(manova$P))) names(manova$P) <- names(manova$SSPE)
 		Y <- model.response(data) %*% manova$P[[iterm]]
 		SSPE <- manova$SSPE[[iterm]]
 	}   
@@ -117,6 +129,8 @@
 	}
 	if (missing(terms) || (is.logical(terms) && terms)) {
 		terms <- manova$terms
+#browser()
+#FIXME:  This does mot work if the between-S design includes only an intercept
 		if (!is.null(iterm)) terms <- terms[grep(iterm, terms)]   ## only include those involving iterm
 		if (remove.intercept) terms <- terms[terms != "(Intercept)"]
 	}
@@ -126,8 +140,6 @@
 	n.ell <- n.terms + n.hyp
 	if (n.ell == 0) stop("Nothing to plot.")
 
-
-#	Y <- model.response(data)[,vars]
 	Y <- Y[,vars] 
 	gmean <- if (missing(data))  c(0,0) 
 			else colMeans(Y)
