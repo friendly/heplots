@@ -71,7 +71,8 @@ Version 0.8-11 (2009-12-08)
 Version 0.9.0 (2009-12-25)
  o Implemented 2D HE plots in heplot.mlm for repeated measures designs by adding
    idata=, idesign=, icontrasts= arguments.  
- o imatrix= argument  for doubly-multivariate designs partially implemented, but depends on car 2.0+
-   (and not tested)
+ o imatrix= argument  for doubly-multivariate designs implemented, but depends on car 2.0+
  o Updated example(OBK) 
+ o Updated example(WeightLoss)
+ 
 

@@ -40,7 +40,7 @@ data(VocabGrowth)
 # Standard Multivariate & Univariate repeated measures analysis
 Vocab.mod <- lm(cbind(grade8,grade9,grade10,grade11) ~ 1, data=VocabGrowth)
 idata <-data.frame(grade=ordered(8:11))
-Anova(Vocab.mod, idata=idata, idesign=~grade)
+Anova(Vocab.mod, idata=idata, idesign=~grade, type="III")
 
 ##Type III Repeated Measures MANOVA Tests: Pillai test statistic
 ##            Df test stat approx F num Df den Df    Pr(>F)    

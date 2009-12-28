@@ -10,7 +10,8 @@
 # last modified 15 Apr 2009 by M. Friendly -- added axes= to fix warnings from pairs.mlm
 # last modified 24 Dec 2009 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
 # last modified 26 Dec 2009 by M. Friendly -- workaround for car::Anova buglet
-# last modified 27 Dec 2009 by M. Friendly -- made it work for designes with no between effects
+# last modified 27 Dec 2009 by M. Friendly -- made it work for designs with no between effects
+# last modified 28 Dec 2009 by M. Friendly -- made it work with car 2.0 for doubly multivariate
 
 
 `heplot.mlm` <-
@@ -81,36 +82,35 @@
 	type <- match.arg(type)
 	size <- match.arg(size)
 	data <- model.frame(mod)
-	# TODO: more checking required here
-#	if (!is.null(imatrix) && packageDescription("car")[["Version"]] < 2)
-#		stop("imatrix argument is not yet implented")
 
 	if (missing(manova)) {
 		if (is.null(imatrix)) {
 			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-			if (packageDescription("car")[["Version"]] < 2)
+			if (packageDescription("car")[["Version"]] >= 2)
 				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
-			else stop("imatrix argument is not yet implented")
+			else stop("imatrix argument requires car 2.0-0 or later")
 		} 
 	}   
 	if (verbose) print(manova)
 
-	if (is.null(idata)) {
+	if (is.null(idata) && is.null(imatrix)) {
 		Y <- model.response(data) 
 		SSPE <- manova$SSPE
 	} 
 	else {
 		if (is.null(iterm)) stop("Must specify a within-S iterm for repeated measures designs" )
-### FIXME::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
+		### FIXME::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
 		if (is.null(names(manova$P))) names(manova$P) <- names(manova$SSPE)
 		Y <- model.response(data) %*% manova$P[[iterm]]
 		SSPE <- manova$SSPE[[iterm]]
 	}   
-	response.names <- rownames(SSPE)
 
+	if (!is.null(rownames(SSPE))) {response.names <- rownames(SSPE)}
+	else {response.names <- paste("V.", 1:nrow(SSPE), sep="")}
 	p <- length(response.names)
+
 #browser()
 	if (!is.numeric(variables)) {
 		vars <- variables
@@ -131,8 +131,8 @@
 
 	if (missing(terms) || (is.logical(terms) && terms)) {
 		terms <- manova$terms
-#FIXME:  This does mot work if the between-S design includes only an intercept 
-#        && terms="(Intercept)" is specified
+# FIXME:  This does mot work if the between-S design includes only an intercept 
+# FIXME: && terms="(Intercept)" is specified
 		if (!is.null(iterm)) {
 #			if (terms=="(Intercept)")  terms <- iterm else 
 			terms <- terms[grep(iterm, terms)]   ## only include those involving iterm

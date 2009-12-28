@@ -49,8 +49,27 @@ pairs(wl.mod, variables=4:6)
 # within-S variables
 within <- data.frame(measure=rep(c("Weight loss", "Self esteem"),each=3), month=rep(ordered(1:3),2))
 
-# not-quite-right doubly multivariate Anova
-Anova(wl.mod, idata=within, idesign=~measure*month)
+# doubly-multivariate analysis: requires car 2.0+
+\dontrun{
+if (packageDescription("car")[["Version"]] >= 2) {
+imatrix <- matrix(c(
+	1,0,-1, 1, 0, 0,
+	1,0, 0,-2, 0, 0,
+	1,0, 1, 1, 0, 0,
+	0,1, 0, 0,-1, 1,
+	0,1, 0, 0, 0,-2,
+	0,1, 0, 0, 1, 1), 6, 6, byrow=TRUE)
+# NB: for heplots the columns of imatrix should have names
+colnames(imatrix) <- c("WL", "SE", "WL.L", "WL.Q", "SE.L", "SE.Q")
+rownames(imatrix) <- colnames(WeightLoss)[-1]
+(imatrix <- list(measure=imatrix[,1:2], month=imatrix[,3:6]))
+contrasts(WeightLoss$group) <- matrix(c(-2,1,1, 0,-1,1), ncol=2) 
+(wl.mod<-lm(cbind(wl1, wl2, wl3, se1, se2, se3)~group, data=WeightLoss))
+(wl.aov <- Anova(wl.mod, imatrix=imatrix, test="Roy"))
+
+heplot(wl.mod, imatrix=imatrix, iterm="group:measure")
+}
+}
 
 # do the correct analysis 'manually'
 unit <- function(n, prefix="") {
