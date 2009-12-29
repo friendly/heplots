@@ -16,7 +16,9 @@ heplot3d(mod, ...)
 \method{heplot3d}{mlm}(mod, terms, hypotheses, term.labels = TRUE, 
     hyp.labels = TRUE, variables = 1:3, error.ellipsoid = !add,
     factor.means = !add, grand.mean = !add, remove.intercept = TRUE, 
-    type = c("II", "III", "2", "3"), manova, size = c("evidence", "effect.size"),
+    type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
+	icontrasts=NULL, imatrix=NULL, iterm=NULL,
+    manova, size = c("evidence", "effect.size"),
     level = 0.68, alpha = 0.05,  segments = 40, col = palette()[-1], lwd=c(1, 4),
     shade=TRUE, shade.alpha=0.1, wire=c(TRUE,FALSE),
     bg.col = c("white", "black"), fogtype = c("none", "exp2", "linear", "exp"), 
@@ -56,6 +58,28 @@ heplot3d(mod, ...)
   \item{type}{``type'' of sum-of-squares-and-products matrices to compute; one of
     \code{"II"}, \code{"III"}, \code{"2"}, or \code{"3"}, where \code{"II"} is
     the default (and \code{"2"} is a synomym).}
+  \item{idata}{an optional data frame giving a factor or factors defining the 
+    intra-subject model for multivariate repeated-measures data. 
+    See Details of \code{\link[car]{Anova}} for an explanation of the intra-subject design and for further explanation 
+    of the other arguments relating to intra-subject factors.} 
+  \item{idesign}{a one-sided model formula using the ``data'' in idata and specifying 
+    the intra-subject design for repeated measure models.} 
+  \item{icontrasts}{names of contrast-generating functions to be applied by default 
+    to factors and ordered factors, respectively, in the within-subject ``data''; 
+    the contrasts must produce an intra-subject model matrix in which different 
+    terms are orthogonal. The default is c("contr.sum", "contr.poly").}
+  \item{imatrix}{In lieu of \code{idata} and \code{idesign}, you can specify the
+    intra-subject design matrix directly via \code{imatrix}, in the form of list of named elements.
+    Each element gives
+  	the columns of the within-subject model matrix for an intra-subject term to be tested, and must
+  	have as many rows as there are responses; the columns of the within-subject model
+  	matrix for \emph{different} terms must be mutually orthogonal. 
+    \emph{This functionality
+    requires \code{car} version 2.0 or later.}}
+  \item{iterm}{For repeated measures designs, you must specify one intra-subject term
+  	(a character string) to select the SSPE (E) matrix used in the HE plot. 
+  	Hypothesis terms plotted include the \code{iterm} effect as well as all interactions
+  	of \code{iterm} with \code{terms}.}
   \item{manova}{optional \code{Anova.mlm} object for the model; if absent a
     MANOVA is computed. Specifying the argument can therefore save 
     computation in repeated calls.}

@@ -14,6 +14,7 @@
 #    - reverted to ellipsoid() for plotting means
 # last modified 11/6/2008 by M. Friendly
 #    - added xlim, ylim, zlim arguments to allow expanding the plot bbox (for candisc)
+# last modified 29 Dec 2009 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
 
 # TODO:
 #  - add aspect argument (for candisc)
@@ -31,6 +32,11 @@
 				grand.mean=!add,
 				remove.intercept=TRUE,
 				type=c("II", "III", "2", "3"),
+				idata=NULL,
+				idesign=NULL,
+				icontrasts=NULL,
+				imatrix=NULL,
+				iterm=NULL,
 				manova,        # an optional Anova.mlm object
 				size=c("evidence", "effect.size"),
 				level=0.68,
@@ -103,9 +109,34 @@
 	fogtype <- match.arg(fogtype)
 	bg.col <- match.arg(bg.col)    
 	data <- model.frame(mod)
-	if (missing(manova)) manova <- Anova(mod, type=type)    
+#	if (missing(manova)) manova <- Anova(mod, type=type)    
+	if (missing(manova)) {
+		if (is.null(imatrix)) {
+			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
+		}
+		else {
+			if (packageDescription("car")[["Version"]] >= 2)
+				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
+			else stop("imatrix argument requires car 2.0-0 or later")
+		} 
+	}   
 	if (verbose) print(manova)    
-	response.names <- rownames(manova$SSPE)
+#	response.names <- rownames(manova$SSPE)
+	if (is.null(idata) && is.null(imatrix)) {
+		Y <- model.response(data) 
+		SSPE <- manova$SSPE
+	} 
+	else {
+		if (is.null(iterm)) stop("Must specify a within-S iterm for repeated measures designs" )
+		### FIXME::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
+		if (is.null(names(manova$P))) names(manova$P) <- names(manova$SSPE)
+		Y <- model.response(data) %*% manova$P[[iterm]]
+		SSPE <- manova$SSPE[[iterm]]
+	}   
+	
+	if (!is.null(rownames(SSPE))) {response.names <- rownames(SSPE)}
+	else {response.names <- paste("V.", 1:nrow(SSPE), sep="")}
+
 	if (!is.numeric(variables)) {
 		vars <- variables
 		variables <- match(vars, response.names)
@@ -119,8 +150,12 @@
 		vars <- response.names[variables]
 	}
 	if (length(variables) != 3) stop("You may only plot 3 response variables")
+
 	if (missing(terms) || (is.logical(terms) && terms)) {
 		terms <- manova$terms
+		if (!is.null(iterm)) {
+			terms <- terms[grep(iterm, terms)]   ## only include those involving iterm
+		}
 		if (remove.intercept) terms <- terms[terms != "(Intercept)"]
 	}
 	n.terms <- if (!is.logical(terms)) length(terms) else 0 

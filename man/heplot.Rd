@@ -76,7 +76,7 @@ heplot(mod, ...)
   	have as many rows as there are responses; the columns of the within-subject model
   	matrix for \emph{different} terms must be mutually orthogonal. 
     \emph{This functionality
-    requires \code{car} version 2.0 or later and is not yet fully implemented here.}}
+    requires \code{car} version 2.0 or later.}}
   \item{iterm}{For repeated measures designs, you must specify one intra-subject term
   	(a character string) to select the SSPE (E) matrix used in the HE plot. 
   	Hypothesis terms plotted include the \code{iterm} effect as well as all interactions
