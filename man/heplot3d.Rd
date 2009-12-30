@@ -183,7 +183,7 @@ Friendly, M. (2007).
     
     \code{\link[rgl]{rgl-package}}, 
     
-    \code{\link[candisc]{heplot3d.candisc}}.
+    \code{\link[candisc]{heplot3d.candisc}} for 3D HE plots in canonical space.
 }
 
 \examples{

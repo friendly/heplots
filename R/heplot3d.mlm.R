@@ -15,6 +15,7 @@
 # last modified 11/6/2008 by M. Friendly
 #    - added xlim, ylim, zlim arguments to allow expanding the plot bbox (for candisc)
 # last modified 29 Dec 2009 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
+# last modified 30 Dec 2009 by M. Friendly -- debugged repeated measures
 
 # TODO:
 #  - add aspect argument (for candisc)
@@ -163,10 +164,12 @@
 	n.hyp <- if (missing(hypotheses)) 0 else length(hypotheses)
 	n.ell <- n.terms + n.hyp
 	if (n.ell == 0) stop("Nothing to plot.")
-	E <- manova$SSPE
+
+	E <- SSPE
 	p <- nrow(E)
 	E <- E[variables, variables]
-	Y <- model.response(data)[,vars]
+#	Y <- model.response(data)[,vars]
+	Y <- Y[,vars] 
 	gmean <- if (missing(data))  c(0,0,0) 
 			else colMeans(Y)
 	if (missing(xlab)) xlab <- vars[1]
