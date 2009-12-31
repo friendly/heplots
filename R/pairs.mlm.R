@@ -7,10 +7,41 @@
 `pairs.mlm` <-
 function(x, variables,
     type=c("II", "III", "2", "3"),
-    offset.axes=0.05, digits=getOption("digits") - 1, ...){
-    manova <- Anova(x, type)
-    Y <- model.response(model.frame(x))
-    vars <- colnames(Y)
+	idata=NULL,
+	idesign=NULL,
+	icontrasts=NULL,
+	imatrix=NULL,
+	iterm=NULL,
+	manova,        # an optional Anova.mlm object
+	offset.axes=0.05, digits=getOption("digits") - 1, ...){
+
+#	manova <- Anova(x, type)
+	if (missing(manova)) {
+		if (is.null(imatrix)) {
+			manova <- Anova(x, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
+		}
+		else {
+			if (packageDescription("car")[["Version"]] >= 2)
+				manova <- Anova(x, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
+			else stop("imatrix argument requires car 2.0-0 or later")
+		} 
+	}   
+	
+	data <- model.frame(x)
+#	Y <- model.response(model.frame(x))
+	if (is.null(idata) && is.null(imatrix)) {
+		Y <- model.response(data) 
+#		SSPE <- manova$SSPE
+	} 
+	else {
+		if (is.null(iterm)) stop("Must specify a within-S iterm for repeated measures designs" )
+		### FIXME::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
+		if (is.null(names(manova$P))) names(manova$P) <- names(manova$SSPE)
+		Y <- model.response(data) %*% manova$P[[iterm]]
+#		SSPE <- manova$SSPE[[iterm]]
+	}   
+	
+	vars <- colnames(Y)
     if (!missing(variables)){
         if (is.numeric(variables)) {
             vars <- vars[variables]
@@ -51,6 +82,7 @@ function(x, variables,
                 }
             else {
                 heplot(x, variables=c(vars[j], vars[i]), manova=manova, axes=FALSE,
+					idata=idata, idesign=idesign, imatrix=imatrix, iterm=iterm,
                     offset.axes=offset.axes, ...)
                 box()
                 }
