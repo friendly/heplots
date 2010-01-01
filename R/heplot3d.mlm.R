@@ -16,6 +16,7 @@
 #    - added xlim, ylim, zlim arguments to allow expanding the plot bbox (for candisc)
 # last modified 29 Dec 2009 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
 # last modified 30 Dec 2009 by M. Friendly -- debugged repeated measures
+# last modified  1 Jan 2010 by M. Friendly -- debugged repeated measures again
 
 # TODO:
 #  - add aspect argument (for candisc)
@@ -240,12 +241,13 @@
 #   if (grand.mean) ellipsoid(gmean, diag((ranges/40)^2), col="black", wire=FALSE, alpha=0.8) # centre dot    
 	# better: use a centered 3D cross here
 	if (grand.mean) cross3d(gmean, (ranges/25), col="black", lwd=2) # centre cross            
-	
+
+#browser()	
 	## BUG fixed here:  should only label the means for factors included in terms
 	if ((!is.logical(factor.means)) || factor.means){
 		factors <- data[, sapply(data, is.factor), drop=FALSE]
 		factor.names <- colnames(factors) 
-		factor.names <- factor.names[factor.names %in% terms]
+		if (is.null(iterm)) factor.names <- factor.names[factor.names %in% terms]
 		if (!is.logical(factor.means)){
 			which <- match(factor.means, factor.names)
 			check <- is.na(which)
@@ -256,7 +258,7 @@
 		else factors <- factors[, factor.names, drop=FALSE]    
 #        for (fac in factors){
 #            means <- aggregate(Y, list(fac), mean)
-		for (j in 1:ncol(factors)){
+		if (ncol(factors)) for (j in 1:ncol(factors)){
 			means <- aggregate(Y, list(factors[,j]), mean)
 			# color the points the same as the ellipse for the term
 			loc <- match(factor.names[j], terms, nomatch=0)
