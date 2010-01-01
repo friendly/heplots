@@ -1,6 +1,7 @@
 ## 1D representation of an HE plot
 # Initial version 17-Apr-2009
 # Fixed buglet with hyp.labels 8-Dec-2009
+# last modified 1 Jan 2010 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
 
 
 `heplot1d` <-
@@ -20,11 +21,15 @@ function(mod, ...) UseMethod("heplot1d")
 				grand.mean=!add,
 				remove.intercept=TRUE,
 				type=c("II", "III", "2", "3"),
+				idata=NULL,
+				idesign=NULL,
+				icontrasts=NULL,
+				imatrix=NULL,
+				iterm=NULL,
 				manova,        # an optional Anova.mlm object
 				size=c("evidence", "effect.size"),
 				level=0.68,
 				alpha=0.05,
-				segments=40,   # line segments in each ellipse [not used]
 				center.pch="|",   # doesn't have to be an argument
 				col=palette()[-1],  # colors for H matrices, E matrix
 				lty=2:1,
@@ -50,10 +55,36 @@ function(mod, ...) UseMethod("heplot1d")
 	type <- match.arg(type)
 	size <- match.arg(size)
 	data <- model.frame(mod)
-	if (missing(manova)) manova <- Anova(mod, type=type)    
+
+#	if (missing(manova)) manova <- Anova(mod, type=type)    
+	if (missing(manova)) {
+		if (is.null(imatrix)) {
+			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
+		}
+		else {
+			if (packageDescription("car")[["Version"]] >= 2)
+				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
+			else stop("imatrix argument requires car 2.0-0 or later")
+		} 
+	}   
+	
 #	if (verbose) print(manova)    
-	response.names <- rownames(manova$SSPE)
+
+	if (is.null(idata) && is.null(imatrix)) {
+		Y <- model.response(data) 
+		SSPE <- manova$SSPE
+	} 
+	else {
+		if (is.null(iterm)) stop("Must specify a within-S iterm for repeated measures designs" )
+		### FIXME::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
+		if (is.null(names(manova$P))) names(manova$P) <- names(manova$SSPE)
+		Y <- model.response(data) %*% manova$P[[iterm]]
+		SSPE <- manova$SSPE[[iterm]]
+	}   
+	if (!is.null(rownames(SSPE))) {response.names <- rownames(SSPE)}
+	else {response.names <- paste("V.", 1:nrow(SSPE), sep="")}
 	p <- length(response.names)
+	
 	if (!is.numeric(variables)) {
 		vars <- variables
 		variables <- match(vars, response.names)
@@ -77,15 +108,22 @@ function(mod, ...) UseMethod("heplot1d")
 
 	if (missing(terms) || (is.logical(terms) && terms)) {
 		terms <- manova$terms
+# FIXME:  This does mot work if the between-S design includes only an intercept 
+# FIXME: && terms="(Intercept)" is specified
+		if (!is.null(iterm)) {
+#			if (terms=="(Intercept)")  terms <- iterm else 
+			terms <- terms[grep(iterm, terms)]   ## only include those involving iterm
+		}
 		if (remove.intercept) terms <- terms[terms != "(Intercept)"]
 	}
-
+	
 	n.terms <- if (!is.logical(terms)) length(terms) else 0 
 	# note: if logical here, necessarily FALSE
 	n.hyp <- if (missing(hypotheses)) 0 else length(hypotheses)
 	n.ell <- n.terms + n.hyp
 	if (n.ell == 0) stop("Nothing to plot.")
-	Y <- model.response(data)[,vars]
+
+	Y <- Y[,vars] 
 	gmean <- if (missing(data))  0 else mean(Y)
 #			else colMeans(Y)
 
@@ -100,7 +138,7 @@ function(mod, ...) UseMethod("heplot1d")
 	lty <- he.rep(lty, n.ell)
 	lwd <- he.rep(lwd, n.ell)
 
-	# plot the 1D representations of the terms on equally space lines
+	# plot the 1D representations of the terms on equally spaced lines
 	yvals <- 1:n.ell
 
 	H.ellipse <- as.list(rep(0, n.ell))
@@ -130,7 +168,7 @@ function(mod, ...) UseMethod("heplot1d")
 			}
 			H.ellipse[[n.terms + hyp]] <- ell1d(gmean, H, radius)
 		}
-	E <- manova$SSPE
+	E <- SSPE
 	E <- E[variables, variables]
 	E <- E * scale[1]
 	E.ellipse <- ell1d(gmean, E, radius)

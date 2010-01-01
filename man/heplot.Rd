@@ -22,7 +22,8 @@ heplot(mod, ...)
     type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
 	icontrasts=NULL, imatrix=NULL, iterm=NULL,
     manova, size = c("evidence", "effect.size"),
-    level = 0.68, alpha = 0.05, segments = 40, center.pch = "+", col = palette()[-1], 
+    level = 0.68, alpha = 0.05, segments = 40, center.pch = "+", center.cex=2,
+    col = palette()[-1], 
     lty = 2:1, lwd = 1:2, xlab, ylab, main = "", xlim, ylim, axes=TRUE, offset.axes, 
     add = FALSE, verbose = FALSE, warn.rank = FALSE, ...)
 }
@@ -94,12 +95,14 @@ heplot(mod, ...)
   \item{alpha}{signficance level for Roy's greatest-root test statistic; if
     \code{size="evidence"}, then the
     hypothesis ellipse is scaled so that it just touches the error ellipse at the
-    specified alpha level; a larger hypothesis elllipse therefore indicates
+    specified alpha level; a larger hypothesis ellipse therefore indicates
     statistical significance; defaults to \code{0.05}.}
   \item{segments}{number of line segments composing each ellipse; defaults to
     \code{40}.}
   \item{center.pch}{character to use in plotting the centroid of the data;
     defaults to \code{"+"}.}
+  \item{center.cex}{size of character to use in plotting the centroid of the data;
+    defaults to \code{2}.}
   \item{col}{a colour or vector of colours to use in plotting ellipses; the first
     colour is used for the error ellipse; the remaining colours --- recycled
     as necessary --- are used for the hypothesis ellipses; 
@@ -156,9 +159,12 @@ heplot(mod, ...)
    See \code{\link[car]{linear.hypothesis}} for details.
    
    For repeated measure designs, where the response variables correspond to one or
-   more variates observed under a within-subject design, the analysis and HE plots
-   amount to analysis of the matrix Y of responses post-multiplied by a matrix M
-   determined by the intra-subject design.
+   more variates observed under a within-subject design, between-subject effects 
+   and within-subject effects must be plotted separately, because the error terms 
+   (E matrices) differ.  When you specify an intra-subject term (\code{iterm})
+   the analysis and HE plots
+   amount to analysis of the matrix \bold{Y} of responses post-multiplied by a matrix 
+   \bold{M} determined by the intra-subject design for that term.
 }
 
 \value{
@@ -233,7 +239,8 @@ heplot(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 # View all pairs
 pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 # or 3D plot
- heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
+col <- c("pink", "black", "blue", "cyan", "magenta", "brown", "gray")
+heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), col=col)
 }
 
 \keyword{hplot}

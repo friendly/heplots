@@ -74,7 +74,13 @@ Version 0.9.0 (2009-12-25)
  o imatrix= argument  for doubly-multivariate designs implemented, but depends on car 2.0+
  o Updated example(OBK) 
  o Updated example(WeightLoss)
- o Implemented 3D HE plots in heplot3d.mlm for repeated measures designs (untested)
+ o Implemented 3D HE plots in heplot3d.mlm for repeated measures designs (OK)
+ o Implemented pairs() for repeated measures designs (OK)
+ o Implemented heplot1d() for repeated measures designs (untested)
+ o Revised documentation for repeated measures
+ o Added center.cex to heplot.mlm()
+
+ 
  
  
 

@@ -38,6 +38,7 @@
 				alpha=0.05,
 				segments=40,   # line segments in each ellipse
 				center.pch="+",   # doesn't have to be an argument
+				center.cex=2,
 				col=palette()[-1],  # colors for H matrices, E matrix
 				lty=2:1,
 				lwd=1:2,
@@ -159,7 +160,7 @@
 	lty <- he.rep(lty, n.ell)
 	lwd <- he.rep(lwd, n.ell)
 	H.ellipse <- as.list(rep(0, n.ell))
-#browser()	
+
 	if (n.terms > 0) for (term in 1:n.terms){
 			term.name <- terms[term]
 			H <- manova$SSP[[term.name]]
@@ -226,7 +227,7 @@
 	}
 	H.ellipse$E <- NULL
 	if (grand.mean) 
-		points(gmean[1], gmean[2], pch=center.pch, cex=2, col="black", xpd=TRUE)
+		points(gmean[1], gmean[2], pch=center.pch, cex=center.cex, col="black", xpd=TRUE)
 	if (error.ellipse){
 		lines(E.ellipse, col=E.col, lty=lty[length(lty)], lwd=lwd[length(lwd)])
 		label.ellipse(E.ellipse, "Error", col=E.col)

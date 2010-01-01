@@ -11,7 +11,8 @@ Visualizing Tests in Multivariate Linear Models
 The \code{heplots} package provides functions for visualizing hypothesis tests
 in multivariate linear models (MANOVA, multivariate multiple regression, MANCOVA, etc.). They
 represent sums-of-squares-and-products matrices for linear hypotheses and for 
-error using ellipses (in two dimensions) and ellipsoids (in three dimensions).
+error using ellipses (in two dimensions), ellipsoids (in three dimensions),
+or by line segments in one dimension.
 See Fox, Friendly and Monette (2007) for a brief introduction.
 }
 
@@ -27,23 +28,33 @@ License: \tab GPL version 2 or newer\cr
 The graphical functions contained here all display multivariate model
 effects in variable space:
 
-%\describe(
-\code{\link{heplot}} constructs two-dimensional HE plots for model terms and 
-linear hypotheses for pairs of response variables in multivariate linear models.
+\describe{
+\item{\code{\link{heplot}}}{constructs two-dimensional HE plots for model terms and 
+linear hypotheses for pairs of response variables in multivariate linear models.}
 
-\code{\link{heplot3d}} constructs analogous 3D plots for triples of response
-variables.
+\item{\code{\link{heplot3d}}}{constructs analogous 3D plots for triples of response
+variables.}
  
-\code{\link{pairs.mlm}} constructs a ``matrix'' of pairwise HE plots.
+\item{\code{\link{pairs.mlm}}}{constructs a ``matrix'' of pairwise HE plots.}
 
-\code{\link{heplot1d}} constructs 1-dimensional analogs of HE plots for model terms and 
-linear hypotheses for single response variables
-%}
+\item{\code{\link{heplot1d}}}{constructs 1-dimensional analogs of HE plots for model terms and 
+linear hypotheses for single response variables.}
+}
+
+For repeated measure designs, between-subject effects and within-subject
+effects must be plotted separately, because the error terms (E matrices)
+differ.  For terms involving within-subject effects,
+these functions carry out a linear
+transformation of the matrix \bold{Y} of responses to a matrix \bold{Y M}, where
+\bold{M} is the model matrix for a term in
+the intra-subject design and produce plots of
+the H and E matrices in this transformed space. 
 
 
-The related \code{\link[car]{car-package}} package calculates tests of multivariate
+The related \code{\link[car]{car-package}} package calculates Type II and Type III tests 
+of multivariate
 linear hypotheses using the  \code{\link[car]{Anova}} and \code{\link[car]{linear.hypothesis}}
-functions.
+functions. 
 
 The \code{\link[candisc]{candisc-package}} package provides functions for 
 visualizing effects for model terms in a low-dimensional canonical space
@@ -81,7 +92,10 @@ Fox, J., Friendly, M. & Monette, G. (2007).
 \keyword{multivariate}
 
 \seealso{
-    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}}, \code{\link[candisc]{candisc-package}}
+    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}}, 
+    \code{\link[candisc]{candisc-package}},
+    \code{\link[stats]{manova}},
+    
 }
 
 
