@@ -68,7 +68,7 @@ Version 0.8-11 (2009-12-08)
  o Added WeightLoss data -- doubly multivariate
  o Added mark.H0
 
-Version 0.9.0 (2009-12-25)
+Version 0.9-0 (2009-12-25)
  o Implemented 2D HE plots in heplot.mlm for repeated measures designs by adding
    idata=, idesign=, icontrasts= arguments.  
  o imatrix= argument  for doubly-multivariate designs implemented, but depends on car 2.0+
@@ -76,9 +76,15 @@ Version 0.9.0 (2009-12-25)
  o Updated example(WeightLoss)
  o Implemented 3D HE plots in heplot3d.mlm for repeated measures designs (OK)
  o Implemented pairs() for repeated measures designs (OK)
+
+Version 0.9-1 (2010-01-1)
+ o heplot.mlm, pairs.mlm, heplot3d.mlm now work for repeated measure designs
+   with only covariates on the rhs.
  o Implemented heplot1d() for repeated measures designs (untested)
  o Revised documentation for repeated measures
  o Added center.cex to heplot.mlm()
+ o Revised mark.H0() to handle 3D plots also
+ 
 
  
  
