@@ -14,6 +14,10 @@ represent sums-of-squares-and-products matrices for linear hypotheses and for
 error using ellipses (in two dimensions), ellipsoids (in three dimensions),
 or by line segments in one dimension.
 See Fox, Friendly and Monette (2007) for a brief introduction.
+
+The package also provides a collection of  data sets illustrating
+a variety of multivariate linear models together with graphical
+displays.
 }
 
 \details{

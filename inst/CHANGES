@@ -84,6 +84,7 @@ Version 0.9-1 (2010-01-1)
  o Revised documentation for repeated measures
  o Added center.cex to heplot.mlm()
  o Revised mark.H0() to handle 3D plots also
+ o Added Adoption data -- MMreg with repeated measures
  
 
  
