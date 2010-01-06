@@ -43,6 +43,20 @@
 Adopted.mod <- lm(cbind(Age2IQ, Age4IQ, Age8IQ, Age13IQ) ~ AMED + BMIQ, data=Adopted)
 Adopted.mod
 
+# test overall multivariate regression
+linear.hypothesis(Adopted.mod, c("AMED","BMIQ"))
+
+# show separate linear regressions
+op <- par(mfcol=c(2,4), mar=c(4,4,2,2)+.1)
+for (i in 3:6) {
+	data.ellipse(as.matrix(Adopted[,c(1,i)]),col="black", levels=0.68, ylim=c(70,140))
+	abline(lm(Adopted[,i] ~ Adopted[,1]), col="red", lwd=2)
+	data.ellipse(as.matrix(Adopted[,c(2,i)]),col="black", levels=0.68, ylim=c(70,140))
+	abline(lm(Adopted[,i] ~ Adopted[,2]), col="red", lwd=2)
+	abline(a=0,b=1, lty=1, col="blue")
+}
+par(op)
+
 # between-S (MMReg) plots
 heplot(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
 	main="IQ scores of adopted children: MMReg")
