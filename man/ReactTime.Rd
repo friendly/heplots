@@ -46,6 +46,8 @@ data(ReactTime)
 within <- expand.grid(tilt=ordered(c(0,4,8)), noise=c("NA", "NP"))
 Anova(RT.mod, idata=within, idesign=~tilt * noise)
 
+heplot(RT.mod, idata=within, idesign=~tilt * noise, iterm="tilt")
+
 # plotting means and std errors directly
 
 levels <- expand.grid(Tilt=c(0,4,8), noise=c("NA", "NP"))

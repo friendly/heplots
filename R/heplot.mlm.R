@@ -29,7 +29,7 @@
 				type=c("II", "III", "2", "3"),
 				idata=NULL,
 				idesign=NULL,
-				icontrasts=NULL,
+				icontrasts=c("contr.sum", "contr.poly"),
 				imatrix=NULL,
 				iterm=NULL,
 				manova,        # an optional Anova.mlm object
