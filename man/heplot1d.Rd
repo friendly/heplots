@@ -25,7 +25,7 @@ heplot1d(mod, ...)
 \method{heplot1d}{mlm}(mod, terms, hypotheses, term.labels = TRUE, hyp.labels = TRUE, 
 	variables = 1, error.ellipse = !add, factor.means = !add, grand.mean = !add, 
 	remove.intercept = TRUE, type = c("II", "III", "2", "3"),
-	idata=NULL, idesign=NULL, icontrasts=NULL, imatrix=NULL, iterm=NULL, manova, 
+	idata=NULL, idesign=NULL, icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL, manova, 
 	size = c("evidence", "effect.size"), level = 0.68, alpha = 0.05,  
 	center.pch = "|", col = palette()[-1], lty = 2:1, lwd = 1:2, xlab, main = "", 
 	xlim, axes = TRUE, offset.axes, add = FALSE, verbose = FALSE, ...)

@@ -17,7 +17,7 @@ heplot3d(mod, ...)
     hyp.labels = TRUE, variables = 1:3, error.ellipsoid = !add,
     factor.means = !add, grand.mean = !add, remove.intercept = TRUE, 
     type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
-	icontrasts=NULL, imatrix=NULL, iterm=NULL,
+	icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL,
     manova, size = c("evidence", "effect.size"),
     level = 0.68, alpha = 0.05,  segments = 40, col = palette()[-1], lwd=c(1, 4),
     shade=TRUE, shade.alpha=0.1, wire=c(TRUE,FALSE),
