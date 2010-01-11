@@ -20,7 +20,7 @@ heplot(mod, ...)
     hyp.labels = TRUE, variables = 1:2, error.ellipse = !add, 
     factor.means = !add, grand.mean = !add, remove.intercept = TRUE,
     type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
-	icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL,
+	icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL, markH0=!is.null(iterm),
     manova, size = c("evidence", "effect.size"),
     level = 0.68, alpha = 0.05, segments = 40, center.pch = "+", center.cex=2,
     col = palette()[-1], 
@@ -82,6 +82,9 @@ heplot(mod, ...)
   	(a character string) to select the SSPE (E) matrix used in the HE plot. 
   	Hypothesis terms plotted include the \code{iterm} effect as well as all interactions
   	of \code{iterm} with \code{terms}.}
+  \item{markH0}{A logical value (or else a list of arguments to \code{mark.H0}) used to
+    draw cross-hairs and a point indicating the value of a point null hypothesis.
+    The default is TRUE if \code{iterm} is non-NULL.}
   \item{manova}{optional \code{Anova.mlm} object for the model; if absent a
     MANOVA is computed. Specifying the argument can therefore save 
     computation in repeated calls.}

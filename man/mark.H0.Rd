@@ -12,17 +12,18 @@ This is most useful for repeated measure designs where null
 hypotheses for within-S effects often correspond to (0,0).
 }
 \usage{
-mark.H0(x = 0, y = 0, z=NULL, cex = 2, pch = 19, col = "green3", lty = 2, pos = 2)
+mark.H0(x = 0, y = 0, z=NULL, label, cex = 2, pch = 19, col = "green3", lty = 2, pos = 2)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{Horizontal coordinate for H0}
   \item{y}{Vertical coordinate for H0}
   \item{z}{z coordinate for H0.  If not NULL, the function assumes that
-  a \code{heplot3d} plot has been drawn}
+  a \code{heplot3d} plot has been drawn.}
+  \item{label}{Text used to label the point. Defaults to \code{expression(H[0])} in 2D plots.}
   \item{cex}{Point and text size.  For 3D plots, the function uses
-  \code{size=5*cex} in a call to \code{\link[rgl]{points3d}}}
-  \item{pch}{Plot character.  Ignored for 3D plots}
+  \code{size=5*cex} in a call to \code{\link[rgl]{points3d}}.}
+  \item{pch}{Plot character.  Ignored for 3D plots.}
   \item{col}{Color for text, character and lines}
   \item{lty}{Line type for vertical and horizontal reference lines. Not
   	drawn if \code{lty}=0.}

@@ -35,6 +35,7 @@ function(mod, ...) UseMethod("heplot")
 				icontrasts=c("contr.sum", "contr.poly"),
 				imatrix=NULL,
 				iterm=NULL,
+				markH0=!is.null(iterm),
 				manova,        # an optional Anova.mlm object
 				size=c("evidence", "effect.size"),
 				level=0.68,
@@ -257,6 +258,10 @@ function(mod, ...) UseMethod("heplot")
 			text(means[,2], means[,3], labels=as.character(means[,1]), pos=3, xpd=TRUE, ...)
 		}
 	}
+
+	if(is.logical(markH0) && markH0) mark.H0()
+	else if (is.list(markH0)) do.call(mark.H0, markH0)
+		
 	names(H.ellipse) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
 	result <- if (!add) list(H=H.ellipse, E=E.ellipse, center=gmean, xlim=xlim, ylim=ylim)
 			else list(H=H.ellipse, E=E.ellipse, center=gmean)
