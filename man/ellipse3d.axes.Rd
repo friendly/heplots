@@ -58,7 +58,7 @@ library(rgl)
 plot3d(iris3, type="s", size=0.4, col=col, cex=2, box=FALSE, aspect="iso")
 plot3d( ellipse3d(cov, centre=mu, level=0.68), col="gray", alpha=0.2,  add = TRUE)
 
-axes <- ellipse3d.axes(cov, centre=mu, level=0.68)
+axes <- ellipse3d.axes(cov, centre=mu, level=0.68, color="gray", lwd=2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

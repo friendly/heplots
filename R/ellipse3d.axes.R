@@ -13,8 +13,9 @@ function (x, centre = c(0, 0, 0), scale = c(1, 1, 1), level = 0.95,
       c(-1, 0, 0,   1, 0, 0,
         0, -1, 0,   0, 1, 0,
         0, 0, -1,   0, 0, 1),  6, 3, byrow=TRUE)
+	rownames(axes)<- apply(expand.grid(c("min","max"),c("X","Y","Z"))[,2:1],1,paste,collapse="")
 
-    # transform to PC axes
+	# transform to PC axes
     axes <- axes %*% sqrt(diag(eig$values)) %*% t(eig$vectors)
     result <- scale3d(axes, t, t, t)
     if (!missing(scale)) {
