@@ -74,7 +74,6 @@ Anova(Adopted.mod, idata=Age, idesign=~Age, test="Roy")
 heplot(Adopted.mod, idata=Age, idesign=~Age, iterm="Age",
 	hypotheses=list("Reg"=c("AMED", "BMIQ"))
 	)
-mark.H0()
 
 }
 

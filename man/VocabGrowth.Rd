@@ -50,7 +50,6 @@ Anova(Vocab.mod, idata=idata, idesign=~grade, type="III")
 
 heplot(Vocab.mod, type="III", idata=idata, idesign=~grade, iterm="grade",
 	main="HE plot for Grade effect")
-mark.H0()
 
 ### doing this 'manually' by explicitly transforming Y -> Y M
 # calculate Y M, using polynomial contrasts
@@ -65,6 +64,5 @@ heplot(within.mod, terms="(Intercept)", col=c("red", "blue"), type="3",
   term.labels="Grade",
   main="HE plot for Grade effect")
 mark.H0()
-
 }
 \keyword{datasets}
