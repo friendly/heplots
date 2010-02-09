@@ -46,11 +46,11 @@ Returns (invisibly): integer ID of the line added to the scene
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
-\references{
+%\references{
 %% ~put references to the literature/web site here ~
-}
+%}
 \author{
-Barry Rowlinson, posted to R-help, 1/10/2010
+Barry Rowlingson, posted to R-help, 1/10/2010
 }
 %\note{
 %%  ~~further notes~~

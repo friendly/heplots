@@ -2,6 +2,8 @@
 # last modified 15 April 2009 by M. Friendly 
 #  -- Fixed numerous warnings resulting from axes=FALSE
 #  -- prepare to generalize diagonal panel
+# last modified 2 Feb 2010 by M. Friendly
+#  -- added code for repeated measures designs
 
 
 `pairs.mlm` <-
@@ -17,6 +19,7 @@ function(x, variables,
 
 #	manova <- Anova(x, type)
 	if (missing(manova)) {
+		type <- match.arg(type)
 		if (is.null(imatrix)) {
 			manova <- Anova(x, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}

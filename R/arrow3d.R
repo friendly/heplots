@@ -1,4 +1,4 @@
-## Original by Barry Rowlinson, R-help, 1/10/2010
+## Original by Barry Rowlingson, R-help, 1/10/2010
 ## Modified by MF: inlined extprod3d, added barblen (to specify absolute barb length)
 
 arrow3d <- function(p0=c(0,0,0), p1=c(1,1,1), barblen, s=0.05, theta=pi/6, n=3, ...){
