@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package heplots:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package heplots:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="heplots-package">
+<param name="Local" value="heplot-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Adopted">
+<param name="Local" value="Adopted.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="arrow3d">
+<param name="Local" value="arrow3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Bees">
+<param name="Local" value="Bees.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="colMeansList">
+<param name="Local" value="statList.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="covList">
+<param name="Local" value="statList.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cross3d">
+<param name="Local" value="cross3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ellipse3d.axes">
+<param name="Local" value="ellipse3d.axes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="FootHead">
+<param name="Local" value="FootHead.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="heplot">
+<param name="Local" value="heplot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="heplot.mlm">
+<param name="Local" value="heplot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="heplot1d">
+<param name="Local" value="heplot1d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="heplot1d.mlm">
+<param name="Local" value="heplot1d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="heplot3d">
+<param name="Local" value="heplot3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="heplot3d.mlm">
+<param name="Local" value="heplot3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="heplots">
+<param name="Local" value="heplot-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mark.H0">
+<param name="Local" value="mark.H0.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pairs.mlm">
+<param name="Local" value="pairs.mlm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plastic">
+<param name="Local" value="Plastic.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ReactTime">
+<param name="Local" value="ReactTime.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Rohwer">
+<param name="Local" value="Rohwer.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="RootStock">
+<param name="Local" value="RootStock.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="statList">
+<param name="Local" value="statList.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="VocabGrowth">
+<param name="Local" value="VocabGrowth.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="WeightLoss">
+<param name="Local" value="WeightLoss.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package heplots:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Adopted Children">
+<param name="Local" value="Adopted.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Calculate statistics for levels of factors">
+<param name="Local" value="statList.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Captive and maltreated bees">
+<param name="Local" value="Bees.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Draw a 3D Arrow in an RGL Scene">
+<param name="Local" value="arrow3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Draw a 3D cross in an rgl scene">
+<param name="Local" value="cross3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Draw axes of a 3D ellipsoid">
+<param name="Local" value="ellipse3d.axes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Growth of Apple Trees from Different Root Stocks">
+<param name="Local" value="RootStock.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Head measurements of football players">
+<param name="Local" value="FootHead.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Mark a point null hypothesis in an HE plot">
+<param name="Local" value="mark.H0.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="One-Dimensional HE Plots">
+<param name="Local" value="heplot1d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Pairwise HE Plots">
+<param name="Local" value="pairs.mlm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plastic Film Data">
+<param name="Local" value="Plastic.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Reaction Time Data">
+<param name="Local" value="ReactTime.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Rohwer Data Set">
+<param name="Local" value="Rohwer.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Three-Dimensional HE Plots">
+<param name="Local" value="heplot3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Two-Dimensional HE Plots">
+<param name="Local" value="heplot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Visualizing Tests in Multivariate Linear Models">
+<param name="Local" value="heplot-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Vocabulary growth data">
+<param name="Local" value="VocabGrowth.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Weight Loss Data">
+<param name="Local" value="WeightLoss.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

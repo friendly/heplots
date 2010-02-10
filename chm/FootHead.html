@@ -1,0 +1,92 @@
+<html><head><title>Head measurements of football players</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>FootHead(heplots)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   FootHead">
+<param name="keyword" value=" Head measurements of football players">
+</object>
+
+
+<h2>Head measurements of football players</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Data collected as part of a preliminary study examining the
+relation between football helmet design and neck injuries.
+There are 30 subjects in each of three groups:
+High school football players, college players and non-football players.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(FootHead)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+A data frame with 90 observations on the following 7 variables.
+<dl>
+<dt><code>group</code></dt><dd>a factor with levels <code>High school</code> <code>College</code> <code>Non-football</code></dd>
+<dt><code>width</code></dt><dd>a numeric vector: head width at widest dimension</dd>
+<dt><code>circum</code></dt><dd>a numeric vector: head circumference</dd>
+<dt><code>front.back</code></dt><dd>a numeric vector: front to back distance at eye level</dd>
+<dt><code>eye.top</code></dt><dd>a numeric vector: eye to top of head</dd>
+<dt><code>ear.top</code></dt><dd>a numeric vector:ear to top of head</dd>
+<dt><code>jaw</code></dt><dd>a numeric vector: jaw width</dd>
+</dl>
+
+<h3>Source</h3>
+
+<p>
+Rencher, A. C. (1995), <EM>Methods of Multivariate Analysis</EM>,
+New York: Wiley, Table 8.3.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(FootHead)
+str(FootHead)
+
+# use Helmert contrasts for group
+contrasts(FootHead$group) &lt;- contr.helmert
+contrasts(FootHead$group)
+
+foot.mod &lt;- lm(cbind(width, circum,front.back,eye.top,ear.top,jaw)~group, data=FootHead)
+Manova(foot.mod)
+
+# show the HE plot for the first two variables
+heplot(foot.mod, main="HE plot")
+
+# show it with tests of Helmert contrasts
+heplot(foot.mod, hypotheses=list("group.1"="group1","group.2"="group2"),
+        col=c("red", "blue", "green3", "green3" ),
+        main="HE plot with orthogonal Helmert contrasts")
+
+# show all pairwise HE plots
+pairs(foot.mod)
+
+# ... with tests of Helmert contrasts
+pairs(foot.mod, hypotheses=list("group.1"="group1","group.2"="group2"),
+        col=c("red", "blue", "green3", "green3"), hyp.labels=FALSE)
+
+# see that the hypothesis for groups really is 2D
+heplot3d(foot.mod, variables=c(1,2,6),
+        hypotheses=list("group.1"="group1","group.2"="group2"),
+        col=c("red", "blue", "green3", "green3" ), wire=FALSE)
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>heplots</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

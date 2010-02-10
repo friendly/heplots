@@ -91,6 +91,7 @@ Version 0.9-1 (2010-01-1)
  o Added label argument to mark.H0()
  o Added arrow3d()
  o Fixed buglet in pairs.mlm (type)
+ o Added demo/Big5.R
  
  
  

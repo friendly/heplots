@@ -1,0 +1,139 @@
+<html><head><title>Captive and maltreated bees</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Bees(heplots)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Bees">
+<param name="keyword" value=" Captive and maltreated bees">
+</object>
+
+
+<h2>Captive and maltreated bees</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Pabalan, Davey and Packe (2000) 
+studied the effects of captivity and maltreatment
+on reproductive capabilities of queen and worker bees in a complex factorial design.
+</p>
+<p>
+Bees were placed in a small tube and either held captive (CAP) or shaken periodically (MAL) for
+one of 5, 7.5, 10, 12.5 or 15 minutes, after which they were sacrificed and
+two measures: ovarian development (<code>Iz</code>) and ovarian reabsorption (<code>Iy</code>), were taken.
+A single control group was measured with no such treatment, i.e., at time 0; there are 
+n=10 per group.
+</p>
+<p>
+The design is thus nearly a three-way factorial, with factors
+<code>caste</code> (Queen, Worker), <code>treat</code> (CAP, MAL) and <code>time</code>, 
+except that there are only 11 combinations of Treatment and Time; 
+we call these <code>trtime</code> below.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(Bees)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+A data frame with 246 observations on the following 6 variables.
+<dl>
+<dt><code>caste</code></dt><dd>a factor with levels <code>Queen</code> <code>Worker</code></dd>
+<dt><code>treat</code></dt><dd>a factor with levels <code>""</code> <code>CAP</code> <code>MAL</code></dd>
+<dt><code>time</code></dt><dd>an ordered factor: time of treatment</dd>
+<dt><code>Iz</code></dt><dd>an index of ovarian development</dd>
+<dt><code>Iy</code></dt><dd>an index of ovarian reabsorption</dd>
+<dt><code>trtime</code></dt><dd>a factor with levels <code>0</code> <code>CAP05</code> <code>CAP07</code> <code>CAP10</code> <code>CAP12</code> <code>CAP15</code> <code>MAL05</code> <code>MAL07</code> <code>MAL10</code> <code>MAL12</code> <code>MAL15</code></dd>
+</dl>
+
+<h3>Details</h3>
+
+<p>
+Models for the three-way factorial design, using the formula <code>cbind(Iz,Iy) ~ caste*treat*time</code>
+ignore the control condition at <code>time==0</code>, where <code>treat==NA</code>.
+</p>
+<p>
+To handle the additional control group at <code>time==0</code>, while separating the
+effects of Treatment and Time, 10 contrasts can be defined for the <code>trtime</code>
+factor in the model <code>cbind(Iz,Iy) ~ caste*trtime</code>
+See <code>demo(bees.contrasts)</code> for details.
+</p>
+<p>
+In the <code>heplot</code> examples below, the default <code>size="evidence"</code> displays are
+too crowded to interpret, because some effects are so highly significant.  The alternative
+effect-size scaling, <code>size="effect"</code>, makes the relations clearer.
+</p>
+
+
+<h3>Source</h3>
+
+<p>
+Pabalan, N., Davey, K. G. &amp; Packe, L. (2000).
+Escalation of Aggressive Interactions During Staged Encounters in Halictus ligatus Say (Hymenoptera: Halictidae), with a Comparison of Circle Tube Behaviors with Other Halictine Species 
+<EM>Journal of Insect Behavior</EM>,  
+<B>13</B>, 627-650.
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Friendly, M. (2006).
+Data Ellipses, HE Plots and Reduced-Rank Displays for Multivariate Linear Models: 
+SAS Software and Examples 
+<EM>Journal of Statistical Software</EM>, 
+<B>17</B>, 1-42.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(Bees)
+
+# 3-way factorial, ignoring 0 group
+bees.mod &lt;- lm(cbind(Iz,Iy) ~ caste*treat*time, data=Bees)
+Anova(bees.mod)
+
+op&lt;-palette(c(palette()[1:4],"brown","magenta", "olivedrab","darkgray"))
+heplot(bees.mod, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+                main="Bees: ~caste*treat*time")
+heplot(bees.mod, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+       main="Bees: ~caste*treat*time", size="effect")
+
+# two-way design, using trtime
+bees.mod1 &lt;- lm(cbind(Iz,Iy) ~ caste*trtime, data=Bees)
+Anova(bees.mod1)
+
+heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+                main="Bees: ~caste*trtime")
+heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+       main="Bees: ~caste*trtime",size="effect")
+palette(op)
+
+# effect plots for separate responses
+if(require(effects)) {
+        bees.lm1 &lt;-lm(Iy ~ treat*caste*time, data=Bees)
+        bees.lm2 &lt;-lm(Iz ~ treat*caste*time, data=Bees)
+        
+        bees.eff1 &lt;- allEffects(bees.lm1)
+        plot(bees.eff1,multiline=TRUE,ask=FALSE)
+        
+        bees.eff2 &lt;- allEffects(bees.lm2)
+        plot(bees.eff2,multiline=TRUE,ask=FALSE)
+}
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>heplots</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>
