@@ -18,6 +18,7 @@
 # last modified 30 Dec 2009 by M. Friendly -- debugged repeated measures
 # last modified  1 Jan 2010 by M. Friendly -- debugged repeated measures again
 # last modified  1 Jan 2010 by M. Friendly -- merged heplot3d.R and heplot.mlm.R
+# last modified 12 Feb 2010 by M. Friendly -- fixed buglet with text3d causing rgl to crash (thx: Duncan Murdoch)
 
 
 `heplot3d` <-
@@ -103,7 +104,8 @@ function(mod, ...) UseMethod("heplot3d")
 		bbox <- matrix(par3d("bbox"), nrow=2)
 		ranges <- apply(bbox, 2, diff)
 #        rgl.texts(x[which.max(x[,2]),] + offset*ranges, adj=0, text=label, color=col, lit=FALSE)
-		texts3d(x[which.max(x[,2]),] + offset*ranges, adj=0, texts=label, color=col, lit=FALSE)
+		if (!is.null(label) && label !="")
+			texts3d(x[which.max(x[,2]),] + offset*ranges, adj=0, texts=label, color=col, lit=FALSE)
 		rownames(bbox) <- c("min", "max")
 		return(bbox)
 	}
