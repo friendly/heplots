@@ -1,0 +1,99 @@
+ Version 0.9-2 (2010-02-12)
+ o Added demo/Big5.R
+ o fixed buglet with text3d causing rgl to crash (thx: Duncan Murdoch)
+ o switched inst/CHANGES to NEWS
+
+Version 0.9-1 (2010-01-1)
+ o heplot.mlm, pairs.mlm, heplot3d.mlm now work for repeated measure designs
+   with only covariates on the rhs.
+ o Implemented heplot1d() for repeated measures designs (untested)
+ o Revised documentation for repeated measures
+ o Added center.cex to heplot.mlm()
+ o Revised mark.H0() to handle 3D plots also
+ o Added Adoption data -- MMreg with repeated measures
+ o Added ReactTime data -- 2 within-S, no between-S factors
+ o Fixed bug with icontrasts
+ o Added markH0 argument to heplot
+ o Added label argument to mark.H0()
+ o Added arrow3d()
+ o Fixed buglet in pairs.mlm (type)
+ 
+Version 0.9-0 (2009-12-25)
+ o Implemented 2D HE plots in heplot.mlm for repeated measures designs by adding
+   idata=, idesign=, icontrasts= arguments.  
+ o imatrix= argument  for doubly-multivariate designs implemented, but depends on car 2.0+
+ o Updated example(OBK) 
+ o Updated example(WeightLoss)
+ o Implemented 3D HE plots in heplot3d.mlm for repeated measures designs (OK)
+ o Implemented pairs() for repeated measures designs (OK)
+
+Version 0.8-11 (2009-12-08)
+ o Minor fixes to heplot1d
+ o Added contrasts example to RootStock.Rd
+ o Added WeightLoss data -- doubly multivariate
+ o Added mark.H0
+
+Version 0.8-10 (2009-10-10)
+ o Fixes to cross-references in .Rd files.
+
+Version 0.8-9 (2009-06-19)
+ o Added data(RootStock)
+ o heplot.mlm, heplot3d.mlm now include center in the returned object
+ 
+Version 0.8-8 (2009-06-04)
+ o Added data(FootHead)
+ o Extended example(FootHead)
+
+ Version 0.8-7 (2009-04-17)
+ o Initial version of heplot1d
+ o Added data(Bees), demo(bees.contrasts)
+ o Now suggest: effects package
+
+Version 0.8-6 (2009-04-11)
+ o Added VocabGrowth data, with an example of heplot() for a repeated measures design
+ o Fixed label.ellipse in heplot.mlm.R to center the label horizontally
+ o Added demo(OBK)
+ o Added axes= to heplot.mlm to fix warnings arising from axes=FALSE in pairs.mlm 
+ 
+Version 0.8-5 (2009-01-26)
+ o Minor documentation changes for Rdoc 2
+ o Michael Friendly as maintainer
+
+Version 0.8-4 (2008-11-17)
+ o Documentation additions
+ o added CITATION file
+
+Version 0.8-3 (2008-11-6)
+ 
+* Changes to heplot3d.mlm:
+ o  added xlim, ylim, zlim arguments
+
+Version 0.8-2 (2008-10-22)
+
+* Package changes
+ o  added suggests: candisc
+ o  added utility.R, cross3d.R
+
+* Changes to heplot.mlm:
+ o  moved lambda.crit to utility.R
+ o  added he.rep to handle common task of repeating HE argument values
+
+* Changes to heplot3d.mlm:
+ o  added shade=, shade.alpha=, wire= parameters
+ o  fixed: grand.mean=FALSE not respected
+ o  replaced sphere at grand.mean with cross3d()
+ o  color means according to the color of the term
+ o  return bounding boxes of the ellipsoids
+ o  replaced rgl.texts with texts3d
+ 
+* Changes to utility.R:
+ o  Generalized lambda.crit to provide Roy.crit and HLT.crit; only Roy.crit is used
+ 
+Version 0.8-1 (2007-05-23)
+
+ o  heplot now passes ... not only to plot() but to calls to text() and points().
+
+Version 0.8-0 (2007-01-31)
+
+o Initial version released to CRAN.
+
