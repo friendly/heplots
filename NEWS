@@ -2,6 +2,7 @@
  o Added demo/Big5.R
  o fixed buglet with text3d causing rgl to crash (thx: Duncan Murdoch)
  o switched inst/CHANGES to NEWS
+ o Added data/RatWeight
 
 Version 0.9-1 (2010-01-1)
  o heplot.mlm, pairs.mlm, heplot3d.mlm now work for repeated measure designs
