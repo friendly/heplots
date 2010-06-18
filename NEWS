@@ -4,6 +4,7 @@
  o switched inst/CHANGES to NEWS
  o Added data/RatWeight and examples
  o Added data/Headache and examples
+ o Fixed buglets in heplot, heplot1d, heplot3d regarding number of variables
 
 Version 0.9-1 (2010-01-1)
  o heplot.mlm, pairs.mlm, heplot3d.mlm now work for repeated measure designs

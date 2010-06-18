@@ -130,7 +130,9 @@ function(mod, ...) UseMethod("heplot")
 		vars <- response.names[variables]
 	}
 	if (length(variables) != 2) {
-		extra <- if (length(variables) == 3) 'heplot3d()' else 'pairs()'
+		extra <- if (length(variables) == 1) 'heplot1d()' else 
+				if (length(variables) == 3) 'heplot3d()' else 'pairs()'
+#		extra <- if (length(variables) == 3) 'heplot3d()' else 'pairs()'
 		stop(paste("You may only plot 2 response variables. Use", extra))
 	}
 	

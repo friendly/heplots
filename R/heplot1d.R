@@ -102,7 +102,7 @@ function(mod, ...) UseMethod("heplot1d")
 	if (length(variables) != 1) {
 #		stop(paste("You may only plot 1 response variable."))
 		extra <- if (length(variables) == 2) 'heplot()' else 
-			if (length(variables) == 3) 'heplot()' else 'pairs()'
+			if (length(variables) == 3) 'heplot3d()' else 'pairs()'
 		stop(paste("You may only plot 1 response variable. Try", extra))
 	}
 

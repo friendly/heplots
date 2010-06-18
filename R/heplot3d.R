@@ -158,7 +158,11 @@ function(mod, ...) UseMethod("heplot3d")
 					length(response.names), " response variables.")
 		vars <- response.names[variables]
 	}
-	if (length(variables) != 3) stop("You may only plot 3 response variables")
+	if (length(variables) != 3) {
+		extra <- if (length(variables) == 1) 'heplot1d()' else 
+				if (length(variables) == 2) 'heplot()' else 'pairs()'
+		stop(paste("You may only plot 3 response variables. Use", extra))
+	}
 	
 	if (missing(terms) || (is.logical(terms) && terms)) {
 		terms <- manova$terms
