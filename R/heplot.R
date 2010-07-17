@@ -68,7 +68,7 @@ function(mod, ...) UseMethod("heplot")
 		order <- order(attr(Q, "pivot"))
 		t( c(center) + t( circle %*% Q[,order]))
 	}
-	label.ellipse <- function(ellipse, label, col){
+	label.ellipse <- function(ellipse, label, col, ...){
 		if (cor(ellipse)[1,2] > 0){
 			index <- which.max(ellipse[,2])
 			x <- ellipse[index, 1] + 0.5 * strwidth(label)  # was: "A"
@@ -116,7 +116,6 @@ function(mod, ...) UseMethod("heplot")
 	else {response.names <- paste("V.", 1:nrow(SSPE), sep="")}
 	p <- length(response.names)
 	
-#browser()
 	if (!is.numeric(variables)) {
 		vars <- variables
 		variables <- match(vars, response.names)
