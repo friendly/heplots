@@ -13,6 +13,7 @@
 # last modified 27 Dec 2009 by M. Friendly -- made it work for designs with no between effects
 # last modified 28 Dec 2009 by M. Friendly -- made it work with car 2.0 for doubly multivariate
 # last modified 10 Jan 2010 by M. Friendly -- merged with heplot.mlm.R
+# last modified 23 Jul 2010 by M. Friendly -- return radius
 
 `heplot` <-
 function(mod, ...) UseMethod("heplot")
@@ -84,6 +85,8 @@ function(mod, ...) UseMethod("heplot")
 		text(x, y, label, adj=adj, xpd=TRUE, col=col, ...)
 	}
 	if (!require(car)) stop("car package is required.")
+	# avoid deprecated warnings from car
+	if (packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 	type <- match.arg(type)
 	size <- match.arg(size)
 	data <- model.frame(mod)
@@ -264,8 +267,8 @@ function(mod, ...) UseMethod("heplot")
 	else if (is.list(markH0)) do.call(mark.H0, markH0)
 		
 	names(H.ellipse) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
-	result <- if (!add) list(H=H.ellipse, E=E.ellipse, center=gmean, xlim=xlim, ylim=ylim)
-			else list(H=H.ellipse, E=E.ellipse, center=gmean)
+	result <- if (!add) list(H=H.ellipse, E=E.ellipse, center=gmean, xlim=xlim, ylim=ylim, radius=radius)
+			else list(H=H.ellipse, E=E.ellipse, center=gmean, radius=radius)
 	class(result) <- "heplot"
 	invisible(result)
 }
