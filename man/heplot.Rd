@@ -189,6 +189,7 @@ heplot(mod, ...)
   \item{center}{x,y coordinates of the centroid}
   \item{xlim}{x-axis limits}
   \item{ylim}{y-axis limits}
+  \item{radius}{the radius for the unit circles used to generate the ellipses}
 
 }
 
