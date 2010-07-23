@@ -3,7 +3,7 @@
 # last modified  2 January 2010 by M. Friendly: export cross3d
 # last modified 27 January 2010 by M. Friendly: export statList etc
 export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, statList, covList, colMeansList, arrow3d,
-	etasq)
+	etasq, gsorth)
 S3method(heplot, mlm)
 S3method(heplot3d, mlm)
 S3method(pairs, mlm)
