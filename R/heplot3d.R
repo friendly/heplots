@@ -19,6 +19,7 @@
 # last modified  1 Jan 2010 by M. Friendly -- debugged repeated measures again
 # last modified  1 Jan 2010 by M. Friendly -- merged heplot3d.R and heplot.mlm.R
 # last modified 12 Feb 2010 by M. Friendly -- fixed buglet with text3d causing rgl to crash (thx: Duncan Murdoch)
+# last modified 23 Jul 2010 by M. Friendly -- return radius
 
 
 `heplot3d` <-
@@ -113,6 +114,8 @@ function(mod, ...) UseMethod("heplot3d")
 	
 	if (!require(car)) stop("car package is required.")
 	if (!require(rgl)) stop("rgl package is required.")    
+	# avoid deprecated warnings from car
+	if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 	type <- match.arg(type)
 	size <- match.arg(size)
 	fogtype <- match.arg(fogtype)
@@ -124,7 +127,7 @@ function(mod, ...) UseMethod("heplot3d")
 			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-			if (packageDescription("car")[["Version"]] >= 2)
+			if (car2)
 				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
 			else stop("imatrix argument requires car 2.0-0 or later")
 		} 
@@ -308,8 +311,8 @@ function(mod, ...) UseMethod("heplot3d")
 	aspect3d(x=1, y=1, z=1)
 	
 	names(H.ellipsoid) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
-	result <- if(error.ellipsoid) list(H=H.ellipsoid, E=E.ellipsoid, center=gmean) 
-			else list(H=H.ellipsoid, center=gmean)
+	result <- if(error.ellipsoid) list(H=H.ellipsoid, E=E.ellipsoid, center=gmean, radius=radius) 
+			else list(H=H.ellipsoid, center=gmean, radius=radius)
 	class(result) <- "heplot3d"
 	invisible(result)
 	

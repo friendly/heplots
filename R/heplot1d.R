@@ -52,6 +52,7 @@ function(mod, ...) UseMethod("heplot1d")
 	}
 
 	if (!require(car)) stop("car package is required.")
+	if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 	type <- match.arg(type)
 	size <- match.arg(size)
 	data <- model.frame(mod)
@@ -62,7 +63,7 @@ function(mod, ...) UseMethod("heplot1d")
 			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-			if (packageDescription("car")[["Version"]] >= 2)
+			if (car2)
 				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
 			else stop("imatrix argument requires car 2.0-0 or later")
 		} 
