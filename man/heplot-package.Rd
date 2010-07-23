@@ -68,7 +68,7 @@ that shows the largest hypothesis relative to error variation.
 \author{
 John Fox, Michael Friendly, and Georges Monette
 
-Maintainer: Michael Friendly <friendly@yorku.ca>
+Maintainer: Michael Friendly, <friendly@yorku.ca>, \url{http://datavis.ca}
 }
 
 \references{
