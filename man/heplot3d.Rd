@@ -34,7 +34,7 @@ heplot3d(mod, ...)
     if \code{FALSE}, no terms are plotted.}
   \item{hypotheses}{optional list of linear hypotheses for which to plot hypothesis
     matrices; hypotheses are specified as for the
-    \code{\link[car]{linear.hypothesis}} function in the \code{car} package;
+    \code{\link[car]{linearHypothesis}} function in the \code{car} package;
     the list elements can be named, in which case the names are used.}
   \item{term.labels}{logical value or character vector of names for the terms to be
     plotted. If \code{TRUE} (the default) the names of the terms are used;
@@ -176,7 +176,7 @@ Friendly, M. (2007).
 }
 
 \seealso{
-    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}}, for details on MANOVA tests and
+    \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}}, for details on MANOVA tests and
     linear hypotheses
     
     \code{\link{heplot}}, \code{\link{pairs.mlm}}, for other plotting methods for \code{mlm} objects

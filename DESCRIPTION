@@ -1,13 +1,13 @@
 Package: heplots
 Type: Package
 Title: Visualizing Tests in Multivariate Linear Models
-Version: 0.9-2
-Date: 2010-02-12
+Version: 0.9-3
+Date: 2010-07-27
 Author: John Fox, Michael Friendly, and Georges Monette
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Depends: car, graphics, stats
 Suggests: rgl, candisc, effects
 LazyLoad: yes
 LazyData: yes
-Description: Functions for visualizing hypothesis tests in multivariate linear models. They represents sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions).
+Description: HE plot functions for visualizing hypothesis tests in multivariate linear models. They represents sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions).
 License: GPL version 2 or newer

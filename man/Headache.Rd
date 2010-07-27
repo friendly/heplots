@@ -73,9 +73,9 @@ headache.mod <- lm(cbind(u1, du1, u2, du2) ~ type * treatment, data=Headache)
 Anova(headache.mod, test="Roy")
 
 # test each contrast separately
-print(linear.hypothesis(headache.mod, hypothesis="treatment1", test="Roy"), SSP=FALSE)
-print(linear.hypothesis(headache.mod, hypothesis="treatment2", test="Roy"), SSP=FALSE)
-print(linear.hypothesis(headache.mod, hypothesis="treatment3", test="Roy"), SSP=FALSE)
+print(linearHypothesis(headache.mod, hypothesis="treatment1", test="Roy"), SSP=FALSE)
+print(linearHypothesis(headache.mod, hypothesis="treatment2", test="Roy"), SSP=FALSE)
+print(linearHypothesis(headache.mod, hypothesis="treatment3", test="Roy"), SSP=FALSE)
 
 
 heplot(headache.mod, variables=c(1,3),

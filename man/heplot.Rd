@@ -207,7 +207,7 @@ Friendly, M. (2007).
 }
 
 \seealso{
-    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}} for details on 
+    \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for details on 
     testing \code{mlm}s.
     
     \code{\link{heplot1d}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}}, \code{\link{mark.H0}} for other

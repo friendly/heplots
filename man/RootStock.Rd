@@ -34,6 +34,12 @@ Rencher, A. C. (1995). \emph{Methods of Multivariate Analysis}.
 New York: Wiley, Table 6.2
 }
 \examples{
+\dontshow{
+	# allow to work with car 1
+	if (packageDescription("car")[["Version"]] < 2) {
+		linearHypothesis <- linear.hypothesis
+	}
+}
 data(RootStock)
 ## maybe str(RootStock) ; plot(RootStock) ...
 root.mod <- lm(cbind(girth4, ext4, girth15, weight15) ~ rootstock, data=RootStock)
@@ -43,7 +49,7 @@ pairs(root.mod)
 
 # test two orthogonal contrasts among the rootstocks
 hyp <- matrix(c(2,-1,-1,-1,-1,2,  1, 0,0,0,0,-1), 2, 6, byrow=TRUE)
-linear.hypothesis(root.mod, hyp)
+linearHypothesis(root.mod, hyp)
 heplot(root.mod, hypotheses=list(Contrasts=hyp, C1=hyp[1,], C2=hyp[2,]))
 
 heplot1d(root.mod, hypotheses=list(Contrasts=hyp, C1=hyp[1,], C2=hyp[2,]))

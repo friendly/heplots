@@ -24,8 +24,8 @@ displays.
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.9-2\cr
-Date: \tab 2009-02-12\cr
+Version: \tab 0.9-3\cr
+Date: \tab 2009-07-27\cr
 License: \tab GPL version 2 or newer\cr
 }
 
@@ -57,7 +57,7 @@ the H and E matrices in this transformed space.
 
 The related \code{\link[car]{car-package}} package calculates Type II and Type III tests 
 of multivariate
-linear hypotheses using the  \code{\link[car]{Anova}} and \code{\link[car]{linear.hypothesis}}
+linear hypotheses using the  \code{\link[car]{Anova}} and \code{\link[car]{linearHypothesis}}
 functions. 
 
 The \code{\link[candisc]{candisc-package}} package provides functions for 
@@ -96,7 +96,7 @@ Fox, J., Friendly, M. & Monette, G. (2007).
 \keyword{multivariate}
 
 \seealso{
-    \code{\link[car]{Anova}}, \code{\link[car]{linear.hypothesis}}, 
+    \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}}, 
     \code{\link[candisc]{candisc-package}},
     \code{\link[stats]{manova}},
     
