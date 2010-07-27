@@ -1,4 +1,5 @@
  Version 0.9-3 (2010-07-27)
+ o Added gsorth()
  o Avoid Deprecated warnings (linear.hypothesis) with car2
  o Fixed documentation warnings with car2 (linear.hypothesis, data.ellipse) 
  

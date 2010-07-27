@@ -8,10 +8,11 @@ Orthogonalize successive columns of a data frame or matrix
 \description{
 \code{gsorth} uses sequential, orthogonal projections, as
 in the Gram-Schmidt method, to transform a matrix or numeric
-columns of a data frame into an uncorrelated set.
+columns of a data frame into an uncorrelated set, possibly
+retaining the same column means and standard deviations as the original.
 }
 \usage{
-gsorth(y, order=1:p, recenter = TRUE, rescale = TRUE, adjnames = TRUE)
+gsorth(y, order, recenter = TRUE, rescale = TRUE, adjnames = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,12 +20,13 @@ gsorth(y, order=1:p, recenter = TRUE, rescale = TRUE, adjnames = TRUE)
 A numeric data frame or matrix
 }
   \item{order}{
-An integer vector specifying the order of the columns of \code{y}
-to be orthogonalized.
+An integer vector specifying the order of and/or a subset of
+the columns of \code{y} to be orthogonalized.
+If missing, \code{order=1:p} where \code{p=ncol(y)}.
 }
   \item{recenter}{
 If \code{TRUE}, the result has same column means as original;
-else means = 0 for cols \code{2:p}
+else means = 0 for cols \code{2:p}.
 }
   \item{rescale}{
 If \code{TRUE}, the result has same column standard deviations as original;
@@ -36,11 +38,18 @@ Y1, Y2.1, Y3.12, by adding the suffixes '.1', '.12', etc. to the
 original column names.
 }
 }
-%\details{
-%%%  ~~ If necessary, more details than the description above ~~
-%}
+\details{
+The method is equivalent to setting each of columns \code{2:p} to
+the residuals from a linear regression of that column on all prior
+columns, i.e.,
+
+\code{z[,j] <- resid( lm( z[,j] ~ as.matrix(z[,1:(j-1)]), data=z) )}
+
+However, for accuracy and speed the transformation is carried out using the QR decomposition.
+}
 \value{
-Returns a matrix or data frame with uncorrelated columns
+Returns a matrix or data frame with uncorrelated columns.  Row and column names are
+copied to the result.
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
@@ -59,10 +68,11 @@ Michael Friendly
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[base]{qr}}
+\code{\link[base]{qr}}, 
 }
 \examples{
 GSiris <- gsorth(iris[,1:4])
+GSiris <- gsorth(iris, order=1:4)   # same, using order
 str(GSiris)
 zapsmall(cor(GSiris))
 colMeans(GSiris)

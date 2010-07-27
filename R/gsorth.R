@@ -4,16 +4,31 @@
 #   rescale=TRUE -> result has same sd as original, else, sd = residual sd
 #   adjnames=TRUE -> colnames are adjusted to Y1, Y2.1, Y3.12, ...
 
-gsorth <- function(y, order=1:p, recenter=TRUE, rescale=TRUE, adjnames=TRUE) {
-#	num <- sapply(y, is.numeric)
+gsorth <- function(y, order, recenter=TRUE, rescale=TRUE, adjnames=TRUE) {
+	n <- nrow(y)
+	if (missing(order)) order <- 1:ncol(y)
+	y <- y[,order]
 	p <- ncol(y)
-	z <- y <- y[,order]
-	for (j in 2:p) {
-		z[,j] <- resid( lm( z[,j] ~ as.matrix(z[,1:(j-1)]), data=z) )
-		if (rescale) z[,j] <- z[,j] * sd(y[,j]) / sd(z[,j])
-		if (recenter) z[,j] <- z[,j] + mean(y[,j])
-		if (adjnames) colnames(z)[j] <- paste(colnames(z)[j], '.', sep="",
-		                                      paste( 1:(j-1), collapse=""))
+	
+	if (is.data.frame(y)) {
+		numeric <- unlist(lapply(y, is.numeric))
+		if (!all(numeric)) stop("all columns of y must be numeric")
+	}
+	
+	ybar <- colMeans(y)
+	ysd <- sd(y)
+	z <- scale(y, center=TRUE, scale=FALSE)
+	z <- qr.Q(qr(z))
+	zsd <- sd(z)
+	if (rescale) z <- z %*% diag( ysd/zsd )
+	if (recenter) z <- z + matrix(rep(ybar,times=n), ncol=p, byrow=TRUE)
+	rownames(z) <- rownames(y)
+	colnames(z) <- colnames(y)
+	if (adjnames) {
+		for (j in 2:p) {
+			colnames(z)[j] <- paste(colnames(z)[j], '.', sep="",
+					paste( 1:(j-1), collapse=""))
 		}
+	}
 	z
 }
