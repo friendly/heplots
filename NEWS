@@ -1,16 +1,20 @@
+ Version 0.9-4 (2010-07-29)
+ o Minor documentation changes
+ 
  Version 0.9-3 (2010-07-27)
- o Added gsorth()
+ o Added gsorth() for Gram-Schmidt orthogonalization of a matrix or data frame, preserving
+    column means and standard deviations
  o Avoid Deprecated warnings (linear.hypothesis) with car2
  o Fixed documentation warnings with car2 (linear.hypothesis, data.ellipse) 
  
  Version 0.9-2 (2010-02-12)
- o Added demo/Big5.R
+ o Added demo/Big5.R - Analysis of scores on the 'Big 5' personality traits for three groups
  o fixed buglet with text3d causing rgl to crash (thx: Duncan Murdoch)
  o switched inst/CHANGES to NEWS
- o Added data/RatWeight and examples
- o Added data/Headache and examples
+ o Added data/RatWeight and examples - repeated measures on Weight Gain in Rats
+ o Added data/Headache and examples - repeated measures on treatment for headaches
  o Fixed buglets in heplot, heplot1d, heplot3d regarding number of variables
- o Added etasq.mlm methods
+ o Added etasq.mlm methods for multivariate measures of association (\eta^2)
  o Return ellipse radius from heplot, heplot3d
 
 Version 0.9-1 (2010-01-1)

@@ -70,7 +70,7 @@ function(mod, ...) UseMethod("heplot")
 		t( c(center) + t( circle %*% Q[,order]))
 	}
 	label.ellipse <- function(ellipse, label, col){
-		if (cor(ellipse)[1,2] > 0){
+		if (cor(ellipse)[1,2] >= 0){
 			index <- which.max(ellipse[,2])
 			x <- ellipse[index, 1] + 0.5 * strwidth(label)  # was: "A"
 			y <- ellipse[index, 2] + 0.5 *strheight("A")
