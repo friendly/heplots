@@ -74,7 +74,7 @@ Maintainer: Michael Friendly, <friendly@yorku.ca>, \url{http://datavis.ca}
 \references{
 Friendly, M. (2006).
   Data Ellipses, HE Plots and Reduced-Rank Displays for Multivariate Linear 
-  Models: SAS Software and Examples 
+  Models: SAS Software and Examples. 
   \emph{Journal of Statistical Software}, 17(6), 1-42.
   \url{http://www.jstatsoft.org/v17/i06/}
 
@@ -88,6 +88,9 @@ Fox, J., Friendly, M. & Monette, G. (2007).
   \emph{DSC 2007: Directions in Statistical Computing}.
   \url{http://socserv.socsci.mcmaster.ca/jfox/heplots-dsc-paper.pdf}
 
+Friendly, M. (2010).
+  HE Plots for Repeated Measures Designs.  Submitted to \emph{Journal of Statistical Software}.
+  \url{http://datavis.ca/papers/repeated-jss4.pdf}.
 }
 
 \keyword{package}
@@ -96,7 +99,8 @@ Fox, J., Friendly, M. & Monette, G. (2007).
 \keyword{multivariate}
 
 \seealso{
-    \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}}, 
+    \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for Anova.mlm computations and tests
+    
     \code{\link[candisc]{candisc-package}},
     \code{\link[stats]{manova}},
     

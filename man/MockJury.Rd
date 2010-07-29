@@ -62,8 +62,21 @@ East Carolina University.
 # manipulation check:  test ratings of the photos classified by Attractiveness
 jury.mod1 <- lm( cbind(phyattr, happy, indepen, sophist) ~ Attr, data=MockJury)
 Anova(jury.mod1, test="Roy")
-heplot(jury.mod1)
+## 
+## Type II MANOVA Tests: Roy test statistic
+##      Df test stat approx F num Df den Df    Pr(>F)    
+## Attr  2    1.7672   48.156      4    109 < 2.2e-16 ***
+## ---
+## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+heplot(jury.mod1, main="HE plot for manipulation check")
 pairs(jury.mod1)
+
+if (require(candisc)) {
+	jury.can <- candisc(jury.mod1)
+	jury.can
+	heplot(jury.can, main="Canonical HE plot")
+}
 
 # influence of Attr of photo and nature of crime on Serious and Years
 jury.mod2 <- lm( cbind(Serious, Years) ~ Attr * Crime, data=MockJury)
