@@ -67,7 +67,7 @@ Anova(jury.mod1, test="Roy")
 ##      Df test stat approx F num Df den Df    Pr(>F)    
 ## Attr  2    1.7672   48.156      4    109 < 2.2e-16 ***
 ## ---
-## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 
 heplot(jury.mod1, main="HE plot for manipulation check")
 pairs(jury.mod1)
