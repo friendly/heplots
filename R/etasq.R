@@ -57,17 +57,18 @@ etasq.Anova.mlm <- function(x, anova=FALSE, ...){
 	result      
 }
 
-etasq.lm <- function(x, anova=FALSE, ...) {
+etasq.lm <- function(x, anova=FALSE, partial=TRUE, ...) {
 	aov <-Anova(x, ...)
 	neff <- nrow(aov)
 	SSH <- aov[-neff,1]
 	SSE <- aov[neff,1]
 	SST <- sum(SSH)
-	eta2 <- c(SSH / (SSH + SSE), NA)
+	eta2 <- if (partial) c(SSH / (SSH + SSE), NA) else c(SSH / SST, NA)
+	etalab <- if (partial) "Partial eta^2" else "eta^2"
 	if (anova) {
 		result <- cbind(eta2, aov)
 		rownames(result) <- rownames(aov)
-		colnames(result) <- c("eta^2", colnames(aov))
+		colnames(result) <- c(etalab, colnames(aov))
 		result <- structure(as.data.frame(result), 
 				heading = attr(aov, "heading"), 
 				class = c("anova", "data.frame"))
@@ -75,7 +76,7 @@ etasq.lm <- function(x, anova=FALSE, ...) {
 	else {
 		result <- data.frame(eta2)
 		rownames(result) <- rownames(aov)
-		colnames(result) <- "eta^2"
+		colnames(result) <- etalab
 	}
 	result      
 }
