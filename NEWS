@@ -1,5 +1,6 @@
  Version 0.9-4 (2010-07-29)
  o Minor documentation changes
+ o Added etasq.lm() method
  
  Version 0.9-3 (2010-07-27)
  o Added gsorth() for Gram-Schmidt orthogonalization of a matrix or data frame, preserving

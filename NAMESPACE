@@ -8,6 +8,7 @@ S3method(heplot, mlm)
 S3method(heplot3d, mlm)
 S3method(pairs, mlm)
 S3method(heplot1d, mlm)
+S3method(etasq,lm)
 S3method(etasq,mlm)
 S3method(etasq,Anova.mlm)
 

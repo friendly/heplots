@@ -1,5 +1,6 @@
 # partial eta^2 measures of association for multivariate tests
 # (mod of car:::print.Anova.mlm, just for testing)
+# added etasq.lm 7/29/2010
 
 etasq <- function(x, ...){
 	UseMethod("etasq", x)
@@ -56,16 +57,26 @@ etasq.Anova.mlm <- function(x, anova=FALSE, ...){
 	result      
 }
 
-TESTME <- FALSE
-if(TESTME) {
-data(Soils) # from car package
-soils.mod <- lm(cbind(pH,N,Dens,P,Ca,Mg,K,Na,Conduc) ~ Block + Contour*Depth, data=Soils)
-#Anova(soils.mod)
-etasq(Anova(soils.mod))
-etasq(soils.mod) # same
-etasq(Anova(soils.mod), anova=TRUE)
-
-etasq(Anova(soils.mod, test="Wilks"))
-etasq(Anova(soils.mod, test="Hotelling"))
+etasq.lm <- function(x, anova=FALSE, ...) {
+	aov <-Anova(x, ...)
+	neff <- nrow(aov)
+	SSH <- aov[-neff,1]
+	SSE <- aov[neff,1]
+	SST <- sum(SSH)
+	eta2 <- c(SSH / (SSH + SSE), NA)
+	if (anova) {
+		result <- cbind(eta2, aov)
+		rownames(result) <- rownames(aov)
+		colnames(result) <- c("eta^2", colnames(aov))
+		result <- structure(as.data.frame(result), 
+				heading = attr(aov, "heading"), 
+				class = c("anova", "data.frame"))
+	}
+	else {
+		result <- data.frame(eta2)
+		rownames(result) <- rownames(aov)
+		colnames(result) <- "eta^2"
+	}
+	result      
 }
 
