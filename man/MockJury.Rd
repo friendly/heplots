@@ -31,17 +31,17 @@ crime?
     \item{\code{Serious}}{a  rating of  how  serious  the  subject  thought the defendant's  crime  was}
     \item{\code{exciting}}{rating of the photo for 'exciting'}
     \item{\code{calm}}{rating of the photo for 'calm'}
-    \item{\code{indepen}}{rating of the photo for 'independent'}
+    \item{\code{independent}}{rating of the photo for 'independent'}
     \item{\code{sincere}}{rating of the photo for 'sincere'}
     \item{\code{warm}}{rating of the photo for 'warm'}
     \item{\code{phyattr}}{rating of the photo for 'physical attractiveness'}
     \item{\code{sociable}}{rating of the photo for 'exciting'}
     \item{\code{kind}}{rating of the photo for 'kind'}
-    \item{\code{intellig}}{rating of the photo for 'intelligent'}
+    \item{\code{intelligent}}{rating of the photo for 'intelligent'}
     \item{\code{strong}}{rating of the photo for 'strong'}
-    \item{\code{sophist}}{rating of the photo for 'sophistocated'}
+    \item{\code{sophisticated}}{rating of the photo for 'sophistocated'}
     \item{\code{happy}}{rating of the photo for 'happy'}
-    \item{\code{ownpa}}{self-rating of the subject for 'physical attractiveness'}
+    \item{\code{ownPA}}{self-rating of the subject for 'physical attractiveness'}
   }
 }
 %\details{
@@ -54,13 +54,14 @@ From Dr. Wuensch's StatData Page,
 \references{
 Data from the thesis by Plaster, M. E. (1989).
 \emph{Inmates as mock jurors: The effects of physical attractiveness upon juridic decisions.}
-East Carolina University. 
+M.A. thesis,
+Greenville, NC: East Carolina University. 
 
 %%  ~~ possibly secondary sources and usages ~~
 }
 \examples{
 # manipulation check:  test ratings of the photos classified by Attractiveness
-jury.mod1 <- lm( cbind(phyattr, happy, indepen, sophist) ~ Attr, data=MockJury)
+jury.mod1 <- lm( cbind(phyattr, happy, independent, sophisticated) ~ Attr, data=MockJury)
 Anova(jury.mod1, test="Roy")
 ## 
 ## Type II MANOVA Tests: Roy test statistic
