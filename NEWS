@@ -2,6 +2,7 @@
  o Minor documentation changes
  o Added etasq.lm() method
  o Added data/MockJury - 1-way and 2-way MANOVA, step-down tests, ANCOVA
+ o Generalized termMeans() and exported it
  
  Version 0.9-3 (2010-07-27)
  o Added gsorth() for Gram-Schmidt orthogonalization of a matrix or data frame, preserving

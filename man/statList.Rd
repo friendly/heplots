@@ -70,7 +70,7 @@ Michael Friendly
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{colMeans}}
+\code{\link[base]{colMeans}}, \code{\link{termMeans}}
 }
 \examples{
 # grand means

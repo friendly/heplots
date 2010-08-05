@@ -181,7 +181,7 @@ Friendly, M. (2007).
     
     \code{\link{heplot}}, \code{\link{pairs.mlm}}, for other plotting methods for \code{mlm} objects
     
-    \code{\link[rgl]{rgl-package}}, 
+    \code{\link[rgl]{rgl-package}}, for details about 3D plots with \code{rgl}
     
     \code{\link[candisc]{heplot3d.candisc}} for 3D HE plots in canonical space.
 }
@@ -198,7 +198,7 @@ heplot3d(soils.mod, variables=c("Mg", "Ca", "Na"))
 
 # Plastic data
 plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
-heplot3d(plastic.mod)
+heplot3d(plastic.mod, col=c("pink", "blue", "brown", "green3"))
 } 
 
 \keyword{hplot}
