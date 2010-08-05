@@ -1,0 +1,479 @@
+%% template for Sweave vignettes
+%\VignetteIndexEntry{HE plot examples}
+%\VignetteDepends{candisc,car}
+%\VignetteKeywords{MANOVA, ANOVA, Canonical discriminant analysis, effect plots, HE plots}
+%\VignettePackage{heplots}
+
+\documentclass[11pt]{article}
+\usepackage{float,graphicx,geometry}
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{latexsym}
+\usepackage{Sweave}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{url}
+\usepackage[round]{natbib}
+\usepackage{hyperref}
+\bibliographystyle{abbrvnat}
+%\bibpunct{(}{)}{;}{a}{,}{,}
+\usepackage{bm}
+\usepackage{upquote}
+\usepackage{sfheaders}
+\usepackage{xspace}
+\geometry{left=1.2in, right=1.2in, top=1in, bottom=1in}
+
+% math stuff
+\newcommand*{\given}{\ensuremath{\, | \,}}
+\renewcommand*{\vec}[1]{\ensuremath{\bm{#1}}}
+\newcommand{\mat}[1]{\ensuremath{\bm{#1}}}
+\newcommand{\trans}{\ensuremath{^\mathsf{T}}}
+\newcommand{\diag}[1]{\ensuremath{\mathrm{diag} (#1)}}
+\def\binom#1#2{{#1 \choose #2}}%
+%\newcommand{\implies}{ \ensuremath{\mapsto} }
+
+\newcommand{\sizedmat}[2]{%
+  \mathord{\mathop{\mat{#1}}\limits_{(#2)}}%
+}
+
+
+\newcommand*{\LM}{LM}
+\newcommand*{\MLM}{MvLM\xspace}
+\newcommand*{\Var}{\ensuremath{\mathsf{Var}}}
+
+
+%\newenvironment{equation*}{\displaymath}{\enddisplaymath}%
+
+\newcommand{\tabref}[1]{Table~\ref{#1}}
+\newcommand{\figref}[1]{Figure~\ref{#1}}
+\newcommand{\secref}[1]{Section~\ref{#1}}
+\newcommand{\loglin}{loglinear }
+
+% R stuff
+\newcommand{\pkg}[1]{{\textsf{#1} package}}
+\newcommand{\Rpackage}[1]{{\textsf{#1}}}
+\newcommand{\R}{\textsf{R}\xspace}
+\newcommand{\code}[1]{{\texttt{#1}}}
+\newcommand{\func}[1]{{\texttt{#1}()}}
+
+
+\title{HE Plot Examples}
+\author{Michael Friendly}
+\date{\footnotesize{Using \Rpackage{heplots} version \Sexpr{packageDescription("heplots")[["Version"]]}
+	and \Rpackage{candisc} version \Sexpr{packageDescription("heplots")[["Version"]]}; Date: \Sexpr{Sys.Date()}}}
+
+
+\definecolor{Soutput}{rgb}{0,0,0.56}
+\definecolor{Sinput}{rgb}{0.56,0,0}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{formatcom={\color{Sinput}},fontsize=\footnotesize, baselinestretch=0.75}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom={\color{Soutput}},fontsize=\footnotesize, baselinestretch=0.75}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	This vignette provides some worked examples of the analysis of multivariate linear models 
+	(\MLM s)
+	with graphical methods for visualizing results using the \pkg{heplots} and the \pkg{candisc}.
+	The emphasis here is on using these methods in \R, and understanding how they help reveal
+	aspects of these models that might not be apparent from other graphical displays.
+	No attempt is made to describe the theory of \MLM s or the statistical details behind
+	HE plots and their reduced-rank canonical cousins.
+	For that, see \citet{FoxFriendlyMonette:09:compstat,Friendly:07:manova,Friendly:06:hesoft}.
+\end{abstract}
+
+{\small
+ \tableofcontents
+}
+
+
+\SweaveOpts{engine=R,height=5,width=5,results=hide,fig=FALSE,echo=TRUE}
+\SweaveOpts{prefix.string=fig/plot}
+\setkeys{Gin}{width=0.7\textwidth}
+
+<<preliminaries,echo=FALSE,results=hide>>=
+set.seed(1071)
+old.opts <- options(width=85, digits=6, useFancyQuotes = FALSE, continue="  ")
+library(heplots)
+library(candisc)
+@
+
+\section{MANOVA Designs}
+
+\subsection{Plastic film data}
+An experiment was conducted to determine the optimum conditions for extruding plastic film. 
+Three responses, \code{tear} resistance, film \code{gloss} and film \code{opacity}
+were measured in relation to two factors, \code{rate} of extrusion and amount of an \code{additive},
+both of these being set to two values, High and Low.
+The design is thus a $2\times 2$ MANOVA, with $n=5$ per cell. 
+This example illustrates 2D and 3D HE plots, the difference between 
+``effect'' scaling and ``evidence'' (significance) scaling, and visualizing
+composite linear hypotheses.
+
+We begin with an overall MANOVA for the two-way MANOVA model.
+Because each effect has 1 df, all of the multivariate statistics are equivalent,
+but we specify \code{test.statistic="Roy"} because Roy's test has
+a natural visual interpretation in HE plots.
+<<plastic-mod, results=verbatim>>=
+plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
+Anova(plastic.mod, test.statistic="Roy")
+@
+For the three responses jointly, the main effects of  \code{rate} and \code{additive}
+are significant, while their interaction is not.
+In some approaches to testing effects in multivariate linear models (\MLM),
+significant multivariate tests are often followed by univariate tests on each
+of the responses separately to determine which responses contribute to each
+significant effect.  In \R, these analyses are most convieniently performed
+using the \func{update} method for the \code{mlm} object \code{plastic.mod}.
+<<plastic-univar, results=verbatim>>=
+Anova(update(plastic.mod, tear ~ .))
+Anova(update(plastic.mod, gloss ~ .))
+Anova(update(plastic.mod, opacity ~ .))
+@
+The results above show significant main effects for \code{tear},
+a significant main effect of \code{rate} for \code{gloss},
+and no significant effects for \code{opacity}, but they don't shed light on the
+\emph{nature} of these effects.
+Traditional univariate plots of the means for each variable separately
+are useful, but they don't allow visualization of the
+\emph{relations} among the response variables.
+
+We can visualize these
+effects for pairs of variables in an HE plot, showing the ``size'' and
+orientation of hypothesis variation (\mat{H}) in relation to error
+variation (\mat{E}) as ellipsoids.
+When, as here, the model terms have 1 degree of freedom, the
+\mat{H} ellipsoids degenerate to a line.
+<<plastic1a, keep.source=TRUE, echo=TRUE, eval=FALSE>>=
+# Compare evidence and effect scaling 
+colors = c("red", "darkblue", "darkgreen", "brown")
+heplot(plastic.mod, size="evidence", col=colors, cex=1.25)
+heplot(plastic.mod, size="effect", add=TRUE, lwd=4, term.labels=FALSE, col=colors)
+@
+With effect scaling, both the \mat{H} and \mat{E} sums of squares and products
+matrices are both divided by the error df, giving multivariate analogs of univariate
+measures of effect size, e.g., $(\bar{y}_1-\bar{y}_2) / s$.
+With significance scaling, the \mat{H} ellipse is further divided by
+$\lambda_\alpha$, the critical value of Roy's largest root statistic.
+This scaling has the property that an \mat{H} ellipse will protrude somewhere
+outside the \mat{E} ellipse \emph{iff} the
+multivariate test is significant at level $\alpha$.
+\figref{fig:plastic1} shows both scalings, using a thinner line for significance scaling.
+Note that the (degenerate) ellipse for \code{additive} is significant, but
+does not protrude outside the \mat{E} ellipse in this view.
+All that is guarranteed is that it will protrude somewhere in the 3D space of
+the responses.
+
+
+By design, means for the levels of interaction terms are not shown in the HE plot,
+because doing so in general can lead to messy displays.
+We can add them here for the term \code{rate:additive} as follows:
+<<plastic1b, keep.source=TRUE, echo=TRUE, eval=FALSE>>=
+## add interaction means
+intMeans <- termMeans(plastic.mod, 'rate:additive', abbrev.levels=2)
+#rownames(intMeans) <- apply(expand.grid(c('Lo','Hi'), c('Lo', 'Hi')), 1, paste, collapse=':')
+points(intMeans[,1], intMeans[,2], pch=18, cex=1.2, col="brown")
+text(intMeans[,1], intMeans[,2], rownames(intMeans), adj=c(0.5,1), col="brown")
+lines(intMeans[c(1,3),1], intMeans[c(1,3),2], col="brown")
+lines(intMeans[c(2,4),1], intMeans[c(2,4),2], col="brown")
+@
+<<plastic1, fig=TRUE, include=FALSE, echo=FALSE>>=
+<<plastic1a>>
+<<plastic1b>>
+@
+
+\begin{figure}[htb]
+\begin{center}
+	\includegraphics[width=.6\textwidth, clip]{fig/plot-plastic1}
+\caption{HE plot for effects on \code{tear} and \code{gloss} according to the
+	factors \code{rate}, \code{additive} and their interaction, \code{rate:additive}.
+	 The thicker
+	lines show effect size scaling, the thinner lines show significance scaling.}
+\label{fig:plastic1}
+\end{center}
+\end{figure}
+
+
+The factor means in this plot (\figref{fig:plastic1}) have a simple interpretation:
+The high \code{rate} level yields greater \code{tear} resistance but lower \code{gloss}
+than the low level.
+The high \code{additive} amount produces greater \code{tear} resistance and greater \code{gloss}.
+
+The \code{rate:additive} interaction is not significant overall, though it
+approaches significance for \code{gloss}. 
+The cell means for the combinations
+of \code{rate} and \code{additive} shown in this figure suggest an explanation,
+for tutorial purposes:
+with the low level of \code{rate}, there is little difference in \code{gloss}
+for the levels of \code{additive}. At the high level of \code{rate}, there is
+a larger difference in \code{gloss}.  The \mat{H} ellipse for the interaction
+of \code{rate:additive} therefore ``points'' in the direction of \code{gloss}
+indicating that this variable contributes to the interaction in the 
+multivariate tests.
+
+
+In some MANOVA models, it is of interest to test sub-hypotheses 
+of a given main effect or interaction, or conversely to test composite
+hypotheses that pool together certain effects to test them jointly.
+All of these tests (and, indeed, the tests of terms in a given model)
+are carried out as tests of general linear hypotheses in the \MLM.
+
+In this example, it might be useful to test two composite hypotheses:
+one corresponding to both main effects jointly, and another corresponding
+to no difference among the means of the four groups (equivalent to
+a joint test for the overall model). These tests are specified in terms
+of subsets or linear combinations of the model parameters.
+<<plastic-mod, results=verbatim>>=
+plastic.mod
+@
+Thus, for example, the joint test of both main effects tests the parameters
+\code{rateHigh} and \code{additiveHigh}.
+<<plastic-tests, results=verbatim>>=
+print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh"), title="Main effects"), SSP=FALSE)
+
+print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh", "rateHigh:additiveHigh"), title="Groups"), SSP=FALSE)
+@
+
+Correspondingly, we can display these tests in the HE plot by specifying these tests in the
+\code{hypothesis} argument to \func{heplot}, as shown in \figref{fig:plastic2}.
+\begin{figure}[htb]
+\begin{center}
+<<plastic2, fig=TRUE>>=
+heplot(plastic.mod, hypotheses=list("Group" = 
+       c("rateHigh", "additiveHigh", "rateHigh:additiveHigh ")),
+       col=c(colors, "purple"),
+       lwd=c(2, 3, 3, 3, 2), cex=1.25)
+heplot(plastic.mod, hypotheses=list("Main effects" = 
+       c("rateHigh", "additiveHigh")), add=TRUE,
+       col=c(colors, "darkgreen"), cex=1.25)
+@
+\caption{HE plot for \code{tear} and \code{gloss}, supplemented with ellipses representing
+	the joint tests of main effects and all group differences}
+\label{fig:plastic2}
+\end{center}
+\end{figure}
+
+Finally, a 3D HE plot can be produced with \func{heplot3d}, giving \figref{fig:plastic1-HE3D}.
+This plot was rotated interactively to a view that shows both main effects
+protruding outside the error ellipsoid.
+<<plastic1-HE3D, fig=FALSE, eval=FALSE>>=
+colors = c("pink", "darkblue", "darkgreen", "brown")
+heplot3d(plastic.mod, col=colors)
+@
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[clip]{fig/plastic1-HE3D}
+\caption{3D HE plot for the plastic film data}
+\label{fig:plastic1-HE3D}
+\end{center}
+\end{figure}
+
+
+\subsection{Effects of physical attractiveness on mock jury decisions}
+
+In a social psychology
+study of influences on jury decisions
+by \citet{Plaster:89},
+male participants (prison inmates)
+were shown a picture of one of three young women.  
+Pilot  work
+had indicated  that one woman  was beautiful,  another of  average physical
+attractiveness, and the third  unattractive.  Participants rated the  woman they
+saw on each  of twelve attributes on scales of 1--9.  These measures were used to check on the
+manipulation of ``attractiveness'' by the photo.
+
+Then the participants were told that the person in the photo had committed a
+Crime, and asked to rate the seriousness of the crime and recommend a
+prison sentence, in Years.  The data are contained in the data frame \code{MockJury}.%
+\footnote{The data were made available courtesy of Karl Wuensch, from
+	\url{http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat}
+}
+
+<<MJdata, results=verbatim>>=
+str(MockJury)
+@
+Sample sizes were roughly balanced  for the independent variables
+in the three conditions of the attractiveness of the photo,
+and the combinations of this with \code{Crime}:
+<<MJdata1, results=verbatim>>=
+table(MockJury$Attr)
+table(MockJury$Attr, MockJury$Crime)
+@
+
+The main questions of interest were:
+(a) Does attractiveness of the ``defendent'' influence the sentence or perceived
+seriousness of the crime?  
+(b) Does attractiveness interact with the nature of the
+crime?
+
+But first, we try to assess the ratings of the photos in relation to the 
+presumed categories of the independent variable \code{Attr}.  The questions here
+are (a) do the ratings of the photos on physical attractiveness
+(\code{phyattr}) confirm the original classification?
+(b) how do other ratings differentiate the photos?
+To keep things simple, we consider ony a few of the other ratings in a one-way MANOVA.
+
+<<jury.mod1, results=verbatim>>=
+(jury.mod1 <- lm( cbind(phyattr, happy, independent, sophisticated) ~ Attr, data=MockJury))
+Anova(jury.mod1, test="Roy")
+@
+Note that Beautiful is the baseline category of \code{Attr}, so the
+intercept term gives the means for this level.
+We see that the means are significantly different on all four variables
+collectively, by a joint multivariate test.  A traditional analysis might
+follow up with univariate ANOVAs for each measure separately. 
+
+As an aid to interpretation of the MANOVA results
+We can examine the test of \code{Attr} in this model with an HE plot for
+pairs of variables, e.g., for \code{phyattr} and  \code{happy} (\figref{fig:jury-mod1-HE}).
+The means in this plot show that Beautiful is rated higher on
+physical attractiveness than the other two photos, while Unattractive
+is rated less happy than the other two. Comparing the sizes of the
+ellipses, differences among group means on physical attractiveness
+contributes more to significance than do ratings on happy.
+
+<<jury-mod1-HE, fig=TRUE, include=FALSE>>=
+heplot(jury.mod1, main="HE plot for manipulation check")
+@
+
+\begin{figure}[htb]
+\begin{center}
+	\includegraphics{fig/plot-jury-mod1-HE}
+\caption{HE plot for ratings of \code{phyattr} and \code{happy} according to the
+	classification of photos on \code{Attr}}
+\label{fig:jury-mod1-HE}
+\end{center}
+\end{figure}
+
+The HE plot for all pairs of variables (\figref{fig:jury-mod1-pairs}) shows that the means for \code{happy}
+and \code{independent} are highly correlated, as are the means for \code{phyattr}
+and \code{sophisticated}.  In most of these pairwise plots, the means form a
+triangle rather than a line, suggesting that these attributes are indeed
+measuring different aspects of the photos.
+
+\begin{figure}[htb]
+\begin{center}
+<<jury-mod1-pairs, fig=TRUE>>=
+pairs(jury.mod1)
+@
+\caption{HE plots for all pairs of ratings according to the
+	classification of photos on \code{Attr}}
+\label{fig:jury-mod1-pairs}
+\end{center}
+\end{figure}
+
+With 3 groups and 4 variables, the \mat{H} ellipsoid has only $s=\min(df_h, p)=2$
+dimensions.  \func{candisc} carries out a canonical discriminant analysis
+for the \MLM\  and returns an object that can be used to show an HE plot in the
+space of the canonical dimensions.  This is plotted in \figref{fig:jury-can1}.
+
+<<jury-can1a, fig=FALSE, results=verbatim>>=
+jury.can <- candisc(jury.mod1)
+jury.can
+@
+
+\begin{figure}[htb]
+\begin{center}
+<<jury-can1, fig=TRUE>>=
+opar <- par(xpd=TRUE)
+heplot(jury.can, prefix="Canonical dimension", main="Canonical HE plot")
+par(opar)
+@
+\caption{Canonical discriminant HE plot}
+\label{fig:jury-can1}
+\end{center}
+\end{figure}
+
+From this we can see that 91\% of the variation among group means
+is accounted for by the first dimension, and this is nearly completely
+aligned with \code{phyattr}. 
+The second dimension, accounting for the remaining 9\%
+is determined nearly entirely by ratings on \code{happy} and \code{independent}.
+This display gives a relatively simple account of the results of the MANOVA
+and the relations of each of the ratings to discrimination among the photos.
+
+Proceeding to the main questions of interest, we carry out a two-way MANOVA of the responses
+\code{Years} and \code{Serious} in relation to the independent variables
+\code{Attr} and \code{Crime}.
+
+<<jury-mod2, results=verbatim>>=
+# influence of Attr of photo and nature of crime on Serious and Years
+jury.mod2 <- lm( cbind(Serious, Years) ~ Attr * Crime, data=MockJury)
+Anova(jury.mod2, test="Roy")
+@
+We see that there is a nearly significant  interaction between \code{Attr} and \code{Crime}
+and a strong effect of \code{Attr}.
+
+\begin{figure}[htb]
+\begin{center}
+<<jury-mod2-HE, fig=TRUE>>=
+heplot(jury.mod2)
+@
+\caption{HE plot for the two-way MANOVA for \code{Years} and \code{Serious}}
+\label{fig:jury-mod2-HE}
+\end{center}
+\end{figure}
+
+The HE plot shows that the nearly significant
+interaction of \code{Attr:Crime} is mainly in terms of
+differences among the groups on the response of \code{Years} of sentence,
+with very little contribution of \code{Serious}.  We explore this interaction in a bit more detail
+below.  The main effect of \code{Attr} is also dominated by differences among groups
+on \code{Years}. 
+
+If we assume that \code{Years} of sentence is the main outcome of interest,
+it also makes sense to carry out a step-down test of this variable by itself,
+controlling for the rating of seriousness (\code{Serious}) of the crime.
+The model \code{jury.mod3} below is equivalent to an ANCOVA for \code{Years}.
+<<jury-mod3-HE, results=verbatim>>=
+# stepdown test (ANCOVA), controlling for Serious
+jury.mod3 <- lm( Years ~ Serious + Attr * Crime, data=MockJury)
+t(coef(jury.mod3))
+Anova(jury.mod3)
+@
+Thus, even when adjusting for \code{Serious} rating, there is still a 
+significant main effect of \code{Attr} of the photo, but also a hint of
+an interaction of \code{Attr} with \code{Crime}. The coefficient for
+\code{Serious} indicates that participants awarded 0.84 additional
+years of sentence for each 1 unit step on the scale of seriousness of crime.
+
+A particularly useful
+method for visualizing the fitted effects in such univariate response
+models is provided by the \pkg{effects}.  By default \func{allEffects}
+calculates the predicted values for all high-order terms in a given
+model, and the \code{plot} method produces plots of these values for
+each term.  The statements below produce \figref{fig:jury-mod3-eff}.
+
+\setkeys{Gin}{width=1\textwidth}
+
+\begin{figure}[htb]
+\begin{center}
+<<jury-mod3-eff, fig=TRUE, width=8, height=4>>=
+library(effects)
+jury.eff <- allEffects(jury.mod3)
+plot(jury.eff, ask=FALSE)
+@
+\caption{Effect plots for  \code{Serious} and the \code{Attr * Crime}
+	 in the ANCOVA model \code{jury.mod3}.}
+\label{fig:jury-mod3-eff}
+\end{center}
+\end{figure}
+
+The effect plot for \code{Serious} shows the expected linear relation
+between that variable and \code{Years}. Of greater interest here is the nature
+of the possible interaction of \code{Attr} and \code{Crime} on \code{Years}
+of sentence, controlling for \code{Serious}.
+The effect plot shows that for the crime of Swindle, there is a much
+greater \code{Years} of sentence awarded to Unattractive defendents.
+ 
+
+<<tidyup,echo=FALSE,results=hide>>=
+options(old.opts )
+@
+
+%\bibliography{graphics}
+\bibliography{HE-examples}
+
+\end{document}

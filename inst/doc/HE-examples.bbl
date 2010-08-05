@@ -1,0 +1,42 @@
+\providecommand{\Loc}[1]{\textsf{#1}}
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Fox et~al.(2009)Fox, Friendly, and
+  Monette]{FoxFriendlyMonette:09:compstat}
+J.~Fox, M.~Friendly, and G.~Monette.
+\newblock Visualizing hypothesis tests in multivariate linear models: The
+  \emph{heplots} package for {R}.
+\newblock \emph{Computational Statistics}, 24\penalty0 (2):\penalty0 233--246,
+  2009.
+\newblock URL \url{http://dx.doi.org/10.1007/s00180-008-0120-1}.
+\newblock (Published online: 15 May 2008).
+
+\bibitem[Friendly(2006)]{Friendly:06:hesoft}
+M.~Friendly.
+\newblock Data ellipses, {HE} plots and reduced-rank displays for multivariate
+  linear models: {SAS} software and examples.
+\newblock \emph{Journal of Statistical Software}, 17\penalty0 (6):\penalty0
+  1--42, 2006.
+\newblock URL \url{http://www.jstatsoft.org/v17/i06/}.
+
+\bibitem[Friendly(2007)]{Friendly:07:manova}
+M.~Friendly.
+\newblock {HE} plots for multivariate general linear models.
+\newblock \emph{Journal of Computational and Graphical Statistics}, 16\penalty0
+  (2):\penalty0 421--444, 2007.
+\newblock \doi{10.1198/106186007X208407}.
+\newblock URL \url{http://www.math.yorku.ca/SCS/Papers/jcgs-heplots.pdf}.
+
+\bibitem[Plaster(1989)]{Plaster:89}
+M.~E. Plaster.
+\newblock \emph{The Effect of Defendent Physical Attractiveness on Juridic
+  Decisions Using Felon Inmates as Mock Jurors}.
+\newblock Unpublished master's thesis, East Carolina University, Greenville,
+  NC, 1989.
+
+\end{thebibliography}
