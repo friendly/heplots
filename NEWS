@@ -1,3 +1,6 @@
+ Version 0.9-5 (2010-10-01)
+ o Added repeated vignette
+
  Version 0.9-4 (2010-07-29)
  o Minor documentation changes
  o Added etasq.lm() method

@@ -24,8 +24,8 @@ displays.
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.9-4\cr
-Date: \tab 2009-07-29\cr
+Version: \tab 0.9-5\cr
+Date: \tab 2009-10-01\cr
 License: \tab GPL version 2 or newer\cr
 }
 
@@ -52,7 +52,8 @@ these functions carry out a linear
 transformation of the matrix \bold{Y} of responses to a matrix \bold{Y M}, where
 \bold{M} is the model matrix for a term in
 the intra-subject design and produce plots of
-the H and E matrices in this transformed space. 
+the H and E matrices in this transformed space. The vignette \code{repeated} describes
+these graphical methods for repeated measures designs.
 
 
 The related \code{\link[car]{car-package}} package calculates Type II and Type III tests 
@@ -89,7 +90,7 @@ Fox, J., Friendly, M. & Monette, G. (2007).
   \url{http://socserv.socsci.mcmaster.ca/jfox/heplots-dsc-paper.pdf}
 
 Friendly, M. (2010).
-  HE Plots for Repeated Measures Designs.  Submitted to \emph{Journal of Statistical Software}.
+  HE Plots for Repeated Measures Designs.  \emph{Journal of Statistical Software}, in press.
   \url{http://datavis.ca/papers/repeated-jss4.pdf}.
 }
 
