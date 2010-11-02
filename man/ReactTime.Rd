@@ -34,6 +34,9 @@ Baron, J. and Li, Y. (2003).
 
 }
 \references{
+Michael Friendly (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
+  37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
+
 Maxwell, S. E. & Delaney, H. D. (1990). 
 \emph{Designing Experiments and Analyzing Data: A model comparison perspective}.
 Pacific Grove, CA: Brooks/Cole.

@@ -36,5 +36,23 @@ citEntry(header="To refer to the theory on which this package is based, also cit
   Journal of Computational and Graphical Statistics, 2007, 16, 421-444"  
 )
 
+citEntry(header="For use with repeated measures designs also cite:",
+  entry = "Article",
+  title        = "HE Plots for Repeated Measures Designs",
+  author       = personList(as.person("Michael Friendly")),
+  journal      = "Journal of Statistical Software",
+  year         = "2010",
+  volume       = "37",
+  number       = "4",
+  pages        = "1--40",
+  url          = "http://www.jstatsoft.org/v37/i04/",
+
+  textVersion  =
+  paste("Michael Friendly (2010).",
+        "HE Plots for Repeated Measures Designs.",
+        "Journal of Statistical Software, 37(4), 1-40.",
+        "URL http://www.jstatsoft.org/v37/i04/.")
+)
+
 citFooter("BibTeX entries for LaTeX users: use\n", sQuote('toBibtex(citation("heplots"))'))
 #toBibtex(citation("heplots"))

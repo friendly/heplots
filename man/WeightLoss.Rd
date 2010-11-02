@@ -31,9 +31,11 @@ and \code{Diet} vs. \code{DietEx}.
 Originally taken from \url{http://www.csun.edu/~ata20315/psy524/main.htm},
 but modified slightly
 }
-%\references{
-%%  ~~ possibly secondary sources and usages ~~
-%}
+\references{
+  Friendly, Michael  (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
+  37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
+
+}
 \examples{
 data(WeightLoss)
 str(WeightLoss)

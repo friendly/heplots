@@ -41,6 +41,10 @@ Fitzmaurice, G. M. and Laird, N. M. and Ware, J. H (2004).
 \references{
 Box, G.E.P. (1950). Problems in the analysis of 
 growth and wear curves.  \emph{Biometrics}, 6, 362-389.
+
+Friendly, Michael (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
+  37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
+
 }
 \examples{
 data(RatWeight)

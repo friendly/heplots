@@ -31,6 +31,9 @@
   package. 
 }
 \references{
+  Friendly, Michael  (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
+  37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
+
   Skodak, M. and Skeels, H.M. (1949). A Final Follow-up Study of One
   Hundred Adopted Children, \emph{Journal of Genetic Psychology}
   \bold{75}: 85--125.

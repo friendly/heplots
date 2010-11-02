@@ -1,11 +1,12 @@
 % template for Sweave vignettes
-%\VignetteIndexEntry{HE plots for Repeated Measures Designs}
-%\VignetteDepends{reshape, car, gplots, nlme, lattice}
-%\VignetteKeywords{}
+%\VignetteIndexEntry{HE Plots for Repeated Measures Designs}
+%\VignetteDepends{reshape, car, gplots, nlme, lattice, rgl}
+%\VignetteKeywords{data ellipse, HE plot, HE plot matrix, profile analysis, repeated measures, MANOVA, doubly-multivariate designs, mixed models}
 %\VignettePackage{heplots}
 
 %\documentclass[12pt]{article}
-\documentclass[article]{jss}
+%\documentclass[article]{jss}
+\documentclass[nojss]{jss}
 \usepackage{float}
 \usepackage{amssymb, amsmath, amsfonts}
 %\usepackage{latexsym}
@@ -19,9 +20,10 @@
 %\bibliographystyle{abbrvnat}
 %\bibpunct{(}{)}{;}{a}{,}{,}
 \usepackage{bm}               % for bold math vectors/matrices
+\usepackage{array}            % for \extrarowheight in Tables
 %\usepackage{geometry}
 %\geometry{left=1.1in, right=1.1in, top=1in, bottom=1in}
-\usepackage{comment}
+%\usepackage{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% document-specific definitions
@@ -30,9 +32,9 @@
 % math stuff
 \newcommand*{\given}{\ensuremath{\, | \,}}
 \renewcommand*{\vec}[1]{\ensuremath{\bm{#1}}}
-\newcommand{\mat}[1]{\ensuremath{\bm{#1}}}
-\newcommand{\trans}{\ensuremath{^\mathsf{T}}}
-\newcommand{\diag}[1]{\ensuremath{\mathrm{diag} (#1)}}
+\newcommand*{\mat}[1]{\ensuremath{\bm{#1}}}
+\newcommand*{\trans}{\ensuremath{^\mathsf{T}}}
+\newcommand*{\diag}[1]{\ensuremath{\mathrm{diag} (#1)}}
 %\newcommand{\implies}{ \ensuremath{\mapsto} }
 \newcommand*{\Beta}{B}
 \newcommand*{\Epsilon}{E}
@@ -47,7 +49,7 @@
 
 % abbreviations
 \newcommand*{\LM}{LM}
-\newcommand*{\MLM}{MvLM}
+\newcommand*{\MLM}{MVLM}
 
 % provided by amsmath
 %\newenvironment{equation*}{\displaymath}{\enddisplaymath}%
@@ -70,11 +72,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\title{HE plots for Repeated Measures Designs}
+\title{HE Plots for Repeated Measures Designs}
 \author{Michael Friendly \\ York University, Toronto}
 %\date{For \Rpackage{heplots} version \Sexpr{packageDescription("heplots")[["Version"]]} , \Sexpr{Sys.Date()}}
 \Plainauthor{Michael Friendly} %% comma-separated
-\Plaintitle{HE plots for Repeated Measures Designs} %% without formatting
+\Plaintitle{HE Plots for Repeated Measures Designs} %% without formatting
 %\Shorttitle{HE plots for Repeated Measures Designs} %% a short title (if necessary)
 
 
@@ -87,11 +89,11 @@
 \DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom={\color{Soutput}},fontsize=\small, baselinestretch=0.75}
 
 \Abstract{
-	Hypothesis-Error (HE) plots, introduced in \citet{Friendly:07:manova},
+	Hypothesis Error (HE) plots, introduced in \citet{Friendly:07:manova},
 	provide graphical methods to visualize hypothesis tests in multivariate linear models,
 	by displaying hypothesis and error covariation as ellipsoids and providing  visual
 	representations of effect size and significance. These methods are implemented in
-	the \pkg{heplots} for \R\ \citep{Fox-etal:07:heplots} and \textsf{SAS}
+	the \pkg{heplots} for \proglang{R} \citep{Fox-etal:07:heplots} and \proglang{SAS}
 	\citep{Friendly:06:hesoft}, and apply generally to designs with fixed-effect
 	factors (MANOVA), quantitative regressors (multivariate multiple regression)
 	and combined cases (MANCOVA).
@@ -99,7 +101,7 @@
 	This paper describes the extension of these methods to repeated measures designs
 	in which the multivariate responses represent the outcomes on one or more
 	``within-subject'' factors.  This extension is illustrated using
-	the \pkg{heplots} for \R.  Examples describe one-sample profile analysis,
+	the \pkg{heplots} for \proglang{R}.  Examples describe one-sample profile analysis,
 	designs with multiple between-S and within-S factors, and doubly-multivariate designs,
 	with multivariate responses observed on multiple occasions.
 }
@@ -127,7 +129,7 @@
   Toronto, ON, M3J 1P3\\
   Canada \\
   E-mail: \email{friendly@yorku.ca}\\
-  URL: \url{http://www.math.yorku.ca/SCS/friendly.html}
+  URL: \url{http://datavis.ca}
 }
 %% It is also possible to add a telephone and fax number
 %% before the e-mail in the following format:
@@ -149,7 +151,7 @@
 
 <<preliminaries,echo=FALSE,results=hide>>=
 set.seed(1071)
-old.opts <- options(width=85, digits=6, useFancyQuotes = FALSE, continue="  ")
+old.opts <- options(width=85, digits=6, useFancyQuotes = FALSE, continue="  ", prompt="R> ")
 library(heplots)
 library(lattice)
 library(nlme)
@@ -160,25 +162,18 @@ if (car2 <- packageDescription("car")[["Version"]] >= 2) data.ellipse <- dataEll
 @
 
 \section{Introduction}
-	Hypothesis-Error (HE) plots, introduced in \citet{Friendly:07:manova},
+	Hypothesis Error (HE) plots, introduced in \citet{Friendly:07:manova},
 	provide graphical methods to visualize hypothesis tests in multivariate linear models,
 	by displaying hypothesis and error covariation as ellipsoids and providing  visual
 	representations of effect size and significance.
-The \pkg{heplots} package for \R\ \citep{Fox-etal:07:heplots} implements these methods
+The \pkg{heplots} \citep{Fox-etal:07:heplots} for \proglang{R} \citep{R:2010}  implements these methods
 for the general class of the multivariate linear model (\MLM) including
-fixed-effect factors (MANOVA), quantitative regressors (multivariate multiple regression (MMReg))
+fixed-effect factors (MANOVA), quantitative regressors (multivariate multiple regression (MMREG))
 and combined cases (MANCOVA).  Here, we describe the extension of these methods to repeated measures designs
 	in which the multivariate responses represent the outcomes on one or more
 	``within-subject'' factors.
 
-\begin{comment}
-To avoid misapprehension,
-it is important at the outset to understand the aims and scope of this paper.
-We are concerned primarily with describing and illustrating a relatively novel,
-and hopefully useful, graphical method for visualizing ...
-\end{comment}
-
-\subsection{Multivariate Linear Models: Notation}
+\subsection{Multivariate linear models: Notation}
 To set notation, we express the \MLM\ as
 \begin{equation}\label{eq:mglm}
 \sizedmat{Y}{n \times p} = \sizedmat{X}{n \times q} \sizedmat{\Beta}{q \times p} +
@@ -204,12 +199,12 @@ H_0 : \sizedmat{L}{h \times q}
 where $\mat{L}$ is a matrix of constants whose rows specify
 $h$ linear combinations or contrasts
 of the parameters to be tested simultaneously
-by a multivariate test. In \R\ all such tests can be carried out using
+by a multivariate test. In \proglang{R} all such tests can be carried out using
 the functions \func{Anova} and \func{linear.hypothesis} in the
 \pkg{car}.%
 \footnote{
 Both the \pkg{car} and the \pkg{heplots} are being actively developed.
-Except where noted, all results in this paper were produced using the stable versions on CRAN,
+Except where noted, all results in this paper were produced using the old-stable versions on CRAN,
 \textbf{car} 1.2-16 (2009/10/10)
 % \Sexpr{packageDescription("car")[["Version"]]} (\Sexpr{(packageDescription("car")[["Date"]])})
 and
@@ -358,7 +353,7 @@ In this case
 the \mat{H} ellipse is scaled to $\mat{H}/(\lambda_\alpha df_e)$
 where $\lambda_\alpha$ is the critical value of Roy's statistic.
 Using this gives a simple visual test of
-$H_0$: Roy's test rejects $H_0$ at a given $\alpha$ level \emph{iff}
+$H_0$: Roy's test rejects $H_0$ at a given $\alpha$ level if and only if
 the corresponding $\alpha$-level \mat{H} ellipse extends anywhere outside the \mat{E}
 ellipse.%
 \footnote{Other multivariate tests (Wilks' $\Lambda$, Hotelling-Lawley trace,
@@ -373,9 +368,8 @@ observed directly in 2D HE plots; when rank$(\mat{H})=3$, some rotation
 of a 3D plot will
 reveal each significant effect as extending somewhere outside the \mat{E}
 ellipsoid.
-% When $p>2$ ... candisc
 
-In our \R\ implementation, the basic plotting functions in the \pkg{heplots} are \func{heplot}
+In our \proglang{R} implementation, the basic plotting functions in the \pkg{heplots} are \func{heplot}
 and \func{heplot3d} for \code{mlm} objects.
 These rely heavily on the \func{Anova} and other functions from the \pkg{car}
 \citep{car} for computation.
@@ -386,7 +380,7 @@ This shows a low-rank 2D (or 3D) view of the effects for a given
 term in the space of maximum discrimination, based on the linear combinations
 of responses which produce maximally significant test statistics.
 See \citet{Friendly:07:manova,FoxFriendlyMonette:09:compstat} for details
-and examples for between-S MANOVA designs, MMReg and MANCOVA models.
+and examples for between-S MANOVA designs, MMREG and MANCOVA models.
 
 \section{Repeated measures designs}\label{sec:repmeas}
 
@@ -442,11 +436,9 @@ to within-individual effects (\mat{M}) as ``within-S.''
 \begin{table}[htb]
 \renewcommand{\arraystretch}{1.5}
 \renewcommand{\tabcolsep}{0.5cm}
-\caption{Three-way design: Tests for Between- (A, B) and Within-S (C) effects
-	are constructed using
-	various \mat{L} and \mat{M} matrices. Table entries give the term actually tested
-	via the general linear test in \eqref{eq:mglt-rep}.}
-	\vspace{6pt}\label{tab:BWtab}
+%	\vspace{6pt}
+	\label{tab:BWtab}
+\setlength{\extrarowheight}{4pt}
 \begin{tabular}{|l|l|l|l|l|}
   \hline
   % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
@@ -457,7 +449,9 @@ to within-individual effects (\mat{M}) as ``within-S.''
                        1 & 1 & 1 \\
                      \end{array}
                     \right)\trans
-  $  & $\vec{\mu}_{..}$ & \code{A} & \code{B} & \code{A:B}   \\ \hline
+  $  & $\vec{\mu}_{..}$ & \code{A} & \code{B} & \code{A:B}   \\[.5ex] 
+%  \hline
+%\rule{0pt}{5pt}
   $\mat{M} = \mat{M}_C = \left(
                      \begin{array}{rrr}
                        1 & -1 & 0 \\
@@ -465,9 +459,12 @@ to within-individual effects (\mat{M}) as ``within-S.''
                      \end{array}
                    \right)\trans
   $  & \code{C} & \code{A:C} & \code{B:C} & \code{A:B:C} \\
-%   &  &  &  &  \\
   \hline
 \end{tabular}
+\caption{Three-way design: Tests for between- (A, B) and within-S (C) effects
+	are constructed using
+	various \mat{L} and \mat{M} matrices. Table entries give the term actually tested
+	via the general linear test in \eqref{eq:mglt-rep}.}
 \end{table}
 
 In the general case, various \mat{L} matrices provide contrasts or
@@ -504,7 +501,7 @@ Each of the within-S terms combine with any between-S terms in an obvious way to
 give an extended version of \tabref{tab:BWtab} with additional rows for
 $\mat{M}_D$  and  $\mat{M}_{CD}$.
 
-In passing, we note that \emph{all} software (SAS, SPSS, R, etc.)
+In passing, we note that \emph{all} software (\proglang{SAS}, \proglang{SPSS}, \proglang{R}, etc.)
 that handles repeated measure designs through this extension of the MLM effectively
 works via the general linear test \eqref{eq:mglt}, with either implicit
 or explicit specifications for the \mat{L} and \mat{M} matrices involved in
@@ -514,7 +511,7 @@ missing data (a particular problem in longitudinal designs),
  and the multivariate test statistics (Wilks' $\Lambda$, etc.)
 assume the covariance matrix of \mat{U} is unstructured.  Alternative analysis
 based on mixed (or hierarchical) models, e.g.
-\citep{PinheiroBates:2000,VerbekeMolenberghs:2000}
+\citep{PinheiroBates:2000,VerbekeMolenberghs:00}
 are more general in some ways, but to date visualization methods for this
 approach remain primitive and the mixed model analysis does not easily accommodate
 multivariate responses.
@@ -659,7 +656,7 @@ title(expression(paste("Multivariate test of ", H[0], " : ", bold(mu)==0)))
 \centering
 \includegraphics[width=.65\textwidth]{fig/plot-voc4}
 \caption{HE plot for Vocabulary data, for the MANOVA test of $H_0 : \vec{\mu}_y=0$.
-	The size of the (degenerate) ellipse for the (Intercept) term relative to that for
+	The size of the (degenerate) ellipse for the intercept term relative to that for
 	Error gives the strength of evidence for the difference between the sample means
 	(marked by $+$) and the means under $H_0$ (marked by the cross-hairs and green dot).
 	The projection of this \mat{H} ellipse outside the \mat{E} ellipse
@@ -683,7 +680,7 @@ within-S effects--- giving rise the \mat{M} matrices in \eqref{eq:mglt-rep}---
 is specified
 through the arguments \code{idata}
 (a data frame giving the factor(s) used in the intra-subject model)
-and  \code{idesign} (a model formula specifying the intra-subject design.).
+and  \code{idesign} (a model formula specifying the intra-subject design).
 That is, if $\mat{Z} = [ \mathtt{idata} ]$, the \mat{M} matrices
 for different intra-subject terms are generated from columns of \mat{Z}
 indexed by the terms in \code{idesign}, with factors and interactions expanded
@@ -767,7 +764,7 @@ cubic trends using $\mat{M}_{poly}$.
 
 Using $\mat{M}_{poly}$, the MANOVA test for the \code{grade} effect is then testing $H_0 :
 \mat{M} \vec{\mu}_y =\vec{0} \leftrightarrow \mu_{Lin} = \mu_{Quad} = \mu_{Cubic} = 0$.
-That is, the means across grades 8--11 are equal \emph{iff}
+That is, the means across grades 8--11 are equal if and only if
 their linear, quadratic and cubic trends are simultaneously zero.
 <<voc6, results=verbatim>>=
 trends <- as.matrix(VocabGrowth) %*% poly(8:11, degree=3)
@@ -861,7 +858,7 @@ the within-S effect of session, called \code{session} in the analysis below.
 
 
 <<obk1>>=
-library(car)	# for OBrienKaiser data
+library("car")	# for OBrienKaiser data
 
 # simplified analysis of OBrienKaiser data, collapsing over hour
 OBK <- OBrienKaiser
@@ -924,9 +921,9 @@ all between- and within-S effects, using a given test statistic,
 yet all details and other test statistics are available using the \code{summary}
 method.%
 \footnote{
-In contrast, SAS \code{proc glm} and SPSS General Linear Model provide only
+In contrast, \proglang{SAS} \code{proc glm} and \proglang{SPSS} General Linear Model provide only
 more complete, but often bewildering outputs that still recall the days
-of FORTRAN coding in spite of more modern look and feel.
+of \proglang{Fortran} coding in spite of more modern look and feel.
 }
 For example, using \code{summary(aov.OBK)} as shown below,	we can display all the multivariate
 tests together with the \mat{H} and \mat{E} matrices,
@@ -934,7 +931,7 @@ and/or all the univariate tests for the traditional univariate
 mixed model, under the assumption of sphericity
 and with Geiser-Greenhouse and Huhyn-Feldt corrected $F$ tests.
 To conserve space in this article the results are not shown here.
-<<obk5, results=hide, keep.source=TRUE>>=
+<<obk5, results=hide>>=
 # All multivariate tests
 summary(aov.OBK, univariate=FALSE)
 # Univariate tests for repeated measures
@@ -961,12 +958,12 @@ for \code{pre} and \code{post}.  By default,
 Additional MLM tests can also be displayed using the \code{hypotheses} argument;
 here we specify the two contrasts for the \code{treatment} effect
 shown above as \code{contrasts(OBK$treatment)}.
-<<obk-HE1, fig=TRUE, include=FALSE, keep.source=TRUE>>=
+<<obk-HE1, fig=TRUE, include=FALSE>>=
 # HE plots for Between-S effects
 heplot(mod.OBK, hypotheses=c("treatment1", "treatment2"),
-	col=c("red", "black", "blue", "brown", "gray40", "gray40"),
-	hyp.labels=c("(A,B)-Control", "A-B"),
-	main="Between-S effects and contrasts"
+  col=c("red", "black", "blue", "brown", "gray40", "gray40"),
+  hyp.labels=c("(A,B)-Control", "A-B"),
+  main="Between-S effects and contrasts"
 	)
 lines(c(3,7), c(3,7), col="green")
 @
@@ -1012,7 +1009,8 @@ heplot3d(mod.OBK, hypotheses=c("treatment1", "treatment2"),
 # rotate around y axis
 play3d( rot8y <- spin3d(axis=c(0,1,0)),duration=12 )
 @
-This plot is not shown here, but an animated version is included in the supplementary materials.
+This plot is not shown here, but an animated version can be generated from the code
+included in the supplementary materials.
 
 Alternatively, all pairwise HE plots for the session means can be shown using \func{pairs}
 for the \code{mlm} object \code{mod.OBK}, with the result shown in \figref{fig:obk-HE2}.
@@ -1039,7 +1037,7 @@ As before, for expository purposes,
 HE plots for within-S effects are constructed by transforming
 $\mat{Y} \mapsto \mat{Y M}$, here using the (profile) contrasts for
 \code{session}.
-<<obk6, echo=TRUE, keep.source=TRUE, results=verbatim>>=
+<<obk6, echo=TRUE, results=verbatim>>=
 # Transform to profile contrasts for within-S effects
 OBK$session.1 <- OBK$post - OBK$pre
 OBK$session.2 <- OBK$fup - OBK$post
@@ -1063,7 +1061,7 @@ involving \code{session}, as just described.
 %the \mat{H} matrices using Type III tests, and explicitly retain the
 %\code{(Intercept)} term which is ignored by default in \func{heplot}.
 %}
-<<obk-HE3, fig=TRUE, include=FALSE, keep.source=TRUE>>=
+<<obk-HE3, fig=TRUE, include=FALSE>>=
 # HE plots for Within-S effects
 heplot(mod1.OBK,
   main="Within-S effects: Session * (Treat*Gender)",
@@ -1170,11 +1168,11 @@ In the present example, this means that
 $\mat{M}_{session}$ and $\mat{M}_{hour}$ are both expanded
 as Kronecker products with the unit vector,
 \begin{eqnarray*}
-	\mat{M}_s & = & \mat{M}_{session} \otimes \vec{1}_5 \\
+	\mat{M}_s & = & \mat{M}_{session} \otimes \vec{1}_5 \comma \\
 	\mat{M}_h & = & \vec{1}_3 \otimes \mat{M}_{hour} \period  \\
 \end{eqnarray*}
 
-These calculations in \R\ are shown below:
+These calculations in \proglang{R} are shown below:
 <<obk2-4, results=verbatim, keep.source=TRUE>>=
 M.session <- matrix(c(-1,  1, 0,
                        0, -1, 1), ncol=2)
@@ -1283,7 +1281,7 @@ as in \eqref{eq:Mcd} as
 	\begin{array}{rr}
 		1 & 0 \\ 0 & 1 \\
    \end{array}
-\right)		
+\right) \period		
 \end{equation}
 	
 In \R, we can express this as follows, using \code{M.measure} to represent $Y_1, Y_2$.
@@ -1306,7 +1304,7 @@ because \func{Anova} does not (yet)%
  allow such a doubly-multivariate design to be specified
 directly.
 
-\subsection{Example: Weight Loss and Self Esteem}
+\subsection{Example: Weight loss and self esteem}
 To illustrate, we consider the data frame \code{WeightLoss} originally
 from Andrew Ainsworth (\url{http://www.csun.edu/~ata20315/psy524/main.htm}),
 giving (contrived) data on weight loss and measures of self esteem after each
@@ -1324,8 +1322,8 @@ to facilitate interpretation of the effects we will see in HE plots, it is helpf
 to view traditional plots of means with standard errors for both variables.
 These plots, shown in \figref{fig:wl-means},%
 \footnote{
-These plots were drawn using \func{plotmeans} in the \pkg{gplots}.
-The code is not shown, but is available in the \R\ example code for this paper.
+These plots were drawn using \func{plotmeans} in the \pkg{gplots} \citep{gplots}.
+The code is not shown, but is available in the \proglang{R} example code for this paper.
 }
 show that, for all three groups,
 the amount of weight lost each month declines, but only the Diet $+$ Exercise
@@ -1334,7 +1332,7 @@ For self esteem, all three groups have a U-shaped pattern over months,
 and by month 3, the groups are ordered Control $<$ Diet $<$ Diet $+$ Exercise.
 <<wl-means, echo=FALSE, fig=TRUE, include=FALSE, width=12, height=4>>=
 op <- par(mfrow=c(1,2))
-library(gplots)
+library("gplots")
 WLlong <-reshape(WeightLoss, varying=list(WeightLoss=2:4, SelfEsteem=5:7), direction="long",
 	timevar = "month",
 	v.names=c("WeightLoss", "SelfEsteem"))
@@ -1556,7 +1554,7 @@ HE plots are desired.  Several examples are given below.
 
 For the \code{VocabularyGrowth} data, \figref{fig:voc8}(b) can be produced by
 
-<<voc-new1,fig=FALSE, echo=TRUE, eval=FALSE, results=hide>>=
+<<voc-new1,fig=FALSE, echo=TRUE, results=hide>>=
 (Vocab.mod <- lm(cbind(grade8,grade9,grade10,grade11) ~ 1, data=VocabGrowth))
 
 idata <-data.frame(grade=ordered(8:11))
@@ -1576,7 +1574,7 @@ session <- ordered(c("pretest", "posttest", "followup"),
 contrasts(session) <- matrix(c(-1,  1, 0,
                                 0, -1, 1), ncol=2)
 @
-<<obk-new1,fig=FALSE, echo=TRUE, results=hide, keep.source=TRUE, eval=FALSE>>=
+<<obk-new1,fig=FALSE, echo=TRUE, results=hide, keep.source=TRUE>>=
 idata <- data.frame(session)
 heplot(mod.OBK, idata=idata, idesign=~session, iterm="session",
   col=c("red", "black", "blue", "brown"),
@@ -1615,7 +1613,7 @@ fewer parameters).
 
 Here we consider a classic data set \citep{PotthoffRoy:64} used in the first application of
 the \MLM\ to growth-curve analysis.  These data are often used as illustrations of
-longitudinal models (e.g., \citet[\S 17.4]{VerbekeMolenberghs:2000}).
+longitudinal models, e.g., \citet[\S 17.4]{VerbekeMolenberghs:00}.
 
 Investigators at the University of North Carolina Dental School followed the growth of 27 children (16 males, 11 females) from age 8 until age 14
 in a study designed to establish typical patterns of jaw size useful for orthodontic practice.
@@ -1625,11 +1623,11 @@ complex function necessary? (b) Are separate growth curves needed for boys and g
 \subsection{Longitudinal, mixed model approach}
 The mixed model for longitudinal data is very general and flexible for the reasons noted above,
 but it is inappropriate here to relate any more than the barest of details necessary for this example.
-We begin with simple plots of the data: a profile plot grouped by Sex (\figref{fig:ortho-xyplot} (left)),
+We begin with simple plots of the data: A profile plot grouped by \code{Sex} (\figref{fig:ortho-xyplot} (left)),
 
 <<ortho-xyplot1-code, keep.source=TRUE, eval=TRUE>>=
-library(nlme)    # for Orthodont data
-library(lattice)
+data("Orthodont", package="nlme")
+library("lattice")
 xyplot(distance ~ age|Sex, data=Orthodont, type='b', groups=Subject, pch=15:25,
     col=palette(), cex=1.3, main="Orthodont data")
 @
@@ -1668,7 +1666,7 @@ plot(trellis.last.object())
  \begin{minipage}[c]{.49\textwidth}
   \includegraphics[width=\textwidth, trim=0 30 0 30]{fig/plot-ortho-xyplot2}
  \end{minipage}
-\caption{Profile plot of Orthodont data, by Sex (left); Pooled OLS and Individual linear regressions on age, by Sex (right)}
+\caption{Profile plot of \code{Orthodont} data, by sex (left); Pooled OLS and individual linear regressions on age, by sex (right)}
 \label{fig:ortho-xyplot}
 \end{figure}
 
@@ -1695,7 +1693,7 @@ For the linear model (m1), we entertain the possibility that
 the person-level intercepts ($\beta_{0i}$) and slopes ($\beta_{1i}$) depend on Sex,
 and so specify them as random coefficients,
 \begin{eqnarray}
-  \beta_{0i} & = & \gamma_{00} + \gamma_{01} \mathrm{Sex}_{i} + u_{0i} \\
+  \beta_{0i} & = & \gamma_{00} + \gamma_{01} \mathrm{Sex}_{i} + u_{0i} \comma \\
   \beta_{1i} & = & \gamma_{10} + \gamma_{11} \mathrm{Sex}_{i} + u_{1i} \period
 \end{eqnarray}
 In these equations the $\gamma$s are the fixed effects, while the $u$ (along with the errors $e_{it}$)
@@ -1756,16 +1754,6 @@ print(xyplot(distance ~ age, data=fm.mix3, groups=Sex, type="b",
 	main="Cubic mixed model: predicted growth"))
 @
 
-\begin{comment}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=.5\textwidth, trim=0 30 0 30]{fig/plot-Ortho-fm1}
-\caption{Fitted values showing the estimated fixed effects of \code{age}, \code{Sex}, and their interaction
-in the linear growth model.}
-\label{fig:Ortho-fm1}
-\end{figure}
-\end{comment}
-
 \begin{figure}[htb]
 %\centering
  \begin{minipage}[c]{.49\textwidth}
@@ -1784,12 +1772,12 @@ For this simple example with only two predictors,
 such plots provide a direct visual summary of the fitted fixed effects
 in the model, as far as they go.
 
-\subsection{MvLM approach}
+\subsection{MVLM approach}
 
 For the multivariate approach, the \code{Orthodont} data must first be reshaped to wide format with the
 distance values as separate columns.
 <<ortho-prep, results=verbatim>>=
-library(nlme)
+library("nlme")
 Orthowide <- reshape(Orthodont, v.names="distance", idvar=c("Subject", "Sex"),
 	timevar="age", direction="wide")
 some(Orthowide, 4)

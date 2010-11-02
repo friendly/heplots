@@ -31,6 +31,9 @@ similar effect occurs in the acquisition of new vocabulary.
 1975, pp453.  
 }
 \references{
+  Friendly, Michael  (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
+  37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
+
   Keesling, J.W., Bock, R.D. et al, "The Laboratory School study of vocabulary growth",
   University of Chicago, 1975.
 }
