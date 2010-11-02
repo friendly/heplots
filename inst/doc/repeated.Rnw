@@ -113,10 +113,10 @@
 %% publication information
 %% NOTE: This needs to filled out ONLY IF THE PAPER WAS ACCEPTED.
 %% If it was not (yet) accepted, leave them commented.
-%% \Volume{17}
-%% \Issue{9}
-%% \Month{September}
-%% \Year{2006}
+\Volume{37}
+\Issue{4}
+\Month{November}
+\Year{2010}
 \Submitdate{2009-12-22}
 \Acceptdate{2010-01-10}
 
@@ -171,7 +171,8 @@ for the general class of the multivariate linear model (\MLM) including
 fixed-effect factors (MANOVA), quantitative regressors (multivariate multiple regression (MMREG))
 and combined cases (MANCOVA).  Here, we describe the extension of these methods to repeated measures designs
 	in which the multivariate responses represent the outcomes on one or more
-	``within-subject'' factors.
+	``within-subject'' factors.  This vignette also appears in the \emph{Journal of Statistical Software}
+	\citep{Friendly:10:JSS}.
 
 \subsection{Multivariate linear models: Notation}
 To set notation, we express the \MLM\ as
@@ -942,7 +943,7 @@ OK, now its time to understand the \emph{nature} of these effects.
 Ordinarily, from a data-analytic point of view, I would show traditional
 plots of means and other measures (as in \figref{fig:voc-boxplot})
 or their generalizations in effect plots
-\citep{Fox:87}.
+\citep{Fox:87,effects2}.
 But I'm not going to do that here.  Instead, I'd like for you to understand
 how HE plots provide a compact \emph{visual} summary of an MLM,
 mirroring the tabular presentation from \code{Anova(mod.OBK)} above,
