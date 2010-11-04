@@ -1,8 +1,8 @@
 Package: heplots
 Type: Package
 Title: Visualizing Tests in Multivariate Linear Models
-Version: 0.9-6
-Date: 2010-11-02
+Version: 0.9-7
+Date: 2010-11-04
 Author: John Fox, Michael Friendly, and Georges Monette
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Depends: car, graphics, stats
