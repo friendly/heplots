@@ -162,7 +162,7 @@ heplot(mod, ...)
    
    For a 1 df hypothesis term (a quantitative regressor, a single contrast or 
    parameter test), the H matrix has rank 1 (one non-zero latent root of
-   \eqn{H E^{-1}}) and the H ellipse collapses to a line. 
+   \eqn{H E^{-1}}) and the H "ellipse" collapses to a degenerate line. 
    
    Typically, you fit a mlm with \code{mymlm <- lm(cbind(y1, y2, y3, ...) ~ modelterms)},
    and plot some or all of the \code{modelterms} with \code{heplot(mymlm, ...)}.
@@ -176,7 +176,9 @@ heplot(mod, ...)
    (E matrices) differ.  When you specify an intra-subject term (\code{iterm}),
    the analysis and HE plots
    amount to analysis of the matrix \bold{Y} of responses post-multiplied by a matrix 
-   \bold{M} determined by the intra-subject design for that term.
+   \bold{M} determined by the intra-subject design for that term.  See Friendly (2010)
+   or the \code{vignette("repeated")} in this package for an extended discussion and
+   examples.
    
     The related \code{\link[candisc]{candisc}} package provides functions for 
     visualizing a multivariate linear model in a low-dimensional view via a
@@ -186,7 +188,8 @@ heplot(mod, ...)
     
     When an element of \code{fill} is \code{TRUE}, the ellipse outline is drawn using the corresponding
     color in \code{col}, and the interior is filled with a transparent version of this color specified
-    in \code{fill.alpha}.
+    in \code{fill.alpha}.  To produce filled (non-degenerate) ellipses without the bounding outline, use
+    a value of \code{lty=0) in the corresponding position.
 }
 
 \value{
@@ -249,6 +252,7 @@ heplot(iris.mod, hypotheses=hyp, size="effect", add=TRUE)
 
 # try filled ellipses
 heplot(iris.mod, hypotheses=hyp, fill=TRUE, col=c("red", "blue"))
+heplot(iris.mod, hypotheses=hyp, fill=TRUE, col=c("red", "blue"), lty=c(0,0,1,1))
 
 hep <-heplot(iris.mod, variables=c(1,3),  hypotheses=hyp)
 str(hep)
