@@ -40,3 +40,6 @@ he.rep <- function (x, n) {
     x <- c(rep(x[-1], n)[1:n], x[1])
     return(x)
 	}
+
+last <- function(x) {x[length(x)]}
+	

@@ -1,7 +1,10 @@
 \name{heplots-internal}
 \alias{lambda.crit}
+\alias{HLT.crit}
+\alias{Roy.crit}
 \alias{he.rep}
 \alias{termInfo}
+\alias{last}
 
 \title{Internal heplots functions}
 
@@ -15,10 +18,11 @@ Roy.crit(alpha, p, dfh, dfe)
 HLT.crit(alpha, p, dfh, dfe)
 he.rep(x, n)
 termInfo(x)
+last(x)
 }
 
 \arguments{
-  \item{alpha}{}
+  \item{alpha}{significance level for critical values of multivariate statistics}
   \item{p}{Number of variables}
   \item{dfh}{degrees of freedom for hypothesis}
   \item{dfe}{degrees of freedom for error}

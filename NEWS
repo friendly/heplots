@@ -1,5 +1,9 @@
 Version 0.9-7 (2010-11-4)
  o Added trans.colors() to make colors transparent
+ o Modifications to heplot() for filled ellipses: added fill= and fill.alpha= arguments; replaced lines() 
+   with polygon() for H and E ellipses; calculate H.rank to distinguish degenerate ellipses
+ o added last() to utility.R 
+ 
 
  Version 0.9-6 (2010-11-2)
  o added CITATION to JSS article and references to .Rd files

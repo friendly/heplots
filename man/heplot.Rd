@@ -22,9 +22,12 @@ heplot(mod, ...)
     type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
 	icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL, markH0=!is.null(iterm),
     manova, size = c("evidence", "effect.size"),
-    level = 0.68, alpha = 0.05, segments = 40, center.pch = "+", center.cex=2,
+    level = 0.68, alpha = 0.05, segments = 40, 
+    center.pch = "+", center.cex=2,
     col = palette()[-1], 
-    lty = 2:1, lwd = 1:2, xlab, ylab, main = "", xlim, ylim, axes=TRUE, offset.axes, 
+    lty = 2:1, lwd = 1:2, 
+    fill=FALSE, fill.alpha=0.3,   
+    xlab, ylab, main = "", xlim, ylim, axes=TRUE, offset.axes, 
     add = FALSE, verbose = FALSE, warn.rank = FALSE, ...)
 }
 
@@ -119,6 +122,12 @@ heplot(mod, ...)
     used for the error ellipse, the rest --- possibly recycled --- for
     the hypothesis ellipses; a single line width can be given. Defaults to
     \code{1:2}.}
+  \item{fill}{A logical vector indicating whether each ellipse should be filled or not.
+    The first value is used for the error ellipse, the rest --- possibly recycled --- for
+    the hypothesis ellipses; a single fill value can be given.  
+    Defaults to FALSE for backward compatibility. See Details below.}
+  \item{fill.alpha}{Alpha transparency for filled ellipses, a numeric scalar or vector of values
+  within \code{[0,1]}, where 0 means fullty transparent and 1 means fully opaque. Defaults to 0.3.}
   \item{xlab}{x-axis label; defaults to name of the x variable.}
   \item{ylab}{y-axis label; defaults to name of the y variable.}
   \item{main}{main plot label; defaults to \code{""}.}
@@ -174,6 +183,10 @@ heplot(mod, ...)
     generalized canonical discriminant analyses.  \code{\link[candisc]{heplot.candisc}}
     and \code{\link[candisc]{heplot3d.candisc}} provide a low-rank 2D (or 3D) view of the effects for  
     a given term in the space of maximum discrimination.
+    
+    When an element of \code{fill} is \code{TRUE}, the ellipse outline is drawn using the corresponding
+    color in \code{col}, and the interior is filled with a transparent version of this color specified
+    in \code{fill.alpha}.
 }
 
 \value{
@@ -204,6 +217,10 @@ Friendly, M. (2007).
   HE plots for Multivariate General Linear Models.
   \emph{Journal of Computational and Graphical Statistics}, \bold{16}(2) 421--444.
   \url{http://www.math.yorku.ca/SCS/Papers/jcgs-heplots.pdf} 
+
+Friendly, Michael (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
+  37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
+
 }
 
 \seealso{
@@ -211,7 +228,7 @@ Friendly, M. (2007).
     testing \code{mlm}s.
     
     \code{\link{heplot1d}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}}, \code{\link{mark.H0}} for other
-    HE plot functions.
+    HE plot functions. \code{\link{trans.colors}} for calculation of transparent colors.
         
   	\code{\link[candisc]{candisc}},   \code{\link[candisc]{heplot.candisc}} for views
   	in canonical space.
@@ -229,6 +246,9 @@ hyp <- list("V:V"="Species1","S:VV"="Species2")
 heplot(iris.mod, hypotheses=hyp)
 # compare with effect-size scaling
 heplot(iris.mod, hypotheses=hyp, size="effect", add=TRUE)
+
+# try filled ellipses
+heplot(iris.mod, hypotheses=hyp, fill=TRUE, col=c("red", "blue"))
 
 hep <-heplot(iris.mod, variables=c(1,3),  hypotheses=hyp)
 str(hep)

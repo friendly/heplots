@@ -1,3 +1,4 @@
+# Change log
 # last modified 23 January 2007 by J. Fox
 # last modified 14 May 2007 by M. Friendly -- return xlim, ylim
 # last modified 18 May 2007 by M. Friendly -- fix xlim, ylim return when !add
@@ -6,17 +7,22 @@
 # last modified 22 Oct 2007 by M. Friendly
 # -- moved lambda.crit to utility.R
 # -- added he.rep to handle common task of repeating HE argument values
-# last modified 13 Apr 2009 by M. Friendly -- fix label.ellipse
-# last modified 15 Apr 2009 by M. Friendly -- added axes= to fix warnings from pairs.mlm
-# last modified 24 Dec 2009 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
-# last modified 26 Dec 2009 by M. Friendly -- workaround for car::Anova buglet
-# last modified 27 Dec 2009 by M. Friendly -- made it work for designs with no between effects
-# last modified 28 Dec 2009 by M. Friendly -- made it work with car 2.0 for doubly multivariate
-# last modified 10 Jan 2010 by M. Friendly -- merged with heplot.mlm.R
-# last modified 23 Jul 2010 by M. Friendly -- return radius
+#  13 Apr 2009 by M. Friendly -- fix label.ellipse
+#  15 Apr 2009 by M. Friendly -- added axes= to fix warnings from pairs.mlm
+#  24 Dec 2009 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
+#  26 Dec 2009 by M. Friendly -- workaround for car::Anova buglet
+#  27 Dec 2009 by M. Friendly -- made it work for designs with no between effects
+#  28 Dec 2009 by M. Friendly -- made it work with car 2.0 for doubly multivariate
+#  10 Jan 2010 by M. Friendly -- merged with heplot.mlm.R
+#  23 Jul 2010 by M. Friendly -- return radius
+#  05 Nov 2010 by M. Friendly 
+# -- added fill= and fill.alpha for filled ellipses
+# -- replaced lines() with polygon() for H and E ellipses
+# -- calculate H.rank to distinguish degenerate ellipses
+# -- added last() to utility.R
 
 `heplot` <-
-function(mod, ...) UseMethod("heplot")
+		function(mod, ...) UseMethod("heplot")
 
 `heplot.mlm` <-
 		function ( 
@@ -47,6 +53,8 @@ function(mod, ...) UseMethod("heplot")
 				col=palette()[-1],  # colors for H matrices, E matrix
 				lty=2:1,
 				lwd=1:2,
+				fill=FALSE,         ## whether to draw filled ellipses (vectorized)
+				fill.alpha=0.3,     ## alpha transparency for filled ellipses
 				xlab,
 				ylab,
 				main="",
@@ -84,6 +92,8 @@ function(mod, ...) UseMethod("heplot")
 		}
 		text(x, y, label, adj=adj, xpd=TRUE, col=col, ...)
 	}
+	last <- function(x) {x[length(x)]}
+	
 	if (!require(car)) stop("car package is required.")
 	# avoid deprecated warnings from car
 	if (packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
@@ -109,7 +119,7 @@ function(mod, ...) UseMethod("heplot")
 	} 
 	else {
 		if (is.null(iterm)) stop("Must specify a within-S iterm for repeated measures designs" )
-		### FIXME::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
+		### DONE::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
 		if (is.null(names(manova$P))) names(manova$P) <- names(manova$SSPE)
 		Y <- model.response(data) %*% manova$P[[iterm]]
 		SSPE <- manova$SSPE[[iterm]]
@@ -134,7 +144,6 @@ function(mod, ...) UseMethod("heplot")
 	if (length(variables) != 2) {
 		extra <- if (length(variables) == 1) 'heplot1d()' else 
 				if (length(variables) == 3) 'heplot3d()' else 'pairs()'
-#		extra <- if (length(variables) == 3) 'heplot3d()' else 'pairs()'
 		stop(paste("You may only plot 2 response variables. Use", extra))
 	}
 	
@@ -164,10 +173,20 @@ function(mod, ...) UseMethod("heplot")
 	radius <- sqrt(2 * qf(level, 2, dfe))
 	
 	# assign colors and line styles
-	col <- he.rep(col, n.ell); E.col<- col[length(col)]
+	col <- he.rep(col, n.ell) 
 	lty <- he.rep(lty, n.ell)
 	lwd <- he.rep(lwd, n.ell)
+	# handle filled ellipses
+	fill <- he.rep(fill, n.ell)
+	fill.alpha <- he.rep(fill.alpha, n.ell)
+	fill.col <- trans.colors(col, alpha)
+	# TODO:  take account of rank=1?
+	fill.col <- ifelse(fill, fill.col, NA)
+	E.col<- last(col)
+	
 	H.ellipse <- as.list(rep(0, n.ell))
+	# keep track of ranks to distinguish degenerate ellipses
+	H.rank <- rep(0, n.ell)
 	
 	if (n.terms > 0) for (term in 1:n.terms){
 			term.name <- terms[term]
@@ -185,6 +204,7 @@ function(mod, ...) UseMethod("heplot")
 				print(H)
 			}
 			H.ellipse[[term]] <- ell(gmean, H, radius)
+			H.rank[term] <- qr(H)$rank
 		}
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
 			lh <- linear.hypothesis(mod, hypotheses[[hyp]])
@@ -233,18 +253,22 @@ function(mod, ...) UseMethod("heplot")
 		ylim <- if(missing(ylim)) c(min[2], max[2]) else ylim
 		plot(xlim, ylim,  type = "n", xlab=xlab, ylab=ylab, main=main, axes=axes, ...)
 	}
+	# no longer need H.ellipse$E, since we return it separately
 	H.ellipse$E <- NULL
 	if (grand.mean) 
 		points(gmean[1], gmean[2], pch=center.pch, cex=center.cex, col="black", xpd=TRUE)
 	if (error.ellipse){
-		lines(E.ellipse, col=E.col, lty=lty[length(lty)], lwd=lwd[length(lwd)])
-		label.ellipse(E.ellipse, "Error", col=E.col)
+#		lines(E.ellipse, col=E.col, lty=lty[length(lty)], lwd=lwd[length(lwd)])
+		polygon(E.ellipse, col=last(fill.col), border=last(col), lty=last(lty), lwd=last(lwd))
+		label.ellipse(E.ellipse, "Error", col=last(col))
 	}
 	term.labels <- if (n.terms == 0) NULL
 			else if (!is.logical(term.labels)) term.labels
 			else if (term.labels) terms else rep("", n.terms)  
 	if (n.terms > 0) for (term in 1:n.terms){
-			lines(H.ellipse[[term]], col=col[term], lty=lty[term], lwd=lwd[term])
+#			lines(H.ellipse[[term]], col=col[term], lty=lty[term], lwd=lwd[term])
+			# TODO: avoid polygon if rank=1 ???
+			polygon(H.ellipse[[term]], col=fill.col[term], border=col[term],  lty=lty[term], lwd=lwd[term])
 			label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term]) 
 		}   
 	hyp.labels <- if (n.hyp == 0) NULL
@@ -262,10 +286,10 @@ function(mod, ...) UseMethod("heplot")
 			text(means[,2], means[,3], labels=as.character(means[,1]), pos=3, xpd=TRUE, ...)
 		}
 	}
-
+	
 	if(is.logical(markH0) && markH0) mark.H0()
 	else if (is.list(markH0)) do.call(mark.H0, markH0)
-		
+	
 	names(H.ellipse) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
 	result <- if (!add) list(H=H.ellipse, E=E.ellipse, center=gmean, xlim=xlim, ylim=ylim, radius=radius)
 			else list(H=H.ellipse, E=E.ellipse, center=gmean, radius=radius)
