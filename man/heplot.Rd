@@ -189,7 +189,7 @@ heplot(mod, ...)
     When an element of \code{fill} is \code{TRUE}, the ellipse outline is drawn using the corresponding
     color in \code{col}, and the interior is filled with a transparent version of this color specified
     in \code{fill.alpha}.  To produce filled (non-degenerate) ellipses without the bounding outline, use
-    a value of \code{lty=0) in the corresponding position.
+    a value of \code{lty=0} in the corresponding position.
 }
 
 \value{
