@@ -37,8 +37,8 @@ Timm, N.H. 1975).
 \references{
 Friendly, M. (2007).
   HE plots for Multivariate General Linear Models.
-  \emph{Journal of Computational and Graphical Statistics}, 16, in press.
-  \url{http://www.math.yorku.ca/SCS/Papers/heplots.pdf} 
+  \emph{Journal of Computational and Graphical Statistics}, \bold{16}(2) 421--444.
+  \url{http://datavis.ca/papers/jcgs-heplots.pdf} 
 
 }
 \examples{
@@ -59,6 +59,7 @@ heplot(rohwer.mod)
 heplot(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 # View all pairs
 pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
+
 # or 3D plot
 col <- c("pink", "black", "blue", "cyan", "magenta", "brown", "gray")
 heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), col=col)

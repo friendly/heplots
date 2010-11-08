@@ -15,7 +15,11 @@ function(x, variables,
 	imatrix=NULL,
 	iterm=NULL,
 	manova,        # an optional Anova.mlm object
-	offset.axes=0.05, digits=getOption("digits") - 1, ...){
+	offset.axes=0.05, 
+	digits=getOption("digits") - 1,
+	fill=FALSE,         ## whether to draw filled ellipses (vectorized)
+	fill.alpha=0.3,     ## alpha transparency for filled ellipses
+	...){
 
 #	manova <- Anova(x, type)
 	if (missing(manova)) {
@@ -86,7 +90,7 @@ function(x, variables,
             else {
                 heplot(x, variables=c(vars[j], vars[i]), manova=manova, axes=FALSE,
 					idata=idata, idesign=idesign, imatrix=imatrix, iterm=iterm,
-                    offset.axes=offset.axes, ...)
+                    offset.axes=offset.axes, fill=fill, fill.alpha=fill.alpha, ...)
                 box()
                 }
             }

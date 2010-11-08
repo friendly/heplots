@@ -11,7 +11,7 @@
 \usage{
 \method{pairs}{mlm}(x, variables, type = c("II", "III", "2", "3"), 
 	idata=NULL, idesign=NULL, icontrasts=NULL, imatrix=NULL, iterm=NULL, manova,
-  offset.axes = 0.05, digits = getOption("digits") - 1, ...)
+  offset.axes = 0.05, digits = getOption("digits") - 1, fill=FALSE, fill.alpha=0.3, ...)
 }
 
 \arguments{
@@ -50,6 +50,12 @@
     to 0.05.}
   \item{digits}{number of significant digits in axis end-labels; taken from
     the \code{"digits"} option.}
+  \item{fill}{A logical vector indicating whether each ellipse should be filled or not.
+    The first value is used for the error ellipse, the rest --- possibly recycled --- for
+    the hypothesis ellipses; a single fill value can be given.  
+    Defaults to FALSE for backward compatibility. See Details of \code{\link{heplot}}}
+  \item{fill.alpha}{Alpha transparency for filled ellipses, a numeric scalar or vector of values
+  within \code{[0,1]}, where 0 means fully transparent and 1 means fully opaque. Defaults to 0.3.}
   \item{\dots}{arguments to pass down to \code{heplot}, which is used to draw
     each panel of the display.}
 }
@@ -65,7 +71,7 @@ Friendly, M. (2006).
 Friendly, M. (2007).
   HE plots for Multivariate General Linear Models.
   \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
-  \url{http://www.math.yorku.ca/SCS/Papers/jcgs-heplots.pdf} 
+  \url{http://datavis.ca/papers/jcgs-heplots.pdf} 
 }
 
 \seealso{

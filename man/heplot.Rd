@@ -127,7 +127,7 @@ heplot(mod, ...)
     the hypothesis ellipses; a single fill value can be given.  
     Defaults to FALSE for backward compatibility. See Details below.}
   \item{fill.alpha}{Alpha transparency for filled ellipses, a numeric scalar or vector of values
-  within \code{[0,1]}, where 0 means fullty transparent and 1 means fully opaque. Defaults to 0.3.}
+  within \code{[0,1]}, where 0 means fully transparent and 1 means fully opaque. Defaults to 0.3.}
   \item{xlab}{x-axis label; defaults to name of the x variable.}
   \item{ylab}{y-axis label; defaults to name of the y variable.}
   \item{main}{main plot label; defaults to \code{""}.}
@@ -219,7 +219,7 @@ Friendly, M. (2006).
 Friendly, M. (2007).
   HE plots for Multivariate General Linear Models.
   \emph{Journal of Computational and Graphical Statistics}, \bold{16}(2) 421--444.
-  \url{http://www.math.yorku.ca/SCS/Papers/jcgs-heplots.pdf} 
+  \url{http://datavis.ca/papers/jcgs-heplots.pdf} 
 
 Friendly, Michael (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
   37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
@@ -233,7 +233,7 @@ Friendly, Michael (2010). HE Plots for Repeated Measures Designs. \emph{Journal 
     \code{\link{heplot1d}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}}, \code{\link{mark.H0}} for other
     HE plot functions. \code{\link{trans.colors}} for calculation of transparent colors.
         
-  	\code{\link[candisc]{candisc}},   \code{\link[candisc]{heplot.candisc}} for views
+  	\code{\link[candisc]{candisc}},   \code{\link[candisc]{heplot.candisc}} for reduced-rank views of \code{mlm}s
   	in canonical space.
 }
 
