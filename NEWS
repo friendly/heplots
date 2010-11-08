@@ -3,6 +3,7 @@ Version 0.9-7 (2010-11-4)
  o Modifications to heplot() for filled ellipses: added fill= and fill.alpha= arguments; replaced lines() 
    with polygon() for H and E ellipses; calculate H.rank to distinguish degenerate ellipses
  o added last() to utility.R 
+ o Modified some examples to show fill=TRUE and use wire=FALSE in heplot3d()
  
 
  Version 0.9-6 (2010-11-2)

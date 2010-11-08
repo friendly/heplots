@@ -194,12 +194,11 @@ Anova(soils.mod)
 heplot(soils.mod, variables=c("Ca", "Mg"))
 pairs(soils.mod, terms="Depth", variables=c("pH", "N", "P", "Ca", "Mg"))
 
-heplot3d(soils.mod, variables=c("Mg", "Ca", "Na"))
+heplot3d(soils.mod, variables=c("Mg", "Ca", "Na"), wire=FALSE)
 
 # Plastic data
 plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
-heplot3d(plastic.mod, col=c("pink", "blue", "brown", "green3"))
-} 
+heplot3d(plastic.mod, col=c("red", "blue", "brown", "green3"), wire=FALSE)} 
 
 \keyword{hplot}
 \keyword{aplot}

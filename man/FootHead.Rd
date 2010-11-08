@@ -46,7 +46,8 @@ foot.mod <- lm(cbind(width, circum,front.back,eye.top,ear.top,jaw)~group, data=F
 Manova(foot.mod)
 
 # show the HE plot for the first two variables
-heplot(foot.mod, main="HE plot")
+heplot(foot.mod, main="HE plot for width and circumference", fill=TRUE,
+	col=c("red", "blue"))
 
 # show it with tests of Helmert contrasts
 heplot(foot.mod, hypotheses=list("group.1"="group1","group.2"="group2"),

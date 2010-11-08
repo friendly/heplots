@@ -92,7 +92,7 @@
 		}
 		text(x, y, label, adj=adj, xpd=TRUE, col=col, ...)
 	}
-	last <- function(x) {x[length(x)]}
+#	last <- function(x) {x[length(x)]}
 	
 	if (!require(car)) stop("car package is required.")
 	# avoid deprecated warnings from car
@@ -276,7 +276,8 @@
 			else if (hyp.labels) names(hypotheses) else rep("", n.hyp)  
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
 			ell <- n.terms + hyp
-			lines(H.ellipse[[ell]], col=col[ell], lty=lty[ell], lwd=lwd[ell])
+#			lines(H.ellipse[[ell]], col=col[ell], lty=lty[ell], lwd=lwd[ell])
+			polygon(H.ellipse[[ell]], col=fill.col[ell], border=col[ell],  lty=lty[ell], lwd=lwd[ell])
 			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell])
 		}
 	if (!add && (!is.logical(factor.means) || factor.means)){
