@@ -6,8 +6,8 @@ Version 0.9-7 (2010-11-4)
  o Modified some examples to show fill=TRUE and use wire=FALSE in heplot3d()
  o Modified pairs.mlm() to pass fill= and fill.alpha= to heplot()
  o Updated reference URLs to point to datavis.ca
+ o Fixed buglet in gsorth when matrix has no row/col names [Thx: mekki@mektek.ca]
  
-
  Version 0.9-6 (2010-11-2)
  o added CITATION to JSS article and references to .Rd files
  o modified repeated vignette to [nojss]
