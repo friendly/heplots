@@ -7,6 +7,7 @@ Version 0.9-7 (2010-11-4)
  o Modified pairs.mlm() to pass fill= and fill.alpha= to heplot()
  o Updated reference URLs to point to datavis.ca
  o Fixed buglet in gsorth when matrix has no row/col names [Thx: mekki@mektek.ca]
+ o Fixed buglet in etasq.lm with partial=FALSE [Thx: i.e.holliday@aston.ac.uk]
  
  Version 0.9-6 (2010-11-2)
  o added CITATION to JSS article and references to .Rd files

@@ -1,6 +1,7 @@
 # partial eta^2 measures of association for multivariate tests
 # (mod of car:::print.Anova.mlm, just for testing)
 # added etasq.lm 7/29/2010
+# fixed buglet in etasq.lm 12/5/2010
 
 etasq <- function(x, ...){
 	UseMethod("etasq", x)
@@ -62,7 +63,7 @@ etasq.lm <- function(x, anova=FALSE, partial=TRUE, ...) {
 	neff <- nrow(aov)
 	SSH <- aov[-neff,1]
 	SSE <- aov[neff,1]
-	SST <- sum(SSH)
+	SST <- sum(SSH) + SSE
 	eta2 <- if (partial) c(SSH / (SSH + SSE), NA) else c(SSH / SST, NA)
 	etalab <- if (partial) "Partial eta^2" else "eta^2"
 	if (anova) {
