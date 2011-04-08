@@ -657,9 +657,13 @@ To simplify this display, we show the hypothesis ellipses\
 for the overall effects of the PA tests in the baseline high-SES group, and
 a single combined ellipse for all the \texttt{SESLo:} interaction terms that
 we tested previously, representing differences in slopes between the low and
-high-SES groups. Because SES is ``treatment-coded'' in this model, the ellipse for each
+high-SES groups. 
+
+Because SES is ``treatment-coded'' in this model, the ellipse for each
 covariate represents the hypothesis that the slopes for that covariate are
-zero in the high-SES baseline category.
+zero in the high-SES baseline category.  With this parameterization, the ellipse for
+\code{Slopes} represents the joint hypothesis that slopes for the covariates do not differ
+in the low-SES group. 
 
 <<rohwer-HE4, fig=TRUE, include=FALSE, keep.source=TRUE>>=
 colors <- c("red", "blue", rep("black",5), "#969696")
@@ -676,6 +680,17 @@ heplot(rohwer.mod2, col=c(colors, "brown"),
 \label{fig:rohwer-HE4}
 \end{center}
 \end{figure}
+
+Comparing \figref{fig:rohwer-HE4} for the heterogeneous slopes model
+with \figref{fig:rohwer-HE2} (left) for the homogeneous slopes model,
+it can be seen that most of the covariates have ellipses of similar
+size and orientation, reflecting simlar evidence against the respective
+null hypotheses, as does the effect of \code{SES}, showing the
+greater performance of the high-SES group on all response measures.
+Somewhat more subtle, the error ellipse is noticeably smaller in
+\figref{fig:rohwer-HE4}, reflecting the additional variation accounted
+for by differences in slopes.
+
 
 <<tidyup,echo=FALSE,results=hide>>=
 options(old.opts )
