@@ -24,8 +24,8 @@ displays.
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.9-7\cr
-Date: \tab 2009-11-04\cr
+Version: \tab 0.9-8\cr
+Date: \tab 2011-04-08\cr
 License: \tab GPL version 2 or newer\cr
 }
 

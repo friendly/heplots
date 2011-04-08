@@ -44,12 +44,7 @@ Friendly, M. (2007).
 \examples{
 str(Rohwer)
 
-# fit separate models for Lo/Hi SES
-rohwer.ses1 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Lo")
-
-rohwer.ses2 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Lo")
-
-# ANCOVA, assuming equal slopes
+## ANCOVA, assuming equal slopes
 rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, data=Rohwer)
 Anova(rohwer.mod)
 
@@ -63,6 +58,14 @@ pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 # or 3D plot
 col <- c("pink", "black", "blue", "cyan", "magenta", "brown", "gray")
 heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), col=col)
+
+## fit separate, independent models for Lo/Hi SES
+rohwer.ses1 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Hi")
+rohwer.ses2 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Lo")
+
+# overlay the separate HE plots
+heplot(rohwer.ses1, ylim=c(40,110),col=c("red", "black"))
+heplot(rohwer.ses2, add=TRUE, col=c("blue", "black"), grand.mean=TRUE, error.ellipse=TRUE)
 
 }
 \keyword{datasets}

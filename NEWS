@@ -1,3 +1,6 @@
+Version 0.9-8 (2011-04-8)
+o Added an MMRA example to HE-examples vignette
+
 Version 0.9-7 (2010-11-4)
  o Added trans.colors() to make colors transparent
  o Modifications to heplot() for filled ellipses: added fill= and fill.alpha= arguments; replaced lines() 

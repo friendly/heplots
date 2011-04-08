@@ -59,7 +59,7 @@
 \title{HE Plot Examples}
 \author{Michael Friendly}
 \date{\footnotesize{Using \Rpackage{heplots} version \Sexpr{packageDescription("heplots")[["Version"]]}
-	and \Rpackage{candisc} version \Sexpr{packageDescription("heplots")[["Version"]]}; Date: \Sexpr{Sys.Date()}}}
+	and \Rpackage{candisc} version \Sexpr{packageDescription("candisc")[["Version"]]}; Date: \Sexpr{Sys.Date()}}}
 
 
 \definecolor{Soutput}{rgb}{0,0,0.56}
@@ -90,11 +90,12 @@
 
 \SweaveOpts{engine=R,height=5,width=5,results=hide,fig=FALSE,echo=TRUE}
 \SweaveOpts{prefix.string=fig/plot}
+\SweaveOpts{concordance=TRUE}
 \setkeys{Gin}{width=0.7\textwidth}
 
 <<preliminaries,echo=FALSE,results=hide>>=
 set.seed(1071)
-old.opts <- options(width=85, digits=6, useFancyQuotes = FALSE, continue="  ")
+old.opts <- options(width=85, digits=5, useFancyQuotes = FALSE, continue="  ")
 library(heplots)
 library(candisc)
 @
@@ -468,6 +469,213 @@ of sentence, controlling for \code{Serious}.
 The effect plot shows that for the crime of Swindle, there is a much
 greater \code{Years} of sentence awarded to Unattractive defendents.
  
+\section[MMRA]{Multivariate Multiple Regression Designs}
+The ideas behind HE plots extend naturally to multivariate multiple
+regression (MMRA) and multivariate analysis of covariance (MANCOVA). 
+In MMRA, the $\mat{X}$ matrix contains only quantitative predictors, while
+in MANCOVA designs, there is a mixture of
+factors and quantitative predictors (covariates).  
+
+In the MANOVA case,
+there is often a subtle difference in emphasis:  true MANCOVA analyses focus on
+the differences among groups defined by the factors, adjusting for 
+(or controlling for) the quantitative covariates. Analyses concerned
+with \emph{homogeneity of regression} focus on quantitative predictors
+and attempt to test whether the regression relations are the same for
+all groups defined by the factors.
+
+\subsection{Rohwer data}
+
+To illustrate the homogeneity of regression flavor,
+we use data
+from a study by Rohwer (given in Timm, 1975: Ex.\ 4.3, 4.7, and 4.23)\nocite%
+{Timm:75} on kindergarten children, designed to determine how well a set of
+paired-associate (PA) tasks predicted performance on the Peabody Picture
+Vocabulary test (\texttt{PPVT}), a student achievement test (\texttt{SAT}),
+and the Raven Progressive matrices test (\texttt{Raven}). The PA tasks
+varied in how the stimuli were presented, and are called \emph{named} (%
+\texttt{n}), \emph{still} (\texttt{s}), \emph{named still} (\texttt{ns}), 
+\emph{named action} (\texttt{na}), and \emph{sentence still} (\texttt{ss}).
+
+Two groups were tested: a group of $n=37$ children from a low socioeconomic
+status (SES) school, and a group of $n=32$ high SES children from an
+upper-class, white residential school. The data are in the data frame 
+\texttt{Rohwer} in the \texttt{heplots} package:
+<<rohwer-some, results=verbatim>>=
+some(Rohwer,n=6)
+@
+
+At one extreme, we might be tempted to fit separate regression models for each
+of the High and Low SES groups.  This approach is \emph{not} recommended because it
+lacks power and does not allow hypotheses about equality of slopes and intercepts
+to be tested directly.
+
+<<rohwer-separate, results=verbatim>>=
+rohwer.ses1 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Hi")
+Anova(rohwer.ses1)
+
+rohwer.ses2 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Lo")
+Anova(rohwer.ses2)
+@
+This allows separate slopes and intercepts for each of the two groups, but it is difficult
+to compare the coefficients numerically.
+<<rohwer-coef, results=verbatim>>=
+coef(rohwer.ses1)
+coef(rohwer.ses2)
+@
+Nevertheless, we can visualize the results with HE plots, and here we make use of the fact
+that several HE plots can be overlaid using the option \code{add=TRUE}
+as shown in \figref{fig:rohwer-HE1}.
+<<rohwer-HE1, fig=TRUE, include=FALSE>>=
+heplot(rohwer.ses1, ylim=c(40,110),col=c("red", "black"), lwd=2, cex=1.2)
+heplot(rohwer.ses2, add=TRUE, col=c("blue", "black"), grand.mean=TRUE, error.ellipse=TRUE, lwd=2, cex=1.2)
+means <- aggregate(cbind(SAT,PPVT)~SES, data=Rohwer,  mean)
+text(means[,2], means[,3], labels=means[,1], pos=3, cex=2, col=c("red", "blue"))
+@
+\begin{figure}[htb]
+\begin{center}
+	\includegraphics[width=.6\textwidth, trim=0 30 0 30]{fig/plot-rohwer-HE1}
+\caption{HE plot for \code{SAT} and \code{PPVT}, showing the effects for the PA predictors
+	for the High and Low SES groups separately}
+\label{fig:rohwer-HE1}
+\end{center}
+\end{figure}
+
+We can readily see the difference in means for the two SES groups (High greater on both variables)
+and it also appears that the slopes of the predictor ellipses are shallower for the High
+than the Low group, indicating greater relation with the \code{SAT} score. 
+
+Alternatively (and optimistically), we can fit a MANCOVA model 
+that allows different means for the two SES groups on the responses, but constrains the
+slopes for the PA covariates to be equal.
+
+<<rohwer-mod, results=verbatim>>=
+# MANCOVA, assuming equal slopes
+rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, 
+                 data=Rohwer)
+Anova(rohwer.mod)
+@
+
+Note that, although the
+multivariate tests for two of the covariates (\texttt{ns} and \texttt{na})
+are highly significant, univariate multiple regression tests for the
+separate responses [from \code{summary(rohwer.mod)}] are relatively weak.
+We can also test the global 5 df hypothesis, $\mat{B}=\mat{0}$, 
+that \emph{all} covariates have null effects
+for all responses as a linear hypothesis (suppressing display of the error
+and hypothesis SSP matrices),
+
+<<rohwer-mod-test, results=verbatim>>=
+(covariates <- rownames(coef(rohwer.mod))[-(1:2)])
+Regr<-linearHypothesis(rohwer.mod, covariates)
+print(Regr, digits=5, SSP=FALSE)
+@
+
+Then 2D views of the
+additive MANCOVA model \code{rohwer.mod} and the overall test for all covariates
+are produced as follows, giving the plots in \figref{fig:rohwer-HE2}.
+<<rohwer-HE2, fig=TRUE, include=FALSE, keep.source=TRUE>>=
+colors <- c("red", "blue", rep("black",5), "#969696")
+heplot(rohwer.mod, col=colors,
+      hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")),
+      cex=1.5, lwd=c(2, rep(3,5), 4),
+      main="(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss")
+@
+<<rohwer-HE3, fig=TRUE, include=FALSE, keep.source=TRUE>>=
+heplot(rohwer.mod, col=colors,  variables=c(1,3),
+      hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")),
+      cex=1.5, lwd=c(2, rep(3,5), 4),
+      main="(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss")
+@
+
+\begin{figure}[htb]
+\begin{center}
+	\includegraphics[width=.48\textwidth, trim=0 30 0 30]{fig/plot-rohwer-HE2}
+	\includegraphics[width=.48\textwidth, trim=0 30 0 30]{fig/plot-rohwer-HE3}
+\caption{HE plot for \code{SAT} and \code{PPVT} (left) and for 
+	\code{SAT} and \code{Raven} (right) using the MANCOVA model }
+\label{fig:rohwer-HE2}
+\end{center}
+\end{figure}
+
+The positive orientation of the \code{Regr} ellipses shows that the prediced
+values for all three responses are positively correlated (more so for
+\code{SAT} and \code{PPVT}). As well, the High SES group
+is higher on all responses than the Low SES group.
+
+Alternatively, all pairwise plots among these responses could be drawn using
+the \code{pairs} function (figure not shown),
+
+<<rohwer-HE3, eval=FALSE, keep.source=TRUE>>=
+pairs(rohwer.mod, col=colors,
+      hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")),
+      cex=1.3, lwd=c(2, rep(3,5), 4))
+@
+or as a 3D plot, using \func{heplot3d} as shown in \figref{fig:rohwer-HE3D}.
+<<rohwer-HE3D, eval=FALSE, keep.source=TRUE>>=
+colors <- c("pink", "blue", rep("black",5), "#969696")
+heplot3d(rohwer.mod, col=colors,
+	hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
+@
+\begin{figure}[htb]
+\begin{center}
+	\includegraphics[width=.6\textwidth]{fig/rohwer-HE3D}
+\caption{3D HE plot for the MANCOVA model fit to the Rohwer data}
+\label{fig:rohwer-HE3D}
+\end{center}
+\end{figure}
+
+The MANCOVA model, \code{rohwer.mod}, has relatively simple interpretations
+(large effect of \code{SES}, with \code{ns} and \code{na} as the major predictors)
+but the test of relies on the assumption of homogeneity of slopes for the predictors.
+We can test this as follows, adding interactions of \code{SES}
+with each of the covariates:
+
+<<rohwer-mod2, results=verbatim>>=
+rohwer.mod2 <- lm(cbind(SAT, PPVT, Raven) ~ SES * (n + s + ns + na + ss),
+                  data=Rohwer)
+Anova(rohwer.mod2)
+@
+It appears from the above that there is only weak evidence of unequal slopes
+from the separate \code{SES:} terms. The evidence for heterogeneity is
+stronger, however, when these terms are tested collectively using the 
+\func{linearHypothesis} function:
+
+<<rohwer-mod2-test, results=verbatim>>=
+(coefs <- rownames(coef(rohwer.mod2)))
+print(linearHypothesis(rohwer.mod2, coefs[grep(":", coefs)]), SSP=FALSE)
+@
+This model (\code{rohwer.mod2}) is similar in spirit to the two models
+(\code{rohwer.ses1} and \code{rohwer.ses2})
+fit for the two SES groups separately and show in \figref{fig:rohwer-HE1},
+except that model \code{rohwer.mod2} assumes a common within-groups error covariance matrix
+and allows overall tests.
+
+To illustrate model \code{rohwer.mod2}, we construct an HE plot for
+\code{SAT} and \code{PPVT} shown in \figref{fig:rohwer-HE4}. 
+To simplify this display, we show the hypothesis ellipses\
+for the overall effects of the PA tests in the baseline high-SES group, and
+a single combined ellipse for all the \texttt{SESLo:} interaction terms that
+we tested previously, representing differences in slopes between the low and
+high-SES groups. Because SES is ``treatment-coded'' in this model, the ellipse for each
+covariate represents the hypothesis that the slopes for that covariate are
+zero in the high-SES baseline category.
+
+<<rohwer-HE4, fig=TRUE, include=FALSE, keep.source=TRUE>>=
+colors <- c("red", "blue", rep("black",5), "#969696")
+heplot(rohwer.mod2, col=c(colors, "brown"), 
+      terms=c("SES", "n", "s", "ns", "na", "ss"), 
+      hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss"),
+                      "Slopes" = coefs[grep(":", coefs)]))
+@
+\begin{figure}[htb]
+\begin{center}
+	\includegraphics[width=.6\textwidth, trim=0 30 0 30]{fig/plot-rohwer-HE4}
+\caption{HE plot for \code{SAT} and \code{PPVT}, fitting the model \code{rohwer.mod2}
+	that allows unequal slopes for the covariates.  }
+\label{fig:rohwer-HE4}
+\end{center}
+\end{figure}
 
 <<tidyup,echo=FALSE,results=hide>>=
 options(old.opts )
