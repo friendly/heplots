@@ -90,7 +90,7 @@
 
 \SweaveOpts{engine=R,height=5,width=5,results=hide,fig=FALSE,echo=TRUE}
 \SweaveOpts{prefix.string=fig/plot}
-\SweaveOpts{concordance=TRUE}
+%\SweaveOpts{concordance=TRUE}
 \setkeys{Gin}{width=0.7\textwidth}
 
 <<preliminaries,echo=FALSE,results=hide>>=
