@@ -20,6 +20,7 @@
 # last modified  1 Jan 2010 by M. Friendly -- merged heplot3d.R and heplot.mlm.R
 # last modified 12 Feb 2010 by M. Friendly -- fixed buglet with text3d causing rgl to crash (thx: Duncan Murdoch)
 # last modified 23 Jul 2010 by M. Friendly -- return radius
+# -- added err.label to allow changing label for Error ellipse
 
 
 `heplot3d` <-
@@ -35,6 +36,7 @@ function(mod, ...) UseMethod("heplot3d")
 				hypotheses,    # list of linear hypotheses for which to plot H ellipses
 				term.labels=TRUE,  # TRUE, FALSE or a list of term labels of length(terms)
 				hyp.labels=TRUE,   # as above for term.labels
+				err.label="Error",
 				variables=1:3,     # x,y variables for the plot [variable names or numbers]
 				error.ellipsoid=!add,
 				factor.means=!add,
@@ -206,7 +208,7 @@ function(mod, ...) UseMethod("heplot3d")
 		rgl.bg(col=bg.col, fogtype=fogtype)    
 	} 
 	if (error.ellipsoid) {
-		E.ellipsoid <- ellipsoid(gmean, E, radius, col=E.col, label="Error", 
+		E.ellipsoid <- ellipsoid(gmean, E, radius, col=E.col, label=err.label, 
 				shade=shade[[length(shade)]], alpha=shade.alpha[[length(shade.alpha)]],
 				wire=wire[[length(wire)]])
 		colnames(E.ellipsoid) <- vars

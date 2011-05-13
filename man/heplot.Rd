@@ -17,7 +17,7 @@ designs treated from a multivariate perspective.
 heplot(mod, ...)
 
 \method{heplot}{mlm}(mod, terms, hypotheses, term.labels = TRUE,
-    hyp.labels = TRUE, variables = 1:2, error.ellipse = !add, 
+    hyp.labels = TRUE, err.label="Error", variables = 1:2, error.ellipse = !add, 
     factor.means = !add, grand.mean = !add, remove.intercept = TRUE,
     type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
 	icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL, markH0=!is.null(iterm),
@@ -47,6 +47,7 @@ heplot(mod, ...)
   \item{hyp.labels}{logical value or character vector of names for the hypotheses to
     be plotted. If \code{TRUE} (the default) the names of components of the list of
     hypotheses are used; if \code{FALSE}, hypothesis labels are not plotted.}
+  \item{err.label}{Label for the error ellipse}
   \item{variables}{indices or names of the two response variables to be plotted;
     defaults to \code{1:2}.}
   \item{error.ellipse}{if \code{TRUE}, plot the error ellipse; defaults to \code{TRUE},

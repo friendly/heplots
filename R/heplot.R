@@ -20,6 +20,7 @@
 # -- replaced lines() with polygon() for H and E ellipses
 # -- calculate H.rank to distinguish degenerate ellipses
 # -- added last() to utility.R
+# -- added err.label to allow changing label for Error ellipse
 
 `heplot` <-
 		function(mod, ...) UseMethod("heplot")
@@ -31,6 +32,7 @@
 				hypotheses,    # list of linear hypotheses for which to plot H ellipses
 				term.labels=TRUE,  # TRUE, FALSE or a vector of term labels of length(terms)
 				hyp.labels=TRUE,   # as above for term.labels
+				err.label="Error",
 				variables=1:2,     # x,y variables for the plot [variable names or numbers]
 				error.ellipse=!add,
 				factor.means=!add,
@@ -260,7 +262,7 @@
 	if (error.ellipse){
 #		lines(E.ellipse, col=E.col, lty=lty[length(lty)], lwd=lwd[length(lwd)])
 		polygon(E.ellipse, col=last(fill.col), border=last(col), lty=last(lty), lwd=last(lwd))
-		label.ellipse(E.ellipse, "Error", col=last(col))
+		label.ellipse(E.ellipse, err.label, col=last(col))
 	}
 	term.labels <- if (n.terms == 0) NULL
 			else if (!is.logical(term.labels)) term.labels
