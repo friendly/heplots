@@ -1,3 +1,6 @@
+Version 0.9-9 (2011-06-10)
+o Added data(Hernior), another MMRA/cancorr example data set
+
 Version 0.9-8 (2011-04-8)
 o Added an MMRA example to HE-examples vignette
 o Added err.label argument to heplot and heplot3d to allow changing the label for the error ellipsoid

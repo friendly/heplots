@@ -16,21 +16,24 @@ or by line segments in one dimension.
 See Fox, Friendly and Monette (2007) for a brief introduction.
 
 The package also provides a collection of  data sets illustrating
-a variety of multivariate linear models together with graphical
-displays.
+a variety of multivariate linear models of the types listed above,
+together with graphical displays.
+
+Several tutorial vignettes are also included.
 }
 
 \details{
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.9-8\cr
-Date: \tab 2011-04-08\cr
-License: \tab GPL version 2 or newer\cr
+Version: \tab 0.9-9\cr
+Date: \tab 2011-06-10\cr
+License: \tab GPL (>= 2), GPL version 2 or newer\cr
 }
 
 The graphical functions contained here all display multivariate model
-effects in variable space:
+effects in variable (data) space, for one or more response variables
+(or contrasts among response variables in repeated measures designs).
 
 \describe{
 \item{\code{\link{heplot}}}{constructs two-dimensional HE plots for model terms and 
@@ -102,8 +105,9 @@ Friendly, Michael (2010). HE Plots for Repeated Measures Designs. \emph{Journal 
 \seealso{
     \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for Anova.mlm computations and tests
     
-    \code{\link[candisc]{candisc-package}},
-    \code{\link[stats]{manova}},
+    \code{\link[candisc]{candisc-package}} for reduced-rank views in canonical space
+    
+    \code{\link[stats]{manova}} for a different approach to testing effects in MANOVA designs
     
 }
 

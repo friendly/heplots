@@ -320,3 +320,5 @@ function(mod, ...) UseMethod("heplot3d")
 	
 }
 
+.frame <- NULL   # avoid warning
+
