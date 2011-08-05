@@ -181,7 +181,7 @@
 	# handle filled ellipses
 	fill <- he.rep(fill, n.ell)
 	fill.alpha <- he.rep(fill.alpha, n.ell)
-	fill.col <- trans.colors(col, alpha)
+	fill.col <- trans.colors(col, fill.alpha)
 	# TODO:  take account of rank=1?
 	fill.col <- ifelse(fill, fill.col, NA)
 	E.col<- last(col)

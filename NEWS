@@ -1,6 +1,7 @@
 Version 0.9-9 (2011-06-10)
 o Added data(Hernior), another MMRA, cancorr example data set
 o Added data(SocGrades), another MANOVA, MMRA, cancorr example data set
+o Corrected buglet with fill.alpha in heplot
 
 Version 0.9-8 (2011-04-8)
 o Added an MMRA example to HE-examples vignette

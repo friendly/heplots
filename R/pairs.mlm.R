@@ -81,11 +81,6 @@ function(x, variables,
         for (j in 1:n.resp){
             if (i == j){
 				panel.label()
-#                plot(c(min, max),c(min, max), type="n", axes=FALSE)
-#                text(0.5, 0.5, vars[i], cex=2)
-#                text(1, 0, signif(range[1, i], digits=digits), adj=c(1, 0))
-#                text(0, 1, signif(range[2, i], digits=digits), adj=c(0, 1)) 
-#                box()
                 }
             else {
                 heplot(x, variables=c(vars[j], vars[i]), manova=manova, axes=FALSE,
