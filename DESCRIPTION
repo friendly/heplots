@@ -1,9 +1,9 @@
 Package: heplots
 Type: Package
 Title: Visualizing Tests in Multivariate Linear Models
-Version: 0.9-9
+Version: 0.9-10
 Date: 2010-10-06
-Author@R: c(person(given = "John", family = "Fox", role="aut"),
+Authors@R: c(person(given = "John", family = "Fox", role="aut"),
             person(given = "Michael", family = "Friendly", role=c("aut", "cre"), email="friendly@yorku.ca"),
             person(given = "Georges", family = "Monette", role="ctb"))
 Author: John Fox, Michael Friendly, and Georges Monette
