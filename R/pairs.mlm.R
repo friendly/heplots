@@ -4,10 +4,12 @@
 #  -- prepare to generalize diagonal panel
 # last modified 2 Feb 2010 by M. Friendly
 #  -- added code for repeated measures designs
+# last modified 13 Oct 2011 by M. Friendly
+#  -- added var.labels 
 
 
 `pairs.mlm` <-
-function(x, variables,
+function(x, variables, var.labels,
     type=c("II", "III", "2", "3"),
 	idata=NULL,
 	idesign=NULL,
@@ -62,6 +64,11 @@ function(x, variables,
             vars <- variables
             }
         }
+	if(missing(var.labels)) var.labels <- vars
+	else {
+		if (length(var.labels) < length(vars)) stop("Too few var.labels supplied")
+	}
+	
     n.resp <- length(vars)
     if (n.resp < 3) stop("Fewer than 3 response variables.")
     range <- apply(Y, 2, range)
@@ -72,7 +79,7 @@ function(x, variables,
 
 	panel.label <- function(x, ...) {
 		plot(c(min, max),c(min, max), type="n", axes=FALSE)
-		text(0.5, 0.5, vars[i], cex=2)
+		text(0.5, 0.5, var.labels[i], cex=2)
 		text(1, 0, signif(range[1, i], digits=digits), adj=c(1, 0))
 		text(0, 1, signif(range[2, i], digits=digits), adj=c(0, 1)) 
 		box()

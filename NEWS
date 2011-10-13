@@ -1,5 +1,6 @@
 Version 0.9-10 (2011-09-12)
 o Fixed Authors@R in DESCRIPTION for R 2.14.x
+o Added var.labels argument to pairs.mlm
 
 Version 0.9-9 (2011-06-10)
 o Added data(Hernior), another MMRA, cancorr example data set

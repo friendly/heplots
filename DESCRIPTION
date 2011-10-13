@@ -2,7 +2,7 @@ Package: heplots
 Type: Package
 Title: Visualizing Tests in Multivariate Linear Models
 Version: 0.9-10
-Date: 2010-10-06
+Date: 2011-09-12
 Authors@R: c(person(given = "John", family = "Fox", role="aut"),
             person(given = "Michael", family = "Friendly", role=c("aut", "cre"), email="friendly@yorku.ca"),
             person(given = "Georges", family = "Monette", role="ctb"))
