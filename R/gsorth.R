@@ -4,8 +4,22 @@
 #   rescale=TRUE -> result has same sd as original, else, sd = residual sd
 #   adjnames=TRUE -> colnames are adjusted to Y1, Y2.1, Y3.12, ...
 #  12-5-2010:  Fixed buglet when matrix has no row/col names
+#  10-14-2011: Made sd() a local function to avoid deprecated warnings
 
 gsorth <- function(y, order, recenter=TRUE, rescale=TRUE, adjnames=TRUE) {
+	
+	# local function sd(), since sd(<matrix>) and sd(<data.frame>) now deprecated
+	sd <- function (x, na.rm = FALSE) 
+	{
+		if (is.matrix(x)) 
+			apply(x, 2, sd, na.rm = na.rm)
+		else if (is.vector(x)) 
+			sqrt(var(x, na.rm = na.rm))
+		else if (is.data.frame(x)) 
+			sapply(x, sd, na.rm = na.rm)
+		else sqrt(var(as.vector(x), na.rm = na.rm))
+	}
+	
 	n <- nrow(y)
 	if (missing(order)) order <- 1:ncol(y)
 	y <- y[,order]
@@ -33,3 +47,4 @@ gsorth <- function(y, order, recenter=TRUE, rescale=TRUE, adjnames=TRUE) {
 	}
 	z
 }
+

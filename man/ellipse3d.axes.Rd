@@ -51,7 +51,7 @@ by rows.
 data(iris)
 iris3 <- iris[,1:3]
 cov <- cov(iris3)
-mu <- mean(iris3)
+mu <- colMeans(iris3)
 col <-c("blue", "green", "red")[iris$Species]
 
 library(rgl)

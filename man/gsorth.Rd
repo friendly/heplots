@@ -76,7 +76,8 @@ GSiris <- gsorth(iris, order=1:4)   # same, using order
 str(GSiris)
 zapsmall(cor(GSiris))
 colMeans(GSiris)
-sd(GSiris)
+# sd(GSiris) -- sd(<matrix>) now deprecated
+apply(GSiris, 2, sd)
 
 # orthogonalize Y side
 GSiris <- data.frame(gsorth(iris[,1:4]), Species=iris$Species)
