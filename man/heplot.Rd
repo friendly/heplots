@@ -39,7 +39,7 @@ heplot(mod, ...)
     if \code{FALSE}, no terms are plotted.}
   \item{hypotheses}{optional list of linear hypotheses for which to plot hypothesis
     matrices; hypotheses are specified as for the
-    \code{\link[car]{linear.hypothesis}} function in the \code{car} package;
+    \code{\link[car]{linearHypothesis}} function in the \code{car} package;
     the list elements can be named, in which case the names are used.}
   \item{term.labels}{logical value or character vector of names for the terms to be
     plotted. If \code{TRUE} (the default) the names of the terms are used;
@@ -169,7 +169,7 @@ heplot(mod, ...)
    and plot some or all of the \code{modelterms} with \code{heplot(mymlm, ...)}.
    Arbitrary linear hypotheses related to the terms in the model (e.g., contrasts of
    an effect) can be included in the plot using the \code{hypotheses} argument. 
-   See \code{\link[car]{linear.hypothesis}} for details.
+   See \code{\link[car]{linearHypothesis}} for details.
    
    For repeated measure designs, where the response variables correspond to one or
    more variates observed under a within-subject design, between-subject effects 

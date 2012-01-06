@@ -201,7 +201,7 @@ where $\mat{L}$ is a matrix of constants whose rows specify
 $h$ linear combinations or contrasts
 of the parameters to be tested simultaneously
 by a multivariate test. In \proglang{R} all such tests can be carried out using
-the functions \func{Anova} and \func{linear.hypothesis} in the
+the functions \func{Anova} and \func{linearHypothesis} in the
 \pkg{car}.%
 \footnote{
 Both the \pkg{car} and the \pkg{heplots} are being actively developed.
@@ -834,7 +834,7 @@ When there are both within- and between-S effects, the multivariate and
 univariate hypotheses tests can all be obtained together using \func{Anova}
 with the \code{idata} and \code{idesign} specifying the within-S levels
 and the within-S design, as shown above.
-\func{linear.hypothesis} can be used to test arbitrary contrasts in the
+\func{linearHypothesis} can be used to test arbitrary contrasts in the
 within- or between- effects.
 
 However, to explain the
