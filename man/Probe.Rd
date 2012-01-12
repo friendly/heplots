@@ -1,0 +1,73 @@
+\name{Probe}
+\alias{Probe}
+\alias{Probe1}
+\alias{Probe2}
+\docType{data}
+\title{
+Response Speed in a Probe Experiment
+}
+\description{
+Data from a probe experiment testing whether immediate memory for
+ sentenses is influenced by the phrase structure of the sentence.
+ The data sets come from Timm (1975), Ex. 3.14 and Ex. 3.16 (p.244)
+
+Procedure: Subjects listened to tape-recorded sentences.  Each
+ sentence was followed by a "probe word" from one of 5 positions
+ within the sentence.  The subject had to respond with the word
+ which immediately followed the probe word in the sentence.  The
+ dependent measure is response speed = k(1/reaction time).
+ 
+Sample sentence:
+\preformatted{
+*       The tall man met the young girl who got the new hat.
+Pos'ns:      1    2            3    4    5
+Function:   ADJ1 SUBJ        ADJ2  OBJ  REL.PN
+}
+
+In \code{Probe2}, there are two groups of subjects, 
+pre-selected on a test of short term memory.
+}
+
+\usage{
+	data(Probe1)
+  data(Probe2)
+	}
+\format{
+  \code{Probe1}: A data frame with 11 observations on the following 5 variables.
+  \describe{
+    \item{\code{p1}}{speed at position 1}
+    \item{\code{p2}}{speed at position 2}
+    \item{\code{p3}}{speed at position 3}
+    \item{\code{p4}}{speed at position 4}
+    \item{\code{p5}}{speed at position 5}
+  }
+
+  \code{Probe2}: A data frame with 20 observations on the following 6 variables.
+  \describe{
+    \item{\code{stm}}{Short term memory capacity: a factor with levels \code{High} \code{Low}}
+    \item{\code{p1}}{speed at position 1}
+    \item{\code{p2}}{speed at position 2}
+    \item{\code{p3}}{speed at position 3}
+    \item{\code{p4}}{speed at position 4}
+    \item{\code{p5}}{speed at position 5}
+  }
+
+}
+\details{
+These data sets (fictitious) are used as examples of single-sample and two-sample
+profile analysis or simple repeated measure designs with structured
+contrasts.
+}
+\source{
+Timm, N. (1975)
+\emph{Multivariate analysis, with applications in education and psychology}
+Brooks/Cole.
+}
+%\references{
+%%  ~~ possibly secondary sources and usages ~~
+%}
+\examples{
+data(Probe1)
+boxplot(Probe1)
+}
+\keyword{datasets}
