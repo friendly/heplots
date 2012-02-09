@@ -185,7 +185,6 @@ function(mod, ...) UseMethod("heplot3d")
 	E <- SSPE
 	p <- nrow(E)
 	E <- E[variables, variables]
-#	Y <- model.response(data)[,vars]
 	Y <- Y[,vars] 
 	gmean <- if (missing(data))  c(0,0,0) 
 			else colMeans(Y)
@@ -205,7 +204,7 @@ function(mod, ...) UseMethod("heplot3d")
 	if (!add){    
 		rgl.clear()
 		rgl.viewpoint(fov=fov)
-		rgl.bg(col=bg.col, fogtype=fogtype)    
+		rgl.bg(color=bg.col, fogtype=fogtype)    
 	} 
 	if (error.ellipsoid) {
 		E.ellipsoid <- ellipsoid(gmean, E, radius, col=E.col, label=err.label, 
@@ -284,10 +283,8 @@ function(mod, ...) UseMethod("heplot3d")
 #            	points3d(unlist(means[m, 2:4]), size=3, color=pcol)
 #							spheres3d(unlist(means[m, 2:4]), radius=diag((ranges/30))^2, color=pcol)
 				}
-#            rgl.texts(means[,2:4] + matrix(offset*ranges, nrow(means), 3, byrow=TRUE), 
-#                text=as.character(means[,1]), col=pcol, adj=0)
 				texts3d(means[,2:4] + matrix(offset*ranges, nrow(means), 3, byrow=TRUE), 
-						texts=as.character(means[,1]), col=pcol, adj=0)
+						texts=as.character(means[,1]), color=pcol, adj=0)
 			}
 	}
 	
@@ -302,12 +299,12 @@ function(mod, ...) UseMethod("heplot3d")
 	}
 	
 	if (add) rgl.pop(id=.frame)
-	frame <- axis3d("x-", col="black")
-	frame <- c(frame, mtext3d(xlab, "x-", col="black", line=1.5))
+	frame <- axis3d("x-", color="black")
+	frame <- c(frame, mtext3d(xlab, "x-", color="black", line=1.5))
 	frame <- c(frame, axis3d("y-", col="black"))
-	frame <- c(frame, mtext3d(ylab, "y-", col="black", line=1.5))
+	frame <- c(frame, mtext3d(ylab, "y-", color="black", line=1.5))
 	frame <- c(frame, axis3d("z-", col="black"))
-	frame <- c(frame, mtext3d(zlab, "z-", col="black", line=1.5))
+	frame <- c(frame, mtext3d(zlab, "z-", color="black", line=1.5))
 	frame <- c(frame, box3d(col="black"))
 	assign(".frame", frame, envir=.GlobalEnv)
 	aspect3d(x=1, y=1, z=1)
