@@ -1,2 +1,4 @@
 doc/fig/.*[.]eps$
 doc/fig/.*[.]pdf$
+doc/fig
+doc/.*[.]jpg$

@@ -265,7 +265,7 @@ heplot3d(plastic.mod, col=colors)
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[clip]{fig/plastic1-HE3D}
+\includegraphics[clip]{plastic1-HE3D}
 \caption{3D HE plot for the plastic film data}
 \label{fig:plastic1-HE3D}
 \end{center}
