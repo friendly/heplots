@@ -4,7 +4,7 @@
 \docType{package}
 
 \title{
-Visualizing Tests in Multivariate Linear Models
+Visualizing Hypothesis Tests in Multivariate Linear Models
 }
 
 \description{
@@ -26,8 +26,8 @@ Several tutorial vignettes are also included.
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 0.9-11\cr
-Date: \tab 2012-01-12\cr
+Version: \tab 0.9-12\cr
+Date: \tab 2012-04-03\cr
 License: \tab GPL (>= 2), GPL version 2 or newer\cr
 }
 
@@ -67,6 +67,10 @@ functions.
 The \code{\link[candisc]{candisc-package}} package provides functions for 
 visualizing effects for model terms in a low-dimensional canonical space
 that shows the largest hypothesis relative to error variation.
+
+The package also contains a large number of multivariate data sets with examples
+of analyses and graphic displays.  Use \code{data(package="heplots")} to see
+the current list.
 }
 
 \author{
