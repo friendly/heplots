@@ -12,14 +12,14 @@
   A data frame with 150 observations on the following 5 variables.
   \describe{
     \item{\code{epoch}}{the epoch the skull as assigned to, 
-                        am ordered factor with levels \code{c4000BC} \code{c3300BC},
+                        an ordered factor with levels \code{c4000BC} \code{c3300BC},
                         \code{c1850BC},  \code{c200BC}, and  \code{cAD150},
                         where the years are only given approximately, of
                         course.}
-    \item{\code{mb}}{maximum breaths of the skull.}
-    \item{\code{bh}}{basibregmatic heights of the skull.}
-    \item{\code{bl}}{basialiveolar length of the skull.}
-    \item{\code{nh}}{nasal heights of the skull.}
+    \item{\code{mb}}{maximal breadth of the skull.}
+    \item{\code{bh}}{basibregmatic height of the skull.}
+    \item{\code{bl}}{basialveolar length of the skull.}
+    \item{\code{nh}}{nasal height of the skull.}
   }
 }
 \details{
