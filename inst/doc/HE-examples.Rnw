@@ -487,9 +487,19 @@ This example examines physical measurements of size and shape made on
 The measures are: maximal breadth (mb), basibregmatic height (bh),
 basialveolar length (bl), and nasal height (nh) of each skull.
 See \url{http://www.redwoods.edu/instruct/agarwin/anth_6_measurements.htm}
-for the definitions of these measures.
+for the definitions of these measures, and \figref{fig:skulls} for a diagram.
 The question of interest is whether and how these measurements change over time.
-Systematic changes over time would indicate interbreeding with immigrant populations.
+Systematic changes over time is of interest because this
+would indicate interbreeding with immigrant populations.
+
+\begin{figure}[htb]
+\begin{center}
+	\includegraphics[width=.6\textwidth]{skulls}
+\caption{Diagram of the skull measurements}
+\label{fig:skulls}
+\end{center}
+\end{figure}
+
 
 <<skulls1, results=verbatim>>=
 data(Skulls)
