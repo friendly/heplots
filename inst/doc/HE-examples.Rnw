@@ -556,11 +556,11 @@ sklong <- melt(Skulls, id="epoch")
 
 bwplot(value ~ epoch | variable, data=sklong, scales="free", 
 	ylab="Variable value", xlab="Epoch",
+	strip=strip.custom(factor.levels=paste(vlab, " (", levels(sklong$variable), ")", sep="")),
 	panel = function(x,y, ...) {
 		panel.bwplot(x, y, ...)
 		panel.linejoin(x,y, col="red", ...)
-	}
-	) 
+	}) 
 @
 \begin{figure}[htb]
 \begin{center}
