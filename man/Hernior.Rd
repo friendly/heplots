@@ -62,9 +62,20 @@ clr <- c("red", "darkgray", "blue", "darkgreen", "magenta", "brown", "black")
 heplot(mod, col=clr)
 pairs(mod, col=clr)
 
+## Enhancing the pairs plot ...
+# create better variable labels
+vlab <- c("LeaveCondition\n(leave)", "NursingCare\n(nurse)", "LengthOfStay\n(los)")
 # Add ellipse to test all 5 regressors simultaneously
 hyp <- list("Regr" = c("age", "sexm", "pstat", "build", "cardiac"))
-pairs(mod, hypotheses=hyp, col=clr)
+pairs(mod, hypotheses=hyp, col=clr, var.labels=vlab)
+
+## Views in canonical space for the various predictors
+if (require(candisc)) {
+	Hern.canL <- candiscList(mod)
+	plot(Hern.canL, term="age")
+	plot(Hern.canL, term="sex")
+	plot(Hern.canL, term="pstat")  # physical status
+}
 
 }
 \keyword{datasets}

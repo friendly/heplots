@@ -3,7 +3,7 @@ o Added Skulls data
 o Extended HE-examples vignette with example based on Skulls data
 o Changed the default colors for heplot() and heplot1d() to allow global setting
   of options("heplot.colors")
- 
+o Extended Hernior.Rd examples to show 1D plots in canonical space
 
 Version 0.9-11 (2012-01-12)
 o Added Probe1, Probe2 data sets
