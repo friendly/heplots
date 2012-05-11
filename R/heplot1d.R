@@ -31,7 +31,8 @@ function(mod, ...) UseMethod("heplot1d")
 				level=0.68,
 				alpha=0.05,
 				center.pch="|",   # doesn't have to be an argument
-				col=palette()[-1],  # colors for H matrices, E matrix
+				col=getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")),
+				# colors for H matrices, E matrix
 				lty=2:1,
 				lwd=1:2,
 				xlab,

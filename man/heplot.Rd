@@ -24,7 +24,8 @@ heplot(mod, ...)
     manova, size = c("evidence", "effect.size"),
     level = 0.68, alpha = 0.05, segments = 40, 
     center.pch = "+", center.cex=2,
-    col = palette()[-1], 
+    col = getOption("heplot.colors", 
+                    c("red", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")), 
     lty = 2:1, lwd = 1:2, 
     fill=FALSE, fill.alpha=0.3,   
     xlab, ylab, main = "", xlim, ylim, axes=TRUE, offset.axes, 
@@ -110,11 +111,14 @@ heplot(mod, ...)
     defaults to \code{"+"}.}
   \item{center.cex}{size of character to use in plotting the centroid of the data;
     defaults to \code{2}.}
-  \item{col}{a colour or vector of colours to use in plotting ellipses; the first
-    colour is used for the error ellipse; the remaining colours --- recycled
-    as necessary --- are used for the hypothesis ellipses; 
-    a single colour can be given, in which case it is used for all ellipses. 
-    Defaults to the current colour palette, less its first element.}
+  \item{col}{a color or vector of colors to use in plotting ellipses; the first
+    color is used for the error ellipse; the remaining colors --- recycled
+    as necessary --- are used for the hypothesis ellipses. 
+    A single color can be given, in which case it is used for all ellipses.
+    For convenience, the default colors for all heplots produced in a given session can be changed
+    by assigning a color vector via \code{options(heplot.colors =c(...)}.  Otherwise,
+    the default colors are \code{c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.
+    }
   \item{lty}{vector of line types to use for plotting the ellipses; the first is
     used for the error ellipse, the rest --- possibly recycled --- for
     the hypothesis ellipses; a single line type can be given. Defaults to

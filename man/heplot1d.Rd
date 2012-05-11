@@ -27,7 +27,10 @@ heplot1d(mod, ...)
 	remove.intercept = TRUE, type = c("II", "III", "2", "3"),
 	idata=NULL, idesign=NULL, icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL, manova, 
 	size = c("evidence", "effect.size"), level = 0.68, alpha = 0.05,  
-	center.pch = "|", col = palette()[-1], lty = 2:1, lwd = 1:2, xlab, main = "", 
+	center.pch = "|", 
+    col = getOption("heplot.colors", 
+                    c("red", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")), 
+	lty = 2:1, lwd = 1:2, xlab, main = "", 
 	xlim, axes = TRUE, offset.axes, add = FALSE, verbose = FALSE, ...)
 }
 
@@ -102,11 +105,14 @@ heplot1d(mod, ...)
     statistical significance; defaults to \code{0.05}.}
   \item{center.pch}{character to use in plotting the centroid of the data;
     defaults to \code{"|"}.}
-  \item{col}{a colour or vector of colours to use in plotting ellipses; the first
-    colour is used for the error ellipse; the remaining colours --- recycled
-    as necessary --- are used for the hypothesis ellipses; 
-    a single colour can be given, in which case it is used for all ellipses. 
-    Defaults to the current colour palette, less its first element.}
+  \item{col}{a color or vector of colors to use in plotting ellipses; the first
+    color is used for the error ellipse; the remaining colors --- recycled
+    as necessary --- are used for the hypothesis ellipses. 
+    A single color can be given, in which case it is used for all ellipses.
+    For convenience, the default colors for all heplots produced in a given session can be changed
+    by assigning a color vector via \code{options(heplot.colors =c(...)}.  Otherwise,
+    the default colors are \code{c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.
+    }
   \item{lty}{vector of line types to use for plotting the ellipses; the first is
     used for the error ellipse, the rest --- possibly recycled --- for
     the hypothesis ellipses; a single line type can be given. Defaults to

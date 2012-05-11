@@ -21,6 +21,7 @@
 # -- calculate H.rank to distinguish degenerate ellipses
 # -- added last() to utility.R
 # -- added err.label to allow changing label for Error ellipse
+# -- changed default colors from palette()[-1] to a better collection, also allowing options("heplot.colors")
 
 `heplot` <-
 		function(mod, ...) UseMethod("heplot")
@@ -52,7 +53,8 @@
 				segments=40,   # line segments in each ellipse
 				center.pch="+",   # doesn't have to be an argument
 				center.cex=2,
-				col=palette()[-1],  # colors for H matrices, E matrix
+				col=getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")),
+				# colors for H matrices, E matrix
 				lty=2:1,
 				lwd=1:2,
 				fill=FALSE,         ## whether to draw filled ellipses (vectorized)
