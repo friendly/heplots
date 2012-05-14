@@ -55,12 +55,16 @@ Hand, D. J., Daly, F., Lunn, A. D., McConway, K. J. and Ostrowski, E. (1994),
 }
 \examples{
 str(Hernior)
-mod <- lm(cbind(leave, nurse, los) ~ age + sex +  pstat +  build + cardiac, data=Hernior)
-Anova(mod, test="Roy") # actually, all tests are identical
+Hern.mod <- lm(cbind(leave, nurse, los) ~ age + sex +  pstat +  build + cardiac, data=Hernior)
+Anova(Hern.mod, test="Roy") # actually, all tests are identical
+# test overall regression
+linearHypothesis(Hern.mod, c("age", "sexm", "pstat", "build", "cardiac"))
+# joint test of age, sex & caridac
+linearHypothesis(Hern.mod, c("age", "sexm", "cardiac"))
 
 clr <- c("red", "darkgray", "blue", "darkgreen", "magenta", "brown", "black")
-heplot(mod, col=clr)
-pairs(mod, col=clr)
+heplot(Hern.mod, col=clr)
+pairs(Hern.mod, col=clr)
 
 ## Enhancing the pairs plot ...
 # create better variable labels
