@@ -1,6 +1,6 @@
 %% template for Sweave vignettes
 %\VignetteIndexEntry{HE plot examples}
-%\VignetteDepends{candisc,car,lattice,reshape2}
+%\VignetteDepends{candisc,car}
 %\VignetteKeywords{MANOVA, ANOVA, Canonical discriminant analysis, effect plots, HE plots}
 %\VignettePackage{heplots}
 
@@ -28,7 +28,7 @@
 \newcommand{\mat}[1]{\ensuremath{\bm{#1}}}
 \newcommand{\trans}{\ensuremath{^\mathsf{T}}}
 \newcommand{\diag}[1]{\ensuremath{\mathrm{diag} (#1)}}
-%\def\binom#1#2{{#1 \choose #2}}%
+\def\binom#1#2{{#1 \choose #2}}%
 %\newcommand{\implies}{ \ensuremath{\mapsto} }
 
 \newcommand{\sizedmat}[2]{%
@@ -53,7 +53,7 @@
 \newcommand{\Rpackage}[1]{{\textsf{#1}}}
 \newcommand{\R}{\textsf{R}\xspace}
 \newcommand{\code}[1]{{\texttt{#1}}}
-\newcommand{\func}[1]{{\texttt{#1()}}}
+\newcommand{\func}[1]{{\texttt{#1}()}}
 
 
 \title{HE Plot Examples}
@@ -69,18 +69,8 @@
 
 
 \begin{document}
+
 \maketitle
-
-\begin{minipage}[b]{.3\linewidth}
-	\includegraphics[width=\linewidth, trim=0 30 0 30]{fig/plot-plastic2}
-\end{minipage}
-\begin{minipage}[b]{.3\linewidth}
-	\includegraphics[width=\linewidth, trim=0 30 0 30]{fig/plot-skulls-can2}
-\end{minipage}
-\begin{minipage}[b]{.3\linewidth}
-	\includegraphics[width=\linewidth, trim=0 30 0 30]{fig/plot-rohwer-HE1}
-\end{minipage}
-
 
 \begin{abstract}
 	This vignette provides some worked examples of the analysis of multivariate linear models 
@@ -282,7 +272,7 @@ heplot3d(plastic.mod, col=colors)
 \end{figure}
 
 
-\subsection[Mock jury decisions]{Effects of physical attractiveness on mock jury decisions}
+\subsection{Effects of physical attractiveness on mock jury decisions}
 
 In a social psychology
 study of influences on jury decisions
@@ -392,7 +382,7 @@ opar <- par(xpd=TRUE)
 heplot(jury.can, prefix="Canonical dimension", main="Canonical HE plot")
 par(opar)
 @
-\caption{Canonical discriminant HE plot for the MockJury data}
+\caption{Canonical discriminant HE plot}
 \label{fig:jury-can1}
 \end{center}
 \end{figure}
@@ -458,15 +448,14 @@ model, and the \code{plot} method produces plots of these values for
 each term.  The statements below produce \figref{fig:jury-mod3-eff}.
 
 \setkeys{Gin}{width=1\textwidth}
-<<jury-mod3-eff, fig=TRUE, include=FALSE, width=8, height=4>>=
+
+\begin{figure}[htb]
+\begin{center}
+<<jury-mod3-eff, fig=TRUE, width=8, height=4>>=
 library(effects)
 jury.eff <- allEffects(jury.mod3)
 plot(jury.eff, ask=FALSE)
 @
-
-\begin{figure}[htb!] % maybe use [H]
-\begin{center}
-	\includegraphics[width=\textwidth]{fig/plot-jury-mod3-eff}
 \caption{Effect plots for  \code{Serious} and the \code{Attr * Crime}
 	 in the ANCOVA model \code{jury.mod3}.}
 \label{fig:jury-mod3-eff}
@@ -479,217 +468,6 @@ of the possible interaction of \code{Attr} and \code{Crime} on \code{Years}
 of sentence, controlling for \code{Serious}.
 The effect plot shows that for the crime of Swindle, there is a much
 greater \code{Years} of sentence awarded to Unattractive defendents.
-
-\subsection[Egyptian skulls]{Egyptian skulls from five epochs}
-This example examines physical measurements of size and shape made on
-150 Egyptian skulls from five epochs ranging from
-4000 BC to 150 AD.
-The measures are: maximal breadth (mb), basibregmatic height (bh),
-basialveolar length (bl), and nasal height (nh) of each skull.
-See \url{http://www.redwoods.edu/instruct/agarwin/anth_6_measurements.htm}
-for the definitions of these measures, and \figref{fig:skulls} for a diagram.
-The question of interest is whether and how these measurements change over time.
-Systematic changes over time is of interest because this
-would indicate interbreeding with immigrant populations.
-
-\begin{figure}[htb]
-\begin{center}
-	\includegraphics[width=.6\textwidth]{skulls}
-\caption{Diagram of the skull measurements}
-\label{fig:skulls}
-\end{center}
-\end{figure}
-
-
-<<skulls1, results=verbatim>>=
-data(Skulls)
-str(Skulls)
-table(Skulls$epoch)
-@
-Note that \code{epoch} is an ordered factor, so the default contrasts
-will be orthogonal polynomials.  This assumes that \code{epoch}
-values are equally spaced, which they are not.  However, examining
-the linear and quadratic trends is useful to a first approximation.
-
-For ease of labeling various outputs, it is useful to trim the
-\code{epoch} values and assign more meaningful variable labels.
-<<skulls2>>=
-# make shorter labels for epochs
-Skulls$epoch <- factor(Skulls$epoch, labels=sub("c","",levels(Skulls$epoch)))
-# assign better variable labels
-vlab <- c("maxBreadth", "basibHeight", "basialLength", "nasalHeight")
-@
-
-We start with some simple displays of the means by epoch.  From the numbers,
-the means don't seem to vary much.  
-A \code{pairs} plot, \figref{fig:skulls4}, joining points
-by \code{epoch} is somewhat more revealing for the bivariate relations among means.
-<<skulls3, results=verbatim>>=
-means <- aggregate(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls, FUN=mean)[,-1]
-rownames(means) <- levels(Skulls$epoch)
-means
-@
-<<skulls4, fig=TRUE, include=FALSE, width=7, height=7>>=
-pairs(means, vlab,
-      panel = function(x, y) {
-          text(x, y, levels(Skulls$epoch))
-          lines(x,y)
-      })
-@
-\begin{figure}[htb]
-\begin{center}
-	\includegraphics[width=.8\textwidth]{fig/plot-skulls4}
-\caption{Pairs plot of means of Skulls data, by epoch}
-\label{fig:skulls4}
-\end{center}
-\end{figure}
-
-Perhaps better for visualizing the trends over time is a set of boxplots,
-joining means over \code{epoch}. Using \func{bwplot} from the \pkg{lattice}
-package requires reshaping the data from wide to long format.  The following
-code produces \figref{fig:skulls-bwplot}.
-
-<<skulls-bwplot, fig=TRUE, include=FALSE, height=7, width=7>>=
-library(lattice)
-library(reshape2)
-sklong <- melt(Skulls, id="epoch")
-
-bwplot(value ~ epoch | variable, data=sklong, scales="free", 
-	ylab="Variable value", xlab="Epoch",
-	strip=strip.custom(factor.levels=paste(vlab, " (", levels(sklong$variable), ")", sep="")),
-	panel = function(x,y, ...) {
-		panel.bwplot(x, y, ...)
-		panel.linejoin(x,y, col="red", ...)
-	}) 
-@
-\begin{figure}[htb]
-\begin{center}
-	\includegraphics[width=.8\textwidth]{fig/plot-skulls-bwplot}
-\caption{Boxplots of Skulls data, by epoch, for each variable}
-\label{fig:skulls-bwplot}
-\end{center}
-\end{figure}
-
- 
-Now, fit the MANOVA model, and test the effect of \code{epoch} with \func{Manova}.
-We see that the multivariate means differ substantially.
-<<skulls5, results=verbatim>>=
-# fit manova model
-sk.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
-Manova(sk.mod)
-@
-Perhaps of greater interest are the more focused tests of trends over time.
-These are based on tests of the coefficients in the model \code{sk.mod}
-being jointly equal to zero, for subsets of the 
-(polynomial) contrasts in \code{epoch}.
-<<skulls5a, results=verbatim>>=
-coef(sk.mod)
-@
-
-We use \func{linearHypothesis} for a multivariate test of the
-\code{epoch.L} linear effect.
-The linear trend is highly significant.  It is not obvious from 
-\figref{fig:skulls4} that maximal breadth and nasal are increasing
-over time, while the other two measurements have negative slopes.
-<<skulls6, results=verbatim>>=
-coef(sk.mod)["epoch.L",]
-print(linearHypothesis(sk.mod, "epoch.L"), SSP=FALSE) # linear component
-@
-\func{linearHypothesis} can also be used to test composite hypotheses.
-Here we test all non-linear coefficients jointly.  The result indicates
-that, collectively, all non-linear terms are not significantly different
-from zero.
-<<skulls6, results=verbatim>>=
-print(linearHypothesis(sk.mod, c("epoch.Q", "epoch.C", "epoch^4")), SSP=FALSE)
-@
-
-Again, HE plots can show the patterns of these tests of multivariate hypotheses.
-With four response variables, it is easiest to look at all pairwise
-HE plots with the \func{pairs.mlm} function. 
-The statement below produces \figref{fig:skulls-HE-pairs}.
-In this plot, we show the hypothesis ellipsoids for the overall
-effect of \code{epoch}, as well as those for the tests just shown
-for the linear trend component \code{epoch.L}
-as well as the joint test of all non-linear terms.
-<<skulls-HE-pairs, fig=TRUE, include=FALSE, keep.source=FALSE>>=
-pairs(sk.mod, variables=c(1,4,2,3),
-	hypotheses=list(Lin="epoch.L", NonLin=c("epoch.Q", "epoch.C", "epoch^4")), 
-	var.labels=vlab[c(1,4,2,3)])
-@
-
-\begin{figure}[htb]
-\begin{center}
-	\includegraphics[width=.8\textwidth]{fig/plot-skulls-HE-pairs}
-\caption{Pairs HE plot of Skulls data, showing multivariate tests of
-	\code{epoch}, as well as tests of linear and nonlinear trends.}
-\label{fig:skulls-HE-pairs}
-\end{center}
-\end{figure}
-These plots have an interesting geometric interpretation:
-the $\mat{H}$ ellipses for the overall effect of \code{epoch}
-are representations of the additive decomposition of this effect into  
-$\mat{H}$ ellipses for the linear and nonlinear linear
-hypothesis tests according to
-\begin{equation*}
-	\mat{H}_{\textrm{epoch}} = \mat{H}_{\textrm{linear}} + \mat{H}_{\textrm{nonlinear}}
-\end{equation*}
-where the linear term has rank 1 (and so plots as a line), while the nonlinear
-term has rank 3.  In each panel, it can be seen that the large direction of
-the $\mat{H}_{\textrm{epoch}}$ leading to significance of this effect corresponds
-essentially to the linear contrast.  $\mat{H}_{\textrm{nonlinear}}$ is the orthogonal
-complement of $\mat{H}_{\textrm{linear}}$ in the space of $\mat{H}_{\textrm{epoch}}$,
-but nowhere does it protrude beyond the boundary of the $\mat{E}$ ellipsoid.
-
-These relations can be seen somewhat more easily in 3D, as produced using
-\func{heplot3d} by the following statement.  The resulting plot is
-better viewed interactively in R and is not reproduced here.
-It would be seen there that the ellipsoid for the nonlinear terms
-is nearly flat in one direction, corresponding to the panel for
-(mb, hb) in \figref{fig:skulls-HE-pairs}.
-<<skulls-HE3D, eval=FALSE>>=
-heplot3d(sk.mod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q", 
-                            NonLin=c("epoch.Q", "epoch.C", "epoch^4")), 
-	col=c("pink", "blue"))
-@
-
-Finally, a simpler view of these effects can be shown in the canonical
-space corresponding to the canonical discriminant analysis for
-\code{epoch}.  The computations are performed by \func{candisc}
-which returns a class \code{"candisc"} object.
-
-<<skulls-can1, results=verbatim>>=
-library(candisc)
-sk.can <- candisc(sk.mod)
-sk.can
-@
-The output above shows that, although $\mat{H}_{\textrm{epoch}}$ is of rank 4,
-two dimensions account for 96\% 
-of the between-epoch variation.  By the likelihood ratio test, only
-the canonical correlation for the first dimension can be considered
-non-zero.
-
-The canonical HE plot is produced by plotting the \code{sk.can} object,
-giving \figref{fig:skulls-can2}.
-<<skulls-can2, fig=TRUE, include=FALSE, width=6, height=6>>=
-heplot(sk.can, prefix="Canonical dimension")
-@
-\begin{figure}[htb]
-\begin{center}
-	\includegraphics[width=.8\textwidth]{fig/plot-skulls-can2}
-\caption{Canonical discriminant HE plot of the Skulls data}
-\label{fig:skulls-can2}
-\end{center}
-\end{figure}
-In this plot, the first canonical dimension (88\%) essentially
-corresponds to the ordered values of \code{epoch}, from right to left.
-The variable vectors for maximum breadth (mb), basialiveolar length (bl)
-and nasal height (nh) are  largely aligned with this dimension, indicating that
-they distinguish the groups of skulls according to time.  The lengths of these
-vectors indicates their relative contribution to discrimination among the
-group means.  Only the variable vector for basibregmatic height (bh)
-points in the direction of the second canonical dimension, corresponding
-to higher means in the middle of the range of epochs.  We leave it to
-forensic anthropologists to determine if this has any meaning.
  
 \section[MMRA]{Multivariate Multiple Regression Designs}
 The ideas behind HE plots extend naturally to multivariate multiple

@@ -45,7 +45,7 @@ potential interactions to be explored.
 }
 \source{
 Mosteller, F. and Tukey, J. W. (1977), \emph{Data analysis and regression},
-Reading, MA: Addison-Wesley. Exhibit 8, 567-568.
+Reading, MA: Addison-Wesley. Data Exhibit 8, 567-568.
 Their source: A study by B. McPeek and J. P. Gilbert of the Harvard
 Anesthesia Center.
 }
@@ -55,10 +55,10 @@ Hand, D. J., Daly, F., Lunn, A. D., McConway, K. J. and Ostrowski, E. (1994),
 }
 \examples{
 str(Hernior)
-Hern.mod <- lm(cbind(leave, nurse, los) ~ age + sex +  pstat +  build + cardiac, data=Hernior)
+Hern.mod <- lm(cbind(leave, nurse, los) ~ age + sex +  pstat +  build + cardiac + resp, data=Hernior)
 Anova(Hern.mod, test="Roy") # actually, all tests are identical
 # test overall regression
-linearHypothesis(Hern.mod, c("age", "sexm", "pstat", "build", "cardiac"))
+linearHypothesis(Hern.mod, c("age", "sexm", "pstat", "build", "cardiac", "resp"))
 # joint test of age, sex & caridac
 linearHypothesis(Hern.mod, c("age", "sexm", "cardiac"))
 
@@ -70,12 +70,12 @@ pairs(Hern.mod, col=clr)
 # create better variable labels
 vlab <- c("LeaveCondition\n(leave)", "NursingCare\n(nurse)", "LengthOfStay\n(los)")
 # Add ellipse to test all 5 regressors simultaneously
-hyp <- list("Regr" = c("age", "sexm", "pstat", "build", "cardiac"))
-pairs(mod, hypotheses=hyp, col=clr, var.labels=vlab)
+hyp <- list("Regr" = c("age", "sexm", "pstat", "build", "cardiac", "resp"))
+pairs(Hern.mod, hypotheses=hyp, col=clr, var.labels=vlab)
 
 ## Views in canonical space for the various predictors
 if (require(candisc)) {
-	Hern.canL <- candiscList(mod)
+	Hern.canL <- candiscList(Hern.mod)
 	plot(Hern.canL, term="age")
 	plot(Hern.canL, term="sex")
 	plot(Hern.canL, term="pstat")  # physical status
