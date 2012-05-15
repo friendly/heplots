@@ -19,7 +19,10 @@ heplot3d(mod, ...)
     type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
 	icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL,
     manova, size = c("evidence", "effect.size"),
-    level = 0.68, alpha = 0.05,  segments = 40, col = palette()[-1], lwd=c(1, 4),
+    level = 0.68, alpha = 0.05,  segments = 40, 
+	col=getOption("heplot3d.colors", 
+	              c("pink", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")),
+    lwd=c(1, 4),
     shade=TRUE, shade.alpha=0.1, wire=c(TRUE,FALSE),
     bg.col = c("white", "black"), fogtype = c("none", "exp2", "linear", "exp"), 
     fov = 30, offset = 0.01, xlab, ylab, zlab, xlim, ylim, zlim, add = FALSE, verbose = FALSE, 
@@ -98,11 +101,14 @@ heplot3d(mod, ...)
     statistical significance; defaults to \code{0.05}.}
   \item{segments}{number of segments composing each elliposid; defaults to
     \code{40}.}
-  \item{col}{a colour or vector of colours to use in plotting ellipsoids; the first
-    colour is used for the error ellipsoid; the remaining colours --- recycled
-    as necessary --- are used for the hypothesis ellipsoids; 
-    a single colour can be given, in which case it is used for all ellipsoids. 
-    Defaults to the current colour palette, less its first element.}
+  \item{col}{a color or vector of colors to use in plotting ellipsoids; the first
+    color is used for the error ellipsoid; the remaining colors --- recycled
+    as necessary --- are used for the hypothesis ellipsoid. 
+    A single color can be given, in which case it is used for all ellipsoid.
+    For convenience, the default colors for all heplots produced in a given session can be changed
+    by assigning a color vector via \code{options(heplot3d.colors =c(...)}.  Otherwise,
+    the default colors are \code{c("pink", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.
+    }
   \item{lwd}{a two-element vector giving the line width for drawing ellipsoids
     (including those that degenerate to an ellipse) and
     for drawing ellipsoids that degenerate to a line segment. The default

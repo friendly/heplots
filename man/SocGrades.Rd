@@ -29,6 +29,9 @@ in multivariate linear models.
   }
 }
 \details{
+\code{midterm1}, \code{midterm2}, \code{final}, and possibly \code{eval} are the response variables.
+All other variables are potential predictors.
+
 The factors \code{class}, \code{sex}, and \code{hssoc} can be used with
 \code{as.numeric} in correlational analyses.
 }
@@ -53,5 +56,20 @@ heplot(grades.mod, col=clr)
 pairs(grades.mod, col=clr)
 
 heplot3d(grades.mod, col=clr, wire=FALSE)
+
+if (require(candisc)) {
+	# calculate canonical results for all terms
+	grades.can <- candiscList(grades.mod)
+	# extract canonical R^2s
+	unlist(lapply(grades.can, function(x) x$canrsq))
+	# plot class effect in canonical space
+	heplot(grades.can, term="class", scale=4)	
+
+	# 1 df terms: show canonical scores and weights for responses
+	plot(grades.can, term="sex")
+	plot(grades.can, term="gpa")
+	plot(grades.can, term="boards")
+	}
+
 }
 \keyword{datasets}

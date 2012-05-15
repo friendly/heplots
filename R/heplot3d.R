@@ -53,7 +53,9 @@ function(mod, ...) UseMethod("heplot3d")
 				level=0.68,
 				alpha=0.05,
 				segments=40,          # line segments in each ellipse
-				col=palette()[-1],    # colors for E matrix, H matrices
+#				col=palette()[-1],    # colors for E matrix, H matrices
+				col=getOption("heplot3d.colors", c("pink", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")),
+				# colors for H matrices, E matrix
 				lwd=c(1, 4),          # line width for drawing ellipsoids and 1d degenerate ellipsoids
 				shade=TRUE,           # use shade3d to render ellipsoids?
 				shade.alpha=0.1,      # alpha transparency for shaded3d
