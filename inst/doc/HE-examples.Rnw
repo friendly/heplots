@@ -198,8 +198,19 @@ lines(intMeans[c(1,3),1], intMeans[c(1,3),2], col="brown")
 lines(intMeans[c(2,4),1], intMeans[c(2,4),2], col="brown")
 @
 <<plastic1, fig=TRUE, include=FALSE, echo=FALSE>>=
-<<plastic1a>>
-<<plastic1b>>
+#      <<plastic1a>>
+# Compare evidence and effect scaling 
+colors = c("red", "darkblue", "darkgreen", "brown")
+heplot(plastic.mod, size="evidence", col=colors, cex=1.25)
+heplot(plastic.mod, size="effect", add=TRUE, lwd=4, term.labels=FALSE, col=colors)
+#      <<plastic1b>>
+## add interaction means
+intMeans <- termMeans(plastic.mod, 'rate:additive', abbrev.levels=2)
+#rownames(intMeans) <- apply(expand.grid(c('Lo','Hi'), c('Lo', 'Hi')), 1, paste, collapse=':')
+points(intMeans[,1], intMeans[,2], pch=18, cex=1.2, col="brown")
+text(intMeans[,1], intMeans[,2], rownames(intMeans), adj=c(0.5,1), col="brown")
+lines(intMeans[c(1,3),1], intMeans[c(1,3),2], col="brown")
+lines(intMeans[c(2,4),1], intMeans[c(2,4),2], col="brown")
 @
 
 \begin{figure}[htb]
