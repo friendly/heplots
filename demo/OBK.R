@@ -21,7 +21,7 @@ session <- ordered(c("pretest", "posttest", "followup"),
     levels=c("pretest", "posttest", "followup"))
 # for profile contrasts
 contrasts(session) <- matrix(c(-1,  1, 0,
-		                      0, -1, 1), ncol=2}
+		                      0, -1, 1), ncol=2)
 #colnames(contrasts(session)) <- c("Post-Pre", "Fol-Post")
 
 idata <- data.frame(session)
