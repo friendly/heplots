@@ -44,7 +44,7 @@ pairs(mod.OBK, col=c("red", "black", "blue", "brown"))
 
 heplot3d(mod.OBK, hypotheses=c("treatment1", "treatment2"),
   col=c("pink", "black", "blue", "green3", "gray40", "gray40"),
-  hyp.labels=c("(A,B)-Control", "A-B")
+  hyp.labels=c("(A,B)-Control", "A-B"))
 
 	
 # HE plots for Within-S effects
