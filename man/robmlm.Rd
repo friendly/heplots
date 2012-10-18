@@ -161,6 +161,7 @@ John Fox; packaged by Michael Friendly
 \code{\link[MASS]{cov.trob}}
 }
 \examples{
+##############
 # Skulls data
 
 # make shorter labels for epochs and nicer variable labels in heplots
@@ -200,6 +201,26 @@ points(pottery.rmod$weights, pch=16, col=Pottery$Site)
 # heplots to see effect of robmlm vs. mlm
 heplot(pottery.mod, cex=1.3, lty=1)
 heplot(pottery.rmod, add=TRUE, error.ellipse=TRUE, lwd=c(2,2), lty=c(2,2), term.labels=FALSE, err.label="")
+
+###############
+# Prestige data
+
+# treat women and prestige as response variables for this example
+prestige.mod <- lm(cbind(women, prestige) ~ income + education + type, data=Prestige)
+prestige.rmod <- robmlm(cbind(women, prestige) ~ income + education + type, data=Prestige)
+
+coef(prestige.mod)
+coef(prestige.rmod)
+# how much do coefficients change?
+round(coef(prestige.mod) - coef(prestige.rmod),3)
+
+# pretty plot of case weights
+plot(prestige.rmod$weights, type="h", xlab="Case Index", ylab="Robust mlm weight", col="gray")
+points(prestige.rmod$weights, pch=16, col=Prestige$type)
+legend(0, 0.7, levels(Prestige$type), pch=16, col=palette()[1:3], bg="white")
+
+heplot(prestige.mod, cex=1.4, lty=1)
+heplot(prestige.rmod, add=TRUE, error.ellipse=TRUE, lwd=c(2,2), lty=c(2,2), term.labels=FALSE, err.label="")
 
 
 }
