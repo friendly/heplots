@@ -22,6 +22,7 @@
 # last modified 23 Jul 2010 by M. Friendly -- return radius
 # -- added err.label to allow changing label for Error ellipse
 
+savedvars <- new.env(parent=emptyenv())
 
 `heplot3d` <-
 function(mod, ...) UseMethod("heplot3d")
@@ -300,7 +301,7 @@ function(mod, ...) UseMethod("heplot3d")
 		decorate3d(xlim=xlim, ylim=ylim, zlim=zlim, box=FALSE, axes=FALSE, xlab=NULL, ylab=NULL, zlab=NULL, top=FALSE)
 	}
 	
-	if (add) rgl.pop(id=.frame)
+	if (add) rgl.pop(id=savedvars$.frame)
 	frame <- axis3d("x-", color="black")
 	frame <- c(frame, mtext3d(xlab, "x-", color="black", line=1.5))
 	frame <- c(frame, axis3d("y-", col="black"))
@@ -308,7 +309,9 @@ function(mod, ...) UseMethod("heplot3d")
 	frame <- c(frame, axis3d("z-", col="black"))
 	frame <- c(frame, mtext3d(zlab, "z-", color="black", line=1.5))
 	frame <- c(frame, box3d(col="black"))
-	assign(".frame", frame, envir=.GlobalEnv)
+	assign(".frame", frame, envir=savedvars)
+	#   savedvars$.frame <- frame
+
 	aspect3d(x=1, y=1, z=1)
 	
 	names(H.ellipsoid) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
