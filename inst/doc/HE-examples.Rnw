@@ -197,7 +197,7 @@ text(intMeans[,1], intMeans[,2], rownames(intMeans), adj=c(0.5,1), col="brown")
 lines(intMeans[c(1,3),1], intMeans[c(1,3),2], col="brown")
 lines(intMeans[c(2,4),1], intMeans[c(2,4),2], col="brown")
 @
-<<plastic1, fig=TRUE, include=FALSE, echo=FALSE>>=
+<<plastic1, fig=FALSE, include=FALSE, echo=FALSE>>=
 #      <<plastic1a>>
 # Compare evidence and effect scaling 
 colors = c("red", "darkblue", "darkgreen", "brown")
@@ -215,7 +215,7 @@ lines(intMeans[c(2,4),1], intMeans[c(2,4),2], col="brown")
 
 \begin{figure}[htb]
 \begin{center}
-	\includegraphics[width=.6\textwidth, clip]{fig/plot-plastic1}
+	\includegraphics[width=.6\textwidth, clip]{plot-plastic1}
 \caption{HE plot for effects on \code{tear} and \code{gloss} according to the
 	factors \code{rate}, \code{additive} and their interaction, \code{rate:additive}.
 	 The thicker
