@@ -6,7 +6,8 @@
 # last modified 4 Oct 2010 by M. Friendly: trans.colors
 export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, statList, covList, colMeansList, arrow3d,
 	etasq, gsorth, termMeans, trans.colors,
-	robmlm, robmlm.default, robmlm.formula)
+	robmlm, robmlm.default, robmlm.formula,
+  interpPlot)
 S3method(heplot, mlm)
 S3method(heplot3d, mlm)
 S3method(pairs, mlm)
