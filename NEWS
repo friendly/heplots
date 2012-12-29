@@ -1,3 +1,6 @@
+Version 1.0-4 (2012-12-29)
+o Added interpPlot
+
 Version 1.0-2 (2012-12-05)
 o Added schooldata and further example of comparison of mlm with robmlm()
 
