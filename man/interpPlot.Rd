@@ -91,15 +91,17 @@ other arguments passed to \code{plot()}
 \author{
 Michael Friendly
 }
-%\note{
-%%%  ~~further notes~~
-%}
+\note{
+The examples here just use on-screen animations to the console graphics window.
+The \code{animation} package provides facilities to save these in various formats.
+}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 \code{\link[car]{dataEllipse}},
 \code{\link[car]{showLabels}}
+\code{\link[animation]{animation}}
 
 }
 \examples{
@@ -108,10 +110,9 @@ Michael Friendly
 #################################################
 data(Duncan, package="car")
 duncmod <- lm(prestige ~ income + education, data=Duncan)
-
 mod.mat <- model.matrix(duncmod)
 
-
+# function to do an animation for one variable
 dunc.anim <- function(variable, other, alpha=seq(0, 1, .1)) {
 	var <- which(variable==colnames(mod.mat))
 	duncdev <- scale(Duncan[,c(variable, "prestige")], scale=FALSE)
@@ -139,6 +140,51 @@ dunc.anim("income", "education")
 
 dunc.anim("education", "income")
 
+############################################
+# correlated bivariate data with 2 outliers
+# show rotation from data space to PCA space
+############################################
+
+set.seed(123345)
+x <- c(rnorm(100), 2, -2)
+y <- c(x[1:100] + rnorm(100), -2, 2)
+XY <- cbind(x=x, y=y)
+rownames(XY) <- seq_along(x)
+XY <- scale(XY, center=TRUE, scale=FALSE)
+
+# start, end plots
+
+dataEllipse(XY, pch=16, levels=0.68, id.n=2)
+mod <- lm(y~x, data=as.data.frame(XY))
+abline(mod, col="red", lwd=2)
+
+pca <- princomp(XY, cor=TRUE)
+scores <- pca$scores
+dataEllipse(scores, pch=16, levels=0.68, id.n=2)
+abline(lm(Comp.2 ~ Comp.1, data=as.data.frame(scores)), lwd=2, col="red")
+
+# show interpolation
+
+alpha <- seq(0,1,.1)
+for (alp in alpha) {
+	main <- if(alp==0) "Original data"
+		else if(alp==1) "PCA scores"
+		else paste(round(100*alp,1), "\% interpolation")
+		xlab <- if(alp==0) "X"
+			else if(alp==1) "PCA.1"
+			else paste("X +", alp, "(X - PCA.1)")
+		ylab <- if(alp==0) "Y"
+			else if(alp==1) "PCA.2"
+			else paste("Y +", alp, "(Y - PCA.2)")
+		interpPlot(XY, scores, alp, 
+			pch=16,
+			main = main,
+			xlab = xlab,
+			ylab = ylab,
+			ellipse=TRUE, ellipse.args=(list(levels=0.68, fill=TRUE, fill.alpha=(1-alp)/2)), 
+			abline=TRUE, id.n=2, id.cex=1.2, cex.lab=1.25, segments=TRUE)
+		Sys.sleep(1)
+	}
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

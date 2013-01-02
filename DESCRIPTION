@@ -9,7 +9,7 @@ Authors@R: c(person(given = "John", family = "Fox", role="aut"),
 Author: John Fox, Michael Friendly, and Georges Monette
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Depends: R (>= 2.10), car, graphics, stats, MASS
-Suggests: rgl, candisc, effects, reshape, gplots, nlme, lattice, reshape2, corrgram, FRB
+Suggests: rgl, candisc, effects, reshape, gplots, nlme, lattice, reshape2, corrgram, FRB, animation
 LazyLoad: yes
 LazyData: yes
 Description: Provides HE plot functions for visualizing hypothesis tests in multivariate linear models. They represents sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions).
