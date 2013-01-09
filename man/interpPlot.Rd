@@ -17,11 +17,14 @@ linear regresion line, and line segments showing the movement of
 points.
 }
 \usage{
-interpPlot(xy1, xy2, alpha, xlim, ylim, 
-	ellipse = FALSE, ellipse.args = NULL, 
-	abline = FALSE, col.lines = palette()[2], lwd = 2, 
-	id.method = "mahal", labels = rownames(xy1), id.n = 0, id.cex = 1, id.col = palette()[1], 
-	segments = FALSE, segment.col = "darkgray", ...)
+interpPlot(xy1, xy2, alpha,
+		xlim, ylim, points=TRUE, add=FALSE, col=palette()[1],
+		ellipse = FALSE, ellipse.args = NULL, 
+		abline=FALSE, col.lines = palette()[2], lwd=2,
+		id.method = "mahal", labels=rownames(xy1), 
+		id.n = 0, id.cex = 1, id.col = palette()[1],
+		segments=FALSE, segment.col="darkgray",
+		 ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -33,17 +36,29 @@ Second data set, a 2-column matrix or data.frame
 
 }
   \item{alpha}{
-The value of the interpolation fraction, \code{0 <= alpha <= 1)}
+The value of the interpolation fraction, typically (but not necessarily) \code{0 <= alpha <= 1)}.
 }
   \item{xlim, ylim}{
 x, y limits for the plot.  If not specified, the function uses the
 ranges of \code{rbind(xy1, xy2)}.
 }
+  \item{points}{
+Logical. Whether to plot the points in the current interpolation?
+}
+
+  \item{col}{
+Color for plotted points.
+}
+
+  \item{add}{
+Logical. Whether to add to an existing plot?
+}
+
   \item{ellipse}{
 logical. \code{TRUE} to plot a \code{dataEllipse}
 }
   \item{ellipse.args}{
-arguments to \code{dataEllipse}
+other arguments pqassed to \code{dataEllipse}
 }
   \item{abline}{
 logical. \code{TRUE} to plot the linear regression line for \code{XY}
@@ -79,11 +94,13 @@ line color for segments
 other arguments passed to \code{plot()}
 }
 }
-%\details{
-%%  ~~ If necessary, more details than the description above ~~
-%}
+\details{
+Interpolations other than linear can be obtained by using a non-linear series of
+\code{alpha} values.  For example \code{alpha=sin(seq(0,1,.1)/sin(1)} will give
+a sinusoid interpolation.
+}
 \value{
-	None.
+Returns invisibly the interpolated XY points.
 }
 %\references{
 %%% ~put references to the literature/web site here ~
@@ -93,14 +110,14 @@ Michael Friendly
 }
 \note{
 The examples here just use on-screen animations to the console graphics window.
-The \code{animation} package provides facilities to save these in various formats.
+The \code{\link[animation]{animation}} package provides facilities to save these in various formats.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 \code{\link[car]{dataEllipse}},
-\code{\link[car]{showLabels}}
+\code{\link[car]{showLabels}},
 \code{\link[animation]{animation}}
 
 }
@@ -165,26 +182,47 @@ abline(lm(Comp.2 ~ Comp.1, data=as.data.frame(scores)), lwd=2, col="red")
 
 # show interpolation
 
-alpha <- seq(0,1,.1)
-for (alp in alpha) {
-	main <- if(alp==0) "Original data"
-		else if(alp==1) "PCA scores"
-		else paste(round(100*alp,1), "\% interpolation")
-		xlab <- if(alp==0) "X"
-			else if(alp==1) "PCA.1"
-			else paste("X +", alp, "(X - PCA.1)")
-		ylab <- if(alp==0) "Y"
-			else if(alp==1) "PCA.2"
-			else paste("Y +", alp, "(Y - PCA.2)")
+# functions for labels, as a function of alpha
+main <- function(alpha) {if(alpha==0) "Original data" 
+	else if(alpha==1) "PCA scores"
+	else paste(round(100*alpha,1), "\% interpolation")}
+xlab <- function(alpha) {if(alpha==0) "X"
+	else if(alpha==1) "PCA.1"
+	else paste("X +", alpha, "(X - PCA.1)")}
+ylab <- function(alpha) {if(alpha==0) "Y"
+	else if(alpha==1) "PCA.2"
+	else paste("Y +", alpha, "(Y - PCA.2)")}
+
+interpPCA <- function(XY, alpha = seq(0,1,.1)) {
+	XY <- scale(XY, center=TRUE, scale=FALSE)
+	if (is.null(rownames(XY))) rownames(XY) <- 1:nrow(XY)
+	pca <- princomp(XY, cor=TRUE)
+	scores <- pca$scores
+
+	for (alp in alpha) {
 		interpPlot(XY, scores, alp, 
 			pch=16,
-			main = main,
-			xlab = xlab,
-			ylab = ylab,
+			main = main(alp),
+			xlab = xlab(alp),
+			ylab = ylab(alp),
 			ellipse=TRUE, ellipse.args=(list(levels=0.68, fill=TRUE, fill.alpha=(1-alp)/2)), 
 			abline=TRUE, id.n=2, id.cex=1.2, cex.lab=1.25, segments=TRUE)
 		Sys.sleep(1)
 	}
+}
+
+# show in R console
+interpPCA(XY)
+
+\dontrun{
+library(animation)
+saveGIF({
+	interpPCA(XY, alpha <- seq(0,1,.1))
+	},
+	movie.name="outlier-demo.gif", ani.width=480, ani.height=480, interval=1.5)
+
+}
+
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
