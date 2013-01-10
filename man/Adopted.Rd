@@ -70,6 +70,7 @@ par(op)
 # between-S (MMReg) plots
 heplot(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
 	main="IQ scores of adopted children: MMReg")
+
 pairs(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")))
 
 heplot3d(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
@@ -82,6 +83,7 @@ Anova(Adopted.mod, idata=Age, idesign=~Age, test="Roy")
 
 # within-S plots
 heplot(Adopted.mod, idata=Age, idesign=~Age, iterm="Age",
+	cex=1.25, cex.lab=1.4, fill=c(FALSE, TRUE),
 	hypotheses=list("Reg"=c("AMED", "BMIQ"))
 	)
 
