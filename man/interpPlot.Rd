@@ -153,9 +153,11 @@ dunc.anim <- function(variable, other, alpha=seq(0, 1, .1)) {
 }
 
 # show these in the R console
+if(interactive()) {
 dunc.anim("income", "education")
 
 dunc.anim("education", "income")
+}
 
 ############################################
 # correlated bivariate data with 2 outliers
@@ -212,7 +214,9 @@ interpPCA <- function(XY, alpha = seq(0,1,.1)) {
 }
 
 # show in R console
+if(interactive()) {
 interpPCA(XY)
+}
 
 \dontrun{
 library(animation)

@@ -27,7 +27,7 @@ Several tutorial vignettes are also included.
 Package: \tab heplots\cr
 Type: \tab Package\cr
 Version: \tab 1.0-4\cr
-Date: \tab 2012-12-29\cr
+Date: \tab 2013-01-12\cr
 License: \tab GPL (>= 2), GPL version 2 or newer\cr
 }
 
