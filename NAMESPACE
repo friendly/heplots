@@ -4,10 +4,13 @@
 # last modified 27 January 2010 by M. Friendly: export statList etc
 # last modified 5 Aug 2010 by M. Friendly: export etasq, gsorth, termMeans
 # last modified 4 Oct 2010 by M. Friendly: trans.colors
+# last modified 14 Jan 2013 by M. Friendly: interpPlot, label.ellipse
 export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, statList, covList, colMeansList, arrow3d,
 	etasq, gsorth, termMeans, trans.colors,
 	robmlm, robmlm.default, robmlm.formula,
-  interpPlot)
+  	interpPlot, 
+  	label.ellipse
+  	)
 S3method(heplot, mlm)
 S3method(heplot3d, mlm)
 S3method(pairs, mlm)

@@ -1,3 +1,6 @@
+Version 1.0-6 (2013-01-14)
+o Added label.ellipse() as an exported function
+
 Version 1.0-4 (2012-12-29)
 o Added interpPlot for plotting interpolations between two data sets, with data ellipses, etc.
 o interpPlot gains add=, points= and col= arguments

@@ -19,15 +19,15 @@ The package also provides a collection of  data sets illustrating
 a variety of multivariate linear models of the types listed above,
 together with graphical displays.
 
-Several tutorial vignettes are also included.
+Several tutorial vignettes are also included.  See \code{vignette(package="heplots")}.
 }
 
 \details{
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 1.0-4\cr
-Date: \tab 2013-01-12\cr
+Version: \tab 1.0-6\cr
+Date: \tab 2013-01-14\cr
 License: \tab GPL (>= 2), GPL version 2 or newer\cr
 }
 
@@ -96,9 +96,12 @@ Fox, J., Friendly, M. & Monette, G. (2007).
   \emph{DSC 2007: Directions in Statistical Computing}.
   \url{http://socserv.socsci.mcmaster.ca/jfox/heplots-dsc-paper.pdf}
 
-Friendly, Michael (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
+Friendly, M. (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
   37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
 
+Fox, J., Friendly, M. & Weisberg, S. (2013).
+Hypothesis Tests for Multivariate Linear Models Using the car Package.
+\emph{The R Journal}, in press.
 }
 
 \keyword{package}
