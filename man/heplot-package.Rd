@@ -101,7 +101,9 @@ Friendly, M. (2010). HE Plots for Repeated Measures Designs. \emph{Journal of St
 
 Fox, J., Friendly, M. & Weisberg, S. (2013).
 Hypothesis Tests for Multivariate Linear Models Using the car Package.
-\emph{The R Journal}, in press.
+\emph{The R Journal}, in press,
+\url{http://journal.r-project.org/accepted/2012-02/Fox+Friendly+Weisberg.pdf}.
+
 }
 
 \keyword{package}

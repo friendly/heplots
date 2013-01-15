@@ -17,7 +17,8 @@ designs treated from a multivariate perspective.
 heplot(mod, ...)
 
 \method{heplot}{mlm}(mod, terms, hypotheses, term.labels = TRUE,
-    hyp.labels = TRUE, err.label="Error", variables = 1:2, error.ellipse = !add, 
+    hyp.labels = TRUE, err.label="Error", label.pos=NULL,
+    variables = 1:2, error.ellipse = !add, 
     factor.means = !add, grand.mean = !add, remove.intercept = TRUE,
     type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
 	icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL, markH0=!is.null(iterm),
@@ -49,6 +50,18 @@ heplot(mod, ...)
     be plotted. If \code{TRUE} (the default) the names of components of the list of
     hypotheses are used; if \code{FALSE}, hypothesis labels are not plotted.}
   \item{err.label}{Label for the error ellipse}
+
+  \item{label.pos}{
+	Label position, a vector of integers (in \code{0:4}) or character strings
+	(in \code{c("center", "bottom", "left", "top", "right")}) use in labeling ellipses,
+	recycled as necessary.
+	Values of 1, 2, 3 and 4, respectively indicate positions below, to the left of, above 
+	and to the right of the max/min coordinates of the ellipse; the value 0 specifies
+	the centroid of the \code{ellipse} object.
+	The default, \code{label.pos=NULL}
+	uses the correlation of the \code{ellipse} to determine "top" (r>=0) or "bottom" (r<0).
+}
+
   \item{variables}{indices or names of the two response variables to be plotted;
     defaults to \code{1:2}.}
   \item{error.ellipse}{if \code{TRUE}, plot the error ellipse; defaults to \code{TRUE},
@@ -229,6 +242,10 @@ Friendly, M. (2007).
 Friendly, Michael (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
   37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
 
+Fox, J., Friendly, M. & Weisberg, S. (2013).
+Hypothesis Tests for Multivariate Linear Models Using the car Package.
+\emph{The R Journal}, in press, 
+\url{http://journal.r-project.org/accepted/2012-02/Fox+Friendly+Weisberg.pdf}.
 }
 
 \seealso{
@@ -256,8 +273,11 @@ heplot(iris.mod, hypotheses=hyp)
 heplot(iris.mod, hypotheses=hyp, size="effect", add=TRUE)
 
 # try filled ellipses
-heplot(iris.mod, hypotheses=hyp, fill=TRUE, col=c("red", "blue"))
+heplot(iris.mod, hypotheses=hyp, fill=TRUE, fill.alpha=0.2, col=c("red", "blue"))
 heplot(iris.mod, hypotheses=hyp, fill=TRUE, col=c("red", "blue"), lty=c(0,0,1,1))
+# vary label position and fill.alpha
+heplot(iris.mod, hypotheses=hyp, fill=TRUE, fill.alpha=c(0.3,0.1), col=c("red", "blue"), lty=c(0,0,1,1), label.pos=0:3)
+
 
 hep <-heplot(iris.mod, variables=c(1,3),  hypotheses=hyp)
 str(hep)

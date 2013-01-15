@@ -22,6 +22,8 @@
 # -- added last() to utility.R
 # -- added err.label to allow changing label for Error ellipse
 # -- changed default colors from palette()[-1] to a better collection, also allowing options("heplot.colors")
+#  15 Jan 2013 by M. Friendly
+# -- replaced internal label.ellipse with separate function; added label.pos= argument
 
 `heplot` <-
 		function(mod, ...) UseMethod("heplot")
@@ -34,6 +36,7 @@
 				term.labels=TRUE,  # TRUE, FALSE or a vector of term labels of length(terms)
 				hyp.labels=TRUE,   # as above for term.labels
 				err.label="Error",
+				label.pos=NULL,    # label positions: NULL or 0:4
 				variables=1:2,     # x,y variables for the plot [variable names or numbers]
 				error.ellipse=!add,
 				factor.means=!add,
@@ -81,21 +84,21 @@
 		order <- order(attr(Q, "pivot"))
 		t( c(center) + t( circle %*% Q[,order]))
 	}
-	label.ellipse <- function(ellipse, label, col){
-		if (cor(ellipse)[1,2] >= 0){
-			index <- which.max(ellipse[,2])
-			x <- ellipse[index, 1] + 0.5 * strwidth(label)  # was: "A"
-			y <- ellipse[index, 2] + 0.5 *strheight("A")
-			adj <- c(1, 0) 
-		}
-		else {
-			index <- which.min(ellipse[,2])
-			x <- ellipse[index, 1] - 0.5 * strwidth(label)  # was: "A"
-			y <- ellipse[index, 2] - 0.5 * strheight("A")
-			adj <- c(0, 1) 
-		}
-		text(x, y, label, adj=adj, xpd=TRUE, col=col, ...)
-	}
+#	label.ellipse <- function(ellipse, label, col){
+#		if (cor(ellipse)[1,2] >= 0){
+#			index <- which.max(ellipse[,2])
+#			x <- ellipse[index, 1] + 0.5 * strwidth(label)  # was: "A"
+#			y <- ellipse[index, 2] + 0.5 *strheight("A")
+#			adj <- c(1, 0) 
+#		}
+#		else {
+#			index <- which.min(ellipse[,2])
+#			x <- ellipse[index, 1] - 0.5 * strwidth(label)  # was: "A"
+#			y <- ellipse[index, 2] - 0.5 * strheight("A")
+#			adj <- c(0, 1) 
+#		}
+#		text(x, y, label, adj=adj, xpd=TRUE, col=col, ...)
+#	}
 #	last <- function(x) {x[length(x)]}
 	
 	if (!require(car)) stop("car package is required.")
@@ -184,6 +187,7 @@
 	fill <- he.rep(fill, n.ell)
 	fill.alpha <- he.rep(fill.alpha, n.ell)
 	fill.col <- trans.colors(col, fill.alpha)
+	label.pos <- he.rep(label.pos, n.ell)
 	# TODO:  take account of rank=1?
 	fill.col <- ifelse(fill, fill.col, NA)
 	E.col<- last(col)
@@ -264,7 +268,7 @@
 	if (error.ellipse){
 #		lines(E.ellipse, col=E.col, lty=lty[length(lty)], lwd=lwd[length(lwd)])
 		polygon(E.ellipse, col=last(fill.col), border=last(col), lty=last(lty), lwd=last(lwd))
-		label.ellipse(E.ellipse, err.label, col=last(col))
+		label.ellipse(E.ellipse, err.label, col=last(col), label.pos=last(label.pos))
 	}
 	term.labels <- if (n.terms == 0) NULL
 			else if (!is.logical(term.labels)) term.labels
@@ -273,7 +277,7 @@
 #			lines(H.ellipse[[term]], col=col[term], lty=lty[term], lwd=lwd[term])
 			# TODO: avoid polygon if rank=1 ???
 			polygon(H.ellipse[[term]], col=fill.col[term], border=col[term],  lty=lty[term], lwd=lwd[term])
-			label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term]) 
+			label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term], label.pos=label.pos[term]) 
 		}   
 	hyp.labels <- if (n.hyp == 0) NULL
 			else if (!is.logical(hyp.labels)) hyp.labels
@@ -282,7 +286,7 @@
 			ell <- n.terms + hyp
 #			lines(H.ellipse[[ell]], col=col[ell], lty=lty[ell], lwd=lwd[ell])
 			polygon(H.ellipse[[ell]], col=fill.col[ell], border=col[ell],  lty=lty[ell], lwd=lwd[ell])
-			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell])
+			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell], label.pos=label.pos[ell])
 		}
 	if (!add && (!is.logical(factor.means) || factor.means)){
 		for (fac in factors){
