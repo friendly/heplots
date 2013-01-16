@@ -51,30 +51,3 @@ label.ellipse <- function(ellipse, label, col="black",
 	text(x, y, label, pos=label.pos, xpd=xpd, col=col, ...)
 }
 
-
-TESTME <- TRUE
-if (TESTME) {
-library(car)
-op <- par(mfrow=c(1,2))
-plot(c(-2,2), c(-3,3), type="n", xlab="x", ylab="y")
-E <- ellipse(c(0,0), matrix(c(1,2,2,5), 2, 2), 1, add=TRUE)
-
-label.ellipse(E, "default", col="red", cex=2)
-label.ellipse(E, "center", label.pos=0)
-label.ellipse(E, "bottom", label.pos=1)
-label.ellipse(E, "top", label.pos=3)
-label.ellipse(E, "left", label.pos=2)
-label.ellipse(E, "right", label.pos=4)
-
-plot(c(-2,2), c(-3,3), type="n", xlab="x", ylab="y")
-E <- ellipse(c(0,0), matrix(c(1,-2,-2,5), 2, 2), 1, add=TRUE)
-
-label.ellipse(E, "default", col="red", cex=2)
-label.ellipse(E, "center", label.pos="center")
-label.ellipse(E, "bottom", label.pos=1, cex=1.5)
-label.ellipse(E, "top", label.pos=3, cex=1.5)
-label.ellipse(E, "left", label.pos=2, cex=1.5)
-label.ellipse(E, "right", label.pos=4, cex=1.5)
-par(op)
-
-}

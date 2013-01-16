@@ -5,11 +5,16 @@
 # last modified 5 Aug 2010 by M. Friendly: export etasq, gsorth, termMeans
 # last modified 4 Oct 2010 by M. Friendly: trans.colors
 # last modified 14 Jan 2013 by M. Friendly: interpPlot, label.ellipse
+# last modified 16 Jan 2013 by M. Friendly: coefplot
+
+#importFrom(car, car:::df.terms, car:::df.terms.default, car:::is.aliased)
+
 export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, statList, covList, colMeansList, arrow3d,
 	etasq, gsorth, termMeans, trans.colors,
 	robmlm, robmlm.default, robmlm.formula,
   	interpPlot, 
-  	label.ellipse
+  	label.ellipse,
+  	coefplot
   	)
 S3method(heplot, mlm)
 S3method(heplot3d, mlm)
@@ -21,4 +26,5 @@ S3method(etasq,Anova.mlm)
 S3method(vcov,mlm)
 S3method(print,robmlm)
 S3method(summary,robmlm)
+S3method(coefplot,mlm)
 
