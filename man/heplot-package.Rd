@@ -13,7 +13,9 @@ in multivariate linear models (MANOVA, multivariate multiple regression, MANCOVA
 They represent sums-of-squares-and-products matrices for linear hypotheses and for 
 error using ellipses (in two dimensions), ellipsoids (in three dimensions),
 or by line segments in one dimension.
-See Fox, Friendly and Monette (2007) for a brief introduction.
+See Fox, Friendly and Monette (2007) for a brief introduction
+and Friendly, Monette and Fox (2013) for a general discussion of the role of
+elliptical geometry in statistical understanding.
 
 The package also provides a collection of  data sets illustrating
 a variety of multivariate linear models of the types listed above,
@@ -100,9 +102,14 @@ Friendly, M. (2010). HE Plots for Repeated Measures Designs. \emph{Journal of St
   37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
 
 Fox, J., Friendly, M. & Weisberg, S. (2013).
-Hypothesis Tests for Multivariate Linear Models Using the car Package.
-\emph{The R Journal}, in press,
-\url{http://journal.r-project.org/accepted/2012-02/Fox+Friendly+Weisberg.pdf}.
+	Hypothesis Tests for Multivariate Linear Models Using the car Package.
+	\emph{The R Journal}, in press,
+	\url{http://journal.r-project.org/accepted/2012-02/Fox+Friendly+Weisberg.pdf}.
+
+Friendly, M.,  Monette, G. & Fox, J. (2013).
+	Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry.
+	\emph{Statistical Science}, 2013, 28 (1), in press,
+	\url{http://datavis.ca/papers/ellipses.pdf}.
 
 }
 
