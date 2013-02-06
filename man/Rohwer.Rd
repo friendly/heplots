@@ -56,8 +56,10 @@ heplot(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 
 # or 3D plot
+\dontrun{
 col <- c("pink", "black", "blue", "cyan", "magenta", "brown", "gray")
 heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), col=col)
+}
 
 ## fit separate, independent models for Lo/Hi SES
 rohwer.ses1 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Hi")

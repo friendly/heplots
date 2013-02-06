@@ -55,7 +55,9 @@ clr <- c("red", "blue", "darkgreen", "magenta", "brown", "black", "darkgray")
 heplot(grades.mod, col=clr)
 pairs(grades.mod, col=clr)
 
+\dontrun{
 heplot3d(grades.mod, col=clr, wire=FALSE)
+}
 
 if (require(candisc)) {
 	# calculate canonical results for all terms

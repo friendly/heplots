@@ -205,7 +205,10 @@ heplot3d(soils.mod, variables=c("Mg", "Ca", "Na"), wire=FALSE)
 
 # Plastic data
 plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
-heplot3d(plastic.mod, col=c("red", "blue", "brown", "green3"), wire=FALSE)} 
+\dontrun{
+heplot3d(plastic.mod, col=c("red", "blue", "brown", "green3"), wire=FALSE)
+}
+}
 
 \keyword{hplot}
 \keyword{aplot}
