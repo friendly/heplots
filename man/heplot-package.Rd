@@ -28,8 +28,8 @@ Several tutorial vignettes are also included.  See \code{vignette(package="heplo
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 1.0-7\cr
-Date: \tab 2013-02-07\cr
+Version: \tab 1.0-8\cr
+Date: \tab 2013-02-22\cr
 License: \tab GPL (>= 2), GPL version 2 or newer\cr
 }
 
@@ -67,10 +67,12 @@ linear hypotheses using the  \code{\link[car]{Anova}} and \code{\link[car]{linea
 functions. 
 
 The \code{\link[candisc]{candisc-package}} package provides functions for 
-visualizing effects for model terms in a low-dimensional canonical space
+visualizing effects for MLM model terms in a low-dimensional canonical space
 that shows the largest hypothesis relative to error variation.
+The \pkg{candisc} package now also includes related methods for
+canonical correlation analysis.
 
-The package also contains a large number of multivariate data sets with examples
+The \code{heplots} package also contains a large number of multivariate data sets with examples
 of analyses and graphic displays.  Use \code{data(package="heplots")} to see
 the current list.
 }
@@ -108,7 +110,7 @@ Fox, J., Friendly, M. & Weisberg, S. (2013).
 
 Friendly, M.,  Monette, G. & Fox, J. (2013).
 	Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry.
-	\emph{Statistical Science}, 2013, 28 (1), in press,
+	\emph{Statistical Science}, 2013, 28 (1), 1-39,
 	\url{http://datavis.ca/papers/ellipses.pdf}.
 
 }

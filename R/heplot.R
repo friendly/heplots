@@ -24,6 +24,8 @@
 # -- changed default colors from palette()[-1] to a better collection, also allowing options("heplot.colors")
 #  15 Jan 2013 by M. Friendly
 # -- replaced internal label.ellipse with separate function; added label.pos= argument
+#  22 Feb 2013
+# -- added ... to label.ellipse to be able to pass cex=
 
 `heplot` <-
 		function(mod, ...) UseMethod("heplot")
@@ -268,7 +270,7 @@
 	if (error.ellipse){
 #		lines(E.ellipse, col=E.col, lty=lty[length(lty)], lwd=lwd[length(lwd)])
 		polygon(E.ellipse, col=last(fill.col), border=last(col), lty=last(lty), lwd=last(lwd))
-		label.ellipse(E.ellipse, err.label, col=last(col), label.pos=last(label.pos))
+		label.ellipse(E.ellipse, err.label, col=last(col), label.pos=last(label.pos), ...)
 	}
 	term.labels <- if (n.terms == 0) NULL
 			else if (!is.logical(term.labels)) term.labels
@@ -277,7 +279,7 @@
 #			lines(H.ellipse[[term]], col=col[term], lty=lty[term], lwd=lwd[term])
 			# TODO: avoid polygon if rank=1 ???
 			polygon(H.ellipse[[term]], col=fill.col[term], border=col[term],  lty=lty[term], lwd=lwd[term])
-			label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term], label.pos=label.pos[term]) 
+			label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term], label.pos=label.pos[term], ...) 
 		}   
 	hyp.labels <- if (n.hyp == 0) NULL
 			else if (!is.logical(hyp.labels)) hyp.labels
@@ -286,7 +288,7 @@
 			ell <- n.terms + hyp
 #			lines(H.ellipse[[ell]], col=col[ell], lty=lty[ell], lwd=lwd[ell])
 			polygon(H.ellipse[[ell]], col=fill.col[ell], border=col[ell],  lty=lty[ell], lwd=lwd[ell])
-			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell], label.pos=label.pos[ell])
+			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell], label.pos=label.pos[ell], ...)
 		}
 	if (!add && (!is.logical(factor.means) || factor.means)){
 		for (fac in factors){
