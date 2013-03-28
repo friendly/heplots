@@ -1,6 +1,10 @@
-Version 1.0-7 (2013-02.07)
-o Made some heplot3d() examples \dontrun{} to reduce example execution time to satisfy CRAN nits
+Version 1.0-8 (2013-02-22)
 o In heplot.mlm(), added ... to label.ellipse to be able to pass cex=
+o Added NLSY data with examples of testing linearHypotheses
+ 
+
+Version 1.0-7 (2013-02-07)
+o Made some heplot3d() examples \dontrun{} to reduce example execution time to satisfy CRAN nits
 
 Version 1.0-6 (2013-01-14)
 o Added label.ellipse() as a more general exported function.
