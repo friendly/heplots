@@ -204,11 +204,18 @@ function(mod, ...) UseMethod("heplot3d")
 	shade.alpha <- he.rep(shade.alpha, n.ell)
 	wire  <- he.rep(wire, n.ell)
 	
-	if (!add){    
-		rgl.clear()
-		rgl.viewpoint(fov=fov)
-		rgl.bg(color=bg.col, fogtype=fogtype)    
+#	if (!add){    
+#		rgl.clear()
+#		rgl.viewpoint(fov=fov)
+#		rgl.bg(color=bg.col, fogtype=fogtype)    
+#	} 
+#  DONE: above rgl.* functions replaced with *3d functions
+if (!add){    
+		open3d()
+		view3d(fov=fov)
+		bg3d(color=bg.col, fogtype=fogtype)    
 	} 
+	
 	if (error.ellipsoid) {
 		E.ellipsoid <- ellipsoid(gmean, E, radius, col=E.col, label=err.label, 
 				shade=shade[[length(shade)]], alpha=shade.alpha[[length(shade.alpha)]],
