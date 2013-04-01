@@ -28,9 +28,12 @@ considered as background variables necessary to control for.
 Interest might then be focused on whether 
 the behavioural variables \code{antisoc} and \code{hyperact} contribute beyond that.
 }
-%\source{
-%%  ~~ reference to a publication or URL from which the data were obtained ~~
-%}
+\source{
+This dataset was derived from a larger one used by Patrick Curran
+at the 1997 meeting of the Society for Research on Child Development (SRCD).
+A description now only exists on the WayBack Machine,
+\url{http://web.archive.org/web/20050404145001/http://www.unc.edu/~curran/example.html}.
+}
 %\references{
 %%%  ~~ possibly secondary sources and usages ~~
 %}

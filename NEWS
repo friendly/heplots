@@ -2,6 +2,7 @@ Version 1.0-8 (2013-02-22)
 o In heplot.mlm(), added ... to label.ellipse to be able to pass cex=
 o Added NLSY data with examples of testing linearHypotheses
 o In heplot3d(), rgl.* functions replaced with *3d() equivalents
+o Extended gsorth description and examples
  
 
 Version 1.0-7 (2013-02-07)

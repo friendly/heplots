@@ -10,6 +10,16 @@ Orthogonalize successive columns of a data frame or matrix
 in the Gram-Schmidt method, to transform a matrix or numeric
 columns of a data frame into an uncorrelated set, possibly
 retaining the same column means and standard deviations as the original.
+
+In statistical applications, interpretation depends on 
+the \code{order} of the variables orthogonalized.
+In multivariate linear models, orthogonalizing the response, Y variables
+provides the equivalent of step-down tests, where Y1 is tested alone,
+and then Y2.1, Y3.12, etc. can be tested to determine their
+additional contributions over the previous response variables. 
+
+Similarly, orthogonalizing the model X variables provides the
+equivalent of Type I tests, such as provided by \code{\link[stats]{anova}}.
 }
 \usage{
 gsorth(y, order, recenter = TRUE, rescale = TRUE, adjnames = TRUE)
@@ -96,6 +106,9 @@ Anova(rohwer.mod1)
 # compare with anova()
 anova(rohwer.mod1)
 
+# compare heplots for original Xs and orthogonalized, Type I
+heplot(rohwer.mod)
+heplot(rohwer.mod1)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
