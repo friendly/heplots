@@ -46,7 +46,7 @@ Michael Friendly
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 \code{\link[grDevices]{col2rgb}},
-\code{\link[grDevices]{rgb}},
+\code{\link[grDevices]{rgb}}, \code{\link[grDevices]{adjustcolor}},
 }
 \examples{
 trans.colors(palette(), alpha=0.5)

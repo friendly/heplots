@@ -1,3 +1,6 @@
+Version 1.0-9 (2013-04-19)
+o Added Pottery2 data, extending car::Pottery
+
 Version 1.0-8 (2013-02-22)
 o In heplot.mlm(), added ... to label.ellipse to be able to pass cex=
 o Added NLSY data with examples of testing linearHypotheses
