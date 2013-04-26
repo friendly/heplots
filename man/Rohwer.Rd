@@ -57,7 +57,7 @@ pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 
 # or 3D plot
 \dontrun{
-col <- c("pink", "black", "blue", "cyan", "magenta", "brown", "gray")
+col <- c("red", "black", "blue", "cyan", "magenta", "brown", "gray")
 heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), col=col)
 }
 

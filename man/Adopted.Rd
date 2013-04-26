@@ -74,7 +74,7 @@ heplot(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
 pairs(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")))
 
 heplot3d(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
-	col = c("pink", "blue", "black", "gray"))
+	col = c("red", "blue", "black", "gray"), wire=FALSE)
 
 # Treat IQ at different ages as a repeated measure factor
 # within-S models & plots

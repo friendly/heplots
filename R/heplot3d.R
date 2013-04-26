@@ -21,6 +21,9 @@
 # last modified 12 Feb 2010 by M. Friendly -- fixed buglet with text3d causing rgl to crash (thx: Duncan Murdoch)
 # last modified 23 Jul 2010 by M. Friendly -- return radius
 # -- added err.label to allow changing label for Error ellipse
+# last modified 26 Apr 2013 by M. Friendly 
+# -- modified ellipsoid to reduce striation (Thx: Duncan Murdoch)
+# -- changed default colors and default fill.alpha
 
 savedvars <- new.env(parent=emptyenv())
 
@@ -55,11 +58,11 @@ function(mod, ...) UseMethod("heplot3d")
 				alpha=0.05,
 				segments=40,          # line segments in each ellipse
 #				col=palette()[-1],    # colors for E matrix, H matrices
-				col=getOption("heplot3d.colors", c("pink", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")),
+				col=getOption("heplot3d.colors", c("red", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")),
 				# colors for H matrices, E matrix
 				lwd=c(1, 4),          # line width for drawing ellipsoids and 1d degenerate ellipsoids
 				shade=TRUE,           # use shade3d to render ellipsoids?
-				shade.alpha=0.1,      # alpha transparency for shaded3d
+				shade.alpha=0.2,      # alpha transparency for shaded3d
 				wire=c(TRUE,FALSE),   # use wire3d to render ellipsoids?
 				bg.col=c("white", "black"),  # background colour
 				fogtype=c("none", "exp2", "linear", "exp"), # fog -- for depth cueing
@@ -81,7 +84,8 @@ function(mod, ...) UseMethod("heplot3d")
 		# modified to return the bbox of the ellipsoid
 		degvec <- seq(0, 2*pi, length=segments)
 		ecoord2 <- function(p) c(cos(p[1])*sin(p[2]), sin(p[1])*sin(p[2]), cos(p[2]))
-		v <- t(apply(expand.grid(degvec,degvec), 1, ecoord2))
+		# v <- t(apply(expand.grid(degvec,degvec), 1, ecoord2))  # modified to make smoother
+		v <- t(apply(expand.grid(degvec,degvec/2), 1, ecoord2)) 
 		if (!warn.rank){
 			warn <- options(warn=-1)
 			on.exit(options(warn))
@@ -109,7 +113,6 @@ function(mod, ...) UseMethod("heplot3d")
 		if(wire) wire3d(ellips, col=col, size=lwd, lit=FALSE)
 		bbox <- matrix(par3d("bbox"), nrow=2)
 		ranges <- apply(bbox, 2, diff)
-#        rgl.texts(x[which.max(x[,2]),] + offset*ranges, adj=0, text=label, color=col, lit=FALSE)
 		if (!is.null(label) && label !="")
 			texts3d(x[which.max(x[,2]),] + offset*ranges, adj=0, texts=label, color=col, lit=FALSE)
 		rownames(bbox) <- c("min", "max")
@@ -126,7 +129,6 @@ function(mod, ...) UseMethod("heplot3d")
 	fogtype <- match.arg(fogtype)
 	bg.col <- match.arg(bg.col)    
 	data <- model.frame(mod)
-#	if (missing(manova)) manova <- Anova(mod, type=type)    
 	if (missing(manova)) {
 		if (is.null(imatrix)) {
 			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
@@ -204,12 +206,6 @@ function(mod, ...) UseMethod("heplot3d")
 	shade.alpha <- he.rep(shade.alpha, n.ell)
 	wire  <- he.rep(wire, n.ell)
 	
-#	if (!add){    
-#		rgl.clear()
-#		rgl.viewpoint(fov=fov)
-#		rgl.bg(color=bg.col, fogtype=fogtype)    
-#	} 
-#  DONE: above rgl.* functions replaced with *3d functions
 if (!add){    
 		open3d()
 		view3d(fov=fov)
@@ -290,8 +286,8 @@ if (!add){
 				pcol <- if (loc>0) col[loc] else "black"
 				for (m in 1:nrow(means)) {
 					ellipsoid(unlist(means[m, 2:4]), diag((ranges/100))^2, col=pcol, wire=FALSE, alpha=0.8)
-#            	points3d(unlist(means[m, 2:4]), size=3, color=pcol)
-#							spheres3d(unlist(means[m, 2:4]), radius=diag((ranges/30))^2, color=pcol)
+#            		points3d(unlist(means[m, 2:4]), size=3, color=pcol)
+#					spheres3d(unlist(means[m, 2:4]), radius=diag((ranges/30))^2, color=pcol)
 				}
 				texts3d(means[,2:4] + matrix(offset*ranges, nrow(means), 3, byrow=TRUE), 
 						texts=as.character(means[,1]), color=pcol, adj=0)
