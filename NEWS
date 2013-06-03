@@ -1,3 +1,6 @@
+Version 1.0-10 (2013-06-03)
+o Added demo/HE-other.R, exploring other representations of HE plots
+
 Version 1.0-9 (2013-04-19)
 o Added Pottery2 data, extending car::Pottery
 o Fixed heplot3d to minimize striated rendering of ellipsoids, and also modified default
