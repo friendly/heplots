@@ -21,12 +21,14 @@ heplot(mod, ...)
     variables = 1:2, error.ellipse = !add, 
     factor.means = !add, grand.mean = !add, remove.intercept = TRUE,
     type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
-	icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL, markH0=!is.null(iterm),
+	icontrasts=c("contr.sum", "contr.poly"),
+	imatrix=NULL, iterm=NULL, markH0=!is.null(iterm),
     manova, size = c("evidence", "effect.size"),
     level = 0.68, alpha = 0.05, segments = 40, 
     center.pch = "+", center.cex=2,
     col = getOption("heplot.colors", 
-                    c("red", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")), 
+               c("red", "blue", "black", "darkgreen", 
+                 "darkcyan","magenta", "brown","darkgray")),
     lty = 2:1, lwd = 1:2, 
     fill=FALSE, fill.alpha=0.3,   
     xlab, ylab, main = "", xlim, ylim, axes=TRUE, offset.axes, 
@@ -276,7 +278,8 @@ heplot(iris.mod, hypotheses=hyp, size="effect", add=TRUE)
 heplot(iris.mod, hypotheses=hyp, fill=TRUE, fill.alpha=0.2, col=c("red", "blue"))
 heplot(iris.mod, hypotheses=hyp, fill=TRUE, col=c("red", "blue"), lty=c(0,0,1,1))
 # vary label position and fill.alpha
-heplot(iris.mod, hypotheses=hyp, fill=TRUE, fill.alpha=c(0.3,0.1), col=c("red", "blue"), lty=c(0,0,1,1), label.pos=0:3)
+heplot(iris.mod, hypotheses=hyp, fill=TRUE, fill.alpha=c(0.3,0.1), col=c("red", "blue"), 
+       lty=c(0,0,1,1), label.pos=0:3)
 
 
 hep <-heplot(iris.mod, variables=c(1,3),  hypotheses=hyp)

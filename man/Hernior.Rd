@@ -55,7 +55,8 @@ Hand, D. J., Daly, F., Lunn, A. D., McConway, K. J. and Ostrowski, E. (1994),
 }
 \examples{
 str(Hernior)
-Hern.mod <- lm(cbind(leave, nurse, los) ~ age + sex +  pstat +  build + cardiac + resp, data=Hernior)
+Hern.mod <- lm(cbind(leave, nurse, los) ~ 
+               age + sex +  pstat +  build + cardiac + resp, data=Hernior)
 Anova(Hern.mod, test="Roy") # actually, all tests are identical
 # test overall regression
 linearHypothesis(Hern.mod, c("age", "sexm", "pstat", "build", "cardiac", "resp"))

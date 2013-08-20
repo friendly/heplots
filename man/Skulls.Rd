@@ -64,8 +64,10 @@ linearHypothesis(sk.mod, "epoch.L") # linear component
 linearHypothesis(sk.mod, "epoch.Q") # quadratic component
 
 # typical scatterplots are not very informative
-scatterplot(mb ~ bh|epoch, data=Skulls, ellipse=TRUE, levels=0.68, smooth=FALSE, legend.coords="topright")
-scatterplot(mb ~ bl|epoch, data=Skulls, ellipse=TRUE, levels=0.68, smooth=FALSE, legend.coords="topright")
+scatterplot(mb ~ bh|epoch, data=Skulls, 
+            ellipse=TRUE, levels=0.68, smooth=FALSE, legend.coords="topright")
+scatterplot(mb ~ bl|epoch, data=Skulls, 
+            ellipse=TRUE, levels=0.68, smooth=FALSE, legend.coords="topright")
 
 # HE plots
 

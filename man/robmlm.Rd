@@ -182,9 +182,11 @@ points(sk.rmod$weights, pch=16, col=Skulls$epoch)
 axis(side=1, at=15+seq(0,120,30), labels=levels(Skulls$epoch), tick=FALSE, cex.axis=1)
 
 # heplots to see effect of robmlm vs. mlm
-heplot(sk.mod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q"), xlab=vlab[1], ylab=vlab[2], cex=1.25, lty=1)
+heplot(sk.mod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q"), 
+    xlab=vlab[1], ylab=vlab[2], cex=1.25, lty=1)
 heplot(sk.rmod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q"), 
-	add=TRUE, error.ellipse=TRUE, lwd=c(2,2), lty=c(2,2), term.labels=FALSE, hyp.labels=FALSE, err.label="")
+    add=TRUE, error.ellipse=TRUE, lwd=c(2,2), lty=c(2,2), 
+    term.labels=FALSE, hyp.labels=FALSE, err.label="")
 
 ##############
 # Pottery data
@@ -200,7 +202,8 @@ points(pottery.rmod$weights, pch=16, col=Pottery$Site)
 
 # heplots to see effect of robmlm vs. mlm
 heplot(pottery.mod, cex=1.3, lty=1)
-heplot(pottery.rmod, add=TRUE, error.ellipse=TRUE, lwd=c(2,2), lty=c(2,2), term.labels=FALSE, err.label="")
+heplot(pottery.rmod, add=TRUE, error.ellipse=TRUE, lwd=c(2,2), lty=c(2,2), 
+    term.labels=FALSE, err.label="")
 
 ###############
 # Prestige data
@@ -220,7 +223,8 @@ points(prestige.rmod$weights, pch=16, col=Prestige$type)
 legend(0, 0.7, levels(Prestige$type), pch=16, col=palette()[1:3], bg="white")
 
 heplot(prestige.mod, cex=1.4, lty=1)
-heplot(prestige.rmod, add=TRUE, error.ellipse=TRUE, lwd=c(2,2), lty=c(2,2), term.labels=FALSE, err.label="")
+heplot(prestige.rmod, add=TRUE, error.ellipse=TRUE, lwd=c(2,2), lty=c(2,2), 
+    term.labels=FALSE, err.label="")
 
 
 }

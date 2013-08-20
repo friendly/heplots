@@ -21,11 +21,15 @@ heplot3d(mod, ...)
     manova, size = c("evidence", "effect.size"),
     level = 0.68, alpha = 0.05,  segments = 40, 
 	col=getOption("heplot3d.colors", 
-	              c("red", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")),
+	              c("red", "blue", "black", "darkgreen", 
+	                "darkcyan","magenta", "brown","darkgray")),
     lwd=c(1, 4),
     shade=TRUE, shade.alpha=0.2, wire=c(TRUE,FALSE),
-    bg.col = c("white", "black"), fogtype = c("none", "exp2", "linear", "exp"), 
-    fov = 30, offset = 0.01, xlab, ylab, zlab, xlim, ylim, zlim, add = FALSE, verbose = FALSE, 
+    bg.col = c("white", "black"), 
+    fogtype = c("none", "exp2", "linear", "exp"), 
+    fov = 30, offset = 0.01, 
+    xlab, ylab, zlab, xlim, ylim, zlim, 
+    add = FALSE, verbose = FALSE, 
     warn.rank = FALSE, ...)
 }
 
