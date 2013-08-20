@@ -1,6 +1,7 @@
 ### robust multivariate linear regression
 
 ## John Fox 2012-06-02
+## revised: 2013-08-20 to avoid calling summary.mlm() directly in vcov.mlm()
 
 robmlm <- function(X, ...){
   UseMethod("robmlm")
@@ -129,19 +130,23 @@ print.summary.robmlm <- function(x, ...){
 vcov.mlm <- function (object, ...) {
 # override stats::vcov.mlm to allow weights
 #   adapted from code provided by Michael Friendly
-  SSD.mlm <- function (object, ...) {
-    if (!is.null(object$weights)) { 
-      SSD <- wcrossprod(residuals(object), w=object$weights)
-      df <- sum(object$weights)
-    }
-    else {
-      SSD <- crossprod(residuals(object))
-      df <- object$df.residual
-    }
-    structure(list(SSD=SSD, call = object$call, 
-                   df = df), class = "SSD")
-  }
-  estVar.mlm <- function (object, ...) estVar(SSD(object))
-  so <- summary.mlm(object)[[1L]]
-  kronecker(estVar(object), so$cov.unscaled, make.dimnames = TRUE)
+# For R 3.1.0, to avoid calling summary.mlm directly, change the object class
+#   temporarily to c("mlm", "lm")
+	SSD.mlm <- function (object, ...) {
+		if (!is.null(object$weights)) { 
+			SSD <- wcrossprod(residuals(object), w=object$weights)
+			df <- sum(object$weights)
+		}
+		else {
+			SSD <- crossprod(residuals(object))
+			df <- object$df.residual
+		}
+		structure(list(SSD=SSD, call = object$call, 
+						df = df), class = "SSD")
+	}
+	estVar.mlm <- function (object, ...) estVar(SSD(object))
+	obj <- object
+	class(obj) <- c("mlm", "lm")  # remove robmlm class temporarily
+	so <- summary(obj)[[1L]]
+	kronecker(estVar(object), so$cov.unscaled, make.dimnames = TRUE)
 }

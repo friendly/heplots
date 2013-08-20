@@ -1,3 +1,6 @@
+Version 1.0-11 (2013-08-20)
+o For R 3.1.0, revised vcov.mlm() to avoid calling summary.mlm() directly
+
 Version 1.0-10 (2013-06-03)
 o Added demo/HE-other.R, exploring other representations of HE plots
 

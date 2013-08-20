@@ -28,8 +28,8 @@ Several tutorial vignettes are also included.  See \code{vignette(package="heplo
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 1.0-10\cr
-Date: \tab 2013-06-03\cr
+Version: \tab 1.0-11\cr
+Date: \tab 2013-08-20\cr
 License: \tab GPL (>= 2), GPL version 2 or newer\cr
 }
 
