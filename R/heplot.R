@@ -103,7 +103,7 @@
 #	}
 #	last <- function(x) {x[length(x)]}
 	
-	if (!require(car)) stop("car package is required.")
+	#if (!require(car)) stop("car package is required.")
 	# avoid deprecated warnings from car
 	if (packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 	type <- match.arg(type)

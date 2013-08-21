@@ -52,7 +52,7 @@ function(mod, ...) UseMethod("heplot1d")
 		(dfh/dfe) * qf(alpha, dfh, dfe, lower.tail=FALSE)
 	}
 
-	if (!require(car)) stop("car package is required.")
+	#if (!require(car)) stop("car package is required.")
 	if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 	type <- match.arg(type)
 	size <- match.arg(size)

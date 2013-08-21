@@ -23,7 +23,7 @@ robmlm.default <- function(X, Y, w, P=2*pnorm(4.685, lower.tail=FALSE),
   #   initialize: modeling function to find start values for coefficients,
   #       equation-by-equation; if absent WLS is used
   #   verbose: show iteration history?
-  if (!require(MASS)) stop("MASS package missing")
+  #if (!require(MASS)) stop("MASS package missing")
   p <- ncol(Y)
   if (missing(w) || is.null(w)) w <- rep(1, nrow(Y))
   if (missing(tune)) tune <- qchisq(1 - P, df=p)

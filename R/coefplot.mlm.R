@@ -101,8 +101,9 @@ coefplot.mlm <- function(object, variables=1:2, parm=NULL, df = NULL, level = 0.
 	else parm.labels <- rep(labels, length.out=np)
 	
 	# determine "size" of intervals [perhaps need importFrom(car, car:::df.terms, ...) in NAMESPACE?]
+	# avoid ::: by including df.terms here (utility-car.R)
 	if(is.null(df)) {
-  	df <- if (Scheffe) sum(car:::df.terms(object)) else 2
+  	df <- if (Scheffe) sum(df.terms(object)) else 2
   }
   dfe <- df.residual(object)
 	radius <- sqrt(df * qf(level, df, dfe)) 

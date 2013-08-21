@@ -2,6 +2,7 @@
 # (mod of car:::print.Anova.mlm, just for testing)
 # added etasq.lm 7/29/2010
 # fixed buglet in etasq.lm 12/5/2010
+# copied stats:::Pillai, etc. to utility.R to avoid using :::
 
 etasq <- function(x, ...){
 	UseMethod("etasq", x)
@@ -24,10 +25,10 @@ etasq.Anova.mlm <- function(x, anova=FALSE, ...){
 		eigs <- Re(eigen(qr.coef(if (repeated) qr(x$SSPE[[term]]) else SSPE.qr,
 								x$SSP[[term]]), symmetric = FALSE)$values)
 		tests[term, 1:4] <- switch(test,
-				Pillai = stats:::Pillai(eigs, x$df[term], x$error.df),
-				Wilks = stats:::Wilks(eigs, x$df[term], x$error.df),
-				"Hotelling-Lawley" = stats:::HL(eigs, x$df[term], x$error.df),
-				Roy = stats:::Roy(eigs, x$df[term], x$error.df))
+				Pillai = Pillai(eigs, x$df[term], x$error.df),
+				Wilks = Wilks(eigs, x$df[term], x$error.df),
+				"Hotelling-Lawley" = HL(eigs, x$df[term], x$error.df),
+				Roy = Roy(eigs, x$df[term], x$error.df))
 		s <- min(length(eigs), x$df[term])
 		assoc[term] <- switch(test,
 			Pillai = tests[term,1] / s,
