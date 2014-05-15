@@ -42,17 +42,11 @@
   \code{\link[Sleuth2]{ex1605}}
 }
 \examples{
-\dontshow{
-	# allow to work with car 1
-	if (packageDescription("car")[["Version"]] < 2) {
-		dataEllipse <- data.ellipse
-		linearHypothesis <- linear.hypothesis
-	}
-}
 # Treat as multivariate regression problem
 Adopted.mod <- lm(cbind(Age2IQ, Age4IQ, Age8IQ, Age13IQ) ~ AMED + BMIQ, data=Adopted)
 Adopted.mod
 
+require(car)
 # test overall multivariate regression
 linearHypothesis(Adopted.mod, c("AMED","BMIQ"))
 

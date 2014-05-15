@@ -37,6 +37,7 @@ New York: Wiley, Table 8.3.
 \examples{
 data(FootHead)
 str(FootHead)
+require(car)
 
 # use Helmert contrasts for group
 contrasts(FootHead$group) <- contr.helmert

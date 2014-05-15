@@ -9,6 +9,9 @@
 
 #importFrom(car, car:::df.terms, car:::df.terms.default, car:::is.aliased)
 
+#import(car)
+importFrom(MASS, psi.bisquare, cov.trob)
+
 export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, statList, covList, colMeansList, arrow3d,
 	etasq, gsorth, termMeans, trans.colors,
 	robmlm, robmlm.default, robmlm.formula,

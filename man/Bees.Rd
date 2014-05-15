@@ -60,6 +60,7 @@ SAS Software and Examples
 }
 \examples{
 data(Bees)
+require(car)
 
 # 3-way factorial, ignoring 0 group
 bees.mod <- lm(cbind(Iz,Iy) ~ caste*treat*time, data=Bees)
