@@ -146,7 +146,7 @@ coefplot.mlm <- function(object, variables=1:2, parm=NULL, df = NULL, level = 0.
 	fill.col <- trans.colors(col, fill.alpha)
 	fill.col <- ifelse(fill, fill.col, NA)
 
-	label.pos <- rep(label.pos, length.out=np)
+	if (!is.null(label.pos)) label.pos <- rep(label.pos, length.out=np)
 
 	for (parm in 1:np){
 #			lines(ellList[[parm]], col=col[parm], lty=lty[parm], lwd=lwd[parm])
