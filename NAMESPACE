@@ -6,11 +6,12 @@
 # last modified 4 Oct 2010 by M. Friendly: trans.colors
 # last modified 14 Jan 2013 by M. Friendly: interpPlot, label.ellipse
 # last modified 16 Jan 2013 by M. Friendly: coefplot
+# now import(car) to avoid CRAN nag
 # now importFrom(MASS)
 
 #importFrom(car, car:::df.terms, car:::df.terms.default, car:::is.aliased)
 
-#import(car)
+import(car)
 importFrom(MASS, psi.bisquare, cov.trob)
 
 export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, statList, covList, colMeansList, arrow3d,

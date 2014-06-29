@@ -6,6 +6,7 @@ Date: 2014-05-15
 Authors@R: c(person(given = "John", family = "Fox", role="aut"),
             person(given = "Michael", family = "Friendly", role=c("aut", "cre"), email="friendly@yorku.ca"),
             person(given = "Georges", family = "Monette", role="ctb"))
+Author: John Fox [aut], Michael Friendly [aut,cre], Georges Monette [ctb]
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Depends: R (>= 2.10), graphics, stats, car
 Imports: MASS
