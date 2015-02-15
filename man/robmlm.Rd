@@ -5,7 +5,7 @@
 \alias{robmlm.default}
 \alias{robmlm.formula}
 \alias{summary.robmlm}
-\alias{vcov.mlm}
+%\alias{vcov.mlm}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Robust Fitting of Multivariate Linear Models
@@ -36,7 +36,7 @@ robmlm(X, ...)
 
 \method{summary}{robmlm}(object, ...)
 
-\method{vcov}{mlm}(object, ...)
+%\method{vcov}{mlm}(object, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -118,7 +118,8 @@ current residuals from the origin, and a scaling (covariance) matrix
 calculated by \code{\link[MASS]{cov.trob}}.
 The design of these methods were loosely modeled on \code{\link[MASS]{rlm}}.
 
-\code{vcov.mlm} is an extension of the standard \code{\link[stats]{vcov}} methods
+An internal \code{vcov.mlm} function is an extension of the standard \code{\link[stats]{vcov}} method
+providing for observation weights.
 
 }
 \value{

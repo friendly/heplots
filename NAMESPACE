@@ -8,6 +8,7 @@
 # last modified 16 Jan 2013 by M. Friendly: coefplot
 # now import(car) to avoid CRAN nag
 # now importFrom(MASS)
+# withdraw vcov.mlm --- now included in stats
 
 #importFrom(car, car:::df.terms, car:::df.terms.default, car:::is.aliased)
 
@@ -28,7 +29,7 @@ S3method(heplot1d, mlm)
 S3method(etasq,lm)
 S3method(etasq,mlm)
 S3method(etasq,Anova.mlm)
-S3method(vcov,mlm)
+#S3method(vcov,mlm)
 S3method(print,robmlm)
 S3method(summary,robmlm)
 S3method(coefplot,mlm)

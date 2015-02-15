@@ -36,7 +36,7 @@ were recorded as the gain in weight for that week.
 
 Fitzmaurice, G. M. and Laird, N. M. and Ware, J. H (2004).
 \emph{Applied Longitudinal Analysis}, New York, NY: Wiley-Interscience.
-\url{http://biosun1.harvard.edu/~fitzmaur/ala/rat.txt}.
+\url{http://www.hsph.harvard.edu/fitzmaur/ala/}.
 }
 \references{
 Box, G.E.P. (1950). Problems in the analysis of 

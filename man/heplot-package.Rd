@@ -28,8 +28,8 @@ Several tutorial vignettes are also included.  See \code{vignette(package="heplo
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 1.0-12\cr
-Date: \tab 2014-05-15\cr
+Version: \tab 1.0-13\cr
+Date: \tab 2015-02-15\cr
 License: \tab GPL (>= 2), GPL version 2 or newer\cr
 }
 
@@ -105,8 +105,8 @@ Friendly, M. (2010). HE Plots for Repeated Measures Designs. \emph{Journal of St
 
 Fox, J., Friendly, M. & Weisberg, S. (2013).
 	Hypothesis Tests for Multivariate Linear Models Using the car Package.
-	\emph{The R Journal}, in press,
-	\url{http://journal.r-project.org/accepted/2012-02/Fox+Friendly+Weisberg.pdf}.
+	\emph{The R Journal}, \bold{5}(1),
+	\url{http://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf}.
 
 Friendly, M.,  Monette, G. & Fox, J. (2013).
 	Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry.
