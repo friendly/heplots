@@ -101,28 +101,28 @@ function(mod, ...) UseMethod("heplot3d")
 		i3 <- (i1 + segments - 1) %% segments^2 + 1
 		i4 <- (i2 + segments - 1) %% segments^2 + 1
 		i <- rbind(i1, i2, i4, i3)
-		x <- asEuclidean(t(v))
-		ellips <- qmesh3d(v, i)
+		x <- rgl::asEuclidean(t(v))
+		ellips <- rgl::qmesh3d(v, i)
 		# override settings for 1 df line
 		if (df<2) {
 			wire <- TRUE
 			shade <- FALSE
 		}
 		if (verbose) print(paste("col:", col, " shade:", shade, " alpha:", alpha, " wire:", wire, sep=" "))
-		if(shade) shade3d(ellips, col=col, alpha=alpha, lit=TRUE)
-		if(wire) wire3d(ellips, col=col, size=lwd, lit=FALSE)
-		bbox <- matrix(par3d("bbox"), nrow=2)
+		if(shade) rgl::shade3d(ellips, col=col, alpha=alpha, lit=TRUE)
+		if(wire) rgl::wire3d(ellips, col=col, size=lwd, lit=FALSE)
+		bbox <- matrix(rgl::par3d("bbox"), nrow=2)
 		ranges <- apply(bbox, 2, diff)
 		if (!is.null(label) && label !="")
-			texts3d(x[which.max(x[,2]),] + offset*ranges, adj=0, texts=label, color=col, lit=FALSE)
+			rgl::texts3d(x[which.max(x[,2]),] + offset*ranges, adj=0, texts=label, color=col, lit=FALSE)
 		rownames(bbox) <- c("min", "max")
 		return(bbox)
 	}
 	
 	
 	#if (!require(car)) stop("car package is required.")
-	#if (!require(rgl)) stop("rgl package is required.")    
-	if (!requireNamespace(rgl)) stop("rgl package is required.")    
+	if (!require(rgl)) stop("rgl package is required.")    
+	if (!requireNamespace("rgl")) stop("rgl package is required.")    
 	# avoid deprecated warnings from car
 	if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 
@@ -209,9 +209,9 @@ function(mod, ...) UseMethod("heplot3d")
 	wire  <- he.rep(wire, n.ell)
 	
 if (!add){    
-		open3d()
-		view3d(fov=fov)
-		bg3d(color=bg.col, fogtype=fogtype)    
+		rgl::open3d()
+		rgl::view3d(fov=fov)
+		rgl::bg3d(color=bg.col, fogtype=fogtype)    
 	} 
 	
 	if (error.ellipsoid) {
@@ -260,7 +260,7 @@ if (!add){
 			H.ellipsoid[[term]] <- ellipsoid(gmean, H, radius, col=col[term], label=hyp.labels[hyp],
 					df=dfh, shade=shade[term], alpha=shade.alpha[term], wire=wire[term])
 		}         
-	ranges <- apply(matrix(par3d("bbox"), nrow=2), 2, diff)
+	ranges <- apply(matrix(rgl::par3d("bbox"), nrow=2), 2, diff)
 #   if (grand.mean) ellipsoid(gmean, diag((ranges/40)^2), col="black", wire=FALSE, alpha=0.8) # centre dot    
 	# better: use a centered 3D cross here
 	if (grand.mean) cross3d(gmean, (ranges/25), col="black", lwd=2) # centre cross            
@@ -291,7 +291,7 @@ if (!add){
 #            		points3d(unlist(means[m, 2:4]), size=3, color=pcol)
 #					spheres3d(unlist(means[m, 2:4]), radius=diag((ranges/30))^2, color=pcol)
 				}
-				texts3d(means[,2:4] + matrix(offset*ranges, nrow(means), 3, byrow=TRUE), 
+				rgl::texts3d(means[,2:4] + matrix(offset*ranges, nrow(means), 3, byrow=TRUE), 
 						texts=as.character(means[,1]), color=pcol, adj=0)
 			}
 	}
@@ -299,25 +299,25 @@ if (!add){
 	# handle xlim, ylim, zlim
 	## enforce that the specified limits are at least as large as the bbox
 	if (!missing(xlim) | !missing(ylim) | !missing(zlim)) {
-		bbox <- matrix(par3d("bbox"),3,2,byrow=TRUE)
+		bbox <- matrix(rgl::par3d("bbox"),3,2,byrow=TRUE)
 		xlim <- if(missing(xlim)) bbox[1,] else c(min(xlim[1],bbox[1,1]), max(xlim[2],bbox[1,2]))
 		ylim <- if(missing(ylim)) bbox[2,] else c(min(ylim[1],bbox[2,1]), max(ylim[2],bbox[2,2]))
 		zlim <- if(missing(zlim)) bbox[3,] else c(min(zlim[1],bbox[3,1]), max(zlim[2],bbox[3,2]))
-		decorate3d(xlim=xlim, ylim=ylim, zlim=zlim, box=FALSE, axes=FALSE, xlab=NULL, ylab=NULL, zlab=NULL, top=FALSE)
+		rgl::decorate3d(xlim=xlim, ylim=ylim, zlim=zlim, box=FALSE, axes=FALSE, xlab=NULL, ylab=NULL, zlab=NULL, top=FALSE)
 	}
 	
-	if (add) rgl.pop(id=savedvars$.frame)
-	frame <- axis3d("x-", color="black")
-	frame <- c(frame, mtext3d(xlab, "x-", color="black", line=1.5))
-	frame <- c(frame, axis3d("y-", col="black"))
-	frame <- c(frame, mtext3d(ylab, "y-", color="black", line=1.5))
-	frame <- c(frame, axis3d("z-", col="black"))
-	frame <- c(frame, mtext3d(zlab, "z-", color="black", line=1.5))
-	frame <- c(frame, box3d(col="black"))
+	if (add) rgl::rgl.pop(id=savedvars$.frame)
+	frame <- rgl::axis3d("x-", color="black")
+	frame <- c(frame, rgl::mtext3d(xlab, "x-", color="black", line=1.5))
+	frame <- c(frame, rgl::axis3d("y-", col="black"))
+	frame <- c(frame, rgl::mtext3d(ylab, "y-", color="black", line=1.5))
+	frame <- c(frame, rgl::axis3d("z-", col="black"))
+	frame <- c(frame, rgl::mtext3d(zlab, "z-", color="black", line=1.5))
+	frame <- c(frame, rgl::box3d(col="black"))
 	assign(".frame", frame, envir=savedvars)
 	#   savedvars$.frame <- frame
 
-	aspect3d(x=1, y=1, z=1)
+	rgl::aspect3d(x=1, y=1, z=1)
 	
 	names(H.ellipsoid) <- c(if (n.terms > 0) term.labels, if (n.hyp > 0) hyp.labels)
 	result <- if(error.ellipsoid) list(H=H.ellipsoid, E=E.ellipsoid, center=gmean, radius=radius) 

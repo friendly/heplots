@@ -40,7 +40,7 @@ arrow3d <- function(p0=c(0,0,0), p1=c(1,1,1), barblen, s=0.05, theta=pi/6, n=3, 
  cpt=(1-(barblen*cos(theta)))*(p1-p0)
 
  ## draw the main line
- line = lines3d(c(p0[1],p1[1]),c(p0[2],p1[2]),c(p0[3],p1[3]),...)
+ line = rgl::lines3d(c(p0[1],p1[1]),c(p0[2],p1[2]),c(p0[3],p1[3]),...)
 
  ## need to find a right-angle to the line. So create a random point:
  rpt = jitter(c(
@@ -57,8 +57,8 @@ arrow3d <- function(p0=c(0,0,0), p1=c(1,1,1), barblen, s=0.05, theta=pi/6, n=3, 
  ## now compute the barb end points and draw:
  pts = list()
  for(i in 1:length(phi)){
-   ptb=rotate3d(r,phi[i],(p1-p0)[1],(p1-p0)[2],(p1-p0)[3])
-   lines3d(
+   ptb=rgl::rotate3d(r,phi[i],(p1-p0)[1],(p1-p0)[2],(p1-p0)[3])
+   rgl::lines3d(
            c(p1[1],cpt[1]+p0[1]+barblen*sin(theta)*ptb[1]),
            c(p1[2],cpt[2]+p0[2]+barblen*sin(theta)*ptb[2]),
            c(p1[3],cpt[3]+p0[3]+barblen*sin(theta)*ptb[3]),

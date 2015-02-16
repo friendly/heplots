@@ -1,7 +1,14 @@
+Version 1.0-13 (2015-02-15)
+o Updated broken urls in documentation
+o Removed vcov.mlm from exports to conform to CRAN policies
+o Now use rgl:: for rgl functions in *3d.R
+
+
 Version 1.0-12 (2014-05-15)
 o Removed Authors: to satisfy CRAN nits
 o Fixed doc for Hernior.Rd
 o Now importsFrom(MASS) rather than Depends:
+
 
 Version 1.0-11 (2013-08-20)
 o Cosmetic changes to pass CRAN checks

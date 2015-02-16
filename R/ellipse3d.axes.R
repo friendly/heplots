@@ -17,20 +17,20 @@ function (x, centre = c(0, 0, 0), scale = c(1, 1, 1), level = 0.95,
 
 	# transform to PC axes
     axes <- axes %*% sqrt(diag(eig$values)) %*% t(eig$vectors)
-    result <- scale3d(axes, t, t, t)
+    result <- rgl::scale3d(axes, t, t, t)
     if (!missing(scale)) {
         if (length(scale) != 3) scale <- rep(scale, length.out=3) 
-        result <- scale3d(result, scale[1], scale[2], scale[3])
+        result <- rgl::scale3d(result, scale[1], scale[2], scale[3])
         }
     if (!missing(centre)) {
         if (length(centre) != 3) scale <- rep(centre, length.out=3) 
-        result <- translate3d(result, centre[1], centre[2], centre[3])
+        result <- rgl::translate3d(result, centre[1], centre[2], centre[3])
         }
-    segments3d(result, ...)
+    rgl::segments3d(result, ...)
     if (!missing(labels)) {
     	if (is.logical(labels) & labels) labels <- paste("PC", 1:3, sep="")
     	if (length(labels)==1) labels <- paste(labels, 1:3, sep="")
-    	texts3d(result[label.ends,], texts=labels, ...)
+    	rgl::texts3d(result[label.ends,], texts=labels, ...)
     }
     invisible(result)
 }
