@@ -11,9 +11,9 @@ mark.H0 <- function(x=0, y=0, z=NULL, label, cex=2, pch=19, col="green3", lty=2,
 		if (lty>0) abline(v=x, col=col, lty=lty)
 	}
 	else {
-		bbox <- matrix(par3d("bbox"), nrow=2)
+		bbox <- matrix(rgl::par3d("bbox"), nrow=2)
 		ranges <- apply(bbox, 2, diff)
-		points3d(x, y, z, size=5*cex, color=col)
+		rgl::points3d(x, y, z, size=5*cex, color=col)
 		if(lty>0) cross3d(c(x,y,z), (ranges/2), col=col, lty=lty)
 	}
 }
