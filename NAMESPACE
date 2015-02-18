@@ -8,7 +8,8 @@
 # last modified 16 Jan 2013 by M. Friendly: coefplot
 # now import(car) to avoid CRAN nag
 # now importFrom(MASS)
-# withdraw vcov.mlm --- now included in stats
+# withdraw vcov.mlm from exports ---  included in stats
+# remove robmlm.* from exports
 
 #importFrom(car, car:::df.terms, car:::df.terms.default, car:::is.aliased)
 
@@ -17,7 +18,8 @@ importFrom(MASS, psi.bisquare, cov.trob)
 
 export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, statList, covList, colMeansList, arrow3d,
 	etasq, gsorth, termMeans, trans.colors,
-	robmlm, robmlm.default, robmlm.formula,
+	robmlm, 
+#	robmlm.default, robmlm.formula,
   	interpPlot, 
   	label.ellipse,
   	coefplot
@@ -30,6 +32,8 @@ S3method(etasq,lm)
 S3method(etasq,mlm)
 S3method(etasq,Anova.mlm)
 #S3method(vcov,mlm)
+S3method(robmlm,default)
+S3method(robmlm,formula)
 S3method(print,robmlm)
 S3method(summary,robmlm)
 S3method(coefplot,mlm)

@@ -13,7 +13,9 @@ arrow3d <- function(p0=c(0,0,0), p1=c(1,1,1), barblen, s=0.05, theta=pi/6, n=3, 
  ## Returns (invisibly): integer ID of the shape added to the scene
 
  # require(geometry)  - inlined extprod3d
- require(rgl)
+ #require(rgl)
+ if (!requireNamespace("rgl")) stop("rgl package is required.")    
+ 
 
 	# cross product of 3D vectors
   extprod3d <- function (x, y) 

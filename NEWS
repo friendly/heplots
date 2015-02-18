@@ -1,7 +1,9 @@
-Version 1.0-13 (2015-02-15)
+Version 1.0-14 (2015-02-15)
 o Updated broken urls in documentation
 o Removed vcov.mlm from exports to conform to CRAN policies
 o Now use rgl:: for rgl functions in *3d.R
+o Removed robmlm.default, robmlm.formula from exports
+o Imports: rgl
 
 
 Version 1.0-12 (2014-05-15)
