@@ -43,7 +43,7 @@ low frequency were removed,
 leaving 332 observations. 
 }
 \source{
-Reimann,C., Arnoldussen, A., Boyd, R., Finne, T.E., Koller, F., Nordgulen, Oe., And Englmaier, P. (2007) 
+Reimann, C., Arnoldussen, A., Boyd, R., Finne, T.E., Koller, F., Nordgulen, Oe., And Englmaier, P. (2007) 
 Element contents in leaves of four plant species (birch, mountain ash, fern and spruce) along anthropogenic and 
 geogenic concentration gradients, 
 \emph{The Science of the Total Environment}, 377, 416-433.
