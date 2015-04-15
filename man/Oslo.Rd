@@ -63,11 +63,13 @@ Anova(Oslo.mod)
 heplot(Oslo.mod, var=c("Cu", "Mn"))
 pairs(Oslo.mod)
 
+\dontrun{
 if(require(candisc)) {
   Oslo.can <- candisc(Oslo.mod)
   Oslo.can
   heplot(Oslo.can)
   heplot3d(Oslo.can, shade=TRUE, wire=FALSE, alpha=0.5, var.col="red")
+}
 }
 
 }
