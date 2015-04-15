@@ -77,13 +77,14 @@ pairs(sk.mod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q"), var.labels=vlab)
 # 3D plot shows that nearly all of hypothesis variation is linear!
 \dontrun{
 heplot3d(sk.mod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q"), col=c("pink", "blue"))
-}
+
 # view in canonical space
 if (require(candisc)) {
 	sk.can <- candisc(sk.mod)
 	sk.can
 	heplot(sk.can)
 	heplot3d(sk.can)
+}
 }
 
 }
