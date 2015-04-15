@@ -1,3 +1,6 @@
+Version 1.0-15 (2015-04-15)
+o Fix require -> requireNamespace
+
 Version 1.0-14 (2015-02-15)
 o Updated broken urls in documentation
 o Removed vcov.mlm from exports to conform to CRAN policies

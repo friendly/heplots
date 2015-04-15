@@ -121,8 +121,8 @@ function(mod, ...) UseMethod("heplot3d")
 	
 	
 	#if (!require(car)) stop("car package is required.")
-	if (!require(rgl)) stop("rgl package is required.")    
-#	if (!requireNamespace("rgl")) stop("rgl package is required.")    
+#	if (!require(rgl)) stop("rgl package is required.")    
+	if (!requireNamespace("rgl")) stop("rgl package is required.")    
 	# avoid deprecated warnings from car
 	if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 
