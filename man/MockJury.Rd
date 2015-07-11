@@ -49,7 +49,7 @@ crime?
 %}
 \source{
 From Dr. Wuensch's StatData Page,
-\url{http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat}
+http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat
 }
 \references{
 Data from the thesis by Plaster, M. E. (1989).

@@ -1,15 +1,15 @@
 Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
-Version: 1.0-15
-Date: 2015-04-15
+Version: 1.0-16
+Date: 2015-07-11
 Authors@R: c(person(given = "John", family = "Fox", role="aut"),
             person(given = "Michael", family = "Friendly", role=c("aut", "cre"), email="friendly@yorku.ca"),
             person(given = "Georges", family = "Monette", role="ctb"))
 Author: John Fox [aut], Michael Friendly [aut, cre], Georges Monette [ctb]
 Maintainer: Michael Friendly <friendly@yorku.ca>
-Depends: R (>= 2.10), graphics, stats, car
-Imports: MASS
+Depends: R (>= 2.10), car
+Imports: MASS, graphics, grDevices, stats, utils
 Suggests: rgl, candisc, effects, reshape, gplots, nlme, lattice, reshape2, corrgram, FRB, animation
 LazyLoad: yes
 LazyData: yes
