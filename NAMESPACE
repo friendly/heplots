@@ -28,7 +28,8 @@ export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, statList, c
 #	robmlm.default, robmlm.formula,
   	interpPlot, 
   	label.ellipse,
-  	coefplot
+  	coefplot,
+    boxM
   	)
 S3method(heplot, mlm)
 S3method(heplot3d, mlm)

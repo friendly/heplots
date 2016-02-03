@@ -1,3 +1,7 @@
+Version 1.1-0 (2016-02-03)
+
+o Added boXM from biotools
+
 Version 1.0-16 (2015-07-11)
 o use importsFrom for base packages
 
