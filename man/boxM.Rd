@@ -16,7 +16,7 @@ boxM(data, grouping)
 \arguments{
   \item{data}{ a numeric data.frame or matrix containing \emph{n} observations of \emph{p} variables;
 	it is expected that \emph{n > p}. }
-  \item{grouping}{ a vector of length n containing the class of each observation;
+  \item{grouping}{ a vector of length \emph{n} containing the class of each observation;
 	it is usualy a factor. }
 }
 
@@ -28,6 +28,7 @@ A list with class \code{c("htest", "boxM")} containing the following components:
   \item{cov }{a list containing the within covariance matrix for each level of \code{grouping}.}
   \item{pooled }{the pooled covariance matrix.}
   \item{logDet }{a vector containing the natural logarithm of each matrix in \code{cov}.}
+  \item{means}{a matrix of the means for all groups, followed by the grand means}
   \item{data.name }{a character string giving the names of the data.}
   \item{method }{the character string "Box's M-test for Homogeneity of Covariance Matrices".}
 }
@@ -43,7 +44,17 @@ Anderson Rodrigo da Silva <anderson.agro@hotmail.com>
 
 \examples{
 data(iris)
-boxM(iris[, -5], iris[, 5])
 
-# End (not run)
+res <- boxM(iris[, 1:4], iris[, "Species"])
+res
+
+# visualize
+ng <- length(res$logDet)
+dets <- c(res$logDet, pooled=log(det(res$pooled)))
+dotchart(dets, xlab = "log determinant")
+points(dets , 1:4,  
+	cex=c(rep(1.5, ng), 2.5), pch=c(rep(16, ng), 15),
+	col= c(rep("blue", ng), "red"))
+
+
 }

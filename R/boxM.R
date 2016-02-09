@@ -29,11 +29,18 @@ function(data, grouping)
    X2 <- minus2logM * (1 - Co)
    dfchi <- (choose(p, 2) + p) * (nlev - 1)
    pval <- pchisq(X2, dfchi, lower.tail = FALSE)
+
+   means <- aggregate(data, list(grouping), mean)
+   rn <- as.character(means[,1])
+   means <- means[,-1]
+   means <- rbind( means, colMeans(data) )
+   rownames(means) <- c(rn, "_all_")
+
    out <- structure(
       list(statistic = c("Chi-Sq (approx.)" = X2),
          parameter = c(df = dfchi),
          p.value = pval,
-         cov = mats, pooled = pooled, logDet = logdet,
+         cov = mats, pooled = pooled, logDet = logdet, means = means,
          data.name = dname,
          method = " Box's M-test for Homogeneity of Covariance Matrices"
          ),
