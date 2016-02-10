@@ -55,7 +55,9 @@ A list with class \code{c("htest", "boxM")} containing the following components:
 \details{
 As an object of class \code{"htest"}, the statistical test is printed normally by default.
 
-There is no provision as yet for handling missing data.
+There is no general provision as yet for handling missing data.  Missing data are simply
+removed, with a warning.
+
 As well, the computation assumes that the covariance matrix for each group is non-singular,
 so that \eqn{log det(S_i)} can be calculated for each group.
 

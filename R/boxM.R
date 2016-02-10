@@ -11,8 +11,16 @@ boxM.default <- function(Y, group, ...)
       stop(paste(dname, "must be a numeric data.frame or matrix!"))
    if (length(group) != nrow(Y))
       stop("incompatible dimensions!")
+
    Y <- as.matrix(Y)
    group <- as.factor(as.character(group))
+
+   valid <- complete.cases(Y, group)
+   if (nrow(Y) > sum(valid)) 
+      warning(paste(nrow(Y) - sum(valid)), " cases with missing data have been removed.")
+   Y <- Y[valid,]
+   group <- group[valid]
+
    p <- ncol(Y)
    nlev <- nlevels(group)
    lev <- levels(group)
