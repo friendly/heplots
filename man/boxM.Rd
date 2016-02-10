@@ -55,6 +55,10 @@ A list with class \code{c("htest", "boxM")} containing the following components:
 \details{
 As an object of class \code{"htest"}, the statistical test is printed normally by default.
 
+There is no provision as yet for handling missing data.
+As well, the computation assumes that the covariance matrix for each group is non-singular,
+so that \eqn{log det(S_i)} can be calculated for each group.
+
 Box's M test for a multivariate linear model highly sensitive to departures from multivariate normality,
 just as the analogous univariate test.  It is also affected adversely by 
 unbalanced designs.  Some people reccommend to ignore the result unless it is very highly significant,
