@@ -1,23 +1,41 @@
 \name{boxM}
 \alias{boxM}
+\alias{boxM.formula}
+\alias{boxM.lm}
+\alias{boxM.default}
 
 \title{ Box's M-test }
 
 \description{
-It performs the Box's M-test for homogeneity of covariance matrices
-obtained from multivariate normal data according to one classification
-factor. The test is based on the chi-square approximation.
+\code{boxM} performs the Box's M-test for homogeneity of covariance matrices
+obtained from multivariate normal data according to one or more classification
+factors. The test compares the product of the log determinants of the
+separate covariance matrices to the log determinant of the pooled
+covariance matrix, analogous to a likelihood ratio test.
+The test statistic uses a chi-square approximation.
 }
 
 \usage{
-boxM(data, grouping)
+boxM(Y, ...)
+
+\method{boxM}{formula}(Y, data, ...)
+
+\method{boxM}{lm}(Y, ...)
+
+\method{boxM}{default}(Y, group, ...)
+
+
 }
 
 \arguments{
+  \item{Y}{The response variable matrix for the default method, or a \code{"mlm"} or \code{"formula"} object
+  for a multivariate linear model.
+  If \code{Y} is a linear-model object or a formula, the variables on the right-hand-side of the model must all be factors 
+  and must be completely crossed.}
   \item{data}{ a numeric data.frame or matrix containing \emph{n} observations of \emph{p} variables;
 	it is expected that \emph{n > p}. }
-  \item{grouping}{ a vector of length \emph{n} containing the class of each observation;
-	it is usualy a factor. }
+  \item{group}{ a factor defining groups, or a vector of length \emph{n} doing the same.}
+  \item{...}{Arguments passed down, currently unused.}
 }
 
 \value{
@@ -27,19 +45,27 @@ A list with class \code{c("htest", "boxM")} containing the following components:
   \item{p.value }{the p-value of the test.}
   \item{cov }{a list containing the within covariance matrix for each level of \code{grouping}.}
   \item{pooled }{the pooled covariance matrix.}
-  \item{logDet }{a vector containing the natural logarithm of each matrix in \code{cov}.}
+  \item{logDet }{a vector containing the natural logarithm of each matrix in \code{cov}, followed by the value for the pooled 
+  covariance matrix}
   \item{means}{a matrix of the means for all groups, followed by the grand means}
   \item{data.name }{a character string giving the names of the data.}
   \item{method }{the character string "Box's M-test for Homogeneity of Covariance Matrices".}
 }
+
+\details{
+As an object of class \code{"htest"}, the statistical test is printed normally by default.
+}
+
 
 \references{
 Morrison, D.F. (1976) \emph{Multivariate Statistical Methods}.
 }
 
 \author{
-Taken from the \pkg{biotools} package, 
+The default method from the \pkg{biotools} package, 
 Anderson Rodrigo da Silva <anderson.agro@hotmail.com>
+
+Generalized by Michael Friendly and John Fox
 }
 
 \examples{
@@ -49,8 +75,8 @@ res <- boxM(iris[, 1:4], iris[, "Species"])
 res
 
 # visualize
-ng <- length(res$logDet)
-dets <- c(res$logDet, pooled=log(det(res$pooled)))
+dets <- res$logDet
+ng <- length(res$logDet)-1
 dotchart(dets, xlab = "log determinant")
 points(dets , 1:4,  
 	cex=c(rep(1.5, ng), 2.5), pch=c(rep(16, ng), 15),
