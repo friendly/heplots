@@ -54,6 +54,12 @@ A list with class \code{c("htest", "boxM")} containing the following components:
 
 \details{
 As an object of class \code{"htest"}, the statistical test is printed normally by default.
+
+Box's M test for a multivariate linear model highly sensitive to departures from multivariate normality,
+just as the analogous univariate test.  It is also affected adversely by 
+unbalanced designs.  Some people reccommend to ignore the result unless it is very highly significant,
+e.g., p < .0001 or worse.
+
 }
 
 
@@ -62,19 +68,25 @@ Morrison, D.F. (1976) \emph{Multivariate Statistical Methods}.
 }
 
 \author{
-The default method from the \pkg{biotools} package, 
+The default method was taken from the \pkg{biotools} package, 
 Anderson Rodrigo da Silva <anderson.agro@hotmail.com>
 
 Generalized by Michael Friendly and John Fox
 }
 
+\seealso{
+\code{\link[car]{leveneTest}} carries out homogeneity of variance tests for
+univariate models with better statistical properties.
+}
+
 \examples{
 data(iris)
 
+# default method
 res <- boxM(iris[, 1:4], iris[, "Species"])
 res
 
-# visualize
+# visualize 
 dets <- res$logDet
 ng <- length(res$logDet)-1
 dotchart(dets, xlab = "log determinant")
@@ -82,5 +94,7 @@ points(dets , 1:4,
 	cex=c(rep(1.5, ng), 2.5), pch=c(rep(16, ng), 15),
 	col= c(rep("blue", ng), "red"))
 
+# formula method
+boxM( cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
 
 }
