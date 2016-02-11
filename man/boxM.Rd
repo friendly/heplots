@@ -7,7 +7,7 @@
 \title{ Box's M-test }
 
 \description{
-\code{boxM} performs the Box's M-test for homogeneity of covariance matrices
+\code{boxM} performs the Box's (1949) M-test for homogeneity of covariance matrices
 obtained from multivariate normal data according to one or more classification
 factors. The test compares the product of the log determinants of the
 separate covariance matrices to the log determinant of the pooled
@@ -70,7 +70,10 @@ e.g., p < .0001 or worse.
 
 
 \references{
+Box, G. E. P. (1949). A general distribution theory for a class of likelihood criteria. \emph{Biometrika}, 36, 317-346.
+
 Morrison, D.F. (1976) \emph{Multivariate Statistical Methods}.
+
 }
 
 \author{
