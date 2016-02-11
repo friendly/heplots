@@ -31,7 +31,7 @@ boxM(Y, ...)
   \item{Y}{The response variable matrix for the default method, or a \code{"mlm"} or \code{"formula"} object
   for a multivariate linear model.
   If \code{Y} is a linear-model object or a formula, the variables on the right-hand-side of the model must all be factors 
-  and must be completely crossed.}
+  and must be completely crossed, e.g., \code{A:B}}
   \item{data}{ a numeric data.frame or matrix containing \emph{n} observations of \emph{p} variables;
 	it is expected that \emph{n > p}. }
   \item{group}{ a factor defining groups, or a vector of length \emph{n} doing the same.}
@@ -83,6 +83,9 @@ Generalized by Michael Friendly and John Fox
 \seealso{
 \code{\link[car]{leveneTest}} carries out homogeneity of variance tests for
 univariate models with better statistical properties.
+
+\code{\link{plot.boxM}}, a simple plot of the log determinants
+
 }
 
 \examples{
@@ -92,15 +95,22 @@ data(iris)
 res <- boxM(iris[, 1:4], iris[, "Species"])
 res
 
-# visualize 
+# visualize (what is done in the plot method) 
 dets <- res$logDet
 ng <- length(res$logDet)-1
 dotchart(dets, xlab = "log determinant")
 points(dets , 1:4,  
-	cex=c(rep(1.5, ng), 2.5), pch=c(rep(16, ng), 15),
+	cex=c(rep(1.5, ng), 2.5), 
+	pch=c(rep(16, ng), 15),
 	col= c(rep("blue", ng), "red"))
 
 # formula method
 boxM( cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
+
+# lm method
+skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
+boxM(skulls.mod)
+
+
 
 }

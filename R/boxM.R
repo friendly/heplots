@@ -47,7 +47,7 @@ boxM.default <- function(Y, group, ...)
    rn <- as.character(means[,1])
    means <- means[,-1]
    means <- rbind( means, colMeans(Y) )
-   rownames(means) <- c(rn, "_all_")
+   rownames(means) <- c(rn, "_pooled_")
 
    logdet <- c(logdet, pooled=log(det(pooled)))
    out <- structure(
@@ -56,7 +56,7 @@ boxM.default <- function(Y, group, ...)
          p.value = pval,
          cov = mats, pooled = pooled, logDet = logdet, means = means,
          data.name = dname,
-         method = " Box's M-test for Homogeneity of Covariance Matrices"
+         method = "Box's M-test for Homogeneity of Covariance Matrices"
          ),
       class = c("htest", "boxM")
       )
