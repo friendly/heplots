@@ -48,6 +48,7 @@ A list with class \code{c("htest", "boxM")} containing the following components:
   \item{logDet }{a vector containing the natural logarithm of each matrix in \code{cov}, followed by the value for the pooled 
   covariance matrix}
   \item{means}{a matrix of the means for all groups, followed by the grand means}
+  \item{df}{a vector of the degrees of freedom for all groups, followed by that for the pooled covariance matrix}
   \item{data.name }{a character string giving the names of the data.}
   \item{method }{the character string "Box's M-test for Homogeneity of Covariance Matrices".}
 }

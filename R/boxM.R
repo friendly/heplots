@@ -47,14 +47,15 @@ boxM.default <- function(Y, group, ...)
    rn <- as.character(means[,1])
    means <- means[,-1]
    means <- rbind( means, colMeans(Y) )
-   rownames(means) <- c(rn, "_pooled_")
+   rownames(means) <- c(rn, "pooled")
 
    logdet <- c(logdet, pooled=log(det(pooled)))
+   df <- c(dfs, pooled=sum(dfs))
    out <- structure(
       list(statistic = c("Chi-Sq (approx.)" = X2),
          parameter = c(df = dfchi),
          p.value = pval,
-         cov = mats, pooled = pooled, logDet = logdet, means = means,
+         cov = mats, pooled = pooled, logDet = logdet, means = means, df=df,
          data.name = dname,
          method = "Box's M-test for Homogeneity of Covariance Matrices"
          ),
