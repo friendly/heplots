@@ -3,6 +3,7 @@
 \alias{boxM.formula}
 \alias{boxM.lm}
 \alias{boxM.default}
+\alias{summary.boxM}
 
 \title{ Box's M-test }
 
@@ -24,7 +25,9 @@ boxM(Y, ...)
 
 \method{boxM}{default}(Y, group, ...)
 
-
+\method{summary}{boxM}(object, 
+     digits = getOption("digits"),
+     cov=FALSE, ...)
 }
 
 \arguments{
@@ -35,7 +38,10 @@ boxM(Y, ...)
   \item{data}{ a numeric data.frame or matrix containing \emph{n} observations of \emph{p} variables;
 	it is expected that \emph{n > p}. }
   \item{group}{ a factor defining groups, or a vector of length \emph{n} doing the same.}
-  \item{...}{Arguments passed down, currently unused.}
+  \item{object}{a \code{"boxM"} object for the \code{summary} method}
+  \item{digits}{number of digits to print for the \code{summary} method}
+  \item{cov}{logical; if \code{TRUE} the covariance matrices are printed.}
+  \item{...}{Arguments passed down to methods.}
 }
 
 \value{
@@ -55,18 +61,22 @@ A list with class \code{c("htest", "boxM")} containing the following components:
 
 \details{
 As an object of class \code{"htest"}, the statistical test is printed normally by default.
+As an object of class \code{"boxM"}, a few methods are available.
 
 There is no general provision as yet for handling missing data.  Missing data are simply
 removed, with a warning.
 
 As well, the computation assumes that the covariance matrix for each group is non-singular,
 so that \eqn{log det(S_i)} can be calculated for each group.
+At the minimum, this requires that \eqn{n > p} for each group.
 
 Box's M test for a multivariate linear model highly sensitive to departures from multivariate normality,
 just as the analogous univariate test.  It is also affected adversely by 
 unbalanced designs.  Some people reccommend to ignore the result unless it is very highly significant,
 e.g., p < .0001 or worse.
 
+The \code{summary} method prints a variety of additional statistics based on the eigenvalues of
+the covariance matrices.
 }
 
 
@@ -98,6 +108,8 @@ data(iris)
 # default method
 res <- boxM(iris[, 1:4], iris[, "Species"])
 res
+
+summary(res)
 
 # visualize (what is done in the plot method) 
 dets <- res$logDet

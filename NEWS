@@ -1,6 +1,9 @@
 Version 1.1-0 (2016-02-03)
 
 o Added boXM from biotools
+o Fleshed out boxM() with formula, lm, plot and summary methods
+o Added covEllipses() methods
+
 
 Version 1.0-16 (2015-07-11)
 o use importsFrom for base packages

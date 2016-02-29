@@ -15,7 +15,7 @@
 #importFrom(car, car:::df.terms, car:::df.terms.default, car:::is.aliased)
 
 import(car)
-importFrom(MASS, psi.bisquare, cov.trob)
+importFrom(MASS, psi.bisquare, cov.trob, cov.rob)
 importFrom("graphics", "abline", "box", "lines", "par", "plot", "points", "polygon", "rect", "strheight", "strwidth", "text")
 importFrom("grDevices", "col2rgb", "palette", "rgb")
 importFrom("stats", ".getXlevels", "SSD", "aggregate", "alias", "cor", "cov", "df.residual", "estVar", "lm.wfit", "lsfit", "mahalanobis", "model.frame", "model.matrix", "model.response", "model.weights", "na.omit", "pf", "pnorm", "qchisq", "qf", "residuals", "runif", "var", "vcov")
@@ -30,7 +30,8 @@ export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d,
   	interpPlot, 
   	label.ellipse,
   	coefplot,
-    boxM
+    boxM,
+    covEllipses
   	)
 
 S3method(heplot, mlm)
@@ -52,5 +53,9 @@ S3method(boxM, formula)
 S3method(boxM, lm)
 S3method(boxM, default)
 S3method(plot, boxM)
+S3method(summary, boxM)
 
-
+S3method(covEllipses, default)
+S3method(covEllipses, data.frame)
+S3method(covEllipses, matrix)
+S3method(covEllipses, boxM)

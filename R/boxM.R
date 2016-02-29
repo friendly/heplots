@@ -93,3 +93,41 @@ boxM.lm <- function(Y, ...) {
   else update(Y, formula(Y))
 	boxM.formula(formula(Y), data=eval(data, envir = environment(formula(Y))), ...)
 }
+
+summary.boxM <- function(object, 
+                         digits = getOption("digits"),
+                         cov=FALSE, ...)
+{
+  cat("Summary for Box's M-test of Equality of Covariance Matrices\n\n")
+  
+  cat("Chi-Sq:\t", object$statistic, "\n")
+  cat("df:\t", object$parameter, "\n")
+  fp <- format.pval(object$p.value, digits = max(1L, digits - 3L))
+  cat("p-value:", fp, "\n\n")
+  
+  cat("log of Covariance determinants:\n")
+  print(object$logDet, digits=digits)
+  
+  covs <- c(object$cov, pooled=list(object$pooled))
+  eigs <- sapply(covs, FUN=function(x) eigen(x)$values)
+  rownames(eigs) <- 1:nrow(eigs)
+  cat("\nEigenvalues:\n")
+  print(eigs, digits=digits)
+  
+  cat("\nStatistics based on eigenvalues:\n")
+  eigstats <- rbind(
+    product = apply(eigs, 2, prod),
+    sum = apply(eigs, 2, sum),
+    precision = 1/apply(1/eigs, 2, sum),
+    max = apply(eigs, 2, max)
+  )
+  print(eigstats, digits=digits)	
+  
+  if (cov) {
+    cat("\nCovariance matrices:\n")
+    print(object$cov, digits=digits)
+    cat("\nPooled:\n")
+    print(object$pooled, digits=digits)
+    
+  }
+}
