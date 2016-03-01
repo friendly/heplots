@@ -6,10 +6,10 @@
 \alias{covEllipses.default}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Draw covariance ellipses for two or more groups
+Draw classical and robust covariance ellipses for one or more groups
 }
 \description{
-The function draws covariance ellipses for two or more groups
+The function draws covariance ellipses for one or more groups
 and optionally for the pooled total sample.  It 
 uses either the classical product-moment covariance estimate, or a
 robust alternative, as provided by \code{\link[MASS]{cov.rob}}.
@@ -42,10 +42,12 @@ covEllipses(x, ...)
 
   \item{x}{
 The generic argument. For the default method, this is a list of covariance matrices.
+For the data.frame and matrix methods, this is a numeric matrix of two or more columns.
 }
 
   \item{group}{
-a factor defining groups, or a vector of length n doing the same
+a factor defining groups, or a vector of length \code{n=nrow(x)} doing the same.
+If missing, a single covariance ellipse is drawn.
 }
   \item{pooled}{
 Logical; if \code{TRUE}, the pooled covariance matrix is also computed and plotted

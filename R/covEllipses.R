@@ -18,6 +18,17 @@ covEllipses.data.frame <-
 		         method = c("classical", "mve", "mcd"), ...) {
 
  method <- match.arg(method)
+ 
+ if (missing(group)) {
+   group <- factor(rep(1, nrow(x)))
+#   pooled <- FALSE
+ }
+
+ if (!is.factor(group)) {
+   warning(deparse(substitute(group)), " coerced to factor.")
+   group <- as.factor(group)
+ }
+ 
  p <- ncol(x)
  nlev <- nlevels(group)
  lev <- levels(group)
@@ -91,6 +102,7 @@ covEllipses.default <-
 		t( c(center) + t( circle %*% Q[,order]))
 	}
 
+	if (!is.list(x)) stop("Argument 'x' must be a list of covariance matrices")
 	cov <- x
 	response.names <- colnames(cov[[1]])
 	p <- ncol(cov[[1]])
@@ -103,7 +115,7 @@ covEllipses.default <-
 					" not among response variables.") 
 	}
 	else {
-		if (any (variables > p)) stop("There are only ", 	p, " response variables.")
+		if (any (variables > p)) stop("There are only ", 	p, " response variables among", variables)
 		vars <- response.names[variables]
 	}
 	n.ell <- length(cov)
