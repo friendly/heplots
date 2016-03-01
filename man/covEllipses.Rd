@@ -63,7 +63,8 @@ minimum covariance determinant (\code{"mcd"}).
 %}
   \item{means}{
 For the default method, a matrix of the means for all groups (followed by the grand means, if \code{pooled=TRUE}).
-Rows are the groups, and columns are the variables.
+Rows are the groups, and columns are the variables. It is assumed that the means have
+column names corresponding to the variables in the covariance matrices.
 }
   \item{df}{
 For the default method, a vector of the degrees of freedom for the covariance matrices

@@ -43,6 +43,7 @@ covEllipses.data.frame <-
 
  names(mats) <- lev
  rownames(means) <- lev
+ colnames(means) <- colnames(x)
 
  if(pooled) {
 	 rcov <- MASS::cov.rob(x, method=method)
@@ -145,9 +146,9 @@ covEllipses.default <-
 	for(i in 1:n.ell) {
 		S <- as.matrix(cov[[i]])
 		S <- S[vars, vars]
+#browser()
 		ctr <- if (center)  c(0,0)
 		       else as.numeric(means[i, vars])
-#browser()
 		ellipses[[i]] <- ell(ctr, S, radius[i])
 	}
 	
