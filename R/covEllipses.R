@@ -21,7 +21,7 @@ covEllipses.data.frame <-
  
  if (missing(group)) {
    group <- factor(rep(1, nrow(x)))
-#   pooled <- FALSE
+   pooled <- FALSE
  }
 
  if (!is.factor(group)) {
@@ -146,7 +146,6 @@ covEllipses.default <-
 	for(i in 1:n.ell) {
 		S <- as.matrix(cov[[i]])
 		S <- S[vars, vars]
-#browser()
 		ctr <- if (center)  c(0,0)
 		       else as.numeric(means[i, vars])
 		ellipses[[i]] <- ell(ctr, S, radius[i])
