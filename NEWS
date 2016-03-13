@@ -4,6 +4,7 @@ o Added boXM from biotools
 o Fleshed out boxM() with formula, lm, plot and summary methods
 o added plot.boxM() method
 o Added covEllipses() methods for plotting (possibly robust) covariance ellipses
+o Added colDevs() as as utility and for use in other multivariate tests.
 
 
 Version 1.0-16 (2015-07-11)
