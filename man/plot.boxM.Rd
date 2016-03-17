@@ -11,17 +11,19 @@ of the various groups to Box's M test for equality of covariance matrices.
 }
 \usage{
 \method{plot}{boxM}(x,
-             pch=c(16, 15), 
-             cex=c(2, 2.5), 
-             col=c("blue", "red"), ...) 
+             gplabel = NULL,
+             pch = c(16, 15), 
+             cex = c(2, 2.5), 
+             col = c("blue", "red"), ...) 
 }
 
 \arguments{
   \item{x}{A \code{"boxM"} object resulting from \code{\link{boxM}} }
-  \item{pch}{a vector of two point symbols to use for the individual groups and the pooled data}
-  \item{cex}{character size, a vector of length two }
+  \item{gplabel}{character string used to label the group factor.}
+  \item{pch}{a vector of two point symbols to use for the individual groups and the pooled data, respectively}
+  \item{cex}{character size, a vector of length two for groups and pooled data }
   \item{col}{colors for point symbols, a vector of length two}
-  \item{...}{Arguments passed down, currently unused.}
+  \item{...}{Arguments passed down to \code{\link[graphics]{dotchart}}.}
 }
 
 %\details{
@@ -33,12 +35,16 @@ of the various groups to Box's M test for equality of covariance matrices.
 %\references{
 %%%  ~~ possibly secondary sources and usages ~~
 %}
+
+\author{Michael Friendly}
+
 \seealso{
-\code{\link{boxM}}
+\code{\link{boxM}},
+\code{\link[graphics]{dotchart}}
 }
 \examples{
 res <- boxM(iris[, 1:4], iris[, "Species"])
-plot(res)
+plot(res, gplabel="Species")
 
 }
 \keyword{hgraph}

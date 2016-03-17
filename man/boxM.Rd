@@ -27,7 +27,7 @@ boxM(Y, ...)
 
 \method{summary}{boxM}(object, 
      digits = getOption("digits"),
-     cov=FALSE, ...)
+     cov=FALSE, quiet=FALSE, ...)
 }
 
 \arguments{
@@ -41,6 +41,7 @@ boxM(Y, ...)
   \item{object}{a \code{"boxM"} object for the \code{summary} method}
   \item{digits}{number of digits to print for the \code{summary} method}
   \item{cov}{logical; if \code{TRUE} the covariance matrices are printed.}
+  \item{quiet}{logical; if \code{TRUE} printing from the \code{summary} is suppressed}
   \item{...}{Arguments passed down to methods.}
 }
 
@@ -76,7 +77,14 @@ unbalanced designs.  Some people reccommend to ignore the result unless it is ve
 e.g., p < .0001 or worse.
 
 The \code{summary} method prints a variety of additional statistics based on the eigenvalues of
-the covariance matrices.
+the covariance matrices.  These are returned invisibly, as a list containing the following
+components:
+\itemize{
+  \item \code{logDet} - log determinants
+  \item \code{eigs} - eigenvalues of the covariance matrices
+  \item \code{eigstats} - statistics computed on the eigenvalues for each covariance matrix
+}
+
 }
 
 
