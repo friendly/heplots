@@ -9,7 +9,7 @@
 
 
 `pairs.mlm` <-
-function(x, variables, var.labels,
+function(x, variables, var.labels, var.cex = 2,
     type=c("II", "III", "2", "3"),
 	idata=NULL,
 	idesign=NULL,
@@ -51,19 +51,20 @@ function(x, variables, var.labels,
 	}   
 	
 	vars <- colnames(Y)
-    if (!missing(variables)){
-        if (is.numeric(variables)) {
-            vars <- vars[variables]
-            if (any(is.na(vars))) stop("Bad response variable selection.")
-            }
-        else {
-            check <- !(variables %in% vars)
-            if (any(check)) stop(paste("The following", 
-                if (sum(check) > 1) "variables are" else "variable is",
-                "not in the model:", paste(variables[check], collapse=", ")))
-            vars <- variables
-            }
-        }
+  if (!missing(variables)){
+      if (is.numeric(variables)) {
+          vars <- vars[variables]
+          if (any(is.na(vars))) stop("Bad response variable selection.")
+          }
+      else {
+          check <- !(variables %in% vars)
+          if (any(check)) stop(paste("The following", 
+              if (sum(check) > 1) "variables are" else "variable is",
+              "not in the model:", paste(variables[check], collapse=", ")))
+          vars <- variables
+          }
+      }
+
 	if(missing(var.labels)) var.labels <- vars
 	else {
 		if (length(var.labels) < length(vars)) stop("Too few var.labels supplied")
@@ -79,23 +80,23 @@ function(x, variables, var.labels,
 
 	panel.label <- function(x, ...) {
 		plot(c(min, max),c(min, max), type="n", axes=FALSE)
-		text(0.5, 0.5, var.labels[i], cex=2)
+		text(0.5, 0.5, var.labels[i], cex=var.cex)
 		text(1, 0, signif(range[1, i], digits=digits), adj=c(1, 0))
 		text(0, 1, signif(range[2, i], digits=digits), adj=c(0, 1)) 
 		box()
 	}	
 	for (i in 1:n.resp){
-        for (j in 1:n.resp){
-            if (i == j){
-				panel.label()
-                }
-            else {
-                heplot(x, variables=c(vars[j], vars[i]), manova=manova, axes=FALSE,
-					idata=idata, idesign=idesign, imatrix=imatrix, iterm=iterm,
-                    offset.axes=offset.axes, fill=fill, fill.alpha=fill.alpha, ...)
-                box()
-                }
-            }
-        }
-    }
+	  for (j in 1:n.resp){
+	    if (i == j){
+	      panel.label()
+	    }
+	    else {
+	      heplot(x, variables=c(vars[j], vars[i]), manova=manova, axes=FALSE,
+	             idata=idata, idesign=idesign, imatrix=imatrix, iterm=iterm,
+	             offset.axes=offset.axes, fill=fill, fill.alpha=fill.alpha, ...)
+	      box()
+	    }
+	  }
+	}
+}
 

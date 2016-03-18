@@ -9,7 +9,8 @@
 }
 
 \usage{
-\method{pairs}{mlm}(x, variables, var.labels, type = c("II", "III", "2", "3"), 
+\method{pairs}{mlm}(x, variables, var.labels, var.cex=2,
+  type = c("II", "III", "2", "3"), 
 	idata=NULL, idesign=NULL, icontrasts=NULL, imatrix=NULL, iterm=NULL, manova,
   offset.axes = 0.05, digits = getOption("digits") - 1, fill=FALSE, fill.alpha=0.3, ...)
 }
@@ -20,6 +21,7 @@
     to be plotted; defaults to all of the responses.}
   \item{var.labels}{labels for the variables plotted in the diagnonal panels;
     defaults to names of the response variables.}
+  \item{var.cex}{character expansion for the variable labels.}
   \item{type}{``type'' of sum-of-squares-and-products matrices to compute; one of
     \code{"II"}, \code{"III"}, \code{"2"}, or \code{"3"}, where \code{"II"} is
     the default (and \code{"2"} is a synomym).}
@@ -75,6 +77,8 @@ Friendly, M. (2007).
   \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
   \url{http://datavis.ca/papers/jcgs-heplots.pdf} 
 }
+
+\author{Michael Friendly}
 
 \seealso{
 \code{\link{heplot}}, \code{\link{heplot3d}}
