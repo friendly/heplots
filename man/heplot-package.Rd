@@ -17,6 +17,9 @@ See Fox, Friendly and Monette (2007) for a brief introduction
 and Friendly, Monette and Fox (2013) for a general discussion of the role of
 elliptical geometry in statistical understanding.
 
+Other topics now addressed here include robust MLMs and tests for equality of
+covariance matrices in MLMs.
+
 The package also provides a collection of  data sets illustrating
 a variety of multivariate linear models of the types listed above,
 together with graphical displays.
