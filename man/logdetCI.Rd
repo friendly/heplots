@@ -20,7 +20,7 @@ the sample size, \eqn{n} and number of variables, \eqn{p}.
 
 This function is included here only to provide an approximation to
 \emph{graphical accuracy} for use with Box's M test for equality of covariance
-matrices, \code{\link{boxM}} and its associated \code{plot} method.
+matrices, \code{\link{boxM}} and its associated \code{\link{plot.boxM}} method.
 }
 \usage{
 logdetCI(cov, n, conf = 0.95, method = 2, bias.adj = TRUE)
@@ -64,7 +64,7 @@ A data frame with one row for each covariance matrix.
 Cai, T. T., Liang, T. & Zhou, H. H. (2016). Law of log determinant of sample
 covariance matrix and optimal estimation of differential enteropy
 for high-dimensional Gaussian distributions.   \emph{JMA}, to appear.
-\url{www.stat.yale.edu/~hz68/Covariance-Determinant.pdf}
+Preprint: \url{www.stat.yale.edu/~hz68/Covariance-Determinant.pdf}
 }
 \author{
 Michael Friendly
@@ -85,6 +85,11 @@ iris.mod <- lm(as.matrix(iris[,1:4]) ~ iris$Species)
 iris.boxm <- boxM(iris.mod)
 cov <- c(iris.boxm$cov, list(pooled=iris.boxm$pooled))
 n <- c(rep(50, 3), 150)
+
+CI <- logdetCI( cov, n=n, conf=.95, method=1)
+CI
+plot(iris.boxm, xlim=c(-14, -8), main="Iris data, Box's M test", gplabel="Species")
+arrows(CI$lower, 1:4, CI$upper, 1:4, lwd=3, angle=90, len=.1, code=3)
 
 CI <- logdetCI( cov, n=n, conf=.95, method=1, bias.adj=FALSE)
 CI

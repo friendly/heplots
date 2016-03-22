@@ -108,6 +108,8 @@ univariate models with better statistical properties.
 
 \code{\link{plot.boxM}}, a simple plot of the log determinants
 
+\code{\link{covEllipses}} plots covariance ellipses in variable space for several groups.
+
 }
 
 \examples{
@@ -131,6 +133,8 @@ points(dets , 1:4,
 # formula method
 boxM( cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
 
+### Skulls dat
+data(Skulls)
 # lm method
 skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 boxM(skulls.mod)
