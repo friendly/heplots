@@ -32,7 +32,8 @@ export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d,
   	coefplot,
     boxM,
     covEllipses,
-    colDevs
+    colDevs,
+    logdetCI
   	)
 
 S3method(heplot, mlm)

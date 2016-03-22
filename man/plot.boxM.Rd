@@ -43,8 +43,15 @@ of the various groups to Box's M test for equality of covariance matrices.
 \code{\link[graphics]{dotchart}}
 }
 \examples{
+# Iris data
 res <- boxM(iris[, 1:4], iris[, "Species"])
 plot(res, gplabel="Species")
+
+# Skulls data
+skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
+skulls.boxm <- boxM(skulls.mod)
+plot(skulls.boxm, gplabel="Epoch")
+
 
 }
 \keyword{hgraph}

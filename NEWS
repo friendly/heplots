@@ -9,6 +9,7 @@ o Added data(AddHealth), a simple example of a one-way MANOVA with nice views [t
 o summary.boxM() now returns the calculated statistics and can be used to construct other kinds of plots.
 o plot.boxM() gets a gplabel argument to provide a label for the group factor
 o pairs.mlm() gets a var.cex argument to control size of variable labels
+o Added logdetCI() for confidence intervals on log determinants of covariance matrices (experimental)
 
 
 Version 1.0-16 (2015-07-11)
