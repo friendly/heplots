@@ -60,6 +60,7 @@ plot(res, gplabel="Species")
 skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 skulls.boxm <- boxM(skulls.mod)
 plot(skulls.boxm, gplabel="Epoch")
+plot(skulls.boxm, gplabel="Epoch", bias.adj=FALSE)
 
 
 }
