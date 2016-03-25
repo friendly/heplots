@@ -10,11 +10,11 @@ boxM.default <- function(Y, group, ...)
    if (!inherits(Y, c("data.frame", "matrix")))
       stop(paste(dname, "must be a numeric data.frame or matrix!"))
    if (length(group) != nrow(Y))
-      stop("incompatible dimensions!")
+      stop("incompatible dimensions in Y and group!")
 
    Y <- as.matrix(Y)
    gname <- deparse(substitute(group))
-   group <- as.factor(as.character(group))
+   if (!is.factor(group)) group <- as.factor(as.character(group))
 
    valid <- complete.cases(Y, group)
    if (nrow(Y) > sum(valid)) 
