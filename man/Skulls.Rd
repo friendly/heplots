@@ -24,6 +24,13 @@
 }
 \details{
 
+The epochs correspond to the following periods of Egyptian history:
+1 - the early predynastic period (circa 4000 BC);
+2 - the late predynastic period (circa 3300 BC);
+3 - the 12th and 13th dynasties (circa 1850 BC);
+4 - the Ptolemiac period (circa 200 BC);
+5 - the Roman period (circa 150 AD).
+
   The question is whether the measurements change over time.
   Non-constant measurements of the skulls over time would indicate
   interbreeding with immigrant populations.
