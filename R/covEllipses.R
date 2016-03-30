@@ -1,3 +1,8 @@
+# Revisions:
+# -  Now allow to plot multiple variables in a scatterplot matrix format 3/30/2016 10:53:05 AM
+
+#' Draw covariance ellipses for one or more groups
+
 covEllipses <-function(x, ...) {
 	UseMethod("covEllipses")
 }
@@ -72,7 +77,7 @@ covEllipses.default <-
 				center = FALSE,    # center the ellipses at c(0,0)?
 				center.pch="+",  
 				center.cex=2,
-				col=getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")),
+				col=getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan", "brown", "magenta", "darkgray")),
 				# colors for ellipses
 				lty=1,
 				lwd=2,
@@ -81,23 +86,21 @@ covEllipses.default <-
 				label.pos=0,    # label positions: NULL or 0:4
 				xlab,
 				ylab,
+				vlabels,
 				main="",
 				xlim,           # min/max for X (override internal min/max calc) 
 				ylim,
 				axes=TRUE,      # whether to draw the axes
 				offset.axes,    # if specified, the proportion by which to expand the axes on each end (e.g., .05)
 				add=FALSE,      # add to existing plot?
-				warn.rank=FALSE,  
 				...) 
 {
 
 	ell <- function(center, shape, radius) {
 		angles <- (0:segments)*2*pi/segments
 		circle <- radius * cbind( cos(angles), sin(angles))
-		if (!warn.rank){
-			warn <- options(warn=-1)
-			on.exit(options(warn))
-		}
+		warn <- options(warn=-1)
+		on.exit(options(warn))
 		Q <- chol(shape, pivot=TRUE)
 		order <- order(attr(Q, "pivot"))
 		t( c(center) + t( circle %*% Q[,order]))
@@ -126,9 +129,6 @@ covEllipses.default <-
 	if (n.ell != length(df)) 
 	  stop( paste0("number of covariance matrices (", n.ell, ") does not conform to df (", length(df), ")") )
 	
-	if (missing(xlab)) xlab <- vars[1]
-	if (missing(ylab)) ylab <- vars[2] 
-
 	# assign colors and line styles
 	rep_fun <- rep_len
 	col <- rep_fun(col, n.ell) 
@@ -140,47 +140,94 @@ covEllipses.default <-
 	fill.col <- trans.colors(col, fill.alpha)
 	label.pos <- rep_fun(label.pos, n.ell)
 	fill.col <- ifelse(fill, fill.col, NA)
-
-	radius <- c(sqrt(2 * qf(level, 2, df)))
-	ellipses <- as.list(rep(0, n.ell))
-	for(i in 1:n.ell) {
-		S <- as.matrix(cov[[i]])
-		S <- S[vars, vars]
-		ctr <- if (center)  c(0,0)
-		       else as.numeric(means[i, vars])
-		ellipses[[i]] <- ell(ctr, S, radius[i])
+	
+	panel_covEllipses <- function(vars, xlab, ylab, xlim, ylim, offset.axes) {
+		if (missing(xlab)) xlab <- vars[1]
+		if (missing(ylab)) ylab <- vars[2] 
+	
+		radius <- c(sqrt(2 * qf(level, 2, df)))
+		ellipses <- as.list(rep(0, n.ell))
+		for(i in 1:n.ell) {
+			S <- as.matrix(cov[[i]])
+			S <- S[vars, vars]
+			ctr <- if (center)  c(0,0)
+			       else as.numeric(means[i, vars])
+			ellipses[[i]] <- ell(ctr, S, radius[i])
+		}
+		
+		if (!add){
+			max <- apply(sapply(ellipses, function(X) apply(X, 2, max)), 1, max)
+			min <- apply(sapply(ellipses, function(X) apply(X, 2, min)), 1, min)
+	
+			if (!missing(offset.axes)){
+				range <- max - min
+				min <- min - offset.axes*range
+				max <- max + offset.axes*range
+			}
+			xlim <- if(missing(xlim)) c(min[1], max[1]) else xlim
+			ylim <- if(missing(ylim)) c(min[2], max[2]) else ylim
+			plot(xlim, ylim,  type = "n", xlab=xlab, ylab=ylab, main=main, axes=axes, ...)
+		}
+	
+		labels <- if (!is.null(labels)) labels
+				else names(cov)
+		names(ellipses) <- labels
+	
+		for (i in 1:n.ell){
+				polygon(ellipses[[i]], col=fill.col[i], border=col[i],  lty=lty[i], lwd=lwd[i])
+				label.ellipse(ellipses[[i]], labels[i], col=col[i], label.pos=label.pos[i], ...) 
+				if (!center) 
+					points(means[i,vars[1]], means[i,vars[2]], pch=center.pch, cex=center.cex, col=col[i], xpd=TRUE)
+			}
+		if (center) points( 0, 0, pch=center.pch, cex=center.cex, col=gray(.25))
 	}
 	
-	if (!add){
-		max <- apply(sapply(ellipses, function(X) apply(X, 2, max)), 1, max)
-		min <- apply(sapply(ellipses, function(X) apply(X, 2, min)), 1, min)
-
-		if (!missing(offset.axes)){
-			range <- max - min
-			min <- min - offset.axes*range
-			max <- max + offset.axes*range
-		}
-		xlim <- if(missing(xlim)) c(min[1], max[1]) else xlim
-		ylim <- if(missing(ylim)) c(min[2], max[2]) else ylim
-		plot(xlim, ylim,  type = "n", xlab=xlab, ylab=ylab, main=main, axes=axes, ...)
+	vlabels <- if (!missing(vlabels)) vlabels else vars
+	if (length(vars)==2) {
+		panel_covEllipses(vars, xlab=xlab, ylab=ylab, xlim=xlim, ylim=ylim, offset.axes=offset.axes)
 	}
-
-	labels <- if (!is.null(labels)) labels
-			else names(cov)
-
-	for (i in 1:n.ell){
-			polygon(ellipses[[i]], col=fill.col[i], border=col[i],  lty=lty[i], lwd=lwd[i])
-			label.ellipse(ellipses[[i]], labels[i], col=col[i], label.pos=label.pos[i], ...) 
-			if (!center) 
-				points(means[i,1], means[i,2], pch=center.pch, cex=center.cex, col=col[i], xpd=TRUE)
-		}   
-
-	names(ellipses) <- labels
+	else {
+		nv <- length(vars)
+		op <- par(mfrow=c(nv, nv), mar=c(2,2,0,0)+.1, xaxt='n', yaxt='n', ann=FALSE)
+		on.exit( par(op) )
+		for (i in 1:nv) {
+			for (j in 1:nv) {
+				if (i==j) {
+					plot(c(0,1), c(0,1), type="n", axes=FALSE)
+					text(0.5, 0.5, vlabels[i], cex=2.2)
+					box()
+				}
+				else {
+					panel_covEllipses( vars[c(i,j)], xlab=xlab, ylab=ylab, xlim=xlim, ylim=ylim, offset.axes=offset.axes )
+				}
+			}
+		}		
+	}
+	
 #	result <- if (!add) list(ellipses, center=means, xlim=xlim, ylim=ylim, radius=radius)
 #			else list(H=ellipses,  center=gmean, radius=radius)
-	result <- ellipses
-	class(result) <- "covEllipses"
-	invisible(result)
+#	result <- ellipses
+#	class(result) <- "covEllipses"
+#	invisible(result)
 	
 }
 
+#if (FALSE) {
+#op <- par(mfrow=c(4,4), mar=c(1,2,0,0)+.1, xaxt='n', yaxt='n', ann=FALSE)
+#for (i in 1:4) {
+#	for (j in 1:4) {
+#		if (i==j) {
+#			plot(c(0,1), c(0,1), type="n", axes=FALSE)
+#			text(0.5, 0.5, vlab[i], cex=2.2)
+#			box()
+#		}
+#		else {
+#			covEllipses(Skulls[,-1], Skulls$epoch, variables=c(i,j),
+#			            fill=c(rep(FALSE, 5), TRUE), label.pos=1:4,
+#			            xlab=vlab[1], ylab=vlab[2], center=TRUE)
+#			points(0, 0, pch='+', cex=2, col=gray(.25))
+#		}
+#	}
+#}
+#par(op)
+#}

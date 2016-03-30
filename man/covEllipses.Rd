@@ -13,6 +13,8 @@ The function draws covariance ellipses for one or more groups
 and optionally for the pooled total sample.  It 
 uses either the classical product-moment covariance estimate, or a
 robust alternative, as provided by \code{\link[MASS]{cov.rob}}.
+Provisions are provided to do this for more than two variables,
+in a scatterplot matrix format.
 }
 \usage{
 
@@ -29,20 +31,22 @@ covEllipses(x, ...)
         segments = 40, 
         center = FALSE, center.pch = "+", center.cex = 2, 
         col = getOption("heplot.colors", c("red", "blue", "black", "darkgreen", 
-                        "darkcyan", "magenta", "brown", "darkgray")), 
+                        "darkcyan", "brown", "magenta", "darkgray")), 
         lty = 1, lwd = 2, 
         fill = FALSE, fill.alpha = 0.3, 
         label.pos = 0, 
-        xlab, ylab, main = "", 
+        xlab, ylab, vlabels, 
+        main = "", 
         xlim, ylim, axes = TRUE, 
-        offset.axes, add = FALSE, warn.rank = FALSE, ...)
+        offset.axes, add = FALSE,  ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
 
   \item{x}{
 The generic argument. For the default method, this is a list of covariance matrices.
-For the data.frame and matrix methods, this is a numeric matrix of two or more columns.
+For the \code{data.frame} and \code{matrix} methods, this is a numeric matrix of two or more columns
+supplying the variables to be analyzed.
 }
 
   \item{group}{
@@ -50,7 +54,7 @@ a factor defining groups, or a vector of length \code{n=nrow(x)} doing the same.
 If missing, a single covariance ellipse is drawn.
 }
   \item{pooled}{
-Logical; if \code{TRUE}, the pooled covariance matrix is also computed and plotted
+Logical; if \code{TRUE}, the pooled covariance matrix for the total sample is also computed and plotted
 }
   \item{method}{
 the covariance method to be used: classical product-moment (\code{"classical"}), 
@@ -72,12 +76,13 @@ For the default method, a vector of the degrees of freedom for the covariance ma
   \item{labels}{
 Either a character vector of labels for the groups, or \code{TRUE},
 indicating that group labels are taken as the names of the covariance matrices.
-Use \code{labels=""} to suppress group labels
+Use \code{labels=""} to suppress group labels, e.g., when \code{add=TRUE}
 }
-  \item{variables}{indices or names of the two response variables to be plotted;
-    defaults to \code{1:2}.}
+  \item{variables}{indices or names of the response variables to be plotted;
+    defaults to \code{1:2}.  If more than two variables are supplied, the function
+    plots all pairwise covariance ellipses in a scatterplot matrix format.}
 
-  \item{level}{equivalent coverage of ellipse for normally-distributed
+  \item{level}{equivalent coverage of a data ellipse for normally-distributed
     errors, defaults to \code{0.68}.}
 
   \item{segments}{number of line segments composing each ellipse; defaults to
@@ -129,18 +134,18 @@ Use \code{labels=""} to suppress group labels
 
   \item{xlab}{x-axis label; defaults to name of the x variable.}
   \item{ylab}{y-axis label; defaults to name of the y variable.}
-  \item{main}{main plot label; defaults to \code{""}.}
+  \item{vlabels}{Labels for the variables can also be supplied through this argument, which is more convenient
+  when \code{length(variables) > 2}.}
+  \item{main}{main plot label; defaults to \code{""}, and presently has no effect.}
   \item{xlim}{x-axis limits; if absent, will be computed from the data.}
   \item{ylim}{y-axis limits; if absent, will be computed from the data.}
   \item{axes}{Whether to draw the x, y axes; defaults to \code{TRUE}}
   \item{offset.axes}{proportion to extend the axes in each direction if computed 
     from the data; optional.}
 
-  \item{add}{if \code{TRUE}, add to the current plot; the default is \code{FALSE}.
+  \item{add}{if \code{TRUE}, add to the current plot; the default is \code{FALSE}. This argument is has no effect
+  when more than two variables are plotted.
     }
-
-  \item{warn.rank}{if \code{TRUE}, do not suppress warnings about the rank of the
-    covariance matrices; the default is \code{FALSE}.}
 
   \item{\dots}{
 Other arguments passed to the default method for \code{plot}, \code{text}, 
@@ -149,13 +154,19 @@ Other arguments passed to the default method for \code{plot}, \code{text},
 
 }
 \details{
-This plot method provides one way to visualize possible heterogeneity of
-covariance matrices in a one-way MANOVA design.
+These plot methods provide one way to visualize possible heterogeneity of within-group
+covariance matrices in a one-way MANOVA design. When 
+covariance matrices are nearly equal, their covariance ellipses should all have the
+same shape.  When centered at a common mean, they should also all overlap.
+
+The can also be used to visualize the difference between classical and
+robust covariance matrices.
 
 }
 \value{
-Returns invisibly an object of class \code{"covEllipse"},
-which is a list of the coordinates for the ellipses drawn.
+Nothing is returned.  The function is used for its side-effect of producing a plot.
+%Returns invisibly an object of class \code{"covEllipse"},
+%which is a list of the coordinates for the ellipses drawn.
 }
 
 %\references{
@@ -183,20 +194,25 @@ Michael Friendly
 
 data(iris)
 
+# compare classical and robust covariance estimates
 covEllipses(iris[,1:4], iris$Species)
 covEllipses(iris[,1:4], iris$Species, fill=TRUE, method="mve", add=TRUE, labels="")
-	
+
+# method for a boxM object	
 x <- boxM(iris[, 1:4], iris[, "Species"])
 x
 covEllipses(x, fill=c(rep(FALSE,3), TRUE) )
 covEllipses(x, fill=c(rep(FALSE,3), TRUE), center=TRUE, label.pos=1:4 )
 
+# method for a list of covariance matrices
 cov <- c(x$cov, pooled=list(x$pooled))
 df <- c(table(iris$Species)-1, nrow(iris)-3)
 covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE))
  
 covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE), center=TRUE)
 
+# scatterplot matrix version
+covEllipses(iris[,1:4], iris$Species, variables=1:4)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

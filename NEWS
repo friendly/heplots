@@ -1,3 +1,7 @@
+Version 1.1-1 (2016-03-30)
+
+o covEllipses() extended to more than two variables, giving a scatterplot matrix plot
+
 Version 1.1-0 (2016-03-03)
 
 o Added boXM from biotools
