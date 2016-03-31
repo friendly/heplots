@@ -51,6 +51,7 @@ covEllipses.data.frame <-
  colnames(means) <- colnames(x)
 
  if(pooled) {
+   x <- colDevs(x, group)
 	 rcov <- MASS::cov.rob(x, method=method)
 	 pooled <- rcov$cov
 	 mats <- c(mats, pooled=list(pooled))
