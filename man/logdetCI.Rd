@@ -63,6 +63,7 @@ has not yet been taken into account here.
 \value{
 A data frame with one row for each covariance matrix.
 \code{lower} and \code{upper} are the boundaries of the confidence intervals.
+Other columns are \code{logdet, bias, se}.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
