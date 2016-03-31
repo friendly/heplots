@@ -23,7 +23,7 @@ This function is included here only to provide an approximation to
 matrices, \code{\link{boxM}} and its associated \code{\link{plot.boxM}} method.
 }
 \usage{
-logdetCI(cov, n, conf = 0.95, method = 2, bias.adj = TRUE)
+logdetCI(cov, n, conf = 0.95, method = 1, bias.adj = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -32,14 +32,20 @@ logdetCI(cov, n, conf = 0.95, method = 2, bias.adj = TRUE)
   \item{conf}{confidence level}
 
   \item{method}{
-Two methods are provided, based on their Colollary 1 and Colollary 2,
+Three methods are provided, based on Cai et. al Theorem 1 (\code{method=1}), Colollary 1 (\code{method=2}) and 
+Colollary 2 (\code{method=3}),
 each with different bias and SE values.
 }
   \item{bias.adj}{
-logical; set \code{FALSE} to exclude the bias correction term
+logical; set \code{FALSE} to exclude the bias correction term.
 }
 }
 \details{
+
+Cai et. al (2016) claim that their Theorem 1 holds with either p fixed or \eqn{p(n)} growing with n, as long as
+\eqn{p(n) \le n}. Their Corollary 1 (\code{method=2}) is the special case when p is fixed.
+Their Corollary 2 (\code{method=3}) is the special case when \eqn{0 \le p/n < 1} is fixed.
+
 The properties of this CI estimator are unknown in small to moderate
 sample sizes, but it seems to be the only one available. 
 It is therefore experimental in this version of the package
@@ -49,6 +55,10 @@ The \eqn{bias} term offsets the confidence interval from the sample
 estimate of \eqn{ \log det( \widehat{\Sigma} ) }.
 When \eqn{p} is large relative to \eqn{n}, the confidence interval may not
 overlap the sample estimate.
+
+Strictly speaking, this estimator applies to the MLE of the covariance matrix, i.e.,
+using \eqn{n} rather than \eqn{n-1} in as the divisor.  The factor \eqn{(n-1 / n)}
+has not yet be taken into account here.
 }
 \value{
 A data frame with one row for each covariance matrix.
