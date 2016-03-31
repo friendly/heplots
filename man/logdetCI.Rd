@@ -42,8 +42,8 @@ logical; set \code{FALSE} to exclude the bias correction term.
 }
 \details{
 
-Cai et. al (2016) claim that their Theorem 1 holds with either p fixed or \eqn{p(n)} growing with n, as long as
-\eqn{p(n) \le n}. Their Corollary 1 (\code{method=2}) is the special case when p is fixed.
+Cai et. al (2016) claim that their Theorem 1 holds with either \eqn{p} fixed or \eqn{p(n)} growing with \eqn{n}, as long as
+\eqn{p(n) \le n}. Their Corollary 1 (\code{method=2}) is the special case when \eqn{p} is fixed.
 Their Corollary 2 (\code{method=3}) is the special case when \eqn{0 \le p/n < 1} is fixed.
 
 The properties of this CI estimator are unknown in small to moderate
@@ -56,9 +56,9 @@ estimate of \eqn{ \log det( \widehat{\Sigma} ) }.
 When \eqn{p} is large relative to \eqn{n}, the confidence interval may not
 overlap the sample estimate.
 
-Strictly speaking, this estimator applies to the MLE of the covariance matrix, i.e.,
+Strictly speaking, this estimator applies to the MLE of the covariance matrix \eqn{ \widehat{\Sigma}}, i.e.,
 using \eqn{n} rather than \eqn{n-1} in as the divisor.  The factor \eqn{(n-1 / n)}
-has not yet be taken into account here.
+has not yet been taken into account here.
 }
 \value{
 A data frame with one row for each covariance matrix.
