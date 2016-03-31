@@ -214,7 +214,9 @@ covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE))
 covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE), center=TRUE)
 
 # scatterplot matrix version
-covEllipses(iris[,1:4], iris$Species, variables=1:4)
+covEllipses(iris[,1:4], iris$Species, 
+	fill=c(rep(FALSE,3), TRUE), variables=1:4, 
+	fill.alpha=.1)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
