@@ -87,6 +87,7 @@ covEllipses.default <-
 				xlab,
 				ylab,
 				vlabels,
+				var.cex=2,
 				main="",
 				xlim,           # min/max for X (override internal min/max calc) 
 				ylim,
@@ -194,7 +195,7 @@ covEllipses.default <-
 			for (j in 1:nv) {
 				if (i==j) {
 					plot(c(0,1), c(0,1), type="n", axes=FALSE)
-					text(0.5, 0.5, vlabels[i], cex=2.2)
+					text(0.5, 0.5, vlabels[i], cex=var.cex)
 					box()
 				}
 				else {

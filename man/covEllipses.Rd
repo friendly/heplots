@@ -35,7 +35,8 @@ covEllipses(x, ...)
         lty = 1, lwd = 2, 
         fill = FALSE, fill.alpha = 0.3, 
         label.pos = 0, 
-        xlab, ylab, vlabels, 
+        xlab, ylab, 
+        vlabels, var.cex=2, 
         main = "", 
         xlim, ylim, axes = TRUE, 
         offset.axes, add = FALSE,  ...)
@@ -136,6 +137,7 @@ Use \code{labels=""} to suppress group labels, e.g., when \code{add=TRUE}
   \item{ylab}{y-axis label; defaults to name of the y variable.}
   \item{vlabels}{Labels for the variables can also be supplied through this argument, which is more convenient
   when \code{length(variables) > 2}.}
+  \item{var.cex}{character size for variable labels in the pairs plot}
   \item{main}{main plot label; defaults to \code{""}, and presently has no effect.}
   \item{xlim}{x-axis limits; if absent, will be computed from the data.}
   \item{ylim}{y-axis limits; if absent, will be computed from the data.}
