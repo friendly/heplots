@@ -201,7 +201,7 @@ covEllipses.default <-
 					box()
 				}
 				else {
-					panel_covEllipses( vars[c(i,j)], xlab=xlab, ylab=ylab, xlim=xlim, ylim=ylim, offset.axes=offset.axes )
+					panel_covEllipses( vars[c(j,i)], xlab=xlab, ylab=ylab, xlim=xlim, ylim=ylim, offset.axes=offset.axes )
 				}
 			}
 		}		

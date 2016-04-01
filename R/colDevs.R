@@ -32,23 +32,3 @@ colDevs <- function(x, group, center=mean,  ...) {
 }
 
 
-TESTME <- FALSE
-if(TESTME) {
-
-# multivariate versions of Levene's test
-Species <- iris$Species
-irisdev <- colDevs(iris[,1:4], Species, mean)
-irisdev.mod <- lm( abs(irisdev) ~ Species)
-car::Anova(irisdev.mod)
-heplot(irisdev.mod)
-pairs(irisdev.mod)
-
-irisdev <- colDevs(iris[,1:4], Species, median)
-irisdev.mod <- lm( abs(irisdev) ~ Species)
-car::Anova(irisdev.mod)
-
-irisdev <- colDevs(iris[,1:4], Species, function(x) mean(x, trim=0.25))
-irisdev.mod <- lm( abs(irisdev) ~ Species)
-car::Anova(irisdev.mod)
-
-}
