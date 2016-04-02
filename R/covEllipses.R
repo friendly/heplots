@@ -191,7 +191,7 @@ covEllipses.default <-
 	}
 	else {
 		nv <- length(vars)
-		op <- par(mfrow=c(nv, nv), mar=c(2,2,0,0)+.1, xaxt='n', yaxt='n', ann=FALSE)
+		op <- par(mfcol=c(nv, nv), mar=c(2,2,0,0)+.1, xaxt='n', yaxt='n', ann=FALSE)
 		on.exit( par(op) )
 		for (i in 1:nv) {
 			for (j in 1:nv) {
@@ -201,7 +201,7 @@ covEllipses.default <-
 					box()
 				}
 				else {
-					panel_covEllipses( vars[c(j,i)], xlab=xlab, ylab=ylab, xlim=xlim, ylim=ylim, offset.axes=offset.axes )
+					panel_covEllipses( vars[c(i,j)], xlab=xlab, ylab=ylab, xlim=xlim, ylim=ylim, offset.axes=offset.axes )
 				}
 			}
 		}		
