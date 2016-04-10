@@ -82,7 +82,11 @@ components:
 \itemize{
   \item \code{logDet} - log determinants
   \item \code{eigs} - eigenvalues of the covariance matrices
-  \item \code{eigstats} - statistics computed on the eigenvalues for each covariance matrix
+  \item \code{eigstats} - statistics computed on the eigenvalues for each covariance matrix:\cr
+    \code{product}:  the product of eigenvalues, \eqn{\prod{\lambda_i}};\cr
+    \code{sum}:  the sum of eigenvalues, \eqn{\sum{\lambda_i}};\cr
+    \code{precision}: the average precision of eigenvalues, \eqn{1/\sum(1/\lambda_i)};\cr
+    \code{max}: the maximum eigenvalue, \eqn{\lambda_1}
 }
 
 }

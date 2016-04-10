@@ -31,8 +31,10 @@ the eigenvalues of these covariance matrices.
 \arguments{
   \item{x}{A \code{"boxM"} object resulting from \code{\link{boxM}} }
   \item{gplabel}{character string used to label the group factor.}
-  \item{which}{Measure to be plotted. The default, \code{"logDet"}, is the standard plot.}
-  \item{log}{logical; if \code{TRUE}, the log of the measure is plotted. }
+  \item{which}{Measure to be plotted. The default, \code{"logDet"}, is the standard plot.
+    Other values are: \code{"product"}, \code{"sum"}, \code{"precision"} and \code{"max"}}
+  \item{log}{logical; if \code{TRUE}, the log of the measure is plotted. The default, \code{which=="product"},
+  produces a plot equivalent to the plot of \code{"logDet"}. }
   \item{pch}{a vector of two point symbols to use for the individual groups and the pooled data, respectively}
   \item{cex}{character size, a vector of length two for groups and pooled data }
   \item{col}{colors for point symbols, a vector of length two}
@@ -45,7 +47,7 @@ the eigenvalues of these covariance matrices.
 }
 
 \details{
-Confidence intervals are only available for the deafault Box M test, using \code{which="logDet"}
+Confidence intervals are only available for the default Box M test, using \code{which="logDet"}.
 %%%  ~~ If necessary, more details than the __description__ above ~~
 %}
 %\source{
@@ -72,6 +74,12 @@ skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 skulls.boxm <- boxM(skulls.mod)
 plot(skulls.boxm, gplabel="Epoch")
 plot(skulls.boxm, gplabel="Epoch", bias.adj=FALSE)
+
+# other measures
+ plot(skulls.boxm, which="product", gplabel="Epoch", xlim=c(10,14))
+ plot(skulls.boxm, which="sum", gplabel="Epoch")
+ plot(skulls.boxm, which="precision", gplabel="Epoch")
+ plot(skulls.boxm, which="max", gplabel="Epoch")
 
 
 }
