@@ -5,6 +5,7 @@ plot.boxM <-
            pch=c(16, 15), 
            cex=c(2, 2.5), 
            col=c("blue", "red"),
+           rev = FALSE,
            xlim,
            conf=0.95, method=1, bias.adj=TRUE, lwd=2, ...) {
     
@@ -36,11 +37,12 @@ plot.boxM <-
       xlim[2] <- max(xlim[2], CI$upper)
     }
     
-    dotchart(measure, xlab = xlab, xlim=xlim,  ...)
+    yorder <- if (rev) c(ng:1, ng+1) else 1:(ng+1)
+    dotchart(measure[yorder], xlab = xlab, xlim=xlim,  ...)
     if (conf>0) {
-      arrows(CI$lower, 1:(ng+1), CI$upper, 1:(ng+1), lwd=lwd, angle=90, length=.075, code=3)
+      arrows(CI$lower, yorder, CI$upper, yorder, lwd=lwd, angle=90, length=.075, code=3)
     }
-    points(measure, 1:(ng+1),  
+    points(measure, yorder,  
            cex=c(rep(cex[1], ng), cex[2]), 
            pch=c(rep(pch[1], ng), pch[2]),
            col=c(rep(col[1], ng), col[2]))

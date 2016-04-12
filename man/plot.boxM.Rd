@@ -23,6 +23,7 @@ the eigenvalues of these covariance matrices.
              pch = c(16, 15), 
              cex = c(2, 2.5), 
              col = c("blue", "red"),  
+             rev = FALSE,
              xlim,
              conf=0.95, method=1, bias.adj=TRUE, lwd=2,
              ...)
@@ -36,8 +37,9 @@ the eigenvalues of these covariance matrices.
   \item{log}{logical; if \code{TRUE}, the log of the measure is plotted. The default, \code{which=="product"},
   produces a plot equivalent to the plot of \code{"logDet"}. }
   \item{pch}{a vector of two point symbols to use for the individual groups and the pooled data, respectively}
-  \item{cex}{character size, a vector of length two for groups and pooled data }
-  \item{col}{colors for point symbols, a vector of length two}
+  \item{cex}{character size of point symbols, a vector of length two for groups and pooled data, respectively }
+  \item{col}{colors for point symbols, a vector of length two for the groups and the pooled data}
+  \item{rev}{logical; if \code{TRUE}, the order of the groups is reversed on the vertical axis.}
   \item{xlim}{x limits for the plot}
   \item{conf}{coverage for approximate confidence intervals, \code{0 <= conf < 1} ; use \code{conf=0} to suppress these }
   \item{method}{confidence interval method; see \code{\link{logdetCI}}}
