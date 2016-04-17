@@ -36,7 +36,8 @@ export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d,
       boxM,
       covEllipses,
       colDevs,
-      logdetCI
+      logdetCI,
+    	bartlettTests
   	)
 
 S3method(heplot, mlm)
