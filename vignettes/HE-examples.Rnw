@@ -514,7 +514,7 @@ would indicate interbreeding with immigrant populations.
 \begin{figure}[htb]
 \begin{center}
 	\includegraphics[width=.6\textwidth]{skulls}
-\caption{Diagram of the skull measurements}
+\caption{Diagram of the skull measurements. Maximal breadth and basibregmatic height are the basic measures of ``size'' of a skull.  Basialveolar length and nasal height are important anthropometric measures of ``shape''.}
 \label{fig:skulls}
 \end{center}
 \end{figure}
