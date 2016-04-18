@@ -72,9 +72,6 @@ leveneTests(iris[,1, drop=FALSE], iris$Species)
 data(Skulls, package="heplots")
 leveneTests(Skulls[,-1], Skulls$epoch)
 
-data(Wine, package="candisc")
-leveneTests(Wine[,-1], Wine$Cultivar)
-
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

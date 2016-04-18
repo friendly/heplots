@@ -27,16 +27,3 @@ leveneTests <-
 	LT
 }
 
-TESTME <- FALSE
-if (TESTME) {
-leveneTests(iris[,1:4], iris$Species)
-
-# handle a 1-column response?
-leveneTests(iris[,1, drop=FALSE], iris$Species)
-
-data(Skulls, package="heplots")
-leveneTests(Skulls[,-1], Skulls$epoch)
-
-data(Wine, package="candisc")
-leveneTests(Wine[,-1], Wine$Cultivar)
-}
