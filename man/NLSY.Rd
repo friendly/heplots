@@ -33,6 +33,10 @@ This dataset was derived from a larger one used by Patrick Curran
 at the 1997 meeting of the Society for Research on Child Development (SRCD).
 A description now only exists on the WayBack Machine,
 \url{http://web.archive.org/web/20050404145001/http://www.unc.edu/~curran/example.html}.
+
+More details are available at
+\url{http://web.archive.org/web/20060830061414/http://www.unc.edu/~curran/srcd-docs/srcdmeth.pdf}.
+
 }
 %\references{
 %%%  ~~ possibly secondary sources and usages ~~
