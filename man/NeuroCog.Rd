@@ -48,7 +48,7 @@ Disorders; 2) outpatient status; 3) a history free of developmental or learning
 disability; 4) age 18-65; 5) a history free of neurological or endocrine
 disorder; and 6) no concurrent DSM-IV-TR diagnosis of substance use disorder.
 
-Non-psychiatric control participants (N = 146) were screened for medical and
+Non-psychiatric control participants (n = 146) were screened for medical and
 psychiatric illness and history of substance abuse. Patients were recruited from
 three outpatient clinics in Hamilton, Ontario, Canada. Control participants were
 recruited through local newspaper and online classified advertisements for paid
@@ -79,6 +79,25 @@ The MATRICS Consensus Cognitive Battery, Part 1: Test selection, reliability, an
 }
 \examples{
 data(NeuroCog)
-## maybe str(NeuroCog) ; plot(NeuroCog) ...
+NC.mlm <- lm(cbind( Speed, Attention, Memory, Verbal, Visual, ProbSolv) ~ Dx,
+               data=NeuroCog)
+Anova(NC.mlm)
+
+# test contrasts
+contrasts(NeuroCog$Dx)
+print(linearHypothesis(NC.mlm, "Dx1"), SSP=FALSE)
+print(linearHypothesis(NC.mlm, "Dx2"), SSP=FALSE)
+
+# pairwise HE plots
+pairs(NC.mlm, var.cex=1.5)
+
+# canonical discriminant analysis
+if (require(candisc)) {
+  NC.can <- candisc(NC.mlm)
+  NC.can
+  
+  plot(NC.can, ellipse=TRUE, rev.axes=c(TRUE,FALSE), pch=c(7,9,10))
+}
+
 }
 \keyword{datasets}
