@@ -56,7 +56,7 @@ heplot(mod, ...)
   \item{label.pos}{
 	Label position, a vector of integers (in \code{0:4}) or character strings
 	(in \code{c("center", "bottom", "left", "top", "right")}, or in
-	\code{c("C", "S", "W", "N", "E")) use in labeling ellipses,
+	\code{c("C", "S", "W", "N", "E")} use in labeling ellipses,
 	recycled as necessary.
 	Values of 1, 2, 3 and 4, respectively indicate positions below, to the left of, above 
 	and to the right of the max/min coordinates of the ellipse; the value 0 specifies
@@ -84,7 +84,8 @@ heplot(mod, ...)
     the default (and \code{"2"} is a synomym).}
   \item{idata}{an optional data frame giving a factor or factors defining the 
     intra-subject model for multivariate repeated-measures data. 
-    See Details of \code{\link[car]{Anova}} for an explanation of the intra-subject design and for further explanation 
+    See Friendly (2010) and Details of \code{\link[car]{Anova}} for an explanation of the intra-subject design
+    and for further explanation 
     of the other arguments relating to intra-subject factors.} 
   \item{idesign}{a one-sided model formula using the ``data'' in idata and specifying 
     the intra-subject design for repeated measure models.} 
@@ -116,14 +117,15 @@ heplot(mod, ...)
     ellipse; if \code{"effect.size"}, the hypothesis ellipse is on the same
     scale as the error ellipse.}  
   \item{level}{equivalent coverage of ellipse for normally-distributed
-    errors, defaults to \code{0.68}.}
+    errors, defaults to \code{0.68}, giving a standard 1 SD bivariate ellipse.}
   \item{alpha}{signficance level for Roy's greatest-root test statistic; if
     \code{size="evidence"}, then the
     hypothesis ellipse is scaled so that it just touches the error ellipse at the
-    specified alpha level; a larger hypothesis ellipse therefore indicates
+    specified alpha level; a larger hypothesis ellipse \emph{somewhere} in the space of
+    the response variables therefore indicates
     statistical significance; defaults to \code{0.05}.}
   \item{segments}{number of line segments composing each ellipse; defaults to
-    \code{40}.}
+    \code{60}.}
   \item{center.pch}{character to use in plotting the centroid of the data;
     defaults to \code{"+"}.}
   \item{center.cex}{size of character to use in plotting the centroid of the data;
@@ -149,7 +151,7 @@ heplot(mod, ...)
     the hypothesis ellipses; a single fill value can be given.  
     Defaults to FALSE for backward compatibility. See Details below.}
   \item{fill.alpha}{Alpha transparency for filled ellipses, a numeric scalar or vector of values
-  within \code{[0,1]}, where 0 means fully transparent and 1 means fully opaque. Defaults to 0.3.}
+  within \code{[0,1]}, where 0 means fully transparent and 1 means fully opaque.}
   \item{xlab}{x-axis label; defaults to name of the x variable.}
   \item{ylab}{y-axis label; defaults to name of the y variable.}
   \item{main}{main plot label; defaults to \code{""}.}
@@ -260,10 +262,13 @@ Recent Advances in Visualizing Multivariate Linear Models.
 
 \seealso{
     \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for details on 
-    testing \code{mlm}s.
+    testing MLMs.
     
     \code{\link{heplot1d}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}}, \code{\link{mark.H0}} for other
-    HE plot functions. \code{\link{trans.colors}} for calculation of transparent colors.
+    HE plot functions. \code{\link{coefplot.mlm}} for plotting confidence ellipses for parameters
+    in MLMs.
+    
+    \code{\link{trans.colors}} for calculation of transparent colors.
     \code{\link{label.ellipse}} for labeling positions in plotting H and E ellipses.
         
   	\code{\link[candisc]{candisc}},   \code{\link[candisc]{heplot.candisc}} for reduced-rank views of \code{mlm}s

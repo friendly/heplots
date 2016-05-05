@@ -35,10 +35,6 @@ contribute to significant differences in variances among groups.
 \value{
 An object of classes "anova" and "data.frame", with one observation for each
 response variable in \code{y}.  
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 \references{
 Bartlett, M. S. (1937). Properties of sufficiency and statistical tests. 
@@ -65,5 +61,4 @@ bartlettTests(Skulls[,-1], Skulls$epoch)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{htest}
