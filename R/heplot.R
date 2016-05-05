@@ -55,7 +55,7 @@
 				size=c("evidence", "effect.size"),
 				level=0.68,
 				alpha=0.05,
-				segments=40,   # line segments in each ellipse
+				segments=60,   # line segments in each ellipse
 				center.pch="+",   # doesn't have to be an argument
 				center.cex=2,
 				col=getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")),

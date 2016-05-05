@@ -24,7 +24,7 @@ heplot(mod, ...)
 	icontrasts=c("contr.sum", "contr.poly"),
 	imatrix=NULL, iterm=NULL, markH0=!is.null(iterm),
     manova, size = c("evidence", "effect.size"),
-    level = 0.68, alpha = 0.05, segments = 40, 
+    level = 0.68, alpha = 0.05, segments = 60, 
     center.pch = "+", center.cex=2,
     col = getOption("heplot.colors", 
                c("red", "blue", "black", "darkgreen", 

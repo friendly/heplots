@@ -1,7 +1,7 @@
 # Revisions:
 # -  Now allow to plot multiple variables in a scatterplot matrix format 3/30/2016 10:53:05 AM
 
-#' Draw covariance ellipses for one or more groups
+# Draw covariance ellipses for one or more groups
 
 covEllipses <-function(x, ...) {
 	UseMethod("covEllipses")

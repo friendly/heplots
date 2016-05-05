@@ -1,10 +1,12 @@
 Version 1.1-1 (2016-04-27)
 
 o covEllipses() extended to more than two variables, giving a scatterplot matrix plot
-o plot.boxM now can plot other measures of the eigenvalues of the covariance matrices.
+o plot.boxM() now can plot other measures of the eigenvalues of the covariance matrices.
 o added bartlettTests() for a collection of univariate Bartlett tests 
 o added leveneTests() for a collection of univariate Levene tests 
 o added NeuroCog data, a simple one-way MANOVA
+o label.ellipse() now uses a much more flexible `label.pos` argument for positioning the
+  text labels used in heplot() and friends.
 
 Version 1.1-0 (2016-03-03)
 

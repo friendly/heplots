@@ -1,15 +1,15 @@
-#' Calculate confidence interval for log determinant of covariance matrices
+# Calculate confidence interval for log determinant of covariance matrices
 
-#' @param cov a covariance matrix or a list of covariance matrices
-#' @param n   sample size, or vector of sample sizes
-#' @param conf  confidence level
-#' @param method 
-#' @param bias.adj logical, to include bias correction term
+# @param cov a covariance matrix or a list of covariance matrices
+# @param n   sample size, or vector of sample sizes
+# @param conf  confidence level
+# @param method 
+# @param bias.adj logical, to include bias correction term
 
-#' @reference Cai, T. T., Liang, T. & Zhou, H. H. (2016). Law of log determinant of sample
-#'         covariance matrix and optimal estimation of differential enteropy
-#'         for high-dimensional Gaussian distributions.   JMA, to appear.
-#'         www.stat.yale.edu/~hz68/Covariance-Determinant.pdf
+# @references Cai, T. T., Liang, T. & Zhou, H. H. (2016). Law of log determinant of sample
+#         covariance matrix and optimal estimation of differential enteropy
+#         for high-dimensional Gaussian distributions.   JMA, to appear.
+#         www.stat.yale.edu/~hz68/Covariance-Determinant.pdf
 
 logdetCI <- function(cov, n, conf=0.95, method=1, bias.adj=TRUE) {
 	p <- if (is.list(cov)) sapply(cov, nrow)
