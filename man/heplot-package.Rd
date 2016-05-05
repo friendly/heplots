@@ -113,9 +113,13 @@ Fox, J., Friendly, M. & Weisberg, S. (2013).
 
 Friendly, M.,  Monette, G. & Fox, J. (2013).
 	Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry.
-	\emph{Statistical Science}, 2013, 28 (1), 1-39,
+	\emph{Statistical Science}, 2013, \bold{28} (1), 1-39,
 	\url{http://datavis.ca/papers/ellipses.pdf}.
 
+Friendly, M. & Sigal, M. (2014)
+Recent Advances in Visualizing Multivariate Linear Models.
+\emph{Revista Colombiana de Estadistica}, \bold{37}, 261-283, 
+\url{http://ref.scielo.org/6gq33g}.
 }
 
 \keyword{package}

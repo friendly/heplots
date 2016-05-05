@@ -55,13 +55,15 @@ heplot(mod, ...)
 
   \item{label.pos}{
 	Label position, a vector of integers (in \code{0:4}) or character strings
-	(in \code{c("center", "bottom", "left", "top", "right")}) use in labeling ellipses,
+	(in \code{c("center", "bottom", "left", "top", "right")}, or in
+	\code{c("C", "S", "W", "N", "E")) use in labeling ellipses,
 	recycled as necessary.
 	Values of 1, 2, 3 and 4, respectively indicate positions below, to the left of, above 
 	and to the right of the max/min coordinates of the ellipse; the value 0 specifies
 	the centroid of the \code{ellipse} object.
 	The default, \code{label.pos=NULL}
 	uses the correlation of the \code{ellipse} to determine "top" (r>=0) or "bottom" (r<0).
+	Even more flexible options are described in \code{\link{label.ellipse}}
 }
 
   \item{variables}{indices or names of the two response variables to be plotted;
@@ -248,6 +250,12 @@ Fox, J., Friendly, M. & Weisberg, S. (2013).
 Hypothesis Tests for Multivariate Linear Models Using the car Package.
 \emph{The R Journal}, \bold{5}(1), 
 \url{http://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf}.
+
+Friendly, M. & Sigal, M. (2014)
+Recent Advances in Visualizing Multivariate Linear Models.
+\emph{Revista Colombiana de Estadistica}, \bold{37}, 261-283, 
+\url{http://ref.scielo.org/6gq33g}.
+
 }
 
 \seealso{
@@ -256,6 +264,7 @@ Hypothesis Tests for Multivariate Linear Models Using the car Package.
     
     \code{\link{heplot1d}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}}, \code{\link{mark.H0}} for other
     HE plot functions. \code{\link{trans.colors}} for calculation of transparent colors.
+    \code{\link{label.ellipse}} for labeling positions in plotting H and E ellipses.
         
   	\code{\link[candisc]{candisc}},   \code{\link[candisc]{heplot.candisc}} for reduced-rank views of \code{mlm}s
   	in canonical space.
