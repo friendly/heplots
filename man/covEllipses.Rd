@@ -28,7 +28,7 @@ covEllipses(x, ...)
 
 \method{covEllipses}{default}(x, means, df, 
         labels = NULL, variables = 1:2, level = 0.68, 
-        segments = 40, 
+        segments = 60, 
         center = FALSE, center.pch = "+", center.cex = 2, 
         col = getOption("heplot.colors", c("red", "blue", "black", "darkgreen", 
                         "darkcyan", "brown", "magenta", "darkgray")), 

@@ -75,7 +75,7 @@ covEllipses.default <-
 		    labels=NULL,
 				variables=1:2,     # x,y variables for the plot [variable names or numbers]
 				level=0.68,
-				segments=40,       # line segments in each ellipse
+				segments=60,       # line segments in each ellipse
 				center = FALSE,    # center the ellipses at c(0,0)?
 				center.pch="+",  
 				center.cex=2,
