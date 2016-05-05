@@ -3,6 +3,7 @@
 #    for all parameters in an mlm, for a given pair of variables
 # Michael Friendly, last mod: 1/13/2013 1:32PM
 # -- now allow ellipses to be filled
+# -- now pass label.pos to label.ellipse
 
 coefplot <- function(object, ...) {
 	UseMethod("coefplot")
@@ -14,7 +15,8 @@ coefplot.mlm <- function(object, variables=1:2, parm=NULL, df = NULL, level = 0.
   labels = !add, 
   label.pos = NULL,             # requires new version of label.ellipse
   xlab, ylab,
-  xlim = NULL, ylim = NULL, axes=TRUE, main="", add=FALSE,
+  xlim = NULL, ylim = NULL, 
+  axes=TRUE, main="", add=FALSE,
   lwd = 1, lty = 1, pch = 19, col=palette(),
   cex=2, cex.label=1.5,
   lty.zero = 3, col.zero = 1, pch.zero = '+',
@@ -152,7 +154,8 @@ coefplot.mlm <- function(object, variables=1:2, parm=NULL, df = NULL, level = 0.
 #			lines(ellList[[parm]], col=col[parm], lty=lty[parm], lwd=lwd[parm])
 			polygon(ellList[[parm]], col=fill.col[parm], border=col[parm], lty=lty[parm], lwd=lwd[parm])
 			points(cf[parm,1], cf[parm,2], col=col[parm], pch=pch[parm], cex=cex)
-			if(labels) label.ellipse(ellList[[parm]], parm.labels[parm], col=col[parm], cex=cex.label)
+			if(labels) label.ellipse(ellList[[parm]], parm.labels[parm], 
+			                         col=col[parm], cex=cex.label, label.pos=label.pos)
 			if (bars) {
 				hxy <- matrix( c(emin[1,parm], emax[1,parm], rep(cf[parm,2], 2)), 2,2)
 				vxy <- matrix( c(rep(cf[parm,1], 2), emin[2,parm], emax[2,parm]), 2,2)
