@@ -9,6 +9,7 @@ o added NeuroCog data, a simple one-way MANOVA [Thx: Leah Hartman]
 o label.ellipse() now uses a much more flexible `label.pos` argument for positioning the
   text labels used in heplot() and friends.
 o in coefplot.mlm(), now pass `label.pos` to label.ellipse()
+o added Mahalanobis() for classical and robust squared distances
 
 Version 1.1-0 (2016-03-03)
 
