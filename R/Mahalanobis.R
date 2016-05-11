@@ -22,11 +22,16 @@
 Mahalanobis <- function(x, center, cov, 
 	method=c("classical", "mcd", "mve"), nsamp="best", ...) {
 	
+  OK <- complete.cases(x)
+  res <- rep(NA, nrow(x))
 	# if center and cov are supplied, use those
-	if (! (missing(center) | missing(cov) ))
-		return( mahalanobis(x, center=center, cov=cov) )
+	if (! (missing(center) | missing(cov) )) {
+	  res[OK] <- mahalanobis(x[OK,], center=center, cov=cov)
+		return( res )
+	}
 
 	method = match.arg(method)
-	stats <- MASS::cov.rob(x, method=method, nsamp=nsamp, ...)	
-	mahalanobis(x, stats$center, stats$cov)	
+	stats <- MASS::cov.rob(x[OK,], method=method, nsamp=nsamp, ...)	
+	res[OK] <- mahalanobis(x[OK,], stats$center, stats$cov)
+	res
 }

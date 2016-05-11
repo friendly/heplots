@@ -7,7 +7,7 @@ Classical and Robust Mahalanobis Distances
 \description{
 This function is a convenience wrapper to \code{\link[stats]{mahalanobis}} offering
 also the possibility to calculate robust Mahalanobis squared distances using
-MCD and MVE estimators of center and covariance.
+MCD and MVE estimators of center and covariance (from \code{\link[MASS]{cov.rob}})
 }
 \usage{
 Mahalanobis(x, center, cov, method = c("classical", "mcd", "mve"), nsamp = "best", ...)
@@ -15,7 +15,7 @@ Mahalanobis(x, center, cov, method = c("classical", "mcd", "mve"), nsamp = "best
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-matrix of data with, say, \eqn{p} columns
+a numeric matrix or data frame with, say, \eqn{p} columns
 }
   \item{center}{
 mean vector of the data; if this and \code{cov} are \emph{both} supplied,
@@ -39,12 +39,12 @@ other arguments passed to \code{\link[MASS]{cov.rob}}
 }
 }
 
-%\details{
-%%%  ~~ If necessary, more details than the description above ~~
-%}
+\details{
+Any missing data in a row of \code{x} causes \code{NA} to be returned for that row. 
+}
 
 \value{
-A numeric vector of squared Mahalanobis distances corresponding to the rows of \code{x}
+A numeric vector of squared Mahalanobis distances corresponding to the rows of \code{x}.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
