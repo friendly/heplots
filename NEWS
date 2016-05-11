@@ -10,6 +10,7 @@ o label.ellipse() now uses a much more flexible `label.pos` argument for positio
   text labels used in heplot() and friends.
 o in coefplot.mlm(), now pass `label.pos` to label.ellipse()
 o added Mahalanobis() for classical and robust squared distances; handles missing data gracefully.
+o added SocialCog data [Thx: Leah Hartman]
 
 Version 1.1-0 (2016-03-03)
 
