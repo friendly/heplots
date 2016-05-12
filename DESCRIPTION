@@ -28,7 +28,8 @@ Suggests:
     reshape2,
     corrgram,
     FRB,
-    animation
+    animation,
+    mvinfluence
 LazyLoad: yes
 LazyData: yes
 Description: Provides HE plot and other functions for visualizing hypothesis

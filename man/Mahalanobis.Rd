@@ -45,11 +45,6 @@ Any missing data in a row of \code{x} causes \code{NA} to be returned for that r
 
 \value{
 A numeric vector of squared Mahalanobis distances corresponding to the rows of \code{x}.
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 
 %\references{
