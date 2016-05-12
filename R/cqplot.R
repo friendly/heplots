@@ -1,8 +1,6 @@
 # plot.mlm:  diagnostic plots for a MLM
 # 1: cqplot:  chisq QQ plot
 # 2: mvinfluence plot?
-
-
 # see: http://svitsrv25.epfl.ch/R-doc/library/snpMatrix/html/qq.chisq.html
 
 `cqplot` <-
@@ -91,54 +89,4 @@ cqplot.default <-
 	res <- dsq  
   invisible(res)
 }
-
-#Mahalanobis <- function(x, center, cov, 
-#	method=c("classical", "mcd", "mve"), ...) {
-#	
-#	# if center and cov are supplied, use those
-#	if (! (missing(center) | missing(cov) ))
-#		return( mahalanobis(x, center=center, cov=cov, ...) )
-#
-#	method = match.arg(method)
-#	stats <- MASS::cov.rob(x, method=method, ...)
-#	
-#	mahalanobis(x, stats$center, stats$cov, ... )
-#	
-#}
-
-TESTME <- FALSE
-if (TESTME) {
-cqplot(iris[,1:4])
-
-iris.mod <- lm(as.matrix(iris[,1:4]) ~ Species, data=iris)
-resids <- residuals(iris.mod)
-cqplot(resids)
-
-qqPlot(Mahalanobis(iris[, 1:4]), dist="chisq", df=4, id.n=3)
-car::qqPlot(Mahalanobis(resids), dist="chisq", df=4, id.n=3)
-
-MVN:::mardiaTest(iris[,1:4], qqplot=TRUE)
-
-res <- psych::outlier(iris[,1:4])
-
-MVN:::mardiaTest(residuals, qqplot=TRUE)
-}
-
-### from cqplot.sas:
-#   	scale = hspr / (cinv(.75, df) - cinv(.25, df));
-#   _p_=(_n_ - .5)/nobs;                 * cumulative prob.;
-#   _z_=cinv(_p_,df);                    * ChiSquare Quantile;
-#   g = (_z_**(-1+df/2)) / (exp(_z_/2)*gamma(df/2)*(sqrt(2)**df));
-#   _se_ = (scale/g)*sqrt(_p_*(1-_p_)/nobs);
-#   _resid_ = &dsq - _z_;                * deviation from normal;
-#   _lower_ = _z_ - &stdmult*_se_;       * +/- SEs around fitted line;
-#   _upper_ = _z_ + &stdmult*_se_;
-#   _reslo_  = -&stdmult*_se_;
-#   _reshi_   = &stdmult*_se_;
-
-#	data <- scale(data, scale = FALSE) 
-#  S <- cov(data)
-#  L <- solve(chol(S))
-#  Z <- data %*% L
-#  dsq <- sort(rowSums(Z^2))
 
