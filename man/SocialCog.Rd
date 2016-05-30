@@ -14,6 +14,15 @@ The data here are for a subset of the observations in \code{\link{NeuroCog}} for
 measures on various scales of social cognition were also available.
 Interest here is on whether the schizophrenia group can be distinguished from the
 schizoaffective group on these measures.
+
+The Social Cognitive measures were designed to tap various aspects of the perception and cognitive
+procession of emotions of others.  Emotion perception was assessed using a Managing Emotions (\code{MgeEmotions})
+score from the MCCB.  A "theory of mind" (\code{ToM}) score assessed ability to read the emotions of
+others from photographs of the eye region of male and female faces. Two other measures,
+externalizing bias (\code{ExtBias}) and personalizing bias (\code{PersBias}) were
+calculated from a scale measuring the degree to which individuals attribute internal, personal
+or situational causal attributions to positive and negative social events.
+
 }
 
 \usage{data("SocialCog")}
