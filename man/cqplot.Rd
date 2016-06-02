@@ -9,7 +9,7 @@ Chi Square Quantile-Quantile plots
 \description{
 A chi square quantile-quantile plots show the relationship between data-based 
 values which should be distributed as \eqn{\chi^2} and corresponding quantiles
-from the \eqn{\chi^2} distribution.  In multivariate analyses, this is often
+from the \eqn{\chi^2} distribution.  In multivariate analyses, this is often used both
 to assess multivariate normality and check for outliers, using the
 Mahalanobis squared distances (\eqn{D^2}) of observations from the centroid.
 
@@ -153,7 +153,12 @@ at the quantile \eqn{q_i}.
 
 Note that this confidence envelope applies only to the \eqn{D^2}
 computed using the classical estimates of location and scatter.
+The \code{car::qqPlot()} function provides for simulated envelopes,
+but only for a univariate measure.
+Oldford (2016) provides a general theory and methods for
+QQ plots.
 }
+
 \value{
 Returns invisibly the
 vector of squared Mahalanobis distances corresponding to the rows of \code{x}
@@ -162,6 +167,8 @@ or the residuals of the model.
 \references{
  J. Chambers, W. S. Cleveland, B. Kleiner, P. A. Tukey (1983).
  \emph{Graphical methods for data analysis}, Wadsworth. 
+
+ R. W. Oldford (2016), "Self calibrating quantile-quantile plots", \emph{The American Statistician}, 70, 74-90. 
 }
 \author{
 Michael Friendly
@@ -173,7 +180,7 @@ Michael Friendly
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{Mahalanobis}} for calculation of Mahalanobis squared distance
+\code{\link{Mahalanobis}} for calculation of Mahalanobis squared distance;
 
 \code{\link[stats]{qqplot}}, 
 \code{\link[car]{qqPlot}} can give a similar result for Mahalanobis squared distances
@@ -188,6 +195,23 @@ cqplot(iris.mod, id.n=3)
 
 # compare with car::qqPlot
 car::qqPlot(Mahalanobis(iris[, 1:4]), dist="chisq", df=4, id.n=3)
+
+# Adopted data
+Adopted.mod <- lm(cbind(Age2IQ, Age4IQ, Age8IQ, Age13IQ) ~ AMED + BMIQ, 
+                  data=Adopted)
+cqplot(Adopted.mod, id.n=3)
+cqplot(Adopted.mod, id.n=3, method="mve")
+
+# Sake data
+Sake.mod <- lm(cbind(taste, smell) ~ ., data=Sake)
+cqplot(Sake.mod)
+cqplot(Sake.mod, method="mve", id.n=2)
+
+# SocialCog data -- one extreme outlier
+data(SocialCog)
+SC.mlm <-  lm(cbind(MgeEmotions,ToM, ExtBias, PersBias) ~ Dx,
+               data=SocialCog)
+cqplot(SC.mlm, id.n=1)
 
 
 }
