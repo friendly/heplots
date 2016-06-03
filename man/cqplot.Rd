@@ -32,7 +32,7 @@ cqplot(x, ...)
 \method{cqplot}{mlm}(x, ...)
 
 \method{cqplot}{default}(x, method = c("classical", "mcd", "mve"), 
-	detrend = FALSE, pch = 19, col = palette()[1], 
+	detrend = FALSE, pch = 19, col = palette()[1], cex = par("cex"),
 	ref.col = "red", ref.lwd = 2, 
 	conf = 0.95, env.col = "gray", env.lwd = 2, env.lty = 1, 
 	env.fill = TRUE, fill.alpha = 0.2, 
@@ -66,11 +66,14 @@ logical; if \code{FALSE}, the plot shows values of \eqn{D^2} vs. \eqn{\chi^2}.
 if \code{TRUE}, the ordinate shows values of \eqn{D^2 - \chi^2}
 }
   \item{pch}{
-plot symbol for points
+plot symbol for points  Can be a vector of length equal to the number of rows in \code{x}.
 }
   \item{col}{
 color for points; the default is the \emph{first} entry in the current color palette 
 (see \code{\link[grDevices]{palette}} and \code{\link[graphics]{par}}.
+}
+  \item{cex}{
+character symbol size for points.  Can be a vector of length equal to the number of rows in \code{x}.
 }
   \item{ref.col}{
 Color for the reference line

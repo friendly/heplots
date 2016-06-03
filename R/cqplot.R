@@ -18,7 +18,7 @@ cqplot.default <-
 		function(x,
 			method=c("classical", "mcd", "mve"), 
 			detrend=FALSE, 
-			pch=19, col = palette()[1],
+			pch=19, col = palette()[1], cex = par("cex"),
 			ref.col="red", ref.lwd=2,
 			conf = 0.95,
 			env.col="gray", env.lwd=2, env.lty=1, env.fill=TRUE,  fill.alpha=0.2,
@@ -42,6 +42,14 @@ cqplot.default <-
 	dsq.y <- dsq[OK][ord]
 	labs <- labels[OK][ord]
 
+  # allow col, pch, and cex to be vectors
+	if (length(col) == nrow(x)) 
+	  col <- col[OK][ord]
+	if (length(pch) == nrow(x)) 
+	  pch <- pch[OK][ord]
+	if (length(cex) == nrow(x)) 
+	  cex <- cex[OK][ord]
+	
 	n <- length(ord)
   p <- ppoints(n)
   chi2q <- qchisq(p, df)
@@ -78,7 +86,7 @@ cqplot.default <-
   if (env.fill) shade(chi2q, upper, chi2q, lower, col=fill.color )
   lines(chi2q, lower, col=env.col, lwd=env.lwd, lty=env.lty)
   lines(chi2q, upper, col=env.col, lwd=env.lwd, lty=env.lty)
-  points(chi2q, y, pch = pch, col=col)
+  points(chi2q, y, pch = pch, col=col, cex=cex)
   
   abline(0, if (detrend) 0 else 1, lwd = ref.lwd, col = ref.col)
   if (!missing(id.n)) {
