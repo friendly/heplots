@@ -182,9 +182,10 @@ Michael Friendly
 \seealso{
 \code{\link{Mahalanobis}} for calculation of Mahalanobis squared distance;
 
-\code{\link[stats]{qqplot}}, 
+\code{\link[stats]{qqplot}}; 
 \code{\link[car]{qqPlot}} can give a similar result for Mahalanobis squared distances
-of data or residuals.
+of data or residuals;
+\code{\link[qqtest]{qqtest}} has many features for all types of QQ plots.
 }
 \examples{
 
@@ -196,11 +197,13 @@ cqplot(iris.mod, id.n=3)
 # compare with car::qqPlot
 car::qqPlot(Mahalanobis(iris[, 1:4]), dist="chisq", df=4, id.n=3)
 
+
 # Adopted data
 Adopted.mod <- lm(cbind(Age2IQ, Age4IQ, Age8IQ, Age13IQ) ~ AMED + BMIQ, 
                   data=Adopted)
 cqplot(Adopted.mod, id.n=3)
 cqplot(Adopted.mod, id.n=3, method="mve")
+
 
 # Sake data
 Sake.mod <- lm(cbind(taste, smell) ~ ., data=Sake)
@@ -212,6 +215,13 @@ data(SocialCog)
 SC.mlm <-  lm(cbind(MgeEmotions,ToM, ExtBias, PersBias) ~ Dx,
                data=SocialCog)
 cqplot(SC.mlm, id.n=1)
+
+# data frame example: stackloss data
+data(stackloss)
+cqplot(stackloss[, 1:3], id.n=4)                # very strange
+cqplot(stackloss[, 1:3], id.n=4, detrend=TRUE)
+cqplot(stackloss[, 1:3], id.n=4, method="mve")
+cqplot(stackloss[, 1:3], id.n=4, method="mcd")
 
 
 }
