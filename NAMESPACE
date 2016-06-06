@@ -53,6 +53,7 @@ S3method(robmlm, default)
 S3method(robmlm, formula)
 S3method(print, robmlm)
 S3method(summary, robmlm)
+S3method(plot, robmlm)
 S3method(coefplot, mlm)
 
 S3method(boxM, formula)
