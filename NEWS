@@ -1,6 +1,6 @@
 Version 1.3-1 (2016-06-06)
 
-o added plot.robmlm
+o added plot.robmlm(), producing an index plot of robust weights
 
 Version 1.3-0 (2016-06-03)
 
@@ -10,9 +10,11 @@ o Bump version, prepare for release
 Version 1.2-1 (2016-05-19)
 
 o in coefplot.mlm(), now pass `label.pos` to label.ellipse()
-o added Mahalanobis() for classical and robust squared distances; handles missing data gracefully.
+o added Mahalanobis() for classical and robust squared distances; handles 
+  missing data gracefully and provides a confidence envelope
 o added SocialCog data [Thx: Leah Hartman]
-o added cqplot() as a plot method for an mlm and for multivariate data
+o added cqplot() of Mahalanobis distances as a plot method for an mlm and for 
+  multivariate data
 
 Version 1.2-0 (2016-04-27)
 
