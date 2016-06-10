@@ -6,7 +6,9 @@ Plot observation weights from a robust multivariate linear models
 }
 \description{
 Creates an index plot of the observation weights assigned in the 
-last iteration of \code{\link{robmlm}}.
+last iteration of \code{\link{robmlm}}.  Observations with low weights
+have large residual squared distances and are potential multivariate
+outliers with respect to the fitted model.
 }
 \usage{
 \method{plot}{robmlm}(x, labels, 
@@ -31,7 +33,7 @@ Threshold for identifying obsrevations with small weights
 Position of observation label relative to the point
 }
   \item{pch}{
-Point symbol(s)
+Point symbol(s); can be a vector of length equal to the number of observations in the data frame
 }
   \item{col}{
 Point color(s)
@@ -49,7 +51,7 @@ x axis label
 y axis label
 }
   \item{\dots}{
-other arguments passed to \code{\link[graphics]{plot}}
+other arguments passed to \code{\link[graphics]{plot}} 
 }
 }
 %\details{
@@ -57,11 +59,6 @@ other arguments passed to \code{\link[graphics]{plot}}
 %}
 \value{
 Returns invisibly the weights for the observations labeled in the plot
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 %\references{
 %%% ~put references to the literature/web site here ~
@@ -85,6 +82,13 @@ axis(side=3, at=15+seq(0,120,30), labels=levels(Skulls$epoch), cex.axis=1)
 
 pottery.rmod <- robmlm(cbind(Al,Fe,Mg,Ca,Na)~Site, data=Pottery)
 plot(pottery.rmod, col=Pottery$Site, segments=TRUE)
+
+# SocialCog data
+
+data(SocialCog)
+SC.rmod <- robmlm(cbind( MgeEmotions, ToM, ExtBias, PersBias) ~ Dx,
+               data=SocialCog)
+plot(SC.rmod, col=SocialCog$Dx, segments=TRUE)
 
 
 }
