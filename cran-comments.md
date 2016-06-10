@@ -1,6 +1,6 @@
 ## Test environments
 * local Windows 7 install, R 3.1.2
-* win-builder (R version 3.3.0 (2016-05-03), 3.2.4), R-Forge R version 3.3.0 Patched (2016-06-02 r70700)
+* win-builder (R devel (unstable) (2016-06-10 r70753)), R-Forge R version 3.3.0 Patched (2016-06-02 r70700)
 
 ## R CMD check results
 There were no ERRORs or WARNINGs or NOTES.  
