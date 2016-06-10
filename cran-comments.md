@@ -3,19 +3,14 @@
 * win-builder (R version 3.3.0 (2016-05-03), 3.2.4), R-Forge R version 3.3.0 Patched (2016-06-02 r70700)
 
 ## R CMD check results
-There were no ERRORs or WARNINGs.  
+There were no ERRORs or WARNINGs or NOTES.  
 
 ## Comments
-This is a major release, with several new functions and numerous enhancements
+This is a minor release, with a new visualization method; released now in relation to a 
+submitted paper.
 
-Version 1.3-0 (2016-06-03)
+## Version 1.3-1 (2016-06-10)
 
-o In cqplot, pch, col, and cex can now be vectors
-o Bump version, prepare for release
+o added `plot.robmlm()`, a plot method for "robmlm" objects.  Currently, it plots the weights given
+  to observations in the last iteration as an index plot.
 
-Version 1.2-1 (2016-05-19)
-
-o in coefplot.mlm(), now pass `label.pos` to label.ellipse()
-o added Mahalanobis() for classical and robust squared distances; handles missing data gracefully.
-o added SocialCog data [Thx: Leah Hartman]
-o added cqplot() as a plot method for an mlm and for multivariate data
