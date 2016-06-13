@@ -13,4 +13,6 @@ submitted paper.
 
 o added `plot.robmlm()`, a plot method for "robmlm" objects.  Currently, it plots the weights given
   to observations in the last iteration as an index plot.
+o Re-built vignettes
+
 

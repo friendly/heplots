@@ -40,8 +40,8 @@
 
 
 \newcommand*{\LM}{LM}
-\newcommand*{\MLM}{MvLM\xspace}
-\newcommand*{\MLMs}{MvLMs\xspace}
+\newcommand*{\MLM}{MLM\xspace}
+\newcommand*{\MLMs}{MLMs\xspace}
 \newcommand*{\Var}{\ensuremath{\mathsf{Var}}}
 
 
@@ -260,9 +260,11 @@ plastic.mod
 Thus, for example, the joint test of both main effects tests the parameters
 \code{rateHigh} and \code{additiveHigh}.
 <<plastic-tests, results=verbatim>>=
-print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh"), title="Main effects"), SSP=FALSE)
+print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh"), title="Main effects"), 
+      SSP=FALSE)
 
-print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh", "rateHigh:additiveHigh"), title="Groups"), SSP=FALSE)
+print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh", "rateHigh:additiveHigh"), 
+                       title="Groups"), SSP=FALSE)
 @
 
 Correspondingly, we can display these tests in the HE plot by specifying these tests in the
