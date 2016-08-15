@@ -57,8 +57,9 @@ pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 
 # or 3D plot
 \dontrun{
-col <- c("red", "black", "blue", "cyan", "magenta", "brown", "gray")
-heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), col=col)
+col <- c("red", "green3", "blue", "cyan", "magenta", "brown", "gray")
+heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), 
+                     col=col, wire=FALSE)
 }
 
 ## fit separate, independent models for Lo/Hi SES
