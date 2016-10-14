@@ -1,6 +1,7 @@
-Version 1.3-2 (2016-08-15)
+Version 1.3-2 (2016-10-14)
 
-o Added Parenting data, a simple one-way MANOVA design
+o Added Parenting data, a simple one-way MANOVA design (used in TQMP paper)
+o Prepare for CRAN release
 
 Version 1.3-1 (2016-06-10)
 
