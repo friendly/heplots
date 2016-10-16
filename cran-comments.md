@@ -7,11 +7,11 @@ There were no ERRORs or WARNINGs or NOTES.
 
 ## Comments
 This is a minor release, adding a new data set and examples; released now in relation to a 
-submitted paper.
+submitted paper that requires that data set.
 
 ## Version 1.3-2 (2016-10-14)
 
 o Added Parenting data, a simple one-way MANOVA design (used in TQMP paper)
-o Prepare for CRAN release
+o Prepare for CRAN release (fix CRAN links to canonical)
 
 
