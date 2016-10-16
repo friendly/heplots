@@ -30,7 +30,7 @@ Reaction Time Data
 \source{
 Baron, J. and Li, Y. (2003).
  \emph{Notes on the use of R for psychology experiments and questionnaires},
- \url{http://cran.r-project.org/doc/contrib/Baron-rpsych.pdf}
+ \url{https://cran.r-project.org/doc/contrib/Baron-rpsych.pdf}
 
 }
 \references{

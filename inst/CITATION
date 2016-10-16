@@ -12,14 +12,14 @@ citEntry(entry = "Manual",
                   as.person("Georges Monette")),
   year = year,
   note = note,
-  url = "http://CRAN.R-project.org/package=heplots",
+  url = "https://CRAN.R-project.org/package=heplots",
 
   textVersion =
   paste("John Fox and Michael Friendly and and Georges Monette",
        sprintf("(%s).", year),
         "heplots: Visualizing Tests in Multivariate Linear Models.",
     paste(note, ".", sep = ""),
-        "URL http://CRAN.R-project.org/package=heplots")
+        "URL https://CRAN.R-project.org/package=heplots")
 )
 
 citEntry(header="To refer to the theory on which this package is based, also cite:",
