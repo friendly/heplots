@@ -1,5 +1,4 @@
 .project
 ^cran-comments\.md$
-^vignettes/fig/*
 
 
