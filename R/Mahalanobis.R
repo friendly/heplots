@@ -10,14 +10,21 @@
 #'               calculate the result
 #' @param cov    covariance matrix (p x p) of the data
 #' @param method  estimation method used for center and covariance, one of:
-#'               \code{"classical") (product-moment), 
-#'               \code{"mcd") (minimum covariance determinant), or           
-#'               \code{"mve") (minimum volume ellipsoid).         
+#'               \code{"classical"} (product-moment), 
+#'               \code{"mcd"} (minimum covariance determinant), or           
+#'               \code{"mve"} (minimum volume ellipsoid).         
 #' @param nsamp  passed to \code{\link[MASS]{cov.rob}}
 #' @param ...    other arguments passed to \code{\link[MASS]{cov.rob}}
-#' @return 
+#' @return      a vector of length \code{nrow(x)} containing the squared distances.
+#' @author      Michael Friendly
 #' @export
+#' @seealso     \code{\link[stats]{mahalanobis}}, \code{\link[MASS]{cov.rob}}
 #' @examples
+#' data(iris)
+#' summary(Mahalanobis(iris[, 1:4]))
+#' summary(Mahalanobis(iris[, 1:4], method="mve"))
+#" summary(Mahalanobis(iris[, 1:4], method="mcd"))
+
 
 Mahalanobis <- function(x, center, cov, 
 	method=c("classical", "mcd", "mve"), nsamp="best", ...) {

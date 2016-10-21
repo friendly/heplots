@@ -19,15 +19,14 @@
 #' corresponding elements of the rows of \code{y}
 #' @param \dots other arguments, passed to \code{\link[stats]{bartlett.test}}
 #' @return An object of classes "anova" and "data.frame", with one observation
-#' for each response variable in \code{y}.  %% If it is a LIST, use %%
-#' \item{comp1 }{Description of 'comp1'} %% \item{comp2 }{Description of
-#' 'comp2'} %% ...
+#' for each response variable in \code{y}. 
 #' @author Michael Friendly
 #' @seealso \code{\link{boxM}} for Box's M test for all responses.
 #' @references Bartlett, M. S. (1937). Properties of sufficiency and
 #' statistical tests.  \emph{Proceedings of the Royal Society of London Series
 #' A}, \bold{160}, 268-282.
-#' @keywords ~kwd1 ~kwd2
+#' @keywords htest
+
 #' @examples
 #' 
 #' bartlettTests(iris[,1:4], iris$Species)
