@@ -10,9 +10,17 @@ glucose tolerance and insulin in 145 nonobese adults.
 They used the PRIM9 system at the Stanford Linear Accelerator Center to
 visualize the data in 3D, and discovered a peculiar pattern that looked like a large
 blob with two wings in different directions.
+
 After further analysis,
 the subjects were classified as subclinical (chemical) diabetics, overt diabetics and
-normals.  
+normals. 
+This study was influential in defining the stages of development of Type 2 diabetes.
+Overt diabetes is the most advanced stage, characterized by elevated
+fasting blood glucose concentration and classical symptoms.
+Preceding overt diabetes
+is the latent or chemical diabetic stage, with no symptoms of diabetes
+but demonstrable abnormality of oral or intravenous glucose tolerance.
+
 }
 \usage{data("Diabetes")}
 \format{
@@ -33,6 +41,14 @@ oral glucose tolerance test."  Reaven & Miller refer to this variable as "Glucos
 
 \code{instest} was defined as the "area under the plasma insulin curve", and is referred
 to in the paper as "Insulin area".
+
+This study was influential in defining the stages of development of Type 2 diabetes.
+Overt diabetes is the most advanced stage, characterized by elevated
+fasting blood glucose concentration and classical symptoms.
+Preceding overt diabetes
+is the latent or chemical diabetic stage, with no symptoms of diabetes
+but demonstrable abnormality of oral or intravenous glucose tolerance.
+
 }
 \source{
 Andrews, D. F. & Herzberg, A. M. (1985). 
