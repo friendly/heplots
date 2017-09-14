@@ -48,3 +48,31 @@ so you will need to have R Tools installed on your system.  [R Tools for Windows
 takes you to the download page for Windows.  [R Tools for Mac OS X](https://cran.r-project.org/bin/macosx/tools/)
 has the required programs for Mac OS X.
 
+## HE plot functions
+
+The graphical functions contained here all display multivariate model
+effects in variable (data) space, for one or more response variables
+(or contrasts among response variables in repeated measures designs).
+The related `candisc` package plots these in canonical discriminant space.
+
+* `heplot` constructs two-dimensional HE plots for model terms and 
+linear hypotheses for pairs of response variables in multivariate linear models.
+
+* `heplot3d` constructs analogous 3D plots for triples of response
+variables.
+ 
+* `pairs.mlm` constructs a scatterplot matrix of pairwise HE plots.
+
+* `heplot1d` constructs 1-dimensional analogs of HE plots for model terms and 
+linear hypotheses for single response variables.
+
+For repeated measure designs, between-subject effects and within-subject
+effects must be plotted separately, because the error terms (E matrices)
+differ.  For terms involving within-subject effects,
+these functions carry out a linear
+transformation of the matrix $Y$ of responses to a matrix $Y M$, where
+$M$ is the model matrix for a term in
+the intra-subject design and produce plots of
+the H and E matrices in this transformed space. The vignette `"repeated"` describes
+these graphical methods for repeated measures designs.
+
