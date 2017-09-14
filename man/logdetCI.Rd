@@ -42,7 +42,7 @@ logical; set \code{FALSE} to exclude the bias correction term.
 }
 \details{
 
-Cai et. al (2016) claim that their Theorem 1 holds with either \eqn{p} fixed or \eqn{p(n)} growing with \eqn{n}, as long as
+Cai et. al (2015) claim that their Theorem 1 holds with either \eqn{p} fixed or \eqn{p(n)} growing with \eqn{n}, as long as
 \eqn{p(n) \le n}. Their Corollary 1 (\code{method=2}) is the special case when \eqn{p} is fixed.
 Their Corollary 2 (\code{method=3}) is the special case when \eqn{0 \le p/n < 1} is fixed.
 
@@ -72,10 +72,9 @@ Other columns are \code{logdet, bias, se}.
 }
 
 \references{
-Cai, T. T., Liang, T. & Zhou, H. H. (2016). Law of log determinant of sample
-covariance matrix and optimal estimation of differential enteropy
-for high-dimensional Gaussian distributions.   \emph{JMA}, to appear.
-Preprint: \url{www.stat.yale.edu/~hz68/Covariance-Determinant.pdf}
+
+Cai, T. T.; Liang, T. & Zhou, H. H. (2015) Law of log determinant of sample covariance matrix and optimal estimation of differential entropy for high-dimensional Gaussian distributions Journal of Multivariate Analysis, 137, 161-172.
+\url{https://doi.org/10.1016/j.jmva.2015.02.003}
 }
 \author{
 Michael Friendly
