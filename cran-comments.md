@@ -35,4 +35,4 @@ it was necessary to build manually, using
         compacted 'repeated.pdf' from 582Kb to 340Kb   
 
 The resulting source file `C:/R/projects/heplots_1.3-4.tar.gz` could then be submitted to
-Win Builder and CRAN
+Win Builder and CRAN.  Downside: has to be done manually.

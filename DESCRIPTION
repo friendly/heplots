@@ -32,6 +32,7 @@ Suggests:
     mvinfluence
 LazyLoad: yes
 LazyData: yes
+BugReports: https://github.com/friendly/heplots/issues
 Description: Provides HE plot and other functions for visualizing hypothesis
     tests in multivariate linear models. HE plots represent sums-of-squares-and-
     products matrices for linear hypotheses and for error using ellipses (in two
