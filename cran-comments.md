@@ -1,22 +1,10 @@
 ## Test environments
 * local Windows 7 install, R 3.4.1
-* win-builder R Under development (unstable) (2017-09-12 r73242), 
+* win-builder R Under development (unstable) (2017-09-12 r73242), 3.4.1 (2017-06-30)
 * R-Forge R version 3.4.1 Patched (2017-09-11 r73238)
 
 ## R CMD check results
-There were no ERRORs or WARNINGS.
-
-There was one NOTE, which I think is spurious, probably a bug in checking 'canonical' URLs
-
-Found the following (possibly) invalid URLs:
-  URL: http://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf
-    From: man/heplot-package.Rd
-          man/heplot.Rd
-    Status: 200
-    Message: OK
-    R-project URL not in canonical form
-
-
+There were no ERRORs or WARNINGS or NOTES.
 
 
 ## Comments
@@ -29,3 +17,22 @@ R-Forge to github.
 o Added Diabetes data, a nice example of heterogeneity of covariances
 
 
+## Notes on building
+
+The standard R Studio / devtools build does not compress vignettes. To avoid the warning
+
+    'gs+qpdf' made some significant size reductions
+
+it was necessary to build manually, using
+
+    Sys.setenv(R_GSCMD="C:/Program Files/gs/gs9.21/bin/gswin64c.exe")
+    devtools::build(args = c('--resave-data','--compact-vignettes="gs+qpdf"'))
+
+(Had to upgrade to gs 9.21, 64 bit) This gives:
+
+    * compacting vignettes and other PDF files
+        compacted 'HE-examples.pdf' from 765Kb to 397Kb
+        compacted 'repeated.pdf' from 582Kb to 340Kb   
+
+The resulting source file `C:/R/projects/heplots_1.3-4.tar.gz` could then be submitted to
+Win Builder and CRAN
