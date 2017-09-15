@@ -109,7 +109,7 @@ Friendly, M. (2010). HE Plots for Repeated Measures Designs. \emph{Journal of St
 Fox, J., Friendly, M. & Weisberg, S. (2013).
 	Hypothesis Tests for Multivariate Linear Models Using the car Package.
 	\emph{The R Journal}, \bold{5}(1),
-	\url{http://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf}.
+	\url{https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf}.
 
 Friendly, M.,  Monette, G. & Fox, J. (2013).
 	Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry.
