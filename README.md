@@ -14,7 +14,7 @@ and repeated measures designs).
 HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for 
 error using ellipses (in two dimensions), ellipsoids (in three dimensions),
 or by line segments in one dimension.
-See Fox, Friendly and Monette (2007) for a brief introduction
+See Fox, Friendly and Monette (2009) for a brief introduction
 and Friendly, Monette and Fox (2013) for a general discussion of the role of
 elliptical geometry in statistical understanding.
 
@@ -76,3 +76,12 @@ the intra-subject design and produce plots of
 the H and E matrices in this transformed space. The vignette `"repeated"` describes
 these graphical methods for repeated measures designs.
 
+## References
+
+Fox, J.; Friendly, M. & Monette, G. (2009).
+Visualizing hypothesis tests in multivariate linear models: The heplots package for R 
+*Computational Statistics*,  **24**, 233-246.
+
+Friendly, M.; Monette, G. & Fox, J. (2013).
+Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry 
+*Statistical Science*,  **28**, 1-39
