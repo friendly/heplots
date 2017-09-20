@@ -80,8 +80,9 @@ these graphical methods for repeated measures designs.
 
 Fox, J.; Friendly, M. & Monette, G. (2009).
 Visualizing hypothesis tests in multivariate linear models: The heplots package for R 
-*Computational Statistics*,  **24**, 233-246.
+*Computational Statistics*,  **24**, 233-246. [paper](http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf)
 
 Friendly, M.; Monette, G. & Fox, J. (2013).
 Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry 
-*Statistical Science*,  **28**, 1-39
+*Statistical Science*,  **28**, 1-39. [paper](http://datavis.ca/palers/ellipses-STS402.pdf)
+
