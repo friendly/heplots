@@ -84,5 +84,5 @@ Visualizing hypothesis tests in multivariate linear models: The heplots package 
 
 Friendly, M.; Monette, G. & Fox, J. (2013).
 Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry 
-*Statistical Science*,  **28**, 1-39. [paper PDF](http://datavis.ca/palers/ellipses-STS402.pdf)
+*Statistical Science*,  **28**, 1-39. [paper](http://datavis.ca/palers/ellipses-STS402.pdf)
 
