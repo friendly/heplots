@@ -17,7 +17,7 @@ R-Forge to github.
 o Added Diabetes data, a nice example of heterogeneity of covariances
 
 
-## Notes on building
+### Notes on building
 
 The standard R Studio / devtools build does not compress vignettes. To avoid the warning
 
@@ -35,4 +35,8 @@ it was necessary to build manually, using
         compacted 'repeated.pdf' from 582Kb to 340Kb   
 
 The resulting source file `C:/R/projects/heplots_1.3-4.tar.gz` could then be submitted to
-Win Builder and CRAN.  Downside: has to be done manually.
+Win Builder and CRAN.  Downside: has to be done manually.  Or:
+
+    args = c('--resave-data','--compact-vignettes="gs+qpdf"')
+    build_win(args=args)
+    submit_cran(args=args)
