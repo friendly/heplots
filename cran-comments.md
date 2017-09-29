@@ -38,5 +38,5 @@ The resulting source file `C:/R/projects/heplots_1.3-4.tar.gz` could then be sub
 Win Builder and CRAN.  Downside: has to be done manually.  Or:
 
     args = c('--resave-data','--compact-vignettes="gs+qpdf"')
-    build_win(args=args)
-    submit_cran(args=args)
+    devtools::build_win(args=args)
+    devtools::submit_cran(args=args)

@@ -4,3 +4,5 @@ README.md
 ^.*\.Rproj$
 ^\.Rproj\.user$
 inst/doc/*\.pdf
+.build-steps.R
+
