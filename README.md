@@ -3,9 +3,12 @@
 [![Rdoc](http://www.rdocumentation.org/badges/version/heplots)](http://www.rdocumentation.org/packages/heplots)
 
 # heplots
-Visualizing Hypothesis Tests in Multivariate Linear Models
+
+## Visualizing Hypothesis Tests in Multivariate Linear Models
 
 Version 1.3-4
+
+## Description
 
 The `heplots` package provides functions for visualizing hypothesis tests in
 multivariate linear models (MANOVA, multivariate multiple regression, MANCOVA,
