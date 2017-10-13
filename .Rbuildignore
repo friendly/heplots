@@ -6,3 +6,5 @@ README.md
 inst/doc/*\.pdf
 .build-steps.R
 
+^README\.Rmd$
+^README-.*\.png$
