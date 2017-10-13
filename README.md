@@ -47,7 +47,9 @@ This installs the package from the source and creates the package vignettes, so 
 HE plot functions
 -----------------
 
-The graphical functions contained here all display multivariate model effects in variable (data) space, for one or more response variables (or contrasts among response variables in repeated measures designs). The related [`candisc`](http://github.com/friendly/candisc) package plots these in canonical discriminant space.
+The graphical functions contained here all display multivariate model effects in variable (**data**) space, for one or more response variables (or contrasts among response variables in repeated measures designs).
+
+The related [`candisc`](http://github.com/friendly/candisc) package plots these in **canonical discriminant** space, the space of linear combinations of the responses that show the maximum possible effects.
 
 -   `heplot` constructs two-dimensional HE plots for model terms and linear hypotheses for pairs of response variables in multivariate linear models.
 
@@ -59,7 +61,7 @@ The graphical functions contained here all display multivariate model effects in
 
 ### Repeated measure designs
 
-For repeated measure designs, between-subject effects and within-subject effects must be plotted separately, because the error terms (E matrices) differ. For terms involving within-subject effects, these functions carry out a linear transformation of the matrix *Y* of responses to a matrix *Y**M*, where *M* is the model matrix for a term in the intra-subject design and produce plots of the H and E matrices in this transformed space. The vignette `"repeated"` describes these graphical methods for repeated measures designs.
+For repeated measure designs, between-subject effects and within-subject effects must be plotted separately, because the error terms (E matrices) differ. For terms involving within-subject effects, these functions carry out a linear transformation of the matrix **Y** of responses to a matrix **Y M**, where **M** is the model matrix for a term in the intra-subject design and produce plots of the H and E matrices in this transformed space. The vignette `"repeated"` describes these graphical methods for repeated measures designs.
 
 Examples
 --------
