@@ -95,3 +95,4 @@ Elliptical Insights: Understanding Statistical Methods Through Elliptical Geomet
 Friendly, M. & Sigal, M. (2017)
 Graphical Methods for Multivariate Linear Models in Psychological Research: An R Tutorial.
 *The Quantitative Methods for Psychology*, **13**, 20-45. [article](https://doi.org/10.20982/tqmp.13.1.p020)
+
