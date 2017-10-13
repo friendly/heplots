@@ -4,7 +4,7 @@
 
 # heplots
 
-## Visualizing Hypothesis Tests in Multivariate Linear Models
+## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
 Version 1.3-4
 
@@ -17,14 +17,15 @@ and repeated measures designs).
 HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for 
 error using ellipses (in two dimensions), ellipsoids (in three dimensions),
 or by line segments in one dimension.
-See Fox, Friendly and Monette (2009) for a brief introduction
-and Friendly, Monette and Fox (2013) for a general discussion of the role of
-elliptical geometry in statistical understanding.
+See Fox, Friendly and Monette (2009) for a brief introduction,
+Friendly, Monette and Fox (2013) for a general discussion of the role of
+elliptical geometry in statistical understanding, and
+Friendly & Sigal (2017) for an applied R tutorial.
 
 Other topics now addressed here include:
 
 * robust MLMs, 
-* tests for equality of covariance matrices in MLMs (Box's M test), 
+* visualizing tests for equality of covariance matrices in MLMs (Box's M test), 
 * chi sqare Q-Q plots for MLMs.
 
 The package also provides a collection of  data sets illustrating
@@ -56,7 +57,7 @@ has the required programs for Mac OS X.
 The graphical functions contained here all display multivariate model
 effects in variable (data) space, for one or more response variables
 (or contrasts among response variables in repeated measures designs).
-The related `candisc` package plots these in canonical discriminant space.
+The related [`candisc`](http://github.com/friendly/candisc) package plots these in canonical discriminant space.
 
 * `heplot` constructs two-dimensional HE plots for model terms and 
 linear hypotheses for pairs of response variables in multivariate linear models.
@@ -64,10 +65,12 @@ linear hypotheses for pairs of response variables in multivariate linear models.
 * `heplot3d` constructs analogous 3D plots for triples of response
 variables.
  
-* `pairs.mlm` constructs a scatterplot matrix of pairwise HE plots.
+* The `pairs` method, `pairs.mlm` constructs a scatterplot matrix of pairwise HE plots.
 
 * `heplot1d` constructs 1-dimensional analogs of HE plots for model terms and 
 linear hypotheses for single response variables.
+
+### Repeated measure designs
 
 For repeated measure designs, between-subject effects and within-subject
 effects must be plotted separately, because the error terms (E matrices)
@@ -87,5 +90,8 @@ Visualizing hypothesis tests in multivariate linear models: The heplots package 
 
 Friendly, M.; Monette, G. & Fox, J. (2013).
 Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry 
-*Statistical Science*,  **28**, 1-39. [paper](http://datavis.ca/palers/ellipses-STS402.pdf)
+*Statistical Science*,  **28**, 1-39. [paper PDF](http://datavis.ca/palers/ellipses-STS402.pdf)
 
+Friendly, M. & Sigal, M. (2017)
+Graphical Methods for Multivariate Linear Models in Psychological Research: An R Tutorial.
+*The Quantitative Methods for Psychology*, **13**, 20-45. [article](https://doi.org/10.20982/tqmp.13.1.p020)
