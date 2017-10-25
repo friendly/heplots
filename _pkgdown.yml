@@ -10,7 +10,7 @@ reference:
     contents:
     - starts_with("he")
     - pairs.mlm
-    - mark_H0
+    - mark.H0
 
   - title: Homogeneity of Variance
     desc: Tests and plots for homogeneity of variances and covariances
@@ -44,6 +44,7 @@ reference:
     - colMeansList
     - covList
     - cross3d
+    - etasq
     - ellipse3d.axes
     - gsorth
     - interpPlot
@@ -54,6 +55,7 @@ reference:
 
   - title: Data sets
     contents:
+    - AddHealth
     - Adopted
     - Bees
     - Diabetes
@@ -81,3 +83,8 @@ reference:
     - WeightLoss
     - schooldata
 
+articles:
+  - title: "Vignettes"
+    contents:
+    - "HE-examples"
+    - repeated
