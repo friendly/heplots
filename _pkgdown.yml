@@ -4,3 +4,80 @@ template:
   params:
     bootswatch: cerulean
 
+reference:
+  - title: HE plots
+    desc:  Hypothesis-Error plots
+    contents:
+    - starts_with("he")
+    - pairs.mlm
+    - mark_H0
+
+  - title: Homogeneity of Variance
+    desc: Tests and plots for homogeneity of variances and covariances
+    contents:
+    - bartlettTests
+    - boxM
+    - leveneTests
+    - logdetCI
+    - plot.boxM
+
+  - title: Robust MLMs
+    desc: Robust multivariate linear models
+    contents:
+    - cqplot
+    - Mahalanobis
+    - robmlm
+    - plot.robmlm
+    - summary.robmlm
+
+  - title: Other plots
+    desc: Other plot methods for multivariate linear models
+    contents:
+    - coefplot
+    - covEllipses
+
+  - title: Utility
+    desc: Utility functions
+    contents:
+    - arrow3d
+    - colDevs
+    - colMeansList
+    - covList
+    - cross3d
+    - ellipse3d.axes
+    - gsorth
+    - interpPlot
+    - label.ellipse
+    - termMeans
+    - statList
+    - trans.colors
+
+  - title: Data sets
+    contents:
+    - Adopted
+    - Bees
+    - Diabetes
+    - FootHead
+    - Headache
+    - Hernior
+    - MockJury
+    - NLSY
+    - NeuroCog
+    - Oslo
+    - Parenting
+    - Plastic
+    - Pottery2
+    - Probe1
+    - Probe2
+    - RatWeight
+    - ReactTime
+    - Rohwer
+    - RootStock
+    - Sake
+    - Skulls
+    - SocGrades
+    - SocialCog
+    - VocabGrowth
+    - WeightLoss
+    - schooldata
+
