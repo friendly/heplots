@@ -1,0 +1,6 @@
+url: http://friendly.github.io/heplots
+
+template:
+  params:
+    bootswatch: cerulean
+

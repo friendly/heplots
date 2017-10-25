@@ -5,6 +5,6 @@ README.md
 ^\.Rproj\.user$
 inst/doc/*\.pdf
 .build-steps.R
-
 ^README\.Rmd$
 ^README-.*\.png$
+^_pkgdown\.yml$
