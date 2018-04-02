@@ -1,3 +1,7 @@
+Version 1.3-5 (2018-04-02)
+
+* fix references to car datatsets -> carData
+
 Version 1.3-4 (2016-11-7)
 
 o Added Diabetes data, a nice example of heterogeneity of covariances

@@ -8,7 +8,7 @@ Chemical Analysis of Romano-British Pottery
 Results of chemical analyses of 48 specimens of Romano-British pottery published by Tubb et al. (1980). 
 The numbers are the percentage of various metal oxides found in each sample
 for elements of concentrations greater than 0.01\%.
-This is the original data set from Tubb et al. (1980), in contrast to \code{\link[car]{Pottery}}.
+This is the original data set from Tubb et al. (1980), in contrast to \code{\link[carData]{Pottery}}.
 }
 \usage{data(Pottery2)}
 \format{

@@ -64,7 +64,7 @@ the H and E matrices in this transformed space. The vignette \code{repeated} des
 these graphical methods for repeated measures designs.
 
 
-The related \code{\link[car]{car-package}} package calculates Type II and Type III tests 
+The related \pkg{car} package calculates Type II and Type III tests 
 of multivariate
 linear hypotheses using the  \code{\link[car]{Anova}} and \code{\link[car]{linearHypothesis}}
 functions. 

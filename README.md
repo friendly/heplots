@@ -8,7 +8,7 @@ heplots
 **Visualizing Hypothesis Tests in Multivariate Linear Models**
 --------------------------------------------------------------
 
-Version 1.3-4
+Version 1.3-5
 
 Description
 -----------
