@@ -198,7 +198,7 @@ iris.mod <- lm(as.matrix(iris[,1:4]) ~ Species, data=iris)
 cqplot(iris.mod, id.n=3)
 
 # compare with car::qqPlot
-car::qqPlot(Mahalanobis(iris[, 1:4]), dist="chisq", df=4, id.n=3)
+car::qqPlot(Mahalanobis(iris[, 1:4]), dist="chisq", df=4)
 
 
 # Adopted data

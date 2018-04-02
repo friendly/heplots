@@ -51,7 +51,7 @@ The Analysis of Romano-British Pottery by Atomic Absorption Spectrophotometry.
 \emph{Archaeometry}, \bold{22}, 153-171.
 }
 \seealso{
-	\code{\link[car]{Pottery}} for the related (subset) data set
+	\code{\link[carData]{Pottery}} for the related (subset) data set
 }
 \examples{
 data(Pottery2)
