@@ -86,5 +86,5 @@ reference:
 articles:
   - title: "Vignettes"
     contents:
-    - "HE-examples"
-    - repeated
+    - "HE-examples.Rnw"
+    - repeated.Rnw
