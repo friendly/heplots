@@ -3,6 +3,7 @@
 # added etasq.lm 7/29/2010
 # fixed buglet in etasq.lm 12/5/2010
 # copied stats:::Pillai, etc. to utility.R to avoid using :::
+# fixed issue #1 in etasq.lm 3/26/2019
 
 etasq <- function(x, ...){
 	UseMethod("etasq", x)
@@ -64,7 +65,10 @@ etasq.lm <- function(x, anova=FALSE, partial=TRUE, ...) {
 	neff <- nrow(aov)
 	SSH <- aov[-neff,1]
 	SSE <- aov[neff,1]
-	SST <- sum(SSH) + SSE
+#	SST <- sum(SSH) + SSE
+	# fix etasq per philchalmers #1
+	y <- model.frame(x)[ ,1]
+	SST <- sum( (y - mean(y))^2 )
 	eta2 <- if (partial) c(SSH / (SSH + SSE), NA) else c(SSH / SST, NA)
 	etalab <- if (partial) "Partial eta^2" else "eta^2"
 	if (anova) {
