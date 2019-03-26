@@ -7,5 +7,6 @@ inst/doc/*\.pdf
 .build-steps.R
 ^README\.Rmd$
 ^README-.*\.png$
+^heplots-logo\.png$
 ^_pkgdown\.yml$
 ^docs$
