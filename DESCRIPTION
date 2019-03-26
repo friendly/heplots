@@ -28,7 +28,6 @@ Suggests:
     lattice,
     reshape2,
     corrgram,
-    FRB,
     animation,
     mvinfluence
 LazyLoad: yes
