@@ -1,3 +1,8 @@
+Version 1.3-6 (2019-03-26)
+
+* fix bug in etasq.lm per #1 [thx: Phil Chalmers]
+* bump pkg version
+
 Version 1.3-5 (2018-04-02)
 
 * fix references to car datatsets -> carData
