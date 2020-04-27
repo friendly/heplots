@@ -2,8 +2,8 @@
 <!-- README.md is generated from README.Rmd. Please edit that file and knit again -->
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots) [![](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots) [![Rdoc](http://www.rdocumentation.org/badges/version/heplots)](http://www.rdocumentation.org/packages/heplots)
 
-heplots <img src="inst/doc/heplots-logo.png" align="right" height="200px" />
-============================================================================
+heplots <img src="heplots-logo.png" align="right" height="200px" />
+===================================================================
 
 **Visualizing Hypothesis Tests in Multivariate Linear Models**
 --------------------------------------------------------------
