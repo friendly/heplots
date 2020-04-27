@@ -8,7 +8,7 @@ heplots <img src="inst/doc/heplots-logo.png" align="right" height="200px" />
 **Visualizing Hypothesis Tests in Multivariate Linear Models**
 --------------------------------------------------------------
 
-Version 1.3-5
+Version 1.3-7
 
 Description
 -----------
