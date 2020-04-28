@@ -30,6 +30,17 @@ str(mathscore)
 math.mod <- lm(cbind(BM, WP) ~ group, data=mathscore)
 car::Anova(math.mod)
 
+# scatterplot with data ellipses
+car::scatterplot(WP ~ BM | group, data=mathscore, 
+	ellipse=list(levels=0.68), smooth=FALSE, pch=c(15,16), 
+	legend=list(coords = "topright"))
+
+# HE plot
+heplot(math.mod, fill=TRUE, 
+  cex=2, cex.lab=1.8,
+	xlab="Basic math", ylab="Word problems")
+
+
 
 }
 \keyword{datasets}
