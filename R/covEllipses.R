@@ -191,7 +191,7 @@ covEllipses.default <-
 	}
 	else {
 		nv <- length(vars)
-		op <- par(mfcol=c(nv, nv), mar=c(2,2,0,0)+.1, xaxt='n', yaxt='n', ann=FALSE)
+		op <- par(mfcol=c(nv, nv), mar=c(1,1,0,0)+.1, xaxt='n', yaxt='n', ann=FALSE, oma=rep(0,4))
 		on.exit( par(op) )
 		for (i in 1:nv) {
 			for (j in 1:nv) {
