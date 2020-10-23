@@ -79,7 +79,8 @@ function(mod, ...) UseMethod("heplot3d")
 				warn.rank=FALSE,  
 				...) {              
 	
-	ellipsoid <- function(center, shape, radius=1, label="", col, df=Inf, shade=TRUE, alpha=0.1, wire=TRUE){
+	ellipsoid <- function(center, shape, radius=1, label="", col, 
+	                      df=Inf, shade=TRUE, alpha=0.1, wire=TRUE){
 		# adapted from the shapes3d demo in the rgl package and from the Rcmdr package
 		# modified to return the bbox of the ellipsoid
 		degvec <- seq(0, 2*pi, length=segments)
@@ -108,7 +109,9 @@ function(mod, ...) UseMethod("heplot3d")
 			wire <- TRUE
 			shade <- FALSE
 		}
-		if (verbose) print(paste("col:", col, " shade:", shade, " alpha:", alpha, " wire:", wire, sep=" "))
+		back <- if (df < 3) "culled" else "filled"
+		if (verbose) cat(paste("df=", df, "col:", col, " shade:", shade, " alpha:", alpha, 
+		                         " wire:", wire, "back:", back, sep=" "), "\n")
 		if(shade) rgl::shade3d(ellips, col=col, alpha=alpha, lit=TRUE)
 		if(wire) rgl::wire3d(ellips, col=col, size=lwd, lit=FALSE)
 		bbox <- matrix(rgl::par3d("bbox"), nrow=2)
@@ -216,8 +219,10 @@ if (!add){
 	
 	if (error.ellipsoid) {
 		E.ellipsoid <- ellipsoid(gmean, E, radius, col=E.col, label=err.label, 
-				shade=shade[[length(shade)]], alpha=shade.alpha[[length(shade.alpha)]],
-				wire=wire[[length(wire)]])
+		                         df=dfe,
+				                    shade=shade[[length(shade)]], 
+				                    alpha=shade.alpha[[length(shade.alpha)]],
+				                    wire=wire[[length(wire)]])
 		colnames(E.ellipsoid) <- vars
 	}       
 	term.labels <- if (n.terms == 0) NULL
@@ -240,7 +245,8 @@ if (!add){
 			if((!shade[term]) & !wire[term]) 
 				warning(paste("shate and wire are both FALSE for ", term), call.=FALSE)
 			H.ellipsoid[[term]] <- ellipsoid(gmean, H, radius, col=col[term], label=term.labels[term], 
-					df=dfh, shade=shade[term], alpha=shade.alpha[term], wire=wire[term])  
+					                      df=dfh, shade=shade[term], alpha=shade.alpha[term], 
+					                      wire=wire[term])  
 			colnames(H.ellipsoid[[term]]) <- vars
 		}
 	hyp.labels <- if (n.hyp == 0) NULL
@@ -287,7 +293,8 @@ if (!add){
 				loc <- match(factor.names[j], terms, nomatch=0)
 				pcol <- if (loc>0) col[loc] else "black"
 				for (m in 1:nrow(means)) {
-					ellipsoid(unlist(means[m, 2:4]), diag((ranges/100))^2, col=pcol, wire=FALSE, alpha=0.8)
+					ellipsoid(unlist(means[m, 2:4]), diag((ranges/100))^2, col=pcol, 
+					          wire=FALSE, alpha=0.8)
 #            		points3d(unlist(means[m, 2:4]), size=3, color=pcol)
 #					spheres3d(unlist(means[m, 2:4]), radius=diag((ranges/30))^2, color=pcol)
 				}
