@@ -24,6 +24,7 @@
 # last modified 26 Apr 2013 by M. Friendly 
 # -- modified ellipsoid to reduce striation (Thx: Duncan Murdoch)
 # -- changed default colors and default fill.alpha
+# 10/20/2020 Fixed moire problem in heplot3d when dfh <3 (Thx: Duncan Murdoch)
 
 savedvars <- new.env(parent=emptyenv())
 
@@ -112,8 +113,8 @@ function(mod, ...) UseMethod("heplot3d")
 		back <- if (df < 3) "culled" else "filled"
 		if (verbose) cat(paste("df=", df, "col:", col, " shade:", shade, " alpha:", alpha, 
 		                         " wire:", wire, "back:", back, sep=" "), "\n")
-		if(shade) rgl::shade3d(ellips, col=col, alpha=alpha, lit=TRUE)
-		if(wire) rgl::wire3d(ellips, col=col, size=lwd, lit=FALSE)
+		if(shade) rgl::shade3d(ellips, col=col, alpha=alpha, lit=TRUE, back=back)
+		if(wire) rgl::wire3d(ellips, col=col, size=lwd, lit=FALSE, back=back)
 		bbox <- matrix(rgl::par3d("bbox"), nrow=2)
 		ranges <- apply(bbox, 2, diff)
 		if (!is.null(label) && label !="")
