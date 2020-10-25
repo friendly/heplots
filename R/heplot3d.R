@@ -25,6 +25,7 @@
 # -- modified ellipsoid to reduce striation (Thx: Duncan Murdoch)
 # -- changed default colors and default fill.alpha
 # 10/20/2020 Fixed moire problem in heplot3d when dfh <3 (Thx: Duncan Murdoch)
+# -- uses back="culled" & depth_mask=FALSE properties
 
 savedvars <- new.env(parent=emptyenv())
 
@@ -111,10 +112,12 @@ function(mod, ...) UseMethod("heplot3d")
 			shade <- FALSE
 		}
 		back <- if (df < 3) "culled" else "filled"
+		depth_mask <- if (alpha <.8) FALSE else TRUE
 		if (verbose) cat(paste("df=", df, "col:", col, " shade:", shade, " alpha:", alpha, 
-		                         " wire:", wire, "back:", back, sep=" "), "\n")
-		if(shade) rgl::shade3d(ellips, col=col, alpha=alpha, lit=TRUE, back=back)
-		if(wire) rgl::wire3d(ellips, col=col, size=lwd, lit=FALSE, back=back)
+		                         " wire:", wire, "back:", back, "depth_mask:", depth_mask,
+		                       sep=" "), "\n")
+		if(shade) rgl::shade3d(ellips, col=col, alpha=alpha, lit=TRUE, back=back, depth_mask=depth_mask)
+		if(wire) rgl::wire3d(ellips, col=col, size=lwd, lit=FALSE, back=back, depth_mask=depth_mask)
 		bbox <- matrix(rgl::par3d("bbox"), nrow=2)
 		ranges <- apply(bbox, 2, diff)
 		if (!is.null(label) && label !="")
@@ -145,7 +148,7 @@ function(mod, ...) UseMethod("heplot3d")
 			else stop("imatrix argument requires car 2.0-0 or later")
 		} 
 	}   
-	if (verbose) print(manova)    
+#	if (verbose) print(manova)    
 #	response.names <- rownames(manova$SSPE)
 	if (is.null(idata) && is.null(imatrix)) {
 		Y <- model.response(data) 
