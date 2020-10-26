@@ -1,18 +1,12 @@
 ## Test environments
-* local Windows 7 install, R 3.4.1
-* win-builder R 3.5.0 alpha (2018-03-30 r74499), 3.4.1 (2017-06-30)
+* local Windows 7 install, R 3.6.3
+* win-builder R Under development (unstable) (2020-10-23 r79366)
 
 ## R CMD check results
 There were no ERRORs or WARNINGS or NOTES.
 
 
 ## Comments
-This is a minor release, fixing some incompatibilities with car 3.0-0.
-
-## Version 1.3-5 (2018-04-02)
-
-* fix references to car datatsets -> carData
-* fix error resulting from car 3.0 changes
-* bump pkg version
+This is a minor release, fixing some bugs and documentation warnings
 
 

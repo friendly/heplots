@@ -1,13 +1,11 @@
 Version 1.3-7 
 
-* Fix rendering of 3D heplots
+* Fix rendering of 3D heplots [Thx: Duncan Murdoch]
+* Fix URLs
 
 Version 1.3-6 (2019-03-26)
 
 * add mathscore data
-
-Version 1.3-6 (2019-03-26)
-
 * fix bug in etasq.lm per #1 [thx: Phil Chalmers]
 * bump pkg version
 * remove Suggests: FRB
