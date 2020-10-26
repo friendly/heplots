@@ -49,8 +49,11 @@ The epochs correspond to the following periods of Egyptian history:
 \references{
   Thomson, A. and Randall-Maciver, R. (1905) \emph{Ancient Races of the Thebaid}, Oxford: Oxford University Press. 
 
-  Egyptian Skull Development, StatLib Data and Story Library,
-  \url{http://lib.stat.cmu.edu/DASL/Stories/EgyptianSkullDevelopment.html}
+Hand, D. J.,  F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski (1994). 
+\emph{A Handbook of Small Datasets}, Chapman and Hall/CRC, London. 
+
+%  Egyptian Skull Development, StatLib Data and Story Library,
+%  \url{http://lib.stat.cmu.edu/DASL/Stories/EgyptianSkullDevelopment.html}
 }
 
 \examples{

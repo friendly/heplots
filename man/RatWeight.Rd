@@ -43,7 +43,7 @@ Box, G.E.P. (1950). Problems in the analysis of
 growth and wear curves.  \emph{Biometrics}, 6, 362-389.
 
 Friendly, Michael (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
-  37(4), 1-40. URL \url{http://www.jstatsoft.org/v37/i04/}.
+  37(4), 1-40. URL \url{https://www.jstatsoft.org/v37/i04/}.
 
 }
 \examples{

@@ -12,7 +12,7 @@ devtools::build(args = c('--resave-data','--compact-vignettes="gs+qpdf"'))
 
 # then, test with win builder
 args = c('--resave-data','--compact-vignettes="gs+qpdf"')
-devtools::build_win(args=args)
+devtools::build(args=args)
 
 # submit to cran
 devtools::submit_cran(args=args)
