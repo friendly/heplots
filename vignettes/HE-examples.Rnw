@@ -345,7 +345,7 @@ presumed categories of the independent variable \code{Attr}.  The questions here
 are (a) do the ratings of the photos on physical attractiveness
 (\code{phyattr}) confirm the original classification?
 (b) how do other ratings differentiate the photos?
-To keep things simple, we consider ony a few of the other ratings in a one-way MANOVA.
+To keep things simple, we consider only a few of the other ratings in a one-way MANOVA.
 
 <<jury.mod1, results=verbatim>>=
 (jury.mod1 <- lm( cbind(phyattr, happy, independent, sophisticated) ~ Attr, data=MockJury))
@@ -506,7 +506,7 @@ This example examines physical measurements of size and shape made on
 150 Egyptian skulls from five epochs ranging from
 4000 BC to 150 AD.
 The measures are: maximal breadth (mb), basibregmatic height (bh),
-basialveolar length (bl), and nasal height (nh) of each skull.
+basialiveolar length (bl), and nasal height (nh) of each skull.
 See \url{http://www.redwoods.edu/instruct/agarwin/anth_6_measurements.htm}
 for the definitions of these measures, and \figref{fig:skulls} for a diagram.
 The question of interest is whether and how these measurements change over time.
@@ -948,7 +948,7 @@ length of stay in hospital after operation (\code{los}, in days)
 
 The predictor variables are patient \code{age}, \code{sex},
 physical status (\code{pstat}, a 1-5 scale, with 1=perfect health, 5=very poor health),
-body build (\code{build}, a 1-5 scale, with 1=emaciated, \dots, 5=obsese),
+body build (\code{build}, a 1-5 scale, with 1=emaciated, \dots, 5=obese),
 and preoperative complications with (\code{cardiac}) heart and respiration (\code{resp}).
 
 We begin with a model fitting all predictors. Note that the ordinal predictors,
