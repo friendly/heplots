@@ -29,7 +29,7 @@ The scores on the response variables are discrete.
 Meyers, L. S., Gamst, G, & Guarino, A. J. (2006).
 \emph{Applied Multivariate Research: Design and Interpretation},
 Thousand Oaks, CA: Sage Publications,
-\url{https://www.sagepub.com/amrStudy}, Exercises 10B.
+\url{https://studysites.sagepub.com/amrStudy/}, Exercises 10B.
 }
 %\references{
 %%%  ~~ possibly secondary sources and usages ~~
