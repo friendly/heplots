@@ -73,7 +73,7 @@ At the minimum, this requires that \eqn{n > p} for each group.
 
 Box's M test for a multivariate linear model highly sensitive to departures from multivariate normality,
 just as the analogous univariate test.  It is also affected adversely by 
-unbalanced designs.  Some people reccommend to ignore the result unless it is very highly significant,
+unbalanced designs.  Some people recommend to ignore the result unless it is very highly significant,
 e.g., p < .0001 or worse.
 
 The \code{summary} method prints a variety of additional statistics based on the eigenvalues of
@@ -101,7 +101,7 @@ Morrison, D.F. (1976) \emph{Multivariate Statistical Methods}.
 
 \author{
 The default method was taken from the \pkg{biotools} package, 
-Anderson Rodrigo da Silva <anderson.agro@hotmail.com>
+Anderson Rodrigo da Silva \email{anderson.agro@hotmail.com}
 
 Generalized by Michael Friendly and John Fox
 }

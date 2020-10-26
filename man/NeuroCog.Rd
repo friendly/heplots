@@ -13,7 +13,7 @@ designed for individuals with psychosis (Heinrichs etal. (2008))
 
 The main interest was in determining how well these measures distinguished among all
 groups and whether there were variables that distinguished between the 
-schizophrenia and schizoafective groups.
+schizophrenia and schizoaffective groups.
 
 
 }

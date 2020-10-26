@@ -40,7 +40,7 @@ or situational causal attributions to positive and negative social events.
 See \code{\link{NeuroCog}} for a description of the sample.
 Only those with complete data on all the social cognitive measures are included in this data set.
 
-There is one extreme outier in the schizophrenia group and other possible
+There is one extreme outlier in the schizophrenia group and other possible
 outliers in the control group, left in here for tutorial purposes.
 }
 \source{

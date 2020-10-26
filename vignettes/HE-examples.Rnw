@@ -841,7 +841,7 @@ heplot(rohwer.mod, col=colors,  variables=c(1,3),
 \end{center}
 \end{figure}
 
-The positive orientation of the \code{Regr} ellipses shows that the prediced
+The positive orientation of the \code{Regr} ellipses shows that the predicted
 values for all three responses are positively correlated (more so for
 \code{SAT} and \code{PPVT}). As well, the High SES group
 is higher on all responses than the Low SES group.
@@ -927,7 +927,7 @@ heplot(rohwer.mod2, col=c(colors, "brown"),
 Comparing \figref{fig:rohwer-HE4} for the heterogeneous slopes model
 with \figref{fig:rohwer-HE2} (left) for the homogeneous slopes model,
 it can be seen that most of the covariates have ellipses of similar
-size and orientation, reflecting simlar evidence against the respective
+size and orientation, reflecting similar evidence against the respective
 null hypotheses, as does the effect of \code{SES}, showing the
 greater performance of the high-SES group on all response measures.
 Somewhat more subtle, the error ellipse is noticeably smaller in

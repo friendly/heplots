@@ -18,7 +18,7 @@
                         course.}
     \item{\code{mb}}{maximal breadth of the skull.}
     \item{\code{bh}}{basibregmatic height of the skull.}
-    \item{\code{bl}}{basialveolar length of the skull.}
+    \item{\code{bl}}{basialiveolar length of the skull.}
     \item{\code{nh}}{nasal height of the skull.}
   }
 }

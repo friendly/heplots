@@ -65,7 +65,7 @@ heplot3d(mod, ...)
     ellipsoid for the intercept even if it is in the MANOVA table.}
   \item{type}{``type'' of sum-of-squares-and-products matrices to compute; one of
     \code{"II"}, \code{"III"}, \code{"2"}, or \code{"3"}, where \code{"II"} is
-    the default (and \code{"2"} is a synomym).}
+    the default (and \code{"2"} is a synonym).}
   \item{idata}{an optional data frame giving a factor or factors defining the 
     intra-subject model for multivariate repeated-measures data. 
     See Details of \code{\link[car]{Anova}} for an explanation of the intra-subject design and for further explanation 
@@ -98,7 +98,7 @@ heplot3d(mod, ...)
     scale as the error ellipsoid.}  
   \item{level}{equivalent coverage of ellipsoid for normally-distributed
     errors, defaults to \code{0.68}.}
-  \item{alpha}{signficance level for Roy's greatest-root test statistic; if
+  \item{alpha}{significance level for Roy's greatest-root test statistic; if
     \code{size="evidence"}, then the
     hypothesis ellipsoid is scaled so that it just touches the error ellipsoid at the
     specified alpha level; a larger hypothesis elllipsoid therefore indicates

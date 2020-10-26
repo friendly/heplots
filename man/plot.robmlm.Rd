@@ -24,10 +24,10 @@ outliers with respect to the fitted model.
 A \code{"robmlm"} object
 }
   \item{labels}{
-Observation labels; if not specified,uses rownames from the original data
+Observation labels; if not specified, uses rownames from the original data
 }
   \item{id.weight}{
-Threshold for identifying obsrevations with small weights
+Threshold for identifying observations with small weights
 }
   \item{id.pos}{
 Position of observation label relative to the point

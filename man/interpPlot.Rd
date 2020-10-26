@@ -13,7 +13,7 @@ Points are plotted via the linear interpolation,
 \deqn{ XY = XY1 + \alpha (XY2 - XY1)}
 
 The function allows plotting of the data ellipse, the
-linear regresion line, and line segments showing the movement of
+linear regression line, and line segments showing the movement of
 points.
 }
 \usage{
@@ -58,7 +58,7 @@ Logical. Whether to add to an existing plot?
 logical. \code{TRUE} to plot a \code{dataEllipse}
 }
   \item{ellipse.args}{
-other arguments pqassed to \code{dataEllipse}
+other arguments passed to \code{dataEllipse}
 }
   \item{abline}{
 logical. \code{TRUE} to plot the linear regression line for \code{XY}

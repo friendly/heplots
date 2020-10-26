@@ -8,7 +8,7 @@ Response Speed in a Probe Experiment
 }
 \description{
 Data from a probe experiment testing whether immediate memory for
- sentenses is influenced by the phrase structure of the sentence.
+ sentences is influenced by the phrase structure of the sentence.
  The data sets come from Timm (1975), Ex. 3.14 and Ex. 3.16 (p.244)
 
 Procedure: Subjects listened to tape-recorded sentences.  Each

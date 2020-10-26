@@ -50,7 +50,7 @@ For univariate linear models, classical \eqn{\eta^2} = SSH / SST and partial
 \eqn{\eta^2} = SSH / (SSH + SSE).  These are identical in one-way designs.
 
 Partial eta-squared describes the proportion of total variation attributable to a given factor, 
-partialling out (excluding) other factors from the total nonerror variation.
+partialing out (excluding) other factors from the total nonerror variation.
 These are commonly used as measures of effect size or measures
 of (non-linear) strength of association in ANOVA models.
 

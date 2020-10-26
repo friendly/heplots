@@ -21,7 +21,7 @@ Other topics now addressed here include:
 
 -   robust MLMs,
 -   visualizing tests for equality of covariance matrices in MLMs (Box's M test),
--   chi sqare Q-Q plots for MLMs.
+-   chi square Q-Q plots for MLMs.
 
 The package also provides a collection of data sets illustrating a variety of multivariate linear models of the types listed above, together with graphical displays.
 
@@ -78,7 +78,7 @@ heplot(iris.mod)
 
 ![](README-iris1-1.png)
 
-Contrasts or other linear hypotheses can be shown as well, and the ellipses look bettter if they are filled. We create contrasts to test the differences between `versacolor` and `virginca` and also between `setosa` and the average of the other two.
+Contrasts or other linear hypotheses can be shown as well, and the ellipses look better if they are filled. We create contrasts to test the differences between `versacolor` and `virginca` and also between `setosa` and the average of the other two.
 
 ``` r
 contrasts(iris$Species)<-matrix(c(0, -1, 1, 

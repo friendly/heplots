@@ -19,7 +19,7 @@ ellipse3d.axes(x, centre = c(0, 0, 0), scale = c(1, 1, 1),
   \item{centre}{The center of the ellipse}
   \item{scale}{If x is a correlation matrix, then the standard deviations of each parameter can be given in the scale parameter. 
   	This defaults to \code{c(1, 1, 1)}, so no rescaling will be done. }
-  \item{level}{The confidence level of a simulataneous confidence region. 
+  \item{level}{The confidence level of a simultaneous confidence region. 
   	The default is 0.95, for a 95\% region. 
   	This is used to control the size of the ellipsoid.}
   \item{t}{The size of the ellipsoid may also be controlled by specifying the value of a 
@@ -29,7 +29,7 @@ ellipse3d.axes(x, centre = c(0, 0, 0), scale = c(1, 1, 1),
   \item{labels}{Either a logical value, a character string, or a character vector of length 3.
   	If \code{TRUE}, the default, the axes are labeled PC1, PC2, PC3.
   	If a single character string, the digits 1, 2, 3 are pasted on the end.}
-  \item{label.ends}{A vector of lengeth 3 indicating which ends of the axes should
+  \item{label.ends}{A vector of length 3 indicating which ends of the axes should
   	be labeled, corresponding to a selection of rows of the 6 x 3 matrix of axes
   	end points.  Default: \code{c(2,4,6)}.}
   \item{\dots}{Other arguments passed to \code{segments3d} and \code{text3d}.}

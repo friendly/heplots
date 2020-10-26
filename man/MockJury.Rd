@@ -39,7 +39,7 @@ crime?
     \item{\code{kind}}{rating of the photo for 'kind'}
     \item{\code{intelligent}}{rating of the photo for 'intelligent'}
     \item{\code{strong}}{rating of the photo for 'strong'}
-    \item{\code{sophisticated}}{rating of the photo for 'sophistocated'}
+    \item{\code{sophisticated}}{rating of the photo for 'sophisticated'}
     \item{\code{happy}}{rating of the photo for 'happy'}
     \item{\code{ownPA}}{self-rating of the subject for 'physical attractiveness'}
   }
@@ -49,7 +49,7 @@ crime?
 %}
 \source{
 From Dr. Wuensch's StatData Page,
-http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat
+\url{http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat}
 }
 \references{
 Data from the thesis by Plaster, M. E. (1989).

@@ -18,7 +18,7 @@ and Friendly, Monette and Fox (2013) for a general discussion of the role of
 elliptical geometry in statistical understanding.
 
 Other topics now addressed here include robust MLMs, tests for equality of
-covariance matrices in MLMs, and chi sqare Q-Q plots for MLMs.
+covariance matrices in MLMs, and chi square Q-Q plots for MLMs.
 
 The package also provides a collection of  data sets illustrating
 a variety of multivariate linear models of the types listed above,
@@ -83,7 +83,7 @@ the current list.
 \author{
 John Fox, Michael Friendly, and Georges Monette
 
-Maintainer: Michael Friendly, <friendly@yorku.ca>, \url{http://datavis.ca}
+Maintainer: Michael Friendly, \email{friendly@yorku.ca}, \url{http://datavis.ca}
 }
 
 \references{

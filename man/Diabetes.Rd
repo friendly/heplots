@@ -31,7 +31,7 @@ but demonstrable abnormality of oral or intravenous glucose tolerance.
     \item{\code{glufast}}{fasting plasma glucose level, a numeric vector}
     \item{\code{glutest}}{test plasma glucose level, a measure of glucose intolerance, a numeric vector}
     \item{\code{instest}}{plasma insulin during test, a measure of insulin response to oral glucose, a numeric vector}
-    \item{\code{sspg}}{staady state plasma glucose, a measure of insulin resistance, a numeric vector}
+    \item{\code{sspg}}{steady state plasma glucose, a measure of insulin resistance, a numeric vector}
     \item{\code{group}}{diagnostic group, a factor with levels \code{Normal} \code{Chemical_Diabetic} \code{Overt_Diabetic}}
   }
 }

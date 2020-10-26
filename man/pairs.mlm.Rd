@@ -24,7 +24,7 @@
   \item{var.cex}{character expansion for the variable labels.}
   \item{type}{``type'' of sum-of-squares-and-products matrices to compute; one of
     \code{"II"}, \code{"III"}, \code{"2"}, or \code{"3"}, where \code{"II"} is
-    the default (and \code{"2"} is a synomym).}
+    the default (and \code{"2"} is a synonym).}
   \item{idata}{an optional data frame giving a factor or factors defining the 
     intra-subject model for multivariate repeated-measures data. 
     See Details of \code{\link[car]{Anova}} for an explanation of the intra-subject design and for further explanation 
