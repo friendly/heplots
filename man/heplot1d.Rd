@@ -104,7 +104,7 @@ heplot1d(mod, ...)
   \item{alpha}{significance level for Roy's greatest-root test statistic; if
     \code{size="evidence"}, then the
     hypothesis ellipse is scaled so that it just touches the error ellipse at the
-    specified alpha level; a larger hypothesis elllipse therefore indicates
+    specified alpha level; a larger hypothesis ellipse therefore indicates
     statistical significance; defaults to \code{0.05}.}
   \item{center.pch}{character to use in plotting the centroid of the data;
     defaults to \code{"|"}.}

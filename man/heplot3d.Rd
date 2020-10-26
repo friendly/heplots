@@ -93,7 +93,7 @@ heplot3d(mod, ...)
     computation in repeated calls.}
   \item{size}{how to scale the hypothesis ellipsoid relative to the error
     ellipsoid; if \code{"evidence"}, the default, the scaling is done so that
-    a ``significant'' hypothesis elliposid extends outside of the error
+    a ``significant'' hypothesis ellipsoid extends outside of the error
     ellipsoid; if \code{"effect.size"}, the hypothesis ellipsoid is on the same
     scale as the error ellipsoid.}  
   \item{level}{equivalent coverage of ellipsoid for normally-distributed
@@ -101,9 +101,9 @@ heplot3d(mod, ...)
   \item{alpha}{significance level for Roy's greatest-root test statistic; if
     \code{size="evidence"}, then the
     hypothesis ellipsoid is scaled so that it just touches the error ellipsoid at the
-    specified alpha level; a larger hypothesis elllipsoid therefore indicates
+    specified alpha level; a larger hypothesis ellipsoid therefore indicates
     statistical significance; defaults to \code{0.05}.}
-  \item{segments}{number of segments composing each elliposid; defaults to
+  \item{segments}{number of segments composing each ellipsoid; defaults to
     \code{40}.}
   \item{col}{a color or vector of colors to use in plotting ellipsoids; the first
     color is used for the error ellipsoid; the remaining colors --- recycled

@@ -6,7 +6,7 @@ National Longitudinal Survey of Youth Data
 }
 \description{
 The dataset come from a small random sample of 
-the U.S. National Longitudinal Surve of Youth.
+the U.S. National Longitudinal Survey of Youth.
 }
 \usage{data(NLSY)}
 \format{

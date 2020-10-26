@@ -16,7 +16,7 @@ elective herniorrhaphy operation,  in relation to pre-operative measures.
     \item{\code{sex}}{patient sex, a factor with levels \code{f} \code{m}}
     \item{\code{pstat}}{physical status (ignoring that associated with the operation). A 1-5
     	scale, with 1=perfect health, 5=very poor health.}
-    \item{\code{build}}{body build, a 1-5 scale, with 1=emaciated, 2=thin, 3=average, 4=fat, 5=obsese.}
+    \item{\code{build}}{body build, a 1-5 scale, with 1=emaciated, 2=thin, 3=average, 4=fat, 5=obese.}
     \item{\code{cardiac}}{preoperative complications with heart, 1-4 scale,
     	with 1=none, 2=mild, 3=moderate, 4=severe.}
     \item{\code{resp}}{preoperative complications with respiration, 1-4 scale,
