@@ -8,11 +8,20 @@ Sys.setenv(RGL_USE_NULL = TRUE)
 # it was necessary to build manually, using
 
 Sys.setenv(R_GSCMD="C:/Program Files/gs/gs9.21/bin/gswin64c.exe")
-devtools::build(args = c('--resave-data','--compact-vignettes="gs+qpdf"'))
+devtools::build(args = c('--resave-data','--compact-vignettes=both'))
+
+#devtools::build(args = c('--compact-vignettes=both'))
 
 # then, test with win builder
-args = c('--resave-data','--compact-vignettes="gs+qpdf"')
-devtools::build(args=args)
+args = c('--resave-data','--compact-vignettes=both')
+devtools::check_win_devel(args=args)
 
 # submit to cran
 devtools::submit_cran(args=args)
+
+
+# NB: building vignettes, then compacting
+devtools::build_vignettes()
+
+tools::compactPDF("doc/HE-examples.pdf", gs_quality="ebook")
+# compacted ‘HE-examples.pdf’ from 765Kb to 415Kb

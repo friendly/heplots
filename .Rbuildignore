@@ -10,3 +10,5 @@ inst/doc/*\.pdf
 ^heplots-logo\.png$
 ^_pkgdown\.yml$
 ^docs$
+^doc$
+^Meta$
