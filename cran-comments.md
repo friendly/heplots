@@ -9,4 +9,5 @@ There were no ERRORs or WARNINGS or NOTES.
 ## Comments
 This is a minor release, fixing some bugs and documentation warnings
 
+Re-submitted with fixed URLs that were not detected in win-builder checks
 
