@@ -82,7 +82,7 @@ Practical methods for computing power in testing the Multivariate General Linear
 \emph{Computational Statistics and Data Analysis}, 2, 143-158.
 
 Muller, K. E. and LaVange, L. M. and Ramey, S. L. and Ramey, C. T. (1992).
-Power Claculations for General Linear Multivariate Models Including Repeated Measures Applications.
+Power Calculations for General Linear Multivariate Models Including Repeated Measures Applications.
 \emph{Journal of the American Statistical Association}, 87, 1209-1226.
 
 }

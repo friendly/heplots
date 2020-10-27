@@ -335,7 +335,7 @@ table(MockJury$Attr, MockJury$Crime)
 @
 
 The main questions of interest were:
-(a) Does attractiveness of the ``defendent'' influence the sentence or perceived
+(a) Does attractiveness of the ``defendant'' influence the sentence or perceived
 seriousness of the crime?  
 (b) Does attractiveness interact with the nature of the
 crime?
@@ -499,7 +499,7 @@ between that variable and \code{Years}. Of greater interest here is the nature
 of the possible interaction of \code{Attr} and \code{Crime} on \code{Years}
 of sentence, controlling for \code{Serious}.
 The effect plot shows that for the crime of Swindle, there is a much
-greater \code{Years} of sentence awarded to Unattractive defendents.
+greater \code{Years} of sentence awarded to Unattractive defendants.
 
 \subsection[Egyptian skulls]{Egyptian skulls from five epochs}
 This example examines physical measurements of size and shape made on

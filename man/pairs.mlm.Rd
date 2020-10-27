@@ -19,7 +19,7 @@
   \item{x}{an object of class \code{mlm}.}
   \item{variables}{indices or names of the three of more response variables 
     to be plotted; defaults to all of the responses.}
-  \item{var.labels}{labels for the variables plotted in the diagnonal panels;
+  \item{var.labels}{labels for the variables plotted in the diagonal panels;
     defaults to names of the response variables.}
   \item{var.cex}{character expansion for the variable labels.}
   \item{type}{``type'' of sum-of-squares-and-products matrices to compute; one of

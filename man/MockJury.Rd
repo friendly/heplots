@@ -16,7 +16,7 @@ Then the participants were told that the person in the photo had committed a
 Crime, and asked to rate the seriousness of the crime and recommend a
 prison sentence, in Years.
 
-Does attractiveness of the "defendent" influence the sentence or perceived
+Does attractiveness of the "defendant" influence the sentence or perceived
 seriousness of the crime?  Does attractiveness interact with the nature of the
 crime?
 }

@@ -141,7 +141,7 @@ confidence envelope is used.
 \details{
 The calculation of the confidence envelope follows that used
 in the SAS program, \url{http://www.datavis.ca/sasmac/cqplot.html}
-which comes from Chambers etal. (1983), Section 6.8.
+which comes from Chambers et al. (1983), Section 6.8.
 
 The essential formula is
 \deqn{
