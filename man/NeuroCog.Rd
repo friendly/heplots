@@ -69,12 +69,12 @@ Neurocognitive normality in schizophrenia revisited.
 Heinrichs, R. W., Ammari, N., McDermid Vaz, S. & Miles, A. (2008). Are schizophrenia and schizoaffective disorder neuropsychologically distinguishable? 
 \emph{Schizophrenia Research}, \bold{99}, 149-154.
 
-Nuechterlein KH, Green MF, Kern RS, Baade LE, Barch D, Cohen J, Essock S, 
-Fenton WS, Frese FJ, Gold JM, Goldberg T, Heaton R, Keefe RSE, Kraemer H, 
-Mesholam-Gately R, Seidman LJ, Stover E, Weinberger DR, Young AS, Zalcman S, Marder SR. (2008) 
+Nuechterlein K.H., Green M.F., Kern R.S., Baade L.E., Barch D., Cohen J., Essock S., 
+Fenton W.S., Frese F.J., Gold J.M., Goldberg T., Heaton R., Keefe R.S.E., Kraemer H., 
+Mesholam-Gately R., Seidman L.J., Stover E., Weinberger D.R., Young A.S., Zalcman S., Marder S.R. (2008) 
 The MATRICS Consensus Cognitive Battery, Part 1: Test selection, reliability, and validity. 
 \emph{American Journal of Psychiatry}, \bold{165} (2), 203-213.
-\url{http://www.ncbi.nlm.nih.gov/pubmed/18172019}.
+\url{https://pubmed.ncbi.nlm.nih.gov/18172019/}.
 
 }
 \examples{

@@ -101,7 +101,7 @@ Friendly, M. (2007).
 Fox, J., Friendly, M. & Monette, G. (2007).
   Visual hypothesis tests in multivariate linear models: The heplots package for R. 
   \emph{DSC 2007: Directions in Statistical Computing}.
-  \url{http://socserv.socsci.mcmaster.ca/jfox/heplots-dsc-paper.pdf}
+  \url{https://socialsciences.mcmaster.ca/jfox/heplots-dsc-paper.pdf}
 
 Friendly, M. (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
   37(4), 1-40. URL \url{https://www.jstatsoft.org/v37/i04/}.
