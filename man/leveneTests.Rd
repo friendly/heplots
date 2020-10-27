@@ -41,7 +41,7 @@ response variable in \code{y}.
 \references{
 Levene, H. (1960).
 Robust Tests for Equality of Variances.
-In Olkin, I. \emph{etal.} (Eds.), 
+In Olkin, I. \emph{et al.} (Eds.), 
 \emph{Contributions to Probability and Statistics: Essays in Honor of Harold Hotelling}, 
 Stanford University Press, 278-292.
 

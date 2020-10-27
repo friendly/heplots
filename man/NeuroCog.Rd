@@ -9,7 +9,7 @@ The primary purpose of the study (Hartman, 2016, Heinrichs etal. (2015)) was to 
 levels of
 performance on neurocognitive measures among individuals with schizophrenia and schizoaffective disorder
 using a well-validated, comprehensive neurocognitive battery specifically
-designed for individuals with psychosis (Heinrichs etal. (2008))
+designed for individuals with psychosis (Heinrichs et al. (2008))
 
 The main interest was in determining how well these measures distinguished among all
 groups and whether there were variables that distinguished between the 

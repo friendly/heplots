@@ -15,7 +15,7 @@ Their results are translated into a CI via the approximation
 where \eqn{ \widehat{\Sigma}} is the sample estimate of a population
 covariance matrix, 
 \eqn{bias} is a bias correction constant and \eqn{SE} is a width factor for
-the confidence interval.  Both \eqn{bias} and \eqn{SE} are functions of 
+the confidence interval.  Both \eqn{bias} and \eqn{SE} are functions ofS 
 the sample size, \eqn{n} and number of variables, \eqn{p}.  
 
 This function is included here only to provide an approximation to
@@ -32,8 +32,8 @@ logdetCI(cov, n, conf = 0.95, method = 1, bias.adj = TRUE)
   \item{conf}{confidence level}
 
   \item{method}{
-Three methods are provided, based on Cai et. al Theorem 1 (\code{method=1}), Colollary 1 (\code{method=2}) and 
-Colollary 2 (\code{method=3}),
+Three methods are provided, based on Cai et. al Theorem 1 (\code{method=1}), Corollary 1 (\code{method=2}) and 
+Corollary 2 (\code{method=3}),
 each with different bias and SE values.
 }
   \item{bias.adj}{
