@@ -84,9 +84,6 @@ The graphical functions contained here all display multivariate model
 effects in variable (**data**) space, for one or more response variables
 (or contrasts among response variables in repeated measures designs).
 
-The related [`candisc`](http://github.com/friendly/candisc) package plots these in **canonical discriminant** space,
-the space of linear combinations of the responses that show the maximum possible effects.
-
 * `heplot` constructs two-dimensional HE plots for model terms and 
 linear hypotheses for pairs of response variables in multivariate linear models.
 
@@ -97,6 +94,10 @@ variables.
 
 * `heplot1d` constructs 1-dimensional analogs of HE plots for model terms and 
 linear hypotheses for single response variables.
+
+The related [`candisc`](http://github.com/friendly/candisc) package plots these in **canonical discriminant** space,
+the space of linear combinations of the responses that show the maximum possible effects.
+
 
 ### Repeated measure designs
 
