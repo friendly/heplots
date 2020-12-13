@@ -41,9 +41,11 @@ pairs(Big5.mod,
 
 
 # examine Extraversion, Openness, Anxiety in 3D 
+if(requireNamespace("rgl")){
 colors <- c("pink", "gray", "blue", "brown")
 heplot3d(Big5.mod, var=c(2:4),
 	col=colors)
+}
 
 ############## canonical discriminant HE plots #####################
 

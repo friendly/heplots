@@ -322,8 +322,10 @@ heplot(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), col=
 # View all pairs
 pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 # or 3D plot
+if(requireNamespace("rgl")){
 col <- c("pink", "black", "blue", "cyan", "magenta", "brown", "gray")
 heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), col=col)
+}
 }
 
 \keyword{hplot}

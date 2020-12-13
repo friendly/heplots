@@ -63,9 +63,10 @@ pairs(foot.mod, hypotheses=list("group.1"="group1","group.2"="group2"),
 	col=c("red", "blue", "green3", "green3"), hyp.labels=FALSE)
 
 # see that the hypothesis for groups really is 2D
+if(requireNamespace("rgl")){
 heplot3d(foot.mod, variables=c(1,2,6),
 	hypotheses=list("group.1"="group1","group.2"="group2"),
 	col=c("red", "blue", "green3", "green3" ), wire=FALSE)
-
+}
 }
 \keyword{datasets}

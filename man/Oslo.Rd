@@ -68,7 +68,9 @@ if(require(candisc)) {
   Oslo.can <- candisc(Oslo.mod)
   Oslo.can
   heplot(Oslo.can)
-  heplot3d(Oslo.can, shade=TRUE, wire=FALSE, alpha=0.5, var.col="red")
+  if(requireNamespace("rgl")){
+    heplot3d(Oslo.can, shade=TRUE, wire=FALSE, alpha=0.5, var.col="red")
+  }
 }
 }
 

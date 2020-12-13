@@ -857,8 +857,10 @@ pairs(rohwer.mod, col=colors,
 or as a 3D plot, using \func{heplot3d} as shown in \figref{fig:rohwer-HE3D}.
 <<rohwer-HE3D, eval=FALSE, keep.source=TRUE>>=
 colors <- c("pink", "blue", rep("black",5), "#969696")
+if(requireNamespace("rgl")){
 heplot3d(rohwer.mod, col=colors,
 	hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
+}
 @
 \begin{figure}[htb]
 \begin{center}
