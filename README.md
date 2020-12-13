@@ -9,7 +9,7 @@
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.3-7
+Version 1.3-8
 
 ## Description
 
