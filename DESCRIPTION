@@ -41,5 +41,5 @@ Description: Provides HE plot and other functions for visualizing hypothesis
     provides visualizations in a reduced-rank canonical discriminant space when
     there are more than a few response variables.
 License: GPL (>= 2)
-URL: http://datavis.ca/R/index.php#heplots
+URL: http://friendly.github.io/heplots/
 RoxygenNote: 5.0.1
