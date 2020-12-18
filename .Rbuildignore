@@ -13,3 +13,4 @@ inst/doc/*\.pdf
 ^doc$
 ^Meta$
 ^CRAN-RELEASE$
+^revdep$
