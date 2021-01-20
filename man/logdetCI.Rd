@@ -73,8 +73,8 @@ Other columns are \code{logdet, bias, se}.
 
 \references{
 
-Cai, T. T.; Liang, T. & Zhou, H. H. (2015) Law of log determinant of sample covariance matrix and optimal estimation of differential entropy for high-dimensional Gaussian distributions Journal of Multivariate Analysis, 137, 161-172.
-\url{https://doi.org/10.1016/j.jmva.2015.02.003}
+Cai, T. T.; Liang, T. & Zhou, H. H. (2015) Law of log determinant of sample covariance matrix and optimal estimation of differential entropy for high-dimensional Gaussian distributions. \emph{Journal of Multivariate Analysis}, 137, 161-172.
+\doi{10.1016/j.jmva.2015.02.003}
 }
 \author{
 Michael Friendly
