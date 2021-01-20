@@ -32,7 +32,7 @@ Several tutorial vignettes are also included.  See \code{vignette(package="heplo
 Package: \tab heplots\cr
 Type: \tab Package\cr
 Version: \tab 1.3-8\cr
-Date: \tab 2020-12-2613\cr
+Date: \tab 2021-01-20\cr
 License: \tab GPL (>= 2), GPL version 2 or newer\cr
 }
 

@@ -7,7 +7,7 @@ Sys.setenv(RGL_USE_NULL = TRUE)
 # 
 # it was necessary to build manually, using
 
-Sys.setenv(R_GSCMD="C:/Program Files/gs/gs9.21/bin/gswin64c.exe")
+#Sys.setenv(R_GSCMD="C:/Program Files/gs/gs9.21/bin/gswin64c.exe")
 devtools::build(args = c('--resave-data','--compact-vignettes=both'))
 
 #devtools::build(args = c('--compact-vignettes=both'))
