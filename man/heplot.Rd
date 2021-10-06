@@ -238,7 +238,8 @@ Friendly, M. (2006).
   Data Ellipses, HE Plots and Reduced-Rank Displays for Multivariate Linear 
   Models: SAS Software and Examples 
   \emph{Journal of Statistical Software}, \bold{17}(6), 1--42.
-  \url{https://www.jstatsoft.org/v17/i06/}
+%  \url{https://www.jstatsoft.org/v17/i06/}
+  \doi{10.18637/jss.v017.i06}
 
 Friendly, M. (2007).
   HE plots for Multivariate General Linear Models.
@@ -246,7 +247,9 @@ Friendly, M. (2007).
   \url{http://datavis.ca/papers/jcgs-heplots.pdf} 
 
 Friendly, Michael (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
-  37(4), 1-40. URL \url{https://www.jstatsoft.org/v37/i04/}.
+  37(4), 1-40. 
+%  URL \url{https://www.jstatsoft.org/v37/i04/}.
+  \doi{10.18637/jss.v037.i04}
 
 Fox, J., Friendly, M. & Weisberg, S. (2013).
 Hypothesis Tests for Multivariate Linear Models Using the car Package.
