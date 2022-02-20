@@ -1,15 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file and knit again -->
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
 [![Rdoc](http://www.rdocumentation.org/badges/version/heplots)](http://www.rdocumentation.org/packages/heplots)
 
-# heplots <img src="heplots-logo.png" align="right" height="200px" />
+# heplots <img src="man/figures/heplots-logo.png" align="right" height="200" />
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.3-8
+Version 1.3-9
 
 ## Description
 
@@ -27,10 +27,10 @@ Friendly & Sigal (2017) for an applied R tutorial.
 
 Other topics now addressed here include:
 
-  - robust MLMs,
-  - visualizing tests for equality of covariance matrices in MLMs (Box’s
+-   robust MLMs,
+-   visualizing tests for equality of covariance matrices in MLMs (Box’s
     M test),
-  - chi square Q-Q plots for MLMs.
+-   chi square Q-Q plots for MLMs.
 
 The package also provides a collection of data sets illustrating a
 variety of multivariate linear models of the types listed above,
@@ -43,9 +43,7 @@ Several tutorial vignettes are also included. See
 
 Get the released version from CRAN:
 
-``` 
- install.packages("heplots")
-```
+     install.packages("heplots")
 
 The development version of `heplots` can be installed to your R library
 directly from github via:
@@ -69,17 +67,17 @@ The graphical functions contained here all display multivariate model
 effects in variable (**data**) space, for one or more response variables
 (or contrasts among response variables in repeated measures designs).
 
-  - `heplot` constructs two-dimensional HE plots for model terms and
+-   `heplot` constructs two-dimensional HE plots for model terms and
     linear hypotheses for pairs of response variables in multivariate
     linear models.
 
-  - `heplot3d` constructs analogous 3D plots for triples of response
+-   `heplot3d` constructs analogous 3D plots for triples of response
     variables.
 
-  - The `pairs` method, `pairs.mlm` constructs a scatterplot matrix of
+-   The `pairs` method, `pairs.mlm` constructs a scatterplot matrix of
     pairwise HE plots.
 
-  - `heplot1d` constructs 1-dimensional analogs of HE plots for model
+-   `heplot1d` constructs 1-dimensional analogs of HE plots for model
     terms and linear hypotheses for single response variables.
 
 The related [`candisc`](http://github.com/friendly/candisc) package
@@ -117,7 +115,7 @@ iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~
 heplot(iris.mod)
 ```
 
-![](README-iris1-1.png)<!-- -->
+![](man/figures/README-iris1-1.png)<!-- -->
 
 Contrasts or other linear hypotheses can be shown as well, and the
 ellipses look better if they are filled. We create contrasts to test the
@@ -140,7 +138,7 @@ heplot(iris.mod, hypotheses=hyp,
        fill=TRUE, fill.alpha=0.2)
 ```
 
-![](README-iris2-1.png)<!-- -->
+![](man/figures/README-iris2-1.png)<!-- -->
 
 All pairwise HE plots are produced using the `pairs` method for MLM
 objects.
@@ -150,7 +148,7 @@ pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
       fill=TRUE, fill.alpha=0.1)
 ```
 
-![](README-iris3-1.png)<!-- -->
+![](man/figures/README-iris3-1.png)<!-- -->
 
 ## References
 
