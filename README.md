@@ -3,9 +3,8 @@
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
-[![Rdoc](http://www.rdocumentation.org/badges/version/heplots)](http://www.rdocumentation.org/packages/heplots)
 
-# heplots <img src="man/figures/heplots-logo.png" align="right" height="200" />
+# heplots <img src="man/figures/logo.png" height="200" style="float:right; height:200px;" />
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
@@ -67,17 +66,17 @@ The graphical functions contained here all display multivariate model
 effects in variable (**data**) space, for one or more response variables
 (or contrasts among response variables in repeated measures designs).
 
--   `heplot` constructs two-dimensional HE plots for model terms and
+-   `heplot()` constructs two-dimensional HE plots for model terms and
     linear hypotheses for pairs of response variables in multivariate
     linear models.
 
--   `heplot3d` constructs analogous 3D plots for triples of response
+-   `heplot3d()` constructs analogous 3D plots for triples of response
     variables.
 
--   The `pairs` method, `pairs.mlm` constructs a scatterplot matrix of
+-   The `pairs` method, `pairs.mlm()` constructs a scatterplot matrix of
     pairwise HE plots.
 
--   `heplot1d` constructs 1-dimensional analogs of HE plots for model
+-   `heplot1d()` constructs 1-dimensional analogs of HE plots for model
     terms and linear hypotheses for single response variables.
 
 The related [`candisc`](http://github.com/friendly/candisc) package
@@ -115,7 +114,7 @@ iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~
 heplot(iris.mod)
 ```
 
-![](man/figures/README-iris1-1.png)<!-- -->
+<img src="man/figures/README-iris1-1.png" width="60%" />
 
 Contrasts or other linear hypotheses can be shown as well, and the
 ellipses look better if they are filled. We create contrasts to test the
@@ -138,7 +137,7 @@ heplot(iris.mod, hypotheses=hyp,
        fill=TRUE, fill.alpha=0.2)
 ```
 
-![](man/figures/README-iris2-1.png)<!-- -->
+<img src="man/figures/README-iris2-1.png" width="60%" />
 
 All pairwise HE plots are produced using the `pairs` method for MLM
 objects.
@@ -148,7 +147,7 @@ pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
       fill=TRUE, fill.alpha=0.1)
 ```
 
-![](man/figures/README-iris3-1.png)<!-- -->
+<img src="man/figures/README-iris3-1.png" width="60%" />
 
 ## References
 

@@ -24,9 +24,8 @@ library(heplots)
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
-[![Rdoc](http://www.rdocumentation.org/badges/version/heplots)](http://www.rdocumentation.org/packages/heplots)
 
-# heplots <img src="man/figures/heplots-logo.png" align="right" height="200" />
+# heplots <img src="man/figures/logo.png" height="200" style="float:right; height:200px;" />
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
@@ -84,15 +83,15 @@ The graphical functions contained here all display multivariate model
 effects in variable (**data**) space, for one or more response variables
 (or contrasts among response variables in repeated measures designs).
 
-* `heplot` constructs two-dimensional HE plots for model terms and 
+* `heplot()` constructs two-dimensional HE plots for model terms and 
 linear hypotheses for pairs of response variables in multivariate linear models.
 
-* `heplot3d` constructs analogous 3D plots for triples of response
+* `heplot3d()` constructs analogous 3D plots for triples of response
 variables.
  
-* The `pairs` method, `pairs.mlm` constructs a scatterplot matrix of pairwise HE plots.
+* The `pairs` method, `pairs.mlm()` constructs a scatterplot matrix of pairwise HE plots.
 
-* `heplot1d` constructs 1-dimensional analogs of HE plots for model terms and 
+* `heplot1d()` constructs 1-dimensional analogs of HE plots for model terms and 
 linear hypotheses for single response variables.
 
 The related [`candisc`](http://github.com/friendly/candisc) package plots these in **canonical discriminant** space,
@@ -123,7 +122,7 @@ The positions of the group means show how they differ on the two response variab
 and provide an interpretation of the orientation of the **H** ellipse: it is long in the
 directions of differences among the means.
 
-```{r iris1}
+```{r iris1, out.width="60%"}
 iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ 
                  Species, data=iris)
 heplot(iris.mod)
@@ -134,7 +133,7 @@ if they are filled. We create contrasts to test the differences between `versaco
 `virginca` and also between `setosa` and the average of the other two.
 
 
-```{r iris2}
+```{r iris2, out.width="60%"}
 contrasts(iris$Species)<-matrix(c(0, -1, 1, 
                                   2, -1, -1), nrow=3, ncol=2)
 contrasts(iris$Species)
@@ -148,7 +147,7 @@ heplot(iris.mod, hypotheses=hyp,
 
 All pairwise HE plots are produced using the `pairs` method for MLM objects.
 
-```{r, iris3}
+```{r, iris3, out.width="60%"}
 pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
       fill=TRUE, fill.alpha=0.1)
 ```

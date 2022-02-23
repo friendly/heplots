@@ -76,13 +76,13 @@
 
 
 <div class="section level1">
-<div class="page-header"><h1 id="heplots-">heplots <img src="heplots-logo.png" align="right" height="200px"><a class="anchor" aria-label="anchor" href="#heplots-"></a>
+<div class="page-header"><h1 id="heplots-">heplots <img src="reference/figures/heplots-logo.png" align="right" height="200"><a class="anchor" aria-label="anchor" href="#heplots-"></a>
 </h1></div>
 <div class="section level2">
 <h2 id="visualizing-hypothesis-tests-in-multivariate-linear-models">
 <strong>Visualizing Hypothesis Tests in Multivariate Linear Models</strong><a class="anchor" aria-label="anchor" href="#visualizing-hypothesis-tests-in-multivariate-linear-models"></a>
 </h2>
-<p>Version 1.3-8</p>
+<p>Version 1.3-9</p>
 </div>
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
@@ -102,7 +102,7 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>Get the released version from CRAN:</p>
-<pre><code><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"heplots"</span><span class="op">)</span></code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">"heplots"</span>)</span></code></pre></div>
 <p>The development version of <code>heplots</code> can be installed to your R library directly from github via:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
@@ -136,7 +136,7 @@
 <code class="sourceCode R"><span class="va">iris.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Sepal.Width</span>, <span class="va">Petal.Length</span>, <span class="va">Petal.Width</span><span class="op">)</span> <span class="op">~</span> 
                  <span class="va">Species</span>, data<span class="op">=</span><span class="va">iris</span><span class="op">)</span>
 <span class="fu"><a href="reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">iris.mod</span><span class="op">)</span></code></pre></div>
-<p><img src="README-iris1-1.png"><!-- --></p>
+<p><img src="reference/figures/README-iris1-1.png"><!-- --></p>
 <p>Contrasts or other linear hypotheses can be shown as well, and the ellipses look better if they are filled. We create contrasts to test the differences between <code>versacolor</code> and <code>virginca</code> and also between <code>setosa</code> and the average of the other two.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, 
@@ -152,12 +152,12 @@
 <span class="va">hyp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"V:V"</span><span class="op">=</span><span class="st">"Species1"</span>,<span class="st">"S:VV"</span><span class="op">=</span><span class="st">"Species2"</span><span class="op">)</span>
 <span class="fu"><a href="reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, 
        fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></code></pre></div>
-<p><img src="README-iris2-1.png"><!-- --></p>
+<p><img src="reference/figures/README-iris2-1.png"><!-- --></p>
 <p>All pairwise HE plots are produced using the <code>pairs</code> method for MLM objects.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, hyp.labels<span class="op">=</span><span class="cn">FALSE</span>,
       fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></code></pre></div>
-<p><img src="README-iris3-1.png"><!-- --></p>
+<p><img src="reference/figures/README-iris3-1.png"><!-- --></p>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
