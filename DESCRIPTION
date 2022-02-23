@@ -3,11 +3,12 @@ Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
 Version: 1.3-9
 Date: 2021-10-06
-Authors@R: c(person(given = "John", family = "Fox", role="aut"),
+Authors@R: c(
             person(given = "Michael", family = "Friendly", role=c("aut", "cre"), email="friendly@yorku.ca"),
-            person(given = "Georges", family = "Monette", role="ctb"),
+            person(given = "John", family = "Fox", role="aut"),
+            person(given = "Georges", family = "Monette", role="aut"),
             person(given = "Phil", family="Chalmers", role="ctb"))
-Author: John Fox [aut], Michael Friendly [aut, cre], Georges Monette [ctb], Phil Chalmers [ctb]
+Author: Michael Friendly [aut, cre], John Fox [aut], Georges Monette [aut], Phil Chalmers [ctb]
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Language: en-US
 Depends:
