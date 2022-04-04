@@ -3,12 +3,13 @@
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
+[![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
 
 # heplots <img src="man/figures/logo.png" height="200" style="float:right; height:200px;" />
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.3-9
+Version 1.4-0
 
 ## Description
 

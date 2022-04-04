@@ -14,3 +14,4 @@ inst/doc/*\.pdf
 ^Meta$
 ^CRAN-RELEASE$
 ^revdep$
+^pkgdown$

@@ -1,3 +1,7 @@
+## Version 1.4-0 (2022-04-04)
+
+* Added Iwasaki_Big_Five data [Thx: James Grice]
+
 ## Version 1.3-9 (2021-10-06)
 
 * Fix potential problem with URL links to JSS articles, now converted to DOIs
