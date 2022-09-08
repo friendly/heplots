@@ -10,7 +10,8 @@ coefplot <- function(object, ...) {
 }
 
 coefplot.mlm <- function(object, variables=1:2, parm=NULL, df = NULL, level = 0.95, 
-  intercept=FALSE, Scheffe=FALSE, bars=TRUE, 
+  intercept=FALSE, 
+  Scheffe=FALSE, bars=TRUE, 
   fill=FALSE, fill.alpha=0.2,   # requires  trans.colors
   labels = !add, 
   label.pos = NULL,             # requires new version of label.ellipse

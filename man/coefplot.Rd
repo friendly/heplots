@@ -32,7 +32,7 @@ coefplot(object, ...)
 \arguments{
 
   \item{object}{
-A multivariate linear model, such as fit by \code{lm()}
+A multivariate linear model, such as fit by \code{lm(cbind(y1, y2, ...) ~ ...)}
 }
   \item{\dots}{
 Other parameters passed to methods
@@ -42,13 +42,13 @@ Other parameters passed to methods
 Response variables to plot, given as their indices or names
 }
   \item{parm}{
-Parameters to plot
+Parameters to plot, given as their indices or names
 }
   \item{df}{
 Degrees of freedom for hypothesis tests
 }
   \item{level}{
-Confidence level
+Confidence level for the confidence ellipses
 }
   \item{intercept}{
 logical. Include the intercept?
@@ -65,7 +65,7 @@ a logical value or vector. \code{TRUE} means the confidence ellipses
 will be filled.
 }
   \item{fill.alpha}{
-%%     ~~Describe \code{fill.alpha} here~~
+Opacity of the confidence ellipses
 }
   \item{labels}{
 Labels for the confidence ellipses
@@ -136,15 +136,15 @@ Michael Friendly
 \code{\link[car]{confidenceEllipse}}, ~~~
 }
 \examples{
-mod <- lm(cbind(SAT,PPVT,Raven)~n+s+ns, data=Rohwer)
+rohwer.mlm <- lm(cbind(SAT,PPVT,Raven)~n+s+ns, data=Rohwer)
 
-coefplot(mod, lwd=2, main="Bivariate coefficient plot for SAT and PPVT", fill=TRUE)
-coefplot(mod, add=TRUE, Scheffe=TRUE, fill=TRUE)
+coefplot(rohwer.mlm, lwd=2, main="Bivariate coefficient plot for SAT and PPVT", fill=TRUE)
+coefplot(rohwer.mlm, add=TRUE, Scheffe=TRUE, fill=TRUE)
 
-coefplot(mod, var=c(1,3))
+coefplot(rohwer.mlm, var=c(1,3))
 
 mod1 <- lm(cbind(SAT,PPVT,Raven)~n+s+ns+na+ss, data=Rohwer)
-coefplot(mod1, lwd=2, fill=2 !=(1:5),
+coefplot(mod1, lwd=2, fill=TRUE, parm=(1:5),
 	main="Bivariate 68\% coefficient plot for SAT and PPVT", level=0.68)
 
 }
