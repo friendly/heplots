@@ -4,7 +4,11 @@ Title: Visualizing Hypothesis Tests in Multivariate Linear Models
 Version: 1.4-0
 Date: 2022-04-04
 Authors@R: c(
-            person(given = "Michael", family = "Friendly", role=c("aut", "cre"), email="friendly@yorku.ca"),
+            person(given = "Michael", 
+                   family = "Friendly", 
+                   role=c("aut", "cre"), 
+                   email="friendly@yorku.ca",
+                   comment = c(ORCID = "0000-0002-3237-0941")),
             person(given = "John", family = "Fox", role="aut"),
             person(given = "Georges", family = "Monette", role="aut"),
             person(given = "Phil", family="Chalmers", role="ctb"))
