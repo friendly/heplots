@@ -9,7 +9,9 @@ Authors@R: c(
                    role=c("aut", "cre"), 
                    email="friendly@yorku.ca",
                    comment = c(ORCID = "0000-0002-3237-0941")),
-            person(given = "John", family = "Fox", role="aut"),
+            person(given = "John", 
+                   family = "Fox", role="aut",
+                   comment = c(ORCID = "0000-0002-1196-8012")),
             person(given = "Georges", family = "Monette", role="aut"),
             person(given = "Phil", family="Chalmers", role="ctb"))
 Author: Michael Friendly [aut, cre], John Fox [aut], Georges Monette [aut], Phil Chalmers [ctb]
