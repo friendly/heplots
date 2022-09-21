@@ -1,0 +1,152 @@
+---
+title: "HE plot MANOVA Examples"
+package: vcdExtra
+output: 
+  rmarkdown::html_vignette:
+  fig_caption: yes
+bibliography: "HE-examples.bib"
+csl: apa.csl
+vignette: >
+  %\VignetteIndexEntry{HE plot MANOVA Examples}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  fig.height=5,
+  fig.width=5,
+  # results='hide',
+  # fig.keep='none',
+  fig.path='fig/manova-',
+  echo=TRUE,
+  collapse = TRUE,
+  comment = "#>"
+  )
+
+```
+
+```{r setup, echo=FALSE}
+set.seed(1071)
+options(width=80, digits=5, continue="  ")
+library(heplots)
+library(candisc)
+library(car)
+```
+
+This vignette provides some worked examples of the analysis of multivariate linear models 
+(MLMs) for MANOVA designs where all predictors are factors, and the goal is to determine
+how the group means differ on several response variables in relation to the factors
+and possible interactions.
+
+Graphical methods for visualizing results using the `heplots` and the `candisc` packages
+are illustrated.
+The emphasis here is on using these methods in R, and understanding how they help reveal
+aspects of these models that might not be apparent from other graphical displays.
+
+No attempt is made here to describe the theory of MLMs or the statistical details behind
+HE plots and their reduced-rank canonical cousins.
+For that, see @FoxFriendlyMonette:09:compstat; @Friendly:07:manova; @Friendly:06:hesoft.
+	
+## Plastic film data
+An experiment was conducted to determine the optimum conditions for extruding plastic film. 
+Three responses, `tear` resistance, film `gloss` and film `opacity`
+were measured in relation to two factors, `rate` of extrusion and amount of an `additive`,
+both of these being set to two values, High and Low.
+
+```{r plastic-str}
+data(Plastic, package="heplots")
+str(Plastic)
+```
+
+
+The design is thus a $2\times 2$ MANOVA, with $n=5$ per cell. 
+This example illustrates:
+
+* 2D and 3D HE plots, 
+* the difference between "effect" scaling and "evidence" (significance) scaling, and 
+* visualizing composite linear hypotheses.
+	
+We begin with an overall MANOVA for the two-way MANOVA model. In all these analyses, we use
+`car::Anova()` for significance tests rather than `stats::anova()`.
+
+Because each effect has 1 df, all of the multivariate statistics are equivalent,
+but we specify `test.statistic="Roy"` because Roy's test has
+a natural visual interpretation in HE plots. 
+
+```{r, plastic-mod}
+plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
+Anova(plastic.mod, test.statistic="Roy")
+```
+
+For the three responses jointly, the main effects of  `rate` and `additive`
+are significant, while their interaction is not.
+In some approaches to testing effects in multivariate linear models (MLMs),
+significant multivariate tests are often followed by univariate tests on each
+of the responses separately to determine which responses contribute to each
+significant effect.  
+
+In R, univariate analyses are conveniently performed
+using the `update()` method for the `mlm` object `plastic.mod`, which re-fits the model with
+only a single outcome variable.
+```{r, plastic-univar}
+Anova(update(plastic.mod, tear ~ .))
+
+Anova(update(plastic.mod, gloss ~ .))
+
+Anova(update(plastic.mod, opacity ~ .))
+```
+
+The results above show significant main effects for `tear`,
+a significant main effect of `rate` for `gloss`,
+and no significant effects for `opacity`, but they don't shed light on the
+*nature* of these effects.
+Traditional univariate plots of the means for each variable separately
+are useful, but they don't allow visualization of the
+*relations* among the response variables.
+
+We can visualize these
+effects for pairs of variables in an HE plot, showing the "size" and
+orientation of hypothesis variation ($\mathbf{H}$) in relation to error
+variation ($\mathbf{E}$) as ellipsoids.
+When, as here, the model terms have 1 degree of freedom, the
+$\mathbf{H}$ ellipsoids degenerate to a line.
+
+In HE plots, the $\mathbf{H}$ ellipses can be scaled relative to the 
+$\mathbf{E}$ to show significance of effects (`size="evidence"`),
+or effect size (`size="effect"`). In the former case, a model term
+is significant (using Roy's maximum root test) _iff_ the 
+$\mathbf{H}$ projects anywhere outside the $\mathbf{E}$ ellipse.
+
+This plot overlays those for both scaling, using thicker lines for the
+effect scaling.
+
+```{r, plastic1a, echo=-1}
+par(mar = c(4,4,1,1)+.1)
+# Compare evidence and effect scaling 
+colors = c("red", "darkblue", "darkgreen", "brown")
+heplot(plastic.mod, size="evidence", 
+       col=colors, cex=1.25)
+heplot(plastic.mod, size="effect", 
+       add=TRUE, lwd=5, term.labels=FALSE, col=colors)
+```
+
+With effect scaling, both the $mathbf{H}$ and $mathbf{E}$ sums of squares and products
+matrices are both divided by the error df, giving multivariate analogs of univariate
+measures of effect size, e.g., $(\bar{y}_1-\bar{y}_2) / s$.
+With significance scaling, the $mathbf{H}$ ellipse is further divided by
+$\lambda_\alpha$, the critical value of Roy's largest root statistic.
+This scaling has the property that an $mathbf{H}$ ellipse will protrude somewhere
+outside the $mathbf{E}$ ellipse *iff* the
+multivariate test is significant at level $\alpha$.
+\figref{fig:plastic1} shows both scalings, using a thinner line for significance scaling.
+Note that the (degenerate) ellipse for `additive` is significant, but
+does not protrude outside the $mathbf{E}$ ellipse in this view.
+All that is guarranteed is that it will protrude somewhere in the 3D space of
+the responses.
+
+
+
+## References

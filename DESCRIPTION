@@ -37,7 +37,9 @@ Suggests:
     reshape2,
     corrgram,
     animation,
-    mvinfluence
+    mvinfluence,
+    knitr,
+    rmarkdown
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
@@ -50,3 +52,4 @@ Description: Provides HE plot and other functions for visualizing hypothesis
 License: GPL (>= 2)
 URL: http://friendly.github.io/heplots/
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr
