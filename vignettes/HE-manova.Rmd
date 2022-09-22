@@ -3,7 +3,7 @@ title: "HE plot MANOVA Examples"
 package: vcdExtra
 output: 
   rmarkdown::html_vignette:
-  fig_caption: yes
+    fig_caption: yes
 bibliography: "HE-examples.bib"
 csl: apa.csl
 vignette: >
@@ -124,8 +124,10 @@ This plot overlays those for both scaling, using thicker lines for the
 effect scaling.
 
 ```{r, plastic1a, echo=-1}
+#| echo=-1,
+#| fig.cap = "HE plot for effects on `tear` and `gloss` according to the factors `rate`, `additive` and their interaction, `rate:additive`. The thicker lines show effect size scaling; the thinner lines show significance scaling."
 par(mar = c(4,4,1,1)+.1)
-# Compare evidence and effect scaling 
+## Compare evidence and effect scaling 
 colors = c("red", "darkblue", "darkgreen", "brown")
 heplot(plastic.mod, size="evidence", 
        col=colors, cex=1.25)
@@ -133,19 +135,206 @@ heplot(plastic.mod, size="effect",
        add=TRUE, lwd=5, term.labels=FALSE, col=colors)
 ```
 
-With effect scaling, both the $mathbf{H}$ and $mathbf{E}$ sums of squares and products
+With effect scaling, both the $\mathbf{H}$ and $\mathbf{E}$ sums of squares and products
 matrices are both divided by the error df, giving multivariate analogs of univariate
 measures of effect size, e.g., $(\bar{y}_1-\bar{y}_2) / s$.
-With significance scaling, the $mathbf{H}$ ellipse is further divided by
+With significance scaling, the $\mathbf{H}$ ellipse is further divided by
 $\lambda_\alpha$, the critical value of Roy's largest root statistic.
-This scaling has the property that an $mathbf{H}$ ellipse will protrude somewhere
-outside the $mathbf{E}$ ellipse *iff* the
+This scaling has the property that an $\mathbf{H}$ ellipse will protrude somewhere
+outside the $\mathbf{E}$ ellipse *iff* the
 multivariate test is significant at level $\alpha$.
-\figref{fig:plastic1} shows both scalings, using a thinner line for significance scaling.
+\@ref(fig:plastic1) shows both scalings, using a thinner line for significance scaling.
 Note that the (degenerate) ellipse for `additive` is significant, but
-does not protrude outside the $mathbf{E}$ ellipse in this view.
-All that is guarranteed is that it will protrude somewhere in the 3D space of
+does not protrude outside the $\mathbf{E}$ ellipse in this view.
+All that is guaranteed is that it will protrude somewhere in the 3D space of
 the responses.
+
+By design, means for the levels of interaction terms are not shown in the HE plot,
+because doing so in general can lead to messy displays.
+We can add them here for the term `rate:additive` as follows:
+
+```{r, plastic1}
+#| echo=-1,
+#| fig.cap = "HE plot for effects on `tear` and `gloss` according to the factors `rate`, `additive` and their interaction, `rate:additive`. Annotations have added means for the combinations of `rate` and `additive`."
+par(mar = c(4,4,1,1)+.1)
+# Compare evidence and effect scaling 
+colors = c("red", "darkblue", "darkgreen", "brown")
+heplot(plastic.mod, size="evidence", 
+       col=colors, cex=1.25)
+heplot(plastic.mod, size="effect", 
+       add=TRUE, lwd=5, term.labels=FALSE, col=colors)
+
+## add interaction means
+intMeans <- termMeans(plastic.mod, 'rate:additive', abbrev.levels=2)
+points(intMeans[,1], intMeans[,2], pch=18, cex=1.2, col="brown")
+text(intMeans[,1], intMeans[,2], rownames(intMeans), 
+     adj=c(0.5, 1), col="brown")
+lines(intMeans[c(1,3),1], intMeans[c(1,3),2], col="brown")
+lines(intMeans[c(2,4),1], intMeans[c(2,4),2], col="brown")
+```
+
+The factor means in this plot (\@ref(fig:plastic1) have a simple interpretation:
+The high `rate` level yields greater `tear` resistance but lower `gloss`
+than the low level.
+The high `additive` amount produces greater `tear` resistance and greater `gloss`.
+
+The `rate:additive` interaction is not significant overall, though it
+approaches significance for `gloss`. 
+The cell means for the combinations
+of `rate` and `additive` shown in this figure suggest an explanation,
+for tutorial purposes:
+with the low level of `rate`, there is little difference in `gloss`
+for the levels of `additive`. At the high level of `rate`, there is
+a larger difference in `gloss`.  The $\mathbf{H}$ ellipse for the interaction
+of `rate:additive` therefore "points" in the direction of `gloss`
+indicating that this variable contributes to the interaction in the 
+multivariate tests.
+
+In some MANOVA models, it is of interest to test sub-hypotheses 
+of a given main effect or interaction, or conversely to test composite
+hypotheses that pool together certain effects to test them jointly.
+All of these tests (and, indeed, the tests of terms in a given model)
+are carried out as tests of general linear hypotheses in the MLM.
+
+In this example, it might be useful to test two composite hypotheses:
+one corresponding to both main effects jointly, and another corresponding
+to no difference among the means of the four groups (equivalent to
+a joint test for the overall model). These tests are specified in terms
+of subsets or linear combinations of the model parameters.
+
+```{r, plastic-mod1}
+plastic.mod
+```
+
+Thus, for example, the joint test of both main effects tests the parameters
+`rateHigh` and `additiveHigh`.
+
+```{r, plastic-tests}
+print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh"), title="Main effects"), 
+      SSP=FALSE)
+
+print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh", "rateHigh:additiveHigh"), 
+                       title="Groups"), SSP=FALSE)
+```
+
+Correspondingly, we can display these tests in the HE plot by specifying these tests in the
+`hypothesis` argument to `heplot()`, as shown in \@ref(fig:plastic2).
+
+```{r, plastic2}
+#| echo=-1,
+#| fig.cap="HE plot for `tear` and `gloss`, supplemented with ellipses representing
+#|     the joint tests of main effects and all group differences"
+par(mar = c(4,4,1,1)+.1)
+heplot(plastic.mod, 
+       hypotheses=list("Group" =  c("rateHigh", "additiveHigh", "rateHigh:additiveHigh ")),
+       col=c(colors, "purple"),
+       lwd=c(2, 3, 3, 3, 2), cex=1.25)
+heplot(plastic.mod, 
+       hypotheses=list("Main effects" = c("rateHigh", "additiveHigh")), 
+       add=TRUE,
+       col=c(colors, "darkgreen"), cex=1.25)
+```
+
+
+Finally, a 3D HE plot can be produced with `heplot3d()`, giving \@ref(fig:plastic1-HE3D).
+This plot was rotated interactively to a view that shows both main effects
+protruding outside the error ellipsoid.
+```{r, plastic1-HE3D, eval=FALSE}
+colors = c("pink", "darkblue", "darkgreen", "brown")
+heplot3d(plastic.mod, col=colors)
+```
+```{r, plastic1-HE3D-png, echo=FALSE}
+#| echo=FALSE,
+#| fig.cap="3D HE plot for the plastic MLM"
+knitr::include_graphics("fig/plastic-HE3D.png")
+```
+
+
+## Effects of physical attractiveness on mock jury decisions
+
+In a social psychology
+study of influences on jury decisions
+by @Plaster:89,
+male participants (prison inmates)
+were shown a picture of one of three young women.  
+Pilot  work
+had indicated  that one woman  was beautiful,  another of  average physical
+attractiveness, and the third  unattractive.  Participants rated the  woman they
+saw on each  of twelve attributes on scales of 1--9.  These measures were used to check on the
+manipulation of "attractiveness" by the photo.
+
+Then the participants were told that the person in the photo had committed a
+Crime, and asked to rate the seriousness of the crime and recommend a
+prison sentence, in Years.  The data are contained in the data frame `MockJury`.[^1]
+[^1]:The data were made available courtesy of Karl Wuensch, from
+	[http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat](http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat)
+}
+
+```{r, MJdata}
+data(MockJury, package = "heplots")
+str(MockJury)
+```
+
+Sample sizes were roughly balanced  for the independent variables
+in the three conditions of the attractiveness of the photo,
+and the combinations of this with `Crime`:
+```{r, MJdata1}
+table(MockJury$Attr)
+table(MockJury$Attr, MockJury$Crime)
+```
+
+The main questions of interest were:
+* Does attractiveness of the "defendant" influence the sentence or perceived seriousness of the crime?  
+* Does attractiveness interact with the nature of the crime?
+
+But first, we try to assess the ratings of the photos in relation to the 
+presumed categories of the independent variable `Attr`.  The questions here
+are 
+* do the ratings of the photos on physical attractiveness
+(`phyattr`) confirm the original classification?
+* how do other ratings differentiate the photos?
+
+To keep things simple, we consider only a few of the other ratings in a one-way MANOVA.
+
+```{r, jury.mod1}
+(jury.mod1 <- lm( cbind(phyattr, happy, independent, sophisticated) ~ Attr, data=MockJury))
+Anova(jury.mod1, test="Roy")
+```
+
+Note that `Beautiful` is the baseline category of `Attr`, so the
+intercept term gives the means for this level.
+We see that the means are significantly different on all four variables
+collectively, by a joint multivariate test.  A traditional analysis might
+follow up with univariate ANOVAs for each measure separately. 
+
+As an aid to interpretation of the MANOVA results
+We can examine the test of `Attr` in this model with an HE plot for
+pairs of variables, e.g., for `phyattr` and  `happy` (\@ref(fig:jury-mod1-HE)).
+The means in this plot show that Beautiful is rated higher on
+physical attractiveness than the other two photos, while Unattractive
+is rated less happy than the other two. Comparing the sizes of the
+ellipses, differences among group means on physical attractiveness
+contributes more to significance than do ratings on happy.
+
+```{r, jury-mod1-HE}
+#| echo=-1,
+#| fig.cap="HE plot for ratings of `phyattr` and `happy` according to the classification of photos on `Attr`"
+par(mar = c(4,4,1,1)+.1)
+heplot(jury.mod1, main="HE plot for manipulation check")
+```
+
+The function `pairs.mlm()` produces all pairwise HE plots.
+This plot (\@ref(fig:jury-mod1-pairs)) shows that the means for `happy`
+and `independent` are highly correlated, as are the means for `phyattr`
+and `sophisticated`.  In most of these pairwise plots, the means form a
+triangle rather than a line, suggesting that these attributes are indeed
+measuring different aspects of the photos.
+
+
+```{r, jury-mod1-pairs}
+#| fig.cap="HE plots for all pairs of ratings according to theclassification of photos on `Attr`"
+pairs(jury.mod1)
+```
 
 
 

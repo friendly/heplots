@@ -35,7 +35,7 @@
 %\newcommand{\implies}{ \ensuremath{\mapsto} }
 
 \newcommand{\sizedmat}[2]{%
-  \mathord{\mathop{$mathbf{#1}$}\limits_{(#2)}}%
+  \mathord{\mathop{$\mathbf{#1}$}\limits_{(#2)}}%
 }
 
 
@@ -48,7 +48,7 @@
 %\newenvironment{equation*}{\displaymath}{\enddisplaymath}%
 
 \newcommand{\tabref}[1]{Table~\@ref(#1)}
-\newcommand{\figref}[1]{Figure~\@ref(#1)}
+\newcommand{\@ref}[1]{Figure~\@ref(#1)}
 \newcommand{\secref}[1]{Section~\@ref(#1)}
 \newcommand{\loglin}{loglinear }
 
@@ -143,7 +143,7 @@ We begin with an overall MANOVA for the two-way MANOVA model.
 Because each effect has 1 df, all of the multivariate statistics are equivalent,
 but we specify `test.statistic="Roy"` because Roy's test has
 a natural visual interpretation in HE plots.
-```{r, plastic-mod, results='markup'}
+```{r, plastic-mod}
 plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
 Anova(plastic.mod, test.statistic="Roy")
 ```
@@ -154,7 +154,7 @@ significant multivariate tests are often followed by univariate tests on each
 of the responses separately to determine which responses contribute to each
 significant effect.  In \R, these analyses are most convieniently performed
 using the `update()` method for the `mlm` object `plastic.mod`.
-```{r, plastic-univar, results='markup'}
+```{r, plastic-univar}
 Anova(update(plastic.mod, tear ~ .))
 Anova(update(plastic.mod, gloss ~ .))
 Anova(update(plastic.mod, opacity ~ .))
@@ -169,27 +169,27 @@ are useful, but they don't allow visualization of the
 
 We can visualize these
 effects for pairs of variables in an HE plot, showing the "size" and
-orientation of hypothesis variation ($mathbf{H}$) in relation to error
-variation ($mathbf{E}$) as ellipsoids.
+orientation of hypothesis variation ($\mathbf{H}$) in relation to error
+variation ($\mathbf{E}$) as ellipsoids.
 When, as here, the model terms have 1 degree of freedom, the
-$mathbf{H}$ ellipsoids degenerate to a line.
+$\mathbf{H}$ ellipsoids degenerate to a line.
 ```{r, plastic1a, tidy=FALSE, echo=TRUE, eval=FALSE}
 # Compare evidence and effect scaling 
 colors = c("red", "darkblue", "darkgreen", "brown")
 heplot(plastic.mod, size="evidence", col=colors, cex=1.25)
 heplot(plastic.mod, size="effect", add=TRUE, lwd=4, term.labels=FALSE, col=colors)
 ```
-With effect scaling, both the $mathbf{H}$ and $mathbf{E}$ sums of squares and products
+With effect scaling, both the $\mathbf{H}$ and $\mathbf{E}$ sums of squares and products
 matrices are both divided by the error df, giving multivariate analogs of univariate
 measures of effect size, e.g., $(\bar{y}_1-\bar{y}_2) / s$.
-With significance scaling, the $mathbf{H}$ ellipse is further divided by
+With significance scaling, the $\mathbf{H}$ ellipse is further divided by
 $\lambda_\alpha$, the critical value of Roy's largest root statistic.
-This scaling has the property that an $mathbf{H}$ ellipse will protrude somewhere
-outside the $mathbf{E}$ ellipse *iff* the
+This scaling has the property that an $\mathbf{H}$ ellipse will protrude somewhere
+outside the $\mathbf{E}$ ellipse *iff* the
 multivariate test is significant at level $\alpha$.
-\figref{fig:plastic1} shows both scalings, using a thinner line for significance scaling.
+\@ref{fig:plastic1} shows both scalings, using a thinner line for significance scaling.
 Note that the (degenerate) ellipse for `additive` is significant, but
-does not protrude outside the $mathbf{E}$ ellipse in this view.
+does not protrude outside the $\mathbf{E}$ ellipse in this view.
 All that is guarranteed is that it will protrude somewhere in the 3D space of
 the responses.
 
@@ -234,7 +234,7 @@ lines(intMeans[c(2,4),1], intMeans[c(2,4),2], col="brown")
 
 
 
-The factor means in this plot (\figref{fig:plastic1}) have a simple interpretation:
+The factor means in this plot (\@ref{fig:plastic1}) have a simple interpretation:
 The high `rate` level yields greater `tear` resistance but lower `gloss`
 than the low level.
 The high `additive` amount produces greater `tear` resistance and greater `gloss`.
@@ -246,7 +246,7 @@ of `rate` and `additive` shown in this figure suggest an explanation,
 for tutorial purposes:
 with the low level of `rate`, there is little difference in `gloss`
 for the levels of `additive`. At the high level of `rate`, there is
-a larger difference in `gloss`.  The $mathbf{H}$ ellipse for the interaction
+a larger difference in `gloss`.  The $\mathbf{H}$ ellipse for the interaction
 of `rate:additive` therefore "points" in the direction of `gloss`
 indicating that this variable contributes to the interaction in the 
 multivariate tests.
@@ -256,19 +256,19 @@ In some MANOVA models, it is of interest to test sub-hypotheses
 of a given main effect or interaction, or conversely to test composite
 hypotheses that pool together certain effects to test them jointly.
 All of these tests (and, indeed, the tests of terms in a given model)
-are carried out as tests of general linear hypotheses in the \MLM.
+are carried out as tests of general linear hypotheses in the MLM.
 
 In this example, it might be useful to test two composite hypotheses:
 one corresponding to both main effects jointly, and another corresponding
 to no difference among the means of the four groups (equivalent to
 a joint test for the overall model). These tests are specified in terms
 of subsets or linear combinations of the model parameters.
-```{r, plastic-mod, results='markup'}
+```{r, plastic-mod}
 plastic.mod
 ```
 Thus, for example, the joint test of both main effects tests the parameters
 `rateHigh` and `additiveHigh`.
-```{r, plastic-tests, results='markup'}
+```{r, plastic-tests}
 print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh"), title="Main effects"), 
       SSP=FALSE)
 
@@ -277,7 +277,7 @@ print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh", "rateHigh:addi
 ```
 
 Correspondingly, we can display these tests in the HE plot by specifying these tests in the
-`hypothesis` argument to `heplot()`, as shown in \figref{fig:plastic2}.
+`hypothesis` argument to `heplot()`, as shown in \@ref{fig:plastic2}.
 [htb]
 
 ```{r, plastic2}
@@ -295,7 +295,7 @@ heplot(plastic.mod, hypotheses=list("Main effects" =
 
 
 
-Finally, a 3D HE plot can be produced with `heplot3d()`, giving \figref{fig:plastic1-HE3D}.
+Finally, a 3D HE plot can be produced with `heplot3d()`, giving \@ref{fig:plastic1-HE3D}.
 This plot was rotated interactively to a view that shows both main effects
 protruding outside the error ellipsoid.
 ```{r, plastic1-HE3D, fig.keep='none', eval=FALSE}
@@ -332,13 +332,13 @@ prison sentence, in Years.  The data are contained in the data frame `MockJury`.
 	[http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat]
 }
 
-```{r, MJdata, results='markup'}
+```{r, MJdata}
 str(MockJury)
 ```
 Sample sizes were roughly balanced  for the independent variables
 in the three conditions of the attractiveness of the photo,
 and the combinations of this with `Crime`:
-```{r, MJdata1, results='markup'}
+```{r, MJdata1}
 table(MockJury$Attr)
 table(MockJury$Attr, MockJury$Crime)
 ```
@@ -356,7 +356,7 @@ are (a) do the ratings of the photos on physical attractiveness
 (b) how do other ratings differentiate the photos?
 To keep things simple, we consider only a few of the other ratings in a one-way MANOVA.
 
-```{r, jury.mod1, results='markup'}
+```{r, jury.mod1}
 (jury.mod1 <- lm( cbind(phyattr, happy, independent, sophisticated) ~ Attr, data=MockJury))
 Anova(jury.mod1, test="Roy")
 ```
@@ -368,7 +368,7 @@ follow up with univariate ANOVAs for each measure separately.
 
 As an aid to interpretation of the MANOVA results
 We can examine the test of `Attr` in this model with an HE plot for
-pairs of variables, e.g., for `phyattr` and  `happy` (\figref{fig:jury-mod1-HE}).
+pairs of variables, e.g., for `phyattr` and  `happy` (\@ref{fig:jury-mod1-HE}).
 The means in this plot show that Beautiful is rated higher on
 physical attractiveness than the other two photos, while Unattractive
 is rated less happy than the other two. Comparing the sizes of the
@@ -388,7 +388,7 @@ heplot(jury.mod1, main="HE plot for manipulation check")
 
 
 
-The HE plot for all pairs of variables (\figref{fig:jury-mod1-pairs}) shows that the means for `happy`
+The HE plot for all pairs of variables (\@ref{fig:jury-mod1-pairs}) shows that the means for `happy`
 and `independent` are highly correlated, as are the means for `phyattr`
 and `sophisticated`.  In most of these pairwise plots, the means form a
 triangle rather than a line, suggesting that these attributes are indeed
@@ -405,12 +405,12 @@ pairs(jury.mod1)
 
 
 
-With 3 groups and 4 variables, the $mathbf{H}$ ellipsoid has only $s=\min(df_h, p)=2$
+With 3 groups and 4 variables, the $\mathbf{H}$ ellipsoid has only $s=\min(df_h, p)=2$
 dimensions.  `candisc()` carries out a canonical discriminant analysis
-for the \MLM\  and returns an object that can be used to show an HE plot in the
-space of the canonical dimensions.  This is plotted in \figref{fig:jury-can1}.
+for the MLM  and returns an object that can be used to show an HE plot in the
+space of the canonical dimensions.  This is plotted in \@ref{fig:jury-can1}.
 
-```{r, jury-can1a, fig.keep='none', results='markup'}
+```{r, jury-can1a, fig.keep='none'}
 jury.can <- candisc(jury.mod1)
 jury.can
 ```
@@ -485,7 +485,7 @@ method for visualizing the fitted effects in such univariate response
 models is provided by the `effects`.  By default `allEffects()`
 calculates the predicted values for all high-order terms in a given
 model, and the `plot` method produces plots of these values for
-each term.  The statements below produce \figref{fig:jury-mod3-eff}.
+each term.  The statements below produce \@ref{fig:jury-mod3-eff}.
 
 \setkeys{Gin}{width=1\textwidth}
 ```{r, jury-mod3-eff, include=FALSE, fig.width=8, fig.height=4}
@@ -517,7 +517,7 @@ This example examines physical measurements of size and shape made on
 The measures are: maximal breadth (mb), basibregmatic height (bh),
 basialiveolar length (bl), and nasal height (nh) of each skull.
 See [http://www.redwoods.edu/instruct/agarwin/anth_6_measurements.htm]
-for the definitions of these measures, and \figref{fig:skulls} for a diagram.
+for the definitions of these measures, and \@ref{fig:skulls} for a diagram.
 The question of interest is whether and how these measurements change over time.
 Systematic changes over time is of interest because this
 would indicate interbreeding with immigrant populations.
@@ -552,7 +552,7 @@ vlab <- c("maxBreadth", "basibHeight", "basialLength", "nasalHeight")
 
 We start with some simple displays of the means by epoch.  From the numbers,
 the means don't seem to vary much.  
-A `pairs` plot, \figref{fig:skulls4}, joining points
+A `pairs` plot, \@ref{fig:skulls4}, joining points
 by `epoch` is somewhat more revealing for the bivariate relations among means.
 ```{r, skulls3, results='markup'}
 means <- aggregate(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls, FUN=mean)[,-1]
@@ -577,7 +577,7 @@ pairs(means, vlab,
 Perhaps better for visualizing the trends over time is a set of boxplots,
 joining means over `epoch`. Using `bwplot()` from the `lattice`
 package requires reshaping the data from wide to long format.  The following
-code produces \figref{fig:skulls-bwplot}.
+code produces \@ref{fig:skulls-bwplot}.
 
 ```{r, skulls-bwplot, include=FALSE, fig.height=7, fig.width=7}
 library(lattice)
@@ -619,7 +619,7 @@ coef(sk.mod)
 We use `linearHypothesis()` for a multivariate test of the
 `epoch.L` linear effect.
 The linear trend is highly significant.  It is not obvious from 
-\figref{fig:skulls4} that maximal breadth and nasal are increasing
+\@ref{fig:skulls4} that maximal breadth and nasal are increasing
 over time, while the other two measurements have negative slopes.
 ```{r, skulls6, results='markup'}
 coef(sk.mod)["epoch.L",]
@@ -636,7 +636,7 @@ print(linearHypothesis(sk.mod, c("epoch.Q", "epoch.C", "epoch^4")), SSP=FALSE)
 Again, HE plots can show the patterns of these tests of multivariate hypotheses.
 With four response variables, it is easiest to look at all pairwise
 HE plots with the `pairs.mlm()` function. 
-The statement below produces \figref{fig:skulls-HE-pairs}.
+The statement below produces \@ref{fig:skulls-HE-pairs}.
 In this plot, we show the hypothesis ellipsoids for the overall
 effect of `epoch`, as well as those for the tests just shown
 for the linear trend component `epoch.L`
@@ -656,26 +656,26 @@ pairs(sk.mod, variables=c(1,4,2,3),
 
 
 These plots have an interesting geometric interpretation:
-the $$mathbf{H}$$ ellipses for the overall effect of `epoch`
+the $\mathbf{H}$ ellipses for the overall effect of `epoch`
 are representations of the additive decomposition of this effect into  
-$$mathbf{H}$$ ellipses for the linear and nonlinear linear
+$\mathbf{H}$ ellipses for the linear and nonlinear linear
 hypothesis tests according to
 
-	$mathbf{H}$_{\textrm{epoch}} = $mathbf{H}$_{\textrm{linear}} + $mathbf{H}$_{\textrm{nonlinear}}
+	$$\mathbf{H}_{\textrm{epoch}} = \mathbf{H}_{\textrm{linear}} + \mathbf{H}_{\textrm{nonlinear}}$$
 
 where the linear term has rank 1 (and so plots as a line), while the nonlinear
 term has rank 3.  In each panel, it can be seen that the large direction of
-the $$mathbf{H}$_{\textrm{epoch}}$ leading to significance of this effect corresponds
-essentially to the linear contrast.  $$mathbf{H}$_{\textrm{nonlinear}}$ is the orthogonal
-complement of $$mathbf{H}$_{\textrm{linear}}$ in the space of $$mathbf{H}$_{\textrm{epoch}}$,
-but nowhere does it protrude beyond the boundary of the $$mathbf{E}$$ ellipsoid.
+the $\mathbf{H}_{\textrm{epoch}}$ leading to significance of this effect corresponds
+essentially to the linear contrast.  $\mathbf{H}_{\textrm{nonlinear}}$ is the orthogonal
+complement of $\mathbf{H}_{\textrm{linear}}$ in the space of $\mathbf{H}_{\textrm{epoch}}$,
+but nowhere does it protrude beyond the boundary of the $\mathbf{E}$ ellipsoid.
 
 These relations can be seen somewhat more easily in 3D, as produced using
 `heplot3d()` by the following statement.  The resulting plot is
 better viewed interactively in R and is not reproduced here.
 It would be seen there that the ellipsoid for the nonlinear terms
 is nearly flat in one direction, corresponding to the panel for
-(mb, hb) in \figref{fig:skulls-HE-pairs}.
+(mb, hb) in \@ref{fig:skulls-HE-pairs}.
 ```{r, skulls-HE3D, eval=FALSE}
 heplot3d(sk.mod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q", 
                             NonLin=c("epoch.Q", "epoch.C", "epoch^4")), 
@@ -692,14 +692,14 @@ library(candisc)
 sk.can <- candisc(sk.mod)
 sk.can
 ```
-The output above shows that, although $$mathbf{H}$_{\textrm{epoch}}$ is of rank 4,
+The output above shows that, although $\mathbf{H}$_{\textrm{epoch}}$ is of rank 4,
 two dimensions account for 96% 
 of the between-epoch variation.  By the likelihood ratio test, only
 the canonical correlation for the first dimension can be considered
 non-zero.
 
 The canonical HE plot is produced by plotting the `sk.can` object,
-giving \figref{fig:skulls-can2}.
+giving \@ref{fig:skulls-can2}.
 ```{r, skulls-can2, include=FALSE, fig.width=6, fig.height=6}
 heplot(sk.can, prefix="Canonical dimension")
 ```
@@ -724,7 +724,7 @@ forensic anthropologists to determine if this has any meaning.
 # Multivariate Multiple Regression Designs
 The ideas behind HE plots extend naturally to multivariate multiple
 regression (MMRA) and multivariate analysis of covariance (MANCOVA). 
-In MMRA, the $$mathbf{X}$$ matrix contains only quantitative predictors, while
+In MMRA, the $\mathbf{X}$ matrix contains only quantitative predictors, while
 in MANCOVA designs, there is a mixture of
 factors and quantitative predictors (covariates).  
 
@@ -777,7 +777,7 @@ coef(rohwer.ses2)
 ```
 Nevertheless, we can visualize the results with HE plots, and here we make use of the fact
 that several HE plots can be overlaid using the option `add=TRUE`
-as shown in \figref{fig:rohwer-HE1}.
+as shown in \@ref{fig:rohwer-HE1}.
 ```{r, rohwer-HE1, include=FALSE}
 heplot(rohwer.ses1, ylim=c(40,110),col=c("red", "black"), lwd=2, cex=1.2)
 heplot(rohwer.ses2, add=TRUE, col=c("blue", "black"), grand.mean=TRUE, error.ellipse=TRUE, lwd=2, cex=1.2)
@@ -812,7 +812,7 @@ Note that, although the
 multivariate tests for two of the covariates (`ns` and `na`)
 are highly significant, univariate multiple regression tests for the
 separate responses [from `summary(rohwer.mod)`] are relatively weak.
-We can also test the global 5 df hypothesis, $$mathbf{B}$=$mathbf{0}$$, 
+We can also test the global 5 df hypothesis, $\mathbf{B}$=$\mathbf{0}$, 
 that *all* covariates have null effects
 for all responses as a linear hypothesis (suppressing display of the error
 and hypothesis SSP matrices),
@@ -825,7 +825,7 @@ print(Regr, digits=5, SSP=FALSE)
 
 Then 2D views of the
 additive MANCOVA model `rohwer.mod` and the overall test for all covariates
-are produced as follows, giving the plots in \figref{fig:rohwer-HE2}.
+are produced as follows, giving the plots in \@ref{fig:rohwer-HE2}.
 ```{r, rohwer-HE2, include=FALSE, tidy=FALSE}
 colors <- c("red", "blue", rep("black",5), "#969696")
 heplot(rohwer.mod, col=colors,
@@ -863,7 +863,7 @@ pairs(rohwer.mod, col=colors,
       hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")),
       cex=1.3, lwd=c(2, rep(3,5), 4))
 ```
-or as a 3D plot, using `heplot3d()` as shown in \figref{fig:rohwer-HE3D}.
+or as a 3D plot, using `heplot3d()` as shown in \@ref{fig:rohwer-HE3D}.
 ```{r, rohwer-HE3D, eval=FALSE, tidy=FALSE}
 colors <- c("pink", "blue", rep("black",5), "#969696")
 if(requireNamespace("rgl")){
@@ -901,12 +901,12 @@ print(linearHypothesis(rohwer.mod2, coefs[grep(":", coefs)]), SSP=FALSE)
 ```
 This model (`rohwer.mod2`) is similar in spirit to the two models
 (`rohwer.ses1` and `rohwer.ses2`)
-fit for the two SES groups separately and show in \figref{fig:rohwer-HE1},
+fit for the two SES groups separately and show in \@ref{fig:rohwer-HE1},
 except that model `rohwer.mod2` assumes a common within-groups error covariance matrix
 and allows overall tests.
 
 To illustrate model `rohwer.mod2`, we construct an HE plot for
-`SAT` and `PPVT` shown in \figref{fig:rohwer-HE4}. 
+`SAT` and `PPVT` shown in \@ref{fig:rohwer-HE4}. 
 To simplify this display, we show the hypothesis ellipses\
 for the overall effects of the PA tests in the baseline high-SES group, and
 a single combined ellipse for all the `SESLo:` interaction terms that
@@ -935,14 +935,14 @@ heplot(rohwer.mod2, col=c(colors, "brown"),
 
 
 
-Comparing \figref{fig:rohwer-HE4} for the heterogeneous slopes model
-with \figref{fig:rohwer-HE2} (left) for the homogeneous slopes model,
+Comparing \@ref{fig:rohwer-HE4} for the heterogeneous slopes model
+with \@ref{fig:rohwer-HE2} (left) for the homogeneous slopes model,
 it can be seen that most of the covariates have ellipses of similar
 size and orientation, reflecting similar evidence against the respective
 null hypotheses, as does the effect of `SES`, showing the
 greater performance of the high-SES group on all response measures.
 Somewhat more subtle, the error ellipse is noticeably smaller in
-\figref{fig:rohwer-HE4}, reflecting the additional variation accounted
+\@ref{fig:rohwer-HE4}, reflecting the additional variation accounted
 for by differences in slopes.
 
 ## Recovery from hernia repair
@@ -974,7 +974,7 @@ Anova(Hern.mod)
 The results of the multivariate tests above are somewhat disappointing.  Only the physical status
 predictor (`pstat`) appears to be significant at conventional levels.
 
-The univariate models for each response are implicit in the \MLM\ `Hern.mod`.
+The univariate models for each response are implicit in the MLM `Hern.mod`.
 These can be printed using `summary()`, or we can use `summary()` to extract
 certain statistics for each univariate response model, as we do here.
 
@@ -985,7 +985,7 @@ unlist(lapply(Hern.summary, function(x) x$r.squared))
 The univariate tests for predictors in each of these models (not shown here)
 are hard to interpret, and largely show only significant effects for 
 the `leave` variable.  Yet, the $R^2$ values for the other responses
-are slightly promising.  We proceed to an overall test of $$mathbf{B}$ = 0$
+are slightly promising.  We proceed to an overall test of $\mathbf{B} = 0$
 for all predictors.
 
 ```{r, hern2, results='markup'}
@@ -1009,15 +1009,15 @@ pairs(Hern.mod, hypotheses=hyp, col=clr, var.labels=vlab)
 
 
 
-A `pairs()` plot for the \MLM gives the set of plots shown in \figref{fig:hern-pairs}
+A `pairs()` plot for the \MLM gives the set of plots shown in \@ref{fig:hern-pairs}
 helps to interpret the relations among the predictors which lead to the highly significant
 overall test.
 Among the predictors, age and sex have small and insignificant effects on the outcome measures
-jointly.  The other predictors all contribute to the overall test of $$mathbf{B}$ = 0$,
+jointly.  The other predictors all contribute to the overall test of $\mathbf{B} = 0$,
 though in different ways for the various responses.
-For example, in the panel for (`leave`, `los`) in  \figref{fig:hern-pairs},
+For example, in the panel for (`leave`, `los`) in  \@ref{fig:hern-pairs},
 it can be seen that while only `pstat` individually is outside the 
-$$mathbf{E}$$ ellipse, `build` and `resp` contribute to the overall test in
+$\mathbf{E}$ ellipse, `build` and `resp` contribute to the overall test in
 an opposite direction.
  
 In this multivariate regression example, all of the terms in the model `Hern.mod`
@@ -1037,7 +1037,7 @@ with a menu, simply by plotting the `Hern.canL` object.
 plot(Hern.canL)
 ```
 Plots for separate terms are produced by the lines below, and shown in 
-\figref{fig:hern-can1} and \figref{fig:hern-can2}.
+\@ref{fig:hern-can1} and \@ref{fig:hern-can2}.
 ```{r, hern-can-all, eval=FALSE}
 plot(Hern.canL, term="pstat")
 plot(Hern.canL, term="build")
@@ -1117,7 +1117,7 @@ Predictor variables are student's social class (`class`, an ordered factor with 
   previous high school unit in sociology?  (`hssoc`: `no`, `yes`), and
   score on a course pretest (`pretest`).
 
-The basic \MLM\ is fit below as `grades.mod`.
+The basic MLM is fit below as `grades.mod`.
 ```{r, grades1, results='markup'}
 data(SocGrades)
 grades.mod <- lm(cbind(midterm1, midterm2, final, eval) ~ 
@@ -1144,7 +1144,7 @@ grades.mod3 <- update(grades.mod, . ~ . + class:sex - hssoc - pretest)
 Anova(grades.mod3, test="Roy")
 ```
 
-A pairwise HE plot for all responses (\figref{fig:grades-pairs}) shows that nearly all 
+A pairwise HE plot for all responses (\@ref{fig:grades-pairs}) shows that nearly all 
 effects are in the expected directions: higher `gpa`, `boards`, `class`
 leads to better performance on most outcomes.  The interaction of
 `class:sex` seems to be confined largely to `midterm1`.
@@ -1161,7 +1161,7 @@ pairs(grades.mod3)
 
 
 These effects are easier to appreciate for the three exam grades jointly in a
-3D HE plot. A snapshot is shown in \figref{fig:grades-HE3D}.  
+3D HE plot. A snapshot is shown in \@ref{fig:grades-HE3D}.  
 ```{r, grades-HE3D, fig.keep='none', eval=FALSE}
 heplot3d(grades.mod3, wire=FALSE)
 ```
@@ -1191,7 +1191,7 @@ unlist(lapply(grades.can, function(x) x$canrsq))
 ```
 
 We use `heplot()` on the `"candiscList"` object to show
-the effects of `class` in canonical space, giving \figref{fig:grades-can-class}.
+the effects of `class` in canonical space, giving \@ref{fig:grades-can-class}.
 ```{r, grades-can-class, include=FALSE}
 # plot class effect in canonical space
  op <- par(xpd=TRUE)
@@ -1206,7 +1206,7 @@ the effects of `class` in canonical space, giving \figref{fig:grades-can-class}.
 
 
 
-It can be seen in \figref{fig:grades-can-class} that nearly all variation
+It can be seen in \@ref{fig:grades-can-class} that nearly all variation
 in exam performance due to class is aligned with the first canonical dimension.
 The three tests and course evaluation all have similar weights on this dimension,
 but the course evaluation differs from the rest along a second, very small
@@ -1214,7 +1214,7 @@ dimension.
 
 1D plots of the canonical scores for other effects in the model are also of
 interest, and provide simple interpretations of these effects on the response
-variables.  The statements below produce the plots shown in \figref{fig:grades-can1}.  
+variables.  The statements below produce the plots shown in \@ref{fig:grades-can1}.  
 ```{r, grades-can-all, eval=FALSE}
 plot(grades.can, term="sex")
 plot(grades.can, term="gpa")
