@@ -320,7 +320,8 @@ contributes more to significance than do ratings on happy.
 #| echo=-1,
 #| fig.cap="HE plot for ratings of `phyattr` and `happy` according to the classification of photos on `Attr`"
 par(mar = c(4,4,1,1)+.1)
-heplot(jury.mod1, main="HE plot for manipulation check")
+heplot(jury.mod1, main="HE plot for manipulation check",
+       fill = TRUE, fill.alpha = 0.1)
 ```
 
 The function `pairs.mlm()` produces all pairwise HE plots.
