@@ -26,6 +26,7 @@
 # -- changed default colors and default fill.alpha
 # 10/20/2020 Fixed moire problem in heplot3d when dfh <3 (Thx: Duncan Murdoch)
 # -- uses back="culled" & depth_mask=FALSE properties
+# 9/22/2022  Add cex.label arg
 
 savedvars <- new.env(parent=emptyenv())
 
@@ -76,13 +77,22 @@ function(mod, ...) UseMethod("heplot3d")
 				xlim,
 				ylim,
 				zlim,
-				add=FALSE,      # add to existing plot?
+        cex.label = 1.5,       # text size for ellipse labels
+				add=FALSE,             # add to existing plot?
 				verbose=FALSE,
 				warn.rank=FALSE,  
 				...) {              
 	
-	ellipsoid <- function(center, shape, radius=1, label="", col, 
-	                      df=Inf, shade=TRUE, alpha=0.1, wire=TRUE){
+	ellipsoid <- function(center, 
+	                      shape, 
+	                      radius=1, 
+	                      label="",
+	                      cex.label,
+	                      col, 
+	                      df=Inf, 
+	                      shade=TRUE, 
+	                      alpha=0.1, 
+	                      wire=TRUE){
 		# adapted from the shapes3d demo in the rgl package and from the Rcmdr package
 		# modified to return the bbox of the ellipsoid
 		degvec <- seq(0, 2*pi, length=segments)
@@ -116,8 +126,10 @@ function(mod, ...) UseMethod("heplot3d")
 		if (verbose) cat(paste("df=", df, "col:", col, " shade:", shade, " alpha:", alpha, 
 		                         " wire:", wire, "back:", back, "depth_mask:", depth_mask,
 		                       sep=" "), "\n")
-		if(shade) rgl::shade3d(ellips, col=col, alpha=alpha, lit=TRUE, back=back, depth_mask=depth_mask)
-		if(wire) rgl::wire3d(ellips, col=col, size=lwd, lit=FALSE, back=back, depth_mask=depth_mask)
+		if(shade) rgl::shade3d(ellips, 
+		                       col=col, alpha=alpha, lit=TRUE, back=back, depth_mask=depth_mask)
+		if(wire) rgl::wire3d(ellips, 
+		                     col=col, size=lwd, lit=FALSE, back=back, depth_mask=depth_mask)
 		bbox <- matrix(rgl::par3d("bbox"), nrow=2)
 		ranges <- apply(bbox, 2, diff)
 		if (!is.null(label) && label !="")
@@ -222,7 +234,8 @@ if (!add){
 	} 
 	
 	if (error.ellipsoid) {
-		E.ellipsoid <- ellipsoid(gmean, E, radius, col=E.col, label=err.label, 
+		E.ellipsoid <- ellipsoid(gmean, E, radius, col=E.col, 
+		                         label=err.label, cex.label = cex.label,
 		                         df=dfe,
 				                    shade=shade[[length(shade)]], 
 				                    alpha=shade.alpha[[length(shade.alpha)]],
@@ -248,7 +261,8 @@ if (!add){
 			}
 			if((!shade[term]) & !wire[term]) 
 				warning(paste("shate and wire are both FALSE for ", term), call.=FALSE)
-			H.ellipsoid[[term]] <- ellipsoid(gmean, H, radius, col=col[term], label=term.labels[term], 
+			H.ellipsoid[[term]] <- ellipsoid(gmean, H, radius, col=col[term], 
+			                                 label=term.labels[term], cex.label = cex.label,
 					                      df=dfh, shade=shade[term], alpha=shade.alpha[term], 
 					                      wire=wire[term])  
 			colnames(H.ellipsoid[[term]]) <- vars
@@ -267,11 +281,13 @@ if (!add){
 				print(lh)
 			}
 			term <- n.terms + hyp
-			H.ellipsoid[[term]] <- ellipsoid(gmean, H, radius, col=col[term], label=hyp.labels[hyp],
-					df=dfh, shade=shade[term], alpha=shade.alpha[term], wire=wire[term])
+			H.ellipsoid[[term]] <- ellipsoid(gmean, H, radius, col=col[term], 
+			                                 label=hyp.labels[hyp], cex.label = cex.label,
+					                             df=dfh, shade=shade[term], alpha=shade.alpha[term], wire=wire[term])
 		}         
 	ranges <- apply(matrix(rgl::par3d("bbox"), nrow=2), 2, diff)
-#   if (grand.mean) ellipsoid(gmean, diag((ranges/40)^2), col="black", wire=FALSE, alpha=0.8) # centre dot    
+
+	#   if (grand.mean) ellipsoid(gmean, diag((ranges/40)^2), col="black", wire=FALSE, alpha=0.8) # centre dot    
 	# better: use a centered 3D cross here
 	if (grand.mean) cross3d(gmean, (ranges/25), col="black", lwd=2) # centre cross            
 	
@@ -314,9 +330,12 @@ if (!add){
 		xlim <- if(missing(xlim)) bbox[1,] else c(min(xlim[1],bbox[1,1]), max(xlim[2],bbox[1,2]))
 		ylim <- if(missing(ylim)) bbox[2,] else c(min(ylim[1],bbox[2,1]), max(ylim[2],bbox[2,2]))
 		zlim <- if(missing(zlim)) bbox[3,] else c(min(zlim[1],bbox[3,1]), max(zlim[2],bbox[3,2]))
-		rgl::decorate3d(xlim=xlim, ylim=ylim, zlim=zlim, box=FALSE, axes=FALSE, xlab=NULL, ylab=NULL, zlab=NULL, top=FALSE)
+		rgl::decorate3d(xlim=xlim, ylim=ylim, zlim=zlim, 
+		                box=FALSE, axes=FALSE, 
+		                xlab=NULL, ylab=NULL, zlab=NULL, top=FALSE)
 	}
 	
+  # TODO: allow cex for axis labels
 	if (add) rgl::rgl.pop(id=savedvars$.frame)
 	frame <- rgl::axis3d("x-", color="black")
 	frame <- c(frame, rgl::mtext3d(xlab, "x-", color="black", line=1.5))

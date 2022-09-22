@@ -1,6 +1,8 @@
 ## Version 1.4-0 (2022-04-04)
 
 * Added Iwasaki_Big_Five data [Thx: James Grice]
+* Added `cex.label` arg to `heplot3d()`
+* Convert old Rnw vignettes to Rmd
 
 ## Version 1.3-9 (2021-10-06)
 

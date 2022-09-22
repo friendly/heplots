@@ -17,10 +17,10 @@ heplot3d(mod, ...)
     hyp.labels = TRUE, err.label="Error", variables = 1:3, error.ellipsoid = !add,
     factor.means = !add, grand.mean = !add, remove.intercept = TRUE, 
     type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
-	icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL,
+	  icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL,
     manova, size = c("evidence", "effect.size"),
     level = 0.68, alpha = 0.05,  segments = 40, 
-	col=getOption("heplot3d.colors", 
+	  col=getOption("heplot3d.colors", 
 	              c("red", "blue", "black", "darkgreen", 
 	                "darkcyan","magenta", "brown","darkgray")),
     lwd=c(1, 4),
@@ -29,6 +29,7 @@ heplot3d(mod, ...)
     fogtype = c("none", "exp2", "linear", "exp"), 
     fov = 30, offset = 0.01, 
     xlab, ylab, zlab, xlim, ylim, zlim, 
+    cex.label = 1.5,
     add = FALSE, verbose = FALSE, 
     warn.rank = FALSE, ...)
 }
@@ -139,6 +140,7 @@ heplot3d(mod, ...)
   \item{xlim}{x-axis limits; if absent, will be computed from the data.}
   \item{ylim}{y-axis limits; if absent, will be computed from the data.}
   \item{zlim}{z-axis limits; if absent, will be computed from the data.}
+  \item{cex.label}{text size for ellipse labels}
   \item{add}{if \code{TRUE}, add to the current plot; the default is \code{FALSE}.
     If \code{TRUE}, the error ellipsoid is neither plotted nor returned in the output object.}
   \item{verbose}{if \code{TRUE}, print the MANOVA table and details of hypothesis
