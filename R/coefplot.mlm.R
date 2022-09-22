@@ -9,20 +9,27 @@ coefplot <- function(object, ...) {
 	UseMethod("coefplot")
 }
 
-coefplot.mlm <- function(object, variables=1:2, parm=NULL, df = NULL, level = 0.95, 
-  intercept=FALSE, 
-  Scheffe=FALSE, bars=TRUE, 
-  fill=FALSE, fill.alpha=0.2,   # requires  trans.colors
-  labels = !add, 
-  label.pos = NULL,             # requires new version of label.ellipse
-  xlab, ylab,
-  xlim = NULL, ylim = NULL, 
-  axes=TRUE, main="", add=FALSE,
-  lwd = 1, lty = 1, pch = 19, col=palette(),
-  cex=2, cex.label=1.5,
-  lty.zero = 3, col.zero = 1, pch.zero = '+',
-  verbose=FALSE,
-   ...)
+coefplot.mlm <- function(object, 
+                         variables=1:2, 
+                         parm=NULL, 
+                         df = NULL, 
+                         level = 0.95, 
+                         intercept=FALSE, 
+                         Scheffe=FALSE, 
+                         bars=TRUE, 
+                         fill=FALSE, fill.alpha=0.2,   # requires  trans.colors
+                         labels = !add, 
+                         label.pos = NULL,             # requires new version of label.ellipse
+                         xlab, ylab,
+                         xlim = NULL, ylim = NULL, 
+                         axes=TRUE, 
+                         main="", 
+                         add=FALSE,
+                         lwd = 1, lty = 1, pch = 19, col=palette(),
+                         cex=2, cex.label=1.5,
+                         lty.zero = 3, col.zero = 1, pch.zero = '+',
+                         verbose=FALSE,
+                         ...)
 {
 
   vcovParm <- function(vcov, var, parm) {
