@@ -416,7 +416,7 @@ model, and the `plot` method produces plots of these values for
 each term.  The statements below produce \@ref(fig:jury-mod3-eff).
 
 ```{r, jury-mod3-eff}
-#| fig.width=8, 
+#| fig.width=9, 
 #| fig.height=4,
 #| fig.cap="Effect plots for  `Serious` and the `Attr * Crime` interaction in the ANCOVA model `jury.mod3`."
 library(effects)
@@ -437,6 +437,178 @@ The effect plot shows that for the crime of Swindle, there is a much
 greater `Years` of sentence awarded to Unattractive defendants.
 
 ## Egyptian skulls from five epochs
+
+This example examines physical measurements of size and shape made on
+150 Egyptian skulls from five epochs ranging from
+4000 BC to 150 AD.
+The measures are: maximal breadth (`mb`), basibregmatic height (`bh`),
+basialiveolar length (`bl`), and nasal height (`nh`) of each skull.
+See [http://www.redwoods.edu/instruct/agarwin/anth_6_measurements.htm]
+for the definitions of these measures, and \@ref(fig:skulls) for a diagram.
+The question of interest is whether and how these measurements change over time.
+Systematic changes over time is of interest because this
+would indicate interbreeding with immigrant populations.
+
+
+```{r skulls-diagram}
+#| echo=FALSE,
+#| out.width="60%",
+#| fig.cap='Diagram of the skull measurements. Maximal breadth and basibregmatic height are the basic measures of "size" of a skull.  Basialveolar length and nasal height are important anthropometric measures of "shape".'
+knitr::include_graphics("fig/skulls.jpg")
+```
+
+<!-- 	\includegraphics[width=.6\textwidth]{skulls} -->
+<!-- \caption{Diagram of the skull measurements. Maximal breadth and basibregmatic height are the basic measures of "size" of a skull.  Basialveolar length and nasal height are important anthropometric measures of "shape".} -->
+<!--  {#fig:skulls} -->
+
+
+```{r, skulls1}
+data(Skulls)
+str(Skulls)
+table(Skulls$epoch)
+```
+
+Note that `epoch` is an ordered factor, so the default contrasts
+will be orthogonal polynomials.  This assumes that `epoch`
+values are equally spaced, which they are not.  However, examining
+the linear and quadratic trends is useful to a first approximation.
+
+For ease of labeling various outputs, it is useful to trim the
+`epoch` values and assign more meaningful variable labels.
+```{r, skulls2}
+# make shorter labels for epochs
+Skulls$epoch <- factor(Skulls$epoch, labels=sub("c","",levels(Skulls$epoch)))
+# assign better variable labels
+vlab <- c("maxBreadth", "basibHeight", "basialLength", "nasalHeight")
+```
+
+We start with some simple displays of the means by epoch.  From the numbers,
+the means don't seem to vary much.  
+A `pairs` plot, \@ref(fig:skulls4), joining points
+by `epoch` is somewhat more revealing for the bivariate relations among means.
+
+```{r, skulls3}
+means <- aggregate(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls, FUN=mean)[,-1]
+rownames(means) <- levels(Skulls$epoch)
+means
+```
+
+```{r, skulls4}
+#| fig.width=7,
+#| fig.height=7,
+#| fig.cap="Pairs plot of means of Skulls data, by epoch."
+pairs(means, vlab,
+      panel = function(x, y) {
+          text(x, y, levels(Skulls$epoch))
+          lines(x,y)
+      })
+```
+
+
+Perhaps better for visualizing the trends over time is a set of boxplots,
+joining means over `epoch`. Using `bwplot()` from the `lattice`
+package requires reshaping the data from wide to long format.  The following
+code produces \@ref(fig:skulls-bwplot).
+
+```{r, skulls-bwplot}
+#| fig.height=7,
+#| fig.width=7,
+#| fig.cap="Boxplots of Skulls data, by epoch, for each variable."
+library(lattice)
+library(reshape2)
+sklong <- melt(Skulls, id="epoch")
+
+bwplot(value ~ epoch | variable, data=sklong, scales="free", 
+	ylab="Variable value", xlab="Epoch",
+	strip=strip.custom(factor.levels=paste(vlab,
+	                                       " (", levels(sklong$variable), ")",
+	                                       sep="")),
+	panel = function(x,y, ...) {
+		panel.bwplot(x, y, ...)
+		panel.linejoin(x,y, col="red", ...)
+	}) 
+```
+
+The trend lines aren't linear, but neither are they random, so something systematic has been going
+on!
+
+Now, fit the MANOVA model, and test the effect of `epoch` with `car::Anova()`.
+We see that the multivariate means differ substantially.
+```{r, skulls5}
+# fit manova model
+sk.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
+Anova(sk.mod)
+```
+
+Perhaps of greater interest are the more focused tests of trends over time.
+These are based on tests of the coefficients in the model `sk.mod`
+being jointly equal to zero, for subsets of the 
+(polynomial) contrasts in `epoch`.
+```{r, skulls5a}
+coef(sk.mod)
+```
+
+We use `linearHypothesis()` for a multivariate test of the
+`epoch.L` linear effect.
+The linear trend is highly significant.  It is not obvious from 
+\@ref(fig:skulls4) that maximal breadth and nasal are increasing
+over time, while the other two measurements have negative slopes.
+
+```{r, skulls6}
+coef(sk.mod)["epoch.L",]
+print(linearHypothesis(sk.mod, "epoch.L"), SSP=FALSE) # linear component
+```
+
+`linearHypothesis()` can also be used to test composite hypotheses.
+Here we test all non-linear coefficients jointly.  The result indicates
+that, collectively, all non-linear terms are not significantly different
+from zero.
+```{r, skulls6a}
+print(linearHypothesis(sk.mod, c("epoch.Q", "epoch.C", "epoch^4")), SSP=FALSE)
+```
+
+Again, HE plots can show the patterns of these tests of multivariate hypotheses.
+With four response variables, it is easiest to look at all pairwise
+HE plots with the `pairs.mlm()` function. 
+The statement below produces \@ref(fig:skulls-HE-pairs).
+In this plot, we show the hypothesis ellipsoids for the overall
+effect of `epoch`, as well as those for the tests just shown
+for the linear trend component `epoch.L`
+as well as the joint test of all non-linear terms.
+```{r, skulls-HE-pairs}
+#| out.width="100%",
+#| fig.cap="Pairs HE plot of Skulls data, showing multivariate tests of `epoch`, as well as tests of linear and nonlinear trends."
+pairs(sk.mod, variables=c(1,4,2,3),
+	hypotheses=list(Lin="epoch.L", 
+	                NonLin=c("epoch.Q", "epoch.C", "epoch^4")), 
+	var.labels=vlab[c(1,4,2,3)])
+```
+
+
+<!-- 	\includegraphics[width=.8\textwidth]{fig/plot-skulls-HE-pairs} -->
+<!-- \caption{Pairs HE plot of Skulls data, showing multivariate tests of -->
+<!-- 	`epoch`, as well as tests of linear and nonlinear trends.} -->
+<!--  {#fig:skulls-HE-pairs} -->
+
+
+These plots have an interesting geometric interpretation:
+the $\mathbf{H}$ ellipses for the overall effect of `epoch`
+are representations of the additive decomposition of this effect into  
+$\mathbf{H}$ ellipses for the linear and nonlinear linear
+hypothesis tests according to
+
+$$\mathbf{H}_{\textrm{epoch}} = \mathbf{H}_{\textrm{linear}} + \mathbf{H}_{\textrm{nonlinear}}$$
+
+where the linear term has rank 1 (and so plots as a line), while the nonlinear
+term has rank 3.  In each panel, it can be seen that the large direction of
+the $\mathbf{H}_{\textrm{epoch}}$ leading to significance of this effect corresponds
+essentially to the linear contrast.  $\mathbf{H}_{\textrm{nonlinear}}$ is the orthogonal
+complement of $\mathbf{H}_{\textrm{linear}}$ in the space of $\mathbf{H}_{\textrm{epoch}}$,
+but nowhere does it protrude beyond the boundary of the $\mathbf{E}$ ellipsoid.
+
+
+
+
 
 
 
