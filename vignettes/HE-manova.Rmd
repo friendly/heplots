@@ -1,9 +1,10 @@
 ---
 title: "HE plot MANOVA Examples"
-package: vcdExtra
+package: heplots
 output: 
   rmarkdown::html_vignette:
     fig_caption: yes
+    toc: true
 bibliography: "HE-examples.bib"
 csl: apa.csl
 vignette: >
@@ -336,6 +337,106 @@ measuring different aspects of the photos.
 #| fig.cap="HE plots for all pairs of ratings according to theclassification of photos on `Attr`"
 pairs(jury.mod1)
 ```
+
+With 3 groups and 4 variables, the $\mathbf{H}$ ellipsoid has only $s=\min(df_h, p)=2$
+dimensions.  `candisc()` carries out a canonical discriminant analysis
+for the MLM  and returns an object that can be used to show an HE plot in the
+space of the canonical dimensions.  This is plotted in \@ref(fig:jury-can1).
+
+```{r, jury-can1a}
+jury.can <- candisc(jury.mod1)
+jury.can
+```
+
+`heplot.candisc()` is the HE plot method for `candisc` objects
+```{r, jury-can1}
+#| echo=-1,
+#| fig.cap="Canonical discriminant HE plot for the MockJury data"
+par(xpd=TRUE, mar=c(4,4,3,1)+.1)
+heplot(jury.can, prefix="Canonical dimension", main="Canonical HE plot")
+```
+
+
+From this we can see that 91% of the variation among group means
+is accounted for by the first dimension, and this is nearly completely
+aligned with `phyattr`. 
+The second dimension, accounting for the remaining 9%
+is determined nearly entirely by ratings on `happy` and `independent`.
+This display gives a relatively simple account of the results of the MANOVA
+and the relations of each of the ratings to discrimination among the photos.
+
+Proceeding to the main questions of interest, we carry out a two-way MANOVA of the responses
+`Years` and `Serious` in relation to the independent variables
+`Attr` and `Crime`.
+
+```{r, jury-mod2}
+# influence of Attr of photo and nature of crime on Serious and Years
+jury.mod2 <- lm( cbind(Serious, Years) ~ Attr * Crime, data=MockJury)
+Anova(jury.mod2, test="Roy")
+```
+We see that there is a nearly significant  interaction between `Attr` and `Crime`
+and a strong effect of `Attr`.
+
+
+```{r, jury-mod2-HE}
+#| fig.cap="HE plot for the two-way MANOVA for `Years` and `Serious`"
+heplot(jury.mod2)
+```
+
+
+The HE plot shows that the nearly significant
+interaction of `Attr:Crime` is mainly in terms of
+differences among the groups on the response of `Years` of sentence,
+with very little contribution of `Serious`.  We explore this interaction in a bit more detail
+below.  The main effect of `Attr` is also dominated by differences among groups
+on `Years`. 
+
+If we assume that `Years` of sentence is the main outcome of interest,
+it also makes sense to carry out a step-down test of this variable by itself,
+controlling for the rating of seriousness (`Serious`) of the crime.
+The model `jury.mod3` below is equivalent to an ANCOVA for `Years`.
+
+```{r, jury-mod3-HE}
+# stepdown test (ANCOVA), controlling for Serious
+jury.mod3 <- lm( Years ~ Serious + Attr * Crime, data=MockJury)
+t(coef(jury.mod3))
+Anova(jury.mod3)
+```
+Thus, even when adjusting for `Serious` rating, there is still a 
+significant main effect of `Attr` of the photo, but also a hint of
+an interaction of `Attr` with `Crime`. The coefficient for
+`Serious` indicates that participants awarded 0.84 additional
+years of sentence for each 1 unit step on the scale of seriousness of crime.
+
+A particularly useful
+method for visualizing the fitted effects in such univariate response
+models is provided by the `effects`.  By default `allEffects()`
+calculates the predicted values for all high-order terms in a given
+model, and the `plot` method produces plots of these values for
+each term.  The statements below produce \@ref(fig:jury-mod3-eff).
+
+```{r, jury-mod3-eff}
+#| fig.width=8, 
+#| fig.height=4,
+#| fig.cap="Effect plots for  `Serious` and the `Attr * Crime` interaction in the ANCOVA model `jury.mod3`."
+library(effects)
+jury.eff <- allEffects(jury.mod3)
+plot(jury.eff, ask=FALSE)
+```
+
+<!-- \includegraphics[width=\textwidth]{fig/plot-jury-mod3-eff} -->
+<!-- \caption{Effect plots for  `Serious` and the `Attr * Crime` -->
+<!-- 	 in the ANCOVA model `jury.mod3`.} -->
+<!--  {#fig:jury-mod3-eff} -->
+
+The effect plot for `Serious` shows the expected linear relation
+between that variable and `Years`. Of greater interest here is the nature
+of the possible interaction of `Attr` and `Crime` on `Years`
+of sentence, controlling for `Serious`.
+The effect plot shows that for the crime of Swindle, there is a much
+greater `Years` of sentence awarded to Unattractive defendants.
+
+## Egyptian skulls from five epochs
 
 
 

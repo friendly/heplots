@@ -408,7 +408,7 @@ pairs(jury.mod1)
 With 3 groups and 4 variables, the $\mathbf{H}$ ellipsoid has only $s=\min(df_h, p)=2$
 dimensions.  `candisc()` carries out a canonical discriminant analysis
 for the MLM  and returns an object that can be used to show an HE plot in the
-space of the canonical dimensions.  This is plotted in \@ref{fig:jury-can1}.
+space of the canonical dimensions.  This is plotted in \@ref(fig:jury-can1).
 
 ```{r, jury-can1a, fig.keep='none'}
 jury.can <- candisc(jury.mod1)
@@ -439,7 +439,7 @@ Proceeding to the main questions of interest, we carry out a two-way MANOVA of t
 `Years` and `Serious` in relation to the independent variables
 `Attr` and `Crime`.
 
-```{r, jury-mod2, results='markup'}
+```{r, jury-mod2}
 # influence of Attr of photo and nature of crime on Serious and Years
 jury.mod2 <- lm( cbind(Serious, Years) ~ Attr * Crime, data=MockJury)
 Anova(jury.mod2, test="Roy")
@@ -468,7 +468,7 @@ If we assume that `Years` of sentence is the main outcome of interest,
 it also makes sense to carry out a step-down test of this variable by itself,
 controlling for the rating of seriousness (`Serious`) of the crime.
 The model `jury.mod3` below is equivalent to an ANCOVA for `Years`.
-```{r, jury-mod3-HE, results='markup'}
+```{r, jury-mod3-HE}
 # stepdown test (ANCOVA), controlling for Serious
 jury.mod3 <- lm( Years ~ Serious + Attr * Crime, data=MockJury)
 t(coef(jury.mod3))
@@ -531,7 +531,7 @@ would indicate interbreeding with immigrant populations.
 
 
 
-```{r, skulls1, results='markup'}
+```{r, skulls1}
 data(Skulls)
 str(Skulls)
 table(Skulls$epoch)
@@ -554,7 +554,7 @@ We start with some simple displays of the means by epoch.  From the numbers,
 the means don't seem to vary much.  
 A `pairs` plot, \@ref{fig:skulls4}, joining points
 by `epoch` is somewhat more revealing for the bivariate relations among means.
-```{r, skulls3, results='markup'}
+```{r, skulls3}
 means <- aggregate(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls, FUN=mean)[,-1]
 rownames(means) <- levels(Skulls$epoch)
 means
@@ -603,7 +603,7 @@ bwplot(value ~ epoch | variable, data=sklong, scales="free",
  
 Now, fit the MANOVA model, and test the effect of `epoch` with `Manova()`.
 We see that the multivariate means differ substantially.
-```{r, skulls5, results='markup'}
+```{r, skulls5}
 # fit manova model
 sk.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 Manova(sk.mod)
@@ -612,7 +612,7 @@ Perhaps of greater interest are the more focused tests of trends over time.
 These are based on tests of the coefficients in the model `sk.mod`
 being jointly equal to zero, for subsets of the 
 (polynomial) contrasts in `epoch`.
-```{r, skulls5a, results='markup'}
+```{r, skulls5a}
 coef(sk.mod)
 ```
 
@@ -621,7 +621,7 @@ We use `linearHypothesis()` for a multivariate test of the
 The linear trend is highly significant.  It is not obvious from 
 \@ref{fig:skulls4} that maximal breadth and nasal are increasing
 over time, while the other two measurements have negative slopes.
-```{r, skulls6, results='markup'}
+```{r, skulls6}
 coef(sk.mod)["epoch.L",]
 print(linearHypothesis(sk.mod, "epoch.L"), SSP=FALSE) # linear component
 ```
@@ -629,7 +629,7 @@ print(linearHypothesis(sk.mod, "epoch.L"), SSP=FALSE) # linear component
 Here we test all non-linear coefficients jointly.  The result indicates
 that, collectively, all non-linear terms are not significantly different
 from zero.
-```{r, skulls6, results='markup'}
+```{r, skulls6}
 print(linearHypothesis(sk.mod, c("epoch.Q", "epoch.C", "epoch^4")), SSP=FALSE)
 ```
 
@@ -687,7 +687,7 @@ space corresponding to the canonical discriminant analysis for
 `epoch`.  The computations are performed by `candisc()`
 which returns a class `"candisc"` object.
 
-```{r, skulls-can1, results='markup'}
+```{r, skulls-can1}
 library(candisc)
 sk.can <- candisc(sk.mod)
 sk.can
@@ -753,7 +753,7 @@ Two groups were tested: a group of $n=37$ children from a low socioeconomic
 status (SES) school, and a group of $n=32$ high SES children from an
 upper-class, white residential school. The data are in the data frame 
 `Rohwer` in the `heplots` package:
-```{r, rohwer-some, results='markup'}
+```{r, rohwer-some}
 some(Rohwer,n=6)
 ```
 
@@ -762,7 +762,7 @@ of the High and Low SES groups.  This approach is *not* recommended because it
 lacks power and does not allow hypotheses about equality of slopes and intercepts
 to be tested directly.
 
-```{r, rohwer-separate, results='markup'}
+```{r, rohwer-separate}
 rohwer.ses1 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Hi")
 Anova(rohwer.ses1)
 
@@ -771,7 +771,7 @@ Anova(rohwer.ses2)
 ```
 This allows separate slopes and intercepts for each of the two groups, but it is difficult
 to compare the coefficients numerically.
-```{r, rohwer-coef, results='markup'}
+```{r, rohwer-coef}
 coef(rohwer.ses1)
 coef(rohwer.ses2)
 ```
@@ -801,7 +801,7 @@ Alternatively (and optimistically), we can fit a MANCOVA model
 that allows different means for the two SES groups on the responses, but constrains the
 slopes for the PA covariates to be equal.
 
-```{r, rohwer-mod, results='markup'}
+```{r, rohwer-mod}
 # MANCOVA, assuming equal slopes
 rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, 
                  data=Rohwer)
@@ -817,7 +817,7 @@ that *all* covariates have null effects
 for all responses as a linear hypothesis (suppressing display of the error
 and hypothesis SSP matrices),
 
-```{r, rohwer-mod-test, results='markup'}
+```{r, rohwer-mod-test}
 (covariates <- rownames(coef(rohwer.mod))[-(1:2)])
 Regr<-linearHypothesis(rohwer.mod, covariates)
 print(Regr, digits=5, SSP=FALSE)
@@ -885,7 +885,7 @@ but the test of relies on the assumption of homogeneity of slopes for the predic
 We can test this as follows, adding interactions of `SES`
 with each of the covariates:
 
-```{r, rohwer-mod2, results='markup'}
+```{r, rohwer-mod2}
 rohwer.mod2 <- lm(cbind(SAT, PPVT, Raven) ~ SES * (n + s + ns + na + ss),
                   data=Rohwer)
 Anova(rohwer.mod2)
@@ -895,7 +895,7 @@ from the separate `SES:` terms. The evidence for heterogeneity is
 stronger, however, when these terms are tested collectively using the 
 `linearHypothesis()` function:
 
-```{r, rohwer-mod2-test, results='markup'}
+```{r, rohwer-mod2-test}
 (coefs <- rownames(coef(rohwer.mod2)))
 print(linearHypothesis(rohwer.mod2, coefs[grep(":", coefs)]), SSP=FALSE)
 ```
@@ -966,7 +966,7 @@ We begin with a model fitting all predictors. Note that the ordinal predictors,
 `pstat`, `build`, `cardiac` and `resp` could arguably be treated as
 factors, rather than linear, regression terms.  We ignore this possibility in this example.
 
-```{r, hern1, results='markup'}
+```{r, hern1}
 Hern.mod <- lm(cbind(leave, nurse, los) ~ age + sex +  pstat +  build + cardiac + resp, 
                data=Hernior)
 Anova(Hern.mod) 
@@ -978,7 +978,7 @@ The univariate models for each response are implicit in the MLM `Hern.mod`.
 These can be printed using `summary()`, or we can use `summary()` to extract
 certain statistics for each univariate response model, as we do here.
 
-```{r, hern.rsq, results='markup'}
+```{r, hern.rsq}
 Hern.summary <- summary(Hern.mod)
 unlist(lapply(Hern.summary, function(x) x$r.squared))
 ```
@@ -988,7 +988,7 @@ the `leave` variable.  Yet, the $R^2$ values for the other responses
 are slightly promising.  We proceed to an overall test of $\mathbf{B} = 0$
 for all predictors.
 
-```{r, hern2, results='markup'}
+```{r, hern2}
 # test overall regression
 Regr <- linearHypothesis(Hern.mod, c("age", "sexm", "pstat", "build", "cardiac", "resp"))
 print(Regr, digits=5, SSP=FALSE)
@@ -1118,7 +1118,7 @@ Predictor variables are student's social class (`class`, an ordered factor with 
   score on a course pretest (`pretest`).
 
 The basic MLM is fit below as `grades.mod`.
-```{r, grades1, results='markup'}
+```{r, grades1}
 data(SocGrades)
 grades.mod <- lm(cbind(midterm1, midterm2, final, eval) ~ 
 	class + sex + gpa + boards + hssoc + pretest, data=SocGrades)
@@ -1131,7 +1131,7 @@ terms (interactions, non-linear predictors).  This can most easily be
 done using `update()`, as we do below.  First, try the extended
 model with all pairwise interactions of the predictors.
 
-```{r, grades1, results='markup'}
+```{r, grades1}
 grades.mod2 <- update(grades.mod, . ~ .^2)
 Anova(grades.mod2, test="Roy")
 ```
@@ -1139,7 +1139,7 @@ In the results above, only the interaction of `class:sex` is significant,
 and the main effects of `hssoc` and `pretest` remain insignificant.
 A revised model to explore is `grades.mod3`,
 
-```{r, grades3, results='markup'}
+```{r, grades3}
 grades.mod3 <- update(grades.mod, . ~ . + class:sex - hssoc - pretest)
 Anova(grades.mod3, test="Roy")
 ```
@@ -1183,7 +1183,7 @@ The representation of these effects in canonical space is particularly useful he
 Again, use `candiscList()` to compute the canonical decompositions for all terms
 in the model, and extract the canonical $R^2$ from the terms in the result.
 
-```{r, grades4, results='markup'}
+```{r, grades4}
 # calculate canonical results for all terms
 grades.can <- candiscList(grades.mod3)
 # extract canonical R^2s
