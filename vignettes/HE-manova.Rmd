@@ -567,6 +567,7 @@ from zero.
 print(linearHypothesis(sk.mod, c("epoch.Q", "epoch.C", "epoch^4")), SSP=FALSE)
 ```
 
+<<<<<<< HEAD
 Again, HE plots can show the patterns of these tests of multivariate hypotheses.
 With four response variables, it is easiest to look at all pairwise
 HE plots with the `pairs.mlm()` function. 
@@ -606,6 +607,8 @@ essentially to the linear contrast.  $\mathbf{H}_{\textrm{nonlinear}}$ is the or
 complement of $\mathbf{H}_{\textrm{linear}}$ in the space of $\mathbf{H}_{\textrm{epoch}}$,
 but nowhere does it protrude beyond the boundary of the $\mathbf{E}$ ellipsoid.
 
+=======
+>>>>>>> 83e54fca6727cdbe68d9348ba92170328e3c3647
 
 
 
