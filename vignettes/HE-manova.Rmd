@@ -55,7 +55,8 @@ For that, see @FoxFriendlyMonette:09:compstat; @Friendly:07:manova; @Friendly:06
 An experiment was conducted to determine the optimum conditions for extruding plastic film. 
 Three responses, `tear` resistance, film `gloss` and film `opacity`
 were measured in relation to two factors, `rate` of extrusion and amount of an `additive`,
-both of these being set to two values, High and Low.
+both of these being set to two values, High and Low. The data set comes from
+@JohnsonWichern:92.
 
 ```{r plastic-str}
 data(Plastic, package="heplots")
@@ -63,7 +64,10 @@ str(Plastic)
 ```
 
 
-The design is thus a $2\times 2$ MANOVA, with $n=5$ per cell. 
+The design is thus a $2\times 2$ MANOVA, with $n=5$ per cell and 3 numeric response variables.
+Because the effects of the factors on the responses are likely correlated, it is useful to
+consider a multivariate analysis, rather than 3 separate univariate ones.
+
 This example illustrates:
 
 * 2D and 3D HE plots, 
@@ -71,10 +75,13 @@ This example illustrates:
 * visualizing composite linear hypotheses.
 	
 We begin with an overall MANOVA for the two-way MANOVA model. In all these analyses, we use
-`car::Anova()` for significance tests rather than `stats::anova()`.
+`car::Anova()` for significance tests rather than `stats::anova()`, which only provides
+so-called "Type I" (sequential) tests for terms in linear models.
 
-Because each effect has 1 df, all of the multivariate statistics are equivalent,
-but we specify `test.statistic="Roy"` because Roy's test has
+In this example, because each effect has 1 df, all of the multivariate statistics 
+(Roy's maximum root test, Pillai and Hotelling trace criteria, Wilks' Lambda)
+are equivalent, in that they give the same $F$ statistics and $p$-values.
+We specify `test.statistic="Roy"` to emphasize that Roy's test has
 a natural visual interpretation in HE plots. 
 
 ```{r, plastic-mod}
@@ -116,8 +123,8 @@ When, as here, the model terms have 1 degree of freedom, the
 $\mathbf{H}$ ellipsoids degenerate to a line.
 
 In HE plots, the $\mathbf{H}$ ellipses can be scaled relative to the 
-$\mathbf{E}$ to show significance of effects (`size="evidence"`),
-or effect size (`size="effect"`). In the former case, a model term
+$\mathbf{E}$ to show **significance** of effects (`size="evidence"`),
+or **effect size** (`size="effect"`). In the former case, a model term
 is significant (using Roy's maximum root test) _iff_ the 
 $\mathbf{H}$ projects anywhere outside the $\mathbf{E}$ ellipse.
 
@@ -131,10 +138,16 @@ par(mar = c(4,4,1,1)+.1)
 ## Compare evidence and effect scaling 
 colors = c("red", "darkblue", "darkgreen", "brown")
 heplot(plastic.mod, size="evidence", 
-       col=colors, cex=1.25)
+       col=colors, cex=1.25,
+       fill=TRUE, fill.alpha=0.1)
 heplot(plastic.mod, size="effect", 
        add=TRUE, lwd=5, term.labels=FALSE, col=colors)
 ```
+
+The interpretation can be easily read from the plot, at least for the two response variables
+(`tear` and `gloss`) that are shown in this bivariate view. The effect of `rate` of extrusion is
+highly significant: high rate shows greater `tear` compared to low rate. The effect of amount of 
+additive is not significant in this view, but high level of additive has greater `tear` and `gloss`.
 
 With effect scaling, both the $\mathbf{H}$ and $\mathbf{E}$ sums of squares and products
 matrices are both divided by the error df, giving multivariate analogs of univariate
@@ -161,7 +174,8 @@ par(mar = c(4,4,1,1)+.1)
 # Compare evidence and effect scaling 
 colors = c("red", "darkblue", "darkgreen", "brown")
 heplot(plastic.mod, size="evidence", 
-       col=colors, cex=1.25)
+       col=colors, cex=1.25,
+       fill=TRUE, fill.alpha=0.05)
 heplot(plastic.mod, size="effect", 
        add=TRUE, lwd=5, term.labels=FALSE, col=colors)
 
@@ -510,6 +524,8 @@ joining means over `epoch`. Using `bwplot()` from the `lattice`
 package requires reshaping the data from wide to long format.  The following
 code produces \@ref(fig:skulls-bwplot).
 
+<!-- TODO: do this with ggplot2 -->
+
 ```{r, skulls-bwplot}
 #| fig.height=7,
 #| fig.width=7,
@@ -567,7 +583,6 @@ from zero.
 print(linearHypothesis(sk.mod, c("epoch.Q", "epoch.C", "epoch^4")), SSP=FALSE)
 ```
 
-<<<<<<< HEAD
 Again, HE plots can show the patterns of these tests of multivariate hypotheses.
 With four response variables, it is easiest to look at all pairwise
 HE plots with the `pairs.mlm()` function. 
@@ -576,6 +591,9 @@ In this plot, we show the hypothesis ellipsoids for the overall
 effect of `epoch`, as well as those for the tests just shown
 for the linear trend component `epoch.L`
 as well as the joint test of all non-linear terms.
+
+<!-- TODO: shorten labels -->
+
 ```{r, skulls-HE-pairs}
 #| out.width="100%",
 #| fig.cap="Pairs HE plot of Skulls data, showing multivariate tests of `epoch`, as well as tests of linear and nonlinear trends."
@@ -607,8 +625,6 @@ essentially to the linear contrast.  $\mathbf{H}_{\textrm{nonlinear}}$ is the or
 complement of $\mathbf{H}_{\textrm{linear}}$ in the space of $\mathbf{H}_{\textrm{epoch}}$,
 but nowhere does it protrude beyond the boundary of the $\mathbf{E}$ ellipsoid.
 
-=======
->>>>>>> 83e54fca6727cdbe68d9348ba92170328e3c3647
 
 
 
