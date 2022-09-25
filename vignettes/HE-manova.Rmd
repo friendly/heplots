@@ -37,6 +37,8 @@ library(candisc)
 library(car)
 ```
 
+# Multivariate Analysis of Variance Designs
+
 This vignette provides some worked examples of the analysis of multivariate linear models 
 (MLMs) for MANOVA designs where all predictors are factors, and the goal is to determine
 how the group means differ on several response variables in relation to the factors

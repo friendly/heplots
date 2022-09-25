@@ -1,0 +1,245 @@
+---
+title: "HE plot MMRA Examples"
+package: heplots
+output: 
+  rmarkdown::html_vignette:
+    fig_caption: yes
+    toc: true
+bibliography: "HE-examples.bib"
+csl: apa.csl
+vignette: >
+  %\VignetteIndexEntry{HE plot MMRA Examples}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  fig.height=5,
+  fig.width=5,
+  # results='hide',
+  # fig.keep='none',
+  fig.path='fig/mmra-',
+  echo=TRUE,
+  collapse = TRUE,
+  comment = "#>"
+  )
+
+```
+
+```{r setup, echo=FALSE}
+set.seed(1071)
+options(width=80, digits=4, continue="  ")
+library(heplots)
+library(candisc)
+library(car)
+library(dplyr)
+```
+
+# Multivariate Multiple Regression Designs
+
+The ideas behind HE plots extend naturally to multivariate multiple
+regression (MMRA) and multivariate analysis of covariance (MANCOVA). 
+In MMRA designs, the $\mathbf{X}$ matrix contains only quantitative predictors, while
+in MANCOVA designs, it contains a mixture of
+factors and quantitative predictors (covariates), but typically there is just
+one "group" factor.
+
+In the MANCOVA case,
+there is often a subtle difference in emphasis:  true MANCOVA analyses focus on
+the differences among groups defined by the factors, adjusting for 
+(or controlling for) the quantitative covariates. Analyses concerned
+with \emph{homogeneity of regression} focus on quantitative predictors
+and attempt to test whether the regression relations are the same for
+all groups defined by the factors.
+
+## Rohwer data
+
+To illustrate the homogeneity of regression flavor,
+we use data
+from a study by Rohwer (given in @Timm:75, Ex. 4.3, 4.7, and 4.23)
+on kindergarten children, designed to determine how well a set of
+paired-associate (PA) tasks predicted performance on the Peabody Picture
+Vocabulary test (`PPVT`), a student achievement test (`SAT`),
+and the Raven Progressive matrices test (`Raven`). The PA tasks
+varied in how the stimuli were presented, and are called *named* (`n`), *still* (`s`), *named still* (`ns`), 
+*named action* (`na`), and *sentence still* (`ss`).
+
+Two groups were tested: a group of $n=37$ children from a low socioeconomic
+status (SES) school, and a group of $n=32$ high SES children from an
+upper-class, white residential school. The data are in the data frame 
+`Rohwer` in the `heplots` package:
+```{r, rohwer-some}
+data(Rohwer)
+Rohwer |> dplyr::sample_n(6)
+```
+
+### Separate models
+
+As one approach, we might be tempted to fit separate regression models for each
+of the High and Low SES groups.  This approach is *not* recommended because it
+lacks power and does not allow hypotheses about equality of slopes and intercepts
+to be tested directly.
+
+```{r, rohwer-separate}
+rohwer.ses1 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Hi")
+Anova(rohwer.ses1)
+
+rohwer.ses2 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, subset=SES=="Lo")
+Anova(rohwer.ses2)
+```
+
+This fits separate slopes and intercepts for each of the two groups, but it is difficult
+to compare the coefficients numerically.
+```{r, rohwer-coef}
+coef(rohwer.ses1)
+coef(rohwer.ses2)
+```
+
+The function `heplots::coefplot()` makes this a bit easier, by plotting bivariate confidence ellipses for the
+coefficients in a multivariate linear model. In this problem, with three response variables,
+the 95% confidence regions are 3D ellipsoids, but we only plot them in 2D.
+The 3D versions have the property that a given predictor is significant by a multivariate test if
+the ellipsoid excludes the point (0, 0, 0).
+
+
+```{r rohwer-coefplot}
+#| echo=-1,
+#| out.width="47%",
+#| out.height="50%",
+#| fig.show="hold",
+#| collapse=FALSE,
+#| fig.cap="Coefficient plots for the separate models for the High and Low SES groups in the Rohwer data"
+par(mar=c(4,4,1,1)+.1)
+coefplot(rohwer.ses1, fill=TRUE, cex.label=1.5, cex.lab=1.5)
+text(-10, 3, "High SES group", pos=4, cex=1.4)
+
+coefplot(rohwer.ses2, fill=TRUE, cex.label=1.5, cex.lab=1.5)
+text(-4.7, 2.5, "Low SES group", pos=4, cex=1.4)
+```
+
+Moreover, we can visualize the results of the multivariate tests for the predictors
+with HE plots. Here we make use of the fact
+that several HE plots can be overlaid using the option `add=TRUE`
+as shown in \@ref(fig:rohwer-HE1).
+
+```{r, rohwer-HE1}
+#| echo=-1,
+#| out.width="60%",
+#| fig.cap="HE plot for `SAT` and `PPVT`, showing the effects for the PA predictors	for the High and Low SES groups separately"
+par(mar=c(4,4,1,1)+.1)
+heplot(rohwer.ses1, 
+       ylim=c(40,110),                        # allow more room for 2nd plot
+       col=c("red", "black"), 
+       fill = TRUE, fill.alpha = 0.1,
+       lwd=2, cex=1.2)
+heplot(rohwer.ses2, 
+       add=TRUE, 
+       col=c("brown", "black"), 
+       grand.mean=TRUE, error.ellipse=TRUE,   # not shown by default when add=TRUE
+       fill = TRUE, fill.alpha = 0.1,
+       lwd=2, cex=1.2)
+# label the groups at their centroid
+means <- aggregate(cbind(SAT,PPVT)~SES, data=Rohwer,  mean)
+text(means[,2], means[,3], labels=means[,1], pos=3, cex=2, col="black")
+```
+
+We can readily see the difference in means for the two SES groups (High greater on both variables)
+and it also appears that the slopes of the predictor ellipses are shallower for the High
+than the Low group, indicating greater relation with the `SAT` score. 
+
+### MANCOVA model
+
+Alternatively (and optimistically), we can fit a MANCOVA model 
+that allows different means for the two SES groups on the responses, but constrains the
+slopes for the PA covariates to be equal.
+
+```{r, rohwer-mod}
+# MANCOVA, assuming equal slopes
+rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, 
+                 data=Rohwer)
+Anova(rohwer.mod)
+```
+
+Note that, although the
+multivariate tests for two of the covariates (`ns` and `na`)
+are highly significant, univariate multiple regression tests for the
+separate responses [from `summary(rohwer.mod)`] are relatively weak.
+
+We can also test the global 5 df hypothesis, $\mathbf{B}=\mathbf{0}$, 
+that *all* covariates have null effects
+for all responses as a linear hypothesis. 
+First, extract the names
+of the PA tests predictors from the model.
+`car::linearHypothesis()` takes a vector of the names coefficients to be tested simultaneously.
+
+```{r, rohwer-cov-names}
+covariates  <- c("n", "s", "ns", "na", "ss")
+# or: covariates <- rownames(coef(rohwer.mod))[-(1:2)]
+```
+
+
+```{r, rohwer-mod-test}
+Regr <- linearHypothesis(rohwer.mod, covariates)
+print(Regr, digits=4, SSP=FALSE)
+```
+
+Then 2D views of the
+additive MANCOVA model `rohwer.mod` and the overall test for all covariates
+are produced as follows, giving the plots in \@ref(fig:rohwer-HE2).
+
+```{r, rohwer-HE2}
+#| echo=-1,
+#| out.width="47%",
+#| out.height="50%",
+#| fig.show="hold",
+#| collapse=FALSE,
+#| fig.cap="HE plot for `SAT` and `PPVT` (left) and for	`SAT` and `Raven` (right) using the MANCOVA model. The ellipses labeled 'Regr' show the test of the overall model, including all predictors."
+par(mar=c(4,4,3,1)+.1)
+
+colors <- c("red", "blue", rep("black",5), "#969696")
+heplot(rohwer.mod, 
+      col=colors,
+      hypotheses=list("Regr" = covariates),
+      cex=1.5, lwd=c(2, rep(3,5), 4),
+      main="(SAT, PPVT) in Rohwer MANCOVA model")
+
+heplot(rohwer.mod, 
+      col=colors,  variables=c(1,3),
+      hypotheses=list("Regr" = covariates),
+      cex=1.5, lwd=c(2, rep(3,5), 4),
+      main="(SAT, Raven) in Rohwer MANCOVA model")
+```
+
+
+The positive orientation of the `Regr` ellipses shows that the predicted
+values for all three responses are positively correlated (more so for
+`SAT` and `PPVT`). As well, the High SES group
+is higher on all responses than the Low SES group.
+
+Alternatively, all pairwise plots among these responses could be drawn using
+the `pairs.mlm()` function,
+
+```{r, rohwer-HE3}
+pairs(rohwer.mod, col=colors,
+      hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")),
+      cex=1.3, lwd=c(2, rep(3,5), 4))
+```
+
+<!-- or as a 3D plot, using `heplot3d()` as shown in \@ref{fig:rohwer-HE3D}. -->
+<!-- ```{r, rohwer-HE3D, eval=FALSE, tidy=FALSE} -->
+<!-- colors <- c("pink", "blue", rep("black",5), "#969696") -->
+<!-- heplot3d(rohwer.mod, col=colors, -->
+<!-- 	hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss"))) -->
+<!-- ``` -->
+
+<!-- 	\includegraphics[width=.6\textwidth]{rohwer-HE3D} -->
+<!-- \caption{3D HE plot for the MANCOVA model fit to the Rohwer data} -->
+<!--  {#fig:rohwer-HE3D} -->
+
+
+
+
+## References

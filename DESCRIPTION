@@ -39,7 +39,8 @@ Suggests:
     animation,
     mvinfluence,
     knitr,
-    rmarkdown
+    rmarkdown,
+    dplyr
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
