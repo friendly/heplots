@@ -5,6 +5,7 @@
 #' 
 #' @param x An \code{mlm} object created by \code{\link[stats]{lm}}, i.e., with a multivariate response.
 #' @param ... Additional arguments. Not used.
+#' @return A \code{\link[tibble]{tibble}} with one row for each response variable and the columns:
 
 glance.mlm <- function(x, ...) {
 #  warn_on_subclass(x, "glance")
@@ -20,11 +21,12 @@ glance.mlm <- function(x, ...) {
   fstats <- t(as.data.frame(fstats))
   colnames(fstats)[1] <- "fstatistic"
   row.names(fstats) <- NULL
+
   nobs <- nobs(x)
   
   # join results together
   res <- cbind(response, stats, fstats, nobs)
-  res
+  as.tibble(res)
 }
 
 
