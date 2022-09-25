@@ -964,7 +964,7 @@ length of stay in hospital after operation (`los`, in days)
 
 The predictor variables are patient `age`, `sex`,
 physical status (`pstat`, a 1-5 scale, with 1=perfect health, 5=very poor health),
-body build (`build`, a 1-5 scale, with 1=emaciated, \dots, 5=obese),
+body build (`build`, a 1-5 scale, with 1=emaciated, ..., 5=obese),
 and preoperative complications with (`cardiac`) heart and respiration (`resp`).
 
 We begin with a model fitting all predictors. Note that the ordinal predictors,
@@ -999,18 +999,18 @@ Regr <- linearHypothesis(Hern.mod, c("age", "sexm", "pstat", "build", "cardiac",
 print(Regr, digits=5, SSP=FALSE)
 ```
 
-```{r, hern-pairs, include=FALSE, fig.width=7, fig.height=7}
+```{r, hern-pairs}
+#| fig.width=7,
+#| fig.height=7,
+#| fig.cap="HE pairs plot for Hernior data"
 clr <- c("red", "darkgray", "blue", "darkgreen", "magenta", "brown", "black")
-vlab <- c("LeaveCondition\n(leave)", "NursingCare\n(nurse)", "LengthOfStay\n(los)")
+vlab <- c("LeaveCondition\n(leave)", 
+          "NursingCare\n(nurse)", 
+          "LengthOfStay\n(los)")
+
 hyp <- list("Regr" = c("age", "sexm", "pstat", "build", "cardiac", "resp"))
 pairs(Hern.mod, hypotheses=hyp, col=clr, var.labels=vlab)
 ```
-
-[htb]
-
-	\includegraphics[width=.8\textwidth]{fig/plot-hern-pairs}
-\caption{HE pairs plot for Hernior data}
- {#fig:hern-pairs}
 
 
 
@@ -1025,6 +1025,7 @@ it can be seen that while only `pstat` individually is outside the
 $\mathbf{E}$ ellipse, `build` and `resp` contribute to the overall test in
 an opposite direction.
  
+
 In this multivariate regression example, all of the terms in the model `Hern.mod`
 have 1 df, and so plot as lines in HE plots.  An alternative view of these effects
 can be seen in canonical discriminant space, which, for each predictor shows the
@@ -1035,7 +1036,6 @@ We use `candiscList()` to calculate the canonical analyses for all terms in
 ```{r, hern-can1}
 Hern.canL <- candiscList(Hern.mod)
 ```
-
 1D canonical discriminant plots for all terms can be obtained interactively 
 with a menu, simply by plotting the `Hern.canL` object.
 ```{r, hern.can2, eval=FALSE}

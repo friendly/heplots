@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
   warning = FALSE,
   fig.height=5,
   fig.width=5,
+  fig.align = "center",
   # results='hide',
   # fig.keep='none',
   fig.path='fig/mmra-',
@@ -198,7 +199,6 @@ are produced as follows, giving the plots in \@ref(fig:rohwer-HE2).
 #| collapse=FALSE,
 #| fig.cap="HE plot for `SAT` and `PPVT` (left) and for	`SAT` and `Raven` (right) using the MANCOVA model. The ellipses labeled 'Regr' show the test of the overall model, including all predictors."
 par(mar=c(4,4,3,1)+.1)
-
 colors <- c("red", "blue", rep("black",5), "#969696")
 heplot(rohwer.mod, 
       col=colors,
@@ -228,16 +228,239 @@ pairs(rohwer.mod, col=colors,
       cex=1.3, lwd=c(2, rep(3,5), 4))
 ```
 
-<!-- or as a 3D plot, using `heplot3d()` as shown in \@ref{fig:rohwer-HE3D}. -->
-<!-- ```{r, rohwer-HE3D, eval=FALSE, tidy=FALSE} -->
-<!-- colors <- c("pink", "blue", rep("black",5), "#969696") -->
-<!-- heplot3d(rohwer.mod, col=colors, -->
-<!-- 	hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss"))) -->
-<!-- ``` -->
+or as a 3D plot, using `heplot3d()` as shown in \@ref{fig:rohwer-HE3D}.
+```{r, rohwer-HE3D-code, eval=FALSE}
+colors <- c("pink", "blue", rep("black",5), "#969696")
+heplot3d(rohwer.mod, col=colors,
+	hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
+```
+```{r rohwer-HE3D}
+#| echo=FALSE,
+#| out.width="60%",
+#| fig.cap="3D HE plot for the MANCOVA model fit to the Rohwer data."
+knitr::include_graphics("fig/mmra-rohwer-HE3D.png")
+```
 
-<!-- 	\includegraphics[width=.6\textwidth]{rohwer-HE3D} -->
-<!-- \caption{3D HE plot for the MANCOVA model fit to the Rohwer data} -->
-<!--  {#fig:rohwer-HE3D} -->
+### Testing homogeneity of regression
+
+The MANCOVA model, `rohwer.mod`, has relatively simple interpretations
+(large effect of `SES`, with `ns` and `na` as the major predictors)
+but the test of relies on the assumption of homogeneity of slopes for the predictors.
+We can test this assumption as follows, adding interactions of `SES`
+with each of the covariates:
+
+```{r, rohwer-mod2}
+rohwer.mod2 <- lm(cbind(SAT, PPVT, Raven) ~ SES * (n + s + ns + na + ss),
+                  data=Rohwer)
+Anova(rohwer.mod2)
+```
+It appears from the above that there is only weak evidence of unequal slopes
+from the separate `SES:` terms. The evidence for heterogeneity is
+stronger, however, when these terms are tested collectively using the 
+`linearHypothesis()` function:
+
+```{r, rohwer-mod2-test}
+(coefs <- rownames(coef(rohwer.mod2)))
+print(linearHypothesis(rohwer.mod2, coefs[grep(":", coefs)]), SSP=FALSE)
+```
+
+This model (`rohwer.mod2`) is similar in spirit to the two models
+(`rohwer.ses1` and `rohwer.ses2`)
+fit for the two SES groups separately and show in \@ref{fig:rohwer-HE1},
+except that model `rohwer.mod2` assumes a common within-groups error covariance matrix
+and allows overall tests.
+
+To illustrate model `rohwer.mod2`, we construct an HE plot for
+`SAT` and `PPVT` shown in \@ref{fig:rohwer-HE4}. 
+To simplify this display, we show the hypothesis ellipses\
+for the overall effects of the PA tests in the baseline high-SES group, and
+a single combined ellipse for all the `SESLo:` interaction terms that
+we tested previously, representing differences in slopes between the low and
+high-SES groups. 
+
+Because SES is "treatment-coded" in this model, the ellipse for each
+covariate represents the hypothesis that the slopes for that covariate are
+zero in the high-SES baseline category.  With this parameterization, the ellipse for
+`Slopes` represents the joint hypothesis that slopes for the covariates do not differ
+in the low-SES group. 
+
+```{r, rohwer-HE4}
+#| echo=-1,
+#| out.width="60%",
+#| fig.cap="HE plot for `SAT` and `PPVT`, fitting the model `rohwer.mod2`	that allows unequal slopes for the covariates."
+par(mar=c(4,4,3,1)+.1)
+colors <- c("red", "blue", rep("black",5), "#969696")
+heplot(rohwer.mod2, col=c(colors, "brown"), 
+      terms=c("SES", "n", "s", "ns", "na", "ss"), 
+      hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss"),
+                      "Slopes" = coefs[grep(":", coefs)]))
+```
+
+Comparing \@ref{fig:rohwer-HE4} for the heterogeneous slopes model
+with \@ref{fig:rohwer-HE2} (left) for the homogeneous slopes model,
+it can be seen that most of the covariates have ellipses of similar
+size and orientation, reflecting similar evidence against the respective
+null hypotheses, as does the effect of `SES`, showing the
+greater performance of the high-SES group on all response measures.
+Somewhat more subtle, the error ellipse is noticeably smaller in
+\@ref{fig:rohwer-HE4}, reflecting the additional variation accounted
+for by differences in slopes.
+
+## Recovery from hernia repair
+
+This example uses the `Hernior` data (from @MostellerTukey:1977, Data Exhibit 8, p. 567-568),
+comprising
+data on measures of post-operative recovery of 32 patients undergoing an
+elective herniorrhaphy operation, in relation to pre-operative measures.
+
+The outcome measures are:
+
+* the patient's condition upon leaving the recovery room (`leave`, a 1-4 scale, 1=best),
+* level of nursing required one week after operation (`nurse`, a 1-5 scale, 1=worst) and 
+* length of stay in hospital after operation (`los`, in days)
+
+The predictor variables are: 
+
+* patient `age`, `sex`,
+* physical status (`pstat`, a 1-5 scale, with 1=perfect health, 5=very poor health),
+* body build (`build`, a 1-5 scale, with 1=emaciated, ..., 5=obese), and
+* preoperative complications with (`cardiac`) heart and respiration (`resp`), 1-4 scales, 1=none, ..., 4=severe.
+<!-- The ordinal predictors could be treated as factors, but we use them here as numeric variables. -->
+
+```{r hern-str}
+data(Hernior)
+str(Hernior)
+```
+
+
+We begin with a model fitting all predictors. Note that the ordinal predictors,
+`pstat`, `build`, `cardiac` and `resp` could arguably be treated as
+factors, rather than linear, regression terms.  We ignore this possibility in this example.
+
+```{r, hern1}
+Hern.mod <- lm(cbind(leave, nurse, los) ~ age + sex +  pstat +  build + cardiac + resp, 
+               data=Hernior)
+Anova(Hern.mod) 
+```
+The results of the multivariate tests above are somewhat disappointing.  Only the physical status
+predictor (`pstat`) appears to be significant at conventional levels.
+
+The univariate models for each response are implicit in the MLM `Hern.mod`.
+These can be printed using `summary()`, or we can use `summary()` to extract
+certain statistics for each univariate response model, as we do here.
+
+```{r, hern.rsq}
+Hern.summary <- summary(Hern.mod)
+unlist(lapply(Hern.summary, function(x) x$r.squared))
+```
+
+The univariate tests for predictors in each of these models (not shown here)
+are hard to interpret, and largely show only significant effects for 
+the `leave` variable.  Yet, the $R^2$ values for the other responses
+are slightly promising.  We proceed to an overall test of $\mathbf{B} = 0$
+for all predictors.
+
+```{r, hern2}
+# test overall regression
+Regr <- linearHypothesis(Hern.mod, c("age", "sexm", "pstat", "build", "cardiac", "resp"))
+print(Regr, digits=5, SSP=FALSE)
+```
+
+```{r, hern-pairs}
+#| fig.width=7,
+#| fig.height=7,
+#| fig.cap="HE pairs plot for Hernior data"
+clr <- c("red", "darkgray", "blue", "darkgreen", "magenta", "brown", "black")
+vlab <- c("LeaveCondition\n(leave)", 
+          "NursingCare\n(nurse)", 
+          "LengthOfStay\n(los)")
+
+hyp <- list("Regr" = c("age", "sexm", "pstat", "build", "cardiac", "resp"))
+pairs(Hern.mod, 
+      hypotheses=hyp, 
+      col=clr, var.labels=vlab, 
+      fill=c(TRUE,FALSE), fill.alpha = 0.1, 
+      cex=1.25)
+```
+
+
+A `pairs()` plot for the MLM gives the set of plots shown in \@ref{fig:hern-pairs}
+helps to interpret the relations among the predictors which lead to the highly significant
+overall test.
+Among the predictors, age and sex have small and insignificant effects on the outcome measures
+jointly.  The other predictors all contribute to the overall test of $\mathbf{B} = 0$,
+though in different ways for the various responses.
+For example, in the panel for (`leave`, `los`) in  \@ref{fig:hern-pairs},
+it can be seen that while only `pstat` individually is outside the 
+$\mathbf{E}$ ellipse, `build` and `resp` contribute to the overall test in
+an opposite direction.
+
+### Canonical analysis
+
+In this multivariate regression example, all of the terms in the model `Hern.mod`
+have 1 df, and so plot as lines in HE plots.  An alternative view of these effects
+can be seen in canonical discriminant space, which, for each predictor shows the
+scores on the linear combination of the responses that contributes most to 
+the multivariate test of that effect, together with the weights for the responses.
+
+We use `candiscList()` to calculate the canonical analyses for all predictor terms in
+`Hern.mod`.
+```{r, hern-canL}
+Hern.canL <- candiscList(Hern.mod)
+```
+
+1D canonical discriminant plots for all terms can be obtained interactively 
+with a menu, simply by plotting the `Hern.canL` object.
+```{r, hern.can2, eval=FALSE}
+plot(Hern.canL)
+```
+Plots for separate terms are produced by the lines below, and shown in 
+\@ref(fig:hern-can1) and \@ref(fig:hern-can2).
+
+For `pstat` and `build`:
+
+```{r, hern-can1}
+#| out.width="47%",
+#| out.height="50%",
+#| fig.show="hold",
+#| collapse=FALSE,
+#| fig.cap="1D Canonical discriminant plots for physical status (`pstat`) and `build`. The canonical scores are such that better outcomes are associated with smaller scores."
+plot(Hern.canL, term="pstat")
+plot(Hern.canL, term="build")
+```
+
+For `age` and `cardiac`:
+
+```{r, hern-can1}
+#| out.width="47%",
+#| out.height="50%",
+#| fig.show="hold",
+#| collapse=FALSE,
+#| fig.cap="1D Canonical discriminant plots for `age` and `cardiac`. The canonical scores are such that better outcomes are associated with smaller scores."
+plot(Hern.canL, term="age")
+plot(Hern.canL, term="cardiac")
+```
+
+In these plots, the canonical scores panel shows
+the linear combinations of the
+response variables which have the largest possible $R^2$.
+Better outcomes correspond to numerically smaller canonical scores.
+The arrows in the structure panel are proportional to
+the canonical weights.
+
+These plots provide simple interpretations of the results for the
+canonical combinations of the responses.
+Better physical status, smaller body build, lower age and absence
+of cardiac complications are all positively related to better outcomes.
+
+## Grades in a Sociology Course
+
+The data set `SocGrades` contains four outcome measures on student performance
+in an introductory sociology course together with six potential predictors.
+These data were used by Marascuilo and Levin (1983) for an example of
+canonical correlation analysis, but are also suitable as examples of
+multivariate multiple regression, MANOVA, MANCOVA
+and step-down analysis in multivariate linear models.
 
 
 
