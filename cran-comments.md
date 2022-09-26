@@ -9,7 +9,8 @@ There were no ERRORs or WARNINGS or NOTES.
 ## Reverse dependencies checks
 
 > devtools::revdep()
-[1] "candisc"     "effects"     "HistData"    "latentnet"   "mvinfluence"
+[1] "candisc"      "effects"      "Guerry"       "HistData"     "latentnet"    "MapeBay"      "MorphoTools2"
+[8] "mvinfluence"  "ordr"   
 
 > revdep_check(num_workers = 4)
 *Wow, no problems at all. :)*
