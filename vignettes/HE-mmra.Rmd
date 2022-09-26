@@ -366,7 +366,8 @@ The univariate tests for predictors in each of these models (not shown here)
 are hard to interpret, and largely show only significant effects for 
 the `leave` variable.  Yet, the $R^2$ values for the other responses
 are slightly promising.  We proceed to an overall test of $\mathbf{B} = 0$
-for all predictors.
+for all predictors, whose term names can be easily extracted from the
+rownames of the coefficients.
 
 ```{r, hern2}
 # test overall regression
