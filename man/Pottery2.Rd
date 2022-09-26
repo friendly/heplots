@@ -39,19 +39,24 @@ The variable \code{Kiln} comes pre-supplied with contrasts to test interesting
 hypotheses related to \code{Site} and \code{Region}. 
 }
 \source{
-Slightly modified from files found at:
-\url{http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html}
+Originally slightly modified from files by David Carlson,
+now at \code{\link[archdata]{RBPottery}}.
+% \url{http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html}
 
 }
 \references{
 Baxter, M. J. 2003. \emph{Statistics in Archaeology}. Arnold, London.
+
+Carlson, David L. 2017. \emph{Quantitative Methods in Archaeology Using R}. Cambridge University
+Press, pp 247-255, 335-342.
 
 Tubb, A., A. J. Parker, and G. Nickless. 1980. 
 The Analysis of Romano-British Pottery by Atomic Absorption Spectrophotometry. 
 \emph{Archaeometry}, \bold{22}, 153-171.
 }
 \seealso{
-	\code{\link[carData]{Pottery}} for the related (subset) data set
+	\code{\link[carData]{Pottery}} for the related (subset) data set;
+	\code{\link[archdata]{RBPottery}} for a newer version with more variables.
 }
 \examples{
 data(Pottery2)

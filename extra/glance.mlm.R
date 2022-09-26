@@ -1,7 +1,8 @@
 #' Glance at an mlm object
 #' 
 #' This function takes an "mlm" object, fit by \code{\link[stats](lm)} with a multivariate response.
-#' The goal is to return something analogous to glance for a univariate response linear model.
+#' The goal is to return something analogous to \code{\link[broom](glance.lm)} for a univariate response linear model.
+#' 
 #' In the multivariate case, it returns a \code{\link[tibble](tibble)} with one row for each
 #' response variable, containing goodness of fit measures, F-tests and p-values.
 #' 
@@ -41,8 +42,8 @@ glance.mlm <- function(x, ...) {
   fstats <- t(as.data.frame(fstats))
   colnames(fstats)[1] <- "fstatistic"
   row.names(fstats) <- NULL
+
   # handle intercept-only case
-#browser()
   p.value = if (!int_only) {
     pf(fstats[,"fstatistic"], fstats[,"numdf"], 
        fstats[,"dendf"], lower.tail = FALSE)
@@ -60,28 +61,3 @@ glance.mlm <- function(x, ...) {
   tibble::as_tibble(res)
 }
 
-
-
-if(FALSE) {
-library(purrr)
-
-data(Hernior)
-Hern.mod <- lm(cbind(leave, nurse, los) ~ age + sex +  pstat +  build + cardiac + resp, 
-               data=Hernior)
-#Anova(Hern.mod)
-Hern.summary <- summary(Hern.mod)
-
-# What are the statistics in the summary for each response?
-names(sumry[[1]])
-# [1] "call"          "terms"         "residuals"     "coefficients"  "aliased"       "sigma"         "df"            "r.squared"    
-# [9] "adj.r.squared" "fstatistic"    "cov.unscaled" 
-
-coefficients(Hern.mod)
-
-map(sumry, magrittr::extract, c("r.squared", "sigma"))
-
-map_dfr(sumry, magrittr::extract, c("r.squared", "adj.r.squared", "sigma"))
-
-fstats <- map(sumry, magrittr::extract, c("fstatistic"))
-
-}

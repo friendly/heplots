@@ -25,11 +25,13 @@
 \details{
 
 The epochs correspond to the following periods of Egyptian history:
-1 - the early predynastic period (circa 4000 BC);
-2 - the late predynastic period (circa 3300 BC);
-3 - the 12th and 13th dynasties (circa 1850 BC);
-4 - the Ptolemiac period (circa 200 BC);
-5 - the Roman period (circa 150 AD).
+\enumerate{
+  \item the early predynastic period (circa 4000 BC);
+  \item the late predynastic period (circa 3300 BC);
+  \item the 12th and 13th dynasties (circa 1850 BC);
+  \item the Ptolemiac period (circa 200 BC);
+  \item the Roman period (circa 150 AD).
+}
 
   The question is whether the measurements change over time.
   Non-constant measurements of the skulls over time would indicate
@@ -40,9 +42,8 @@ The epochs correspond to the following periods of Egyptian history:
 }
 \source{
 
-
-  D. J. Hand, F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski (1994).
-  \emph{A Handbook of Small Datasets}, Chapman and Hall/CRC, London.
+D. J. Hand, F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski (1994).
+\emph{A Handbook of Small Datasets}, Chapman and Hall/CRC, London.
 
 }
 
@@ -60,7 +61,8 @@ Hand, D. J.,  F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski (1994).
 data(Skulls)
 # make shorter labels for epochs
 Skulls$epoch <- factor(Skulls$epoch, labels=sub("c","",levels(Skulls$epoch)))
-# variable labels
+
+# longer variable labels
 vlab <- c("maxBreadth", "basibHeight", "basialLength", "nasalHeight")
 
 # fit manova model
