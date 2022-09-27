@@ -118,7 +118,9 @@ Rohwer_long <- Rohwer %>%
   tidyr::pivot_longer(cols = all_of(xvars), 
                       names_to = "xvar", values_to = "x") |>
   tidyr::pivot_longer(cols = all_of(yvars), 
-                      names_to = "yvar", values_to = "y")
+                      names_to = "yvar", values_to = "y") |>
+  dplyr::mutate(xvar = factor(xvar, levels = xvars),
+                yvar = factor(yvar, levels = yvars))
 Rohwer_long
 ```
 
