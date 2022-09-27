@@ -37,6 +37,9 @@ library(candisc)
 library(car)
 ```
 
+Vignette built using `heplots`, version `r packageDescription("heplots")[["Version"]]`
+and `candisc`, version `r packageDescription("candisc")[["Version"]]`.
+
 # Multivariate Analysis of Variance Designs
 
 This vignette provides some worked examples of the analysis of multivariate linear models 
@@ -473,10 +476,6 @@ would indicate interbreeding with immigrant populations.
 #| fig.cap='Diagram of the skull measurements. Maximal breadth and basibregmatic height are the basic measures of "size" of a skull.  Basialveolar length and nasal height are important anthropometric measures of "shape".'
 knitr::include_graphics("fig/skulls.jpg")
 ```
-
-<!-- 	\includegraphics[width=.6\textwidth]{skulls} -->
-<!-- \caption{Diagram of the skull measurements. Maximal breadth and basibregmatic height are the basic measures of "size" of a skull.  Basialveolar length and nasal height are important anthropometric measures of "shape".} -->
-<!--  {#fig:skulls} -->
 
 
 ```{r, skulls1}

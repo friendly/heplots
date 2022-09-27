@@ -42,6 +42,9 @@ library(ggplot2)
 
 ```
 
+Vignette built using `heplots`, version `r packageDescription("heplots")[["Version"]]`
+and `candisc`, version `r packageDescription("candisc")[["Version"]]`.
+
 # Multivariate Multiple Regression Designs
 
 The ideas behind HE plots extend naturally to multivariate multiple

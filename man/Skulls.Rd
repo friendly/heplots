@@ -59,6 +59,8 @@ Hand, D. J.,  F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski (1994).
 
 \examples{
 data(Skulls)
+library(car)    # for Anova
+
 # make shorter labels for epochs
 Skulls$epoch <- factor(Skulls$epoch, labels=sub("c","",levels(Skulls$epoch)))
 
@@ -68,23 +70,35 @@ vlab <- c("maxBreadth", "basibHeight", "basialLength", "nasalHeight")
 # fit manova model
 sk.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 
-Manova(sk.mod)
-summary(Manova(sk.mod))
+Anova(sk.mod)
+summary(Anova(sk.mod))
 
 # test trends over epochs
-linearHypothesis(sk.mod, "epoch.L") # linear component
-linearHypothesis(sk.mod, "epoch.Q") # quadratic component
+print(linearHypothesis(sk.mod, "epoch.L"), SSP=FALSE) # linear component
+print(linearHypothesis(sk.mod, "epoch.Q"), SSP=FALSE) # quadratic component
 
 # typical scatterplots are not very informative
 scatterplot(mb ~ bh|epoch, data=Skulls, 
-            ellipse=TRUE, levels=0.68, smooth=FALSE, legend.coords="topright")
+            ellipse = list(levels=0.68), 
+            smooth=FALSE, 
+            legend = list(coords="topright"),
+            xlab=vlab[2], ylab=vlab[1])
+
 scatterplot(mb ~ bl|epoch, data=Skulls, 
-            ellipse=TRUE, levels=0.68, smooth=FALSE, legend.coords="topright")
+            ellipse = list(levels=0.68), 
+            smooth=FALSE, 
+            legend = list(coords="topright"),
+            xlab=vlab[3], ylab=vlab[1])
 
 # HE plots
 
-heplot(sk.mod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q"), xlab=vlab[1], ylab=vlab[2])
-pairs(sk.mod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q"), var.labels=vlab)
+heplot(sk.mod, 
+       hypotheses=list(Lin="epoch.L", Quad="epoch.Q"), 
+       xlab=vlab[1], ylab=vlab[2])
+
+pairs(sk.mod, 
+      hypotheses=list(Lin="epoch.L", Quad="epoch.Q"), 
+      var.labels=vlab)
 
 # 3D plot shows that nearly all of hypothesis variation is linear!
 \dontrun{
