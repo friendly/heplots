@@ -1,0 +1,86 @@
+
+R version 4.2.1 (2022-06-23 ucrt) -- "Funny-Looking Kid"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #  File tests/nomcmc.R in package latentnet, part of the
+> #  Statnet suite of packages for network analysis, https://statnet.org .
+> #
+> #  This software is distributed under the GPL-3 license.  It is free,
+> #  open source, and has the attribution requirements (GPL Section 7) at
+> #  https://statnet.org/attribution .
+> #
+> #  Copyright 2003-2022 Statnet Commons
+> ################################################################################
+> library(latentnet)
+Loading required package: network
+
+'network' 1.17.2 (2022-05-20), part of the Statnet Project
+* 'news(package="network")' for changes since last version
+* 'citation("network")' for citation information
+* 'https://statnet.org' for help, support, and other information
+
+Loading required package: ergm
+
+'ergm' 4.2.2 (2022-06-01), part of the Statnet Project
+* 'news(package="ergm")' for changes since last version
+* 'citation("ergm")' for citation information
+* 'https://statnet.org' for help, support, and other information
+
+'ergm' 4 is a major update that introduces some backwards-incompatible
+changes. Please type 'news(package="ergm")' for a list of major
+changes.
+
+
+'latentnet' 2.10.6 (2022-05-11), part of the Statnet Project
+* 'news(package="latentnet")' for changes since last version
+* 'citation("latentnet")' for citation information
+* 'https://statnet.org' for help, support, and other information
+NOTE: BIC calculation prior to latentnet 2.7.0 had a bug in the calculation of the effective number of parameters. See help(summary.ergmm) for details.
+NOTE: Prior to version 2.8.0, handling of fixed effects for directed networks had a bug. See help("ergmm-terms") for details.
+> 
+> data(sampson)
+> 
+> mleonly<-ergmm(samplike~euclidean(d=2),tofit="mle")
+> 
+> # Should skip MCMC.
+> if(!is.null(mleonly$sample)) stop("MCMC should not be run for MLE!")
+> 
+> # Should give an informative error message.
+> print(try(plot(mleonly)))
+Error in summary.ergmm(x, point.est = c("pmean", "mkl"), bic.eff.obs = NULL) : 
+  MCMC was not was not run for this fit.
+[1] "Error in summary.ergmm(x, point.est = c(\"pmean\", \"mkl\"), bic.eff.obs = NULL) : \n  MCMC was not was not run for this fit.\n"
+attr(,"class")
+[1] "try-error"
+attr(,"condition")
+<simpleError in summary.ergmm(x, point.est = c("pmean", "mkl"), bic.eff.obs = NULL): MCMC was not was not run for this fit.>
+> 
+> # Should plot OK.
+> plot(mleonly,what="mle")
+> 
+> # Should give an informative error message.
+> print(try(mcmc.diagnostics(mleonly)))
+Error in mcmc.diagnostics.ergmm(mleonly) : 
+  MCMC was not run for this ERGMM fit.
+[1] "Error in mcmc.diagnostics.ergmm(mleonly) : \n  MCMC was not run for this ERGMM fit.\n"
+attr(,"class")
+[1] "try-error"
+attr(,"condition")
+<simpleError in mcmc.diagnostics.ergmm(mleonly): MCMC was not run for this ERGMM fit.>
+> 
+> proc.time()
+   user  system elapsed 
+   4.72    0.37    5.36 

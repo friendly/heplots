@@ -1,0 +1,167 @@
+
+R version 4.2.1 (2022-06-23 ucrt) -- "Funny-Looking Kid"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #  File tests/nolatent.R in package latentnet, part of the
+> #  Statnet suite of packages for network analysis, https://statnet.org .
+> #
+> #  This software is distributed under the GPL-3 license.  It is free,
+> #  open source, and has the attribution requirements (GPL Section 7) at
+> #  https://statnet.org/attribution .
+> #
+> #  Copyright 2003-2022 Statnet Commons
+> ################################################################################
+> library(latentnet)
+Loading required package: network
+
+'network' 1.17.2 (2022-05-20), part of the Statnet Project
+* 'news(package="network")' for changes since last version
+* 'citation("network")' for citation information
+* 'https://statnet.org' for help, support, and other information
+
+Loading required package: ergm
+
+'ergm' 4.2.2 (2022-06-01), part of the Statnet Project
+* 'news(package="ergm")' for changes since last version
+* 'citation("ergm")' for citation information
+* 'https://statnet.org' for help, support, and other information
+
+'ergm' 4 is a major update that introduces some backwards-incompatible
+changes. Please type 'news(package="ergm")' for a list of major
+changes.
+
+
+'latentnet' 2.10.6 (2022-05-11), part of the Statnet Project
+* 'news(package="latentnet")' for changes since last version
+* 'citation("latentnet")' for citation information
+* 'https://statnet.org' for help, support, and other information
+NOTE: BIC calculation prior to latentnet 2.7.0 had a bug in the calculation of the effective number of parameters. See help(summary.ergmm) for details.
+NOTE: Prior to version 2.8.0, handling of fixed effects for directed networks had a bug. See help("ergmm-terms") for details.
+> library(statnet.common)
+
+Attaching package: 'statnet.common'
+
+The following objects are masked from 'package:base':
+
+    attr, order
+
+> 
+> data(sampson)
+> 
+> monks.nmr<-ergmm(samplike~nodematch("group")+rreceiver)
+> mcmc.diagnostics(monks.nmr)
+Chain 1 
+Lag 0 
+                  lpY     beta.1     beta.2 receiver.1
+lpY         1.0000000 -0.1116765  0.1638976  0.3847256
+beta.1     -0.1116765  1.0000000 -0.5415361 -0.4297907
+beta.2      0.1638976 -0.5415361  1.0000000  0.2507829
+receiver.1  0.3847256 -0.4297907  0.2507829  1.0000000
+
+Lag 10 
+                   lpY     beta.1     beta.2  receiver.1
+lpY         0.13514382 -0.1019472  0.1245641  0.09833305
+beta.1     -0.06841571  0.3844354 -0.2383768 -0.22722316
+beta.2      0.12170448 -0.2357129  0.3757446  0.17808181
+receiver.1  0.10565819 -0.2303665  0.1889260  0.21120548
+
+[[1]]
+
+Quantile (q) = 0.025
+Accuracy (r) = +/- 0.0125
+Probability (s) = 0.95 
+                                                  
+            Burn-in  Total Lower bound  Dependence
+            (M)      (N)   (Nmin)       factor (I)
+ lpY        20       6080  600          10.1      
+ beta.1     50       9240  600          15.4      
+ beta.2     50       9860  600          16.4      
+ receiver.1 30       6480  600          10.8      
+
+
+> 
+> print(summary(monks.nmr))
+NOTE: It is not certain whether it is appropriate to use latentnet's BIC to select latent space dimension, whether or not to include actor-specific random effects, and to compare clustered models with the unclustered model.
+
+==========================
+Summary of model fit
+==========================
+
+Formula:   samplike ~ nodematch("group") + rreceiver
+Attribute: edges
+Model:     Bernoulli 
+MCMC sample of size 4000, draws are 10 iterations apart, after burnin of 10000 iterations.
+Covariate coefficients posterior means:
+                Estimate    2.5%   97.5% 2*min(Pr(>0),Pr(<0))    
+(Intercept)      -2.2745 -2.9584 -1.6268            < 2.2e-16 ***
+nodematch.group   3.0539  2.3649  3.7874            < 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Receiver effect variance: 1.013389.
+Overall BIC:        289.7536 
+Likelihood BIC:     245.6651 
+Receiver effect BIC:     44.08846 
+
+Covariate coefficients MKL:
+                 Estimate
+(Intercept)     -1.811697
+nodematch.group  2.863050
+
+
+> # Should produce a meaningful error message.
+> print(try(plot(monks.nmr)))
+Error in plot.ergmm(monks.nmr) : 
+  Plotting non-latent-space models is not available.
+[1] "Error in plot.ergmm(monks.nmr) : \n  Plotting non-latent-space models is not available.\n"
+attr(,"class")
+[1] "try-error"
+attr(,"condition")
+<simpleError in plot.ergmm(monks.nmr): Plotting non-latent-space models is not available.>
+> 
+> opttest({
++   
++ monks.dnmr<-ergmm(samplike~nodematch("group",diff=TRUE)+rreceiver)
++ mcmc.diagnostics(monks.dnmr)
++ print(summary(monks.dnmr))
++ 
++ monks.dnmr2<-ergmm(samplike~nodematch("group",diff=TRUE)+rreceiver,prior=monks.dnmr$prior)
++ if(!all.equal(monks.dnmr2$prior,monks.dnmr$prior)) stop("Prior specification problem!")
++ 
++ monks.nm<-ergmm(samplike~nodematch("group"))
++ mcmc.diagnostics(monks.nm)
++ print(summary(monks.nm))
++ 
++ monks.dnm<-ergmm(samplike~nodematch("group",diff=TRUE))
++ mcmc.diagnostics(monks.dnm)
++ print(summary(monks.dnm))
++ 
++ # tests importing of ergm terms with local variable as inputs
++ set.seed(1)
++ nw <- samplike
++ n <- network.size(samplike)
++ covar <- matrix(rbinom(n^2, 1, 0.2), nrow=n)
++ covar.nw <- network(covar)
++ test3 <- ergmm(nw ~ euclidean(d = 2) + edgecov(covar)) 
++ test4 <- ergmm(nw ~ euclidean(d = 2) + edgecov(covar.nw)) 
++ 
++ 
++ }, "Some non-latent-space")
+Some non-latent-space test(s) skipped. Set ENABLE_statnet_TESTS environment variable to run.
+> 
+> proc.time()
+   user  system elapsed 
+   6.52    0.42    7.20 

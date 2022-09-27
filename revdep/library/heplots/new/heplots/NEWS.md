@@ -4,7 +4,6 @@
 * Added `cex.label` arg to `heplot3d()`
 * Convert old Rnw vignettes to Rmd
 * Fix documentation infelicities
-* Added TIPI data
 
 ## Version 1.3-9 (2021-10-06)
 
