@@ -23,6 +23,7 @@ map_dfr(sumry, magrittr::extract, c("r.squared", "adj.r.squared", "sigma"))
 fstats <- map(sumry, magrittr::extract, c("fstatistic"))
 
 ## test
+library(broom)
 source(here::here("extra", "glance.mlm.R"))
 iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
 glance(iris.mod)

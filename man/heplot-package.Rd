@@ -31,8 +31,8 @@ Several tutorial vignettes are also included.  See \code{vignette(package="heplo
 \tabular{ll}{
 Package: \tab heplots\cr
 Type: \tab Package\cr
-Version: \tab 1.3-9\cr
-Date: \tab 2021-10-06\cr
+Version: \tab 1.4-0\cr
+Date: \tab 2022-09-26\cr
 License: \tab GPL (>= 2), GPL version 2 or newer\cr
 }
 

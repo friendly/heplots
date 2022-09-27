@@ -24,7 +24,11 @@ Imports:
     graphics,
     grDevices,
     stats,
-    utils
+    utils,
+    broom,
+    magrittr,
+    purrr,
+    tibble
 Suggests:
     rgl,
     candisc,
@@ -39,7 +43,9 @@ Suggests:
     mvinfluence,
     knitr,
     rmarkdown,
-    dplyr
+    dplyr,
+    tidyr,
+    ggplot2
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues

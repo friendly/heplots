@@ -5,6 +5,7 @@
 * Convert old Rnw vignettes to Rmd
 * Fix documentation infelicities
 * Added TIPI data
+* Added `glance.mlm()` as an extension of `broom::glance.lm()`
 
 ## Version 1.3-9 (2021-10-06)
 
