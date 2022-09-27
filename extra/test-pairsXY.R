@@ -23,15 +23,20 @@ par(op)
 
 # answer from SO: https://stackoverflow.com/questions/73859139/how-to-make-a-scatterplot-rectangular-matrix-y1-y2-x1-x2-in-r
 library(tidyr)
-;ibrary(dplyr)
+library(dplyr)
 library(ggplot2)
 
+yvars <- c("SAT", "PPVT", "Raven" )      # outcome variables
+xvars <- c("n", "s", "ns", "na", "ss")   # predictors
+xvars <- c("n", "s", "ns")               # make a smaller example
+
 Rohwer_long <- Rohwer %>%
-  dplyr::select(-na, -ss) |>
-  pivot_longer(cols = all_of(xvars), 
-               names_to = "xvar", values_to = "x") |>
-  pivot_longer(cols = all_of(yvars), 
-               names_to = "yvar", values_to = "y")
+  dplyr::select(-group, -na, -ss) |>
+  tidyr::pivot_longer(cols = all_of(xvars), 
+                      names_to = "xvar", values_to = "x") |>
+  tidyr::pivot_longer(cols = all_of(yvars), 
+                      names_to = "yvar", values_to = "y")
+Rohwer_long
 
 ggplot(Rohwer_long, aes(x, y, color = SES, shape = SES)) +
   geom_jitter(size=1.5) +

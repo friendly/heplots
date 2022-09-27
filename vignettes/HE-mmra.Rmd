@@ -37,6 +37,9 @@ library(heplots)
 library(candisc)
 library(car)
 library(dplyr)
+library(tidyr)
+library(ggplot2)
+
 ```
 
 # Multivariate Multiple Regression Designs
@@ -76,6 +79,68 @@ upper-class, white residential school. The data are in the data frame
 data(Rohwer)
 Rohwer |> dplyr::sample_n(6)
 ```
+
+### Preliminary plots
+
+Before fitting models, it is usually useful to do some data exploration and graphing.
+With multivariate multiple regression data, among the most helpful plots are scatterplots
+of each response variable, Y, against each predictor, X, and we can get a better sense of
+the relationships by adding linear regression lines, loess smooths or other enhancements.
+
+A scatterplot matrix, using `graphics::pairs()` or `GGally::ggpairs()` is easy to do.
+However, with 3 response variables, 4 predictors and a group factor (`SES`), this can
+be overwhelming. An alternative is to compose a rectangular matrix of plots for 
+only the Y variables against the Xs.
+
+This turned out to be not as easy as it might seem, because none of the `pairs()` methods
+allow for this possibility.  The trick is to reshape the data from wide to long format
+and use facets in `ggplot2` to compose the pairwise scatterplots into the desired 
+rectangular matrix format.[^1]
+
+[^1]: This solution was suggested in an answer to a Stackoverflow question, https://stackoverflow.com/questions/73859139/how-to-make-a-scatterplot-rectangular-matrix-y1-y2-x1-x2-in-r
+
+<!-- TODO: retain original variable order -->
+
+```{r rohwer-long}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+
+yvars <- c("SAT", "PPVT", "Raven" )      # outcome variables
+xvars <- c("n", "s", "ns", "na", "ss")   # predictors
+xvars <- c("n", "s", "ns")               # make a smaller example
+
+Rohwer_long <- Rohwer %>%
+  dplyr::select(-group, -na, -ss) |>
+  tidyr::pivot_longer(cols = all_of(xvars), 
+                      names_to = "xvar", values_to = "x") |>
+  tidyr::pivot_longer(cols = all_of(yvars), 
+                      names_to = "yvar", values_to = "y")
+Rohwer_long
+```
+
+Then, we can use `ggplot2` to make produce the pairwise plots for each combination of `x` and `y` variables. Using `color=SES` in the aesthetic results in a separate regression line for
+the two SES groups produced by `geom_smooth()`.
+
+```{r rohwer-long-ggplot}
+#| fig.width=8,
+#| fig.heigth=10,
+#| fig.cap="Plot matrix of the response variables (`SAT`, `PPVT` and `Raven`) against each of three predictors (`n`, `s`, `ns`). The lines show separate linear regressions for each SES group."
+ggplot(Rohwer_long, aes(x, y, color = SES, shape = SES)) +
+  geom_jitter(size=1.5) +
+  geom_smooth(method = "lm", 
+              se = FALSE, 
+              formula = y ~ x, 
+              size=1.5) +
+  facet_grid(yvar ~ xvar,            # plot matrix of Y by X
+             scales = "free") +
+  theme_bw(base_size = 16) +
+  theme(legend.position = "bottom")
+
+```
+
+Such plots form a framework for understanding model fits and statistical tests we turn to now.
+
 
 ### Separate models
 
@@ -474,9 +539,9 @@ and step-down analysis in multivariate linear models.
 
 The outcome measures used here are three test scores during the course,
 `midterm1`, `midterm2`, `final`,
-and a course evaluation (`eval`).[^1]
+and a course evaluation (`eval`).[^2]
 
-[^1]:It is arguable that the students' course evaluation should not
+[^2]:It is arguable that the students' course evaluation should not
 	be considered a response variable here.  It could be used as a
 	predictor in a follow-up, 	step-down analysis, which would address the separate
 	question of	whether the effects on exam grades remain, when `eval` is	controlled for.  
