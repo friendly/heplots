@@ -1,5 +1,6 @@
 ---
 title: "HE plot MMRA Examples"
+date: "`r Sys.Date()`"
 package: heplots
 output: 
   rmarkdown::html_vignette:

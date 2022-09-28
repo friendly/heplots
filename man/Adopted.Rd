@@ -31,7 +31,7 @@
   package. 
 }
 \references{
-  Friendly, Michael  (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
+  Friendly, M.  (2010). HE Plots for Repeated Measures Designs. \emph{Journal of Statistical Software},
   37(4), 1-40. 
   \doi{10.18637/jss.v037.i04}.
 %  \url{https://www.jstatsoft.org/v37/i04/}.
@@ -45,19 +45,24 @@
 }
 \examples{
 # Treat as multivariate regression problem
-Adopted.mod <- lm(cbind(Age2IQ, Age4IQ, Age8IQ, Age13IQ) ~ AMED + BMIQ, data=Adopted)
+Adopted.mod <- lm(cbind(Age2IQ, Age4IQ, Age8IQ, Age13IQ) ~ AMED + BMIQ, 
+                  data=Adopted)
 Adopted.mod
+
 
 require(car)
 # test overall multivariate regression
-linearHypothesis(Adopted.mod, c("AMED","BMIQ"))
+print(linearHypothesis(Adopted.mod, c("AMED","BMIQ")), SSP=FALSE)
 
 # show separate linear regressions
-op <- par(mfcol=c(2,4), mar=c(4,4,2,2)+.1)
+op <- par(mfcol=c(2,4), mar=c(4,4,1,1)+.1)
 for (i in 3:6) {
-	dataEllipse(as.matrix(Adopted[,c(1,i)]),col="black", levels=0.68, ylim=c(70,140))
+	dataEllipse(as.matrix(Adopted[,c(1,i)]),
+	            col="black", levels=0.68, ylim=c(70,140))
 	abline(lm(Adopted[,i] ~ Adopted[,1]), col="red", lwd=2)
-	dataEllipse(as.matrix(Adopted[,c(2,i)]),col="black", levels=0.68, ylim=c(70,140))
+
+	dataEllipse(as.matrix(Adopted[,c(2,i)]),
+	            col="black", levels=0.68, ylim=c(70,140))
 	abline(lm(Adopted[,i] ~ Adopted[,2]), col="red", lwd=2)
 	abline(a=0,b=1, lty=1, col="blue")
 }

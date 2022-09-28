@@ -1,5 +1,6 @@
 ---
 title: "HE plot MANOVA Examples"
+date: "`r Sys.Date()`"
 package: heplots
 output: 
   rmarkdown::html_vignette:
