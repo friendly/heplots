@@ -5,7 +5,7 @@
 Neurocognitive Measures in Psychiatric Groups
 }
 \description{
-The primary purpose of the study (Hartman, 2016, Heinrichs etal. (2015)) was to evaluate patterns and 
+The primary purpose of the study (Hartman, 2016, Heinrichs et al. (2015)) was to evaluate patterns and 
 levels of
 performance on neurocognitive measures among individuals with schizophrenia and schizoaffective disorder
 using a well-validated, comprehensive neurocognitive battery specifically

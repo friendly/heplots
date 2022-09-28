@@ -45,7 +45,8 @@ Suggests:
     rmarkdown,
     dplyr,
     tidyr,
-    ggplot2
+    ggplot2,
+    bookdown
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues

@@ -1,6 +1,18 @@
 #' Latex to R markdown converter
 #' 
-#' @description Does 7- percent of the job, the rest is manual edits.
+#' @description Converts an Sweave / LaTeX `.Rnw` file to knitr / rmarkdown `.Rmd`.
+#'   It handles code chunks and most standard latex constructs for sections, lists, emphasis, citations,
+#'   cross-references, links, footnotes, as well as a collection of `\newcommand`s I regularly use
+#'   in LaTeX.
+#'   
+#'   It does not produce a finished `.Rmd` file. It leaves the preamble and all non-converted text in place,
+#'   so extensive manual editing is necessary to produce something you can actually knit. Perhaps easier,
+#'   first copy the content of the LaTeX file to a RStudio `.Rmd` template, then remove preamble and 
+#'   other non-essentials, then run the function.
+#'   
+#'   
+#'   The original source was https://github.com/loicdtx/latex2Rmd/ by Loic Dutrieux. There is also `rnw2rmd`
+#'   which started out as a Perl script and is available in several packages.
 #' 
 #' @param input Character Filename of input file
 #' @param output character Filename of output file
@@ -15,8 +27,12 @@
 library(stringr)
 
 latex2Rmd <- function(input, output) {
-    text <- readChar(input, file.info(input)$size)
+  if (missing(output)) output = paste0(tools::file_path_sans_ext(input), ".Rmd")
+
+  # read the file as characters
+  text <- readChar(input, file.info(input)$size)
     
+  # begin replacing
     text <- str_replace_all(string = text, pattern = '<<(.*?)>>=(.*?)@', replacement = '```{r, \\1}\\2```')
     
     # Order these in likelihood of nestedness
@@ -91,6 +107,9 @@ latex2Rmd <- function(input, output) {
 
       c(from = "\\\\given",                     to = "\\; | \\;"),
       c(from = "\\\\mat{(.+?)}",                to = "$\\\\mathbf{\\1}$"),
+      c(from = "\\\\figref{(.+?)}",             to = "\\\\Figure @ref(\\1)"),
+      c(from = "\\\\eqref{(.+?)}",              to = "\\\\Eqn. @ref(\\1)"),
+      c(from = "\\\\tabref{(.+?)}",             to = "\\\\Table @ref(\\1)"),
       
       # footnotes can be multiline; need non-greedy regex
       c(from = "\\\\footnote{(.+?)}",           to = "^[\\1]")
