@@ -16,7 +16,7 @@ There were no ERRORs or WARNINGS or NOTES.
 *Wow, no problems at all. :)*
 
 ## Comments
-This is a major release, adding Rmd vignettes that caused problems in their Sweave Rnw versions. No longer have to go through `qpdf` to compress.
+This is a major release, adding Rmd vignettes that caused problems in their Sweave Rnw versions. No longer have to go through `qpdf` to compress. The new vignettes are more detailed, with more description and plots.
 
 ## Version 1.4-0 (2022-09-26)
 
@@ -24,6 +24,8 @@ This is a major release, adding Rmd vignettes that caused problems in their Swea
 * Added `cex.label` arg to `heplot3d()`
 * Convert old Rnw vignettes to Rmd
 * Fix documentation infelicities
+* Added TIPI data
+* Added `glance.mlm()` as an extension of `broom::glance.lm()`
 
 
 
