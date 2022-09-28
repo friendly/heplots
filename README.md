@@ -32,14 +32,32 @@ Friendly & Sigal (2017) for an applied R tutorial.
 
 Other topics now addressed here include:
 
--   robust MLMs,
+-   robust MLMs, using iteratively re-weighted least squared to
+    down-weight observations with large multivariate residuals,
+    `robmlm()`.
+-   `Mahalanobis()` calculates classical and robust Mahalanobis squared
+    distances using MCD and MVE estimators of center and covariance.
 -   visualizing tests for equality of covariance matrices in MLMs (Box’s
-    M test),
--   chi square Q-Q plots for MLMs.
+    M test), `boxM()` and `plot.boxM()`.
+-   $\chi^2$ Q-Q plots for MLMs (`cqplot()`) to detect outliers and
+    assess multivariate normality of residuals.
+-   bivariate coefficient plots showing elliptical confidence regions
+    (`coefplot()`).
 
-The package also provides a collection of data sets illustrating a
-variety of multivariate linear models of the types listed above,
-together with graphical displays.
+In this respect, the `heplots` package now aims to provide a wide range
+of tools for analyzing and visualizing multivariate response linear
+models.
+
+The related [`candisc`](http://github.com/friendly/candisc) package
+provides HE plots in **canonical discriminant** space, the space of
+linear combinations of the responses that show the maximum possible
+effects and for canonical correlation in multivariate regression
+designs.
+
+Another package,
+[`mvinfluence`](https://friendly.github.io/mvinfluence/), provides
+diagnostic measures and plots for influential observations in MLM
+designs.
 
 Several tutorial vignettes are also included. See
 `vignette(package="heplots")`.
@@ -48,23 +66,17 @@ Several tutorial vignettes are also included. See
 
 Get the released version from CRAN:
 
-     install.packages("heplots")
+      install.packages("heplots")
 
 The development version of `heplots` can be installed to your R library
 directly from github via:
 
-``` r
-if (!require(devtools)) install.packages("devtools")
-library(devtools)
-install_github("friendly/heplots", build_vignettes = TRUE)
-```
+      remotes::install_github("friendly/heplots")
 
-This installs the package from the source and creates the package
-vignettes, so you will need to have R Tools installed on your system. [R
-Tools for Windows](https://cran.r-project.org/bin/windows/Rtools/) takes
-you to the download page for Windows. [R Tools for Mac OS
-X](https://cran.r-project.org/bin/macosx/tools/) has the required
-programs for Mac OS X.
+<!-- This installs the package from the source and creates the package vignettes,  -->
+<!-- so you will need to have R Tools installed on your system.  [R Tools for Windows](https://cran.r-project.org/bin/windows/Rtools/) -->
+<!-- takes you to the download page for Windows.  [R Tools for Mac OS X](https://cran.r-project.org/bin/macosx/tools/) -->
+<!-- has the required programs for Mac OS X. -->
 
 ## HE plot functions
 
@@ -85,9 +97,21 @@ effects in variable (**data**) space, for one or more response variables
 -   `heplot1d()` constructs 1-dimensional analogs of HE plots for model
     terms and linear hypotheses for single response variables.
 
-The related [`candisc`](http://github.com/friendly/candisc) package
-plots these in **canonical discriminant** space, the space of linear
-combinations of the responses that show the maximum possible effects.
+## Other functions
+
+-   `glance.mlm()` extends `broom::glance.lm()` to multivariate response
+    models, giving a one-line statistical summary for each response
+    variable.
+
+-   `boxM()` Calculates Box’s *M* test for homogeneity of covariance
+    matrices in a MANOVA design. A `plot` method displays a visual
+    representation of the components of the test. Associated with this,
+    `bartletTests()` and `levineTests()` give the univariate tests of
+    homogeneity of variance for each response measure in a MLM.
+
+-   `covEllipses()` draw covariance (data) ellipses for one or more
+    group, optionally including the ellipse for the pooled within-group
+    covariance.
 
 ### Repeated measure designs
 
@@ -98,16 +122,62 @@ carry out a linear transformation of the matrix **Y** of responses to a
 matrix **Y M**, where **M** is the model matrix for a term in the
 intra-subject design and produce plots of the H and E matrices in this
 transformed space. The vignette `"repeated"` describes these graphical
-methods for repeated measures designs.
+methods for repeated measures designs. (At present, this vignette is
+only available at [HE plots for repeated measures
+designs](http://www.jstatsoft.org/v37/i04/paper).)
+
+## Datasets
+
+The package also provides a large collection of data sets illustrating a
+variety of multivariate linear models of the types listed above,
+together with graphical displays.
+
+``` r
+vcdExtra::datasets("heplots")[, c("Item", "Title")] |> knitr::kable()
+```
+
+| Item             | Title                                                       |
+|:-----------------|:------------------------------------------------------------|
+| AddHealth        | Adolescent Health Data                                      |
+| Adopted          | Adopted Children                                            |
+| Bees             | Captive and maltreated bees                                 |
+| Diabetes         | Diabetes Dataset                                            |
+| FootHead         | Head measurements of football players                       |
+| Headache         | Treatment of Headache Sufferers for Sensitivity to Noise    |
+| Hernior          | Recovery from Elective Herniorrhaphy                        |
+| Iwasaki_Big_Five | Personality Traits of Cultural Groups                       |
+| MockJury         | Effects Of Physical Attractiveness Upon Mock Jury Decisions |
+| NLSY             | National Longitudinal Survey of Youth Data                  |
+| NeuroCog         | Neurocognitive Measures in Psychiatric Groups               |
+| Oslo             | Oslo Transect Subset Data                                   |
+| Parenting        | Father Parenting Competence                                 |
+| Plastic          | Plastic Film Data                                           |
+| Pottery2         | Chemical Analysis of Romano-British Pottery                 |
+| Probe1           | Response Speed in a Probe Experiment                        |
+| Probe2           | Response Speed in a Probe Experiment                        |
+| RatWeight        | Weight Gain in Rats Exposed to Thiouracil and Thyroxin      |
+| ReactTime        | Reaction Time Data                                          |
+| Rohwer           | Rohwer Data Set                                             |
+| RootStock        | Growth of Apple Trees from Different Root Stocks            |
+| Sake             | Taste Ratings of Japanese Rice Wine (Sake)                  |
+| Skulls           | Egyptian Skulls                                             |
+| SocGrades        | Grades in a Sociology Course                                |
+| SocialCog        | Social Cognitive Measures in Psychiatric Groups             |
+| TIPI             | Data on the Ten Item Personality Inventory                  |
+| VocabGrowth      | Vocabulary growth data                                      |
+| WeightLoss       | Weight Loss Data                                            |
+| mathscore        | Math scores for basic math and word problems                |
+| schooldata       | School Data                                                 |
 
 ## Examples
 
 This example illustrates HE plots using the classic `iris` data set. How
-do the means of the flower variables differ by `Species`? A basic HE
-plot shows the **H** and **E** ellipses for the first two response
-variables (here: `Sepal.Length` and `Sepal.Width`). The multivariate
-test is significant (by Roy’s test) *iff* the **H** ellipse projects
-*anywhere* outside the **E** ellipse.
+do the means of the flower variables differ by `Species`?
+
+A basic HE plot shows the **H** and **E** ellipses for the first two
+response variables (here: `Sepal.Length` and `Sepal.Width`). The
+multivariate test is significant (by Roy’s test) *iff* the **H** ellipse
+projects *anywhere* outside the **E** ellipse.
 
 The positions of the group means show how they differ on the two
 response variables shown, and provide an interpretation of the
@@ -120,7 +190,7 @@ iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~
 heplot(iris.mod)
 ```
 
-<img src="man/figures/README-iris1-1.png" width="60%" />
+<img src="man/figures/README-iris1-1.png" width="70%" />
 
 Contrasts or other linear hypotheses can be shown as well, and the
 ellipses look better if they are filled. We create contrasts to test the
@@ -140,10 +210,10 @@ iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~
 
 hyp <- list("V:V"="Species1","S:VV"="Species2")
 heplot(iris.mod, hypotheses=hyp, 
-       fill=TRUE, fill.alpha=0.2)
+       fill=TRUE, fill.alpha=0.1)
 ```
 
-<img src="man/figures/README-iris2-1.png" width="60%" />
+<img src="man/figures/README-iris2-1.png" width="70%" />
 
 All pairwise HE plots are produced using the `pairs` method for MLM
 objects.
@@ -153,7 +223,7 @@ pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
       fill=TRUE, fill.alpha=0.1)
 ```
 
-<img src="man/figures/README-iris3-1.png" width="60%" />
+<img src="man/figures/README-iris3-1.png" width="90%" />
 
 ## References
 
@@ -167,7 +237,7 @@ Understanding Statistical Methods Through Elliptical Geometry
 *Statistical Science*, **28**, 1-39. [paper
 PDF](http://datavis.ca/palers/ellipses-STS402.pdf)
 
-Friendly, M. & Sigal, M. (2017) Graphical Methods for Multivariate
+Friendly, M. & Sigal, M. (2017). Graphical Methods for Multivariate
 Linear Models in Psychological Research: An R Tutorial. *The
 Quantitative Methods for Psychology*, **13**, 20-45.
 [article](https://doi.org/10.20982/tqmp.13.1.p020)
