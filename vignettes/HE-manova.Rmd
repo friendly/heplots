@@ -5,9 +5,9 @@ date: "`r Sys.Date()`"
 package: heplots
 output: 
   bookdown::html_document2:
+    base_format: rmarkdown::html_vignette
     fig_caption: yes
     toc: true
-    toc_float: true
 bibliography: "HE-examples.bib"
 link-citations: yes
 csl: apa.csl
@@ -21,6 +21,7 @@ vignette: >
 output:
     bookdown::html_document2:
       base_format: rmarkdown::html_vignette
+    toc_float: true
       
 at end:  sessioninfo::package_info()
 -->
@@ -175,7 +176,7 @@ $\lambda_\alpha$, the critical value of Roy's largest root statistic.
 This scaling has the property that an $\mathbf{H}$ ellipse will protrude somewhere
 outside the $\mathbf{E}$ ellipse *iff* the
 multivariate test is significant at level $\alpha$.
-\@ref(fig:plastic1) shows both scalings, using a thinner line for significance scaling.
+Figure \@ref(fig:plastic1) shows both scalings, using a thinner line for significance scaling.
 Note that the (degenerate) ellipse for `additive` is significant, but
 does not protrude outside the $\mathbf{E}$ ellipse in this view.
 All that is guaranteed is that it will protrude somewhere in the 3D space of
@@ -206,7 +207,7 @@ lines(intMeans[c(1,3),1], intMeans[c(1,3),2], col="brown")
 lines(intMeans[c(2,4),1], intMeans[c(2,4),2], col="brown")
 ```
 
-The factor means in this plot (\@ref(fig:plastic1) have a simple interpretation:
+The factor means in this plot (Figure \@ref(fig:plastic1) have a simple interpretation:
 The high `rate` level yields greater `tear` resistance but lower `gloss`
 than the low level.
 The high `additive` amount produces greater `tear` resistance and greater `gloss`.
@@ -251,7 +252,7 @@ print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh", "rateHigh:addi
 ```
 
 Correspondingly, we can display these tests in the HE plot by specifying these tests in the
-`hypothesis` argument to `heplot()`, as shown in \@ref(fig:plastic2).
+`hypothesis` argument to `heplot()`, as shown in Figure \@ref(fig:plastic2).
 
 ```{r, plastic2}
 #| echo=-1,
@@ -261,6 +262,7 @@ par(mar = c(4,4,1,1)+.1)
 heplot(plastic.mod, 
        hypotheses=list("Group" =  c("rateHigh", "additiveHigh", "rateHigh:additiveHigh ")),
        col=c(colors, "purple"),
+       fill = TRUE, fill.alpha = 0.1,
        lwd=c(2, 3, 3, 3, 2), cex=1.25)
 heplot(plastic.mod, 
        hypotheses=list("Main effects" = c("rateHigh", "additiveHigh")), 
@@ -269,14 +271,14 @@ heplot(plastic.mod,
 ```
 
 
-Finally, a 3D HE plot can be produced with `heplot3d()`, giving \@ref(fig:plastic1-HE3D).
+Finally, a 3D HE plot can be produced with `heplot3d()`, giving Figure \@ref(fig:plastic1-HE3D).
 This plot was rotated interactively to a view that shows both main effects
 protruding outside the error ellipsoid.
-```{r, plastic1-HE3D, eval=FALSE}
+```{r, plastic1-HE3D-code, eval=FALSE}
 colors = c("pink", "darkblue", "darkgreen", "brown")
 heplot3d(plastic.mod, col=colors)
 ```
-```{r, plastic1-HE3D-png, echo=FALSE}
+```{r, plastic1-HE3D, echo=FALSE}
 #| echo=FALSE,
 #| fig.cap="3D HE plot for the plastic MLM"
 knitr::include_graphics("fig/plastic-HE3D.png")
@@ -299,9 +301,10 @@ manipulation of "attractiveness" by the photo.
 Then the participants were told that the person in the photo had committed a
 Crime, and asked to rate the seriousness of the crime and recommend a
 prison sentence, in Years.  The data are contained in the data frame `MockJury`.[^1]
+
 [^1]:The data were made available courtesy of Karl Wuensch, from
 	[http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat](http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat)
-}
+
 
 ```{r, MJdata}
 data(MockJury, package = "heplots")
@@ -317,12 +320,17 @@ table(MockJury$Attr, MockJury$Crime)
 ```
 
 The main questions of interest were:
+
 * Does attractiveness of the "defendant" influence the sentence or perceived seriousness of the crime?  
 * Does attractiveness interact with the nature of the crime?
 
-But first, we try to assess the ratings of the photos in relation to the 
+## Manipulation check
+
+But first, as a check on the manipulation of attractiveness,
+we try to assess the ratings of the photos in relation to the 
 presumed categories of the independent variable `Attr`.  The questions here
-are 
+are:
+
 * do the ratings of the photos on physical attractiveness
 (`phyattr`) confirm the original classification?
 * how do other ratings differentiate the photos?
@@ -342,7 +350,7 @@ follow up with univariate ANOVAs for each measure separately.
 
 As an aid to interpretation of the MANOVA results
 We can examine the test of `Attr` in this model with an HE plot for
-pairs of variables, e.g., for `phyattr` and  `happy` (\@ref(fig:jury-mod1-HE)).
+pairs of variables, e.g., for `phyattr` and  `happy` (Figure \@ref(fig:jury-mod1-HE)).
 The means in this plot show that Beautiful is rated higher on
 physical attractiveness than the other two photos, while Unattractive
 is rated less happy than the other two. Comparing the sizes of the
@@ -358,7 +366,7 @@ heplot(jury.mod1, main="HE plot for manipulation check",
 ```
 
 The function `pairs.mlm()` produces all pairwise HE plots.
-This plot (\@ref(fig:jury-mod1-pairs)) shows that the means for `happy`
+This plot (Figure \@ref(fig:jury-mod1-pairs)) shows that the means for `happy`
 and `independent` are highly correlated, as are the means for `phyattr`
 and `sophisticated`.  In most of these pairwise plots, the means form a
 triangle rather than a line, suggesting that these attributes are indeed
@@ -366,14 +374,14 @@ measuring different aspects of the photos.
 
 
 ```{r, jury-mod1-pairs}
-#| fig.cap="HE plots for all pairs of ratings according to theclassification of photos on `Attr`"
+#| fig.cap="HE plots for all pairs of ratings according to the classification of photos on `Attr`"
 pairs(jury.mod1)
 ```
 
 With 3 groups and 4 variables, the $\mathbf{H}$ ellipsoid has only $s=\min(df_h, p)=2$
 dimensions.  `candisc()` carries out a canonical discriminant analysis
 for the MLM  and returns an object that can be used to show an HE plot in the
-space of the canonical dimensions.  This is plotted in \@ref(fig:jury-can1).
+space of the canonical dimensions.  This is plotted in Figure \@ref(fig:jury-can1).
 
 ```{r, jury-can1a}
 jury.can <- candisc(jury.mod1)
@@ -383,11 +391,27 @@ jury.can
 `heplot.candisc()` is the HE plot method for `candisc` objects
 ```{r, jury-can1}
 #| echo=-1,
-#| fig.cap="Canonical discriminant HE plot for the MockJury data"
+#| fig.cap="Canonical discriminant HE plot for the MockJury data. Variable vectors show the correlations of the predictors with the canonical dimensions."
 par(xpd=TRUE, mar=c(4,4,3,1)+.1)
-heplot(jury.can, prefix="Canonical dimension", main="Canonical HE plot")
+heplot(jury.can, 
+       rev.axes = TRUE,
+       fill = c(TRUE,FALSE),
+       prefix="Canonical dimension", 
+       main="Canonical HE plot")
 ```
 
+In this plot, 
+
+* the variable vectors are determined by the canonical structure
+coefficients and represent the correlations of the predictor variables with
+the canonical variables. Thus, an angle near zero with an axis represents a
+correlation close to 1.0; an angle near 90$^o$ represent a correlation close to 0.0.
+(The axes must be scaled to have equal unit lengths for angles to be interpretable.)
+
+* The lengths of arrows are scaled to roughly fill the plot, but relative length
+represents the overall strength of the relation of the variable with the canonical dimensions.
+
+* Points represent the means of the canonical scores on the two dimensions for the three groups of photos.
 
 From this we can see that 91% of the variation among group means
 is accounted for by the first dimension, and this is nearly completely
@@ -396,6 +420,8 @@ The second dimension, accounting for the remaining 9%
 is determined nearly entirely by ratings on `happy` and `independent`.
 This display gives a relatively simple account of the results of the MANOVA
 and the relations of each of the ratings to discrimination among the photos.
+
+## Main analysis
 
 Proceeding to the main questions of interest, we carry out a two-way MANOVA of the responses
 `Years` and `Serious` in relation to the independent variables
@@ -411,7 +437,9 @@ and a strong effect of `Attr`.
 
 
 ```{r, jury-mod2-HE}
+#| echo=-1,
 #| fig.cap="HE plot for the two-way MANOVA for `Years` and `Serious`"
+par(mar=c(4,4,3,1)+.1)
 heplot(jury.mod2)
 ```
 
@@ -445,7 +473,7 @@ method for visualizing the fitted effects in such univariate response
 models is provided by the `effects`.  By default `allEffects()`
 calculates the predicted values for all high-order terms in a given
 model, and the `plot` method produces plots of these values for
-each term.  The statements below produce \@ref(fig:jury-mod3-eff).
+each term.  The statements below produce Figure \@ref(fig:jury-mod3-eff).
 
 ```{r, jury-mod3-eff}
 #| fig.width=9, 
@@ -476,14 +504,14 @@ This example examines physical measurements of size and shape made on
 The measures are: maximal breadth (`mb`), basibregmatic height (`bh`),
 basialiveolar length (`bl`), and nasal height (`nh`) of each skull.
 <!-- See [http://www.redwoods.edu/instruct/agarwin/anth_6_measurements.htm] -->
-<!-- for the definitions of these measures, and \@ref(fig:skulls) for a diagram. -->
-See \@ref(fig:skulls) for a diagram.
+<!-- for the definitions of these measures, and Figure \@ref(fig:skulls) for a diagram. -->
+See Figure \@ref(fig:skulls) for a diagram.
 The question of interest is whether and how these measurements change over time.
 Systematic changes over time is of interest because this
 would indicate interbreeding with immigrant populations.
 
 
-```{r skulls-diagram}
+```{r skulls}
 #| echo=FALSE,
 #| out.width="60%",
 #| fig.cap='Diagram of the skull measurements. Maximal breadth and basibregmatic height are the basic measures of "size" of a skull.  Basialveolar length and nasal height are important anthropometric measures of "shape".'
@@ -513,7 +541,7 @@ vlab <- c("maxBreadth", "basibHeight", "basialLength", "nasalHeight")
 
 We start with some simple displays of the means by epoch.  From the numbers,
 the means don't seem to vary much.  
-A `pairs` plot, \@ref(fig:skulls4), joining points
+A `pairs` plot, Figure \@ref(fig:skulls4), joining points
 by `epoch` is somewhat more revealing for the bivariate relations among means.
 
 ```{r, skulls3}
@@ -537,7 +565,7 @@ pairs(means, vlab,
 Perhaps better for visualizing the trends over time is a set of boxplots,
 joining means over `epoch`. Using `bwplot()` from the `lattice`
 package requires reshaping the data from wide to long format.  The following
-code produces \@ref(fig:skulls-bwplot).
+code produces Figure \@ref(fig:skulls-bwplot).
 
 <!-- TODO: do this with ggplot2 -->
 
@@ -582,7 +610,7 @@ coef(sk.mod)
 We use `linearHypothesis()` for a multivariate test of the
 `epoch.L` linear effect.
 The linear trend is highly significant.  It is not obvious from 
-\@ref(fig:skulls4) that maximal breadth and nasal are increasing
+Figure \@ref(fig:skulls4) that maximal breadth and nasal are increasing
 over time, while the other two measurements have negative slopes.
 
 ```{r, skulls6}
@@ -601,7 +629,7 @@ print(linearHypothesis(sk.mod, c("epoch.Q", "epoch.C", "epoch^4")), SSP=FALSE)
 Again, HE plots can show the patterns of these tests of multivariate hypotheses.
 With four response variables, it is easiest to look at all pairwise
 HE plots with the `pairs.mlm()` function. 
-The statement below produces \@ref(fig:skulls-HE-pairs).
+The statement below produces Figure \@ref(fig:skulls-HE-pairs).
 In this plot, we show the hypothesis ellipsoids for the overall
 effect of `epoch`, as well as those for the tests just shown
 for the linear trend component `epoch.L`
