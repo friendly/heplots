@@ -1,18 +1,31 @@
 ---
 title: "HE plot MMRA Examples"
+author: Michael Friendly
 date: "`r Sys.Date()`"
 package: heplots
 output: 
-  rmarkdown::html_vignette:
+  bookdown::html_document2:
     fig_caption: yes
     toc: true
+    toc_float: true
 bibliography: "HE-examples.bib"
+link-citations: yes
 csl: apa.csl
 vignette: >
   %\VignetteIndexEntry{HE plot MMRA Examples}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+<!--
+  bookdown::html_document2:
+  rmarkdown::html_vignette:
+
+    theme: flatly
+    toc: yes
+    toc_depth: 1
+bibliography: lib.bib
+-->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -46,7 +59,7 @@ library(ggplot2)
 Vignette built using `heplots`, version `r packageDescription("heplots")[["Version"]]`
 and `candisc`, version `r packageDescription("candisc")[["Version"]]`.
 
-# Multivariate Multiple Regression Designs
+# Multivariate Multiple Regression Designs {-}
 
 The ideas behind HE plots extend naturally to multivariate multiple
 regression (MMRA) and multivariate analysis of covariance (MANCOVA). 
@@ -63,7 +76,7 @@ with \emph{homogeneity of regression} focus on quantitative predictors
 and attempt to test whether the regression relations are the same for
 all groups defined by the factors.
 
-## Rohwer data
+# Rohwer data
 
 To illustrate the homogeneity of regression flavor,
 we use data
@@ -84,7 +97,7 @@ data(Rohwer)
 Rohwer |> dplyr::sample_n(6)
 ```
 
-### Preliminary plots
+## Preliminary plots
 
 Before fitting models, it is usually useful to do some data exploration and graphing.
 With multivariate multiple regression data, among the most helpful plots are scatterplots
@@ -148,7 +161,7 @@ ggplot(Rohwer_long, aes(x, y, color = SES, shape = SES)) +
 Such plots form a framework for understanding model fits and statistical tests we turn to now.
 
 
-### Separate models
+## Separate models
 
 As one approach, we might be tempted to fit separate regression models for each
 of the High and Low SES groups.  This approach is *not* recommended because it
@@ -222,7 +235,7 @@ We can readily see the difference in means for the two SES groups (`Hi` has grea
 and it also appears that the slopes of the predictor ellipses are shallower for the High
 than the Low group, indicating greater relation with the `SAT` score. 
 
-### MANCOVA model
+## MANCOVA model
 
 Alternatively (and optimistically), we can fit a MANCOVA model 
 that allows different means for the two SES groups on the responses, but constrains the
@@ -316,7 +329,7 @@ heplot3d(rohwer.mod, col=colors,
 knitr::include_graphics("fig/mmra-rohwer-HE3D.png")
 ```
 
-### Testing homogeneity of regression
+## Testing homogeneity of regression
 
 The MANCOVA model, `rohwer.mod`, has relatively simple interpretations
 (large effect of `SES`, with `ns` and `na` as the major predictors)
@@ -381,7 +394,7 @@ Somewhat more subtle, the error ellipse is noticeably smaller in
 \@ref{fig:rohwer-HE4}, reflecting the additional variation accounted
 for by differences in slopes.
 
-## Recovery from hernia repair
+# Recovery from hernia repair
 
 This example uses the `Hernior` data (from @MostellerTukey:1977, Data Exhibit 8, p. 567-568),
 comprising
@@ -476,7 +489,7 @@ it can be seen that while only `pstat` individually is outside the
 $\mathbf{E}$ ellipse, `build` and `resp` contribute to the overall test in
 an opposite direction.
 
-### Canonical analysis
+## Canonical analysis
 
 In this multivariate regression example, all of the terms in the model `Hern.mod`
 have 1 df, and so plot as lines in HE plots.  An alternative view of these effects
@@ -534,7 +547,7 @@ canonical combinations of the responses.
 Better physical status, smaller body build, lower age and absence
 of cardiac complications are all positively related to better outcomes.
 
-## Grades in a Sociology Course
+# Grades in a Sociology Course
 
 The data set `SocGrades` contains four outcome measures on student performance
 in an introductory sociology course together with six potential predictors.
@@ -566,7 +579,7 @@ Predictor variables are:
 str(SocGrades)
 ```
 
-### Models
+## Models
 
 The basic MLM is fit below as `grades.mod`.
 
@@ -634,7 +647,7 @@ and of these, one dimension is very small.  The major axis of the `class` ellips
 is aligned with increasing performance on all three grades, with the expected
 ordering of the three social classes.
 
-### Canonical analysis
+## Canonical analysis
 The representation of these effects in canonical space is particularly useful here.
 Again, use `candiscList()` to compute the canonical decompositions for all terms
 in the model, and extract the canonical $R^2$ from the terms in the result.
