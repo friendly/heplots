@@ -1,12 +1,15 @@
 ---
 title: "HE plot MANOVA Examples"
+author: Michael Friendly
 date: "`r Sys.Date()`"
 package: heplots
 output: 
-  rmarkdown::html_vignette:
+  bookdown::html_document2:
     fig_caption: yes
     toc: true
+    toc_float: true
 bibliography: "HE-examples.bib"
+link-citations: yes
 csl: apa.csl
 vignette: >
   %\VignetteIndexEntry{HE plot MANOVA Examples}
@@ -41,7 +44,7 @@ library(car)
 Vignette built using `heplots`, version `r packageDescription("heplots")[["Version"]]`
 and `candisc`, version `r packageDescription("candisc")[["Version"]]`.
 
-# Multivariate Analysis of Variance Designs
+# Multivariate Analysis of Variance Designs {-}
 
 This vignette provides some worked examples of the analysis of multivariate linear models 
 (MLMs) for MANOVA designs where all predictors are factors, and the goal is to determine
@@ -57,7 +60,8 @@ No attempt is made here to describe the theory of MLMs or the statistical detail
 HE plots and their reduced-rank canonical cousins.
 For that, see @FoxFriendlyMonette:09:compstat; @Friendly:07:manova; @Friendly:06:hesoft.
 	
-## Plastic film data
+# Plastic film data
+
 An experiment was conducted to determine the optimum conditions for extruding plastic film. 
 Three responses, `tear` resistance, film `gloss` and film `opacity`
 were measured in relation to two factors, `rate` of extrusion and amount of an `additive`,
@@ -271,7 +275,7 @@ knitr::include_graphics("fig/plastic-HE3D.png")
 ```
 
 
-## Effects of physical attractiveness on mock jury decisions
+# Effects of physical attractiveness on mock jury decisions
 
 In a social psychology
 study of influences on jury decisions
@@ -456,7 +460,7 @@ of sentence, controlling for `Serious`.
 The effect plot shows that for the crime of Swindle, there is a much
 greater `Years` of sentence awarded to Unattractive defendants.
 
-## Egyptian skulls from five epochs
+# Egyptian skulls from five epochs
 
 This example examines physical measurements of size and shape made on
 150 Egyptian skulls from five epochs ranging from
@@ -627,9 +631,6 @@ the $\mathbf{H}_{\textrm{epoch}}$ leading to significance of this effect corresp
 essentially to the linear contrast.  $\mathbf{H}_{\textrm{nonlinear}}$ is the orthogonal
 complement of $\mathbf{H}_{\textrm{linear}}$ in the space of $\mathbf{H}_{\textrm{epoch}}$,
 but nowhere does it protrude beyond the boundary of the $\mathbf{E}$ ellipsoid.
-
-
-
 
 
 
