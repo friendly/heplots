@@ -30,11 +30,12 @@ reference:
     - plot.robmlm
     - summary.robmlm
 
-  - title: Other plots
-    desc: Other plot methods for multivariate linear models
+  - title: Other plots & methods
+    desc: Other plots and methods for multivariate linear models
     contents:
     - coefplot
     - covEllipses
+    - glance.mlm
 
   - title: Utility
     desc: Utility functions
@@ -62,6 +63,7 @@ reference:
     - FootHead
     - Headache
     - Hernior
+    - Iwasaki_Big_Five
     - MockJury
     - NLSY
     - NeuroCog
@@ -79,12 +81,8 @@ reference:
     - Skulls
     - SocGrades
     - SocialCog
+    - TIPI
     - VocabGrowth
     - WeightLoss
+    - mathscore
     - schooldata
-
-articles:
-  - title: "Vignettes"
-    contents:
-    - "HE-examples.Rnw"
-    - repeated.Rnw

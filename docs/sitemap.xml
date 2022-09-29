@@ -4,6 +4,15 @@
     <loc>http://friendly.github.io/heplots/404.html</loc>
   </url>
   <url>
+    <loc>http://friendly.github.io/heplots/articles/HE_manova.html</loc>
+  </url>
+  <url>
+    <loc>http://friendly.github.io/heplots/articles/HE_mmra.html</loc>
+  </url>
+  <url>
+    <loc>http://friendly.github.io/heplots/articles/index.html</loc>
+  </url>
+  <url>
     <loc>http://friendly.github.io/heplots/authors.html</loc>
   </url>
   <url>
@@ -58,6 +67,9 @@
     <loc>http://friendly.github.io/heplots/reference/FootHead.html</loc>
   </url>
   <url>
+    <loc>http://friendly.github.io/heplots/reference/glance.mlm.html</loc>
+  </url>
+  <url>
     <loc>http://friendly.github.io/heplots/reference/gsorth.html</loc>
   </url>
   <url>
@@ -86,6 +98,9 @@
   </url>
   <url>
     <loc>http://friendly.github.io/heplots/reference/interpPlot.html</loc>
+  </url>
+  <url>
+    <loc>http://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html</loc>
   </url>
   <url>
     <loc>http://friendly.github.io/heplots/reference/label.ellipse.html</loc>
@@ -173,6 +188,9 @@
   </url>
   <url>
     <loc>http://friendly.github.io/heplots/reference/termMeans.html</loc>
+  </url>
+  <url>
+    <loc>http://friendly.github.io/heplots/reference/TIPI.html</loc>
   </url>
   <url>
     <loc>http://friendly.github.io/heplots/reference/trans.colors.html</loc>

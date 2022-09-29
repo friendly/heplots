@@ -23,7 +23,7 @@ thyroxin group are unavailable."><meta property="og:image" content="http://frien
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -31,9 +31,19 @@ thyroxin group are unavailable."><meta property="og:image" content="http://frien
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -68,7 +78,7 @@ thyroxin group are unavailable.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">RatWeight</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">RatWeight</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="format">
@@ -113,21 +123,21 @@ growth and wear curves.  <em>Biometrics</em>, 6, 362-389.</p>
 <p>Friendly, Michael (2010). HE Plots for Repeated Measures Designs. <em>Journal of Statistical Software</em>,
   37(4), 1-40.
 <!-- %  URL \url{https://www.jstatsoft.org/v37/i04/}. -->
-  doi: <a href="https://doi.org/10.18637/jss.v037.i04" class="external-link">10.18637/jss.v037.i04</a>
+  <a href="https://doi.org/10.18637/jss.v037.i04" class="external-link">doi:10.18637/jss.v037.i04</a>
 .</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">RatWeight</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">RatWeight</span><span class="op">$</span><span class="va">trt</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">RatWeight</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">RatWeight</span><span class="op">$</span><span class="va">trt</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            [,1] [,2]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Control      -1   -1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Thiouracil    1    0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Thyroxin      0    1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">rat.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">wt0</span>, <span class="va">wt1</span>, <span class="va">wt2</span>, <span class="va">wt3</span>, <span class="va">wt4</span><span class="op">)</span> <span class="op">~</span> <span class="va">trt</span>, data<span class="op">=</span><span class="va">RatWeight</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">rat.mod</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">rat.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">wt0</span>, <span class="va">wt1</span>, <span class="va">wt2</span>, <span class="va">wt3</span>, <span class="va">wt4</span><span class="op">)</span> <span class="op">~</span> <span class="va">trt</span>, data<span class="op">=</span><span class="va">RatWeight</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">rat.mod</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> lm(formula = cbind(wt0, wt1, wt2, wt3, wt4) ~ trt, data = RatWeight)</span>
@@ -138,9 +148,9 @@ growth and wear curves.  <em>Biometrics</em>, 6, 362-389.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> trt1          -0.05714   -0.58571   -6.41905  -15.47143  -25.15238</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> trt2           0.81429   -1.02857    2.63810    9.04286   13.70476</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">idata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>week <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rat.mod</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">week</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">idata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>week <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rat.mod</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">week</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II Repeated Measures MANOVA Tests: Roy test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
@@ -150,25 +160,25 @@ growth and wear curves.  <em>Biometrics</em>, 6, 362-389.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> trt:week     2     1.979     10.9      4     22 5.059e-05 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># quick look at between group effects</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">rat.mod</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># quick look at between group effects</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">rat.mod</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="RatWeight-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># between-S, baseline &amp; week 4</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">rat.mod</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green3"</span>, <span class="st">"green3"</span><span class="op">)</span>,</span>
-<span class="r-in">  variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span><span class="op">)</span>,</span>
-<span class="r-in">  hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"trt1"</span>, <span class="st">"trt2"</span><span class="op">)</span>,</span>
-<span class="r-in">  main<span class="op">=</span><span class="st">"Rat weight data, Between-S effects"</span><span class="op">)</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># between-S, baseline &amp; week 4</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">rat.mod</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green3"</span>, <span class="st">"green3"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"trt1"</span>, <span class="st">"trt2"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  main<span class="op">=</span><span class="st">"Rat weight data, Between-S effects"</span><span class="op">)</span> </span></span>
 <span class="r-plt img"><img src="RatWeight-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># within-S</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">rat.mod</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">week</span>, iterm<span class="op">=</span><span class="st">"week"</span>,</span>
-<span class="r-in">  col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green3"</span><span class="op">)</span>,</span>
-<span class="r-in"><span class="co">#  hypotheses=c("trt1", "trt2"),</span></span>
-<span class="r-in">  main<span class="op">=</span><span class="st">"Rat weight data, Within-S effects"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># within-S</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">rat.mod</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">week</span>, iterm<span class="op">=</span><span class="st">"week"</span>,</span></span>
+<span class="r-in"><span>  col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green3"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span><span class="co">#  hypotheses=c("trt1", "trt2"),</span></span></span>
+<span class="r-in"><span>  main<span class="op">=</span><span class="st">"Rat weight data, Within-S effects"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="RatWeight-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -183,7 +193,7 @@ growth and wear curves.  <em>Biometrics</em>, 6, 362-389.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

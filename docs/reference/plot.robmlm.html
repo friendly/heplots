@@ -20,7 +20,7 @@ outliers with respect to the fitted model."><meta property="og:image" content="h
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -28,9 +28,19 @@ outliers with respect to the fitted model."><meta property="og:image" content="h
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -62,43 +72,56 @@ outliers with respect to the fitted model.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for robmlm</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">labels</span>, 
-     id.weight <span class="op">=</span> <span class="fl">0.7</span>, id.pos <span class="op">=</span> <span class="fl">4</span>, 
-     pch <span class="op">=</span> <span class="fl">19</span>, 
-     col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, cex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="st">"cex"</span><span class="op">)</span>, 
-     segments <span class="op">=</span> <span class="cn">FALSE</span>,
-     xlab <span class="op">=</span> <span class="st">"Case index"</span>, ylab <span class="op">=</span> <span class="st">"Weight in robust MANOVA"</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for robmlm</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">labels</span>, </span>
+<span>     id.weight <span class="op">=</span> <span class="fl">0.7</span>, id.pos <span class="op">=</span> <span class="fl">4</span>, </span>
+<span>     pch <span class="op">=</span> <span class="fl">19</span>, </span>
+<span>     col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, cex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="st">"cex"</span><span class="op">)</span>, </span>
+<span>     segments <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"Case index"</span>, ylab <span class="op">=</span> <span class="st">"Weight in robust MANOVA"</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A <code>"robmlm"</code> object</p></dd>
-<dt>labels</dt>
+
+  <dt>labels</dt>
 <dd><p>Observation labels; if not specified, uses rownames from the original data</p></dd>
-<dt>id.weight</dt>
+
+  <dt>id.weight</dt>
 <dd><p>Threshold for identifying observations with small weights</p></dd>
-<dt>id.pos</dt>
+
+  <dt>id.pos</dt>
 <dd><p>Position of observation label relative to the point</p></dd>
-<dt>pch</dt>
+
+  <dt>pch</dt>
 <dd><p>Point symbol(s); can be a vector of length equal to the number of observations in the data frame</p></dd>
-<dt>col</dt>
+
+  <dt>col</dt>
 <dd><p>Point color(s)</p></dd>
-<dt>cex</dt>
+
+  <dt>cex</dt>
 <dd><p>Point character size(s)</p></dd>
-<dt>segments</dt>
+
+  <dt>segments</dt>
 <dd><p>logical; if <code>TRUE</code>, draw line segments from 1.o down to the point</p></dd>
-<dt>xlab</dt>
+
+  <dt>xlab</dt>
 <dd><p>x axis label</p></dd>
-<dt>ylab</dt>
+
+  <dt>ylab</dt>
 <dd><p>y axis label</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>other arguments passed to <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns invisibly the weights for the observations labeled in the plot</p>
+    
+
+<p>Returns invisibly the weights for the observations labeled in the plot</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -111,27 +134,27 @@ outliers with respect to the fitted model.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">sk.rmod</span> <span class="op">&lt;-</span> <span class="fu"><a href="robmlm.html">robmlm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sk.rmod</span>, col<span class="op">=</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span>side<span class="op">=</span><span class="fl">3</span>, at<span class="op">=</span><span class="fl">15</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">120</span>,<span class="fl">30</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span><span class="op">)</span>, cex.axis<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sk.rmod</span> <span class="op">&lt;-</span> <span class="fu"><a href="robmlm.html">robmlm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sk.rmod</span>, col<span class="op">=</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span>side<span class="op">=</span><span class="fl">3</span>, at<span class="op">=</span><span class="fl">15</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">120</span>,<span class="fl">30</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span><span class="op">)</span>, cex.axis<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.robmlm-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Pottery data</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">pottery.rmod</span> <span class="op">&lt;-</span> <span class="fu"><a href="robmlm.html">robmlm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Al</span>,<span class="va">Fe</span>,<span class="va">Mg</span>,<span class="va">Ca</span>,<span class="va">Na</span><span class="op">)</span><span class="op">~</span><span class="va">Site</span>, data<span class="op">=</span><span class="va">Pottery</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pottery.rmod</span>, col<span class="op">=</span><span class="va">Pottery</span><span class="op">$</span><span class="va">Site</span>, segments<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Pottery data</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">pottery.rmod</span> <span class="op">&lt;-</span> <span class="fu"><a href="robmlm.html">robmlm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Al</span>,<span class="va">Fe</span>,<span class="va">Mg</span>,<span class="va">Ca</span>,<span class="va">Na</span><span class="op">)</span><span class="op">~</span><span class="va">Site</span>, data<span class="op">=</span><span class="va">Pottery</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pottery.rmod</span>, col<span class="op">=</span><span class="va">Pottery</span><span class="op">$</span><span class="va">Site</span>, segments<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.robmlm-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># SocialCog data</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">SocialCog</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">SC.rmod</span> <span class="op">&lt;-</span> <span class="fu"><a href="robmlm.html">robmlm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span> <span class="va">MgeEmotions</span>, <span class="va">ToM</span>, <span class="va">ExtBias</span>, <span class="va">PersBias</span><span class="op">)</span> <span class="op">~</span> <span class="va">Dx</span>,</span>
-<span class="r-in">               data<span class="op">=</span><span class="va">SocialCog</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">SC.rmod</span>, col<span class="op">=</span><span class="va">SocialCog</span><span class="op">$</span><span class="va">Dx</span>, segments<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># SocialCog data</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">SocialCog</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">SC.rmod</span> <span class="op">&lt;-</span> <span class="fu"><a href="robmlm.html">robmlm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span> <span class="va">MgeEmotions</span>, <span class="va">ToM</span>, <span class="va">ExtBias</span>, <span class="va">PersBias</span><span class="op">)</span> <span class="op">~</span> <span class="va">Dx</span>,</span></span>
+<span class="r-in"><span>               data<span class="op">=</span><span class="va">SocialCog</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">SC.rmod</span>, col<span class="op">=</span><span class="va">SocialCog</span><span class="op">$</span><span class="va">Dx</span>, segments<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.robmlm-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -146,7 +169,7 @@ outliers with respect to the fitted model.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

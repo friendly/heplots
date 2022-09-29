@@ -21,7 +21,7 @@ of measurement, so as to be comparable over the four grades."><meta property="og
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -29,9 +29,19 @@ of measurement, so as to be comparable over the four grades."><meta property="og
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -64,7 +74,7 @@ of measurement, so as to be comparable over the four grades.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">VocabGrowth</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">VocabGrowth</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="format">
@@ -100,7 +110,7 @@ similar effect occurs in the acquisition of new vocabulary.</p>
     <p>Friendly, Michael  (2010). HE Plots for Repeated Measures Designs. <em>Journal of Statistical Software</em>,
   37(4), 1-40.
 <!-- %  URL \url{https://www.jstatsoft.org/v37/i04/}. -->
-  doi: <a href="https://doi.org/10.18637/jss.v037.i04" class="external-link">10.18637/jss.v037.i04</a>
+  <a href="https://doi.org/10.18637/jss.v037.i04" class="external-link">doi:10.18637/jss.v037.i04</a>
 .</p>
 <p>Keesling, J.W., Bock, R.D. et al, "The Laboratory School study of vocabulary growth",
   University of Chicago, 1975.</p>
@@ -108,12 +118,12 @@ similar effect occurs in the acquisition of new vocabulary.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">VocabGrowth</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Standard Multivariate &amp; Univariate repeated measures analysis</span></span>
-<span class="r-in"><span class="va">Vocab.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">grade8</span>,<span class="va">grade9</span>,<span class="va">grade10</span>,<span class="va">grade11</span><span class="op">)</span> <span class="op">~</span> <span class="fl">1</span>, data<span class="op">=</span><span class="va">VocabGrowth</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">idata</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>grade<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">Vocab.mod</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">grade</span>, type<span class="op">=</span><span class="st">"III"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">VocabGrowth</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Standard Multivariate &amp; Univariate repeated measures analysis</span></span></span>
+<span class="r-in"><span><span class="va">Vocab.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">grade8</span>,<span class="va">grade9</span>,<span class="va">grade10</span>,<span class="va">grade11</span><span class="op">)</span> <span class="op">~</span> <span class="fl">1</span>, data<span class="op">=</span><span class="va">VocabGrowth</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">idata</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>grade<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">Vocab.mod</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">grade</span>, type<span class="op">=</span><span class="st">"III"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type III Repeated Measures MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
@@ -121,26 +131,26 @@ similar effect occurs in the acquisition of new vocabulary.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> grade        1   0.82578   96.376      3     61 &lt; 2.2e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">##Type III Repeated Measures MANOVA Tests: Pillai test statistic</span></span>
-<span class="r-in"><span class="co">##            Df test stat approx F num Df den Df    Pr(&gt;F)    </span></span>
-<span class="r-in"><span class="co">##(Intercept)  1     0.653  118.498      1     63 4.115e-16 ***</span></span>
-<span class="r-in"><span class="co">##grade        1     0.826   96.376      3     61 &lt; 2.2e-16 ***</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">Vocab.mod</span>, type<span class="op">=</span><span class="st">"III"</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">grade</span>, iterm<span class="op">=</span><span class="st">"grade"</span>,</span>
-<span class="r-in">  main<span class="op">=</span><span class="st">"HE plot for Grade effect"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">##Type III Repeated Measures MANOVA Tests: Pillai test statistic</span></span></span>
+<span class="r-in"><span><span class="co">##            Df test stat approx F num Df den Df    Pr(&gt;F)    </span></span></span>
+<span class="r-in"><span><span class="co">##(Intercept)  1     0.653  118.498      1     63 4.115e-16 ***</span></span></span>
+<span class="r-in"><span><span class="co">##grade        1     0.826   96.376      3     61 &lt; 2.2e-16 ***</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">Vocab.mod</span>, type<span class="op">=</span><span class="st">"III"</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">grade</span>, iterm<span class="op">=</span><span class="st">"grade"</span>,</span></span>
+<span class="r-in"><span>  main<span class="op">=</span><span class="st">"HE plot for Grade effect"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="VocabGrowth-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### doing this 'manually' by explicitly transforming Y -&gt; Y M</span></span>
-<span class="r-in"><span class="co"># calculate Y M, using polynomial contrasts</span></span>
-<span class="r-in"><span class="va">trends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">VocabGrowth</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/poly.html" class="external-link">poly</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">11</span>, degree<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">trends</span><span class="op">)</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Linear"</span>, <span class="st">"Quad"</span>, <span class="st">"Cubic"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># test all trend means = 0 == Grade effect</span></span>
-<span class="r-in"><span class="va">within.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">trends</span> <span class="op">~</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Manova</a></span><span class="op">(</span><span class="va">within.mod</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### doing this 'manually' by explicitly transforming Y -&gt; Y M</span></span></span>
+<span class="r-in"><span><span class="co"># calculate Y M, using polynomial contrasts</span></span></span>
+<span class="r-in"><span><span class="va">trends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">VocabGrowth</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/poly.html" class="external-link">poly</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">11</span>, degree<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">trends</span><span class="op">)</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Linear"</span>, <span class="st">"Quad"</span>, <span class="st">"Cubic"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># test all trend means = 0 == Grade effect</span></span></span>
+<span class="r-in"><span><span class="va">within.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">trends</span> <span class="op">~</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Manova</a></span><span class="op">(</span><span class="va">within.mod</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Note: model has only an intercept; equivalent type-III tests substituted.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type III MANOVA Tests: Pillai test statistic</span>
@@ -148,10 +158,10 @@ similar effect occurs in the acquisition of new vocabulary.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  1   0.82578   96.376      3     61 &lt; 2.2e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">within.mod</span>, terms<span class="op">=</span><span class="st">"(Intercept)"</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"3"</span>,</span>
-<span class="r-in">  term.labels<span class="op">=</span><span class="st">"Grade"</span>,</span>
-<span class="r-in">  main<span class="op">=</span><span class="st">"HE plot for Grade effect"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="mark.H0.html">mark.H0</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">within.mod</span>, terms<span class="op">=</span><span class="st">"(Intercept)"</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"3"</span>,</span></span>
+<span class="r-in"><span>  term.labels<span class="op">=</span><span class="st">"Grade"</span>,</span></span>
+<span class="r-in"><span>  main<span class="op">=</span><span class="st">"HE plot for Grade effect"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="mark.H0.html">mark.H0</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="VocabGrowth-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -167,7 +177,7 @@ similar effect occurs in the acquisition of new vocabulary.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

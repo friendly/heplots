@@ -19,7 +19,7 @@ in a multivariate linear model."><meta property="og:image" content="http://frien
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -27,9 +27,19 @@ in a multivariate linear model."><meta property="og:image" content="http://frien
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -60,31 +70,38 @@ in a multivariate linear model.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="va">term</span>, label.factors<span class="op">=</span><span class="cn">FALSE</span>, abbrev.levels<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="va">term</span>, label.factors<span class="op">=</span><span class="cn">FALSE</span>, abbrev.levels<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>mod</dt>
 <dd><p>An mlm model object</p></dd>
-<dt>term</dt>
+
+  <dt>term</dt>
 <dd><p>A character string indicating a given term in the model.
 All factors in the term must be included in the model, even if they are in the
 model data frame.</p></dd>
-<dt>label.factors</dt>
+
+  <dt>label.factors</dt>
 <dd><p>If true, the rownames for each row in the result include
 the name(s) of the factor(s) involved, followed by the
 level values. Otherwise, the rownames include only the levels
 of the factor(s), with multiple factors separated by ':'</p></dd>
-<dt>abbrev.levels</dt>
+
+  <dt>abbrev.levels</dt>
 <dd><p>Either a logical or an integer, specifying whether the levels values
 of the factors in the <code>term</code> are to be abbreviated in
 constructing the rownames.  An integer specifies the minimum length
 of the abbreviation for each factor in the term.</p></dd>
+
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a matrix whose columns correspond to the response variables
+    
+
+<p>Returns a matrix whose columns correspond to the response variables
 in the model and whose rows correspond to the levels of the factor(s)
 in the <code>term</code>.</p>
     </div>
@@ -100,18 +117,18 @@ in the <code>term</code>.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">factors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span>A<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,B<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span>,C<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">factors</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">responses</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Y1<span class="op">=</span><span class="fl">10</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fl">10</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>,Y2<span class="op">=</span><span class="fl">10</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fl">10</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">factors</span>, <span class="va">responses</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Y1</span>,<span class="va">Y2</span><span class="op">)</span> <span class="op">~</span> <span class="va">A</span><span class="op">*</span><span class="va">B</span>, data<span class="op">=</span><span class="va">test</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">factors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span>A<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,B<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span>,C<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">factors</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">responses</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Y1<span class="op">=</span><span class="fl">10</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fl">10</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>,Y2<span class="op">=</span><span class="fl">10</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fl">10</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">factors</span>, <span class="va">responses</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Y1</span>,<span class="va">Y2</span><span class="op">)</span> <span class="op">~</span> <span class="va">A</span><span class="op">*</span><span class="va">B</span>, data<span class="op">=</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Y1    Y2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 17.00 12.25</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  9.50 10.75</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 13.75  2.00</span>
-<span class="r-in"><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A:B"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A:B"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Y1   Y2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:1 10.0 10.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2:1  3.0 19.5</span>
@@ -119,7 +136,7 @@ in the <code>term</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:2 24.0 14.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2:2 16.0  2.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3:2 10.0 -2.0</span>
-<span class="r-in"><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A:B"</span>, label.factors<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A:B"</span>, label.factors<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Y1   Y2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A1:B1 10.0 10.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A2:B1  3.0 19.5</span>
@@ -127,20 +144,20 @@ in the <code>term</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A1:B2 24.0 14.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A2:B2 16.0  2.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A3:B2 10.0 -2.0</span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A:B:C"</span><span class="op">)</span>    <span class="co"># generates an error</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">plastic.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">tear</span>, <span class="va">gloss</span>, <span class="va">opacity</span><span class="op">)</span> <span class="op">~</span> <span class="va">rate</span><span class="op">*</span><span class="va">additive</span>, data<span class="op">=</span><span class="va">Plastic</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">colors</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"darkblue"</span>, <span class="st">"darkgreen"</span>, <span class="st">"brown"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">plastic.mod</span>, col<span class="op">=</span><span class="va">colors</span>, cex<span class="op">=</span><span class="fl">1.25</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># add means for interaction term</span></span>
-<span class="r-in"><span class="va">intMeans</span> <span class="op">&lt;-</span> <span class="fu">termMeans</span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="st">'rate:additive'</span>, abbrev<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">intMeans</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">intMeans</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, pch<span class="op">=</span><span class="fl">18</span>, cex<span class="op">=</span><span class="fl">1.2</span>, col<span class="op">=</span><span class="st">"brown"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="va">intMeans</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">intMeans</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">intMeans</span><span class="op">)</span>, adj<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">1</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"brown"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A:B:C"</span><span class="op">)</span>    <span class="co"># generates an error</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">plastic.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">tear</span>, <span class="va">gloss</span>, <span class="va">opacity</span><span class="op">)</span> <span class="op">~</span> <span class="va">rate</span><span class="op">*</span><span class="va">additive</span>, data<span class="op">=</span><span class="va">Plastic</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">colors</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"darkblue"</span>, <span class="st">"darkgreen"</span>, <span class="st">"brown"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">plastic.mod</span>, col<span class="op">=</span><span class="va">colors</span>, cex<span class="op">=</span><span class="fl">1.25</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># add means for interaction term</span></span></span>
+<span class="r-in"><span><span class="va">intMeans</span> <span class="op">&lt;-</span> <span class="fu">termMeans</span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="st">'rate:additive'</span>, abbrev<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">intMeans</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">intMeans</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, pch<span class="op">=</span><span class="fl">18</span>, cex<span class="op">=</span><span class="fl">1.2</span>, col<span class="op">=</span><span class="st">"brown"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="va">intMeans</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">intMeans</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">intMeans</span><span class="op">)</span>, adj<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">1</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"brown"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="termMeans-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -155,7 +172,7 @@ in the <code>term</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

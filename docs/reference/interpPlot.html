@@ -24,7 +24,7 @@ points."><meta property="og:image" content="http://friendly.github.io/heplots/lo
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -32,9 +32,19 @@ points."><meta property="og:image" content="http://friendly.github.io/heplots/lo
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -70,59 +80,82 @@ points.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">interpPlot</span><span class="op">(</span><span class="va">xy1</span>, <span class="va">xy2</span>, <span class="va">alpha</span>,
-    <span class="va">xlim</span>, <span class="va">ylim</span>, points<span class="op">=</span><span class="cn">TRUE</span>, add<span class="op">=</span><span class="cn">FALSE</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,
-    ellipse <span class="op">=</span> <span class="cn">FALSE</span>, ellipse.args <span class="op">=</span> <span class="cn">NULL</span>, 
-    abline<span class="op">=</span><span class="cn">FALSE</span>, col.lines <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, lwd<span class="op">=</span><span class="fl">2</span>,
-    id.method <span class="op">=</span> <span class="st">"mahal"</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">xy1</span><span class="op">)</span>, 
-    id.n <span class="op">=</span> <span class="fl">0</span>, id.cex <span class="op">=</span> <span class="fl">1</span>, id.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,
-    segments<span class="op">=</span><span class="cn">FALSE</span>, segment.col<span class="op">=</span><span class="st">"darkgray"</span>,
-     <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">interpPlot</span><span class="op">(</span><span class="va">xy1</span>, <span class="va">xy2</span>, <span class="va">alpha</span>,</span>
+<span>    <span class="va">xlim</span>, <span class="va">ylim</span>, points<span class="op">=</span><span class="cn">TRUE</span>, add<span class="op">=</span><span class="cn">FALSE</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>    ellipse <span class="op">=</span> <span class="cn">FALSE</span>, ellipse.args <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>    abline<span class="op">=</span><span class="cn">FALSE</span>, col.lines <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, lwd<span class="op">=</span><span class="fl">2</span>,</span>
+<span>    id.method <span class="op">=</span> <span class="st">"mahal"</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">xy1</span><span class="op">)</span>, </span>
+<span>    id.n <span class="op">=</span> <span class="fl">0</span>, id.cex <span class="op">=</span> <span class="fl">1</span>, id.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>    segments<span class="op">=</span><span class="cn">FALSE</span>, segment.col<span class="op">=</span><span class="st">"darkgray"</span>,</span>
+<span>     <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>xy1</dt>
 <dd><p>First data set, a 2-column matrix or data.frame</p></dd>
-<dt>xy2</dt>
+
+  <dt>xy2</dt>
 <dd><p>Second data set, a 2-column matrix or data.frame</p></dd>
-<dt>alpha</dt>
+
+  <dt>alpha</dt>
 <dd><p>The value of the interpolation fraction, typically (but not necessarily) <code>0 &lt;= alpha &lt;= 1)</code>.</p></dd>
-<dt>xlim, ylim</dt>
+
+  <dt>xlim, ylim</dt>
 <dd><p>x, y limits for the plot.  If not specified, the function uses the
 ranges of <code>rbind(xy1, xy2)</code>.</p></dd>
-<dt>points</dt>
+
+  <dt>points</dt>
 <dd><p>Logical. Whether to plot the points in the current interpolation?</p></dd>
-<dt>col</dt>
+
+
+  <dt>col</dt>
 <dd><p>Color for plotted points.</p></dd>
-<dt>add</dt>
+
+
+  <dt>add</dt>
 <dd><p>Logical. Whether to add to an existing plot?</p></dd>
-<dt>ellipse</dt>
+
+
+  <dt>ellipse</dt>
 <dd><p>logical. <code>TRUE</code> to plot a <code>dataEllipse</code></p></dd>
-<dt>ellipse.args</dt>
+
+  <dt>ellipse.args</dt>
 <dd><p>other arguments passed to <code>dataEllipse</code></p></dd>
-<dt>abline</dt>
+
+  <dt>abline</dt>
 <dd><p>logical. <code>TRUE</code> to plot the linear regression line for <code>XY</code></p></dd>
-<dt>col.lines</dt>
+
+  <dt>col.lines</dt>
 <dd><p>line color</p></dd>
-<dt>lwd</dt>
+
+  <dt>lwd</dt>
 <dd><p>line width</p></dd>
-<dt>id.method</dt>
+
+  <dt>id.method</dt>
 <dd><p>How points are to be identified. See <code><a href="https://rdrr.io/pkg/car/man/showLabels.html" class="external-link">showLabels</a></code>.</p></dd>
-<dt>labels</dt>
+
+  <dt>labels</dt>
 <dd><p>observation labels</p></dd>
-<dt>id.n</dt>
+
+  <dt>id.n</dt>
 <dd><p>Number of points to be identified. If set to zero, no points are identified.</p></dd>
-<dt>id.cex</dt>
+
+  <dt>id.cex</dt>
 <dd><p>Controls the size of the plotted labels. The default is 1</p></dd>
-<dt>id.col</dt>
+
+  <dt>id.col</dt>
 <dd><p>Controls the color of the plotted labels.</p></dd>
-<dt>segments</dt>
+
+  <dt>segments</dt>
 <dd><p>logical. <code>TRUE</code> to draw lines segments from <code>xy1</code> to <code>xy</code></p></dd>
-<dt>segment.col</dt>
+
+  <dt>segment.col</dt>
 <dd><p>line color for segments</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>other arguments passed to <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code></p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -132,7 +165,9 @@ a sinusoid interpolation.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns invisibly the interpolated XY points.</p>
+    
+
+<p>Returns invisibly the interpolated XY points.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -152,59 +187,59 @@ The <code><a href="https://rdrr.io/pkg/animation/man/animation-package.html" cla
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">#################################################</span></span>
-<span class="r-in"><span class="co"># animate an AV plot from marginal to conditional</span></span>
-<span class="r-in"><span class="co">#################################################</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Duncan</span>, package<span class="op">=</span><span class="st">"car"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">#################################################</span></span></span>
+<span class="r-in"><span><span class="co"># animate an AV plot from marginal to conditional</span></span></span>
+<span class="r-in"><span><span class="co">#################################################</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Duncan</span>, package<span class="op">=</span><span class="st">"car"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set 'Duncan' not found</span>
-<span class="r-in"><span class="va">duncmod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">prestige</span> <span class="op">~</span> <span class="va">income</span> <span class="op">+</span> <span class="va">education</span>, data<span class="op">=</span><span class="va">Duncan</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">mod.mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/model.matrix.html" class="external-link">model.matrix</a></span><span class="op">(</span><span class="va">duncmod</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># function to do an animation for one variable</span></span>
-<span class="r-in"><span class="va">dunc.anim</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">variable</span>, <span class="va">other</span>, <span class="va">alpha</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">variable</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">mod.mat</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">duncdev</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">Duncan</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"prestige"</span><span class="op">)</span><span class="op">]</span>, scale<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">duncav</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lsfit.html" class="external-link">lsfit</a></span><span class="op">(</span><span class="va">mod.mat</span><span class="op">[</span>, <span class="op">-</span><span class="va">var</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mod.mat</span><span class="op">[</span>, <span class="va">var</span><span class="op">]</span>, <span class="va">Duncan</span><span class="op">$</span><span class="va">prestige</span><span class="op">)</span>, </span>
-<span class="r-in">          intercept <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">residuals</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">duncav</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"prestige"</span><span class="op">)</span></span>
-<span class="r-in">  </span>
-<span class="r-in">  <span class="va">lims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">duncdev</span>, <span class="va">duncav</span><span class="op">)</span>,<span class="fl">2</span>,<span class="va">range</span><span class="op">)</span></span>
-<span class="r-in">  </span>
-<span class="r-in">  <span class="kw">for</span> <span class="op">(</span><span class="va">alp</span> <span class="kw">in</span> <span class="va">alpha</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">    <span class="va">main</span> <span class="op">&lt;-</span> <span class="kw">if</span><span class="op">(</span><span class="va">alp</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Marginal plot:"</span>, <span class="va">variable</span><span class="op">)</span></span>
-<span class="r-in">      <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="va">alp</span><span class="op">)</span>, <span class="st">"% Added-variable plot:"</span>, <span class="va">variable</span><span class="op">)</span></span>
-<span class="r-in">    <span class="fu">interpPlot</span><span class="op">(</span><span class="va">duncdev</span>, <span class="va">duncav</span>, <span class="va">alp</span>, xlim<span class="op">=</span><span class="va">lims</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, ylim<span class="op">=</span><span class="va">lims</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, pch<span class="op">=</span><span class="fl">16</span>,</span>
-<span class="r-in">      main <span class="op">=</span> <span class="va">main</span>,</span>
-<span class="r-in">      xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"| "</span>, <span class="va">alp</span>, <span class="va">other</span><span class="op">)</span>,</span>
-<span class="r-in">      ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"prestige | "</span>, <span class="va">alp</span>, <span class="va">other</span><span class="op">)</span>,</span>
-<span class="r-in">      ellipse<span class="op">=</span><span class="cn">TRUE</span>, ellipse.args<span class="op">=</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>levels<span class="op">=</span><span class="fl">0.68</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="va">alp</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>, </span>
-<span class="r-in">      abline<span class="op">=</span><span class="cn">TRUE</span>, id.n<span class="op">=</span><span class="fl">3</span>, id.cex<span class="op">=</span><span class="fl">1.2</span>, cex.lab<span class="op">=</span><span class="fl">1.25</span><span class="op">)</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">}</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># show these in the R console</span></span>
-<span class="r-in"><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">dunc.anim</span><span class="op">(</span><span class="st">"income"</span>, <span class="st">"education"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">dunc.anim</span><span class="op">(</span><span class="st">"education"</span>, <span class="st">"income"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">############################################</span></span>
-<span class="r-in"><span class="co"># correlated bivariate data with 2 outliers</span></span>
-<span class="r-in"><span class="co"># show rotation from data space to PCA space</span></span>
-<span class="r-in"><span class="co">############################################</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123345</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, <span class="fl">2</span>, <span class="op">-</span><span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">]</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">XY</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span><span class="va">y</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">XY</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">XY</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">XY</span>, center<span class="op">=</span><span class="cn">TRUE</span>, scale<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># start, end plots</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></span><span class="op">(</span><span class="va">XY</span>, pch<span class="op">=</span><span class="fl">16</span>, levels<span class="op">=</span><span class="fl">0.68</span>, id.n<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">duncmod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">prestige</span> <span class="op">~</span> <span class="va">income</span> <span class="op">+</span> <span class="va">education</span>, data<span class="op">=</span><span class="va">Duncan</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mod.mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/model.matrix.html" class="external-link">model.matrix</a></span><span class="op">(</span><span class="va">duncmod</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># function to do an animation for one variable</span></span></span>
+<span class="r-in"><span><span class="va">dunc.anim</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">variable</span>, <span class="va">other</span>, <span class="va">alpha</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">variable</span><span class="op">==</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">mod.mat</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">duncdev</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">Duncan</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"prestige"</span><span class="op">)</span><span class="op">]</span>, scale<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">duncav</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lsfit.html" class="external-link">lsfit</a></span><span class="op">(</span><span class="va">mod.mat</span><span class="op">[</span>, <span class="op">-</span><span class="va">var</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mod.mat</span><span class="op">[</span>, <span class="va">var</span><span class="op">]</span>, <span class="va">Duncan</span><span class="op">$</span><span class="va">prestige</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>          intercept <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">residuals</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">duncav</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"prestige"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="va">lims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">duncdev</span>, <span class="va">duncav</span><span class="op">)</span>,<span class="fl">2</span>,<span class="va">range</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="kw">for</span> <span class="op">(</span><span class="va">alp</span> <span class="kw">in</span> <span class="va">alpha</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="va">main</span> <span class="op">&lt;-</span> <span class="kw">if</span><span class="op">(</span><span class="va">alp</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Marginal plot:"</span>, <span class="va">variable</span><span class="op">)</span></span></span>
+<span class="r-in"><span>      <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="va">alp</span><span class="op">)</span>, <span class="st">"% Added-variable plot:"</span>, <span class="va">variable</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu">interpPlot</span><span class="op">(</span><span class="va">duncdev</span>, <span class="va">duncav</span>, <span class="va">alp</span>, xlim<span class="op">=</span><span class="va">lims</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, ylim<span class="op">=</span><span class="va">lims</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, pch<span class="op">=</span><span class="fl">16</span>,</span></span>
+<span class="r-in"><span>      main <span class="op">=</span> <span class="va">main</span>,</span></span>
+<span class="r-in"><span>      xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="st">"| "</span>, <span class="va">alp</span>, <span class="va">other</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"prestige | "</span>, <span class="va">alp</span>, <span class="va">other</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      ellipse<span class="op">=</span><span class="cn">TRUE</span>, ellipse.args<span class="op">=</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>levels<span class="op">=</span><span class="fl">0.68</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="va">alp</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>      abline<span class="op">=</span><span class="cn">TRUE</span>, id.n<span class="op">=</span><span class="fl">3</span>, id.cex<span class="op">=</span><span class="fl">1.2</span>, cex.lab<span class="op">=</span><span class="fl">1.25</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># show these in the R console</span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">dunc.anim</span><span class="op">(</span><span class="st">"income"</span>, <span class="st">"education"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">dunc.anim</span><span class="op">(</span><span class="st">"education"</span>, <span class="st">"income"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">############################################</span></span></span>
+<span class="r-in"><span><span class="co"># correlated bivariate data with 2 outliers</span></span></span>
+<span class="r-in"><span><span class="co"># show rotation from data space to PCA space</span></span></span>
+<span class="r-in"><span><span class="co">############################################</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123345</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, <span class="fl">2</span>, <span class="op">-</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">]</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, <span class="op">-</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">XY</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span><span class="va">y</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">XY</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">XY</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">XY</span>, center<span class="op">=</span><span class="cn">TRUE</span>, scale<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># start, end plots</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></span><span class="op">(</span><span class="va">XY</span>, pch<span class="op">=</span><span class="fl">16</span>, levels<span class="op">=</span><span class="fl">0.68</span>, id.n<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
@@ -213,13 +248,13 @@ The <code><a href="https://rdrr.io/pkg/animation/man/animation-package.html" cla
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
-<span class="r-in"><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="va">x</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">XY</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="va">mod</span>, col<span class="op">=</span><span class="st">"red"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">y</span><span class="op">~</span><span class="va">x</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">XY</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="va">mod</span>, col<span class="op">=</span><span class="st">"red"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="interpPlot-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/princomp.html" class="external-link">princomp</a></span><span class="op">(</span><span class="va">XY</span>, cor<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">scores</span> <span class="op">&lt;-</span> <span class="va">pca</span><span class="op">$</span><span class="va">scores</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></span><span class="op">(</span><span class="va">scores</span>, pch<span class="op">=</span><span class="fl">16</span>, levels<span class="op">=</span><span class="fl">0.68</span>, id.n<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/princomp.html" class="external-link">princomp</a></span><span class="op">(</span><span class="va">XY</span>, cor<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">scores</span> <span class="op">&lt;-</span> <span class="va">pca</span><span class="op">$</span><span class="va">scores</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></span><span class="op">(</span><span class="va">scores</span>, pch<span class="op">=</span><span class="fl">16</span>, levels<span class="op">=</span><span class="fl">0.68</span>, id.n<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
@@ -228,54 +263,54 @@ The <code><a href="https://rdrr.io/pkg/animation/man/animation-package.html" cla
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>"id.n" is not a graphical parameter</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Comp.2</span> <span class="op">~</span> <span class="va">Comp.1</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">scores</span><span class="op">)</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Comp.2</span> <span class="op">~</span> <span class="va">Comp.1</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">scores</span><span class="op">)</span><span class="op">)</span>, lwd<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="interpPlot-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># show interpolation</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># functions for labels, as a function of alpha</span></span>
-<span class="r-in"><span class="va">main</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">alpha</span><span class="op">)</span> <span class="op">{</span><span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span> <span class="st">"Original data"</span> </span>
-<span class="r-in">  <span class="kw">else</span> <span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span> <span class="st">"PCA scores"</span></span>
-<span class="r-in">  <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="va">alpha</span>,<span class="fl">1</span><span class="op">)</span>, <span class="st">"% interpolation"</span><span class="op">)</span><span class="op">}</span></span>
-<span class="r-in"><span class="va">xlab</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">alpha</span><span class="op">)</span> <span class="op">{</span><span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span> <span class="st">"X"</span></span>
-<span class="r-in">  <span class="kw">else</span> <span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span> <span class="st">"PCA.1"</span></span>
-<span class="r-in">  <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"X +"</span>, <span class="va">alpha</span>, <span class="st">"(X - PCA.1)"</span><span class="op">)</span><span class="op">}</span></span>
-<span class="r-in"><span class="va">ylab</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">alpha</span><span class="op">)</span> <span class="op">{</span><span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span> <span class="st">"Y"</span></span>
-<span class="r-in">  <span class="kw">else</span> <span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span> <span class="st">"PCA.2"</span></span>
-<span class="r-in">  <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Y +"</span>, <span class="va">alpha</span>, <span class="st">"(Y - PCA.2)"</span><span class="op">)</span><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">interpPCA</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">XY</span>, <span class="va">alpha</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">.1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">XY</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">XY</span>, center<span class="op">=</span><span class="cn">TRUE</span>, scale<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">XY</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">XY</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">XY</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/princomp.html" class="external-link">princomp</a></span><span class="op">(</span><span class="va">XY</span>, cor<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">scores</span> <span class="op">&lt;-</span> <span class="va">pca</span><span class="op">$</span><span class="va">scores</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="kw">for</span> <span class="op">(</span><span class="va">alp</span> <span class="kw">in</span> <span class="va">alpha</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">    <span class="fu">interpPlot</span><span class="op">(</span><span class="va">XY</span>, <span class="va">scores</span>, <span class="va">alp</span>, </span>
-<span class="r-in">      pch<span class="op">=</span><span class="fl">16</span>,</span>
-<span class="r-in">      main <span class="op">=</span> <span class="fu">main</span><span class="op">(</span><span class="va">alp</span><span class="op">)</span>,</span>
-<span class="r-in">      xlab <span class="op">=</span> <span class="fu">xlab</span><span class="op">(</span><span class="va">alp</span><span class="op">)</span>,</span>
-<span class="r-in">      ylab <span class="op">=</span> <span class="fu">ylab</span><span class="op">(</span><span class="va">alp</span><span class="op">)</span>,</span>
-<span class="r-in">      ellipse<span class="op">=</span><span class="cn">TRUE</span>, ellipse.args<span class="op">=</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>levels<span class="op">=</span><span class="fl">0.68</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">alp</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>, </span>
-<span class="r-in">      abline<span class="op">=</span><span class="cn">TRUE</span>, id.n<span class="op">=</span><span class="fl">2</span>, id.cex<span class="op">=</span><span class="fl">1.2</span>, cex.lab<span class="op">=</span><span class="fl">1.25</span>, segments<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">}</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># show in R console</span></span>
-<span class="r-in"><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">interpPCA</span><span class="op">(</span><span class="va">XY</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/animation/" class="external-link">animation</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/animation/man/saveGIF.html" class="external-link">saveGIF</a></span><span class="op">(</span><span class="op">{</span></span>
-<span class="r-in">  <span class="fu">interpPCA</span><span class="op">(</span><span class="va">XY</span>, <span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">.1</span><span class="op">)</span><span class="op">)</span><span class="op">}</span>,</span>
-<span class="r-in">  movie.name<span class="op">=</span><span class="st">"outlier-demo.gif"</span>, ani.width<span class="op">=</span><span class="fl">480</span>, ani.height<span class="op">=</span><span class="fl">480</span>, interval<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># show interpolation</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># functions for labels, as a function of alpha</span></span></span>
+<span class="r-in"><span><span class="va">main</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">alpha</span><span class="op">)</span> <span class="op">{</span><span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span> <span class="st">"Original data"</span> </span></span>
+<span class="r-in"><span>  <span class="kw">else</span> <span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span> <span class="st">"PCA scores"</span></span></span>
+<span class="r-in"><span>  <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="va">alpha</span>,<span class="fl">1</span><span class="op">)</span>, <span class="st">"% interpolation"</span><span class="op">)</span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="va">xlab</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">alpha</span><span class="op">)</span> <span class="op">{</span><span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span> <span class="st">"X"</span></span></span>
+<span class="r-in"><span>  <span class="kw">else</span> <span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span> <span class="st">"PCA.1"</span></span></span>
+<span class="r-in"><span>  <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"X +"</span>, <span class="va">alpha</span>, <span class="st">"(X - PCA.1)"</span><span class="op">)</span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="va">ylab</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">alpha</span><span class="op">)</span> <span class="op">{</span><span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span> <span class="st">"Y"</span></span></span>
+<span class="r-in"><span>  <span class="kw">else</span> <span class="kw">if</span><span class="op">(</span><span class="va">alpha</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span> <span class="st">"PCA.2"</span></span></span>
+<span class="r-in"><span>  <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Y +"</span>, <span class="va">alpha</span>, <span class="st">"(Y - PCA.2)"</span><span class="op">)</span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">interpPCA</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">XY</span>, <span class="va">alpha</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">.1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">XY</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">XY</span>, center<span class="op">=</span><span class="cn">TRUE</span>, scale<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">XY</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">XY</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">XY</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/princomp.html" class="external-link">princomp</a></span><span class="op">(</span><span class="va">XY</span>, cor<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">scores</span> <span class="op">&lt;-</span> <span class="va">pca</span><span class="op">$</span><span class="va">scores</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="kw">for</span> <span class="op">(</span><span class="va">alp</span> <span class="kw">in</span> <span class="va">alpha</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="fu">interpPlot</span><span class="op">(</span><span class="va">XY</span>, <span class="va">scores</span>, <span class="va">alp</span>, </span></span>
+<span class="r-in"><span>      pch<span class="op">=</span><span class="fl">16</span>,</span></span>
+<span class="r-in"><span>      main <span class="op">=</span> <span class="fu">main</span><span class="op">(</span><span class="va">alp</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      xlab <span class="op">=</span> <span class="fu">xlab</span><span class="op">(</span><span class="va">alp</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      ylab <span class="op">=</span> <span class="fu">ylab</span><span class="op">(</span><span class="va">alp</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      ellipse<span class="op">=</span><span class="cn">TRUE</span>, ellipse.args<span class="op">=</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>levels<span class="op">=</span><span class="fl">0.68</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">alp</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>      abline<span class="op">=</span><span class="cn">TRUE</span>, id.n<span class="op">=</span><span class="fl">2</span>, id.cex<span class="op">=</span><span class="fl">1.2</span>, cex.lab<span class="op">=</span><span class="fl">1.25</span>, segments<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># show in R console</span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">interpPCA</span><span class="op">(</span><span class="va">XY</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/animation/" class="external-link">animation</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/animation/man/saveGIF.html" class="external-link">saveGIF</a></span><span class="op">(</span><span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu">interpPCA</span><span class="op">(</span><span class="va">XY</span>, <span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">.1</span><span class="op">)</span><span class="op">)</span><span class="op">}</span>,</span></span>
+<span class="r-in"><span>  movie.name<span class="op">=</span><span class="st">"outlier-demo.gif"</span>, ani.width<span class="op">=</span><span class="fl">480</span>, ani.height<span class="op">=</span><span class="fl">480</span>, interval<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -290,7 +325,7 @@ The <code><a href="https://rdrr.io/pkg/animation/man/animation-package.html" cla
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

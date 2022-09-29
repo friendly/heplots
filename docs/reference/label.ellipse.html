@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -26,9 +26,19 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -58,26 +68,39 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">label.ellipse</span><span class="op">(</span><span class="va">ellipse</span>, <span class="va">label</span>, col <span class="op">=</span> <span class="st">"black"</span>, label.pos <span class="op">=</span> <span class="cn">NULL</span>, xpd <span class="op">=</span> <span class="cn">TRUE</span>,
-  tweak <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/strwidth.html" class="external-link">strwidth</a></span><span class="op">(</span><span class="st">"M"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/strwidth.html" class="external-link">strheight</a></span><span class="op">(</span><span class="st">"M"</span><span class="op">)</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">label.ellipse</span><span class="op">(</span><span class="va">ellipse</span>, <span class="va">label</span>, col <span class="op">=</span> <span class="st">"black"</span>, label.pos <span class="op">=</span> <span class="cn">NULL</span>, xpd <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  tweak <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/strwidth.html" class="external-link">strwidth</a></span><span class="op">(</span><span class="st">"M"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/strwidth.html" class="external-link">strheight</a></span><span class="op">(</span><span class="st">"M"</span><span class="op">)</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>ellipse</dt>
 <dd><p>A two-column matrix of coordinates for the ellipse boundary</p></dd>
+
+
 <dt>label</dt>
 <dd><p>Character string to be used as the ellipse label</p></dd>
+
+
 <dt>col</dt>
 <dd><p>Label color</p></dd>
+
+
 <dt>label.pos</dt>
 <dd><p>Label position relative to the ellipse.  See details</p></dd>
+
+
 <dt>xpd</dt>
 <dd><p>Should the label be allowed to extend beyond the plot limits?</p></dd>
+
+
 <dt>tweak</dt>
 <dd><p>A vector of two lengths used to tweak label positions</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other parameters passed to <code>text</code>, e.g., <code>cex</code>, ...</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -106,33 +129,33 @@ as the fraction of the way around the unit circle, counterclockwise from the poi
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">circle</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">center</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="va">radius</span><span class="op">=</span><span class="fl">1</span>, <span class="va">segments</span><span class="op">=</span><span class="fl">60</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">   <span class="va">angles</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="va">segments</span><span class="op">)</span><span class="op">*</span><span class="fl">2</span><span class="op">*</span><span class="va">pi</span><span class="op">/</span><span class="va">segments</span></span>
-<span class="r-in">   <span class="va">circle</span> <span class="op">&lt;-</span> <span class="va">radius</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">angles</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">angles</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">center</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span> <span class="va">circle</span> <span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">label_demo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">ell</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">2</span>, type<span class="op">=</span><span class="st">"n"</span>, asp<span class="op">=</span><span class="fl">1</span>, main<span class="op">=</span><span class="st">"label.pos values and points (0:60)"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">ell</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, pch<span class="op">=</span><span class="st">"+"</span>, cex<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in">  </span>
-<span class="r-in">  <span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"bot"</span>, <span class="st">"left"</span>, <span class="st">"top"</span>, <span class="st">"right"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">    <span class="fu">label.ellipse</span><span class="op">(</span><span class="va">ell</span>, label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">i</span>, <span class="st">":"</span>, <span class="va">labs</span><span class="op">[</span><span class="va">i</span><span class="op">+</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, label.pos <span class="op">=</span> <span class="va">i</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">}</span></span>
-<span class="r-in">  <span class="kw">for</span><span class="op">(</span> <span class="va">i</span> <span class="kw">in</span> <span class="fl">5</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>, <span class="fl">4</span>,<span class="fl">5</span>, <span class="fl">7</span>,<span class="fl">8</span>, <span class="fl">10</span>,<span class="fl">11</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">ell</span><span class="op">[</span><span class="va">i</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">ell</span><span class="op">[</span><span class="va">i</span>,<span class="fl">2</span><span class="op">]</span>, pch<span class="op">=</span><span class="fl">16</span><span class="op">)</span></span>
-<span class="r-in">    <span class="fu">label.ellipse</span><span class="op">(</span><span class="va">ell</span>, label<span class="op">=</span><span class="va">i</span>, label.pos<span class="op">=</span><span class="va">i</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">}</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">circ</span> <span class="op">&lt;-</span> <span class="fu">circle</span><span class="op">(</span>radius<span class="op">=</span><span class="fl">1.8</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">label_demo</span><span class="op">(</span><span class="va">circ</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">circle</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">center</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="va">radius</span><span class="op">=</span><span class="fl">1</span>, <span class="va">segments</span><span class="op">=</span><span class="fl">60</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>   <span class="va">angles</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="va">segments</span><span class="op">)</span><span class="op">*</span><span class="fl">2</span><span class="op">*</span><span class="va">pi</span><span class="op">/</span><span class="va">segments</span></span></span>
+<span class="r-in"><span>   <span class="va">circle</span> <span class="op">&lt;-</span> <span class="va">radius</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">angles</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">angles</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">center</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span> <span class="va">circle</span> <span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">label_demo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">ell</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">2</span>, <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">2</span>, type<span class="op">=</span><span class="st">"n"</span>, asp<span class="op">=</span><span class="fl">1</span>, main<span class="op">=</span><span class="st">"label.pos values and points (0:60)"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">ell</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, pch<span class="op">=</span><span class="st">"+"</span>, cex<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span>  <span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"bot"</span>, <span class="st">"left"</span>, <span class="st">"top"</span>, <span class="st">"right"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">0</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="fu">label.ellipse</span><span class="op">(</span><span class="va">ell</span>, label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">i</span>, <span class="st">":"</span>, <span class="va">labs</span><span class="op">[</span><span class="va">i</span><span class="op">+</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, label.pos <span class="op">=</span> <span class="va">i</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span></span></span>
+<span class="r-in"><span>  <span class="kw">for</span><span class="op">(</span> <span class="va">i</span> <span class="kw">in</span> <span class="fl">5</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>, <span class="fl">4</span>,<span class="fl">5</span>, <span class="fl">7</span>,<span class="fl">8</span>, <span class="fl">10</span>,<span class="fl">11</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">ell</span><span class="op">[</span><span class="va">i</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">ell</span><span class="op">[</span><span class="va">i</span>,<span class="fl">2</span><span class="op">]</span>, pch<span class="op">=</span><span class="fl">16</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu">label.ellipse</span><span class="op">(</span><span class="va">ell</span>, label<span class="op">=</span><span class="va">i</span>, label.pos<span class="op">=</span><span class="va">i</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">circ</span> <span class="op">&lt;-</span> <span class="fu">circle</span><span class="op">(</span>radius<span class="op">=</span><span class="fl">1.8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">label_demo</span><span class="op">(</span><span class="va">circ</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="label.ellipse-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">ell</span> <span class="op">&lt;-</span><span class="va">circ</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">.5</span>, <span class="fl">.5</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> </span>
-<span class="r-in"><span class="fu">label_demo</span><span class="op">(</span><span class="va">ell</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">ell</span> <span class="op">&lt;-</span><span class="va">circ</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">.5</span>, <span class="fl">.5</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="fu">label_demo</span><span class="op">(</span><span class="va">ell</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="label.ellipse-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -148,7 +171,7 @@ as the fraction of the way around the unit circle, counterclockwise from the poi
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
