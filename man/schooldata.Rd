@@ -1,11 +1,11 @@
 \name{schooldata}
 \alias{schooldata}
 \docType{data}
-\title{ School Data}
+\title{School Data}
 \description{
  School Data, from Charnes et al. (1981). The aim is to explain scores on 3 
 different tests, \code{reading}, \code{mathematics} and \code{selfesteem}
-from 70 school sites by means of 5 explanatory variables.
+from 70 school sites by means of 5 explanatory variables related to parents and teachers.
 
 }
 \usage{data(schooldata)}
