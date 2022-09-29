@@ -134,8 +134,13 @@ The package also provides a large collection of  data sets illustrating
 a variety of multivariate linear models of the types listed above,
 together with graphical displays.
 
-```{r datasets}
-vcdExtra::datasets("heplots")[, c("Item", "Title")] |> knitr::kable()
+```{r datasets, echo=FALSE}
+dsets <- vcdExtra::datasets("heplots")[, c("Item", "dim", "Title")]
+rowcols <- as.data.frame(stringr::str_split_fixed(dsets$dim,"x", 2))
+colnames(rowcols) <- c("rows", "cols")
+
+dsets.table <- cbind("dataset" = dsets$Item, rowcols, "title" =dsets$Title)
+knitr::kable(dsets.table)
 ```
 
 

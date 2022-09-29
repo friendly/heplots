@@ -132,42 +132,38 @@ The package also provides a large collection of data sets illustrating a
 variety of multivariate linear models of the types listed above,
 together with graphical displays.
 
-``` r
-vcdExtra::datasets("heplots")[, c("Item", "Title")] |> knitr::kable()
-```
-
-| Item             | Title                                                       |
-|:-----------------|:------------------------------------------------------------|
-| AddHealth        | Adolescent Health Data                                      |
-| Adopted          | Adopted Children                                            |
-| Bees             | Captive and maltreated bees                                 |
-| Diabetes         | Diabetes Dataset                                            |
-| FootHead         | Head measurements of football players                       |
-| Headache         | Treatment of Headache Sufferers for Sensitivity to Noise    |
-| Hernior          | Recovery from Elective Herniorrhaphy                        |
-| Iwasaki_Big_Five | Personality Traits of Cultural Groups                       |
-| MockJury         | Effects Of Physical Attractiveness Upon Mock Jury Decisions |
-| NLSY             | National Longitudinal Survey of Youth Data                  |
-| NeuroCog         | Neurocognitive Measures in Psychiatric Groups               |
-| Oslo             | Oslo Transect Subset Data                                   |
-| Parenting        | Father Parenting Competence                                 |
-| Plastic          | Plastic Film Data                                           |
-| Pottery2         | Chemical Analysis of Romano-British Pottery                 |
-| Probe1           | Response Speed in a Probe Experiment                        |
-| Probe2           | Response Speed in a Probe Experiment                        |
-| RatWeight        | Weight Gain in Rats Exposed to Thiouracil and Thyroxin      |
-| ReactTime        | Reaction Time Data                                          |
-| Rohwer           | Rohwer Data Set                                             |
-| RootStock        | Growth of Apple Trees from Different Root Stocks            |
-| Sake             | Taste Ratings of Japanese Rice Wine (Sake)                  |
-| Skulls           | Egyptian Skulls                                             |
-| SocGrades        | Grades in a Sociology Course                                |
-| SocialCog        | Social Cognitive Measures in Psychiatric Groups             |
-| TIPI             | Data on the Ten Item Personality Inventory                  |
-| VocabGrowth      | Vocabulary growth data                                      |
-| WeightLoss       | Weight Loss Data                                            |
-| mathscore        | Math scores for basic math and word problems                |
-| schooldata       | School Data                                                 |
+| dataset          | rows | cols | title                                                       |
+|:-----------------|:-----|:-----|:------------------------------------------------------------|
+| AddHealth        | 4344 | 3    | Adolescent Health Data                                      |
+| Adopted          | 62   | 6    | Adopted Children                                            |
+| Bees             | 246  | 6    | Captive and maltreated bees                                 |
+| Diabetes         | 145  | 6    | Diabetes Dataset                                            |
+| FootHead         | 90   | 7    | Head measurements of football players                       |
+| Headache         | 98   | 6    | Treatment of Headache Sufferers for Sensitivity to Noise    |
+| Hernior          | 32   | 9    | Recovery from Elective Herniorrhaphy                        |
+| Iwasaki_Big_Five | 203  | 7    | Personality Traits of Cultural Groups                       |
+| MockJury         | 114  | 17   | Effects Of Physical Attractiveness Upon Mock Jury Decisions |
+| NLSY             | 243  | 6    | National Longitudinal Survey of Youth Data                  |
+| NeuroCog         | 242  | 10   | Neurocognitive Measures in Psychiatric Groups               |
+| Oslo             | 332  | 14   | Oslo Transect Subset Data                                   |
+| Parenting        | 60   | 4    | Father Parenting Competence                                 |
+| Plastic          | 20   | 5    | Plastic Film Data                                           |
+| Pottery2         | 48   | 12   | Chemical Analysis of Romano-British Pottery                 |
+| Probe1           | 11   | 5    | Response Speed in a Probe Experiment                        |
+| Probe2           | 20   | 6    | Response Speed in a Probe Experiment                        |
+| RatWeight        | 27   | 6    | Weight Gain in Rats Exposed to Thiouracil and Thyroxin      |
+| ReactTime        | 10   | 6    | Reaction Time Data                                          |
+| Rohwer           | 69   | 10   | Rohwer Data Set                                             |
+| RootStock        | 48   | 5    | Growth of Apple Trees from Different Root Stocks            |
+| Sake             | 30   | 10   | Taste Ratings of Japanese Rice Wine (Sake)                  |
+| Skulls           | 150  | 5    | Egyptian Skulls                                             |
+| SocGrades        | 40   | 10   | Grades in a Sociology Course                                |
+| SocialCog        | 139  | 5    | Social Cognitive Measures in Psychiatric Groups             |
+| TIPI             | 1799 | 16   | Data on the Ten Item Personality Inventory                  |
+| VocabGrowth      | 64   | 4    | Vocabulary growth data                                      |
+| WeightLoss       | 34   | 7    | Weight Loss Data                                            |
+| mathscore        | 12   | 3    | Math scores for basic math and word problems                |
+| schooldata       | 70   | 8    | School Data                                                 |
 
 ## Examples
 
