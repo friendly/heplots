@@ -68,3 +68,5 @@ pairs(mod,
 
 }
 \keyword{datasets}
+\concept{MANOVA}
+

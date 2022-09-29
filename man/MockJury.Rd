@@ -94,3 +94,6 @@ anova(jury.mod3, jury.mod4)
 
 }
 \keyword{datasets}
+\concept{MANOVA}
+\concept{candisc}
+
