@@ -168,7 +168,11 @@ together with graphical displays.
 ## Examples
 
 This example illustrates HE plots using the classic `iris` data set. How
-do the means of the flower variables differ by `Species`?
+do the means of the flower variables differ by `Species`? This dataset
+was the imputus for R. A. Fisher (1936) to propose a method of
+discriminant analysis using data collected by Edgar Anderson (1928).
+Though some may rightly deprecate Fisher for being a supporter of
+eugenics, Anderson’s `iris` dataset should not be blamed.
 
 A basic HE plot shows the **H** and **E** ellipses for the first two
 response variables (here: `Sepal.Length` and `Sepal.Width`). The
@@ -229,6 +233,13 @@ pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
 <img src="man/figures/README-iris3-1.png" width="100%" />
 
 ## References
+
+Anderson, E. (1928). The Problem of Species in the Northern Blue Flags,
+Iris versicolor L. and Iris virginica L. *Annals of the Missouri
+Botanical Garden*, **13**, 241–313.
+
+Fisher, R. A. (1936). The Use of Multiple Measurements in Taxonomic
+Problems. *Annals of Eugenics*, **8**, 379–388.
 
 Fox, J.; Friendly, M. & Monette, G. (2009). [Visualizing hypothesis
 tests in multivariate linear models: The heplots package for
