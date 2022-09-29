@@ -59,11 +59,28 @@ school.rmod <- robmlm(cbind(reading, mathematics, selfesteem) ~ ., data=schoolda
 # note that counseling is now significant
 Anova(school.rmod)
 
-# compare classical HEplot with robust
-heplot(school.mod, cex=1.4, lty=1, fill=TRUE, fill.alpha=0.1)
-heplot(school.rmod, add=TRUE, error.ellipse=TRUE, lwd=c(2,2), lty=c(2,2), 
-	term.labels=FALSE, err.label="", fill=TRUE)
+# Index plot of the weights
+wts <- school.rmod$weights
+notable <- which(wts < 0.8)
+plot(wts, type = "h", col="gray", ylab = "Observation weight")
+points(1:length(wts), wts, 
+       pch=16,
+       col = ifelse(wts < 0.8, "red", "black"))
 
+text(notable, wts[notable],
+     labels = notable,
+     pos = 3,
+     col = "red")
+
+
+# compare classical HE plot with that based on the robust model
+heplot(school.mod, cex=1.4, lty=1, fill=TRUE, fill.alpha=0.1)
+heplot(school.rmod, 
+       add=TRUE, 
+       error.ellipse=TRUE, 
+       lwd=c(2,2), lty=c(2,2), 
+	     term.labels=FALSE, err.label="", 
+	     fill=TRUE)
 
 }
 \keyword{datasets}
