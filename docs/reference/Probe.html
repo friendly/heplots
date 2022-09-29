@@ -32,7 +32,7 @@ pre-selected on a test of short term memory."><meta property="og:image" content=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -86,8 +86,8 @@ pre-selected on a test of short term memory.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Probe1</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Probe2</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Probe1</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Probe2</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="format">
@@ -143,15 +143,15 @@ Brooks/Cole.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Probe1</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">Probe1</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Probe1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">Probe1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Probe-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">pmod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>,<span class="va">p2</span>,<span class="va">p3</span>,<span class="va">p4</span>,<span class="va">p5</span><span class="op">)</span> <span class="op">~</span> <span class="fl">1</span>, data<span class="op">=</span><span class="va">Probe1</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">idata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>position<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/car/" class="external-link">car</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="op">(</span><span class="va">pmod1.aov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pmod1</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">pmod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">p1</span>,<span class="va">p2</span>,<span class="va">p3</span>,<span class="va">p4</span>,<span class="va">p5</span><span class="op">)</span> <span class="op">~</span> <span class="fl">1</span>, data<span class="op">=</span><span class="va">Probe1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">idata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>position<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/car/" class="external-link">car</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">pmod1.aov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pmod1</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Note: model has only an intercept; equivalent type-III tests substituted.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type III Repeated Measures MANOVA Tests: Pillai test statistic</span>
@@ -160,25 +160,25 @@ Brooks/Cole.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> position     1   0.75177     5.30      4      7   0.02767 *  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># using default contrasts (p5 as reference level)</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pmod1</span>, manova<span class="op">=</span><span class="va">pmod1.aov</span>, iterm<span class="op">=</span><span class="st">"position"</span>, type<span class="op">=</span><span class="st">"III"</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># using default contrasts (p5 as reference level)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pmod1</span>, manova<span class="op">=</span><span class="va">pmod1.aov</span>, iterm<span class="op">=</span><span class="st">"position"</span>, type<span class="op">=</span><span class="st">"III"</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Probe-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">pmod1</span>, manova<span class="op">=</span><span class="va">pmod1.aov</span>, iterm<span class="op">=</span><span class="st">"position"</span>, type<span class="op">=</span><span class="st">"III"</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">pmod1</span>, manova<span class="op">=</span><span class="va">pmod1.aov</span>, iterm<span class="op">=</span><span class="st">"position"</span>, type<span class="op">=</span><span class="st">"III"</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Probe-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># contrasts for substantative hypotheses regarding</span></span>
-<span class="r-in"><span class="co"># sentence position effects</span></span>
-<span class="r-in"><span class="va">C</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="fl">1</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>,</span>
-<span class="r-in">  <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>,</span>
-<span class="r-in">  <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>,</span>
-<span class="r-in">  <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">4</span><span class="op">)</span>, <span class="fl">5</span>, <span class="fl">4</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">C</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"p"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">C</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SubPred"</span>, <span class="st">"AdjNoun"</span>, <span class="st">"SPxAN"</span>, <span class="st">"RelPN"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">idata</span><span class="op">$</span><span class="va">position</span><span class="op">)</span><span class="op">&lt;-</span> <span class="va">C</span></span>
-<span class="r-in"><span class="op">(</span><span class="va">pmod1.aov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pmod1</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># contrasts for substantative hypotheses regarding</span></span></span>
+<span class="r-in"><span><span class="co"># sentence position effects</span></span></span>
+<span class="r-in"><span><span class="va">C</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fl">1</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>  <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>  <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>  <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">4</span><span class="op">)</span>, <span class="fl">5</span>, <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">C</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"p"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">C</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SubPred"</span>, <span class="st">"AdjNoun"</span>, <span class="st">"SPxAN"</span>, <span class="st">"RelPN"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">idata</span><span class="op">$</span><span class="va">position</span><span class="op">)</span><span class="op">&lt;-</span> <span class="va">C</span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">pmod1.aov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pmod1</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Note: model has only an intercept; equivalent type-III tests substituted.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type III Repeated Measures MANOVA Tests: Pillai test statistic</span>
@@ -187,11 +187,11 @@ Brooks/Cole.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> position     1   0.75177     5.30      4      7   0.02767 *  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pmod1</span>, manova<span class="op">=</span><span class="va">pmod1.aov</span>, iterm<span class="op">=</span><span class="st">"position"</span>, type<span class="op">=</span><span class="st">"III"</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pmod1</span>, manova<span class="op">=</span><span class="va">pmod1.aov</span>, iterm<span class="op">=</span><span class="st">"position"</span>, type<span class="op">=</span><span class="st">"III"</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Probe-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">pmod1</span>, manova<span class="op">=</span><span class="va">pmod1.aov</span>, iterm<span class="op">=</span><span class="st">"position"</span>, type<span class="op">=</span><span class="st">"III"</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">pmod1</span>, manova<span class="op">=</span><span class="va">pmod1.aov</span>, iterm<span class="op">=</span><span class="st">"position"</span>, type<span class="op">=</span><span class="st">"III"</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">position</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Probe-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -206,7 +206,7 @@ Brooks/Cole.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -21,7 +21,7 @@ heplot."><meta property="og:image" content="http://friendly.github.io/heplots/lo
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -92,49 +92,74 @@ summary(object, ...)
     <h2>Arguments</h2>
     <dl><dt>formula</dt>
 <dd><p>a formula of the form <code>cbind(y1, y2, ...) ~ x1 + x2 + ...</code>.</p></dd>
-<dt>data</dt>
+
+  <dt>data</dt>
 <dd><p>a data frame from which variables specified in <code>formula</code> are preferentially to be taken.</p></dd>
-<dt>subset</dt>
+
+  <dt>subset</dt>
 <dd><p>An index vector specifying the cases to be used in fitting.</p></dd>
-<dt>weights</dt>
+
+  <dt>weights</dt>
 <dd><p>a vector of prior weights for each case.</p></dd>
-<dt>na.action</dt>
+
+
+  <dt>na.action</dt>
 <dd><p>A function to specify the action to be taken if <code>NA</code>s are found. 
 The 'factory-fresh' default action in R is 
 <code><a href="https://rdrr.io/r/stats/na.fail.html" class="external-link">na.omit</a></code>, and can be changed by <code><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></code><code>(na.action=)</code>.</p></dd>
-<dt>model</dt>
+
+  <dt>model</dt>
 <dd><p>should the model frame be returned in the object?</p></dd>
-<dt>contrasts</dt>
+
+  <dt>contrasts</dt>
 <dd><p>optional contrast specifications; see <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></code> for details.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>other arguments, passed down. In particular relevant control arguments
 can be passed to the to the <code>robmlm.default</code> method.</p></dd>
-<dt>X</dt>
+
+
+  <dt>X</dt>
 <dd><p>for the default method, a model matrix, including the constant (if present)</p></dd>
-<dt>Y</dt>
+
+  <dt>Y</dt>
 <dd><p>for the default method, a response matrix</p></dd>
-<dt>w</dt>
+
+
+  <dt>w</dt>
 <dd><p>prior weights</p></dd>
-<dt>P</dt>
+
+  <dt>P</dt>
 <dd><p>two-tail probability, to find cutoff quantile for chisq (tuning constant);
 default is set for bisquare weight function</p></dd>
-<dt>tune</dt>
+
+  <dt>tune</dt>
 <dd><p>tuning constant (if given directly)</p></dd>
-<dt>max.iter</dt>
+
+  <dt>max.iter</dt>
 <dd><p>maximum number of iterations</p></dd>
-<dt>psi</dt>
+
+  <dt>psi</dt>
 <dd><p>robustness weight function; <code><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">psi.bisquare</a></code> is the default</p></dd>
-<dt>tol</dt>
+
+  <dt>tol</dt>
 <dd><p>convergence tolerance, maximum relative change in coefficients</p></dd>
-<dt>initialize</dt>
+
+  <dt>initialize</dt>
 <dd><p>modeling function to find start values for coefficients,
 equation-by-equation; if absent WLS (<code>lm.wfit</code>) is used</p></dd>
-<dt>verbose</dt>
+
+  <dt>verbose</dt>
 <dd><p>show iteration history? (<code>TRUE</code> or <code>FALSE</code>)</p></dd>
-<dt>x</dt>
+
+  <dt>x</dt>
 <dd><p>a <code>robmlm</code> object</p></dd>
-<dt>object</dt>
+
+
+  <dt>object</dt>
 <dd><p>a <code>robmlm</code> object</p></dd>
+
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -148,22 +173,36 @@ providing for observation weights.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class <code>"robmlm"</code> inheriting from <code>c("mlm", "lm")</code>.
-This means that the returned <code>"robmlm"</code> contains all the components
+    
+
+<p>An object of class <code>"robmlm"</code> inheriting from <code>c("mlm", "lm")</code>.</p>
+
+
+<p>This means that the returned <code>"robmlm"</code> contains all the components
 of <code>"mlm"</code> objects described for <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></code>,
 plus the following:
 <!-- %%  If it is a LIST, use --></p>
 <dl><dt>weights </dt>
 <dd><p>final observation weights</p></dd>
+
 <dt>iterations </dt>
 <dd><p>number of iterations</p></dd>
+
 <dt>converged </dt>
 <dd><p>logical: did the IWLS process converge?</p></dd>
-</dl><p><!-- %% ... -->The generic accessor functions 
+
+</dl><p><!-- %% ... --></p>
+
+
+
+<p>The generic accessor functions 
 <code><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coefficients</a></code>, 
 <code><a href="https://rdrr.io/r/stats/effects.html" class="external-link">effects</a></code>, 
 <code><a href="https://rdrr.io/r/stats/fitted.values.html" class="external-link">fitted.values</a></code> and 
-<code><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></code>extract various useful features of the value returned by <code>robmlm</code>.</p>
+<code><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></code></p>
+
+
+<p>extract various useful features of the value returned by <code>robmlm</code>.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -186,114 +225,114 @@ Wadsworth &amp; Brooks/Cole.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">##############</span></span>
-<span class="r-in"><span class="co"># Skulls data</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># make shorter labels for epochs and nicer variable labels in heplots</span></span>
-<span class="r-in"><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"c"</span>,<span class="st">""</span>,<span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># variable labels</span></span>
-<span class="r-in"><span class="va">vlab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"maxBreadth"</span>, <span class="st">"basibHeight"</span>, <span class="st">"basialLength"</span>, <span class="st">"nasalHeight"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># fit manova model, classically and robustly</span></span>
-<span class="r-in"><span class="va">sk.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">sk.rmod</span> <span class="op">&lt;-</span> <span class="fu">robmlm</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># standard mlm methods apply here</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coefficients</a></span><span class="op">(</span><span class="va">sk.rmod</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">##############</span></span></span>
+<span class="r-in"><span><span class="co"># Skulls data</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># make shorter labels for epochs and nicer variable labels in heplots</span></span></span>
+<span class="r-in"><span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"c"</span>,<span class="st">""</span>,<span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># variable labels</span></span></span>
+<span class="r-in"><span><span class="va">vlab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"maxBreadth"</span>, <span class="st">"basibHeight"</span>, <span class="st">"basialLength"</span>, <span class="st">"nasalHeight"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># fit manova model, classically and robustly</span></span></span>
+<span class="r-in"><span><span class="va">sk.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sk.rmod</span> <span class="op">&lt;-</span> <span class="fu">robmlm</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># standard mlm methods apply here</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coefficients</a></span><span class="op">(</span><span class="va">sk.rmod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      mb          bh          bl         nh</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 133.9539529 132.6656599 96.50561801 50.8900600</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> epoch.L       4.1659721  -2.1793681 -4.84240950  1.1168866</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> epoch.Q      -0.3671411  -1.3069085 -0.04276618  0.2817763</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> epoch.C      -0.5833713  -0.7912067  1.03002114 -0.8379419</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> epoch^4       0.6350148   0.8787857 -0.55919989 -0.6233314</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># index plot of weights</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sk.rmod</span><span class="op">$</span><span class="va">weights</span>, type<span class="op">=</span><span class="st">"h"</span>, xlab<span class="op">=</span><span class="st">"Case Index"</span>, ylab<span class="op">=</span><span class="st">"Robust mlm weight"</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">sk.rmod</span><span class="op">$</span><span class="va">weights</span>, pch<span class="op">=</span><span class="fl">16</span>, col<span class="op">=</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span>side<span class="op">=</span><span class="fl">1</span>, at<span class="op">=</span><span class="fl">15</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">120</span>,<span class="fl">30</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span><span class="op">)</span>, tick<span class="op">=</span><span class="cn">FALSE</span>, cex.axis<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># index plot of weights</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">sk.rmod</span><span class="op">$</span><span class="va">weights</span>, type<span class="op">=</span><span class="st">"h"</span>, xlab<span class="op">=</span><span class="st">"Case Index"</span>, ylab<span class="op">=</span><span class="st">"Robust mlm weight"</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">sk.rmod</span><span class="op">$</span><span class="va">weights</span>, pch<span class="op">=</span><span class="fl">16</span>, col<span class="op">=</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span>side<span class="op">=</span><span class="fl">1</span>, at<span class="op">=</span><span class="fl">15</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">120</span>,<span class="fl">30</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">$</span><span class="va">epoch</span><span class="op">)</span>, tick<span class="op">=</span><span class="cn">FALSE</span>, cex.axis<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="robmlm-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># heplots to see effect of robmlm vs. mlm</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">sk.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>Lin<span class="op">=</span><span class="st">"epoch.L"</span>, Quad<span class="op">=</span><span class="st">"epoch.Q"</span><span class="op">)</span>, </span>
-<span class="r-in">    xlab<span class="op">=</span><span class="va">vlab</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, ylab<span class="op">=</span><span class="va">vlab</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, cex<span class="op">=</span><span class="fl">1.25</span>, lty<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">sk.rmod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>Lin<span class="op">=</span><span class="st">"epoch.L"</span>, Quad<span class="op">=</span><span class="st">"epoch.Q"</span><span class="op">)</span>, </span>
-<span class="r-in">    add<span class="op">=</span><span class="cn">TRUE</span>, error.ellipse<span class="op">=</span><span class="cn">TRUE</span>, lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, </span>
-<span class="r-in">    term.labels<span class="op">=</span><span class="cn">FALSE</span>, hyp.labels<span class="op">=</span><span class="cn">FALSE</span>, err.label<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># heplots to see effect of robmlm vs. mlm</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">sk.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>Lin<span class="op">=</span><span class="st">"epoch.L"</span>, Quad<span class="op">=</span><span class="st">"epoch.Q"</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>    xlab<span class="op">=</span><span class="va">vlab</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, ylab<span class="op">=</span><span class="va">vlab</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, cex<span class="op">=</span><span class="fl">1.25</span>, lty<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">sk.rmod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>Lin<span class="op">=</span><span class="st">"epoch.L"</span>, Quad<span class="op">=</span><span class="st">"epoch.Q"</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>    add<span class="op">=</span><span class="cn">TRUE</span>, error.ellipse<span class="op">=</span><span class="cn">TRUE</span>, lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>    term.labels<span class="op">=</span><span class="cn">FALSE</span>, hyp.labels<span class="op">=</span><span class="cn">FALSE</span>, err.label<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="robmlm-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">##############</span></span>
-<span class="r-in"><span class="co"># Pottery data</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">pottery.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Al</span>,<span class="va">Fe</span>,<span class="va">Mg</span>,<span class="va">Ca</span>,<span class="va">Na</span><span class="op">)</span><span class="op">~</span><span class="va">Site</span>, data<span class="op">=</span><span class="va">Pottery</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">pottery.rmod</span> <span class="op">&lt;-</span> <span class="fu">robmlm</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Al</span>,<span class="va">Fe</span>,<span class="va">Mg</span>,<span class="va">Ca</span>,<span class="va">Na</span><span class="op">)</span><span class="op">~</span><span class="va">Site</span>, data<span class="op">=</span><span class="va">Pottery</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pottery.mod</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">##############</span></span></span>
+<span class="r-in"><span><span class="co"># Pottery data</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">pottery.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Al</span>,<span class="va">Fe</span>,<span class="va">Mg</span>,<span class="va">Ca</span>,<span class="va">Na</span><span class="op">)</span><span class="op">~</span><span class="va">Site</span>, data<span class="op">=</span><span class="va">Pottery</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pottery.rmod</span> <span class="op">&lt;-</span> <span class="fu">robmlm</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Al</span>,<span class="va">Fe</span>,<span class="va">Mg</span>,<span class="va">Ca</span>,<span class="va">Na</span><span class="op">)</span><span class="op">~</span><span class="va">Site</span>, data<span class="op">=</span><span class="va">Pottery</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pottery.mod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Site  3    1.5539   4.2984     15     60 2.413e-05 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pottery.rmod</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pottery.rmod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Site  3     1.975   6.5516     15     51 1.722e-07 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># index plot of weights</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pottery.rmod</span><span class="op">$</span><span class="va">weights</span>, type<span class="op">=</span><span class="st">"h"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">pottery.rmod</span><span class="op">$</span><span class="va">weights</span>, pch<span class="op">=</span><span class="fl">16</span>, col<span class="op">=</span><span class="va">Pottery</span><span class="op">$</span><span class="va">Site</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># index plot of weights</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pottery.rmod</span><span class="op">$</span><span class="va">weights</span>, type<span class="op">=</span><span class="st">"h"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">pottery.rmod</span><span class="op">$</span><span class="va">weights</span>, pch<span class="op">=</span><span class="fl">16</span>, col<span class="op">=</span><span class="va">Pottery</span><span class="op">$</span><span class="va">Site</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="robmlm-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># heplots to see effect of robmlm vs. mlm</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pottery.mod</span>, cex<span class="op">=</span><span class="fl">1.3</span>, lty<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pottery.rmod</span>, add<span class="op">=</span><span class="cn">TRUE</span>, error.ellipse<span class="op">=</span><span class="cn">TRUE</span>, lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, </span>
-<span class="r-in">    term.labels<span class="op">=</span><span class="cn">FALSE</span>, err.label<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># heplots to see effect of robmlm vs. mlm</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pottery.mod</span>, cex<span class="op">=</span><span class="fl">1.3</span>, lty<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pottery.rmod</span>, add<span class="op">=</span><span class="cn">TRUE</span>, error.ellipse<span class="op">=</span><span class="cn">TRUE</span>, lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>    term.labels<span class="op">=</span><span class="cn">FALSE</span>, err.label<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="robmlm-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">###############</span></span>
-<span class="r-in"><span class="co"># Prestige data</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># treat women and prestige as response variables for this example</span></span>
-<span class="r-in"><span class="va">prestige.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">women</span>, <span class="va">prestige</span><span class="op">)</span> <span class="op">~</span> <span class="va">income</span> <span class="op">+</span> <span class="va">education</span> <span class="op">+</span> <span class="va">type</span>, data<span class="op">=</span><span class="va">Prestige</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">prestige.rmod</span> <span class="op">&lt;-</span> <span class="fu">robmlm</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">women</span>, <span class="va">prestige</span><span class="op">)</span> <span class="op">~</span> <span class="va">income</span> <span class="op">+</span> <span class="va">education</span> <span class="op">+</span> <span class="va">type</span>, data<span class="op">=</span><span class="va">Prestige</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">prestige.mod</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">###############</span></span></span>
+<span class="r-in"><span><span class="co"># Prestige data</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># treat women and prestige as response variables for this example</span></span></span>
+<span class="r-in"><span><span class="va">prestige.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">women</span>, <span class="va">prestige</span><span class="op">)</span> <span class="op">~</span> <span class="va">income</span> <span class="op">+</span> <span class="va">education</span> <span class="op">+</span> <span class="va">type</span>, data<span class="op">=</span><span class="va">Prestige</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">prestige.rmod</span> <span class="op">&lt;-</span> <span class="fu">robmlm</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">women</span>, <span class="va">prestige</span><span class="op">)</span> <span class="op">~</span> <span class="va">income</span> <span class="op">+</span> <span class="va">education</span> <span class="op">+</span> <span class="va">type</span>, data<span class="op">=</span><span class="va">Prestige</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">prestige.mod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                    women     prestige</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 29.638865042 -0.622929165</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> income      -0.004594789  0.001013193</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> education    1.677749298  3.673166052</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> typeprof    20.761455686  6.038970651</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> typewc      27.911084356 -2.737230718</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">prestige.rmod</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">prestige.rmod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                    women     prestige</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept) 24.696906731  0.019651597</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> income      -0.004902077  0.001082214</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> education    2.352283991  3.549614674</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> typeprof    18.737098949  6.394466644</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> typewc      26.762870920 -2.570933052</span>
-<span class="r-in"><span class="co"># how much do coefficients change?</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">prestige.mod</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">prestige.rmod</span><span class="op">)</span>,<span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># how much do coefficients change?</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">prestige.mod</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">prestige.rmod</span><span class="op">)</span>,<span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              women prestige</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  4.942   -0.643</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> income       0.000    0.000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> education   -0.675    0.124</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> typeprof     2.024   -0.355</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> typewc       1.148   -0.166</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># pretty plot of case weights</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">prestige.rmod</span><span class="op">$</span><span class="va">weights</span>, type<span class="op">=</span><span class="st">"h"</span>, xlab<span class="op">=</span><span class="st">"Case Index"</span>, ylab<span class="op">=</span><span class="st">"Robust mlm weight"</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">prestige.rmod</span><span class="op">$</span><span class="va">weights</span>, pch<span class="op">=</span><span class="fl">16</span>, col<span class="op">=</span><span class="va">Prestige</span><span class="op">$</span><span class="va">type</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.7</span>, <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">Prestige</span><span class="op">$</span><span class="va">type</span><span class="op">)</span>, pch<span class="op">=</span><span class="fl">16</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, bg<span class="op">=</span><span class="st">"white"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># pretty plot of case weights</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">prestige.rmod</span><span class="op">$</span><span class="va">weights</span>, type<span class="op">=</span><span class="st">"h"</span>, xlab<span class="op">=</span><span class="st">"Case Index"</span>, ylab<span class="op">=</span><span class="st">"Robust mlm weight"</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">prestige.rmod</span><span class="op">$</span><span class="va">weights</span>, pch<span class="op">=</span><span class="fl">16</span>, col<span class="op">=</span><span class="va">Prestige</span><span class="op">$</span><span class="va">type</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.7</span>, <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">Prestige</span><span class="op">$</span><span class="va">type</span><span class="op">)</span>, pch<span class="op">=</span><span class="fl">16</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, bg<span class="op">=</span><span class="st">"white"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="robmlm-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">prestige.mod</span>, cex<span class="op">=</span><span class="fl">1.4</span>, lty<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">prestige.rmod</span>, add<span class="op">=</span><span class="cn">TRUE</span>, error.ellipse<span class="op">=</span><span class="cn">TRUE</span>, lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, </span>
-<span class="r-in">    term.labels<span class="op">=</span><span class="cn">FALSE</span>, err.label<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">prestige.mod</span>, cex<span class="op">=</span><span class="fl">1.4</span>, lty<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">prestige.rmod</span>, add<span class="op">=</span><span class="cn">TRUE</span>, error.ellipse<span class="op">=</span><span class="cn">TRUE</span>, lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>    term.labels<span class="op">=</span><span class="cn">FALSE</span>, err.label<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="robmlm-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -308,7 +347,7 @@ Wadsworth &amp; Brooks/Cole.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

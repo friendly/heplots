@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -56,31 +56,54 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">arrow3d</span><span class="op">(</span>p0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, p1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, <span class="va">barblen</span>, s <span class="op">=</span> <span class="fl">0.05</span>, theta <span class="op">=</span> <span class="va">pi</span><span class="op">/</span><span class="fl">6</span>, n <span class="op">=</span> <span class="fl">3</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">arrow3d</span><span class="op">(</span>p0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, p1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, <span class="va">barblen</span>, s <span class="op">=</span> <span class="fl">0.05</span>, theta <span class="op">=</span> <span class="va">pi</span><span class="op">/</span><span class="fl">6</span>, n <span class="op">=</span> <span class="fl">3</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>p0</dt>
 <dd><p>Initial point (tail of arrow)</p></dd>
-<dt>p1</dt>
+
+  <dt>p1</dt>
 <dd><p>Ending point (head of arrow)</p></dd>
-<dt>barblen</dt>
+
+  <dt>barblen</dt>
 <dd><p>Length of each barb, in data units</p></dd>
-<dt>s</dt>
+
+  <dt>s</dt>
 <dd><p>length of barb as fraction of line length (unless barblen is specified)</p></dd>
-<dt>theta</dt>
+
+  <dt>theta</dt>
 <dd><p>opening angle of barbs</p></dd>
-<dt>n</dt>
+
+  <dt>n</dt>
 <dd><p>number of barbs</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>args passed to lines3d for line styling, e.g., <code>color</code>, <code>lwd</code>, etc.
 See <code><a href="https://dmurdoch.github.io/rgl/dev/reference/material.html" class="external-link">material3d</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns (invisibly): integer ID of the line added to the scene
-<!-- %%  ~Describe the value returned --><!-- %%  If it is a LIST, use --><!-- %%  \item{comp1 }{Description of 'comp1'} --><!-- %%  \item{comp2 }{Description of 'comp2'} --><!-- %% ... --></p>
+    
+
+<p>Returns (invisibly): integer ID of the line added to the scene
+<!-- %%  ~Describe the value returned --></p>
+
+
+<p><!-- %%  If it is a LIST, use --></p>
+
+
+<p><!-- %%  \item{comp1 }{Description of 'comp1'} --></p>
+
+
+<p><!-- %%  \item{comp2 }{Description of 'comp2'} --></p>
+
+
+<p><!-- %% ... --></p>
+
+
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -93,8 +116,8 @@ See <code><a href="https://dmurdoch.github.io/rgl/dev/reference/material.html" c
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">arrow3d</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, barblen<span class="op">=</span><span class="fl">.2</span>, lwd<span class="op">=</span><span class="fl">3</span>, col<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">arrow3d</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, barblen<span class="op">=</span><span class="fl">.2</span>, lwd<span class="op">=</span><span class="fl">3</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">arrow3d</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, barblen<span class="op">=</span><span class="fl">.2</span>, lwd<span class="op">=</span><span class="fl">3</span>, col<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">arrow3d</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>, barblen<span class="op">=</span><span class="fl">.2</span>, lwd<span class="op">=</span><span class="fl">3</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -109,7 +132,7 @@ See <code><a href="https://dmurdoch.github.io/rgl/dev/reference/material.html" c
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

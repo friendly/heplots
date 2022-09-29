@@ -23,7 +23,7 @@ the eigenvalues of these covariance matrices."><meta property="og:image" content
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -68,52 +68,66 @@ the eigenvalues of these covariance matrices.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for boxM</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>,
-             gplabel <span class="op">=</span> <span class="cn">NULL</span>,
-             which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"logDet"</span>, <span class="st">"product"</span>, <span class="st">"sum"</span>, <span class="st">"precision"</span>, <span class="st">"max"</span><span class="op">)</span>,
-             log <span class="op">=</span> <span class="va">which</span><span class="op">==</span><span class="st">"product"</span>,
-             pch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">15</span><span class="op">)</span>, 
-             cex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2.5</span><span class="op">)</span>, 
-             col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"red"</span><span class="op">)</span>,  
-             rev <span class="op">=</span> <span class="cn">FALSE</span>,
-             <span class="va">xlim</span>,
-             conf<span class="op">=</span><span class="fl">0.95</span>, method<span class="op">=</span><span class="fl">1</span>, bias.adj<span class="op">=</span><span class="cn">TRUE</span>, lwd<span class="op">=</span><span class="fl">2</span>,
-             <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for boxM</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>,</span>
+<span>             gplabel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>             which <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"logDet"</span>, <span class="st">"product"</span>, <span class="st">"sum"</span>, <span class="st">"precision"</span>, <span class="st">"max"</span><span class="op">)</span>,</span>
+<span>             log <span class="op">=</span> <span class="va">which</span><span class="op">==</span><span class="st">"product"</span>,</span>
+<span>             pch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">15</span><span class="op">)</span>, </span>
+<span>             cex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2.5</span><span class="op">)</span>, </span>
+<span>             col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"red"</span><span class="op">)</span>,  </span>
+<span>             rev <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>             <span class="va">xlim</span>,</span>
+<span>             conf<span class="op">=</span><span class="fl">0.95</span>, method<span class="op">=</span><span class="fl">1</span>, bias.adj<span class="op">=</span><span class="cn">TRUE</span>, lwd<span class="op">=</span><span class="fl">2</span>,</span>
+<span>             <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A <code>"boxM"</code> object resulting from <code><a href="boxM.html">boxM</a></code></p></dd>
-<dt>gplabel</dt>
+
+  <dt>gplabel</dt>
 <dd><p>character string used to label the group factor.</p></dd>
-<dt>which</dt>
+
+  <dt>which</dt>
 <dd><p>Measure to be plotted. The default, <code>"logDet"</code>, is the standard plot.
     Other values are: <code>"product"</code>, <code>"sum"</code>, <code>"precision"</code> and <code>"max"</code></p></dd>
-<dt>log</dt>
+
+  <dt>log</dt>
 <dd><p>logical; if <code>TRUE</code>, the log of the measure is plotted. The default, <code>which=="product"</code>,
   produces a plot equivalent to the plot of <code>"logDet"</code>.</p></dd>
-<dt>pch</dt>
+
+  <dt>pch</dt>
 <dd><p>a vector of two point symbols to use for the individual groups and the pooled data, respectively</p></dd>
-<dt>cex</dt>
+
+  <dt>cex</dt>
 <dd><p>character size of point symbols, a vector of length two for groups and pooled data, respectively</p></dd>
-<dt>col</dt>
+
+  <dt>col</dt>
 <dd><p>colors for point symbols, a vector of length two for the groups and the pooled data</p></dd>
-<dt>rev</dt>
+
+  <dt>rev</dt>
 <dd><p>logical; if <code>TRUE</code>, the order of the groups is reversed on the vertical axis.</p></dd>
-<dt>xlim</dt>
+
+  <dt>xlim</dt>
 <dd><p>x limits for the plot</p></dd>
-<dt>conf</dt>
+
+  <dt>conf</dt>
 <dd><p>coverage for approximate confidence intervals, <code>0 &lt;= conf &lt; 1</code> ; use <code>conf=0</code> to suppress these</p></dd>
-<dt>method</dt>
+
+  <dt>method</dt>
 <dd><p>confidence interval method; see <code><a href="logdetCI.html">logdetCI</a></code></p></dd>
-<dt>bias.adj</dt>
+
+  <dt>bias.adj</dt>
 <dd><p>confidence interval bias adjustment; see <code><a href="logdetCI.html">logdetCI</a></code></p></dd>
-<dt>lwd</dt>
+
+  <dt>lwd</dt>
 <dd><p>line width for confidence interval</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>Arguments passed down to <code><a href="https://rdrr.io/r/graphics/dotchart.html" class="external-link">dotchart</a></code>.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -138,30 +152,30 @@ the eigenvalues of these covariance matrices.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Iris data</span></span>
-<span class="r-in"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="boxM.html">boxM</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">[</span>, <span class="st">"Species"</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, gplabel<span class="op">=</span><span class="st">"Species"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Iris data</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="boxM.html">boxM</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">[</span>, <span class="st">"Species"</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, gplabel<span class="op">=</span><span class="st">"Species"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.boxM-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Skulls data</span></span>
-<span class="r-in"><span class="va">skulls.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">skulls.boxm</span> <span class="op">&lt;-</span> <span class="fu"><a href="boxM.html">boxM</a></span><span class="op">(</span><span class="va">skulls.mod</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Skulls data</span></span></span>
+<span class="r-in"><span><span class="va">skulls.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">skulls.boxm</span> <span class="op">&lt;-</span> <span class="fu"><a href="boxM.html">boxM</a></span><span class="op">(</span><span class="va">skulls.mod</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.boxM-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span>, bias.adj<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span>, bias.adj<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.boxM-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># other measures</span></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, which<span class="op">=</span><span class="st">"product"</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span>, xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">14</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># other measures</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, which<span class="op">=</span><span class="st">"product"</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span>, xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">14</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.boxM-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, which<span class="op">=</span><span class="st">"sum"</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span><span class="op">)</span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, which<span class="op">=</span><span class="st">"sum"</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.boxM-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, which<span class="op">=</span><span class="st">"precision"</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span><span class="op">)</span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, which<span class="op">=</span><span class="st">"precision"</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.boxM-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, which<span class="op">=</span><span class="st">"max"</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span><span class="op">)</span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">skulls.boxm</span>, which<span class="op">=</span><span class="st">"max"</span>, gplabel<span class="op">=</span><span class="st">"Epoch"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.boxM-7.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -176,7 +190,7 @@ the eigenvalues of these covariance matrices.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

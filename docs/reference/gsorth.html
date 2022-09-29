@@ -28,7 +28,7 @@ equivalent of Type I tests, such as provided by anova."><meta property="og:image
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -78,27 +78,32 @@ equivalent of Type I tests, such as provided by <code><a href="https://rdrr.io/r
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">gsorth</span><span class="op">(</span><span class="va">y</span>, <span class="va">order</span>, recenter <span class="op">=</span> <span class="cn">TRUE</span>, rescale <span class="op">=</span> <span class="cn">TRUE</span>, adjnames <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gsorth</span><span class="op">(</span><span class="va">y</span>, <span class="va">order</span>, recenter <span class="op">=</span> <span class="cn">TRUE</span>, rescale <span class="op">=</span> <span class="cn">TRUE</span>, adjnames <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>y</dt>
 <dd><p>A numeric data frame or matrix</p></dd>
-<dt>order</dt>
+
+  <dt>order</dt>
 <dd><p>An integer vector specifying the order of and/or a subset of
 the columns of <code>y</code> to be orthogonalized.
 If missing, <code>order=1:p</code> where <code>p=ncol(y)</code>.</p></dd>
-<dt>recenter</dt>
+
+  <dt>recenter</dt>
 <dd><p>If <code>TRUE</code>, the result has same column means as original;
 else means = 0 for cols <code>2:p</code>.</p></dd>
-<dt>rescale</dt>
+
+  <dt>rescale</dt>
 <dd><p>If <code>TRUE</code>, the result has same column standard deviations as original;
 else sd = residual variance for cols <code>2:p</code></p></dd>
-<dt>adjnames</dt>
+
+  <dt>adjnames</dt>
 <dd><p>If <code>TRUE</code>, the column names of the result  are adjusted to the form
 Y1, Y2.1, Y3.12, by adding the suffixes '.1', '.12', etc. to the
 original column names.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -110,9 +115,22 @@ columns, i.e.,</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a matrix or data frame with uncorrelated columns.  Row and column names are
+    
+
+<p>Returns a matrix or data frame with uncorrelated columns.  Row and column names are
 copied to the result.
-<!-- %%  If it is a LIST, use --><!-- %%  \item{comp1 }{Description of 'comp1'} --><!-- %%  \item{comp2 }{Description of 'comp2'} --><!-- %% ... --></p>
+<!-- %%  If it is a LIST, use --></p>
+
+
+<p><!-- %%  \item{comp1 }{Description of 'comp1'} --></p>
+
+
+<p><!-- %%  \item{comp2 }{Description of 'comp2'} --></p>
+
+
+<p><!-- %% ... --></p>
+
+
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -125,41 +143,41 @@ copied to the result.
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">GSiris</span> <span class="op">&lt;-</span> <span class="fu">gsorth</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">GSiris</span> <span class="op">&lt;-</span> <span class="fu">gsorth</span><span class="op">(</span><span class="va">iris</span>, order<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>   <span class="co"># same, using order</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">GSiris</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">GSiris</span> <span class="op">&lt;-</span> <span class="fu">gsorth</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">GSiris</span> <span class="op">&lt;-</span> <span class="fu">gsorth</span><span class="op">(</span><span class="va">iris</span>, order<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>   <span class="co"># same, using order</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">GSiris</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  num [1:150, 1:4] 5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "dimnames")=List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ : chr [1:150] "1" "2" "3" "4" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ : chr [1:4] "Sepal.Length" "Sepal.Width.1" "Petal.Length.12" "Petal.Width.123"</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/zapsmall.html" class="external-link">zapsmall</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="va">GSiris</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/zapsmall.html" class="external-link">zapsmall</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="va">GSiris</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                 Sepal.Length Sepal.Width.1 Petal.Length.12 Petal.Width.123</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sepal.Length               1             0               0               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sepal.Width.1              0             1               0               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Petal.Length.12            0             0               1               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Petal.Width.123            0             0               0               1</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colMeans</a></span><span class="op">(</span><span class="va">GSiris</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colMeans</a></span><span class="op">(</span><span class="va">GSiris</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Sepal.Length   Sepal.Width.1 Petal.Length.12 Petal.Width.123 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        5.843333        3.057333        3.758000        1.199333 </span>
-<span class="r-in"><span class="co"># sd(GSiris) -- sd(&lt;matrix&gt;) now deprecated</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">GSiris</span>, <span class="fl">2</span>, <span class="va">sd</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># sd(GSiris) -- sd(&lt;matrix&gt;) now deprecated</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">GSiris</span>, <span class="fl">2</span>, <span class="va">sd</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Sepal.Length   Sepal.Width.1 Petal.Length.12 Petal.Width.123 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       0.8280661       0.4358663       1.7652982       0.7622377 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># orthogonalize Y side</span></span>
-<span class="r-in"><span class="va">GSiris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu">gsorth</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>, Species<span class="op">=</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">iris.mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">GSiris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span> <span class="op">~</span> <span class="va">Species</span>, data<span class="op">=</span><span class="va">GSiris</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">iris.mod1</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># orthogonalize Y side</span></span></span>
+<span class="r-in"><span><span class="va">GSiris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu">gsorth</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>, Species<span class="op">=</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">iris.mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">GSiris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span> <span class="op">~</span> <span class="va">Species</span>, data<span class="op">=</span><span class="va">GSiris</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">iris.mod1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Species  2    1.1919   53.466      8    290 &lt; 2.2e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># orthogonalize X side</span></span>
-<span class="r-in"><span class="va">rohwer.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, data<span class="op">=</span><span class="va">Rohwer</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.mod</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># orthogonalize X side</span></span></span>
+<span class="r-in"><span><span class="va">rohwer.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, data<span class="op">=</span><span class="va">Rohwer</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.mod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Df test stat approx F num Df den Df   Pr(&gt;F)   </span>
@@ -170,12 +188,12 @@ copied to the result.
 <span class="r-out co"><span class="r-pr">#&gt;</span> ss  1  0.091796   2.0552      3     61 0.115521   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># type I tests for Rohwer data</span></span>
-<span class="r-in"><span class="va">Rohwer.orth</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Rohwer</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fu">gsorth</span><span class="op">(</span><span class="va">Rohwer</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span><span class="op">]</span>, adjnames<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">rohwer.mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, data<span class="op">=</span><span class="va">Rohwer.orth</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.mod1</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># type I tests for Rohwer data</span></span></span>
+<span class="r-in"><span><span class="va">Rohwer.orth</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Rohwer</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fu">gsorth</span><span class="op">(</span><span class="va">Rohwer</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span><span class="op">]</span>, adjnames<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">rohwer.mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, data<span class="op">=</span><span class="va">Rohwer.orth</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.mod1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
@@ -186,8 +204,8 @@ copied to the result.
 <span class="r-out co"><span class="r-pr">#&gt;</span> ss  1  0.091796   2.0552      3     61  0.115521    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"><span class="co"># compare with anova()</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/anova.html" class="external-link">anova</a></span><span class="op">(</span><span class="va">rohwer.mod1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># compare with anova()</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html" class="external-link">anova</a></span><span class="op">(</span><span class="va">rohwer.mod1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Analysis of Variance Table</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Df  Pillai approx F num Df den Df    Pr(&gt;F)    </span>
@@ -200,13 +218,13 @@ copied to the result.
 <span class="r-out co"><span class="r-pr">#&gt;</span> Residuals   63                                             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># compare heplots for original Xs and orthogonalized, Type I</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">rohwer.mod</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># compare heplots for original Xs and orthogonalized, Type I</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">rohwer.mod</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="gsorth-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">rohwer.mod1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">rohwer.mod1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="gsorth-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -221,7 +239,7 @@ copied to the result.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

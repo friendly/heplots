@@ -20,7 +20,7 @@ by group, allowing an arbitrary center function."><meta property="og:image" cont
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -62,22 +62,26 @@ by group, allowing an arbitrary <code>center</code> function.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">colDevs</span><span class="op">(</span><span class="va">x</span>, <span class="va">group</span>, center <span class="op">=</span> <span class="va">mean</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">colDevs</span><span class="op">(</span><span class="va">x</span>, <span class="va">group</span>, center <span class="op">=</span> <span class="va">mean</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A numeric data frame or matrix.</p></dd>
-<dt>group</dt>
+
+  <dt>group</dt>
 <dd><p>A factor (or variable that can be coerced to a factor) indicating
 the membership of each observation in <code>x</code> in one or more groups.
 If missing, all the data is treated as a single group.</p></dd>
-<dt>center</dt>
+
+  <dt>center</dt>
 <dd><p>A function used to center the values (for each group if <code>group</code> is specified.
 The function must take a vector argument and return a scalar result.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>Arguments passed down</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -85,8 +89,24 @@ The function must take a vector argument and return a scalar result.</p></dd>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>A numeric matrix containing the deviations from the centering function.
-<!-- %%  ~Describe the value returned --><!-- %%  If it is a LIST, use --><!-- %%  \item{comp1 }{Description of 'comp1'} --><!-- %%  \item{comp2 }{Description of 'comp2'} --><!-- %% ... --></p>
+    
+
+<p>A numeric matrix containing the deviations from the centering function.
+<!-- %%  ~Describe the value returned --></p>
+
+
+<p><!-- %%  If it is a LIST, use --></p>
+
+
+<p><!-- %%  \item{comp1 }{Description of 'comp1'} --></p>
+
+
+<p><!-- %%  \item{comp2 }{Description of 'comp2'} --></p>
+
+
+<p><!-- %% ... --></p>
+
+
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -100,17 +120,17 @@ The function must take a vector argument and return a scalar result.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">Species</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">$</span><span class="va">Species</span></span>
-<span class="r-in"><span class="va">irisdev</span> <span class="op">&lt;-</span> <span class="fu">colDevs</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">Species</span>, <span class="va">mean</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">irisdev</span> <span class="op">&lt;-</span> <span class="fu">colDevs</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">Species</span>, <span class="va">median</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># trimmed mean, using an anonymous function</span></span>
-<span class="r-in"><span class="va">irisdev</span> <span class="op">&lt;-</span> <span class="fu">colDevs</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">Species</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">x</span>, trim<span class="op">=</span><span class="fl">0.25</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># no grouping variable: deviations from column grand means</span></span>
-<span class="r-in"><span class="co"># include all variables (but suppress warning for this doc)</span></span>
-<span class="r-in"><span class="va">irisdev</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span> <span class="fu">colDevs</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">Species</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">$</span><span class="va">Species</span></span></span>
+<span class="r-in"><span><span class="va">irisdev</span> <span class="op">&lt;-</span> <span class="fu">colDevs</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">Species</span>, <span class="va">mean</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">irisdev</span> <span class="op">&lt;-</span> <span class="fu">colDevs</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">Species</span>, <span class="va">median</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># trimmed mean, using an anonymous function</span></span></span>
+<span class="r-in"><span><span class="va">irisdev</span> <span class="op">&lt;-</span> <span class="fu">colDevs</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">Species</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">x</span>, trim<span class="op">=</span><span class="fl">0.25</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># no grouping variable: deviations from column grand means</span></span></span>
+<span class="r-in"><span><span class="co"># include all variables (but suppress warning for this doc)</span></span></span>
+<span class="r-in"><span><span class="va">irisdev</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span> <span class="fu">colDevs</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -125,7 +145,7 @@ The function must take a vector argument and return a scalar result.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -22,7 +22,7 @@ The test statistic uses a chi-square approximation."><meta property="og:image" c
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -66,21 +66,21 @@ The test statistic uses a chi-square approximation.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">boxM</span><span class="op">(</span><span class="va">Y</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for formula</span>
-<span class="fu">boxM</span><span class="op">(</span><span class="va">Y</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for lm</span>
-<span class="fu">boxM</span><span class="op">(</span><span class="va">Y</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for default</span>
-<span class="fu">boxM</span><span class="op">(</span><span class="va">Y</span>, <span class="va">group</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for boxM</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">object</span>, 
-     digits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"digits"</span><span class="op">)</span>,
-     cov<span class="op">=</span><span class="cn">FALSE</span>, quiet<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">boxM</span><span class="op">(</span><span class="va">Y</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for formula</span></span>
+<span><span class="fu">boxM</span><span class="op">(</span><span class="va">Y</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for lm</span></span>
+<span><span class="fu">boxM</span><span class="op">(</span><span class="va">Y</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for default</span></span>
+<span><span class="fu">boxM</span><span class="op">(</span><span class="va">Y</span>, <span class="va">group</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for boxM</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">object</span>, </span>
+<span>     digits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"digits"</span><span class="op">)</span>,</span>
+<span>     cov<span class="op">=</span><span class="cn">FALSE</span>, quiet<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -90,46 +90,66 @@ The test statistic uses a chi-square approximation.</p>
   for a multivariate linear model.
   If <code>Y</code> is a linear-model object or a formula, the variables on the right-hand-side of the model must all be factors 
   and must be completely crossed, e.g., <code>A:B</code></p></dd>
-<dt>data</dt>
+
+  <dt>data</dt>
 <dd><p>a numeric data.frame or matrix containing <em>n</em> observations of <em>p</em> variables;
 	it is expected that <em>n &gt; p</em>.</p></dd>
-<dt>group</dt>
+
+  <dt>group</dt>
 <dd><p>a factor defining groups, or a vector of length <em>n</em> doing the same.</p></dd>
-<dt>object</dt>
+
+  <dt>object</dt>
 <dd><p>a <code>"boxM"</code> object for the <code>summary</code> method</p></dd>
-<dt>digits</dt>
+
+  <dt>digits</dt>
 <dd><p>number of digits to print for the <code>summary</code> method</p></dd>
-<dt>cov</dt>
+
+  <dt>cov</dt>
 <dd><p>logical; if <code>TRUE</code> the covariance matrices are printed.</p></dd>
-<dt>quiet</dt>
+
+  <dt>quiet</dt>
 <dd><p>logical; if <code>TRUE</code> printing from the <code>summary</code> is suppressed</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>Arguments passed down to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list with class <code>c("htest", "boxM")</code> containing the following components:</p>
+    
+
+<p>A list with class <code>c("htest", "boxM")</code> containing the following components:</p>
 <dl><dt>statistic </dt>
 <dd><p>an approximated value of the chi-square distribution.</p></dd>
-<dt>parameter </dt>
+
+  <dt>parameter </dt>
 <dd><p>the degrees of freedom related of the test statistic in this case that it follows a Chi-square distribution.</p></dd>
-<dt>p.value </dt>
+
+  <dt>p.value </dt>
 <dd><p>the p-value of the test.</p></dd>
-<dt>cov </dt>
+
+  <dt>cov </dt>
 <dd><p>a list containing the within covariance matrix for each level of <code>grouping</code>.</p></dd>
-<dt>pooled </dt>
+
+  <dt>pooled </dt>
 <dd><p>the pooled covariance matrix.</p></dd>
-<dt>logDet </dt>
+
+  <dt>logDet </dt>
 <dd><p>a vector containing the natural logarithm of each matrix in <code>cov</code>, followed by the value for the pooled 
   covariance matrix</p></dd>
-<dt>means</dt>
+
+  <dt>means</dt>
 <dd><p>a matrix of the means for all groups, followed by the grand means</p></dd>
-<dt>df</dt>
+
+  <dt>df</dt>
 <dd><p>a vector of the degrees of freedom for all groups, followed by that for the pooled covariance matrix</p></dd>
-<dt>data.name </dt>
+
+  <dt>data.name </dt>
 <dd><p>a character string giving the names of the data.</p></dd>
-<dt>method </dt>
+
+  <dt>method </dt>
 <dd><p>the character string "Box's M-test for Homogeneity of Covariance Matrices".</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -171,19 +191,19 @@ univariate models with better statistical properties.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># default method</span></span>
-<span class="r-in"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">boxM</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">[</span>, <span class="st">"Species"</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">res</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># default method</span></span></span>
+<span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">boxM</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">[</span>, <span class="st">"Species"</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">res</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Box's M-test for Homogeneity of Covariance Matrices</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  iris[, 1:4]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chi-Sq (approx.) = 140.94, df = 20, p-value &lt; 2.2e-16</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Summary for Box's M-test of Equality of Covariance Matrices</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chi-Sq:	 140.943 </span>
@@ -207,40 +227,40 @@ univariate models with better statistical properties.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sum       3.092041e-01 6.248245e-01 0.8883673469 6.074653e-01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> precision 5.576122e-03 7.338788e-03 0.0169121236 1.304819e-02</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> max       2.364557e-01 4.878739e-01 0.6952548382 4.435659e-01</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># visualize (what is done in the plot method) </span></span>
-<span class="r-in"><span class="va">dets</span> <span class="op">&lt;-</span> <span class="va">res</span><span class="op">$</span><span class="va">logDet</span></span>
-<span class="r-in"><span class="va">ng</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">logDet</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/dotchart.html" class="external-link">dotchart</a></span><span class="op">(</span><span class="va">dets</span>, xlab <span class="op">=</span> <span class="st">"log determinant"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">dets</span> , <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,  </span>
-<span class="r-in">  cex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="va">ng</span><span class="op">)</span>, <span class="fl">2.5</span><span class="op">)</span>, </span>
-<span class="r-in">  pch<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">16</span>, <span class="va">ng</span><span class="op">)</span>, <span class="fl">15</span><span class="op">)</span>,</span>
-<span class="r-in">  col<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="va">ng</span><span class="op">)</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># visualize (what is done in the plot method) </span></span></span>
+<span class="r-in"><span><span class="va">dets</span> <span class="op">&lt;-</span> <span class="va">res</span><span class="op">$</span><span class="va">logDet</span></span></span>
+<span class="r-in"><span><span class="va">ng</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">logDet</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/dotchart.html" class="external-link">dotchart</a></span><span class="op">(</span><span class="va">dets</span>, xlab <span class="op">=</span> <span class="st">"log determinant"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">dets</span> , <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,  </span></span>
+<span class="r-in"><span>  cex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1.5</span>, <span class="va">ng</span><span class="op">)</span>, <span class="fl">2.5</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>  pch<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">16</span>, <span class="va">ng</span><span class="op">)</span>, <span class="fl">15</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  col<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="va">ng</span><span class="op">)</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="boxM-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># formula method</span></span>
-<span class="r-in"><span class="fu">boxM</span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Sepal.Width</span>, <span class="va">Petal.Length</span>, <span class="va">Petal.Width</span><span class="op">)</span> <span class="op">~</span> <span class="va">Species</span>, data<span class="op">=</span><span class="va">iris</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># formula method</span></span></span>
+<span class="r-in"><span><span class="fu">boxM</span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Sepal.Width</span>, <span class="va">Petal.Length</span>, <span class="va">Petal.Width</span><span class="op">)</span> <span class="op">~</span> <span class="va">Species</span>, data<span class="op">=</span><span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Box's M-test for Homogeneity of Covariance Matrices</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  Y</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chi-Sq (approx.) = 140.94, df = 20, p-value &lt; 2.2e-16</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">### Skulls dat</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># lm method</span></span>
-<span class="r-in"><span class="va">skulls.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">boxM</span><span class="op">(</span><span class="va">skulls.mod</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">### Skulls dat</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># lm method</span></span></span>
+<span class="r-in"><span><span class="va">skulls.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">boxM</span><span class="op">(</span><span class="va">skulls.mod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Box's M-test for Homogeneity of Covariance Matrices</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  Y</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chi-Sq (approx.) = 45.667, df = 40, p-value = 0.2483</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -255,7 +275,7 @@ univariate models with better statistical properties.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

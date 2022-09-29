@@ -30,7 +30,7 @@ but demonstrable abnormality of oral or intravenous glucose tolerance."><meta pr
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -82,7 +82,7 @@ but demonstrable abnormality of oral or intravenous glucose tolerance.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Diabetes"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Diabetes"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="format">
@@ -137,52 +137,52 @@ An attempt to define the nature of chemical diabetes using a multidimensional an
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"darkgreen"</span><span class="op">)</span><span class="op">[</span><span class="va">Diabetes</span><span class="op">$</span><span class="va">group</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">pch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>,<span class="fl">15</span>,<span class="fl">17</span><span class="op">)</span><span class="op">[</span><span class="va">Diabetes</span><span class="op">$</span><span class="va">group</span><span class="op">]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># a perplexing plot, similar to Fig 2, but with a loess smooth </span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">instest</span> <span class="op">~</span> <span class="va">glutest</span>, data<span class="op">=</span><span class="va">Diabetes</span>, pch<span class="op">=</span><span class="fl">16</span>,</span>
-<span class="r-in">  cex.lab<span class="op">=</span><span class="fl">1.25</span>,</span>
-<span class="r-in">  xlab<span class="op">=</span><span class="st">"Glucose area (glutest)"</span>,</span>
-<span class="r-in">  ylab<span class="op">=</span><span class="st">"Insulin area (instest)"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/stats/scatter.smooth.html" class="external-link">loess.smooth</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">$</span><span class="va">glutest</span>, <span class="va">Diabetes</span><span class="op">$</span><span class="va">instest</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"blue"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"darkgreen"</span><span class="op">)</span><span class="op">[</span><span class="va">Diabetes</span><span class="op">$</span><span class="va">group</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">pch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>,<span class="fl">15</span>,<span class="fl">17</span><span class="op">)</span><span class="op">[</span><span class="va">Diabetes</span><span class="op">$</span><span class="va">group</span><span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># a perplexing plot, similar to Fig 2, but with a loess smooth </span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">instest</span> <span class="op">~</span> <span class="va">glutest</span>, data<span class="op">=</span><span class="va">Diabetes</span>, pch<span class="op">=</span><span class="fl">16</span>,</span></span>
+<span class="r-in"><span>  cex.lab<span class="op">=</span><span class="fl">1.25</span>,</span></span>
+<span class="r-in"><span>  xlab<span class="op">=</span><span class="st">"Glucose area (glutest)"</span>,</span></span>
+<span class="r-in"><span>  ylab<span class="op">=</span><span class="st">"Insulin area (instest)"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/stats/scatter.smooth.html" class="external-link">loess.smooth</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">$</span><span class="va">glutest</span>, <span class="va">Diabetes</span><span class="op">$</span><span class="va">instest</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"blue"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span> </span></span>
 <span class="r-plt img"><img src="Diabetes-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># scatterplot matrix, colored by group</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, col<span class="op">=</span><span class="va">col</span>, pch<span class="op">=</span><span class="va">pch</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># scatterplot matrix, colored by group</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, col<span class="op">=</span><span class="va">col</span>, pch<span class="op">=</span><span class="va">pch</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Diabetes-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># covariance ellipses</span></span>
-<span class="r-in"><span class="fu"><a href="covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">[</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">Diabetes</span><span class="op">$</span><span class="va">group</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, pooled<span class="op">=</span><span class="cn">FALSE</span>, </span>
-<span class="r-in">  col<span class="op">=</span><span class="va">col</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># covariance ellipses</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">[</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">Diabetes</span><span class="op">$</span><span class="va">group</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, pooled<span class="op">=</span><span class="cn">FALSE</span>, </span></span>
+<span class="r-in"><span>  col<span class="op">=</span><span class="va">col</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Diabetes-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">[</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">Diabetes</span><span class="op">$</span><span class="va">group</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, pooled<span class="op">=</span><span class="cn">FALSE</span>, </span>
-<span class="r-in">  col<span class="op">=</span><span class="va">col</span>, variables<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">[</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">Diabetes</span><span class="op">$</span><span class="va">group</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, pooled<span class="op">=</span><span class="cn">FALSE</span>, </span></span>
+<span class="r-in"><span>  col<span class="op">=</span><span class="va">col</span>, variables<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Diabetes-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Box's M test</span></span>
-<span class="r-in"><span class="va">diab.boxm</span> <span class="op">&lt;-</span> <span class="fu"><a href="boxM.html">boxM</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">[</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">Diabetes</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">diab.boxm</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Box's M test</span></span></span>
+<span class="r-in"><span><span class="va">diab.boxm</span> <span class="op">&lt;-</span> <span class="fu"><a href="boxM.html">boxM</a></span><span class="op">(</span><span class="va">Diabetes</span><span class="op">[</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">Diabetes</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">diab.boxm</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Box's M-test for Homogeneity of Covariance Matrices</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  Diabetes[, 2:5]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chi-Sq (approx.) = 382.84, df = 20, p-value &lt; 2.2e-16</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">diab.boxm</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">diab.boxm</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Diabetes-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># heplots</span></span>
-<span class="r-in"><span class="va">diab.mlm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">glufast</span>, <span class="va">glutest</span>, <span class="va">instest</span>, <span class="va">sspg</span><span class="op">)</span> <span class="op">~</span> <span class="va">group</span>, data<span class="op">=</span><span class="va">Diabetes</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">diab.mlm</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># heplots</span></span></span>
+<span class="r-in"><span><span class="va">diab.mlm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">glufast</span>, <span class="va">glutest</span>, <span class="va">instest</span>, <span class="va">sspg</span><span class="op">)</span> <span class="op">~</span> <span class="va">group</span>, data<span class="op">=</span><span class="va">Diabetes</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">diab.mlm</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Diabetes-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">diab.mlm</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">diab.mlm</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Diabetes-7.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -197,7 +197,7 @@ An attempt to define the nature of chemical diabetes using a multidimensional an
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
