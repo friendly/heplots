@@ -51,3 +51,5 @@ summary(Anova(AH.mod))
 heplot(AH.mod, hypotheses="grade.L", fill=c(TRUE, FALSE))
 }
 \keyword{datasets}
+\concept{MANOVA}
+\concept{ordered}

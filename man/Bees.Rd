@@ -67,19 +67,32 @@ bees.mod <- lm(cbind(Iz,Iy) ~ caste*treat*time, data=Bees)
 Anova(bees.mod)
 
 op<-palette(c(palette()[1:4],"brown","magenta", "olivedrab","darkgray"))
-heplot(bees.mod, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+heplot(bees.mod, 
+    xlab="Iz: Ovarian development", 
+    ylab="Iz: Ovarian reabsorption",
 		main="Bees: ~caste*treat*time")
-heplot(bees.mod, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
-       main="Bees: ~caste*treat*time", size="effect")
+
+heplot(bees.mod, size="effect",
+    xlab="Iz: Ovarian development", 
+    ylab="Iz: Ovarian reabsorption",
+    main="Bees: ~caste*treat*time", 
+    )
 
 # two-way design, using trtime
 bees.mod1 <- lm(cbind(Iz,Iy) ~ caste*trtime, data=Bees)
 Anova(bees.mod1)
 
-heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+# HE plots for this model, with both significance and effect size scaling
+
+heplot(bees.mod1, 
+    xlab="Iz: Ovarian development", 
+    ylab="Iz: Ovarian reabsorption",
 		main="Bees: ~caste*trtime")
-heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
-       main="Bees: ~caste*trtime",size="effect")
+heplot(bees.mod1, 
+    xlab="Iz: Ovarian development", 
+    ylab="Iz: Ovarian reabsorption",
+    main="Bees: ~caste*trtime",
+    size="effect")
 palette(op)
 
 # effect plots for separate responses
@@ -96,3 +109,4 @@ if(require(effects)) {
 
 }
 \keyword{datasets}
+\concept{MANOVA}

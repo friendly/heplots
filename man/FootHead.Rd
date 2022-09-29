@@ -43,7 +43,8 @@ require(car)
 contrasts(FootHead$group) <- contr.helmert
 contrasts(FootHead$group)
 
-foot.mod <- lm(cbind(width, circum,front.back,eye.top,ear.top,jaw)~group, data=FootHead)
+foot.mod <- lm(cbind(width, circum,front.back,eye.top,ear.top,jaw) ~ group, 
+               data=FootHead)
 Manova(foot.mod)
 
 # show the HE plot for the first two variables
@@ -70,3 +71,6 @@ heplot3d(foot.mod, variables=c(1,2,6),
 }
 }
 \keyword{datasets}
+\concept{MMRA}
+\concept{contrasts}
+

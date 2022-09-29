@@ -98,3 +98,4 @@ pairs(diab.mlm, fill=TRUE, fill.alpha=0.1)
 
 }
 \keyword{datasets}
+\concept{MANOVA}

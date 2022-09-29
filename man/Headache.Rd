@@ -101,3 +101,6 @@ Anova(headache.mod, idata=idata, idesign=~level*phase)
 
 }
 \keyword{datasets}
+\concept{MANOVA}
+\concept{repeated}
+

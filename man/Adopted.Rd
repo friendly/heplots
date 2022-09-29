@@ -94,3 +94,5 @@ heplot(Adopted.mod, idata=Age, idesign=~Age, iterm="Age",
 
 
 \keyword{datasets}
+\concept{MMRA}
+\concept{repeated}
