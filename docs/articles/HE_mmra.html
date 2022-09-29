@@ -92,7 +92,7 @@
                         <h4 data-toc-skip class="author">Michael
 Friendly</h4>
             
-            <h4 data-toc-skip class="date">2022-09-28</h4>
+            <h4 data-toc-skip class="date">2022-09-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/friendly/heplots/blob/HEAD/vignettes/HE_mmra.Rmd" class="external-link"><code>vignettes/HE_mmra.Rmd</code></a></small>
       <div class="hidden name"><code>HE_mmra.Rmd</code></div>
@@ -252,7 +252,7 @@ directly.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rohwer.ses1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, data<span class="op">=</span><span class="va">Rohwer</span>, </span>
 <span>                  subset<span class="op">=</span><span class="va">SES</span><span class="op">==</span><span class="st">"Hi"</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">rohwer.ses1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.ses1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Pillai test statistic</span></span>
 <span><span class="co">#&gt;    Df test stat approx F num Df den Df Pr(&gt;F)   </span></span>
@@ -266,7 +266,7 @@ directly.</p>
 <span></span>
 <span><span class="va">rohwer.ses2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, data<span class="op">=</span><span class="va">Rohwer</span>, </span>
 <span>                  subset<span class="op">=</span><span class="va">SES</span><span class="op">==</span><span class="st">"Lo"</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">rohwer.ses2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.ses2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Pillai test statistic</span></span>
 <span><span class="co">#&gt;    Df test stat approx F num Df den Df Pr(&gt;F)  </span></span>
@@ -358,7 +358,7 @@ constrains the slopes for the PA covariates to be equal.</p>
 <code class="sourceCode R"><span><span class="co"># MANCOVA, assuming equal slopes</span></span>
 <span><span class="va">rohwer.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">SES</span> <span class="op">+</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, </span>
 <span>                 data<span class="op">=</span><span class="va">Rohwer</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">rohwer.mod</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.mod</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Pillai test statistic</span></span>
 <span><span class="co">#&gt;     Df test stat approx F num Df den Df  Pr(&gt;F)    </span></span>
@@ -383,7 +383,7 @@ coefficients to be tested simultaneously.</p>
 <code class="sourceCode R"><span><span class="va">covariates</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span></span>
 <span><span class="co"># or: covariates &lt;- rownames(coef(rohwer.mod))[-(1:2)]</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Regr</span> <span class="op">&lt;-</span> <span class="fu">linearHypothesis</span><span class="op">(</span><span class="va">rohwer.mod</span>, <span class="va">covariates</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">Regr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">rohwer.mod</span>, <span class="va">covariates</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">Regr</span>, digits<span class="op">=</span><span class="fl">4</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Multivariate Tests: </span></span>
@@ -455,7 +455,7 @@ with each of the covariates:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rohwer.mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">SES</span> <span class="op">*</span> <span class="op">(</span><span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span><span class="op">)</span>,</span>
 <span>                  data<span class="op">=</span><span class="va">Rohwer</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">rohwer.mod2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.mod2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Pillai test statistic</span></span>
 <span><span class="co">#&gt;        Df test stat approx F num Df den Df  Pr(&gt;F)    </span></span>
@@ -475,13 +475,13 @@ with each of the covariates:</p>
 <p>It appears from the above that there is only weak evidence of unequal
 slopes from the separate <code>SES:</code> terms. The evidence for
 heterogeneity is stronger, however, when these terms are tested
-collectively using the <code>linearHypothesis()</code> function:</p>
+collectively using the <code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis()</a></code> function:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">coefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">rohwer.mod2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "(Intercept)" "SESLo"       "n"           "s"           "ns"         </span></span>
 <span><span class="co">#&gt;  [6] "na"          "ss"          "SESLo:n"     "SESLo:s"     "SESLo:ns"   </span></span>
 <span><span class="co">#&gt; [11] "SESLo:na"    "SESLo:ss"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">linearHypothesis</span><span class="op">(</span><span class="va">rohwer.mod2</span>, <span class="va">coefs</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">":"</span>, <span class="va">coefs</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">rohwer.mod2</span>, <span class="va">coefs</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">":"</span>, <span class="va">coefs</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Multivariate Tests: </span></span>
 <span><span class="co">#&gt;                  Df test stat approx F num Df den Df  Pr(&gt;F)   </span></span>
@@ -589,7 +589,7 @@ possibility in this example.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Hern.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">leave</span>, <span class="va">nurse</span>, <span class="va">los</span><span class="op">)</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span>  <span class="va">pstat</span> <span class="op">+</span>  <span class="va">build</span> <span class="op">+</span> <span class="va">cardiac</span> <span class="op">+</span> <span class="va">resp</span>, </span>
 <span>               data<span class="op">=</span><span class="va">Hernior</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Pillai test statistic</span></span>
 <span><span class="co">#&gt;         Df test stat approx F num Df den Df Pr(&gt;F)  </span></span>
@@ -637,7 +637,7 @@ coefficients.</p>
 <code class="sourceCode R"><span><span class="co"># test overall regression</span></span>
 <span><span class="op">(</span><span class="va">predictors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "age"     "sexm"    "pstat"   "build"   "cardiac" "resp"</span></span>
-<span><span class="va">Regr</span> <span class="op">&lt;-</span> <span class="fu">linearHypothesis</span><span class="op">(</span><span class="va">Hern.mod</span>, <span class="va">predictors</span><span class="op">)</span></span>
+<span><span class="va">Regr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">Hern.mod</span>, <span class="va">predictors</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">Regr</span>, digits<span class="op">=</span><span class="fl">5</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Multivariate Tests: </span></span>
@@ -688,10 +688,10 @@ discriminant space, which, for each predictor shows the scores on the
 linear combination of the responses that contributes most to the
 multivariate test of that effect, together with the weights for the
 responses.</p>
-<p>We use <code>candiscList()</code> to calculate the canonical analyses
+<p>We use <code><a href="https://rdrr.io/pkg/candisc/man/candiscList.html" class="external-link">candiscList()</a></code> to calculate the canonical analyses
 for all predictor terms in <code>Hern.mod</code>.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Hern.canL</span> <span class="op">&lt;-</span> <span class="fu">candiscList</span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">Hern.canL</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/candisc/man/candiscList.html" class="external-link">candiscList</a></span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span></span></code></pre></div>
 <p>1D canonical discriminant plots for all terms can be obtained
 interactively with a menu, simply by plotting the <code>Hern.canL</code>
 object.</p>
@@ -785,7 +785,7 @@ predictor variables.</p>
 <span><span class="va">grades.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">midterm1</span>, <span class="va">midterm2</span>, <span class="va">final</span>, <span class="va">eval</span><span class="op">)</span> <span class="op">~</span> </span>
 <span>                         <span class="va">class</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">gpa</span> <span class="op">+</span> <span class="va">boards</span> <span class="op">+</span> <span class="va">hssoc</span> <span class="op">+</span> <span class="va">pretest</span>, </span>
 <span>                 data<span class="op">=</span><span class="va">SocGrades</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">grades.mod</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">grades.mod</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Roy test statistic</span></span>
 <span><span class="co">#&gt;         Df test stat approx F num Df den Df  Pr(&gt;F)    </span></span>
@@ -810,7 +810,7 @@ the <code>.</code> represents all terms in the model, and the
 <code>class:sex</code>, <code>class:gpa</code>, and so forth.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">grades.mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">grades.mod</span>, <span class="va">.</span> <span class="op">~</span> <span class="va">.</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">grades.mod2</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">grades.mod2</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Roy test statistic</span></span>
 <span><span class="co">#&gt;                Df test stat approx F num Df den Df Pr(&gt;F)   </span></span>
@@ -843,7 +843,7 @@ is significant, and the main effects of <code>hssoc</code> and
 <code>grades.mod3</code>,</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">grades.mod3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">grades.mod</span>, <span class="va">.</span> <span class="op">~</span> <span class="va">.</span> <span class="op">+</span> <span class="va">class</span><span class="op">:</span><span class="va">sex</span> <span class="op">-</span> <span class="va">hssoc</span> <span class="op">-</span> <span class="va">pretest</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">grades.mod3</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">grades.mod3</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Roy test statistic</span></span>
 <span><span class="co">#&gt;           Df test stat approx F num Df den Df  Pr(&gt;F)    </span></span>
@@ -891,13 +891,13 @@ expected ordering of the three social classes.</p>
 <h3 id="canonical-analysis-1">Canonical analysis<a class="anchor" aria-label="anchor" href="#canonical-analysis-1"></a>
 </h3>
 <p>The representation of these effects in canonical space is
-particularly useful here. Again, use <code>candiscList()</code> to
+particularly useful here. Again, use <code><a href="https://rdrr.io/pkg/candisc/man/candiscList.html" class="external-link">candiscList()</a></code> to
 compute the canonical decompositions for all terms in the model, and
 extract the canonical <span class="math inline">\(R^2\)</span> from the
 terms in the result.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># calculate canonical results for all terms</span></span>
-<span><span class="va">grades.can</span> <span class="op">&lt;-</span> <span class="fu">candiscList</span><span class="op">(</span><span class="va">grades.mod3</span><span class="op">)</span></span>
+<span><span class="va">grades.can</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/candisc/man/candiscList.html" class="external-link">candiscList</a></span><span class="op">(</span><span class="va">grades.mod3</span><span class="op">)</span></span>
 <span><span class="co"># extract canonical R^2s</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">grades.can</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">$</span><span class="va">canrsq</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     class1     class2        sex        gpa     boards class:sex1 class:sex2 </span></span>
