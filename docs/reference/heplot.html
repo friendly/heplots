@@ -22,7 +22,7 @@ designs treated from a multivariate perspective."><meta property="og:image" cont
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -30,9 +30,19 @@ designs treated from a multivariate perspective."><meta property="og:image" cont
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -66,53 +76,60 @@ designs treated from a multivariate perspective.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">heplot</span><span class="op">(</span><span class="va">mod</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for mlm</span>
-<span class="fu">heplot</span><span class="op">(</span><span class="va">mod</span>, <span class="va">terms</span>, <span class="va">hypotheses</span>, term.labels <span class="op">=</span> <span class="cn">TRUE</span>,
-    hyp.labels <span class="op">=</span> <span class="cn">TRUE</span>, err.label<span class="op">=</span><span class="st">"Error"</span>, label.pos<span class="op">=</span><span class="cn">NULL</span>,
-    variables <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, error.ellipse <span class="op">=</span> <span class="op">!</span><span class="va">add</span>, 
-    factor.means <span class="op">=</span> <span class="op">!</span><span class="va">add</span>, grand.mean <span class="op">=</span> <span class="op">!</span><span class="va">add</span>, remove.intercept <span class="op">=</span> <span class="cn">TRUE</span>,
-    type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"II"</span>, <span class="st">"III"</span>, <span class="st">"2"</span>, <span class="st">"3"</span><span class="op">)</span>, idata<span class="op">=</span><span class="cn">NULL</span>, idesign<span class="op">=</span><span class="cn">NULL</span>,
-  icontrasts<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"contr.sum"</span>, <span class="st">"contr.poly"</span><span class="op">)</span>,
-  imatrix<span class="op">=</span><span class="cn">NULL</span>, iterm<span class="op">=</span><span class="cn">NULL</span>, markH0<span class="op">=</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">iterm</span><span class="op">)</span>,
-    <span class="va">manova</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"evidence"</span>, <span class="st">"effect.size"</span><span class="op">)</span>,
-    level <span class="op">=</span> <span class="fl">0.68</span>, alpha <span class="op">=</span> <span class="fl">0.05</span>, segments <span class="op">=</span> <span class="fl">60</span>, 
-    center.pch <span class="op">=</span> <span class="st">"+"</span>, center.cex<span class="op">=</span><span class="fl">2</span>,
-    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"heplot.colors"</span>, 
-               <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"black"</span>, <span class="st">"darkgreen"</span>, 
-                 <span class="st">"darkcyan"</span>,<span class="st">"magenta"</span>, <span class="st">"brown"</span>,<span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span>,
-    lty <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">1</span>, lwd <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, 
-    fill<span class="op">=</span><span class="cn">FALSE</span>, fill.alpha<span class="op">=</span><span class="fl">0.3</span>,   
-    <span class="va">xlab</span>, <span class="va">ylab</span>, main <span class="op">=</span> <span class="st">""</span>, <span class="va">xlim</span>, <span class="va">ylim</span>, axes<span class="op">=</span><span class="cn">TRUE</span>, <span class="va">offset.axes</span>, 
-    add <span class="op">=</span> <span class="cn">FALSE</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, warn.rank <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">heplot</span><span class="op">(</span><span class="va">mod</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for mlm</span></span>
+<span><span class="fu">heplot</span><span class="op">(</span><span class="va">mod</span>, <span class="va">terms</span>, <span class="va">hypotheses</span>, term.labels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    hyp.labels <span class="op">=</span> <span class="cn">TRUE</span>, err.label<span class="op">=</span><span class="st">"Error"</span>, label.pos<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>    variables <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, error.ellipse <span class="op">=</span> <span class="op">!</span><span class="va">add</span>, </span>
+<span>    factor.means <span class="op">=</span> <span class="op">!</span><span class="va">add</span>, grand.mean <span class="op">=</span> <span class="op">!</span><span class="va">add</span>, remove.intercept <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"II"</span>, <span class="st">"III"</span>, <span class="st">"2"</span>, <span class="st">"3"</span><span class="op">)</span>, idata<span class="op">=</span><span class="cn">NULL</span>, idesign<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>  icontrasts<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"contr.sum"</span>, <span class="st">"contr.poly"</span><span class="op">)</span>,</span>
+<span>  imatrix<span class="op">=</span><span class="cn">NULL</span>, iterm<span class="op">=</span><span class="cn">NULL</span>, markH0<span class="op">=</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">iterm</span><span class="op">)</span>,</span>
+<span>    <span class="va">manova</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"evidence"</span>, <span class="st">"effect.size"</span><span class="op">)</span>,</span>
+<span>    level <span class="op">=</span> <span class="fl">0.68</span>, alpha <span class="op">=</span> <span class="fl">0.05</span>, segments <span class="op">=</span> <span class="fl">60</span>, </span>
+<span>    center.pch <span class="op">=</span> <span class="st">"+"</span>, center.cex<span class="op">=</span><span class="fl">2</span>,</span>
+<span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"heplot.colors"</span>, </span>
+<span>               <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"black"</span>, <span class="st">"darkgreen"</span>, </span>
+<span>                 <span class="st">"darkcyan"</span>,<span class="st">"magenta"</span>, <span class="st">"brown"</span>,<span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    lty <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">1</span>, lwd <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, </span>
+<span>    fill<span class="op">=</span><span class="cn">FALSE</span>, fill.alpha<span class="op">=</span><span class="fl">0.3</span>,   </span>
+<span>    <span class="va">xlab</span>, <span class="va">ylab</span>, main <span class="op">=</span> <span class="st">""</span>, <span class="va">xlim</span>, <span class="va">ylim</span>, axes<span class="op">=</span><span class="cn">TRUE</span>, <span class="va">offset.axes</span>, </span>
+<span>    add <span class="op">=</span> <span class="cn">FALSE</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, warn.rank <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>mod</dt>
 <dd><p>a model object of class <code>"mlm"</code>.</p></dd>
-<dt>terms</dt>
+
+  <dt>terms</dt>
 <dd><p>a logical value or character vector of terms in the model 
     for which to plot
     hypothesis matrices; if missing or <code>TRUE</code>, defaults to all terms; 
     if <code>FALSE</code>, no terms are plotted.</p></dd>
-<dt>hypotheses</dt>
+
+  <dt>hypotheses</dt>
 <dd><p>optional list of linear hypotheses for which to plot hypothesis
     matrices; hypotheses are specified as for the
     <code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></code> function in the <code>car</code> package;
     the list elements can be named, in which case the names are used.</p></dd>
-<dt>term.labels</dt>
+
+  <dt>term.labels</dt>
 <dd><p>logical value or character vector of names for the terms to be
     plotted. If <code>TRUE</code> (the default) the names of the terms are used;
     if <code>FALSE</code>, term labels are not plotted.</p></dd>
-<dt>hyp.labels</dt>
+
+  <dt>hyp.labels</dt>
 <dd><p>logical value or character vector of names for the hypotheses to
     be plotted. If <code>TRUE</code> (the default) the names of components of the list of
     hypotheses are used; if <code>FALSE</code>, hypothesis labels are not plotted.</p></dd>
-<dt>err.label</dt>
+
+  <dt>err.label</dt>
 <dd><p>Label for the error ellipse</p></dd>
-<dt>label.pos</dt>
+
+
+  <dt>label.pos</dt>
 <dd><p>Label position, a vector of integers (in <code>0:4</code>) or character strings
 	(in <code>c("center", "bottom", "left", "top", "right")</code>, or in
 	<code>c("C", "S", "W", "N", "E")</code> use in labeling ellipses,
@@ -123,43 +140,54 @@ designs treated from a multivariate perspective.</p>
 	The default, <code>label.pos=NULL</code>
 	uses the correlation of the <code>ellipse</code> to determine "top" (r&gt;=0) or "bottom" (r&lt;0).
 	Even more flexible options are described in <code><a href="label.ellipse.html">label.ellipse</a></code></p></dd>
-<dt>variables</dt>
+
+
+  <dt>variables</dt>
 <dd><p>indices or names of the two response variables to be plotted;
     defaults to <code>1:2</code>.</p></dd>
-<dt>error.ellipse</dt>
+
+  <dt>error.ellipse</dt>
 <dd><p>if <code>TRUE</code>, plot the error ellipse; defaults to <code>TRUE</code>,
     if the argument <code>add</code> is <code>FALSE</code> (see below).</p></dd>
-<dt>factor.means</dt>
+
+  <dt>factor.means</dt>
 <dd><p>logical value or character vector of names of 
     factors for which the means
     are to be plotted, or <code>TRUE</code> or <code>FALSE</code>; defaults to <code>TRUE</code>,
     if the argument <code>add</code> is <code>FALSE</code> (see below).</p></dd>
-<dt>grand.mean</dt>
+
+  <dt>grand.mean</dt>
 <dd><p>if <code>TRUE</code>, plot the centroid for all of the data; 
     defaults to <code>TRUE</code>,
     if the argument <code>add</code> is <code>FALSE</code> (see below).</p></dd>
-<dt>remove.intercept</dt>
+
+  <dt>remove.intercept</dt>
 <dd><p>if <code>TRUE</code> (the default), do not plot the 
     ellipse for the intercept even if it is in the MANOVA table.</p></dd>
-<dt>type</dt>
+
+  <dt>type</dt>
 <dd><p>``type'' of sum-of-squares-and-products matrices to compute; one of
     <code>"II"</code>, <code>"III"</code>, <code>"2"</code>, or <code>"3"</code>, where <code>"II"</code> is
     the default (and <code>"2"</code> is a synonym).</p></dd>
-<dt>idata</dt>
+
+  <dt>idata</dt>
 <dd><p>an optional data frame giving a factor or factors defining the 
     intra-subject model for multivariate repeated-measures data. 
     See Friendly (2010) and Details of <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code> for an explanation of the intra-subject design
     and for further explanation 
     of the other arguments relating to intra-subject factors.</p></dd>
-<dt>idesign</dt>
+ 
+  <dt>idesign</dt>
 <dd><p>a one-sided model formula using the ``data'' in idata and specifying 
     the intra-subject design for repeated measure models.</p></dd>
-<dt>icontrasts</dt>
+ 
+  <dt>icontrasts</dt>
 <dd><p>names of contrast-generating functions to be applied by default 
     to factors and ordered factors, respectively, in the within-subject ``data''; 
     the contrasts must produce an intra-subject model matrix in which different 
     terms are orthogonal. The default is c("contr.sum", "contr.poly").</p></dd>
-<dt>imatrix</dt>
+
+  <dt>imatrix</dt>
 <dd><p>In lieu of <code>idata</code> and <code>idesign</code>, you can specify the
     intra-subject design matrix directly via <code>imatrix</code>, in the form of list of named elements.
     Each element gives
@@ -168,45 +196,55 @@ designs treated from a multivariate perspective.</p>
   	matrix for <em>different</em> terms must be mutually orthogonal. 
     <em>This functionality
     requires <code>car</code> version 2.0 or later.</em></p></dd>
-<dt>iterm</dt>
+
+  <dt>iterm</dt>
 <dd><p>For repeated measures designs, you must specify one intra-subject term
   	(a character string) to select the SSPE (E) matrix used in the HE plot. 
   	Hypothesis terms plotted include the <code>iterm</code> effect as well as all interactions
   	of <code>iterm</code> with <code>terms</code>.</p></dd>
-<dt>markH0</dt>
+
+  <dt>markH0</dt>
 <dd><p>A logical value (or else a list of arguments to <code><a href="mark.H0.html">mark.H0</a></code>) used to
     draw cross-hairs and a point indicating the value of a point null hypothesis.
     The default is TRUE if <code>iterm</code> is non-NULL.</p></dd>
-<dt>manova</dt>
+
+  <dt>manova</dt>
 <dd><p>optional <code>Anova.mlm</code> object for the model; if absent a
     MANOVA is computed. Specifying the argument can therefore save 
     computation in repeated calls.</p></dd>
-<dt>size</dt>
+
+  <dt>size</dt>
 <dd><p>how to scale the hypothesis ellipse relative to the error
     ellipse; if <code>"evidence"</code>, the default, the scaling is done so that
     a ``significant'' hypothesis ellipse at level <code>alpha</code> extends outside of the error
     ellipse; if <code>"effect.size"</code>, the hypothesis ellipse is on the same
     scale as the error ellipse.</p></dd>
-<dt>level</dt>
+  
+  <dt>level</dt>
 <dd><p>equivalent coverage of ellipse for normally-distributed
     errors, defaults to <code>0.68</code>, giving a standard 1 SD bivariate ellipse.</p></dd>
-<dt>alpha</dt>
+
+  <dt>alpha</dt>
 <dd><p>significance level for Roy's greatest-root test statistic; if
     <code>size="evidence"</code>, then the
     hypothesis ellipse is scaled so that it just touches the error ellipse at the
     specified alpha level; a larger hypothesis ellipse <em>somewhere</em> in the space of
     the response variables therefore indicates
     statistical significance; defaults to <code>0.05</code>.</p></dd>
-<dt>segments</dt>
+
+  <dt>segments</dt>
 <dd><p>number of line segments composing each ellipse; defaults to
     <code>60</code>.</p></dd>
-<dt>center.pch</dt>
+
+  <dt>center.pch</dt>
 <dd><p>character to use in plotting the centroid of the data;
     defaults to <code>"+"</code>.</p></dd>
-<dt>center.cex</dt>
+
+  <dt>center.cex</dt>
 <dd><p>size of character to use in plotting the centroid of the data;
     defaults to <code>2</code>.</p></dd>
-<dt>col</dt>
+
+  <dt>col</dt>
 <dd><p>a color or vector of colors to use in plotting ellipses; the first
     color is used for the error ellipse; the remaining colors --- recycled
     as necessary --- are used for the hypothesis ellipses. 
@@ -214,52 +252,68 @@ designs treated from a multivariate perspective.</p>
     For convenience, the default colors for all heplots produced in a given session can be changed
     by assigning a color vector via <code>options(heplot.colors =c(...)</code>.  Otherwise,
     the default colors are <code>c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")</code>.</p></dd>
-<dt>lty</dt>
+
+  <dt>lty</dt>
 <dd><p>vector of line types to use for plotting the ellipses; the first is
     used for the error ellipse, the rest --- possibly recycled --- for
     the hypothesis ellipses; a single line type can be given. Defaults to
     <code>2:1</code>.</p></dd>
-<dt>lwd</dt>
+
+  <dt>lwd</dt>
 <dd><p>vector of line widths to use for plotting the ellipses; the first is
     used for the error ellipse, the rest --- possibly recycled --- for
     the hypothesis ellipses; a single line width can be given. Defaults to
     <code>1:2</code>.</p></dd>
-<dt>fill</dt>
+
+  <dt>fill</dt>
 <dd><p>A logical vector indicating whether each ellipse should be filled or not.
     The first value is used for the error ellipse, the rest --- possibly recycled --- for
     the hypothesis ellipses; a single fill value can be given.  
     Defaults to FALSE for backward compatibility. See Details below.</p></dd>
-<dt>fill.alpha</dt>
+
+  <dt>fill.alpha</dt>
 <dd><p>Alpha transparency for filled ellipses, a numeric scalar or vector of values
   within <code>[0,1]</code>, where 0 means fully transparent and 1 means fully opaque.</p></dd>
-<dt>xlab</dt>
+
+  <dt>xlab</dt>
 <dd><p>x-axis label; defaults to name of the x variable.</p></dd>
-<dt>ylab</dt>
+
+  <dt>ylab</dt>
 <dd><p>y-axis label; defaults to name of the y variable.</p></dd>
-<dt>main</dt>
+
+  <dt>main</dt>
 <dd><p>main plot label; defaults to <code>""</code>.</p></dd>
-<dt>xlim</dt>
+
+  <dt>xlim</dt>
 <dd><p>x-axis limits; if absent, will be computed from the data.</p></dd>
-<dt>ylim</dt>
+
+  <dt>ylim</dt>
 <dd><p>y-axis limits; if absent, will be computed from the data.</p></dd>
-<dt>axes</dt>
+
+  <dt>axes</dt>
 <dd><p>Whether to draw the x, y axes; defaults to <code>TRUE</code></p></dd>
-<dt>offset.axes</dt>
+
+  <dt>offset.axes</dt>
 <dd><p>proportion to extend the axes in each direction if computed 
     from the data; optional.</p></dd>
-<dt>add</dt>
+
+  <dt>add</dt>
 <dd><p>if <code>TRUE</code>, add to the current plot; the default is <code>FALSE</code>.
     If <code>TRUE</code>, the error ellipse is not plotted.</p></dd>
-<dt>verbose</dt>
+
+  <dt>verbose</dt>
 <dd><p>if <code>TRUE</code>, print the MANOVA table and details of hypothesis
     tests; the default is <code>FALSE</code>.</p></dd>
-<dt>warn.rank</dt>
+
+  <dt>warn.rank</dt>
 <dd><p>if <code>TRUE</code>, do not suppress warnings about the rank of the
     hypothesis matrix when the ellipse collapses to a line; the default is
     <code>FALSE</code>.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>arguments to pass down to <code>plot</code>, <code>text</code>, 
     and <code>points</code>.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -302,24 +356,35 @@ designs treated from a multivariate perspective.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>The function invisibly returns an object of class <code>"heplot"</code>, with
+    
+
+<p>The function invisibly returns an object of class <code>"heplot"</code>, with
   coordinates for the various hypothesis ellipses and the error ellipse, and
   the limits of the horizontal and vertical axes.  These may be useful for
   adding additional annotations to the plot, using standard plotting functions.
-  (No methods for manipulating these objects are currently available.)
-  The components are:</p>
+  (No methods for manipulating these objects are currently available.)</p>
+
+
+<p>The components are:</p>
 <dl><dt>H</dt>
 <dd><p>a list containing the coordinates of each ellipse for the hypothesis terms</p></dd>
-<dt>E</dt>
+
+  <dt>E</dt>
 <dd><p>a matrix containing the coordinates for the error ellipse</p></dd>
-<dt>center</dt>
+
+  <dt>center</dt>
 <dd><p>x,y coordinates of the centroid</p></dd>
-<dt>xlim</dt>
+
+  <dt>xlim</dt>
 <dd><p>x-axis limits</p></dd>
-<dt>ylim</dt>
+
+  <dt>ylim</dt>
 <dd><p>y-axis limits</p></dd>
-<dt>radius</dt>
+
+  <dt>radius</dt>
 <dd><p>the radius for the unit circles used to generate the ellipses</p></dd>
+
+
 </dl></div>
     <div id="references">
     <h2>References</h2>
@@ -328,7 +393,7 @@ designs treated from a multivariate perspective.</p>
   Models: SAS Software and Examples 
   <em>Journal of Statistical Software</em>, <b>17</b>(6), 1--42.
 <!-- %  \url{https://www.jstatsoft.org/v17/i06/} -->
-  doi: <a href="https://doi.org/10.18637/jss.v017.i06" class="external-link">10.18637/jss.v017.i06</a></p>
+  <a href="https://doi.org/10.18637/jss.v017.i06" class="external-link">doi:10.18637/jss.v017.i06</a></p>
 <p>Friendly, M. (2007).
   HE plots for Multivariate General Linear Models.
   <em>Journal of Computational and Graphical Statistics</em>, <b>16</b>(2) 421--444.
@@ -336,7 +401,7 @@ designs treated from a multivariate perspective.</p>
 <p>Friendly, Michael (2010). HE Plots for Repeated Measures Designs. <em>Journal of Statistical Software</em>,
   37(4), 1-40. 
 <!-- %  URL \url{https://www.jstatsoft.org/v37/i04/}. -->
-  doi: <a href="https://doi.org/10.18637/jss.v037.i04" class="external-link">10.18637/jss.v037.i04</a></p>
+  <a href="https://doi.org/10.18637/jss.v037.i04" class="external-link">doi:10.18637/jss.v037.i04</a></p>
 <p>Fox, J., Friendly, M. &amp; Weisberg, S. (2013).
 Hypothesis Tests for Multivariate Linear Models Using the car Package.
 <em>The R Journal</em>, <b>5</b>(1), 
@@ -361,37 +426,37 @@ Recent Advances in Visualizing Multivariate Linear Models.
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## iris data</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="op">-</span><span class="fl">1</span>,<span class="fl">1</span>, <span class="fl">2</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>, <span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## iris data</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="op">-</span><span class="fl">1</span>,<span class="fl">1</span>, <span class="fl">2</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>, <span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            [,1] [,2]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> setosa        0    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> versicolor   -1   -1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> virginica     1   -1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">iris.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Sepal.Width</span>, <span class="va">Petal.Length</span>, <span class="va">Petal.Width</span><span class="op">)</span> <span class="op">~</span></span>
-<span class="r-in"><span class="va">Species</span>, data<span class="op">=</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">hyp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"V:V"</span><span class="op">=</span><span class="st">"Species1"</span>,<span class="st">"S:VV"</span><span class="op">=</span><span class="st">"Species2"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># compare with effect-size scaling</span></span>
-<span class="r-in"><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, size<span class="op">=</span><span class="st">"effect"</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">iris.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Sepal.Width</span>, <span class="va">Petal.Length</span>, <span class="va">Petal.Width</span><span class="op">)</span> <span class="op">~</span></span></span>
+<span class="r-in"><span><span class="va">Species</span>, data<span class="op">=</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">hyp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"V:V"</span><span class="op">=</span><span class="st">"Species1"</span>,<span class="st">"S:VV"</span><span class="op">=</span><span class="st">"Species2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># compare with effect-size scaling</span></span></span>
+<span class="r-in"><span><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, size<span class="op">=</span><span class="st">"effect"</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heplot-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># try filled ellipses</span></span>
-<span class="r-in"><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.2</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># try filled ellipses</span></span></span>
+<span class="r-in"><span><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.2</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heplot-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heplot-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># vary label position and fill.alpha</span></span>
-<span class="r-in"><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.3</span>,<span class="fl">0.1</span><span class="op">)</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>, </span>
-<span class="r-in">       lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>, label.pos<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># vary label position and fill.alpha</span></span></span>
+<span class="r-in"><span><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.3</span>,<span class="fl">0.1</span><span class="op">)</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>       lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>, label.pos<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heplot-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">hep</span> <span class="op">&lt;-</span><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>,  hypotheses<span class="op">=</span><span class="va">hyp</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">hep</span> <span class="op">&lt;-</span><span class="fu">heplot</span><span class="op">(</span><span class="va">iris.mod</span>, variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>,  hypotheses<span class="op">=</span><span class="va">hyp</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heplot-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">hep</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">hep</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ H     :List of 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ Species: num [1:61, 1:2] 9.66 9.68 9.66 9.6 9.5 ...</span>
@@ -418,25 +483,25 @@ Recent Advances in Visualizing Multivariate Linear Models.
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "names")= chr [1:2] "Petal.Length" "Petal.Length"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ radius: num 1.52</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "class")= chr "heplot"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># all pairs</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, hyp.labels<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># all pairs</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, hyp.labels<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heplot-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Pottery data, from car package</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Pottery</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">pottery.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Al</span>, <span class="va">Fe</span>, <span class="va">Mg</span>, <span class="va">Ca</span>, <span class="va">Na</span><span class="op">)</span> <span class="op">~</span> <span class="va">Site</span>, data<span class="op">=</span><span class="va">Pottery</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">heplot</span><span class="op">(</span><span class="va">pottery.mod</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">heplot</span><span class="op">(</span><span class="va">pottery.mod</span>, terms<span class="op">=</span><span class="cn">FALSE</span>, add<span class="op">=</span><span class="cn">TRUE</span>, col<span class="op">=</span><span class="st">"blue"</span>, </span>
-<span class="r-in">  hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SiteCaldicot = 0"</span>, <span class="st">"SiteIsleThorns=0"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  hyp.labels<span class="op">=</span><span class="st">"Sites Caldicot and Isle Thorns"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Pottery data, from car package</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Pottery</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pottery.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Al</span>, <span class="va">Fe</span>, <span class="va">Mg</span>, <span class="va">Ca</span>, <span class="va">Na</span><span class="op">)</span> <span class="op">~</span> <span class="va">Site</span>, data<span class="op">=</span><span class="va">Pottery</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">heplot</span><span class="op">(</span><span class="va">pottery.mod</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">heplot</span><span class="op">(</span><span class="va">pottery.mod</span>, terms<span class="op">=</span><span class="cn">FALSE</span>, add<span class="op">=</span><span class="cn">TRUE</span>, col<span class="op">=</span><span class="st">"blue"</span>, </span></span>
+<span class="r-in"><span>  hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SiteCaldicot = 0"</span>, <span class="st">"SiteIsleThorns=0"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  hyp.labels<span class="op">=</span><span class="st">"Sites Caldicot and Isle Thorns"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heplot-7.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Rohwer data, multivariate multiple regression/ANCOVA</span></span>
-<span class="r-in"><span class="co">#-- ANCOVA, assuming equal slopes</span></span>
-<span class="r-in"><span class="va">rohwer.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">SES</span> <span class="op">+</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, data<span class="op">=</span><span class="va">Rohwer</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.mod</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Rohwer data, multivariate multiple regression/ANCOVA</span></span></span>
+<span class="r-in"><span><span class="co">#-- ANCOVA, assuming equal slopes</span></span></span>
+<span class="r-in"><span><span class="va">rohwer.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">SES</span> <span class="op">+</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, data<span class="op">=</span><span class="va">Rohwer</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.mod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
@@ -448,20 +513,20 @@ Recent Advances in Visualizing Multivariate Linear Models.
 <span class="r-out co"><span class="r-pr">#&gt;</span> ss   1   0.04990   1.0504      3     60  0.376988    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"><span class="va">col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"black"</span>, <span class="st">"blue"</span>, <span class="st">"cyan"</span>, <span class="st">"magenta"</span>, <span class="st">"brown"</span>, <span class="st">"gray"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">heplot</span><span class="op">(</span><span class="va">rohwer.mod</span>, col<span class="op">=</span><span class="va">col</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"black"</span>, <span class="st">"blue"</span>, <span class="st">"cyan"</span>, <span class="st">"magenta"</span>, <span class="st">"brown"</span>, <span class="st">"gray"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">heplot</span><span class="op">(</span><span class="va">rohwer.mod</span>, col<span class="op">=</span><span class="va">col</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heplot-8.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># Add ellipse to test all 5 regressors</span></span>
-<span class="r-in"><span class="fu">heplot</span><span class="op">(</span><span class="va">rohwer.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Regr"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span><span class="op">)</span>, col<span class="op">=</span><span class="va">col</span>, fill<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># Add ellipse to test all 5 regressors</span></span></span>
+<span class="r-in"><span><span class="fu">heplot</span><span class="op">(</span><span class="va">rohwer.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Regr"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span><span class="op">)</span>, col<span class="op">=</span><span class="va">col</span>, fill<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heplot-9.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># View all pairs</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">rohwer.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Regr"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># View all pairs</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">rohwer.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Regr"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="heplot-10.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># or 3D plot</span></span>
-<span class="r-in"><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"rgl"</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span class="r-in"><span class="va">col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pink"</span>, <span class="st">"black"</span>, <span class="st">"blue"</span>, <span class="st">"cyan"</span>, <span class="st">"magenta"</span>, <span class="st">"brown"</span>, <span class="st">"gray"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="heplot3d.html">heplot3d</a></span><span class="op">(</span><span class="va">rohwer.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Regr"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span><span class="op">)</span>, col<span class="op">=</span><span class="va">col</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span><span class="co"># or 3D plot</span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"rgl"</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pink"</span>, <span class="st">"black"</span>, <span class="st">"blue"</span>, <span class="st">"cyan"</span>, <span class="st">"magenta"</span>, <span class="st">"brown"</span>, <span class="st">"gray"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot3d.html">heplot3d</a></span><span class="op">(</span><span class="va">rohwer.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Regr"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span><span class="op">)</span>, col<span class="op">=</span><span class="va">col</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -476,7 +541,7 @@ Recent Advances in Visualizing Multivariate Linear Models.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

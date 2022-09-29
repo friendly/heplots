@@ -22,7 +22,7 @@ The child's intelligence was measured at age 2, 4, 8, and 13 for
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -30,9 +30,19 @@ The child's intelligence was measured at age 2, 4, 8, and 13 for
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -66,7 +76,7 @@ The child's intelligence was measured at age 2, 4, 8, and 13 for
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="va">Adopted</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">Adopted</span></span></code></pre></div>
     </div>
 
     <div id="format">
@@ -100,9 +110,9 @@ The child's intelligence was measured at age 2, 4, 8, and 13 for
     </div>
     <div id="references">
     <h2>References</h2>
-    <p>Friendly, Michael  (2010). HE Plots for Repeated Measures Designs. <em>Journal of Statistical Software</em>,
+    <p>Friendly, M.  (2010). HE Plots for Repeated Measures Designs. <em>Journal of Statistical Software</em>,
   37(4), 1-40. 
-  doi: <a href="https://doi.org/10.18637/jss.v037.i04" class="external-link">10.18637/jss.v037.i04</a>
+  <a href="https://doi.org/10.18637/jss.v037.i04" class="external-link">doi:10.18637/jss.v037.i04</a>
 .
 <!-- %  \url{https://www.jstatsoft.org/v37/i04/}. --></p>
 <p>Skodak, M. and Skeels, H.M. (1949). A Final Follow-up Study of One
@@ -116,9 +126,10 @@ The child's intelligence was measured at age 2, 4, 8, and 13 for
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Treat as multivariate regression problem</span></span>
-<span class="r-in"><span class="va">Adopted.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Age2IQ</span>, <span class="va">Age4IQ</span>, <span class="va">Age8IQ</span>, <span class="va">Age13IQ</span><span class="op">)</span> <span class="op">~</span> <span class="va">AMED</span> <span class="op">+</span> <span class="va">BMIQ</span>, data<span class="op">=</span><span class="va">Adopted</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">Adopted.mod</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Treat as multivariate regression problem</span></span></span>
+<span class="r-in"><span><span class="va">Adopted.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Age2IQ</span>, <span class="va">Age4IQ</span>, <span class="va">Age8IQ</span>, <span class="va">Age13IQ</span><span class="op">)</span> <span class="op">~</span> <span class="va">AMED</span> <span class="op">+</span> <span class="va">BMIQ</span>, </span></span>
+<span class="r-in"><span>                  data<span class="op">=</span><span class="va">Adopted</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Adopted.mod</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> lm(formula = cbind(Age2IQ, Age4IQ, Age8IQ, Age13IQ) ~ AMED + </span>
@@ -130,24 +141,11 @@ The child's intelligence was measured at age 2, 4, 8, and 13 for
 <span class="r-out co"><span class="r-pr">#&gt;</span> AMED          -0.44136   -0.02073   -0.01216   -0.16063</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BMIQ           0.04001    0.22172    0.30961    0.36747</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/car/" class="external-link">car</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># test overall multivariate regression</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AMED"</span>,<span class="st">"BMIQ"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for the hypothesis:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           Age2IQ    Age4IQ    Age8IQ   Age13IQ</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Age2IQ  118.3111  123.1252  168.2407  231.7826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Age4IQ  123.1252  763.3184 1066.4332 1260.8390</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Age8IQ  168.2407 1066.4332 1490.0603 1760.4299</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Age13IQ 231.7826 1260.8390 1760.4299 2090.8328</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for error:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            Age2IQ   Age4IQ   Age8IQ   Age13IQ</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Age2IQ  10242.157 5137.843 5000.888  3430.234</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Age4IQ   5137.843 9561.649 5929.696  5316.677</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Age8IQ   5000.888 5929.696 9875.424  8141.506</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Age13IQ  3430.234 5316.677 8141.506 12312.409</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/car/" class="external-link">car</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># test overall multivariate regression</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AMED"</span>,<span class="st">"BMIQ"</span><span class="op">)</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Multivariate Tests: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  Df test stat approx F num Df den Df   Pr(&gt;F)  </span>
@@ -157,37 +155,40 @@ The child's intelligence was measured at age 2, 4, 8, and 13 for
 <span class="r-out co"><span class="r-pr">#&gt;</span> Roy               2 0.2195371 3.128404      4     57 0.021426 *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># show separate linear regressions</span></span>
-<span class="r-in"><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfcol<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>, mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">+</span><span class="fl">.1</span><span class="op">)</span></span>
-<span class="r-in"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">Adopted</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="va">i</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>,col<span class="op">=</span><span class="st">"black"</span>, levels<span class="op">=</span><span class="fl">0.68</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">70</span>,<span class="fl">140</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Adopted</span><span class="op">[</span>,<span class="va">i</span><span class="op">]</span> <span class="op">~</span> <span class="va">Adopted</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"red"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">Adopted</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="va">i</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>,col<span class="op">=</span><span class="st">"black"</span>, levels<span class="op">=</span><span class="fl">0.68</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">70</span>,<span class="fl">140</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Adopted</span><span class="op">[</span>,<span class="va">i</span><span class="op">]</span> <span class="op">~</span> <span class="va">Adopted</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"red"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>a<span class="op">=</span><span class="fl">0</span>,b<span class="op">=</span><span class="fl">1</span>, lty<span class="op">=</span><span class="fl">1</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># show separate linear regressions</span></span></span>
+<span class="r-in"><span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfcol<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>, mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">4</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">+</span><span class="fl">.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">Adopted</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="va">i</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>              col<span class="op">=</span><span class="st">"black"</span>, levels<span class="op">=</span><span class="fl">0.68</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">70</span>,<span class="fl">140</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Adopted</span><span class="op">[</span>,<span class="va">i</span><span class="op">]</span> <span class="op">~</span> <span class="va">Adopted</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"red"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">Adopted</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="va">i</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>              col<span class="op">=</span><span class="st">"black"</span>, levels<span class="op">=</span><span class="fl">0.68</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">70</span>,<span class="fl">140</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Adopted</span><span class="op">[</span>,<span class="va">i</span><span class="op">]</span> <span class="op">~</span> <span class="va">Adopted</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span>, col<span class="op">=</span><span class="st">"red"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>a<span class="op">=</span><span class="fl">0</span>,b<span class="op">=</span><span class="fl">1</span>, lty<span class="op">=</span><span class="fl">1</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-plt img"><img src="Adopted-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># between-S (MMReg) plots</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Reg"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AMED"</span>, <span class="st">"BMIQ"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  main<span class="op">=</span><span class="st">"IQ scores of adopted children: MMReg"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># between-S (MMReg) plots</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Reg"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AMED"</span>, <span class="st">"BMIQ"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  main<span class="op">=</span><span class="st">"IQ scores of adopted children: MMReg"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Adopted-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Reg"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AMED"</span>, <span class="st">"BMIQ"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Reg"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AMED"</span>, <span class="st">"BMIQ"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Adopted-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"rgl"</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span class="r-in"><span class="fu"><a href="heplot3d.html">heplot3d</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Reg"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AMED"</span>, <span class="st">"BMIQ"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"black"</span>, <span class="st">"gray"</span><span class="op">)</span>, wire<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"rgl"</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot3d.html">heplot3d</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Reg"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AMED"</span>, <span class="st">"BMIQ"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"black"</span>, <span class="st">"gray"</span><span class="op">)</span>, wire<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required namespace: rgl</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Treat IQ at different ages as a repeated measure factor</span></span>
-<span class="r-in"><span class="co"># within-S models &amp; plots</span></span>
-<span class="r-in"><span class="va">Age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Age<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">8</span>,<span class="fl">13</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, idata<span class="op">=</span><span class="va">Age</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">Age</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Treat IQ at different ages as a repeated measure factor</span></span></span>
+<span class="r-in"><span><span class="co"># within-S models &amp; plots</span></span></span>
+<span class="r-in"><span><span class="va">Age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Age<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">8</span>,<span class="fl">13</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, idata<span class="op">=</span><span class="va">Age</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">Age</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II Repeated Measures MANOVA Tests: Roy test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
@@ -199,14 +200,14 @@ The child's intelligence was measured at age 2, 4, 8, and 13 for
 <span class="r-out co"><span class="r-pr">#&gt;</span> BMIQ:Age     1     0.122      2.3      3     57  0.085792 .  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># within-S plots</span></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, idata<span class="op">=</span><span class="va">Age</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">Age</span>, iterm<span class="op">=</span><span class="st">"Age"</span>,</span>
-<span class="r-in">  cex<span class="op">=</span><span class="fl">1.25</span>, cex.lab<span class="op">=</span><span class="fl">1.4</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">  hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Reg"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AMED"</span>, <span class="st">"BMIQ"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># within-S plots</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">Adopted.mod</span>, idata<span class="op">=</span><span class="va">Age</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">Age</span>, iterm<span class="op">=</span><span class="st">"Age"</span>,</span></span>
+<span class="r-in"><span>  cex<span class="op">=</span><span class="fl">1.25</span>, cex.lab<span class="op">=</span><span class="fl">1.4</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Reg"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AMED"</span>, <span class="st">"BMIQ"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Adopted-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -221,7 +222,7 @@ The child's intelligence was measured at age 2, 4, 8, and 13 for
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

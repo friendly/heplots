@@ -22,7 +22,7 @@ and Roy's maximum root test."><meta property="og:image" content="http://friendly
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -30,9 +30,19 @@ and Roy's maximum root test."><meta property="og:image" content="http://friendly
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -66,29 +76,34 @@ and Roy's maximum root test.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">etasq</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for lm</span>
-<span class="fu">etasq</span><span class="op">(</span><span class="va">x</span>, anova <span class="op">=</span> <span class="cn">FALSE</span>, partial <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for mlm</span>
-<span class="fu">etasq</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for Anova.mlm</span>
-<span class="fu">etasq</span><span class="op">(</span><span class="va">x</span>, anova <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">etasq</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for lm</span></span>
+<span><span class="fu">etasq</span><span class="op">(</span><span class="va">x</span>, anova <span class="op">=</span> <span class="cn">FALSE</span>, partial <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for mlm</span></span>
+<span><span class="fu">etasq</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for Anova.mlm</span></span>
+<span><span class="fu">etasq</span><span class="op">(</span><span class="va">x</span>, anova <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A <code>lm</code>, <code>mlm</code> or <code>Anova.mlm</code> object</p></dd>
-<dt>anova</dt>
+
+  <dt>anova</dt>
 <dd><p>A logical, indicating whether the result should also contain the
 test statistics produced by <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova()</a></code>.</p></dd>
-<dt>partial</dt>
+
+  <dt>partial</dt>
 <dd><p>A logical, indicating whether to calculate partial or classical eta^2.</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>Other arguments passed down to <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code>.</p></dd>
+
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -118,10 +133,19 @@ calculated as:</p>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>When <code>anova=FALSE</code>, a one-column data frame containing the
-eta-squared values for each term in the model.
-When <code>anova=TRUE</code>, a 5-column (lm) or 7-column (mlm)  data frame containing the
-eta-squared values and the test statistics produced by <code>print.Anova()</code>for each term in the model.</p>
+    
+
+<p>When <code>anova=FALSE</code>, a one-column data frame containing the
+eta-squared values for each term in the model.</p>
+
+
+<p>When <code>anova=TRUE</code>, a 5-column (lm) or 7-column (mlm)  data frame containing the
+eta-squared values and the test statistics produced by <code>print.Anova()</code></p>
+
+
+<p>for each term in the model.</p>
+
+
     </div>
     <div id="references">
     <h2>References</h2>
@@ -143,22 +167,22 @@ Power Calculations for General Linear Multivariate Models Including Repeated Mea
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Soils</span><span class="op">)</span>  <span class="co"># from car package</span></span>
-<span class="r-in"><span class="va">soils.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">pH</span>,<span class="va">N</span>,<span class="va">Dens</span>,<span class="va">P</span>,<span class="va">Ca</span>,<span class="va">Mg</span>,<span class="va">K</span>,<span class="va">Na</span>,<span class="va">Conduc</span><span class="op">)</span> <span class="op">~</span> <span class="va">Block</span> <span class="op">+</span> <span class="va">Contour</span><span class="op">*</span><span class="va">Depth</span>, data<span class="op">=</span><span class="va">Soils</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">#Anova(soils.mod)</span></span>
-<span class="r-in"><span class="fu">etasq</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">soils.mod</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Soils</span><span class="op">)</span>  <span class="co"># from car package</span></span></span>
+<span class="r-in"><span><span class="va">soils.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">pH</span>,<span class="va">N</span>,<span class="va">Dens</span>,<span class="va">P</span>,<span class="va">Ca</span>,<span class="va">Mg</span>,<span class="va">K</span>,<span class="va">Na</span>,<span class="va">Conduc</span><span class="op">)</span> <span class="op">~</span> <span class="va">Block</span> <span class="op">+</span> <span class="va">Contour</span><span class="op">*</span><span class="va">Depth</span>, data<span class="op">=</span><span class="va">Soils</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">#Anova(soils.mod)</span></span></span>
+<span class="r-in"><span><span class="fu">etasq</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">soils.mod</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   eta^2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Block         0.5585973</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contour       0.6692989</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Depth         0.5983772</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contour:Depth 0.2058495</span>
-<span class="r-in"><span class="fu">etasq</span><span class="op">(</span><span class="va">soils.mod</span><span class="op">)</span> <span class="co"># same</span></span>
+<span class="r-in"><span><span class="fu">etasq</span><span class="op">(</span><span class="va">soils.mod</span><span class="op">)</span> <span class="co"># same</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   eta^2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Block         0.5585973</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contour       0.6692989</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Depth         0.5983772</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contour:Depth 0.2058495</span>
-<span class="r-in"><span class="fu">etasq</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">soils.mod</span><span class="op">)</span>, anova<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">etasq</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">soils.mod</span><span class="op">)</span>, anova<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                 eta^2 Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
@@ -168,14 +192,14 @@ Power Calculations for General Linear Multivariate Models Including Repeated Mea
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contour:Depth 0.20585  6    1.2351   0.8640     54    180    0.7311    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">etasq</span><span class="op">(</span><span class="va">soils.mod</span>, test<span class="op">=</span><span class="st">"Wilks"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">etasq</span><span class="op">(</span><span class="va">soils.mod</span>, test<span class="op">=</span><span class="st">"Wilks"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   eta^2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Block         0.5701385</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contour       0.7434504</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Depth         0.8294239</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contour:Depth 0.2250388</span>
-<span class="r-in"><span class="fu">etasq</span><span class="op">(</span><span class="va">soils.mod</span>, test<span class="op">=</span><span class="st">"Hotelling"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">etasq</span><span class="op">(</span><span class="va">soils.mod</span>, test<span class="op">=</span><span class="st">"Hotelling"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   eta^2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Block         0.5823516</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contour       0.8009753</span>
@@ -195,7 +219,7 @@ Power Calculations for General Linear Multivariate Models Including Repeated Mea
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

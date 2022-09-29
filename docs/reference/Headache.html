@@ -27,7 +27,7 @@ they considered uncomfortable (U) and definitely uncomfortable (DU)."><meta prop
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -35,9 +35,19 @@ they considered uncomfortable (U) and definitely uncomfortable (DU)."><meta prop
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -76,7 +86,7 @@ they considered uncomfortable (U) and definitely uncomfortable (DU).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Headache</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Headache</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="format">
@@ -135,8 +145,8 @@ ISBN: 0412258005. Table E.1.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Headache</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">Headache</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Headache</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">Headache</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 'data.frame':	98 obs. of  6 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ type     : Factor w/ 2 levels "Migrane","Tension": 1 1 2 1 1 1 1 1 1 2 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ treatment: Factor w/ 4 levels "T1","T2","T3",..: 3 1 1 3 3 3 2 1 1 3 ...</span>
@@ -148,14 +158,14 @@ ISBN: 0412258005. Table E.1.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ du1      : num  5.3 6.85 0.53 9.12 7.21 7.3 3.75 3.25 2.33 1.42 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ u2       : num  5.8 4.68 0.55 5.7 5.63 4.83 2.5 2 2.23 1.37 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ du2      : num  8.52 6.68 0.84 7.88 6.75 7.32 3.18 3.3 3.98 1.89 ...</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># basic MLM, specifying between-S effects</span></span>
-<span class="r-in"><span class="va">headache.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">u1</span>, <span class="va">du1</span>, <span class="va">u2</span>, <span class="va">du2</span><span class="op">)</span> <span class="op">~</span> <span class="va">type</span> <span class="op">*</span> <span class="va">treatment</span>, data<span class="op">=</span><span class="va">Headache</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">##############################</span></span>
-<span class="r-in"><span class="co">## between-S tests</span></span>
-<span class="r-in"><span class="co">##############################</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">headache.mod</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># basic MLM, specifying between-S effects</span></span></span>
+<span class="r-in"><span><span class="va">headache.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">u1</span>, <span class="va">du1</span>, <span class="va">u2</span>, <span class="va">du2</span><span class="op">)</span> <span class="op">~</span> <span class="va">type</span> <span class="op">*</span> <span class="va">treatment</span>, data<span class="op">=</span><span class="va">Headache</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">##############################</span></span></span>
+<span class="r-in"><span><span class="co">## between-S tests</span></span></span>
+<span class="r-in"><span><span class="co">##############################</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">headache.mod</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Roy test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                Df test stat approx F num Df den Df   Pr(&gt;F)   </span>
@@ -164,50 +174,50 @@ ISBN: 0412258005. Table E.1.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> type:treatment  3  0.161202   3.5867      4     89 0.009281 **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># test each contrast separately</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">headache.mod</span>, hypothesis<span class="op">=</span><span class="st">"treatment1"</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># test each contrast separately</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">headache.mod</span>, hypothesis<span class="op">=</span><span class="st">"treatment1"</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Multivariate Test: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Df  test stat  approx F num Df den Df  Pr(&gt;F)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Roy  1 0.01305284 0.2838993      4     87 0.88769</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">headache.mod</span>, hypothesis<span class="op">=</span><span class="st">"treatment2"</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">headache.mod</span>, hypothesis<span class="op">=</span><span class="st">"treatment2"</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Multivariate Test: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Df  test stat approx F num Df den Df  Pr(&gt;F)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Roy  1 0.08267735 1.798232      4     87 0.13645</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">headache.mod</span>, hypothesis<span class="op">=</span><span class="st">"treatment3"</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">headache.mod</span>, hypothesis<span class="op">=</span><span class="st">"treatment3"</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Multivariate Test: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Df test stat approx F num Df den Df    Pr(&gt;F)   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Roy  1 0.1902026 4.136907      4     87 0.0040827 **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">headache.mod</span>, variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>,</span>
-<span class="r-in">  hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"treatment"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span>,</span>
-<span class="r-in">  hyp.labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"extra.exp"</span>, <span class="st">"no.inst"</span>, <span class="st">"explicit.inst"</span><span class="op">)</span>,</span>
-<span class="r-in">  xlab<span class="op">=</span><span class="st">"u1: Initial sensitivity"</span>, ylab<span class="op">=</span><span class="st">"u2: Final sensitivity"</span>,</span>
-<span class="r-in">  main<span class="op">=</span><span class="st">"Headache data: Unpleasant levels"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty<span class="op">=</span><span class="fl">5</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">headache.mod</span>, variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"treatment"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  hyp.labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"extra.exp"</span>, <span class="st">"no.inst"</span>, <span class="st">"explicit.inst"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  xlab<span class="op">=</span><span class="st">"u1: Initial sensitivity"</span>, ylab<span class="op">=</span><span class="st">"u2: Final sensitivity"</span>,</span></span>
+<span class="r-in"><span>  main<span class="op">=</span><span class="st">"Headache data: Unpleasant levels"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty<span class="op">=</span><span class="fl">5</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Headache-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">headache.mod</span>, variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>,</span>
-<span class="r-in">  hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"treatment"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span>,</span>
-<span class="r-in">  xlab<span class="op">=</span><span class="st">"du1: Initial sensitivity"</span>, ylab<span class="op">=</span><span class="st">"du2: Final sensitivity"</span>,</span>
-<span class="r-in">  main<span class="op">=</span><span class="st">"Headache data: Definitely Unpleasant levels"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty<span class="op">=</span><span class="fl">5</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">headache.mod</span>, variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"treatment"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, sep<span class="op">=</span><span class="st">""</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  xlab<span class="op">=</span><span class="st">"du1: Initial sensitivity"</span>, ylab<span class="op">=</span><span class="st">"du2: Final sensitivity"</span>,</span></span>
+<span class="r-in"><span>  main<span class="op">=</span><span class="st">"Headache data: Definitely Unpleasant levels"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty<span class="op">=</span><span class="fl">5</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Headache-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">headache.mod</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">headache.mod</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Headache-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">##############################</span></span>
-<span class="r-in"><span class="co"># between-S and within-S tests</span></span>
-<span class="r-in"><span class="co">##############################</span></span>
-<span class="r-in"><span class="va">idata</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span>level<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"U"</span>, <span class="st">"DU"</span><span class="op">)</span><span class="op">)</span>, phase<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">headache.mod</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">level</span><span class="op">*</span><span class="va">phase</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">##############################</span></span></span>
+<span class="r-in"><span><span class="co"># between-S and within-S tests</span></span></span>
+<span class="r-in"><span><span class="co">##############################</span></span></span>
+<span class="r-in"><span><span class="va">idata</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span>level<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"U"</span>, <span class="st">"DU"</span><span class="op">)</span><span class="op">)</span>, phase<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">headache.mod</span>, idata<span class="op">=</span><span class="va">idata</span>, idesign<span class="op">=</span><span class="op">~</span><span class="va">level</span><span class="op">*</span><span class="va">phase</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II Repeated Measures MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                            Df test stat approx F num Df den Df  Pr(&gt;F)    </span>
@@ -229,7 +239,7 @@ ISBN: 0412258005. Table E.1.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> type:treatment:level:phase  3   0.03475    1.080      3     90 0.36173    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -244,7 +254,7 @@ ISBN: 0412258005. Table E.1.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

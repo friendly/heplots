@@ -27,7 +27,7 @@ crime?'><meta property="og:image" content="http://friendly.github.io/heplots/log
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -35,9 +35,19 @@ crime?'><meta property="og:image" content="http://friendly.github.io/heplots/log
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -76,7 +86,7 @@ crime?</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">MockJury</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">MockJury</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="format">
@@ -151,38 +161,38 @@ Greenville, NC: East Carolina University.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># manipulation check:  test ratings of the photos classified by Attractiveness</span></span>
-<span class="r-in"><span class="va">jury.mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">phyattr</span>, <span class="va">happy</span>, <span class="va">independent</span>, <span class="va">sophisticated</span><span class="op">)</span> <span class="op">~</span> <span class="va">Attr</span>, data<span class="op">=</span><span class="va">MockJury</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">jury.mod1</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># manipulation check:  test ratings of the photos classified by Attractiveness</span></span></span>
+<span class="r-in"><span><span class="va">jury.mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">phyattr</span>, <span class="va">happy</span>, <span class="va">independent</span>, <span class="va">sophisticated</span><span class="op">)</span> <span class="op">~</span> <span class="va">Attr</span>, data<span class="op">=</span><span class="va">MockJury</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">jury.mod1</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Roy test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Attr  2    1.7672   48.156      4    109 &lt; 2.2e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"><span class="co">## </span></span>
-<span class="r-in"><span class="co">## Type II MANOVA Tests: Roy test statistic</span></span>
-<span class="r-in"><span class="co">##      Df test stat approx F num Df den Df    Pr(&gt;F)    </span></span>
-<span class="r-in"><span class="co">## Attr  2    1.7672   48.156      4    109 &lt; 2.2e-16 ***</span></span>
-<span class="r-in"><span class="co">## ---</span></span>
-<span class="r-in"><span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 </span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">jury.mod1</span>, main<span class="op">=</span><span class="st">"HE plot for manipulation check"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">## </span></span></span>
+<span class="r-in"><span><span class="co">## Type II MANOVA Tests: Roy test statistic</span></span></span>
+<span class="r-in"><span><span class="co">##      Df test stat approx F num Df den Df    Pr(&gt;F)    </span></span></span>
+<span class="r-in"><span><span class="co">## Attr  2    1.7672   48.156      4    109 &lt; 2.2e-16 ***</span></span></span>
+<span class="r-in"><span><span class="co">## ---</span></span></span>
+<span class="r-in"><span><span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 </span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">jury.mod1</span>, main<span class="op">=</span><span class="st">"HE plot for manipulation check"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="MockJury-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">jury.mod1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">jury.mod1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="MockJury-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">candisc</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">jury.can</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/candisc/man/candisc.html" class="external-link">candisc</a></span><span class="op">(</span><span class="va">jury.mod1</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">jury.can</span></span>
-<span class="r-in">  <span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">jury.can</span>, main<span class="op">=</span><span class="st">"Canonical HE plot"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">candisc</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">jury.can</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/candisc/man/candisc.html" class="external-link">candisc</a></span><span class="op">(</span><span class="va">jury.mod1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">jury.can</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">jury.can</span>, main<span class="op">=</span><span class="st">"Canonical HE plot"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-plt img"><img src="MockJury-3.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Vector scale factor set to  8.817675 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># influence of Attr of photo and nature of crime on Serious and Years</span></span>
-<span class="r-in"><span class="va">jury.mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Serious</span>, <span class="va">Years</span><span class="op">)</span> <span class="op">~</span> <span class="va">Attr</span> <span class="op">*</span> <span class="va">Crime</span>, data<span class="op">=</span><span class="va">MockJury</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">jury.mod2</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># influence of Attr of photo and nature of crime on Serious and Years</span></span></span>
+<span class="r-in"><span><span class="va">jury.mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Serious</span>, <span class="va">Years</span><span class="op">)</span> <span class="op">~</span> <span class="va">Attr</span> <span class="op">*</span> <span class="va">Crime</span>, data<span class="op">=</span><span class="va">MockJury</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">jury.mod2</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Roy test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            Df test stat approx F num Df den Df  Pr(&gt;F)  </span>
@@ -191,12 +201,12 @@ Greenville, NC: East Carolina University.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Attr:Crime  2  0.050104   2.7056      2    108 0.07136 .</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">jury.mod2</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">jury.mod2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="MockJury-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># stepdown test (ANCOVA), controlling for Serious</span></span>
-<span class="r-in"><span class="va">jury.mod3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span> <span class="va">Years</span> <span class="op">~</span> <span class="va">Serious</span> <span class="op">+</span> <span class="va">Attr</span> <span class="op">*</span> <span class="va">Crime</span>, data<span class="op">=</span><span class="va">MockJury</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">jury.mod3</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># stepdown test (ANCOVA), controlling for Serious</span></span></span>
+<span class="r-in"><span><span class="va">jury.mod3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span> <span class="va">Years</span> <span class="op">~</span> <span class="va">Serious</span> <span class="op">+</span> <span class="va">Attr</span> <span class="op">*</span> <span class="va">Crime</span>, data<span class="op">=</span><span class="va">MockJury</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">jury.mod3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Anova Table (Type II tests)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Response: Years</span>
@@ -208,10 +218,10 @@ Greenville, NC: East Carolina University.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Residuals  986.95 107                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># need to consider heterogeneous slopes?</span></span>
-<span class="r-in"><span class="va">jury.mod4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span> <span class="va">Years</span> <span class="op">~</span> <span class="va">Serious</span> <span class="op">*</span> <span class="va">Attr</span> <span class="op">*</span> <span class="va">Crime</span>, data<span class="op">=</span><span class="va">MockJury</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/anova.html" class="external-link">anova</a></span><span class="op">(</span><span class="va">jury.mod3</span>, <span class="va">jury.mod4</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># need to consider heterogeneous slopes?</span></span></span>
+<span class="r-in"><span><span class="va">jury.mod4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span> <span class="va">Years</span> <span class="op">~</span> <span class="va">Serious</span> <span class="op">*</span> <span class="va">Attr</span> <span class="op">*</span> <span class="va">Crime</span>, data<span class="op">=</span><span class="va">MockJury</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html" class="external-link">anova</a></span><span class="op">(</span><span class="va">jury.mod3</span>, <span class="va">jury.mod4</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Analysis of Variance Table</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Model 1: Years ~ Serious + Attr * Crime</span>
@@ -221,7 +231,7 @@ Greenville, NC: East Carolina University.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    102 901.38  5    85.565 1.9365 0.09468 .</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -236,7 +246,7 @@ Greenville, NC: East Carolina University.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

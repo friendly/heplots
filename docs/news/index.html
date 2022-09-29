@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -25,9 +25,19 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -50,6 +60,17 @@
       <small>Source: <a href="https://github.com/friendly/heplots/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.4-0" id="version-14-0-2022-09-26">Version 1.4-0 (2022-09-26)<a class="anchor" aria-label="anchor" href="#version-14-0-2022-09-26"></a></h2>
+<ul><li>Added Iwasaki_Big_Five data [Thx: James Grice]</li>
+<li>Added <code>cex.label</code> arg to <code><a href="../reference/heplot3d.html">heplot3d()</a></code>
+</li>
+<li>Convert old Rnw vignettes to Rmd</li>
+<li>Fix documentation infelicities</li>
+<li>Added TIPI data</li>
+<li>Added <code><a href="../reference/glance.mlm.html">glance.mlm()</a></code> as an extension of <code><a href="https://broom.tidymodels.org/reference/glance.lm.html" class="external-link">broom::glance.lm()</a></code>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.3-9" id="version-13-9-2021-10-06">Version 1.3-9 (2021-10-06)<small>2021-10-06</small><a class="anchor" aria-label="anchor" href="#version-13-9-2021-10-06"></a></h2>
 <ul><li>Fix potential problem with URL links to JSS articles, now converted to DOIs</li>
@@ -314,7 +335,7 @@ o imatrix= argument for doubly-multivariate designs implemented, but depends on 
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

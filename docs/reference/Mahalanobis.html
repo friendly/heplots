@@ -19,7 +19,7 @@ MCD and MVE estimators of center and covariance (from cov.rob)"><meta property="
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -27,9 +27,19 @@ MCD and MVE estimators of center and covariance (from cov.rob)"><meta property="
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -60,28 +70,34 @@ MCD and MVE estimators of center and covariance (from <code><a href="https://rdr
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Mahalanobis</span><span class="op">(</span><span class="va">x</span>, <span class="va">center</span>, <span class="va">cov</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"classical"</span>, <span class="st">"mcd"</span>, <span class="st">"mve"</span><span class="op">)</span>, nsamp <span class="op">=</span> <span class="st">"best"</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Mahalanobis</span><span class="op">(</span><span class="va">x</span>, <span class="va">center</span>, <span class="va">cov</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"classical"</span>, <span class="st">"mcd"</span>, <span class="st">"mve"</span><span class="op">)</span>, nsamp <span class="op">=</span> <span class="st">"best"</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a numeric matrix or data frame with, say, \(p\) columns</p></dd>
-<dt>center</dt>
+
+  <dt>center</dt>
 <dd><p>mean vector of the data; if this and <code>cov</code> are <em>both</em> supplied,
 the function simply calls <code><a href="https://rdrr.io/r/stats/mahalanobis.html" class="external-link">mahalanobis</a></code> to 
 calculate the result, ignoring the <code>method</code> argument.</p></dd>
-<dt>cov</dt>
+
+  <dt>cov</dt>
 <dd><p>covariance matrix (\(p x p\)) of the data</p></dd>
-<dt>method</dt>
+
+  <dt>method</dt>
 <dd><p>estimation method used for center and covariance, one of:
 <code>"classical"</code> (product-moment), 
 <code>"mcd"</code> (minimum covariance determinant), or           
 <code>"mve"</code> (minimum volume ellipsoid).</p></dd>
-<dt>nsamp</dt>
+
+  <dt>nsamp</dt>
 <dd><p>passed to <code><a href="https://rdrr.io/pkg/MASS/man/cov.rob.html" class="external-link">cov.rob</a>, just to make this argument explicit</code></p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>other arguments passed to <code><a href="https://rdrr.io/pkg/MASS/man/cov.rob.html" class="external-link">cov.rob</a></code></p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -89,7 +105,9 @@ calculate the result, ignoring the <code>method</code> argument.</p></dd>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>A numeric vector of squared Mahalanobis distances corresponding to the rows of <code>x</code>.</p>
+    
+
+<p>A numeric vector of squared Mahalanobis distances corresponding to the rows of <code>x</code>.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -102,16 +120,16 @@ calculate the result, ignoring the <code>method</code> argument.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu">Mahalanobis</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu">Mahalanobis</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.3195  2.1871  3.0628  3.9733  4.8053 13.1011 </span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu">Mahalanobis</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, method<span class="op">=</span><span class="st">"mve"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu">Mahalanobis</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, method<span class="op">=</span><span class="st">"mve"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.4461  2.5331  4.0110  5.5585  6.8295 25.7951 </span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu">Mahalanobis</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, method<span class="op">=</span><span class="st">"mcd"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu">Mahalanobis</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, method<span class="op">=</span><span class="st">"mcd"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.4352  2.7301  5.7160 19.2207 36.7121 98.0335 </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -126,7 +144,7 @@ calculate the result, ignoring the <code>method</code> argument.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

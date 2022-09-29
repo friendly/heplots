@@ -20,7 +20,7 @@ This is the original data set from Tubb et al. (1980), in contrast to Pottery.">
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -28,9 +28,19 @@ This is the original data set from Tubb et al. (1980), in contrast to Pottery.">
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -62,7 +72,7 @@ This is the original data set from Tubb et al. (1980), in contrast to <code><a h
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Pottery2</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Pottery2</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="format">
@@ -117,47 +127,51 @@ hypotheses related to <code>Site</code> and <code>Region</code>.</p>
     </div>
     <div id="source">
     <h2>Source</h2>
-    <p>Slightly modified from files found at:
-<a href="http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html" class="external-link">http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html</a></p>
+    <p>Originally slightly modified from files by David Carlson,
+now at <code><a href="https://rdrr.io/pkg/archdata/man/RBPottery.html" class="external-link">RBPottery</a></code>.
+<!-- % \url{http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html} --></p>
     </div>
     <div id="references">
     <h2>References</h2>
     <p>Baxter, M. J. 2003. <em>Statistics in Archaeology</em>. Arnold, London.</p>
+<p>Carlson, David L. 2017. <em>Quantitative Methods in Archaeology Using R</em>. Cambridge University
+Press, pp 247-255, 335-342.</p>
 <p>Tubb, A., A. J. Parker, and G. Nickless. 1980. 
 The Analysis of Romano-British Pottery by Atomic Absorption Spectrophotometry. 
 <em>Archaeometry</em>, <b>22</b>, 153-171.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/carData/man/Pottery.html" class="external-link">Pottery</a></code> for the related (subset) data set</p></div>
+    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/carData/man/Pottery.html" class="external-link">Pottery</a></code> for the related (subset) data set;
+	<code><a href="https://rdrr.io/pkg/archdata/man/RBPottery.html" class="external-link">RBPottery</a></code> for a newer version with more variables.</p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Pottery2</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># contrasts for Kiln correspond to between Region [,1:2] and within Region [,3:4]</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">Pottery2</span><span class="op">$</span><span class="va">Kiln</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Pottery2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># contrasts for Kiln correspond to between Region [,1:2] and within Region [,3:4]</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">Pottery2</span><span class="op">$</span><span class="va">Kiln</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   G.WN W.N W2.W3 NF4.NF5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    4   0     0       0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   -1   1     1       0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3   -1   1    -1       0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4   -1  -1     0       1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5   -1  -1     0      -1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">pmod</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Al</span>,<span class="va">Fe</span>,<span class="va">Mg</span>,<span class="va">Ca</span>,<span class="va">Na</span>,<span class="va">K</span>,<span class="va">Ti</span>,<span class="va">Mn</span>,<span class="va">Ba</span><span class="op">)</span><span class="op">~</span><span class="va">Kiln</span>, data<span class="op">=</span><span class="va">Pottery2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pmod</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">pmod</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Al</span>,<span class="va">Fe</span>,<span class="va">Mg</span>,<span class="va">Ca</span>,<span class="va">Na</span>,<span class="va">K</span>,<span class="va">Ti</span>,<span class="va">Mn</span>,<span class="va">Ba</span><span class="op">)</span><span class="op">~</span><span class="va">Kiln</span>, data<span class="op">=</span><span class="va">Pottery2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pmod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Kiln  4    2.2268   5.3025     36    152 1.391e-13 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># extract coefficient names for linearHypotheses</span></span>
-<span class="r-in"><span class="va">coefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">pmod</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># test differences among regions</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">pmod</span>, <span class="va">coefs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># extract coefficient names for linearHypotheses</span></span></span>
+<span class="r-in"><span><span class="va">coefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">pmod</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># test differences among regions</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">pmod</span>, <span class="va">coefs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for the hypothesis:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              Al           Fe           Mg          Ca           Na            K</span>
@@ -211,8 +225,8 @@ The Analysis of Romano-British Pottery by Atomic Absorption Spectrophotometry.
 <span class="r-out co"><span class="r-pr">#&gt;</span> Roy               2  25.10339 100.41357      9     36 &lt; 2.22e-16 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"><span class="co"># test differences within regions B, C</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">pmod</span>, <span class="va">coefs</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># test differences within regions B, C</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">pmod</span>, <span class="va">coefs</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for the hypothesis:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            Al         Fe         Mg          Ca          Na           K</span>
@@ -266,29 +280,29 @@ The Analysis of Romano-British Pottery by Atomic Absorption Spectrophotometry.
 <span class="r-out co"><span class="r-pr">#&gt;</span> Roy               2 0.5041642 2.0166569      9     36 0.065976 .</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pmod</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">FALSE</span><span class="op">)</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Region"</span> <span class="op">=</span><span class="va">coefs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, <span class="st">"WithinBC"</span><span class="op">=</span><span class="va">coefs</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pmod</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">FALSE</span><span class="op">)</span>, hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Region"</span> <span class="op">=</span><span class="va">coefs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, <span class="st">"WithinBC"</span><span class="op">=</span><span class="va">coefs</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Pottery2-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># all pairwise views;  note that Ba shows no effect</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">pmod</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># all pairwise views;  note that Ba shows no effect</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">pmod</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Pottery2-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># canonical view, via candisc::heplot</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">candisc</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># canonical analysis: how many dimensions?</span></span>
-<span class="r-in"><span class="op">(</span><span class="va">pcan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/candisc/man/candisc.html" class="external-link">candisc</a></span><span class="op">(</span><span class="va">pmod</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pcan</span>, scale<span class="op">=</span><span class="fl">18</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">FALSE</span><span class="op">)</span>, var.col<span class="op">=</span><span class="st">"darkgreen"</span>, var.lwd<span class="op">=</span><span class="fl">2</span>, var.cex<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu"><a href="heplot3d.html">heplot3d</a></span><span class="op">(</span><span class="va">pcan</span>, scale<span class="op">=</span><span class="fl">8</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># canonical view, via candisc::heplot</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">candisc</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># canonical analysis: how many dimensions?</span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">pcan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/candisc/man/candisc.html" class="external-link">candisc</a></span><span class="op">(</span><span class="va">pmod</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">pcan</span>, scale<span class="op">=</span><span class="fl">18</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>,<span class="cn">FALSE</span><span class="op">)</span>, var.col<span class="op">=</span><span class="st">"darkgreen"</span>, var.lwd<span class="op">=</span><span class="fl">2</span>, var.cex<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot3d.html">heplot3d</a></span><span class="op">(</span><span class="va">pcan</span>, scale<span class="op">=</span><span class="fl">8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-plt img"><img src="Pottery2-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -303,7 +317,7 @@ The Analysis of Romano-British Pottery by Atomic Absorption Spectrophotometry.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

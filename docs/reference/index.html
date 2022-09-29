@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -25,9 +25,19 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -54,7 +64,7 @@
           <p class="section-desc"></p><p>Hypothesis-Error plots</p>
         </th>
       </tr></tbody><tbody><tr><td>
-          <p><code><a href="heplot-package.html">heplots-package</a></code> </p>
+          <p><code><a href="heplot-package.html">heplots-package</a></code> <code><a href="heplot-package.html">heplots</a></code> </p>
         </td>
         <td><p>Visualizing Hypothesis Tests in Multivariate Linear Models</p></td>
       </tr><tr><td>
@@ -122,8 +132,8 @@
         </td>
         <td><p>Plot observation weights from a robust multivariate linear models</p></td>
       </tr></tbody><tbody><tr><th colspan="2">
-          <h2 id="other-plots">Other plots <a href="#other-plots" class="anchor" aria-hidden="true"></a></h2>
-          <p class="section-desc"></p><p>Other plot methods for multivariate linear models</p>
+          <h2 id="other-plots-methods">Other plots &amp; methods <a href="#other-plots-methods" class="anchor" aria-hidden="true"></a></h2>
+          <p class="section-desc"></p><p>Other plots and methods for multivariate linear models</p>
         </th>
       </tr></tbody><tbody><tr><td>
           <p><code><a href="coefplot.html">coefplot()</a></code> </p>
@@ -133,6 +143,10 @@
           <p><code><a href="covEllipses.html">covEllipses()</a></code> </p>
         </td>
         <td><p>Draw classical and robust covariance ellipses for one or more groups</p></td>
+      </tr><tr><td>
+          <p><code><a href="glance.mlm.html">glance()</a></code> </p>
+        </td>
+        <td><p>Glance at an mlm object</p></td>
       </tr></tbody><tbody><tr><th colspan="2">
           <h2 id="utility">Utility <a href="#utility" class="anchor" aria-hidden="true"></a></h2>
           <p class="section-desc"></p><p>Utility functions</p>
@@ -214,6 +228,10 @@
         </td>
         <td><p>Recovery from Elective Herniorrhaphy</p></td>
       </tr><tr><td>
+          <p><code><a href="Iwasaki_Big_Five.html">Iwasaki_Big_Five</a></code> </p>
+        </td>
+        <td><p>Personality Traits of Cultural Groups</p></td>
+      </tr><tr><td>
           <p><code><a href="MockJury.html">MockJury</a></code> </p>
         </td>
         <td><p>Effects Of Physical Attractiveness Upon Mock Jury Decisions</p></td>
@@ -278,6 +296,10 @@
         </td>
         <td><p>Social Cognitive Measures in Psychiatric Groups</p></td>
       </tr><tr><td>
+          <p><code><a href="TIPI.html">TIPI</a></code> </p>
+        </td>
+        <td><p>Data on the Ten Item Personality Inventory</p></td>
+      </tr><tr><td>
           <p><code><a href="VocabGrowth.html">VocabGrowth</a></code> </p>
         </td>
         <td><p>Vocabulary growth data</p></td>
@@ -285,6 +307,10 @@
           <p><code><a href="WeightLoss.html">WeightLoss</a></code> </p>
         </td>
         <td><p>Weight Loss Data</p></td>
+      </tr><tr><td>
+          <p><code><a href="mathscore.html">mathscore</a></code> </p>
+        </td>
+        <td><p>Math scores for basic math and word problems</p></td>
       </tr><tr><td>
           <p><code><a href="schooldata.html">schooldata</a></code> </p>
         </td>
@@ -302,7 +328,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

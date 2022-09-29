@@ -22,7 +22,7 @@ in a scatterplot matrix format."><meta property="og:image" content="http://frien
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3-9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
       </span>
     </div>
 
@@ -30,9 +30,19 @@ in a scatterplot matrix format."><meta property="og:image" content="http://frien
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/index.html">Articles</a>
-</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/HE_manova.html">HE plot MANOVA Examples</a>
+    </li>
+    <li>
+      <a href="../articles/HE_mmra.html">HE plot MMRA Examples</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -66,32 +76,32 @@ in a scatterplot matrix format.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for boxM</span>
-<span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for data.frame</span>
-<span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, <span class="va">group</span>, pooled <span class="op">=</span> <span class="cn">TRUE</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"classical"</span>, <span class="st">"mve"</span>, <span class="st">"mcd"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for matrix</span>
-<span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, <span class="va">group</span>, pooled <span class="op">=</span> <span class="cn">TRUE</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"classical"</span>, <span class="st">"mve"</span>, <span class="st">"mcd"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for default</span>
-<span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, <span class="va">means</span>, <span class="va">df</span>, 
-        labels <span class="op">=</span> <span class="cn">NULL</span>, variables <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, level <span class="op">=</span> <span class="fl">0.68</span>, 
-        segments <span class="op">=</span> <span class="fl">60</span>, 
-        center <span class="op">=</span> <span class="cn">FALSE</span>, center.pch <span class="op">=</span> <span class="st">"+"</span>, center.cex <span class="op">=</span> <span class="fl">2</span>, 
-        col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"heplot.colors"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"black"</span>, <span class="st">"darkgreen"</span>, 
-                        <span class="st">"darkcyan"</span>, <span class="st">"brown"</span>, <span class="st">"magenta"</span>, <span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span>, 
-        lty <span class="op">=</span> <span class="fl">1</span>, lwd <span class="op">=</span> <span class="fl">2</span>, 
-        fill <span class="op">=</span> <span class="cn">FALSE</span>, fill.alpha <span class="op">=</span> <span class="fl">0.3</span>, 
-        label.pos <span class="op">=</span> <span class="fl">0</span>, 
-        <span class="va">xlab</span>, <span class="va">ylab</span>, 
-        <span class="va">vlabels</span>, var.cex<span class="op">=</span><span class="fl">2</span>, 
-        main <span class="op">=</span> <span class="st">""</span>, 
-        <span class="va">xlim</span>, <span class="va">ylim</span>, axes <span class="op">=</span> <span class="cn">TRUE</span>, 
-        <span class="va">offset.axes</span>, add <span class="op">=</span> <span class="cn">FALSE</span>,  <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for boxM</span></span>
+<span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for data.frame</span></span>
+<span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, <span class="va">group</span>, pooled <span class="op">=</span> <span class="cn">TRUE</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"classical"</span>, <span class="st">"mve"</span>, <span class="st">"mcd"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for matrix</span></span>
+<span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, <span class="va">group</span>, pooled <span class="op">=</span> <span class="cn">TRUE</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"classical"</span>, <span class="st">"mve"</span>, <span class="st">"mcd"</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for default</span></span>
+<span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, <span class="va">means</span>, <span class="va">df</span>, </span>
+<span>        labels <span class="op">=</span> <span class="cn">NULL</span>, variables <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, level <span class="op">=</span> <span class="fl">0.68</span>, </span>
+<span>        segments <span class="op">=</span> <span class="fl">60</span>, </span>
+<span>        center <span class="op">=</span> <span class="cn">FALSE</span>, center.pch <span class="op">=</span> <span class="st">"+"</span>, center.cex <span class="op">=</span> <span class="fl">2</span>, </span>
+<span>        col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"heplot.colors"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"black"</span>, <span class="st">"darkgreen"</span>, </span>
+<span>                        <span class="st">"darkcyan"</span>, <span class="st">"brown"</span>, <span class="st">"magenta"</span>, <span class="st">"darkgray"</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>        lty <span class="op">=</span> <span class="fl">1</span>, lwd <span class="op">=</span> <span class="fl">2</span>, </span>
+<span>        fill <span class="op">=</span> <span class="cn">FALSE</span>, fill.alpha <span class="op">=</span> <span class="fl">0.3</span>, </span>
+<span>        label.pos <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>        <span class="va">xlab</span>, <span class="va">ylab</span>, </span>
+<span>        <span class="va">vlabels</span>, var.cex<span class="op">=</span><span class="fl">2</span>, </span>
+<span>        main <span class="op">=</span> <span class="st">""</span>, </span>
+<span>        <span class="va">xlim</span>, <span class="va">ylim</span>, axes <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>        <span class="va">offset.axes</span>, add <span class="op">=</span> <span class="cn">FALSE</span>,  <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -100,70 +110,106 @@ in a scatterplot matrix format.</p>
 <dd><p>The generic argument. For the default method, this is a list of covariance matrices.
 For the <code>data.frame</code> and <code>matrix</code> methods, this is a numeric matrix of two or more columns
 supplying the variables to be analyzed.</p></dd>
-<dt>group</dt>
+
+
+  <dt>group</dt>
 <dd><p>a factor defining groups, or a vector of length <code>n=nrow(x)</code> doing the same.
 If missing, a single covariance ellipse is drawn.</p></dd>
-<dt>pooled</dt>
+
+  <dt>pooled</dt>
 <dd><p>Logical; if <code>TRUE</code>, the pooled covariance matrix for the total sample is also computed and plotted</p></dd>
-<dt>method</dt>
+
+  <dt>method</dt>
 <dd><p>the covariance method to be used: classical product-moment (<code>"classical"</code>), 
 or minimum volume ellipsoid (<code>"mve"</code>), or 
 minimum covariance determinant (<code>"mcd"</code>).</p></dd>
-</dl><p><!-- %  \item{cov}{ --><!-- %%%     ~~Describe \code{cov} here~~ --><!-- %} --></p>
+
+
+</dl><p><!-- %  \item{cov}{ --></p>
+
+
+<p><!-- %%%     ~~Describe \code{cov} here~~ --></p>
+
+
+<p><!-- %} --></p>
 <dl><dt>means</dt>
 <dd><p>For the default method, a matrix of the means for all groups (followed by the grand means, if <code>pooled=TRUE</code>).
 Rows are the groups, and columns are the variables. It is assumed that the means have
 column names corresponding to the variables in the covariance matrices.</p></dd>
-<dt>df</dt>
+
+  <dt>df</dt>
 <dd><p>For the default method, a vector of the degrees of freedom for the covariance matrices</p></dd>
-<dt>labels</dt>
+
+  <dt>labels</dt>
 <dd><p>Either a character vector of labels for the groups, or <code>TRUE</code>,
 indicating that group labels are taken as the names of the covariance matrices.
 Use <code>labels=""</code> to suppress group labels, e.g., when <code>add=TRUE</code></p></dd>
-<dt>variables</dt>
+
+  <dt>variables</dt>
 <dd><p>indices or names of the response variables to be plotted;
     defaults to <code>1:2</code>.  If more than two variables are supplied, the function
     plots all pairwise covariance ellipses in a scatterplot matrix format.</p></dd>
-<dt>level</dt>
+
+
+  <dt>level</dt>
 <dd><p>equivalent coverage of a data ellipse for normally-distributed
     errors, defaults to <code>0.68</code>.</p></dd>
-<dt>segments</dt>
+
+
+  <dt>segments</dt>
 <dd><p>number of line segments composing each ellipse; defaults to
     <code>40</code>.</p></dd>
-<dt>center</dt>
+
+
+  <dt>center</dt>
 <dd><p>If <code>TRUE</code>, the covariance ellipses are centered at the centroid.</p></dd>
-<dt>center.pch</dt>
+
+
+  <dt>center.pch</dt>
 <dd><p>character to use in plotting the centroid of the data;
     defaults to <code>"+"</code>.</p></dd>
-<dt>center.cex</dt>
+
+
+  <dt>center.cex</dt>
 <dd><p>size of character to use in plotting the centroid of the data;
     defaults to <code>2</code>.</p></dd>
-<dt>col</dt>
+
+
+  <dt>col</dt>
 <dd><p>a color or vector of colors to use in plotting ellipses
    --- recycled as necessary 
     A single color can be given, in which case it is used for all ellipses.
     For convenience, the default colors for all plots produced in a given session can be changed
     by assigning a color vector via <code>options(heplot.colors =c(...)</code>.  Otherwise,
     the default colors are <code>c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")</code>.</p></dd>
-<dt>lty</dt>
+
+
+  <dt>lty</dt>
 <dd><p>vector of line types to use for plotting the ellipses; the first is
     used for the error ellipse, the rest --- possibly recycled --- for
     the hypothesis ellipses; a single line type can be given. Defaults to
     <code>2:1</code>.</p></dd>
-<dt>lwd</dt>
+
+
+  <dt>lwd</dt>
 <dd><p>vector of line widths to use for plotting the ellipses; the first is
     used for the error ellipse, the rest --- possibly recycled --- for
     the hypothesis ellipses; a single line width can be given. Defaults to
     <code>1:2</code>.</p></dd>
-<dt>fill</dt>
+
+
+  <dt>fill</dt>
 <dd><p>A logical vector indicating whether each ellipse should be filled or not.
     The first value is used for the error ellipse, the rest --- possibly recycled --- for
     the hypothesis ellipses; a single fill value can be given.  
     Defaults to FALSE for backward compatibility. See Details below.</p></dd>
-<dt>fill.alpha</dt>
+
+  <dt>fill.alpha</dt>
 <dd><p>Alpha transparency for filled ellipses, a numeric scalar or vector of values
   within <code>[0,1]</code>, where 0 means fully transparent and 1 means fully opaque. Defaults to 0.3.</p></dd>
-<dt>label.pos</dt>
+
+
+  <dt>label.pos</dt>
 <dd><p>Label position, a vector of integers (in <code>0:4</code>) or character strings
 	(in <code>c("center", "bottom", "left", "top", "right")</code>) use in labeling ellipses,
 	recycled as necessary.
@@ -172,32 +218,48 @@ Use <code>labels=""</code> to suppress group labels, e.g., when <code>add=TRUE</
 	the centroid of the <code>ellipse</code> object.
 	The default, <code>label.pos=NULL</code>
 	uses the correlation of the <code>ellipse</code> to determine "top" (r&gt;=0) or "bottom" (r&lt;0).</p></dd>
-<dt>xlab</dt>
+
+
+  <dt>xlab</dt>
 <dd><p>x-axis label; defaults to name of the x variable.</p></dd>
-<dt>ylab</dt>
+
+  <dt>ylab</dt>
 <dd><p>y-axis label; defaults to name of the y variable.</p></dd>
-<dt>vlabels</dt>
+
+  <dt>vlabels</dt>
 <dd><p>Labels for the variables can also be supplied through this argument, which is more convenient
   when <code>length(variables) &gt; 2</code>.</p></dd>
-<dt>var.cex</dt>
+
+  <dt>var.cex</dt>
 <dd><p>character size for variable labels in the pairs plot</p></dd>
-<dt>main</dt>
+
+  <dt>main</dt>
 <dd><p>main plot label; defaults to <code>""</code>, and presently has no effect.</p></dd>
-<dt>xlim</dt>
+
+  <dt>xlim</dt>
 <dd><p>x-axis limits; if absent, will be computed from the data.</p></dd>
-<dt>ylim</dt>
+
+  <dt>ylim</dt>
 <dd><p>y-axis limits; if absent, will be computed from the data.</p></dd>
-<dt>axes</dt>
+
+  <dt>axes</dt>
 <dd><p>Whether to draw the x, y axes; defaults to <code>TRUE</code></p></dd>
-<dt>offset.axes</dt>
+
+  <dt>offset.axes</dt>
 <dd><p>proportion to extend the axes in each direction if computed 
     from the data; optional.</p></dd>
-<dt>add</dt>
+
+
+  <dt>add</dt>
 <dd><p>if <code>TRUE</code>, add to the current plot; the default is <code>FALSE</code>. This argument is has no effect
   when more than two variables are plotted.</p></dd>
-<dt>...</dt>
+
+
+  <dt>...</dt>
 <dd><p>Other arguments passed to the default method for <code>plot</code>, <code>text</code>, 
     and <code>points</code></p></dd>
+
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -210,8 +272,15 @@ robust covariance matrices.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Nothing is returned.  The function is used for its side-effect of producing a plot.
-<!-- %Returns invisibly an object of class \code{"covEllipse"}, --><!-- %which is a list of the coordinates for the ellipses drawn. --></p>
+    
+
+<p>Nothing is returned.  The function is used for its side-effect of producing a plot.
+<!-- %Returns invisibly an object of class \code{"covEllipse"}, --></p>
+
+
+<p><!-- %which is a list of the coordinates for the ellipses drawn. --></p>
+
+
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -228,43 +297,43 @@ robust covariance matrices.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># compare classical and robust covariance estimates</span></span>
-<span class="r-in"><span class="fu">covEllipses</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">covEllipses</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, method<span class="op">=</span><span class="st">"mve"</span>, add<span class="op">=</span><span class="cn">TRUE</span>, labels<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># compare classical and robust covariance estimates</span></span></span>
+<span class="r-in"><span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, method<span class="op">=</span><span class="st">"mve"</span>, add<span class="op">=</span><span class="cn">TRUE</span>, labels<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="covEllipses-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># method for a boxM object  </span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="boxM.html">boxM</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">[</span>, <span class="st">"Species"</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># method for a boxM object  </span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="boxM.html">boxM</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">[</span>, <span class="st">"Species"</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Box's M-test for Homogeneity of Covariance Matrices</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data:  iris[, 1:4]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chi-Sq (approx.) = 140.94, df = 20, p-value &lt; 2.2e-16</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op">)</span></span></span>
 <span class="r-plt img"><img src="covEllipses-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span>, center<span class="op">=</span><span class="cn">TRUE</span>, label.pos<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span> <span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">x</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span>, center<span class="op">=</span><span class="cn">TRUE</span>, label.pos<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span> <span class="op">)</span></span></span>
 <span class="r-plt img"><img src="covEllipses-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># method for a list of covariance matrices</span></span>
-<span class="r-in"><span class="va">cov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">cov</span>, pooled<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">pooled</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">-</span><span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">covEllipses</span><span class="op">(</span><span class="va">cov</span>, <span class="va">x</span><span class="op">$</span><span class="va">means</span>, <span class="va">df</span>, label.pos<span class="op">=</span><span class="fl">3</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># method for a list of covariance matrices</span></span></span>
+<span class="r-in"><span><span class="va">cov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">cov</span>, pooled<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">pooled</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">-</span><span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">cov</span>, <span class="va">x</span><span class="op">$</span><span class="va">means</span>, <span class="va">df</span>, label.pos<span class="op">=</span><span class="fl">3</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="covEllipses-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"> </span>
-<span class="r-in"><span class="fu">covEllipses</span><span class="op">(</span><span class="va">cov</span>, <span class="va">x</span><span class="op">$</span><span class="va">means</span>, <span class="va">df</span>, label.pos<span class="op">=</span><span class="fl">3</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span>, center<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span> </span></span>
+<span class="r-in"><span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">cov</span>, <span class="va">x</span><span class="op">$</span><span class="va">means</span>, <span class="va">df</span>, label.pos<span class="op">=</span><span class="fl">3</span>, fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span>, center<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="covEllipses-5.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># scatterplot matrix version</span></span>
-<span class="r-in"><span class="fu">covEllipses</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>, </span>
-<span class="r-in">  fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span>, variables<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, </span>
-<span class="r-in">  fill.alpha<span class="op">=</span><span class="fl">.1</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># scatterplot matrix version</span></span></span>
+<span class="r-in"><span><span class="fu">covEllipses</span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>, </span></span>
+<span class="r-in"><span>  fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span>, variables<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, </span></span>
+<span class="r-in"><span>  fill.alpha<span class="op">=</span><span class="fl">.1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="covEllipses-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -279,7 +348,7 @@ robust covariance matrices.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
