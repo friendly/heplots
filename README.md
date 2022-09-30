@@ -6,11 +6,12 @@
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
-[![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
+[![License](https://img.shields.io/badge/license-GPL%20(%3E=%202)-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![DOI](https://zenodo.org/badge/13908453.svg)](https://zenodo.org/badge/latestdoi/13908453)
+
 <!-- badges: end -->
 
-# heplots <img src="man/figures/logo.png" height="200" style="float:right; height:200px;" />
+# heplots <img src="man/figures/logo.png" height="200" style="float:right; height:200px;"/>
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
@@ -52,11 +53,15 @@ In this respect, the `heplots` package now aims to provide a wide range
 of tools for analyzing and visualizing multivariate response linear
 models.
 
+<img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;">
+
 -   The related [`candisc`](http://github.com/friendly/candisc) package
     provides HE plots in **canonical discriminant** space, the space of
     linear combinations of the responses that show the maximum possible
     effects and for canonical correlation in multivariate regression
     designs.
+
+<img src='https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png' height='80'  style="float:right; height:80px;">
 
 -   Another package,
     [`mvinfluence`](https://friendly.github.io/mvinfluence/), provides
