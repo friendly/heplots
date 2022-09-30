@@ -72,3 +72,4 @@ heplot(mod2, fill=TRUE, hypotheses=list("mod2|mod1"=coefs[1:2]))
 
 }
 \keyword{datasets}
+\concept{MMRA}

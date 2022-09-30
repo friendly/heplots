@@ -75,3 +75,5 @@ heplot(rat.mod, idata=idata, idesign=~week, iterm="week",
 
 }
 \keyword{datasets}
+\concept{MANOVA}
+\concept{repeated}

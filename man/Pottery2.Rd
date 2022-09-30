@@ -95,3 +95,5 @@ heplot3d(pcan, scale=8)
 
 }
 \keyword{datasets}
+\concept{MANOVA}
+\concept{candisc}

@@ -8,23 +8,23 @@
 7,Hernior,32,9,Recovery from Elective Herniorrhaphy,MMRA candisc
 8,Iwasaki_Big_Five,203,7,Personality Traits of Cultural Groups,MANOVA
 9,MockJury,114,17,Effects Of Physical Attractiveness Upon Mock Jury Decisions,MANOVA candisc
-10,NLSY,243,6,National Longitudinal Survey of Youth Data,
+10,NLSY,243,6,National Longitudinal Survey of Youth Data,MMRA
 11,NeuroCog,242,10,Neurocognitive Measures in Psychiatric Groups,MANOVA candisc
-12,Oslo,332,14,Oslo Transect Subset Data,
-13,Parenting,60,4,Father Parenting Competence,
-14,Plastic,20,5,Plastic Film Data,
-15,Pottery2,48,12,Chemical Analysis of Romano-British Pottery,
-16,Probe1,11,5,Response Speed in a Probe Experiment,
-17,Probe2,20,6,Response Speed in a Probe Experiment,
-18,RatWeight,27,6,Weight Gain in Rats Exposed to Thiouracil and Thyroxin,
-19,ReactTime,10,6,Reaction Time Data,
-20,Rohwer,69,10,Rohwer Data Set,
-21,RootStock,48,5,Growth of Apple Trees from Different Root Stocks,
-22,Sake,30,10,Taste Ratings of Japanese Rice Wine (Sake),
-23,Skulls,150,5,Egyptian Skulls,
-24,SocGrades,40,10,Grades in a Sociology Course,
-25,SocialCog,139,5,Social Cognitive Measures in Psychiatric Groups,
-26,TIPI,1799,16,Data on the Ten Item Personality Inventory,
+12,Oslo,332,14,Oslo Transect Subset Data,MANOVA  candisc
+13,Parenting,60,4,Father Parenting Competence,MANOVA contrasts
+14,Plastic,20,5,Plastic Film Data,MANOVA
+15,Pottery2,48,12,Chemical Analysis of Romano-British Pottery,MANOVA candisc
+16,Probe1,11,5,Response Speed in a Probe Experiment,MANOVA repeated
+17,Probe2,20,6,Response Speed in a Probe Experiment,MANOVA repeated
+18,RatWeight,27,6,Weight Gain in Rats Exposed to Thiouracil and Thyroxin,MANOVA repeated
+19,ReactTime,10,6,Reaction Time Data,repeated
+20,Rohwer,69,10,Rohwer Data Set,MMRA MANCOVA
+21,RootStock,48,5,Growth of Apple Trees from Different Root Stocks,MANOVA contrasts
+22,Sake,30,10,Taste Ratings of Japanese Rice Wine (Sake),MMRA
+23,Skulls,150,5,Egyptian Skulls,MANOVA contrasts
+24,SocGrades,40,10,Grades in a Sociology Course,MANOVA candisc
+25,SocialCog,139,5,Social Cognitive Measures in Psychiatric Groups,MANOVA candisc
+26,TIPI,1799,16,Data on the Ten Item Personality Inventory,MANOVA candisc
 27,VocabGrowth,64,4,Vocabulary growth data,
 28,WeightLoss,34,7,Weight Loss Data,
 29,mathscore,12,3,Math scores for basic math and word problems,

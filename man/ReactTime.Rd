@@ -76,3 +76,4 @@ with(means.df, {
 }
 
 \keyword{datasets}
+\concept{repeated}

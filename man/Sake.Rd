@@ -62,3 +62,4 @@ linearHypothesis(Sake.mod, predictors)
 heplot(Sake.mod, hypotheses=list("Regr" = predictors))
 }
 \keyword{datasets}
+\concept{MMRA}

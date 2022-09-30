@@ -76,3 +76,5 @@ heplot(tipi.can, fill=TRUE, fill.alpha=0.1,
        var.col = "darkred", var.cex = 1.5, var.lwd = 3)
 }
 \keyword{datasets}
+\concept{MANOVA}
+\concept{candisc}

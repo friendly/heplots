@@ -56,3 +56,5 @@ heplot1d(root.mod, hypotheses=list(Contrasts=hyp, C1=hyp[1,], C2=hyp[2,]))
 
 }
 \keyword{datasets}
+\concept{MANOVA}
+\concept{contrasts}

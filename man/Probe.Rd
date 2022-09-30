@@ -77,8 +77,14 @@ library(car)
 (pmod1.aov <- Anova(pmod1, idata=idata, idesign=~position))
 
 # using default contrasts (p5 as reference level)
-heplot(pmod1, manova=pmod1.aov, iterm="position", type="III", idata=idata, idesign=~position)
-pairs(pmod1, manova=pmod1.aov, iterm="position", type="III", idata=idata, idesign=~position)
+heplot(pmod1, manova=pmod1.aov, 
+       iterm="position", 
+       type="III", 
+       idata=idata, idesign=~position)
+pairs(pmod1, manova=pmod1.aov, 
+       iterm="position", 
+       type="III", 
+       idata=idata, idesign=~position)
 
 # contrasts for substantative hypotheses regarding
 # sentence position effects
@@ -97,3 +103,6 @@ pairs(pmod1, manova=pmod1.aov, iterm="position", type="III", idata=idata, idesig
 
 }
 \keyword{datasets}
+\concept{MANOVA}
+\concept{repeated}
+\concept{contrasts}

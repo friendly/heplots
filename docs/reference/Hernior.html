@@ -162,20 +162,9 @@ Anesthesia Center.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> resp     1   0.32969   2.5277      3     23 0.08245 .</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># test overall regression</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">Hern.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"sexm"</span>, <span class="st">"pstat"</span>, <span class="st">"build"</span>, <span class="st">"cardiac"</span>, <span class="st">"resp"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for the hypothesis:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            leave       nurse        los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> leave  5.4553174  -0.9980793   2.454547</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nurse -0.9980793   5.8138316 -42.887940</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> los    2.4545475 -42.8879402 454.997603</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for error:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            leave       nurse        los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> leave  3.7634326   0.8730793  -9.079547</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nurse  0.8730793  17.6861684 -75.612060</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> los   -9.0795475 -75.6120598 790.502397</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">Hern.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"sexm"</span>, <span class="st">"pstat"</span>, <span class="st">"build"</span>, <span class="st">"cardiac"</span>, <span class="st">"resp"</span><span class="op">)</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Multivariate Tests: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  Df test stat approx F num Df   den Df     Pr(&gt;F)    </span>
@@ -185,30 +174,12 @@ Anesthesia Center.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Roy               6 1.5543375 6.476406      6 25.00000 0.00032318 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="r-in"><span><span class="co"># joint test of age, sex &amp; caridac</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">Hern.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"sexm"</span>, <span class="st">"cardiac"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for the hypothesis:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           leave      nurse        los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> leave  1.113783  -1.756501   6.369289</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nurse -1.756501   3.488577 -15.547576</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> los    6.369289 -15.547576  78.609719</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for error:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            leave       nurse        los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> leave  3.7634326   0.8730793  -9.079547</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nurse  0.8730793  17.6861684 -75.612060</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> los   -9.0795475 -75.6120598 790.502397</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Multivariate Tests: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  Df test stat approx F num Df   den Df   Pr(&gt;F)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pillai            3 0.3826974 1.218485      9 75.00000 0.296709  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Wilks             3 0.6305421 1.301115      9 56.12656 0.257126  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Hotelling-Lawley  3 0.5649409 1.360043      9 65.00000 0.224709  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Roy               3 0.5249507 4.374589      3 25.00000 0.013162 *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># joint test of age, sex &amp; caridac</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">Hern.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"sexm"</span>, <span class="st">"cardiac"</span><span class="op">)</span><span class="op">)</span>, <span class="va">SSP</span><span class="op">+</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in print.linearHypothesis.mlm(linearHypothesis(Hern.mod, c("age",     "sexm", "cardiac")), SSP + FALSE):</span> object 'SSP' not found</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># HE plots</span></span></span>
 <span class="r-in"><span><span class="va">clr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"darkgray"</span>, <span class="st">"blue"</span>, <span class="st">"darkgreen"</span>, <span class="st">"magenta"</span>, <span class="st">"brown"</span>, <span class="st">"black"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">Hern.mod</span>, col<span class="op">=</span><span class="va">clr</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="Hernior-1.png" alt="" width="700" height="433"></span>
@@ -217,7 +188,9 @@ Anesthesia Center.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Enhancing the pairs plot ...</span></span></span>
 <span class="r-in"><span><span class="co"># create better variable labels</span></span></span>
-<span class="r-in"><span><span class="va">vlab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"LeaveCondition\n(leave)"</span>, <span class="st">"NursingCare\n(nurse)"</span>, <span class="st">"LengthOfStay\n(los)"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">vlab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"LeaveCondition\n(leave)"</span>, </span></span>
+<span class="r-in"><span>          <span class="st">"NursingCare\n(nurse)"</span>, </span></span>
+<span class="r-in"><span>          <span class="st">"LengthOfStay\n(los)"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Add ellipse to test all 5 regressors simultaneously</span></span></span>
 <span class="r-in"><span><span class="va">hyp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Regr"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"sexm"</span>, <span class="st">"pstat"</span>, <span class="st">"build"</span>, <span class="st">"cardiac"</span>, <span class="st">"resp"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">Hern.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, col<span class="op">=</span><span class="va">clr</span>, var.labels<span class="op">=</span><span class="va">vlab</span><span class="op">)</span></span></span>

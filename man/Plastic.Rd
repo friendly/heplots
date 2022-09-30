@@ -39,3 +39,4 @@ Anova(plastic.mod)
 pairs(plastic.mod)
 }
 \keyword{datasets}
+\concept{MANOVA}

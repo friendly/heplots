@@ -72,3 +72,5 @@ heplot(rohwer.ses2, add=TRUE, col=c("blue", "black"), grand.mean=TRUE, error.ell
 
 }
 \keyword{datasets}
+\concept{MMRA}
+\concept{MANCOVA}

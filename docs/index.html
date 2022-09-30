@@ -107,7 +107,13 @@
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h2>
 <p>The <code>heplots</code> package provides functions for visualizing hypothesis tests in multivariate linear models (MANOVA, multivariate multiple regression, MANCOVA, and repeated measures designs).</p>
-<p>HE plots represent sums-of-squares-and-products matrices for linear hypotheses (<strong>H</strong>) and for error (<strong>E</strong>) using ellipses (in two dimensions), ellipsoids (in three dimensions), or by line segments in one dimension. See Fox, Friendly and Monette (2009) for a brief introduction, Friendly, Monette and Fox (2013) for a general discussion of the role of elliptical geometry in statistical understanding, and Friendly &amp; Sigal (2017) for an applied R tutorial.</p>
+<p>HE plots represent sums-of-squares-and-products matrices for linear hypotheses (<strong>H</strong>) and for error (<strong>E</strong>) using ellipses (in two dimensions), ellipsoids (in three dimensions), or by line segments in one dimension. For the theory and applications, see:</p>
+<ul>
+<li>Fox, Friendly and Monette (2009) for a brief introduction,</li>
+<li>Friendly (2010) for the application of these ideas to repeated measure designs,</li>
+<li>Friendly, Monette and Fox (2013) for a general discussion of the role of elliptical geometry in statistical understanding, and</li>
+<li>Friendly &amp; Sigal (2017) for an applied R tutorial.</li>
+</ul>
 <p>Other topics now addressed here include:</p>
 <ul>
 <li>robust MLMs, using iteratively re-weighted least squared to down-weight observations with large multivariate residuals, <code><a href="reference/robmlm.html">robmlm()</a></code>.</li>
@@ -119,21 +125,26 @@
 <li>bivariate coefficient plots showing elliptical confidence regions (<code><a href="reference/coefplot.html">coefplot()</a></code>).</li>
 </ul>
 <p>In this respect, the <code>heplots</code> package now aims to provide a wide range of tools for analyzing and visualizing multivariate response linear models.</p>
-<p>The related <a href="http://github.com/friendly/candisc" class="external-link"><code>candisc</code></a> package provides HE plots in <strong>canonical discriminant</strong> space, the space of linear combinations of the responses that show the maximum possible effects and for canonical correlation in multivariate regression designs.</p>
-<p>Another package, <a href="https://friendly.github.io/mvinfluence/" class="external-link"><code>mvinfluence</code></a>, provides diagnostic measures and plots for influential observations in MLM designs.</p>
+<ul>
+<li><p>The related <a href="http://github.com/friendly/candisc" class="external-link"><code>candisc</code></a> package provides HE plots in <strong>canonical discriminant</strong> space, the space of linear combinations of the responses that show the maximum possible effects and for canonical correlation in multivariate regression designs.</p></li>
+<li><p>Another package, <a href="https://friendly.github.io/mvinfluence/" class="external-link"><code>mvinfluence</code></a>, provides diagnostic measures and plots for influential observations in MLM designs.</p></li>
+</ul>
 <p>Several tutorial vignettes are also included. See <code>vignette(package="heplots")</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Get the released version from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"heplots"</span>)</span></code></pre></div>
-<p>The development version of <code>heplots</code> can be installed to your R library directly from github via:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"friendly/heplots"</span>)</span></code></pre></div>
-<!-- This installs the package from the source and creates the package vignettes,  -->
-<!-- so you will need to have R Tools installed on your system.  [R Tools for Windows](https://cran.r-project.org/bin/windows/Rtools/) -->
-<!-- takes you to the download page for Windows.  [R Tools for Mac OS X](https://cran.r-project.org/bin/macosx/tools/) -->
-<!-- has the required programs for Mac OS X. -->
+<table class="table"><tbody>
+<tr class="odd">
+<td>CRAN version</td>
+<td><code>install.packages("heplots")</code></td>
+</tr>
+<tr class="even">
+<td>Development version</td>
+<td><code>remotes::install_github("friendly/heplots")</code></td>
+</tr>
+</tbody></table>
+<!-- This installs the package from the source and creates the package vignettes,  --><!-- so you will need to have R Tools installed on your system.  [R Tools for Windows](https://cran.r-project.org/bin/windows/Rtools/) --><!-- takes you to the download page for Windows.  [R Tools for Mac OS X](https://cran.r-project.org/bin/macosx/tools/) --><!-- has the required programs for Mac OS X. -->
 </div>
 <div class="section level2">
 <h2 id="he-plot-functions">HE plot functions<a class="anchor" aria-label="anchor" href="#he-plot-functions"></a>
@@ -157,143 +168,205 @@
 <div class="section level3">
 <h3 id="repeated-measure-designs">Repeated measure designs<a class="anchor" aria-label="anchor" href="#repeated-measure-designs"></a>
 </h3>
-<p>For repeated measure designs, between-subject effects and within-subject effects must be plotted separately, because the error terms (E matrices) differ. For terms involving within-subject effects, these functions carry out a linear transformation of the matrix <strong>Y</strong> of responses to a matrix <strong>Y M</strong>, where <strong>M</strong> is the model matrix for a term in the intra-subject design and produce plots of the H and E matrices in this transformed space. The vignette <code>"repeated"</code> describes these graphical methods for repeated measures designs. (At present, this vignette is only available at <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a>.)</p>
+<p>For repeated measure designs, between-subject effects and within-subject effects must be plotted separately, because the error terms (<strong>E</strong> matrices) differ. For terms involving within-subject effects, these functions carry out a linear transformation of the matrix <strong>Y</strong> of responses to a matrix <strong>Y M</strong>, where <strong>M</strong> is the model matrix for a term in the intra-subject design and produce plots of the H and E matrices in this transformed space. The vignette <code>"repeated"</code> describes these graphical methods for repeated measures designs. (At present, this vignette is only available at <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a>.)</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a>
 </h2>
 <p>The package also provides a large collection of data sets illustrating a variety of multivariate linear models of the types listed above, together with graphical displays.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">vcdExtra</span><span class="fu">::</span><span class="fu"><a href="http://friendly.github.io/vcdExtra/reference/datasets.html" class="external-link">datasets</a></span><span class="op">(</span><span class="st">"heplots"</span><span class="op">)</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Item"</span>, <span class="st">"Title"</span><span class="op">)</span><span class="op">]</span> <span class="op">|&gt;</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="22%">
-<col width="77%">
+<col width="19%">
+<col width="6%">
+<col width="6%">
+<col width="67%">
 </colgroup>
 <thead><tr class="header">
-<th align="left">Item</th>
-<th align="left">Title</th>
+<th align="left">dataset</th>
+<th align="left">rows</th>
+<th align="left">cols</th>
+<th align="left">title</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">AddHealth</td>
+<td align="left">4344</td>
+<td align="left">3</td>
 <td align="left">Adolescent Health Data</td>
 </tr>
 <tr class="even">
 <td align="left">Adopted</td>
+<td align="left">62</td>
+<td align="left">6</td>
 <td align="left">Adopted Children</td>
 </tr>
 <tr class="odd">
 <td align="left">Bees</td>
+<td align="left">246</td>
+<td align="left">6</td>
 <td align="left">Captive and maltreated bees</td>
 </tr>
 <tr class="even">
 <td align="left">Diabetes</td>
+<td align="left">145</td>
+<td align="left">6</td>
 <td align="left">Diabetes Dataset</td>
 </tr>
 <tr class="odd">
 <td align="left">FootHead</td>
+<td align="left">90</td>
+<td align="left">7</td>
 <td align="left">Head measurements of football players</td>
 </tr>
 <tr class="even">
 <td align="left">Headache</td>
+<td align="left">98</td>
+<td align="left">6</td>
 <td align="left">Treatment of Headache Sufferers for Sensitivity to Noise</td>
 </tr>
 <tr class="odd">
 <td align="left">Hernior</td>
+<td align="left">32</td>
+<td align="left">9</td>
 <td align="left">Recovery from Elective Herniorrhaphy</td>
 </tr>
 <tr class="even">
 <td align="left">Iwasaki_Big_Five</td>
+<td align="left">203</td>
+<td align="left">7</td>
 <td align="left">Personality Traits of Cultural Groups</td>
 </tr>
 <tr class="odd">
 <td align="left">MockJury</td>
+<td align="left">114</td>
+<td align="left">17</td>
 <td align="left">Effects Of Physical Attractiveness Upon Mock Jury Decisions</td>
 </tr>
 <tr class="even">
 <td align="left">NLSY</td>
+<td align="left">243</td>
+<td align="left">6</td>
 <td align="left">National Longitudinal Survey of Youth Data</td>
 </tr>
 <tr class="odd">
 <td align="left">NeuroCog</td>
+<td align="left">242</td>
+<td align="left">10</td>
 <td align="left">Neurocognitive Measures in Psychiatric Groups</td>
 </tr>
 <tr class="even">
 <td align="left">Oslo</td>
+<td align="left">332</td>
+<td align="left">14</td>
 <td align="left">Oslo Transect Subset Data</td>
 </tr>
 <tr class="odd">
 <td align="left">Parenting</td>
+<td align="left">60</td>
+<td align="left">4</td>
 <td align="left">Father Parenting Competence</td>
 </tr>
 <tr class="even">
 <td align="left">Plastic</td>
+<td align="left">20</td>
+<td align="left">5</td>
 <td align="left">Plastic Film Data</td>
 </tr>
 <tr class="odd">
 <td align="left">Pottery2</td>
+<td align="left">48</td>
+<td align="left">12</td>
 <td align="left">Chemical Analysis of Romano-British Pottery</td>
 </tr>
 <tr class="even">
 <td align="left">Probe1</td>
+<td align="left">11</td>
+<td align="left">5</td>
 <td align="left">Response Speed in a Probe Experiment</td>
 </tr>
 <tr class="odd">
 <td align="left">Probe2</td>
+<td align="left">20</td>
+<td align="left">6</td>
 <td align="left">Response Speed in a Probe Experiment</td>
 </tr>
 <tr class="even">
 <td align="left">RatWeight</td>
+<td align="left">27</td>
+<td align="left">6</td>
 <td align="left">Weight Gain in Rats Exposed to Thiouracil and Thyroxin</td>
 </tr>
 <tr class="odd">
 <td align="left">ReactTime</td>
+<td align="left">10</td>
+<td align="left">6</td>
 <td align="left">Reaction Time Data</td>
 </tr>
 <tr class="even">
 <td align="left">Rohwer</td>
+<td align="left">69</td>
+<td align="left">10</td>
 <td align="left">Rohwer Data Set</td>
 </tr>
 <tr class="odd">
 <td align="left">RootStock</td>
+<td align="left">48</td>
+<td align="left">5</td>
 <td align="left">Growth of Apple Trees from Different Root Stocks</td>
 </tr>
 <tr class="even">
 <td align="left">Sake</td>
+<td align="left">30</td>
+<td align="left">10</td>
 <td align="left">Taste Ratings of Japanese Rice Wine (Sake)</td>
 </tr>
 <tr class="odd">
 <td align="left">Skulls</td>
+<td align="left">150</td>
+<td align="left">5</td>
 <td align="left">Egyptian Skulls</td>
 </tr>
 <tr class="even">
 <td align="left">SocGrades</td>
+<td align="left">40</td>
+<td align="left">10</td>
 <td align="left">Grades in a Sociology Course</td>
 </tr>
 <tr class="odd">
 <td align="left">SocialCog</td>
+<td align="left">139</td>
+<td align="left">5</td>
 <td align="left">Social Cognitive Measures in Psychiatric Groups</td>
 </tr>
 <tr class="even">
 <td align="left">TIPI</td>
+<td align="left">1799</td>
+<td align="left">16</td>
 <td align="left">Data on the Ten Item Personality Inventory</td>
 </tr>
 <tr class="odd">
 <td align="left">VocabGrowth</td>
+<td align="left">64</td>
+<td align="left">4</td>
 <td align="left">Vocabulary growth data</td>
 </tr>
 <tr class="even">
 <td align="left">WeightLoss</td>
+<td align="left">34</td>
+<td align="left">7</td>
 <td align="left">Weight Loss Data</td>
 </tr>
 <tr class="odd">
 <td align="left">mathscore</td>
+<td align="left">12</td>
+<td align="left">3</td>
 <td align="left">Math scores for basic math and word problems</td>
 </tr>
 <tr class="even">
 <td align="left">schooldata</td>
+<td align="left">70</td>
+<td align="left">8</td>
 <td align="left">School Data</td>
 </tr>
 </tbody>
@@ -302,17 +375,19 @@
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<p>This example illustrates HE plots using the classic <code>iris</code> data set. How do the means of the flower variables differ by <code>Species</code>?</p>
+<p>This example illustrates HE plots using the classic <code>iris</code> data set. How do the means of the flower variables differ by <code>Species</code>? This dataset was the imputus for R. A. Fisher (1936) to propose a method of discriminant analysis using data collected by Edgar Anderson (1928). Though some may rightly deprecate Fisher for being a supporter of eugenics, Anderson’s <code>iris</code> dataset should not be blamed.</p>
 <p>A basic HE plot shows the <strong>H</strong> and <strong>E</strong> ellipses for the first two response variables (here: <code>Sepal.Length</code> and <code>Sepal.Width</code>). The multivariate test is significant (by Roy’s test) <em>iff</em> the <strong>H</strong> ellipse projects <em>anywhere</em> outside the <strong>E</strong> ellipse.</p>
 <p>The positions of the group means show how they differ on the two response variables shown, and provide an interpretation of the orientation of the <strong>H</strong> ellipse: it is long in the directions of differences among the means.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Sepal.Width</span>, <span class="va">Petal.Length</span>, <span class="va">Petal.Width</span><span class="op">)</span> <span class="op">~</span> </span>
 <span>                 <span class="va">Species</span>, data<span class="op">=</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">iris.mod</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-iris1-1.png" width="70%"></p>
-<p>Contrasts or other linear hypotheses can be shown as well, and the ellipses look better if they are filled. We create contrasts to test the differences between <code>versacolor</code> and <code>virginca</code> and also between <code>setosa</code> and the average of the other two.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, </span>
+<p>Contrasts or other linear hypotheses can be shown as well, and the ellipses look better if they are filled. We create contrasts to test the differences between <code>versacolor</code> and <code>virginca</code> and also between <code>setosa</code> and the average of the other two. Each 1 df contrast plots as degenerate 1D ellipse– a line.</p>
+<p>Because these contrasts are orthogonal, they add to the total 2 df effect of <code>Species</code>. Note how the first contrast, labeled <code>V:V</code>, distinguishes the means of <em>versicolor</em> from <em>virginica</em>; the second contrast, <code>S:VV</code> distinguishes <code>setosa</code> from the other two.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">4</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">+</span><span class="fl">.1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, </span>
 <span>                                  <span class="fl">2</span>, <span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">3</span>, ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            [,1] [,2]</span></span>
@@ -327,17 +402,20 @@
 <span>       fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-iris2-1.png" width="70%"></p>
 <p>All pairwise HE plots are produced using the <code>pairs</code> method for MLM objects.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, hyp.labels<span class="op">=</span><span class="cn">FALSE</span>,</span>
 <span>      fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-iris3-1.png" width="90%"></p>
+<p><img src="reference/figures/README-iris3-1.png" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<p>Fox, J.; Friendly, M. &amp; Monette, G. (2009). Visualizing hypothesis tests in multivariate linear models: The heplots package for R <em>Computational Statistics</em>, <strong>24</strong>, 233-246. <a href="http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf" class="external-link">paper PDF</a></p>
-<p>Friendly, M.; Monette, G. &amp; Fox, J. (2013). Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry <em>Statistical Science</em>, <strong>28</strong>, 1-39. <a href="http://datavis.ca/palers/ellipses-STS402.pdf" class="external-link">paper PDF</a></p>
-<p>Friendly, M. &amp; Sigal, M. (2017). Graphical Methods for Multivariate Linear Models in Psychological Research: An R Tutorial. <em>The Quantitative Methods for Psychology</em>, <strong>13</strong>, 20-45. <a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">article</a></p>
+<p>Anderson, E. (1928). The Problem of Species in the Northern Blue Flags, Iris versicolor L. and Iris virginica L. <em>Annals of the Missouri Botanical Garden</em>, <strong>13</strong>, 241–313.</p>
+<p>Fisher, R. A. (1936). The Use of Multiple Measurements in Taxonomic Problems. <em>Annals of Eugenics</em>, <strong>8</strong>, 379–388.</p>
+<p>Fox, J.; Friendly, M. &amp; Monette, G. (2009). <a href="http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf" class="external-link">Visualizing hypothesis tests in multivariate linear models: The heplots package for R</a> <em>Computational Statistics</em>, <strong>24</strong>, 233-246.</p>
+<p>Friendly, M. (2010). <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a>. <em>Journal of Statistical Software</em>, <strong>37</strong>, 1–37.</p>
+<p>Friendly, M.; Monette, G. &amp; Fox, J. (2013). <a href="http://datavis.ca/palers/ellipses-STS402.pdf" class="external-link">Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry</a> <em>Statistical Science</em>, <strong>28</strong>, 1-39.</p>
+<p>Friendly, M. &amp; Sigal, M. (2017). <a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">Graphical Methods for Multivariate Linear Models in Psychological Research: An R Tutorial.</a> <em>The Quantitative Methods for Psychology</em>, <strong>13</strong>, 20-45.</p>
 </div>
 </div>
 
