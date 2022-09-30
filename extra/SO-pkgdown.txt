@@ -1,0 +1,16 @@
+How to have `pkgdown` use figure numbers and cross-reeferences in vignettes?
+
+I've created several vignettes for a package, with figures I want to reference in the text.
+Using the template for a `.Rmd` vignette, I can do this by using `bookdown::html_document2` as follows in my yaml header:
+
+    output: 
+      bookdown::html_document2:
+        base_format: rmarkdown::html_vignette
+        fig_caption: yes
+        toc: true
+
+Yet, when I build the associated `pkgdown` site, I don't get figure numbers or cross-references,
+done with `\@ref(fig:chunk_name)`.
+
+Is there some magic I can add to my `_pkgdown.yml` file to have it use the bookdown output format?
+

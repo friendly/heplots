@@ -51,7 +51,7 @@ Other topics now addressed here include:
 
 In this respect, the `heplots` package now aims to provide a wide range
 of tools for analyzing and visualizing multivariate response linear
-models.
+models, together with other packages:
 
 <a href="http://github.com/friendly/candisc"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
 
@@ -65,8 +65,8 @@ models.
 
 -   Another package,
     [`mvinfluence`](https://friendly.github.io/mvinfluence/), provides
-    diagnostic measures and plots for influential observations in MLM
-    designs.
+    diagnostic measures and plots for **influential observations** in
+    MLM designs.
 
 Several tutorial vignettes are also included. See
 `vignette(package="heplots")`.
