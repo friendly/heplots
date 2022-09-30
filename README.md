@@ -53,7 +53,7 @@ In this respect, the `heplots` package now aims to provide a wide range
 of tools for analyzing and visualizing multivariate response linear
 models.
 
-<img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;">
+<a href="http://github.com/friendly/candisc"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
 
 -   The related [`candisc`](http://github.com/friendly/candisc) package
     provides HE plots in **canonical discriminant** space, the space of
@@ -61,7 +61,7 @@ models.
     effects and for canonical correlation in multivariate regression
     designs.
 
-<img src='https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png' height='80'  style="float:right; height:80px;">
+<a href="https://friendly.github.io/mvinfluence/"><img src='https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png' height='80'  style="float:right; height:80px;"></a>
 
 -   Another package,
     [`mvinfluence`](https://friendly.github.io/mvinfluence/), provides
