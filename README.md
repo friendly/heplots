@@ -130,7 +130,9 @@ designs](http://www.jstatsoft.org/v37/i04/paper).)
 
 The package also provides a large collection of data sets illustrating a
 variety of multivariate linear models of the types listed above,
-together with graphical displays.
+together with graphical displays. The table below classifies these with
+method tags. Their names are linked to the documentation on the
+`pkgdown` website, \[<http://friendly.github.io/heplots>\].
 
 <!--
 dsets <- vcdExtra::datasets("heplots")[, c("Item", "dim", "Title")]
