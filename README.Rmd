@@ -171,16 +171,6 @@ together with graphical displays. The table below classifies these with
 method tags. Their names are linked to the documentation on the
 `pkgdown` website, [<http://friendly.github.io/heplots>].
 
-```{=html}
-<!--
-dsets <- vcdExtra::datasets("heplots")[, c("Item", "dim", "Title")]
-rowcols <- as.data.frame(stringr::str_split_fixed(dsets$dim,"x", 2))
-colnames(rowcols) <- c("rows", "cols")
-
-dsets.table <- cbind("dataset" = dsets$Item, rowcols, "title" =dsets$Title)
-knitr::kable(dsets.table)
--->
-```
 ```{r datasets, echo=FALSE}
 library(here)
 library(DT)
@@ -222,8 +212,9 @@ response variables shown, and provide an interpretation of the
 orientation of the **H** ellipse: it is long in the directions of
 differences among the means.
 
-```{r iris1, out.width="70%"}
-#| echo=-1
+```{r iris1}
+#| echo=-1,
+#| out.width="70%"
 par(mar=c(4,4,1,1)+.1)
 iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ 
                  Species, data=iris)
@@ -271,10 +262,16 @@ Botanical Garden*, **13**, 241--313.
 Fisher, R. A. (1936). The Use of Multiple Measurements in Taxonomic
 Problems. *Annals of Eugenics*, **8**, 379--388.
 
-Fox, J.; Friendly, M. & Monette, G. (2009). [Visualizing hypothesis
+Fox, J., Friendly, M. & Monette, G. (2009). [Visualizing hypothesis
 tests in multivariate linear models: The heplots package for
 R](http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf) *Computational
 Statistics*, **24**, 233-246.
+
+Friendly, M. (2006).
+[Data Ellipses, HE Plots and Reduced-Rank Displays for Multivariate Linear Models: 
+SAS Software and Examples.](https://www.jstatsoft.org/article/view/v017i06) 
+_Journal of Statistical Software_, **17**, 1-42.
+
 
 Friendly, M. (2010). [HE plots for repeated measures
 designs](http://www.jstatsoft.org/v37/i04/paper). *Journal of

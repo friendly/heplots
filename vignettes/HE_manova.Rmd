@@ -278,7 +278,7 @@ protruding outside the error ellipsoid.
 colors = c("pink", "darkblue", "darkgreen", "brown")
 heplot3d(plastic.mod, col=colors)
 ```
-```{r, plastic1-HE3D, echo=FALSE}
+```{r, plastic1-HE3D}
 #| echo=FALSE,
 #| fig.cap="3D HE plot for the plastic MLM"
 knitr::include_graphics("fig/plastic-HE3D.png")
