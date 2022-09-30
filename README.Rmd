@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   fig.width = 4,
   fig.height = 4,
+  dpi = 96,
   comment = "#>",
   fig.path = "man/figures/README-"
 )
@@ -147,8 +148,16 @@ knitr::kable(dsets.table)
 ```{r datasets, echo=FALSE}
 library(here)
 library(DT)
+library(dplyr)
 dsets <- read.csv(here::here("extra", "datasets.csv"))
 dsets <- dsets[,-1]  # remove row number
+
+# link dataset to pkgdown doc
+refurl <- "http://friendly.github.io/heplots/reference/"
+
+dsets <- dsets |>
+  mutate(dataset = glue::glue("[{dataset}]({refurl}{dataset}.html)")) 
+
 knitr::kable(dsets)
 
 # doesn't work -- can't find phantomJS

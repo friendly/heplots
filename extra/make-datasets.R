@@ -15,8 +15,16 @@ write.csv(dsets.table, file = here::here("extra", "datasets.csv"))
 # use DT to display
 
 library(here)
-dsets <- read.csv(here("extra", "datasets.csv"))
+library(glue)
+library(dplyr)
+dsets <- read.csv(here::here("extra", "datasets.csv"))
 dsets <- dsets[,-1]  # remove row number
+
+refurl <- "http://friendly.github.io/heplots/reference/"
+
+dsets <- dsets |>
+  mutate(dataset = glue::glue("[{dataset}]({refurl}{dataset}.html)")) 
+
 #knitr::kable(dsets)
 
 library(DT)
