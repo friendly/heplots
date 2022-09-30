@@ -12,3 +12,15 @@ head(dsets.table)
 
 write.csv(dsets.table, file = here::here("extra", "datasets.csv"))
 
+# use DT to display
+
+library(here)
+dsets <- read.csv(here("extra", "datasets.csv"))
+dsets <- dsets[,-1]  # remove row number
+#knitr::kable(dsets)
+
+library(DT)
+DT::datatable(dsets, 
+              options = list(pageLength = 15),
+              rownames = FALSE,
+              filter = "none")

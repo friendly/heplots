@@ -132,38 +132,47 @@ The package also provides a large collection of data sets illustrating a
 variety of multivariate linear models of the types listed above,
 together with graphical displays.
 
-| dataset          | rows | cols | title                                                       |
-|:-----------------|:-----|:-----|:------------------------------------------------------------|
-| AddHealth        | 4344 | 3    | Adolescent Health Data                                      |
-| Adopted          | 62   | 6    | Adopted Children                                            |
-| Bees             | 246  | 6    | Captive and maltreated bees                                 |
-| Diabetes         | 145  | 6    | Diabetes Dataset                                            |
-| FootHead         | 90   | 7    | Head measurements of football players                       |
-| Headache         | 98   | 6    | Treatment of Headache Sufferers for Sensitivity to Noise    |
-| Hernior          | 32   | 9    | Recovery from Elective Herniorrhaphy                        |
-| Iwasaki_Big_Five | 203  | 7    | Personality Traits of Cultural Groups                       |
-| MockJury         | 114  | 17   | Effects Of Physical Attractiveness Upon Mock Jury Decisions |
-| NLSY             | 243  | 6    | National Longitudinal Survey of Youth Data                  |
-| NeuroCog         | 242  | 10   | Neurocognitive Measures in Psychiatric Groups               |
-| Oslo             | 332  | 14   | Oslo Transect Subset Data                                   |
-| Parenting        | 60   | 4    | Father Parenting Competence                                 |
-| Plastic          | 20   | 5    | Plastic Film Data                                           |
-| Pottery2         | 48   | 12   | Chemical Analysis of Romano-British Pottery                 |
-| Probe1           | 11   | 5    | Response Speed in a Probe Experiment                        |
-| Probe2           | 20   | 6    | Response Speed in a Probe Experiment                        |
-| RatWeight        | 27   | 6    | Weight Gain in Rats Exposed to Thiouracil and Thyroxin      |
-| ReactTime        | 10   | 6    | Reaction Time Data                                          |
-| Rohwer           | 69   | 10   | Rohwer Data Set                                             |
-| RootStock        | 48   | 5    | Growth of Apple Trees from Different Root Stocks            |
-| Sake             | 30   | 10   | Taste Ratings of Japanese Rice Wine (Sake)                  |
-| Skulls           | 150  | 5    | Egyptian Skulls                                             |
-| SocGrades        | 40   | 10   | Grades in a Sociology Course                                |
-| SocialCog        | 139  | 5    | Social Cognitive Measures in Psychiatric Groups             |
-| TIPI             | 1799 | 16   | Data on the Ten Item Personality Inventory                  |
-| VocabGrowth      | 64   | 4    | Vocabulary growth data                                      |
-| WeightLoss       | 34   | 7    | Weight Loss Data                                            |
-| mathscore        | 12   | 3    | Math scores for basic math and word problems                |
-| schooldata       | 70   | 8    | School Data                                                 |
+<!--
+dsets <- vcdExtra::datasets("heplots")[, c("Item", "dim", "Title")]
+rowcols <- as.data.frame(stringr::str_split_fixed(dsets$dim,"x", 2))
+colnames(rowcols) <- c("rows", "cols")
+
+dsets.table <- cbind("dataset" = dsets$Item, rowcols, "title" =dsets$Title)
+knitr::kable(dsets.table)
+-->
+
+| dataset          | rows | cols | title                                                       | tags             |
+|:-----------------|-----:|-----:|:------------------------------------------------------------|:-----------------|
+| AddHealth        | 4344 |    3 | Adolescent Health Data                                      | MANOVA ordered   |
+| Adopted          |   62 |    6 | Adopted Children                                            | MMRA repeated    |
+| Bees             |  246 |    6 | Captive and maltreated bees                                 | MANOVA           |
+| Diabetes         |  145 |    6 | Diabetes Dataset                                            | MANOVA           |
+| FootHead         |   90 |    7 | Head measurements of football players                       | MANOVA contrasts |
+| Headache         |   98 |    6 | Treatment of Headache Sufferers for Sensitivity to Noise    | MANOVA repeated  |
+| Hernior          |   32 |    9 | Recovery from Elective Herniorrhaphy                        | MMRA candisc     |
+| Iwasaki_Big_Five |  203 |    7 | Personality Traits of Cultural Groups                       | MANOVA           |
+| MockJury         |  114 |   17 | Effects Of Physical Attractiveness Upon Mock Jury Decisions | MANOVA candisc   |
+| NLSY             |  243 |    6 | National Longitudinal Survey of Youth Data                  | MMRA             |
+| NeuroCog         |  242 |   10 | Neurocognitive Measures in Psychiatric Groups               | MANOVA candisc   |
+| Oslo             |  332 |   14 | Oslo Transect Subset Data                                   | MANOVA candisc   |
+| Parenting        |   60 |    4 | Father Parenting Competence                                 | MANOVA contrasts |
+| Plastic          |   20 |    5 | Plastic Film Data                                           | MANOVA           |
+| Pottery2         |   48 |   12 | Chemical Analysis of Romano-British Pottery                 | MANOVA candisc   |
+| Probe1           |   11 |    5 | Response Speed in a Probe Experiment                        | MANOVA repeated  |
+| Probe2           |   20 |    6 | Response Speed in a Probe Experiment                        | MANOVA repeated  |
+| RatWeight        |   27 |    6 | Weight Gain in Rats Exposed to Thiouracil and Thyroxin      | MANOVA repeated  |
+| ReactTime        |   10 |    6 | Reaction Time Data                                          | repeated         |
+| Rohwer           |   69 |   10 | Rohwer Data Set                                             | MMRA MANCOVA     |
+| RootStock        |   48 |    5 | Growth of Apple Trees from Different Root Stocks            | MANOVA contrasts |
+| Sake             |   30 |   10 | Taste Ratings of Japanese Rice Wine (Sake)                  | MMRA             |
+| Skulls           |  150 |    5 | Egyptian Skulls                                             | MANOVA contrasts |
+| SocGrades        |   40 |   10 | Grades in a Sociology Course                                | MANOVA candisc   |
+| SocialCog        |  139 |    5 | Social Cognitive Measures in Psychiatric Groups             | MANOVA candisc   |
+| TIPI             | 1799 |   16 | Data on the Ten Item Personality Inventory                  | MANOVA candisc   |
+| VocabGrowth      |   64 |    4 | Vocabulary growth data                                      | repeated         |
+| WeightLoss       |   34 |    7 | Weight Loss Data                                            | repeated         |
+| mathscore        |   12 |    3 | Math scores for basic math and word problems                | MANOVA           |
+| schooldata       |   70 |    8 | School Data                                                 | MMRA robust      |
 
 ## Examples
 

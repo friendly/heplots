@@ -25,7 +25,7 @@
 24,SocGrades,40,10,Grades in a Sociology Course,MANOVA candisc
 25,SocialCog,139,5,Social Cognitive Measures in Psychiatric Groups,MANOVA candisc
 26,TIPI,1799,16,Data on the Ten Item Personality Inventory,MANOVA candisc
-27,VocabGrowth,64,4,Vocabulary growth data,
-28,WeightLoss,34,7,Weight Loss Data,
-29,mathscore,12,3,Math scores for basic math and word problems,
+27,VocabGrowth,64,4,Vocabulary growth data,repeated
+28,WeightLoss,34,7,Weight Loss Data,repeated
+29,mathscore,12,3,Math scores for basic math and word problems,MANOVA
 30,schooldata,70,8,School Data,MMRA robust

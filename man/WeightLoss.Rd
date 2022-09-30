@@ -63,11 +63,14 @@ imatrix <- matrix(c(
 	0,1, 0, 0,-1, 1,
 	0,1, 0, 0, 0,-2,
 	0,1, 0, 0, 1, 1), 6, 6, byrow=TRUE)
+
 # NB: for heplots the columns of imatrix should have names
 colnames(imatrix) <- c("WL", "SE", "WL.L", "WL.Q", "SE.L", "SE.Q")
 rownames(imatrix) <- colnames(WeightLoss)[-1]
 (imatrix <- list(measure=imatrix[,1:2], month=imatrix[,3:6]))
-contrasts(WeightLoss$group) <- matrix(c(-2,1,1, 0,-1,1), ncol=2) 
+contrasts(WeightLoss$group) <- matrix(c(-2,1,1, 
+                                        0,-1,1), ncol=2) 
+
 (wl.mod<-lm(cbind(wl1, wl2, wl3, se1, se2, se3)~group, data=WeightLoss))
 (wl.aov <- Anova(wl.mod, imatrix=imatrix, test="Roy"))
 
