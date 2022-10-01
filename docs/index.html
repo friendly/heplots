@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-1</span>
       </span>
     </div>
 
@@ -102,7 +102,7 @@
 <h2 id="visualizing-hypothesis-tests-in-multivariate-linear-models">
 <strong>Visualizing Hypothesis Tests in Multivariate Linear Models</strong><a class="anchor" aria-label="anchor" href="#visualizing-hypothesis-tests-in-multivariate-linear-models"></a>
 </h2>
-<p>Version 1.4-0</p>
+<p>Version 1.4-1</p>
 </div>
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
@@ -180,14 +180,6 @@
 <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a>
 </h2>
 <p>The package also provides a large collection of data sets illustrating a variety of multivariate linear models of the types listed above, together with graphical displays. The table below classifies these with method tags. Their names are linked to the documentation on the <code>pkgdown</code> website, [<a href="http://friendly.github.io/heplots" class="uri">http://friendly.github.io/heplots</a>].</p>
-<!--
-dsets <- vcdExtra::datasets("heplots")[, c("Item", "dim", "Title")]
-rowcols <- as.data.frame(stringr::str_split_fixed(dsets$dim,"x", 2))
-colnames(rowcols) <- c("rows", "cols")
-
-dsets.table <- cbind("dataset" = dsets$Item, rowcols, "title" =dsets$Title)
-knitr::kable(dsets.table)
--->
 <table class="table">
 <colgroup>
 <col width="48%">
@@ -457,7 +449,8 @@ knitr::kable(dsets.table)
 </h2>
 <p>Anderson, E. (1928). The Problem of Species in the Northern Blue Flags, Iris versicolor L. and Iris virginica L. <em>Annals of the Missouri Botanical Garden</em>, <strong>13</strong>, 241–313.</p>
 <p>Fisher, R. A. (1936). The Use of Multiple Measurements in Taxonomic Problems. <em>Annals of Eugenics</em>, <strong>8</strong>, 379–388.</p>
-<p>Fox, J.; Friendly, M. &amp; Monette, G. (2009). <a href="http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf" class="external-link">Visualizing hypothesis tests in multivariate linear models: The heplots package for R</a> <em>Computational Statistics</em>, <strong>24</strong>, 233-246.</p>
+<p>Fox, J., Friendly, M. &amp; Monette, G. (2009). <a href="http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf" class="external-link">Visualizing hypothesis tests in multivariate linear models: The heplots package for R</a> <em>Computational Statistics</em>, <strong>24</strong>, 233-246.</p>
+<p>Friendly, M. (2006). <a href="https://www.jstatsoft.org/article/view/v017i06" class="external-link">Data Ellipses, HE Plots and Reduced-Rank Displays for Multivariate Linear Models: SAS Software and Examples.</a> <em>Journal of Statistical Software</em>, <strong>17</strong>, 1-42.</p>
 <p>Friendly, M. (2010). <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a>. <em>Journal of Statistical Software</em>, <strong>37</strong>, 1–37.</p>
 <p>Friendly, M.; Monette, G. &amp; Fox, J. (2013). <a href="http://datavis.ca/palers/ellipses-STS402.pdf" class="external-link">Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry</a> <em>Statistical Science</em>, <strong>28</strong>, 1-39.</p>
 <p>Friendly, M. &amp; Sigal, M. (2017). <a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">Graphical Methods for Multivariate Linear Models in Psychological Research: An R Tutorial.</a> <em>The Quantitative Methods for Psychology</em>, <strong>13</strong>, 20-45.</p>

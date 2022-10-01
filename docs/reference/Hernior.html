@@ -18,7 +18,7 @@ elective herniorrhaphy operation,  in relation to pre-operative measures."><meta
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-1</span>
       </span>
     </div>
 
@@ -176,8 +176,16 @@ Anesthesia Center.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># joint test of age, sex &amp; caridac</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">Hern.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"sexm"</span>, <span class="st">"cardiac"</span><span class="op">)</span><span class="op">)</span>, <span class="va">SSP</span><span class="op">+</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in print.linearHypothesis.mlm(linearHypothesis(Hern.mod, c("age",     "sexm", "cardiac")), SSP + FALSE):</span> object 'SSP' not found</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">Hern.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"sexm"</span>, <span class="st">"cardiac"</span><span class="op">)</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Multivariate Tests: </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  Df test stat approx F num Df   den Df   Pr(&gt;F)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pillai            3 0.3826974 1.218485      9 75.00000 0.296709  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Wilks             3 0.6305421 1.301115      9 56.12656 0.257126  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Hotelling-Lawley  3 0.5649409 1.360043      9 65.00000 0.224709  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Roy               3 0.5249507 4.374589      3 25.00000 0.013162 *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># HE plots</span></span></span>
 <span class="r-in"><span><span class="va">clr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"darkgray"</span>, <span class="st">"blue"</span>, <span class="st">"darkgreen"</span>, <span class="st">"magenta"</span>, <span class="st">"brown"</span>, <span class="st">"black"</span><span class="op">)</span></span></span>
