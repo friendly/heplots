@@ -15,7 +15,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.4-0
+Version 1.4-1
 
 ## Description
 
@@ -139,15 +139,6 @@ together with graphical displays. The table below classifies these with
 method tags. Their names are linked to the documentation on the
 `pkgdown` website, \[<http://friendly.github.io/heplots>\].
 
-<!--
-dsets <- vcdExtra::datasets("heplots")[, c("Item", "dim", "Title")]
-rowcols <- as.data.frame(stringr::str_split_fixed(dsets$dim,"x", 2))
-colnames(rowcols) <- c("rows", "cols")
-
-dsets.table <- cbind("dataset" = dsets$Item, rowcols, "title" =dsets$Title)
-knitr::kable(dsets.table)
--->
-
 | dataset                                                                               | rows | cols | title                                                       | tags             |
 |:--------------------------------------------------------------------------------------|-----:|-----:|:------------------------------------------------------------|:-----------------|
 | [AddHealth](http://friendly.github.io/heplots/reference/AddHealth.html)               | 4344 |    3 | Adolescent Health Data                                      | MANOVA ordered   |
@@ -257,10 +248,15 @@ Botanical Garden*, **13**, 241–313.
 Fisher, R. A. (1936). The Use of Multiple Measurements in Taxonomic
 Problems. *Annals of Eugenics*, **8**, 379–388.
 
-Fox, J.; Friendly, M. & Monette, G. (2009). [Visualizing hypothesis
+Fox, J., Friendly, M. & Monette, G. (2009). [Visualizing hypothesis
 tests in multivariate linear models: The heplots package for
 R](http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf) *Computational
 Statistics*, **24**, 233-246.
+
+Friendly, M. (2006). [Data Ellipses, HE Plots and Reduced-Rank Displays
+for Multivariate Linear Models: SAS Software and
+Examples.](https://www.jstatsoft.org/article/view/v017i06) *Journal of
+Statistical Software*, **17**, 1-42.
 
 Friendly, M. (2010). [HE plots for repeated measures
 designs](http://www.jstatsoft.org/v37/i04/paper). *Journal of

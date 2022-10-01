@@ -39,11 +39,11 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 
 # heplots <img src="man/figures/logo.png" height="200" style="float:right; height:200px;"/>
 
-## **Visualizing Hypothesis Tests in Multivariate Linear Models**
+## **Visualizing Hypothesis Tests in Multivariate Linear Models** 
 
-Version 1.4-0
+Version 1.4-1
 
-## Description
+## Description 
 
 The `heplots` package provides functions for visualizing hypothesis
 tests in multivariate linear models (MANOVA, multivariate multiple
