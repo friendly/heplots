@@ -20,6 +20,7 @@
 #'   \item{\code{p.value}}{P-value corresponding to the F statistic}
 #'   \item{\code{nobs}}{Number of observations used}
 #' }
+#' @importFrom broom glance
 #' @importFrom magrittr extract
 #' @importFrom purrr map_dfr map
 #' @importFrom tibble as_tibble
@@ -28,9 +29,9 @@
 #' iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
 #' glance(iris.mod)
 
-glance <- function(x, ...) {
-  UseMethod("glance")
-}
+# glance <- function(x, ...) {
+#   UseMethod("glance")
+# }
 
 glance.mlm <- function(x, ...) {
 #  warn_on_subclass(x, "glance")

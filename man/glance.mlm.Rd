@@ -1,5 +1,5 @@
 \name{glance.mlm}
-\alias{glance}
+%\alias{glance}
 \alias{glance.mlm}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
@@ -14,7 +14,7 @@ response variable, containing goodness of fit measures, F-tests and p-values.
 
 }
 \usage{
-glance(x, ...)
+% glance(x, ...)
 
 \method{glance}{mlm}(x, ...)
 }

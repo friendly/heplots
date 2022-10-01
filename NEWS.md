@@ -1,3 +1,7 @@
+## Version 1.4-1 (2022-10-01)
+
+* (Ugh) broom becomes a Depend: so as not to override `broom::glance()`
+
 ## Version 1.4-0 (2022-09-26)
 
 * Added Iwasaki_Big_Five data [Thx: James Grice]
