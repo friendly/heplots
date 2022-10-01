@@ -4,6 +4,15 @@ template:
   params:
     bootswatch: cerulean
 
+# template:
+#   bootstrap: 5
+#   bslib:
+#     base_font: {google: "Roboto"}
+#     heading_font: {google: "Roboto Slab"}
+#     code_font: {google: "JetBrains Mono"}
+# 
+
+
 reference:
   - title: HE plots
     desc:  Hypothesis-Error plots

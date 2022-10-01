@@ -2,6 +2,7 @@
 * local Windows 7 install, R version 4.2.1 (2022-06-23 ucrt)
 * local Windows 10 install, R 4.0.2
 * win-builder R Under development (unstable) (2022-09-25 r82916 ucrt)
+* win-builder R version 4.2.1 (2022-06-23 ucrt)
 
 ## R CMD check results
 There were no ERRORs or WARNINGS or NOTES.
