@@ -714,7 +714,7 @@ Multivariate influence statistics for model:
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.24 0.25 2.94 NA NA 
+Time elapsed:  2.2 0.28 3.56 NA NA 
 > grDevices::dev.off()
 null device 
           1 

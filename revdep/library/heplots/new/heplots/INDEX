@@ -27,6 +27,7 @@ Sake                    Taste Ratings of Japanese Rice Wine (Sake)
 Skulls                  Egyptian Skulls
 SocGrades               Grades in a Sociology Course
 SocialCog               Social Cognitive Measures in Psychiatric Groups
+TIPI                    Data on the Ten Item Personality Inventory
 VocabGrowth             Vocabulary growth data
 WeightLoss              Weight Loss Data
 arrow3d                 Draw a 3D Arrow in an RGL Scene
@@ -42,6 +43,7 @@ cross3d                 Draw a 3D cross in an rgl scene
 ellipse3d.axes          Draw axes of a 3D ellipsoid
 etasq                   Measures of Partial Association (Eta-squared)
                         for Linear Models
+glance.mlm              Glance at an mlm object
 gsorth                  Orthogonalize successive columns of a data
                         frame or matrix
 heplot                  Two-Dimensional HE Plots

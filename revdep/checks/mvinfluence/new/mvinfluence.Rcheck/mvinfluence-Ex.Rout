@@ -25,6 +25,7 @@ Type 'q()' to quit R.
 Loading required package: car
 Loading required package: carData
 Loading required package: heplots
+Loading required package: broom
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
@@ -714,7 +715,7 @@ Multivariate influence statistics for model:
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.19 0.27 2.96 NA NA 
+Time elapsed:  2.1 0.38 2.6 NA NA 
 > grDevices::dev.off()
 null device 
           1 

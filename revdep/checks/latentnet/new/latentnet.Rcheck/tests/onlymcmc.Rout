@@ -55,4 +55,4 @@ parallel_MPI test(s) skipped. Set ENABLE_MPI_TESTS environment variable to run.
 > 
 > proc.time()
    user  system elapsed 
-   0.21    0.06    0.28 
+   0.23    0.04    0.28 

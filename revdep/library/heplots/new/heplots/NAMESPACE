@@ -23,6 +23,12 @@ importFrom("grDevices", "col2rgb", "palette", "rgb", "gray")
 #importFrom("stats", "complete.cases", "formula", "getCall", "pchisq", "qnorm", "update")
 importFrom("utils", "packageDescription")
 
+# for glance.mlm
+importFrom("broom",    "glance")
+importFrom("magrittr", "extract")
+importFrom("purrr",    "map_dfr", "map")
+importFrom("tibble",   "as_tibble")
+
 
 export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, 
        statList, covList, colMeansList, arrow3d,
@@ -37,7 +43,9 @@ export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d,
       logdetCI,
     	bartlettTests, leveneTests,
     	Mahalanobis,
-    	cqplot
+    	cqplot,
+#    	glance, 
+    	glance.mlm
   	)
 
 S3method(heplot, mlm)
@@ -70,4 +78,5 @@ S3method(covEllipses, boxM)
 S3method(cqplot, default)
 S3method(cqplot, mlm)
 
+S3method(glance, mlm)
 

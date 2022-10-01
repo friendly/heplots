@@ -13,13 +13,21 @@ There were no ERRORs or WARNINGS or NOTES.
 [1] "candisc"      "effects"      "Guerry"       "HistData"     "latentnet"    "MapeBay"      "MorphoTools2"
 [8] "mvinfluence"  "ordr"   
 
-> revdep_check(num_workers = 4)
-*Wow, no problems at all. :)*
+## revdepcheck results
+
+We checked 9 reverse dependencies (4 from CRAN + 5 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 0 packages
+
 
 ## Comments
-**Ugh** A minor typo in an example. Sorry.  Now fixed.
 
 This is a major release, adding Rmd vignettes that caused problems in their Sweave Rnw versions. No longer have to go through `qpdf` to compress. The new vignettes are more detailed, with more description and plots.
+
+## Version 1.4-1 (2022-10-01)
+
+* (Ugh) broom becomes a Depend: so as not to override `broom::glance()` and to pass revdep checks from MapeBay
 
 ## Version 1.4-0 (2022-09-26)
 

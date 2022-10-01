@@ -12,8 +12,8 @@ Sys.setenv(RGL_USE_NULL = TRUE)
 
 # revdep
 #remotes::install_github("r-lib/revdepcheck")
-library(revdepcheck)
-revdep_check(num_workers = 4)
+#library(revdepcheck)
+revdepcheck::revdep_check(num_workers = 4)
 
 devtools::build()
 devtools::build_vignettes()

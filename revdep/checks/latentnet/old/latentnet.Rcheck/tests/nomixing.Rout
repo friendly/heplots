@@ -64,20 +64,20 @@ In cov2cor(beta.cov) :
 Chain 1 
 WARNING: Variables beta.1 did not mix AT ALL. MCMC should be rerun with different proposal parameters!
 Lag 0 
-                  lpY beta.1       Z.1.1       Z.1.2 receiver.1
-lpY         1.0000000    NaN -0.32371130  0.25578377  0.6189222
-beta.1            NaN    NaN         NaN         NaN        NaN
-Z.1.1      -0.3237113    NaN  1.00000000 -0.08235627 -0.3511772
-Z.1.2       0.2557838    NaN -0.08235627  1.00000000  0.3672923
-receiver.1  0.6189222    NaN -0.35117717  0.36729229  1.0000000
+                  lpY beta.1        Z.1.1        Z.1.2 receiver.1
+lpY        1.00000000    NaN  0.017934815  0.090186937 0.36522745
+beta.1            NaN    NaN          NaN          NaN        NaN
+Z.1.1      0.01793482    NaN  1.000000000 -0.003101575 0.03228667
+Z.1.2      0.09018694    NaN -0.003101575  1.000000000 0.36201198
+receiver.1 0.36522745    NaN  0.032286674  0.362011976 1.00000000
 
 Lag 1 
-                  lpY beta.1       Z.1.1       Z.1.2 receiver.1
-lpY         0.9167202    NaN -0.32564206  0.25522710  0.6156493
-beta.1            NaN    NaN         NaN         NaN        NaN
-Z.1.1      -0.3256176    NaN  0.94758744 -0.09156917 -0.3504867
-Z.1.2       0.2653351    NaN -0.07616211  0.94923541  0.3606789
-receiver.1  0.5932028    NaN -0.35647324  0.36558075  0.9299578
+                  lpY beta.1        Z.1.1       Z.1.2 receiver.1
+lpY        0.87029869    NaN  0.024800510 0.086279422 0.35555161
+beta.1            NaN    NaN          NaN         NaN        NaN
+Z.1.1      0.01663567    NaN  0.942706122 0.002337661 0.02933618
+Z.1.2      0.10129140    NaN -0.009936845 0.982746481 0.35774408
+receiver.1 0.34226665    NaN  0.038601715 0.358586400 0.89281278
 
 [[1]]
 
@@ -87,14 +87,14 @@ Probability (s) = 0.95
                                                   
             Burn-in  Total Lower bound  Dependence
             (M)      (N)   (Nmin)       factor (I)
- lpY        25       4299  600          7.16      
- beta.1     <NA>     <NA>  600            NA      
- Z.1.1      15       2665  600          4.44      
- Z.1.2      25       4299  600          7.16      
- receiver.1 26       4664  600          7.77      
+ lpY        10       1660  600           2.77     
+ beta.1     <NA>     <NA>  600             NA     
+ Z.1.1      14       2339  600           3.90     
+ Z.1.2      39       6750  600          11.20     
+ receiver.1 39       5171  600           8.62     
 
 
 > 
 > proc.time()
    user  system elapsed 
-   3.10    0.35    3.51 
+   3.07    0.43    3.58 

@@ -29,6 +29,7 @@ etasq.Anova.mlm	etasq
 etasq.lm	etasq
 etasq.mlm	etasq
 FootHead	FootHead
+glance.mlm	glance.mlm
 gsorth	gsorth
 he.rep	heplots-internal
 Headache	Headache
@@ -84,6 +85,7 @@ summary.boxM	boxM
 summary.robmlm	robmlm
 termInfo	heplots-internal
 termMeans	termMeans
+TIPI	TIPI
 trans.colors	trans.colors
 VocabGrowth	VocabGrowth
 WeightLoss	WeightLoss

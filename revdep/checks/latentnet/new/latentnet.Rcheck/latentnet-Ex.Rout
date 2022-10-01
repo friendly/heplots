@@ -309,7 +309,7 @@ Warning in backoff.check(model, burnin.sample, burnin.control) :
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  3.26 0.14 3.57 NA NA 
+Time elapsed:  3.19 0.27 3.55 NA NA 
 > grDevices::dev.off()
 null device 
           1 

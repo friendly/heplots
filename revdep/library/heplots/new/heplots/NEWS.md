@@ -1,9 +1,15 @@
+## Version 1.4-1 (2022-10-01)
+
+* (Ugh) broom becomes a Depend: so as not to override `broom::glance()`
+
 ## Version 1.4-0 (2022-09-26)
 
 * Added Iwasaki_Big_Five data [Thx: James Grice]
 * Added `cex.label` arg to `heplot3d()`
 * Convert old Rnw vignettes to Rmd
 * Fix documentation infelicities
+* Added TIPI data
+* Added `glance.mlm()` as an extension of `broom::glance.lm()`
 
 ## Version 1.3-9 (2021-10-06)
 

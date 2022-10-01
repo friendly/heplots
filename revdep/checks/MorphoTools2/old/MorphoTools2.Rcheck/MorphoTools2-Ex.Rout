@@ -2086,7 +2086,7 @@ Warning in FUN(X[[i]], ...) : NaNs produced
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  11.94 0.92 13.64 NA NA 
+Time elapsed:  12.34 1.02 14.23 NA NA 
 > grDevices::dev.off()
 null device 
           1 

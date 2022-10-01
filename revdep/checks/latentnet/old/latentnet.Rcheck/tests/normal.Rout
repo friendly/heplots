@@ -109,4 +109,4 @@ Normal response variable test(s) skipped. Set ENABLE_statnet_TESTS environment v
 > 
 > proc.time()
    user  system elapsed 
-   0.20    0.10    0.31 
+   0.15    0.17    0.32 

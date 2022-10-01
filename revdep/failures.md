@@ -15,26 +15,26 @@
 
 ```
 
-  There is a binary version available but the source version is later:
-     binary  source needs_compilation
-rgl 0.109.6 0.110.2              TRUE
+  There are binary versions available but the source versions are later:
+         binary source needs_compilation
+crayon    1.5.1  1.5.2             FALSE
+jsonlite  1.8.0  1.8.1              TRUE
+vctrs     0.4.1  0.4.2              TRUE
 
   Binaries will be installed
 package 'abind' successfully unpacked and MD5 sums checked
 package 'backports' successfully unpacked and MD5 sums checked
-package 'base64enc' successfully unpacked and MD5 sums checked
-package 'boot' successfully unpacked and MD5 sums checked
 ...
-package 'pkgload' successfully unpacked and MD5 sums checked
-package 'praise' successfully unpacked and MD5 sums checked
-package 'processx' successfully unpacked and MD5 sums checked
-package 'ps' successfully unpacked and MD5 sums checked
-package 'purrr' successfully unpacked and MD5 sums checked
-package 'quantreg' successfully unpacked and MD5 sums checked
-package 'R6' successfully unpacked and MD5 sums checked
-package 'rappdirs' successfully unpacked and MD5 sums checked
-package 'RColorBrewer' successfully unpacked and MD5 sums checked
-package 'Rcpp' successfully unpacked and MD5 sums checked
+package 'rematch2' successfully unpacked and MD5 sums checked
+package 'rgl' successfully unpacked and MD5 sums checked
+package 'rlang' successfully unpacked and MD5 sums checked
+package 'rmarkdown' successfully unpacked and MD5 sums checked
+package 'rpart' successfully unpacked and MD5 sums checked
+package 'rpart.plot' successfully unpacked and MD5 sums checked
+package 'rprojroot' successfully unpacked and MD5 sums checked
+package 'sass' successfully unpacked and MD5 sums checked
+package 'scales' successfully unpacked and MD5 sums checked
+package 'sp' successfully unpacked and MD5 sums checked
 
 
 
@@ -45,26 +45,26 @@ package 'Rcpp' successfully unpacked and MD5 sums checked
 
 ```
 
-  There is a binary version available but the source version is later:
-     binary  source needs_compilation
-rgl 0.109.6 0.110.2              TRUE
+  There are binary versions available but the source versions are later:
+         binary source needs_compilation
+crayon    1.5.1  1.5.2             FALSE
+jsonlite  1.8.0  1.8.1              TRUE
+vctrs     0.4.1  0.4.2              TRUE
 
   Binaries will be installed
 package 'abind' successfully unpacked and MD5 sums checked
 package 'backports' successfully unpacked and MD5 sums checked
-package 'base64enc' successfully unpacked and MD5 sums checked
-package 'boot' successfully unpacked and MD5 sums checked
 ...
-package 'pkgload' successfully unpacked and MD5 sums checked
-package 'praise' successfully unpacked and MD5 sums checked
-package 'processx' successfully unpacked and MD5 sums checked
-package 'ps' successfully unpacked and MD5 sums checked
-package 'purrr' successfully unpacked and MD5 sums checked
-package 'quantreg' successfully unpacked and MD5 sums checked
-package 'R6' successfully unpacked and MD5 sums checked
-package 'rappdirs' successfully unpacked and MD5 sums checked
-package 'RColorBrewer' successfully unpacked and MD5 sums checked
-package 'Rcpp' successfully unpacked and MD5 sums checked
+package 'rematch2' successfully unpacked and MD5 sums checked
+package 'rgl' successfully unpacked and MD5 sums checked
+package 'rlang' successfully unpacked and MD5 sums checked
+package 'rmarkdown' successfully unpacked and MD5 sums checked
+package 'rpart' successfully unpacked and MD5 sums checked
+package 'rpart.plot' successfully unpacked and MD5 sums checked
+package 'rprojroot' successfully unpacked and MD5 sums checked
+package 'sass' successfully unpacked and MD5 sums checked
+package 'scales' successfully unpacked and MD5 sums checked
+package 'sp' successfully unpacked and MD5 sums checked
 
 
 
@@ -87,27 +87,27 @@ package 'Rcpp' successfully unpacked and MD5 sums checked
 ### Devel
 
 ```
+
+  There are binary versions available but the source versions are later:
+         binary  source needs_compilation
+crayon    1.5.1   1.5.2             FALSE
+jsonlite  1.8.0   1.8.1              TRUE
+ucminf    1.1-4 1.1-4.1              TRUE
+vctrs     0.4.1   0.4.2              TRUE
+
+  Binaries will be installed
 package 'abind' successfully unpacked and MD5 sums checked
-package 'alr4' successfully unpacked and MD5 sums checked
-package 'backports' successfully unpacked and MD5 sums checked
-package 'betareg' successfully unpacked and MD5 sums checked
-package 'boot' successfully unpacked and MD5 sums checked
-package 'brio' successfully unpacked and MD5 sums checked
-package 'broom' successfully unpacked and MD5 sums checked
-package 'callr' successfully unpacked and MD5 sums checked
-package 'car' successfully unpacked and MD5 sums checked
-package 'carData' successfully unpacked and MD5 sums checked
 ...
-package 'ucminf' successfully unpacked and MD5 sums checked
-package 'utf8' successfully unpacked and MD5 sums checked
-package 'vctrs' successfully unpacked and MD5 sums checked
-package 'viridisLite' successfully unpacked and MD5 sums checked
-package 'waldo' successfully unpacked and MD5 sums checked
-package 'withr' successfully unpacked and MD5 sums checked
-package 'xfun' successfully unpacked and MD5 sums checked
-package 'xtable' successfully unpacked and MD5 sums checked
-package 'yaml' successfully unpacked and MD5 sums checked
-package 'zoo' successfully unpacked and MD5 sums checked
+package 'robustlmm' successfully unpacked and MD5 sums checked
+package 'rprojroot' successfully unpacked and MD5 sums checked
+package 'sandwich' successfully unpacked and MD5 sums checked
+package 'scales' successfully unpacked and MD5 sums checked
+package 'scatterplot3d' successfully unpacked and MD5 sums checked
+package 'sp' successfully unpacked and MD5 sums checked
+package 'SparseM' successfully unpacked and MD5 sums checked
+package 'stringi' successfully unpacked and MD5 sums checked
+package 'stringr' successfully unpacked and MD5 sums checked
+package 'survey' successfully unpacked and MD5 sums checked
 
 
 
@@ -117,27 +117,27 @@ package 'zoo' successfully unpacked and MD5 sums checked
 ### CRAN
 
 ```
+
+  There are binary versions available but the source versions are later:
+         binary  source needs_compilation
+crayon    1.5.1   1.5.2             FALSE
+jsonlite  1.8.0   1.8.1              TRUE
+ucminf    1.1-4 1.1-4.1              TRUE
+vctrs     0.4.1   0.4.2              TRUE
+
+  Binaries will be installed
 package 'abind' successfully unpacked and MD5 sums checked
-package 'alr4' successfully unpacked and MD5 sums checked
-package 'backports' successfully unpacked and MD5 sums checked
-package 'betareg' successfully unpacked and MD5 sums checked
-package 'boot' successfully unpacked and MD5 sums checked
-package 'brio' successfully unpacked and MD5 sums checked
-package 'broom' successfully unpacked and MD5 sums checked
-package 'callr' successfully unpacked and MD5 sums checked
-package 'car' successfully unpacked and MD5 sums checked
-package 'carData' successfully unpacked and MD5 sums checked
 ...
-package 'ucminf' successfully unpacked and MD5 sums checked
-package 'utf8' successfully unpacked and MD5 sums checked
-package 'vctrs' successfully unpacked and MD5 sums checked
-package 'viridisLite' successfully unpacked and MD5 sums checked
-package 'waldo' successfully unpacked and MD5 sums checked
-package 'withr' successfully unpacked and MD5 sums checked
-package 'xfun' successfully unpacked and MD5 sums checked
-package 'xtable' successfully unpacked and MD5 sums checked
-package 'yaml' successfully unpacked and MD5 sums checked
-package 'zoo' successfully unpacked and MD5 sums checked
+package 'robustlmm' successfully unpacked and MD5 sums checked
+package 'rprojroot' successfully unpacked and MD5 sums checked
+package 'sandwich' successfully unpacked and MD5 sums checked
+package 'scales' successfully unpacked and MD5 sums checked
+package 'scatterplot3d' successfully unpacked and MD5 sums checked
+package 'sp' successfully unpacked and MD5 sums checked
+package 'SparseM' successfully unpacked and MD5 sums checked
+package 'stringi' successfully unpacked and MD5 sums checked
+package 'stringr' successfully unpacked and MD5 sums checked
+package 'survey' successfully unpacked and MD5 sums checked
 
 
 
@@ -160,27 +160,27 @@ package 'zoo' successfully unpacked and MD5 sums checked
 ### Devel
 
 ```
-package 'abind' successfully unpacked and MD5 sums checked
-package 'ade4' successfully unpacked and MD5 sums checked
-package 'adegenet' successfully unpacked and MD5 sums checked
-package 'adegraphics' successfully unpacked and MD5 sums checked
-package 'adephylo' successfully unpacked and MD5 sums checked
-package 'adespatial' successfully unpacked and MD5 sums checked
-package 'ape' successfully unpacked and MD5 sums checked
-package 'askpass' successfully unpacked and MD5 sums checked
-package 'backports' successfully unpacked and MD5 sums checked
-package 'base64enc' successfully unpacked and MD5 sums checked
+
+  There are binary versions available but the source versions are later:
+         binary source needs_compilation
+classInt  0.4-7  0.4-8              TRUE
+crayon    1.5.1  1.5.2             FALSE
+jsonlite  1.8.0  1.8.1              TRUE
+spdep     1.2-5  1.2-7              TRUE
+vctrs     0.4.1  0.4.2              TRUE
+
+  Binaries will be installed
 ...
-package 'progress' successfully unpacked and MD5 sums checked
-package 'promises' successfully unpacked and MD5 sums checked
-package 'proxy' successfully unpacked and MD5 sums checked
-package 'ps' successfully unpacked and MD5 sums checked
-package 'purrr' successfully unpacked and MD5 sums checked
-package 'quantreg' successfully unpacked and MD5 sums checked
-package 'R6' successfully unpacked and MD5 sums checked
-package 'rappdirs' successfully unpacked and MD5 sums checked
-package 'RColorBrewer' successfully unpacked and MD5 sums checked
-package 'Rcpp' successfully unpacked and MD5 sums checked
+package 'rncl' successfully unpacked and MD5 sums checked
+package 'RNeXML' successfully unpacked and MD5 sums checked
+package 'rprojroot' successfully unpacked and MD5 sums checked
+package 's2' successfully unpacked and MD5 sums checked
+package 'sass' successfully unpacked and MD5 sums checked
+package 'scales' successfully unpacked and MD5 sums checked
+package 'segmented' successfully unpacked and MD5 sums checked
+package 'seqinr' successfully unpacked and MD5 sums checked
+package 'sf' successfully unpacked and MD5 sums checked
+package 'shiny' successfully unpacked and MD5 sums checked
 
 
 
@@ -190,100 +190,27 @@ package 'Rcpp' successfully unpacked and MD5 sums checked
 ### CRAN
 
 ```
-package 'abind' successfully unpacked and MD5 sums checked
-package 'ade4' successfully unpacked and MD5 sums checked
-package 'adegenet' successfully unpacked and MD5 sums checked
-package 'adegraphics' successfully unpacked and MD5 sums checked
-package 'adephylo' successfully unpacked and MD5 sums checked
-package 'adespatial' successfully unpacked and MD5 sums checked
-package 'ape' successfully unpacked and MD5 sums checked
-package 'askpass' successfully unpacked and MD5 sums checked
-package 'backports' successfully unpacked and MD5 sums checked
-package 'base64enc' successfully unpacked and MD5 sums checked
+
+  There are binary versions available but the source versions are later:
+         binary source needs_compilation
+classInt  0.4-7  0.4-8              TRUE
+crayon    1.5.1  1.5.2             FALSE
+jsonlite  1.8.0  1.8.1              TRUE
+spdep     1.2-5  1.2-7              TRUE
+vctrs     0.4.1  0.4.2              TRUE
+
+  Binaries will be installed
 ...
-package 'progress' successfully unpacked and MD5 sums checked
-package 'promises' successfully unpacked and MD5 sums checked
-package 'proxy' successfully unpacked and MD5 sums checked
-package 'ps' successfully unpacked and MD5 sums checked
-package 'purrr' successfully unpacked and MD5 sums checked
-package 'quantreg' successfully unpacked and MD5 sums checked
-package 'R6' successfully unpacked and MD5 sums checked
-package 'rappdirs' successfully unpacked and MD5 sums checked
-package 'RColorBrewer' successfully unpacked and MD5 sums checked
-package 'Rcpp' successfully unpacked and MD5 sums checked
-
-
-
-
-
-```
-# HistData
-
-<details>
-
-* Version: 
-* GitHub: https://github.com/friendly/heplots
-* Source code: NA
-* Number of recursive dependencies: 0
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-package 'abind' successfully unpacked and MD5 sums checked
-package 'backports' successfully unpacked and MD5 sums checked
-package 'base64enc' successfully unpacked and MD5 sums checked
-package 'bitops' successfully unpacked and MD5 sums checked
-package 'boot' successfully unpacked and MD5 sums checked
-package 'brio' successfully unpacked and MD5 sums checked
-package 'broom' successfully unpacked and MD5 sums checked
-package 'bslib' successfully unpacked and MD5 sums checked
-package 'cachem' successfully unpacked and MD5 sums checked
-package 'callr' successfully unpacked and MD5 sums checked
-...
-package 'tidyselect' successfully unpacked and MD5 sums checked
-package 'tinytex' successfully unpacked and MD5 sums checked
-package 'utf8' successfully unpacked and MD5 sums checked
-package 'vcd' successfully unpacked and MD5 sums checked
-package 'vctrs' successfully unpacked and MD5 sums checked
-package 'viridisLite' successfully unpacked and MD5 sums checked
-package 'waldo' successfully unpacked and MD5 sums checked
-package 'withr' successfully unpacked and MD5 sums checked
-package 'xfun' successfully unpacked and MD5 sums checked
-package 'yaml' successfully unpacked and MD5 sums checked
-
-
-
-
-
-```
-### CRAN
-
-```
-package 'abind' successfully unpacked and MD5 sums checked
-package 'backports' successfully unpacked and MD5 sums checked
-package 'base64enc' successfully unpacked and MD5 sums checked
-package 'bitops' successfully unpacked and MD5 sums checked
-package 'boot' successfully unpacked and MD5 sums checked
-package 'brio' successfully unpacked and MD5 sums checked
-package 'broom' successfully unpacked and MD5 sums checked
-package 'bslib' successfully unpacked and MD5 sums checked
-package 'cachem' successfully unpacked and MD5 sums checked
-package 'callr' successfully unpacked and MD5 sums checked
-...
-package 'tidyselect' successfully unpacked and MD5 sums checked
-package 'tinytex' successfully unpacked and MD5 sums checked
-package 'utf8' successfully unpacked and MD5 sums checked
-package 'vcd' successfully unpacked and MD5 sums checked
-package 'vctrs' successfully unpacked and MD5 sums checked
-package 'viridisLite' successfully unpacked and MD5 sums checked
-package 'waldo' successfully unpacked and MD5 sums checked
-package 'withr' successfully unpacked and MD5 sums checked
-package 'xfun' successfully unpacked and MD5 sums checked
-package 'yaml' successfully unpacked and MD5 sums checked
+package 'rncl' successfully unpacked and MD5 sums checked
+package 'RNeXML' successfully unpacked and MD5 sums checked
+package 'rprojroot' successfully unpacked and MD5 sums checked
+package 's2' successfully unpacked and MD5 sums checked
+package 'sass' successfully unpacked and MD5 sums checked
+package 'scales' successfully unpacked and MD5 sums checked
+package 'segmented' successfully unpacked and MD5 sums checked
+package 'seqinr' successfully unpacked and MD5 sums checked
+package 'sf' successfully unpacked and MD5 sums checked
+package 'shiny' successfully unpacked and MD5 sums checked
 
 
 
@@ -308,9 +235,11 @@ package 'yaml' successfully unpacked and MD5 sums checked
 ```
 
   There are binary versions available but the source versions are later:
-        binary  source needs_compilation
-mnormt   2.1.0   2.1.1              TRUE
-rgl    0.109.6 0.110.2              TRUE
+         binary source needs_compilation
+crayon    1.5.1  1.5.2             FALSE
+jsonlite  1.8.0  1.8.1              TRUE
+psych     2.2.5  2.2.9             FALSE
+vctrs     0.4.1  0.4.2              TRUE
 
   Binaries will be installed
 package 'abind' successfully unpacked and MD5 sums checked
@@ -329,9 +258,11 @@ package 'base64enc' successfully unpacked and MD5 sums checked
 ```
 
   There are binary versions available but the source versions are later:
-        binary  source needs_compilation
-mnormt   2.1.0   2.1.1              TRUE
-rgl    0.109.6 0.110.2              TRUE
+         binary source needs_compilation
+crayon    1.5.1  1.5.2             FALSE
+jsonlite  1.8.0  1.8.1              TRUE
+psych     2.2.5  2.2.9             FALSE
+vctrs     0.4.1  0.4.2              TRUE
 
   Binaries will be installed
 package 'abind' successfully unpacked and MD5 sums checked
@@ -361,6 +292,14 @@ package 'base64enc' successfully unpacked and MD5 sums checked
 ### Devel
 
 ```
+
+  There are binary versions available but the source versions are later:
+         binary source needs_compilation
+crayon    1.5.1  1.5.2             FALSE
+jsonlite  1.8.0  1.8.1              TRUE
+vctrs     0.4.1  0.4.2              TRUE
+
+  Binaries will be installed
 package 'abind' successfully unpacked and MD5 sums checked
 package 'backports' successfully unpacked and MD5 sums checked
 package 'base64enc' successfully unpacked and MD5 sums checked
@@ -373,6 +312,14 @@ package 'base64enc' successfully unpacked and MD5 sums checked
 ### CRAN
 
 ```
+
+  There are binary versions available but the source versions are later:
+         binary source needs_compilation
+crayon    1.5.1  1.5.2             FALSE
+jsonlite  1.8.0  1.8.1              TRUE
+vctrs     0.4.1  0.4.2              TRUE
+
+  Binaries will be installed
 package 'abind' successfully unpacked and MD5 sums checked
 package 'backports' successfully unpacked and MD5 sums checked
 package 'base64enc' successfully unpacked and MD5 sums checked

@@ -66,17 +66,17 @@ The following objects are masked from 'package:base':
 Chain 1 
 Lag 0 
                   lpY     beta.1     beta.2 receiver.1
-lpY         1.0000000 -0.1210000  0.1588729  0.3758226
-beta.1     -0.1210000  1.0000000 -0.5259663 -0.4270673
-beta.2      0.1588729 -0.5259663  1.0000000  0.2238355
-receiver.1  0.3758226 -0.4270673  0.2238355  1.0000000
+lpY         1.0000000 -0.1027198  0.1425345  0.3594113
+beta.1     -0.1027198  1.0000000 -0.5322525 -0.4654201
+beta.2      0.1425345 -0.5322525  1.0000000  0.2748903
+receiver.1  0.3594113 -0.4654201  0.2748903  1.0000000
 
 Lag 10 
-                   lpY     beta.1     beta.2  receiver.1
-lpY         0.09056128 -0.0859743  0.1127492  0.07577117
-beta.1     -0.07735854  0.3194201 -0.1805582 -0.22543266
-beta.2      0.08824781 -0.1894471  0.3798067  0.13814506
-receiver.1  0.08119232 -0.2301900  0.1644448  0.20644719
+                   lpY      beta.1      beta.2 receiver.1
+lpY         0.12137547 -0.07757842  0.08511078  0.1205851
+beta.1     -0.05207244  0.31713000 -0.20578675 -0.2080444
+beta.2      0.08594989 -0.20888173  0.36581092  0.1787657
+receiver.1  0.08404716 -0.21244160  0.18668395  0.2354558
 
 [[1]]
 
@@ -86,10 +86,10 @@ Probability (s) = 0.95
                                                   
             Burn-in  Total Lower bound  Dependence
             (M)      (N)   (Nmin)       factor (I)
- lpY        20       5840  600           9.73     
- beta.1     40       8130  600          13.60     
- beta.2     40       8130  600          13.60     
- receiver.1 30       6610  600          11.00     
+ lpY        20       6330  600          10.6      
+ beta.1     40       7970  600          13.3      
+ beta.2     40       7640  600          12.7      
+ receiver.1 30       7030  600          11.7      
 
 
 > 
@@ -106,20 +106,20 @@ Model:     Bernoulli
 MCMC sample of size 4000, draws are 10 iterations apart, after burnin of 10000 iterations.
 Covariate coefficients posterior means:
                 Estimate    2.5%   97.5% 2*min(Pr(>0),Pr(<0))    
-(Intercept)      -2.2751 -2.9351 -1.6506            < 2.2e-16 ***
-nodematch.group   3.0609  2.3941  3.7922            < 2.2e-16 ***
+(Intercept)      -2.2758 -2.9878 -1.6242            < 2.2e-16 ***
+nodematch.group   3.0561  2.4005  3.7900            < 2.2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Receiver effect variance: 1.014049.
-Overall BIC:        286.0982 
-Likelihood BIC:     245.6514 
-Receiver effect BIC:     40.44683 
+Receiver effect variance: 1.010918.
+Overall BIC:        287.4796 
+Likelihood BIC:     245.6588 
+Receiver effect BIC:     41.82081 
 
 Covariate coefficients MKL:
                  Estimate
-(Intercept)     -2.065877
-nodematch.group  2.872133
+(Intercept)     -2.365310
+nodematch.group  2.866122
 
 
 > # Should produce a meaningful error message.
@@ -164,4 +164,4 @@ Some non-latent-space test(s) skipped. Set ENABLE_statnet_TESTS environment vari
 > 
 > proc.time()
    user  system elapsed 
-   6.69    0.21    7.00 
+   6.61    0.40    7.31 
