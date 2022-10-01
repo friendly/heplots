@@ -7,15 +7,16 @@ note <- sprintf("R package version %s", meta$Version)
      
 citEntry(entry = "Manual",
   title = "{heplots}: Visualizing Tests in Multivariate Linear Models",
-  author = personList(as.person("John Fox"),
+  author = personList(
                   as.person("Michael Friendly"),
+                  as.person("John Fox"),
                   as.person("Georges Monette")),
   year = year,
   note = note,
   url = "https://CRAN.R-project.org/package=heplots",
 
   textVersion =
-  paste("John Fox and Michael Friendly and and Georges Monette",
+  paste("Michael Friendly and John Fox and Georges Monette",
        sprintf("(%s).", year),
         "heplots: Visualizing Tests in Multivariate Linear Models.",
     paste(note, ".", sep = ""),
