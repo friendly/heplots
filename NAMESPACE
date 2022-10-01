@@ -24,10 +24,10 @@ importFrom("grDevices", "col2rgb", "palette", "rgb", "gray")
 importFrom("utils", "packageDescription")
 
 # for glance.mlm
-importFrom("broom", "glance")
+importFrom("broom",    "glance")
 importFrom("magrittr", "extract")
-importFrom("purrr", "map_dfr", "map")
-importFrom("tibble", "as_tibble")
+importFrom("purrr",    "map_dfr", "map")
+importFrom("tibble",   "as_tibble")
 
 
 export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, 
@@ -44,7 +44,8 @@ export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d,
     	bartlettTests, leveneTests,
     	Mahalanobis,
     	cqplot,
-    	glance, glance.mlm
+#    	glance, 
+    	glance.mlm
   	)
 
 S3method(heplot, mlm)
