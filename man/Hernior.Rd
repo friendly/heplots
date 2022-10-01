@@ -65,7 +65,7 @@ Anova(Hern.mod, test="Roy") # actually, all tests are identical
 print(linearHypothesis(Hern.mod, c("age", "sexm", "pstat", "build", "cardiac", "resp")), SSP=FALSE)
 
 # joint test of age, sex & caridac
-print(linearHypothesis(Hern.mod, c("age", "sexm", "cardiac")), SSP+FALSE)
+print(linearHypothesis(Hern.mod, c("age", "sexm", "cardiac")), SSP=FALSE)
 
 # HE plots
 clr <- c("red", "darkgray", "blue", "darkgreen", "magenta", "brown", "black")

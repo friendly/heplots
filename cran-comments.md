@@ -16,8 +16,7 @@ There were no ERRORs or WARNINGS or NOTES.
 *Wow, no problems at all. :)*
 
 ## Comments
-`heplots` v.1.4-0 was submitted to CRAN via `devtools::release()` on Sept. 27?, but I have had no replies, so
-perhaps this did not take.  I am resubmitting a new source package, with some documentation additions/changes.
+**Ugh** A minor typo in an example. Sorry.  Now fixed.
 
 This is a major release, adding Rmd vignettes that caused problems in their Sweave Rnw versions. No longer have to go through `qpdf` to compress. The new vignettes are more detailed, with more description and plots.
 
