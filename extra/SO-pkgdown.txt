@@ -1,4 +1,4 @@
-How to have `pkgdown` use figure numbers and cross-reeferences in vignettes?
+How to have `pkgdown` use figure numbers and cross-references in vignettes?
 
 I've created several vignettes for a package, with figures I want to reference in the text.
 Using the template for a `.Rmd` vignette, I can do this by using `bookdown::html_document2` as follows in my yaml header:

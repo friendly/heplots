@@ -16,3 +16,4 @@ inst/doc/*\.pdf
 ^revdep$
 ^pkgdown$
 ^extra$
+^CRAN-SUBMISSION$
