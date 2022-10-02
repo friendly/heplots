@@ -2,6 +2,8 @@
 
 
 
+
+
 #' Levene Tests of Homogeneity of Variances
 #' 
 #' This function extends \code{\link[car]{leveneTest}} to a multivariate
@@ -23,7 +25,7 @@
 #' @author Michael Friendly
 #' @seealso \code{\link[car]{leveneTest}}, \code{\link{bartlettTests}}
 #' @references Levene, H. (1960). Robust Tests for Equality of Variances. In
-#' Olkin, I. \emph{etal.} (Eds.), \emph{Contributions to Probability and
+#' Olkin, I. \emph{et al.} (Eds.), \emph{Contributions to Probability and
 #' Statistics: Essays in Honor of Harold Hotelling}, Stanford University Press,
 #' 278-292.
 #' 
@@ -42,6 +44,7 @@
 #' leveneTests(Skulls[,-1], Skulls$epoch)
 #' 
 #' 
+#' @export leveneTests
 leveneTests <-
 	function (y, group, center = median, ...) 
 {

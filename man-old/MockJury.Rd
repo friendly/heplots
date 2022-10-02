@@ -1,0 +1,99 @@
+\name{MockJury}
+\Rdversion{1.1}
+\alias{MockJury}
+\docType{data}
+\title{
+Effects Of Physical Attractiveness Upon Mock Jury Decisions
+}
+\description{
+Male participants were shown a picture of one of three young women.  Pilot  work
+had indicated  that the  one woman  was beautiful,  another of  average physical
+attractiveness, and the third  unattractive.  Participants rated the  woman they
+saw on each  of twelve attributes.  These measures were used to check on the
+manipulation by the photo.
+
+Then the participants were told that the person in the photo had committed a
+Crime, and asked to rate the seriousness of the crime and recommend a
+prison sentence, in Years.
+
+Does attractiveness of the "defendant" influence the sentence or perceived
+seriousness of the crime?  Does attractiveness interact with the nature of the
+crime?
+}
+\usage{data(MockJury)}
+\format{
+  A data frame with 114 observations on the following 17 variables.
+  \describe{
+    \item{\code{Attr}}{Attractiveness of the photo, a factor with levels \code{Beautiful} \code{Average} \code{Unattractive}}
+    \item{\code{Crime}}{Type of crime, a factor with levels \code{Burglary} (theft of items from victim's room)
+    	 \code{Swindle} (conned a male victim)}
+    \item{\code{Years}}{length  of sentence given the defendant by the  mock juror subject}
+    \item{\code{Serious}}{a  rating of  how  serious  the  subject  thought the defendant's  crime  was}
+    \item{\code{exciting}}{rating of the photo for 'exciting'}
+    \item{\code{calm}}{rating of the photo for 'calm'}
+    \item{\code{independent}}{rating of the photo for 'independent'}
+    \item{\code{sincere}}{rating of the photo for 'sincere'}
+    \item{\code{warm}}{rating of the photo for 'warm'}
+    \item{\code{phyattr}}{rating of the photo for 'physical attractiveness'}
+    \item{\code{sociable}}{rating of the photo for 'exciting'}
+    \item{\code{kind}}{rating of the photo for 'kind'}
+    \item{\code{intelligent}}{rating of the photo for 'intelligent'}
+    \item{\code{strong}}{rating of the photo for 'strong'}
+    \item{\code{sophisticated}}{rating of the photo for 'sophisticated'}
+    \item{\code{happy}}{rating of the photo for 'happy'}
+    \item{\code{ownPA}}{self-rating of the subject for 'physical attractiveness'}
+  }
+}
+%\details{
+%%  ~~ If necessary, more details than the __description__ above ~~
+%}
+\source{
+From Dr. Wuensch's StatData Page,
+\url{http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat}
+}
+\references{
+Data from the thesis by Plaster, M. E. (1989).
+\emph{Inmates as mock jurors: The effects of physical attractiveness upon juridic decisions.}
+M.A. thesis,
+Greenville, NC: East Carolina University. 
+
+%%  ~~ possibly secondary sources and usages ~~
+}
+\examples{
+# manipulation check:  test ratings of the photos classified by Attractiveness
+jury.mod1 <- lm( cbind(phyattr, happy, independent, sophisticated) ~ Attr, data=MockJury)
+Anova(jury.mod1, test="Roy")
+## 
+## Type II MANOVA Tests: Roy test statistic
+##      Df test stat approx F num Df den Df    Pr(>F)    
+## Attr  2    1.7672   48.156      4    109 < 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+heplot(jury.mod1, main="HE plot for manipulation check")
+pairs(jury.mod1)
+
+if (require(candisc)) {
+	jury.can <- candisc(jury.mod1)
+	jury.can
+	heplot(jury.can, main="Canonical HE plot")
+}
+
+# influence of Attr of photo and nature of crime on Serious and Years
+jury.mod2 <- lm( cbind(Serious, Years) ~ Attr * Crime, data=MockJury)
+Anova(jury.mod2, test="Roy")
+heplot(jury.mod2)
+
+# stepdown test (ANCOVA), controlling for Serious
+jury.mod3 <- lm( Years ~ Serious + Attr * Crime, data=MockJury)
+Anova(jury.mod3)
+
+# need to consider heterogeneous slopes?
+jury.mod4 <- lm( Years ~ Serious * Attr * Crime, data=MockJury)
+anova(jury.mod3, jury.mod4)
+
+}
+\keyword{datasets}
+\concept{MANOVA}
+\concept{candisc}
+

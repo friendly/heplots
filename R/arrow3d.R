@@ -1,6 +1,34 @@
 ## Original by Barry Rowlingson, R-help, 1/10/2010
 ## Modified by MF: inlined extprod3d, added barblen (to specify absolute barb length)
 
+
+
+#' Draw a 3D Arrow in an RGL Scene
+#' 
+#' Draws a 3D arrow in an rgl scene with barbs at the arrow head
+#' 
+#' 
+#' @param p0 Initial point (tail of arrow)
+#' @param p1 Ending point (head of arrow)
+#' @param barblen Length of each barb, in data units
+#' @param s length of barb as fraction of line length (unless barblen is
+#' specified)
+#' @param theta opening angle of barbs
+#' @param n number of barbs
+#' @param \dots args passed to lines3d for line styling, e.g., \code{color},
+#' \code{lwd}, etc. See \code{\link[rgl]{material3d}}.
+#' @return Returns (invisibly): integer ID of the line added to the scene %%
+#' ~Describe the value returned %% If it is a LIST, use %% \item{comp1
+#' }{Description of 'comp1'} %% \item{comp2 }{Description of 'comp2'} %% ...
+#' @author Barry Rowlingson, posted to R-help, 1/10/2010
+#' @seealso \code{\link[rgl]{lines3d}}, \code{\link[rgl]{segments3d}},
+#' @keywords aplot
+#' @examples
+#' 
+#' arrow3d(c(0,0,0), c(2,2,2), barblen=.2, lwd=3, col="black")
+#' arrow3d(c(0,0,0), c(-2,2,2), barblen=.2, lwd=3, col="red")
+#' 
+#' @export arrow3d
 arrow3d <- function(p0=c(0,0,0), p1=c(1,1,1), barblen, s=0.05, theta=pi/6, n=3, ...){
  ##      p0: start point
  ##      p1: end point

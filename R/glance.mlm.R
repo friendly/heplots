@@ -33,6 +33,42 @@
 #   UseMethod("glance")
 # }
 
+
+
+#' Glance at an mlm object
+#' 
+#' This function takes an "mlm" object, fit by \code{\link[stats]{lm}} with a
+#' multivariate response. The goal is to return something analogous to
+#' \code{\link[broom]{glance.lm}} for a univariate response linear model.
+#' 
+#' In the multivariate case, it returns a \code{\link[tibble]{tibble}} with one
+#' row for each response variable, containing goodness of fit measures, F-tests
+#' and p-values.
+#' 
+#' 
+#' @param x An \code{mlm} object created by \code{\link[stats]{lm}}, i.e., with
+#' a multivariate response.
+#' @param \dots Additional arguments. Not used.
+#' @return A \code{\link[tibble]{tibble}} with one row for each response
+#' variable and the columns: \describe{ \item{list("r.squared")}{R squared
+#' statistic, or the percent of variation explained by the model.}
+#' \item{list("adj.r.squared")}{Adjusted R squared statistic, which is like the
+#' R squared statistic except taking degrees of freedom into account.}
+#' \item{list("sigma")}{Estimated standard error of the residuals}
+#' \item{list("fstatitic")}{Overall F statistic for the model}
+#' \item{list("numdf")}{Numerator degrees of freedom for the overall test}
+#' \item{list("dendf")}{Denominator degrees of freedom for the overall test}
+#' \item{list("p.value")}{P-value corresponding to the F statistic}
+#' \item{list("nobs")}{Number of observations used} }
+#' @author Michael Friendly
+#' @seealso \code{\link[broom]{glance}}, \code{\link[broom]{glance.lm}}
+#' @keywords multivariate models
+#' @examples
+#' 
+#' iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
+#' glance(iris.mod)
+#' 
+#' @export glance.mlm
 glance.mlm <- function(x, ...) {
 #  warn_on_subclass(x, "glance")
   int_only <- nrow(coefficients(x)) == 1

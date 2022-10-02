@@ -4,6 +4,8 @@
 
 
 
+
+
 #' Make Colors Transparent
 #' 
 #' Takes a vector of colors (as color names or rgb hex values) and adds a
@@ -41,6 +43,7 @@
 #' trans.colors("red", alpha=seq(0,1, length=5), names=paste("red", 1:5, sep=""))
 #' 
 #' 
+#' @export trans.colors
 trans.colors <- function(col, alpha=0.5, names=NULL) {
   nc <- length(col)
   na <- length(alpha)

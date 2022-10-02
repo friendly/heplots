@@ -5,6 +5,67 @@
 # -- now allow ellipses to be filled
 # -- now pass label.pos to label.ellipse
 
+
+
+#' Coefficient plots for Multivariate Linear Models
+#' 
+#' Displays confidence ellipses for all parameters in an multivariate linear
+#' model, for a given pair of variables.  As such, it is a generalization of
+#' \code{\link[car]{confidenceEllipse}}.
+#' 
+#' 
+#' @aliases coefplot coefplot.mlm
+#' @param object A multivariate linear model, such as fit by \code{lm(cbind(y1,
+#' y2, ...) ~ ...)}
+#' @param \dots Other parameters passed to methods
+#' @param variables Response variables to plot, given as their indices or names
+#' @param parm Parameters to plot, given as their indices or names
+#' @param df Degrees of freedom for hypothesis tests
+#' @param level Confidence level for the confidence ellipses
+#' @param intercept logical. Include the intercept?
+#' @param Scheffe If \code{TRUE}, confidence intervals for all parameters have
+#' Scheffe coverage, otherwise, individual coverage.
+#' @param bars Draw univariate confidence intervals for each of the variables?
+#' @param fill a logical value or vector. \code{TRUE} means the confidence
+#' ellipses will be filled.
+#' @param fill.alpha Opacity of the confidence ellipses
+#' @param labels Labels for the confidence ellipses
+#' @param label.pos Positions of the labels for each ellipse.  See
+#' \code{\link{label.ellipse}}
+#' @param xlab,ylab x, y axis labels
+#' @param xlim,ylim Axis limits
+#' @param axes Draw axes?
+#' @param main Plot title
+#' @param add logical. Add to an existing plot?
+#' @param lwd Line widths
+#' @param lty Line types
+#' @param pch Point symbols for the parameter estimates
+#' @param col Colors for the confidence ellipses, points, lines
+#' @param cex Character size for points showing parameter estimates
+#' @param cex.label Character size for ellipse labels
+#' @param lty.zero,col.zero,pch.zero Line type, color and point symbol for
+#' horizontal and vertical lines at 0, 0.
+#' @param verbose logical.  Print parameter estimates and variance-covariance
+#' for each parameter?
+#' @return Returns invisibly a list of the coordinates of the ellipses drawn
+#' @author Michael Friendly
+#' @seealso \code{\link[car]{confidenceEllipse}}, ~~~
+#' @keywords hplot
+#' @examples
+#' 
+#' rohwer.mlm <- lm(cbind(SAT,PPVT,Raven)~n+s+ns, data=Rohwer)
+#' 
+#' coefplot(rohwer.mlm, lwd=2, main="Bivariate coefficient plot for SAT and PPVT", fill=TRUE)
+#' coefplot(rohwer.mlm, add=TRUE, Scheffe=TRUE, fill=TRUE)
+#' 
+#' coefplot(rohwer.mlm, var=c(1,3))
+#' 
+#' mod1 <- lm(cbind(SAT,PPVT,Raven)~n+s+ns+na+ss, data=Rohwer)
+#' coefplot(mod1, lwd=2, fill=TRUE, parm=(1:5),
+#' 	main="Bivariate 68% coefficient plot for SAT and PPVT", level=0.68)
+#' 
+#' 
+#' @export coefplot
 coefplot <- function(object, ...) {
 	UseMethod("coefplot")
 }
