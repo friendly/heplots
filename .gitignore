@@ -3,7 +3,7 @@
 .RData
 .Ruserdata
 heplots.Rproj
-
+*.bak
 doc
 Meta
 inst/doc
