@@ -9,6 +9,8 @@ output:
     fig_caption: yes
     toc: true
     toc_depth: 2
+pkgdown:
+  as_is: true
 bibliography: "HE-examples.bib"
 link-citations: yes
 csl: apa.csl
