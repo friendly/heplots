@@ -20,15 +20,20 @@
 #' Several tutorial vignettes are also included.  See
 #' \code{vignette(package="heplots")}.
 #' 
-#' \tabular{ll}{ Package: \tab heplots\cr Type: \tab Package\cr Version: \tab
-#' 1.4-0\cr Date: \tab 2022-09-26\cr License: \tab GPL (>= 2), GPL version 2 or
-#' newer\cr }
+#' \tabular{ll}{ 
+#' Package: \tab heplots\cr 
+#' Type: \tab Package\cr 
+#' Version: \tab 1.4-0\cr 
+#' Date: \tab 2022-09-26\cr 
+#' License: \tab GPL (>= 2), GPL version 2 or newer\cr 
+#' }
 #' 
 #' The graphical functions contained here all display multivariate model
 #' effects in variable (data) space, for one or more response variables (or
 #' contrasts among response variables in repeated measures designs).
 #' 
-#' \describe{ \item{list(list("heplot"))}{constructs two-dimensional HE plots
+#' \describe{ 
+#' \item{list(list("heplot"))}{constructs two-dimensional HE plots
 #' for model terms and linear hypotheses for pairs of response variables in
 #' multivariate linear models.}
 #' 
@@ -39,7 +44,8 @@
 #' plots.}
 #' 
 #' \item{list(list("heplot1d"))}{constructs 1-dimensional analogs of HE plots
-#' for model terms and linear hypotheses for single response variables.} }
+#' for model terms and linear hypotheses for single response variables.} 
+#' }
 #' 
 #' For repeated measure designs, between-subject effects and within-subject
 #' effects must be plotted separately, because the error terms (E matrices)
@@ -67,19 +73,19 @@
 #' @name heplots-package
 #' @aliases heplots-package heplots
 #' @docType package
-#' @author John Fox, Michael Friendly, and Georges Monette
+#' @author 
+#'    Michael Friendly, John Fox, and Georges Monette
 #' 
-#' Maintainer: Michael Friendly, \email{friendly@yorku.ca},
-#' \url{http://datavis.ca}
-#' @seealso \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for
-#' Anova.mlm computations and tests
+#'    Maintainer: Michael Friendly, \email{friendly@yorku.ca}, \url{http://datavis.ca}
+#' @seealso 
+#'     \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for Anova.mlm computations and tests
 #' 
-#' \code{\link[candisc]{candisc-package}} for reduced-rank views in canonical
-#' space
+#'     \code{\link[candisc]{candisc-package}} for reduced-rank views in canonical space
 #' 
-#' \code{\link[stats]{manova}} for a different approach to testing effects in
-#' MANOVA designs
-#' @references Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
+#'     \code{\link[stats]{manova}} for a different approach to testing effects in MANOVA designs
+#'     
+#' @references 
+#' Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 #' Displays for Multivariate Linear Models: SAS Software and Examples.
 #' \emph{Journal of Statistical Software}, 17(6), 1-42. %
 #' \url{https://www.jstatsoft.org/v17/i06/}
@@ -96,10 +102,8 @@
 #' \url{https://socialsciences.mcmaster.ca/jfox/heplots-dsc-paper.pdf}
 #' 
 #' Friendly, M. (2010). HE Plots for Repeated Measures Designs. \emph{Journal
-#' of Statistical Software}, 37(4), 1-40.  % URL
-#' \url{https://www.jstatsoft.org/v37/i04/}.
-#' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_expr_doi(\"#1\")}",
-#' "10.18637/jss.v037.i04")\Sexpr{tools:::Rd_expr_doi("10.18637/jss.v037.i04")}
+#' of Statistical Software}, 37(4), 1-40. 
+#' \doi{10.18637/jss.v037.i04}.
 #' 
 #' Fox, J., Friendly, M. & Weisberg, S. (2013).  Hypothesis Tests for
 #' Multivariate Linear Models Using the car Package.  \emph{The R Journal},

@@ -1,15 +1,3 @@
-#' Calculate confidence interval for log determinant of covariance matrices
-
-#' @param cov a covariance matrix or a list of covariance matrices
-#' @param n   sample size, or vector of sample sizes
-#' @param conf  confidence level
-#' @param method 
-#' @param bias.adj logical, to include bias correction term
-
-#' @references Cai, T. T.; Liang, T. & Zhou, H. H. (2015).
-#'  Law of log determinant of sample covariance matrix and optimal estimation of differential entropy 
-#'  for high-dimensional Gaussian distributions Journal of Multivariate Analysis, 137, 161-172.
-
 
 
 #' Calculate confidence interval for log determinant of covariance matrices
@@ -18,11 +6,12 @@
 #' Theorem 1, to calculate approximate, normal theory confidence intervals
 #' (CIs) for the log determinant of one or more sample covariance matrices.
 #' 
-#' Their results are translated into a CI via the approximation \deqn{ \log
-#' det( \widehat{\Sigma} ) - bias \pm z_{1 - \alpha/2} \times SE } where \eqn{
-#' \widehat{\Sigma}} is the sample estimate of a population covariance matrix,
+#' Their results are translated into a CI via the approximation 
+#' \deqn{ \log det( \widehat{\Sigma} ) - bias \pm z_{1 - \alpha/2} \times SE } 
+#' where \eqn{\widehat{\Sigma}} 
+#' is the sample estimate of a population covariance matrix,
 #' \eqn{bias} is a bias correction constant and \eqn{SE} is a width factor for
-#' the confidence interval.  Both \eqn{bias} and \eqn{SE} are functions ofS the
+#' the confidence interval.  Both \eqn{bias} and \eqn{SE} are functions of the
 #' sample size, \eqn{n} and number of variables, \eqn{p}.
 #' 
 #' This function is included here only to provide an approximation to
@@ -51,21 +40,17 @@
 #' as the divisor.  The factor \eqn{(n-1 / n)} has not yet been taken into
 #' account here.
 #' 
-#' @param cov a covariance matrix or a (named) list of covariance matrices, all
-#' the same size
-#' @param n sample size, or vector of sample sizes, one for each covariance
-#' matrix
+#' @param cov a covariance matrix or a (named) list of covariance matrices, all the same size
+#' @param n sample size, or vector of sample sizes, one for each covariance matrix
 #' @param conf confidence level
 #' @param method Three methods are provided, based on Cai et. al Theorem 1
-#' (\code{method=1}), Corollary 1 (\code{method=2}) and Corollary 2
-#' (\code{method=3}), each with different bias and SE values.
-#' @param bias.adj logical; set \code{FALSE} to exclude the bias correction
-#' term.
+#'        (\code{method=1}), Corollary 1 (\code{method=2}) and Corollary 2
+#'        (\code{method=3}), each with different bias and SE values.
+#' @param bias.adj logical; set \code{FALSE} to exclude the bias correction term.
 #' @return A data frame with one row for each covariance matrix. \code{lower}
-#' and \code{upper} are the boundaries of the confidence intervals. Other
-#' columns are \code{logdet, bias, se}. %% ~Describe the value returned %% If
-#' it is a LIST, use %% \item{comp1 }{Description of 'comp1'} %% \item{comp2
-#' }{Description of 'comp2'} %% ...
+#'        and \code{upper} are the boundaries of the confidence intervals. Other
+#'        columns are \code{logdet, bias, se}. 
+#'        
 #' @author Michael Friendly
 #' @seealso \code{\link{boxM}}, \code{\link{plot.boxM}}
 #' @references
@@ -74,8 +59,7 @@
 #' covariance matrix and optimal estimation of differential entropy for
 #' high-dimensional Gaussian distributions. \emph{Journal of Multivariate
 #' Analysis}, 137, 161-172.
-#' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_expr_doi(\"#1\")}",
-#' "10.1016/j.jmva.2015.02.003")\Sexpr{tools:::Rd_expr_doi("10.1016/j.jmva.2015.02.003")}
+#' \doi{10.1016/j.jmva.2015.02.003}
 #' @keywords manip
 #' @examples
 #' 

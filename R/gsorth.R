@@ -35,19 +35,18 @@
 #' 
 #' @param y A numeric data frame or matrix
 #' @param order An integer vector specifying the order of and/or a subset of
-#' the columns of \code{y} to be orthogonalized. If missing, \code{order=1:p}
-#' where \code{p=ncol(y)}.
+#'        the columns of \code{y} to be orthogonalized. If missing, \code{order=1:p}
+#'        where \code{p=ncol(y)}.
 #' @param recenter If \code{TRUE}, the result has same column means as
-#' original; else means = 0 for cols \code{2:p}.
+#'        original; else means = 0 for cols \code{2:p}.
 #' @param rescale If \code{TRUE}, the result has same column standard
-#' deviations as original; else sd = residual variance for cols \code{2:p}
+#'        deviations as original; else sd = residual variance for cols \code{2:p}
 #' @param adjnames If \code{TRUE}, the column names of the result are adjusted
-#' to the form Y1, Y2.1, Y3.12, by adding the suffixes '.1', '.12', etc. to the
-#' original column names.
+#'        to the form Y1, Y2.1, Y3.12, by adding the suffixes '.1', '.12', etc. to the
+#'        original column names.
 #' @return Returns a matrix or data frame with uncorrelated columns.  Row and
-#' column names are copied to the result. %% If it is a LIST, use %%
-#' \item{comp1 }{Description of 'comp1'} %% \item{comp2 }{Description of
-#' 'comp2'} %% ...
+#' column names are copied to the result. 
+#' 
 #' @author Michael Friendly
 #' @seealso \code{\link[base]{qr}},
 #' @keywords manip

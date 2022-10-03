@@ -29,37 +29,34 @@
 #' @param xy1 First data set, a 2-column matrix or data.frame
 #' @param xy2 Second data set, a 2-column matrix or data.frame
 #' @param alpha The value of the interpolation fraction, typically (but not
-#' necessarily) \code{0 <= alpha <= 1)}.
+#'        necessarily) \code{0 <= alpha <= 1)}.
 #' @param xlim,ylim x, y limits for the plot.  If not specified, the function
-#' uses the ranges of \code{rbind(xy1, xy2)}.
-#' @param points Logical. Whether to plot the points in the current
-#' interpolation?
+#'        uses the ranges of \code{rbind(xy1, xy2)}.
+#' @param points Logical. Whether to plot the points in the current interpolation?
 #' @param col Color for plotted points.
 #' @param add Logical. Whether to add to an existing plot?
 #' @param ellipse logical. \code{TRUE} to plot a \code{dataEllipse}
 #' @param ellipse.args other arguments passed to \code{dataEllipse}
-#' @param abline logical. \code{TRUE} to plot the linear regression line for
-#' \code{XY}
+#' @param abline logical. \code{TRUE} to plot the linear regression line for \code{XY}
 #' @param col.lines line color
 #' @param lwd line width
-#' @param id.method How points are to be identified. See
-#' \code{\link[car]{showLabels}}.
+#' @param id.method How points are to be identified. See \code{\link[car]{showLabels}}.
 #' @param labels observation labels
-#' @param id.n Number of points to be identified. If set to zero, no points are
-#' identified.
+#' @param id.n Number of points to be identified. If set to zero, no points are identified.
 #' @param id.cex Controls the size of the plotted labels. The default is 1
 #' @param id.col Controls the color of the plotted labels.
-#' @param segments logical. \code{TRUE} to draw lines segments from \code{xy1}
-#' to \code{xy}
+#' @param segments logical. \code{TRUE} to draw lines segments from \code{xy1} to \code{xy}
 #' @param segment.col line color for segments
 #' @param \dots other arguments passed to \code{plot()}
 #' @return Returns invisibly the interpolated XY points.
-#' @note The examples here just use on-screen animations to the console
+#' @note 
+#' The examples here just use on-screen animations to the console
 #' graphics window. The \code{\link[animation]{animation}} package provides
 #' facilities to save these in various formats.
 #' @author Michael Friendly
-#' @seealso \code{\link[car]{dataEllipse}}, \code{\link[car]{showLabels}},
-#' \code{\link[animation]{animation}}
+#' @seealso 
+#'    \code{\link[car]{dataEllipse}}, \code{\link[car]{showLabels}},
+#'    \code{\link[animation]{animation}}
 #' @keywords hplot
 #' @examples
 #' 
