@@ -22,7 +22,7 @@
 #' robust covariance matrices.
 #' 
 #' @aliases covEllipses covEllipses.boxM covEllipses.data.frame
-#' covEllipses.matrix covEllipses.default
+#'          covEllipses.matrix covEllipses.default
 #' @param x The generic argument. For the default method, this is a list of
 #' covariance matrices. For the \code{data.frame} and \code{matrix} methods,
 #' this is a numeric matrix of two or more columns supplying the variables to
@@ -219,7 +219,8 @@ covEllipses.default <-
 				center = FALSE,    # center the ellipses at c(0,0)?
 				center.pch="+",  
 				center.cex=2,
-				col=getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan", "brown", "magenta", "darkgray")),
+				col=getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan", "brown", 
+				                                 "magenta", "darkgray")),
 				# colors for ellipses
 				lty=1,
 				lwd=2,

@@ -20,10 +20,10 @@
 #' @docType data
 #' @format A data frame with 4344 observations on the following 3 variables.
 #' \describe{ 
-#' \item{\code{grade}}{an ordered factor with levels \code{7} <
+#'   \item{\code{grade}}{an ordered factor with levels \code{7} <
 #'       \code{8} < \code{9} < \code{10} < \code{11} < \code{12}}
-#' \item{\code{depression}{a numeric vector} 
-#' \item{\code{anxiety}{a numeric vector} }
+#'   \item{\code{depression}{a numeric vector} 
+#'   \item{\code{anxiety}{a numeric vector} }
 #' @source 
 #' Warne, R. T. (2014). A primer on Multivariate Analysis of Variance
 #' (MANOVA) for Behavioral Scientists.  
@@ -60,13 +60,13 @@ NULL
 #' @docType data
 #' @format A data frame with 62 observations on the following 6 variables.
 #' \describe{ 
-#' \item{list("AMED")}{adoptive mother's years of education (proxy
+#'   \item{\code{AMED}}{adoptive mother's years of education (proxy
 #' for her IQ)} 
-#' \item{list("BMIQ")}{biological mother's score on IQ test}
-#' \item{list("Age2IQ")}{IQ of child at age 2} 
-#' \item{list("Age4IQ")}{IQ of child at age 4} 
-#' \item{list("Age8IQ")}{IQ of child at age 8}
-#' \item{list("Age13IQ")}{IQ of child at age 13} 
+#'   \item{\code{BMIQ}}{biological mother's score on IQ test}
+#'   \item{\code{Age2IQ}}{IQ of child at age 2} 
+#'   \item{\code{Age4IQ}}{IQ of child at age 4} 
+#'   \item{\code{Age8IQ}}{IQ of child at age 8}
+#'   \item{\code{Age13IQ}}{IQ of child at age 13} 
 #' }
 #' @seealso \code{\link[Sleuth2]{ex1605}}
 #' @references 
@@ -112,13 +112,13 @@ NULL
 #' par(op)
 #' 
 #' # between-S (MMReg) plots
-#' heplot(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
+#' heplot(Adopted.mod, hypotheses=\code{Reg"=c("AMED", "BMIQ}),
 #' 	main="IQ scores of adopted children: MMReg")
 #' 
-#' pairs(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")))
+#' pairs(Adopted.mod, hypotheses=\code{Reg"=c("AMED", "BMIQ}))
 #' 
 #' if(requireNamespace("rgl")){
-#' heplot3d(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
+#' heplot3d(Adopted.mod, hypotheses=\code{Reg"=c("AMED", "BMIQ}),
 #' 	col = c("red", "blue", "black", "gray"), wire=FALSE)
 #' }
 #' 
@@ -130,7 +130,7 @@ NULL
 #' # within-S plots
 #' heplot(Adopted.mod, idata=Age, idesign=~Age, iterm="Age",
 #' 	cex=1.25, cex.lab=1.4, fill=c(FALSE, TRUE),
-#' 	hypotheses=list("Reg"=c("AMED", "BMIQ"))
+#' 	hypotheses=\code{Reg"=c("AMED", "BMIQ})
 #' 	)
 #' 
 #' 
@@ -175,12 +175,12 @@ NULL
 #' @docType data
 #' @format A data frame with 246 observations on the following 6 variables.
 #' \describe{ 
-#' \item{list("caste")}{a factor with levels \code{Queen} \code{Worker}} 
-#' \item{list("treat")}{a factor with levels \code{""} \code{CAP} \code{MAL}} 
-#' \item{list("time")}{an ordered factor: time of treatment} 
-#' \item{list("Iz")}{an index of ovarian development}
-#' \item{list("Iy")}{an index of ovarian reabsorption} 
-#' \item{list("trtime")}{a factor with levels \code{0} \code{CAP05} \code{CAP07} \code{CAP10}
+#'   \item{\code{caste}}{a factor with levels \code{Queen} \code{Worker}} 
+#'   \item{\code{treat}}{a factor with levels \code{""} \code{CAP} \code{MAL}} 
+#'   \item{\code{time}}{an ordered factor: time of treatment} 
+#'   \item{\code{Iz}}{an index of ovarian development}
+#'   \item{\code{Iy}}{an index of ovarian reabsorption} 
+#'   \item{\code{trtime}}{a factor with levels \code{0} \code{CAP05} \code{CAP07} \code{CAP10}
 #'       \code{CAP12} \code{CAP15} \code{MAL05} \code{MAL07} \code{MAL10}
 #'       \code{MAL12} \code{MAL15}} 
 #' }
@@ -287,12 +287,12 @@ NULL
 #' @docType data
 #' @format A data frame with 145 observations on the following 6 variables.
 #' \describe{ 
-#' \item{list("relwt")}{relative weight, expressed as the ratio of actual weight to expected weight, given the person's height, a numeric vector} 
-#' \item{list("glufast")}{fasting plasma glucose level, a numeric vector} 
-#' \item{list("glutest")}{test plasma glucose level, a measure of glucose intolerance, a numeric vector} 
-#' \item{list("instest")}{plasma insulin during test, a measure of insulin response to oral glucose, a numeric vector} 
-#' \item{list("sspg")}{steady state plasma glucose, a measure of insulin resistance, a numeric vector} 
-#' \item{list("group")}{diagnostic group, a factor with levels \code{Normal} \code{Chemical_Diabetic}
+#'   \item{\code{relwt}}{relative weight, expressed as the ratio of actual weight to expected weight, given the person's height, a numeric vector} 
+#'   \item{\code{glufast}}{fasting plasma glucose level, a numeric vector} 
+#'   \item{\code{glutest}}{test plasma glucose level, a measure of glucose intolerance, a numeric vector} 
+#'   \item{\code{instest}}{plasma insulin during test, a measure of insulin response to oral glucose, a numeric vector} 
+#'   \item{\code{sspg}}{steady state plasma glucose, a measure of insulin resistance, a numeric vector} 
+#'   \item{\code{group}}{diagnostic group, a factor with levels \code{Normal} \code{Chemical_Diabetic}
 #'       \code{Overt_Diabetic}} 
 #' }
 #' @references 
@@ -362,13 +362,13 @@ NULL
 #' @docType data
 #' @format A data frame with 90 observations on the following 7 variables.
 #' \describe{ 
-#' \item{list("group")}{a factor with levels \code{High school} \code{College} \code{Non-football}} 
-#' \item{list("width")}{a numeric vector: head width at widest dimension} 
-#' \item{list("circum")}{a numeric vector: head circumference} 
-#' \item{list("front.back")}{a numeric vector: front to back distance at eye level} 
-#' \item{list("eye.top")}{a numeric vector: eye to top of head} 
-#' \item{list("ear.top")}{a numeric vector:ear to top of head}
-#' \item{list("jaw")}{a numeric vector: jaw width} 
+#'   \item{\code{group}}{a factor with levels \code{High school} \code{College} \code{Non-football}} 
+#'   \item{\code{width}}{a numeric vector: head width at widest dimension} 
+#'   \item{\code{circum}}{a numeric vector: head circumference} 
+#'   \item{\code{front.back}}{a numeric vector: front to back distance at eye level} 
+#'   \item{\code{eye.top}}{a numeric vector: eye to top of head} 
+#'   \item{\code{ear.top}}{a numeric vector:ear to top of head}
+#'   \item{\code{jaw}}{a numeric vector: jaw width} 
 #' }
 #' @source 
 #' Rencher, A. C. (1995), \emph{Methods of Multivariate Analysis}, New
@@ -393,7 +393,7 @@ NULL
 #' 	col=c("red", "blue"))
 #' 
 #' # show it with tests of Helmert contrasts
-#' heplot(foot.mod, hypotheses=list("group.1"="group1","group.2"="group2"),
+#' heplot(foot.mod, hypotheses=\code{group.1"="group1","group.2"="group2},
 #' 	col=c("red", "blue", "green3", "green3" ),
 #' 	main="HE plot with orthogonal Helmert contrasts")
 #' 
@@ -401,13 +401,13 @@ NULL
 #' pairs(foot.mod)
 #' 
 #' # ... with tests of Helmert contrasts
-#' pairs(foot.mod, hypotheses=list("group.1"="group1","group.2"="group2"),
+#' pairs(foot.mod, hypotheses=\code{group.1"="group1","group.2"="group2},
 #' 	col=c("red", "blue", "green3", "green3"), hyp.labels=FALSE)
 #' 
 #' # see that the hypothesis for groups really is 2D
 #' if(requireNamespace("rgl")){
 #' heplot3d(foot.mod, variables=c(1,2,6),
-#' 	hypotheses=list("group.1"="group1","group.2"="group2"),
+#' 	hypotheses=\code{group.1"="group1","group.2"="group2},
 #' 	col=c("red", "blue", "green3", "green3" ), wire=FALSE)
 #' }
 #' 
@@ -433,14 +433,13 @@ NULL
 #' 
 #' The treatments are described as follows: 
 #' \describe{
-#' \item{list("T1")}{Listened again to the tone at their initial DU level, for
-#' the same amount of time they were able to tolerate it before.}
-#' \item{list("T2")}{Same as T1, with one additional minute exposure}
-#' \item{list("T3")}{Same as T2, but were explicitly instructed to use the
-#' relaxation techniques} 
-#' \item{list("Control")}{These subject experienced no
-#' further exposure to the noise tone until the final sensitivity measures were
-#' taken} 
+#'   \item{\code{T1}}{Listened again to the tone at their initial DU level, for
+#'          the same amount of time they were able to tolerate it before.}
+#'   \item{\code{T2}}{Same as T1, with one additional minute exposure}
+#'   \item{\code{T3}}{Same as T2, but were explicitly instructed to use the
+#'         relaxation techniques} 
+#'   \item{\code{Control}}{These subject experienced no
+#'         further exposure to the noise tone until the final sensitivity measures were taken} 
 #' }
 #' 
 #' Hand and Taylor described several substantive hypotheses related to the
@@ -451,13 +450,13 @@ NULL
 #' @docType data
 #' @format A data frame with 98 observations on the following 6 variables.
 #' \describe{ 
-#' \item{list("type")}{Type of headache, a factor with levels \code{Migrane} \code{Tension}} 
-#' \item{list("treatment")}{Treatment group, a factor with levels \code{T1} \code{T2} \code{T3} 
+#'   \item{\code{type}}{Type of headache, a factor with levels \code{Migrane} \code{Tension}} 
+#'   \item{\code{treatment}}{Treatment group, a factor with levels \code{T1} \code{T2} \code{T3} 
 #'       \code{Control}.  See Details} 
-#' \item{list("u1")}{Noise level rated as Uncomfortable, initial measure} 
-#' \item{list("du1")}{Noise level rated as Definitely Uncomfortable, initial measure} 
-#' \item{list("u2")}{Noise level rated as Uncomfortable, final measure} 
-#' \item{list("du2")}{Noise level rated as Definitely Uncomfortable, final measure} 
+#'   \item{\code{u1}}{Noise level rated as Uncomfortable, initial measure} 
+#'   \item{\code{du1}}{Noise level rated as Definitely Uncomfortable, initial measure} 
+#'   \item{\code{u2}}{Noise level rated as Uncomfortable, final measure} 
+#'   \item{\code{du2}}{Noise level rated as Definitely Uncomfortable, final measure} 
 #' }
 #' @source 
 #' D. J. Hand and C. C. Taylor (1987). \emph{Multivariate analysis of
@@ -533,19 +532,19 @@ NULL
 #' @docType data
 #' @format A data frame with 32 observations on the following 9 variables.
 #' \describe{ 
-#' \item{list("age")}{patient age} 
-#' \item{list("sex")}{patient sex, a factor with levels \code{f} \code{m}} 
-#' \item{list("pstat")}{physical status (ignoring that associated with the operation). 
+#'   \item{\code{age}}{patient age} 
+#'   \item{\code{sex}}{patient sex, a factor with levels \code{f} \code{m}} 
+#'   \item{\code{pstat}}{physical status (ignoring that associated with the operation). 
 #'       A 1-5 scale, with 1=perfect health, 5=very poor health.} 
-#' \item{list("build")}{body build, a 1-5 scale, with 1=emaciated, 2=thin, 3=average, 4=fat, 5=obese.}
-#' \item{list("cardiac")}{preoperative complications with heart, 1-4 scale, with 1=none, 2=mild, 3=moderate, 4=severe.} 
-#' \item{list("resp")}{preoperative complications with respiration, 1-4 scale, with 1=none, 2=mild, 
+#'   \item{\code{build}}{body build, a 1-5 scale, with 1=emaciated, 2=thin, 3=average, 4=fat, 5=obese.}
+#'   \item{\code{cardiac}}{preoperative complications with heart, 1-4 scale, with 1=none, 2=mild, 3=moderate, 4=severe.} 
+#'   \item{\code{resp}}{preoperative complications with respiration, 1-4 scale, with 1=none, 2=mild, 
 #'       3=moderate, 4=severe.} 
-#' \item{list("leave")}{condition upon leaving the recovery room, a 1-4 scale, with 1=routine recovery, 2=intensive care for observation
+#'   \item{\code{leave}}{condition upon leaving the recovery room, a 1-4 scale, with 1=routine recovery, 2=intensive care for observation
 #'       overnight, 3=intensive care, with moderate care required, 4=intensive care,
 #'       with moderate care required.  } 
-#' \item{list("los")}{length of stay in hospital after operation (days)}
-#' \item{list("nurse")}{level of nursing required one week after operation, a
+#'   \item{\code{los}}{length of stay in hospital after operation (days)}
+#'   \item{\code{nurse}}{level of nursing required one week after operation, a
 #'       1-5 scale, with 1=intense, 2=heavy, 3=moderate, 4=light, 5=none (?); see Details}
 #' }
 #' 
@@ -584,7 +583,7 @@ NULL
 #'           "NursingCare\n(nurse)", 
 #'           "LengthOfStay\n(los)")
 #' # Add ellipse to test all 5 regressors simultaneously
-#' hyp <- list("Regr" = c("age", "sexm", "pstat", "build", "cardiac", "resp"))
+#' hyp <- \code{Regr" = c("age", "sexm", "pstat", "build", "cardiac", "resp})
 #' pairs(Hern.mod, hypotheses=hyp, col=clr, var.labels=vlab)
 #' 
 #' ## Views in canonical space for the various predictors
@@ -611,9 +610,9 @@ NULL
 #' 
 #' The groups are: 
 #' \describe{ 
-#' \item{Eur}{European Americans (Caucasians living in the United States their entire lives)} 
-#' \item{Asian_Amer}{Asian Americans (Asians living in the United States since before the age of 6 years)}
-#' \item{Asian_Intl}{Asian Internationals (Asians who moved to the United States after their 6th birthday)} 
+#'   \item{Eur}{European Americans (Caucasians living in the United States their entire lives)} 
+#'   \item{Asian_Amer}{Asian Americans (Asians living in the United States since before the age of 6 years)}
+#'   \item{Asian_Intl}{Asian Internationals (Asians who moved to the United States after their 6th birthday)} 
 #' }
 #' 
 #' The factor \code{Group} is set up to compare E vs. Asian and the two Asian
@@ -623,13 +622,13 @@ NULL
 #' @docType data
 #' @format A data frame with 203 observations on the following 7 variables.
 #' \describe{ 
-#' \item{list("ID")}{ID number} 
-#' \item{list("Group")}{a factor with
-#' levels \code{Eur} \code{Asian_Amer} \code{Asian_Intl}}
-#' \item{list("N")}{Neuroticism score} 
-#' \item{list("E")}{Extraversion score}
-#' \item{list("O")}{Openness score} \item{list("A")}{Agreeableness score}
-#' \item{list("C")}{Conscientiousness score} 
+#'   \item{\code{ID}}{ID number} 
+#'   \item{\code{Group}}{a factor with
+#'         levels \code{Eur} \code{Asian_Amer} \code{Asian_Intl}}
+#'   \item{\code{N}}{Neuroticism score} 
+#'   \item{\code{E}}{Extraversion score}
+#'   \item{\code{O")}{Openness score} \item{list("A}}{Agreeableness score}
+#'   \item{\code{C}}{Conscientiousness score} 
 #' }
 #' @references 
 #' Costa Jr, P. T., & McCrae, R. R. (1992).  \emph{Revised NEO
@@ -685,9 +684,9 @@ NULL
 #' @format A data frame with 12 observations on the following 3 variables.
 #' 
 #' \describe{ 
-#'   \item{list("group")}{a factor with levels \code{1} \code{2}}
-#'   \item{list("BM")}{Basic Math score, a numeric vector} 
-#'   \item{list("WP")}{Word Problems score, a numeric vector} 
+#'   \item{\code{group}}{a factor with levels \code{1} \code{2}}
+#'   \item{\code{BM}}{Basic Math score, a numeric vector} 
+#'   \item{\code{WP}}{Word Problems score, a numeric vector} 
 #'   }
 #' @source Fictitious data
 #' @keywords datasets
@@ -738,23 +737,23 @@ NULL
 #' @docType data
 #' @format A data frame with 114 observations on the following 17 variables.
 #' \describe{ 
-#' \item{list("Attr")}{Attractiveness of the photo, a factor with levels \code{Beautiful} \code{Average} \code{Unattractive}}
-#' \item{list("Crime")}{Type of crime, a factor with levels \code{Burglary} (theft of items from victim's room) \code{Swindle} (conned a male victim)}
-#' \item{list("Years")}{length of sentence given the defendant by the mock juror subject} 
-#' \item{list("Serious")}{a rating of how serious the subject thought the defendant's crime was} 
-#' \item{list("exciting")}{rating of the photo for 'exciting'} 
-#' \item{list("calm")}{rating of the photo for 'calm'}
-#' \item{list("independent")}{rating of the photo for 'independent'}
-#' \item{list("sincere")}{rating of the photo for 'sincere'}
-#' \item{list("warm")}{rating of the photo for 'warm'}
-#' \item{list("phyattr")}{rating of the photo for 'physical attractiveness'}
-#' \item{list("sociable")}{rating of the photo for 'exciting'}
-#' \item{list("kind")}{rating of the photo for 'kind'}
-#' \item{list("intelligent")}{rating of the photo for 'intelligent'}
-#' \item{list("strong")}{rating of the photo for 'strong'}
-#' \item{list("sophisticated")}{rating of the photo for 'sophisticated'}
-#' \item{list("happy")}{rating of the photo for 'happy'}
-#' \item{list("ownPA")}{self-rating of the subject for 'physical attractiveness'} 
+#'   \item{\code{Attr}}{Attractiveness of the photo, a factor with levels \code{Beautiful} \code{Average} \code{Unattractive}}
+#'   \item{\code{Crime}}{Type of crime, a factor with levels \code{Burglary} (theft of items from victim's room) \code{Swindle} (conned a male victim)}
+#'   \item{\code{Years}}{length of sentence given the defendant by the mock juror subject} 
+#'   \item{\code{Serious}}{a rating of how serious the subject thought the defendant's crime was} 
+#'   \item{\code{exciting}}{rating of the photo for 'exciting'} 
+#'   \item{\code{calm}}{rating of the photo for 'calm'}
+#'   \item{\code{independent}}{rating of the photo for 'independent'}
+#'   \item{\code{sincere}}{rating of the photo for 'sincere'}
+#'   \item{\code{warm}}{rating of the photo for 'warm'}
+#'   \item{\code{phyattr}}{rating of the photo for 'physical attractiveness'}
+#'   \item{\code{sociable}}{rating of the photo for 'exciting'}
+#'   \item{\code{kind}}{rating of the photo for 'kind'}
+#'   \item{\code{intelligent}}{rating of the photo for 'intelligent'}
+#'   \item{\code{strong}}{rating of the photo for 'strong'}
+#'   \item{\code{sophisticated}}{rating of the photo for 'sophisticated'}
+#'   \item{\code{happy}}{rating of the photo for 'happy'}
+#'   \item{\code{ownPA}}{self-rating of the subject for 'physical attractiveness'} 
 #' }
 #' @references 
 #' Data from the thesis by Plaster, M. E. (1989). \emph{Inmates as
@@ -838,16 +837,16 @@ NULL
 #' @docType data
 #' @format A data frame with 242 observations on the following 10 variables.
 #' \describe{ 
-#' \item{list("Dx")}{Diagnostic group, a factor with levels \code{Schizophrenia} \code{Schizoaffective} \code{Control}}
-#' \item{list("Speed")}{Speed of processing domain T score, a numeric vector}
-#' \item{list("Attention")}{Attention/Vigilance Domain T score, a numeric vector} 
-#' \item{list("Memory")}{Working memory a numeric vector}
-#' \item{list("Verbal")}{Verbal Learning Domain T score, a numeric vector}
-#' \item{list("Visual")}{Visual Learning Domain T score, a numeric vector}
-#' \item{list("ProbSolv")}{Reasoning/Problem Solving Domain T score, a numeric vector} 
-#' \item{list("SocialCog")}{Social Cognition Domain T score, a numeric vector} 
-#' \item{list("Age")}{Subject age, a numeric vector}
-#' \item{list("Sex")}{Subject gender, a factor with levels \code{Female} \code{Male}} 
+#'   \item{\code{Dx}}{Diagnostic group, a factor with levels \code{Schizophrenia} \code{Schizoaffective} \code{Control}}
+#'   \item{\code{Speed}}{Speed of processing domain T score, a numeric vector}
+#'   \item{\code{Attention}}{Attention/Vigilance Domain T score, a numeric vector} 
+#'   \item{\code{Memory}}{Working memory a numeric vector}
+#'   \item{\code{Verbal}}{Verbal Learning Domain T score, a numeric vector}
+#'   \item{\code{Visual}}{Visual Learning Domain T score, a numeric vector}
+#'   \item{\code{ProbSolv}}{Reasoning/Problem Solving Domain T score, a numeric vector} 
+#'   \item{\code{SocialCog}}{Social Cognition Domain T score, a numeric vector} 
+#'   \item{\code{Age}}{Subject age, a numeric vector}
+#'   \item{\code{Sex}}{Subject gender, a factor with levels \code{Female} \code{Male}} 
 #' }
 #' @references 
 #' Heinrichs, R. W., Ammari, N., McDermid Vaz, S. & Miles, A.
@@ -917,14 +916,12 @@ NULL
 #' @docType data
 #' @format A data frame with 243 observations on the following 6 variables.
 #' \describe{ 
-#' \item{list("math")}{Math achievement test score}
-#' \item{list("read")}{Reading achievement test score}
-#' \item{list("antisoc")}{score on a measure of child's antisocial behavior,
-#' \code{0:6}} 
-#' \item{list("hyperact")}{score on a measure of child's
-#' hyperactive behavior, \code{0:5}} \item{list("income")}{yearly income of
-#' child's father} 
-#' \item{list("educ")}{years of education of child's father} 
+#'   \item{\code{math}}{Math achievement test score}
+#'   \item{\code{read}}{Reading achievement test score}
+#'   \item{\code{antisoc}}{score on a measure of child's antisocial behavior, \code{0:6}} 
+#'   \item{\code{hyperact}}{score on a measure of child's
+#'         hyperactive behavior, \code{0:5}} \item{\code{income}}{yearly income of child's father} 
+#'   \item{\code{educ}}{years of education of child's father} 
 #' }
 #' @source 
 #' This dataset was derived from a larger one used by Patrick Curran at
@@ -990,30 +987,30 @@ NULL
 #' @docType data
 #' @format A data frame with 332 observations on the following 14 variables.
 #' \describe{ 
-#' \item{list("site")}{transect site ID, a factor with levels
-#' \code{102} \code{103} \code{104} \code{105} \code{106} \code{107} \code{108}
-#' \code{109} \code{111} \code{112} \code{113} \code{114} \code{115} \code{116}
-#' \code{117} \code{118} \code{119} \code{121} \code{122} \code{123} \code{124}
-#' \code{125} \code{126} \code{127} \code{128} \code{129} \code{131} \code{132}
-#' \code{133} \code{134} \code{135} \code{136} \code{138} \code{139} \code{141}
-#' \code{142} \code{143} \code{144}} 
-#' \item{list("XC")}{X coordinate, a numeric vector} 
-#' \item{list("YC")}{Y coordinate, a numeric vector}
-#' \item{list("forest")}{forest type, a factor with levels \code{birspr}
+#'   \item{\code{site}}{transect site ID, a factor with levels
+#'      \code{102} \code{103} \code{104} \code{105} \code{106} \code{107} \code{108}
+#'      \code{109} \code{111} \code{112} \code{113} \code{114} \code{115} \code{116}
+#'      \code{117} \code{118} \code{119} \code{121} \code{122} \code{123} \code{124}
+#'      \code{125} \code{126} \code{127} \code{128} \code{129} \code{131} \code{132}
+#'      \code{133} \code{134} \code{135} \code{136} \code{138} \code{139} \code{141}
+#'      \code{142} \code{143} \code{144}} 
+#'   \item{\code{XC}}{X coordinate, a numeric vector} 
+#'   \item{\code{YC}}{Y coordinate, a numeric vector}
+#'   \item{\code{forest}}{forest type, a factor with levels \code{birspr}
 #'       \code{mixdec} \code{pine} \code{sprbir} \code{sprpin} \code{spruce}}
-#' \item{list("weather")}{weather type, a factor with levels \code{cloud}
-#'       \code{moist} \code{nice} \code{rain}} \item{list("litho")}{lithological
+#'   \item{\code{weather}}{weather type, a factor with levels \code{cloud}
+#'       \code{moist} \code{nice} \code{rain}} \item{\code{litho}}{lithological
 #'       type, a factor with levels \code{camsed} (Cambro-Silurian sedimentary),
-#' \code{gneis_o} (Precambrian gneisses - Oslo), \code{gneis_r} (- Randsfjord),
-#' \code{magm} (Magmatic rocks)} 
-#' \item{list("altitude")}{altitude, a numeric vector} 
-#' \item{list("Cu")}{Copper, a numeric vector} 
-#' \item{list("Fe")}{Iron, a numeric vector} 
-#' \item{list("K")}{Potassium, a numeric vector}
-#' \item{list("Mg")}{Magnesium, a numeric vector} 
-#' \item{list("Mn")}{Manganese, a numeric vector} 
-#' \item{list("P")}{Lead, a numeric vector}
-#' \item{list("Zn")}{Zinc, a numeric vector} 
+#'      \code{gneis_o} (Precambrian gneisses - Oslo), \code{gneis_r} (- Randsfjord),
+#'      \code{magm} (Magmatic rocks)} 
+#'   \item{\code{altitude}}{altitude, a numeric vector} 
+#'   \item{\code{Cu}}{Copper, a numeric vector} 
+#'   \item{\code{Fe}}{Iron, a numeric vector} 
+#'   \item{\code{K}}{Potassium, a numeric vector}
+#'   \item{\code{Mg}}{Magnesium, a numeric vector} 
+#'   \item{\code{Mn}}{Manganese, a numeric vector} 
+#'   \item{\code{P}}{Lead, a numeric vector}
+#'   \item{\code{Zn}}{Zinc, a numeric vector} 
 #' }
 #' @references 
 #' Todorov V. and Filzmoser P. (2009) Robust statistic for the
@@ -1069,11 +1066,11 @@ NULL
 #' @docType data
 #' @format A data frame with 60 observations on the following 4 variables.
 #' \describe{ 
-#' \item{list("group")}{a factor with levels \code{Normal}
+#'   \item{\code{group}}{a factor with levels \code{Normal}
 #'       \code{Physical Disability} \code{Mental Disability}}
-#' \item{list("caring")}{caretaking responsibilities, a numeric vector}
-#' \item{list("emotion")}{emotional support provided to the child, a numeric vector} 
-#' \item{list("play")}{recreational time spent with the child, a numeric vector} 
+#'   \item{\code{caring}}{caretaking responsibilities, a numeric vector}
+#'   \item{\code{emotion}}{emotional support provided to the child, a numeric vector} 
+#'   \item{\code{play}}{recreational time spent with the child, a numeric vector} 
 #' }
 #' @source 
 #' Meyers, L. S., Gamst, G, & Guarino, A. J. (2006). \emph{Applied
@@ -1102,7 +1099,7 @@ NULL
 #' 
 #' heplot(parenting.mod)
 #' # display tests of contrasts
-#' hyp <- list("N:MP" = "group1", "M:P" = "group2")
+#' hyp <- \code{N:MP" = "group1", "M:P" = "group2}
 #' heplot(parenting.mod, hypotheses=hyp)
 #' 
 #' # make a prettier plot
@@ -1137,11 +1134,11 @@ NULL
 #' @docType data
 #' @format A data frame with 20 observations on the following 5 variables.
 #' \describe{ 
-#' \item{list("tear")}{a numeric vector: tear resistance}
-#' \item{list("gloss")}{a numeric vector: film gloss} 
-#' \item{list("opacity")}{a numeric vector: film opacity} 
-#' \item{list("rate")}{a factor representing change in the rate of extrusion with levels \code{Low} (-10\%), \code{High} (10\%)} 
-#' \item{list("additive")}{a factor with levels \code{Low} (1.0\%), \code{High} (1.5\%)} 
+#'   \item{\code{tear}}{a numeric vector: tear resistance}
+#'   \item{\code{gloss}}{a numeric vector: film gloss} 
+#'   \item{\code{opacity}}{a numeric vector: film opacity} 
+#'   \item{\code{rate}}{a factor representing change in the rate of extrusion with levels \code{Low} (-10\%), \code{High} (10\%)} 
+#'   \item{\code{additive}}{a factor with levels \code{Low} (1.0\%), \code{High} (1.5\%)} 
 #' }
 #' @references 
 #' Krzanowski, W. J. (1988). \emph{Principles of Multivariate
@@ -1184,21 +1181,21 @@ NULL
 #' @docType data
 #' @format A data frame with 48 observations on the following 12 variables.
 #' \describe{ 
-#' \item{list("Region")}{a factor with levels \code{Gl} \code{NF}
-#' \code{Wales}} 
-#' \item{list("Site")}{a factor with levels \code{AshleyRails}
-#' \code{Caldicot} \code{Gloucester} \code{IsleThorns} \code{Llanedryn}}
-#' \item{list("Kiln")}{a factor with levels \code{1} \code{2} \code{3} \code{4}
-#' \code{5}} 
-#' \item{list("Al")}{amount of aluminum oxide, \eqn{Al_2O_3}}
-#' \item{list("Fe")}{amount of iron oxide, \eqn{Fe_2O_3}}
-#' \item{list("Mg")}{amount of magnesium oxide, MgO} 
-#' \item{list("Ca")}{amount of calcium oxide, CaO} 
-#' \item{list("Na")}{amount of sodium oxide, \eqn{Na_2O}} 
-#' \item{list("K")}{amount of potassium oxide, \eqn{K_2O}}
-#' \item{list("Ti")}{amount of titanium oxide, \eqn{TiO_2} }
-#' \item{list("Mn")}{amount of manganese oxide, MnO} 
-#' \item{list("Ba")}{amount of BaO} 
+#'   \item{\code{Region}}{a factor with levels \code{Gl} \code{NF}
+#'      \code{Wales}} 
+#'   \item{\code{Site}}{a factor with levels \code{AshleyRails}
+#'      \code{Caldicot} \code{Gloucester} \code{IsleThorns} \code{Llanedryn}}
+#'   \item{\code{Kiln}}{a factor with levels \code{1} \code{2} \code{3} \code{4}
+#'      \code{5}} 
+#'   \item{\code{Al}}{amount of aluminum oxide, \eqn{Al_2O_3}}
+#'   \item{\code{Fe}}{amount of iron oxide, \eqn{Fe_2O_3}}
+#'   \item{\code{Mg}}{amount of magnesium oxide, MgO} 
+#'   \item{\code{Ca}}{amount of calcium oxide, CaO} 
+#'   \item{\code{Na}}{amount of sodium oxide, \eqn{Na_2O}} 
+#'   \item{\code{K}}{amount of potassium oxide, \eqn{K_2O}}
+#'   \item{\code{Ti}}{amount of titanium oxide, \eqn{TiO_2} }
+#'   \item{\code{Mn}}{amount of manganese oxide, MnO} 
+#'   \item{\code{Ba}}{amount of BaO} 
 #' }
 #' @seealso \code{\link[carData]{Pottery}} for the related (subset) data set;
 #'     \code{\link[archdata]{RBPottery}} for a newer version with more variables.
@@ -1291,21 +1288,21 @@ NULL
 #' @docType data
 #' @format \code{Probe1}: A data frame with 11 observations on the following 5 variables.  
 #' \describe{ 
-#' \item{list("p1")}{speed at position 1}
-#' \item{list("p2")}{speed at position 2} 
-#' \item{list("p3")}{speed at position 3} 
-#' \item{list("p4")}{speed at position 4} 
-#' \item{list("p5")}{speed at position 5} 
+#'   \item{\code{p1}}{speed at position 1}
+#'   \item{\code{p2}}{speed at position 2} 
+#'   \item{\code{p3}}{speed at position 3} 
+#'   \item{\code{p4}}{speed at position 4} 
+#'   \item{\code{p5}}{speed at position 5} 
 #' }
 #' 
 #' \code{Probe2}: A data frame with 20 observations on the following 6 variables.  
 #' \describe{ 
-#' \item{list("stm")}{Short term memory capacity: a factor with levels \code{High} \code{Low}} 
-#' \item{list("p1")}{speed at position 1} 
-#' \item{list("p2")}{speed at position 2} 
-#' \item{list("p3")}{speed at position 3} 
-#' \item{list("p4")}{speed at position 4}
-#' \item{list("p5")}{speed at position 5} 
+#'   \item{\code{stm}}{Short term memory capacity: a factor with levels \code{High} \code{Low}} 
+#'   \item{\code{p1}}{speed at position 1} 
+#'   \item{\code{p2}}{speed at position 2} 
+#'   \item{\code{p3}}{speed at position 3} 
+#'   \item{\code{p4}}{speed at position 4}
+#'   \item{\code{p5}}{speed at position 5} 
 #' }
 #' @source Timm, N. (1975) \emph{Multivariate analysis, with applications in
 #' education and psychology} Brooks/Cole.
@@ -1373,12 +1370,12 @@ NULL
 #' @docType data
 #' @format A data frame with 27 observations on the following 6 variables.
 #' \describe{ 
-#' \item{list("trt")}{a factor with levels \code{Control} \code{Thiouracil} \code{Thyroxin}} 
-#' \item{list("wt0")}{Weight at Week 0 (baseline weight)} 
-#' \item{list("wt1")}{Weight at Week 1}
-#' \item{list("wt2")}{Weight at Week 2} 
-#' \item{list("wt3")}{Weight at Week 3}
-#' \item{list("wt4")}{Weight at Week 4} 
+#'   \item{\code{trt}}{a factor with levels \code{Control} \code{Thiouracil} \code{Thyroxin}} 
+#'   \item{\code{wt0}}{Weight at Week 0 (baseline weight)} 
+#'   \item{\code{wt1}}{Weight at Week 1}
+#'   \item{\code{wt2}}{Weight at Week 2} 
+#'   \item{\code{wt3}}{Weight at Week 3}
+#'   \item{\code{wt4}}{Weight at Week 4} 
 #' }
 #' @references 
 #' Box, G.E.P. (1950). Problems in the analysis of growth and wear
@@ -1441,11 +1438,11 @@ NULL
 #' @format A data frame with 10 observations giving the reaction time for the 6
 #' conditions.  
 #' \describe{ 
-#' \item{list("deg0NA")}{a numeric vector}
-#' \item{list("deg4NA")}{a numeric vector} 
-#' \item{list("deg8NA")}{a numeric vector} \item{list("deg0NP")}{a numeric vector} 
-#' \item{list("deg4NP")}{a numeric vector} 
-#' \item{list("deg8NP")}{a numeric vector} 
+#'   \item{\code{deg0NA}}{a numeric vector}
+#'   \item{\code{deg4NA}}{a numeric vector} 
+#'   \item{\code{deg8NA")}{a numeric vector} \item{list("deg0NP}}{a numeric vector} 
+#'   \item{\code{deg4NP}}{a numeric vector} 
+#'   \item{\code{deg8NP}}{a numeric vector} 
 #' }
 #' @references 
 #' Michael Friendly (2010). HE Plots for Repeated Measures Designs.
@@ -1511,16 +1508,16 @@ NULL
 #' @docType data
 #' @format A data frame with 69 observations on the following 10 variables.
 #' \describe{ 
-#' \item{list("group")}{a numeric vector, corresponding to SES}
-#' \item{list("SES")}{Socioeconomic status, a factor with levels \code{Hi} \code{Lo}} 
-#' \item{list("SAT")}{a numeric vector: score on a Student Achievement Test} 
-#' \item{list("PPVT")}{a numeric vector: score on the Peabody Picture Vocabulary Test} 
-#' \item{list("Raven")}{a numeric vector: score on the Raven Progressive Matrices Test} 
-#' \item{list("n")}{a numeric vector: performance on a 'named' PA task} 
-#' \item{list("s")}{a numeric vector: performance on a 'still' PA task} 
-#' \item{list("ns")}{a numeric vector: performance on a 'named still' PA task} 
-#' \item{list("na")}{a numeric vector: performance on a 'named action' PA task} 
-#' \item{list("ss")}{a numeric vector: performance on a 'sentence still' PA task} 
+#'   \item{\code{group}}{a numeric vector, corresponding to SES}
+#'   \item{\code{SES}}{Socioeconomic status, a factor with levels \code{Hi} \code{Lo}} 
+#'   \item{\code{SAT}}{a numeric vector: score on a Student Achievement Test} 
+#'   \item{\code{PPVT}}{a numeric vector: score on the Peabody Picture Vocabulary Test} 
+#'   \item{\code{Raven}}{a numeric vector: score on the Raven Progressive Matrices Test} 
+#'   \item{\code{n}}{a numeric vector: performance on a 'named' PA task} 
+#'   \item{\code{s}}{a numeric vector: performance on a 'still' PA task} 
+#'   \item{\code{ns}}{a numeric vector: performance on a 'named still' PA task} 
+#'   \item{\code{na}}{a numeric vector: performance on a 'named action' PA task} 
+#'   \item{\code{ss}}{a numeric vector: performance on a 'sentence still' PA task} 
 #' }
 #' @references 
 #' Friendly, M. (2007).  HE plots for Multivariate General Linear
@@ -1543,14 +1540,14 @@ NULL
 #' # Visualize the ANCOVA model
 #' heplot(rohwer.mod)
 #' # Add ellipse to test all 5 regressors
-#' heplot(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
+#' heplot(rohwer.mod, hypotheses=\code{Regr" = c("n", "s", "ns", "na", "ss}))
 #' # View all pairs
-#' pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
+#' pairs(rohwer.mod, hypotheses=\code{Regr" = c("n", "s", "ns", "na", "ss}))
 #' 
 #' # or 3D plot
 #' \dontrun{
 #' col <- c("red", "green3", "blue", "cyan", "magenta", "brown", "gray")
-#' heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), 
+#' heplot3d(rohwer.mod, hypotheses=\code{Regr" = c("n", "s", "ns", "na", "ss}), 
 #'                      col=col, wire=FALSE)
 #' }
 #' 
@@ -1579,11 +1576,11 @@ NULL
 #' @docType data
 #' @format A data frame with 48 observations on the following 5 variables.
 #' \describe{ 
-#' \item{list("rootstock")}{a factor with levels \code{1} \code{2} \code{3} \code{4} \code{5} \code{6}} 
-#' \item{list("girth4")}{a numeric vector: trunk girth at 4 years (mm x 100)} 
-#' \item{list("ext4")}{a numeric vector: extension growth at 4 years (m)} 
-#' \item{list("girth15")}{a numeric vector: trunk girth at 15 years (mm x 100)} 
-#' \item{list("weight15")}{a numeric vector: weight of tree above ground at 15 years (lb x 1000)} 
+#'   \item{\code{rootstock}}{a factor with levels \code{1} \code{2} \code{3} \code{4} \code{5} \code{6}} 
+#'   \item{\code{girth4}}{a numeric vector: trunk girth at 4 years (mm x 100)} 
+#'   \item{\code{ext4}}{a numeric vector: extension growth at 4 years (m)} 
+#'   \item{\code{girth15}}{a numeric vector: trunk girth at 15 years (mm x 100)} 
+#'   \item{\code{weight15}}{a numeric vector: weight of tree above ground at 15 years (lb x 1000)} 
 #' }
 #' @references 
 #' Rencher, A. C. (1995). \emph{Methods of Multivariate Analysis}.
@@ -1635,16 +1632,16 @@ NULL
 #' @docType data
 #' @format A data frame with 30 observations on the following 10 variables.
 #' \describe{ 
-#' \item{list("taste")}{mean taste rating} 
-#' \item{list("smell")}{mean smell rating} 
-#' \item{list("pH")}{pH measurement} 
-#' \item{list("acidity1")}{one measure of acidity} 
-#' \item{list("acidity2")}{another measure of acidity}
-#' \item{list("sake")}{Sake-meter score} 
-#' \item{list("rsugar")}{direct reducing sugar content} 
-#' \item{list("tsugar")}{total sugar content}
-#' \item{list("alcohol")}{alcohol content}
-#' \item{list("nitrogen")}{formol-nitrogen content} 
+#'   \item{\code{taste}}{mean taste rating} 
+#'   \item{\code{smell}}{mean smell rating} 
+#'   \item{\code{pH}}{pH measurement} 
+#'   \item{\code{acidity1}}{one measure of acidity} 
+#'   \item{\code{acidity2}}{another measure of acidity}
+#'   \item{\code{sake}}{Sake-meter score} 
+#'   \item{\code{rsugar}}{direct reducing sugar content} 
+#'   \item{\code{tsugar}}{total sugar content}
+#'   \item{\code{alcohol}}{alcohol content}
+#'   \item{\code{nitrogen}}{formol-nitrogen content} 
 #' }
 #' @references 
 #' Barrett, B. E. (2003). Understanding Influence in Multivariate
@@ -1695,18 +1692,18 @@ NULL
 #' @format A data frame with 70 observations on the following 8 variables.
 #' 
 #' \describe{ 
-#' \item{list("education")}{Education level of mother as measured in
+#'   \item{\code{education}}{Education level of mother as measured in
 #'       terms of percentage of high school graduates among female parents}
-#' \item{list("occupation")}{ Highest occupation of a family member according
+#'   \item{\code{occupation}}{ Highest occupation of a family member according
 #'       to a pre-arranged rating scale} 
-#' \item{list("visit")}{ Parental visits index
+#'   \item{\code{visit}}{ Parental visits index
 #'      representing the number of visits to the school site}
-#' \item{list("counseling")}{ Parent counseling index calculated from data on
+#'   \item{\code{counseling}}{ Parent counseling index calculated from data on
 #'       time spent with child on school-related topics such as reading together, etc.} 
-#' \item{list("teacher")}{ Number of teachers at a given site}
-#' \item{list("reading")}{ Reading score as measured by the Metropolitan Achievement Test} 
-#' \item{list("mathematics")}{Mathematics score as measured by the Metropolitan Achievement Test} 
-#' \item{list("selfesteem")}{Coopersmith Self-Esteem Inventory, intended as a measure of self-esteem} 
+#'   \item{\code{teacher}}{ Number of teachers at a given site}
+#'   \item{\code{reading}}{ Reading score as measured by the Metropolitan Achievement Test} 
+#'   \item{\code{mathematics}}{Mathematics score as measured by the Metropolitan Achievement Test} 
+#'   \item{\code{selfesteem}}{Coopersmith Self-Esteem Inventory, intended as a measure of self-esteem} 
 #' }
 #' @source 
 #' A. Charnes, W.W. Cooper and E. Rhodes (1981). Evaluating Program and
@@ -1781,11 +1778,11 @@ NULL
 #' 
 #' The epochs correspond to the following periods of Egyptian history:
 #' \enumerate{ 
-#' \item the early predynastic period (circa 4000 BC); 
-#' \item the late predynastic period (circa 3300 BC); 
-#' \item the 12th and 13th dynasties (circa 1850 BC); 
-#' \item the Ptolemiac period (circa 200 BC); 
-#' \item the Roman period (circa 150 AD). 
+#'   \item the early predynastic period (circa 4000 BC); 
+#'   \item the late predynastic period (circa 3300 BC); 
+#'   \item the 12th and 13th dynasties (circa 1850 BC); 
+#'   \item the Ptolemiac period (circa 200 BC); 
+#'   \item the Roman period (circa 150 AD). 
 #' }
 #' 
 #' The question is whether the measurements change over time.  Non-constant
@@ -1799,13 +1796,13 @@ NULL
 #' @docType data
 #' @format A data frame with 150 observations on the following 5 variables.
 #' \describe{ 
-#' \item{list("epoch")}{the epoch the skull as assigned to, an
+#'   \item{\code{epoch}}{the epoch the skull as assigned to, an
 #'       ordered factor with levels \code{c4000BC} \code{c3300BC}, \code{c1850BC},
 #'       \code{c200BC}, and \code{cAD150}, where the years are only given approximately, of course.} 
-#' \item{list("mb")}{maximal breadth of the skull.}
-#' \item{list("bh")}{basibregmatic height of the skull.}
-#' \item{list("bl")}{basialiveolar length of the skull.}
-#' \item{list("nh")}{nasal height of the skull.} 
+#'   \item{\code{mb}}{maximal breadth of the skull.}
+#'   \item{\code{bh}}{basibregmatic height of the skull.}
+#'   \item{\code{bl}}{basialiveolar length of the skull.}
+#'   \item{\code{nh}}{nasal height of the skull.} 
 #' }
 #' @references 
 #' Thomson, A. and Randall-Maciver, R. (1905) \emph{Ancient Races
@@ -1902,17 +1899,17 @@ NULL
 #' @docType data
 #' @format A data frame with 40 observations on the following 10 variables.
 #' \describe{ 
-#' \item{list("class")}{Social class, an ordered factor with levels
+#'   \item{\code{class}}{Social class, an ordered factor with levels
 #'       \code{1} > \code{2} > \code{3}} 
-#' \item{list("sex")}{sex, a factor with levels \code{F} \code{M}} 
-#' \item{list("gpa")}{grade point average}
-#' \item{list("boards")}{College Board test scores}
-#' \item{list("hssoc")}{previous high school unit in sociology, a factor with 2 \code{no}, \code{yes}} 
-#' \item{list("pretest")}{score on course pretest}
-#' \item{list("midterm1")}{score on first midterm exam}
-#' \item{list("midterm2")}{score on second midterm exam}
-#' \item{list("final")}{score on final exam} 
-#' \item{list("eval")}{course evaluation} }
+#'   \item{\code{sex}}{sex, a factor with levels \code{F} \code{M}} 
+#'   \item{\code{gpa}}{grade point average}
+#'   \item{\code{boards}}{College Board test scores}
+#'   \item{\code{hssoc}}{previous high school unit in sociology, a factor with 2 \code{no}, \code{yes}} 
+#'   \item{\code{pretest}}{score on course pretest}
+#'   \item{\code{midterm1}}{score on first midterm exam}
+#'   \item{\code{midterm2}}{score on second midterm exam}
+#'   \item{\code{final}}{score on final exam} 
+#'   \item{\code{eval}}{course evaluation} }
 #' @source 
 #' Marascuilo, L. A. and Levin, J. R. (1983). \emph{Multivariate
 #' Statistics in the Social Sciences} Monterey, CA: Brooks/Cole, Table 5-1, p.
@@ -1990,12 +1987,12 @@ NULL
 #' @docType data
 #' @format A data frame with 139 observations on the following 5 variables.
 #' \describe{ 
-#' \item{list("Dx")}{Diagnostic group, a factor with levels
+#'   \item{\code{Dx}}{Diagnostic group, a factor with levels
 #'       \code{Schizophrenia}, \code{Schizoaffective}, \code{Control}}
-#' \item{list("MgeEmotions")}{Score on the Managing emotions test, a numeric vector} 
-#' \item{list("ToM")}{Score on the The Reading the Mind in the Eyes test (theory of mind), a numeric vector}
-#' \item{list("ExtBias")}{Externalizing Bias score, a numeric vector}
-#' \item{list("PersBias")}{Personal Bias score, a numeric vector} 
+#'   \item{\code{MgeEmotions}}{Score on the Managing emotions test, a numeric vector} 
+#'   \item{\code{ToM}}{Score on the The Reading the Mind in the Eyes test (theory of mind), a numeric vector}
+#'   \item{\code{ExtBias}}{Externalizing Bias score, a numeric vector}
+#'   \item{\code{PersBias}}{Personal Bias score, a numeric vector} 
 #' }
 #' @source 
 #' Hartman, L. I. (2016). Schizophrenia and Schizoaffective Disorder:
@@ -2019,7 +2016,7 @@ NULL
 #' 
 #' #' ## HE plots
 #' 
-#' heplot(SC.mod, hypotheses=list("Dx1"="Dx1", "Dx2"="Dx2"),
+#' heplot(SC.mod, hypotheses=\code{Dx1"="Dx1", "Dx2"="Dx2},
 #' 	fill=TRUE, fill.alpha=.1)
 #' 	
 #' pairs(SC.mod, fill=c(TRUE,FALSE), fill.alpha=.1) 
@@ -2059,28 +2056,28 @@ NULL
 #' @docType data
 #' @format A data frame with 1799 observations on the following 16 variables.
 #' \describe{ 
-#' \item{list("Extraversion")}{a numeric vector}
-#' \item{list("Neuroticism")}{a numeric vector}
-#' \item{list("Conscientiousness")}{a numeric vector}
-#' \item{list("Agreeableness")}{a numeric vector} \item{list("Openness")}{a numeric vector} 
-#' \item{list("education")}{an ordered factor with levels
+#'   \item{\code{Extraversion}}{a numeric vector}
+#'   \item{\code{Neuroticism}}{a numeric vector}
+#'   \item{\code{Conscientiousness}}{a numeric vector}
+#'   \item{\code{Agreeableness")}{a numeric vector} \item{list("Openness}}{a numeric vector} 
+#'   \item{\code{education}}{an ordered factor with levels
 #'       \code{<HS} < \code{HS} < \code{Univ} < \code{Grad}} 
-#' \item{list("urban")}{an ordered factor with levels \code{Rural} < \code{Suburban} < \code{Urban}}
-#' \item{list("gender")}{a factor with levels \code{M} \code{F}}
-#' \item{list("engnat")}{a factor with levels \code{Native} \code{Non-native}}
-#' \item{list("age")}{a numeric vector} 
-#' \item{list("religion")}{a factor with levels \code{Agnostic} \code{Atheist} \code{Buddhist} \code{Christian
+#'   \item{\code{urban}}{an ordered factor with levels \code{Rural} < \code{Suburban} < \code{Urban}}
+#'   \item{\code{gender}}{a factor with levels \code{M} \code{F}}
+#'   \item{\code{engnat}}{a factor with levels \code{Native} \code{Non-native}}
+#'   \item{\code{age}}{a numeric vector} 
+#'   \item{\code{religion}}{a factor with levels \code{Agnostic} \code{Atheist} \code{Buddhist} \code{Christian
 #'       (Catholic)} \code{Christian (Mormon)} \code{Christian (Protestant)}
 #'       \code{Christian (Other)} \code{Hindu} \code{Jewish} \code{Muslim}
 #'       \code{Sikh} \code{Other}} 
-#' \item{list("orientation")}{a factor with levels \code{Heterosexual} \code{Bisexual} \code{Homosexual} 
+#'   \item{\code{orientation}}{a factor with levels \code{Heterosexual} \code{Bisexual} \code{Homosexual} 
 #'       \code{Asexual} \code{Other}} 
-#' \item{list("race")}{a factor with levels \code{Asian}
+#'   \item{\code{race}}{a factor with levels \code{Asian}
 #'       \code{Arab} \code{Black} \code{Indig-White} \code{Other}}
-#' \item{list("voted")}{a factor with levels \code{Yes} \code{No}}
-#' \item{list("married")}{a factor with levels \code{Never married}
+#'   \item{\code{voted}}{a factor with levels \code{Yes} \code{No}}
+#'   \item{\code{married}}{a factor with levels \code{Never married}
 #'       \code{Currently married} \code{Previously married}}
-#' \item{list("familysize")}{a numeric vector} 
+#'   \item{\code{familysize}}{a numeric vector} 
 #' }
 #' @references Gosling, S. D., Rentfrow, P. J., & Swann, W. B, Jr. (2003). A
 #' very brief measure of the Big-Five personality domains. \emph{Journal of
@@ -2132,10 +2129,10 @@ NULL
 #' @docType data
 #' @format A data frame with 64 observations on the following 4 variables.
 #' \describe{ 
-#' \item{list("grade8")}{Grade 8 vocabulary score}
-#' \item{list("grade9")}{Grade 9 vocabulary score} 
-#' \item{list("grade10")}{Grade 10 vocabulary score} 
-#' \item{list("grade11")}{Grade 11 vocabulary score} 
+#'   \item{\code{grade8}}{Grade 8 vocabulary score}
+#'   \item{\code{grade9}}{Grade 9 vocabulary score} 
+#'   \item{\code{grade10}}{Grade 10 vocabulary score} 
+#'   \item{\code{grade11}}{Grade 11 vocabulary score} 
 #' }
 #' @references 
 #' Friendly, Michael (2010). HE Plots for Repeated Measures
@@ -2199,13 +2196,13 @@ NULL
 #' @docType data
 #' @format A data frame with 34 observations on the following 7 variables.
 #' \describe{ 
-#' \item{list("group")}{a factor with levels \code{Control}
-#'       \code{Diet} \code{DietEx}.} \item{list("wl1")}{Weight loss at 1 month}
-#' \item{list("wl2")}{Weight loss at 2 months} 
-#' \item{list("wl3")}{Weight loss at 3 months} 
-#' \item{list("se1")}{Self esteem at 1 month}
-#' \item{list("se2")}{Self esteem at 2 months} 
-#' \item{list("se3")}{Self esteem at 3 months} 
+#'   \item{\code{group}}{a factor with levels \code{Control}
+#'       \code{Diet} \code{DietEx}.} \item{\code{wl1}}{Weight loss at 1 month}
+#'   \item{\code{wl2}}{Weight loss at 2 months} 
+#'   \item{\code{wl3}}{Weight loss at 3 months} 
+#'   \item{\code{se1}}{Self esteem at 1 month}
+#'   \item{\code{se2}}{Self esteem at 2 months} 
+#'   \item{\code{se3}}{Self esteem at 3 months} 
 #' }
 #' @references Friendly, Michael (2010). HE Plots for Repeated Measures
 #' Designs. \emph{Journal of Statistical Software}, 37(4), 1-40.
