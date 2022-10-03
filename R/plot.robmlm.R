@@ -8,20 +8,20 @@
 #' 
 #' @param x A \code{"robmlm"} object
 #' @param labels Observation labels; if not specified, uses rownames from the
-#' original data
+#'        original data
 #' @param id.weight Threshold for identifying observations with small weights
 #' @param id.pos Position of observation label relative to the point
 #' @param pch Point symbol(s); can be a vector of length equal to the number of
-#' observations in the data frame
+#'        observations in the data frame
 #' @param col Point color(s)
 #' @param cex Point character size(s)
 #' @param segments logical; if \code{TRUE}, draw line segments from 1.o down to
-#' the point
+#'        the point
 #' @param xlab x axis label
 #' @param ylab y axis label
 #' @param \dots other arguments passed to \code{\link[graphics]{plot}}
 #' @return Returns invisibly the weights for the observations labeled in the
-#' plot
+#'        plot
 #' @author Michael Friendly
 #' @seealso \code{\link{robmlm}}
 #' @keywords hplot
