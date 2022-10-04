@@ -13,17 +13,16 @@
 #' @aliases statList covList colMeansList
 #' @param X A matrix or data frame containing the variables to be summarized
 #' @param factors A vector, matrix or data frame containing the factors for
-#' which \code{X} is to be summarized.  If \code{factors} is not specified, the
-#' result is calculated for all of the data in \code{X}.
-#' @param FUN A function to be applied to the pieces of \code{X}, as split by
-#' \code{factors}.
+#'        which \code{X} is to be summarized.  If \code{factors} is not specified,  
+#'        the result is calculated for all of the data in \code{X}.
+#' @param FUN A function to be applied to the pieces of \code{X}, as split by \code{factors}.
 #' @param drop Logical, indicating whether empty levels of \code{factors} are
-#' to be dropped from the result.
+#'        to be dropped from the result.
 #' @param \dots Other arguments, passed to \code{FUN}.
 #' @return Returns a list of items corresponding to the unique elements in
-#' \code{factors}, or the interaction of \code{factors}. Each item is the
-#' result of applying \code{FUN} to that collection of rows of \code{X}. The
-#' items are named according to the levels in \code{factors}.
+#'        \code{factors}, or the interaction of \code{factors}. Each item is the
+#'        result of applying \code{FUN} to that collection of rows of \code{X}. The
+#'        items are named according to the levels in \code{factors}.
 #' @author Michael Friendly
 #' @seealso \code{\link[base]{colMeans}}, \code{\link{termMeans}}
 #' @keywords utilities multivariate

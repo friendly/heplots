@@ -26,55 +26,58 @@
 #' 
 #' @aliases print.robmlm print.summary.robmlm robmlm robmlm.default
 #' robmlm.formula summary.robmlm
-#' @param formula a formula of the form \code{cbind(y1, y2, ...) ~ x1 + x2 +
-#' ...}.
+#' @param formula a formula of the form \code{cbind(y1, y2, ...) ~ x1 + x2 + ...}.
 #' @param data a data frame from which variables specified in \code{formula}
-#' are preferentially to be taken.
+#'        are preferentially to be taken.
 #' @param subset An index vector specifying the cases to be used in fitting.
 #' @param weights a vector of prior weights for each case.
 #' @param na.action A function to specify the action to be taken if \code{NA}s
-#' are found.  The 'factory-fresh' default action in R is
-#' \code{\link[stats]{na.omit}}, and can be changed by
-#' \code{\link[base]{options}}\code{(na.action=)}.
+#'        are found.  The 'factory-fresh' default action in R is
+#'        \code{\link[stats]{na.omit}}, and can be changed by
+#'        \code{\link[base]{options}}\code{(na.action=)}.
 #' @param model should the model frame be returned in the object?
 #' @param contrasts optional contrast specifications; see
-#' \code{\link[stats]{lm}} for details.
+#'        \code{\link[stats]{lm}} for details.
 #' @param \dots other arguments, passed down. In particular relevant control
-#' arguments can be passed to the to the \code{robmlm.default} method.
+#'         arguments can be passed to the to the \code{robmlm.default} method.
 #' @param X for the default method, a model matrix, including the constant (if
-#' present)
+#'        present)
 #' @param Y for the default method, a response matrix
 #' @param w prior weights
 #' @param P two-tail probability, to find cutoff quantile for chisq (tuning
-#' constant); default is set for bisquare weight function
+#'        constant); default is set for bisquare weight function
 #' @param tune tuning constant (if given directly)
 #' @param max.iter maximum number of iterations
 #' @param psi robustness weight function; \code{\link[MASS]{psi.bisquare}} is
-#' the default
+#'        the default
 #' @param tol convergence tolerance, maximum relative change in coefficients
 #' @param initialize modeling function to find start values for coefficients,
-#' equation-by-equation; if absent WLS (\code{lm.wfit}) is used
+#'        equation-by-equation; if absent WLS (\code{lm.wfit}) is used
 #' @param verbose show iteration history? (\code{TRUE} or \code{FALSE})
 #' @param x a \code{robmlm} object
 #' @param object a \code{robmlm} object
 #' @return An object of class \code{"robmlm"} inheriting from \code{c("mlm",
 #' "lm")}.
 #' 
-#' This means that the returned \code{"robmlm"} contains all the components of
-#' \code{"mlm"} objects described for \code{\link[stats]{lm}}, plus the
-#' following: %% If it is a LIST, use \item{weights }{final observation
-#' weights} \item{iterations }{number of iterations} \item{converged }{logical:
-#' did the IWLS process converge?} %% ...
+#'  This means that the returned \code{"robmlm"} contains all the components of
+#'  \code{"mlm"} objects described for \code{\link[stats]{lm}}, plus the
+#'  following: 
+#'  \describe{
+#'    \item{weights }{final observation weights} 
+#'    \item{iterations }{number of iterations} 
+#'    \item{converged }{logical: did the IWLS process converge?}
+#'  }
 #' 
 #' The generic accessor functions \code{\link[stats]{coefficients}},
 #' \code{\link[stats]{effects}}, \code{\link[stats]{fitted.values}} and
 #' \code{\link[stats]{residuals}} extract various useful features of the value
 #' returned by \code{robmlm}.
 #' @author John Fox; packaged by Michael Friendly
-#' @seealso
 #' 
-#' \code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
-#' @references A. Marazzi (1993) \emph{Algorithms, Routines and S Functions for
+#' @seealso
+#'     \code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
+#' @references 
+#' A. Marazzi (1993) \emph{Algorithms, Routines and S Functions for
 #' Robust Statistics}.  Wadsworth & Brooks/Cole.
 #' @keywords multivariate robust
 #' @examples

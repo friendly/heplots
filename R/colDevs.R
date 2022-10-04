@@ -12,11 +12,11 @@
 #' 
 #' @param x A numeric data frame or matrix.
 #' @param group A factor (or variable that can be coerced to a factor)
-#' indicating the membership of each observation in \code{x} in one or more
-#' groups. If missing, all the data is treated as a single group.
+#'         indicating the membership of each observation in \code{x} in one or more
+#'         groups. If missing, all the data is treated as a single group.
 #' @param center A function used to center the values (for each group if
-#' \code{group} is specified. The function must take a vector argument and
-#' return a scalar result.
+#'         \code{group} is specified. The function must take a vector argument and
+#'         return a scalar result.
 #' @param \dots Arguments passed down
 #' @return A numeric matrix containing the deviations from the centering
 #' function. %% ~Describe the value returned %% If it is a LIST, use %%

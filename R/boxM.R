@@ -30,57 +30,65 @@
 #' 
 #' The \code{summary} method prints a variety of additional statistics based on
 #' the eigenvalues of the covariance matrices.  These are returned invisibly,
-#' as a list containing the following components: \itemize{ \item \code{logDet}
-#' - log determinants \item \code{eigs} - eigenvalues of the covariance
-#' matrices \item \code{eigstats} - statistics computed on the eigenvalues for
-#' each covariance matrix:\cr \code{product}: the product of eigenvalues,
-#' \eqn{\prod{\lambda_i}};\cr \code{sum}: the sum of eigenvalues,
-#' \eqn{\sum{\lambda_i}};\cr \code{precision}: the average precision of
-#' eigenvalues, \eqn{1/\sum(1/\lambda_i)};\cr \code{max}: the maximum
-#' eigenvalue, \eqn{\lambda_1} }
+#' as a list containing the following components: 
+#' \itemize{ 
+#' \item \code{logDet} - log determinants 
+#' \item \code{eigs} - eigenvalues of the covariance matrices 
+#' \item \code{eigstats} - statistics computed on the eigenvalues for each covariance matrix:\cr 
+#'     \code{product}: the product of eigenvalues, \eqn{\prod{\lambda_i}};\cr 
+#'     \code{sum}: the sum of eigenvalues, \eqn{\sum{\lambda_i}};\cr 
+#'     \code{precision}: the average precision of eigenvalues, \eqn{1/\sum(1/\lambda_i)};\cr 
+#'     \code{max}: the maximum eigenvalue, \eqn{\lambda_1} 
+#' }
 #' 
 #' @aliases boxM boxM.formula boxM.lm boxM.default summary.boxM
 #' @param Y The response variable matrix for the default method, or a
-#' \code{"mlm"} or \code{"formula"} object for a multivariate linear model.  If
-#' \code{Y} is a linear-model object or a formula, the variables on the
-#' right-hand-side of the model must all be factors and must be completely
-#' crossed, e.g., \code{A:B}
+#'         \code{"mlm"} or \code{"formula"} object for a multivariate linear model.  If
+#'         \code{Y} is a linear-model object or a formula, the variables on the
+#'         right-hand-side of the model must all be factors and must be completely
+#'         crossed, e.g., \code{A:B}
 #' @param data a numeric data.frame or matrix containing \emph{n} observations
-#' of \emph{p} variables; it is expected that \emph{n > p}.
+#'         of \emph{p} variables; it is expected that \emph{n > p}.
 #' @param group a factor defining groups, or a vector of length \emph{n} doing
-#' the same.
+#'         the same.
 #' @param object a \code{"boxM"} object for the \code{summary} method
 #' @param digits number of digits to print for the \code{summary} method
 #' @param cov logical; if \code{TRUE} the covariance matrices are printed.
 #' @param quiet logical; if \code{TRUE} printing from the \code{summary} is
-#' suppressed
+#'         suppressed
 #' @param ... Arguments passed down to methods.
 #' @return A list with class \code{c("htest", "boxM")} containing the following
-#' components: \item{statistic }{an approximated value of the chi-square
-#' distribution.} \item{parameter }{the degrees of freedom related of the test
+#' components: 
+#' \item{statistic }{an approximated value of the chi-square
+#' distribution.} 
+#' \item{parameter }{the degrees of freedom related of the test
 #' statistic in this case that it follows a Chi-square distribution.}
-#' \item{p.value }{the p-value of the test.} \item{cov }{a list containing the
-#' within covariance matrix for each level of \code{grouping}.} \item{pooled
-#' }{the pooled covariance matrix.} \item{logDet }{a vector containing the
-#' natural logarithm of each matrix in \code{cov}, followed by the value for
-#' the pooled covariance matrix} \item{means}{a matrix of the means for all
-#' groups, followed by the grand means} \item{df}{a vector of the degrees of
-#' freedom for all groups, followed by that for the pooled covariance matrix}
+#' \item{p.value }{the p-value of the test.} 
+#' \item{cov }{a list containing the
+#' within covariance matrix for each level of \code{grouping}.} 
+#' \item{pooled}{the pooled covariance matrix.} 
+#' \item{logDet }{a vector containing the natural logarithm of each matrix in \code{cov}, followed by the value for
+#' the pooled covariance matrix} 
+#' \item{means}{a matrix of the means for all groups, followed by the grand means} 
+#' \item{df}{a vector of the degrees of freedom for all groups, followed by that for the pooled covariance matrix}
 #' \item{data.name }{a character string giving the names of the data.}
 #' \item{method }{the character string "Box's M-test for Homogeneity of
 #' Covariance Matrices".}
+#' 
 #' @author The default method was taken from the \pkg{biotools} package,
 #' Anderson Rodrigo da Silva \email{anderson.agro@@hotmail.com}
 #' 
 #' Generalized by Michael Friendly and John Fox
-#' @seealso \code{\link[car]{leveneTest}} carries out homogeneity of variance
+#' @seealso 
+#' \code{\link[car]{leveneTest}} carries out homogeneity of variance
 #' tests for univariate models with better statistical properties.
 #' 
 #' \code{\link{plot.boxM}}, a simple plot of the log determinants
 #' 
 #' \code{\link{covEllipses}} plots covariance ellipses in variable space for
 #' several groups.
-#' @references Box, G. E. P. (1949). A general distribution theory for a class
+#' @references 
+#' Box, G. E. P. (1949). A general distribution theory for a class
 #' of likelihood criteria. \emph{Biometrika}, 36, 317-346.
 #' 
 #' Morrison, D.F. (1976) \emph{Multivariate Statistical Methods}.

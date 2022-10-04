@@ -6,19 +6,19 @@
 #' 
 #' @param mod An mlm model object
 #' @param term A character string indicating a given term in the model. All
-#' factors in the term must be included in the model, even if they are in the
-#' model data frame.
+#'            factors in the term must be included in the model, even if they are in the
+#'            model data frame.
 #' @param label.factors If true, the rownames for each row in the result
-#' include the name(s) of the factor(s) involved, followed by the level values.
-#' Otherwise, the rownames include only the levels of the factor(s), with
-#' multiple factors separated by ':'
+#'            include the name(s) of the factor(s) involved, followed by the 
+#'            level values. Otherwise, the rownames include only the levels of 
+#'            the factor(s), with multiple factors separated by ':'
 #' @param abbrev.levels Either a logical or an integer, specifying whether the
-#' levels values of the factors in the \code{term} are to be abbreviated in
-#' constructing the rownames.  An integer specifies the minimum length of the
-#' abbreviation for each factor in the term.
+#'            levels values of the factors in the \code{term} are to be abbreviated in
+#'            constructing the rownames.  An integer specifies the minimum length of the
+#'            abbreviation for each factor in the term.
 #' @return Returns a matrix whose columns correspond to the response variables
-#' in the model and whose rows correspond to the levels of the factor(s) in the
-#' \code{term}.
+#'         in the model and whose rows correspond to the levels of the factor(s) in the
+#'         \code{term}.
 #' @author Michael Friendly
 #' @seealso \code{\link[stats]{aggregate}}, \code{\link[base]{colMeans}}
 #' 

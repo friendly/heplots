@@ -12,14 +12,12 @@
 #' @param p1 Ending point (head of arrow)
 #' @param barblen Length of each barb, in data units
 #' @param s length of barb as fraction of line length (unless barblen is
-#' specified)
+#'        specified)
 #' @param theta opening angle of barbs
 #' @param n number of barbs
 #' @param \dots args passed to lines3d for line styling, e.g., \code{color},
-#' \code{lwd}, etc. See \code{\link[rgl]{material3d}}.
+#'         \code{lwd}, etc. See \code{\link[rgl]{material3d}}.
 #' @return Returns (invisibly): integer ID of the line added to the scene %%
-#' ~Describe the value returned %% If it is a LIST, use %% \item{comp1
-#' }{Description of 'comp1'} %% \item{comp2 }{Description of 'comp2'} %% ...
 #' @author Barry Rowlingson, posted to R-help, 1/10/2010
 #' @seealso \code{\link[rgl]{lines3d}}, \code{\link[rgl]{segments3d}},
 #' @keywords aplot

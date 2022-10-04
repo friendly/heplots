@@ -16,7 +16,7 @@
 #' 
 #' @aliases coefplot coefplot.mlm
 #' @param object A multivariate linear model, such as fit by \code{lm(cbind(y1,
-#' y2, ...) ~ ...)}
+#'             y2, ...) ~ ...)}
 #' @param \dots Other parameters passed to methods
 #' @param variables Response variables to plot, given as their indices or names
 #' @param parm Parameters to plot, given as their indices or names
@@ -24,14 +24,14 @@
 #' @param level Confidence level for the confidence ellipses
 #' @param intercept logical. Include the intercept?
 #' @param Scheffe If \code{TRUE}, confidence intervals for all parameters have
-#' Scheffe coverage, otherwise, individual coverage.
+#'        Scheffe coverage, otherwise, individual coverage.
 #' @param bars Draw univariate confidence intervals for each of the variables?
 #' @param fill a logical value or vector. \code{TRUE} means the confidence
-#' ellipses will be filled.
+#'        ellipses will be filled.
 #' @param fill.alpha Opacity of the confidence ellipses
 #' @param labels Labels for the confidence ellipses
 #' @param label.pos Positions of the labels for each ellipse.  See
-#' \code{\link{label.ellipse}}
+#'        \code{\link{label.ellipse}}
 #' @param xlab,ylab x, y axis labels
 #' @param xlim,ylim Axis limits
 #' @param axes Draw axes?
@@ -46,16 +46,17 @@
 #' @param lty.zero,col.zero,pch.zero Line type, color and point symbol for
 #' horizontal and vertical lines at 0, 0.
 #' @param verbose logical.  Print parameter estimates and variance-covariance
-#' for each parameter?
+#'        for each parameter?
 #' @return Returns invisibly a list of the coordinates of the ellipses drawn
 #' @author Michael Friendly
-#' @seealso \code{\link[car]{confidenceEllipse}}, ~~~
+#' @seealso \code{\link[car]{confidenceEllipse}},
 #' @keywords hplot
 #' @examples
 #' 
 #' rohwer.mlm <- lm(cbind(SAT,PPVT,Raven)~n+s+ns, data=Rohwer)
 #' 
-#' coefplot(rohwer.mlm, lwd=2, main="Bivariate coefficient plot for SAT and PPVT", fill=TRUE)
+#' coefplot(rohwer.mlm, lwd=2, 
+#'          main="Bivariate coefficient plot for SAT and PPVT", fill=TRUE)
 #' coefplot(rohwer.mlm, add=TRUE, Scheffe=TRUE, fill=TRUE)
 #' 
 #' coefplot(rohwer.mlm, var=c(1,3))
