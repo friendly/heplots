@@ -1,0 +1,509 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.3.0
+# See also: https://docs.ropensci.org/cffr/
+# -----------------------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "heplots" in publications use:'
+type: software
+license: GPL-2.0-or-later
+title: 'heplots: Visualizing Hypothesis Tests in Multivariate Linear Models'
+version: 1.4-2
+abstract: Provides HE plot and other functions for visualizing hypothesis tests in
+  multivariate linear models. HE plots represent sums-of-squares-and-products matrices
+  for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids
+  (in three dimensions). The related 'candisc' package provides visualizations in
+  a reduced-rank canonical discriminant space when there are more than a few response
+  variables.
+authors:
+- family-names: Friendly
+  given-names: Michael
+  email: friendly@yorku.ca
+  orcid: https://orcid.org/0000-0002-3237-0941
+- family-names: Fox
+  given-names: John
+  orcid: https://orcid.org/0000-0002-1196-8012
+- family-names: Monette
+  given-names: Georges
+preferred-citation:
+  type: manual
+  title: 'heplots: Visualizing Tests in Multivariate Linear Models'
+  authors:
+  - family-names: Friendly
+    given-names: Michael
+    email: friendly@yorku.ca
+    orcid: https://orcid.org/0000-0002-3237-0941
+  - family-names: Fox
+    given-names: John
+    orcid: https://orcid.org/0000-0002-1196-8012
+  - family-names: Monette
+    given-names: Georges
+  year: '2022'
+  notes: R package version 1.4-2
+  url: https://CRAN.R-project.org/package=heplots
+repository: https://CRAN.R-project.org/package=heplots
+repository-code: https://github.com/friendly/heplots
+url: http://friendly.github.io/heplots/
+date-released: '2022-10-09'
+contact:
+- family-names: Friendly
+  given-names: Michael
+  email: friendly@yorku.ca
+  orcid: https://orcid.org/0000-0002-3237-0941
+keywords:
+- linear-hypotheses
+- matrices
+- multivariate-linear-models
+- plot
+- repeated-measure-designs
+- visualizing-hypothesis-tests
+references:
+- type: article
+  title: HE plots for Multivariate General Linear Models
+  authors:
+  - family-names: Friendly
+    given-names: Michael
+  year: '2007'
+  journal: Journal of Computational and Graphical Statistics
+  volume: '16'
+  issue: '4'
+  start: '421'
+  end: '444'
+- type: article
+  title: HE Plots for Repeated Measures Designs
+  authors:
+  - family-names: Friendly
+    given-names: Michael
+  journal: Journal of Statistical Software
+  year: '2010'
+  volume: '37'
+  issue: '4'
+  doi: 10.18637/jss.v037.i04
+  start: '1'
+  end: '40'
+- type: software
+  title: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+  version: '>= 3.5.0'
+- type: software
+  title: car
+  abstract: 'car: Companion to Applied Regression'
+  notes: Depends
+  authors:
+  - family-names: Fox
+    given-names: John
+    email: jfox@mcmaster.ca
+  - family-names: Weisberg
+    given-names: Sanford
+    email: sandy@umn.edu
+  - family-names: Price
+    given-names: Brad
+    email: brad.price@mail.wvu.edu
+  year: '2022'
+  url: https://CRAN.R-project.org/package=car
+  version: '>= 3.0'
+- type: software
+  title: broom
+  abstract: 'broom: Convert Statistical Objects into Tidy Tibbles'
+  notes: Depends
+  authors:
+  - family-names: Robinson
+    given-names: David
+    email: admiral.david@gmail.com
+  - family-names: Hayes
+    given-names: Alex
+    email: alexpghayes@gmail.com
+    orcid: https://orcid.org/0000-0002-4985-5160
+  - family-names: Couch
+    given-names: Simon
+    email: simonpatrickcouch@gmail.com
+    orcid: https://orcid.org/0000-0001-5676-5107
+  year: '2022'
+  url: https://CRAN.R-project.org/package=broom
+- type: software
+  title: MASS
+  abstract: 'MASS: Support Functions and Datasets for Venables and Ripley''s MASS'
+  notes: Imports
+  authors:
+  - family-names: Ripley
+    given-names: Brian
+    email: ripley@stats.ox.ac.uk
+  year: '2022'
+  url: https://CRAN.R-project.org/package=MASS
+- type: software
+  title: graphics
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+- type: software
+  title: grDevices
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+- type: software
+  title: stats
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+- type: software
+  title: utils
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+- type: software
+  title: magrittr
+  abstract: 'magrittr: A Forward-Pipe Operator for R'
+  notes: Imports
+  authors:
+  - family-names: Bache
+    given-names: Stefan Milton
+    email: stefan@stefanbache.dk
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=magrittr
+- type: software
+  title: purrr
+  abstract: 'purrr: Functional Programming Tools'
+  notes: Imports
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@rstudio.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=purrr
+- type: software
+  title: tibble
+  abstract: 'tibble: Simple Data Frames'
+  notes: Imports
+  authors:
+  - family-names: Müller
+    given-names: Kirill
+    email: krlmlr+r@mailbox.org
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=tibble
+- type: software
+  title: rgl
+  abstract: 'rgl: 3D Visualization Using OpenGL'
+  notes: Suggests
+  authors:
+  - family-names: Murdoch
+    given-names: Duncan
+    email: murdoch.duncan@gmail.com
+  - family-names: Adler
+    given-names: Daniel
+    email: dadler@dyncall.org
+  year: '2022'
+  url: https://CRAN.R-project.org/package=rgl
+- type: software
+  title: candisc
+  abstract: 'candisc: Visualizing Generalized Canonical Discriminant and Canonical
+    Correlation Analysis'
+  notes: Suggests
+  authors:
+  - family-names: Friendly
+    given-names: Michael
+    email: friendly@yorku.ca
+  - family-names: Fox
+    given-names: John
+  year: '2022'
+  url: https://CRAN.R-project.org/package=candisc
+- type: software
+  title: effects
+  abstract: 'effects: Effect Displays for Linear, Generalized Linear, and Other Models'
+  notes: Suggests
+  authors:
+  - family-names: Fox
+    given-names: John
+    email: jfox@mcmaster.ca
+  - family-names: Weisberg
+    given-names: Sanford
+    email: sandy@umn.edu
+  - family-names: Price
+    given-names: Brad
+    email: brad.price@mail.wvu.edu
+  - family-names: Friendly
+    given-names: Michael
+    email: friendly@yorku.ca
+  - family-names: Hong
+    given-names: Jangman
+  year: '2022'
+  url: https://CRAN.R-project.org/package=effects
+- type: software
+  title: reshape
+  abstract: 'reshape: Flexibly Reshape Data'
+  notes: Suggests
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=reshape
+- type: software
+  title: gplots
+  abstract: 'gplots: Various R Programming Tools for Plotting Data'
+  notes: Suggests
+  authors:
+  - family-names: Warnes
+    given-names: Gregory R.
+  - family-names: Bolker
+    given-names: Ben
+  - family-names: Bonebakker
+    given-names: Lodewijk
+  - family-names: Gentleman
+    given-names: Robert
+  - family-names: Huber
+    given-names: Wolfgang
+  - family-names: Liaw
+    given-names: Andy
+  - family-names: Lumley
+    given-names: Thomas
+  - family-names: Maechler
+    given-names: Martin
+  - family-names: Magnusson
+    given-names: Arni
+  - family-names: Moeller
+    given-names: Steffen
+  - family-names: Schwartz
+    given-names: Marc
+  - family-names: Venables
+    given-names: Bill
+  year: '2022'
+  url: https://CRAN.R-project.org/package=gplots
+- type: software
+  title: nlme
+  abstract: 'nlme: Linear and Nonlinear Mixed Effects Models'
+  notes: Suggests
+  authors:
+  - family-names: Pinheiro
+    given-names: José
+  - family-names: Bates
+    given-names: Douglas
+  - name: R Core Team
+    email: R-core@R-project.org
+  year: '2022'
+  url: https://CRAN.R-project.org/package=nlme
+- type: software
+  title: lattice
+  abstract: 'lattice: Trellis Graphics for R'
+  notes: Suggests
+  authors:
+  - family-names: Sarkar
+    given-names: Deepayan
+    email: deepayan.sarkar@r-project.org
+    orcid: https://orcid.org/0000-0003-4107-1553
+  year: '2022'
+  url: https://CRAN.R-project.org/package=lattice
+- type: software
+  title: reshape2
+  abstract: 'reshape2: Flexibly Reshape Data: A Reboot of the Reshape Package'
+  notes: Suggests
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: h.wickham@gmail.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=reshape2
+- type: software
+  title: corrgram
+  abstract: 'corrgram: Plot a Correlogram'
+  notes: Suggests
+  authors:
+  - family-names: Wright
+    given-names: Kevin
+    email: kw.stat@gmail.com
+    orcid: https://orcid.org/0000-0002-0617-8673
+  year: '2022'
+  url: https://CRAN.R-project.org/package=corrgram
+- type: software
+  title: animation
+  abstract: 'animation: A Gallery of Animations in Statistics and Utilities to Create
+    Animations'
+  notes: Suggests
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+  year: '2022'
+  url: https://CRAN.R-project.org/package=animation
+- type: software
+  title: mvinfluence
+  abstract: 'mvinfluence: Influence Measures and Diagnostic Plots for Multivariate
+    Linear Models'
+  notes: Suggests
+  authors:
+  - family-names: Friendly
+    given-names: Michael
+    email: friendly@yorku.ca
+    orcid: https://orcid.org/0000-0002-3237-0941
+  year: '2022'
+  url: https://github.com/friendly/mvinfluence
+- type: software
+  title: knitr
+  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  notes: Suggests
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  year: '2022'
+  url: https://CRAN.R-project.org/package=knitr
+- type: software
+  title: rmarkdown
+  abstract: 'rmarkdown: Dynamic Documents for R'
+  notes: Suggests
+  authors:
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@rstudio.com
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: McPherson
+    given-names: Jonathan
+    email: jonathan@rstudio.com
+  - family-names: Luraschi
+    given-names: Javier
+    email: javier@rstudio.com
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevin@rstudio.com
+  - family-names: Atkins
+    given-names: Aron
+    email: aron@rstudio.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@rstudio.com
+  - family-names: Chang
+    given-names: Winston
+    email: winston@rstudio.com
+  - family-names: Iannone
+    given-names: Richard
+    email: rich@rstudio.com
+    orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2022'
+  url: https://CRAN.R-project.org/package=rmarkdown
+- type: software
+  title: dplyr
+  abstract: 'dplyr: A Grammar of Data Manipulation'
+  notes: Suggests
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: François
+    given-names: Romain
+    orcid: https://orcid.org/0000-0002-2444-4226
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Müller
+    given-names: Kirill
+    orcid: https://orcid.org/0000-0002-1416-3412
+  year: '2022'
+  url: https://CRAN.R-project.org/package=dplyr
+- type: software
+  title: tidyr
+  abstract: 'tidyr: Tidy Messy Data'
+  notes: Suggests
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Girlich
+    given-names: Maximilian
+  year: '2022'
+  url: https://CRAN.R-project.org/package=tidyr
+- type: software
+  title: ggplot2
+  abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
+  notes: Suggests
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: Chang
+    given-names: Winston
+    orcid: https://orcid.org/0000-0002-1576-2126
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Pedersen
+    given-names: Thomas Lin
+    email: thomas.pedersen@rstudio.com
+    orcid: https://orcid.org/0000-0002-5147-4711
+  - family-names: Takahashi
+    given-names: Kohske
+  - family-names: Wilke
+    given-names: Claus
+    orcid: https://orcid.org/0000-0002-7470-9261
+  - family-names: Woo
+    given-names: Kara
+    orcid: https://orcid.org/0000-0002-5125-4188
+  - family-names: Yutani
+    given-names: Hiroaki
+    orcid: https://orcid.org/0000-0002-3385-7233
+  - family-names: Dunnington
+    given-names: Dewey
+    orcid: https://orcid.org/0000-0002-9415-4582
+  year: '2022'
+  url: https://CRAN.R-project.org/package=ggplot2
+- type: software
+  title: bookdown
+  abstract: 'bookdown: Authoring Books and Technical Documents with R Markdown'
+  notes: Suggests
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  year: '2022'
+  url: https://CRAN.R-project.org/package=bookdown

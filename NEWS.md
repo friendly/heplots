@@ -1,3 +1,7 @@
+## Version 1.4-2 (2022-10-09)
+
+* Fix CITATION
+
 ## Version 1.4-1 (2022-10-01)
 
 * (Ugh) broom becomes a Depend: so as not to override `broom::glance()`
