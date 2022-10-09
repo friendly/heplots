@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">heplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4-2</span>
       </span>
     </div>
 
@@ -91,7 +91,7 @@
       <h1 data-toc-skip>HE plot MANOVA Examples</h1>
                         <h4 data-toc-skip class="author">Michael Friendly</h4>
             
-            <h4 data-toc-skip class="date">2022-10-02</h4>
+            <h4 data-toc-skip class="date">2022-10-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/friendly/heplots/blob/HEAD/vignettes/HE_manova.Rmd" class="external-link"><code>vignettes/HE_manova.Rmd</code></a></small>
       <div class="hidden name"><code>HE_manova.Rmd</code></div>
@@ -108,7 +108,7 @@ output:
       
 at end:  sessioninfo::package_info()
 -->
-<p>Vignette built using <code>heplots</code>, version 1.3-9
+<p>Vignette built using <code>heplots</code>, version 1.4-2
 and <code>candisc</code>, version 0.8-6.</p>
 <div class="section level2">
 <h2 id="multivariate-analysis-of-variance-designs">Multivariate Analysis of Variance Designs<a class="anchor" aria-label="anchor" href="#multivariate-analysis-of-variance-designs"></a>
@@ -162,7 +162,7 @@ We specify <code>test.statistic="Roy"</code> to emphasize that Roy’s test has
 a natural visual interpretation in HE plots.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plastic.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">tear</span>, <span class="va">gloss</span>, <span class="va">opacity</span><span class="op">)</span> <span class="op">~</span> <span class="va">rate</span><span class="op">*</span><span class="va">additive</span>, data<span class="op">=</span><span class="va">Plastic</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">plastic.mod</span>, test.statistic<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">plastic.mod</span>, test.statistic<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Roy test statistic</span></span>
 <span><span class="co">#&gt;               Df test stat approx F num Df den Df Pr(&gt;F)   </span></span>
@@ -181,7 +181,7 @@ significant effect.</p>
 using the <code><a href="https://rdrr.io/r/stats/update.html" class="external-link">update()</a></code> method for the <code>mlm</code> object <code>plastic.mod</code>, which re-fits the model with
 only a single outcome variable.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">Anova</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="va">tear</span> <span class="op">~</span> <span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="va">tear</span> <span class="op">~</span> <span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Anova Table (Type II tests)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Response: tear</span></span>
@@ -193,7 +193,7 @@ only a single outcome variable.</p>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
 <span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="va">gloss</span> <span class="op">~</span> <span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="va">gloss</span> <span class="op">~</span> <span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Anova Table (Type II tests)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Response: gloss</span></span>
@@ -205,7 +205,7 @@ only a single outcome variable.</p>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
 <span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="va">opacity</span> <span class="op">~</span> <span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="va">opacity</span> <span class="op">~</span> <span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Anova Table (Type II tests)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Response: opacity</span></span>
@@ -330,7 +330,7 @@ of subsets or linear combinations of the model parameters.</p>
 <p>Thus, for example, the joint test of both main effects tests the parameters
 <code>rateHigh</code> and <code>additiveHigh</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">linearHypothesis</span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rateHigh"</span>, <span class="st">"additiveHigh"</span><span class="op">)</span>, title<span class="op">=</span><span class="st">"Main effects"</span><span class="op">)</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rateHigh"</span>, <span class="st">"additiveHigh"</span><span class="op">)</span>, title<span class="op">=</span><span class="st">"Main effects"</span><span class="op">)</span>, </span>
 <span>      SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Multivariate Tests: Main effects</span></span>
@@ -342,7 +342,7 @@ of subsets or linear combinations of the model parameters.</p>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">linearHypothesis</span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rateHigh"</span>, <span class="st">"additiveHigh"</span>, <span class="st">"rateHigh:additiveHigh"</span><span class="op">)</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">plastic.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rateHigh"</span>, <span class="st">"additiveHigh"</span>, <span class="st">"rateHigh:additiveHigh"</span><span class="op">)</span>, </span>
 <span>                       title<span class="op">=</span><span class="st">"Groups"</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Multivariate Tests: Groups</span></span>
@@ -468,7 +468,7 @@ are:</p>
 <span><span class="co">#&gt; (Intercept)        8.282    5.359   6.410        6.077       </span></span>
 <span><span class="co">#&gt; AttrAverage       -4.808    0.430   0.537       -1.340       </span></span>
 <span><span class="co">#&gt; AttrUnattractive  -5.390   -1.359  -1.410       -1.753</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">jury.mod1</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">jury.mod1</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Roy test statistic</span></span>
 <span><span class="co">#&gt;      Df test stat approx F num Df den Df Pr(&gt;F)    </span></span>
@@ -512,11 +512,11 @@ Figure 2.2: HE plots for all pairs of ratings according to the classification of
 </p>
 </div>
 <p>With 3 groups and 4 variables, the <span class="math inline">\(\mathbf{H}\)</span> ellipsoid has only <span class="math inline">\(s=\min(df_h, p)=2\)</span>
-dimensions. <code>candisc()</code> carries out a canonical discriminant analysis
+dimensions. <code><a href="https://rdrr.io/pkg/candisc/man/candisc.html" class="external-link">candisc()</a></code> carries out a canonical discriminant analysis
 for the MLM and returns an object that can be used to show an HE plot in the
 space of the canonical dimensions. This is plotted in Figure <a href="#fig:jury-can1">2.3</a>.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">jury.can</span> <span class="op">&lt;-</span> <span class="fu">candisc</span><span class="op">(</span><span class="va">jury.mod1</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">jury.can</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/candisc/man/candisc.html" class="external-link">candisc</a></span><span class="op">(</span><span class="va">jury.mod1</span><span class="op">)</span></span>
 <span><span class="va">jury.can</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Canonical Discriminant Analysis for Attr:</span></span>
@@ -576,7 +576,7 @@ and the relations of each of the ratings to discrimination among the photos.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># influence of Attr of photo and nature of crime on Serious and Years</span></span>
 <span><span class="va">jury.mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Serious</span>, <span class="va">Years</span><span class="op">)</span> <span class="op">~</span> <span class="va">Attr</span> <span class="op">*</span> <span class="va">Crime</span>, data<span class="op">=</span><span class="va">MockJury</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">jury.mod2</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">jury.mod2</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Roy test statistic</span></span>
 <span><span class="co">#&gt;            Df test stat approx F num Df den Df Pr(&gt;F)  </span></span>
@@ -613,7 +613,7 @@ The model <code>jury.mod3</code> below is equivalent to an ANCOVA for <code>Year
 <span><span class="co">#&gt; [1,]    0.011612 0.83711     0.39586          0.60285     -0.26302</span></span>
 <span><span class="co">#&gt;      AttrAverage:CrimeSwindle AttrUnattractive:CrimeSwindle</span></span>
 <span><span class="co">#&gt; [1,]                 -0.53701                        2.5123</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">jury.mod3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">jury.mod3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Anova Table (Type II tests)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Response: Years</span></span>
@@ -761,7 +761,7 @@ We see that the multivariate means differ substantially.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># fit manova model</span></span>
 <span><span class="va">sk.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span>
-<span><span class="fu">Anova</span><span class="op">(</span><span class="va">sk.mod</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">sk.mod</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Pillai test statistic</span></span>
 <span><span class="co">#&gt;       Df test stat approx F num Df den Df  Pr(&gt;F)    </span></span>
@@ -780,7 +780,7 @@ being jointly equal to zero, for subsets of the
 <span><span class="co">#&gt; epoch.Q      -0.46325  -1.26504 -0.089087  0.12472</span></span>
 <span><span class="co">#&gt; epoch.C      -0.46380  -0.78003  1.075174 -0.83273</span></span>
 <span><span class="co">#&gt; epoch^4       0.34263   0.80479 -0.661360 -0.41833</span></span></code></pre></div>
-<p>We use <code>linearHypothesis()</code> for a multivariate test of the
+<p>We use <code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis()</a></code> for a multivariate test of the
 <code>epoch.L</code> linear effect.
 The linear trend is highly significant. It is not obvious from
 Figure <a href="#fig:skulls4">3.2</a> that maximal breadth and nasal are increasing
@@ -789,7 +789,7 @@ over time, while the other two measurements have negative slopes.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">sk.mod</span><span class="op">)</span><span class="op">[</span><span class="st">"epoch.L"</span>,<span class="op">]</span></span>
 <span><span class="co">#&gt;      mb      bh      bl      nh </span></span>
 <span><span class="co">#&gt;  4.0266 -2.1925 -5.0175  1.0752</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">linearHypothesis</span><span class="op">(</span><span class="va">sk.mod</span>, <span class="st">"epoch.L"</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># linear component</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">sk.mod</span>, <span class="st">"epoch.L"</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># linear component</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Multivariate Tests: </span></span>
 <span><span class="co">#&gt;                  Df test stat approx F num Df den Df    Pr(&gt;F)    </span></span>
@@ -799,12 +799,12 @@ over time, while the other two measurements have negative slopes.</p>
 <span><span class="co">#&gt; Roy               1   0.41119   14.597      4    142 5.195e-10 ***</span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
-<p><code>linearHypothesis()</code> can also be used to test composite hypotheses.
+<p><code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis()</a></code> can also be used to test composite hypotheses.
 Here we test all non-linear coefficients jointly. The result indicates
 that, collectively, all non-linear terms are not significantly different
 from zero.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">linearHypothesis</span><span class="op">(</span><span class="va">sk.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epoch.Q"</span>, <span class="st">"epoch.C"</span>, <span class="st">"epoch^4"</span><span class="op">)</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">sk.mod</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"epoch.Q"</span>, <span class="st">"epoch.C"</span>, <span class="st">"epoch^4"</span><span class="op">)</span><span class="op">)</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Multivariate Tests: </span></span>
 <span><span class="co">#&gt;                  Df test stat approx F num Df den Df Pr(&gt;F)</span></span>

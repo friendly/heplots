@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   HE_manova: HE_manova.html
   HE_mmra: HE_mmra.html
-last_built: 2022-10-01T22:44Z
+last_built: 2022-10-09T21:51Z
 urls:
   reference: http://friendly.github.io/heplots/reference
   article: http://friendly.github.io/heplots/articles
