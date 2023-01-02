@@ -336,7 +336,7 @@ if (!add){
 	}
 	
   # TODO: allow cex for axis labels
-	if (add) rgl::rgl.pop(id=savedvars$.frame)
+	if (add) rgl::pop3d(id=savedvars$.frame)
 	frame <- rgl::axis3d("x-", color="black")
 	frame <- c(frame, rgl::mtext3d(xlab, "x-", color="black", line=1.5))
 	frame <- c(frame, rgl::axis3d("y-", col="black"))
