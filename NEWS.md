@@ -1,3 +1,7 @@
+## Version 1.4-3 (2023-01-02)
+
+* replace rgl.pop() with pop3D (PR #7); thx: D. Murdoch
+
 ## Version 1.4-2 (2022-10-09)
 
 * Fix CITATION

@@ -1,8 +1,8 @@
 Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
-Version: 1.4-2
-Date: 2022-10-09
+Version: 1.4-3
+Date: 2023-01-02
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -13,7 +13,8 @@ Authors@R: c(
                    family = "Fox", role="aut",
                    comment = c(ORCID = "0000-0002-1196-8012")),
             person(given = "Georges", family = "Monette", role="aut"),
-            person(given = "Phil", family="Chalmers", role="ctb"))
+            person(given = "Phil", family="Chalmers", role="ctb"),
+            person(given = "Duncan", family = "Murdoch", role="ctb"))
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Language: en-US
 Depends:
