@@ -45,7 +45,8 @@ export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d,
     	Mahalanobis,
     	cqplot,
 #    	glance, 
-    	glance.mlm
+    	glance.mlm,
+      Ellipsoid
   	)
 
 S3method(heplot, mlm)

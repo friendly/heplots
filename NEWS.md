@@ -1,3 +1,8 @@
+## Version 1.5.0 (2023-05-30)
+
+* `covEllipses()` gains a formula method
+* Internal function `ellipsoid()` used in `heplot3d()` becomes an exported function.
+
 ## Version 1.4-3 (2023-01-02)
 
 * replace rgl.pop() with pop3D (PR #7); thx: D. Murdoch

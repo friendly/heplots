@@ -13,24 +13,38 @@ multivariate linear model.
 \usage{
 heplot3d(mod, ...)
 
-\method{heplot3d}{mlm}(mod, terms, hypotheses, term.labels = TRUE, 
-    hyp.labels = TRUE, err.label="Error", variables = 1:3, error.ellipsoid = !add,
-    factor.means = !add, grand.mean = !add, remove.intercept = TRUE, 
-    type = c("II", "III", "2", "3"), idata=NULL, idesign=NULL,
-	  icontrasts=c("contr.sum", "contr.poly"), imatrix=NULL, iterm=NULL,
-    manova, size = c("evidence", "effect.size"),
-    level = 0.68, alpha = 0.05,  segments = 40, 
+\method{heplot3d}{mlm}(mod, 
+    terms, hypotheses, term.labels = TRUE, 
+    hyp.labels = TRUE, err.label="Error", 
+    variables = 1:3, 
+    error.ellipsoid = !add,
+    factor.means = !add, grand.mean = !add, 
+    remove.intercept = TRUE, 
+    type = c("II", "III", "2", "3"), 
+    idata = NULL, idesign = NULL,
+	  icontrasts=c("contr.sum", "contr.poly"), 
+	  imatrix = NULL,
+	  iterm = NULL,
+    manova, 
+    size = c("evidence", "effect.size"),
+    level = 0.68, 
+    alpha = 0.05,  
+    segments = 40, 
 	  col=getOption("heplot3d.colors", 
 	              c("red", "blue", "black", "darkgreen", 
 	                "darkcyan","magenta", "brown","darkgray")),
     lwd=c(1, 4),
-    shade=TRUE, shade.alpha=0.2, wire=c(TRUE,FALSE),
+    shade=TRUE, 
+    shade.alpha=0.2, 
+    wire = c(TRUE,FALSE),
     bg.col = c("white", "black"), 
     fogtype = c("none", "exp2", "linear", "exp"), 
-    fov = 30, offset = 0.01, 
+    fov = 30, 
+    offset = 0.01, 
     xlab, ylab, zlab, xlim, ylim, zlim, 
     cex.label = 1.5,
-    add = FALSE, verbose = FALSE, 
+    add = FALSE, 
+    verbose = FALSE, 
     warn.rank = FALSE, ...)
 }
 
@@ -83,8 +97,7 @@ heplot3d(mod, ...)
   	the columns of the within-subject model matrix for an intra-subject term to be tested, and must
   	have as many rows as there are responses; the columns of the within-subject model
   	matrix for \emph{different} terms must be mutually orthogonal. 
-    \emph{This functionality
-    requires \code{car} version 2.0 or later.}}
+    }
   \item{iterm}{For repeated measures designs, you must specify one intra-subject term
   	(a character string) to select the SSPE (E) matrix used in the HE plot. 
   	Hypothesis terms plotted include the \code{iterm} effect as well as all interactions
