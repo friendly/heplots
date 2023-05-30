@@ -7,16 +7,6 @@ covEllipses <-function(x, ...) {
 	UseMethod("covEllipses")
 }
 
-
-covEllipses.boxM <-
-		function(x, ...) {
-
-	cov <- c(x$cov, pooled=list(x$pooled))
-	mns <- x$means
-	df <- x$df
-	covEllipses.default(cov, mns, df, ...)
-}
-
 covEllipses.data.frame <-
 		function(x, group,
 		         pooled=TRUE, 
@@ -66,7 +56,35 @@ covEllipses.data.frame <-
 
 covEllipses.matrix <- covEllipses.data.frame
 
-		  
+covEllipses.formula <- function(x, data, ...)
+{
+  form <- x
+  mf <- model.frame(form, data)
+  if (any(sapply(2:dim(mf)[2], function(j) is.numeric(mf[[j]])))) 
+    stop("covEllipses is not appropriate with quantitative explanatory variables.")
+  
+  x <- mf[,1]
+  if (dim(x)[2] < 2) stop("There must be two or more response variables.")
+  
+  if(dim(mf)[2]==2) group <- mf[,2]
+  else {
+    if (length(grep("\\+ | \\| | \\^ | \\:",form))>0) stop("Model must be completely crossed formula only.")
+    group <- interaction(mf[,2:dim(mf)[2]])
+  }
+  covEllipses.data.frame(x=x, group=group, ...)
+}
+
+# boxM method
+covEllipses.boxM <-
+  function(x, ...) {
+    
+    cov <- c(x$cov, pooled=list(x$pooled))
+    mns <- x$means
+    df <- x$df
+    covEllipses.default(cov, mns, df, ...)
+  }
+
+
 covEllipses.default <-
 		function ( 
 		    x,                 # a list of covariance matrices

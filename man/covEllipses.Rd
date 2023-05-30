@@ -2,6 +2,7 @@
 \alias{covEllipses}
 \alias{covEllipses.boxM}
 \alias{covEllipses.data.frame}
+\alias{covEllipses.formula}
 \alias{covEllipses.matrix}
 \alias{covEllipses.default}
 %- Also NEED an '\alias' for EACH other topic documented here.
@@ -22,9 +23,12 @@ covEllipses(x, ...)
 
 \method{covEllipses}{boxM}(x, ...)
 
+\method{covEllipses}{formula}(x, data, ...)
+
 \method{covEllipses}{data.frame}(x, group, pooled = TRUE, method = c("classical", "mve", "mcd"), ...)
 
 \method{covEllipses}{matrix}(x, group, pooled = TRUE, method = c("classical", "mve", "mcd"), ...)
+
 
 \method{covEllipses}{default}(x, means, df, 
         labels = NULL, variables = 1:2, level = 0.68, 
@@ -47,12 +51,17 @@ covEllipses(x, ...)
   \item{x}{
 The generic argument. For the default method, this is a list of covariance matrices.
 For the \code{data.frame} and \code{matrix} methods, this is a numeric matrix of two or more columns
-supplying the variables to be analyzed.
+supplying the variables to be analyzed. For the \code{formula} method, this is a multivariate
+model formula with a single group factor.
 }
 
   \item{group}{
 a factor defining groups, or a vector of length \code{n=nrow(x)} doing the same.
 If missing, a single covariance ellipse is drawn.
+}
+
+  \item{data}{
+  For the \code{formula} method, Aa data frame containing the variables in the model.
 }
   \item{pooled}{
 Logical; if \code{TRUE}, the pooled covariance matrix for the total sample is also computed and plotted

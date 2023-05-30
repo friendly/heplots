@@ -15,7 +15,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.4-2
+Version 1.5.0
 
 ## Description
 
@@ -28,26 +28,26 @@ hypotheses (**H**) and for error (**E**) using ellipses (in two
 dimensions), ellipsoids (in three dimensions), or by line segments in
 one dimension. For the theory and applications, see:
 
--   Fox, Friendly and Monette (2009) for a brief introduction,
--   Friendly (2010) for the application of these ideas to repeated
-    measure designs,
--   Friendly, Monette and Fox (2013) for a general discussion of the
-    role of elliptical geometry in statistical understanding, and
--   Friendly & Sigal (2017) for an applied R tutorial.
+- Fox, Friendly and Monette (2009) for a brief introduction,
+- Friendly (2010) for the application of these ideas to repeated measure
+  designs,
+- Friendly, Monette and Fox (2013) for a general discussion of the role
+  of elliptical geometry in statistical understanding, and
+- Friendly & Sigal (2017) for an applied R tutorial.
 
 Other topics now addressed here include:
 
--   robust MLMs, using iteratively re-weighted least squared to
-    down-weight observations with large multivariate residuals,
-    `robmlm()`.
--   `Mahalanobis()` calculates classical and robust Mahalanobis squared
-    distances using MCD and MVE estimators of center and covariance.
--   visualizing tests for equality of covariance matrices in MLMs (Box’s
-    M test), `boxM()` and `plot.boxM()`.
--   $\chi^2$ Q-Q plots for MLMs (`cqplot()`) to detect outliers and
-    assess multivariate normality of residuals.
--   bivariate coefficient plots showing elliptical confidence regions
-    (`coefplot()`).
+- robust MLMs, using iteratively re-weighted least squared to
+  down-weight observations with large multivariate residuals,
+  `robmlm()`.
+- `Mahalanobis()` calculates classical and robust Mahalanobis squared
+  distances using MCD and MVE estimators of center and covariance.
+- visualizing tests for equality of covariance matrices in MLMs (Box’s M
+  test), `boxM()` and `plot.boxM()`.
+- $\chi^2$ Q-Q plots for MLMs (`cqplot()`) to detect outliers and assess
+  multivariate normality of residuals.
+- bivariate coefficient plots showing elliptical confidence regions
+  (`coefplot()`).
 
 In this respect, the `heplots` package now aims to provide a wide range
 of tools for analyzing and visualizing multivariate response linear
@@ -55,18 +55,18 @@ models, together with other packages:
 
 <a href="http://github.com/friendly/candisc"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
 
--   The related [`candisc`](http://github.com/friendly/candisc) package
-    provides HE plots in **canonical discriminant** space, the space of
-    linear combinations of the responses that show the maximum possible
-    effects and for canonical correlation in multivariate regression
-    designs.
+- The related [`candisc`](http://github.com/friendly/candisc) package
+  provides HE plots in **canonical discriminant** space, the space of
+  linear combinations of the responses that show the maximum possible
+  effects and for canonical correlation in multivariate regression
+  designs.
 
 <a href="https://friendly.github.io/mvinfluence/"><img src='https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png' height='80'  style="float:right; height:80px;"></a>
 
--   Another package,
-    [`mvinfluence`](https://friendly.github.io/mvinfluence/), provides
-    diagnostic measures and plots for **influential observations** in
-    MLM designs.
+- Another package,
+  [`mvinfluence`](https://friendly.github.io/mvinfluence/), provides
+  diagnostic measures and plots for **influential observations** in MLM
+  designs.
 
 Several tutorial vignettes are also included. See
 `vignette(package="heplots")`.
@@ -89,34 +89,34 @@ The graphical functions contained here all display multivariate model
 effects in variable (**data**) space, for one or more response variables
 (or contrasts among response variables in repeated measures designs).
 
--   `heplot()` constructs two-dimensional HE plots for model terms and
-    linear hypotheses for pairs of response variables in multivariate
-    linear models.
+- `heplot()` constructs two-dimensional HE plots for model terms and
+  linear hypotheses for pairs of response variables in multivariate
+  linear models.
 
--   `heplot3d()` constructs analogous 3D plots for triples of response
-    variables.
+- `heplot3d()` constructs analogous 3D plots for triples of response
+  variables.
 
--   The `pairs` method, `pairs.mlm()` constructs a scatterplot matrix of
-    pairwise HE plots.
+- The `pairs` method, `pairs.mlm()` constructs a scatterplot matrix of
+  pairwise HE plots.
 
--   `heplot1d()` constructs 1-dimensional analogs of HE plots for model
-    terms and linear hypotheses for single response variables.
+- `heplot1d()` constructs 1-dimensional analogs of HE plots for model
+  terms and linear hypotheses for single response variables.
 
 ## Other functions
 
--   `glance.mlm()` extends `broom::glance.lm()` to multivariate response
-    models, giving a one-line statistical summary for each response
-    variable.
+- `glance.mlm()` extends `broom::glance.lm()` to multivariate response
+  models, giving a one-line statistical summary for each response
+  variable.
 
--   `boxM()` Calculates Box’s *M* test for homogeneity of covariance
-    matrices in a MANOVA design. A `plot` method displays a visual
-    representation of the components of the test. Associated with this,
-    `bartletTests()` and `levineTests()` give the univariate tests of
-    homogeneity of variance for each response measure in a MLM.
+- `boxM()` Calculates Box’s *M* test for homogeneity of covariance
+  matrices in a MANOVA design. A `plot` method displays a visual
+  representation of the components of the test. Associated with this,
+  `bartletTests()` and `levineTests()` give the univariate tests of
+  homogeneity of variance for each response measure in a MLM.
 
--   `covEllipses()` draw covariance (data) ellipses for one or more
-    group, optionally including the ellipse for the pooled within-group
-    covariance.
+- `covEllipses()` draw covariance (data) ellipses for one or more group,
+  optionally including the ellipse for the pooled within-group
+  covariance.
 
 ### Repeated measure designs
 
