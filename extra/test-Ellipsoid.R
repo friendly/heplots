@@ -13,3 +13,7 @@ print(ell)
 
 ell2 <- Ellipsoid(xyz)
 print(ell2)
+
+# test bbox3d
+ell3d <- rgl::ellipse3d(sigma, centre = mu)
+bbox3d(ell3d)
