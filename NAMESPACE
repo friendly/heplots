@@ -81,3 +81,4 @@ S3method(cqplot, mlm)
 
 S3method(glance, mlm)
 
+S3method(Ellipsoid, default)

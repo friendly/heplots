@@ -8,8 +8,9 @@
 
 #' Draw an Ellipsoid in an rgl Scene
 #'
+#' @param x      a 3 x 3 matrix, , typically the covariance matrix of data
 #' @param center center of the ellipsoid, a vector of length 3, typically the mean vector of data
-#' @param shape  shape of the ellipsoid, a 3 x 3 matrix, , typically the covariance matrix of data
+#' @param which  selects which variables from the object will be plotted. The default is the first 3.
 #' @param radius size of the ellipsoid
 #' @param df     degrees of freedom associated with the covariance matrix, used to calculate the appropriate F statistic
 #' @param label  label for the ellipsoid
@@ -22,15 +23,21 @@
 #' @param wire   logical; should the ellipsoid be drawn as a wire frame?
 #' @param verbose logical; for debugging
 #' @param warn.rank logical; warn if the ellipsoid is less than rank 3?
+#' @param ...
 #'
 #' @return returns the bounding box of the ellipsoid invisibly; otherwise used for it's side effect of
 #'         drawing the ellipsoid
 #' @export
 #'
 #' @examples
-Ellipsoid <- function(
-    center, 
-    shape, 
+
+Ellipsoid <-
+  function(x, ...) UseMethod("Ellipsoid")
+
+Ellipsoid.default <- function(
+    x, 
+    center = c(0,0,0), 
+    which = 1:3,
     radius = 1, 
     df = Inf, 
     label = "",
@@ -42,7 +49,8 @@ Ellipsoid <- function(
     alpha = 0.1, 
     wire = TRUE,
     verbose = FALSE,
-    warn.rank = FALSE  
+    warn.rank = FALSE,
+    ...
 ){
 
   degvec <- seq(0, 2*pi, length=segments)
@@ -54,6 +62,8 @@ Ellipsoid <- function(
     warn <- options(warn=-1)
     on.exit(options(warn))
   }
+  shape <- x
+  # TODO: select which
   Q <- chol(shape, pivot=TRUE)
   lwd <- if (df < 2) lwd[2] else lwd[1]
   order <- order(attr(Q, "pivot"))

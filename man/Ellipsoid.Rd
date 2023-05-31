@@ -1,12 +1,18 @@
 \name{Ellipsoid}
 \alias{Ellipsoid}
+\alias{Ellipsoid.default}
 %- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Draw an Ellipsoid in an rgl Scene}
 \description{Draws an ellipsoid in an \code{rgl} scene}
 
 \usage{
-Ellipsoid(center, 
-  shape, 
+Ellipsoid(x, ...)
+
+\method{Ellipsoid}{default}(
+  x,
+  center = c(0,0,0), 
+  which = 1:3,
   radius = 1, 
   df = Inf, 
   label = "", 
@@ -18,12 +24,14 @@ Ellipsoid(center,
   alpha = 0.1, 
   wire = TRUE, 
   verbose = FALSE, 
-  warn.rank = FALSE)
+  warn.rank = FALSE,
+  ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
+  \item{x}{An object. In the default method the parameter x should be a square positive definite matrix at least 3x3 in size. It will be treated as the correlation or covariance of a multivariate normal distribution.}
   \item{center}{center of the ellipsoid, a vector of length 3, typically the mean vector of data}
-  \item{shape}{shape of the ellipsoid, a 3 x 3 matrix, , typically the covariance matrix of data}
+  \item{which}{This parameter selects which variables from the object will be plotted. The default is the first 3.}
   \item{radius}{size of the ellipsoid}
   \item{df}{degrees of freedom associated with the covariance matrix, used to calculate the appropriate F statistic}
   \item{label}{label for the ellipsoid}
@@ -36,6 +44,7 @@ Ellipsoid(center,
   \item{wire}{logical; should the ellipsoid be drawn as a wire frame?}
   \item{verbose}{logical; for debugging}
   \item{warn.rank}{logical; warn if the ellipsoid is less than rank 3?}
+  \item{...}{Additional parameters}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
