@@ -30,7 +30,8 @@ importFrom("purrr",    "map_dfr", "map")
 importFrom("tibble",   "as_tibble")
 
 
-export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d, 
+export(heplot, heplot3d, heplot1d, 
+       ellipse3d.axes, mark.H0, cross3d, 
        statList, covList, colMeansList, arrow3d,
        etasq, gsorth, termMeans, trans.colors,
        robmlm, 
@@ -46,7 +47,8 @@ export(heplot, heplot3d, heplot1d, ellipse3d.axes, mark.H0, cross3d,
     	cqplot,
 #    	glance, 
     	glance.mlm,
-      Ellipsoid
+      Ellipsoid,
+      bbox3d
   	)
 
 S3method(heplot, mlm)
