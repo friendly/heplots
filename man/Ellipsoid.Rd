@@ -1,6 +1,8 @@
 \name{Ellipsoid}
 \alias{Ellipsoid}
 \alias{Ellipsoid.default}
+\alias{Ellipsoid.data.frame}
+\alias{Ellipsoid.matrix}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
 \title{Draw an Ellipsoid in an rgl Scene}
@@ -9,6 +11,12 @@
 \usage{
 Ellipsoid(x, ...)
 
+\method{Ellipsoid}{data.frame}(
+  x,
+  which = 1:3,
+  method = c("classical", "mve", "mcd"),
+    ...)
+  
 \method{Ellipsoid}{default}(
   x,
   center = c(0,0,0), 
@@ -29,9 +37,16 @@ Ellipsoid(x, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{An object. In the default method the parameter x should be a square positive definite matrix at least 3x3 in size. It will be treated as the correlation or covariance of a multivariate normal distribution.}
+  \item{x}{An object. In the default method the parameter x should be a square positive definite matrix at               least 3x3 in size. It will be treated as the correlation or covariance of a multivariate normal
+           distribution. For the \code{data.frame} method, it should be a numeric data frame with at
+           least 3 columns.
+  }
   \item{center}{center of the ellipsoid, a vector of length 3, typically the mean vector of data}
   \item{which}{This parameter selects which variables from the object will be plotted. The default is the first 3.}
+  \item{method}{For the \code{data.frame} method, a character string to specify the covariance method to 
+           be used: \emph{classical} product-moment (\code{"classical"}),  or \emph{minimum volume ellipsoid} 
+           (\code{"mve"}), or \emph{minimum covariance determinant} (\code{"mcd"}).}
+
   \item{radius}{size of the ellipsoid}
   \item{df}{degrees of freedom associated with the covariance matrix, used to calculate the appropriate F statistic}
   \item{label}{label for the ellipsoid}

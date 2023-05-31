@@ -1,7 +1,7 @@
 ## Version 1.5.0 (2023-05-30)
 
 * `covEllipses()` gains a formula method
-* Internal function `ellipsoid()` used in `heplot3d()` becomes an exported function.
+* Internal function `ellipsoid()` used in `heplot3d()` becomes an exported function, `Ellipsoid()`
 
 ## Version 1.4-3 (2023-01-02)
 

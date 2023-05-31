@@ -34,6 +34,34 @@
 Ellipsoid <-
   function(x, ...) UseMethod("Ellipsoid")
 
+#' @param method  the covariance method to be used: classical product-moment (\code{"classical"}), 
+#'        or minimum volume ellipsoid (\code{"mve"}), or 
+#'        minimum covariance determinant (\code{"mcd"}
+        
+Ellipsoid.data.frame <- function(
+    x,
+    which = 1:3,
+    method = c("classical", "mve", "mcd"),
+    ...) {
+  
+  method <- match.arg(method)
+  
+  if (length(which) != 3L) stop("'which' must be a vector of length 3, not ", which)
+  if (any(which) > ncol(x) |
+      any(which) < 0)  stop("unavailable variables selected in ", which) 
+  x <- x[, which]
+  
+  rcov <- MASS::cov.rob(x, method=method)
+  cov  <- rcov$cov
+  means<- rcov$center
+  
+  Ellipsoid.default(cov, center = means, ...)
+  
+}
+
+Ellipsoid.matrix <- Ellipsoid.data.frame
+
+
 Ellipsoid.default <- function(
     x, 
     center = c(0,0,0), 
@@ -106,7 +134,7 @@ Ellipsoid.default <- function(
   ranges <- apply(bbox, 2, diff)
   if (!is.null(label) && label !="")
     rgl::texts3d(x[which.max(x[,2]),] + offset*ranges, adj=0, texts=label, color=col, lit=FALSE)
-browser()
+
   rownames(bbox) <- c("min", "max")
   colnames(bbox) <- names(center)
   invisible(bbox)

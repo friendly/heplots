@@ -82,3 +82,5 @@ S3method(cqplot, mlm)
 S3method(glance, mlm)
 
 S3method(Ellipsoid, default)
+S3method(Ellipsoid, data.frame)
+S3method(Ellipsoid, matrix)

@@ -48,55 +48,36 @@ covEllipses(x, ...)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
 
-  \item{x}{
-The generic argument. For the default method, this is a list of covariance matrices.
-For the \code{data.frame} and \code{matrix} methods, this is a numeric matrix of two or more columns
-supplying the variables to be analyzed. For the \code{formula} method, this is a multivariate
-model formula with a single group factor.
-}
+  \item{x}{The generic argument. For the default method, this is a list of covariance matrices.
+           For the \code{data.frame} and \code{matrix} methods, this is a numeric matrix of two or more
+           columns supplying the variables to be analyzed. For the \code{formula} method, this is a
+           multivariate model formula with a single group factor.}
 
-  \item{group}{
-a factor defining groups, or a vector of length \code{n=nrow(x)} doing the same.
-If missing, a single covariance ellipse is drawn.
-}
+  \item{group}{a factor defining groups, or a vector of length \code{n=nrow(x)} doing the same.
+           If missing, a single covariance ellipse is drawn.}
 
-  \item{data}{
-  For the \code{formula} method, Aa data frame containing the variables in the model.
-}
-  \item{pooled}{
-Logical; if \code{TRUE}, the pooled covariance matrix for the total sample is also computed and plotted
-}
-  \item{method}{
-the covariance method to be used: classical product-moment (\code{"classical"}), 
-or minimum volume ellipsoid (\code{"mve"}), or 
-minimum covariance determinant (\code{"mcd"}).
-}
+  \item{data}{For the \code{formula} method, Aa data frame containing the variables in the model.}
+  \item{pooled}{Logical; if \code{TRUE}, the pooled covariance matrix for the total sample is also 
+            computed and plotted.}
+  \item{method}{a character string to specify the covariance method to be
+           used: \emph{classical} product-moment (\code{"classical"}),  or \emph{minimum volume ellipsoid} 
+           (\code{"mve"}), or \emph{minimum covariance determinant} (\code{"mcd"}).}
 
-%  \item{cov}{
-%%%     ~~Describe \code{cov} here~~
-%}
-  \item{means}{
-For the default method, a matrix of the means for all groups (followed by the grand means, if \code{pooled=TRUE}).
-Rows are the groups, and columns are the variables. It is assumed that the means have
-column names corresponding to the variables in the covariance matrices.
-}
-  \item{df}{
-For the default method, a vector of the degrees of freedom for the covariance matrices
-}
-  \item{labels}{
-Either a character vector of labels for the groups, or \code{TRUE},
-indicating that group labels are taken as the names of the covariance matrices.
-Use \code{labels=""} to suppress group labels, e.g., when \code{add=TRUE}
-}
+  \item{means}{For the default method, a matrix of the means for all groups (followed by the grand means, 
+           if \code{pooled=TRUE}). Rows are the groups, and columns are the variables. It is assumed 
+           that the means have column names corresponding to the variables in the covariance matrices.}
+  \item{df}{For the default method, a vector of the degrees of freedom for the covariance matrices}
+  \item{labels}{Either a character vector of labels for the groups, or \code{TRUE}, indicating that 
+           group labels are taken as the names of the covariance matrices. Use \code{labels=""} to 
+           suppress group labels, e.g., when \code{add=TRUE}}
   \item{variables}{indices or names of the response variables to be plotted;
-    defaults to \code{1:2}.  If more than two variables are supplied, the function
-    plots all pairwise covariance ellipses in a scatterplot matrix format.}
+           defaults to \code{1:2}.  If more than two variables are supplied, the function
+           plots all pairwise covariance ellipses in a scatterplot matrix format.}
 
-  \item{level}{equivalent coverage of a data ellipse for normally-distributed
-    errors, defaults to \code{0.68}.}
+  \item{level}{equivalent coverage of a data ellipse for normally-distributed errors, defaults to 
+            \code{0.68}.}
 
-  \item{segments}{number of line segments composing each ellipse; defaults to
-    \code{40}.}
+  \item{segments}{number of line segments composing each ellipse; defaults to \code{40}.}
 
   \item{center}{If \code{TRUE}, the covariance ellipses are centered at the centroid.}
 
@@ -106,12 +87,12 @@ Use \code{labels=""} to suppress group labels, e.g., when \code{add=TRUE}
   \item{center.cex}{size of character to use in plotting the centroid of the data;
     defaults to \code{2}.}
 
-  \item{col}{a color or vector of colors to use in plotting ellipses
-   --- recycled as necessary 
+  \item{col}{a color or vector of colors to use in plotting ellipses --- recycled as necessary 
     A single color can be given, in which case it is used for all ellipses.
     For convenience, the default colors for all plots produced in a given session can be changed
     by assigning a color vector via \code{options(heplot.colors =c(...)}.  Otherwise,
-    the default colors are \code{c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.
+    the default colors are \code{c("red", "blue", "black", "darkgreen", "darkcyan", 
+    "magenta", "brown", "darkgray")}.
     }
 
   \item{lty}{vector of line types to use for plotting the ellipses; the first is
@@ -144,8 +125,8 @@ Use \code{labels=""} to suppress group labels, e.g., when \code{add=TRUE}
 
   \item{xlab}{x-axis label; defaults to name of the x variable.}
   \item{ylab}{y-axis label; defaults to name of the y variable.}
-  \item{vlabels}{Labels for the variables can also be supplied through this argument, which is more convenient
-  when \code{length(variables) > 2}.}
+  \item{vlabels}{Labels for the variables can also be supplied through this argument, which is 
+            more convenient when \code{length(variables) > 2}.}
   \item{var.cex}{character size for variable labels in the pairs plot}
   \item{main}{main plot label; defaults to \code{""}, and presently has no effect.}
   \item{xlim}{x-axis limits; if absent, will be computed from the data.}

@@ -7,4 +7,9 @@ dfe <- nrow(xyz)
 level <- 0.68
 radius <- sqrt(3 * qf(level, 3, dfe))
 ell <- Ellipsoid(sigma, center = mu, radius = radius)
-print(ell)  
+print(ell) 
+
+# test data.frame method
+
+ell2 <- Ellipsoid(xyz)
+print(ell2)
