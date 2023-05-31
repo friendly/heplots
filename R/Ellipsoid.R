@@ -62,8 +62,15 @@ Ellipsoid.default <- function(
     warn <- options(warn=-1)
     on.exit(options(warn))
   }
+
+  dimx <- dim(x)
+  if (!length(dimx) == 2 & dimx[1] == dimx[2]) stop("'x' must be a square matrix")
+  if (length(which) != 3) stop("'which' must be a vector of length 3, not ", which)
+  if (any(which) > dimx[1]) stop("unavailable variables selected in ", which) 
+  x <- x[which, which]
   shape <- x
   # TODO: select which
+  
   Q <- chol(shape, pivot=TRUE)
   lwd <- if (df < 2) lwd[2] else lwd[1]
   order <- order(attr(Q, "pivot"))
@@ -99,21 +106,9 @@ Ellipsoid.default <- function(
   ranges <- apply(bbox, 2, diff)
   if (!is.null(label) && label !="")
     rgl::texts3d(x[which.max(x[,2]),] + offset*ranges, adj=0, texts=label, color=col, lit=FALSE)
-
+browser()
   rownames(bbox) <- c("min", "max")
   colnames(bbox) <- names(center)
   invisible(bbox)
 }
 
-if(FALSE) {
-#  data(iris)
-
-  # xyz <- iris[, 1:3]
-  # mu <- apply(xyz, 2, mean)
-  # sigma <- cov(xyz)
-  # dfe <- nrow(xyz)
-  # level <- 0.68
-  # radius <- sqrt(3 * qf(level, 3, dfe))
-  # ell <- Ellipsoid(sigma, center = mu, radius = radius)
-  # print(ell)  
-}
