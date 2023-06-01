@@ -2,7 +2,7 @@
 \alias{Ellipsoid}
 \alias{Ellipsoid.default}
 \alias{Ellipsoid.data.frame}
-\alias{Ellipsoid.matrix}
+%\alias{Ellipsoid.matrix}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
 \title{Draw an Ellipsoid in an rgl Scene}

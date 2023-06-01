@@ -140,26 +140,37 @@ label.ellipse3d <- function(ellipse,
   pos <- label.pos
   
   bbox <- bbox3d(ellipse)
+  adj <- rep(adj, out.length = length(poss))
   
   if (label.pos==1) {   # bottom
     x <- mean(bbox[, "x"])
-    y <- bbox["min", "y"] + adj[2]
-    z <- bbox["min", "z"] + adj[3]
+    y <- bbox["min", "y"]  + adj[2]
+    z <- mean(bbox[, "z"]) + adj[3]
   }
   else if (label.pos==2) {   # left
-    x <- bbox["min", "x"] + adj[1]
-    y <- bbox["min", "y"] + adj[2]
-    z <- bbox["min", "z"] + adj[3]
+    x <- bbox["min", "x"]  + adj[1]
+    y <- mean(bbox[, "y"]) + adj[2]
+    z <- mean(bbox[, "z"]) + adj[3]
   }
   else if (label.pos==3) {   # top
-    x <- bbox["min", "x"] + adj[1]
-    y <- bbox["min", "y"] + adj[2]
-    z <- bbox["min", "z"] + adj[3]
+    x <- mean(bbox[, "x"])
+    y <- bbox["max", "y"]  + adj[2]
+    z <- mean(bbox[, "z"]) + adj[3]
   }
   else if (label.pos==4) {   # right
-    x <- bbox["min", "x"] + adj[1]
-    y <- bbox["min", "y"] + adj[2]
-    z <- bbox["min", "z"] + adj[3]
+    x <- bbox["max", "x"]  + adj[1]
+    y <- mean(bbox[, "y"]) + adj[2]
+    z <- mean(bbox[, "z"]) + adj[3]
+  }
+  else if (label.pos==5) {   # front
+    x <- mean(bbox[, "x"])
+    y <- mean(bbox[, "y"]) + adj[2]
+    z <- bbox["min", "z"] + adj[1]
+  }
+  else if (label.pos==6) {   # back
+    x <- mean(bbox[, "x"])
+    y <- mean(bbox[, "y"]) + adj[2]
+    z <- bbox["max", "z"] + adj[1]
   }
   else if (label.pos==0) {   # center
     x <- mean(bbox[, "x"])

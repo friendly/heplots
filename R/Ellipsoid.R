@@ -50,6 +50,7 @@ Ellipsoid.data.frame <- function(
   if (any(which) > ncol(x) |
       any(which) < 0)  stop("unavailable variables selected in ", which) 
   x <- x[, which]
+  if (nrow(x) < 4) stop("at least 4 cases are needed")
   
   rcov <- MASS::cov.rob(x, method=method)
   cov  <- rcov$cov
@@ -59,7 +60,7 @@ Ellipsoid.data.frame <- function(
   
 }
 
-Ellipsoid.matrix <- Ellipsoid.data.frame
+# Ellipsoid.matrix <- Ellipsoid.data.frame
 
 
 Ellipsoid.default <- function(

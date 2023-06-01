@@ -32,10 +32,18 @@ bees.mod1 <- lm(cbind(Iz,Iy) ~ caste*trtime, data=Bees)
 coefs <- rownames(coef(bees.mod1))
 linearHypothesis(bees.mod1,"trtimetreat" , title="Treat")
 
-print(linearHypothesis(bees.mod1, coefs[grep("^trtimetime", coefs)], title="Time"),SSP=FALSE)
-print(linearHypothesis(bees.mod1, coefs[grep("^trtimetreat:time", coefs)], title="Treat:Time"),SSP=FALSE)
+print(linearHypothesis(bees.mod1, 
+                       coefs[grep("^trtimetime", coefs)], 
+                       title="Time"),
+      SSP=FALSE)
+print(linearHypothesis(bees.mod1, 
+                       coefs[grep("^trtimetreat:time", coefs)], 
+                       title="Treat:Time"),
+      SSP=FALSE)
 
-heplot(bees.mod1, xlab="Iz: Ovarian development", ylab="Iz: Ovarian reabsorption",
+heplot(bees.mod1, 
+       xlab="Iz: Ovarian development", 
+       ylab="Iz: Ovarian reabsorption",
 		size="effect", main="Bees: ~caste*trtime",
 		hypotheses=list(Time=coefs[grep("^trtimetime", coefs)])
 )
