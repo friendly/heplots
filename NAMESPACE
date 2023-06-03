@@ -37,7 +37,7 @@ export(heplot, heplot3d, heplot1d,
        robmlm, 
     	interpPlot, 
     	label.ellipse,
-    	label.ellipse3d,
+ #   	label.ellipse3d,
     	coefplot,
       boxM,
       covEllipses,
@@ -78,6 +78,7 @@ S3method(covEllipses, default)
 S3method(covEllipses, data.frame)
 S3method(covEllipses, matrix)
 S3method(covEllipses, boxM)
+S3method(covEllipses, formula)
 
 S3method(cqplot, default)
 S3method(cqplot, mlm)
