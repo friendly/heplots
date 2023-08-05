@@ -1,16 +1,13 @@
-url: http://friendly.github.io/heplots
+url: https://friendly.github.io/heplots
 
 template:
+  bootstrap: 5
   params:
     bootswatch: cerulean
-
-# template:
-#   bootstrap: 5
-#   bslib:
-#     base_font: {google: "Roboto"}
-#     heading_font: {google: "Roboto Slab"}
-#     code_font: {google: "JetBrains Mono"}
-# 
+  bslib:
+    base_font: {google: "Roboto"}
+    heading_font: {google: "Roboto Slab"}
+    code_font: {google: "JetBrains Mono"}
 
 
 reference:
@@ -50,11 +47,13 @@ reference:
     desc: Utility functions
     contents:
     - arrow3d
+    - bbox3d
     - colDevs
     - colMeansList
     - covList
     - cross3d
     - etasq
+    - Ellipsoid
     - ellipse3d.axes
     - gsorth
     - interpPlot

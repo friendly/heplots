@@ -1,204 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://friendly.github.io/heplots/404.html</loc>
+    <loc>https://friendly.github.io/heplots/404.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/articles/HE_manova.html</loc>
+    <loc>https://friendly.github.io/heplots/articles/HE_manova.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/articles/HE_mmra.html</loc>
+    <loc>https://friendly.github.io/heplots/articles/HE_mmra.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/articles/index.html</loc>
+    <loc>https://friendly.github.io/heplots/articles/index.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/authors.html</loc>
+    <loc>https://friendly.github.io/heplots/authors.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/index.html</loc>
+    <loc>https://friendly.github.io/heplots/index.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/news/index.html</loc>
+    <loc>https://friendly.github.io/heplots/news/index.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/AddHealth.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/AddHealth.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Adopted.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Adopted.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/arrow3d.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/arrow3d.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/bartlettTests.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/bartlettTests.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Bees.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/bbox3d.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/boxM.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Bees.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/coefplot.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/boxM.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/colDevs.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/coefplot.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/covEllipses.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/colDevs.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/cqplot.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/covEllipses.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/cross3d.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/cqplot.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Diabetes.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/cross3d.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/ellipse3d.axes.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Diabetes.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/etasq.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/ellipse3d.axes.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/FootHead.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Ellipsoid.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/glance.mlm.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/etasq.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/gsorth.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/FootHead.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Headache.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/glance.mlm.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/heplot-package.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/gsorth.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/heplot.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Headache.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/heplot1d.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/heplot-package.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/heplot3d.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/heplot.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/heplots-internal.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/heplot1d.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Hernior.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/heplot3d.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/index.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/heplots-internal.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/interpPlot.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Hernior.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/index.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/label.ellipse.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/interpPlot.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/leveneTests.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/logdetCI.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/label.ellipse.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Mahalanobis.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/leveneTests.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/mark.H0.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/logdetCI.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/mathscore.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Mahalanobis.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/MockJury.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/mark.H0.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/NeuroCog.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/mathscore.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/NLSY.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/MockJury.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Oslo.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/NeuroCog.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/pairs.mlm.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/NLSY.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Parenting.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Oslo.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Plastic.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/pairs.mlm.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/plot.boxM.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Parenting.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/plot.robmlm.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Plastic.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Pottery2.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/plot.boxM.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Probe.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/plot.robmlm.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/RatWeight.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Pottery2.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/ReactTime.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Probe.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/robmlm.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/RatWeight.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Rohwer.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/ReactTime.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/RootStock.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/robmlm.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Sake.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Rohwer.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/schooldata.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/RootStock.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/Skulls.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Sake.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/SocGrades.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/schooldata.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/SocialCog.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/Skulls.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/statList.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/SocGrades.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/termMeans.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/SocialCog.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/TIPI.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/statList.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/trans.colors.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/termMeans.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/VocabGrowth.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/TIPI.html</loc>
   </url>
   <url>
-    <loc>http://friendly.github.io/heplots/reference/WeightLoss.html</loc>
+    <loc>https://friendly.github.io/heplots/reference/trans.colors.html</loc>
+  </url>
+  <url>
+    <loc>https://friendly.github.io/heplots/reference/VocabGrowth.html</loc>
+  </url>
+  <url>
+    <loc>https://friendly.github.io/heplots/reference/WeightLoss.html</loc>
   </url>
 </urlset>

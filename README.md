@@ -5,10 +5,11 @@
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
+[![Last
+Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://github.com/friendly/heplots)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
-[![License](https://img.shields.io/badge/license-GPL%20(%3E=%202)-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![DOI](https://zenodo.org/badge/13908453.svg)](https://zenodo.org/badge/latestdoi/13908453)
-
+[![](https://img.shields.io/badge/pkgdown%20site-blue)](https://friendly.github.io/genridge)
 <!-- badges: end -->
 
 # heplots <img src="man/figures/logo.png" height="200" style="float:right; height:200px;"/>
