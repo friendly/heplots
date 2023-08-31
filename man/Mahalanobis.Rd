@@ -15,7 +15,7 @@ Mahalanobis(x, center, cov, method = c("classical", "mcd", "mve"), nsamp = "best
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-a numeric matrix or data frame with, say, \eqn{p} columns
+a numeric matrix or data frame with, say, \eqn{p} columns. Missing cases are ignored, with a message.
 }
   \item{center}{
 mean vector of the data; if this and \code{cov} are \emph{both} supplied,
@@ -23,7 +23,7 @@ the function simply calls \code{\link[stats]{mahalanobis}} to
 calculate the result, ignoring the \code{method} argument.
 }
   \item{cov}{
-covariance matrix (\eqn{p x p}) of the data
+covariance matrix (\eqn{p \times p}) of the data
 }
   \item{method}{
 estimation method used for center and covariance, one of:
