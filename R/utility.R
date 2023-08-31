@@ -1,12 +1,17 @@
-# critical value of Roy's largest root test
 
-#lambda.crit <- function(alpha, p, dfh, dfe){
-#    d <- max(p, dfh)
-#    nu <- dfe - d + dfh
-#    (d/nu) * qf(alpha, d, nu, lower.tail=FALSE)
-#    }
+#' Internal heplots functions
+#' 
+#' Internal functions for package heplots.
+#' 
+#' These functions are not intended to be called by the user.
+#' 
 
-lambda.crit <- function(alpha, p, dfh, dfe, test.statistic=c("Roy", "HLT", "Hotelling-Lawley")){
+
+# critical values for lambda in scaling H ellipses relative to E
+
+
+lambda.crit <- function(alpha, p, dfh, dfe, 
+                        test.statistic=c("Roy", "HLT", "Hotelling-Lawley")){
 	test.statistic <- match.arg(test.statistic)
 	switch(test.statistic,
 		Roy = Roy.crit(alpha, p, dfh, dfe),

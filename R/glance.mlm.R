@@ -33,6 +33,7 @@
 #   UseMethod("glance")
 # }
 
+#' @export glance.mlm
 glance.mlm <- function(x, ...) {
 #  warn_on_subclass(x, "glance")
   int_only <- nrow(coefficients(x)) == 1

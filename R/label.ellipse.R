@@ -60,11 +60,7 @@
 #' ell <-circ %*% chol(matrix( c(1, .5, .5, 1), 2, 2)) 
 #' label_demo(ell)
 
-
-
-
-
-
+#' @export label.ellipse
 label.ellipse <- function(ellipse, label, col="black", 
 				label.pos=NULL, xpd=TRUE, 
 				tweak=0.5*c(strwidth("M"), strheight("M")), ...){
