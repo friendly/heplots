@@ -34,7 +34,7 @@ Ellipsoid(x, ...)
 distribution. For the \code{data.frame} method, it should be a numeric data frame with at
 least 3 columns.}
 
-\item{...}{}
+\item{...}{Other arguments}
 
 \item{which}{This parameter selects which variables from the object will be plotted. The default is the first 3.}
 

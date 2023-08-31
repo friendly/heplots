@@ -20,14 +20,6 @@
 #' Several tutorial vignettes are also included.  See
 #' \code{vignette(package="heplots")}.
 #' 
-#' \tabular{ll}{ 
-#' Package: \tab heplots\cr 
-#' Type: \tab Package\cr 
-#' Version: \tab 1.4-0\cr 
-#' Date: \tab 2022-09-26\cr 
-#' License: \tab GPL (>= 2), GPL version 2 or newer\cr 
-#' }
-#' 
 #' The graphical functions contained here all display multivariate model
 #' effects in variable (data) space, for one or more response variables (or
 #' contrasts among response variables in repeated measures designs).
@@ -122,6 +114,12 @@
 #' Friendly, M. & Sigal, M. (2016). Graphical Methods for Multivariate Linear
 #' Models in Psychological Research: An R Tutorial. Submitted for publication.
 #' @keywords package hplot aplot multivariate
+#' 
+#' @importFrom grDevices col2rgb gray palette rgb
+#' @importFrom graphics abline arrows box dotchart lines par points polygon rect strheight strwidth text
+#' @importFrom stats .getXlevels IQR SSD aggregate alias coefficients complete.cases cor cov df.residual 
+#'        estVar formula getCall lm.wfit lsfit mahalanobis median model.frame model.matrix model.response model.weights 
+#'        na.omit offset pchisq pf pnorm ppoints qchisq qf qnorm residuals runif update var vcov
 NULL
 
 

@@ -66,7 +66,7 @@ heplot(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
 pairs(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")))
 
 if(requireNamespace("rgl")){
-heplot3d(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ"))),
+heplot3d(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
 	col = c("red", "blue", "black", "gray"), wire=FALSE)
 }
 

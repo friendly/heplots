@@ -34,7 +34,7 @@
 #' @param wire   logical; should the ellipsoid be drawn as a wire frame?
 #' @param verbose logical; for debugging
 #' @param warn.rank logical; warn if the ellipsoid is less than rank 3?
-#' @param ...
+#' @param ...     Other arguments
 #'
 #' @return returns the bounding box of the ellipsoid invisibly; otherwise used for it's side effect of
 #'         drawing the ellipsoid
