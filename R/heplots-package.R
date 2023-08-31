@@ -128,29 +128,6 @@ NULL
 
 
 
-#' Internal heplots functions
-#' 
-#' Internal functions for package heplots.
-#' 
-#' These functions are not intended to be called by the user.
-#' 
-#' @aliases lambda.crit HLT.crit Roy.crit he.rep termInfo last
-#' @param alpha significance level for critical values of multivariate
-#' statistics
-#' @param p Number of variables
-#' @param dfh degrees of freedom for hypothesis
-#' @param dfe degrees of freedom for error
-#' @param test.statistic Test statistic used for the multivariate test
-#' @param x An argument to \code{\link{heplot}} or \code{\link{heplot3d}} that
-#' is to be repeated for Error and all hypothesis terms
-#' @param n Number of hypothesis terms
-#' @author Michael Friendly \email{friendly@yorku.ca}
-#' @keywords internal
-NULL
-
-
-
-
 
 
 
@@ -166,10 +143,7 @@ NULL
 #' eigenvalues of these covariance matrices.
 #' 
 #' Confidence intervals are only available for the default Box M test, using
-#' \code{which="logDet"}. %%% ~~ If necessary, more details than the
-#' __description__ above ~~ %} %\source{ %%% ~~ reference to a publication or
-#' URL from which the data were obtained ~~ %} %\references{ %%% ~~ possibly
-#' secondary sources and usages ~~
+#' \code{which="logDet"}. 
 #' 
 #' @name plot.boxM
 #' @docType data

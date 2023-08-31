@@ -19,9 +19,7 @@
 #'         return a scalar result.
 #' @param \dots Arguments passed down
 #' @return A numeric matrix containing the deviations from the centering
-#' function. %% ~Describe the value returned %% If it is a LIST, use %%
-#' \item{comp1 }{Description of 'comp1'} %% \item{comp2 }{Description of
-#' 'comp2'} %% ...
+#' function. 
 #' @author Michael Friendly
 #' @seealso \code{\link[base]{colMeans}} for column means,
 #' 

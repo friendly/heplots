@@ -22,8 +22,9 @@
 #' \describe{ 
 #'   \item{\code{grade}}{an ordered factor with levels \code{7} <
 #'       \code{8} < \code{9} < \code{10} < \code{11} < \code{12}}
-#'   \item{\code{depression}{a numeric vector} 
-#'   \item{\code{anxiety}{a numeric vector} }
+#'   \item{\code{depression}}{a numeric vector} 
+#'   \item{\code{anxiety}}{a numeric vector} 
+#'   }
 #' @source 
 #' Warne, R. T. (2014). A primer on Multivariate Analysis of Variance
 #' (MANOVA) for Behavioral Scientists.  

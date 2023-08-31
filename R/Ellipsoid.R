@@ -6,11 +6,22 @@
 # Handle greater, less than 3D
 # Use label.ellipse?
 
-#' Draw an Ellipsoid in an rgl Scene
+#' @name Ellipsoid
+#' @aliases Ellipsoid Ellipsoid.data.frame Ellipsoid.default
+#' 
+#' @title Draw an Ellipsoid in an rgl Scene
+#' 
+#' @description 
+#' This is an experimental function designed to separate internal code in \code{link{heplot3d}}.
 #'
-#' @param x      a 3 x 3 matrix, , typically the covariance matrix of data
+#' @param x      An object. In the default method the parameter x should be a square positive definite matrix at               least 3x3 in size. It will be treated as the correlation or covariance of a multivariate normal
+#'               distribution. For the \code{data.frame} method, it should be a numeric data frame with at
+#'               least 3 columns.
 #' @param center center of the ellipsoid, a vector of length 3, typically the mean vector of data
-#' @param which  selects which variables from the object will be plotted. The default is the first 3.
+#' @param which  This parameter selects which variables from the object will be plotted. The default is the first 3.
+#' @param method For the \code{data.frame} method, a character string to specify the covariance method to 
+#'               be used: \emph{classical} product-moment (\code{"classical"}),  or \emph{minimum volume ellipsoid} 
+#'               (\code{"mve"}), or \emph{minimum covariance determinant} (\code{"mcd"}).
 #' @param radius size of the ellipsoid
 #' @param df     degrees of freedom associated with the covariance matrix, used to calculate the appropriate F statistic
 #' @param label  label for the ellipsoid
@@ -30,6 +41,7 @@
 #' @export
 #'
 #' @examples
+#' # none yet
 
 Ellipsoid <-
   function(x, ...) UseMethod("Ellipsoid")
@@ -38,6 +50,8 @@ Ellipsoid <-
 #'        or minimum volume ellipsoid (\code{"mve"}), or 
 #'        minimum covariance determinant (\code{"mcd"}
         
+#' @rdname Ellipsoid
+#' @exportS3Method Ellipsoid data.frame
 Ellipsoid.data.frame <- function(
     x,
     which = 1:3,
@@ -63,6 +77,8 @@ Ellipsoid.data.frame <- function(
 # Ellipsoid.matrix <- Ellipsoid.data.frame
 
 
+#' @rdname Ellipsoid
+#' @exportS3Method Ellipsoid default
 Ellipsoid.default <- function(
     x, 
     center = c(0,0,0), 
