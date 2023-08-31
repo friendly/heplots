@@ -29,9 +29,9 @@ Imports:
     utils,
     magrittr,
     purrr,
+    rgl,
     tibble
 Suggests:
-    rgl,
     candisc,
     effects,
     reshape,

@@ -10,7 +10,8 @@ A data frame with 1799 observations on the following 16 variables.
   \item{\code{Extraversion}}{a numeric vector}
   \item{\code{Neuroticism}}{a numeric vector}
   \item{\code{Conscientiousness}}{a numeric vector}
-  \item{\code{Agreeableness")}{a numeric vector} \item{list("Openness}}{a numeric vector} 
+  \item{\code{Agreeableness}}{a numeric vector} 
+  \item{\code{Openness}}{a numeric vector} 
   \item{\code{education}}{an ordered factor with levels
       \code{<HS} < \code{HS} < \code{Univ} < \code{Grad}} 
   \item{\code{urban}}{an ordered factor with levels \code{Rural} < \code{Suburban} < \code{Urban}}

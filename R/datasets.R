@@ -113,13 +113,13 @@ NULL
 #' par(op)
 #' 
 #' # between-S (MMReg) plots
-#' heplot(Adopted.mod, hypotheses=\code{Reg"=c("AMED", "BMIQ}),
+#' heplot(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
 #' 	main="IQ scores of adopted children: MMReg")
 #' 
-#' pairs(Adopted.mod, hypotheses=\code{Reg"=c("AMED", "BMIQ}))
+#' pairs(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")))
 #' 
 #' if(requireNamespace("rgl")){
-#' heplot3d(Adopted.mod, hypotheses=\code{Reg"=c("AMED", "BMIQ}),
+#' heplot3d(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ"))),
 #' 	col = c("red", "blue", "black", "gray"), wire=FALSE)
 #' }
 #' 
@@ -628,7 +628,8 @@ NULL
 #'         levels \code{Eur} \code{Asian_Amer} \code{Asian_Intl}}
 #'   \item{\code{N}}{Neuroticism score} 
 #'   \item{\code{E}}{Extraversion score}
-#'   \item{\code{O")}{Openness score} \item{list("A}}{Agreeableness score}
+#'   \item{\code{O}}{Openness score} 
+#'   \item{\code{A}}{Agreeableness score}
 #'   \item{\code{C}}{Conscientiousness score} 
 #' }
 #' @references 
@@ -1441,7 +1442,8 @@ NULL
 #' \describe{ 
 #'   \item{\code{deg0NA}}{a numeric vector}
 #'   \item{\code{deg4NA}}{a numeric vector} 
-#'   \item{\code{deg8NA")}{a numeric vector} \item{list("deg0NP}}{a numeric vector} 
+#'   \item{\code{deg8NA}}{a numeric vector} 
+#'   \item{\code{deg0NP}}{a numeric vector} 
 #'   \item{\code{deg4NP}}{a numeric vector} 
 #'   \item{\code{deg8NP}}{a numeric vector} 
 #' }
@@ -2060,7 +2062,8 @@ NULL
 #'   \item{\code{Extraversion}}{a numeric vector}
 #'   \item{\code{Neuroticism}}{a numeric vector}
 #'   \item{\code{Conscientiousness}}{a numeric vector}
-#'   \item{\code{Agreeableness")}{a numeric vector} \item{list("Openness}}{a numeric vector} 
+#'   \item{\code{Agreeableness}}{a numeric vector} 
+#'   \item{\code{Openness}}{a numeric vector} 
 #'   \item{\code{education}}{an ordered factor with levels
 #'       \code{<HS} < \code{HS} < \code{Univ} < \code{Grad}} 
 #'   \item{\code{urban}}{an ordered factor with levels \code{Rural} < \code{Suburban} < \code{Urban}}

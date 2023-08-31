@@ -12,7 +12,8 @@ A data frame with 203 observations on the following 7 variables.
         levels \code{Eur} \code{Asian_Amer} \code{Asian_Intl}}
   \item{\code{N}}{Neuroticism score} 
   \item{\code{E}}{Extraversion score}
-  \item{\code{O")}{Openness score} \item{list("A}}{Agreeableness score}
+  \item{\code{O}}{Openness score} 
+  \item{\code{A}}{Agreeableness score}
   \item{\code{C}}{Conscientiousness score} 
 }
 }

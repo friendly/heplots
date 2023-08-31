@@ -1,9 +1,9 @@
 #' Glance at an mlm object
 #' 
-#' This function takes an "mlm" object, fit by \code{\link[stats](lm)} with a multivariate response.
-#' The goal is to return something analogous to \code{\link[broom](glance.lm)} for a univariate response linear model.
+#' This function takes an "mlm" object, fit by \code{\link[stats]{lm}} with a multivariate response.
+#' The goal is to return something analogous to \code{\link[broom]{glance.lm}} for a univariate response linear model.
 #' 
-#' In the multivariate case, it returns a \code{\link[tibble](tibble)} with one row for each
+#' In the multivariate case, it returns a \code{\link[tibble]{tibble}} with one row for each
 #' response variable, containing goodness of fit measures, F-tests and p-values.
 #' 
 #' @param x An \code{mlm} object created by \code{\link[stats]{lm}}, i.e., with a multivariate response.

@@ -10,7 +10,8 @@ conditions.
 \describe{ 
   \item{\code{deg0NA}}{a numeric vector}
   \item{\code{deg4NA}}{a numeric vector} 
-  \item{\code{deg8NA")}{a numeric vector} \item{list("deg0NP}}{a numeric vector} 
+  \item{\code{deg8NA}}{a numeric vector} 
+  \item{\code{deg0NP}}{a numeric vector} 
   \item{\code{deg4NP}}{a numeric vector} 
   \item{\code{deg8NP}}{a numeric vector} 
 }

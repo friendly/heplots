@@ -6,6 +6,52 @@
 \title{Two-Dimensional HE Plots}
 \usage{
 heplot(mod, ...)
+
+\method{heplot}{mlm}(
+  mod,
+  terms,
+  hypotheses,
+  term.labels = TRUE,
+  hyp.labels = TRUE,
+  err.label = "Error",
+  label.pos = NULL,
+  variables = 1:2,
+  error.ellipse = !add,
+  factor.means = !add,
+  grand.mean = !add,
+  remove.intercept = TRUE,
+  type = c("II", "III", "2", "3"),
+  idata = NULL,
+  idesign = NULL,
+  icontrasts = c("contr.sum", "contr.poly"),
+  imatrix = NULL,
+  iterm = NULL,
+  markH0 = !is.null(iterm),
+  manova,
+  size = c("evidence", "effect.size"),
+  level = 0.68,
+  alpha = 0.05,
+  segments = 60,
+  center.pch = "+",
+  center.cex = 2,
+  col = getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan",
+    "magenta", "brown", "darkgray")),
+  lty = 2:1,
+  lwd = 1:2,
+  fill = FALSE,
+  fill.alpha = 0.3,
+  xlab,
+  ylab,
+  main = "",
+  xlim,
+  ylim,
+  axes = TRUE,
+  offset.axes,
+  add = FALSE,
+  verbose = FALSE,
+  warn.rank = FALSE,
+  ...
+)
 }
 \arguments{
 \item{mod}{a model object of class \code{"mlm"}.}

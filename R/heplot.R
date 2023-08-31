@@ -321,6 +321,8 @@
 heplot <-
 		function(mod, ...) UseMethod("heplot")
 
+#' @rdname heplot
+#' @exportS3Method  heplot mlm
 heplot.mlm <-
 		function ( 
 				mod,           # an mlm object

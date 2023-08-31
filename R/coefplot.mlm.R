@@ -71,6 +71,9 @@ coefplot <- function(object, ...) {
 	UseMethod("coefplot")
 }
 
+#' @rdname coefplot
+#' @exportS3Method coefplot mlm
+#' 
 coefplot.mlm <- function(object, 
                          variables=1:2, 
                          parm=NULL, 

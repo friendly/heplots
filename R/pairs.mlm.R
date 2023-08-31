@@ -83,6 +83,7 @@
 #' pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 #' 
 #' 
+#' @exportS3Method pairs mlm
 pairs.mlm <-
 function(x, variables, var.labels, var.cex = 2,
     type=c("II", "III", "2", "3"),

@@ -60,13 +60,13 @@ for (i in 3:6) {
 par(op)
 
 # between-S (MMReg) plots
-heplot(Adopted.mod, hypotheses=\code{Reg"=c("AMED", "BMIQ}),
+heplot(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
 	main="IQ scores of adopted children: MMReg")
 
-pairs(Adopted.mod, hypotheses=\code{Reg"=c("AMED", "BMIQ}))
+pairs(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")))
 
 if(requireNamespace("rgl")){
-heplot3d(Adopted.mod, hypotheses=\code{Reg"=c("AMED", "BMIQ}),
+heplot3d(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ"))),
 	col = c("red", "blue", "black", "gray"), wire=FALSE)
 }
 

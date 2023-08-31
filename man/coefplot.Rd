@@ -6,6 +6,39 @@
 \title{Coefficient plots for Multivariate Linear Models}
 \usage{
 coefplot(object, ...)
+
+\method{coefplot}{mlm}(
+  object,
+  variables = 1:2,
+  parm = NULL,
+  df = NULL,
+  level = 0.95,
+  intercept = FALSE,
+  Scheffe = FALSE,
+  bars = TRUE,
+  fill = FALSE,
+  fill.alpha = 0.2,
+  labels = !add,
+  label.pos = NULL,
+  xlab,
+  ylab,
+  xlim = NULL,
+  ylim = NULL,
+  axes = TRUE,
+  main = "",
+  add = FALSE,
+  lwd = 1,
+  lty = 1,
+  pch = 19,
+  col = palette(),
+  cex = 2,
+  cex.label = 1.5,
+  lty.zero = 3,
+  col.zero = 1,
+  pch.zero = "+",
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{object}{A multivariate linear model, such as fit by \code{lm(cbind(y1,
