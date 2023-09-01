@@ -55,10 +55,12 @@ statList <- function(X, factors, FUN, drop=FALSE, ...) {
   result
 }
 
+#' @export
 colMeansList <- function(X, factors, drop=FALSE, ...) {
 	statList(X, factors, FUN=colMeans, drop=drop, ...)
 }
 
+#' @export
 covList <- function(X, factors, drop=FALSE, ...) {
 	statList(X, factors, FUN=cov, drop=drop, ...)
 }

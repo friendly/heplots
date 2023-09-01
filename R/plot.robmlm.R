@@ -46,6 +46,7 @@
 #' 
 #' 
 #' 
+#' @exportS3Method plot robmlm
 plot.robmlm <- 
 	function(x, 
 	         labels,
