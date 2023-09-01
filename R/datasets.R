@@ -2233,7 +2233,6 @@ NULL
 #' 
 #' # doubly-multivariate analysis: requires car 2.0+
 #' \dontrun{
-#' if (packageDescription("car")[["Version"]] >= 2) {
 #' imatrix <- matrix(c(
 #' 	1,0,-1, 1, 0, 0,
 #' 	1,0, 0,-2, 0, 0,
@@ -2253,7 +2252,6 @@ NULL
 #' (wl.aov <- Anova(wl.mod, imatrix=imatrix, test="Roy"))
 #' 
 #' heplot(wl.mod, imatrix=imatrix, iterm="group:measure")
-#' }
 #' }
 #' 
 #' # do the correct analysis 'manually'

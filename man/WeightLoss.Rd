@@ -47,7 +47,6 @@ within <- data.frame(measure=rep(c("Weight loss", "Self esteem"),each=3), month=
 
 # doubly-multivariate analysis: requires car 2.0+
 \dontrun{
-if (packageDescription("car")[["Version"]] >= 2) {
 imatrix <- matrix(c(
 	1,0,-1, 1, 0, 0,
 	1,0, 0,-2, 0, 0,
@@ -67,7 +66,6 @@ contrasts(WeightLoss$group) <- matrix(c(-2,1,1,
 (wl.aov <- Anova(wl.mod, imatrix=imatrix, test="Roy"))
 
 heplot(wl.mod, imatrix=imatrix, iterm="group:measure")
-}
 }
 
 # do the correct analysis 'manually'

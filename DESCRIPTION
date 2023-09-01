@@ -26,7 +26,6 @@ Imports:
     graphics,
     grDevices,
     stats,
-    utils,
     magrittr,
     purrr,
     rgl,
