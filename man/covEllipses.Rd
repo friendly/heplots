@@ -6,9 +6,61 @@
 \alias{covEllipses.data.frame}
 \alias{covEllipses.matrix}
 \alias{covEllipses.default}
+\alias{covEllipses.formula}
 \title{Draw classical and robust covariance ellipses for one or more groups}
 \usage{
 covEllipses(x, ...)
+
+\method{covEllipses}{data.frame}(
+  x,
+  group,
+  pooled = TRUE,
+  method = c("classical", "mve", "mcd"),
+  ...
+)
+
+\method{covEllipses}{matrix}(
+  x,
+  group,
+  pooled = TRUE,
+  method = c("classical", "mve", "mcd"),
+  ...
+)
+
+\method{covEllipses}{formula}(x, data, ...)
+
+\method{covEllipses}{boxM}(x, ...)
+
+\method{covEllipses}{default}(
+  x,
+  means,
+  df,
+  labels = NULL,
+  variables = 1:2,
+  level = 0.68,
+  segments = 60,
+  center = FALSE,
+  center.pch = "+",
+  center.cex = 2,
+  col = getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan",
+    "brown", "magenta", "darkgray")),
+  lty = 1,
+  lwd = 2,
+  fill = FALSE,
+  fill.alpha = 0.3,
+  label.pos = 0,
+  xlab,
+  ylab,
+  vlabels,
+  var.cex = 2,
+  main = "",
+  xlim,
+  ylim,
+  axes = TRUE,
+  offset.axes,
+  add = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{The generic argument. For the default method, this is a list of
@@ -29,6 +81,8 @@ total sample is also computed and plotted}
 \item{method}{the covariance method to be used: classical product-moment
 (\code{"classical"}), or minimum volume ellipsoid (\code{"mve"}), or minimum
 covariance determinant (\code{"mcd"}).}
+
+\item{data}{For the \code{formula} method, a data.frame in which to evaluate.}
 
 \item{means}{For the default method, a matrix of the means for all groups
 (followed by the grand means, if \code{pooled=TRUE}). Rows are the groups,

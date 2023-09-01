@@ -10,6 +10,37 @@
 \title{Robust Fitting of Multivariate Linear Models}
 \usage{
 robmlm(X, ...)
+
+\method{robmlm}{default}(
+  X,
+  Y,
+  w,
+  P = 2 * pnorm(4.685, lower.tail = FALSE),
+  tune,
+  max.iter = 100,
+  psi = psi.bisquare,
+  tol = 1e-06,
+  initialize,
+  verbose = FALSE,
+  ...
+)
+
+\method{robmlm}{formula}(
+  formula,
+  data,
+  subset,
+  weights,
+  na.action,
+  model = TRUE,
+  contrasts = NULL,
+  ...
+)
+
+\method{print}{robmlm}(x, ...)
+
+\method{summary}{robmlm}(object, ...)
+
+\method{print}{summary.robmlm}(x, ...)
 }
 \arguments{
 \item{X}{for the default method, a model matrix, including the constant (if
@@ -17,25 +48,6 @@ present)}
 
 \item{\dots}{other arguments, passed down. In particular relevant control
 arguments can be passed to the to the \code{robmlm.default} method.}
-
-\item{formula}{a formula of the form \code{cbind(y1, y2, ...) ~ x1 + x2 + ...}.}
-
-\item{data}{a data frame from which variables specified in \code{formula}
-are preferentially to be taken.}
-
-\item{subset}{An index vector specifying the cases to be used in fitting.}
-
-\item{weights}{a vector of prior weights for each case.}
-
-\item{na.action}{A function to specify the action to be taken if \code{NA}s
-are found.  The 'factory-fresh' default action in R is
-\code{\link[stats]{na.omit}}, and can be changed by
-\code{\link[base]{options}}\code{(na.action=)}.}
-
-\item{model}{should the model frame be returned in the object?}
-
-\item{contrasts}{optional contrast specifications; see
-\code{\link[stats]{lm}} for details.}
 
 \item{Y}{for the default method, a response matrix}
 
@@ -57,6 +69,25 @@ the default}
 equation-by-equation; if absent WLS (\code{lm.wfit}) is used}
 
 \item{verbose}{show iteration history? (\code{TRUE} or \code{FALSE})}
+
+\item{formula}{a formula of the form \code{cbind(y1, y2, ...) ~ x1 + x2 + ...}.}
+
+\item{data}{a data frame from which variables specified in \code{formula}
+are preferentially to be taken.}
+
+\item{subset}{An index vector specifying the cases to be used in fitting.}
+
+\item{weights}{a vector of prior weights for each case.}
+
+\item{na.action}{A function to specify the action to be taken if \code{NA}s
+are found.  The 'factory-fresh' default action in R is
+\code{\link[stats]{na.omit}}, and can be changed by
+\code{\link[base]{options}}\code{(na.action=)}.}
+
+\item{model}{should the model frame be returned in the object?}
+
+\item{contrasts}{optional contrast specifications; see
+\code{\link[stats]{lm}} for details.}
 
 \item{x}{a \code{robmlm} object}
 

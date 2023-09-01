@@ -156,6 +156,8 @@ heplot1d <-
 function(mod, ...) UseMethod("heplot1d")
 
 
+#' @rdname heplot1d
+#' @exportS3Method heplot1d mlm
 heplot1d.mlm <-
 		function ( 
 				mod,           # an mlm object
@@ -202,7 +204,7 @@ heplot1d.mlm <-
 	}
 
 	#if (!require(car)) stop("car package is required.")
-	if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
+	#if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 	type <- match.arg(type)
 	size <- match.arg(size)
 	data <- model.frame(mod)
@@ -213,9 +215,7 @@ heplot1d.mlm <-
 			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-			if (car2)
-				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
-			else stop("imatrix argument requires car 2.0-0 or later")
+			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
 		} 
 	}   
 	

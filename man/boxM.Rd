@@ -9,6 +9,14 @@
 \title{Box's M-test}
 \usage{
 boxM(Y, ...)
+
+\method{boxM}{default}(Y, group, ...)
+
+\method{boxM}{formula}(Y, data, ...)
+
+\method{boxM}{lm}(Y, ...)
+
+\method{summary}{boxM}(object, digits = getOption("digits"), cov = FALSE, quiet = FALSE, ...)
 }
 \arguments{
 \item{Y}{The response variable matrix for the default method, or a
@@ -19,11 +27,11 @@ crossed, e.g., \code{A:B}}
 
 \item{...}{Arguments passed down to methods.}
 
-\item{data}{a numeric data.frame or matrix containing \emph{n} observations
-of \emph{p} variables; it is expected that \emph{n > p}.}
-
 \item{group}{a factor defining groups, or a vector of length \emph{n} doing
 the same.}
+
+\item{data}{a numeric data.frame or matrix containing \emph{n} observations
+of \emph{p} variables; it is expected that \emph{n > p}.}
 
 \item{object}{a \code{"boxM"} object for the \code{summary} method}
 

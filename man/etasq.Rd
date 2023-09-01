@@ -8,6 +8,12 @@
 \title{Measures of Partial Association (Eta-squared) for Linear Models}
 \usage{
 etasq(x, ...)
+
+\method{etasq}{mlm}(x, ...)
+
+\method{etasq}{Anova.mlm}(x, anova = FALSE, ...)
+
+\method{etasq}{lm}(x, anova = FALSE, partial = TRUE, ...)
 }
 \arguments{
 \item{x}{A \code{lm}, \code{mlm} or \code{Anova.mlm} object}

@@ -165,7 +165,7 @@
 #' }
 #' 
 #' 
-#' 
+#' @importFrom car showLabels dataEllipse
 #' @export interpPlot
 interpPlot <- function(xy1, xy2, alpha,
 		xlim, ylim, points=TRUE, add=FALSE, col=palette()[1],
@@ -192,14 +192,14 @@ interpPlot <- function(xy1, xy2, alpha,
   if (ellipse) {
       ellipse.args <- c(list(xy, add = TRUE, plot.points = FALSE), 
           ellipse.args)
-      do.call(dataEllipse, ellipse.args)
+      do.call(car::dataEllipse, ellipse.args)
   }
   if (abline) {
     abline(lsfit(xy[, 1], xy[, 2]), col = col.lines, 
         lwd = lwd)
   }
   if (!is.null(labels)) {
-  showLabels(xy[, 1], xy[, 2], labels = labels, id.method = id.method, 
+  car::showLabels(xy[, 1], xy[, 2], labels = labels, id.method = id.method, 
         id.n = id.n, id.cex = id.cex, id.col = id.col)
   }
   

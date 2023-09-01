@@ -84,6 +84,8 @@
 #' 
 #' 
 #' @exportS3Method pairs mlm
+#' @importFrom car Anova
+#' @importFrom stats model.frame
 pairs.mlm <-
 function(x, variables, var.labels, var.cex = 2,
     type=c("II", "III", "2", "3"),
@@ -103,12 +105,12 @@ function(x, variables, var.labels, var.cex = 2,
 	if (missing(manova)) {
 		type <- match.arg(type)
 		if (is.null(imatrix)) {
-			manova <- Anova(x, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
+			manova <- car::Anova(x, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-			if (packageDescription("car")[["Version"]] >= 2)
-				manova <- Anova(x, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
-			else stop("imatrix argument requires car 2.0-0 or later")
+#			if (packageDescription("car")[["Version"]] >= 2)
+				manova <- car::Anova(x, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
+#			else stop("imatrix argument requires car 2.0-0 or later")
 		} 
 	}   
 	

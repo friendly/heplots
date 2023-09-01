@@ -323,6 +323,7 @@ heplot <-
 
 #' @rdname heplot
 #' @exportS3Method  heplot mlm
+#' @importFrom car linearHypothesis Anova
 heplot.mlm <-
 		function ( 
 				mod,           # an mlm object
@@ -399,7 +400,7 @@ heplot.mlm <-
 	
 	#if (!require(car)) stop("car package is required.")
 	# avoid deprecated warnings from car
-	if (packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
+#	if (packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 	type <- match.arg(type)
 	size <- match.arg(size)
 	data <- model.frame(mod)
@@ -511,7 +512,7 @@ heplot.mlm <-
 			H.rank[term] <- qr(H)$rank
 		}
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
-			lh <- linear.hypothesis(mod, hypotheses[[hyp]])
+			lh <- car::linearHypothesis(mod, hypotheses[[hyp]])
 			H <- lh$SSPH[variables, variables]
 			dfh <- lh$df
 			factor <- if (size == "evidence") lambda.crit(alpha, p, dfh, dfe) else 1

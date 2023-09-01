@@ -219,6 +219,8 @@ function(mod, ...) UseMethod("heplot3d")
 # TODO:
 #  - add aspect argument (for candisc)
 
+#' @rdname heplot3d
+#' @exportS3Method heplot3d mlm
 heplot3d.mlm <-
 		function ( 
 				mod,           # an mlm object
@@ -325,7 +327,7 @@ heplot3d.mlm <-
 	
 	if (!requireNamespace("rgl")) stop("rgl package is required.")    
 	# avoid deprecated warnings from car
-	if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
+	#if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 
 	type <- match.arg(type)
 	size <- match.arg(size)
@@ -337,9 +339,7 @@ heplot3d.mlm <-
 			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-			if (car2)
 				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
-			else stop("imatrix argument requires car 2.0-0 or later")
 		} 
 	}   
 #	if (verbose) print(manova)    

@@ -128,6 +128,8 @@ boxM <-
 	function(Y, ...) UseMethod("boxM")
 
 
+#' @rdname boxM
+#' @exportS3Method boxM default
 boxM.default <- function(Y, group, ...)
 {
    dname <- deparse(substitute(Y))
@@ -189,6 +191,8 @@ boxM.default <- function(Y, group, ...)
    return(out)
 }
 
+#' @rdname boxM
+#' @exportS3Method boxM formula
 boxM.formula <- function(Y, data, ...)
 {
 	form <- Y
@@ -208,7 +212,8 @@ boxM.formula <- function(Y, data, ...)
 
 }
 
-
+#' @rdname boxM
+#' @exportS3Method boxM lm
 boxM.lm <- function(Y, ...) {
   data <- getCall(Y)$data
   Y <- if (!is.null(data)) {
@@ -219,6 +224,8 @@ boxM.lm <- function(Y, ...) {
 	boxM.formula(formula(Y), data=eval(data, envir = environment(formula(Y))), ...)
 }
 
+#' @rdname boxM
+#' @exportS3Method summary boxM
 summary.boxM <- function(object, 
                          digits = getOption("digits"),
                          cov=FALSE, quiet=FALSE, ...)

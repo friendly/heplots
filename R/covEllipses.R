@@ -27,6 +27,7 @@
 #' covariance matrices. For the \code{data.frame} and \code{matrix} methods,
 #' this is a numeric matrix of two or more columns supplying the variables to
 #' be analyzed.
+#' @param data For the \code{formula} method, a data.frame in which to evaluate.
 #' @param group a factor defining groups, or a vector of length
 #' \code{n=nrow(x)} doing the same. If missing, a single covariance ellipse is
 #' drawn.
@@ -147,6 +148,8 @@ covEllipses <-function(x, ...) {
 	UseMethod("covEllipses")
 }
 
+#' @rdname covEllipses
+#' @exportS3Method covEllipses data.frame
 covEllipses.data.frame <-
 		function(x, group,
 		         pooled=TRUE, 
@@ -194,8 +197,12 @@ covEllipses.data.frame <-
 
 }
 
+#' @rdname covEllipses
+#' @exportS3Method covEllipses matrix
 covEllipses.matrix <- covEllipses.data.frame
 
+#' @rdname covEllipses
+#' @exportS3Method covEllipses formula
 covEllipses.formula <- function(x, data, ...)
 {
   form <- x
@@ -215,6 +222,8 @@ covEllipses.formula <- function(x, data, ...)
 }
 
 # boxM method
+#' @rdname covEllipses
+#' @exportS3Method covEllipses boxM
 covEllipses.boxM <-
   function(x, ...) {
     
@@ -225,6 +234,8 @@ covEllipses.boxM <-
   }
 
 
+#' @rdname covEllipses
+#' @exportS3Method covEllipses default
 covEllipses.default <-
 		function ( 
 		    x,                 # a list of covariance matrices

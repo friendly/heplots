@@ -146,6 +146,8 @@
 `cqplot` <-
 		function(x, ...) UseMethod("cqplot")
 
+#' @rdname cqplot
+#' @exportS3Method cqplot mlm
 cqplot.mlm <-
 		function(x, ...) {
 		
@@ -154,6 +156,8 @@ cqplot.mlm <-
 }
 
 
+#' @rdname cqplot
+#' @exportS3Method cqplot default
 cqplot.default <- 
 		function(x,
 			method=c("classical", "mcd", "mve"), 

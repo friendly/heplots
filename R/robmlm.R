@@ -25,7 +25,7 @@
 #' \code{\link[stats]{vcov}} method providing for observation weights.
 #' 
 #' @aliases print.robmlm print.summary.robmlm robmlm robmlm.default
-#' robmlm.formula summary.robmlm
+#'          robmlm.formula summary.robmlm
 #' @param formula a formula of the form \code{cbind(y1, y2, ...) ~ x1 + x2 + ...}.
 #' @param data a data frame from which variables specified in \code{formula}
 #'        are preferentially to be taken.
@@ -154,6 +154,9 @@ robmlm <- function(X, ...){
   UseMethod("robmlm")
 }
 
+#' @rdname robmlm
+#' @exportS3Method robmlm default
+#' @importFrom MASS psi.bisquare cov.trob
 robmlm.default <- function(X, Y, w, P=2*pnorm(4.685, lower.tail=FALSE), 
                            tune, max.iter=100, psi=psi.bisquare, tol=1e-6, 
                            initialize, verbose=FALSE, ...){
@@ -202,7 +205,7 @@ robmlm.default <- function(X, Y, w, P=2*pnorm(4.685, lower.tail=FALSE),
     iter <- iter + 1
     if (iter > max.iter) break
     E <- fit.last$residuals
-    S <- cov.trob(E, center=FALSE)$cov
+    S <- MASS::cov.trob(E, center=FALSE)$cov
     mahal <- mahalanobis(E, 0, S)
     wts <- psi(mahal, tune)
     fit.new <- lm.wfit(X, Y, w*wts)
@@ -224,6 +227,8 @@ robmlm.default <- function(X, Y, w, P=2*pnorm(4.685, lower.tail=FALSE),
   fit.new
 }
 
+#' @rdname robmlm
+#' @exportS3Method robmlm formula
 robmlm.formula <- function(formula, data, subset, weights, na.action, model = TRUE,
                          contrasts = NULL, ...) {
   # ... passed to robmlm.default
@@ -251,6 +256,8 @@ robmlm.formula <- function(formula, data, subset, weights, na.action, model = TR
   mod
 }
 
+#' @rdname robmlm
+#' @exportS3Method print robmlm
 print.robmlm <- function(x, ...){
   if (!x$converged) warning("failed to converge")
   NextMethod()
@@ -258,6 +265,8 @@ print.robmlm <- function(x, ...){
   invisible(x)
 }
 
+#' @rdname robmlm
+#' @exportS3Method summary robmlm
 summary.robmlm <- function(object, ...){
   res <- list()
   res[[1]] <- NextMethod()
@@ -267,6 +276,8 @@ summary.robmlm <- function(object, ...){
   res
 }
 
+#' @rdname robmlm
+#' @exportS3Method print summary.robmlm
 print.summary.robmlm <- function(x, ...){
   if (!x$converged) warning("failed to converge")
   print(x[[1]])
@@ -281,7 +292,7 @@ vcov.mlm <- function (object, ...) {
 #   temporarily to c("mlm", "lm")
 	SSD.mlm <- function (object, ...) {
 		if (!is.null(object$weights)) { 
-			SSD <- wcrossprod(residuals(object), w=object$weights)
+			SSD <- car::wcrossprod(residuals(object), w=object$weights)
 			df <- sum(object$weights)
 		}
 		else {

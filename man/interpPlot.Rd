@@ -202,7 +202,6 @@ saveGIF({
 }
 
 
-
 }
 \seealso{
 \code{\link[car]{dataEllipse}}, \code{\link[car]{showLabels}},

@@ -7,6 +7,37 @@
 \title{Chi Square Quantile-Quantile plots}
 \usage{
 cqplot(x, ...)
+
+\method{cqplot}{mlm}(x, ...)
+
+\method{cqplot}{default}(
+  x,
+  method = c("classical", "mcd", "mve"),
+  detrend = FALSE,
+  pch = 19,
+  col = palette()[1],
+  cex = par("cex"),
+  ref.col = "red",
+  ref.lwd = 2,
+  conf = 0.95,
+  env.col = "gray",
+  env.lwd = 2,
+  env.lty = 1,
+  env.fill = TRUE,
+  fill.alpha = 0.2,
+  fill.color = trans.colors(ref.col, fill.alpha),
+  labels = if (!is.null(rownames(x))) rownames(x) else 1:nrow(x),
+  id.n,
+  id.method = "y",
+  id.cex = 1,
+  id.col = palette()[1],
+  xlab,
+  ylab,
+  main,
+  what = deparse(substitute(x)),
+  ylim,
+  ...
+)
 }
 \arguments{
 \item{x}{either a numeric data frame or matrix for the default method, or an

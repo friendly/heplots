@@ -72,15 +72,20 @@
 #' etasq(soils.mod, test="Wilks")
 #' etasq(soils.mod, test="Hotelling")
 #' 
+#' @importFrom car Anova
 #' @export etasq
 etasq <- function(x, ...){
 	UseMethod("etasq", x)
 }
 
+#' @rdname etasq
+#' @exportS3Method  etasq mlm
 etasq.mlm <- function(x, ...) {
 	etasq(Anova(x, ...))
 }
 
+#' @rdname etasq
+#' @exportS3Method  etasq Anova.mlm
 etasq.Anova.mlm <- function(x, anova=FALSE, ...){
 	test <- x$test
 	if (test == "Roy") warning("eta^2 not defined for Roy's test")
@@ -128,6 +133,8 @@ etasq.Anova.mlm <- function(x, anova=FALSE, ...){
 	result      
 }
 
+#' @rdname etasq
+#' @exportS3Method  etasq lm
 etasq.lm <- function(x, anova=FALSE, partial=TRUE, ...) {
 	aov <-Anova(x, ...)
 	neff <- nrow(aov)
