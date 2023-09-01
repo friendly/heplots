@@ -410,9 +410,7 @@ heplot.mlm <-
 			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-			if (packageDescription("car")[["Version"]] >= 2)
 				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
-			else stop("imatrix argument requires car 2.0-0 or later")
 		} 
 	}   
 	if (verbose) print(manova)
