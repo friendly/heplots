@@ -68,7 +68,7 @@ data(TIPI)
 # fit an mlm
 tipi.mlm <- lm(cbind(Extraversion, Neuroticism, Conscientiousness, Agreeableness, Openness) 
                ~ engnat + gender + education, data = TIPI )
-Anova(tipi.mlm)
+car::Anova(tipi.mlm)
 
 heplot(tipi.mlm, fill=TRUE, fill.alpha=0.1)
 

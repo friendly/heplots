@@ -56,10 +56,11 @@ outliers in the control group, left in here for tutorial purposes.
 }
 \examples{
 
+library(car)
 data(SocialCog)
 SC.mod <- lm(cbind(MgeEmotions, ToM, ExtBias, PersBias) ~ Dx, data=SocialCog)
 SC.mod
-Anova(SC.mod)
+car::Anova(SC.mod)
 
 # test hypotheses of interest in terms of contrasts
 print(linearHypothesis(SC.mod, "Dx1"), SSP=FALSE)

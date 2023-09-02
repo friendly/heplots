@@ -61,7 +61,7 @@ data(Oslo)
 table(Oslo$litho)
 
 Oslo.mod <- lm(cbind(Cu, K, Mg, Mn, P, Zn) ~ litho, data=Oslo)
-Anova(Oslo.mod)
+car::Anova(Oslo.mod)
 
 heplot(Oslo.mod, var=c("Cu", "Mn"))
 pairs(Oslo.mod)

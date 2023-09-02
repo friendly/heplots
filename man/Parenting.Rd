@@ -36,14 +36,14 @@ require(car)
 
 # fit the MLM
 parenting.mod <- lm(cbind(caring, emotion, play) ~ group, data=Parenting)
-Anova(parenting.mod)
+car::Anova(parenting.mod)
 
 # Box's M test
 boxM(parenting.mod)
 plot(boxM(parenting.mod))
 
 parenting.mod <- lm(cbind(caring, emotion, play) ~ group, data=Parenting)
-Anova(parenting.mod)
+car::Anova(parenting.mod)
 # test contrasts
 print(linearHypothesis(parenting.mod, "group1"), SSP=FALSE)
 print(linearHypothesis(parenting.mod, "group2"), SSP=FALSE)

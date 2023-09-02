@@ -73,7 +73,7 @@ heplot3d(Adopted.mod, hypotheses=list("Reg"=c("AMED", "BMIQ")),
 # Treat IQ at different ages as a repeated measure factor
 # within-S models & plots
 Age <- data.frame(Age=ordered(c(2,4,8,13)))
-Anova(Adopted.mod, idata=Age, idesign=~Age, test="Roy")
+car::Anova(Adopted.mod, idata=Age, idesign=~Age, test="Roy")
 
 # within-S plots
 heplot(Adopted.mod, idata=Age, idesign=~Age, iterm="Age",

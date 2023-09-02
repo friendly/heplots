@@ -46,7 +46,7 @@ str(Iwasaki_Big_Five)
 
 mod <- lm(cbind(N, E, O, A, C) ~ Group, data=Iwasaki_Big_Five)
 
-Anova(mod)
+car::Anova(mod)
 
 # heplots
 labs <- c("Neuroticism", "Extraversion", "Openness", "Agreeableness", "Consientiousness" )

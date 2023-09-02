@@ -63,7 +63,7 @@ contrasts(WeightLoss$group) <- matrix(c(-2,1,1,
                                         0,-1,1), ncol=2) 
 
 (wl.mod<-lm(cbind(wl1, wl2, wl3, se1, se2, se3)~group, data=WeightLoss))
-(wl.aov <- Anova(wl.mod, imatrix=imatrix, test="Roy"))
+(wl.aov <- car::Anova(wl.mod, imatrix=imatrix, test="Roy"))
 
 heplot(wl.mod, imatrix=imatrix, iterm="group:measure")
 }
@@ -81,7 +81,7 @@ colnames(measure)<- c('WL', 'SE')
 between <- as.matrix(WeightLoss[,-1]) \%*\% measure
 
 between.mod <- lm(between ~ group, data=WeightLoss)
-Anova(between.mod)
+car::Anova(between.mod)
 
 heplot(between.mod, hypotheses=c("group1", "group2"), 
 	xlab="Weight Loss", ylab="Self Esteem",
@@ -92,7 +92,7 @@ month <- kronecker(diag(2), poly(1:3), make.dimnames=TRUE)
 colnames(month)<- c('WL', 'SE')
 trends <- as.matrix(WeightLoss[,-1]) \%*\% month
 within.mod <- lm(trends ~ group, data=WeightLoss)
-Anova(within.mod)
+car::Anova(within.mod)
 
 heplot(within.mod)
 heplot(within.mod, hypotheses=c("group1", "group2"), 

@@ -309,7 +309,7 @@ heplot1d.mlm <-
 		}
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
 #			lh <- linear.hypothesis(mod, hypotheses[[hyp]])
-			lh <- linearHypothesis(mod, hypotheses[[hyp]])
+			lh <- car::linearHypothesis(mod, hypotheses[[hyp]])
 			H <- lh$SSPH[variables, variables]
 			dfh <- lh$df
 			factor <- if (size == "evidence") F.crit(alpha, p, dfh, dfe) else 1

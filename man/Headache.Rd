@@ -52,6 +52,7 @@ been included as \code{contrasts(Headache$treatment)}
 }
 \examples{
 
+library(car)
 data(Headache)
 str(Headache)
 

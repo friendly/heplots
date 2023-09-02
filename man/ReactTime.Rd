@@ -35,7 +35,7 @@ data(ReactTime)
 
 # within-S factors
 within <- expand.grid(tilt=ordered(c(0,4,8)), noise=c("NA", "NP"))
-Anova(RT.mod, idata=within, idesign=~tilt * noise)
+car::Anova(RT.mod, idata=within, idesign=~tilt * noise)
 
 heplot(RT.mod, idata=within, idesign=~tilt * noise, iterm="tilt")
 

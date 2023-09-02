@@ -49,10 +49,12 @@ also potential interactions to be explored.
 }
 \examples{
 
+library(car)
+data(Hernior)
 str(Hernior)
 Hern.mod <- lm(cbind(leave, nurse, los) ~ 
                age + sex +  pstat +  build + cardiac + resp, data=Hernior)
-Anova(Hern.mod, test="Roy") # actually, all tests are identical
+car::Anova(Hern.mod, test="Roy") # actually, all tests are identical
 
 # test overall regression
 print(linearHypothesis(Hern.mod, c("age", "sexm", "pstat", "build", "cardiac", "resp")), SSP=FALSE)

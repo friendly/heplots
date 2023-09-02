@@ -27,7 +27,7 @@ factors, rate of extrusion and amount of an additive.
 
 str(Plastic)
 plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
-Anova(plastic.mod)
+car::Anova(plastic.mod)
 
 pairs(plastic.mod)
 

@@ -37,6 +37,7 @@ Interest might then be focused on whether the behavioural variables
 }
 \examples{
 
+library(car)
 data(NLSY)
 
 #examine the data

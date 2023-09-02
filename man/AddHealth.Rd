@@ -41,8 +41,8 @@ data(AddHealth)
 # fit mlm
 AH.mod <- lm(cbind(depression, anxiety) ~ grade, data=AddHealth)
 
-Anova(AH.mod)
-summary(Anova(AH.mod))
+car::Anova(AH.mod)
+summary(car::Anova(AH.mod))
 
 heplot(AH.mod, hypotheses="grade.L", fill=c(TRUE, FALSE))
 

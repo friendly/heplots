@@ -64,6 +64,7 @@ advertisements for paid research participation.
 }
 \examples{
 
+library(car)
 data(NeuroCog)
 NC.mlm <- lm(cbind( Speed, Attention, Memory, Verbal, Visual, ProbSolv) ~ Dx,
                data=NeuroCog)

@@ -453,7 +453,7 @@ if (!add){
 			else if (!is.logical(hyp.labels)) hyp.labels
 			else if (hyp.labels) names(hypotheses) else rep("", n.hyp)  
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
-			lh <- linearHypothesis(mod, hypotheses[[hyp]])
+			lh <- car::linearHypothesis(mod, hypotheses[[hyp]])
 			H <- lh$SSPH[variables, variables]
 			dfh <- lh$df
 			factor <- if (size == "evidence") lambda.crit(alpha, p, dfh, dfe) else 1  

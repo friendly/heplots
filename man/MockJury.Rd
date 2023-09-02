@@ -50,7 +50,7 @@ the crime?
 
 # manipulation check:  test ratings of the photos classified by Attractiveness
 jury.mod1 <- lm( cbind(phyattr, happy, independent, sophisticated) ~ Attr, data=MockJury)
-Anova(jury.mod1, test="Roy")
+car::Anova(jury.mod1, test="Roy")
 
 heplot(jury.mod1, main="HE plot for manipulation check")
 pairs(jury.mod1)
@@ -63,16 +63,16 @@ if (require(candisc)) {
 
 # influence of Attr of photo and nature of crime on Serious and Years
 jury.mod2 <- lm( cbind(Serious, Years) ~ Attr * Crime, data=MockJury)
-Anova(jury.mod2, test="Roy")
+car::Anova(jury.mod2, test="Roy")
 heplot(jury.mod2)
 
 # stepdown test (ANCOVA), controlling for Serious
 jury.mod3 <- lm( Years ~ Serious + Attr * Crime, data=MockJury)
-Anova(jury.mod3)
+car::Anova(jury.mod3)
 
 # need to consider heterogeneous slopes?
 jury.mod4 <- lm( Years ~ Serious * Attr * Crime, data=MockJury)
-anova(jury.mod3, jury.mod4)
+car::Anova(jury.mod3, jury.mod4)
 
 
 }

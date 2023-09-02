@@ -45,7 +45,7 @@ rat.mod <- lm(cbind(wt0, wt1, wt2, wt3, wt4) ~ trt, data=RatWeight)
 rat.mod
 
 idata <- data.frame(week = ordered(0:4))
-Anova(rat.mod, idata=idata, idesign=~week, test="Roy")
+car::Anova(rat.mod, idata=idata, idesign=~week, test="Roy")
 
 # quick look at between group effects
 pairs(rat.mod)

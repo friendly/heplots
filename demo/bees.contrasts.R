@@ -1,4 +1,6 @@
 # Bees data:
+library(heplots)
+library(car)
 data(Bees)
 # contrasts to resolve trtime into treat, time, treat:time
 

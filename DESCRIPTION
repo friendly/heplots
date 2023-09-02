@@ -19,9 +19,9 @@ Maintainer: Michael Friendly <friendly@yorku.ca>
 Language: en-US
 Depends:
     R (>= 3.5.0),
-    car (>= 3.0),
     broom
 Imports:
+    car,
     MASS,
     graphics,
     grDevices,

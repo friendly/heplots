@@ -48,12 +48,13 @@ interesting hypotheses related to \code{Site} and \code{Region}.
 }
 \examples{
 
+library(car)
 data(Pottery2)
 # contrasts for Kiln correspond to between Region [,1:2] and within Region [,3:4]
 contrasts(Pottery2$Kiln)
 
 pmod <-lm(cbind(Al,Fe,Mg,Ca,Na,K,Ti,Mn,Ba)~Kiln, data=Pottery2)
-Anova(pmod)
+car::Anova(pmod)
 
 # extract coefficient names for linearHypotheses
 coefs <- rownames(coef(pmod))[-1]

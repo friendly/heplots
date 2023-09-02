@@ -62,7 +62,7 @@ require(car)
 
 # 3-way factorial, ignoring 0 group
 bees.mod <- lm(cbind(Iz,Iy) ~ caste*treat*time, data=Bees)
-Anova(bees.mod)
+car::Anova(bees.mod)
 
 op<-palette(c(palette()[1:4],"brown","magenta", "olivedrab","darkgray"))
 heplot(bees.mod, 

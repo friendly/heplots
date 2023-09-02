@@ -40,7 +40,7 @@ str(Rohwer)
 
 ## ANCOVA, assuming equal slopes
 rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, data=Rohwer)
-Anova(rohwer.mod)
+car::Anova(rohwer.mod)
 
 # Visualize the ANCOVA model
 heplot(rohwer.mod)

@@ -37,8 +37,8 @@
 #' # fit mlm
 #' AH.mod <- lm(cbind(depression, anxiety) ~ grade, data=AddHealth)
 #' 
-#' Anova(AH.mod)
-#' summary(Anova(AH.mod))
+#' car::Anova(AH.mod)
+#' summary(car::Anova(AH.mod))
 #' 
 #' heplot(AH.mod, hypotheses="grade.L", fill=c(TRUE, FALSE))
 #' 
@@ -126,7 +126,7 @@ NULL
 #' # Treat IQ at different ages as a repeated measure factor
 #' # within-S models & plots
 #' Age <- data.frame(Age=ordered(c(2,4,8,13)))
-#' Anova(Adopted.mod, idata=Age, idesign=~Age, test="Roy")
+#' car::Anova(Adopted.mod, idata=Age, idesign=~Age, test="Roy")
 #' 
 #' # within-S plots
 #' heplot(Adopted.mod, idata=Age, idesign=~Age, iterm="Age",
@@ -204,7 +204,7 @@ NULL
 #' 
 #' # 3-way factorial, ignoring 0 group
 #' bees.mod <- lm(cbind(Iz,Iy) ~ caste*treat*time, data=Bees)
-#' Anova(bees.mod)
+#' car::Anova(bees.mod)
 #' 
 #' op<-palette(c(palette()[1:4],"brown","magenta", "olivedrab","darkgray"))
 #' heplot(bees.mod, 
@@ -467,6 +467,7 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
+#' library(car)
 #' data(Headache)
 #' str(Headache)
 #' 
@@ -562,10 +563,12 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
+#' library(car)
+#' data(Hernior)
 #' str(Hernior)
 #' Hern.mod <- lm(cbind(leave, nurse, los) ~ 
 #'                age + sex +  pstat +  build + cardiac + resp, data=Hernior)
-#' Anova(Hern.mod, test="Roy") # actually, all tests are identical
+#' car::Anova(Hern.mod, test="Roy") # actually, all tests are identical
 #' 
 #' # test overall regression
 #' print(linearHypothesis(Hern.mod, c("age", "sexm", "pstat", "build", "cardiac", "resp")), SSP=FALSE)
@@ -649,7 +652,7 @@ NULL
 #' 
 #' mod <- lm(cbind(N, E, O, A, C) ~ Group, data=Iwasaki_Big_Five)
 #' 
-#' Anova(mod)
+#' car::Anova(mod)
 #' 
 #' # heplots
 #' labs <- c("Neuroticism", "Extraversion", "Openness", "Agreeableness", "Consientiousness" )
@@ -771,7 +774,7 @@ NULL
 #' 
 #' # manipulation check:  test ratings of the photos classified by Attractiveness
 #' jury.mod1 <- lm( cbind(phyattr, happy, independent, sophisticated) ~ Attr, data=MockJury)
-#' Anova(jury.mod1, test="Roy")
+#' car::Anova(jury.mod1, test="Roy")
 #' 
 #' heplot(jury.mod1, main="HE plot for manipulation check")
 #' pairs(jury.mod1)
@@ -784,16 +787,16 @@ NULL
 #' 
 #' # influence of Attr of photo and nature of crime on Serious and Years
 #' jury.mod2 <- lm( cbind(Serious, Years) ~ Attr * Crime, data=MockJury)
-#' Anova(jury.mod2, test="Roy")
+#' car::Anova(jury.mod2, test="Roy")
 #' heplot(jury.mod2)
 #' 
 #' # stepdown test (ANCOVA), controlling for Serious
 #' jury.mod3 <- lm( Years ~ Serious + Attr * Crime, data=MockJury)
-#' Anova(jury.mod3)
+#' car::Anova(jury.mod3)
 #' 
 #' # need to consider heterogeneous slopes?
 #' jury.mod4 <- lm( Years ~ Serious * Attr * Crime, data=MockJury)
-#' anova(jury.mod3, jury.mod4)
+#' car::Anova(jury.mod3, jury.mod4)
 #' 
 #' 
 NULL
@@ -875,6 +878,7 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
+#' library(car)
 #' data(NeuroCog)
 #' NC.mlm <- lm(cbind( Speed, Attention, Memory, Verbal, Visual, ProbSolv) ~ Dx,
 #'                data=NeuroCog)
@@ -936,6 +940,7 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
+#' library(car)
 #' data(NLSY)
 #' 
 #' #examine the data
@@ -1031,7 +1036,7 @@ NULL
 #' table(Oslo$litho)
 #' 
 #' Oslo.mod <- lm(cbind(Cu, K, Mg, Mn, P, Zn) ~ litho, data=Oslo)
-#' Anova(Oslo.mod)
+#' car::Anova(Oslo.mod)
 #' 
 #' heplot(Oslo.mod, var=c("Cu", "Mn"))
 #' pairs(Oslo.mod)
@@ -1086,14 +1091,14 @@ NULL
 #' 
 #' # fit the MLM
 #' parenting.mod <- lm(cbind(caring, emotion, play) ~ group, data=Parenting)
-#' Anova(parenting.mod)
+#' car::Anova(parenting.mod)
 #' 
 #' # Box's M test
 #' boxM(parenting.mod)
 #' plot(boxM(parenting.mod))
 #' 
 #' parenting.mod <- lm(cbind(caring, emotion, play) ~ group, data=Parenting)
-#' Anova(parenting.mod)
+#' car::Anova(parenting.mod)
 #' # test contrasts
 #' print(linearHypothesis(parenting.mod, "group1"), SSP=FALSE)
 #' print(linearHypothesis(parenting.mod, "group2"), SSP=FALSE)
@@ -1154,7 +1159,7 @@ NULL
 #' 
 #' str(Plastic)
 #' plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
-#' Anova(plastic.mod)
+#' car::Anova(plastic.mod)
 #' 
 #' pairs(plastic.mod)
 #' 
@@ -1218,12 +1223,13 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
+#' library(car)
 #' data(Pottery2)
 #' # contrasts for Kiln correspond to between Region [,1:2] and within Region [,3:4]
 #' contrasts(Pottery2$Kiln)
 #' 
 #' pmod <-lm(cbind(Al,Fe,Mg,Ca,Na,K,Ti,Mn,Ba)~Kiln, data=Pottery2)
-#' Anova(pmod)
+#' car::Anova(pmod)
 #' 
 #' # extract coefficient names for linearHypotheses
 #' coefs <- rownames(coef(pmod))[-1]
@@ -1318,7 +1324,7 @@ NULL
 #' idata <- data.frame(position=factor(1:5))
 #' 
 #' library(car)
-#' (pmod1.aov <- Anova(pmod1, idata=idata, idesign=~position))
+#' (pmod1.aov <- car::Anova(pmod1, idata=idata, idesign=~position))
 #' 
 #' # using default contrasts (p5 as reference level)
 #' heplot(pmod1, manova=pmod1.aov, 
@@ -1341,7 +1347,7 @@ NULL
 #' colnames(C) <- c("SubPred", "AdjNoun", "SPxAN", "RelPN")
 #' 
 #' contrasts(idata$position)<- C
-#' (pmod1.aov <- Anova(pmod1, idata=idata, idesign=~position))
+#' (pmod1.aov <- car::Anova(pmod1, idata=idata, idesign=~position))
 #' 
 #' heplot(pmod1, manova=pmod1.aov, 
 #'        iterm="position", type="III", idata=idata, idesign=~position)
@@ -1404,7 +1410,7 @@ NULL
 #' rat.mod
 #' 
 #' idata <- data.frame(week = ordered(0:4))
-#' Anova(rat.mod, idata=idata, idesign=~week, test="Roy")
+#' car::Anova(rat.mod, idata=idata, idesign=~week, test="Roy")
 #' 
 #' # quick look at between group effects
 #' pairs(rat.mod)
@@ -1467,7 +1473,7 @@ NULL
 #' 
 #' # within-S factors
 #' within <- expand.grid(tilt=ordered(c(0,4,8)), noise=c("NA", "NP"))
-#' Anova(RT.mod, idata=within, idesign=~tilt * noise)
+#' car::Anova(RT.mod, idata=within, idesign=~tilt * noise)
 #' 
 #' heplot(RT.mod, idata=within, idesign=~tilt * noise, iterm="tilt")
 #' 
@@ -1538,7 +1544,7 @@ NULL
 #' 
 #' ## ANCOVA, assuming equal slopes
 #' rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, data=Rohwer)
-#' Anova(rohwer.mod)
+#' car::Anova(rohwer.mod)
 #' 
 #' # Visualize the ANCOVA model
 #' heplot(rohwer.mod)
@@ -1595,16 +1601,17 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
+#' library(car)
 #' data(RootStock)
 #' ## maybe str(RootStock) ; plot(RootStock) ...
 #' root.mod <- lm(cbind(girth4, ext4, girth15, weight15) ~ rootstock, data=RootStock)
-#' Anova(root.mod)
+#' car::Anova(root.mod)
 #' 
 #' pairs(root.mod)
 #' 
 #' # test two orthogonal contrasts among the rootstocks
 #' hyp <- matrix(c(2,-1,-1,-1,-1,2,  1, 0,0,0,0,-1), 2, 6, byrow=TRUE)
-#' linearHypothesis(root.mod, hyp)
+#' car::linearHypothesis(root.mod, hyp)
 #' heplot(root.mod, hypotheses=list(Contrasts=hyp, C1=hyp[1,], C2=hyp[2,]))
 #' 
 #' heplot1d(root.mod, hypotheses=list(Contrasts=hyp, C1=hyp[1,], C2=hyp[2,]))
@@ -1664,7 +1671,7 @@ NULL
 #' Sake.mod <- lm(cbind(taste,smell) ~ ., data=Sake)
 #' 
 #' library(car)
-#' Anova(Sake.mod)
+#' car::Anova(Sake.mod)
 #' 
 #' predictors <- colnames(Sake)[-(1:2)]                 
 #' # overall multivariate regression test
@@ -1925,7 +1932,7 @@ NULL
 #' grades.mod <- lm(cbind(midterm1, midterm2, final, eval) ~ 
 #' 	class + sex + gpa + boards + hssoc + pretest, data=SocGrades)
 #' 	
-#' Anova(grades.mod, test="Roy")
+#' car::Anova(grades.mod, test="Roy")
 #' 
 #' clr <- c("red", "blue", "darkgreen", "magenta", "brown", "black", "darkgray")
 #' heplot(grades.mod, col=clr)
@@ -2008,10 +2015,11 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
+#' library(car)
 #' data(SocialCog)
 #' SC.mod <- lm(cbind(MgeEmotions, ToM, ExtBias, PersBias) ~ Dx, data=SocialCog)
 #' SC.mod
-#' Anova(SC.mod)
+#' car::Anova(SC.mod)
 #' 
 #' # test hypotheses of interest in terms of contrasts
 #' print(linearHypothesis(SC.mod, "Dx1"), SSP=FALSE)
@@ -2097,7 +2105,7 @@ NULL
 #' # fit an mlm
 #' tipi.mlm <- lm(cbind(Extraversion, Neuroticism, Conscientiousness, Agreeableness, Openness) 
 #'                ~ engnat + gender + education, data = TIPI )
-#' Anova(tipi.mlm)
+#' car::Anova(tipi.mlm)
 #' 
 #' heplot(tipi.mlm, fill=TRUE, fill.alpha=0.1)
 #' 
@@ -2151,12 +2159,13 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
+#' library(car)
 #' data(VocabGrowth)
 #' 
 #' # Standard Multivariate & Univariate repeated measures analysis
 #' Vocab.mod <- lm(cbind(grade8,grade9,grade10,grade11) ~ 1, data=VocabGrowth)
 #' idata <-data.frame(grade=ordered(8:11))
-#' Anova(Vocab.mod, idata=idata, idesign=~grade, type="III")
+#' car::Anova(Vocab.mod, idata=idata, idesign=~grade, type="III")
 #' 
 #' ##Type III Repeated Measures MANOVA Tests: Pillai test statistic
 #' ##            Df test stat approx F num Df den Df    Pr(>F)    
@@ -2249,7 +2258,7 @@ NULL
 #'                                         0,-1,1), ncol=2) 
 #' 
 #' (wl.mod<-lm(cbind(wl1, wl2, wl3, se1, se2, se3)~group, data=WeightLoss))
-#' (wl.aov <- Anova(wl.mod, imatrix=imatrix, test="Roy"))
+#' (wl.aov <- car::Anova(wl.mod, imatrix=imatrix, test="Roy"))
 #' 
 #' heplot(wl.mod, imatrix=imatrix, iterm="group:measure")
 #' }
@@ -2267,7 +2276,7 @@ NULL
 #' between <- as.matrix(WeightLoss[,-1]) %*% measure
 #' 
 #' between.mod <- lm(between ~ group, data=WeightLoss)
-#' Anova(between.mod)
+#' car::Anova(between.mod)
 #' 
 #' heplot(between.mod, hypotheses=c("group1", "group2"), 
 #' 	xlab="Weight Loss", ylab="Self Esteem",
@@ -2278,7 +2287,7 @@ NULL
 #' colnames(month)<- c('WL', 'SE')
 #' trends <- as.matrix(WeightLoss[,-1]) %*% month
 #' within.mod <- lm(trends ~ group, data=WeightLoss)
-#' Anova(within.mod)
+#' car::Anova(within.mod)
 #' 
 #' heplot(within.mod)
 #' heplot(within.mod, hypotheses=c("group1", "group2"), 

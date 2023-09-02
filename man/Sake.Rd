@@ -48,7 +48,7 @@ boxplot(scale(Sake))
 Sake.mod <- lm(cbind(taste,smell) ~ ., data=Sake)
 
 library(car)
-Anova(Sake.mod)
+car::Anova(Sake.mod)
 
 predictors <- colnames(Sake)[-(1:2)]                 
 # overall multivariate regression test
