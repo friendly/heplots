@@ -100,7 +100,7 @@ facilities to save these in various formats.
 #################################################
 # animate an AV plot from marginal to conditional
 #################################################
-data(Duncan, package="car")
+data(Duncan, package="carData")
 duncmod <- lm(prestige ~ income + education, data=Duncan)
 mod.mat <- model.matrix(duncmod)
 
