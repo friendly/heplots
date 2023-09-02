@@ -197,9 +197,10 @@ savedvars <- new.env(parent=emptyenv())
 #' @keywords hplot aplot dynamic multivariate
 #' @examples
 #' 
-#' # Soils data, from car package
+#' # Soils data, from carData package
+#' data(Soils, package = "carData")
 #' soils.mod <- lm(cbind(pH,N,Dens,P,Ca,Mg,K,Na,Conduc) ~ Block + Contour*Depth, data=Soils)
-#' Anova(soils.mod)
+#' car::Anova(soils.mod)
 #' 
 #' heplot(soils.mod, variables=c("Ca", "Mg"))
 #' pairs(soils.mod, terms="Depth", variables=c("pH", "N", "P", "Ca", "Mg"))
@@ -336,10 +337,10 @@ heplot3d.mlm <-
 	data <- model.frame(mod)
 	if (missing(manova)) {
 		if (is.null(imatrix)) {
-			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
+			manova <- car::Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
+				manova <- car::Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
 		} 
 	}   
 #	if (verbose) print(manova)    

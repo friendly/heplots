@@ -212,10 +212,10 @@ heplot1d.mlm <-
 #	if (missing(manova)) manova <- Anova(mod, type=type)    
 	if (missing(manova)) {
 		if (is.null(imatrix)) {
-			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
+			manova <- car::Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
+			manova <- car::Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
 		} 
 	}   
 	

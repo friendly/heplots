@@ -240,9 +240,10 @@ expand the bounding box of the axes, but cannot decrease it.
 }
 \examples{
 
-# Soils data, from car package
+# Soils data, from carData package
+data(Soils, package = "carData")
 soils.mod <- lm(cbind(pH,N,Dens,P,Ca,Mg,K,Na,Conduc) ~ Block + Contour*Depth, data=Soils)
-Anova(soils.mod)
+car::Anova(soils.mod)
 
 heplot(soils.mod, variables=c("Ca", "Mg"))
 pairs(soils.mod, terms="Depth", variables=c("pH", "N", "P", "Ca", "Mg"))

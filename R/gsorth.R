@@ -63,17 +63,17 @@
 #' # orthogonalize Y side
 #' GSiris <- data.frame(gsorth(iris[,1:4]), Species=iris$Species)
 #' iris.mod1 <- lm(as.matrix(GSiris[,1:4]) ~ Species, data=GSiris)
-#' Anova(iris.mod1)
+#' car::Anova(iris.mod1)
 #' 
 #' # orthogonalize X side
 #' rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer)
-#' Anova(rohwer.mod)
+#' car::Anova(rohwer.mod)
 #' 
 #' # type I tests for Rohwer data
 #' Rohwer.orth <- cbind(Rohwer[,1:5], gsorth(Rohwer[, c("n", "s", "ns", "na", "ss")], adjnames=FALSE))
 #' 
 #' rohwer.mod1 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer.orth)
-#' Anova(rohwer.mod1)
+#' car::Anova(rohwer.mod1)
 #' # compare with anova()
 #' anova(rohwer.mod1)
 #' 

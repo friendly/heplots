@@ -294,7 +294,7 @@
 #' 
 #' 
 #' ## Pottery data, from car package
-#' data(Pottery)
+#' data(Pottery, package = "carData")
 #' pottery.mod <- lm(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data=Pottery)
 #' heplot(pottery.mod)
 #' heplot(pottery.mod, terms=FALSE, add=TRUE, col="blue", 
@@ -304,14 +304,17 @@
 #' ## Rohwer data, multivariate multiple regression/ANCOVA
 #' #-- ANCOVA, assuming equal slopes
 #' rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, data=Rohwer)
-#' Anova(rohwer.mod)
+#' car::Anova(rohwer.mod)
 #' col <- c("red", "black", "blue", "cyan", "magenta", "brown", "gray")
 #' heplot(rohwer.mod, col=col)
+#' 
 #' # Add ellipse to test all 5 regressors
-#' heplot(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), col=col, fill=TRUE)
+#' heplot(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), 
+#'        col=col, fill=TRUE)
 #' # View all pairs
 #' pairs(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 #' # or 3D plot
+#' 
 #' if(requireNamespace("rgl")){
 #' col <- c("pink", "black", "blue", "cyan", "magenta", "brown", "gray")
 #' heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), col=col)
@@ -407,10 +410,10 @@ heplot.mlm <-
 	
 	if (missing(manova)) {
 		if (is.null(imatrix)) {
-			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
+			manova <- car::Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
+				manova <- car::Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
 		} 
 	}   
 	if (verbose) print(manova)

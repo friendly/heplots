@@ -164,8 +164,8 @@ heplot(sk.rmod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q"),
 
 pottery.mod <- lm(cbind(Al,Fe,Mg,Ca,Na)~Site, data=Pottery)
 pottery.rmod <- robmlm(cbind(Al,Fe,Mg,Ca,Na)~Site, data=Pottery)
-Anova(pottery.mod)
-Anova(pottery.rmod)
+car::Anova(pottery.mod)
+car::Anova(pottery.rmod)
 
 # index plot of weights
 plot(pottery.rmod$weights, type="h")
