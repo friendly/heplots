@@ -110,23 +110,6 @@ coefplot.mlm <- function(object,
   }
 
 
-#	# TODO: delete this, in favor of heplots::label.ellipse
-#	label.ellipse <- function(ellipse, label, col, ...){
-#		if (cor(ellipse, use="complete.obs")[1,2] > 0){
-#			index <- which.max(ellipse[,2])
-#			x <- ellipse[index, 1] + 0.5 * strwidth(label)  # was: "A"
-#			y <- ellipse[index, 2] + 0.5 *strheight("A")
-#			adj <- c(1, 0) 
-#		}
-#		else {
-#			index <- which.min(ellipse[,2])
-#			x <- ellipse[index, 1] - 0.5 * strwidth(label)  # was: "A"
-#			y <- ellipse[index, 2] - 0.5 * strheight("A")
-#			adj <- c(0, 1) 
-#		}
-#		text(x, y, label, adj=adj, xpd=TRUE, col=col, ...)
-#	}
-
 	# determine parameters to plot; allow parameters to be passed by names or numbers
   cf <- coef(object)
   if(is.null(parm)) parm <- 1:nrow(cf)
