@@ -34,6 +34,7 @@
 #' 
 #' # Pottery data
 #' 
+#' data(Pottery, package = "carData")
 #' pottery.rmod <- robmlm(cbind(Al,Fe,Mg,Ca,Na)~Site, data=Pottery)
 #' plot(pottery.rmod, col=Pottery$Site, segments=TRUE)
 #' 

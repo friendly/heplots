@@ -148,13 +148,13 @@ XY <- scale(XY, center=TRUE, scale=FALSE)
 
 # start, end plots
 
-dataEllipse(XY, pch=16, levels=0.68, id.n=2)
+car::dataEllipse(XY, pch=16, levels=0.68, id.n=2)
 mod <- lm(y~x, data=as.data.frame(XY))
 abline(mod, col="red", lwd=2)
 
 pca <- princomp(XY, cor=TRUE)
 scores <- pca$scores
-dataEllipse(scores, pch=16, levels=0.68, id.n=2)
+car::dataEllipse(scores, pch=16, levels=0.68, id.n=2)
 abline(lm(Comp.2 ~ Comp.1, data=as.data.frame(scores)), lwd=2, col="red")
 
 # show interpolation

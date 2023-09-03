@@ -162,6 +162,7 @@ heplot(sk.rmod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q"),
 ##############
 # Pottery data
 
+data(Pottery, package = "carData")
 pottery.mod <- lm(cbind(Al,Fe,Mg,Ca,Na)~Site, data=Pottery)
 pottery.rmod <- robmlm(cbind(Al,Fe,Mg,Ca,Na)~Site, data=Pottery)
 car::Anova(pottery.mod)
@@ -178,6 +179,7 @@ heplot(pottery.rmod, add=TRUE, error.ellipse=TRUE, lwd=c(2,2), lty=c(2,2),
 
 ###############
 # Prestige data
+data(Prestige, package = "carData")
 
 # treat women and prestige as response variables for this example
 prestige.mod <- lm(cbind(women, prestige) ~ income + education + type, data=Prestige)

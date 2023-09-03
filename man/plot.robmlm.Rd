@@ -63,6 +63,7 @@ axis(side=3, at=15+seq(0,120,30), labels=levels(Skulls$epoch), cex.axis=1)
 
 # Pottery data
 
+data(Pottery, package = "carData")
 pottery.rmod <- robmlm(cbind(Al,Fe,Mg,Ca,Na)~Site, data=Pottery)
 plot(pottery.rmod, col=Pottery$Site, segments=TRUE)
 
