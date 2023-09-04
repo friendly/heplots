@@ -1,0 +1,182 @@
+
+R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #  File tests/nofixed.R in package latentnet, part of the
+> #  Statnet suite of packages for network analysis, https://statnet.org .
+> #
+> #  This software is distributed under the GPL-3 license.  It is free,
+> #  open source, and has the attribution requirements (GPL Section 7) at
+> #  https://statnet.org/attribution .
+> #
+> #  Copyright 2003-2022 Statnet Commons
+> ################################################################################
+> library(latentnet)
+Loading required package: network
+
+'network' 1.18.1 (2023-01-24), part of the Statnet Project
+* 'news(package="network")' for changes since last version
+* 'citation("network")' for citation information
+* 'https://statnet.org' for help, support, and other information
+
+Loading required package: ergm
+
+'ergm' 4.5.0 (2023-05-27), part of the Statnet Project
+* 'news(package="ergm")' for changes since last version
+* 'citation("ergm")' for citation information
+* 'https://statnet.org' for help, support, and other information
+
+'ergm' 4 is a major update that introduces some backwards-incompatible
+changes. Please type 'news(package="ergm")' for a list of major
+changes.
+
+
+'latentnet' 2.10.6 (2022-05-11), part of the Statnet Project
+* 'news(package="latentnet")' for changes since last version
+* 'citation("latentnet")' for citation information
+* 'https://statnet.org' for help, support, and other information
+NOTE: BIC calculation prior to latentnet 2.7.0 had a bug in the calculation of the effective number of parameters. See help(summary.ergmm) for details.
+NOTE: Prior to version 2.8.0, handling of fixed effects for directed networks had a bug. See help("ergmm-terms") for details.
+> 
+> data(sampson)
+> 
+> monks.nf<-ergmm(samplike~euclidean(d=2)+rreceiver-1)
+> mcmc.diagnostics(monks.nf)
+Chain 1 
+Lag 0 
+                  lpY      Z.1.1       Z.1.2 receiver.1
+lpY         1.0000000 0.07390530 -0.20893381  0.5579253
+Z.1.1       0.0739053 1.00000000  0.05885617  0.1266751
+Z.1.2      -0.2089338 0.05885617  1.00000000 -0.3255281
+receiver.1  0.5579253 0.12667508 -0.32552810  1.0000000
+
+Lag 10 
+                   lpY      Z.1.1       Z.1.2  receiver.1
+lpY         0.62492770 0.05735114 -0.17570331  0.48833050
+Z.1.1       0.07520222 0.43165749  0.02513901  0.09592223
+Z.1.2      -0.17926128 0.01554245  0.44598409 -0.22452294
+receiver.1  0.48896220 0.07695039 -0.23527815  0.58533586
+
+[[1]]
+
+Quantile (q) = 0.025
+Accuracy (r) = +/- 0.0125
+Probability (s) = 0.95 
+                                                  
+            Burn-in  Total Lower bound  Dependence
+            (M)      (N)   (Nmin)       factor (I)
+ lpY        80       17860 600          29.8      
+ Z.1.1      50       9240  600          15.4      
+ Z.1.2      50       9240  600          15.4      
+ receiver.1 60       11520 600          19.2      
+
+
+> plot(gof(monks.nf))
+> predict(monks.nf)
+           [,1]      [,2]       [,3]       [,4]      [,5]       [,6]      [,7]
+ [1,] 0.8998672 0.7608732 0.17797322 0.17132751 0.3672862 0.07478332 0.5123455
+ [2,] 0.7490513 0.8994509 0.15708145 0.09614891 0.2277378 0.04052016 0.5669794
+ [3,] 0.5113822 0.4811823 0.62629947 0.09287327 0.2399861 0.03876848 0.2616621
+ [4,] 0.3757279 0.2442253 0.05669434 0.74341045 0.6681391 0.29288269 0.1178581
+ [5,] 0.4741549 0.3236735 0.08949231 0.52566550 0.8473685 0.25192878 0.1645737
+ [6,] 0.4015253 0.2673016 0.06364184 0.53992625 0.6363073 0.49476523 0.1327611
+ [7,] 0.7334694 0.7816878 0.16295657 0.10999864 0.2542981 0.04679927 0.7623939
+ [8,] 0.5600125 0.4123189 0.08907680 0.46346614 0.6274860 0.23255872 0.2262308
+ [9,] 0.4856367 0.3467429 0.07675303 0.45864570 0.6490071 0.24397992 0.1823116
+[10,] 0.4742698 0.3294327 0.08646999 0.52427753 0.6631657 0.24326231 0.1691661
+[11,] 0.5085407 0.3762164 0.07691696 0.48786628 0.6496043 0.21235410 0.1986867
+[12,] 0.7342115 0.7818214 0.11306023 0.10454695 0.2346776 0.04434522 0.5419763
+[13,] 0.4409070 0.3677571 0.34287439 0.14771118 0.3382734 0.06231480 0.1964972
+[14,] 0.7476732 0.7413267 0.11029313 0.15255299 0.3115065 0.06500266 0.4584797
+[15,] 0.7466431 0.7809844 0.12288507 0.12619500 0.2777616 0.05378271 0.5271100
+[16,] 0.7218093 0.7248714 0.12628093 0.15269211 0.3159335 0.06623942 0.5407245
+[17,] 0.4485014 0.4252314 0.44604012 0.08298647 0.2138758 0.03431285 0.2228353
+[18,] 0.5079525 0.4750846 0.46136258 0.09638320 0.2463897 0.03980480 0.2611449
+            [,8]       [,9]      [,10]      [,11]     [,12]     [,13]     [,14]
+ [1,] 0.25662351 0.17433527 0.08847559 0.14679382 0.5969440 0.2437041 0.5301513
+ [2,] 0.15339850 0.10121283 0.04874905 0.08722780 0.6459523 0.1859327 0.5097836
+ [3,] 0.11397570 0.08176329 0.04894390 0.06152155 0.2421822 0.5061009 0.1803741
+ [4,] 0.40266978 0.35244398 0.25492460 0.31379895 0.1486890 0.1669488 0.1623561
+ [5,] 0.41376044 0.39446227 0.24699545 0.32707079 0.1977845 0.2465949 0.2070986
+ [6,] 0.40606923 0.37325037 0.22353270 0.26870557 0.1657214 0.1769777 0.1753618
+ [7,] 0.17451325 0.11735610 0.05635966 0.09915078 0.6210185 0.2079311 0.4551886
+ [8,] 0.69418008 0.43280712 0.26805347 0.30352008 0.2758785 0.2098706 0.2805258
+ [9,] 0.48199315 0.64882380 0.24939001 0.27357568 0.2267550 0.1971243 0.2288345
+[10,] 0.48359779 0.40827366 0.46296922 0.28845981 0.2052319 0.2279034 0.2145746
+[11,] 0.41873338 0.33694914 0.20964516 0.57263621 0.2548429 0.1842549 0.2792755
+[12,] 0.16513624 0.11228313 0.05182593 0.09842829 0.8143262 0.1443072 0.5408646
+[13,] 0.15190095 0.11891633 0.07663456 0.08537366 0.1785774 0.7718667 0.1437101
+[14,] 0.22164057 0.15231452 0.07491765 0.14847319 0.6231773 0.1572360 0.7583872
+[15,] 0.19145014 0.13042416 0.06193925 0.11790628 0.6389097 0.1638056 0.5691407
+[16,] 0.22688722 0.16377414 0.07587436 0.14176282 0.5869344 0.1806410 0.4705598
+[17,] 0.09755464 0.07130610 0.04305321 0.05218483 0.2022313 0.5029129 0.1484638
+[18,] 0.11584367 0.08400873 0.05026481 0.06236458 0.2381023 0.5332722 0.1773084
+           [,15]      [,16]      [,17]      [,18]
+ [1,] 0.31118320 0.28970535 0.10688706 0.17379433
+ [2,] 0.34514212 0.28716869 0.09593863 0.15146918
+ [3,] 0.09398616 0.09679040 0.36201337 0.45669818
+ [4,] 0.05957731 0.07519022 0.03614569 0.05850996
+ [5,] 0.08361524 0.10130790 0.05743381 0.09288510
+ [6,] 0.06733249 0.08423267 0.04128140 0.06517403
+ [7,] 0.31118986 0.32895682 0.10042989 0.16112118
+ [8,] 0.11754262 0.14573524 0.05521370 0.08956399
+ [9,] 0.09342405 0.12199322 0.04823639 0.07803130
+[10,] 0.08433090 0.10593935 0.05577525 0.08807449
+[11,] 0.11085486 0.13472524 0.04722633 0.07715424
+[12,] 0.34004009 0.30030284 0.06701422 0.10885507
+[13,] 0.06974798 0.07831432 0.27010249 0.36273844
+[14,] 0.35029937 0.27108214 0.06640806 0.10787877
+[15,] 0.55628382 0.31070227 0.07410006 0.12012291
+[16,] 0.30663819 0.55876013 0.07574822 0.12437704
+[17,] 0.07647769 0.07861731 0.53804900 0.44446199
+[18,] 0.09305293 0.09672322 0.36443210 0.62085246
+> simulate(monks.nf)
+ Network attributes:
+  vertices = 18 
+  directed = TRUE 
+  hyper = FALSE 
+  loops = FALSE 
+  multiple = FALSE 
+  bipartite = FALSE 
+  total edges= 72 
+    missing edges= 0 
+    non-missing edges= 72 
+
+ Vertex attribute names: 
+    vertex.names 
+
+No edge attributes
+> print(summary(monks.nf))
+NOTE: It is not certain whether it is appropriate to use latentnet's BIC to select latent space dimension, whether or not to include actor-specific random effects, and to compare clustered models with the unclustered model.
+
+==========================
+Summary of model fit
+==========================
+
+Formula:   samplike ~ euclidean(d = 2) + rreceiver - 1
+Attribute: edges
+Model:     Bernoulli 
+MCMC sample of size 4000, draws are 10 iterations apart, after burnin of 10000 iterations.
+Receiver effect variance: 2.125319.
+Overall BIC:        384.3983 
+Likelihood BIC:     242.3597 
+Latent space/clustering BIC:     99.79557 
+Receiver effect BIC:     42.243 
+
+> 
+> proc.time()
+   user  system elapsed 
+  10.48    0.62   11.03 

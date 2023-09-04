@@ -1,0 +1,100 @@
+
+R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #  File tests/nomixing.R in package latentnet, part of the
+> #  Statnet suite of packages for network analysis, https://statnet.org .
+> #
+> #  This software is distributed under the GPL-3 license.  It is free,
+> #  open source, and has the attribution requirements (GPL Section 7) at
+> #  https://statnet.org/attribution .
+> #
+> #  Copyright 2003-2022 Statnet Commons
+> ################################################################################
+> library(latentnet)
+Loading required package: network
+
+'network' 1.18.1 (2023-01-24), part of the Statnet Project
+* 'news(package="network")' for changes since last version
+* 'citation("network")' for citation information
+* 'https://statnet.org' for help, support, and other information
+
+Loading required package: ergm
+
+'ergm' 4.5.0 (2023-05-27), part of the Statnet Project
+* 'news(package="ergm")' for changes since last version
+* 'citation("ergm")' for citation information
+* 'https://statnet.org' for help, support, and other information
+
+'ergm' 4 is a major update that introduces some backwards-incompatible
+changes. Please type 'news(package="ergm")' for a list of major
+changes.
+
+
+'latentnet' 2.10.6 (2022-05-11), part of the Statnet Project
+* 'news(package="latentnet")' for changes since last version
+* 'citation("latentnet")' for citation information
+* 'https://statnet.org' for help, support, and other information
+NOTE: BIC calculation prior to latentnet 2.7.0 had a bug in the calculation of the effective number of parameters. See help(summary.ergmm) for details.
+NOTE: Prior to version 2.8.0, handling of fixed effects for directed networks had a bug. See help("ergmm-terms") for details.
+> 
+> data(sampson)
+> 
+> badfit<-ergmm(samplike~euclidean(d=2,G=3)+rreceiver,control=ergmm.control(mle.maxit=3,burnin=0,interval=1,sample.size=1000,group.deltas=0,pilot.runs=0))
+> 
+> plot(badfit)
+Warning message:
+In cov2cor(beta.cov) :
+  diag(.) had 0 or NA entries; non-finite result is doubtful
+> 
+> mcmc.diagnostics(badfit)
+Chain 1 
+WARNING: Variables beta.1 did not mix AT ALL. MCMC should be rerun with different proposal parameters!
+Lag 0 
+                   lpY beta.1      Z.1.1       Z.1.2 receiver.1
+lpY         1.00000000    NaN  0.1435516 -0.06377017  0.3619415
+beta.1             NaN    NaN        NaN         NaN        NaN
+Z.1.1       0.14355162    NaN  1.0000000 -0.29304026 -0.1351269
+Z.1.2      -0.06377017    NaN -0.2930403  1.00000000  0.1070274
+receiver.1  0.36194146    NaN -0.1351269  0.10702736  1.0000000
+
+Lag 1 
+                   lpY beta.1      Z.1.1       Z.1.2 receiver.1
+lpY         0.86376000    NaN  0.1442373 -0.05142377  0.3660463
+beta.1             NaN    NaN        NaN         NaN        NaN
+Z.1.1       0.13733672    NaN  0.9266274 -0.29270238 -0.1282780
+Z.1.2      -0.06721414    NaN -0.2988407  0.96923592  0.0956339
+receiver.1  0.32140695    NaN -0.1375933  0.10121051  0.9132338
+
+[[1]]
+
+Quantile (q) = 0.025
+Accuracy (r) = +/- 0.0125
+Probability (s) = 0.95 
+                                                  
+            Burn-in  Total Lower bound  Dependence
+            (M)      (N)   (Nmin)       factor (I)
+ lpY        12       2071  600           3.45     
+ beta.1     <NA>     <NA>  600             NA     
+ Z.1.1      29       5733  600           9.56     
+ Z.1.2      30       5279  600           8.80     
+ receiver.1 53       6310  600          10.50     
+
+
+> 
+> proc.time()
+   user  system elapsed 
+   2.75    0.48    3.12 

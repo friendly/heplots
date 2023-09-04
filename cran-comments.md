@@ -1,7 +1,6 @@
 ## Test environments
-* local Windows 7 install, R version 4.2.1 (2022-06-23 ucrt)
-* local Windows 10 install, R 4.0.2
-* win-builder R Under development (unstable) (2022-09-25 r82916 ucrt)
+* local Windows 10 install, R 4.3.1 (2023-06-16 ucrt)
+* win-builder R Under development (unstable) (2023-09-03 r85052 ucrt)
 * win-builder R version 4.2.1 (2022-06-23 ucrt)
 
 ## R CMD check results
@@ -15,7 +14,7 @@ There were no ERRORs or WARNINGS or NOTES.
 
 ## revdepcheck results
 
-We checked 9 reverse dependencies (4 from CRAN + 5 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 9 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
  * We saw 0 new problems
  * We failed to check 0 packages
@@ -23,7 +22,10 @@ We checked 9 reverse dependencies (4 from CRAN + 5 from Bioconductor), comparing
 
 ## Comments
 
-This is a minor release, to fix an error in the CITATION file
+This is a major release, without much new or changed functionality, but with all documentation now
+in roxygen format.
+
+
 
 
 
