@@ -16,6 +16,12 @@ Authors@R: c(
             person(given = "Phil", family="Chalmers", role="ctb"),
             person(given = "Duncan", family = "Murdoch", role="ctb"))
 Maintainer: Michael Friendly <friendly@yorku.ca>
+Description: Provides HE plot and other functions for visualizing hypothesis
+    tests in multivariate linear models. HE plots represent sums-of-squares-and-products 
+    matrices for linear hypotheses and for error using ellipses (in two
+    dimensions) and ellipsoids (in three dimensions). The related 'candisc' package
+    provides visualizations in a reduced-rank canonical discriminant space when
+    there are more than a few response variables.
 Language: en-US
 Depends:
     R (>= 3.5.0),
@@ -51,12 +57,6 @@ Suggests:
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
-Description: Provides HE plot and other functions for visualizing hypothesis
-    tests in multivariate linear models. HE plots represent sums-of-squares-and-products 
-    matrices for linear hypotheses and for error using ellipses (in two
-    dimensions) and ellipsoids (in three dimensions). The related 'candisc' package
-    provides visualizations in a reduced-rank canonical discriminant space when
-    there are more than a few response variables.
 License: GPL (>= 2)
 URL: http://friendly.github.io/heplots/
 RoxygenNote: 7.2.3
