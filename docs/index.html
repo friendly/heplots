@@ -416,6 +416,9 @@
 <span>                 <span class="va">Species</span>, data<span class="op">=</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">iris.mod</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-iris1-1.png" width="70%"></p>
+<div class="section level3">
+<h3 id="contrasts">Contrasts<a class="anchor" aria-label="anchor" href="#contrasts"></a>
+</h3>
 <p>Contrasts or other linear hypotheses can be shown as well, and the ellipses look better if they are filled. We create contrasts to test the differences between <code>versacolor</code> and <code>virginca</code> and also between <code>setosa</code> and the average of the other two. Each 1 df contrast plots as degenerate 1D ellipse– a line.</p>
 <p>Because these contrasts are orthogonal, they add to the total 2 df effect of <code>Species</code>. Note how the first contrast, labeled <code>V:V</code>, distinguishes the means of <em>versicolor</em> from <em>virginica</em>; the second contrast, <code>S:VV</code> distinguishes <code>setosa</code> from the other two.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -434,11 +437,26 @@
 <span><span class="fu"><a href="reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, </span>
 <span>       fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-iris2-1.png" width="70%"></p>
-<p>All pairwise HE plots are produced using the <code>pairs</code> method for MLM objects.</p>
+</div>
+<div class="section level3">
+<h3 id="all-pairwise-he-plots">All pairwise HE plots<a class="anchor" aria-label="anchor" href="#all-pairwise-he-plots"></a>
+</h3>
+<p>All pairwise HE plots are produced using the <code><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs()</a></code> method for MLM objects.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, hyp.labels<span class="op">=</span><span class="cn">FALSE</span>,</span>
 <span>      fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-iris3-1.png" width="100%"></p>
+</div>
+<div class="section level3">
+<h3 id="covariance-ellipses">Covariance ellipses<a class="anchor" aria-label="anchor" href="#covariance-ellipses"></a>
+</h3>
+<p>MANOVA relies on the assumption that within-group covariance matrices are all equal. It is useful to visualize these in the space of some of the predictors. <code><a href="reference/covEllipses.html">covEllipses()</a></code> provides this both for classical and robust estimates. The figure below shows these for the three Iris species and the pooled covariance matrix, which is the same as the <strong>E</strong> matrix used in MANOVA tests.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>, </span>
+<span>            fill<span class="op">=</span><span class="cn">TRUE</span>, method<span class="op">=</span><span class="st">"mve"</span>, add<span class="op">=</span><span class="cn">TRUE</span>, labels<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-iris4-1.png" width="80%"></p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
@@ -450,7 +468,7 @@
 <p>Friendly, M. (2010). <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a>. <em>Journal of Statistical Software</em>, <strong>37</strong>, 1–37.</p>
 <p>Friendly, M.; Monette, G. &amp; Fox, J. (2013). <a href="http://datavis.ca/palers/ellipses-STS402.pdf" class="external-link">Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry</a> <em>Statistical Science</em>, <strong>28</strong>, 1-39.</p>
 <p>Friendly, M. &amp; Sigal, M. (2017). <a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">Graphical Methods for Multivariate Linear Models in Psychological Research: An R Tutorial.</a> <em>The Quantitative Methods for Psychology</em>, <strong>13</strong>, 20-45.</p>
-<p>Friendly, M. &amp; Sigal, M. (2018): Visualizing Tests for Equality of Covariance Matrices, <em>The American Statistician</em>, <a href="https://doi.org/10.1080/00031305.2018.1497537" class="external-link">DOI</a></p>
+<p>Friendly, M. &amp; Sigal, M. (2018): <a href="https://www.datavis.ca/papers/EqCov-TAS.pdf" class="external-link">Visualizing Tests for Equality of Covariance Matrices</a>, <em>The American Statistician</em>, <a href="https://doi.org/10.1080/00031305.2018.1497537" class="external-link">DOI</a></p>
 </div>
 </div>
 

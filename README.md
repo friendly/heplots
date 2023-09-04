@@ -202,6 +202,8 @@ heplot(iris.mod)
 
 <img src="man/figures/README-iris1-1.png" width="70%" />
 
+### Contrasts
+
 Contrasts or other linear hypotheses can be shown as well, and the
 ellipses look better if they are filled. We create contrasts to test the
 differences between `versacolor` and `virginca` and also between
@@ -232,7 +234,9 @@ heplot(iris.mod, hypotheses=hyp,
 
 <img src="man/figures/README-iris2-1.png" width="70%" />
 
-All pairwise HE plots are produced using the `pairs` method for MLM
+### All pairwise HE plots
+
+All pairwise HE plots are produced using the `pairs()` method for MLM
 objects.
 
 ``` r
@@ -241,6 +245,23 @@ pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
 ```
 
 <img src="man/figures/README-iris3-1.png" width="100%" />
+
+### Covariance ellipses
+
+MANOVA relies on the assumption that within-group covariance matrices
+are all equal. It is useful to visualize these in the space of some of
+the predictors. `covEllipses()` provides this both for classical and
+robust estimates. The figure below shows these for the three Iris
+species and the pooled covariance matrix, which is the same as the **E**
+matrix used in MANOVA tests.
+
+``` r
+covEllipses(iris[,1:4], iris$Species)
+covEllipses(iris[,1:4], iris$Species, 
+            fill=TRUE, method="mve", add=TRUE, labels="")
+```
+
+<img src="man/figures/README-iris4-1.png" width="80%" />
 
 ## References
 
@@ -275,6 +296,7 @@ Linear Models in Psychological Research: An R
 Tutorial.](https://doi.org/10.20982/tqmp.13.1.p020) *The Quantitative
 Methods for Psychology*, **13**, 20-45.
 
-Friendly, M. & Sigal, M. (2018): Visualizing Tests for Equality of
-Covariance Matrices, *The American Statistician*,
+Friendly, M. & Sigal, M. (2018): [Visualizing Tests for Equality of
+Covariance Matrices](https://www.datavis.ca/papers/EqCov-TAS.pdf), *The
+American Statistician*,
 [DOI](https://doi.org/10.1080/00031305.2018.1497537)
