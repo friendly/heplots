@@ -4,7 +4,12 @@
 #' 
 #' This function creates a simple dot chart showing the contributions (log
 #' determinants) of the various groups to Box's M test for equality of
-#' covariance matrices.
+#' covariance matrices. An important virtue of these plots is that they can show
+#' \emph{how} the groups differ from each other, and from the pooled
+#' covariance matrix using a scalar like \eqn{ln | S |}. In this way, they
+#' can suggest more specific questions or hypotheses regarding the
+#' equality of covariance matrices, analogous to the use of contrasts
+#' and linear hypotheses for testing differences among group mean vectors.
 #' 
 #' Because Box's M test is based on a specific function (log determinant) of
 #' the covariance matrices in the groups compared to the pooled covariance
@@ -44,6 +49,11 @@
 #' @seealso \code{\link{boxM}}, \code{\link{logdetCI}}
 #' 
 #' \code{\link[graphics]{dotchart}}
+#' @references 
+#' Friendly, M., & Sigal, M. (2018). Visualizing Tests for Equality of Covariance Matrices. 
+#' \emph{The American Statistician}, \bold{72}(4);
+#' \doi{10.1080/00031305.2018.1497537}.
+#' Online: \url{https://www.datavis.ca/papers/EqCov-TAS.pdf}.
 #' @keywords hgraph
 #' @examples
 #' 
