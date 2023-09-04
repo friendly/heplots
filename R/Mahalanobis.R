@@ -1,10 +1,14 @@
 #' Classical and Robust Mahalanobis Distances
-#'
-#' This function is a convenience wrapper to \code{\link[stats]{mahalanobis}} offering
-#' also the possibility to calculate robust Mahalanobis squared distances using
-#' MCD and MVE estimators of center and covariance.
-#'
-#' @param x      matrix of data with, say, p columns
+#' 
+#' This function is a convenience wrapper to \code{\link[stats]{mahalanobis}}
+#' offering also the possibility to calculate robust Mahalanobis squared
+#' distances using MCD and MVE estimators of center and covariance (from
+#' \code{\link[MASS]{cov.rob}})
+#' 
+#' Any missing data in a row of \code{x} causes \code{NA} to be returned for
+#' that row.
+#' 
+#' @param x a numeric matrix or data frame with, say, \eqn{p} columns
 #' @param center mean vector of the data; if this and \code{cov} are both supplied,
 #'               the function simply calls \code{\link[stats]{mahalanobis}} to 
 #'               calculate the result
@@ -16,16 +20,17 @@
 #' @param nsamp  passed to \code{\link[MASS]{cov.rob}}
 #' @param ...    other arguments passed to \code{\link[MASS]{cov.rob}}
 #' @return      a vector of length \code{nrow(x)} containing the squared distances.
-#' @author      Michael Friendly
-#' @export
-#' @seealso     \code{\link[stats]{mahalanobis}}, \code{\link[MASS]{cov.rob}}
+#' @author Michael Friendly
+#' @seealso \code{\link[stats]{mahalanobis}}, \code{\link[MASS]{cov.rob}}
+#' @keywords multivariate
 #' @examples
-#' data(iris)
+#' 
 #' summary(Mahalanobis(iris[, 1:4]))
 #' summary(Mahalanobis(iris[, 1:4], method="mve"))
-#" summary(Mahalanobis(iris[, 1:4], method="mcd"))
-
-
+#' summary(Mahalanobis(iris[, 1:4], method="mcd"))
+#' 
+#' 
+#' @export 
 Mahalanobis <- function(x, center, cov, 
 	method=c("classical", "mcd", "mve"), nsamp="best", ...) {
 	

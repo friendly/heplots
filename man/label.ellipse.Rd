@@ -4,8 +4,15 @@
 \alias{label.ellipse}
 \title{Label an ellipse}
 \usage{
-label.ellipse(ellipse, label, col = "black", label.pos = NULL, xpd = TRUE,
-  tweak = 0.5 * c(strwidth("M"), strheight("M")), ...)
+label.ellipse(
+  ellipse,
+  label,
+  col = "black",
+  label.pos = NULL,
+  xpd = TRUE,
+  tweak = 0.5 * c(strwidth("M"), strheight("M")),
+  ...
+)
 }
 \arguments{
 \item{ellipse}{A two-column matrix of coordinates for the ellipse boundary}
@@ -69,10 +76,9 @@ label_demo(circ)
 ell <-circ \%*\% chol(matrix( c(1, .5, .5, 1), 2, 2)) 
 label_demo(ell)
 }
-\author{
-Michael Friendly
-}
 \seealso{
 \code{\link{heplot}}
 }
-
+\author{
+Michael Friendly
+}

@@ -4,11 +4,161 @@
 # last modified 1 Jan 2010 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
 
 
-`heplot1d` <-
+
+
+#' One-Dimensional HE Plots
+#' 
+#' This function plots a 1-dimensional representation of the hypothesis (H) and
+#' error (E) sums-of-squares-and-products matrices for terms and linear
+#' hypotheses in a multivariate linear model.
+#' 
+#' In particular, for a given response, the 1-D representations of H and E
+#' matrices correspond to line segments.  The E ``ellipse'' is shown as a
+#' filled rectangle whose width equals the mean squared error for that
+#' response.  The H ``ellipse'' for each model term is shown as a line segment
+#' whose length represents either the size of the effect or the evidence for
+#' that effect.
+#' 
+#' \bold{This version is an initial sketch.  Details of the implementation are
+#' subject to change.}
+#' 
+#' 
+#' @aliases heplot1d heplot1d.mlm
+#' @param mod a model object of class \code{"mlm"}.
+#' @param terms a logical value or character vector of terms in the model for
+#'           which to plot hypothesis matrices; if missing or \code{TRUE}, defaults to
+#'           all terms; if \code{FALSE}, no terms are plotted.
+#' @param hypotheses optional list of linear hypotheses for which to plot
+#'           hypothesis matrices; hypotheses are specified as for the
+#'           \code{\link[car]{linearHypothesis}} function in the \code{car} package; the
+#'           list elements can be named, in which case the names are used.
+#' @param term.labels logical value or character vector of names for the terms
+#'           to be plotted. If \code{TRUE} (the default) the names of the terms are used;
+#'           if \code{FALSE}, term labels are not plotted.
+#' @param hyp.labels logical value or character vector of names for the
+#'           hypotheses to be plotted. If \code{TRUE} (the default) the names of
+#'           components of the list of hypotheses are used; if \code{FALSE}, hypothesis
+#'           labels are not plotted.
+#' @param variables indices or names of the two response variables to be
+#'            plotted; defaults to \code{1:2}.
+#' @param error.ellipse if \code{TRUE}, plot the error ellipse; defaults to
+#'            \code{TRUE}, if the argument \code{add} is \code{FALSE} (see below).
+#' @param factor.means logical value or character vector of names of factors
+#'            for which the means are to be plotted, or \code{TRUE} or \code{FALSE};
+#'            defaults to \code{TRUE}, if the argument \code{add} is \code{FALSE} (see
+#'            below).
+#' @param grand.mean if \code{TRUE}, plot the centroid for all of the data;
+#'            defaults to \code{TRUE}, if the argument \code{add} is \code{FALSE} (see
+#'            below).
+#' @param remove.intercept if \code{TRUE} (the default), do not plot the
+#'            ellipse for the intercept even if it is in the MANOVA table.
+#' @param type ``type'' of sum-of-squares-and-products matrices to compute; one
+#'             of \code{"II"}, \code{"III"}, \code{"2"}, or \code{"3"}, where \code{"II"}
+#'             is the default (and \code{"2"} is a synonym).
+#' @param idata an optional data frame giving a factor or factors defining the
+#'             intra-subject model for multivariate repeated-measures data.  See Details of
+#'             \code{\link[car]{Anova}} for an explanation of the intra-subject design and
+#'             for further explanation of the other arguments relating to intra-subject
+#'             factors.
+#' @param idesign a one-sided model formula using the ``data'' in idata and
+#'             specifying the intra-subject design for repeated measure models.
+#' @param icontrasts names of contrast-generating functions to be applied by
+#'             default to factors and ordered factors, respectively, in the within-subject
+#'            ``data''; the contrasts must produce an intra-subject model matrix in which
+#'             different terms are orthogonal. The default is c("contr.sum", "contr.poly").
+#' @param imatrix In lieu of \code{idata} and \code{idesign}, you can specify
+#'             the intra-subject design matrix directly via \code{imatrix}, in the form of
+#'             list of named elements.  Each element gives the columns of the
+#'             within-subject model matrix for an intra-subject term to be tested, and must
+#'             have as many rows as there are responses; the columns of the within-subject
+#'             model matrix for \emph{different} terms must be mutually orthogonal.
+#' @param iterm For repeated measures designs, you must specify one
+#'             intra-subject term (a character string) to select the SSPE (E) matrix used
+#'             in the HE plot.  Hypothesis terms plotted include the \code{iterm} effect as
+#'             well as all interactions of \code{iterm} with \code{terms}.
+#' @param manova optional \code{Anova.mlm} object for the model; if absent a
+#'             MANOVA is computed. Specifying the argument can therefore save computation
+#'             in repeated calls.
+#' @param size how to scale the hypothesis ellipse relative to the error
+#'             ellipse; if \code{"evidence"}, the default, the scaling is done so that a
+#'             ``significant'' hypothesis ellipse extends outside of the error ellipse; if
+#'             \code{"effect.size"}, the hypothesis ellipse is on the same scale as the
+#'             error ellipse.
+#' @param level equivalent coverage of ellipse for normally-distributed errors,
+#'             defaults to \code{0.68}.
+#' @param alpha significance level for Roy's greatest-root test statistic; if
+#'             \code{size="evidence"}, then the hypothesis ellipse is scaled so that it
+#'             just touches the error ellipse at the specified alpha level; a larger
+#'             hypothesis ellipse therefore indicates statistical significance; defaults to
+#'             \code{0.05}.
+#' @param center.pch character to use in plotting the centroid of the data;
+#'             defaults to \code{"|"}.
+#' @param col a color or vector of colors to use in plotting ellipses; the
+#'             first color is used for the error ellipse; the remaining colors --- recycled
+#'             as necessary --- are used for the hypothesis ellipses.  A single color can
+#'             be given, in which case it is used for all ellipses.  For convenience, the
+#'             default colors for all heplots produced in a given session can be changed by
+#'             assigning a color vector via \code{options(heplot.colors =c(...)}.
+#'             Otherwise, the default colors are \code{c("red", "blue", "black",
+#'             "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.
+#' @param lty vector of line types to use for plotting the ellipses; the first
+#'             is used for the error ellipse, the rest --- possibly recycled --- for the
+#'             hypothesis ellipses; a single line type can be given. Defaults to \code{2:1}.
+#' @param lwd vector of line widths to use for plotting the ellipses; the first
+#'             is used for the error ellipse, the rest --- possibly recycled --- for the
+#'             hypothesis ellipses; a single line width can be given. Defaults to \code{1:2}.
+#' @param xlab x-axis label; defaults to name of the x variable.
+#' @param main main plot label; defaults to \code{""}.
+#' @param xlim x-axis limits; if absent, will be computed from the data.
+#' @param axes Whether to draw the x, y axes; defaults to \code{TRUE}
+#' @param offset.axes proportion to extend the axes in each direction if
+#'             computed from the data; optional.
+#' @param add if \code{TRUE}, add to the current plot; the default is
+#'             \code{FALSE}.  If \code{TRUE}, the error ellipse is not plotted.
+#' @param verbose if \code{TRUE}, print the MANOVA table and details of
+#'             hypothesis tests; the default is \code{FALSE}.
+#' @param \dots arguments to pass down to \code{plot}, \code{text}, and \code{points}.
+#' 
+#' @return The function invisibly returns an object of class \code{"heplot1d"},
+#' with coordinates for the various hypothesis ellipses and the error ellipse,
+#' and the limits of the horizontal and vertical axes.  (No methods for
+#' manipulating these objects are currently available.)
+#' 
+#' The components are: 
+#' \item{H}{ranges for the hypothesis terms} 
+#' \item{E}{range for E} 
+#' \item{xlim}{x-axis limits}
+#' 
+#' @author Michael Friendly
+#' @seealso 
+#'    \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for
+#'       hypothesis tests in \code{mlm}s
+#' 
+#'    \code{\link{heplot}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}} for
+#'       other HE plot methods
+#' @keywords hplot aplot multivariate
+#' @examples
+#' 
+#' ## Plastics data
+#' plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
+#' heplot1d(plastic.mod, col=c("pink","blue"))
+#' heplot1d(plastic.mod, col=c("pink","blue"),variables=2)
+#' heplot1d(plastic.mod, col=c("pink","blue"),variables=3)
+#' 
+#' ## Bees data
+#' bees.mod <- lm(cbind(Iz,Iy) ~ caste*treat*time, data=Bees)
+#' heplot1d(bees.mod)
+#' heplot1d(bees.mod, variables=2)
+#' 
+#' 
+#' @export heplot1d
+heplot1d <-
 function(mod, ...) UseMethod("heplot1d")
 
 
-`heplot1d.mlm` <-
+#' @rdname heplot1d
+#' @exportS3Method heplot1d mlm
+heplot1d.mlm <-
 		function ( 
 				mod,           # an mlm object
 				terms,         # vector of terms to plot H ellipses
@@ -31,7 +181,8 @@ function(mod, ...) UseMethod("heplot1d")
 				level=0.68,
 				alpha=0.05,
 				center.pch="|",   # doesn't have to be an argument
-				col=getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan","magenta", "brown","darkgray")),
+				col=getOption("heplot.colors", c("red", "blue", "black", "darkgreen", "darkcyan",
+				                                 "magenta", "brown","darkgray")),
 				# colors for H matrices, E matrix
 				lty=2:1,
 				lwd=1:2,
@@ -53,7 +204,7 @@ function(mod, ...) UseMethod("heplot1d")
 	}
 
 	#if (!require(car)) stop("car package is required.")
-	if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
+	#if (car2 <- packageDescription("car")[["Version"]] >= 2) linear.hypothesis <- linearHypothesis
 	type <- match.arg(type)
 	size <- match.arg(size)
 	data <- model.frame(mod)
@@ -61,12 +212,10 @@ function(mod, ...) UseMethod("heplot1d")
 #	if (missing(manova)) manova <- Anova(mod, type=type)    
 	if (missing(manova)) {
 		if (is.null(imatrix)) {
-			manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
+			manova <- car::Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts)
 		}
 		else {
-			if (car2)
-				manova <- Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
-			else stop("imatrix argument requires car 2.0-0 or later")
+			manova <- car::Anova(mod, type=type, idata=idata, idesign=idesign, icontrasts=icontrasts, imatrix=imatrix)
 		} 
 	}   
 	
@@ -160,7 +309,7 @@ function(mod, ...) UseMethod("heplot1d")
 		}
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
 #			lh <- linear.hypothesis(mod, hypotheses[[hyp]])
-			lh <- linearHypothesis(mod, hypotheses[[hyp]])
+			lh <- car::linearHypothesis(mod, hypotheses[[hyp]])
 			H <- lh$SSPH[variables, variables]
 			dfh <- lh$df
 			factor <- if (size == "evidence") F.crit(alpha, p, dfh, dfe) else 1

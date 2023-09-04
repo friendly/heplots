@@ -1,12 +1,30 @@
-# critical value of Roy's largest root test
 
-#lambda.crit <- function(alpha, p, dfh, dfe){
-#    d <- max(p, dfh)
-#    nu <- dfe - d + dfh
-#    (d/nu) * qf(alpha, d, nu, lower.tail=FALSE)
-#    }
-
-lambda.crit <- function(alpha, p, dfh, dfe, test.statistic=c("Roy", "HLT", "Hotelling-Lawley")){
+#' Internal heplots functions
+#' 
+#' Internal functions for the heplots package
+#' 
+#' These functions calculate critical values of multivariate test statistics (Wilks' Lambda, Hotelling-Lawley
+#' trace, Roy's maximum root test) used in setting the size of H ellipses relative to E.
+#' They are not intended to be called by the user.
+#' 
+#' 
+#' @name heplots-internal
+#' @aliases lambda.crit HLT.crit Roy.crit he.rep termInfo last
+#' @param alpha significance level for critical values of multivariate
+#' statistics
+#' @param p Number of variables
+#' @param dfh degrees of freedom for hypothesis
+#' @param dfe degrees of freedom for error
+#' @param test.statistic Test statistic used for the multivariate test
+#' @param x An argument to \code{\link{heplot}} or \code{\link{heplot3d}} that
+#' is to be repeated for Error and all hypothesis terms
+#' @param n Number of hypothesis terms
+#' @author Michael Friendly \email{friendly@yorku.ca}
+#' @keywords internal
+#' @return The critical value of the test statistic
+#'
+lambda.crit <- function(alpha, p, dfh, dfe, 
+                        test.statistic=c("Roy", "HLT", "Hotelling-Lawley")){
 	test.statistic <- match.arg(test.statistic)
 	switch(test.statistic,
 		Roy = Roy.crit(alpha, p, dfh, dfe),
@@ -16,6 +34,8 @@ lambda.crit <- function(alpha, p, dfh, dfe, test.statistic=c("Roy", "HLT", "Hote
 }
 # see: http://wiki.math.yorku.ca/index.php/Statistics:_Ellipses
 ## Critical value for \lambda_1 in Roy test
+
+#' @rdname heplots-internal
 Roy.crit <- function(alpha, p, dfh, dfe){
     df1 <- max(p, dfh)
     df2 <- dfe - df1 + dfh
@@ -23,6 +43,7 @@ Roy.crit <- function(alpha, p, dfh, dfe){
 }
 
 ## Critical value for \bar{\lambda_i} in HLT test
+#' @rdname heplots-internal
 HLT.crit <- function ( alpha, p, dfh, dfe) {
 	s <- min(p, dfh)
 	m <- (abs(p-dfh)-1)/2
@@ -33,8 +54,9 @@ HLT.crit <- function ( alpha, p, dfh, dfe) {
 }
 
 
-# extend HE parmeters for given number of terms
+# extend HE parameters for given number of terms
 #   return vector in the form H1, H2, ..., E
+#' @rdname heplots-internal
 he.rep <- function (x, n) {
     if (length(x) < 2) x <- rep(x, 2)
     x <- c(rep(x[-1], n)[1:n], x[1])
@@ -44,6 +66,7 @@ he.rep <- function (x, n) {
 last <- function(x) {x[length(x)]}
 
 # copied from stats::: to avoid using :::
+#' @rdname heplots-internal
 Pillai <- function (eig, q, df.res) 
 {
 	test <- sum(eig/(1 + eig))
@@ -56,6 +79,7 @@ Pillai <- function (eig, q, df.res)
 	c(test, (tmp2/tmp1 * test)/(s - test), s * tmp1, s * tmp2)
 }
 
+#' @rdname heplots-internal
 Wilks <- function (eig, q, df.res) 
 {
 	test <- prod(1/(1 + eig))
@@ -70,6 +94,7 @@ Wilks <- function (eig, q, df.res)
 			p * q, tmp1 * tmp3 - 2 * tmp2)
 }
 
+#' @rdname heplots-internal
 HL <- function (eig, q, df.res) 
 {
 	test <- sum(eig)
@@ -82,6 +107,7 @@ HL <- function (eig, q, df.res)
 	c(test, (tmp2 * test)/s/s/tmp1, s * tmp1, tmp2)
 }
 
+#' @rdname heplots-internal
 Roy <- function (eig, q, df.res) 
 {
 	p <- length(eig)

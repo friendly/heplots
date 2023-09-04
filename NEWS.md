@@ -1,3 +1,8 @@
+## Version 1.6.0 (2023-08-30)
+
+* converted pkg to roxygen documentation
+* now Suggests: car rather than Depends:
+
 ## Version 1.5.0 (2023-05-30)
 
 * `covEllipses()` gains a formula method
