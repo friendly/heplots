@@ -16,7 +16,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.5.0
+Version 1.6.0
 
 ## Description
 
@@ -33,8 +33,10 @@ one dimension. For the theory and applications, see:
 - Friendly (2010) for the application of these ideas to repeated measure
   designs,
 - Friendly, Monette and Fox (2013) for a general discussion of the role
-  of elliptical geometry in statistical understanding, and
-- Friendly & Sigal (2017) for an applied R tutorial.
+  of elliptical geometry in statistical understanding,
+- Friendly & Sigal (2017) for an applied R tutorial,
+- Friendly & Sigal (2018) for theory and examples of visualizing
+  equality of covariance matrices.
 
 Other topics now addressed here include:
 
@@ -272,3 +274,7 @@ Friendly, M. & Sigal, M. (2017). [Graphical Methods for Multivariate
 Linear Models in Psychological Research: An R
 Tutorial.](https://doi.org/10.20982/tqmp.13.1.p020) *The Quantitative
 Methods for Psychology*, **13**, 20-45.
+
+Friendly, M. & Sigal, M. (2018): Visualizing Tests for Equality of
+Covariance Matrices, *The American Statistician*,
+[DOI](https://doi.org/10.1080/00031305.2018.1497537)
