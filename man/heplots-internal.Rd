@@ -8,6 +8,10 @@
 \alias{he.rep}
 \alias{termInfo}
 \alias{last}
+\alias{Pillai}
+\alias{Wilks}
+\alias{HL}
+\alias{Roy}
 \title{Internal heplots functions}
 \usage{
 lambda.crit(
@@ -17,6 +21,20 @@ lambda.crit(
   dfe,
   test.statistic = c("Roy", "HLT", "Hotelling-Lawley")
 )
+
+Roy.crit(alpha, p, dfh, dfe)
+
+HLT.crit(alpha, p, dfh, dfe)
+
+he.rep(x, n)
+
+Pillai(eig, q, df.res)
+
+Wilks(eig, q, df.res)
+
+HL(eig, q, df.res)
+
+Roy(eig, q, df.res)
 }
 \arguments{
 \item{alpha}{significance level for critical values of multivariate
@@ -39,16 +57,12 @@ is to be repeated for Error and all hypothesis terms}
 The critical value of the test statistic
 }
 \description{
-Internal functions for package heplots.
+Internal functions for the heplots package
 }
 \details{
-These functions are not intended to be called by the user.
-
-Internal heplots functions
-
-Internal functions for package heplots.
-
-These functions are not intended to be called by the user.
+These functions calculate critical values of multivariate test statistics (Wilks' Lambda, Hotelling-Lawley
+trace, Roy's maximum root test) used in setting the size of H ellipses relative to E.
+They are not intended to be called by the user.
 }
 \author{
 Michael Friendly \email{friendly@yorku.ca}
