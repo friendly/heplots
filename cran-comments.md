@@ -1,7 +1,6 @@
 ## Test environments
 * local Windows 10 install, R 4.3.1 (2023-06-16 ucrt)
 * win-builder R Under development (unstable) (2023-09-03 r85052 ucrt)
-* win-builder R version 4.2.1 (2022-06-23 ucrt)
 
 ## R CMD check results
 There were no ERRORs or WARNINGS or NOTES.
@@ -22,8 +21,7 @@ We checked 9 reverse dependencies, comparing R CMD check results across CRAN and
 
 ## Comments
 
-This is a major release, without much new or changed functionality, but with all documentation now
-in roxygen format.
+This is a major release; not much new or changed functionality, but with all documentation now in roxygen format.
 
 
 
