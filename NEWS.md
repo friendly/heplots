@@ -7,6 +7,7 @@
 
 * converted pkg to roxygen documentation
 * now Suggests: car rather than Depends:
+* fix CITATION authors
 
 ## Version 1.5.0 (2023-05-30)
 
