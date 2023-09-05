@@ -24,9 +24,9 @@ Description: Provides HE plot and other functions for visualizing hypothesis
     there are more than a few response variables.
 Language: en-US
 Depends:
-    R (>= 3.5.0),
-    broom
+    R (>= 3.5.0)
 Imports:
+    broom,
     car,
     MASS,
     graphics,

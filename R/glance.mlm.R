@@ -5,7 +5,9 @@
 #' 
 #' In the multivariate case, it returns a \code{\link[tibble]{tibble}} with one row for each
 #' response variable, containing goodness of fit measures, F-tests and p-values.
-#' 
+#'
+#' @name glance.mlm
+#' @aliases glance.mlm 
 #' @param x An \code{mlm} object created by \code{\link[stats]{lm}}, i.e., with a multivariate response.
 #' @param ... Additional arguments. Not used.
 #' @method glance mlm
@@ -20,11 +22,10 @@
 #'   \item{\code{p.value}}{P-value corresponding to the F statistic}
 #'   \item{\code{nobs}}{Number of observations used}
 #' }
-#' @importFrom broom glance
+#' @importFrom generics glance
 #' @importFrom magrittr extract
 #' @importFrom purrr map_dfr map
 #' @importFrom tibble as_tibble
-#' @export
 #' @examples 
 #' iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
 #' glance(iris.mod)
@@ -33,7 +34,8 @@
 #   UseMethod("glance")
 # }
 
-#' @export glance.mlm
+#' @rdname glance.mlm
+#' @exportS3Method glance mlm
 glance.mlm <- function(x, ...) {
 #  warn_on_subclass(x, "glance")
   int_only <- nrow(coefficients(x)) == 1

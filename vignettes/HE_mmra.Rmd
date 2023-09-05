@@ -462,7 +462,7 @@ of all predictors.
 
 <!-- TODO: use glance.mlm() here -->
 ```{r hern-glance}
-glance.mlm(Hern.mod)
+glance(Hern.mod)
 ```
 
 
