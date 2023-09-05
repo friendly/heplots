@@ -15,6 +15,12 @@ Sys.setenv(RGL_USE_NULL = TRUE)
 #library(revdepcheck)
 revdepcheck::revdep_check(num_workers = 4)
 
+# get list of possibly misspelled words
+wds <- spelling::spell_check_package()
+cat(paste(wds[, "word"], collapse = "\n"))
+# to add all words
+update_wordlist()
+
 devtools::build()
 devtools::build_vignettes()
 

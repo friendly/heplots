@@ -48,7 +48,7 @@ bibentry(
 bibentry(header="For use with repeated measures designs also cite:",
   bibtype      = "Article",
   title        = "HE Plots for Repeated Measures Designs",
-  author       = personList(as.person("Michael Friendly")),
+  author       = "Michael Friendly",
   journal      = "Journal of Statistical Software",
   year         = "2010",
   volume       = "37",
