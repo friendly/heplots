@@ -72,7 +72,11 @@ label.ellipse <- function(ellipse, label, col="black",
 		r = cor(ellipse, use="complete.obs")[1,2]
 		label.pos <- if (r>0) 3 else 1
 	}
-
+	else if(length(label.pos) > 1) {
+	  warning("label.pos = ", paste(label.pos, collapse=", "), " has length ", length(label.pos), " only 1st used." )
+	  label.pos <- label.pos[1]    # only use 1st if > 1
+	}
+	
 	#		index <- if (1:4 %% 2) ... 
 
 	posn <- c("center", "bottom", "left", "top", "right")
