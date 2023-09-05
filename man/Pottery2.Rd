@@ -27,7 +27,7 @@ A data frame with 48 observations on the following 12 variables.
 \source{
 Originally slightly modified from files by David Carlson, now at
 \code{\link[archdata]{RBPottery}}. %
-\url{http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html}
+% \url{http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html}
 }
 \description{
 Results of chemical analyses of 48 specimens of Romano-British pottery

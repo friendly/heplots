@@ -1219,7 +1219,7 @@ NULL
 #' 
 #' @source Originally slightly modified from files by David Carlson, now at
 #' \code{\link[archdata]{RBPottery}}. %
-#' \url{http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html}
+#' % \url{http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html}
 #' @keywords datasets
 #' @examples
 #' 
@@ -1822,7 +1822,7 @@ NULL
 #' \emph{A Handbook of Small Datasets}, Chapman and Hall/CRC, London.
 #' 
 #' Egyptian Skull Development, StatLib Data and Story Library, 
-#' \url{http://lib.stat.cmu.edu/DASL/Stories/EgyptianSkullDevelopment.html}
+#' \url{https://dasl.datadescription.com/Stories/EgyptianSkullDevelopment.html}
 #' @source
 #' 
 #' D. J. Hand, F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski (1994).
