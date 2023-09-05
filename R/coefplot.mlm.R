@@ -211,7 +211,7 @@ coefplot.mlm <- function(object,
 			polygon(ellList[[parm]], col=fill.col[parm], border=col[parm], lty=lty[parm], lwd=lwd[parm])
 			points(cf[parm,1], cf[parm,2], col=col[parm], pch=pch[parm], cex=cex)
 			if(labels) label.ellipse(ellList[[parm]], parm.labels[parm], 
-			                         col=col[parm], cex=cex.label, label.pos=label.pos)
+			                         col=col[parm], cex=cex.label, label.pos=label.pos[parm])
 			if (bars) {
 				hxy <- matrix( c(emin[1,parm], emax[1,parm], rep(cf[parm,2], 2)), 2,2)
 				vxy <- matrix( c(rep(cf[parm,1], 2), emin[2,parm], emax[2,parm]), 2,2)
