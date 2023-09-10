@@ -2,8 +2,8 @@ url: https://friendly.github.io/heplots
 
 template:
   bootstrap: 5
-  params:
-    bootswatch: cerulean
+  # params:
+  #   bootswatch: cerulean
   bslib:
     base_font: {google: "Roboto"}
     heading_font: {google: "Roboto Slab"}
