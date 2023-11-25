@@ -199,8 +199,10 @@ interpPlot <- function(xy1, xy2, alpha,
         lwd = lwd)
   }
   if (!is.null(labels)) {
-  car::showLabels(xy[, 1], xy[, 2], labels = labels, id.method = id.method, 
-        id.n = id.n, id.cex = id.cex, id.col = id.col)
+  car::showLabels(xy[, 1], xy[, 2], 
+                  labels = labels, 
+                  method = id.method, n = id.n, 
+                  cex = id.cex, col = id.col)
   }
   
   if(segments) {
