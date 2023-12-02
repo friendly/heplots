@@ -10,15 +10,16 @@
 #' @param x A square positive definite matrix at least 3x3 in size.  It will be
 #'          treated as the correlation or covariance of a multivariate normal
 #'          distribution.
-#' @param centre The center of the ellipse
+#' @param centre,center The center of the ellipse
 #' @param scale If x is a correlation matrix, then the standard deviations of
 #'          each parameter can be given in the scale parameter.  This defaults to
 #'          \code{c(1, 1, 1)}, so no rescaling will be done.
-#' @param level The confidence level of a simultaneous confidence region.  The
+#' @param level The coverage level of a simultaneous region.  The
 #'          default is 0.95, for a 95\% region.  This is used to control the size of the
 #'          ellipsoid.
 #' @param t The size of the ellipsoid may also be controlled by specifying the
-#'          value of a t-statistic on its boundary.
+#'          value of a t-statistic on its boundary, which defaults to the square root of a chi-square statistic
+#'          for a given \code{level} on 3 degrees of freedom.
 #' @param which This parameter selects which variables from the object will be
 #'          plotted.  The default is the first 3.
 #' @param labels Either a logical value, a character string, or a character
@@ -50,9 +51,16 @@
 #' axes <- ellipse3d.axes(cov, centre=mu, level=0.68, color="gray", lwd=2)
 #' 
 #' @export ellipse3d.axes
-ellipse3d.axes <-
-function (x, centre = c(0, 0, 0), scale = c(1, 1, 1), level = 0.95,
-    t = sqrt(qchisq(level, 3)), which = 1:3, labels=TRUE, label.ends=c(2,4,6), ...) 
+ellipse3d.axes <- function (
+    x, 
+    centre = c(0, 0, 0),
+    center = centre,
+    scale = c(1, 1, 1), 
+    level = 0.95,
+    t = sqrt(qchisq(level, 3)), 
+    which = 1:3, 
+    labels=TRUE, 
+    label.ends=c(2,4,6), ...) 
 {
     stopifnot(is.matrix(x)) 
     stopifnot(dim(x)[1] ==  dim(x)[2])  # square matrix?
@@ -74,7 +82,7 @@ function (x, centre = c(0, 0, 0), scale = c(1, 1, 1), level = 0.95,
         result <- rgl::scale3d(result, scale[1], scale[2], scale[3])
         }
     if (!missing(centre)) {
-        if (length(centre) != 3) scale <- rep(centre, length.out=3) 
+        if (length(centre) != 3) centre <- rep(centre, length.out=3) 
         result <- rgl::translate3d(result, centre[1], centre[2], centre[3])
         }
     rgl::segments3d(result, ...)
