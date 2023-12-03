@@ -20,7 +20,7 @@
 #' @param t The size of the ellipsoid may also be controlled by specifying the
 #'          value of a t-statistic on its boundary, which defaults to the square root of a chi-square statistic
 #'          for a given \code{level} on 3 degrees of freedom.
-#' @param which This parameter selects which variables from the object will be
+#' @param which An integer vector to select which variables from the object will be
 #'          plotted.  The default is the first 3.
 #' @param labels Either a logical value, a character string, or a character
 #'          vector of length 3.  If \code{TRUE}, the default, the axes are labeled PC1,

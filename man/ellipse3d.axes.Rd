@@ -7,6 +7,7 @@
 ellipse3d.axes(
   x,
   centre = c(0, 0, 0),
+  center = centre,
   scale = c(1, 1, 1),
   level = 0.95,
   t = sqrt(qchisq(level, 3)),
@@ -21,20 +22,21 @@ ellipse3d.axes(
 treated as the correlation or covariance of a multivariate normal
 distribution.}
 
-\item{centre}{The center of the ellipse}
+\item{centre, center}{The center of the ellipse}
 
 \item{scale}{If x is a correlation matrix, then the standard deviations of
 each parameter can be given in the scale parameter.  This defaults to
 \code{c(1, 1, 1)}, so no rescaling will be done.}
 
-\item{level}{The confidence level of a simultaneous confidence region.  The
+\item{level}{The coverage level of a simultaneous region.  The
 default is 0.95, for a 95\% region.  This is used to control the size of the
 ellipsoid.}
 
 \item{t}{The size of the ellipsoid may also be controlled by specifying the
-value of a t-statistic on its boundary.}
+value of a t-statistic on its boundary, which defaults to the square root of a chi-square statistic
+for a given \code{level} on 3 degrees of freedom.}
 
-\item{which}{This parameter selects which variables from the object will be
+\item{which}{An integer vector to select which variables from the object will be
 plotted.  The default is the first 3.}
 
 \item{labels}{Either a logical value, a character string, or a character
