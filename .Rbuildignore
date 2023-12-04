@@ -19,3 +19,5 @@ inst/doc/*\.pdf
 ^CRAN-SUBMISSION$
 ^CITATION\.cff$
 NAMESPACE-old
+.nojekyll
+
