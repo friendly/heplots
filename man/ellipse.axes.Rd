@@ -10,11 +10,11 @@ ellipse.axes(
   center = center,
   scale = c(1, 1),
   level = 0.95,
-  t = sqrt(qchisq(level, 2)),
+  radius = sqrt(qchisq(level, 2)),
   which = 1:2,
   labels = TRUE,
   label.ends = c(2, 4),
-  label.pos = c(4, 2, 3, 1),
+  label.pos = c(2, 4, 1, 3),
   ...
 )
 }
@@ -29,11 +29,11 @@ distribution.}
 each parameter can be given in the scale parameter.  This defaults to
 \code{c(1, 1)}, so no rescaling will be done.}
 
-\item{level}{The coverage level of a simultaneous region.  The
+\item{level}{The coverage level of a simultaneous region of the ellipse.  The
 default is 0.95, for a 95\% region.  This is used to control the size of the
-ellipsoid.}
+ellipse.}
 
-\item{t}{The size of the ellipsoid may also be controlled by specifying the
+\item{radius}{The size of the ellipsoid may also be controlled by specifying the
 value of a t-statistic on its boundary, which defaults to the square root of a chi-square statistic
 for a given \code{level} on 2 degrees of freedom.}
 
@@ -41,19 +41,19 @@ for a given \code{level} on 2 degrees of freedom.}
 plotted.  The default is the first 2.}
 
 \item{labels}{Either a logical value, a character string, or a character
-vector of length 2.  If \code{TRUE}, the default, the axes are labeled PC1,
-PC2.  If a single character string, the digits 1, and 2 are pasted on
+vector of length 2.  If \code{TRUE}, the default, the axes are labeled "PC1",
+"PC2".  If a single character string, the digits 1, and 2 are pasted on
 the end.}
 
 \item{label.ends}{A vector of indices in the range \code{1:4} indicating which ends of the axes
 should be labeled, corresponding to a selection of rows of the 4 x 2 matrix
-of axes end points. Values \code{1:2} represent the minimum and maximum of the first dimension respectivly.
+of axes end points. Values \code{1:2} represent the minimum and maximum of the first dimension respectively.
 Values \code{3:4} represent the minimum and maximum of the second dimension.
 Default: \code{c(2, 4)}.}
 
 \item{label.pos}{Positions of text labels relative to the ends of the axes used in \code{\link[graphics]{text}} for
 the four possible \code{label.ends}. 1, 2, 3, 4 represent below, to the left, above and to the right.
-Default: \code{c(4, 2, 3, 1)}.}
+The default, \code{c(2, 4, 1, 3)}, positions the labels outside the axes.}
 
 \item{\dots}{Other arguments passed to \code{lines} and \code{text}.}
 }
@@ -61,7 +61,7 @@ Default: \code{c(4, 2, 3, 1)}.}
 Invisibly returns a 4 x 2 matrix containing the end points of the axes in pairs (min, max) by rows.
 }
 \description{
-A function to draw the major axes of a 2D ellipse from a correlation,
+A function to draw the principal axes of a 2D ellipse from a correlation,
 covariance or sums of squares and cross products matrix in an existing plot.
 }
 \examples{
@@ -73,7 +73,7 @@ radius <- sqrt(qchisq(0.68, 2))
 plot(iris[,1:2])
 car::ellipse(mu, cov, radius = radius)
 res <- ellipse.axes(cov, centre=mu, level = 0.68,
-            labels = TRUE, label.ends = 1:4)
+            labels = TRUE)
 res
 }
 \seealso{
