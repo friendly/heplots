@@ -45,7 +45,7 @@
 #' mu <- colMeans(iris[,1:2])
 #' 
 #' radius <- sqrt(qchisq(0.68, 2))
-#' plot(iris[,1:2])
+#' plot(iris[,1:2], asp=1)
 #' car::ellipse(mu, cov, radius = radius)
 #' res <- ellipse.axes(cov, centre=mu, level = 0.68,
 #'             labels = TRUE)
@@ -84,7 +84,7 @@ ellipse.axes <- function(
   # transform to PC axes
   result <- axes %*% sqrt(diag(eig$values)) %*% t(eig$vectors)
   # scale
-  result <- result %*% diag(rep(t, 2))
+  result <- result %*% diag(rep(radius, 2))
   # center 
   result <- sweep(result, 2L, centre, FUN="+")
   colnames(result) <- colnames(cov)

@@ -70,7 +70,7 @@ cov <- cov(iris[,1:2])
 mu <- colMeans(iris[,1:2])
 
 radius <- sqrt(qchisq(0.68, 2))
-plot(iris[,1:2])
+plot(iris[,1:2], asp=1)
 car::ellipse(mu, cov, radius = radius)
 res <- ellipse.axes(cov, centre=mu, level = 0.68,
             labels = TRUE)

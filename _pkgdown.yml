@@ -59,6 +59,7 @@ reference:
     - cross3d
     - etasq
     - Ellipsoid
+    - ellipse.axes
     - ellipse3d.axes
     - gsorth
     - interpPlot
