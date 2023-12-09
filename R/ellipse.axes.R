@@ -12,14 +12,15 @@
 #' @param scale If x is a correlation matrix, then the standard deviations of
 #'          each parameter can be given in the scale parameter.  This defaults to
 #'          \code{c(1, 1)}, so no rescaling will be done.
+#' @param which An integer vector to select which variables from the object \code{x} will be
+#'          plotted.  The default is the first 2.
 #' @param level The coverage level of a simultaneous region of the ellipse.  The
 #'          default is 0.95, for a 95\% region.  This is used to control the size of the
 #'          ellipse.
 #' @param radius The size of the ellipsoid may also be controlled by specifying the
-#'          value of a t-statistic on its boundary, which defaults to the square root of a chi-square statistic
-#'          for a given \code{level} on 2 degrees of freedom.
-#' @param which An integer vector to select which variables from the object \code{x} will be
-#'          plotted.  The default is the first 2.
+#'          value of a t-statistic on its boundary. This defaults to the square root of a chi-square statistic
+#'          for a given \code{level} on 2 degrees of freedom, however in a small sample of \code{n} observations,
+#'          a more accurate value is \code{sqrt(2 * qf(level, 2, n - 1 ))}. 
 #' @param labels Either a logical value, a character string, or a character
 #'          vector of length 2.  If \code{TRUE}, the default, the axes are labeled "PC1",
 #'          "PC2".  If a single character string, the digits 1, and 2 are pasted on
@@ -32,12 +33,12 @@
 #' @param label.pos Positions of text labels relative to the ends of the axes used in \code{\link[graphics]{text}} for
 #'          the four possible \code{label.ends}. 1, 2, 3, 4 represent below, to the left, above and to the right.
 #'          The default, \code{c(2, 4, 1, 3)}, positions the labels outside the axes.
-#' @param \dots Other arguments passed to \code{lines} and \code{text}.
+#' @param \dots Other arguments passed to \code{\link[graphics]{lines}} and \code{\link[graphics]{text}}.
 #'
 #' @return Invisibly returns a 4 x 2 matrix containing the end points of the axes in pairs (min, max) by rows.
 #' @author Michael Friendly
 #' @seealso \code{\link[graphics]{lines}}, \code{\link[graphics]{text}}
-#' @export
+#' @export ellipse.axes
 #'
 #' @examples
 #' data(iris)
@@ -47,7 +48,7 @@
 #' radius <- sqrt(qchisq(0.68, 2))
 #' plot(iris[,1:2], asp=1)
 #' car::ellipse(mu, cov, radius = radius)
-#' res <- ellipse.axes(cov, centre=mu, level = 0.68,
+#' res <- ellipse.axes(cov, center=mu, level = 0.68,
 #'             labels = TRUE)
 #' res
 
@@ -57,9 +58,9 @@ ellipse.axes <- function(
     centre = c(0, 0), 
     center = center,
     scale = c(1, 1), 
+    which = 1:2, 
     level = 0.95,
     radius = sqrt(qchisq(level, 2)), 
-    which = 1:2, 
     labels = TRUE, 
     label.ends = c(2, 4),
     label.pos = c(2, 4, 1, 3),
