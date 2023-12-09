@@ -3,6 +3,7 @@
 * add warning to label.ellipse() if length(label.pos) > 1
 * fixed label.pos in `coefplot.mlm()`
 * add `ellipse.axes()` to draw axes of a covariance ellipse
+* add `ellipse.box()` to draw conjugate axes of a covariance ellipse
 
 ## Version 1.6.0 (2023-08-30)
 
