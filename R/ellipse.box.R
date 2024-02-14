@@ -3,7 +3,7 @@
 #' @param x A square positive definite matrix at least 2x2 in size.  It will be
 #'          treated as the correlation or covariance of a multivariate normal
 #'          distribution.
-#' @param centre,center The center of the ellipse
+#' @param center The center of the ellipse
 #' @param which An integer vector to select which variables from the object \code{x} will be
 #'          plotted.  The default is the first 2.
 #' @param level The coverage level of a simultaneous region of the ellipse.  The

@@ -58,10 +58,16 @@
     <loc>https://friendly.github.io/heplots/reference/cross3d.html</loc>
   </url>
   <url>
+    <loc>https://friendly.github.io/heplots/reference/df.terms.html</loc>
+  </url>
+  <url>
     <loc>https://friendly.github.io/heplots/reference/Diabetes.html</loc>
   </url>
   <url>
     <loc>https://friendly.github.io/heplots/reference/ellipse.axes.html</loc>
+  </url>
+  <url>
+    <loc>https://friendly.github.io/heplots/reference/ellipse.box.html</loc>
   </url>
   <url>
     <loc>https://friendly.github.io/heplots/reference/ellipse3d.axes.html</loc>
@@ -149,6 +155,9 @@
   </url>
   <url>
     <loc>https://friendly.github.io/heplots/reference/Parenting.html</loc>
+  </url>
+  <url>
+    <loc>https://friendly.github.io/heplots/reference/peng.html</loc>
   </url>
   <url>
     <loc>https://friendly.github.io/heplots/reference/Plastic.html</loc>

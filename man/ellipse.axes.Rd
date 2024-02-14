@@ -4,7 +4,7 @@
 \alias{ellipse.axes}
 \title{Draw Axes of a 2D Covariance Ellipse}
 \usage{
-\method{ellipse}{axes}(
+ellipse.axes(
   x,
   centre = c(0, 0),
   center = center,

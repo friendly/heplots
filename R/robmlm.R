@@ -287,6 +287,8 @@ print.summary.robmlm <- function(x, ...){
   invisible(x)
 }
 
+#' @exportS3Method stats::vcov
+#' @importFrom car wcrossprod
 vcov.mlm <- function (object, ...) {
 # override stats::vcov.mlm to allow weights
 #   adapted from code provided by Michael Friendly

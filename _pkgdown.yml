@@ -57,9 +57,11 @@ reference:
     - colMeansList
     - covList
     - cross3d
+    - df.terms
     - etasq
     - Ellipsoid
     - ellipse.axes
+    - ellipse.box
     - ellipse3d.axes
     - gsorth
     - interpPlot
@@ -83,6 +85,7 @@ reference:
     - NeuroCog
     - Oslo
     - Parenting
+    - peng
     - Plastic
     - Pottery2
     - Probe1

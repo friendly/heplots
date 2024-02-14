@@ -64,7 +64,6 @@
 #' 
 #' @name heplots-package
 #' @aliases heplots-package heplots
-#' @docType package
 #' @author 
 #'    Michael Friendly, John Fox, and Georges Monette
 #' 

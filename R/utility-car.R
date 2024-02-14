@@ -2,10 +2,19 @@
 # but not sure how to do this
 # [perhaps need importFrom(car, car:::df.terms, car:::df.terms.default, car:::is.aliased) in NAMESPACE?]
 
+#' Find degrees of freedom for model terms
+#' 
+#' @param model A model object, such as fit using \code{\link[stats]{lm}}.
+#' @param term  One or more terms from the model
+#' @param ...   Other arguments, ignored
+#'
+#' @export
 df.terms <- function(model, term, ...){
 	UseMethod("df.terms")
 }
 
+#' @rdname df.terms
+#' @export
 df.terms.default <- function(model, term, ...){
 	if (is.aliased(model)) stop("Model has aliased term(s); df ambiguous.")
 	if (!missing(term) && 1 == length(term)){

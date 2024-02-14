@@ -4,7 +4,7 @@
 \alias{ellipse.box}
 \title{Draw Conjugate Axes and Parallelogram Surrounding a Covariance Ellipse}
 \usage{
-\method{ellipse}{box}(
+ellipse.box(
   x,
   center = c(0, 0),
   which = 1:2,
@@ -19,6 +19,8 @@
 \item{x}{A square positive definite matrix at least 2x2 in size.  It will be
 treated as the correlation or covariance of a multivariate normal
 distribution.}
+
+\item{center}{The center of the ellipse}
 
 \item{which}{An integer vector to select which variables from the object \code{x} will be
 plotted.  The default is the first 2.}
@@ -39,8 +41,6 @@ factor of \code{x}.}
 \item{draw}{What to draw? \code{"box"}, \code{"diameters"} or \code{"both"}}
 
 \item{\dots}{Other arguments passed to \code{\link[graphics]{lines}}.}
-
-\item{centre, center}{The center of the ellipse}
 }
 \value{
 Invisibly returns a 2 column matrix containing the end points of lines.

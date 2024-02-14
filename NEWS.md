@@ -1,3 +1,8 @@
+## Version 1.6.2 (2024-02-14)
+
+* Add `peng` dataset, a version of `palmerpenguins::penguins`
+* Correct documentation problems from Roxygen 7.3.1 (@docType)
+
 ## Version 1.6.1 (2023-12-05)
 
 * add warning to label.ellipse() if length(label.pos) > 1
