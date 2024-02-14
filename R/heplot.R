@@ -243,9 +243,8 @@
 #' Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 #' Displays for Multivariate Linear Models: SAS Software and Examples
 #' \emph{Journal of Statistical Software}, \bold{17}(6), 1--42. %
-#' \url{https://www.jstatsoft.org/v17/i06/}
-#' c("\\Sexpr[results=rd,stage=build]{tools:::Rd_expr_doi(\"#1\")}",
-#' "10.18637/jss.v017.i06")\Sexpr{tools:::Rd_expr_doi("10.18637/jss.v017.i06")}
+#' \url{https://www.jstatsoft.org/v17/i06/},
+#' \doi{10.18637/jss.v017.i06}
 #' 
 #' Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
 #' \emph{Journal of Computational and Graphical Statistics}, \bold{16}(2)

@@ -97,7 +97,7 @@
 <h2 id="visualizing-hypothesis-tests-in-multivariate-linear-models">
 <strong>Visualizing Hypothesis Tests in Multivariate Linear Models</strong><a class="anchor" aria-label="anchor" href="#visualizing-hypothesis-tests-in-multivariate-linear-models"></a>
 </h2>
-<p>Version 1.6.1</p>
+<p>Version 1.6.2</p>
 </div>
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
@@ -105,12 +105,20 @@
 <p>The <code>heplots</code> package provides functions for visualizing hypothesis tests in multivariate linear models (MANOVA, multivariate multiple regression, MANCOVA, and repeated measures designs).</p>
 <p>HE plots represent sums-of-squares-and-products matrices for linear hypotheses (<strong>H</strong>) and for error (<strong>E</strong>) using ellipses (in two dimensions), ellipsoids (in three dimensions), or by line segments in one dimension. For the theory and applications, see:</p>
 <ul>
-<li>Fox, Friendly and Monette (2009) for a brief introduction,</li>
-<li>Friendly (2010) for the application of these ideas to repeated measure designs,</li>
-<li>Friendly, Monette and Fox (2013) for a general discussion of the role of elliptical geometry in statistical understanding,</li>
-<li>Friendly &amp; Sigal (2017) for an applied R tutorial,</li>
-<li>Friendly &amp; Sigal (2018) for theory and examples of visualizing equality of covariance matrices.</li>
+<li>
+<a href="http://datavis.ca/papers/jcgs-heplots.pdf" class="external-link">Friendly (2007)</a> for the basic theory on which this is based.</li>
+<li>
+<a href="(http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf)" class="external-link">Fox, Friendly and Monette (2009)</a> for a brief introduction,</li>
+<li>
+<a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">Friendly (2010)</a> for the application of these ideas to repeated measure designs,</li>
+<li>
+<a href="http://datavis.ca/palers/ellipses-STS402.pdf" class="external-link">Friendly, Monette and Fox (2013)</a> for a general discussion of the role of elliptical geometry in statistical understanding,</li>
+<li>
+<a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">Friendly &amp; Sigal (2017)</a> for an applied R tutorial,</li>
+<li>
+<a href="https://www.datavis.ca/papers/EqCov-TAS.pdf" class="external-link">Friendly &amp; Sigal (2018)</a> for theory and examples of visualizing equality of covariance matrices.</li>
 </ul>
+<p>If you use this work in teaching or research, please cite it as given by <code>citation("heplots")</code> or see <a href="authors.html#citation">Citation</a>.</p>
 <p>Other topics now addressed here include:</p>
 <ul>
 <li>robust MLMs, using iteratively re-weighted least squared to down-weight observations with large multivariate residuals, <code><a href="reference/robmlm.html">robmlm()</a></code>.</li>
@@ -145,7 +153,6 @@
 <td><code>remotes::install_github("friendly/heplots")</code></td>
 </tr>
 </tbody></table>
-<!-- This installs the package from the source and creates the package vignettes,  --><!-- so you will need to have R Tools installed on your system.  [R Tools for Windows](https://cran.r-project.org/bin/windows/Rtools/) --><!-- takes you to the download page for Windows.  [R Tools for Mac OS X](https://cran.r-project.org/bin/macosx/tools/) --><!-- has the required programs for Mac OS X. -->
 </div>
 <div class="section level2">
 <h2 id="he-plot-functions">HE plot functions<a class="anchor" aria-label="anchor" href="#he-plot-functions"></a>
@@ -178,11 +185,11 @@
 <p>The package also provides a large collection of data sets illustrating a variety of multivariate linear models of the types listed above, together with graphical displays. The table below classifies these with method tags. Their names are linked to the documentation on the <code>pkgdown</code> website, [<a href="http://friendly.github.io/heplots" class="external-link uri">http://friendly.github.io/heplots</a>].</p>
 <table class="table">
 <colgroup>
-<col width="48%">
+<col width="47%">
 <col width="3%">
 <col width="3%">
-<col width="34%">
-<col width="10%">
+<col width="36%">
+<col width="9%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">dataset</th>
@@ -402,6 +409,13 @@
 <td align="left">School Data</td>
 <td align="left">MMRA robust</td>
 </tr>
+<tr class="odd">
+<td align="left"><a href="http://friendly.github.io/heplots/reference/peng.html" class="external-link">peng</a></td>
+<td align="right">333</td>
+<td align="right">8</td>
+<td align="left">Size measurements for adult foraging penguins near Palmer Station</td>
+<td align="left">MANOVA</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -463,8 +477,9 @@
 </h2>
 <p>Anderson, E. (1928). The Problem of Species in the Northern Blue Flags, Iris versicolor L. and Iris virginica L. <em>Annals of the Missouri Botanical Garden</em>, <strong>13</strong>, 241–313.</p>
 <p>Fisher, R. A. (1936). The Use of Multiple Measurements in Taxonomic Problems. <em>Annals of Eugenics</em>, <strong>8</strong>, 379–388.</p>
-<p>Fox, J., Friendly, M. &amp; Monette, G. (2009). <a href="http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf" class="external-link">Visualizing hypothesis tests in multivariate linear models: The heplots package for R</a> <em>Computational Statistics</em>, <strong>24</strong>, 233-246.</p>
 <p>Friendly, M. (2006). <a href="https://www.jstatsoft.org/article/view/v017i06" class="external-link">Data Ellipses, HE Plots and Reduced-Rank Displays for Multivariate Linear Models: SAS Software and Examples.</a> <em>Journal of Statistical Software</em>, <strong>17</strong>, 1-42.</p>
+<p>Friendly, M. (2007). <a href="http://datavis.ca/papers/jcgs-heplots.pdf" class="external-link">HE plots for Multivariate General Linear Models</a>. <em>Journal of Computational and Graphical Statistics</em>, <strong>16</strong>(2) 421-444. <a href="http://dx.doi.org/10.1198/106186007X208407" class="external-link">DOI</a>.</p>
+<p>Fox, J., Friendly, M. &amp; Monette, G. (2009). <a href="http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf" class="external-link">Visualizing hypothesis tests in multivariate linear models: The heplots package for R</a> <em>Computational Statistics</em>, <strong>24</strong>, 233-246.</p>
 <p>Friendly, M. (2010). <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a>. <em>Journal of Statistical Software</em>, <strong>37</strong>, 1–37.</p>
 <p>Friendly, M.; Monette, G. &amp; Fox, J. (2013). <a href="http://datavis.ca/palers/ellipses-STS402.pdf" class="external-link">Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry</a> <em>Statistical Science</em>, <strong>28</strong>, 1-39.</p>
 <p>Friendly, M. &amp; Sigal, M. (2017). <a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">Graphical Methods for Multivariate Linear Models in Psychological Research: An R Tutorial.</a> <em>The Quantitative Methods for Psychology</em>, <strong>13</strong>, 20-45.</p>

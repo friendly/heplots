@@ -1,14 +1,6 @@
 # keep rgl from popping up windows
 Sys.setenv(RGL_USE_NULL = TRUE)
 
-# The standard R Studio / devtools build does not compress vignettes. To avoid the warning
-# 
-# 'gs+qpdf' made some significant size reductions
-# 
-# it was necessary to build manually, using
-
-#Sys.setenv(R_GSCMD="C:/Program Files/gs/gs9.21/bin/gswin64c.exe")
-#Sys.setenv(R_GSCMD="C:/Program Files/gs/gs9.53.3/bin/gswin64c.exe")
 
 # revdep
 #remotes::install_github("r-lib/revdepcheck")
@@ -20,6 +12,12 @@ wds <- spelling::spell_check_package()
 cat(paste(wds[, "word"], collapse = "\n"))
 # to add all words
 update_wordlist()
+
+library(devtools)
+
+# prepare pkgdown site
+build_readme()
+pkgdown::build_site()
 
 devtools::build()
 devtools::build_vignettes()

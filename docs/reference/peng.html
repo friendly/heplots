@@ -126,41 +126,48 @@ missing data have been removed.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">peng</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set 'peng' not found</span>
 <span class="r-in"><span><span class="co"># Covariance ellipses, centered, first two variables</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">bill_length</span>, <span class="va">bill_depth</span><span class="op">)</span> <span class="op">~</span> <span class="va">species</span>, data<span class="op">=</span><span class="va">peng</span>,</span></span>
 <span class="r-in"><span>     center<span class="op">=</span><span class="cn">TRUE</span>, </span></span>
 <span class="r-in"><span>     fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span>, </span></span>
 <span class="r-in"><span>     fill.alpha<span class="op">=</span><span class="fl">.1</span>, label.pos<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'peng' not found</span>
+<span class="r-plt img"><img src="peng-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># All pairs when more than two variables are specified. They look pretty similar</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">peng</span><span class="op">[</span>,<span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, <span class="va">peng</span><span class="op">$</span><span class="va">species</span>, </span></span>
 <span class="r-in"><span>            variables<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, </span></span>
 <span class="r-in"><span>            fill<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">FALSE</span>,<span class="fl">3</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span>, </span></span>
 <span class="r-in"><span>            fill.alpha<span class="op">=</span><span class="fl">.1</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'peng' not found</span>
+<span class="r-plt img"><img src="peng-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span>            </span></span>
 <span class="r-in"><span><span class="co"># Box's M test   </span></span></span>
 <span class="r-in"><span><span class="va">peng.boxm</span> <span class="op">&lt;-</span> <span class="fu"><a href="boxM.html">boxM</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">bill_length</span>, <span class="va">bill_depth</span>, <span class="va">flipper_length</span>, <span class="va">body_mass</span><span class="op">)</span> <span class="op">~</span> <span class="va">species</span>, data<span class="op">=</span><span class="va">peng</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'peng' not found</span>
 <span class="r-in"><span><span class="va">peng.boxm</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'peng.boxm' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	Box's M-test for Homogeneity of Covariance Matrices</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> data:  Y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chi-Sq (approx.) = 74.731, df = 20, p-value = 3.02e-08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">peng.boxm</span>, gplabel<span class="op">=</span><span class="st">"Species"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'peng.boxm' not found</span>
+<span class="r-plt img"><img src="peng-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Fit MANOVA model, predicting species </span></span></span>
 <span class="r-in"><span><span class="va">peng.mod0</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">bill_length</span>, <span class="va">bill_depth</span>, <span class="va">flipper_length</span>, <span class="va">body_mass</span><span class="op">)</span> <span class="op">~</span></span></span>
 <span class="r-in"><span>               <span class="va">species</span>, data<span class="op">=</span><span class="va">peng</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(mf, parent.frame()):</span> object 'peng' not found</span>
 <span class="r-in"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">peng.mod0</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'peng.mod0' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Pillai test statistic</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         Df test stat approx F num Df den Df    Pr(&gt;F)    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> species  2    1.6379   370.89      8    656 &lt; 2.2e-16 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># HE plot</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">peng.mod0</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.1</span>, </span></span>
 <span class="r-in"><span>       size<span class="op">=</span><span class="st">"effect"</span>,</span></span>
 <span class="r-in"><span>       xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">35</span>,<span class="fl">52</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">14</span>,<span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'peng.mod0' not found</span>
+<span class="r-plt img"><img src="peng-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

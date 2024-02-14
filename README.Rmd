@@ -41,7 +41,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models** 
 
-Version 1.6.1
+Version 1.6.2
 
 ## Description 
 
@@ -54,13 +54,15 @@ hypotheses (**H**) and for error (**E**) using ellipses (in two
 dimensions), ellipsoids (in three dimensions), or by line segments in
 one dimension. For the theory and applications, see:
 
--   Fox, Friendly and Monette (2009) for a brief introduction,
--   Friendly (2010) for the application of these ideas to repeated
+-   [Friendly (2007)](http://datavis.ca/papers/jcgs-heplots.pdf) for the basic theory on which this is based.
+-   [Fox, Friendly and Monette (2009)]((http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf)) for a brief introduction,
+-   [Friendly (2010)](http://www.jstatsoft.org/v37/i04/paper) for the application of these ideas to repeated
     measure designs,
--   Friendly, Monette and Fox (2013) for a general discussion of the
-    role of elliptical geometry in statistical understanding, 
--   Friendly & Sigal (2017) for an applied R tutorial, 
--   Friendly & Sigal (2018) for theory and examples of visualizing equality of covariance matrices.
+-   [Friendly, Monette and Fox (2013)](http://datavis.ca/palers/ellipses-STS402.pdf) for a general discussion of the role of elliptical geometry in statistical understanding, 
+-   [Friendly & Sigal (2017)](https://doi.org/10.20982/tqmp.13.1.p020) for an applied R tutorial, 
+-   [Friendly & Sigal (2018)](https://www.datavis.ca/papers/EqCov-TAS.pdf) for theory and examples of visualizing equality of covariance matrices.
+
+If you use this work in teaching or research, please cite it as given by `citation("heplots")` or see [Citation](authors.html#citation).
 
 Other topics now addressed here include:
 
@@ -108,13 +110,6 @@ Several tutorial vignettes are also included. See
 | version           |                                                 |
 +-------------------+-------------------------------------------------+
 
-<!-- This installs the package from the source and creates the package vignettes,  -->
-
-<!-- so you will need to have R Tools installed on your system.  [R Tools for Windows](https://cran.r-project.org/bin/windows/Rtools/) -->
-
-<!-- takes you to the download page for Windows.  [R Tools for Mac OS X](https://cran.r-project.org/bin/macosx/tools/) -->
-
-<!-- has the required programs for Mac OS X. -->
 
 ## HE plot functions
 
@@ -281,15 +276,20 @@ Botanical Garden*, **13**, 241--313.
 Fisher, R. A. (1936). The Use of Multiple Measurements in Taxonomic
 Problems. *Annals of Eugenics*, **8**, 379--388.
 
-Fox, J., Friendly, M. & Monette, G. (2009). [Visualizing hypothesis
-tests in multivariate linear models: The heplots package for
-R](http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf) *Computational
-Statistics*, **24**, 233-246.
-
 Friendly, M. (2006).
 [Data Ellipses, HE Plots and Reduced-Rank Displays for Multivariate Linear Models: 
 SAS Software and Examples.](https://www.jstatsoft.org/article/view/v017i06) 
 _Journal of Statistical Software_, **17**, 1-42.
+
+Friendly, M. (2007).  [HE plots for Multivariate General Linear Models](http://datavis.ca/papers/jcgs-heplots.pdf).
+_Journal of Computational and Graphical Statistics_, **16**(2) 421-444.
+[DOI](http://dx.doi.org/10.1198/106186007X208407).
+
+
+Fox, J., Friendly, M. & Monette, G. (2009). [Visualizing hypothesis
+tests in multivariate linear models: The heplots package for
+R](http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf) *Computational
+Statistics*, **24**, 233-246.
 
 
 Friendly, M. (2010). [HE plots for repeated measures
