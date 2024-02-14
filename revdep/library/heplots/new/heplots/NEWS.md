@@ -1,12 +1,25 @@
+## Version 1.6.2 (2024-02-14)
+
+* Add `peng` dataset, a version of `palmerpenguins::penguins`
+* Correct documentation problems from Roxygen 7.3.1 (@docType)
+
+## Version 1.6.1 (2023-12-05)
+
+* add warning to label.ellipse() if length(label.pos) > 1
+* fixed label.pos in `coefplot.mlm()`
+* add `ellipse.axes()` to draw axes of a covariance ellipse
+* add `ellipse.box()` to draw conjugate axes of a covariance ellipse
+
 ## Version 1.6.0 (2023-08-30)
 
 * converted pkg to roxygen documentation
 * now Suggests: car rather than Depends:
+* fix CITATION authors
 
 ## Version 1.5.0 (2023-05-30)
 
 * `covEllipses()` gains a formula method
-* Internal function `ellipsoid()` used in `heplot3d()` becomes an exported function, `Ellipsoid()`
+* Internal function `ellipsoid()` used in `heplot3d()` becomes an (experimental) exported function, `Ellipsoid()`
 
 ## Version 1.4-3 (2023-01-02)
 
@@ -51,7 +64,7 @@
 
 ## Version 1.3-5 (2018-04-02)
 
-* fix references to car datatsets -> carData
+* fix references to car datasets -> carData
 * fix error resulting from car 3.0 changes
 * bump pkg version
 
@@ -168,10 +181,10 @@
 * interpPlot gains add=, points= and col= arguments for greater control of graphical parameters.
 
 ## Version 1.0-2 (2012-12-05)
-* Added schooldata and further example of comparison of mlm with robmlm()
+* Added Schooldata and further example of comparison of mlm with robmlm()
 
 ## Version 1.0-1 (2012-10-18)
-* Added simple robmlm methods for robust mlms with print and summary methods and a vcov.mlm method.
+* Added simple robmlm methods for robust MLMss with print and summary methods and a vcov.mlm method.
   This allows heplot() and related methods to show robust HE plots.
 
 ## Version 1.0-0 (2012-6-3)

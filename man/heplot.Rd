@@ -294,7 +294,7 @@ value of \code{lty=0} in the corresponding position.
 \examples{
 
 ## iris data
-contrasts(iris$Species)<-matrix(c(0,-1,1, 2, -1, -1), 3,2)
+contrasts(iris$Species) < -matrix(c(0,-1,1, 2, -1, -1), 3,2)
 contrasts(iris$Species)
 
 iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~
@@ -305,14 +305,17 @@ heplot(iris.mod, hypotheses=hyp)
 # compare with effect-size scaling
 heplot(iris.mod, hypotheses=hyp, size="effect", add=TRUE)
 
-# try filled ellipses
-heplot(iris.mod, hypotheses=hyp, fill=TRUE, fill.alpha=0.2, col=c("red", "blue"))
-heplot(iris.mod, hypotheses=hyp, fill=TRUE, col=c("red", "blue"), lty=c(0,0,1,1))
+# try filled ellipses; include contrasts
+heplot(iris.mod, hypotheses=hyp, fill=TRUE, 
+       fill.alpha=0.2, col=c("red", "blue"))
+heplot(iris.mod, hypotheses=hyp, fill=TRUE, 
+       col=c("red", "blue"), lty=c(0,0,1,1))
+
 # vary label position and fill.alpha
 heplot(iris.mod, hypotheses=hyp, fill=TRUE, fill.alpha=c(0.3,0.1), col=c("red", "blue"), 
        lty=c(0,0,1,1), label.pos=0:3)
 
-
+# what is returned?
 hep <-heplot(iris.mod, variables=c(1,3),  hypotheses=hyp)
 str(hep)
 
@@ -352,9 +355,8 @@ heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), co
 Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 Displays for Multivariate Linear Models: SAS Software and Examples
 \emph{Journal of Statistical Software}, \bold{17}(6), 1--42. %
-\url{https://www.jstatsoft.org/v17/i06/}
-c("\\Sexpr[results=rd,stage=build]{tools:::Rd_expr_doi(\"#1\")}",
-"10.18637/jss.v017.i06")\Sexpr{tools:::Rd_expr_doi("10.18637/jss.v017.i06")}
+\url{https://www.jstatsoft.org/v17/i06/},
+DOI: 10.18637/jss.v017.i06
 
 Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
 \emph{Journal of Computational and Graphical Statistics}, \bold{16}(2)
@@ -362,7 +364,7 @@ Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
 
 Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
 \emph{Journal of Statistical Software}, 37(4), 1-40.  
-\doi{10.18637/jss.v037.i04}.
+DOI: 10.18637/jss.v037.i04.
 
 Fox, J., Friendly, M. & Weisberg, S. (2013). Hypothesis Tests for
 Multivariate Linear Models Using the car Package. \emph{The R Journal},

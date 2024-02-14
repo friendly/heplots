@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
@@ -27,14 +27,14 @@ Type 'q()' to quit R.
 > library(latentnet)
 Loading required package: network
 
-'network' 1.18.1 (2023-01-24), part of the Statnet Project
+'network' 1.18.2 (2023-12-04), part of the Statnet Project
 * 'news(package="network")' for changes since last version
 * 'citation("network")' for citation information
 * 'https://statnet.org' for help, support, and other information
 
 Loading required package: ergm
 
-'ergm' 4.5.0 (2023-05-27), part of the Statnet Project
+'ergm' 4.6.0 (2023-12-17), part of the Statnet Project
 * 'news(package="ergm")' for changes since last version
 * 'citation("ergm")' for citation information
 * 'https://statnet.org' for help, support, and other information
@@ -66,17 +66,17 @@ The following objects are masked from 'package:base':
 Chain 1 
 Lag 0 
                   lpY     beta.1     beta.2 receiver.1
-lpY         1.0000000 -0.1250856  0.1581713  0.3812945
-beta.1     -0.1250856  1.0000000 -0.5522759 -0.4606613
-beta.2      0.1581713 -0.5522759  1.0000000  0.2372869
-receiver.1  0.3812945 -0.4606613  0.2372869  1.0000000
+lpY         1.0000000 -0.1054471  0.1558122  0.3673334
+beta.1     -0.1054471  1.0000000 -0.5401571 -0.4293387
+beta.2      0.1558122 -0.5401571  1.0000000  0.2508423
+receiver.1  0.3673334 -0.4293387  0.2508423  1.0000000
 
 Lag 10 
-                   lpY      beta.1      beta.2  receiver.1
-lpY         0.11108574 -0.06477707  0.07549488  0.07433145
-beta.1     -0.07112065  0.26420735 -0.14059366 -0.18988037
-beta.2      0.09290304 -0.13549435  0.23196995  0.13299724
-receiver.1  0.08167717 -0.17712800  0.13787931  0.18514065
+                   lpY      beta.1     beta.2  receiver.1
+lpY         0.13403871 -0.06678353  0.1216317  0.08359476
+beta.1     -0.07523947  0.30585787 -0.1820245 -0.18592336
+beta.2      0.08367140 -0.21656324  0.3046448  0.13638393
+receiver.1  0.09524352 -0.22732483  0.1721813  0.21042211
 
 [[1]]
 
@@ -86,10 +86,10 @@ Probability (s) = 0.95
                                                   
             Burn-in  Total Lower bound  Dependence
             (M)      (N)   (Nmin)       factor (I)
- lpY        20       6330  600          10.6      
- beta.1     40       7970  600          13.3      
- beta.2     30       7030  600          11.7      
- receiver.1 20       6210  600          10.4      
+ lpY        20       6080  600          10.1      
+ beta.1     40       7640  600          12.7      
+ beta.2     40       7970  600          13.3      
+ receiver.1 30       6480  600          10.8      
 
 
 > 
@@ -106,20 +106,20 @@ Model:     Bernoulli
 MCMC sample of size 4000, draws are 10 iterations apart, after burnin of 10000 iterations.
 Covariate coefficients posterior means:
                 Estimate    2.5%   97.5% 2*min(Pr(>0),Pr(<0))    
-(Intercept)      -2.2832 -2.9838 -1.6511            < 2.2e-16 ***
-nodematch.group   3.0589  2.3847  3.8048            < 2.2e-16 ***
+(Intercept)      -2.2772 -2.9798 -1.6423            < 2.2e-16 ***
+nodematch.group   3.0644  2.3839  3.8315            < 2.2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Receiver effect variance: 0.9997331.
-Overall BIC:        286.5973 
-Likelihood BIC:     245.6578 
-Receiver effect BIC:     40.93948 
+Receiver effect variance: 1.014632.
+Overall BIC:        286.0854 
+Likelihood BIC:     245.6405 
+Receiver effect BIC:     40.4449 
 
 Covariate coefficients MKL:
                  Estimate
-(Intercept)     -2.299331
-nodematch.group  2.871087
+(Intercept)     -2.066934
+nodematch.group  2.871479
 
 
 > # Should produce a meaningful error message.
@@ -164,4 +164,4 @@ Some non-latent-space test(s) skipped. Set ENABLE_statnet_TESTS environment vari
 > 
 > proc.time()
    user  system elapsed 
-   5.59    0.51    6.01 
+   3.48    0.21    3.71 

@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
@@ -40,14 +40,6 @@ Type 'q()' to quit R.
 > 
 > library(Guerry)
 > library(sp)
-The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,
-which was just loaded, will retire in October 2023.
-Please refer to R-spatial evolution reports for details, especially
-https://r-spatial.org/r/2023/05/15/evolution4.html.
-It may be desirable to make the sf package available;
-package maintainers should consider adding sf to Suggests:.
-The sp package is now running under evolution status 2
-     (status 2 uses the sf package in place of rgdal)
 > library(RColorBrewer)
 > 
 > data(Guerry)
@@ -217,6 +209,8 @@ detaching 'package:sp'
 > data(gfrance85)
 > require(sp)
 Loading required package: sp
+> require(scales)
+Loading required package: scales
 > plot(gfrance85)   # plot the empty outline map
 > 
 > # extract some useful components
@@ -224,25 +218,15 @@ Loading required package: sp
 > xy <- coordinates(gfrance85)             # department centroids
 > dep.names <- data.frame(gfrance85)[,6]
 > region.names <- data.frame(gfrance85)[,5]
-> col.region <- colors()[c(149,254,468,552,26)]
+> col.region <- colors()[c(149,254,468,552,26)] |>
++   scales::alpha(alpha = 0.2)
 > 
-> if (require(spdep)) {
-+   lw <- nb2listw(poly2nb(gfrance85))       # neighbors list
-+ }
-Loading required package: spdep
-Loading required package: spData
-To access larger datasets in this package, install the spDataLarge
-package with: `install.packages('spDataLarge',
-repos='https://nowosad.github.io/drat/', type='source')`
-Loading required package: sf
-Linking to GEOS 3.11.2, GDAL 3.6.2, PROJ 9.2.0; sf_use_s2() is TRUE
 > 
 > # plot the map showing regions by color with department labels
 > op <-par(mar=rep(0.1,4))
 > plot(gfrance85,col=col.region[region.names])
-> text(xy, labels=dep.names, cex=0.4)
+> text(xy, labels=dep.names, cex=0.6)
 > par(op)
-> 
 > 
 > 
 > 
@@ -250,7 +234,7 @@ Linking to GEOS 3.11.2, GDAL 3.6.2, PROJ 9.2.0; sf_use_s2() is TRUE
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 
-detaching 'package:spdep', 'package:sf', 'package:spData', 'package:sp'
+detaching 'package:scales', 'package:sp'
 
 > nameEx("propensity")
 > ### * propensity
@@ -274,7 +258,7 @@ detaching 'package:spdep', 'package:sf', 'package:spData', 'package:sp'
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  7.7 0.83 8.71 NA NA 
+Time elapsed:  2.89 0.14 3.16 NA NA 
 > grDevices::dev.off()
 null device 
           1 

@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
@@ -55,4 +55,4 @@ parallel_MPI test(s) skipped. Set ENABLE_MPI_TESTS environment variable to run.
 > 
 > proc.time()
    user  system elapsed 
-   0.18    0.10    0.26 
+   0.03    0.06    0.15 

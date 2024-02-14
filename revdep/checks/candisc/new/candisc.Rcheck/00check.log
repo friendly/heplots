@@ -1,10 +1,10 @@
-* using log directory 'C:/R/projects/heplots/revdep/checks/candisc/new/candisc.Rcheck'
-* using R version 4.3.1 (2023-06-16 ucrt)
+* using log directory 'C:/R/Projects/heplots/revdep/checks/candisc/new/candisc.Rcheck'
+* using R version 4.3.2 (2023-10-31 ucrt)
 * using platform: x86_64-w64-mingw32 (64-bit)
 * R was compiled by
-    gcc.exe (GCC) 12.2.0
-    GNU Fortran (GCC) 12.2.0
-* running under: Windows 10 x64 (build 19042)
+    gcc.exe (GCC) 12.3.0
+    GNU Fortran (GCC) 12.3.0
+* running under: Windows 10 x64 (build 19044)
 * using session charset: UTF-8
 * using options '--no-manual --no-build-vignettes'
 * checking for file 'candisc/DESCRIPTION' ... OK

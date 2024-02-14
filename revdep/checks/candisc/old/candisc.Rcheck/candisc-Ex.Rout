@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
@@ -691,7 +691,6 @@ Vector scale factor set to  14.83312
 > if(requireNamespace("rgl")){
 + heplot3d(pottery.can, var.lwd=3, scale=10, zlim=c(-3,3), wire=FALSE)
 + }
-Loading required namespace: rgl
 > 
 > 
 > # reduce example for CRAN checks time
@@ -881,7 +880,7 @@ max  3  2
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  3.12 0.55 3.64 NA NA 
+Time elapsed:  1.37 0.19 1.63 NA NA 
 > grDevices::dev.off()
 null device 
           1 

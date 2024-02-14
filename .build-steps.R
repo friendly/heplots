@@ -24,6 +24,16 @@ devtools::build_vignettes()
 
 devtools::check_win_devel()
 
+# check reverse dependencies
+devtools::revdep()
+# [1] "candisc"      "effects"      "Guerry"       "HistData"     "ICSClust"     "latentnet"    "MorphoTools2" "mvinfluence"  "ordr"       
+
+library(revdepcheck)
+revdep_reset()
+revdep_check()
+
+# -> Results to cran-comments.md
+
 # submit to cran
 devtools::release()
 

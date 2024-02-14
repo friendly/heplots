@@ -2,6 +2,7 @@ AddHealth               Adolescent Health Data
 Adopted                 Adopted Children
 Bees                    Captive and maltreated bees
 Diabetes                Diabetes Dataset
+Ellipsoid               Draw an Ellipsoid in an rgl Scene
 FootHead                Head measurements of football players
 Headache                Treatment of Headache Sufferers for Sensitivity
                         to Noise
@@ -32,6 +33,8 @@ VocabGrowth             Vocabulary growth data
 WeightLoss              Weight Loss Data
 arrow3d                 Draw a 3D Arrow in an RGL Scene
 bartlettTests           Bartlett Tests of Homogeneity of Variances
+bbox3d                  Find the bounding box of a 'rgl::mesh3d' or
+                        'rgl::qmesh3d' object
 boxM                    Box's M-test
 coefplot                Coefficient plots for Multivariate Linear
                         Models

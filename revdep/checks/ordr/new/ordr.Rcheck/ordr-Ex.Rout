@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
@@ -4102,7 +4102,7 @@ CaO   0.7639885 -0.6168220 0.03273126
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  9.44 0.56 10.55 NA NA 
+Time elapsed:  5.46 0.21 5.75 NA NA 
 > grDevices::dev.off()
 null device 
           1 

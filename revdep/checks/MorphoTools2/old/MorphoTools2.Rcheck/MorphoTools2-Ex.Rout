@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
@@ -2086,7 +2086,7 @@ Warning in FUN(X[[i]], ...) : NaNs produced
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  8.75 0.92 9.77 NA NA 
+Time elapsed:  4.53 0.52 5.13 NA NA 
 > grDevices::dev.off()
 null device 
           1 

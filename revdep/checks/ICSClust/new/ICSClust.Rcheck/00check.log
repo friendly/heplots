@@ -1,15 +1,15 @@
-* using log directory 'C:/R/projects/heplots/revdep/checks/MapeBay/old/MapeBay.Rcheck'
-* using R version 4.3.1 (2023-06-16 ucrt)
+* using log directory 'C:/R/Projects/heplots/revdep/checks/ICSClust/new/ICSClust.Rcheck'
+* using R version 4.3.2 (2023-10-31 ucrt)
 * using platform: x86_64-w64-mingw32 (64-bit)
 * R was compiled by
-    gcc.exe (GCC) 12.2.0
-    GNU Fortran (GCC) 12.2.0
-* running under: Windows 10 x64 (build 19042)
+    gcc.exe (GCC) 12.3.0
+    GNU Fortran (GCC) 12.3.0
+* running under: Windows 10 x64 (build 19044)
 * using session charset: UTF-8
 * using options '--no-manual --no-build-vignettes'
-* checking for file 'MapeBay/DESCRIPTION' ... OK
+* checking for file 'ICSClust/DESCRIPTION' ... OK
 * checking extension type ... Package
-* this is package 'MapeBay' version '0.1.0'
+* this is package 'ICSClust' version '0.1.0'
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... OK
@@ -18,10 +18,8 @@
 * checking for executable files ... OK
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
-* checking whether package 'MapeBay' can be installed ... OK
-* used C++ compiler: 'G__~1.EXE (GCC) 12.2.0'
-* checking C++ specification ... OK
-  Not all R platforms support C++17
+* checking whether package 'ICSClust' can be installed ... OK
+* used C++ compiler: 'G__~1.EXE (GCC) 12.3.0'
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking DESCRIPTION meta-information ... OK
@@ -37,9 +35,7 @@
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
 * checking loading without being on the library search path ... OK
-* checking dependencies in R code ... NOTE
-Namespace in Imports field not imported from: 'RcppParallel'
-  All declared Imports should be used.
+* checking dependencies in R code ... OK
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
@@ -52,18 +48,16 @@ Namespace in Imports field not imported from: 'RcppParallel'
 * checking Rd \usage sections ... OK
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
-* checking line endings in shell scripts ... OK
-* checking line endings in C/C++/Fortran sources/headers ... NOTE
-Found the following sources/headers with CR or CRLF line endings:
-  src/stanExports_onewaymodel.cc
-Some Unix compilers require LF line endings.
+* checking line endings in C/C++/Fortran sources/headers ... OK
 * checking line endings in Makefiles ... OK
 * checking compilation flags in Makevars ... OK
-* checking for GNU extensions in Makefiles ... NOTE
-GNU make is a SystemRequirements.
+* checking for GNU extensions in Makefiles ... OK
 * checking for portable use of $(BLAS_LIBS) and $(LAPACK_LIBS) ... OK
 * checking use of PKG_*FLAGS in Makefiles ... OK
 * checking compiled code ... OK
 * checking examples ... OK
+* checking for unstated dependencies in 'tests' ... OK
+* checking tests ... OK
+  Running 'testthat.R'
 * DONE
-Status: 3 NOTEs
+Status: OK

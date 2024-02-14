@@ -5,12 +5,19 @@ if(!exists("meta") || is.null(meta)) meta <- packageDescription("heplots")
 year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version)
      
-citEntry(entry = "Manual",
+bibentry(
+  bibtype = "Manual",
   title = "{heplots}: Visualizing Tests in Multivariate Linear Models",
-  author = personList(
-                  as.person("Michael Friendly"),
-                  as.person("John Fox"),
-                  as.person("Georges Monette")),
+  author = c(
+            person(given = "Michael", 
+                   family = "Friendly", 
+                   role=c("aut", "cre"), 
+                   email="friendly@yorku.ca",
+                   comment = c(ORCID = "0000-0002-3237-0941")),
+            person(given = "John", 
+                   family = "Fox", role="aut",
+                   comment = c(ORCID = "0000-0002-1196-8012")),
+            person(given = "Georges", family = "Monette", role="aut")),
   year = year,
   note = note,
   url = "https://CRAN.R-project.org/package=heplots",
@@ -23,24 +30,25 @@ citEntry(entry = "Manual",
         "URL https://CRAN.R-project.org/package=heplots")
 )
 
-citEntry(header="To refer to the theory on which this package is based, also cite:",
-   entry="Article",
-  title = 	 "HE plots for Multivariate General Linear Models",
-  author = 	 "Michael Friendly",
-  year = 	 "2007",
-  journal = 	 "Journal of Computational and Graphical Statistics",
-  volume = "16",
-  number = "4",
-  pages = "421--444", 
+bibentry(
+  header    = "To refer to the theory on which this package is based, also cite:",
+  bibtype   = "Article",
+  title     =  "HE plots for Multivariate General Linear Models",
+  author    =  "Michael Friendly",
+  year      =  "2007",
+  journal   = 	"Journal of Computational and Graphical Statistics",
+  volume    = "16",
+  number    = "4",
+  pages     = "421--444", 
   textVersion = "Friendly, M. (2007). 
   HE plots for Multivariate General Linear Models.
   Journal of Computational and Graphical Statistics, 2007, 16, 421-444"  
 )
 
-citEntry(header="For use with repeated measures designs also cite:",
-  entry = "Article",
+bibentry(header="For use with repeated measures designs also cite:",
+  bibtype      = "Article",
   title        = "HE Plots for Repeated Measures Designs",
-  author       = personList(as.person("Michael Friendly")),
+  author       = "Michael Friendly",
   journal      = "Journal of Statistical Software",
   year         = "2010",
   volume       = "37",

@@ -10,11 +10,15 @@ tests in multivariate linear models (MANOVA, multivariate multiple
 regression, MANCOVA, and repeated measures designs).  HE plots represent
 sums-of-squares-and-products matrices for linear hypotheses and for error
 using ellipses (in two dimensions), ellipsoids (in three dimensions), or by
-line segments in one dimension. See Fox, Friendly and Monette (2007) for a
-brief introduction and Friendly, Monette and Fox (2013) for a general
-discussion of the role of elliptical geometry in statistical understanding.
+line segments in one dimension.
 }
 \details{
+The basic theory behind HE plots is described by Friendly (2007).
+See Fox, Friendly and Monette (2007) for a
+brief introduction; Friendly & Sigal (2016) for a tutorial on these methods;
+and Friendly, Monette and Fox (2013) for a general
+discussion of the role of elliptical geometry in statistical understanding.
+
 Other topics now addressed here include robust MLMs, tests for equality of
 covariance matrices in MLMs, and chi square Q-Q plots for MLMs.
 
@@ -71,13 +75,13 @@ sets with examples of analyses and graphic displays.  Use
 Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 Displays for Multivariate Linear Models: SAS Software and Examples.
 \emph{Journal of Statistical Software}, 17(6), 1-42. %
-\url{https://www.jstatsoft.org/v17/i06/}
-c("\\Sexpr[results=rd,stage=build]{tools:::Rd_expr_doi(\"#1\")}",
-"10.18637/jss.v017.i06")\Sexpr{tools:::Rd_expr_doi("10.18637/jss.v017.i06")}
+\url{https://www.jstatsoft.org/v17/i06/},
+\doi{10.18637/jss.v017.i06}
 
 Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
 \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
-\url{http://datavis.ca/papers/jcgs-heplots.pdf}
+\url{http://datavis.ca/papers/jcgs-heplots.pdf},
+\doi{10.1198/106186007X208407}
 
 Fox, J., Friendly, M. & Monette, G. (2007).  Visual hypothesis tests in
 multivariate linear models: The heplots package for R.  \emph{DSC 2007:

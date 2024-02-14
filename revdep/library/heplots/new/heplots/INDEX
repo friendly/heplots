@@ -43,6 +43,10 @@ covEllipses             Draw classical and robust covariance ellipses
                         for one or more groups
 cqplot                  Chi Square Quantile-Quantile plots
 cross3d                 Draw a 3D cross in an rgl scene
+df.terms                Find degrees of freedom for model terms
+ellipse.axes            Draw Axes of a 2D Covariance Ellipse
+ellipse.box             Draw Conjugate Axes and Parallelogram
+                        Surrounding a Covariance Ellipse
 ellipse3d.axes          Draw axes of a 3D ellipsoid
 etasq                   Measures of Partial Association (Eta-squared)
                         for Linear Models
@@ -63,6 +67,8 @@ logdetCI                Calculate confidence interval for log
 mark.H0                 Mark a point null hypothesis in an HE plot
 mathscore               Math scores for basic math and word problems
 pairs.mlm               Pairwise HE Plots
+peng                    Size measurements for adult foraging penguins
+                        near Palmer Station, Antarctica
 plot.boxM               Plot for Box's M test and generalizations
 plot.robmlm             Plot observation weights from a robust
                         multivariate linear models

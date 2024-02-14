@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
@@ -24,14 +24,14 @@ Type 'q()' to quit R.
 > library('latentnet')
 Loading required package: network
 
-'network' 1.18.1 (2023-01-24), part of the Statnet Project
+'network' 1.18.2 (2023-12-04), part of the Statnet Project
 * 'news(package="network")' for changes since last version
 * 'citation("network")' for citation information
 * 'https://statnet.org' for help, support, and other information
 
 Loading required package: ergm
 
-'ergm' 4.5.0 (2023-05-27), part of the Statnet Project
+'ergm' 4.6.0 (2023-12-17), part of the Statnet Project
 * 'news(package="ergm")' for changes since last version
 * 'citation("ergm")' for citation information
 * 'https://statnet.org' for help, support, and other information
@@ -309,7 +309,7 @@ Warning in backoff.check(model, burnin.sample, burnin.control) :
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.41 0.49 2.88 NA NA 
+Time elapsed:  1.11 0.16 1.3 NA NA 
 > grDevices::dev.off()
 null device 
           1 

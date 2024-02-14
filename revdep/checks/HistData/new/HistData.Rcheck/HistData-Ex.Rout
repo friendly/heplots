@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
@@ -1525,14 +1525,6 @@ detaching 'package:car', 'package:carData', 'package:KernSmooth'
 > ### ** Examples
 > 
 > library(sp)
-The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,
-which was just loaded, will retire in October 2023.
-Please refer to R-spatial evolution reports for details, especially
-https://r-spatial.org/r/2023/05/15/evolution4.html.
-It may be desirable to make the sf package available;
-package maintainers should consider adding sf to Suggests:.
-The sp package is now running under evolution status 2
-     (status 2 uses the sf package in place of rgdal)
 > library(effects)
 Loading required package: carData
 lattice theme set by effectsTheme()
@@ -2543,7 +2535,7 @@ mean of x
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  16.93 1.87 24.26 NA NA 
+Time elapsed:  5.25 0.72 6.06 NA NA 
 > grDevices::dev.off()
 pdf 
   2 

@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
@@ -198,7 +198,6 @@ Loading required package: Matrix
 +     detach(package:heplots)
 + }
 Loading required package: heplots
-Loading required package: car
 Loading required package: broom
 > 
 > # svyglm() example (adapting an example from the survey package)
@@ -227,8 +226,8 @@ Loading required package: broom
 > 
 > cleanEx()
 
-detaching 'package:broom', 'package:car', 'package:Matrix',
-  'package:MASS', 'package:nnet'
+detaching 'package:broom', 'package:Matrix', 'package:MASS',
+  'package:nnet'
 
 > nameEx("effectsHexsticker")
 > ### * effectsHexsticker
@@ -1359,7 +1358,7 @@ $extraversion
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  7.16 0.77 7.89 NA NA 
+Time elapsed:  3.3 0.31 3.63 NA NA 
 > grDevices::dev.off()
 null device 
           1 

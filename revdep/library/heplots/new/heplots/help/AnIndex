@@ -24,7 +24,11 @@ cqplot	cqplot
 cqplot.default	cqplot
 cqplot.mlm	cqplot
 cross3d	cross3d
+df.terms	df.terms
+df.terms.default	df.terms
 Diabetes	Diabetes
+ellipse.axes	ellipse.axes
+ellipse.box	ellipse.box
 ellipse3d.axes	ellipse3d.axes
 Ellipsoid	Ellipsoid
 Ellipsoid.data.frame	Ellipsoid
@@ -65,6 +69,7 @@ NLSY	NLSY
 Oslo	Oslo
 pairs.mlm	pairs.mlm
 Parenting	Parenting
+peng	peng
 Pillai	heplots-internal
 Plastic	Plastic
 plot.boxM	plot.boxM

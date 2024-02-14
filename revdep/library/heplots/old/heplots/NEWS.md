@@ -1,3 +1,17 @@
+## Version 1.6.0 (2023-08-30)
+
+* converted pkg to roxygen documentation
+* now Suggests: car rather than Depends:
+
+## Version 1.5.0 (2023-05-30)
+
+* `covEllipses()` gains a formula method
+* Internal function `ellipsoid()` used in `heplot3d()` becomes an (experimental) exported function, `Ellipsoid()`
+
+## Version 1.4-3 (2023-01-02)
+
+* replace rgl.pop() with pop3D (PR #7); thx: D. Murdoch
+
 ## Version 1.4-2 (2022-10-09)
 
 * Fix CITATION
@@ -37,7 +51,7 @@
 
 ## Version 1.3-5 (2018-04-02)
 
-* fix references to car datatsets -> carData
+* fix references to car datasets -> carData
 * fix error resulting from car 3.0 changes
 * bump pkg version
 
@@ -154,10 +168,10 @@
 * interpPlot gains add=, points= and col= arguments for greater control of graphical parameters.
 
 ## Version 1.0-2 (2012-12-05)
-* Added schooldata and further example of comparison of mlm with robmlm()
+* Added Schooldata and further example of comparison of mlm with robmlm()
 
 ## Version 1.0-1 (2012-10-18)
-* Added simple robmlm methods for robust mlms with print and summary methods and a vcov.mlm method.
+* Added simple robmlm methods for robust MLMss with print and summary methods and a vcov.mlm method.
   This allows heplot() and related methods to show robust HE plots.
 
 ## Version 1.0-0 (2012-6-3)

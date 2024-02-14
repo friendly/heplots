@@ -1,5 +1,5 @@
 
-R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+R version 4.3.2 (2023-10-31 ucrt) -- "Eye Holes"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
@@ -151,4 +151,4 @@ Warning messages:
 > 
 > proc.time()
    user  system elapsed 
-   3.51    0.34    3.84 
+   1.59    0.06    1.67 
