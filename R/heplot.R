@@ -266,7 +266,7 @@
 #' @examples
 #' 
 #' ## iris data
-#' contrasts(iris$Species) < - matrix(c(0,-1,1, 2, -1, -1), 3,2)
+#' contrasts(iris$Species) <- matrix(c(0,-1,1, 2, -1, -1), 3,2)
 #' contrasts(iris$Species)
 #' 
 #' iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~
