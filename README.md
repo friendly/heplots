@@ -16,7 +16,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.6.2
+Version 1.6.3
 
 ## Description
 
