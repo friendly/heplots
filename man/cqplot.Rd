@@ -54,10 +54,12 @@ determinant), or \code{"mve"} (minimum volume ellipsoid).}
                vs. \eqn{\chi^2}. if \code{TRUE}, the ordinate shows values of \eqn{D^2 -
 \chi^2}}
 
-\item{pch}{plot symbol for points Can be a vector of length equal to the
+\item{pch}{plot symbol for points. Can be a vector of length equal to the
 number of rows in \code{x}.}
 
-\item{col}{color for points; the default is the \emph{first} entry in the
+\item{col}{color for points. Can be a vector of length equal to the
+number of rows in \code{x}.
+The default is the \emph{first} entry in the
 current color palette (see \code{\link[grDevices]{palette}} and
 \code{\link[graphics]{par}}.}
 
@@ -112,7 +114,7 @@ confidence envelope is used.}
 }
 \value{
 Returns invisibly the vector of squared Mahalanobis distances
-            corresponding to the rows of \code{x} or the residuals of the model.
+            corresponding to the rows of \code{x} or the residuals of the model for the identified points, else \code{NULL}
 }
 \description{
 A chi square quantile-quantile plots show the relationship between
@@ -139,7 +141,7 @@ program, \url{http://www.datavis.ca/sasmac/cqplot.html} which comes from
 Chambers et al. (1983), Section 6.8.
 
 The essential formula is 
-\deqn{ SE ( z_{(i)} ) = \frac{\hat{\delta}}{g ( q_i)) \times \sqrt{ frac{ p_i (1-p_i} }{n}} } 
+\deqn{ SE ( z_{(i)} ) = \hat{\delta} /g ( q_i)) \times \sqrt{  p_i (1-p_i) / n } }
 where \eqn{z_{(i)}} is the i-th
 order value of \eqn{D^2}, \eqn{\hat{\delta}} is an estimate of the slope of
 the reference line obtained from the corresponding quartiles and

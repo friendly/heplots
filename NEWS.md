@@ -2,6 +2,8 @@
 
 * Add `peng` dataset, a version of `palmerpenguins::penguins`
 * Correct documentation problems from Roxygen 7.3.1 (@docType)
+* Correct documentation error in `cqplot`
+* `cqplot()` now returns DSQ values for identified points
 
 ## Version 1.6.1 (2023-12-05)
 

@@ -30,7 +30,7 @@
 #' Chambers et al. (1983), Section 6.8.
 #' 
 #' The essential formula is 
-#' \deqn{ SE ( z_{(i)} ) = \frac{\hat{\delta}}{g ( q_i)) \times \sqrt{ frac{ p_i (1-p_i} }{n}} } 
+#' \deqn{ SE ( z_{(i)} ) = \hat{\delta} /g ( q_i)) \times \sqrt{  p_i (1-p_i) / n } }
 #' where \eqn{z_{(i)}} is the i-th
 #' order value of \eqn{D^2}, \eqn{\hat{\delta}} is an estimate of the slope of
 #' the reference line obtained from the corresponding quartiles and
@@ -54,9 +54,11 @@
 #' @param detrend logical; if \code{FALSE}, the plot shows values of \eqn{D^2}
 #'                vs. \eqn{\chi^2}. if \code{TRUE}, the ordinate shows values of \eqn{D^2 -
 #' \chi^2}
-#' @param pch plot symbol for points Can be a vector of length equal to the
+#' @param pch plot symbol for points. Can be a vector of length equal to the
 #'            number of rows in \code{x}.
-#' @param col color for points; the default is the \emph{first} entry in the
+#' @param col color for points. Can be a vector of length equal to the
+#'            number of rows in \code{x}.
+#'            The default is the \emph{first} entry in the
 #'            current color palette (see \code{\link[grDevices]{palette}} and
 #'            \code{\link[graphics]{par}}.
 #' @param cex character symbol size for points.  Can be a vector of length
@@ -89,7 +91,7 @@
 #' @param ylim limits for vertical axis.  If not specified, the range of the
 #'             confidence envelope is used.
 #' @return Returns invisibly the vector of squared Mahalanobis distances
-#'             corresponding to the rows of \code{x} or the residuals of the model.
+#'             corresponding to the rows of \code{x} or the residuals of the model for the identified points, else \code{NULL}
 #' @author Michael Friendly
 #' @seealso \code{\link{Mahalanobis}} for calculation of Mahalanobis squared distance;
 #' 
@@ -238,11 +240,14 @@ cqplot.default <-
   
   abline(0, if (detrend) 0 else 1, lwd = ref.lwd, col = ref.col)
   if (!missing(id.n)) {
-  	res <- car::showLabels(chi2q, y, labels=labs, id.method=id.method, 
+  	noteworthy <- car::showLabels(chi2q, y, labels=labs, id.method=id.method, 
   		id.n=id.n,  id.cex = id.cex, id.col = id.col)
+  	
+  	res <- data.frame(dsq[noteworthy])
+  	rownames(res) <- labs[noteworthy]
+  	return(invisible(res))
   }
+  else return(invisible(NULL))
 
-	res <- dsq  
-  invisible(res)
 }
 
