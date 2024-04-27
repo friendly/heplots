@@ -20,7 +20,7 @@ observations from the centroid."><meta property="og:image" content="https://frie
     
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,12 +134,14 @@ determinant), or <code>"mve"</code> (minimum volume ellipsoid).</p></dd>
 
 
 <dt>pch</dt>
-<dd><p>plot symbol for points Can be a vector of length equal to the
+<dd><p>plot symbol for points. Can be a vector of length equal to the
 number of rows in <code>x</code>.</p></dd>
 
 
 <dt>col</dt>
-<dd><p>color for points; the default is the <em>first</em> entry in the
+<dd><p>color for points. Can be a vector of length equal to the
+number of rows in <code>x</code>.
+The default is the <em>first</em> entry in the
 current color palette (see <code><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></code> and
 <code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></code>.</p></dd>
 
@@ -238,7 +240,9 @@ confidence envelope is used.</p></dd>
     
 
 <p>Returns invisibly the vector of squared Mahalanobis distances
-            corresponding to the rows of <code>x</code> or the residuals of the model.</p>
+            corresponding to the rows of <code>x</code> or the residuals of the model for the identified points, else <code>NULL</code></p>
+
+
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -255,7 +259,7 @@ model.</p>
 program, <a href="http://www.datavis.ca/sasmac/cqplot.html" class="external-link">http://www.datavis.ca/sasmac/cqplot.html</a> which comes from
 Chambers et al. (1983), Section 6.8.</p>
 <p>The essential formula is 
-$$ SE ( z_{(i)} ) = \frac{\hat{\delta}}{g ( q_i)) \times \sqrt{ frac{ p_i (1-p_i} }{n}} $$ 
+$$ SE ( z_{(i)} ) = \hat{\delta} /g ( q_i)) \times \sqrt{  p_i (1-p_i) / n } $$
 where \(z_{(i)}\) is the i-th
 order value of \(D^2\), \(\hat{\delta}\) is an estimate of the slope of
 the reference line obtained from the corresponding quartiles and
