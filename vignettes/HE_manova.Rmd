@@ -157,18 +157,31 @@ covEllipses(AddHealth[, 3:2], group = AddHealth$grade,
 
 ## Fit the MLM
 
-Now, let's fit the MLM for both responses jointly in relation to `grade`.
+Now, let's fit the MLM for both responses jointly in relation to `grade`. The null hypothesis is that
+the means for anxiety and depression are the same at all six grades,
+$$
+H_0 : \mathbf{\mu}_7 = \mathbf{\mu}_8 = \cdots = \mathbf{\mu}_{12} \; .
+$$
+The overall test, with 5 degrees of freedom is diffuse, in that it can be rejected if any
+pair of means differ.
+Given that `grade` is an ordered factor, it makes sense to examine narrower hypotheses
+of linear and nonlinear trends.
+
 `car::Anova()` gives a simple display of the multivariate test, using the Pillai trace criterion.
 The `summary()` method for this gives all four test statistics.
 ```{r addhealth-mlm}
 AH.mlm <- lm(cbind(anxiety, depression) ~ grade, data = AddHealth)
+
 # overall test of `grade`
 Anova(AH.mlm)
+
 # show separate multivariate tests
 summary(Anova(AH.mlm)) |> print(SSP = FALSE)
 ```
 
 ## HE plot
+
+Figure \@ref(fig:addhealth-heplot)
 
 ```{r addhealth-heplot, echo = -1}
 #| fig.cap = "HE plot for the model `AH.mlm`."
@@ -206,6 +219,8 @@ This example illustrates:
 * the difference between "effect" scaling and "evidence" (significance) scaling, and 
 * visualizing composite linear hypotheses.
 	
+### Multivariate tests
+
 We begin with an overall MANOVA for the two-way MANOVA model. In all these analyses, we use
 `car::Anova()` for significance tests rather than `stats::anova()`, which only provides
 so-called "Type I" (sequential) tests for terms in linear models.
@@ -247,6 +262,7 @@ Traditional univariate plots of the means for each variable separately
 are useful, but they don't allow visualization of the
 *relations* among the response variables.
 
+### HE plots
 We can visualize these
 effects for pairs of variables in an HE plot, showing the "size" and
 orientation of hypothesis variation ($\mathbf{H}$) in relation to error
