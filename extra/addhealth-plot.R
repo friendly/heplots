@@ -3,6 +3,7 @@ data("AddHealth", package = "heplots")
 library(ggplot2)
 library(dplyr, warn=FALSE)
 library(car)
+library(patchwork)
 
 
 means <- AddHealth |>
@@ -31,6 +32,25 @@ means <- AddHealth |>
 
 
 # plot means with error bars
+
+p1 <-ggplot(data = means, aes(x = grade, y = anxiety)) +
+  geom_point(size = 4) +
+  geom_line(aes(group = 1), linewidth = 1.2) +
+  geom_errorbar(aes(ymin = anxiety - anx_se, 
+                   ymax = anxiety + anx_se),
+                width = .2) +
+  theme_bw(base_size = 15)
+
+p2 <-ggplot(data = means, aes(x = grade, y = depression)) +
+  geom_point(size = 4) +
+  geom_line(aes(group = 1), linewidth = 1.2) +
+  geom_errorbar(aes(ymin = depression - dep_se, 
+                    ymax = depression + dep_se),
+                width = .2) +
+  theme_bw(base_size = 15)
+
+p1 + p2
+
 
 ggplot(data = means, aes(x = anxiety, y = depression, 
                          color = grade)) +
@@ -93,6 +113,8 @@ lmtest::coeftest(AH.mlm)
 # test for all non-linear trends together
 # linearHypothesis(AH.mlm, rownames(coef(AH.mlm)[-(1:2)]))
 linearHypothesis(AH.mlm, "grade.L")
+linearHypothesis(AH.mlm, "grade.Q")
+
 linearHypothesis(AH.mlm, rownames(coef(AH.mlm))[3:5])
 
 
