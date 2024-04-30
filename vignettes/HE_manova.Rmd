@@ -50,6 +50,8 @@ options(width=80, digits=5, continue="  ")
 library(heplots)
 library(candisc)
 library(car)
+library(ggplot2)
+library(dplyr)
 ```
 
 Vignette built using `heplots`, version `r packageDescription("heplots")[["Version"]]`
@@ -71,6 +73,218 @@ No attempt is made here to describe the theory of MLMs or the statistical detail
 HE plots and their reduced-rank canonical cousins.
 For that, see @FoxFriendlyMonette:09:compstat; @Friendly:07:manova; @Friendly:06:hesoft.
 	
+# Adolescent Mental Health Data
+
+This is a simple example of a one-way MANOVA design with a quantitative factor.
+The dataset, `AddHealth`, contains a large cross-sectional sample of participants from grades 7--12
+from the National Longitudinal Study of Adolescent Health, described by @Warne2014.
+It contains responses to two Likert-scale (1--5) items, `anxiety` and `depression`.
+`grade` is an _ordered_ factor, which means that the default contrasts are taken as
+orthogonal polynomials with linear (`grade.L`), quadratic (`grade.Q`), up to 5th degree (`grade^5`)
+trends, which decompose the total effect of grade.
+
+```{r addhealth-str}
+data(AddHealth, package="heplots")
+str(AddHealth)
+```
+
+The research questions are:
+
+1. How do the means for anxiety and depression vary separately with grade? Is there evidence for linear and nonlinear trends?
+2. How do anxiety and depression vary _jointly_ with grade?
+3. How does the association of anxiety and depression vary with age?
+
+The first question can be answered by fitting separate linear models for each response
+(e.g., `lm(anxiety ~ grade))`). However the second question is more interesting because it 
+considers the two responses together and takes their correlation into account. This would
+be fit as the MLM:
+
+$$
+\mathbf{y} = \boldsymbol{\beta}_0 + \boldsymbol{\beta}_1 x + \boldsymbol{\beta}_2 x^2 + \cdots \boldsymbol{\beta}_5 x^5
+(\#eq:AH-mod)
+$$
+or,
+$$
+\begin{eqnarray*}
+\begin{bmatrix} y_{\text{anx}} \\y_{\text{dep}} \end{bmatrix} & = &
+\begin{bmatrix} \beta_{0,\text{anx}} \\ \beta_{0,\text{dep}} \end{bmatrix} +
+\begin{bmatrix} \beta_{1,\text{anx}} \\ \beta_{1,\text{dep}} \end{bmatrix} \text{grade} +
+\begin{bmatrix} \beta_{2,\text{anx}} \\ \beta_{2,\text{dep}} \end{bmatrix} \text{grade}^2 + \cdots
+\begin{bmatrix} \beta_{5,\text{anx}} \\ \beta_{5,\text{dep}} \end{bmatrix} \text{grade}^5
+\end{eqnarray*}
+$$
+
+Using `lm()` we get the coefficients for each of the polynomial terms in `grade`:
+
+```{r ah-mlm}
+lm(cbind(anxiety, depression) ~ grade, data=AddHealth)
+```
+
+## Exploratory plots {-}
+Some exploratory analysis is useful before fitting and visualizing models.
+As a first step, find the means, standard deviations, and standard errors of the means:
+```{r addhealth-means}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+
+means <- AddHealth |>
+  group_by(grade) |>
+  summarise(
+    n = n(),
+    dep_sd = sd(depression, na.rm = TRUE),
+    anx_sd = sd(anxiety, na.rm = TRUE),
+    dep_se = dep_sd / sqrt(n),
+    anx_se = anx_sd / sqrt(n),
+    depression = mean(depression),
+    anxiety = mean(anxiety) ) |> 
+  relocate(depression, anxiety, .after = grade) |>
+  print()
+```
+
+Now, plot the means with $\pm 1$ error bars. It appears that average level of both depression
+and anxiety increase steadily with grade, except for grades 11 and 12 which don't differ much.
+
+```{r addhealth-means-each}
+#| out.width = "100%",
+#| fig.width = 7,
+#| fig.height = 4,
+#| fig.cap = "Means of anxiety and depression by grade, with $\\pm 1$ standard error bars."
+p1 <-ggplot(data = means, aes(x = grade, y = anxiety)) +
+  geom_point(size = 4) +
+  geom_line(aes(group = 1), linewidth = 1.2) +
+  geom_errorbar(aes(ymin = anxiety - anx_se, 
+                   ymax = anxiety + anx_se),
+                width = .2) +
+  theme_bw(base_size = 15)
+
+p2 <-ggplot(data = means, aes(x = grade, y = depression)) +
+  geom_point(size = 4) +
+  geom_line(aes(group = 1), linewidth = 1.2) +
+  geom_errorbar(aes(ymin = depression - dep_se, 
+                    ymax = depression + dep_se),
+                width = .2) +
+  theme_bw(base_size = 15)
+
+p1 + p2
+```
+
+Treating anxiety and depression as multivariate outcomes, we can also plot their bivariate means.
+```{r addhealth-means-plot}
+#| fig.cap = "Joint plot of means of anxiety and depression by grade, with $\\pm 1$ standard error bars."
+ggplot(data = means, aes(x = anxiety, y = depression, 
+                         color = grade)) +
+  geom_point(size = 3) +
+  geom_errorbarh(aes(xmin = anxiety - anx_se, 
+                    xmax = anxiety + anx_se)) +
+  geom_errorbar(aes(ymin = depression - dep_se, 
+                    ymax = depression + dep_se)) +
+  geom_line(aes(group = 1), linewidth = 1.5) +
+  geom_label(aes(label = grade), 
+             nudge_x = -0.015, nudge_y = 0.02) +
+  scale_color_discrete(guide = "none") +
+  theme_bw(base_size = 15)
+```
+
+You can examine the within-group correlations using `covEllipses()`. Because the variability of the
+scores is so large compared to the range of the means, I show the data ellipses with coverage of
+only 10%.
+
+```{r addhealth-covellipse, echo = -1}
+#| fig.cap = "Within-group covariance ellipses for the `grade` groups."
+op <- par(mar = c(5,4,1,1)+0.1)
+covEllipses(AddHealth[, 3:2], group = AddHealth$grade,
+            pooled = FALSE, level = 0.1,
+            center.cex = 2.5, cex = 1.5, cex.lab = 1.5,
+            fill = TRUE, fill.alpha = 0.05)
+```
+
+## Fit the MLM {-}
+
+
+Now, let's fit the MLM for both responses jointly in relation to `grade`. The null hypothesis is that
+the means for anxiety and depression are the same at all six grades,
+$$
+H_0 : \mathbf{\mu}_7 = \mathbf{\mu}_8 = \cdots = \mathbf{\mu}_{12} \; ,
+$$
+or equivalently, that all coefficients except the intercept in the model \@ref(eq:AH-mod) are zero,
+$$
+H_0 : \boldsymbol{\beta}_1 =  \boldsymbol{\beta}_2  = \cdots =  \boldsymbol{\beta}_5 = \boldsymbol{0} \; .
+$$
+
+The overall test, with 5 degrees of freedom is diffuse, in that it can be rejected if any
+pair of means differ.
+
+`car::Anova()` gives a simple display of the multivariate test, using the Pillai trace criterion.
+```{r addhealth-mlm}
+AH.mlm <- lm(cbind(anxiety, depression) ~ grade, data = AddHealth)
+
+# overall test of `grade`
+Anova(AH.mlm)
+```
+
+The `summary()` method for this gives all four test statistics.
+```{r addhealth-summary}
+## show separate multivariate tests
+summary(Anova(AH.mlm)) |> print(SSP = FALSE)
+```
+
+## Testing linear hypotheses {-}
+Given that `grade` is an ordered factor, it makes sense to examine narrower hypotheses
+of linear and nonlinear trends. `car::linearHypothesis()` provides a general way to
+do this, giving multivariate tests for one or more linear combinations of coefficients.
+
+The joint test of the linear coefficients for anxiety and depression, 
+$H_0 : \boldsymbol{\beta}_1 = \boldsymbol{0}$ is highly significant,
+```{r addhealth-linhyp1}
+## linear effect
+linearHypothesis(AH.mlm, "grade.L") |> print(SSP = FALSE)
+```
+
+The test of the quadratic coefficients $H_0 : \boldsymbol{\beta}_2 = \boldsymbol{0}$
+indicates significant curvature in trends across grade, as we saw in the plots of their means,
+Figures \@ref(fig:addhealth-means-each) and \@ref(fig:addhealth-means-plot).
+```{r addhealth-linhyp2}
+## quadratic effect
+linearHypothesis(AH.mlm, "grade.Q") |> print(SSP = FALSE)
+```
+
+We can also test the hypothesis that all higher order terms beyond the quadratic are zero,
+H_0 : \boldsymbol{\beta}_3 =  \boldsymbol{\beta}_4 =  \boldsymbol{\beta}_5 = \boldsymbol{0}$:
+```{r addhealth-linhyp3}
+## joint test of all higher terms
+linearHypothesis(AH.mlm, rownames(coef(AH.mlm))[3:5]) |> print(SSP = FALSE)
+```
+
+
+## HE plot {-}
+
+Figure \@ref(fig:addhealth-heplot) shows the HE plot for this problem.
+The **H** ellipse for the `grade` effect reflects the increasing pattern in the means across grades:
+depression increases along with anxiety. The error **E** ellipse reflects the pooled with-group
+covariance, the weighted average of those shown in \@ref{fig-addhealth-covellipse}.
+
+You can include any linear hypotheses or contrasts using the `hypotheses` argument.
+The **H** ellipses for the 1 df linear and quadratic terms plot as lines.
+The linear effect corresponds to the major axis of the **H** ellipse for the `grade` effect.
+
+Again, to preserve resolution in the plot, I show the **H** and **E** ellipses with only 10% coverage,
+but it is only the relative size of an **H** ellipse relative to **E** that matters:
+With the default significance scaling, any effect is significant _iff_ the
+corresponding **H** ellipse projects anywhere outside the **E** ellipse.
+
+```{r addhealth-heplot, echo = -1}
+#| fig.cap = "HE plot for the multivariate model `AH.mlm`, showing the overall effect of `grade` as well as tests for the linear and quadratic terms in this model."
+op <- par(mar = c(4,4,1,1)+0.1)
+heplot(AH.mlm, 
+       hypotheses = c("grade.L", "grade.Q"), 
+       hyp.labels = c("linear", "quad"),
+       label.pos = c(4, 3, 1, 1),
+       fill=c(TRUE, FALSE),
+       level = 0.1,
+       cex.lab = 1.5)
+```
+
 # Plastic film data
 
 An experiment was conducted to determine the optimum conditions for extruding plastic film. 
@@ -95,6 +309,8 @@ This example illustrates:
 * the difference between "effect" scaling and "evidence" (significance) scaling, and 
 * visualizing composite linear hypotheses.
 	
+## Multivariate tests {-}
+
 We begin with an overall MANOVA for the two-way MANOVA model. In all these analyses, we use
 `car::Anova()` for significance tests rather than `stats::anova()`, which only provides
 so-called "Type I" (sequential) tests for terms in linear models.
@@ -136,6 +352,7 @@ Traditional univariate plots of the means for each variable separately
 are useful, but they don't allow visualization of the
 *relations* among the response variables.
 
+## HE plots {-}
 We can visualize these
 effects for pairs of variables in an HE plot, showing the "size" and
 orientation of hypothesis variation ($\mathbf{H}$) in relation to error
@@ -246,11 +463,13 @@ Thus, for example, the joint test of both main effects tests the parameters
 `rateHigh` and `additiveHigh`.
 
 ```{r, plastic-tests}
-print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh"), title="Main effects"), 
-      SSP=FALSE)
+linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh"), 
+                 title="Main effects") |>
+  print(SSP=FALSE)
 
-print(linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh", "rateHigh:additiveHigh"), 
-                       title="Groups"), SSP=FALSE)
+linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh", "rateHigh:additiveHigh"),
+                 title="Groups") |>
+  print(SSP=FALSE)
 ```
 
 Correspondingly, we can display these tests in the HE plot by specifying these tests in the
@@ -326,7 +545,7 @@ The main questions of interest were:
 * Does attractiveness of the "defendant" influence the sentence or perceived seriousness of the crime?  
 * Does attractiveness interact with the nature of the crime?
 
-## Manipulation check
+## Manipulation check {-}
 
 But first, as a check on the manipulation of attractiveness,
 we try to assess the ratings of the photos in relation to the 
@@ -423,7 +642,7 @@ is determined nearly entirely by ratings on `happy` and `independent`.
 This display gives a relatively simple account of the results of the MANOVA
 and the relations of each of the ratings to discrimination among the photos.
 
-## Main analysis
+## Main analysis {-}
 
 Proceeding to the main questions of interest, we carry out a two-way MANOVA of the responses
 `Years` and `Serious` in relation to the independent variables
@@ -673,4 +892,4 @@ but nowhere does it protrude beyond the boundary of the $\mathbf{E}$ ellipsoid.
 
 
 
-## References
+# References

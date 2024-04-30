@@ -53,7 +53,8 @@ Suggests:
     dplyr,
     tidyr,
     ggplot2,
-    bookdown
+    bookdown,
+    patchwork
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues

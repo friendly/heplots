@@ -1,6 +1,6 @@
 
 
-#' Adolescent Health Data
+#' Adolescent Mental Health Data
 #' 
 #' This data was taken from the National Longitudinal Study of Adolescent
 #' Health.  It is a cross-sectional sample of participants from grades 7--12,
@@ -34,13 +34,44 @@
 #' @examples
 #' 
 #' data(AddHealth)
+#' 
+#' if(require(dplyr) & require(ggplot2)) {
+#' # find means & std.errors by grade
+#' means <- AddHealth |>
+#' group_by(grade) |>
+#'   summarise(
+#'     n = n(),
+#'     dep_se = sd(depression, na.rm = TRUE) / sqrt(n),
+#'     anx_se = sd(anxiety, na.rm = TRUE) / sqrt(n),
+#'     depression = mean(depression),
+#'     anxiety = mean(anxiety) ) |> 
+#'   relocate(depression, anxiety, .after = grade) |>
+#'   print()
+#'   
+#' # plot means with std.error bars
+#' ggplot(data = means, aes(x = anxiety, y = depression, 
+#' color = grade)) +
+#'   geom_point(size = 3) +
+#'   geom_errorbarh(aes(xmin = anxiety - anx_se, 
+#'                      xmax = anxiety + anx_se)) +
+#'   geom_errorbar(aes(ymin = depression - dep_se, 
+#'                     ymax = depression + dep_se)) +
+#'   geom_line(aes(group = 1), linewidth = 1.5) +
+#'   geom_label(aes(label = grade), 
+#'              nudge_x = -0.015, nudge_y = 0.02) +
+#'   scale_color_discrete(guide = "none") +
+#'   theme_bw(base_size = 15)
+#' }
+#' 
 #' # fit mlm
-#' AH.mod <- lm(cbind(depression, anxiety) ~ grade, data=AddHealth)
+#' AH.mod <- lm(cbind(anxiety, depression) ~ grade, data=AddHealth)
 #' 
 #' car::Anova(AH.mod)
 #' summary(car::Anova(AH.mod))
 #' 
-#' heplot(AH.mod, hypotheses="grade.L", fill=c(TRUE, FALSE))
+#' heplot(AH.mod, hypotheses="grade.L", 
+#'        fill=c(TRUE, FALSE),
+#'        level = 0.4)
 #' 
 NULL
 
@@ -648,30 +679,47 @@ NULL
 #' @examples
 #' 
 #' data(Iwasaki_Big_Five)
+#' # use Helmert contrasts for groups
+#' contrasts(Iwasaki_Big_Five$Group) <- 
+#'    matrix(c(2, -1, -1,
+#'             0, -1,  1), ncol=2)
+#'
 #' str(Iwasaki_Big_Five)
 #' 
-#' mod <- lm(cbind(N, E, O, A, C) ~ Group, data=Iwasaki_Big_Five)
+#' Big5.mod <- lm(cbind(N, E, O, A, C) ~ Group, data=Iwasaki_Big_Five)
+#' coef(Big5.mod)
 #' 
-#' car::Anova(mod)
+#' car::Anova(Big5.mod)
+#' 
+#' # test contrasts
+#' car::linearHypothesis(Big5.mod, "Group1", title = "Eur vs Asian")
+#' car::linearHypothesis(Big5.mod, "Group2", title = "Asian: Amer vs Inter")
 #' 
 #' # heplots
-#' labs <- c("Neuroticism", "Extraversion", "Openness", "Agreeableness", "Consientiousness" )
+#' labs <- c("Neuroticism", "Extraversion", "Openness", "Agreeableness", "Conscientiousness" )
 #' 
-#' heplot(mod,
+#' heplot(Big5.mod,
 #'        fill = TRUE, fill.alpha = 0.2, 
 #'        cex.lab = 1.5,
 #'        xlab = labs[1], ylab = labs[2])
 #' 
-#' heplot(mod, variables = c(2,5),
+#' heplot(Big5.mod, variables = c(2,5),
 #'        fill = TRUE, fill.alpha = 0.2,
 #'        cex.lab = 1.5,
 #'        xlab = labs[2], ylab = labs[5])
 #' 
-#' pairs(mod, 
+#' pairs(Big5.mod, 
 #'       fill = TRUE, fill.alpha = 0.2, var.labels = labs)
 #' 
-#' 
-#' 
+#'
+#' # canonical discriminant analysis
+#' if (require(candisc)) { 
+#' library(candisc)
+#' Big5.can <- candisc(Big5.mod)
+#' Big5.can
+#' heplot(Big5.can, fill = TRUE, fill.alpha = 0.1)
+#' }
+
 NULL
 
 

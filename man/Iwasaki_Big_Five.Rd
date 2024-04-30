@@ -42,30 +42,46 @@ groups
 \examples{
 
 data(Iwasaki_Big_Five)
+# use Helmert contrasts for groups
+contrasts(Iwasaki_Big_Five$Group) <- 
+   matrix(c(2, -1, -1,
+            0, -1,  1), ncol=2)
+
 str(Iwasaki_Big_Five)
 
-mod <- lm(cbind(N, E, O, A, C) ~ Group, data=Iwasaki_Big_Five)
+Big5.mod <- lm(cbind(N, E, O, A, C) ~ Group, data=Iwasaki_Big_Five)
+coef(Big5.mod)
 
-car::Anova(mod)
+car::Anova(Big5.mod)
+
+# test contrasts
+car::linearHypothesis(Big5.mod, "Group1", title = "Eur vs Asian")
+car::linearHypothesis(Big5.mod, "Group2", title = "Asian: Amer vs Inter")
 
 # heplots
-labs <- c("Neuroticism", "Extraversion", "Openness", "Agreeableness", "Consientiousness" )
+labs <- c("Neuroticism", "Extraversion", "Openness", "Agreeableness", "Conscientiousness" )
 
-heplot(mod,
+heplot(Big5.mod,
        fill = TRUE, fill.alpha = 0.2, 
        cex.lab = 1.5,
        xlab = labs[1], ylab = labs[2])
 
-heplot(mod, variables = c(2,5),
+heplot(Big5.mod, variables = c(2,5),
        fill = TRUE, fill.alpha = 0.2,
        cex.lab = 1.5,
        xlab = labs[2], ylab = labs[5])
 
-pairs(mod, 
+pairs(Big5.mod, 
       fill = TRUE, fill.alpha = 0.2, var.labels = labs)
 
 
-
+# canonical discriminant analysis
+if (require(candisc)) { 
+library(candisc)
+Big5.can <- candisc(Big5.mod)
+Big5.can
+heplot(Big5.can, fill = TRUE, fill.alpha = 0.1)
+}
 }
 \references{
 Costa Jr, P. T., & McCrae, R. R. (1992).  \emph{Revised NEO

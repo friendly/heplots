@@ -586,7 +586,7 @@ heplot.mlm <-
 			ell <- n.terms + hyp
 #			lines(H.ellipse[[ell]], col=col[ell], lty=lty[ell], lwd=lwd[ell])
 			polygon(H.ellipse[[ell]], col=fill.col[ell], border=col[ell],  lty=lty[ell], lwd=lwd[ell])
-			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell], label.pos=label.pos[ell], ...)
+			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell], label.pos=label.pos[hyp], ...)
 		}
 	if (!add && (!is.logical(factor.means) || factor.means)){
 		for (fac in factors){

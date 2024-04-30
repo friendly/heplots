@@ -243,7 +243,7 @@ cqplot.default <-
   	noteworthy <- car::showLabels(chi2q, y, labels=labs, id.method=id.method, 
   		id.n=id.n,  id.cex = id.cex, id.col = id.col)
   	
-  	res <- data.frame(dsq[noteworthy])
+  	res <- data.frame(DSQ = dsq.y[noteworthy], quantile = chi2q[noteworthy])
   	rownames(res) <- labs[noteworthy]
   	return(invisible(res))
   }
