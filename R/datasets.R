@@ -829,8 +829,8 @@ NULL
 #' 
 #' 
 #' @source 
-#' From Dr. Wuensch's StatData Page,
-#' \url{http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat}
+#' Originally obtained from Dr. Wuensch's StatData page,
+#' http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept candisc

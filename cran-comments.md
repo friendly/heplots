@@ -1,5 +1,5 @@
 ## Test environments
-* local Windows 10 install, R 4.3.1 (2023-06-16 ucrt)
+* local Windows 10 install, R 4.3.2 (2023-10-31 ucrt)
 * win-builder R Under development (unstable) (2024-02-13 r85898 ucrt)
 
 ## R CMD check results
@@ -21,24 +21,19 @@ We checked 9 reverse dependencies, comparing R CMD check results across CRAN and
 
 ## Comments
 
-This is a minor release, adding some new functionality, fixing a few bugs and adding a new dataset.
+This is a major release, primarily documenting all datasets in the package with `@concept` tags.
+It also adds new datasets and fixes bugs and documentation errors since the last CRAN release (v 1.6.2)
 
-## Version 1.6.2 (2024-02-14)
+## Version 1.7.0 (2024-05-01)
 
-* Add `peng` dataset, a version of `palmerpenguins::penguins`
-* Correct documentation problems from Roxygen 7.3.1 (@docType)
+* Added a new example (`AddHealth` data) to the `HE_manova` vignette
+* Added `Overdose` data, a simple MMRA example.
+* All datasets now classified by `@concept` tags in documentation, giving the primary methods ("MANOVA", "MMRA", "repeated", ...) that they illustrate. These supplement `@keyword` tags and appear in the index of the package documentation.
 
-## Version 1.6.1 (2023-12-05)
+## Version 1.6.3 (2024-03-05)
 
-* add warning to label.ellipse() if length(label.pos) > 1
-* fixed label.pos in `coefplot.mlm()`
-* add `ellipse.axes()` to draw axes of a covariance ellipse
-* add `ellipse.box()` to draw conjugate axes of a covariance ellipse
-
-
-
-
-
-
+* Correct documentation error in `cqplot()`
+* `cqplot()` now returns DSQ values for identified points
+* Fixed small buglet re: labeling of hypothesis ellipses in `heplot()`
 
 
