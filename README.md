@@ -181,6 +181,7 @@ method tags. Their names are linked to the documentation on the
 | [mathscore](http://friendly.github.io/heplots/reference/mathscore.html)               |   12 |    3 | Math scores for basic math and word problems                      | MANOVA           |
 | [schooldata](http://friendly.github.io/heplots/reference/schooldata.html)             |   70 |    8 | School Data                                                       | MMRA robust      |
 | [peng](http://friendly.github.io/heplots/reference/peng.html)                         |  333 |    8 | Size measurements for adult foraging penguins near Palmer Station | MANOVA           |
+| [Overdose](http://friendly.github.io/heplots/reference/Overdose.html)                 |   17 |    7 | Overdose of Amitriptyline                                         | MMRA cancor      |
 
 ## Examples
 

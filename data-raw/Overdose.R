@@ -24,7 +24,17 @@ library(dplyr)
 Overdose <- ami_data |>
   relocate(BP, .before = PR) |>
   rename(ECG_PR = PR, ECG_QRS = QRS) |>
-  mutate(Gender = factor(Gender, labels = "Male", "Female")) |> print()
+  mutate(Gender = factor(Gender, labels = c("Male", "Female"))) |> print()
+
+str(Overdose)
+
+save(Overdose, file = "Overdose.RData")
+
+source("C:/Dropbox/R/functions/use_data_doc.R")
+
+use_data_doc(Overdose, file = "data-raw/Over-doc.R")
+
+
 
 
 

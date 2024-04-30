@@ -30,3 +30,4 @@
 29,mathscore,12,3,Math scores for basic math and word problems,MANOVA
 30,schooldata,70,8,School Data,MMRA robust
 31,peng,333,8,Size measurements for adult foraging penguins near Palmer Station,MANOVA
+32,Overdose,17,7,Overdose of Amitriptyline,MMRA cancor

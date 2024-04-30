@@ -20,4 +20,4 @@ inst/doc/*\.pdf
 ^CITATION\.cff$
 NAMESPACE-old
 .nojekyll
-
+$data-raw$

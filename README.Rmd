@@ -169,7 +169,7 @@ method tags. Their names are linked to the documentation on the
 
 ```{r datasets, echo=FALSE}
 library(here)
-library(DT)
+#library(DT)
 library(dplyr)
 dsets <- read.csv(here::here("extra", "datasets.csv"))
 dsets <- dsets[,-1]  # remove row number
