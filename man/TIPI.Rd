@@ -88,4 +88,6 @@ Gosling, S. D., Rentfrow, P. J., & Swann, W. B, Jr. (2003). A
 very brief measure of the Big-Five personality domains. \emph{Journal of
 Research in Personality}, \bold{37}, 504?528.
 }
+\concept{MANOVA}
+\concept{candisc}
 \keyword{datasets}

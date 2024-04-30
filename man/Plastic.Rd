@@ -36,4 +36,5 @@ pairs(plastic.mod)
 Krzanowski, W. J. (1988). \emph{Principles of Multivariate
 Analysis. A User's Perspective}. Oxford.  (p. 381)
 }
+\concept{MANOVA}
 \keyword{datasets}

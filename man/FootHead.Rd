@@ -64,4 +64,6 @@ heplot3d(foot.mod, variables=c(1,2,6),
 }
 
 }
+\concept{MMRA}
+\concept{contrasts}
 \keyword{datasets}

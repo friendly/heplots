@@ -97,4 +97,7 @@ pairs(pmod1, manova=pmod1.aov,
 
 
 }
+\concept{MANOVA}
+\concept{contrasts}
+\concept{repeated}
 \keyword{datasets}

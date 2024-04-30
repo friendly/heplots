@@ -83,4 +83,6 @@ if(require(candisc)) {
 Todorov V. and Filzmoser P. (2009) Robust statistic for the
 one-way MANOVA, submitted to the \emph{Journal of Environmetrics}.
 }
+\concept{MANOVA}
+\concept{candisc}
 \keyword{datasets}

@@ -70,4 +70,5 @@ heplot3d(parenting.mod, wire=FALSE)
 
 
 }
+\concept{MANOVA}
 \keyword{datasets}

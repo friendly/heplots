@@ -78,4 +78,6 @@ heplot(AH.mod, hypotheses="grade.L",
        level = 0.4)
 
 }
+\concept{MANOVA}
+\concept{ordered}
 \keyword{datasets}

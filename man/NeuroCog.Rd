@@ -101,4 +101,7 @@ Cognitive Battery, Part 1: Test selection, reliability, and validity.
 \emph{American Journal of Psychiatry}, \bold{165} (2), 203-213.
 \url{https://pubmed.ncbi.nlm.nih.gov/18172019/}.
 }
+\concept{MANOVA}
+\concept{candisc}
+\concept{contrast}
 \keyword{datasets}

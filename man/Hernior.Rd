@@ -91,4 +91,6 @@ Hand, D. J., Daly, F., Lunn, A. D., McConway, K. J. and
 Ostrowski, E. (1994), \emph{A Handbook of Small Data Sets}, Number 484,
 390-391.
 }
+\concept{MMRA}
+\concept{candisc}
 \keyword{datasets}

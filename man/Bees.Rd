@@ -112,4 +112,5 @@ Friendly, M. (2006). Data Ellipses, HE Plots and Reduced-Rank
 Displays for Multivariate Linear Models: SAS Software and Examples
 \emph{Journal of Statistical Software}, \bold{17}, 1-42.
 }
+\concept{MANOVA}
 \keyword{datasets}

@@ -71,4 +71,6 @@ Designs. \emph{Journal of Statistical Software}, 37(4), 1-40.
 Keesling, J.W., Bock, R.D. et al, "The Laboratory School study of vocabulary
 growth", University of Chicago, 1975.
 }
+\concept{contrasts}
+\concept{repeated}
 \keyword{datasets}

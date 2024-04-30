@@ -106,4 +106,6 @@ of the Thebaid}, Oxford: Oxford University Press.
 Hand, D. J., F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski (1994).
 \emph{A Handbook of Small Datasets}, Chapman and Hall/CRC, London.
 }
+\concept{MANOVA}
+\concept{contrasts}
 \keyword{datasets}

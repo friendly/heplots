@@ -88,4 +88,5 @@ Costa Jr, P. T., & McCrae, R. R. (1992).  \emph{Revised NEO
 Personality Inventory (NEO PI-R) and NEO Five-Factor Inventory (NEOFFI)
 professional manual}.  Psychological Assessment Resources.
 }
+\concept{MANOVA}
 \keyword{datasets}

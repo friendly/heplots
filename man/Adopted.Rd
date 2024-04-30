@@ -95,4 +95,6 @@ Adopted Children,
 \seealso{
 \code{\link[Sleuth2]{ex1605}}
 }
+\concept{MMRA}
+\concept{repeated}
 \keyword{datasets}

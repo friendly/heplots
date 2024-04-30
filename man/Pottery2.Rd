@@ -100,4 +100,6 @@ Romano-British Pottery by Atomic Absorption Spectrophotometry.
 \code{\link[carData]{Pottery}} for the related (subset) data set;
     \code{\link[archdata]{RBPottery}} for a newer version with more variables.
 }
+\concept{MANOVA}
+\concept{candisc}
 \keyword{datasets}

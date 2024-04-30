@@ -72,4 +72,6 @@ if (require(candisc)) {
 
 
 }
+\concept{MANOVA}
+\concept{candisc}
 \keyword{datasets}

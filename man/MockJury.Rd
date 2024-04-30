@@ -81,4 +81,6 @@ Data from the thesis by Plaster, M. E. (1989). \emph{Inmates as
 mock jurors: The effects of physical attractiveness upon juridic decisions.}
 M.A. thesis, Greenville, NC: East Carolina University.
 }
+\concept{MANOVA}
+\concept{candisc}
 \keyword{datasets}

@@ -31,6 +31,8 @@
 #' \emph{Practical Assessment, Research & Evaluation}, 19 (1).
 #' \url{https://scholarworks.umass.edu/pare/vol19/iss1/17/}
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept ordered
 #' @examples
 #' 
 #' data(AddHealth)
@@ -117,6 +119,8 @@ NULL
 #' This data set is identical to \code{\link[Sleuth2]{ex1605}} in the
 #' \code{Sleuth2} package.
 #' @keywords datasets
+#' @concept MMRA
+#' @concept repeated
 #' @examples
 #' 
 #' # Treat as multivariate regression problem
@@ -228,6 +232,7 @@ NULL
 #' Other Halictine Species \emph{Journal of Insect Behavior}, \bold{13},
 #' 627-650.
 #' @keywords datasets
+#' @concept MANOVA
 #' @examples
 #' 
 #' data(Bees)
@@ -340,6 +345,7 @@ NULL
 #' Friendly, M. (1991). \emph{SAS System for Statistical Graphics}, Cary, NC:
 #' SAS Institute.
 #' @keywords datasets
+#' @concept MANOVA
 #' @examples
 #' 
 #' data(Diabetes)
@@ -406,6 +412,8 @@ NULL
 #' Rencher, A. C. (1995), \emph{Methods of Multivariate Analysis}, New
 #' York: Wiley, Table 8.3.
 #' @keywords datasets
+#' @concept MMRA
+#' @concept contrasts
 #' @examples
 #' 
 #' data(FootHead)
@@ -496,6 +504,8 @@ NULL
 #' scientists} London: Chapman and Hall. ISBN: 0412258005. Table E.1.
 #' 
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept repeated
 #' @examples
 #' 
 #' library(car)
@@ -592,6 +602,8 @@ NULL
 #' source: A study by B. McPeek and J. P. Gilbert of the Harvard Anesthesia
 #' Center.
 #' @keywords datasets
+#' @concept MMRA
+#' @concept candisc
 #' @examples
 #' 
 #' library(car)
@@ -676,6 +688,7 @@ NULL
 #' MANOVA.  \emph{Applied Multivariate Research}, \bold{12}, 199-226.
 #' https://doi.org/10.22329/amr.v12i3.660.
 #' @keywords datasets
+#' @concept MANOVA
 #' @examples
 #' 
 #' data(Iwasaki_Big_Five)
@@ -743,6 +756,7 @@ NULL
 #'   }
 #' @source Fictitious data
 #' @keywords datasets
+#' @concept MANOVA
 #' @examples
 #' 
 #' data(mathscore)
@@ -818,6 +832,8 @@ NULL
 #' From Dr. Wuensch's StatData Page,
 #' \url{http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat}
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept candisc
 #' @examples
 #' 
 #' # manipulation check:  test ratings of the photos classified by Attractiveness
@@ -924,6 +940,9 @@ NULL
 #' \emph{Schizophrenia Research: Cognition}, \bold{2} (4), 227-232.
 #' \code{doi: 10.1016/j.scog.2015.09.001}
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept contrast
+#' @concept candisc
 #' @examples
 #' 
 #' library(car)
@@ -986,6 +1005,7 @@ NULL
 #' More details are available at
 #' \url{http://web.archive.org/web/20060830061414/http://www.unc.edu/~curran/srcd-docs/srcdmeth.pdf}.
 #' @keywords datasets
+#' @concept MMRA
 #' @examples
 #' 
 #' library(car)
@@ -1078,6 +1098,8 @@ NULL
 #' geogenic concentration gradients, \emph{The Science of the Total
 #' Environment}, 377, 416-433.
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept candisc
 #' @examples
 #' 
 #' data(Oslo)
@@ -1203,6 +1225,7 @@ NULL
 #' Multivariate Research: Design and Interpretation}, Thousand Oaks, CA: Sage
 #' Publications, \url{https://studysites.sagepub.com/amrStudy/}, Exercises 10B.
 #' @keywords datasets
+#' @concept MANOVA
 #' @examples
 #' 
 #' data(Parenting)
@@ -1274,6 +1297,7 @@ NULL
 #' Johnson, R.A. & Wichern, D.W. (1992). \emph{Applied Multivariate
 #' Statistical Analysis}, 3rd ed., Prentice-Hall. Example 6.12 (p. 266).
 #' @keywords datasets
+#' @concept MANOVA
 #' @examples
 #' 
 #' str(Plastic)
@@ -1340,6 +1364,8 @@ NULL
 #' \code{\link[archdata]{RBPottery}}. %
 #' % \url{http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html}
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept candisc
 #' @examples
 #' 
 #' library(car)
@@ -1434,6 +1460,9 @@ NULL
 #' @source Timm, N. (1975) \emph{Multivariate analysis, with applications in
 #' education and psychology} Brooks/Cole.
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept repeated
+#' @concept contrasts
 #' @examples
 #' 
 #' data(Probe1)
@@ -1520,6 +1549,8 @@ NULL
 #' Longitudinal Analysis}, New York, NY: Wiley-Interscience.
 #' \url{https://rdrr.io/rforge/ALA/}.
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept repeated
 #' @examples
 #' 
 #' data(RatWeight)
@@ -1585,6 +1616,7 @@ NULL
 #' psychology experiments and questionnaires},
 #' \url{https://cran.r-project.org/doc/contrib/Baron-rpsych.pdf}
 #' @keywords datasets
+#' @concept repeated
 #' @examples
 #' 
 #' data(ReactTime)
@@ -1657,6 +1689,8 @@ NULL
 #' Education and Psychology}.  Wadsworth (Brooks/Cole), Examples 4.3 (p. 281),
 #' 4.7 (p. 313), 4.13 (p. 344).
 #' @keywords datasets
+#' @concept MMRA
+#' @concept MANCOVA
 #' @examples
 #' 
 #' str(Rohwer)
@@ -1696,6 +1730,7 @@ NULL
 #' 
 #' In a classic experiment carried out from 1918 to 1934, growth of apple trees
 #' of six different rootstocks were compared on four measures of size.
+#' How do the measures of size vary with the type of rootstock?
 #' 
 #' This is a balanced, one-way MANOVA design, with n=8 trees for each
 #' rootstock.
@@ -1718,18 +1753,22 @@ NULL
 #' Problems from Many Fields for the Student and Research Worker}
 #' Springer-Verlag, pp. 357--360.
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept contrasts
 #' @examples
 #' 
 #' library(car)
 #' data(RootStock)
-#' ## maybe str(RootStock) ; plot(RootStock) ...
+#' str(RootStock)
+#' 
 #' root.mod <- lm(cbind(girth4, ext4, girth15, weight15) ~ rootstock, data=RootStock)
 #' car::Anova(root.mod)
 #' 
 #' pairs(root.mod)
 #' 
 #' # test two orthogonal contrasts among the rootstocks
-#' hyp <- matrix(c(2,-1,-1,-1,-1,2,  1, 0,0,0,0,-1), 2, 6, byrow=TRUE)
+#' hyp <- matrix(c(2,-1,-1,-1,-1,2,  
+#'                 1, 0,0,0,0,-1), 2, 6, byrow=TRUE)
 #' car::linearHypothesis(root.mod, hyp)
 #' heplot(root.mod, hypotheses=list(Contrasts=hyp, C1=hyp[1,], C2=hyp[2,]))
 #' 
@@ -1781,6 +1820,7 @@ NULL
 #' Multivariate Statistical Analysis: A Graduate Course and Handbook}. American
 #' Sciences Press, p. 217.
 #' @keywords datasets
+#' @concept MMRA
 #' @examples
 #' 
 #' data(Sake)
@@ -1839,6 +1879,8 @@ NULL
 #' Managerial Efficiency: An Application of Data Envelopment Analysis to
 #' Program Follow Through. \emph{Management Science}, \bold{27}, 668-697.
 #' @keywords datasets
+#' @concept MMRA
+#' @concept robust
 #' @examples
 #' 
 #' data(schooldata)
@@ -1944,6 +1986,8 @@ NULL
 #' D. J. Hand, F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski (1994).
 #' \emph{A Handbook of Small Datasets}, Chapman and Hall/CRC, London.
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept contrasts
 #' @examples
 #' 
 #' data(Skulls)
@@ -2041,6 +2085,8 @@ NULL
 #' Statistics in the Social Sciences} Monterey, CA: Brooks/Cole, Table 5-1, p.
 #' 192.
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept candisc
 #' @examples
 #' 
 #' data(SocGrades)
@@ -2129,6 +2175,8 @@ NULL
 #' revisited.  \emph{Schizophrenia Research: Cognition}, \bold{2} (4), 227-232.
 #' doi: 10.1016/j.scog.2015.09.001
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept candisc
 #' @examples
 #' 
 #' library(car)
@@ -2215,6 +2263,8 @@ NULL
 #' \emph{Psychometrika}, \bold{85}, 926?945.
 #' https://doi.org/10.1007/s11336-020-09731-4
 #' @keywords datasets
+#' @concept MANOVA
+#' @concept candisc
 #' @examples
 #' 
 #' data(TIPI)
@@ -2273,6 +2323,8 @@ NULL
 #' @source R.D.  
 #' Bock, \emph{Multivariate statistical methods in behavioral research}, McGraw-Hill, New York, 1975, pp453.
 #' @keywords datasets
+#' @concept repeated
+#' @concept contrasts
 #' @examples
 #' 
 #' library(car)

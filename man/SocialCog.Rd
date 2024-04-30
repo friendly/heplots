@@ -75,4 +75,6 @@ pairs(SC.mod, fill=c(TRUE,FALSE), fill.alpha=.1)
 
 
 }
+\concept{MANOVA}
+\concept{candisc}
 \keyword{datasets}

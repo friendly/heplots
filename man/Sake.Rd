@@ -62,4 +62,5 @@ Barrett, B. E. (2003). Understanding Influence in Multivariate
 Regression. \emph{Communications in Statistics - Theory and Methods} 32 (3),
 667-680.
 }
+\concept{MMRA}
 \keyword{datasets}

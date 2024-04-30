@@ -5,6 +5,7 @@
 * Fixed small buglet re: labeling of hypothesis ellipses in `heplot()`
 * Added a new example (`AddHealth` data) to the `HE_manova` vignette
 * Added `Overdose` data
+* All datasets now classified by `@concept` tags in documentation, giving the primary methods ("MANOVA", "MMRA", "repeated", ...) that they illustrate. These supplement `@keyword` and appear in the index of the package documentation.
 
 ## Version 1.6.2 (2024-02-14)
 

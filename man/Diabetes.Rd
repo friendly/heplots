@@ -97,4 +97,5 @@ Reaven, G. M. and Miller, R. G. (1979).  An attempt to define
 the nature of chemical diabetes using a multidimensional analysis.
 \emph{Diabetologia}, 16, 17-24.
 }
+\concept{MANOVA}
 \keyword{datasets}

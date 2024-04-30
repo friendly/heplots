@@ -1,54 +1,77 @@
-man-old/AddHealth.Rd:\concept{MANOVA}
-man-old/AddHealth.Rd:\concept{ordered}
-man-old/Adopted.Rd:\concept{MMRA}
-man-old/Adopted.Rd:\concept{repeated}
-man-old/Bees.Rd:\concept{MANOVA}man-old/Diabetes.Rd:\concept{MANOVA}
-man-old/Ellipsoid.Rd:% For non-standard keywords, use \concept instead of \keyword:
-man-old/Ellipsoid.Rd:% \concept{ ~cpt1 }
-man-old/Ellipsoid.Rd:% \concept{ ~cpt2 }
-man-old/Ellipsoid.Rd:% Use only one concept per line.
-man-old/FootHead.Rd:\concept{MMRA}
-man-old/FootHead.Rd:\concept{contrasts}
-man-old/Headache.Rd:\concept{MANOVA}
-man-old/Headache.Rd:\concept{repeated}
-man-old/Hernior.Rd:\concept{MMRA}
-man-old/Hernior.Rd:\concept{candisc}
-man-old/Iwasaki_Big_Five.Rd:\concept{MANOVA}
-man-old/MockJury.Rd:\concept{MANOVA}
-man-old/MockJury.Rd:\concept{candisc}
-man-old/NLSY.Rd:\concept{MMRA}
-man-old/NeuroCog.Rd:\concept{MANOVA}
-man-old/NeuroCog.Rd:\concept{candisc}
-man-old/Oslo.Rd:\concept{MANOVA}
-man-old/Oslo.Rd:\concept{candisc}
-man-old/Parenting.Rd:\concept{MANOVA}
-man-old/Plastic.Rd:\concept{MANOVA}
-man-old/Pottery2.Rd:\concept{MANOVA}
-man-old/Pottery2.Rd:\concept{candisc}
-man-old/Probe.Rd:\concept{MANOVA}
-man-old/Probe.Rd:\concept{repeated}
-man-old/Probe.Rd:\concept{contrasts}
-man-old/RatWeight.Rd:\concept{MANOVA}
-man-old/RatWeight.Rd:\concept{repeated}
-man-old/ReactTime.Rd:\concept{repeated}
-man-old/Rohwer.Rd:\concept{MMRA}
-man-old/Rohwer.Rd:\concept{MANCOVA}
-man-old/RootStock.Rd:\concept{MANOVA}
-man-old/RootStock.Rd:\concept{contrasts}
-man-old/Sake.Rd:\concept{MMRA}
-man-old/Skulls.Rd:\concept{MANOVA}
-man-old/Skulls.Rd:\concept{contrasts}
-man-old/SocGrades.Rd:\concept{MANOVA}
-man-old/SocGrades.Rd:\concept{candisc}
-man-old/SocialCog.Rd:\concept{MANOVA}
-man-old/SocialCog.Rd:\concept{candisc}
-man-old/TIPI.Rd:\concept{MANOVA}
-man-old/TIPI.Rd:\concept{candisc}
-man-old/etasq.Rd:\concept{effect size}
-man-old/etasq.Rd:\concept{strength of association}
-man-old/glance.mlm.Rd:% For non-standard keywords, use \concept instead of \keyword:
-man-old/glance.mlm.Rd:% \concept{ ~cpt1 }
-man-old/glance.mlm.Rd:% \concept{ ~cpt2 }
-man-old/glance.mlm.Rd:% Use only one concept per line.
-man-old/schooldata.Rd:\concept{MMRA}
-man-old/schooldata.Rd:\concept{robust}
+# generated via `tcgrep concept man-old > extra/concepts.txt
+# then hand edited
+
+AddHealth.Rd:
+#' @concept MANOVA
+#' @concept ordered
+Adopted.Rd:
+#' @concept MMRA
+#' @concept repeated
+Bees.Rd:
+#' @concept MANOVA
+Diabetes.Rd:
+#' @concept MANOVA
+FootHead.Rd:
+#' @concept MMRA
+#' @concept contrasts
+Headache.Rd:
+#' @concept MANOVA
+#' @concept repeated
+Hernior.Rd:
+#' @concept MMRA
+#' @concept candisc
+Iwasaki_Big_Five.Rd:
+#' @concept MANOVA
+MockJury.Rd:
+#' @concept MANOVA
+#' @concept candisc
+NLSY.Rd:
+#' @concept MMRA
+NeuroCog.Rd:
+#' @concept MANOVA
+#' @concept candisc
+Oslo.Rd:
+#' @concept MANOVA
+#' @concept candisc
+Parenting.Rd:
+#' @concept MANOVA
+Plastic.Rd:
+#' @concept MANOVA
+Pottery2.Rd:
+#' @concept MANOVA
+#' @concept candisc
+Probe.Rd:
+#' @concept MANOVA
+#' @concept repeated
+#' @concept contrasts
+RatWeight.Rd:
+#' @concept MANOVA
+#' @concept repeated
+ReactTime.Rd:
+#' @concept repeated
+Rohwer.Rd:
+#' @concept MMRA
+#' @concept MANCOVA
+RootStock.Rd:
+#' @concept MANOVA
+#' @concept contrasts
+Sake.Rd:
+#' @concept MMRA
+Skulls.Rd:
+#' @concept MANOVA
+#' @concept contrasts
+SocGrades.Rd:
+#' @concept MANOVA
+#' @concept candisc
+SocialCog.Rd:
+#' @concept MANOVA
+#' @concept candisc
+TIPI.Rd:
+#' @concept MANOVA
+#' @concept candisc
+etasq.Rd:
+#' @concept effect size
+#' @concept strength of association
+schooldata.Rd:
+#' @concept MMRA
+#' @concept robust

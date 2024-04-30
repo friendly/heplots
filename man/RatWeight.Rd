@@ -72,4 +72,6 @@ Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
 \emph{Journal of Statistical Software}, 37(4), 1-40. 
 \doi{10.18637/jss.v037.i04}.
 }
+\concept{MANOVA}
+\concept{repeated}
 \keyword{datasets}

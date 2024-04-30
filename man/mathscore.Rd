@@ -42,4 +42,5 @@ heplot(math.mod, fill=TRUE,
 
 
 }
+\concept{MANOVA}
 \keyword{datasets}

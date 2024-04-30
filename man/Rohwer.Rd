@@ -71,4 +71,6 @@ Friendly, M. (2007).  HE plots for Multivariate General Linear
 Models.  \emph{Journal of Computational and Graphical Statistics},
 \bold{16}(2) 421--444.  \url{http://datavis.ca/papers/jcgs-heplots.pdf}
 }
+\concept{MANCOVA}
+\concept{MMRA}
 \keyword{datasets}

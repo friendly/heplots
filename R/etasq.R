@@ -53,13 +53,15 @@
 #' @seealso \code{\link[car]{Anova}}
 #' @references Muller, K. E. and Peterson, B. L. (1984). Practical methods for
 #' computing power in testing the Multivariate General Linear Hypothesis
-#' \emph{Computational Statistics and Data Analysis}, 2, 143-158.
+#' \emph{Computational Statistics and Data Analysis}, \bold{2}, 143-158.
 #' 
 #' Muller, K. E. and LaVange, L. M. and Ramey, S. L. and Ramey, C. T. (1992).
 #' Power Calculations for General Linear Multivariate Models Including Repeated
 #' Measures Applications. \emph{Journal of the American Statistical
-#' Association}, 87, 1209-1226.
+#' Association}, \bold{87}, 1209-1226.
 #' @keywords multivariate
+#' @concept effect size
+#' @concept strength of association
 #' @examples
 #' 
 #' library(car)
