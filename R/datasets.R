@@ -830,7 +830,7 @@ NULL
 #' 
 #' @source 
 #' Originally obtained from Dr. Wuensch's StatData page,
-#' https://core.ecu.edu/wuenschk/StatData/PLASTER.dat
+#' \url{https://core.ecu.edu/wuenschk/StatData/PLASTER.dat}
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept candisc
