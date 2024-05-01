@@ -26,7 +26,8 @@ devtools::check_win_devel()
 
 # check reverse dependencies
 devtools::revdep()
-# [1] "candisc"      "effects"      "Guerry"       "HistData"     "ICSClust"     "latentnet"    "MorphoTools2" "mvinfluence"  "ordr"       
+# [1] "candisc"      "effects"      "Guerry"       "HistData"     "ICSClust"     "latentnet"   
+# [7] "MorphoTools2" "mvinfluence"  "ordr"
 
 library(revdepcheck)
 revdep_reset()

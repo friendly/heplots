@@ -1,6 +1,6 @@
 ## Test environments
 * local Windows 10 install, R 4.3.2 (2023-10-31 ucrt)
-* win-builder R Under development (unstable) (2024-02-13 r85898 ucrt)
+* win-builder R Under development (unstable) (2024-04-29 r86495 ucrt)
 
 ## R CMD check results
 There were no ERRORs or WARNINGS or NOTES.
