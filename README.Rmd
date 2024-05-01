@@ -266,10 +266,14 @@ differences among the group means relative to within-group scatter. The computat
 with the [`candisc`](http://github.com/friendly/candisc) package, which has an `heplot.candisc()`
 method.
 
-```{r iris-can}
+```{r iris-can0}
 library(candisc)
 iris.can <- candisc(iris.mod) |> print()
+```
 
+The HE plot in canonical space shows that the differences among species are nearly
+entirely one-dimensional.
+```{r iris-can}
 # HE plot in canonical space
 heplot(iris.can)
 ```

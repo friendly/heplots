@@ -245,7 +245,9 @@ heplot(iris.mod, hypotheses=hyp,
 ### All pairwise HE plots
 
 All pairwise HE plots are produced using the `pairs()` method for MLM
-objects.
+objects.In the plot, note how the means of most pairs of variables are
+very highly correlated, in the order Setosa \< Versicolor \< Virginica,
+but this pattern doesn’t hold for relations with `Sepal.Width`.
 
 ``` r
 pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
@@ -254,16 +256,58 @@ pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
 
 <img src="man/figures/README-iris3-1.png" width="100%" />
 
+### Canonical discriminant view
+
+For more than two response variables, a multivariate effect can be
+viewed more simply by projecting the data into canonical space — the
+linear combinations of the responses which show the greatest differences
+among the group means relative to within-group scatter. The computations
+are performed with the [`candisc`](http://github.com/friendly/candisc)
+package, which has an `heplot.candisc()` method.
+
+``` r
+library(candisc)
+iris.can <- candisc(iris.mod) |> print()
+#> 
+#> Canonical Discriminant Analysis for Species:
+#> 
+#>    CanRsq Eigenvalue Difference  Percent Cumulative
+#> 1 0.96987   32.19193     31.907 99.12126     99.121
+#> 2 0.22203    0.28539     31.907  0.87874    100.000
+#> 
+#> Test of H0: The canonical correlations in the 
+#> current row and all that follow are zero
+#> 
+#>   LR test stat approx F numDF denDF   Pr(> F)    
+#> 1      0.02344  199.145     8   288 < 2.2e-16 ***
+#> 2      0.77797   13.794     3   145 5.794e-08 ***
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+The HE plot in canonical space shows that the differences among species
+are nearly entirely one-dimensional.
+
+``` r
+# HE plot in canonical space
+heplot(iris.can)
+```
+
+![](man/figures/README-iris-can-1.png)<!-- -->
+
+    #> Vector scale factor set to  43.914
+
 ### Covariance ellipses
 
 MANOVA relies on the assumption that within-group covariance matrices
 are all equal. It is useful to visualize these in the space of some of
 the predictors. `covEllipses()` provides this both for classical and
-robust estimates. The figure below shows these for the three Iris
-species and the pooled covariance matrix, which is the same as the **E**
-matrix used in MANOVA tests.
+robust (`method="mve"`) estimates. The figure below shows these for the
+three Iris species and the pooled covariance matrix, which is the same
+as the **E** matrix used in MANOVA tests.
 
 ``` r
+par(mar=c(4,4,1,1)+.1)
 covEllipses(iris[,1:4], iris$Species)
 covEllipses(iris[,1:4], iris$Species, 
             fill=TRUE, method="mve", add=TRUE, labels="")
