@@ -187,7 +187,7 @@ method tags. Their names are linked to the documentation on the
 
 This example illustrates HE plots using the classic `iris` data set. How
 do the means of the flower variables differ by `Species`? This dataset
-was the imputus for R. A. Fisher (1936) to propose a method of
+was the impetus for R. A. Fisher (1936) to propose a method of
 discriminant analysis using data collected by Edgar Anderson (1928).
 Though some may rightly deprecate Fisher for being a supporter of
 eugenics, Anderson’s `iris` dataset should not be blamed.

@@ -20,7 +20,7 @@
 #' \eqn{\eta^2} = SSH / (SSH + SSE).  These are identical in one-way designs.
 #' 
 #' Partial eta-squared describes the proportion of total variation attributable
-#' to a given factor, partialing out (excluding) other factors from the total
+#' to a given factor, partialling out (excluding) other factors from the total
 #' nonerror variation. These are commonly used as measures of effect size or
 #' measures of (non-linear) strength of association in ANOVA models.
 #' 

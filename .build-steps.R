@@ -5,13 +5,14 @@ Sys.setenv(RGL_USE_NULL = TRUE)
 # revdep
 #remotes::install_github("r-lib/revdepcheck")
 #library(revdepcheck)
+revdepcheck::revdep_reset()
 revdepcheck::revdep_check(num_workers = 4)
 
 # get list of possibly misspelled words
-wds <- spelling::spell_check_package()
+wds <- spelling::spell_check_package() |> print()
 cat(paste(wds[, "word"], collapse = "\n"))
 # to add all words
-update_wordlist()
+spelling::update_wordlist()
 
 library(devtools)
 

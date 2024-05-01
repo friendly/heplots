@@ -131,30 +131,58 @@ Exercise 7.25, p. 426.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Overdose</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set 'Overdose' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">Overdose</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'Overdose' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 'data.frame':	17 obs. of  7 variables:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ TCAD   : int  3389 1101 1131 596 896 1767 807 1111 645 628 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ AMI    : int  3149 653 810 448 844 1450 493 941 547 392 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Gender : Factor w/ 2 levels "Male","Female": 2 2 1 2 2 2 2 1 2 2 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ amount : int  7500 1975 3600 675 750 2500 350 1500 375 1050 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ BP     : int  0 0 60 60 70 60 80 70 60 60 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ ECG_PR : int  220 200 205 160 185 180 154 200 137 167 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ ECG_QRS: int  140 100 111 120 83 80 98 93 105 74 ...</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">Overdose</span><span class="op">)</span> </span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'Overdose' not found</span>
+<span class="r-plt img"><img src="Overdose-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">over.mlm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">TCAD</span>, <span class="va">AMI</span><span class="op">)</span> <span class="op">~</span> <span class="va">Gender</span> <span class="op">+</span> <span class="va">amount</span> <span class="op">+</span> <span class="va">BP</span> <span class="op">+</span> <span class="va">ECG_PR</span> <span class="op">+</span> <span class="va">ECG_QRS</span>, data <span class="op">=</span> <span class="va">Overdose</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(mf, parent.frame()):</span> object 'Overdose' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">over.mlm</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'over.mlm' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       TCAD           AMI</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  -2879.4782461 -2728.7085444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenderFemale   675.6507805   763.0297617</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> amount           0.2848511     0.3063734</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> BP               7.2511714     7.2055597</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ECG_PR          10.2721328     8.8961977</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ECG_QRS          7.5982397     4.9870508</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># check for outliers</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="cqplot.html">cqplot</a></span><span class="op">(</span><span class="va">over.mlm</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'over.mlm' not found</span>
+<span class="r-plt img"><img src="Overdose-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># HE plot shows that relations of responses to predictors are essentially one-dimensional</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">over.mlm</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'over.mlm' not found</span>
+<span class="r-plt img"><img src="Overdose-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># canonical correlation analysis </span></span></span>
 <span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">candisc</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="fu">cancor</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">TCAD</span>, <span class="va">AMI</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">Gender</span><span class="op">)</span> <span class="op">+</span> <span class="va">amount</span> <span class="op">+</span> <span class="va">BP</span> <span class="op">+</span> <span class="va">ECG_PR</span> <span class="op">+</span> <span class="va">ECG_QRS</span>, data <span class="op">=</span> <span class="va">Overdose</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(mf, parent.frame()):</span> object 'Overdose' not found</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>non-list contrasts argument ignored</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Canonical correlation analysis of:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	 5   X  variables:  as.numeric(Gender), amount, BP, ECG_PR, ECG_QRS </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   with	 2   Y  variables:  TCAD, AMI </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     CanR CanRSQ Eigen percent    cum                          scree</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.9437 0.8905 8.131   96.35  96.35 ******************************</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.4853 0.2355 0.308    3.65 100.00 *                             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Test of H0: The canonical correlations in the </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> current row and all that follow are zero</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      CanR LR test stat approx F numDF denDF  Pr(&gt; F)   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.94366      0.08372   4.9120    10    20 0.001223 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.48528      0.76451   0.8471     4    11 0.524104   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

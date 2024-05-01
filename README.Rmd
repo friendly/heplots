@@ -193,7 +193,7 @@ knitr::kable(dsets)
 
 This example illustrates HE plots using the classic `iris` data set. How
 do the means of the flower variables differ by `Species`? This dataset
-was the imputus for R. A. Fisher (1936) to propose a method of
+was the impetus for R. A. Fisher (1936) to propose a method of
 discriminant analysis using data collected by Edgar Anderson (1928).
 Though some may rightly deprecate Fisher for being a supporter of
 eugenics, Anderson's `iris` dataset should not be blamed.
@@ -246,22 +246,45 @@ heplot(iris.mod, hypotheses=hyp,
 ### All pairwise HE plots
 
 All pairwise HE plots are produced using the `pairs()` method for MLM
-objects.
+objects.In the plot, note how the means of most pairs of variables are very
+highly correlated, in the order Setosa < Versicolor < Virginica, but this
+pattern doesn't hold for relations with `Sepal.Width`.
 
-```{r, iris3, out.width="100%"}
+```{r, iris3}
+#| out.width="100%",
+#| fig.height = 6,
+#| fig.width = 6
 pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
       fill=TRUE, fill.alpha=0.1)
 ```
+
+### Canonical discriminant view
+
+For more than two response variables, a multivariate effect can be viewed more simply by projecting
+the data into canonical space --- the linear combinations of the responses which show the greatest
+differences among the group means relative to within-group scatter. The computations are performed
+with the [`candisc`](http://github.com/friendly/candisc) package, which has an `heplot.candisc()`
+method.
+
+```{r iris-can}
+library(candisc)
+iris.can <- candisc(iris.mod) |> print()
+
+# HE plot in canonical space
+heplot(iris.can)
+```
+
 
 ### Covariance ellipses
 
 MANOVA relies on the assumption that within-group covariance matrices are all equal.
 It is useful to visualize these in the space of some of the predictors.
-`covEllipses()` provides this both for classical and robust estimates.
+`covEllipses()` provides this both for classical and robust (`method="mve"`) estimates.
 The figure below shows these for the three Iris species and the 
 pooled covariance matrix, which is the same as the **E** matrix used
 in MANOVA tests.
 ```{r iris4, out.width="80%"}
+par(mar=c(4,4,1,1)+.1)
 covEllipses(iris[,1:4], iris$Species)
 covEllipses(iris[,1:4], iris$Species, 
             fill=TRUE, method="mve", add=TRUE, labels="")
