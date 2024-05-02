@@ -80,7 +80,8 @@ models, together with other packages:
 - Another package,
   [`mvinfluence`](https://friendly.github.io/mvinfluence/), provides
   diagnostic measures and plots for **influential observations** in MLM
-  designs.
+  designs. See the [package
+  documentation](https://friendly.github.io/mvinfluence/) for details.
 
 Several tutorial vignettes are also included. See
 `vignette(package="heplots")`.

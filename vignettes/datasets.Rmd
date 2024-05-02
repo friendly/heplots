@@ -52,8 +52,8 @@ The main methods are:
 * **MANOVA**: Multivariate analysis of variance
 * **MANCOVA**: Multivariate of covariance
 * **MMRA**: Multivariate multiple regression
-* **cancor**: Canonical correlation
-* **candisc**: Canonical discriminant analysis
+* **cancor**: Canonical correlation (using the [candisc](http://github.com/friendly/candisc) package)
+* **candisc**: Canonical discriminant analysis (using [candisc](http://github.com/friendly/candisc))
 * **repeated**: Repeated measures designs
 * **robust**: Robust estimation of MLMs
 
