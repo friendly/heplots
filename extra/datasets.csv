@@ -14,8 +14,7 @@
 13,Parenting,60,4,Father Parenting Competence,MANOVA contrasts
 14,Plastic,20,5,Plastic Film Data,MANOVA
 15,Pottery2,48,12,Chemical Analysis of Romano-British Pottery,MANOVA candisc
-16,Probe1,11,5,Response Speed in a Probe Experiment,MANOVA repeated
-17,Probe2,20,6,Response Speed in a Probe Experiment,MANOVA repeated
+16,Probe,11,5,Response Speed in a Probe Experiment,MANOVA repeated
 18,RatWeight,27,6,Weight Gain in Rats Exposed to Thiouracil and Thyroxin,MANOVA repeated
 19,ReactTime,10,6,Reaction Time Data,repeated
 20,Rohwer,69,10,Rohwer Data Set,MMRA MANCOVA

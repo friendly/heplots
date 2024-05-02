@@ -2467,7 +2467,7 @@ NULL
 #' 
 NULL
 
-#' Size measurements for adult foraging penguins near Palmer Station, Antarctica
+#' Size measurements for penguins near Palmer Station, Antarctica
 #'
 #' Data originally from \href{https://allisonhorst.github.io/palmerpenguins/}{\code{palmerpenguins}}. Includes
 #' measurements for penguin species, island in Palmer Archipelago,

@@ -3,7 +3,7 @@
 \docType{data}
 \name{peng}
 \alias{peng}
-\title{Size measurements for adult foraging penguins near Palmer Station, Antarctica}
+\title{Size measurements for penguins near Palmer Station, Antarctica}
 \format{
 A tibble with 333 rows and 8 variables:
 \describe{

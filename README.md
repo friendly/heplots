@@ -169,8 +169,7 @@ graphical output on the `pkgdown` website,
 | [peng](http://friendly.github.io/heplots/reference/peng.html)                         | 333  | 8    | Size measurements for adult foraging penguins near Palmer Station | MANOVA           |
 | [Plastic](http://friendly.github.io/heplots/reference/Plastic.html)                   | 20   | 5    | Plastic Film Data                                                 | MANOVA           |
 | [Pottery2](http://friendly.github.io/heplots/reference/Pottery2.html)                 | 48   | 12   | Chemical Analysis of Romano-British Pottery                       | MANOVA candisc   |
-| [Probe1](http://friendly.github.io/heplots/reference/Probe1.html)                     | 11   | 5    | Response Speed in a Probe Experiment                              | MANOVA repeated  |
-| [Probe2](http://friendly.github.io/heplots/reference/Probe2.html)                     | 20   | 6    | Response Speed in a Probe Experiment                              | MANOVA repeated  |
+| [Probe](http://friendly.github.io/heplots/reference/Probe.html)                       | 11   | 5    | Response Speed in a Probe Experiment                              | MANOVA repeated  |
 | [RatWeight](http://friendly.github.io/heplots/reference/RatWeight.html)               | 27   | 6    | Weight Gain in Rats Exposed to Thiouracil and Thyroxin            | MANOVA repeated  |
 | [ReactTime](http://friendly.github.io/heplots/reference/ReactTime.html)               | 10   | 6    | Reaction Time Data                                                | repeated         |
 | [Rohwer](http://friendly.github.io/heplots/reference/Rohwer.html)                     | 69   | 10   | Rohwer Data Set                                                   | MMRA MANCOVA     |

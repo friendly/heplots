@@ -23,6 +23,8 @@ pkgdown::build_site()
 devtools::build()
 # to test vignettes, built them, but then have to remove `doc/` directory
 devtools::build_vignettes()
+# create the manual
+devtools::build_manual()
 
 devtools::check_win_devel()
 

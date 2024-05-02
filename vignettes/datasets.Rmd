@@ -64,7 +64,11 @@ linear hypotheses concerning factors:
 * **contrasts**: other contrasts
 
 The dataset names are linked to the documentation with graphical output on the
-`pkgdown` website, [<http://friendly.github.io/heplots>].
+`pkgdown` website, [<http://friendly.github.io/heplots/>].
+
+<!-- # fix problem with Probe1, Probe2, which are documented together and caused 404 errors -->
+<!-- # fixed by deleting Probe2 from the list and renaming Probe1 -> Probe -->
+
 
 ## Dataset table
 
