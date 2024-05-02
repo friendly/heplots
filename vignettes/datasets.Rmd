@@ -1,0 +1,106 @@
+---
+title: "Data sets in the heplots package"
+author: Michael Friendly
+date: "`r Sys.Date()`"
+package: heplots
+output: 
+  bookdown::html_document2:
+  base_format: rmarkdown::html_vignette
+fig_caption: yes
+toc: true
+pkgdown:
+  as_is: true
+bibliography: "HE-examples.bib"
+link-citations: yes
+csl: apa.csl
+vignette: >
+  %\VignetteIndexEntry{HE plot datasets}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  fig.height=5,
+  fig.width=5,
+  # results='hide',
+  # fig.keep='none',
+  fig.path='fig/datasets-',
+  echo=TRUE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo=FALSE}
+set.seed(1071)
+options(width=80, digits=5, continue="  ")
+library(heplots)
+library(candisc)
+library(ggplot2)
+library(dplyr)
+```
+
+The `heplots` package provides a large collection of data sets illustrating a
+variety of multivariate linear models with some an analyses,
+and graphical displays. The table below classifies these with
+method tags (`@concept`). 
+The main methods are:
+
+* **MANOVA**: Multivariate analysis of variance
+* **MANCOVA**: Multivariate of covariance
+* **MMRA**: Multivariate multiple regression
+* **cancor**: Canonical correlation
+* **candisc**: Canonical discriminant analysis
+* **repeated**: Repeated measures designs
+* **robust**: Robust estimation of MLMs
+
+In addition, a few examples illustrate special handling for
+linear hypotheses concerning factors:
+
+* **ordered**: ordered factors
+* **contrasts**: other contrasts
+
+The dataset names are linked to the documentation with graphical output on the
+`pkgdown` website, [<http://friendly.github.io/heplots>].
+
+## Dataset table
+
+```{r datasets}
+library(here)
+library(dplyr)
+library(tinytable)
+#dsets <- read.csv(here::here("extra", "datasets.csv"))  # doesn't work in a vignette
+dsets <- read.csv("https://raw.githubusercontent.com/friendly/heplots/master/extra/datasets.csv")
+dsets <- dsets |> dplyr::select(-X) |> arrange(tolower(dataset))
+
+# link dataset to pkgdown doc
+refurl <- "http://friendly.github.io/heplots/reference/"
+
+dsets <- dsets |>
+  mutate(dataset = glue::glue("[{dataset}]({refurl}{dataset}.html)")) 
+
+#tinytable::tt(dsets)
+knitr::kable(dsets)
+
+```
+
+## Concept table
+
+This table can be inverted to list the datasets that illustrate each concept:
+
+```{r concepts}
+concepts <- dsets |>
+  select(dataset, tags) |>
+  tidyr::separate_longer_delim(tags, delim = " ") |>
+  arrange(tags, dataset) |>
+  summarize(datasets = toString(dataset), .by = tags) |>
+  rename(concept = tags)
+
+#tinytable::tt(concepts)
+knitr::kable(concepts)
+```
+
+

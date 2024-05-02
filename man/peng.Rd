@@ -36,7 +36,7 @@ A tibble with 333 rows and 8 variables:
   nesting along the Palmer Archipelago near Palmer Station, 2007-2009 ver 6. 
   Environmental Data Initiative} \doi{10.6073/pasta/c14dfcfada8ea13a17536e73eb6fbe9e}
 
-{Originally published in: Gorman KB, Williams TD, Fraser WR (2014) 
+{Originally published in: Gorman K.B., Williams T.D., Fraser W.R. (2014) 
   Ecological Sexual Dimorphism and Environmental Variability within a 
   Community of Antarctic Penguins (Genus Pygoscelis). PLoS ONE 9(3): e90081.} 
   \doi{10.1371/journal.pone.0090081}

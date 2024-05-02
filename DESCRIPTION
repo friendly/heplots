@@ -54,7 +54,10 @@ Suggests:
     tidyr,
     ggplot2,
     bookdown,
-    patchwork
+    patchwork,
+    tinytable,
+    glue,
+    here
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
