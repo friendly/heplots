@@ -24,6 +24,8 @@ We checked 9 reverse dependencies, comparing R CMD check results across CRAN and
 This is a semi-major release, primarily documenting all datasets in the package with `@concept` tags.
 It also adds new datasets and fixes bugs and documentation errors since the last CRAN release (v 1.6.2)
 
+Fixed minor URL nits from initial submission.
+
 ## Version 1.7.0 (2024-05-01)
 
 * Added a new example (`AddHealth` data) to the `HE_manova` vignette
