@@ -17,10 +17,11 @@ spelling::update_wordlist()
 library(devtools)
 
 # prepare pkgdown site
-build_readme()
+devtools::build_readme()
 pkgdown::build_site()
 
 devtools::build()
+# to test vignettes, built them, but then have to remove `doc/` directory
 devtools::build_vignettes()
 
 devtools::check_win_devel()
