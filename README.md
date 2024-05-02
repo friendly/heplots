@@ -69,7 +69,7 @@ models, together with other packages:
 
 <a href="http://github.com/friendly/candisc"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
 
-- The related [`candisc`](http://github.com/friendly/candisc) package
+- The related [`candisc`](https://github.com/friendly/candisc/) package
   provides HE plots in **canonical discriminant** space, the space of
   linear combinations of the responses that show the maximum possible
   effects and for canonical correlation in multivariate regression
