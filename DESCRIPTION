@@ -57,7 +57,8 @@ Suggests:
     patchwork,
     tinytable,
     glue,
-    here
+    here,
+    Sleuth2, rrcov, archdata, qqtest
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
