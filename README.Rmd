@@ -41,7 +41,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models** 
 
-Version 1.7.0
+Version 1.7.1
 
 ## Description 
 
@@ -172,7 +172,8 @@ method tags. Their names are linked to their documentation with graphical output
 library(here)
 library(dplyr)
 library(tinytable)
-dsets <- read.csv(here::here("extra", "datasets.csv"))
+#dsets <- read.csv(here::here("extra", "datasets.csv"))
+dsets <- read.csv("https://raw.githubusercontent.com/friendly/heplots/master/extra/datasets.csv")
 dsets <- dsets |> dplyr::select(-X) |> arrange(tolower(dataset))
 
 # link dataset to pkgdown doc
