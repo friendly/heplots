@@ -31,6 +31,7 @@ library(heplots)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
+[![R_Universe](https://friendly.r-universe.dev/badges/heplots)](https://friendly.r-universe.dev)
 [![Last Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://github.com/friendly/heplots)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
 [![DOI](https://zenodo.org/badge/13908453.svg)](https://zenodo.org/badge/latestdoi/13908453)
@@ -41,7 +42,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models** 
 
-Version 1.7.0
+Version 1.7.1
 
 ## Description 
 
