@@ -1,3 +1,7 @@
+## Version 1.7.1 (2024-05-03)
+
+* Extended the "datasets" vignette with further description of how this was done.
+
 ## Version 1.7.0 (2024-05-01)
 
 This is a semi-major release, primarily documenting all datasets in the package with `@concept` tags.
