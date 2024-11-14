@@ -1,6 +1,7 @@
 ## Version 1.7.1 (2024-05-03)
 
 * Extended the "datasets" vignette with further description of how this was done.
+* Added `dogfood` and `oral` datasets, both simple MANOVA examples.
 
 ## Version 1.7.0 (2024-05-01)
 
