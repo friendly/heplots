@@ -64,7 +64,7 @@ LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
 License: GPL (>= 2)
-URL: http://friendly.github.io/heplots/
+URL: http://friendly.github.io/heplots/, http://friendly.github.io/heplots/
 RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr
