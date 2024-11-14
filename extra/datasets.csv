@@ -30,3 +30,5 @@
 30,schooldata,70,8,School Data,MMRA robust
 31,peng,333,8,Size measurements for adult foraging penguins near Palmer Station,MANOVA
 32,Overdose,17,7,Overdose of Amitriptyline,MMRA cancor
+33,dogfood,16,3,Dogfood Preferences,MANOVA contrasts candisc
+34,oral,56,5,Effect of Delay in Oral Practice in Second Language Learning,MANOVA
