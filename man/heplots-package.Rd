@@ -3,6 +3,7 @@
 \name{heplots-package}
 \alias{heplots-package}
 \alias{heplots}
+\alias{_PACKAGE}
 \title{Visualizing Hypothesis Tests in Multivariate Linear Models}
 \description{
 The \code{heplots} package provides functions for visualizing hypothesis

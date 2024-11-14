@@ -2537,3 +2537,91 @@ NULL
 #'        xlim=c(35,52), ylim=c(14,20))
 #' 
 "peng"
+
+#' @name dogfood
+#' @aliases dogfood
+#' @docType data
+#' @title
+#' Dogfood Preferences
+#'
+#' @description
+#' A tiny hypothetical dataset to illustrate one-way MANOVA.
+#' 
+#' A dogfood manufacturer wanted to study preference for different dogfood formulas, two of their own
+#' ("Old", "New") and two from other manufacturers ("Major", "Alps"). In a between-dog design, 4 dogs
+#' were presented with a bowl of one \code{formula} and the time to \code{start} eating and \code{amount} eaten were recorded.
+#'
+#'
+#' @usage data("dogfood")
+#' @format
+#'  A data frame with 16 observations on the following 3 variables.
+#'  \describe{
+#'    \item{\code{formula}}{factor, a factor with levels \code{Old} \code{New} \code{Major} \code{Alps}}
+#'    \item{\code{start}}{numeric, time to start eating}
+#'    \item{\code{amount}}{numeric, amount eaten}
+#'  }
+#'
+#' @details 
+#' %%  ~~ If necessary, more details than the __description__ above ~~
+#' @source 
+#' Used in my Psych 6140 lecture notes
+#'
+#' @concept MANOVA
+#' @concept contrasts
+#' @concept candisc
+#' @keywords datasets
+#' @examples
+#' data(dogfood)
+#' library(car)
+#' dog.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+#' Anova(dog.mod)
+#'
+#' # data ellipses
+#' covEllipses(cbind(start, amount) ~ formula)
+#' 
+#' # test contrasts
+#' linearHypothesis(dog.mod, "formula1", title="Ours vs. Theirs")
+#' linearHypothesis(dog.mod, "formula2", title="Old vs. New")
+#' linearHypothesis(dog.mod, "formula3", title="Alps vs. Major")
+
+NULL
+
+#' @name oral
+#' @aliases oral
+#' @docType data
+#' @title
+#' Effect of Delay in Oral Practice in Second Language Learning
+#'
+#' @description
+#' Postovsky (1970) investigatged the effect of delay in oral practice at the beginning of second language learning.
+#' A control condition began oral practice with no delay, while an experimental group had a four-week delay before
+#' starting oral practice. The data consists of scores on language skills at the end of six weeks of study.
+#' 
+#' Students in this study were matched on age, education, former language training, intelligence and language aptitude.
+#'
+#' @usage data("oral")
+#' @format
+#'  A data frame with 56 observations on the following 5 variables.
+#'  \describe{
+#'    \item{\code{group}}{Group, a factor with levels \code{Control} \code{Exptl}}
+#'    \item{\code{listen}}{Listening test, a numeric vector}
+#'    \item{\code{speak}}{Speaking test, a numeric vector}
+#'    \item{\code{read}}{Reading test, a numeric vector}
+#'    \item{\code{write}}{Writing test, a numeric vector}
+#'  }
+#'
+#' @details 
+#' %%  ~~ If necessary, more details than the __description__ above ~~
+#' @source 
+#' Timm, N. H. (1975). \emph{Multivariate Analysis with Applications in Education and Psychology}. Wadsworth (Brooks/Cole),
+#'     Exercise 3.12, p. 279.
+#' @references
+#' Postovsky, V. A. (1970). Effects of delay in oral practice at the start of second language training. Unpublished doctoral dissertation, University of California, Berleley.
+#'
+#' @concept MANOVA
+#' @examples
+#' data(oral)
+#' ## maybe str(oral) ; plot(oral) ...
+#'
+#' @keywords datasets
+NULL

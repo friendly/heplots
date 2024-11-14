@@ -2,7 +2,7 @@
 #' @aliases dogfood
 #' @docType data
 #' @title
-#' %%  Dogfood Preferences
+#' Dogfood Preferences
 #'
 #' @description
 #' A tiny hypothetical dataset to illustrate one-way MANOVA.
@@ -39,3 +39,4 @@
 #' # data ellipses
 #' covEllipses(cbind(start, amount) ~ formula)
 NULL
+
