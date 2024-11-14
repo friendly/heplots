@@ -13,7 +13,7 @@ A data frame with 16 observations on the following 3 variables.
  }
 }
 \source{
-Used in my Psych 6140 lecture notes
+Used in my Psych 6140 lecture notes, \url{http://friendly.apps01.yorku.ca/psy6140/}
 }
 \usage{
 data("dogfood")
@@ -25,9 +25,6 @@ A dogfood manufacturer wanted to study preference for different dogfood formulas
 ("Old", "New") and two from other manufacturers ("Major", "Alps"). In a between-dog design, 4 dogs
 were presented with a bowl of one \code{formula} and the time to \code{start} eating and \code{amount} eaten were recorded.
 }
-\details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-}
 \examples{
 data(dogfood)
 library(car)
@@ -35,12 +32,14 @@ dog.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
 Anova(dog.mod)
 
 # data ellipses
-covEllipses(cbind(start, amount) ~ formula)
+covEllipses(cbind(start, amount) ~ formula, data=dogfood)
 
 # test contrasts
 linearHypothesis(dog.mod, "formula1", title="Ours vs. Theirs")
 linearHypothesis(dog.mod, "formula2", title="Old vs. New")
 linearHypothesis(dog.mod, "formula3", title="Alps vs. Major")
+
+heplot(dog.mod)
 }
 \concept{MANOVA}
 \concept{candisc}

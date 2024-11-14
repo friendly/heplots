@@ -31,3 +31,5 @@ linearHypothesis(dog.mod, "formula1", title="Ours vs. Theirs")
 linearHypothesis(dog.mod, "formula2", title="Old vs. New")
 linearHypothesis(dog.mod, "formula3", title="Alps vs. Major")
 
+heplot(dog.mod)
+

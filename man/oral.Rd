@@ -28,9 +28,6 @@ starting oral practice. The data consists of scores on language skills at the en
 
 Students in this study were matched on age, education, former language training, intelligence and language aptitude.
 }
-\details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-}
 \examples{
 data(oral)
 ## maybe str(oral) ; plot(oral) ...

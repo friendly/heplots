@@ -2561,10 +2561,8 @@ NULL
 #'    \item{\code{amount}}{numeric, amount eaten}
 #'  }
 #'
-#' @details 
-#' %%  ~~ If necessary, more details than the __description__ above ~~
 #' @source 
-#' Used in my Psych 6140 lecture notes
+#' Used in my Psych 6140 lecture notes, \url{http://friendly.apps01.yorku.ca/psy6140/}
 #'
 #' @concept MANOVA
 #' @concept contrasts
@@ -2577,12 +2575,14 @@ NULL
 #' Anova(dog.mod)
 #'
 #' # data ellipses
-#' covEllipses(cbind(start, amount) ~ formula)
+#' covEllipses(cbind(start, amount) ~ formula, data=dogfood)
 #' 
 #' # test contrasts
 #' linearHypothesis(dog.mod, "formula1", title="Ours vs. Theirs")
 #' linearHypothesis(dog.mod, "formula2", title="Old vs. New")
 #' linearHypothesis(dog.mod, "formula3", title="Alps vs. Major")
+#' 
+#' heplot(dog.mod)
 
 NULL
 
@@ -2610,8 +2610,6 @@ NULL
 #'    \item{\code{write}}{Writing test, a numeric vector}
 #'  }
 #'
-#' @details 
-#' %%  ~~ If necessary, more details than the __description__ above ~~
 #' @source 
 #' Timm, N. H. (1975). \emph{Multivariate Analysis with Applications in Education and Psychology}. Wadsworth (Brooks/Cole),
 #'     Exercise 3.12, p. 279.
