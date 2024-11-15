@@ -202,8 +202,7 @@ covEllipses(AddHealth[, 3:2], group = AddHealth$grade,
 ## Fit the MLM {-}
 
 
-Now, let's fit the MLM for both responses jointly in relation to `grade`. The null hypothesis is that
-the means for anxiety and depression are the same at all six grades,
+Now, let's fit the MLM for both responses jointly in relation to `grade`. The null hypothesis is that the means for anxiety and depression are the same at all six grades,
 $$
 H_0 : \mathbf{\mu}_7 = \mathbf{\mu}_8 = \cdots = \mathbf{\mu}_{12} \; ,
 $$
@@ -250,7 +249,7 @@ linearHypothesis(AH.mlm, "grade.Q") |> print(SSP = FALSE)
 ```
 
 We can also test the hypothesis that all higher order terms beyond the quadratic are zero,
-H_0 : \boldsymbol{\beta}_3 =  \boldsymbol{\beta}_4 =  \boldsymbol{\beta}_5 = \boldsymbol{0}$:
+$H_0 : \boldsymbol{\beta}_3 =  \boldsymbol{\beta}_4 =  \boldsymbol{\beta}_5 = \boldsymbol{0}$:
 ```{r addhealth-linhyp3}
 ## joint test of all higher terms
 linearHypothesis(AH.mlm, rownames(coef(AH.mlm))[3:5]) |> print(SSP = FALSE)
