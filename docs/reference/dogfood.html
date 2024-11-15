@@ -59,7 +59,7 @@ were presented with a bowl of one <code>formula</code> and the time to <code>sta
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
     <p>A data frame with 16 observations on the following 3 variables.</p><dl><dt><code>formula</code></dt>
-<dd><p>factor, a factor with levels <code>Old</code> <code>New</code> <code>Major</code> <code>Alps</code></p></dd>
+<dd><p>factor, a factor with levels <code>Old</code>, <code>New</code>, <code>Major</code>, <code>Alps</code></p></dd>
 
    <dt><code>start</code></dt>
 <dd><p>numeric, time to start eating</p></dd>
@@ -73,19 +73,32 @@ were presented with a bowl of one <code>formula</code> and the time to <code>sta
     <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
     <p>Used in my Psych 6140 lecture notes, <a href="http://friendly.apps01.yorku.ca/psy6140/" class="external-link">http://friendly.apps01.yorku.ca/psy6140/</a></p>
     </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Three contrasts have been specified for the 3-df <code>formula</code> factor:</p><ul><li><p><code>Ours</code> vs. <code>Theirs</code></p></li>
+<li><p><code>Major</code> vs. <code>Alps</code></p></li>
+<li><p><code>Old</code> vs. <code>New</code></p></li>
+</ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dogfood</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/car/" class="external-link">car</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">dog.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">start</span>, <span class="va">amount</span><span class="op">)</span> <span class="op">~</span> <span class="va">formula</span>, data<span class="op">=</span><span class="va">dogfood</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">dog.mod</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/friendly/candisc/" class="external-link">candisc</a></span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package 'candisc' was built under R version 4.3.3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: 'candisc'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from 'package:stats':</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     cancor</span>
+<span class="r-in"><span><span class="va">dogfood.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">start</span>, <span class="va">amount</span><span class="op">)</span> <span class="op">~</span> <span class="va">formula</span>, data<span class="op">=</span><span class="va">dogfood</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">dogfood.mod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type II MANOVA Tests: Pillai test statistic</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Df test stat approx F num Df den Df  Pr(&gt;F)  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> formula  3   0.70178   2.1623      6     24 0.08289 .</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># data ellipses</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">start</span>, <span class="va">amount</span><span class="op">)</span> <span class="op">~</span> <span class="va">formula</span>, data<span class="op">=</span><span class="va">dogfood</span>,</span></span>
@@ -93,7 +106,14 @@ were presented with a bowl of one <code>formula</code> and the time to <code>sta
 <span class="r-plt img"><img src="dogfood-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># test contrasts</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">dog.mod</span>, <span class="st">"formula1"</span>, title<span class="op">=</span><span class="st">"Ours vs. Theirs"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/contrasts.html" class="external-link">contrasts</a></span><span class="op">(</span><span class="va">dogfood</span><span class="op">$</span><span class="va">formula</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       [,1] [,2] [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Old      1    0    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> New      1    0   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Major   -1    1    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alps    -1   -1    0</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">dogfood.mod</span>, <span class="st">"formula1"</span>, title<span class="op">=</span><span class="st">"Ours vs. Theirs"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for the hypothesis:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           start   amount</span>
@@ -112,8 +132,8 @@ were presented with a bowl of one <code>formula</code> and the time to <code>sta
 <span class="r-out co"><span class="r-pr">#&gt;</span> Hotelling-Lawley  1 1.6686941 9.177818      2     11 0.0045223 **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Roy               1 1.6686941 9.177818      2     11 0.0045223 **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">dog.mod</span>, <span class="st">"formula2"</span>, title<span class="op">=</span><span class="st">"Old vs. New"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">dogfood.mod</span>, <span class="st">"formula2"</span>, title<span class="op">=</span><span class="st">"Old vs. New"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for the hypothesis:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        start amount</span>
@@ -131,7 +151,7 @@ were presented with a bowl of one <code>formula</code> and the time to <code>sta
 <span class="r-out co"><span class="r-pr">#&gt;</span> Wilks             1 0.9314896 0.4045209      2     11 0.67683</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Hotelling-Lawley  1 0.0735493 0.4045209      2     11 0.67683</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Roy               1 0.0735493 0.4045209      2     11 0.67683</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">dog.mod</span>, <span class="st">"formula3"</span>, title<span class="op">=</span><span class="st">"Alps vs. Major"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">dogfood.mod</span>, <span class="st">"formula3"</span>, title<span class="op">=</span><span class="st">"Alps vs. Major"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sum of squares and products for the hypothesis:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        start amount</span>
@@ -150,15 +170,21 @@ were presented with a bowl of one <code>formula</code> and the time to <code>sta
 <span class="r-out co"><span class="r-pr">#&gt;</span> Hotelling-Lawley  1 0.3291208 1.810164      2     11 0.20912</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Roy               1 0.3291208 1.810164      2     11 0.20912</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">dog.mod</span>, fill <span class="op">=</span> <span class="cn">TRUE</span>, fill.alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">dogfood.mod</span>, fill <span class="op">=</span> <span class="cn">TRUE</span>, fill.alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="dogfood-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">hyp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Ours/Theirs"</span> <span class="op">=</span> <span class="st">"formula1"</span>,</span></span>
 <span class="r-in"><span>            <span class="st">"Old/New"</span> <span class="op">=</span> <span class="st">"formula2"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">dog.mod</span>, hypotheses <span class="op">=</span> <span class="va">hyp</span>,</span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">dogfood.mod</span>, hypotheses <span class="op">=</span> <span class="va">hyp</span>,</span></span>
 <span class="r-in"><span>       fill <span class="op">=</span> <span class="cn">TRUE</span>, fill.alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="dogfood-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">dogfood.can</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://friendly.github.io/candisc/reference/candisc.html" class="external-link">candisc</a></span><span class="op">(</span><span class="va">dogfood.mod</span>, data<span class="op">=</span><span class="va">dogfood</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="heplot.html">heplot</a></span><span class="op">(</span><span class="va">dogfood.can</span>, </span></span>
+<span class="r-in"><span>       fill <span class="op">=</span> <span class="cn">TRUE</span>, fill.alpha <span class="op">=</span> <span class="fl">0.1</span>, </span></span>
+<span class="r-in"><span>       lwd <span class="op">=</span> <span class="fl">2</span>, var.lwd <span class="op">=</span> <span class="fl">2</span>, var.cex <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="dogfood-4.png" alt="" width="700" height="433"></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Vector scale factor set to  2.635145 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

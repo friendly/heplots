@@ -83,9 +83,9 @@ In this respect, the `heplots` package now aims to provide a wide range
 of tools for analyzing and visualizing multivariate response linear
 models, together with other packages:
 
-<a href="http://github.com/friendly/candisc"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
+<a href="https://friendly.github.io/candisc/"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
 
--   The related [`candisc`](https://github.com/friendly/candisc/) package
+-   The related [`candisc`](https://friendly.github.io/candisc/) package
     provides HE plots in **canonical discriminant** space, the space of
     linear combinations of the responses that show the maximum possible
     effects and for canonical correlation in multivariate regression

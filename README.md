@@ -68,9 +68,9 @@ In this respect, the `heplots` package now aims to provide a wide range
 of tools for analyzing and visualizing multivariate response linear
 models, together with other packages:
 
-<a href="http://github.com/friendly/candisc"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
+<a href="https://friendly.github.io/candisc/"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
 
-- The related [`candisc`](https://github.com/friendly/candisc/) package
+- The related [`candisc`](https://friendly.github.io/candisc/) package
   provides HE plots in **canonical discriminant** space, the space of
   linear combinations of the responses that show the maximum possible
   effects and for canonical correlation in multivariate regression
@@ -157,6 +157,7 @@ graphical output on the `pkgdown` website,
 | [Adopted](http://friendly.github.io/heplots/reference/Adopted.html) | 62 | 6 | Adopted Children | MMRA repeated |
 | [Bees](http://friendly.github.io/heplots/reference/Bees.html) | 246 | 6 | Captive and maltreated bees | MANOVA |
 | [Diabetes](http://friendly.github.io/heplots/reference/Diabetes.html) | 145 | 6 | Diabetes Dataset | MANOVA |
+| [dogfood](http://friendly.github.io/heplots/reference/dogfood.html) | 16 | 3 | Dogfood Preferences | MANOVA contrasts candisc |
 | [FootHead](http://friendly.github.io/heplots/reference/FootHead.html) | 90 | 7 | Head measurements of football players | MANOVA contrasts |
 | [Headache](http://friendly.github.io/heplots/reference/Headache.html) | 98 | 6 | Treatment of Headache Sufferers for Sensitivity to Noise | MANOVA repeated |
 | [Hernior](http://friendly.github.io/heplots/reference/Hernior.html) | 32 | 9 | Recovery from Elective Herniorrhaphy | MMRA candisc |
@@ -165,6 +166,7 @@ graphical output on the `pkgdown` website,
 | [MockJury](http://friendly.github.io/heplots/reference/MockJury.html) | 114 | 17 | Effects Of Physical Attractiveness Upon Mock Jury Decisions | MANOVA candisc |
 | [NeuroCog](http://friendly.github.io/heplots/reference/NeuroCog.html) | 242 | 10 | Neurocognitive Measures in Psychiatric Groups | MANOVA candisc |
 | [NLSY](http://friendly.github.io/heplots/reference/NLSY.html) | 243 | 6 | National Longitudinal Survey of Youth Data | MMRA |
+| [oral](http://friendly.github.io/heplots/reference/oral.html) | 56 | 5 | Effect of Delay in Oral Practice in Second Language Learning | MANOVA |
 | [Oslo](http://friendly.github.io/heplots/reference/Oslo.html) | 332 | 14 | Oslo Transect Subset Data | MANOVA candisc |
 | [Overdose](http://friendly.github.io/heplots/reference/Overdose.html) | 17 | 7 | Overdose of Amitriptyline | MMRA cancor |
 | [Parenting](http://friendly.github.io/heplots/reference/Parenting.html) | 60 | 4 | Father Parenting Competence | MANOVA contrasts |
