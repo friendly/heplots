@@ -32,14 +32,21 @@ dog.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
 Anova(dog.mod)
 
 # data ellipses
-covEllipses(cbind(start, amount) ~ formula, data=dogfood)
+covEllipses(cbind(start, amount) ~ formula, data=dogfood,
+  fill = TRUE, fill.alpha = 0.1)
 
 # test contrasts
 linearHypothesis(dog.mod, "formula1", title="Ours vs. Theirs")
 linearHypothesis(dog.mod, "formula2", title="Old vs. New")
 linearHypothesis(dog.mod, "formula3", title="Alps vs. Major")
 
-heplot(dog.mod)
+heplot(dog.mod, fill = TRUE, fill.alpha = 0.1)
+
+hyp <- list("Ours/Theirs" = "formula1",
+            "Old/New" = "formula2")
+heplot(dog.mod, hypotheses = hyp,
+       fill = TRUE, fill.alpha = 0.1)
+
 }
 \concept{MANOVA}
 \concept{candisc}

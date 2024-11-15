@@ -2575,14 +2575,21 @@ NULL
 #' Anova(dog.mod)
 #'
 #' # data ellipses
-#' covEllipses(cbind(start, amount) ~ formula, data=dogfood)
+#' covEllipses(cbind(start, amount) ~ formula, data=dogfood,
+#'   fill = TRUE, fill.alpha = 0.1)
 #' 
 #' # test contrasts
 #' linearHypothesis(dog.mod, "formula1", title="Ours vs. Theirs")
 #' linearHypothesis(dog.mod, "formula2", title="Old vs. New")
 #' linearHypothesis(dog.mod, "formula3", title="Alps vs. Major")
 #' 
-#' heplot(dog.mod)
+#' heplot(dog.mod, fill = TRUE, fill.alpha = 0.1)
+#' 
+#' hyp <- list("Ours/Theirs" = "formula1",
+#'             "Old/New" = "formula2")
+#' heplot(dog.mod, hypotheses = hyp,
+#'        fill = TRUE, fill.alpha = 0.1)
+#' 
 
 NULL
 
@@ -2618,8 +2625,23 @@ NULL
 #'
 #' @concept MANOVA
 #' @examples
+#' library(car)
+#' library(candisc)
 #' data(oral)
-#' ## maybe str(oral) ; plot(oral) ...
+#' 
+#' covEllipses(cbind(listen, speak, read, write) ~ group, data=oral,
+#'     variables = 1:4,
+#'     level = 0.40,
+#'     pooled = FALSE,
+#'     fill = TRUE, fill.alpha = 0.05)
+#' 
+#' oral.mod <- lm(cbind(listen, speak, read, write) ~ group, data=oral)
+#' Anova(oral.mod)
+#' 
+#' # canonical view
+#' oral.can <- candisc(oral.mod) |> print()
+#' plot(oral.can, var.lwd=2)
+#'
 #'
 #' @keywords datasets
 NULL

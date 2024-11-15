@@ -29,8 +29,23 @@ starting oral practice. The data consists of scores on language skills at the en
 Students in this study were matched on age, education, former language training, intelligence and language aptitude.
 }
 \examples{
+library(car)
+library(candisc)
 data(oral)
-## maybe str(oral) ; plot(oral) ...
+
+covEllipses(cbind(listen, speak, read, write) ~ group, data=oral,
+    variables = 1:4,
+    level = 0.40,
+    pooled = FALSE,
+    fill = TRUE, fill.alpha = 0.05)
+
+oral.mod <- lm(cbind(listen, speak, read, write) ~ group, data=oral)
+Anova(oral.mod)
+
+# canonical view
+oral.can <- candisc(oral.mod) |> print()
+plot(oral.can, var.lwd=2)
+
 
 }
 \references{
