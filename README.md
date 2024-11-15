@@ -5,6 +5,7 @@
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
+[![R_Universe](https://friendly.r-universe.dev/badges/heplots)](https://friendly.r-universe.dev)
 [![Last
 Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://github.com/friendly/heplots)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
@@ -16,7 +17,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.7.0
+Version 1.7.1
 
 ## Description
 
@@ -69,7 +70,7 @@ models, together with other packages:
 
 <a href="http://github.com/friendly/candisc"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
 
-- The related [`candisc`](http://github.com/friendly/candisc) package
+- The related [`candisc`](https://github.com/friendly/candisc/) package
   provides HE plots in **canonical discriminant** space, the space of
   linear combinations of the responses that show the maximum possible
   effects and for canonical correlation in multivariate regression
@@ -80,7 +81,8 @@ models, together with other packages:
 - Another package,
   [`mvinfluence`](https://friendly.github.io/mvinfluence/), provides
   diagnostic measures and plots for **influential observations** in MLM
-  designs.
+  designs. See the [package
+  documentation](https://friendly.github.io/mvinfluence/) for details.
 
 Several tutorial vignettes are also included. See
 `vignette(package="heplots")`.
@@ -145,49 +147,49 @@ designs](http://www.jstatsoft.org/v37/i04/paper).)
 The package also provides a large collection of data sets illustrating a
 variety of multivariate linear models of the types listed above,
 together with graphical displays. The table below classifies these with
-method tags. Their names are linked to the documentation on the
-`pkgdown` website, \[<http://friendly.github.io/heplots>\].
+method tags. Their names are linked to their documentation with
+graphical output on the `pkgdown` website,
+\[<http://friendly.github.io/heplots>\].
 
-| dataset                                                                               | rows | cols | title                                                             | tags             |
-|:--------------------------------------------------------------------------------------|-----:|-----:|:------------------------------------------------------------------|:-----------------|
-| [AddHealth](http://friendly.github.io/heplots/reference/AddHealth.html)               | 4344 |    3 | Adolescent Health Data                                            | MANOVA ordered   |
-| [Adopted](http://friendly.github.io/heplots/reference/Adopted.html)                   |   62 |    6 | Adopted Children                                                  | MMRA repeated    |
-| [Bees](http://friendly.github.io/heplots/reference/Bees.html)                         |  246 |    6 | Captive and maltreated bees                                       | MANOVA           |
-| [Diabetes](http://friendly.github.io/heplots/reference/Diabetes.html)                 |  145 |    6 | Diabetes Dataset                                                  | MANOVA           |
-| [FootHead](http://friendly.github.io/heplots/reference/FootHead.html)                 |   90 |    7 | Head measurements of football players                             | MANOVA contrasts |
-| [Headache](http://friendly.github.io/heplots/reference/Headache.html)                 |   98 |    6 | Treatment of Headache Sufferers for Sensitivity to Noise          | MANOVA repeated  |
-| [Hernior](http://friendly.github.io/heplots/reference/Hernior.html)                   |   32 |    9 | Recovery from Elective Herniorrhaphy                              | MMRA candisc     |
-| [Iwasaki_Big_Five](http://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html) |  203 |    7 | Personality Traits of Cultural Groups                             | MANOVA           |
-| [MockJury](http://friendly.github.io/heplots/reference/MockJury.html)                 |  114 |   17 | Effects Of Physical Attractiveness Upon Mock Jury Decisions       | MANOVA candisc   |
-| [NLSY](http://friendly.github.io/heplots/reference/NLSY.html)                         |  243 |    6 | National Longitudinal Survey of Youth Data                        | MMRA             |
-| [NeuroCog](http://friendly.github.io/heplots/reference/NeuroCog.html)                 |  242 |   10 | Neurocognitive Measures in Psychiatric Groups                     | MANOVA candisc   |
-| [Oslo](http://friendly.github.io/heplots/reference/Oslo.html)                         |  332 |   14 | Oslo Transect Subset Data                                         | MANOVA candisc   |
-| [Parenting](http://friendly.github.io/heplots/reference/Parenting.html)               |   60 |    4 | Father Parenting Competence                                       | MANOVA contrasts |
-| [Plastic](http://friendly.github.io/heplots/reference/Plastic.html)                   |   20 |    5 | Plastic Film Data                                                 | MANOVA           |
-| [Pottery2](http://friendly.github.io/heplots/reference/Pottery2.html)                 |   48 |   12 | Chemical Analysis of Romano-British Pottery                       | MANOVA candisc   |
-| [Probe1](http://friendly.github.io/heplots/reference/Probe1.html)                     |   11 |    5 | Response Speed in a Probe Experiment                              | MANOVA repeated  |
-| [Probe2](http://friendly.github.io/heplots/reference/Probe2.html)                     |   20 |    6 | Response Speed in a Probe Experiment                              | MANOVA repeated  |
-| [RatWeight](http://friendly.github.io/heplots/reference/RatWeight.html)               |   27 |    6 | Weight Gain in Rats Exposed to Thiouracil and Thyroxin            | MANOVA repeated  |
-| [ReactTime](http://friendly.github.io/heplots/reference/ReactTime.html)               |   10 |    6 | Reaction Time Data                                                | repeated         |
-| [Rohwer](http://friendly.github.io/heplots/reference/Rohwer.html)                     |   69 |   10 | Rohwer Data Set                                                   | MMRA MANCOVA     |
-| [RootStock](http://friendly.github.io/heplots/reference/RootStock.html)               |   48 |    5 | Growth of Apple Trees from Different Root Stocks                  | MANOVA contrasts |
-| [Sake](http://friendly.github.io/heplots/reference/Sake.html)                         |   30 |   10 | Taste Ratings of Japanese Rice Wine (Sake)                        | MMRA             |
-| [Skulls](http://friendly.github.io/heplots/reference/Skulls.html)                     |  150 |    5 | Egyptian Skulls                                                   | MANOVA contrasts |
-| [SocGrades](http://friendly.github.io/heplots/reference/SocGrades.html)               |   40 |   10 | Grades in a Sociology Course                                      | MANOVA candisc   |
-| [SocialCog](http://friendly.github.io/heplots/reference/SocialCog.html)               |  139 |    5 | Social Cognitive Measures in Psychiatric Groups                   | MANOVA candisc   |
-| [TIPI](http://friendly.github.io/heplots/reference/TIPI.html)                         | 1799 |   16 | Data on the Ten Item Personality Inventory                        | MANOVA candisc   |
-| [VocabGrowth](http://friendly.github.io/heplots/reference/VocabGrowth.html)           |   64 |    4 | Vocabulary growth data                                            | repeated         |
-| [WeightLoss](http://friendly.github.io/heplots/reference/WeightLoss.html)             |   34 |    7 | Weight Loss Data                                                  | repeated         |
-| [mathscore](http://friendly.github.io/heplots/reference/mathscore.html)               |   12 |    3 | Math scores for basic math and word problems                      | MANOVA           |
-| [schooldata](http://friendly.github.io/heplots/reference/schooldata.html)             |   70 |    8 | School Data                                                       | MMRA robust      |
-| [peng](http://friendly.github.io/heplots/reference/peng.html)                         |  333 |    8 | Size measurements for adult foraging penguins near Palmer Station | MANOVA           |
-| [Overdose](http://friendly.github.io/heplots/reference/Overdose.html)                 |   17 |    7 | Overdose of Amitriptyline                                         | MMRA cancor      |
+| dataset | rows | cols | title | tags |
+|----|----|----|----|----|
+| [AddHealth](http://friendly.github.io/heplots/reference/AddHealth.html) | 4344 | 3 | Adolescent Health Data | MANOVA ordered |
+| [Adopted](http://friendly.github.io/heplots/reference/Adopted.html) | 62 | 6 | Adopted Children | MMRA repeated |
+| [Bees](http://friendly.github.io/heplots/reference/Bees.html) | 246 | 6 | Captive and maltreated bees | MANOVA |
+| [Diabetes](http://friendly.github.io/heplots/reference/Diabetes.html) | 145 | 6 | Diabetes Dataset | MANOVA |
+| [FootHead](http://friendly.github.io/heplots/reference/FootHead.html) | 90 | 7 | Head measurements of football players | MANOVA contrasts |
+| [Headache](http://friendly.github.io/heplots/reference/Headache.html) | 98 | 6 | Treatment of Headache Sufferers for Sensitivity to Noise | MANOVA repeated |
+| [Hernior](http://friendly.github.io/heplots/reference/Hernior.html) | 32 | 9 | Recovery from Elective Herniorrhaphy | MMRA candisc |
+| [Iwasaki_Big_Five](http://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html) | 203 | 7 | Personality Traits of Cultural Groups | MANOVA |
+| [mathscore](http://friendly.github.io/heplots/reference/mathscore.html) | 12 | 3 | Math scores for basic math and word problems | MANOVA |
+| [MockJury](http://friendly.github.io/heplots/reference/MockJury.html) | 114 | 17 | Effects Of Physical Attractiveness Upon Mock Jury Decisions | MANOVA candisc |
+| [NeuroCog](http://friendly.github.io/heplots/reference/NeuroCog.html) | 242 | 10 | Neurocognitive Measures in Psychiatric Groups | MANOVA candisc |
+| [NLSY](http://friendly.github.io/heplots/reference/NLSY.html) | 243 | 6 | National Longitudinal Survey of Youth Data | MMRA |
+| [Oslo](http://friendly.github.io/heplots/reference/Oslo.html) | 332 | 14 | Oslo Transect Subset Data | MANOVA candisc |
+| [Overdose](http://friendly.github.io/heplots/reference/Overdose.html) | 17 | 7 | Overdose of Amitriptyline | MMRA cancor |
+| [Parenting](http://friendly.github.io/heplots/reference/Parenting.html) | 60 | 4 | Father Parenting Competence | MANOVA contrasts |
+| [peng](http://friendly.github.io/heplots/reference/peng.html) | 333 | 8 | Size measurements for adult foraging penguins near Palmer Station | MANOVA |
+| [Plastic](http://friendly.github.io/heplots/reference/Plastic.html) | 20 | 5 | Plastic Film Data | MANOVA |
+| [Pottery2](http://friendly.github.io/heplots/reference/Pottery2.html) | 48 | 12 | Chemical Analysis of Romano-British Pottery | MANOVA candisc |
+| [Probe](http://friendly.github.io/heplots/reference/Probe.html) | 11 | 5 | Response Speed in a Probe Experiment | MANOVA repeated |
+| [RatWeight](http://friendly.github.io/heplots/reference/RatWeight.html) | 27 | 6 | Weight Gain in Rats Exposed to Thiouracil and Thyroxin | MANOVA repeated |
+| [ReactTime](http://friendly.github.io/heplots/reference/ReactTime.html) | 10 | 6 | Reaction Time Data | repeated |
+| [Rohwer](http://friendly.github.io/heplots/reference/Rohwer.html) | 69 | 10 | Rohwer Data Set | MMRA MANCOVA |
+| [RootStock](http://friendly.github.io/heplots/reference/RootStock.html) | 48 | 5 | Growth of Apple Trees from Different Root Stocks | MANOVA contrasts |
+| [Sake](http://friendly.github.io/heplots/reference/Sake.html) | 30 | 10 | Taste Ratings of Japanese Rice Wine (Sake) | MMRA |
+| [schooldata](http://friendly.github.io/heplots/reference/schooldata.html) | 70 | 8 | School Data | MMRA robust |
+| [Skulls](http://friendly.github.io/heplots/reference/Skulls.html) | 150 | 5 | Egyptian Skulls | MANOVA contrasts |
+| [SocGrades](http://friendly.github.io/heplots/reference/SocGrades.html) | 40 | 10 | Grades in a Sociology Course | MANOVA candisc |
+| [SocialCog](http://friendly.github.io/heplots/reference/SocialCog.html) | 139 | 5 | Social Cognitive Measures in Psychiatric Groups | MANOVA candisc |
+| [TIPI](http://friendly.github.io/heplots/reference/TIPI.html) | 1799 | 16 | Data on the Ten Item Personality Inventory | MANOVA candisc |
+| [VocabGrowth](http://friendly.github.io/heplots/reference/VocabGrowth.html) | 64 | 4 | Vocabulary growth data | repeated |
+| [WeightLoss](http://friendly.github.io/heplots/reference/WeightLoss.html) | 34 | 7 | Weight Loss Data | repeated |
 
 ## Examples
 
 This example illustrates HE plots using the classic `iris` data set. How
 do the means of the flower variables differ by `Species`? This dataset
-was the imputus for R. A. Fisher (1936) to propose a method of
+was the impetus for R. A. Fisher (1936) to propose a method of
 discriminant analysis using data collected by Edgar Anderson (1928).
 Though some may rightly deprecate Fisher for being a supporter of
 eugenics, Anderson’s `iris` dataset should not be blamed.
@@ -245,7 +247,9 @@ heplot(iris.mod, hypotheses=hyp,
 ### All pairwise HE plots
 
 All pairwise HE plots are produced using the `pairs()` method for MLM
-objects.
+objects.In the plot, note how the means of most pairs of variables are
+very highly correlated, in the order Setosa \< Versicolor \< Virginica,
+but this pattern doesn’t hold for relations with `Sepal.Width`.
 
 ``` r
 pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
@@ -254,16 +258,60 @@ pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
 
 <img src="man/figures/README-iris3-1.png" width="100%" />
 
+### Canonical discriminant view
+
+For more than two response variables, a multivariate effect can be
+viewed more simply by projecting the data into canonical space — the
+linear combinations of the responses which show the greatest differences
+among the group means relative to within-group scatter. The computations
+are performed with the [`candisc`](http://github.com/friendly/candisc)
+package, which has an `heplot.candisc()` method.
+
+``` r
+library(candisc)
+iris.can <- candisc(iris.mod) |> print()
+#> 
+#> Canonical Discriminant Analysis for Species:
+#> 
+#>    CanRsq Eigenvalue Difference  Percent Cumulative
+#> 1 0.96987   32.19193     31.907 99.12126     99.121
+#> 2 0.22203    0.28539     31.907  0.87874    100.000
+#> 
+#> Test of H0: The canonical correlations in the 
+#> current row and all that follow are zero
+#> 
+#>   LR test stat approx F numDF denDF   Pr(> F)    
+#> 1      0.02344  199.145     8   288 < 2.2e-16 ***
+#> 2      0.77797   13.794     3   145 5.794e-08 ***
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+The HE plot in canonical space shows that the differences among species
+are nearly entirely one-dimensional. The weights for the variables on
+the first dimension show how `Sepal.Width` differs from the other size
+variables.
+
+``` r
+# HE plot in canonical space
+heplot(iris.can)
+```
+
+<img src="man/figures/README-iris-can-1.png" width="60%" />
+
+    #> Vector scale factor set to  43.914
+
 ### Covariance ellipses
 
 MANOVA relies on the assumption that within-group covariance matrices
 are all equal. It is useful to visualize these in the space of some of
 the predictors. `covEllipses()` provides this both for classical and
-robust estimates. The figure below shows these for the three Iris
-species and the pooled covariance matrix, which is the same as the **E**
-matrix used in MANOVA tests.
+robust (`method="mve"`) estimates. The figure below shows these for the
+three Iris species and the pooled covariance matrix, which is the same
+as the **E** matrix used in MANOVA tests.
 
 ``` r
+par(mar=c(4,4,1,1)+.1)
 covEllipses(iris[,1:4], iris$Species)
 covEllipses(iris[,1:4], iris$Species, 
             fill=TRUE, method="mve", add=TRUE, labels="")

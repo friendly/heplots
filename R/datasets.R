@@ -830,7 +830,7 @@ NULL
 #' 
 #' @source 
 #' Originally obtained from Dr. Wuensch's StatData page,
-#' https://core.ecu.edu/wuenschk/StatData/PLASTER.dat
+#' \url{https://core.ecu.edu/wuenschk/StatData/PLASTER.dat}
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept candisc
@@ -2467,7 +2467,7 @@ NULL
 #' 
 NULL
 
-#' Size measurements for adult foraging penguins near Palmer Station, Antarctica
+#' Size measurements for penguins near Palmer Station, Antarctica
 #'
 #' Data originally from \href{https://allisonhorst.github.io/palmerpenguins/}{\code{palmerpenguins}}. Includes
 #' measurements for penguin species, island in Palmer Archipelago,
@@ -2502,7 +2502,7 @@ NULL
 #'   among adult male and female Chinstrap penguin (Pygoscelis antarcticus) 
 #'   nesting along the Palmer Archipelago near Palmer Station, 2007-2009 ver 6. 
 #'   Environmental Data Initiative} \doi{10.6073/pasta/c14dfcfada8ea13a17536e73eb6fbe9e}
-#' @source {Originally published in: Gorman KB, Williams TD, Fraser WR (2014) 
+#' @source {Originally published in: Gorman K.B., Williams T.D., Fraser W.R. (2014) 
 #'   Ecological Sexual Dimorphism and Environmental Variability within a 
 #'   Community of Antarctic Penguins (Genus Pygoscelis). PLoS ONE 9(3): e90081.} 
 #'   \doi{10.1371/journal.pone.0090081}
@@ -2537,3 +2537,89 @@ NULL
 #'        xlim=c(35,52), ylim=c(14,20))
 #' 
 "peng"
+
+#' @name dogfood
+#' @aliases dogfood
+#' @docType data
+#' @title
+#' Dogfood Preferences
+#'
+#' @description
+#' A tiny hypothetical dataset to illustrate one-way MANOVA.
+#' 
+#' A dogfood manufacturer wanted to study preference for different dogfood formulas, two of their own
+#' ("Old", "New") and two from other manufacturers ("Major", "Alps"). In a between-dog design, 4 dogs
+#' were presented with a bowl of one \code{formula} and the time to \code{start} eating and \code{amount} eaten were recorded.
+#'
+#'
+#' @usage data("dogfood")
+#' @format
+#'  A data frame with 16 observations on the following 3 variables.
+#'  \describe{
+#'    \item{\code{formula}}{factor, a factor with levels \code{Old} \code{New} \code{Major} \code{Alps}}
+#'    \item{\code{start}}{numeric, time to start eating}
+#'    \item{\code{amount}}{numeric, amount eaten}
+#'  }
+#'
+#' @source 
+#' Used in my Psych 6140 lecture notes, \url{http://friendly.apps01.yorku.ca/psy6140/}
+#'
+#' @concept MANOVA
+#' @concept contrasts
+#' @concept candisc
+#' @keywords datasets
+#' @examples
+#' data(dogfood)
+#' library(car)
+#' dog.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+#' Anova(dog.mod)
+#'
+#' # data ellipses
+#' covEllipses(cbind(start, amount) ~ formula, data=dogfood)
+#' 
+#' # test contrasts
+#' linearHypothesis(dog.mod, "formula1", title="Ours vs. Theirs")
+#' linearHypothesis(dog.mod, "formula2", title="Old vs. New")
+#' linearHypothesis(dog.mod, "formula3", title="Alps vs. Major")
+#' 
+#' heplot(dog.mod)
+
+NULL
+
+#' @name oral
+#' @aliases oral
+#' @docType data
+#' @title
+#' Effect of Delay in Oral Practice in Second Language Learning
+#'
+#' @description
+#' Postovsky (1970) investigatged the effect of delay in oral practice at the beginning of second language learning.
+#' A control condition began oral practice with no delay, while an experimental group had a four-week delay before
+#' starting oral practice. The data consists of scores on language skills at the end of six weeks of study.
+#' 
+#' Students in this study were matched on age, education, former language training, intelligence and language aptitude.
+#'
+#' @usage data("oral")
+#' @format
+#'  A data frame with 56 observations on the following 5 variables.
+#'  \describe{
+#'    \item{\code{group}}{Group, a factor with levels \code{Control} \code{Exptl}}
+#'    \item{\code{listen}}{Listening test, a numeric vector}
+#'    \item{\code{speak}}{Speaking test, a numeric vector}
+#'    \item{\code{read}}{Reading test, a numeric vector}
+#'    \item{\code{write}}{Writing test, a numeric vector}
+#'  }
+#'
+#' @source 
+#' Timm, N. H. (1975). \emph{Multivariate Analysis with Applications in Education and Psychology}. Wadsworth (Brooks/Cole),
+#'     Exercise 3.12, p. 279.
+#' @references
+#' Postovsky, V. A. (1970). Effects of delay in oral practice at the start of second language training. Unpublished doctoral dissertation, University of California, Berleley.
+#'
+#' @concept MANOVA
+#' @examples
+#' data(oral)
+#' ## maybe str(oral) ; plot(oral) ...
+#'
+#' @keywords datasets
+NULL

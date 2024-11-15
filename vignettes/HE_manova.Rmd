@@ -523,7 +523,7 @@ Crime, and asked to rate the seriousness of the crime and recommend a
 prison sentence, in Years.  The data are contained in the data frame `MockJury`.[^1]
 
 [^1]:The data were made available courtesy of Karl Wuensch, from
-	[http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat](http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat)
+	[https://core.ecu.edu/wuenschk/StatData/PLASTER.dat](https://core.ecu.edu/wuenschk/StatData/PLASTER.dat)
 
 
 ```{r, MJdata}

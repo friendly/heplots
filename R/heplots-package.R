@@ -67,7 +67,7 @@
 #' \code{data(package="heplots")} to see the current list.
 #' 
 #' @name heplots-package
-#' @aliases heplots-package heplots
+#' @aliases heplots-package heplots _PACKAGE
 #' @author 
 #'    Michael Friendly, John Fox, and Georges Monette
 #' 

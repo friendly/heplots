@@ -10,12 +10,11 @@
 9,MockJury,114,17,Effects Of Physical Attractiveness Upon Mock Jury Decisions,MANOVA candisc
 10,NLSY,243,6,National Longitudinal Survey of Youth Data,MMRA
 11,NeuroCog,242,10,Neurocognitive Measures in Psychiatric Groups,MANOVA candisc
-12,Oslo,332,14,Oslo Transect Subset Data,MANOVA  candisc
+12,Oslo,332,14,Oslo Transect Subset Data,MANOVA candisc
 13,Parenting,60,4,Father Parenting Competence,MANOVA contrasts
 14,Plastic,20,5,Plastic Film Data,MANOVA
 15,Pottery2,48,12,Chemical Analysis of Romano-British Pottery,MANOVA candisc
-16,Probe1,11,5,Response Speed in a Probe Experiment,MANOVA repeated
-17,Probe2,20,6,Response Speed in a Probe Experiment,MANOVA repeated
+16,Probe,11,5,Response Speed in a Probe Experiment,MANOVA repeated
 18,RatWeight,27,6,Weight Gain in Rats Exposed to Thiouracil and Thyroxin,MANOVA repeated
 19,ReactTime,10,6,Reaction Time Data,repeated
 20,Rohwer,69,10,Rohwer Data Set,MMRA MANCOVA
@@ -31,3 +30,5 @@
 30,schooldata,70,8,School Data,MMRA robust
 31,peng,333,8,Size measurements for adult foraging penguins near Palmer Station,MANOVA
 32,Overdose,17,7,Overdose of Amitriptyline,MMRA cancor
+33,dogfood,16,3,Dogfood Preferences,MANOVA contrasts candisc
+34,oral,56,5,Effect of Delay in Oral Practice in Second Language Learning,MANOVA

@@ -1,8 +1,8 @@
 Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
-Version: 1.7.0
-Date: 2024-05-01
+Version: 1.7.1
+Date: 2024-11-14
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -54,12 +54,17 @@ Suggests:
     tidyr,
     ggplot2,
     bookdown,
-    patchwork
+    patchwork,
+    tinytable,
+    glue,
+    here,
+    Sleuth2, rrcov, archdata, qqtest,
+    vcdExtra
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
 License: GPL (>= 2)
-URL: http://friendly.github.io/heplots/
-RoxygenNote: 7.3.1
+URL: http://friendly.github.io/heplots/, http://friendly.github.io/heplots/
+RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr
