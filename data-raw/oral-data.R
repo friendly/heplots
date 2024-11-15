@@ -43,11 +43,25 @@ pairs(oral.mod, col=c("red", "black"),
 
 
 par(mfrow=c(1,4), cex.lab=1.5)
-Boxplot(listen ~ group, data=oral, col=c("lightblue", "pink"))
-Boxplot(speak ~ group, data=oral, col=c("lightblue", "pink"))
-Boxplot(read ~ group, data=oral, col=c("lightblue", "pink"))
-Boxplot(write ~ group, data=oral, col=c("lightblue", "pink"))
+clr <- c("pink", "lightblue")
+Boxplot(listen ~ group, data=oral, col = clr, cex.lab = 1.5)
+Boxplot(speak ~  group, data=oral, col = clr, cex.lab = 1.5)
+Boxplot(read ~   group, data=oral, col = clr, cex.lab = 1.5)
+Boxplot(write ~  group, data=oral, col = clr, cex.lab = 1.5)
 par(op)
+
+Boxplot(oral[, 2:5], g = oral$group)
+
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+oral |>
+  pivot_longer(!group, names_to = "variable") |>
+  ggplot(aes(x = group, y = value, color = group)) +
+  geom_boxplot() +
+  facet_wrap(~variable, scales="free")
+
+
 
 oral.can <- candisc(oral.mod)
 plot(oral.can, var.lwd=2)

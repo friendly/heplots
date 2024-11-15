@@ -33,6 +33,16 @@ library(car)
 library(candisc)
 data(oral)
 
+# make some boxplots
+op <- par(mfrow=c(1,4), cex.lab=1.5)
+clr <- c("pink", "lightblue")
+Boxplot(listen ~ group, data=oral, col = clr, cex.lab = 1.5)
+Boxplot(speak ~  group, data=oral, col = clr, cex.lab = 1.5)
+Boxplot(read ~   group, data=oral, col = clr, cex.lab = 1.5)
+Boxplot(write ~  group, data=oral, col = clr, cex.lab = 1.5)
+par(op)
+
+# view the data ellipses
 covEllipses(cbind(listen, speak, read, write) ~ group, data=oral,
     variables = 1:4,
     level = 0.40,
@@ -44,6 +54,12 @@ Anova(oral.mod)
 
 # canonical view
 oral.can <- candisc(oral.mod) |> print()
+summary(oral.can)
+
+# reflect the structure & scores to make them positive
+oral.can$structure[, "Can1"] <- -1 * oral.can$structure[, "Can1"]
+oral.can$scores[, "Can1"]    <- -1 * oral.can$scores[, "Can1"]
+
 plot(oral.can, var.lwd=2)
 
 

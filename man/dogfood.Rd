@@ -7,7 +7,7 @@
 \format{
 A data frame with 16 observations on the following 3 variables.
  \describe{
-   \item{\code{formula}}{factor, a factor with levels \code{Old} \code{New} \code{Major} \code{Alps}}
+   \item{\code{formula}}{factor, a factor with levels \code{Old}, \code{New}, \code{Major}, \code{Alps}}
    \item{\code{start}}{numeric, time to start eating}
    \item{\code{amount}}{numeric, amount eaten}
  }
@@ -25,28 +25,43 @@ A dogfood manufacturer wanted to study preference for different dogfood formulas
 ("Old", "New") and two from other manufacturers ("Major", "Alps"). In a between-dog design, 4 dogs
 were presented with a bowl of one \code{formula} and the time to \code{start} eating and \code{amount} eaten were recorded.
 }
+\details{
+Three contrasts have been specified for the 3-df \code{formula} factor:
+\itemize{
+  \item \code{Ours} vs. \code{Theirs}
+  \item \code{Major} vs. \code{Alps}
+  \item \code{Old} vs. \code{New}
+  }
+}
 \examples{
 data(dogfood)
 library(car)
-dog.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
-Anova(dog.mod)
+library(candisc)
+dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+Anova(dogfood.mod)
 
 # data ellipses
 covEllipses(cbind(start, amount) ~ formula, data=dogfood,
   fill = TRUE, fill.alpha = 0.1)
 
 # test contrasts
-linearHypothesis(dog.mod, "formula1", title="Ours vs. Theirs")
-linearHypothesis(dog.mod, "formula2", title="Old vs. New")
-linearHypothesis(dog.mod, "formula3", title="Alps vs. Major")
+contrasts(dogfood$formula)
 
-heplot(dog.mod, fill = TRUE, fill.alpha = 0.1)
+linearHypothesis(dogfood.mod, "formula1", title="Ours vs. Theirs")
+linearHypothesis(dogfood.mod, "formula2", title="Old vs. New")
+linearHypothesis(dogfood.mod, "formula3", title="Alps vs. Major")
+
+heplot(dogfood.mod, fill = TRUE, fill.alpha = 0.1)
 
 hyp <- list("Ours/Theirs" = "formula1",
             "Old/New" = "formula2")
-heplot(dog.mod, hypotheses = hyp,
+heplot(dogfood.mod, hypotheses = hyp,
        fill = TRUE, fill.alpha = 0.1)
 
+dogfood.can <- candisc(dogfood.mod, data=dogfood)
+heplot(dogfood.can, 
+       fill = TRUE, fill.alpha = 0.1, 
+       lwd = 2, var.lwd = 2, var.cex = 2)
 }
 \concept{MANOVA}
 \concept{candisc}
