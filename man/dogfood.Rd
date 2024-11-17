@@ -37,6 +37,16 @@ Three contrasts have been specified for the 3-df \code{formula} factor:
 data(dogfood)
 library(car)
 library(candisc)
+
+# make some boxplots
+op <- par(mfrow = c(1,2))
+boxplot(start ~ formula, data = dogfood)
+points(start ~ formula, data = dogfood, pch=16, cex = 1.2)
+
+boxplot(amount ~ formula, data = dogfood)
+points(amount ~ formula, data = dogfood, pch=16, cex = 1.2)
+par(op)
+
 dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
 Anova(dogfood.mod)
 
