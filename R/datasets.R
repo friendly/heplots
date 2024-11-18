@@ -2552,13 +2552,15 @@ NULL
 #' were presented with a bowl of one \code{formula} and the time to \code{start} eating and \code{amount} eaten were recorded.
 #'
 #' @details
-#' Three contrasts have been specified for the 3-df \code{formula} factor:
+#' In addition to testing the overall effects of \code{formula},
+#' three useful (and orthogonal) contrasts can specified for this 3-df factor:
 #' \itemize{
-#'   \item \code{Ours} vs. \code{Theirs}
-#'   \item \code{Major} vs. \code{Alps}
-#'   \item \code{Old} vs. \code{New}
+#'   \item \code{Ours} vs. \code{Theirs}, with weights \code{c(1, 1, -1, -1)}
+#'   \item \code{Major} vs. \code{Alps}, with weights \code{c(0, 0,  1, -1)}
+#'   \item \code{Old} vs. \code{New}, with weights \code{c(1, -1, 0, 0)}
 #'   }
-#' 
+#' Because these are orthogonal contrasts, they fully decompose the main effect of \code{formula},
+#' in that their sum of squares add to the overall sum of squares.
 #'
 #' @usage data("dogfood")
 #' @format
@@ -2597,15 +2599,23 @@ NULL
 #' covEllipses(cbind(start, amount) ~ formula, data=dogfood,
 #'   fill = TRUE, fill.alpha = 0.1)
 #' 
-#' # test contrasts
-#' contrasts(dogfood$formula)
+#' # setup contrasts to test interesting comparisons
+#' C <- matrix(
+#'        c( 1,  1, -1, -1,         #Ours vs. Theirs
+#'           0,  0,  1, -1,           #Major vs. Alps
+#'           1, -1,  0,  0),             #New vs. Old
+#'        nrow=4, ncol=3)
+#' # assign these to the formula factor
+#' contrasts(dogfood$formula) <- C
 #' 
+#' # test these contrasts with multivariate tests 
 #' linearHypothesis(dogfood.mod, "formula1", title="Ours vs. Theirs")
 #' linearHypothesis(dogfood.mod, "formula2", title="Old vs. New")
 #' linearHypothesis(dogfood.mod, "formula3", title="Alps vs. Major")
 #' 
 #' heplot(dogfood.mod, fill = TRUE, fill.alpha = 0.1)
-#' 
+#'
+#' # display contrasts in the heplot 
 #' hyp <- list("Ours/Theirs" = "formula1",
 #'             "Old/New" = "formula2")
 #' heplot(dogfood.mod, hypotheses = hyp,
