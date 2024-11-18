@@ -1,7 +1,7 @@
 library(readr)
 #dogfood <- read_table("data-raw/dogfood.dat")
 dogfood <- read.csv("data-raw/dogfood.dat", sep="")
-View(dogfood)
+#View(dogfood)
 
 # make a factor, with levels in our order
 dogfood$formula <- factor(dogfood$formula,
