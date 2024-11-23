@@ -17,7 +17,7 @@ A data frame with 60 observations on the following 4 variables.
 \source{
 Meyers, L. S., Gamst, G, & Guarino, A. J. (2006). \emph{Applied
 Multivariate Research: Design and Interpretation}, Thousand Oaks, CA: Sage
-Publications, \url{https://studysites.sagepub.com/amrStudy/}, Exercises 10B.
+Publications, \url{https://study.sagepub.com/meyers3e}, Exercises 10B.
 }
 \description{
 The data, from an exercise given by Meyers et al. (2006) relates to 60

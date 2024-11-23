@@ -50,13 +50,6 @@ boxplot(amount ~ formula, data = dogfood)
 points(amount ~ formula, data = dogfood, pch=16, cex = 1.2)
 par(op)
 
-dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
-Anova(dogfood.mod)
-
-# data ellipses
-covEllipses(cbind(start, amount) ~ formula, data=dogfood,
-  fill = TRUE, fill.alpha = 0.1)
-
 # setup contrasts to test interesting comparisons
 C <- matrix(
        c( 1,  1, -1, -1,         #Ours vs. Theirs
@@ -65,6 +58,13 @@ C <- matrix(
        nrow=4, ncol=3)
 # assign these to the formula factor
 contrasts(dogfood$formula) <- C
+
+dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+Anova(dogfood.mod)
+
+# data ellipses
+covEllipses(cbind(start, amount) ~ formula, data=dogfood,
+  fill = TRUE, fill.alpha = 0.1)
 
 # test these contrasts with multivariate tests 
 linearHypothesis(dogfood.mod, "formula1", title="Ours vs. Theirs")

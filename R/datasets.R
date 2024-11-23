@@ -29,7 +29,7 @@
 #' Warne, R. T. (2014). A primer on Multivariate Analysis of Variance
 #' (MANOVA) for Behavioral Scientists.  
 #' \emph{Practical Assessment, Research & Evaluation}, 19 (1).
-#' \url{https://scholarworks.umass.edu/pare/vol19/iss1/17/}
+#' % \url{https://scholarworks.umass.edu/pare/vol19/iss1/17/}
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept ordered
@@ -829,8 +829,8 @@ NULL
 #' 
 #' 
 #' @source 
-#' Originally obtained from Dr. Wuensch's StatData page,
-#' \url{https://core.ecu.edu/wuenschk/StatData/PLASTER.dat}
+#' Originally obtained from Dr. Wuensch's StatData page at East Carolina University. No longer exists.
+#' %\url{https://core.ecu.edu/wuenschk/StatData/PLASTER.dat}
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept candisc
@@ -1223,7 +1223,7 @@ NULL
 #' @source 
 #' Meyers, L. S., Gamst, G, & Guarino, A. J. (2006). \emph{Applied
 #' Multivariate Research: Design and Interpretation}, Thousand Oaks, CA: Sage
-#' Publications, \url{https://studysites.sagepub.com/amrStudy/}, Exercises 10B.
+#' Publications, \url{https://study.sagepub.com/meyers3e}, Exercises 10B.
 #' @keywords datasets
 #' @concept MANOVA
 #' @examples
@@ -2592,13 +2592,6 @@ NULL
 #' points(amount ~ formula, data = dogfood, pch=16, cex = 1.2)
 #' par(op)
 #' 
-#' dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
-#' Anova(dogfood.mod)
-#'
-#' # data ellipses
-#' covEllipses(cbind(start, amount) ~ formula, data=dogfood,
-#'   fill = TRUE, fill.alpha = 0.1)
-#' 
 #' # setup contrasts to test interesting comparisons
 #' C <- matrix(
 #'        c( 1,  1, -1, -1,         #Ours vs. Theirs
@@ -2607,6 +2600,13 @@ NULL
 #'        nrow=4, ncol=3)
 #' # assign these to the formula factor
 #' contrasts(dogfood$formula) <- C
+#' 
+#' dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+#' Anova(dogfood.mod)
+#'
+#' # data ellipses
+#' covEllipses(cbind(start, amount) ~ formula, data=dogfood,
+#'   fill = TRUE, fill.alpha = 0.1)
 #' 
 #' # test these contrasts with multivariate tests 
 #' linearHypothesis(dogfood.mod, "formula1", title="Ours vs. Theirs")
