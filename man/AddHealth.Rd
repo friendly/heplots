@@ -17,7 +17,6 @@ A data frame with 4344 observations on the following 3 variables.
 Warne, R. T. (2014). A primer on Multivariate Analysis of Variance
 (MANOVA) for Behavioral Scientists.  
 \emph{Practical Assessment, Research & Evaluation}, 19 (1).
-% was: https://scholarworks.umass.edu/pare/vol19/iss1/17/
 }
 \description{
 This data was taken from the National Longitudinal Study of Adolescent
