@@ -67,7 +67,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Data sets in the heplots package</h1>
                         <h4 data-toc-skip class="author">Michael Friendly</h4>
             
-            <h4 data-toc-skip class="date">2024-11-15</h4>
+            <h4 data-toc-skip class="date">2024-11-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/friendly/heplots/blob/HEAD/vignettes/datasets.Rmd" class="external-link"><code>vignettes/datasets.Rmd</code></a></small>
       <div class="d-none name"><code>datasets.Rmd</code></div>
@@ -94,7 +94,9 @@ usual stub examples, that often look like:</p>
 <span><span class="co">#&gt; 2   Adopted data.frame   62x6              Adopted Children</span></span>
 <span><span class="co">#&gt; 3      Bees data.frame  246x6   Captive and maltreated bees</span></span>
 <span><span class="co">#&gt; 4  Diabetes data.frame  145x6              Diabetes Dataset</span></span></code></pre></div>
-<p>Then, in the roxygen documentation, I added <code>@concept</code> tags to classify these datasets according to methods used. For example,
+<p>Then, in the roxygen documentation, I added <code>@concept</code> tags to classify these datasets according to methods used.
+(<code>@concept</code> entries are indexed with the package, so they work via <code><a href="https://rdrr.io/r/utils/help.search.html" class="external-link">help.search()</a></code>)
+For example,
 the documentation for the <code>AddHealth</code> data contains these lines:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @name AddHealth</span></span>
@@ -125,7 +127,7 @@ used below.</p>
 <li>
 <strong>candisc</strong>: Canonical discriminant analysis (using <a href="https://github.com/friendly/candisc/" class="external-link">candisc</a>)</li>
 <li>
-<strong>repeated</strong>: Repeated measures designs</li>
+<strong>repeated</strong>: Repeated measures designs, analyzed from the multivariate perspective</li>
 <li>
 <strong>robust</strong>: Robust estimation of MLMs</li>
 </ul>
@@ -151,7 +153,9 @@ linear hypotheses concerning factors:</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/tinytable/" class="external-link">tinytable</a></span><span class="op">)</span></span>
 <span><span class="co">#dsets &lt;- read.csv(here::here("extra", "datasets.csv"))  # doesn't work in a vignette</span></span>
 <span><span class="va">dsets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/friendly/heplots/master/extra/datasets.csv"</span><span class="op">)</span></span>
-<span><span class="va">dsets</span> <span class="op">&lt;-</span> <span class="va">dsets</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">X</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">dsets</span> <span class="op">&lt;-</span> <span class="va">dsets</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">X</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># link dataset to pkgdown doc</span></span>
 <span><span class="va">refurl</span> <span class="op">&lt;-</span> <span class="st">"http://friendly.github.io/heplots/reference/"</span></span>
