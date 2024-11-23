@@ -91,7 +91,7 @@ The main methods used in the example datasets are shown in the table below:
 * **MMRA**: Multivariate multiple regression
 * **cancor**: Canonical correlation (using the [candisc](https://github.com/friendly/candisc/) package)
 * **candisc**: Canonical discriminant analysis (using [candisc](https://github.com/friendly/candisc/))
-* **repeated**: Repeated measures designs
+* **repeated**: Repeated measures designs, analyzed from the multivariate perspective
 * **robust**: Robust estimation of MLMs
 
 In addition, a few examples illustrate special handling for
@@ -115,7 +115,9 @@ library(dplyr)
 library(tinytable)
 #dsets <- read.csv(here::here("extra", "datasets.csv"))  # doesn't work in a vignette
 dsets <- read.csv("https://raw.githubusercontent.com/friendly/heplots/master/extra/datasets.csv")
-dsets <- dsets |> dplyr::select(-X) |> arrange(tolower(dataset))
+dsets <- dsets |> 
+  dplyr::select(-X) |> 
+  arrange(tolower(dataset))
 
 # link dataset to pkgdown doc
 refurl <- "http://friendly.github.io/heplots/reference/"
