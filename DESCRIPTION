@@ -50,6 +50,7 @@ Suggests:
     mvinfluence,
     knitr,
     rmarkdown,
+    markdown,
     dplyr,
     tidyr,
     ggplot2,
