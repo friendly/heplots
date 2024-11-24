@@ -2634,7 +2634,7 @@ NULL
 #' Effect of Delay in Oral Practice in Second Language Learning
 #'
 #' @description
-#' Postovsky (1970) investigatged the effect of delay in oral practice at the beginning of second language learning.
+#' Postovsky (1970) investigated the effect of delay in oral practice at the beginning of second language learning.
 #' A control condition began oral practice with no delay, while an experimental group had a four-week delay before
 #' starting oral practice. The data consists of scores on language skills at the end of six weeks of study.
 #' 
@@ -2655,7 +2655,8 @@ NULL
 #' Timm, N. H. (1975). \emph{Multivariate Analysis with Applications in Education and Psychology}. Wadsworth (Brooks/Cole),
 #'     Exercise 3.12, p. 279.
 #' @references
-#' Postovsky, V. A. (1970). Effects of delay in oral practice at the start of second language training. Unpublished doctoral dissertation, University of California, Berleley.
+#' Postovsky, V. A. (1970). Effects of delay in oral practice at the start of second language training. Unpublished doctoral dissertation, 
+#' University of California, Berkeley.
 #'
 #' @concept MANOVA
 #' @examples

@@ -1,10 +1,11 @@
-## Version 1.7.1 (2024-05-03)
+## Version 1.7.1 (2024-11-14)
 
 This is a modest update, adding two new datasets for simple examples and a PDF vignette
 
 * Extended the "datasets" vignette with further description of how this was done.
 * Added `dogfood` and `oral` datasets, both simple MANOVA examples.
 * Added HE Plots for Repeated Measures Designs vignette
+* Fixed nits from URLs vanished or moved
 
 ## Version 1.7.0 (2024-05-01)
 
