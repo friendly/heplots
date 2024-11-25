@@ -32,7 +32,7 @@
 
     <a class="navbar-brand me-2" href="index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +74,8 @@
 <h2 id="visualizing-hypothesis-tests-in-multivariate-linear-models">
 <strong>Visualizing Hypothesis Tests in Multivariate Linear Models</strong><a class="anchor" aria-label="anchor" href="#visualizing-hypothesis-tests-in-multivariate-linear-models"></a>
 </h2>
-<p>Version 1.7.1</p>
+<!-- Version 1.7.2 -->
+<p>Version 1.7.2</p>
 </div>
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
@@ -107,9 +108,9 @@
 <li>bivariate coefficient plots showing elliptical confidence regions (<code><a href="reference/coefplot.html">coefplot()</a></code>).</li>
 </ul>
 <p>In this respect, the <code>heplots</code> package now aims to provide a wide range of tools for analyzing and visualizing multivariate response linear models, together with other packages:</p>
-<p><a href="http://github.com/friendly/candisc" class="external-link"><img src="https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png" height="80" style="float:right; height:80px;"></a></p>
+<p><a href="https://friendly.github.io/candisc/" class="external-link"><img src="https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png" height="80" style="float:right; height:80px;"></a></p>
 <ul>
-<li>The related <a href="https://github.com/friendly/candisc/" class="external-link"><code>candisc</code></a> package provides HE plots in <strong>canonical discriminant</strong> space, the space of linear combinations of the responses that show the maximum possible effects and for canonical correlation in multivariate regression designs.</li>
+<li>The related <a href="https://friendly.github.io/candisc/" class="external-link"><code>candisc</code></a> package provides HE plots in <strong>canonical discriminant</strong> space, the space of linear combinations of the responses that show the maximum possible effects and for canonical correlation in multivariate regression designs.</li>
 </ul>
 <p><a href="https://friendly.github.io/mvinfluence/" class="external-link"><img src="https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png" height="80" style="float:right; height:80px;"></a></p>
 <ul>
@@ -205,60 +206,74 @@
 <td>MANOVA</td>
 </tr>
 <tr class="odd">
+<td><a href="http://friendly.github.io/heplots/reference/dogfood.html" class="external-link">dogfood</a></td>
+<td>16</td>
+<td>3</td>
+<td>Dogfood Preferences</td>
+<td>MANOVA contrasts candisc</td>
+</tr>
+<tr class="even">
 <td><a href="http://friendly.github.io/heplots/reference/FootHead.html" class="external-link">FootHead</a></td>
 <td>90</td>
 <td>7</td>
 <td>Head measurements of football players</td>
 <td>MANOVA contrasts</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="http://friendly.github.io/heplots/reference/Headache.html" class="external-link">Headache</a></td>
 <td>98</td>
 <td>6</td>
 <td>Treatment of Headache Sufferers for Sensitivity to Noise</td>
 <td>MANOVA repeated</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="http://friendly.github.io/heplots/reference/Hernior.html" class="external-link">Hernior</a></td>
 <td>32</td>
 <td>9</td>
 <td>Recovery from Elective Herniorrhaphy</td>
 <td>MMRA candisc</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="http://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html" class="external-link">Iwasaki_Big_Five</a></td>
 <td>203</td>
 <td>7</td>
 <td>Personality Traits of Cultural Groups</td>
 <td>MANOVA</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="http://friendly.github.io/heplots/reference/mathscore.html" class="external-link">mathscore</a></td>
 <td>12</td>
 <td>3</td>
 <td>Math scores for basic math and word problems</td>
 <td>MANOVA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="http://friendly.github.io/heplots/reference/MockJury.html" class="external-link">MockJury</a></td>
 <td>114</td>
 <td>17</td>
 <td>Effects Of Physical Attractiveness Upon Mock Jury Decisions</td>
 <td>MANOVA candisc</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="http://friendly.github.io/heplots/reference/NeuroCog.html" class="external-link">NeuroCog</a></td>
 <td>242</td>
 <td>10</td>
 <td>Neurocognitive Measures in Psychiatric Groups</td>
 <td>MANOVA candisc</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="http://friendly.github.io/heplots/reference/NLSY.html" class="external-link">NLSY</a></td>
 <td>243</td>
 <td>6</td>
 <td>National Longitudinal Survey of Youth Data</td>
 <td>MMRA</td>
+</tr>
+<tr class="even">
+<td><a href="http://friendly.github.io/heplots/reference/oral.html" class="external-link">oral</a></td>
+<td>56</td>
+<td>5</td>
+<td>Effect of Delay in Oral Practice in Second Language Learning</td>
+<td>MANOVA</td>
 </tr>
 <tr class="odd">
 <td><a href="http://friendly.github.io/heplots/reference/Oslo.html" class="external-link">Oslo</a></td>
