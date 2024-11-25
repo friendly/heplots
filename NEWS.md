@@ -1,3 +1,8 @@
+## Version 1.7.2 (2024-11-25)
+
+* Fixed bug in `ellipse.axes()` re center/centre
+* `ellipse.axes()` gains a `type` argument to draw lines or arrows
+
 ## Version 1.7.1 (2024-11-14)
 
 This is a modest update, adding two new datasets for simple examples and a PDF vignette

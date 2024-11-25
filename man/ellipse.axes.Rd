@@ -7,14 +7,15 @@
 ellipse.axes(
   x,
   centre = c(0, 0),
-  center = center,
-  scale = c(1, 1),
+  center = centre,
+  scale,
   which = 1:2,
   level = 0.95,
   radius = sqrt(qchisq(level, 2)),
   labels = TRUE,
   label.ends = c(2, 4),
   label.pos = c(2, 4, 1, 3),
+  type = c("lines", "arrows"),
   ...
 )
 }
@@ -56,6 +57,8 @@ Default: \code{c(2, 4)}.}
 the four possible \code{label.ends}. 1, 2, 3, 4 represent below, to the left, above and to the right.
 The default, \code{c(2, 4, 1, 3)}, positions the labels outside the axes.}
 
+\item{type}{Character. Draw \code{"lines"} or \code{"arrows"}.}
+
 \item{\dots}{Other arguments passed to \code{\link[graphics]{lines}} and \code{\link[graphics]{text}}.}
 }
 \value{
@@ -74,8 +77,23 @@ radius <- sqrt(qchisq(0.68, 2))
 plot(iris[,1:2], asp=1)
 car::ellipse(mu, cov, radius = radius)
 res <- ellipse.axes(cov, center=mu, level = 0.68,
-            labels = TRUE)
+                    labels = TRUE)
 res
+
+# try some options 
+plot(iris[,1:2], asp=1)
+car::ellipse(mu, cov, radius = radius)
+abline(h=mu[2], v=mu[1], col = "grey")
+ellipse.axes(cov, centre=mu, level = 0.68,
+             labels = "Dim", label.ends = 1:4,
+             lwd = 2, lty = 2, col = "red",
+             cex = 1.5)
+             
+# draw arrows rather than lines            
+plot(iris[,1:2], asp=1)
+car::ellipse(mu, cov, radius = radius)
+ellipse.axes(cov, center=mu, level = 0.68,
+             type = "arrows")
 }
 \seealso{
 \code{\link[graphics]{lines}}, \code{\link[graphics]{text}}
