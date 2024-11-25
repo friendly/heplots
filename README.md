@@ -298,12 +298,10 @@ variables.
 
 ``` r
 # HE plot in canonical space
-heplot(iris.can)
+heplot(iris.can, var.pos = 1, scale = 40)
 ```
 
 <img src="man/figures/README-iris-can-1.png" width="60%" />
-
-    #> Vector scale factor set to  43.914
 
 ### Covariance ellipses
 

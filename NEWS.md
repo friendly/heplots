@@ -2,6 +2,7 @@
 
 * Fixed bug in `ellipse.axes()` re center/centre
 * `ellipse.axes()` gains a `type` argument to draw lines or arrows
+* `ellipse.axes()` gains a `extend` argument to extend/shrink the axes
 
 ## Version 1.7.1 (2024-11-14)
 

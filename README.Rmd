@@ -278,7 +278,7 @@ show how `Sepal.Width` differs from the other size variables.
 #| echo = -1
 par(mar=c(4,4,1,1)+.1)
 # HE plot in canonical space
-heplot(iris.can)
+heplot(iris.can, var.pos = 1, scale = 40)
 ```
 
 

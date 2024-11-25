@@ -5,7 +5,7 @@
 #' 
 #' 
 #'
-#' @param x A square positive definite matrix at least 2x2 in size.  It will be
+#' @param x A square positive definite matrix at least \eqn{2 \times 2} in size.  It will be
 #'          treated as the correlation or covariance of a multivariate normal
 #'          distribution.
 #' @param centre,center The center of the ellipse
@@ -20,7 +20,9 @@
 #' @param radius The size of the ellipsoid may also be controlled by specifying the
 #'          value of a t-statistic on its boundary. This defaults to the square root of a chi-square statistic
 #'          for a given \code{level} on 2 degrees of freedom, however in a small sample of \code{n} observations,
-#'          a more accurate value is \code{sqrt(2 * qf(level, 2, n - 1 ))}. 
+#'          a more accurate value is \code{sqrt(2 * qf(level, 2, n - 1 ))}.
+#' @param extend Fraction to extend the \code{radius} (default: 0). For example, use \code{extend = 0.1} to extend
+#'          the ellipse axes by 10\%.
 #' @param labels Either a logical value, a character string, or a character
 #'          vector of length 2.  If \code{TRUE}, the default, the axes are labeled "PC1",
 #'          "PC2".  If a single character string, the digits 1, and 2 are pasted on
@@ -66,7 +68,7 @@
 #' plot(iris[,1:2], asp=1)
 #' car::ellipse(mu, cov, radius = radius)
 #' ellipse.axes(cov, center=mu, level = 0.68,
-#'              type = "arrows")
+#'              type = "arrows", extend = 0.2)
 
 
 ellipse.axes <- function(
@@ -76,7 +78,8 @@ ellipse.axes <- function(
     scale, 
     which = 1:2, 
     level = 0.95,
-    radius = sqrt(qchisq(level, 2)), 
+    radius = sqrt(qchisq(level, 2)),
+    extend = 0,
     labels = TRUE, 
     label.ends = c(2, 4),
     label.pos = c(2, 4, 1, 3),
@@ -89,7 +92,7 @@ ellipse.axes <- function(
     warning("Specify 'centre' or 'center', not both. The value from 'center' will be used.")
   }
 
-  if(length(which) != 2)  stop("`which` must be a vector of length 2, not", which)
+  if(length(which) != 2)  stop("`which` must be a vector of length 2, not ", which)
   cov <- x[which, which]
   eig <- eigen(cov)
 
@@ -104,6 +107,7 @@ ellipse.axes <- function(
   # transform to PC axes
   result <- axes %*% sqrt(diag(eig$values)) %*% t(eig$vectors)
   # scale
+  radius <- radius * (1 + extend)
   result <- result %*% diag(rep(radius, 2))
   # center
   result <- sweep(result, 2L, center, FUN="+")
@@ -113,9 +117,6 @@ ellipse.axes <- function(
   if(result[1,1] > result[2,1]) result[1:2,] <- result[2:1,]
   if(result[3,2] > result[4,2]) result[3:4,] <- result[4:3,]
   
-  # convert to something that can be used by lines()
-  #result <- rbind(result[1:2,], NA, result[3:4,])
-
   # draw the lines (inserting NA between each pair) or arrows
   type <- match.arg(type)
   if (type == "lines") {
@@ -128,8 +129,8 @@ ellipse.axes <- function(
   }
 
   if (!missing(labels)) {
-    if (is.logical(labels) & isTRUE(labels)) labels <- paste("PC", 1:2, sep="")
-    if (length(labels)==1) labels <- paste(labels, 1:2, sep="")
+    if (is.logical(labels) & isTRUE(labels)) labels <- paste("PC", which, sep="")
+    if (length(labels)==1) labels <- paste(labels, which, sep="")
     labels <- rep(labels, each = 2)
     text(result[label.ends,], 
          labels=labels[label.ends], 

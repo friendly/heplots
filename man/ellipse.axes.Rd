@@ -12,6 +12,7 @@ ellipse.axes(
   which = 1:2,
   level = 0.95,
   radius = sqrt(qchisq(level, 2)),
+  extend = 0,
   labels = TRUE,
   label.ends = c(2, 4),
   label.pos = c(2, 4, 1, 3),
@@ -20,7 +21,7 @@ ellipse.axes(
 )
 }
 \arguments{
-\item{x}{A square positive definite matrix at least 2x2 in size.  It will be
+\item{x}{A square positive definite matrix at least \eqn{2 \times 2} in size.  It will be
 treated as the correlation or covariance of a multivariate normal
 distribution.}
 
@@ -41,6 +42,9 @@ ellipse.}
 value of a t-statistic on its boundary. This defaults to the square root of a chi-square statistic
 for a given \code{level} on 2 degrees of freedom, however in a small sample of \code{n} observations,
 a more accurate value is \code{sqrt(2 * qf(level, 2, n - 1 ))}.}
+
+\item{extend}{Fraction to extend the \code{radius} (default: 0). For example, use \code{extend = 0.1} to extend
+the ellipse axes by 10\%.}
 
 \item{labels}{Either a logical value, a character string, or a character
 vector of length 2.  If \code{TRUE}, the default, the axes are labeled "PC1",
