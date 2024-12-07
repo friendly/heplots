@@ -4,11 +4,13 @@
 \alias{leveneTests}
 \title{Levene Tests of Homogeneity of Variances}
 \usage{
-leveneTests(y, group, center = median, ...)
+leveneTests(y, ...)
 }
 \arguments{
 \item{y}{A data frame or matrix of numeric response variables in a
 multivariate linear model.}
+
+\item{\dots}{other arguments, passed to \code{\link[car]{leveneTest}}}
 
 \item{group}{a vector or factor object giving the group for the
 corresponding elements of the rows of \code{y}}
@@ -16,8 +18,6 @@ corresponding elements of the rows of \code{y}}
 \item{center}{The name of a function to compute the center of each group;
 \code{mean} gives the original Levene's (1960) test; the default,
 \code{median}, provides a more robust test suggested by Brown and Forsythe (1974).}
-
-\item{\dots}{other arguments, passed to \code{\link[car]{leveneTest}}}
 }
 \value{
 An object of classes "anova" and "data.frame", with one observation
@@ -38,6 +38,8 @@ leveneTests(iris[,1, drop=FALSE], iris$Species)
 data(Skulls, package="heplots")
 leveneTests(Skulls[,-1], Skulls$epoch)
 
+# formula method
+leveneTests(epoch ~ ., data=Skulls)
 
 }
 \references{

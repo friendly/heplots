@@ -42,9 +42,19 @@
 #' data(Skulls, package="heplots")
 #' leveneTests(Skulls[,-1], Skulls$epoch)
 #' 
+#' # formula method
+#' leveneTests(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 #' 
 #' @export leveneTests
-leveneTests <-
+#' 
+
+leveneTests <- function (y, ...) {
+  UseMethod("leveneTests") 
+}
+
+
+#' @export
+leveneTests.default <-
 	function (y, group, center = median, ...) 
 {
 	if (! inherits(y, "data.frame") | inherits(y, "matrix") )
@@ -71,3 +81,27 @@ leveneTests <-
 	LT
 }
 
+#' @export
+leveneTests.formula <- function(y, data, ...) {
+  form <- y
+  mf <- if (missing(data)) model.frame(form) else model.frame(form, data)
+  if (any(sapply(2:dim(mf)[2], function(j) is.numeric(mf[[j]])))) 
+    stop("Levene's test is not appropriate with quantitative explanatory variables.")
+  y <- mf[,1]
+  if(dim(mf)[2]==2) group <- mf[,2]
+  else {
+    if (length(grep("\\+ | \\| | \\^ | \\:",form))>0) stop("Model must be completely crossed formula only.")
+    group <- interaction(mf[,2:dim(mf)[2]])
+  }
+  leveneTests.default(y=y, group=group, ...)
+}
+
+
+#' @export
+leveneTests.mlm <- function(y, ...) {
+  m <- model.frame(y)
+  m$..y <- model.response(m)
+  f <- formula(y)
+  f[2] <- expression(..y)
+  leveneTest.formula(f, data=m, ...)
+}
