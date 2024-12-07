@@ -2,6 +2,9 @@
 
 S3method(Ellipsoid,data.frame)
 S3method(Ellipsoid,default)
+S3method(bartlettTests,default)
+S3method(bartlettTests,formula)
+S3method(bartlettTests,mlm)
 S3method(boxM,default)
 S3method(boxM,formula)
 S3method(boxM,lm)
