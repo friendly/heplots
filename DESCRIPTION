@@ -3,6 +3,7 @@ Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
 Version: 1.7.3
 Date: 2024-12-07
+
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -50,6 +51,7 @@ Suggests:
     mvinfluence,
     knitr,
     rmarkdown,
+    markdown,
     dplyr,
     tidyr,
     ggplot2,
@@ -59,7 +61,8 @@ Suggests:
     glue,
     here,
     Sleuth2, rrcov, archdata, qqtest,
-    vcdExtra
+    vcdExtra,
+    R.rsp
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
@@ -67,4 +70,4 @@ License: GPL (>= 2)
 URL: http://friendly.github.io/heplots/, http://friendly.github.io/heplots/
 RoxygenNote: 7.3.2
 Encoding: UTF-8
-VignetteBuilder: knitr
+VignetteBuilder: knitr, R.rsp

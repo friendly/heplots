@@ -22,7 +22,7 @@ Timm, N. H. (1975). \emph{Multivariate Analysis with Applications in Education a
 data("oral")
 }
 \description{
-Postovsky (1970) investigatged the effect of delay in oral practice at the beginning of second language learning.
+Postovsky (1970) investigated the effect of delay in oral practice at the beginning of second language learning.
 A control condition began oral practice with no delay, while an experimental group had a four-week delay before
 starting oral practice. The data consists of scores on language skills at the end of six weeks of study.
 
@@ -65,7 +65,8 @@ plot(oral.can, var.lwd=2)
 
 }
 \references{
-Postovsky, V. A. (1970). Effects of delay in oral practice at the start of second language training. Unpublished doctoral dissertation, University of California, Berleley.
+Postovsky, V. A. (1970). Effects of delay in oral practice at the start of second language training. Unpublished doctoral dissertation, 
+University of California, Berkeley.
 }
 \concept{MANOVA}
 \keyword{datasets}

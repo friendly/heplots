@@ -7,19 +7,21 @@
 ellipse.axes(
   x,
   centre = c(0, 0),
-  center = center,
-  scale = c(1, 1),
+  center = centre,
+  scale,
   which = 1:2,
   level = 0.95,
   radius = sqrt(qchisq(level, 2)),
+  extend = 0,
   labels = TRUE,
   label.ends = c(2, 4),
   label.pos = c(2, 4, 1, 3),
+  type = c("lines", "arrows"),
   ...
 )
 }
 \arguments{
-\item{x}{A square positive definite matrix at least 2x2 in size.  It will be
+\item{x}{A square positive definite matrix at least \eqn{2 \times 2} in size.  It will be
 treated as the correlation or covariance of a multivariate normal
 distribution.}
 
@@ -41,6 +43,9 @@ value of a t-statistic on its boundary. This defaults to the square root of a ch
 for a given \code{level} on 2 degrees of freedom, however in a small sample of \code{n} observations,
 a more accurate value is \code{sqrt(2 * qf(level, 2, n - 1 ))}.}
 
+\item{extend}{Fraction to extend the \code{radius} (default: 0). For example, use \code{extend = 0.1} to extend
+the ellipse axes by 10\%.}
+
 \item{labels}{Either a logical value, a character string, or a character
 vector of length 2.  If \code{TRUE}, the default, the axes are labeled "PC1",
 "PC2".  If a single character string, the digits 1, and 2 are pasted on
@@ -55,6 +60,8 @@ Default: \code{c(2, 4)}.}
 \item{label.pos}{Positions of text labels relative to the ends of the axes used in \code{\link[graphics]{text}} for
 the four possible \code{label.ends}. 1, 2, 3, 4 represent below, to the left, above and to the right.
 The default, \code{c(2, 4, 1, 3)}, positions the labels outside the axes.}
+
+\item{type}{Character. Draw \code{"lines"} or \code{"arrows"}.}
 
 \item{\dots}{Other arguments passed to \code{\link[graphics]{lines}} and \code{\link[graphics]{text}}.}
 }
@@ -74,8 +81,23 @@ radius <- sqrt(qchisq(0.68, 2))
 plot(iris[,1:2], asp=1)
 car::ellipse(mu, cov, radius = radius)
 res <- ellipse.axes(cov, center=mu, level = 0.68,
-            labels = TRUE)
+                    labels = TRUE)
 res
+
+# try some options 
+plot(iris[,1:2], asp=1)
+car::ellipse(mu, cov, radius = radius)
+abline(h=mu[2], v=mu[1], col = "grey")
+ellipse.axes(cov, centre=mu, level = 0.68,
+             labels = "Dim", label.ends = 1:4,
+             lwd = 2, lty = 2, col = "red",
+             cex = 1.5)
+             
+# draw arrows rather than lines            
+plot(iris[,1:2], asp=1)
+car::ellipse(mu, cov, radius = radius)
+ellipse.axes(cov, center=mu, level = 0.68,
+             type = "arrows")
 }
 \seealso{
 \code{\link[graphics]{lines}}, \code{\link[graphics]{text}}

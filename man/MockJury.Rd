@@ -27,8 +27,8 @@ A data frame with 114 observations on the following 17 variables.
 }
 }
 \source{
-Originally obtained from Dr. Wuensch's StatData page,
-\url{https://core.ecu.edu/wuenschk/StatData/PLASTER.dat}
+Originally obtained from Dr. Wuensch's StatData page at East Carolina University. No longer exists.
+% was: https://core.ecu.edu/wuenschk/StatData/PLASTER.dat
 }
 \description{
 Male participants were shown a picture of one of three young women.  Pilot

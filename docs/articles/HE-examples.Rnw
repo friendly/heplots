@@ -320,8 +320,9 @@ Then the participants were told that the person in the photo had committed a
 Crime, and asked to rate the seriousness of the crime and recommend a
 prison sentence, in Years.  The data are contained in the data frame \code{MockJury}.%
 \footnote{The data were made available courtesy of Karl Wuensch, from
-	\url{http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat}
+a website that no longer exists.
 }
+% http://core.ecu.edu/psyc/wuenschk/StatData/PLASTER.dat
 
 <<MJdata, results=verbatim>>=
 str(MockJury)

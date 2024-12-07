@@ -29,7 +29,6 @@
 #' Warne, R. T. (2014). A primer on Multivariate Analysis of Variance
 #' (MANOVA) for Behavioral Scientists.  
 #' \emph{Practical Assessment, Research & Evaluation}, 19 (1).
-#' \url{https://scholarworks.umass.edu/pare/vol19/iss1/17/}
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept ordered
@@ -829,8 +828,8 @@ NULL
 #' 
 #' 
 #' @source 
-#' Originally obtained from Dr. Wuensch's StatData page,
-#' \url{https://core.ecu.edu/wuenschk/StatData/PLASTER.dat}
+#' Originally obtained from Dr. Wuensch's StatData page at East Carolina University. No longer exists.
+#' % was: https://core.ecu.edu/wuenschk/StatData/PLASTER.dat
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept candisc
@@ -1223,7 +1222,7 @@ NULL
 #' @source 
 #' Meyers, L. S., Gamst, G, & Guarino, A. J. (2006). \emph{Applied
 #' Multivariate Research: Design and Interpretation}, Thousand Oaks, CA: Sage
-#' Publications, \url{https://studysites.sagepub.com/amrStudy/}, Exercises 10B.
+#' Publications, \url{https://study.sagepub.com/meyers3e}, Exercises 10B.
 #' @keywords datasets
 #' @concept MANOVA
 #' @examples
@@ -2592,13 +2591,6 @@ NULL
 #' points(amount ~ formula, data = dogfood, pch=16, cex = 1.2)
 #' par(op)
 #' 
-#' dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
-#' Anova(dogfood.mod)
-#'
-#' # data ellipses
-#' covEllipses(cbind(start, amount) ~ formula, data=dogfood,
-#'   fill = TRUE, fill.alpha = 0.1)
-#' 
 #' # setup contrasts to test interesting comparisons
 #' C <- matrix(
 #'        c( 1,  1, -1, -1,         #Ours vs. Theirs
@@ -2609,6 +2601,13 @@ NULL
 #' contrasts(dogfood$formula) <- C
 #' # re-fit the model
 #' dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+#' 
+#' dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+#' Anova(dogfood.mod)
+#'
+#' # data ellipses
+#' covEllipses(cbind(start, amount) ~ formula, data=dogfood,
+#'   fill = TRUE, fill.alpha = 0.1)
 #' 
 #' # test these contrasts with multivariate tests 
 #' linearHypothesis(dogfood.mod, "formula1", title="Ours vs. Theirs")
@@ -2637,7 +2636,7 @@ NULL
 #' Effect of Delay in Oral Practice in Second Language Learning
 #'
 #' @description
-#' Postovsky (1970) investigatged the effect of delay in oral practice at the beginning of second language learning.
+#' Postovsky (1970) investigated the effect of delay in oral practice at the beginning of second language learning.
 #' A control condition began oral practice with no delay, while an experimental group had a four-week delay before
 #' starting oral practice. The data consists of scores on language skills at the end of six weeks of study.
 #' 
@@ -2658,7 +2657,8 @@ NULL
 #' Timm, N. H. (1975). \emph{Multivariate Analysis with Applications in Education and Psychology}. Wadsworth (Brooks/Cole),
 #'     Exercise 3.12, p. 279.
 #' @references
-#' Postovsky, V. A. (1970). Effects of delay in oral practice at the start of second language training. Unpublished doctoral dissertation, University of California, Berleley.
+#' Postovsky, V. A. (1970). Effects of delay in oral practice at the start of second language training. Unpublished doctoral dissertation, 
+#' University of California, Berkeley.
 #'
 #' @concept MANOVA
 #' @examples

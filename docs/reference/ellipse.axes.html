@@ -9,7 +9,7 @@ covariance or sums of squares and cross products matrix in an existing plot."><m
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,14 +50,15 @@ covariance or sums of squares and cross products matrix in an existing plot.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ellipse.axes</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  centre <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>,</span>
-<span>  center <span class="op">=</span> <span class="va">center</span>,</span>
-<span>  scale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  center <span class="op">=</span> <span class="va">centre</span>,</span>
+<span>  <span class="va">scale</span>,</span>
 <span>  which <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  radius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html" class="external-link">qchisq</a></span><span class="op">(</span><span class="va">level</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  labels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  label.ends <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>,</span>
 <span>  label.pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lines"</span>, <span class="st">"arrows"</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -121,6 +122,10 @@ the four possible <code>label.ends</code>. 1, 2, 3, 4 represent below, to the le
 The default, <code>c(2, 4, 1, 3)</code>, positions the labels outside the axes.</p></dd>
 
 
+<dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
+<dd><p>Character. Draw <code>"lines"</code> or <code>"arrows"</code>.</p></dd>
+
+
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Other arguments passed to <code><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></code> and <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code>.</p></dd>
 
@@ -148,14 +153,31 @@ The default, <code>c(2, 4, 1, 3)</code>, positions the labels outside the axes.<
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, asp<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">ellipse</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">cov</span>, radius <span class="op">=</span> <span class="va">radius</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ellipse.axes</span><span class="op">(</span><span class="va">cov</span>, center<span class="op">=</span><span class="va">mu</span>, level <span class="op">=</span> <span class="fl">0.68</span>,</span></span>
-<span class="r-in"><span>            labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                    labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ellipse.axes-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="va">res</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Sepal.Length Sepal.Width</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xmin  -1.24882344   0.1061294</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xmax   1.24882344  -0.1061294</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ymin  -0.05518532  -0.6493648</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ymax   0.05518532   0.6493648</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Xmin     4.594510    3.163463</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Xmax     7.092157    2.951204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ymin     5.788148    2.407969</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ymax     5.898519    3.706698</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># try some options </span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, asp<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">ellipse</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">cov</span>, radius <span class="op">=</span> <span class="va">radius</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h<span class="op">=</span><span class="va">mu</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, v<span class="op">=</span><span class="va">mu</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ellipse.axes</span><span class="op">(</span><span class="va">cov</span>, centre<span class="op">=</span><span class="va">mu</span>, level <span class="op">=</span> <span class="fl">0.68</span>,</span></span>
+<span class="r-in"><span>             labels <span class="op">=</span> <span class="st">"Dim"</span>, label.ends <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,</span></span>
+<span class="r-in"><span>             lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"red"</span>,</span></span>
+<span class="r-in"><span>             cex <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="ellipse.axes-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span>             </span></span>
+<span class="r-in"><span><span class="co"># draw arrows rather than lines            </span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, asp<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">ellipse</a></span><span class="op">(</span><span class="va">mu</span>, <span class="va">cov</span>, radius <span class="op">=</span> <span class="va">radius</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ellipse.axes</span><span class="op">(</span><span class="va">cov</span>, center<span class="op">=</span><span class="va">mu</span>, level <span class="op">=</span> <span class="fl">0.68</span>,</span></span>
+<span class="r-in"><span>             type <span class="op">=</span> <span class="st">"arrows"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="ellipse.axes-3.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

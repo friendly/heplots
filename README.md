@@ -17,7 +17,9 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.7.1
+<!-- Version 1.7.2 -->
+
+Version 1.7.2
 
 ## Description
 
@@ -296,12 +298,10 @@ variables.
 
 ``` r
 # HE plot in canonical space
-heplot(iris.can)
+heplot(iris.can, var.pos = 1, scale = 40)
 ```
 
 <img src="man/figures/README-iris-can-1.png" width="60%" />
-
-    #> Vector scale factor set to  43.914
 
 ### Covariance ellipses
 
