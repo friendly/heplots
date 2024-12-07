@@ -1,3 +1,9 @@
+## Version 1.7.3 (2024-12-05)
+
+* `leveneTests()` gains formula and lm methods
+* `bartlettTests()` gains formula and lm methods
+* `colDevs()` examples extended
+
 ## Version 1.7.2 (2024-11-25)
 
 * Fixed bug in `ellipse.axes()` re center/centre

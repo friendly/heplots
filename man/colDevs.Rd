@@ -11,7 +11,9 @@ colDevs(x, group, center = mean, ...)
 
 \item{group}{A factor (or variable that can be coerced to a factor)
 indicating the membership of each observation in \code{x} in one or more
-groups. If missing, all the data is treated as a single group.}
+groups. If missing, all the data is treated as a single group.
+You can also specify the \code{\link[base]{interaction}} of two or more
+factors.}
 
 \item{center}{A function used to center the values (for each group if
 \code{group} is specified. The function must take a vector argument and
@@ -49,6 +51,11 @@ irisdev <- colDevs(iris[,1:4], Species, function(x) mean(x, trim=0.25))
 # include all variables (but suppress warning for this doc)
 irisdev <- suppressWarnings( colDevs(iris) )
 
+# two-way design
+colDevs(Plastic[,1:3], Plastic[,"rate"])
+colDevs(Plastic[,1:3], Plastic[,"additive"])
+# cell deviations
+#' colDevs(Plastic[,1:3], interaction(Plastic[,c("rate", "additive")]))
 }
 \seealso{
 \code{\link[base]{colMeans}} for column means,

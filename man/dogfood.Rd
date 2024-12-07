@@ -58,6 +58,8 @@ C <- matrix(
        nrow=4, ncol=3)
 # assign these to the formula factor
 contrasts(dogfood$formula) <- C
+# re-fit the model
+dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
 
 dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
 Anova(dogfood.mod)
