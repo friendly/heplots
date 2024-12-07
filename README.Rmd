@@ -42,7 +42,8 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models** 
 
-Version 1.7.1
+<!-- Version 1.7.1 -->
+Version `r getNamespaceVersion("heplots")`
 
 ## Description 
 
@@ -105,12 +106,14 @@ Several tutorial vignettes are also included. See
 
 ## Installation
 
-+-------------------+-------------------------------------------------+
-| CRAN version      | `install.packages("heplots")`                   |
-+-------------------+-------------------------------------------------+
-| Development       | `remotes::install_github("friendly/heplots")`   |
-| version           |                                                 |
-+-------------------+-------------------------------------------------+
++-------------------+----------------------------------------------------------------------------+
+| CRAN version      | `install.packages("heplots")`                                              |
++-------------------+----------------------------------------------------------------------------+
+| R-universe        | `install.packages("heplots", repos = c('https://friendly.r-universe.dev')` |
++-------------------+----------------------------------------------------------------------------+
+| Development       | `remotes::install_github("friendly/heplots")`                              |
+| version           |                                                                            |
++-------------------+----------------------------------------------------------------------------+
 
 
 ## HE plot functions

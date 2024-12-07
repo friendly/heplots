@@ -2,22 +2,38 @@
 % Please edit documentation in R/leveneTests.R
 \name{leveneTests}
 \alias{leveneTests}
+\alias{leveneTests.default}
+\alias{leveneTests.formula}
+\alias{leveneTests.mlm}
 \title{Levene Tests of Homogeneity of Variances}
 \usage{
 leveneTests(y, ...)
+
+\method{leveneTests}{default}(y, group, center = median, ...)
+
+\method{leveneTests}{formula}(y, data, ...)
+
+\method{leveneTests}{mlm}(y, ...)
 }
 \arguments{
-\item{y}{A data frame or matrix of numeric response variables in a
-multivariate linear model.}
+\item{y}{A data frame or matrix of numeric response variables for the default method,
+or a model formula for a multivariate linear model, or the multivariate linear model itself.
+In the case of a formula or model, the  variables on the right-hand-side of the model must all 
+be factors and must be completely crossed.}
 
-\item{\dots}{other arguments, passed to \code{\link[car]{leveneTest}}}
+\item{\dots}{arguments to be passed down to \code{\link[car]{leveneTest}}, e.g., \code{data} for the 
+\code{formula} and \code{mlm} methods; can also 
+be used to pass arguments to the function given by center (e.g., center=mean and trim=0.1 specify 
+the 10\% trimmed mean) other arguments.}
 
 \item{group}{a vector or factor object giving the group for the
-corresponding elements of the rows of \code{y}}
+corresponding elements of the rows of \code{y} for the default method}
 
 \item{center}{The name of a function to compute the center of each group;
 \code{mean} gives the original Levene's (1960) test; the default,
 \code{median}, provides a more robust test suggested by Brown and Forsythe (1974).}
+
+\item{data}{the data set, for the \code{formula} method}
 }
 \value{
 An object of classes "anova" and "data.frame", with one observation
@@ -39,7 +55,15 @@ data(Skulls, package="heplots")
 leveneTests(Skulls[,-1], Skulls$epoch)
 
 # formula method
-leveneTests(epoch ~ ., data=Skulls)
+leveneTests(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
+
+# use 10\% trimmed means
+leveneTests(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls, trim = 0.1)
+
+
+# mlm method
+skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
+leveneTests(skulls.mod)
 
 }
 \references{

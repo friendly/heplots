@@ -1,3 +1,8 @@
+## Version 1.7.3 (2024-12-05)
+
+* `leveneTests()` gains formula and mlm methods
+* `colDevs()` examples extended
+
 ## Version 1.7.1 (2024-05-03)
 
 * Extended the "datasets" vignette with further description of how this was done.
