@@ -1,7 +1,7 @@
 ## Version 1.7.3 (2024-12-05)
 
-* `leveneTests()` gains formula and mlm methods
-* `bartlettTests()` gains formula and mlm methods
+* `leveneTests()` gains formula and lm methods
+* `bartlettTests()` gains formula and lm methods
 * `colDevs()` examples extended
 
 ## Version 1.7.1 (2024-05-03)

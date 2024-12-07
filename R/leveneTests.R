@@ -2,7 +2,7 @@
 
 
 #' @name leveneTests
-#' @aliases leveneTests.default leveneTests.formula leveneTests.mlm
+#' @aliases leveneTests.default leveneTests.formula leveneTests.lm
 #' @title Levene Tests of Homogeneity of Variances
 #' 
 #' @description
@@ -22,7 +22,7 @@
 #'        \code{mean} gives the original Levene's (1960) test; the default,
 #'        \code{median}, provides a more robust test suggested by Brown and Forsythe (1974).
 #' @param \dots arguments to be passed down to \code{\link[car]{leveneTest}}, e.g., \code{data} for the 
-#'        \code{formula} and \code{mlm} methods; can also 
+#'        \code{formula} and \code{lm} methods; can also 
 #'        be used to pass arguments to the function given by center (e.g., center=mean and trim=0.1 specify 
 #'        the 10\% trimmed mean) other arguments.
 #' 
@@ -119,7 +119,7 @@ leveneTests.formula <- function(y, data, ...) {
 
 #' @rdname leveneTests
 #' @exportS3Method 
-leveneTests.mlm <- function(y, ...) {
+leveneTests.lm <- function(y, ...) {
   m <- model.frame(y)
   m$..y <- model.response(m)
   f <- formula(y)

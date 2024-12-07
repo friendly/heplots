@@ -1,6 +1,6 @@
 
 #' @name bartlettTests
-#' @aliases bartlettTests.default bartlettTests.formula bartlettTests.mlm
+#' @aliases bartlettTests.default bartlettTests.formula bartlettTests.lm
 #' @title Bartlett Tests of Homogeneity of Variances
 #' 
 #' @description
@@ -96,7 +96,7 @@ bartlettTests.formula <- function(y, data, ...) {
 
 #' @rdname bartlettTests
 #' @exportS3Method 
-bartlettTests.mlm <- function(y, ...) {
+bartlettTests.lm <- function(y, ...) {
   m <- model.frame(y)
   m$..y <- model.response(m)
   f <- formula(y)

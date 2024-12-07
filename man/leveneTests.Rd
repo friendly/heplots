@@ -4,7 +4,7 @@
 \alias{leveneTests}
 \alias{leveneTests.default}
 \alias{leveneTests.formula}
-\alias{leveneTests.mlm}
+\alias{leveneTests.lm}
 \title{Levene Tests of Homogeneity of Variances}
 \usage{
 leveneTests(y, ...)
@@ -13,7 +13,7 @@ leveneTests(y, ...)
 
 \method{leveneTests}{formula}(y, data, ...)
 
-\method{leveneTests}{mlm}(y, ...)
+\method{leveneTests}{lm}(y, ...)
 }
 \arguments{
 \item{y}{A data frame or matrix of numeric response variables for the default method,
@@ -22,7 +22,7 @@ In the case of a formula or model, the  variables on the right-hand-side of the 
 be factors and must be completely crossed.}
 
 \item{\dots}{arguments to be passed down to \code{\link[car]{leveneTest}}, e.g., \code{data} for the 
-\code{formula} and \code{mlm} methods; can also 
+\code{formula} and \code{lm} methods; can also 
 be used to pass arguments to the function given by center (e.g., center=mean and trim=0.1 specify 
 the 10\% trimmed mean) other arguments.}
 

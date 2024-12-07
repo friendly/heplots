@@ -4,7 +4,7 @@
 \alias{bartlettTests}
 \alias{bartlettTests.default}
 \alias{bartlettTests.formula}
-\alias{bartlettTests.mlm}
+\alias{bartlettTests.lm}
 \title{Bartlett Tests of Homogeneity of Variances}
 \usage{
 bartlettTests(y, ...)
@@ -13,7 +13,7 @@ bartlettTests(y, ...)
 
 \method{bartlettTests}{formula}(y, data, ...)
 
-\method{bartlettTests}{mlm}(y, ...)
+\method{bartlettTests}{lm}(y, ...)
 }
 \arguments{
 \item{y}{A data frame or matrix of numeric response variables for the default method,
