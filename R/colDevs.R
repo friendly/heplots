@@ -19,9 +19,12 @@
 #' @param center A function used to center the values (for each group if
 #'         \code{group} is specified. The function must take a vector argument and
 #'         return a scalar result.
+#' @param group.var logical. If \code{TRUE}, the \code{group} variable containing factor levels is prepended to the
+#'        matrix of deviations.
 #' @param \dots Arguments passed down
-#' @return A numeric matrix containing the deviations from the centering
-#' function. 
+#' @return By default, it returns a numeric matrix containing the deviations from the centering
+#'         function. If \code{levels==TRUE}, it returns a data.frame containing the group factor prepended to the
+#'         matrix of deviations. 
 #' @author Michael Friendly
 #' @seealso \code{\link[base]{colMeans}} for column means,
 #' 
@@ -33,9 +36,14 @@
 #' 
 #' Species <- iris$Species
 #' irisdev <- colDevs(iris[,1:4], Species, mean)
+#' 
 #' irisdev <- colDevs(iris[,1:4], Species, median)
 #' # trimmed mean, using an anonymous function
 #' irisdev <- colDevs(iris[,1:4], Species, function(x) mean(x, trim=0.25))
+#' 
+#' # include the group factor in output
+#' irisdev <- colDevs(iris[,1:4], Species, group.var = "Species")
+#' head(irisdev)
 #' 
 #' # no grouping variable: deviations from column grand means
 #' # include all variables (but suppress warning for this doc)
@@ -47,7 +55,11 @@
 #' # cell deviations
 #' #' colDevs(Plastic[,1:3], interaction(Plastic[,c("rate", "additive")]))
 #' @export colDevs
-colDevs <- function(x, group, center=mean,  ...) {
+colDevs <- function(x, 
+                    group, 
+                    center=mean,
+                    group.var=FALSE,
+                    ...) {
 
 	if (!inherits(x, c("data.frame", "matrix")))
 		stop("Argument 'x' must be a data.frame or matrix")
@@ -77,6 +89,14 @@ colDevs <- function(x, group, center=mean,  ...) {
 		ctr <- apply( x[rows,], 2, center)
 		mat[rows, ] <- sweep( x[rows, ], 2, ctr)
 	}
+
+	if(is.logical(group.var) && group.var == TRUE) {
+	  mat <- cbind(group, as.data.frame(mat))
+	}
+  else if (is.character(group.var)) {
+    mat <- cbind(group, as.data.frame(mat))
+    colnames(mat)[1] <- group.var
+  }
 	mat
 }
 

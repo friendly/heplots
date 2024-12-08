@@ -97,7 +97,7 @@ ellipse.axes(cov, centre=mu, level = 0.68,
 plot(iris[,1:2], asp=1)
 car::ellipse(mu, cov, radius = radius)
 ellipse.axes(cov, center=mu, level = 0.68,
-             type = "arrows")
+             type = "arrows", extend = 0.2)
 }
 \seealso{
 \code{\link[graphics]{lines}}, \code{\link[graphics]{text}}

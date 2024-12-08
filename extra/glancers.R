@@ -1,10 +1,15 @@
 library(car)
 library(heplots)
+library(dplyr)
 
 iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ 
                  Species, data=iris)
 
 glance(iris.mod)
+
+glance(iris.mod) |>
+  select( -adj.r.squared, -nobs)
+
 
 tidy(iris.mod)
 

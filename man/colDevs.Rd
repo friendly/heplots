@@ -4,7 +4,7 @@
 \alias{colDevs}
 \title{Calculate column deviations from central values}
 \usage{
-colDevs(x, group, center = mean, ...)
+colDevs(x, group, center = mean, group.var = FALSE, ...)
 }
 \arguments{
 \item{x}{A numeric data frame or matrix.}
@@ -19,11 +19,15 @@ factors.}
 \code{group} is specified. The function must take a vector argument and
 return a scalar result.}
 
+\item{group.var}{logical. If \code{TRUE}, the \code{group} variable containing factor levels is prepended to the
+matrix of deviations.}
+
 \item{\dots}{Arguments passed down}
 }
 \value{
-A numeric matrix containing the deviations from the centering
-function.
+By default, it returns a numeric matrix containing the deviations from the centering
+        function. If \code{levels==TRUE}, it returns a data.frame containing the group factor prepended to the
+        matrix of deviations.
 }
 \description{
 \code{colDevs} calculates the column deviations of data values from a
@@ -43,9 +47,14 @@ data(iris)
 
 Species <- iris$Species
 irisdev <- colDevs(iris[,1:4], Species, mean)
+
 irisdev <- colDevs(iris[,1:4], Species, median)
 # trimmed mean, using an anonymous function
 irisdev <- colDevs(iris[,1:4], Species, function(x) mean(x, trim=0.25))
+
+# include the group factor in output
+irisdev <- colDevs(iris[,1:4], Species, group.var = "Species")
+head(irisdev)
 
 # no grouping variable: deviations from column grand means
 # include all variables (but suppress warning for this doc)

@@ -2,7 +2,7 @@
 
 * `leveneTests()` gains formula and lm methods
 * `bartlettTests()` gains formula and lm methods
-* `colDevs()` examples extended
+* `colDevs()` gains a `group.var` argument; examples extended
 
 ## Version 1.7.2 (2024-11-25)
 
