@@ -1,3 +1,5 @@
+# Removed adj.r.squared as unnecessary in multivariate context
+
 #' Glance at an mlm object
 #' 
 #' This function takes an "mlm" object, fit by \code{\link[stats]{lm}} with a multivariate response.
@@ -6,13 +8,12 @@
 #' In the multivariate case, it returns a \code{\link[tibble]{tibble}} with one row for each
 #' response variable, containing goodness of fit measures, F-tests and p-values.
 #' 
-#' @param x An \code{mlm} object created by \code{\link[stats]{lm}}, i.e., with a multivariate response.
+#' @param x An \code{"mlm"} object created by \code{\link[stats]{lm}}, i.e., with a multivariate response.
 #' @param ... Additional arguments. Not used.
 #' @method glance mlm
 #' @return A \code{\link[tibble]{tibble}} with one row for each response variable and the columns:
 #' \describe{
 #'   \item{\code{r.squared}}{R squared statistic, or the percent of variation explained by the model.}
-#'   \item{\code{adj.r.squared}}{Adjusted R squared statistic, which is like the R squared statistic except taking degrees of freedom into account.}
 #'   \item{\code{sigma}}{Estimated standard error of the residuals}
 #'   \item{\code{fstatitic}}{Overall F statistic for the model}
 #'   \item{\code{numdf}}{Numerator degrees of freedom for the overall test}
@@ -41,7 +42,7 @@ glance.mlm <- function(x, ...) {
   sumry <- summary(x)
   response <- sub("Response ", "", names(sumry))
   # basic model summary statistics
-  stats <- purrr::map_dfr(sumry, magrittr::extract, c("r.squared", "adj.r.squared", "sigma"))
+  stats <- purrr::map_dfr(sumry, magrittr::extract, c("r.squared", "sigma"))
 
   # get the F statistic & df for each response
   fstats <- purrr::map(sumry, magrittr::extract, c("fstatistic"))
