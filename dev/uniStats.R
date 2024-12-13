@@ -1,5 +1,14 @@
 # Univariate test statistics for a mlm
 
+#' Univariate Test Statistics for a Multivariate Linear Model
+#'
+#' @param x  A \code{"mlm"} object fitted by \code{link[stats]{lm}} with two or more response variable3s
+#' @param ... Other arguments, ignored
+#'
+#' @return
+#' @export
+#'
+#' @examples
 uniStats <- function(x, ...) {
   if (!inherits(x, "mlm")) stop("This function is only for 'mlm' objects")
   SS <- summary(x)
@@ -11,14 +20,16 @@ uniStats <- function(x, ...) {
     result[i,2:4] <- f
     result[i,5] <- pf(f[1], f[2], f[3], lower.tail=FALSE)
   }
-  result$stars <- c(gtools:::stars.pval(result[,5]))
-  result[,5] <- format.pval(result[,5], eps=0.001)
-  colnames(result) <- c("R^2", "F", "df1", "df2", "Pr (>F)", " ")
-
-  resp <- sub("Response ", "", names(SS))  
-  result <- cbind(response = resp, result)
-  result
   
+  colnames(result) <- c("R^2", "F", "df1", "df2", "Pr(>F)")
+  resp <- sub("Response ", "", names(SS)) 
+  rownames(result) <- resp
+
+  class(result) <- c("anova", "data.frame")
+  xname <- deparse(substitute(x))
+  attr(result, "heading") <- paste("Univariate tests for responses in the 'mlm'", xname, "\n")
+#  print(result, eps.Pvalue=eps, ...)
+  result
   
 }
 
