@@ -5,10 +5,23 @@
 #' @param x  A \code{"mlm"} object fitted by \code{link[stats]{lm}} with two or more response variable3s
 #' @param ... Other arguments, ignored
 #'
-#' @return
+#' @return An object of class \code{c("anova", "data.frame")} containing, for each response variable
+#'         the overall \eqn{R^2} for all terms in the model and the overall \eqn{F} statistic
+#'         together with its degrees of freedom and p-value.
+#' @seealso [glance.mlm()]
 #' @export
 #'
 #' @examples
+#' iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
+#' car::Anova(iris.mod)
+#' uniStats(iris.mod)
+#' 
+#' data(Plastic, package = "heplots")
+#' plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
+#' # multivariate tests
+#' car::Anova(plastic.mod)
+
+
 uniStats <- function(x, ...) {
   if (!inherits(x, "mlm")) stop("This function is only for 'mlm' objects")
   SS <- summary(x)
@@ -27,31 +40,9 @@ uniStats <- function(x, ...) {
 
   class(result) <- c("anova", "data.frame")
   xname <- deparse(substitute(x))
-  attr(result, "heading") <- paste("Univariate tests for responses in the 'mlm'", xname, "\n")
+  attr(result, "heading") <- paste("Univariate tests for responses in the multivariate linear model", xname, "\n")
 #  print(result, eps.Pvalue=eps, ...)
   result
   
 }
 
-if (FALSE) {
-  
-  data(Wine, package="candisc")
-  Wine.mod <- lm(as.matrix(Wine[, -1]) ~ Cultivar, data=Wine)
-  uniStats(Wine.mod)
-  
-  
-ss <- summary(Wine.mod)
-UniStats <- as.data.frame(matrix(0, nrow=length(ss), 5))
-for (i in 1:length(ss)) {
-  UniStats[i,1] <- ss[[i]]$r.squared
-  f <- ss[[i]]$fstatistic
-  UniStats[i,2:4] <- f
-  UniStats[i,5] <- pf(f[1], f[2], f[3], lower.tail=FALSE)
-}
-
-rownames(UniStats) <- sub("Response ", "", names(ss))
-UniStats$stars <- c(gtools:::stars.pval(UniStats[,5]))
-UniStats[,5] <- format.pval(UniStats[,5], eps=0.001)
-colnames(UniStats) <- c("R^2", "F", "df1", "df2", "Pr (>F)", "")
-UniStats
-}

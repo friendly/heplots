@@ -7,7 +7,7 @@
 \method{glance}{mlm}(x, ...)
 }
 \arguments{
-\item{x}{An \code{mlm} object created by \code{\link[stats]{lm}}, i.e., with a multivariate response.}
+\item{x}{An \code{"mlm"} object created by \code{\link[stats]{lm}}, i.e., with a multivariate response.}
 
 \item{...}{Additional arguments. Not used.}
 }
@@ -15,7 +15,6 @@
 A \code{\link[tibble]{tibble}} with one row for each response variable and the columns:
 \describe{
   \item{\code{r.squared}}{R squared statistic, or the percent of variation explained by the model.}
-  \item{\code{adj.r.squared}}{Adjusted R squared statistic, which is like the R squared statistic except taking degrees of freedom into account.}
   \item{\code{sigma}}{Estimated standard error of the residuals}
   \item{\code{fstatitic}}{Overall F statistic for the model}
   \item{\code{numdf}}{Numerator degrees of freedom for the overall test}
