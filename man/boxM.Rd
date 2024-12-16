@@ -108,6 +108,7 @@ data(iris)
 res <- boxM(iris[, 1:4], iris[, "Species"])
 res
 
+# summary method gives details
 summary(res)
 
 # visualize (what is done in the plot method) 
@@ -118,6 +119,9 @@ points(dets , 1:4,
 	cex=c(rep(1.5, ng), 2.5), 
 	pch=c(rep(16, ng), 15),
 	col= c(rep("blue", ng), "red"))
+	
+	# plot method gives confidence intervals for logDet
+plot(res, gplabel="Species")
 
 # formula method
 boxM( cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
