@@ -5,7 +5,7 @@
 # last modified 20 May 2007 by M. Friendly -- pass ... to text
 # last modified 23 May 2007 by J. Fox -- add ... to call to points()
 # last modified 22 Oct 2007 by M. Friendly
-# -- moved lambda.crit to utility.R
+# -- moved lambda.crit to heplots-internal.R
 # -- added he.rep to handle common task of repeating HE argument values
 #  13 Apr 2009 by M. Friendly -- fix label.ellipse
 #  15 Apr 2009 by M. Friendly -- added axes= to fix warnings from pairs.mlm

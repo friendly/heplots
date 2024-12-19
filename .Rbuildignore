@@ -21,3 +21,4 @@ inst/doc/*\.pdf
 NAMESPACE-old
 .nojekyll
 ^data-raw$
+^dev$
