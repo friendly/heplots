@@ -155,7 +155,7 @@ uses the correlation of the \code{ellipse} to determine "top" (r>=0) or
 \item{vlabels}{Labels for the variables can also be supplied through this
 argument, which is more convenient when \code{length(variables) > 2}.}
 
-\item{var.cex}{character size for variable labels in the pairs plot}
+\item{var.cex}{character size for variable labels in the pairs plot, when \code{length(variables) > 2}.}
 
 \item{main}{main plot label; defaults to \code{""}, and presently has no
 effect.}
@@ -190,8 +190,8 @@ within-group covariance matrices in a one-way MANOVA design. When covariance
 matrices are nearly equal, their covariance ellipses should all have the
 same shape.  When centered at a common mean, they should also all overlap.
 
-The can also be used to visualize the difference between classical and
-robust covariance matrices.
+They can also be used to visualize the difference between classical and
+robust covariance matrices by overlaying the two in a single plot (via \code{add=TRUE}).
 }
 \details{
 The arguments \code{labels},

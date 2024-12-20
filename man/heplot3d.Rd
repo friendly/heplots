@@ -26,7 +26,7 @@ heplot3d(mod, ...)
   imatrix = NULL,
   iterm = NULL,
   manova,
-  size = c("evidence", "effect.size"),
+  size = c("evidence", "effect.size", "significance"),
   level = 0.68,
   alpha = 0.05,
   segments = 40,
@@ -130,20 +130,21 @@ well as all interactions of \code{iterm} with \code{terms}.}
 MANOVA is computed. Specifying the argument can therefore save computation
 in repeated calls.}
 
-\item{size}{how to scale the hypothesis ellipsoid relative to the error
-ellipsoid; if \code{"evidence"}, the default, the scaling is done so that a
-``significant'' hypothesis ellipsoid extends outside of the error ellipsoid;
-if \code{"effect.size"}, the hypothesis ellipsoid is on the same scale as
-the error ellipsoid.}
+\item{size}{how to scale the hypothesis ellipse relative to the error
+ellipse; if \code{"evidence"}, the default, the scaling is done so that a
+``significant'' hypothesis ellipse at level \code{alpha} extends outside of
+the error ellipse. \code{size = "significance"} is a synonym and does the same thing.
+If \code{"effect.size"}, the hypothesis ellipse is on the
+same scale as the error ellipse.}
 
-\item{level}{equivalent coverage of ellipsoid for normally-distributed
-errors, defaults to \code{0.68}.}
+\item{level}{equivalent coverage of ellipse  (assuming normally-distributed errors).
+This defaults to \code{0.68}, giving a standard 1 SD bivariate ellipse.}
 
 \item{alpha}{significance level for Roy's greatest-root test statistic; if
-\code{size="evidence"}, then the hypothesis ellipsoid is scaled so that it
-just touches the error ellipsoid at the specified alpha level; a larger
-hypothesis ellipsoid therefore indicates statistical significance; defaults
-to \code{0.05}.}
+\code{size="evidence"} or \code{size="significance"}, then the hypothesis ellipse is scaled so that it
+just touches the error ellipse at the specified alpha level. A larger
+hypothesis ellipse \emph{somewhere} in the space of the response variables
+therefore indicates statistical significance; defaults to \code{0.05}.}
 
 \item{segments}{number of segments composing each ellipsoid; defaults to \code{40}.}
 

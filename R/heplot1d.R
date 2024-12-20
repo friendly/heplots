@@ -80,17 +80,18 @@
 #'             MANOVA is computed. Specifying the argument can therefore save computation
 #'             in repeated calls.
 #' @param size how to scale the hypothesis ellipse relative to the error
-#'             ellipse; if \code{"evidence"}, the default, the scaling is done so that a
-#'             ``significant'' hypothesis ellipse extends outside of the error ellipse; if
-#'             \code{"effect.size"}, the hypothesis ellipse is on the same scale as the
-#'             error ellipse.
-#' @param level equivalent coverage of ellipse for normally-distributed errors,
-#'             defaults to \code{0.68}.
+#'              ellipse; if \code{"evidence"}, the default, the scaling is done so that a
+#'              ``significant'' hypothesis ellipse at level \code{alpha} extends outside of
+#'              the error ellipse. \code{size = "significance"} is a synonym and does the same thing.
+#'              If \code{"effect.size"}, the hypothesis ellipse is on the
+#'              same scale as the error ellipse.
+#' @param level equivalent coverage of ellipse  (assuming normally-distributed errors).
+#'              This defaults to \code{0.68}, giving a standard 1 SD bivariate ellipse.
 #' @param alpha significance level for Roy's greatest-root test statistic; if
-#'             \code{size="evidence"}, then the hypothesis ellipse is scaled so that it
-#'             just touches the error ellipse at the specified alpha level; a larger
-#'             hypothesis ellipse therefore indicates statistical significance; defaults to
-#'             \code{0.05}.
+#'              \code{size="evidence"} or \code{size="significance"}, then the hypothesis ellipse is scaled so that it
+#'              just touches the error ellipse at the specified alpha level. A larger
+#'              hypothesis ellipse \emph{somewhere} in the space of the response variables
+#'              therefore indicates statistical significance; defaults to \code{0.05}.
 #' @param center.pch character to use in plotting the centroid of the data;
 #'             defaults to \code{"|"}.
 #' @param col a color or vector of colors to use in plotting ellipses; the
@@ -177,7 +178,7 @@ heplot1d.mlm <-
 				imatrix=NULL,
 				iterm=NULL,
 				manova,        # an optional Anova.mlm object
-				size=c("evidence", "effect.size"),
+				size=c("evidence", "effect.size", "significance"),
 				level=0.68,
 				alpha=0.05,
 				center.pch="|",   # doesn't have to be an argument
