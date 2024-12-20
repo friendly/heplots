@@ -5,6 +5,7 @@
 * `colDevs()` gains a `group.var` argument; examples extended
 * Added `uniStats()` for an anova version of `glance.mlm()`
 * Corrected documentation of `covEllipses()` to more accurately describe recycling of arguments.
+* `size="significance"` now allowed as a synonym for `size="evidence"` in heplot functions.
 
 ## Version 1.7.2 (2024-11-25)
 
