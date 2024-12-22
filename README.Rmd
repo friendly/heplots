@@ -84,7 +84,7 @@ In this respect, the `heplots` package now aims to provide a wide range
 of tools for analyzing and visualizing multivariate response linear
 models, together with other packages:
 
-<a href="https://friendly.github.io/candisc/"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
+<a href="https://friendly.github.io/candisc/"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80' alt="candisc logo"   style="float:right; height:80px;"></a>
 
 -   The related [`candisc`](https://friendly.github.io/candisc/) package
     provides HE plots in **canonical discriminant** space, the space of
@@ -92,7 +92,7 @@ models, together with other packages:
     effects and for canonical correlation in multivariate regression
     designs.
 
-<a href="https://friendly.github.io/mvinfluence/"><img src='https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png' height='80'  style="float:right; height:80px;"></a>
+<a href="https://friendly.github.io/mvinfluence/"><img src='https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png' height='80' alt="mvinfluence logo"   style="float:right; height:80px;"></a>
 
 -   Another package,
     [`mvinfluence`](https://friendly.github.io/mvinfluence/), provides
@@ -211,7 +211,8 @@ differences among the means.
 
 ```{r iris1}
 #| echo=-1,
-#| out.width="70%"
+#| out.width="70%",
+#| fig.cap = "HE plot of sepal length and Sepal width for the iris data"
 par(mar=c(4,4,1,1)+.1)
 iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ 
                  Species, data=iris)
@@ -232,6 +233,7 @@ distinguishes the means of *versicolor* from *virginica*; the second
 contrast, `S:VV` distinguishes `setosa` from the other two.
 
 ```{r iris2, out.width="70%"}
+#| fig.cap = "HE plot of sepal length and Sepal width for the iris data, showing lines reflecting two contrasts among iris species."
 par(mar=c(4,4,1,1)+.1)
 contrasts(iris$Species)<-matrix(c(0, -1, 1, 
                                   2, -1, -1), nrow=3, ncol=2)

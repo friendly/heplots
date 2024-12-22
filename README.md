@@ -19,7 +19,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 <!-- Version 1.7.2 -->
 
-Version 1.7.2
+Version 1.7.3
 
 ## Description
 
@@ -70,7 +70,7 @@ In this respect, the `heplots` package now aims to provide a wide range
 of tools for analyzing and visualizing multivariate response linear
 models, together with other packages:
 
-<a href="https://friendly.github.io/candisc/"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80'  style="float:right; height:80px;"></a>
+<a href="https://friendly.github.io/candisc/"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80' alt="candisc logo"   style="float:right; height:80px;"></a>
 
 - The related [`candisc`](https://friendly.github.io/candisc/) package
   provides HE plots in **canonical discriminant** space, the space of
@@ -78,7 +78,7 @@ models, together with other packages:
   effects and for canonical correlation in multivariate regression
   designs.
 
-<a href="https://friendly.github.io/mvinfluence/"><img src='https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png' height='80'  style="float:right; height:80px;"></a>
+<a href="https://friendly.github.io/mvinfluence/"><img src='https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png' height='80' alt="mvinfluence logo"   style="float:right; height:80px;"></a>
 
 - Another package,
   [`mvinfluence`](https://friendly.github.io/mvinfluence/), provides
@@ -91,9 +91,10 @@ Several tutorial vignettes are also included. See
 
 ## Installation
 
-|                     |                                               |
-|---------------------|-----------------------------------------------|
-| CRAN version        | `install.packages("heplots")`                 |
+|  |  |
+|----|----|
+| CRAN version | `install.packages("heplots")` |
+| R-universe | `install.packages("heplots", repos = c('https://friendly.r-universe.dev')` |
 | Development version | `remotes::install_github("friendly/heplots")` |
 
 ## HE plot functions
@@ -214,7 +215,14 @@ iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~
 heplot(iris.mod)
 ```
 
-<img src="man/figures/README-iris1-1.png" width="70%" />
+<div class="figure">
+
+<img src="man/figures/README-iris1-1.png" alt="HE plot of sepal length and Sepal width for the iris data" width="70%" />
+<p class="caption">
+HE plot of sepal length and Sepal width for the iris data
+</p>
+
+</div>
 
 ### Contrasts
 
@@ -246,7 +254,15 @@ heplot(iris.mod, hypotheses=hyp,
        fill=TRUE, fill.alpha=0.1)
 ```
 
-<img src="man/figures/README-iris2-1.png" width="70%" />
+<div class="figure">
+
+<img src="man/figures/README-iris2-1.png" alt="HE plot of sepal length and Sepal width for the iris data, showing lines reflecting two contrasts among iris species." width="70%" />
+<p class="caption">
+HE plot of sepal length and Sepal width for the iris data, showing lines
+reflecting two contrasts among iris species.
+</p>
+
+</div>
 
 ### All pairwise HE plots
 

@@ -47,6 +47,7 @@ reference:
     - coefplot
     - covEllipses
     - glance.mlm
+    - uniStats
 
   - title: Utility
     desc: Utility functions

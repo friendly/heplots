@@ -1,5 +1,7 @@
 ## Version 1.7.3 (2024-12-05)
 
+This is a moderate update, adding new functionality
+
 * `leveneTests()` gains formula and lm methods
 * `bartlettTests()` gains formula and lm methods
 * `colDevs()` gains a `group.var` argument; examples extended
