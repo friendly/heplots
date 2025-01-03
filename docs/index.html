@@ -32,7 +32,7 @@
 
     <a class="navbar-brand me-2" href="index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +75,7 @@
 <strong>Visualizing Hypothesis Tests in Multivariate Linear Models</strong><a class="anchor" aria-label="anchor" href="#visualizing-hypothesis-tests-in-multivariate-linear-models"></a>
 </h2>
 <!-- Version 1.7.2 -->
-<p>Version 1.7.3</p>
+<p>Version 1.7.4</p>
 </div>
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
@@ -102,7 +102,7 @@
 <li>robust MLMs, using iteratively re-weighted least squared to down-weight observations with large multivariate residuals, <code><a href="reference/robmlm.html">robmlm()</a></code>.</li>
 <li>
 <code><a href="reference/Mahalanobis.html">Mahalanobis()</a></code> calculates classical and robust Mahalanobis squared distances using MCD and MVE estimators of center and covariance.</li>
-<li>visualizing tests for equality of covariance matrices in MLMs (Box’s M test), <code><a href="reference/boxM.html">boxM()</a></code> and <code><a href="reference/plot.boxM.html">plot.boxM()</a></code>.</li>
+<li>visualizing tests for equality of covariance matrices in MLMs (Box’s M test), <code><a href="reference/boxM.html">boxM()</a></code> and <code><a href="reference/plot.boxM.html">plot.boxM()</a></code>. Also: <code><a href="reference/bartlettTests.html">bartlettTests()</a></code> and <code>LeveneTests()</code> for homogeneity of variance for each response in a MLM.</li>
 <li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>χ</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math> Q-Q plots for MLMs (<code><a href="reference/cqplot.html">cqplot()</a></code>) to detect outliers and assess multivariate normality of residuals.</li>
 <li>bivariate coefficient plots showing elliptical confidence regions (<code><a href="reference/coefplot.html">coefplot()</a></code>).</li>
@@ -110,7 +110,7 @@
 <p>In this respect, the <code>heplots</code> package now aims to provide a wide range of tools for analyzing and visualizing multivariate response linear models, together with other packages:</p>
 <p><a href="https://friendly.github.io/candisc/" class="external-link"><img src="https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png" height="80" alt="candisc logo" style="float:right; height:80px;"></a></p>
 <ul>
-<li>The related <a href="https://friendly.github.io/candisc/" class="external-link"><code>candisc</code></a> package provides HE plots in <strong>canonical discriminant</strong> space, the space of linear combinations of the responses that show the maximum possible effects and for canonical correlation in multivariate regression designs.</li>
+<li>The related <a href="https://friendly.github.io/candisc/" class="external-link"><code>candisc</code></a> package provides HE plots in <strong>canonical discriminant</strong> space, the space of linear combinations of the responses that show the maximum possible effects and for canonical correlation in multivariate regression designs. See the <a href="https://friendly.github.io/candisc/" class="external-link">package documentation</a> for details.</li>
 </ul>
 <p><a href="https://friendly.github.io/mvinfluence/" class="external-link"><img src="https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png" height="80" alt="mvinfluence logo" style="float:right; height:80px;"></a></p>
 <ul>
@@ -157,14 +157,14 @@
 <h2 id="other-functions">Other functions<a class="anchor" aria-label="anchor" href="#other-functions"></a>
 </h2>
 <ul>
-<li><p><code><a href="reference/glance.mlm.html">glance.mlm()</a></code> extends <code><a href="https://broom.tidymodels.org/reference/glance.lm.html" class="external-link">broom::glance.lm()</a></code> to multivariate response models, giving a one-line statistical summary for each response variable.</p></li>
+<li><p><code><a href="reference/glance.mlm.html">glance.mlm()</a></code> extends <code><a href="https://broom.tidymodels.org/reference/glance.lm.html" class="external-link">broom::glance.lm()</a></code> to multivariate response models, giving a one-line statistical summary for each response variable. <code><a href="reference/uniStats.html">uniStats()</a></code> does something similar, but formatted more like a ANOVA table.</p></li>
 <li><p><code><a href="reference/boxM.html">boxM()</a></code> Calculates Box’s <em>M</em> test for homogeneity of covariance matrices in a MANOVA design. A <code>plot</code> method displays a visual representation of the components of the test. Associated with this, <code>bartletTests()</code> and <code>levineTests()</code> give the univariate tests of homogeneity of variance for each response measure in a MLM.</p></li>
-<li><p><code><a href="reference/covEllipses.html">covEllipses()</a></code> draw covariance (data) ellipses for one or more group, optionally including the ellipse for the pooled within-group covariance.</p></li>
+<li><p><code><a href="reference/covEllipses.html">covEllipses()</a></code> draw covariance (data) ellipses for one or more group, optionally including the ellipse for the pooled within-group covariance. <code><a href="reference/coefplot.html">coefplot()</a></code> for an MLM object draws bivariate confidence ellipses.</p></li>
 </ul>
 <div class="section level3">
 <h3 id="repeated-measure-designs">Repeated measure designs<a class="anchor" aria-label="anchor" href="#repeated-measure-designs"></a>
 </h3>
-<p>For repeated measure designs, between-subject effects and within-subject effects must be plotted separately, because the error terms (<strong>E</strong> matrices) differ. For terms involving within-subject effects, these functions carry out a linear transformation of the matrix <strong>Y</strong> of responses to a matrix <strong>Y M</strong>, where <strong>M</strong> is the model matrix for a term in the intra-subject design and produce plots of the H and E matrices in this transformed space. The vignette <code>"repeated"</code> describes these graphical methods for repeated measures designs. (At present, this vignette is only available at <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a>.)</p>
+<p>For repeated measure designs, between-subject effects and within-subject effects must be plotted separately, because the error terms (<strong>E</strong> matrices) differ. For terms involving within-subject effects, these functions carry out a linear transformation of the matrix <strong>Y</strong> of responses to a matrix <strong>Y M</strong>, where <strong>M</strong> is the model matrix for a term in the intra-subject design and produce plots of the <strong>H</strong> and <strong>E</strong> matrices in this transformed space. The vignette <code>"repeated"</code> describes these graphical methods for repeated measures designs. (This paper <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a> is now provided as a PDF vignette.)</p>
 </div>
 </div>
 <div class="section level2">

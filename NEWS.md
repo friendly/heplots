@@ -1,3 +1,7 @@
+## Version 1.7.4 (2025-01-03)
+
+* added plotting all X vs all Y to Rohwer doc
+
 ## Version 1.7.3 (2024-12-05)
 
 This is a moderate update, adding new functionality

@@ -1,8 +1,8 @@
 Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
-Version: 1.7.3
-Date: 2024-12-07
+Version: 1.7.4
+Date: 2025-01-03
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
