@@ -1871,10 +1871,15 @@ NULL
 #' from 70 school sites by means of 5 explanatory variables related to parents
 #' and teachers.
 #' 
-#' This dataset was shamelessly borrowed from the \code{FRB} package.
-#' 
-#' The relationships among these variables are unusual, a fact only revealed by
+#' A number of observations are unusual, a fact only revealed by
 #' plotting.
+#' 
+#' @details
+#' The study was designed to compare schools using Program Follow Through (PFT)
+#' management methods of taking actions to achieve goals with those of
+#' Non Follow Through (NFT). Observations \code{1:49} came from PFT sites
+#' and \code{50:70} from NFT sites.
+#' 
 #' 
 #' @name schooldata
 #' @docType data
@@ -1895,6 +1900,8 @@ NULL
 #'   \item{\code{selfesteem}}{Coopersmith Self-Esteem Inventory, intended as a measure of self-esteem} 
 #' }
 #' @source 
+#' #' This dataset was shamelessly borrowed from the \code{FRB} package.
+#' @references 
 #' A. Charnes, W.W. Cooper and E. Rhodes (1981). Evaluating Program and
 #' Managerial Efficiency: An Application of Data Envelopment Analysis to
 #' Program Follow Through. \emph{Management Science}, \bold{27}, 668-697.
@@ -1912,6 +1919,10 @@ NULL
 #' corrgram(schooldata, 
 #'          lower.panel=panel.ellipse, 
 #'          upper.panel=panel.pts)
+#'
+#' # check for multivariate outliers
+#' res <- cqplot(schooldata, id.n = 5)
+#' res
 #' 
 #' #fit the MMreg model
 #' school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ 
@@ -1934,7 +1945,7 @@ NULL
 #' wts <- school.rmod$weights
 #' notable <- which(wts < 0.8)
 #' plot(wts, type = "h", col="gray", ylab = "Observation weight")
-#' points(1:length(wts), wts, 
+#' points(seq_along(wts), wts, 
 #'        pch=16,
 #'        col = ifelse(wts < 0.8, "red", "black"))
 #' 

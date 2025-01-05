@@ -51,6 +51,10 @@ corrgram(schooldata,
          lower.panel=panel.ellipse, 
          upper.panel=panel.pts)
 
+# check for multivariate outliers
+res <- cqplot(schooldata, id.n = 5)
+res
+
 #fit the MMreg model
 school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ 
 		             education + occupation + visit + counseling + teacher, data=schooldata)
@@ -72,7 +76,7 @@ car::Anova(school.rmod)
 wts <- school.rmod$weights
 notable <- which(wts < 0.8)
 plot(wts, type = "h", col="gray", ylab = "Observation weight")
-points(1:length(wts), wts, 
+points(seq_along(wts), wts, 
        pch=16,
        col = ifelse(wts < 0.8, "red", "black"))
 
