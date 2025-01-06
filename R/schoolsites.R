@@ -1,0 +1,49 @@
+#' @name schoolsites
+#' @aliases schoolsites
+#' @docType data
+#' @title
+#' Schooldata Sites
+#'
+#' @description
+#' Descriptors for the sites of the \code{\link{schooldata}} dataset, from Charnes et al. (1981).
+#' The study was designed to compare schools using Program Follow Through (PFT)
+#' management methods of taking actions to achieve goals with those of
+#' Non Follow Through (NFT). Observations \code{1:49} came from PFT sites
+#' and \code{50:70} from NFT sites.
+#' This dataset gives other descriptors for the sites, from their Exhibit C.
+#'
+#' @usage data("schoolsites")
+#' @format
+#'  A data frame with 70 observations on the following 7 variables.
+#'  \describe{
+#'    \item{\code{site}}{site number, a numeric vector}
+#'    \item{\code{type}}{program type, a factor with levels \code{PFT} ("Program Follow Through") and \code{NFT} ("Non Follow Through")}
+#'    \item{\code{model}}{education style model, a factor with levels \code{BA}, \code{Bank Street}, 
+#'         \code{California Process}, \code{Cognitive Curriculum}, \code{DIM}, \code{EDC}, \code{Home-School},
+#'          \code{ILM}, \code{Parent Education}, \code{Responsive Education}, \code{SEDL}, \code{TEEM}}
+#'    \item{\code{site_name}}{location of site, a character vector}
+#'    \item{\code{region}}{US region, a factor with levels \code{NC}, \code{NE}, \code{S}, \code{W}}
+#'    \item{\code{city_size}}{city size, an ordered factor with levels \code{Rural} < \code{Small} < \code{Medium} < \code{Large}}
+#'    \item{\code{student_pop}}{size of the student population, a numeric vector}
+#'  }
+#'
+#' % @details 
+#' %%  ~~ If necessary, more details than the __description__ above ~~
+#' @source 
+#' A. Charnes, W.W. Cooper and E. Rhodes (1981). Evaluating Program and
+#' Managerial Efficiency: An Application of Data Envelopment Analysis to
+#' Program Follow Through. \emph{Management Science}, \bold{27}, 668-697, Exhibit C.
+#'
+#' @seealso \code{\link{schooldata}}
+#' @concept MANOVA
+#' @examples
+#' data(schoolsites)
+#' str(schoolsites)
+#' schools <- cbind(schooldata, schoolsites)
+#' schools.mod <- lm(cbind(reading, mathematics, selfesteem) ~
+#'                     education + occupation + visit + counseling + teacher +
+#'                     type + region, data = schools)
+#' car::Anova(schools.mod)
+#'
+#' @keywords datasets
+NULL
