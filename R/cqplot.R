@@ -97,8 +97,10 @@
 #'             \code{main} when that is not specified.
 #' @param ylim limits for vertical axis.  If not specified, the range of the
 #'             confidence envelope is used.
-#' @return Returns invisibly the vector of squared Mahalanobis distances
-#'             corresponding to the rows of \code{x} or the residuals of the model for the identified points, else \code{NULL}
+#' @return Returns invisibly a data.frame containing squared Mahalanobis distances (\code{DSQ}), 
+#'         their \code{quantile}s and \code{p}-values
+#'             corresponding to the rows of \code{x} or the residuals of the model for the identified points, 
+#'             else \code{NULL} if no points are identified.
 #' @author Michael Friendly
 #' @seealso \code{\link{Mahalanobis}} for calculation of Mahalanobis squared distance;
 #' 
@@ -118,7 +120,9 @@
 #' cqplot(iris[, 1:4])
 #' 
 #' iris.mod <- lm(as.matrix(iris[,1:4]) ~ Species, data=iris)
-#' cqplot(iris.mod, id.n=3)
+#' out <- cqplot(iris.mod, id.n=3)
+#' # show return value
+#' out
 #' 
 #' # compare with car::qqPlot
 #' car::qqPlot(Mahalanobis(iris[, 1:4]), dist="chisq", df=4)

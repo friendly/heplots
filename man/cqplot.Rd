@@ -113,8 +113,10 @@ options.}
 confidence envelope is used.}
 }
 \value{
-Returns invisibly the vector of squared Mahalanobis distances
-            corresponding to the rows of \code{x} or the residuals of the model for the identified points, else \code{NULL}
+Returns invisibly a data.frame containing squared Mahalanobis distances (\code{DSQ}), 
+        their \code{quantile}s and \code{p}-values
+            corresponding to the rows of \code{x} or the residuals of the model for the identified points, 
+            else \code{NULL} if no points are identified.
 }
 \description{
 A chi square quantile-quantile plots show the relationship between
@@ -165,7 +167,9 @@ for QQ plots.
 cqplot(iris[, 1:4])
 
 iris.mod <- lm(as.matrix(iris[,1:4]) ~ Species, data=iris)
-cqplot(iris.mod, id.n=3)
+out <- cqplot(iris.mod, id.n=3)
+# show return value
+out
 
 # compare with car::qqPlot
 car::qqPlot(Mahalanobis(iris[, 1:4]), dist="chisq", df=4)
