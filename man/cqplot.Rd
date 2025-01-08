@@ -144,7 +144,7 @@ The calculation of the confidence envelope follows that used in the SAS
 program, \url{http://www.datavis.ca/sasmac/cqplot.html} which comes from
 Chambers et al. (1983), Section 6.8.
 
-The essential formula is 
+The essential formula computes the standard errors as: 
 \deqn{ \text{se} ( D^2_{(i)} ) = \hat{\delta} /g ( q_i)) \times \sqrt{  p_i (1-p_i) / n } }
 where \eqn{D^2_{(i)}} is the i-th
 ordered value of \eqn{D^2}, \eqn{\hat{\delta}} is an estimate of the slope of
