@@ -123,8 +123,18 @@ A chi square quantile-quantile plots show the relationship between
 data-based values which should be distributed as \eqn{\chi^2} and
 corresponding quantiles from the \eqn{\chi^2} distribution.  In multivariate
 analyses, this is often used both to assess multivariate normality and check
-for outliers, using the Mahalanobis squared distances (\eqn{D^2}) of
-observations from the centroid.
+for or identify outliers.  
+
+For a data frame of numeric variables or a matrix supplied as the argument \code{x},
+it uses the Mahalanobis squared distances (\eqn{D^2}) of
+observations \eqn{\mathbf{x}} from the centroid \eqn{\bar{\mathbf{x}}}
+taking the sample covariance matrix \eqn{\mathbf{S}} into account,
+\deqn{
+D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} - \bar{\mathbf{x}}) \; .
+}
+
+The method for \code{"mlm"} objects fit using \code{\link[stats]{lm}} for a multivariate response
+applies this to the residuals from the model.
 }
 \details{
 \code{cqplot} is a more general version of similar functions in other
@@ -135,28 +145,34 @@ around the line of unit slope, a detrended version, where the reference line
 is horizontal, the ability to identify or label unusual points, and other
 graphical features.
 
-The method for \code{"mlm"} objects applies this to the residuals from the
-model.
-
 Cases with any missing values are excluded from the calculation and graph with a warning.
 
 \subsection{Confidence envelope}{
+In the typical use of QQ plots, it essential to have something in the nature of a confidence band
+around the points to be able to appreciate whether, and to what degree the observed data points
+differ from the reference distribution. For \code{cqplot}, this helps to assess whether the
+data are reasonably distributed as multivariate normal and also to flag potential outliers.
 
-The calculation of the confidence envelope follows that used in the SAS
+The calculation of the confidence envelope here follows that used in the SAS
 program, \url{http://www.datavis.ca/sasmac/cqplot.html} which comes from
 Chambers et al. (1983), Section 6.8.
 
 The essential formula computes the standard errors as: 
-\deqn{ \text{se} ( D^2_{(i)} ) = \hat{\delta} /g ( q_i)) \times \sqrt{  p_i (1-p_i) / n } }
+\deqn{ \text{se} ( D^2_{(i)} ) = \frac{\hat{b}} {d ( q_i)} \times \sqrt{  p_i (1-p_i) / n } }
 where \eqn{D^2_{(i)}} is the i-th
-ordered value of \eqn{D^2}, \eqn{\hat{\delta}} is an estimate of the slope of
-the reference line obtained from the corresponding quartiles and
-\eqn{g(q_i)} is the density of the chi square distribution at the quantile
-\eqn{q_i}.
+ordered value of \eqn{D^2}, \eqn{\hat{b}} is an estimate of the slope of
+the reference line obtained from the ratio of the interquartile range of the
+\eqn{D^2} values to that of the \eqn{\chi^2_p} distribution and
+\eqn{d(q_i)} is the density of the chi square distribution at the quantile
+\eqn{q_i}. 
+
+The pointwise confidence envelope of coverage \code{conf} = \eqn{1-\alpha} is then calculated as
+\eqn{D^2_{(i)} \pm z_{1-\alpha/2} \text{se} ( D^2_{(i)} )}
 
 Note that this confidence envelope applies only to the \eqn{D^2} computed
-using the classical estimates of location and scatter. The
-\code{car::qqPlot()} function provides for simulated envelopes, but only for
+using the classical estimates of location (\eqn{\bar{\mathbf{x}}}) and scatter (\eqn{\mathbf{S}}). The
+\code{\link[car]{qqPlot}}
+function provides for simulated envelopes, but only for
 a univariate measure. Oldford (2016) provides a general theory and methods
 for QQ plots.
 }
