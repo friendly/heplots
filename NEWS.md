@@ -2,6 +2,7 @@
 
 * added plotting all X vs all Y to Rohwer doc
 * added `schoolsites` dataset
+* `cqplot()` now prints a warning if there are missing cases and also returns the upper tail p-values corresponding to Mahalanobis $D^2$.
 
 ## Version 1.7.3 (2024-12-05)
 

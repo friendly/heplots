@@ -61,7 +61,7 @@ number of rows in \code{x}.}
 number of rows in \code{x}.
 The default is the \emph{first} entry in the
 current color palette (see \code{\link[grDevices]{palette}} and
-\code{\link[graphics]{par}}.}
+\code{\link[graphics]{par}}).}
 
 \item{cex}{character symbol size for points.  Can be a vector of length
 equal to the number of rows in \code{x}.}
@@ -136,14 +136,18 @@ graphical features.
 The method for \code{"mlm"} objects applies this to the residuals from the
 model.
 
+Cases with any missing values are excluded from the calculation and graph with a warning.
+
+\subsection{Confidence envelope}{
+
 The calculation of the confidence envelope follows that used in the SAS
 program, \url{http://www.datavis.ca/sasmac/cqplot.html} which comes from
 Chambers et al. (1983), Section 6.8.
 
 The essential formula is 
-\deqn{ SE ( z_{(i)} ) = \hat{\delta} /g ( q_i)) \times \sqrt{  p_i (1-p_i) / n } }
-where \eqn{z_{(i)}} is the i-th
-order value of \eqn{D^2}, \eqn{\hat{\delta}} is an estimate of the slope of
+\deqn{ \text{se} ( D^2_{(i)} ) = \hat{\delta} /g ( q_i)) \times \sqrt{  p_i (1-p_i) / n } }
+where \eqn{D^2_{(i)}} is the i-th
+ordered value of \eqn{D^2}, \eqn{\hat{\delta}} is an estimate of the slope of
 the reference line obtained from the corresponding quartiles and
 \eqn{g(q_i)} is the density of the chi square distribution at the quantile
 \eqn{q_i}.
@@ -153,6 +157,7 @@ using the classical estimates of location and scatter. The
 \code{car::qqPlot()} function provides for simulated envelopes, but only for
 a univariate measure. Oldford (2016) provides a general theory and methods
 for QQ plots.
+}
 }
 \examples{
 
