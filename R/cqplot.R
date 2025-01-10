@@ -103,8 +103,8 @@
 #' @param id.n number of points labeled. If \code{id.n=0}, the default, no
 #'             point identification occurs.
 #' @param id.method point identification method. The default
-#'             \code{id.method="y"} will identify the \code{id.n} points with the largest
-#'             value of abs(y-mean(y)). See \code{\link[car]{showLabels}} for other
+#'             \code{id.method="r"} will identify the \code{id.n} points with the largest
+#'             value of abs(y), i.e., the largest Mahalanobis DSQ. See \code{\link[car]{showLabels}} for other
 #'             options.
 #' @param id.cex size of text for point labels
 #' @param id.col color for point labels
@@ -191,19 +191,28 @@ cqplot.mlm <-
 #' @exportS3Method cqplot default
 cqplot.default <- 
 		function(x,
-			method=c("classical", "mcd", "mve"), 
-			detrend=FALSE, 
-			pch=19, col = palette()[1], cex = par("cex"),
-			ref.col="red", ref.lwd=2,
-			conf = 0.95,
-			env.col="gray", env.lwd=2, env.lty=1, env.fill=TRUE,  
-			fill.alpha=0.2,
-			fill.color=trans.colors(ref.col, fill.alpha),
-			labels = if (!is.null(rownames(x))) rownames(x) else 1:nrow(x),
-			id.n, id.method="y", id.cex=1, id.col = palette()[1],
+			method = c("classical", "mcd", "mve"), 
+			detrend = FALSE, 
+			pch = 19, 
+			col  =  palette()[1], 
+			cex  =  par("cex"),
+			ref.col = "red", 
+			ref.lwd = 2,
+			conf  =  0.95,
+			env.col = "gray", 
+			env.lwd = 2, 
+			env.lty = 1, 
+			env.fill = TRUE,  
+			fill.alpha = 0.2,
+			fill.color = trans.colors(ref.col, fill.alpha),
+			labels  =  if (!is.null(rownames(x))) rownames(x) else 1:nrow(x),
+			id.n, 
+			id.method = "r", 
+			id.cex = 1, 
+			id.col  =  palette()[1],
 			xlab, ylab, 
 			main, 
-			what=deparse(substitute(x)), 
+			what = deparse(substitute(x)), 
 			ylim, ...) {
 
   # Function to shade concentration band  

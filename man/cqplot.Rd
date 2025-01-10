@@ -28,7 +28,7 @@ cqplot(x, ...)
   fill.color = trans.colors(ref.col, fill.alpha),
   labels = if (!is.null(rownames(x))) rownames(x) else 1:nrow(x),
   id.n,
-  id.method = "y",
+  id.method = "r",
   id.cex = 1,
   id.col = palette()[1],
   xlab,
@@ -92,8 +92,8 @@ to \code{rownames(x)} or observation numbers if \code{rownames(x)} is
 point identification occurs.}
 
 \item{id.method}{point identification method. The default
-\code{id.method="y"} will identify the \code{id.n} points with the largest
-value of abs(y-mean(y)). See \code{\link[car]{showLabels}} for other
+\code{id.method="r"} will identify the \code{id.n} points with the largest
+value of abs(y), i.e., the largest Mahalanobis DSQ. See \code{\link[car]{showLabels}} for other
 options.}
 
 \item{id.cex}{size of text for point labels}
