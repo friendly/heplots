@@ -49,6 +49,7 @@ Suggests:
     animation,
     mvinfluence,
     knitr,
+    litedown,
     rmarkdown,
     markdown,
     dplyr,
