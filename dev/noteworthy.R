@@ -46,32 +46,32 @@ noteworthy <- function(x, y,
                        id.fun = NULL,
                        level = NULL,
                        ...){
-
-
-
+  
+  
+  
   # remove missings
   ismissing <- is.na(x) | is.na(y) 
   if( any(ismissing) ) {
     x <- x[!ismissing]
     y <- y[!ismissing]
   }
-
+  
   k <- length(x)
   methods <- c("dsq", "mahal", "x", "y", "r", "px", "py")
   methid <- pmatch(method, methods)
   method <- methods[methid]
-
+  
   if (!is.null(id.fun)) 
     crit = id.fun(x, y, ...)
   else {
     crit <- switch(method,
-      'mahal' = (k-1) * rowSums( qr.Q(qr(cbind(1, x, y)))^2 ),
-      'dsq' = (k-1) * rowSums( qr.Q(qr(cbind(1, x, y)))^2 ),
-      'x' = abs(x - mean(x)),
-      'y' = abs(y - mean(y)),
-      'r' = abs(y),
-      'px' = ppoints(x),
-      'py' = ppoints(y)
+                   'mahal' = (k-1) * rowSums( qr.Q(qr(cbind(1, x, y)))^2 ),
+                   'dsq' = (k-1) * rowSums( qr.Q(qr(cbind(1, x, y)))^2 ),
+                   'x' = abs(x - mean(x)),
+                   'y' = abs(y - mean(y)),
+                   'r' = abs(y),
+                   'px' = ppoints(x),
+                   'py' = ppoints(y)
     )
   }
   
@@ -86,11 +86,11 @@ noteworthy <- function(x, y,
     }
   }
   if(length(crit) == 0) return(NULL)
-#browser()  
+  #browser()  
   index <-  order(crit, decreasing=TRUE)[1L:min(length(crit), n)]
   index
 }
-              
+
 if(FALSE) {
   set.seed(47)
   x <- c(runif(100), 1.5, 1.6)
@@ -104,7 +104,7 @@ if(FALSE) {
   dsqr <- rowSums( qr.Q(qr(cbind(1, XY)))^2 )
   dmod <- lm(dsq ~ dsqr)
   coef(dmod)
-
+  
   testnote <- function(x, y, n, method, ...)  {
     plot(x, y)
     abline(lm(y ~ x))
@@ -113,7 +113,7 @@ if(FALSE) {
     noteworthy(x, y, n=n, method = method, ...)
     
   }
-
+  
   testnote(x, y, n=5, method = "mahal")
   testnote(x, y, n=5, method = "mahal", level = .99)
   
@@ -124,6 +124,6 @@ if(FALSE) {
   
   noteworthy(x, y, n=5, method = "y")
   noteworthy(x, y, n=5, method = "r")
-
-    
+  
+  
 }
