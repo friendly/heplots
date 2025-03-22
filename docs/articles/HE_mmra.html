@@ -67,7 +67,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>HE plot MMRA Examples</h1>
                         <h4 data-toc-skip class="author">Michael Friendly</h4>
             
-            <h4 data-toc-skip class="date">2025-01-03</h4>
+            <h4 data-toc-skip class="date">2025-01-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/friendly/heplots/blob/HEAD/vignettes/HE_mmra.Rmd" class="external-link"><code>vignettes/HE_mmra.Rmd</code></a></small>
       <div class="d-none name"><code>HE_mmra.Rmd</code></div>
@@ -84,9 +84,7 @@
     toc_depth: 1
 bibliography: lib.bib
 -->
-<pre><code><span><span class="co">#&gt; Error in get(paste0(generic, ".", class), envir = get_method_env()) : </span></span>
-<span><span class="co">#&gt;   object 'type_sum.accel' not found</span></span></code></pre>
-<p>Vignette built using <code>heplots</code>, version 1.7.3
+<p>Vignette built using <code>heplots</code>, version 1.7.4
 and <code>candisc</code>, version 0.9.0.</p>
 <div class="section level2">
 <h2 id="multivariate-multiple-regression-designs">Multivariate Multiple Regression Designs<a class="anchor" aria-label="anchor" href="#multivariate-multiple-regression-designs"></a>
@@ -126,7 +124,7 @@ varied in how the stimuli were presented, and are called <em>named</em> (<code>n
 status (SES) school, and a group of <span class="math inline">\(n=32\)</span> high SES children from an
 upper-class, white residential school. The data are in the data frame
 <code>Rohwer</code> in the <code>heplots</code> package:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Rohwer</span><span class="op">)</span></span>
 <span><span class="va">Rohwer</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    group SES SAT PPVT Raven n  s ns na ss</span></span>
@@ -153,7 +151,7 @@ allow for this possibility. The trick is to reshape the data from wide to long f
 and use facets in <code>ggplot2</code> to compose the pairwise scatterplots into the desired
 rectangular matrix format.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;This solution was suggested in an answer to a Stackoverflow question, &lt;a href="https://stackoverflow.com/questions/73859139/how-to-make-a-scatterplot-rectangular-matrix-y1-y2-x1-x2-in-r" class="external-link uri"&gt;https://stackoverflow.com/questions/73859139/how-to-make-a-scatterplot-rectangular-matrix-y1-y2-x1-x2-in-r&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a></p>
 <!-- TODO: retain original variable order -->
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -187,7 +185,7 @@ rectangular matrix format.<a class="footnote-ref" tabindex="0" data-bs-toggle="p
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 611 more rows</span></span></span></code></pre></div>
 <p>Then, we can use <code>ggplot2</code> to make produce the pairwise plots for each combination of <code>x</code> and <code>y</code> variables. Using <code>color=SES</code> in the aesthetic results in a separate regression line for
 the two SES groups produced by <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth()</a></code>.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">Rohwer_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, color <span class="op">=</span> <span class="va">SES</span>, shape <span class="op">=</span> <span class="va">SES</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html" class="external-link">geom_jitter</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, </span>
@@ -215,7 +213,7 @@ of the High and Low SES groups. This approach is <em>not</em> generally recommen
 lacks power (smaller sample sizes in each group than a combined analysis)
 and does not allow hypotheses about equality of slopes and intercepts
 to be tested directly.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rohwer.ses1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, data<span class="op">=</span><span class="va">Rohwer</span>, </span>
 <span>                  subset<span class="op">=</span><span class="va">SES</span><span class="op">==</span><span class="st">"Hi"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.ses1</span><span class="op">)</span></span>
@@ -245,7 +243,7 @@ to be tested directly.</p>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>This fits separate slopes and intercepts for each of the two groups, but it is difficult
 to compare the coefficients numerically.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">rohwer.ses1</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                  SAT     PPVT    Raven</span></span>
 <span><span class="co">#&gt; (Intercept) -28.4675 39.69709 13.24384</span></span>
@@ -267,7 +265,7 @@ coefficients in a multivariate linear model. In this problem, with three respons
 the 95% confidence regions are 3D ellipsoids, but we only plot them in 2D.
 The 3D versions have the property that a given predictor is significant by a multivariate test if
 the ellipsoid excludes the point (0, 0, 0).</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/coefplot.html">coefplot</a></span><span class="op">(</span><span class="va">rohwer.ses1</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, cex.label<span class="op">=</span><span class="fl">1.5</span>, cex.lab<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">3</span>, <span class="st">"High SES group"</span>, pos<span class="op">=</span><span class="fl">4</span>, cex<span class="op">=</span><span class="fl">1.4</span><span class="op">)</span></span>
 <span></span>
@@ -283,7 +281,7 @@ Figure 1.2: Coefficient plots for the separate models for the High and Low SES g
 with HE plots. Here we make use of the fact
 that several HE plots can be overlaid using the option <code>add=TRUE</code>
 as shown in Figure <a href="#fig:rohwer-HE1">1.3</a>.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">rohwer.ses1</span>, </span>
 <span>       ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">40</span>,<span class="fl">110</span><span class="op">)</span>,                        <span class="co"># allow more room for 2nd plot</span></span>
 <span>       col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"black"</span><span class="op">)</span>, </span>
@@ -315,7 +313,7 @@ than the Low group, indicating greater relation with the <code>SAT</code> score.
 <p>Alternatively (and optimistically), we can fit a MANCOVA model
 that allows different means for the two SES groups on the responses, but constrains the
 slopes for the PA covariates to be equal.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># MANCOVA, assuming equal slopes</span></span>
 <span><span class="va">rohwer.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">SES</span> <span class="op">+</span> <span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span>, </span>
 <span>                 data<span class="op">=</span><span class="va">Rohwer</span><span class="op">)</span></span>
@@ -341,10 +339,10 @@ for all responses as a linear hypothesis.
 First, extract the names
 of the PA tests predictors from the model.
 <code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">car::linearHypothesis()</a></code> takes a vector of the names coefficients to be tested simultaneously.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">covariates</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span></span>
 <span><span class="co"># or: covariates &lt;- rownames(coef(rohwer.mod))[-(1:2)]</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Regr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></span><span class="op">(</span><span class="va">rohwer.mod</span>, <span class="va">covariates</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">Regr</span>, digits<span class="op">=</span><span class="fl">4</span>, SSP<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -359,7 +357,7 @@ of the PA tests predictors from the model.
 <p>Then 2D views of the
 additive MANCOVA model <code>rohwer.mod</code> and the overall test for all covariates
 are produced as follows, giving the plots in Figure <a href="#fig:rohwer-HE2">1.4</a>.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"black"</span>,<span class="fl">5</span><span class="op">)</span>, <span class="st">"#969696"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">rohwer.mod</span>, </span>
 <span>       col<span class="op">=</span><span class="va">colors</span>, variables<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>,</span>
@@ -386,13 +384,13 @@ values for all three responses are positively correlated (more so for
 is higher on all responses than the Low SES group.</p>
 <p>Alternatively, all pairwise plots among these responses could be drawn using
 the <code><a href="../reference/pairs.mlm.html">pairs.mlm()</a></code> function,</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">rohwer.mod</span>, col<span class="op">=</span><span class="va">colors</span>,</span>
 <span>      hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Regr"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>      cex<span class="op">=</span><span class="fl">1.3</span>, lwd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig%2Fmmra-rohwer-HE3-1.png" style="display: block; margin: auto;"></p>
 <p>or as a 3D plot, using <code><a href="../reference/heplot3d.html">heplot3d()</a></code> as shown in Figure <a href="#fig:rohwer-HE3D">1.5</a>.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pink"</span>, <span class="st">"blue"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"black"</span>,<span class="fl">5</span><span class="op">)</span>, <span class="st">"#969696"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/heplot3d.html">heplot3d</a></span><span class="op">(</span><span class="va">rohwer.mod</span>, col<span class="op">=</span><span class="va">colors</span>,</span>
 <span>    hypotheses<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"Regr"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -412,7 +410,7 @@ Figure 1.5: 3D HE plot for the MANCOVA model fit to the Rohwer data.
 but the test of relies on the assumption of homogeneity of slopes for the predictors.
 We can test this assumption as follows, by adding interactions of <code>SES</code>
 with each of the covariates:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rohwer.mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">SAT</span>, <span class="va">PPVT</span>, <span class="va">Raven</span><span class="op">)</span> <span class="op">~</span> <span class="va">SES</span> <span class="op">*</span> <span class="op">(</span><span class="va">n</span> <span class="op">+</span> <span class="va">s</span> <span class="op">+</span> <span class="va">ns</span> <span class="op">+</span> <span class="va">na</span> <span class="op">+</span> <span class="va">ss</span><span class="op">)</span>,</span>
 <span>                  data<span class="op">=</span><span class="va">Rohwer</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">rohwer.mod2</span><span class="op">)</span></span>
@@ -436,7 +434,7 @@ with each of the covariates:</p>
 from the separate <code>SES:</code> terms. The evidence for heterogeneity is
 stronger, however, when these terms are tested collectively using the
 <code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis()</a></code> function:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">coefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">rohwer.mod2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "(Intercept)" "SESLo"       "n"           "s"           "ns"         </span></span>
 <span><span class="co">#&gt;  [6] "na"          "ss"          "SESLo:n"     "SESLo:s"     "SESLo:ns"   </span></span>
@@ -468,7 +466,7 @@ covariate represents the hypothesis that the slopes for that covariate are
 zero in the high-SES baseline category. With this parameterization, the ellipse for
 <code>Slopes</code> represents the joint hypothesis that slopes for the covariates do not differ
 in the low-SES group.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"black"</span>,<span class="fl">5</span><span class="op">)</span>, <span class="st">"#969696"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">rohwer.mod2</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">colors</span>, <span class="st">"brown"</span><span class="op">)</span>, </span>
 <span>      terms<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SES"</span>, <span class="st">"n"</span>, <span class="st">"s"</span>, <span class="st">"ns"</span>, <span class="st">"na"</span>, <span class="st">"ss"</span><span class="op">)</span>, </span>
@@ -518,7 +516,7 @@ elective herniorrhaphy operation, in relation to pre-operative measures.</p>
 <!-- The ordinal predictors could be treated as factors, but we use them here as numeric variables. -->
 </li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Hernior</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">Hernior</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 'data.frame':    32 obs. of  9 variables:</span></span>
@@ -540,7 +538,7 @@ elective herniorrhaphy operation, in relation to pre-operative measures.</p>
 factors, rather than linear, regression terms. Doing so would give tests for
 nonlinear effects of their relations with the responses.
 We ignore this possibility in this example.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Hern.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">leave</span>, <span class="va">nurse</span>, <span class="va">los</span><span class="op">)</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span>  <span class="va">pstat</span> <span class="op">+</span>  <span class="va">build</span> <span class="op">+</span> <span class="va">cardiac</span> <span class="op">+</span> <span class="va">resp</span>, </span>
 <span>               data<span class="op">=</span><span class="va">Hernior</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span> </span>
@@ -560,7 +558,7 @@ predictor (<code>pstat</code>) appears to be significant at conventional levels.
 <p>The univariate models for each response are implicit in the MLM <code>Hern.mod</code>.
 These can be printed using <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code>, or we can use <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> to extract
 certain statistics for each univariate response model, as we do here.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Hern.summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">Hern.summary</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">$</span><span class="va">r.squared</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Response leave Response nurse   Response los </span></span>
@@ -570,7 +568,7 @@ to give a one-line summary of statistics for each response variable in a MLM.
 The <span class="math inline">\(R^2\)</span> and <span class="math inline">\(F\)</span> statistics are those for each overall model assessing the impact
 of all predictors.</p>
 <!-- TODO: use glance.mlm() here -->
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/glance.mlm.html">glance.mlm</a></span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 8</span></span></span>
 <span><span class="co">#&gt;   response r.squared sigma fstatistic numdf dendf  p.value  nobs</span></span>
@@ -584,7 +582,7 @@ the <code>leave</code> variable. Yet, the <span class="math inline">\(R^2\)</spa
 are slightly promising. We proceed to a multivariate overall test of <span class="math inline">\(\mathbf{B} = 0\)</span>
 for all predictors, whose term names can be easily extracted from the
 rownames of the coefficients.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># test overall regression</span></span>
 <span><span class="op">(</span><span class="va">predictors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "age"     "sexm"    "pstat"   "build"   "cardiac" "resp"</span></span>
@@ -599,7 +597,7 @@ rownames of the coefficients.</p>
 <span><span class="co">#&gt; Roy               6   1.55434   6.4764      6 25.000 0.0003232 ***</span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"darkgray"</span>, <span class="st">"blue"</span>, <span class="st">"darkgreen"</span>, <span class="st">"magenta"</span>, <span class="st">"brown"</span>, <span class="st">"black"</span><span class="op">)</span></span>
 <span><span class="va">vlab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"LeaveCondition\n(leave)"</span>, </span>
 <span>          <span class="st">"NursingCare\n(nurse)"</span>, </span>
@@ -639,16 +637,16 @@ scores on the linear combination of the responses that contributes most to
 the multivariate test of that effect, together with the weights for the responses.</p>
 <p>We use <code><a href="https://friendly.github.io/candisc/reference/candiscList.html" class="external-link">candiscList()</a></code> to calculate the canonical analyses for all predictor terms in
 <code>Hern.mod</code>.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Hern.canL</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://friendly.github.io/candisc/reference/candiscList.html" class="external-link">candiscList</a></span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span></span></code></pre></div>
 <p>1D canonical discriminant plots for all terms can be obtained interactively
 with a menu, simply by plotting the <code>Hern.canL</code> object.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Hern.canL</span><span class="op">)</span></span></code></pre></div>
 <p>Plots for separate terms are produced by the lines below, and shown in
 Figure <a href="#fig:hern-can1">2.2</a> and Figure <a href="#fig:hern-can2">2.3</a>.</p>
 <p>For <code>pstat</code> and <code>build</code>:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Hern.canL</span>, term<span class="op">=</span><span class="st">"pstat"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Hern.canL</span>, term<span class="op">=</span><span class="st">"build"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -658,7 +656,7 @@ Figure 2.2: 1D Canonical discriminant plots for physical status (<code>pstat</co
 </p>
 </div>
 <p>For <code>age</code> and <code>cardiac</code>:</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Hern.canL</span>, term<span class="op">=</span><span class="st">"age"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Hern.canL</span>, term<span class="op">=</span><span class="st">"cardiac"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -710,7 +708,7 @@ question of whether the effects on exam grades remain, when &lt;code&gt;eval&lt;
 <li>
 <code>pretest</code>, score on a course pretest.</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">SocGrades</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 'data.frame':    40 obs. of  10 variables:</span></span>
 <span><span class="co">#&gt;  $ class   : Ord.factor w/ 3 levels "3"&lt;"2"&lt;"1": 2 2 2 1 2 1 3 2 1 2 ...</span></span>
@@ -728,7 +726,7 @@ question of whether the effects on exam grades remain, when &lt;code&gt;eval&lt;
 <span class="header-section-number">3.1</span> Models<a class="anchor" aria-label="anchor" href="#models"></a>
 </h3>
 <p>The basic MLM is fit below as <code>grades.mod</code> with all predictor variables.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">SocGrades</span><span class="op">)</span></span>
 <span><span class="va">grades.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">midterm1</span>, <span class="va">midterm2</span>, <span class="va">final</span>, <span class="va">eval</span><span class="op">)</span> <span class="op">~</span> </span>
 <span>                         <span class="va">class</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">gpa</span> <span class="op">+</span> <span class="va">boards</span> <span class="op">+</span> <span class="va">hssoc</span> <span class="op">+</span> <span class="va">pretest</span>, </span>
@@ -756,7 +754,7 @@ done using <code><a href="https://rdrr.io/r/stats/update.html" class="external-l
 model with all pairwise interactions of the predictors.
 In the model formula, <code>~.^2</code>, the <code>.</code> represents all terms in the model,
 and the <code>^2</code> generates all products of terms, such as <code>class:sex</code>, <code>class:gpa</code>, and so forth.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">grades.mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">grades.mod</span>, <span class="va">.</span> <span class="op">~</span> <span class="va">.</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">grades.mod2</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -788,7 +786,7 @@ and the <code>^2</code> generates all products of terms, such as <code>class:sex
 <p>In the results above, only the interaction of <code>class:sex</code> is significant,
 and the main effects of <code>hssoc</code> and <code>pretest</code> remain insignificant.
 A revised model to explore is <code>grades.mod3</code>,</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">grades.mod3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">grades.mod</span>, <span class="va">.</span> <span class="op">~</span> <span class="va">.</span> <span class="op">+</span> <span class="va">class</span><span class="op">:</span><span class="va">sex</span> <span class="op">-</span> <span class="va">hssoc</span> <span class="op">-</span> <span class="va">pretest</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">grades.mod3</span>, test<span class="op">=</span><span class="st">"Roy"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -805,7 +803,7 @@ A revised model to explore is <code>grades.mod3</code>,</p>
 effects are in the expected directions: higher <code>gpa</code>, <code>boards</code>, <code>class</code>
 leads to better performance on most outcomes. The interaction of
 <code>class:sex</code> seems to be confined largely to <code>midterm1</code>.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">grades.mod3</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:grades-pairs"></span>
@@ -815,7 +813,7 @@ Figure 3.1: HE pairs plot for SocGrade, model <code>grades.mod3</code>.
 </div>
 <p>These effects are easier to appreciate for the three exam grades jointly in a
 3D HE plot when you can rotate it interactively. A snapshot is shown in Figure <a href="#fig:grades-HE3D">3.2</a>.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/heplot3d.html">heplot3d</a></span><span class="op">(</span><span class="va">grades.mod3</span>, wire<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:grades-HE3D"></span>
@@ -840,7 +838,7 @@ ordering of the three social classes.</p>
 <p>The representation of these effects in canonical space is particularly useful here.
 Again, use <code><a href="https://friendly.github.io/candisc/reference/candiscList.html" class="external-link">candiscList()</a></code> to compute the canonical decompositions for all terms
 in the model, and extract the canonical <span class="math inline">\(R^2\)</span> from the terms in the result.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># calculate canonical results for all terms</span></span>
 <span><span class="va">grades.can</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://friendly.github.io/candisc/reference/candiscList.html" class="external-link">candiscList</a></span><span class="op">(</span><span class="va">grades.mod3</span><span class="op">)</span></span>
 <span><span class="co"># extract canonical R^2s</span></span>
@@ -849,7 +847,7 @@ in the model, and extract the canonical <span class="math inline">\(R^2\)</span>
 <span><span class="co">#&gt;    0.61362    0.02419    0.36527    0.58915    0.47227    0.31046    0.13293</span></span></code></pre></div>
 <p>We use <code><a href="../reference/heplot.html">heplot()</a></code> on the <code>"candiscList"</code> object to show
 the effects of <code>class</code> in canonical space, giving Figure <a href="#fig:grades-can-class">3.3</a>.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># plot class effect in canonical space</span></span>
 <span> <span class="fu"><a href="../reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">grades.can</span>, term<span class="op">=</span><span class="st">"class"</span>, </span>
 <span>        scale<span class="op">=</span><span class="fl">4</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, var.col<span class="op">=</span><span class="st">"black"</span>, var.lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
@@ -867,7 +865,7 @@ dimension.</p>
 <p>1D plots of the canonical scores for other effects in the model are also of
 interest, and provide simple interpretations of these effects on the response
 variables. The statements below produce the plots shown in Figure <a href="#fig:grades-can-all">3.4</a>.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">grades.can</span>, term<span class="op">=</span><span class="st">"sex"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">grades.can</span>, term<span class="op">=</span><span class="st">"gpa"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
