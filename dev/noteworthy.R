@@ -1,5 +1,8 @@
 # Find noteworthy points in a 2D scatterplot
+# ------------------------------------------
 # TODO: How to allow for method = a vector of the same length as x, e.g, method = cooks.distance(m)
+# TODO: Fix id.fun problem. How to pass a function name that can be invoked?
+# TODO: Is there any need for px, py?
 
 #' Find noteworthy (unusual) points in a 2D plot
 #' 
@@ -60,7 +63,8 @@ noteworthy <- function(x, y,
   methods <- c("dsq", "mahal", "x", "y", "r", "px", "py")
   methid <- pmatch(method, methods)
   method <- methods[methid]
-  
+
+
   if (!is.null(id.fun)) 
     crit = id.fun(x, y, ...)
   else {
@@ -73,18 +77,20 @@ noteworthy <- function(x, y,
                    'px' = ppoints(x),
                    'py' = ppoints(y)
     )
+  
+    if(!is.null(level)) {
+      if(method %in% c("px", "py")) {
+        crit[crit < level] <- 0
+        n <- sum(crit != 0)
+      }
+      if(method %in% c("dsq", "mahal")) {
+        crit[crit < qchisq(level, df=2)] <- 0
+        n <- sum(crit != 0)
+      }
+    }
   }
   
-  if(!is.null(level)) {
-    if(method %in% c("px", "py")) {
-      crit[crit < level] <- 0
-      n <- sum(crit != 0)
-    }
-    if(method %in% c("dsq", "mahal")) {
-      crit[crit < qchisq(level, df=2)] <- 0
-      n <- sum(crit != 0)
-    }
-  }
+  
   if(length(crit) == 0) return(NULL)
   #browser()  
   index <-  order(crit, decreasing=TRUE)[1L:min(length(crit), n)]
@@ -105,25 +111,31 @@ if(FALSE) {
   dmod <- lm(dsq ~ dsqr)
   coef(dmod)
   
-  testnote <- function(x, y, n, method, ...)  {
+  testnote <- function(x, y, n, method=NULL, ...)  {
     plot(x, y)
     abline(lm(y ~ x))
-    if (method %in% c("mahal", "x", "y", "r"))
-      showLabels(x, y, n=n, method = method) |> print()
-    noteworthy(x, y, n=n, method = method, ...)
-    
+    if (!is.null(method) && method %in% c("mahal", "x", "y", "r"))
+      car::showLabels(x, y, n=n, method = method) |> print()
+    ids <- noteworthy(x, y, n=n, method = method, ...)
+    text(x, y, labels = ifelse(1:length(x) %in% ids, ids, ""), col = "red")
+    ids
   }
   
   testnote(x, y, n=5, method = "mahal")
   testnote(x, y, n=5, method = "mahal", level = .99)
   
+  # px, py don't make much sense 
   testnote(x, y, n=5, method = "px")
+  testnote(x, y, n=5, method = "py")
   testnote(x, y, n=5, method = "px", level = .99)
-  
-  testnote(x, y, n=5, id.fun = Mahalanobis(data.frame(x,y)))
   
   noteworthy(x, y, n=5, method = "y")
   noteworthy(x, y, n=5, method = "r")
+
+  # id.fun doesn't work
+  testnote(x, y, n=5, id.fun = Mahalanobis)
+  testnote(x, y, n=5, id.fun = Mahalanobis(data.frame(x,y)))
+  
   
   
 }
