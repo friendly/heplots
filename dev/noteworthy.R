@@ -117,7 +117,7 @@ if(FALSE) {
     if (!is.null(method) && method %in% c("mahal", "x", "y", "r"))
       car::showLabels(x, y, n=n, method = method) |> print()
     ids <- noteworthy(x, y, n=n, method = method, ...)
-    text(x, y, labels = ifelse(1:length(x) %in% ids, ids, ""), col = "red")
+    text(x[ids], y[ids], labels = ids, col = "red")
     ids
   }
   
@@ -135,7 +135,5 @@ if(FALSE) {
   # id.fun doesn't work
   testnote(x, y, n=5, id.fun = Mahalanobis)
   testnote(x, y, n=5, id.fun = Mahalanobis(data.frame(x,y)))
-  
-  
   
 }
