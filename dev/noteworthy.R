@@ -1,106 +1,139 @@
-# Find noteworthy points in a 2D scatterplot
-# ------------------------------------------
-# TODO: How to allow for method = a vector of the same length as x, e.g, method = cooks.distance(m)
-# TODO: Fix id.fun problem. How to pass a function name that can be invoked?
-# TODO: Is there any need for px, py?
+# id.method can be any of the following:
+#    --- a vector of row numbers: all are chosen
+#    --- a vector of n numbers: the largest n are chosen
+#    --- a text string:  'x', 'y', 'mahal', 'dsq', 'r', 'ry'
+#
+# For id.method = "identify", see: https://stackoverflow.com/questions/10526005/is-there-any-way-to-use-the-identify-command-with-ggplot-2
 
 #' Find noteworthy (unusual) points in a 2D plot
-#' 
+#'
+#' @description 
 #' This function extends the logic used by \code{\link[car]{showLabels}} to provide a more general
 #' collection of methods to identify unusual or "noteworthy" points in a two-dimensional display.
-#' 
+#' Standard methods include Mahalanobis  and Euclidean distance from the centroid, absolute value of distance from 
+#' the mean of X or Y, absolute value of Y and absolute value of the residual in a model \code{Y ~ X}.
 #' 
 #' @details
 #' 
-#' You can supply as \code{id.fun} the name of any function that takes \code{(x, y)} as its first two 
-#' arguments and calculates a criterion such that the \emph{largest} \code{n} values are considered noteworthy.
-#' Otherwise, the \code{method} argument determines how noteworthy points are identified.
-#' 
+#' The `method` argument determines how the points to be identified are selected:
 #' \describe{
-#'  \item{\code{"x"}}{select points according to their value of \code{abs(x - mean(x))}
-#'  \item{\code{"y"}}{select points according to their value of \code{abs(y - mean(r))}
-#'  \item{\code{"r"}}{select points according to their value of abs(y), as may be appropriate 
-#'       in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot}
-#'  \item{\code{"dsq", "mahal"}}{Treat (x, y) as if it were a bivariate sample, 
+#'  \item{\code{"mahal"}}{Treat (x, y) as if it were a bivariate sample, 
 #'       and select cases according to their Mahalanobis distance from \code{(mean(x), mean(y))}
-#'  \item{code{"px"}}{select points according to their value of \code{ppoints(x)}}
-#'  \item{code{"py"}}{select points according to their value of \code{ppoints(y)}}
+#'  \item{\code{"dsq"}}{Similar to \code{"mahal"} but uses squared Euclidean distance}  
+#'  \item{\code{"x"}}{Select points according to their value of \code{abs(x - mean(x))}
+#'  \item{\code{"y"}}{Select points according to their value of \code{abs(y - mean(r))}
+#'  \item{\code{"r"}}{Select points according to their value of abs(y), as may be appropriate 
+#'       in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot}
+#'  \item{\code{"ry"}}{Fit the linear model, \code{y ~ x} and select points according to their absolute residuals.}
+#'  \item{numeric vector}{\code{method} can be a vector of the same length as x consisting of values to determine the points 
+#'       to be labeled. For example, for a linear model \code{mod}, setting \code{method=cooks.distance(mod)} will label the 
+#'       \code{n} points corresponding to the largest values of Cook's distance. Warning: If missing data are present, 
+#'       points may be incorrectly selected.}
+#'  \item{case IDs}{\code{method} can be an integer vector of case numbers in \code{1:length{x}}, in which case those cases 
+#'       will be labeled.}
 #' }
 #' 
-#' If a value for \code{level} is supplied, this is used as a filter to select cases whose criterion value
+#' In the case of \code{method == "mahal"} a value for \code{level} can be supplied and 
+#' this can used as a filter to select cases whose criterion value
 #' exceeds \code{level}. In this case, the number of points identified will be less than or equal to \code{n}.
+#' 
+#' 
 #' 
 #' @param x, y       Plotting coordinates 
 #' @param n          Maximum number of points to identify
 #' @param method     Method of point identification. See Details.
-#' @param id.fun     Name of a function of \code{(x, y)}. If supplied, this overrides the \code{method} argument
-#' @param level      If supplied, the identified points are filtered so that only those for which the 
+#' @param level      Where appropriate, if supplied, the identified points are filtered so that only those for which the 
 #'                   criterion is \code{< level}
-#' @param ...        Other arguments passed to \code{id.fun()}
-#'
-#' @return   An integer vector of the indices of the (x,y) pairs found to be noteworthy or \code{NULL} if no
-#'           points are identified as noteworthy.
 #' @export
-#'
 #' @examples
+#' # example code
+#' set.seed(47)
+#' x <- c(runif(100), 1.5, 1.6, 0)
+#' y <- c(2*x[1:100] + rnorm(100, sd = 1.2), -2, 6, 6 )
+#' 
+#' testnote(x, y, n=5, method = "mahal")
+#' testnote(x, y, n=5, method = "mahal", level = .99)
+#' 
+#' testnote(x, y, n=5, method = "dsq")
+#' 
+#' testnote(x, y, n=5, method = "y")
+#' testnote(x, y, n=5, method = "ry")
+#'   # a vector of criterion values
+#' testnote(x, y, n=5, method = Mahalanobis(data.frame(x,y)))
+
 noteworthy <- function(x, y, 
-                       n,
+                       n = length(x),
                        method = "mahal",
-                       id.fun = NULL,
                        level = NULL,
-                       ...){
-  
-  
-  
-  # remove missings
-  ismissing <- is.na(x) | is.na(y) 
-  if( any(ismissing) ) {
-    x <- x[!ismissing]
-    y <- y[!ismissing]
+                       ...)
+{
+
+  special <- c("x", "y", "mahal", "dsq", "r", 'ry')
+  idmeth <- pmatch(method[1], special)
+  if(!is.na(idmeth)) 
+    idmeth <- special[idmeth]
+
+#browser()  
+  if(is.na(idmeth)) {
+  # if idmeth is still NA, then id.method must be <= n numbers or row ids
+  # handle these separately before using idmeth
+    # row ids?
+    crit <- method
+    # vector of row ids
+    if(all(crit == floor(crit)) && all(crit %in% 1:length(x))) {
+      n <- length(crit)
+    # we're done
+      return(crit)
+    }
+    # vector of numeric criteria, for selecting the largest `n`
+    if (!is.null(level)) warning("`level` does not apply when `method` is a numeric vector.")
   }
-  
-  k <- length(x)
-  methods <- c("dsq", "mahal", "x", "y", "r", "px", "py")
-  methid <- pmatch(method, methods)
-  method <- methods[methid]
 
-
-  if (!is.null(id.fun)) 
-    crit = id.fun(x, y, ...)
   else {
-    crit <- switch(method,
+    k <- length(x)
+    # remove missings
+    ismissing <- is.na(x) | is.na(y) 
+    if( any(ismissing) ) {
+      x <- x[!ismissing]
+      y <- y[!ismissing]
+      # should this issue a warning?
+      warntext <- paste(sum(ismissing), "observations ignored due to missing `x` or `y`. Selected points may be incorrect.")
+      message(warntext)
+    }
+    if(length(x) != length(y)) stop("`x` and `y` must be vectors of the same length.")
+
+  # what about CookD / influence?  
+    crit <- switch(idmeth,
                    'mahal' = (k-1) * rowSums( qr.Q(qr(cbind(1, x, y)))^2 ),
-                   'dsq' = (k-1) * rowSums( qr.Q(qr(cbind(1, x, y)))^2 ),
-                   'x' = abs(x - mean(x)),
-                   'y' = abs(y - mean(y)),
-                   'r' = abs(y),
-                   'px' = ppoints(x),
-                   'py' = ppoints(y)
+                   'dsq'   = (x - mean(x))^2 + (y - mean(y))^2,
+                   'x'     = abs(x - mean(x)),
+                   'y'     = abs(y - mean(y)),
+                   'r'     = abs(y),
+                   'ry'    = abs(residuals(lm(y ~ x)))
     )
   
+  # adjust for `level` here, for any methods for which a level value is appropriate, to select fewer than `n`.
     if(!is.null(level)) {
-      if(method %in% c("px", "py")) {
-        crit[crit < level] <- 0
-        n <- sum(crit != 0)
-      }
-      if(method %in% c("dsq", "mahal")) {
+      if(idmeth == "mahal") {
         crit[crit < qchisq(level, df=2)] <- 0
         n <- sum(crit != 0)
       }
+      # could do something similar for `ry`: select by qnorm(level, lower.tail = FALSE)
     }
   }
   
-  
+  # return result: row IDs of the largest n criterion values
   if(length(crit) == 0) return(NULL)
   #browser()  
   index <-  order(crit, decreasing=TRUE)[1L:min(length(crit), n)]
   index
+  
 }
-
+  
 if(FALSE) {
   set.seed(47)
-  x <- c(runif(100), 1.5, 1.6)
-  y <- c(2*x[1:100] + rnorm(100, sd = 1.2), -2, 6 )
+  x <- c(runif(100), 1.5, 1.6, 0)
+  y <- c(2*x[1:100] + rnorm(100, sd = 1.2), -2, 6, 6 )
   XY <- data.frame(x, y)
   plot(x, y)
   abline(lm(y ~ x))
@@ -114,7 +147,7 @@ if(FALSE) {
   testnote <- function(x, y, n, method=NULL, ...)  {
     plot(x, y)
     abline(lm(y ~ x))
-    if (!is.null(method) && method %in% c("mahal", "x", "y", "r"))
+    if (!is.null(method))
       car::showLabels(x, y, n=n, method = method) |> print()
     ids <- noteworthy(x, y, n=n, method = method, ...)
     text(x[ids], y[ids], labels = ids, col = "red")
@@ -123,17 +156,22 @@ if(FALSE) {
   
   testnote(x, y, n=5, method = "mahal")
   testnote(x, y, n=5, method = "mahal", level = .99)
-  
-  # px, py don't make much sense 
-  testnote(x, y, n=5, method = "px")
-  testnote(x, y, n=5, method = "py")
-  testnote(x, y, n=5, method = "px", level = .99)
-  
-  noteworthy(x, y, n=5, method = "y")
-  noteworthy(x, y, n=5, method = "r")
 
-  # id.fun doesn't work
-  testnote(x, y, n=5, id.fun = Mahalanobis)
-  testnote(x, y, n=5, id.fun = Mahalanobis(data.frame(x,y)))
+  testnote(x, y, n=5, method = "dsq")
+  
+  testnote(x, y, n=5, method = "y")
+  testnote(x, y, n=5, method = "r")
+  
+  # a vector of criterion values
+  testnote(x, y, n=5, method = Mahalanobis(data.frame(x,y)))
+  # NB: level doesn't apply here (-> warning)
+  testnote(x, y, n=5, method = Mahalanobis(data.frame(x,y)), level = 0.95)
+
+  # largest (positive) residuals
+  testnote(x, y, n=4, method = residuals(lm(y~x)))
+  # vector of case IDs
+  testnote(x, y, n = 4, method = seq(10, 60, 10))
   
 }
+  
+  
