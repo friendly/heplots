@@ -7,7 +7,9 @@
 noteworthy(x, y, n = length(x), method = "mahal", level = NULL, ...)
 }
 \arguments{
-\item{x, }{y       Plotting coordinates}
+\item{x}{Plot coordinate: x}
+
+\item{y}{Plot coordinate: y}
 
 \item{n}{Maximum number of points to identify}
 
@@ -15,6 +17,8 @@ noteworthy(x, y, n = length(x), method = "mahal", level = NULL, ...)
 
 \item{level}{Where appropriate, if supplied, the identified points are filtered so that only those for which the 
 criterion is \code{< level}}
+
+\item{...}{Other arguments, silently ignored}
 }
 \description{
 This function extends the logic used by \code{\link[car]{showLabels}} to provide a more general
@@ -75,7 +79,7 @@ testnote(x, y, n = 5, method = "ry")
 
   # a vector of criterion values
 testnote(x, y, n = 5, method = Mahalanobis(data.frame(x,y)))
-textnote(x, y, n = 5, method = z)
+testnote(x, y, n = 5, method = z)
   # vector of case IDs
 testnote(x, y, n = 4, method = seq(10, 60, 10))
 testnote(x, y, n = 4, method = which(cooks.distance(mod) > .25))

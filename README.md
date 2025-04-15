@@ -283,7 +283,14 @@ pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
       fill=TRUE, fill.alpha=0.1)
 ```
 
-<img src="man/figures/README-iris3-1.png" width="100%" />
+<div class="figure">
+
+<img src="man/figures/README-iris3-1.png" alt="Scatterplot matrix of pairwise HE plots for the iris data." width="100%" />
+<p class="caption">
+Scatterplot matrix of pairwise HE plots for the iris data.
+</p>
+
+</div>
 
 ### Canonical discriminant view
 
@@ -324,7 +331,14 @@ variables.
 heplot(iris.can, var.pos = 1, scale = 40)
 ```
 
-<img src="man/figures/README-iris-can-1.png" width="60%" />
+<div class="figure">
+
+<img src="man/figures/README-iris-can-1.png" alt="Canonical HE plot for the iris data" width="60%" />
+<p class="caption">
+Canonical HE plot for the iris data
+</p>
+
+</div>
 
 ### Covariance ellipses
 
@@ -336,13 +350,20 @@ three Iris species and the pooled covariance matrix, which is the same
 as the **E** matrix used in MANOVA tests.
 
 ``` r
-par(mar=c(4,4,1,1)+.1)
 covEllipses(iris[,1:4], iris$Species)
 covEllipses(iris[,1:4], iris$Species, 
             fill=TRUE, method="mve", add=TRUE, labels="")
 ```
 
-<img src="man/figures/README-iris4-1.png" width="80%" />
+<div class="figure">
+
+<img src="man/figures/README-iris4-1.png" alt="Covariance ellipses for the iris data, showing the classical and robust estimates." width="80%" />
+<p class="caption">
+Covariance ellipses for the iris data, showing the classical and robust
+estimates.
+</p>
+
+</div>
 
 ## References
 

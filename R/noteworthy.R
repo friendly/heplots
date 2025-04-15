@@ -38,12 +38,15 @@
 #' exceeds \code{level}. In this case, the number of points identified will be less than or equal to \code{n}.
 #' 
 #' 
-#' @param x, y       Plotting coordinates 
+#' @param x          Plot coordinate: x 
+#' @param y          Plot coordinate: y 
 #' @param n          Maximum number of points to identify
 #' @param method     Method of point identification. See Details.
 #' @param level      Where appropriate, if supplied, the identified points are filtered so that only those for which the 
 #'                   criterion is \code{< level}
+#' @param ...        Other arguments, silently ignored
 #' @keywords utilities
+#' @importFrom stats lm
 #' @export
 #' @examples
 #' # example code
@@ -75,7 +78,7 @@
 #' 
 #'   # a vector of criterion values
 #' testnote(x, y, n = 5, method = Mahalanobis(data.frame(x,y)))
-#' textnote(x, y, n = 5, method = z)
+#' testnote(x, y, n = 5, method = z)
 #'   # vector of case IDs
 #' testnote(x, y, n = 4, method = seq(10, 60, 10))
 #' testnote(x, y, n = 4, method = which(cooks.distance(mod) > .25))
@@ -129,7 +132,7 @@ noteworthy <- function(x, y,
                    'x'     = abs(x - mean(x)),
                    'y'     = abs(y - mean(y)),
                    'r'     = abs(y),
-                   'ry'    = abs(residuals(lm(y ~ x)))
+                   'ry'    = abs(residuals(stats::lm(y ~ x)))
     )
   
   # adjust for `level` here, for any methods for which a level value is appropriate, to select fewer than `n`.
