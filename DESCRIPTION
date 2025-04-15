@@ -17,10 +17,11 @@ Authors@R: c(
             person(given = "Duncan", family = "Murdoch", role="ctb"))
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Description: Provides HE plot and other functions for visualizing hypothesis
-    tests in multivariate linear models. HE plots represent sums-of-squares-and-products 
+    tests in multivariate linear models ("MLMs"). HE plots represent sums-of-squares-and-products 
     matrices for linear hypotheses and for error using ellipses (in two
-    dimensions) and ellipsoids (in three dimensions). The related 'candisc' package
-    provides visualizations in a reduced-rank canonical discriminant space when
+    dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of "MLMs"
+    such as robust methods and homogeneity of variance covariance matrices.
+    The related 'candisc' package provides visualizations in a reduced-rank canonical discriminant space when
     there are more than a few response variables.
 Language: en-US
 Depends:

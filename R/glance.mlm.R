@@ -25,6 +25,7 @@
 #' @importFrom magrittr extract
 #' @importFrom purrr map_dfr map
 #' @importFrom tibble as_tibble
+#' @keywords multivariate
 #' @export
 #' @examples 
 #' iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)

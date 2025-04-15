@@ -237,3 +237,4 @@ R. W. Oldford (2016), "Self calibrating quantile-quantile plots",
 Michael Friendly
 }
 \keyword{hplot}
+\keyword{multivariate}

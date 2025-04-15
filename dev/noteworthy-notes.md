@@ -60,9 +60,8 @@ geom_noteworthy(method = c("dsq", "mahal", "x", "y", "r"),
                 ...)
 ```
 
-To this end, I've written a `compute` function, `noteworthy(x, y, n, method, ...)` that tries to be very general,
-but perhaps consequently, isn't fully working:
-https://github.com/friendly/heplots/blob/master/dev/noteworthy.R
+To this end, I've written a `compute` function, `heplots::noteworthy(x, y, n, method, ...)` that tries to be very general,
+https://github.com/friendly/heplots/blob/master/R/noteworthy.R
 
 
 

@@ -24,6 +24,7 @@
 #'        used to limit the number of points selected
 #'
 #' @return A vector of case id numbers for the selected points
+#' @keywords utilities
 #' @export
 #'
 #' @examples

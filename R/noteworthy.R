@@ -18,25 +18,24 @@
 #' The `method` argument determines how the points to be identified are selected:
 #' \describe{
 #'  \item{\code{"mahal"}}{Treat (x, y) as if it were a bivariate sample, 
-#'       and select cases according to their Mahalanobis distance from \code{(mean(x), mean(y))}
-#'  \item{\code{"dsq"}}{Similar to \code{"mahal"} but uses squared Euclidean distance}  
-#'  \item{\code{"x"}}{Select points according to their value of \code{abs(x - mean(x))}
-#'  \item{\code{"y"}}{Select points according to their value of \code{abs(y - mean(r))}
-#'  \item{\code{"r"}}{Select points according to their value of abs(y), as may be appropriate 
-#'       in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot}
+#'       and select cases according to their Mahalanobis distance from \code{(mean(x), mean(y))}.}
+#'  \item{\code{"dsq"}}{Similar to \code{"mahal"} but uses squared Euclidean distance.}  
+#'  \item{\code{"x"}}{Select points according to their value of \code{abs(x - mean(x))}.}
+#'  \item{\code{"y"}}{Select points according to their value of \code{abs(y - mean(y))}.}
+#'  \item{\code{"r"}}{Select points according to their value of \code{abs(y)}, as may be appropriate 
+#'       in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot.}
 #'  \item{\code{"ry"}}{Fit the linear model, \code{y ~ x} and select points according to their absolute residuals.}
+#'  \item{case IDs}{\code{method} can be an integer vector of case numbers in \code{1:length{x}}, in which case those cases 
+#'       will be labeled.}
 #'  \item{numeric vector}{\code{method} can be a vector of the same length as x consisting of values to determine the points 
 #'       to be labeled. For example, for a linear model \code{mod}, setting \code{method=cooks.distance(mod)} will label the 
 #'       \code{n} points corresponding to the largest values of Cook's distance. Warning: If missing data are present, 
 #'       points may be incorrectly selected.}
-#'  \item{case IDs}{\code{method} can be an integer vector of case numbers in \code{1:length{x}}, in which case those cases 
-#'       will be labeled.}
 #' }
 #' 
-#' In the case of \code{method == "mahal"} a value for \code{level} can be supplied and 
-#' this can used as a filter to select cases whose criterion value
+#' In the case of \code{method == "mahal"} a value for \code{level} can be supplied.
+#' This is used as a filter to select cases whose criterion value
 #' exceeds \code{level}. In this case, the number of points identified will be less than or equal to \code{n}.
-#' 
 #' 
 #' 
 #' @param x, y       Plotting coordinates 
@@ -44,22 +43,43 @@
 #' @param method     Method of point identification. See Details.
 #' @param level      Where appropriate, if supplied, the identified points are filtered so that only those for which the 
 #'                   criterion is \code{< level}
+#' @keywords utilities
 #' @export
 #' @examples
 #' # example code
 #' set.seed(47)
 #' x <- c(runif(100), 1.5, 1.6, 0)
 #' y <- c(2*x[1:100] + rnorm(100, sd = 1.2), -2, 6, 6 )
+#' z <- y - x
+#' mod <- lm(y ~ x)
+#'
+#' # testing function to compare noteworthy with car::showLabels() 
+#' testnote <- function(x, y, n, method=NULL, ...)  {
+#'   plot(x, y)
+#'   abline(lm(y ~ x))
+#'   if (!is.null(method))
+#'     car::showLabels(x, y, n=n, method = method) |> print()
+#'   ids <- noteworthy(x, y, n=n, method = method, ...)
+#'   text(x[ids], y[ids], labels = ids, col = "red")
+#'   ids
+#'   }
 #' 
-#' testnote(x, y, n=5, method = "mahal")
-#' testnote(x, y, n=5, method = "mahal", level = .99)
+#'   # Mahalanobis distance 
+#' testnote(x, y, n = 5, method = "mahal")
+#' testnote(x, y, n = 5, method = "mahal", level = .99)
+#'   # Euclidean distance 
+#' testnote(x, y, n = 5, method = "dsq")
 #' 
-#' testnote(x, y, n=5, method = "dsq")
+#' testnote(x, y, n = 5, method = "y")
+#' testnote(x, y, n = 5, method = "ry")
 #' 
-#' testnote(x, y, n=5, method = "y")
-#' testnote(x, y, n=5, method = "ry")
 #'   # a vector of criterion values
-#' testnote(x, y, n=5, method = Mahalanobis(data.frame(x,y)))
+#' testnote(x, y, n = 5, method = Mahalanobis(data.frame(x,y)))
+#' textnote(x, y, n = 5, method = z)
+#'   # vector of case IDs
+#' testnote(x, y, n = 4, method = seq(10, 60, 10))
+#' testnote(x, y, n = 4, method = which(cooks.distance(mod) > .25))
+
 
 noteworthy <- function(x, y, 
                        n = length(x),
@@ -171,7 +191,7 @@ if(FALSE) {
   testnote(x, y, n=4, method = residuals(lm(y~x)))
   # vector of case IDs
   testnote(x, y, n = 4, method = seq(10, 60, 10))
-  
+  testnote(x, y, n = 4, method = which(cooks.distance(mod) > .25))  
 }
   
   

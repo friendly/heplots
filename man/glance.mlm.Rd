@@ -35,3 +35,4 @@ response variable, containing goodness of fit measures, F-tests and p-values.
 iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
 glance(iris.mod)
 }
+\keyword{multivariate}

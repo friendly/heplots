@@ -132,6 +132,7 @@
 #' R. W. Oldford (2016), "Self calibrating quantile-quantile plots", 
 #' \emph{The American Statistician}, 70, 74-90.
 #' @keywords hplot
+#' @keywords multivariate
 #' @examples
 #' 
 #' 
