@@ -63,7 +63,10 @@ Suggests:
     here,
     Sleuth2, rrcov, archdata, qqtest,
     vcdExtra,
-    R.rsp
+    R.rsp,
+    KernSmooth,
+    aplpack,
+    foreign
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues

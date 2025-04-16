@@ -9,6 +9,8 @@ This is largely a maintenance release, but adds a function to identify "notewort
 * added `noteworthy(x, y)` as a utility to select "noteworthy" observations in a 2D plot, extending the ideas in `car::showLabels()`
 * corrected some minor documentation problems
 * fixed some 301 "moved" URLs
+* Now Depends: on R >= 4.1.0 because package uses native pipes |>
+* Added Suggests: KernSmooth, aplpack, foreign, used in some demos
 
 ## Version 1.7.3 (2024-12-05)
 
