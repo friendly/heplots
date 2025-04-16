@@ -1,7 +1,7 @@
-# id.method can be any of the following:
-#    --- a vector of row numbers: all are chosen
-#    --- a vector of n numbers: the largest n are chosen
-#    --- a text string:  'x', 'y', 'mahal', 'dsq', 'r', 'ry'
+# method can be any of the following:
+#   * a vector of row numbers: all are chosen
+#   * a vector of length(x) numbers: the largest n are chosen
+#   * a text string:  'x', 'y', 'mahal', 'dsq', 'r', 'ry'
 #
 # For id.method = "identify", see: https://stackoverflow.com/questions/10526005/is-there-any-way-to-use-the-identify-command-with-ggplot-2
 
@@ -38,15 +38,16 @@
 #' exceeds \code{level}. In this case, the number of points identified will be less than or equal to \code{n}.
 #' 
 #' 
-#' @param x          Plot coordinate: x 
-#' @param y          Plot coordinate: y 
-#' @param n          Maximum number of points to identify
+#' @param x,y        The x and y coordinates of a set of points. Alternatively, a single argument \code{x} can be provided,
+#'                   since \code{\link[grDevices]{xy.coords}(x, y)} is used for construction of the coordinates.
+#' @param n          Maximum number of points to identify. If set to 0, no points are identified.
 #' @param method     Method of point identification. See Details.
 #' @param level      Where appropriate, if supplied, the identified points are filtered so that only those for which the 
 #'                   criterion is \code{< level}
 #' @param ...        Other arguments, silently ignored
 #' @keywords utilities
 #' @importFrom stats lm
+#' @importFrom grDevices xy.coords
 #' @export
 #' @examples
 #' # example code
@@ -84,7 +85,7 @@
 #' testnote(x, y, n = 4, method = which(cooks.distance(mod) > .25))
 
 
-noteworthy <- function(x, y, 
+noteworthy <- function(x, y = NULL, 
                        n = length(x),
                        method = "mahal",
                        level = NULL,
@@ -113,6 +114,9 @@ noteworthy <- function(x, y,
   }
 
   else {
+    xy <- xy.coords(x, y)
+    x <- xy$x
+    y <- xy$y
     k <- length(x)
     # remove missings
     ismissing <- is.na(x) | is.na(y) 
@@ -194,7 +198,11 @@ if(FALSE) {
   testnote(x, y, n=4, method = residuals(lm(y~x)))
   # vector of case IDs
   testnote(x, y, n = 4, method = seq(10, 60, 10))
-  testnote(x, y, n = 4, method = which(cooks.distance(mod) > .25))  
+  testnote(x, y, n = 4, method = which(cooks.distance(mod) > .25)) 
+
+  # test use of xy.coords  
+  noteworthy(data.frame(x,y), n=4)
+  noteworthy(y ~ x, n=4)
 }
   
   

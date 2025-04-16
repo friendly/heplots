@@ -1,0 +1,165 @@
+---
+title: "Test table variations"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Test table variations}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = TRUE)
+
+library(dplyr)
+library(ggplot2)
+library(volker)
+
+theme_set(theme_bw())
+
+data <- volker::chatgpt
+
+```
+
+## Categorical variables
+
+### tab_counts_one
+```{r}
+tab_counts(data, sd_gender)
+```
+
+### tab_counts_one_grouped
+```{r}
+tab_counts(data, adopter, sd_gender)
+```
+
+### tab_counts_one_cor
+```{r}
+tab_counts(data, adopter, sd_age, metric = TRUE)
+```
+
+### tab_counts_items
+```{r}
+tab_counts(data, starts_with("cg_adoption_"))
+```
+
+### tab_counts_items_grouped
+```{r}
+tab_counts(data, starts_with("cg_adoption_"), sd_gender)
+```
+
+### tab_counts_items_cor
+```{r}
+tab_counts(data, starts_with("cg_adoption_"), sd_age, metric = TRUE)
+```
+
+## Metric variables
+
+### tab_metrics_one
+```{r}
+tab_metrics(data, sd_age)
+```
+
+### tab_metrics_one_grouped
+```{r}
+tab_metrics(data, sd_age, sd_gender)
+```
+
+### tab_metrics_one_cor
+```{r}
+tab_metrics(data, sd_age, use_private, metric = TRUE)
+```
+
+### tab_metrics_items
+```{r}
+tab_metrics(data, starts_with("cg_adoption_"))
+```
+
+### tab_metrics_items_grouped
+```{r}
+tab_metrics(data, starts_with("cg_adoption_"), sd_gender)
+```
+
+
+### tab_metrics_items_cor
+```{r}
+tab_metrics(data, starts_with("cg_adoption_adv"), sd_age, metric = TRUE)
+```
+
+# Scales
+
+```{r}
+# Add a single index
+data %>%
+  add_index(starts_with("cg_adoption_")) %>%
+  tab_metrics_one(idx_cg_adoption)
+
+# Compare the index values by group
+data %>%
+  add_index(starts_with("cg_adoption_")) %>%
+  tab_metrics_one_grouped(idx_cg_adoption, adopter)
+```
+
+
+```{r}
+# Add multiple indizes and summarize them
+data %>%
+  add_index(starts_with("cg_adoption_")) %>%
+  add_index(starts_with("cg_adoption_advantage")) %>%
+  add_index(starts_with("cg_adoption_fearofuse")) %>%
+  add_index(starts_with("cg_adoption_social")) %>%
+  tab_metrics_items(starts_with("idx_cg_adoption"))
+```
+
+# Labels
+## Set custom item labels
+
+```{r}
+newlabels <- tribble(
+  ~item_name, ~item_label,
+  "cg_adoption_advantage_01", "Allgemeine Vorteile",
+  "cg_adoption_advantage_02", "Finanzielle Vorteile",
+  "cg_adoption_advantage_03", "Vorteile bei der Arbeit",
+  "cg_adoption_advantage_04", "Macht mehr Spaß"
+)
+
+
+data %>%
+  labs_apply(newlabels) %>%
+  
+  labs_store() %>% 
+  labs_clear() %>% 
+  labs_restore() %>% 
+  
+  tab_counts_items(starts_with("cg_adoption_advantage_"))
+
+```
+
+## Remove labels
+
+```{r}
+data %>%
+  labs_clear(everything()) %>%
+  tab_counts_items(starts_with("cg_adoption_advantage_"))
+```
+
+## Apply value labels
+
+```{r}
+
+data %>%
+  filter(sd_gender != "diverse") %>% 
+  labs_apply(
+    cols = sd_gender,
+    values = list(
+      "female" = "Weiblich",
+      "male" = "Maennlich"
+    )
+  ) %>%
+  tab_metrics(sd_age, sd_gender)
+
+```
+
+
+

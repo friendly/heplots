@@ -1,0 +1,2383 @@
+
+R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "volker"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> options(pager = "console")
+> library('volker')
+
+Attaching package: 'volker'
+
+The following object is masked from 'package:stats':
+
+    filter
+
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("add_clusters")
+> ### * add_clusters
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_clusters
+> ### Title: Add cluster number to a data frame
+> ### Aliases: add_clusters
+> 
+> ### ** Examples
+> 
+> library(volker)
+> ds <- volker::chatgpt
+> 
+> volker::add_clusters(ds, starts_with("cg_adoption"), k = 3)
+# A tibble: 97 × 20
+    case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
+   <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
+ 1   170           4        4                        3                        4
+ 2   183           1        1                        4                        3
+ 3   195           2        4                        5                        5
+ 4   212           5        5                        4                        4
+ 5   222           2        3                        3                        2
+ 6   236           3        1                        3                        2
+ 7   255           3        1                        3                        1
+ 8   297           3        4                        4                        3
+ 9   309           3        3                        3                        4
+10   325           2        1                        4                        1
+# ℹ 87 more rows
+# ℹ 15 more variables: cg_adoption_advantage_03 <dbl>,
+#   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
+#   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
+#   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,
+#   cg_adoption_social_02 <dbl>, cg_adoption_social_03 <dbl>,
+#   cg_adoption_social_04 <dbl>, adopter <fct>, sd_age <dbl>, …
+> 
+> 
+> 
+> cleanEx()
+> nameEx("add_factors")
+> ### * add_factors
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_factors
+> ### Title: Add PCA columns along with summary statistics (KMO and Bartlett
+> ###   test) to a data frame
+> ### Aliases: add_factors
+> 
+> ### ** Examples
+> 
+> library(volker)
+> ds <- volker::chatgpt
+> 
+> volker::add_factors(ds, starts_with("cg_adoption"))
+# A tibble: 97 × 21
+    case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
+   <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
+ 1   170           4        4                        3                        4
+ 2   183           1        1                        4                        3
+ 3   195           2        4                        5                        5
+ 4   212           5        5                        4                        4
+ 5   222           2        3                        3                        2
+ 6   236           3        1                        3                        2
+ 7   255           3        1                        3                        1
+ 8   297           3        4                        4                        3
+ 9   309           3        3                        3                        4
+10   325           2        1                        4                        1
+# ℹ 87 more rows
+# ℹ 16 more variables: cg_adoption_advantage_03 <dbl>,
+#   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
+#   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
+#   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,
+#   cg_adoption_social_02 <dbl>, cg_adoption_social_03 <dbl>,
+#   cg_adoption_social_04 <dbl>, adopter <fct>, sd_age <dbl>, …
+> 
+> 
+> 
+> cleanEx()
+> nameEx("add_index")
+> ### * add_index
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_index
+> ### Title: Calculate the mean value of multiple items
+> ### Aliases: add_index
+> 
+> ### ** Examples
+> 
+> ds <- volker::chatgpt
+> volker::add_index(ds, starts_with("cg_adoption"))
+# A tibble: 97 × 20
+    case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
+   <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
+ 1   170           4        4                        3                        4
+ 2   183           1        1                        4                        3
+ 3   195           2        4                        5                        5
+ 4   212           5        5                        4                        4
+ 5   222           2        3                        3                        2
+ 6   236           3        1                        3                        2
+ 7   255           3        1                        3                        1
+ 8   297           3        4                        4                        3
+ 9   309           3        3                        3                        4
+10   325           2        1                        4                        1
+# ℹ 87 more rows
+# ℹ 15 more variables: cg_adoption_advantage_03 <dbl>,
+#   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
+#   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
+#   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,
+#   cg_adoption_social_02 <dbl>, cg_adoption_social_03 <dbl>,
+#   cg_adoption_social_04 <dbl>, adopter <fct>, sd_age <dbl>, …
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cluster_plot")
+> ### * cluster_plot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cluster_plot
+> ### Title: Get plot for clustering result
+> ### Aliases: cluster_plot
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> cluster_plot(data, starts_with("cg_adoption"), k = 2)
+In the plot, 4 missing case(s) omitted.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cluster_tab")
+> ### * cluster_tab
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cluster_tab
+> ### Title: Get tables for clustering result
+> ### Aliases: cluster_tab
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> cluster_tab(data, starts_with("cg_adoption"), k = 2)
+
+
+|Expectations                                                |     total| Cluster 1| Cluster 2|
+|:-----------------------------------------------------------|---------:|---------:|---------:|
+|ChatGPT has clear advantages compared to similar offerings. | 3.4 (1.0)| 3.8 (0.9)| 3.2 (1.0)|
+|Using ChatGPT brings financial benefits.                    | 2.7 (1.2)| 3.5 (0.9)| 2.2 (1.1)|
+|Using ChatGPT is advantageous in many tasks.                | 3.6 (1.1)| 4.0 (0.8)| 3.3 (1.2)|
+|Compared to other systems, using ChatGPT is more fun.       | 3.5 (1.0)| 4.0 (0.8)| 3.2 (1.0)|
+|Much can go wrong when using ChatGPT.                       | 3.1 (1.1)| 3.1 (1.1)| 3.1 (1.1)|
+|There are legal issues with using ChatGPT.                  | 3.1 (1.2)| 3.5 (1.0)| 2.8 (1.2)|
+|The security of user data is not guaranteed with ChatGPT.   | 3.2 (1.0)| 3.5 (1.0)| 3.0 (1.0)|
+|Using ChatGPT could bring personal disadvantages.           | 2.7 (1.1)| 3.1 (1.2)| 2.5 (1.0)|
+|In my environment, using ChatGPT is standard.               | 2.5 (1.1)| 3.5 (0.9)| 1.9 (0.8)|
+|Almost everyone in my environment uses ChatGPT.             | 2.4 (1.2)| 3.4 (1.0)| 1.8 (0.8)|
+|Not using ChatGPT is considered being an outsider.          | 2.0 (1.2)| 2.9 (1.2)| 1.4 (0.6)|
+|Using ChatGPT brings me recognition from my environment.    | 2.3 (1.2)| 3.4 (1.1)| 1.7 (0.8)|
+|n                                                           |        97|        36|        61|
+
+4 missing case(s) omitted.
+
+
+
+|Cluster   |  n|    p|
+|:---------|--:|----:|
+|Cluster 1 | 36|  37%|
+|Cluster 2 | 61|  63%|
+|total     | 97| 100%|
+
+n=97.
+
+
+
+|Statistic                      |  Value|
+|:------------------------------|------:|
+|Within-Cluster Sum of Squares  | 907.02|
+|Between-Cluster Sum of Squares | 244.98|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("codebook")
+> ### * codebook
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: codebook
+> ### Title: Get variable and value labels from a data set
+> ### Aliases: codebook
+> 
+> ### ** Examples
+> 
+> volker::codebook(volker::chatgpt)
+# A tibble: 94 × 6
+   item_name     item_group item_class item_label         value_name value_label
+   <chr>         <chr>      <chr>      <chr>              <chr>      <chr>      
+ 1 case          case       numeric    case               <NA>       <NA>       
+ 2 sd_age        sd         numeric    Age                <NA>       <NA>       
+ 3 cg_activities cg         character  Activities with C… <NA>       <NA>       
+ 4 adopter       adopter    factor     Innovator type     I try new… I try new …
+ 5 adopter       adopter    factor     Innovator type     I try new… I try new …
+ 6 adopter       adopter    factor     Innovator type     I wait un… I wait unt…
+ 7 adopter       adopter    factor     Innovator type     I only us… I only use…
+ 8 adopter       adopter    factor     Innovator type     [no answe… [no answer]
+ 9 sd_gender     sd         factor     Gender             female     female     
+10 sd_gender     sd         factor     Gender             male       male       
+# ℹ 84 more rows
+> 
+> 
+> 
+> cleanEx()
+> nameEx("data_clean")
+> ### * data_clean
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: data_clean
+> ### Title: Prepare dataframe for the analysis
+> ### Aliases: data_clean
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> ds <- volker::chatgpt
+> ds <- data_clean(ds)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("data_clean_default")
+> ### * data_clean_default
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: data_clean_default
+> ### Title: Prepare data originating from SoSci Survey or SPSS
+> ### Aliases: data_clean_default
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> ds <- volker::chatgpt
+> ds <- data_clean_default(ds)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("data_prepare")
+> ### * data_prepare
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: data_prepare
+> ### Title: Prepare data for calculation
+> ### Aliases: data_prepare
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> data <- volker::chatgpt
+> data_prepare(data, sd_age, sd_gender)
+# A tibble: 101 × 19
+    case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
+   <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
+ 1   170           4        4                        3                        4
+ 2   183           1        1                        4                        3
+ 3   195           2        4                        5                        5
+ 4   212           5        5                        4                        4
+ 5   222           2        3                        3                        2
+ 6   236           3        1                        3                        2
+ 7   255           3        1                        3                        1
+ 8   297           3        4                        4                        3
+ 9   309           3        3                        3                        4
+10   325           2        1                        4                        1
+# ℹ 91 more rows
+# ℹ 14 more variables: cg_adoption_advantage_03 <dbl>,
+#   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
+#   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
+#   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,
+#   cg_adoption_social_02 <dbl>, cg_adoption_social_03 <dbl>,
+#   cg_adoption_social_04 <dbl>, adopter <fct>, sd_age <dbl>, …
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_counts")
+> ### * effect_counts
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_counts
+> ### Title: Output effect sizes and test statistics for count data
+> ### Aliases: effect_counts
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_counts(data, sd_gender, adopter)
+
+
+|Statistic   | Value|
+|:-----------|-----:|
+|Cramer's V  |  0.26|
+|n           |   101|
+|Chi-squared | 13.48|
+|df          |      |
+|p           | 0.013|
+|stars       |     *|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_counts_items")
+> ### * effect_counts_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_counts_items
+> ### Title: Test homogeneity of category shares for multiple items
+> ### Aliases: effect_counts_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_counts_items(data, starts_with("cg_adoption_adv"))
+
+
+|Expectations                                                | Gini coefficient|  n| Chi-squared|     p| stars|
+|:-----------------------------------------------------------|----------------:|--:|-----------:|-----:|-----:|
+|ChatGPT has clear advantages compared to similar offerings. |             0.36| 99|       43.47| 0.000|   ***|
+|Using ChatGPT brings financial benefits.                    |             0.19| 99|       14.28| 0.006|    **|
+|Using ChatGPT is advantageous in many tasks.                |             0.36| 99|       47.01| 0.000|   ***|
+|Compared to other systems, using ChatGPT is more fun.       |             0.40| 99|       53.68| 0.000|   ***|
+
+2 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_counts_one")
+> ### * effect_counts_one
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_counts_one
+> ### Title: Test homogeneity of category shares
+> ### Aliases: effect_counts_one
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> data |>
++   filter(sd_gender != "diverse") |>
++   effect_counts_one(sd_gender)
+
+
+|Statistic        | Value|
+|:----------------|-----:|
+|Gini coefficient |  0.10|
+|n                |   100|
+|Chi-squared      |  4.00|
+|p                | 0.046|
+|stars            |     *|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_counts_one_grouped")
+> ### * effect_counts_one_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_counts_one_grouped
+> ### Title: Output test statistics and effect size for contingency tables
+> ### Aliases: effect_counts_one_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_counts_one_grouped(data, adopter, sd_gender)
+
+
+|Statistic   | Value|
+|:-----------|-----:|
+|Cramer's V  |  0.26|
+|n           |   101|
+|Chi-squared | 13.48|
+|df          |      |
+|p           | 0.020|
+|stars       |     *|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_metrics")
+> ### * effect_metrics
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_metrics
+> ### Title: Output effect sizes and test statistics for metric data
+> ### Aliases: effect_metrics
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_metrics(data, sd_age, sd_gender)
+
+
+|Term               | estimate| ci low| ci high|    se|     t|     p| stars|
+|:------------------|--------:|------:|-------:|-----:|-----:|-----:|-----:|
+|(Intercept)        |    37.52|  33.21|   41.84|  2.18| 17.24| 0.000|   ***|
+|female (Reference) |         |       |        |      |      |      |      |
+|male               |     3.69|  -1.88|    9.27|  2.81|  1.31| 0.192|      |
+|diverse            |    -4.52| -32.18|   23.13| 13.94| -0.32| 0.746|      |
+
+
+|Statistic          | Value|
+|:------------------|-----:|
+|Adjusted R-squared |     0|
+|F                  |  0.98|
+|df                 |     2|
+|residual df        |    98|
+|p                  |  0.38|
+|stars              |      |
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_metrics_items")
+> ### * effect_metrics_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_metrics_items
+> ### Title: Test whether a distribution is normal for each item
+> ### Aliases: effect_metrics_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_metrics_items(data, starts_with("cg_adoption"))
+
+
+|Expectations                                                | skewness| kurtosis|    W|     p| stars|  normality|
+|:-----------------------------------------------------------|--------:|--------:|----:|-----:|-----:|----------:|
+|ChatGPT has clear advantages compared to similar offerings. |    -0.51|    -0.05| 0.89| 0.000|   ***| not normal|
+|Using ChatGPT brings financial benefits.                    |     0.09|    -1.00| 0.90| 0.000|   ***| not normal|
+|Using ChatGPT is advantageous in many tasks.                |    -0.76|    -0.02| 0.86| 0.000|   ***| not normal|
+|Compared to other systems, using ChatGPT is more fun.       |    -0.66|     0.43| 0.86| 0.000|   ***| not normal|
+|Much can go wrong when using ChatGPT.                       |     0.12|    -0.85| 0.91| 0.000|   ***| not normal|
+|There are legal issues with using ChatGPT.                  |     0.07|    -0.66| 0.90| 0.000|   ***| not normal|
+|The security of user data is not guaranteed with ChatGPT.   |     0.22|    -0.61| 0.89| 0.000|   ***| not normal|
+|Using ChatGPT could bring personal disadvantages.           |     0.33|    -0.65| 0.91| 0.000|   ***| not normal|
+|In my environment, using ChatGPT is standard.               |     0.39|    -0.68| 0.90| 0.000|   ***| not normal|
+|Almost everyone in my environment uses ChatGPT.             |     0.56|    -0.51| 0.88| 0.000|   ***| not normal|
+|Not using ChatGPT is considered being an outsider.          |     1.08|     0.22| 0.79| 0.000|   ***| not normal|
+|Using ChatGPT brings me recognition from my environment.    |     0.57|    -0.77| 0.87| 0.000|   ***| not normal|
+
+4 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_metrics_items_cor")
+> ### * effect_metrics_items_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_metrics_items_cor
+> ### Title: Output correlation coefficients for items and one metric
+> ###   variable
+> ### Aliases: effect_metrics_items_cor
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_metrics_items_cor(
++   data, starts_with("cg_adoption_adv"), sd_age
++ )
+
+
+|Expectations: Correlation with Age                          | R-squared|  n| Pearson's r| ci low| ci high| df|     t|     p| stars|
+|:-----------------------------------------------------------|---------:|--:|-----------:|------:|-------:|--:|-----:|-----:|-----:|
+|ChatGPT has clear advantages compared to similar offerings. |      0.01| 99|       -0.12|  -0.31|    0.08| 97| -1.16| 0.249|      |
+|Using ChatGPT brings financial benefits.                    |      0.01| 99|       -0.09|  -0.29|    0.11| 97| -0.93| 0.356|      |
+|Using ChatGPT is advantageous in many tasks.                |      0.00| 99|       -0.06|  -0.25|    0.14| 97| -0.56| 0.579|      |
+|Compared to other systems, using ChatGPT is more fun.       |      0.01| 99|       -0.12|  -0.31|    0.08| 97| -1.18| 0.239|      |
+
+2 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_metrics_items_cor_items")
+> ### * effect_metrics_items_cor_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_metrics_items_cor_items
+> ### Title: Output correlation coefficients for multiple items
+> ### Aliases: effect_metrics_items_cor_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_metrics_items_cor_items(
++   data,
++   starts_with("cg_adoption_adv"),
++   starts_with("use"),
++   metric = TRUE
++ )
+
+
+|Expectations                                                |                   Usage| R-squared|  n| Pearson's r| ci low| ci high| df|    t|     p| stars|
+|:-----------------------------------------------------------|-----------------------:|---------:|--:|-----------:|------:|-------:|--:|----:|-----:|-----:|
+|ChatGPT has clear advantages compared to similar offerings. |      in private context|      0.25| 99|        0.50|   0.33|    0.63| 97| 5.61| 0.000|   ***|
+|ChatGPT has clear advantages compared to similar offerings. | in professional context|      0.07| 99|        0.27|   0.07|    0.44| 97| 2.73| 0.008|    **|
+|Using ChatGPT brings financial benefits.                    |      in private context|      0.03| 99|        0.17|  -0.03|    0.36| 97| 1.73| 0.087|     .|
+|Using ChatGPT brings financial benefits.                    | in professional context|      0.28| 99|        0.53|   0.37|    0.66| 97| 6.19| 0.000|   ***|
+|Using ChatGPT is advantageous in many tasks.                |      in private context|      0.12| 99|        0.34|   0.16|    0.51| 97| 3.59| 0.001|   ***|
+|Using ChatGPT is advantageous in many tasks.                | in professional context|      0.12| 99|        0.35|   0.17|    0.51| 97| 3.71| 0.000|   ***|
+|Compared to other systems, using ChatGPT is more fun.       |      in private context|      0.22| 99|        0.47|   0.30|    0.61| 97| 5.28| 0.000|   ***|
+|Compared to other systems, using ChatGPT is more fun.       | in professional context|      0.07| 99|        0.27|   0.07|    0.44| 97| 2.73| 0.008|    **|
+
+2 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_metrics_items_grouped")
+> ### * effect_metrics_items_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_metrics_items_grouped
+> ### Title: Compare groups for each item by calculating F-statistics and
+> ###   effect sizes
+> ### Aliases: effect_metrics_items_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_metrics(data, starts_with("cg_adoption_"), adopter)
+
+
+|Expectations                                                | Eta-squared|  Eta|  n|     F|     p| stars|
+|:-----------------------------------------------------------|-----------:|----:|--:|-----:|-----:|-----:|
+|ChatGPT has clear advantages compared to similar offerings. |        0.03| 0.18| 97|  1.03| 0.719|      |
+|Using ChatGPT brings financial benefits.                    |        0.08| 0.29| 97|  2.88| 0.011|     *|
+|Using ChatGPT is advantageous in many tasks.                |        0.01| 0.09| 97|  0.23| 0.578|      |
+|Compared to other systems, using ChatGPT is more fun.       |        0.03| 0.19| 97|  1.12| 0.103|      |
+|Much can go wrong when using ChatGPT.                       |        0.00| 0.07| 97|  0.16| 0.517|      |
+|There are legal issues with using ChatGPT.                  |        0.05| 0.21| 97|  1.47| 0.166|      |
+|The security of user data is not guaranteed with ChatGPT.   |        0.04| 0.21| 97|  1.37| 0.146|      |
+|Using ChatGPT could bring personal disadvantages.           |        0.04| 0.20| 97|  1.36| 0.133|      |
+|In my environment, using ChatGPT is standard.               |        0.22| 0.47| 97|  8.96| 0.000|   ***|
+|Almost everyone in my environment uses ChatGPT.             |        0.23| 0.48| 97|  9.05| 0.000|   ***|
+|Not using ChatGPT is considered being an outsider.          |        0.27| 0.52| 97| 11.63| 0.000|   ***|
+|Using ChatGPT brings me recognition from my environment.    |        0.25| 0.50| 97| 10.13| 0.000|   ***|
+
+4 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_metrics_one")
+> ### * effect_metrics_one
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_metrics_one
+> ### Title: Test whether a distribution is normal
+> ### Aliases: effect_metrics_one
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_metrics_one(data, sd_age)
+
+
+|Age      | Value|
+|:--------|-----:|
+|skewness |  0.25|
+|kurtosis | -0.98|
+
+
+|Shapiro-Wilk normality test |      Value|
+|:---------------------------|----------:|
+|W                           |       0.96|
+|p                           |      0.002|
+|stars                       |         **|
+|normality                   | not normal|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_metrics_one_cor")
+> ### * effect_metrics_one_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_metrics_one_cor
+> ### Title: Test whether the correlation is different from zero
+> ### Aliases: effect_metrics_one_cor
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_metrics_one_cor(data, sd_age, use_private, metric = TRUE)
+
+
+|Statistic   | value|
+|:-----------|-----:|
+|R-squared   |  0.03|
+|n           |   101|
+|Pearson's r | -0.19|
+|ci low      | -0.37|
+|ci high     |  0.01|
+|df          |    99|
+|t           | -1.88|
+|p           | 0.063|
+|stars       |     .|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_metrics_one_grouped")
+> ### * effect_metrics_one_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_metrics_one_grouped
+> ### Title: Output a regression table with estimates and macro statistics
+> ### Aliases: effect_metrics_one_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_metrics_one_grouped(data, sd_age, sd_gender)
+
+
+|Term               | estimate| ci low| ci high|    se|     t|     p| stars|
+|:------------------|--------:|------:|-------:|-----:|-----:|-----:|-----:|
+|(Intercept)        |    37.52|  33.21|   41.84|  2.18| 17.24| 0.000|   ***|
+|female (Reference) |         |       |        |      |      |      |      |
+|male               |     3.69|  -1.88|    9.27|  2.81|  1.31| 0.192|      |
+|diverse            |    -4.52| -32.18|   23.13| 13.94| -0.32| 0.746|      |
+
+
+|Statistic          | Value|
+|:------------------|-----:|
+|Adjusted R-squared |     0|
+|F                  |  0.98|
+|df                 |     2|
+|residual df        |    98|
+|p                  |  0.38|
+|stars              |      |
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("factor_plot")
+> ### * factor_plot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: factor_plot
+> ### Title: Get plot with factor analysis result
+> ### Aliases: factor_plot
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> ds <- volker::chatgpt
+> 
+> volker::factor_plot(ds, starts_with("cg_adoption"), k = 3)
+In the plot, 4 missing case(s) omitted.
+> 
+> 
+> 
+> cleanEx()
+> nameEx("factor_tab")
+> ### * factor_tab
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: factor_tab
+> ### Title: Get tables with factor analysis results
+> ### Aliases: factor_tab
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> ds <- volker::chatgpt
+> 
+> volker::factor_tab(ds, starts_with("cg_adoption"), k = 3)
+
+
+|Expectations                                                | Component 1| Component 2| Component 3| communality|
+|:-----------------------------------------------------------|-----------:|-----------:|-----------:|-----------:|
+|ChatGPT has clear advantages compared to similar offerings. |         0.1|         0.9|         0.0|         0.8|
+|Using ChatGPT brings financial benefits.                    |         0.5|         0.5|         0.3|         0.6|
+|Using ChatGPT is advantageous in many tasks.                |         0.2|         0.8|         0.0|         0.7|
+|Compared to other systems, using ChatGPT is more fun.       |         0.2|         0.8|         0.0|         0.7|
+|Much can go wrong when using ChatGPT.                       |        -0.1|        -0.2|         0.8|         0.7|
+|There are legal issues with using ChatGPT.                  |         0.2|         0.2|         0.6|         0.5|
+|The security of user data is not guaranteed with ChatGPT.   |         0.1|         0.1|         0.7|         0.6|
+|Using ChatGPT could bring personal disadvantages.           |         0.2|        -0.1|         0.7|         0.6|
+|In my environment, using ChatGPT is standard.               |         0.9|         0.2|         0.0|         0.8|
+|Almost everyone in my environment uses ChatGPT.             |         0.8|         0.2|         0.1|         0.7|
+|Not using ChatGPT is considered being an outsider.          |         0.7|         0.0|         0.3|         0.6|
+|Using ChatGPT brings me recognition from my environment.    |         0.8|         0.2|         0.0|         0.6|
+
+4 missing case(s) omitted.
+
+
+
+|Component   | Eigenvalue| Proportion of variance| Cumulative proportion of variance|
+|:-----------|----------:|----------------------:|---------------------------------:|
+|Component 1 |        3.0|                    0.3|                               0.3|
+|Component 2 |        2.5|                    0.2|                               0.5|
+|Component 3 |        2.2|                    0.2|                               0.6|
+
+
+|Test          |                Statistic|  value|
+|:-------------|------------------------:|------:|
+|KMO Test      |                    Cases|     97|
+|KMO Test      |                Variables|     12|
+|KMO Test      | Cases-to-Variables Ratio|   8.08|
+|KMO Test      |              Overall MSA|   0.74|
+|Bartlett Test |              Chi-squared| 463.54|
+|Bartlett Test |                       df|     66|
+|Bartlett Test |                        p|  0.000|
+|Bartlett Test |                    stars|    ***|
+> 
+> 
+> 
+> cleanEx()
+> nameEx("html_report")
+> ### * html_report
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: html_report
+> ### Title: Volker style HTML document format
+> ### Aliases: html_report
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D # Add `volker::html_report` to the output options of your Markdown document:
+> ##D #
+> ##D # ```
+> ##D # ---
+> ##D # title: "How to create reports?"
+> ##D # output: volker::html_report
+> ##D # ---
+> ##D # ```
+> ## End(Not run)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("knit_print.vlkr_plt")
+> ### * knit_print.vlkr_plt
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: knit_print.vlkr_plt
+> ### Title: Printing method for volker plots when knitting
+> ### Aliases: knit_print.vlkr_plt
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> pl <- plot_metrics(data, sd_age)
+> print(pl)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("labs_apply")
+> ### * labs_apply
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: labs_apply
+> ### Title: Set column and value labels
+> ### Aliases: labs_apply
+> 
+> ### ** Examples
+> 
+> library(volker)
+> 
+> # Set column labels using the items-parameter
+> volker::chatgpt %>%
++   labs_apply(
++    items = list(
++      "cg_adoption_advantage_01" = "Allgemeine Vorteile",
++      "cg_adoption_advantage_02" = "Finanzielle Vorteile",
++      "cg_adoption_advantage_03" = "Vorteile bei der Arbeit",
++      "cg_adoption_advantage_04" = "Macht mehr Spaß"
++    )
++  ) %>%
++  tab_metrics(starts_with("cg_adoption_advantage_"))
+
+
+|Item                    | min| q1| median| q3| max| mean|  sd|  n|
+|:-----------------------|---:|--:|------:|--:|---:|----:|---:|--:|
+|Allgemeine Vorteile     |   1|  3|      4|  4|   5|  3.5| 1.0| 99|
+|Finanzielle Vorteile    |   1|  2|      3|  4|   5|  2.7| 1.2| 99|
+|Vorteile bei der Arbeit |   1|  3|      4|  4|   5|  3.6| 1.1| 99|
+|Macht mehr Spaß         |   1|  3|      4|  4|   5|  3.5| 1.0| 99|
+
+2 missing case(s) omitted.
+
+> 
+> # Set value labels using the values-parameter
+>  volker::chatgpt %>%
++    labs_apply(
++      cols=starts_with("cg_adoption"),
++      values = list(
++        "1" = "Stimme überhaupt nicht zu",
++        "2" = "Stimme nicht zu",
++        "3" = "Unentschieden",
++        "4" = "Stimme zu",
++        "5" =  "Stimme voll und ganz zu"
++      )
++    ) %>%
++    plot_metrics(starts_with("cg_adoption"))
+In the plot, 4 missing case(s) omitted.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("labs_clear")
+> ### * labs_clear
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: labs_clear
+> ### Title: Remove all comments from the selected columns
+> ### Aliases: labs_clear
+> 
+> ### ** Examples
+> 
+> library(volker)
+> volker::chatgpt |>
++   labs_clear()
+# A tibble: 101 × 19
+    case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
+   <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
+ 1   170           4        4                        3                        4
+ 2   183           1        1                        4                        3
+ 3   195           2        4                        5                        5
+ 4   212           5        5                        4                        4
+ 5   222           2        3                        3                        2
+ 6   236           3        1                        3                        2
+ 7   255           3        1                        3                        1
+ 8   297           3        4                        4                        3
+ 9   309           3        3                        3                        4
+10   325           2        1                        4                        1
+# ℹ 91 more rows
+# ℹ 14 more variables: cg_adoption_advantage_03 <dbl>,
+#   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
+#   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
+#   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,
+#   cg_adoption_social_02 <dbl>, cg_adoption_social_03 <dbl>,
+#   cg_adoption_social_04 <dbl>, adopter <fct>, sd_age <dbl>, …
+> 
+> 
+> 
+> cleanEx()
+> nameEx("labs_restore")
+> ### * labs_restore
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: labs_restore
+> ### Title: Restore labels from the codebook store in the codebook
+> ###   attribute.
+> ### Aliases: labs_restore
+> 
+> ### ** Examples
+> 
+> library(dplyr)
+Warning: package 'dplyr' was built under R version 4.4.3
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+> library(volker)
+> 
+> volker::chatgpt |>
++   labs_store() |>
++   mutate(sd_age = 2024 - sd_age) |>
++   labs_restore() |>
++   tab_metrics(sd_age)
+
+
+|Age    |  value|
+|:------|------:|
+|min    |   1956|
+|q1     |   1972|
+|median |   1986|
+|q3     |   1997|
+|max    |   2006|
+|mean   | 1984.3|
+|sd     |   13.8|
+|n      |    101|
+> 
+> 
+> 
+> cleanEx()
+
+detaching 'package:dplyr'
+
+> nameEx("labs_store")
+> ### * labs_store
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: labs_store
+> ### Title: Get the current codebook and store it in the codebook attribute.
+> ### Aliases: labs_store
+> 
+> ### ** Examples
+> 
+> library(dplyr)
+Warning: package 'dplyr' was built under R version 4.4.3
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+> library(volker)
+> 
+> volker::chatgpt |>
++   labs_store() |>
++   mutate(sd_age = 2024 - sd_age) |>
++   labs_restore() |>
++   tab_metrics(sd_age)
+
+
+|Age    |  value|
+|:------|------:|
+|min    |   1956|
+|q1     |   1972|
+|median |   1986|
+|q3     |   1997|
+|max    |   2006|
+|mean   | 1984.3|
+|sd     |   13.8|
+|n      |    101|
+> 
+> 
+> 
+> cleanEx()
+
+detaching 'package:dplyr'
+
+> nameEx("model_metrics_plot")
+> ### * model_metrics_plot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: model_metrics_plot
+> ### Title: Plot regression coefficients
+> ### Aliases: model_metrics_plot
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> data |>
++   filter(sd_gender != "diverse") |>
++   model_metrics_plot(use_work, categorical = c(sd_gender, adopter), metric = sd_age)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("model_metrics_tab")
+> ### * model_metrics_tab
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: model_metrics_tab
+> ### Title: Output a regression table with estimates and macro statistics
+> ###   for multiple categorical or metric independent variables
+> ### Aliases: model_metrics_tab
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> data |>
++   filter(sd_gender != "diverse") |>
++   model_metrics_tab(use_work, categorical = c(sd_gender, adopter), metric = sd_age)
+
+
+|Term                                              | estimate| ci low| ci high| standard error|     t|    p| stars|
+|:-------------------------------------------------|--------:|------:|-------:|--------------:|-----:|----:|-----:|
+|(Intercept)                                       |     4.67|   3.64|    5.70|           0.52|  9.00| 0.00|   ***|
+|female (Reference)                                |         |       |        |               |      |     |      |
+|male                                              |    -0.48|  -1.02|    0.06|           0.27| -1.75| 0.08|     .|
+|I try new offers immediately (Reference)          |         |       |        |               |      |     |      |
+|I try new offers rather quickly                   |    -1.52|  -2.29|   -0.76|           0.38| -3.96| 0.00|   ***|
+|I wait until offers establish themselves          |    -1.96|  -2.86|   -1.06|           0.45| -4.34| 0.00|   ***|
+|I only use new offers when I have no other choice |    -1.36|  -3.99|    1.27|           1.33| -1.03| 0.31|      |
+|sd_age                                            |    -0.01|  -0.03|    0.00|           0.01| -1.58| 0.12|      |
+
+
+|Item      | Partial Eta Squared| Sum of Squares| Df|    F|    p| stars| GVIF| GVIF^(1/(2*Df))|
+|:---------|-------------------:|--------------:|--:|----:|----:|-----:|----:|---------------:|
+|sd_gender |                0.03|           4.96|  1| 3.08| 0.08|     .| 1.10|            1.05|
+|adopter   |                0.18|          32.78|  3| 6.78| 0.00|   ***| 1.12|            1.02|
+|sd_age    |                0.03|           4.01|  1| 2.49| 0.12|      | 1.05|            1.02|
+|Residuals |                    |         151.43| 94|     |     |      |     |                |
+
+
+|Statistic                     |  value|
+|:-----------------------------|------:|
+|Adjusted R squared            |   0.17|
+|Degrees of freedom            |      5|
+|Residuals' degrees of freedom |     94|
+|AIC                           | 339.28|
+|F                             |   5.01|
+|p                             |      0|
+|stars                         |    ***|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pdf_report")
+> ### * pdf_report
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pdf_report
+> ### Title: Volker style PDF document format
+> ### Aliases: pdf_report
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D # Add `volker::pdf_report` to the output options of your Markdown document:
+> ##D #
+> ##D # ```
+> ##D # ---
+> ##D # title: "How to create reports?"
+> ##D # output: volker::pdf_report
+> ##D # ---
+> ##D # ```
+> ## End(Not run)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_counts")
+> ### * plot_counts
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_counts
+> ### Title: Output a frequency plot
+> ### Aliases: plot_counts
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_counts(data, sd_gender)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_counts_items")
+> ### * plot_counts_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_counts_items
+> ### Title: Output frequencies for multiple variables
+> ### Aliases: plot_counts_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_counts_items(data, starts_with("cg_adoption_"))
+In the plot, 4 missing case(s) omitted.
+In the plot, 4 missing case(s) omitted.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_counts_items_cor")
+> ### * plot_counts_items_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_counts_items_cor
+> ### Title: Plot percent shares of multiple items compared by a metric
+> ###   variable split into groups
+> ### Aliases: plot_counts_items_cor
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_counts_items_cor(
++   data, starts_with("cg_adoption_"), sd_age,
++   category=c("agree","strongly agree")
++ )
+In the plot, 4 missing case(s) omitted.
+> 
+> plot_counts_items_cor(
++   data, starts_with("cg_adoption_"), sd_age,
++   category=c(4,5)
++ )
+In the plot, 4 missing case(s) omitted.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_counts_items_grouped")
+> ### * plot_counts_items_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_counts_items_grouped
+> ### Title: Plot percent shares of multiple items compared by groups
+> ### Aliases: plot_counts_items_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> plot_counts_items_grouped(
++   data, starts_with("cg_adoption_"), adopter,
++   category=c("agree","strongly agree")
++ )
+In the plot, 4 missing case(s) omitted.
+> 
+> plot_counts_items_grouped(
++   data, starts_with("cg_adoption_"), adopter,
++   category=c(4,5)
++ )
+In the plot, 4 missing case(s) omitted.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_counts_one")
+> ### * plot_counts_one
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_counts_one
+> ### Title: Plot the frequency of values in one column
+> ### Aliases: plot_counts_one
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_counts_one(data, sd_gender)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_counts_one_cor")
+> ### * plot_counts_one_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_counts_one_cor
+> ### Title: Plot frequencies cross tabulated with a metric column that will
+> ###   be split into groups
+> ### Aliases: plot_counts_one_cor
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_counts_one_cor(data, adopter, sd_age)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_counts_one_grouped")
+> ### * plot_counts_one_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_counts_one_grouped
+> ### Title: Plot frequencies cross tabulated with a grouping column
+> ### Aliases: plot_counts_one_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_counts_one_grouped(data, adopter, sd_gender)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_metrics")
+> ### * plot_metrics
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_metrics
+> ### Title: Output a plot with distribution parameters such as the mean
+> ###   values
+> ### Aliases: plot_metrics
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_metrics(data, sd_age)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_metrics_items")
+> ### * plot_metrics_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_metrics_items
+> ### Title: Output averages for multiple variables
+> ### Aliases: plot_metrics_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_metrics_items(data, starts_with("cg_adoption_"))
+In the plot, 4 missing case(s) omitted.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_metrics_items_cor")
+> ### * plot_metrics_items_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_metrics_items_cor
+> ### Title: Multiple items correlated with one metric variable
+> ### Aliases: plot_metrics_items_cor
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_metrics_items_cor(data, starts_with("use_"), sd_age)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_metrics_items_cor_items")
+> ### * plot_metrics_items_cor_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_metrics_items_cor_items
+> ### Title: Heatmap for correlations between multiple items
+> ### Aliases: plot_metrics_items_cor_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_metrics_items_cor_items(data, starts_with("cg_adoption_adv"), starts_with("use_"))
+In the plot, 2 missing case(s) omitted.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_metrics_items_grouped")
+> ### * plot_metrics_items_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_metrics_items_grouped
+> ### Title: Output averages for multiple variables compared by a grouping
+> ###   variable
+> ### Aliases: plot_metrics_items_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_metrics_items_grouped(data, starts_with("cg_adoption_"), sd_gender)
+In the plot, 4 missing case(s) omitted.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_metrics_one")
+> ### * plot_metrics_one
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_metrics_one
+> ### Title: Output a density plot for a single metric variable
+> ### Aliases: plot_metrics_one
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_metrics_one(data, sd_age)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_metrics_one_cor")
+> ### * plot_metrics_one_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_metrics_one_cor
+> ### Title: Correlate two items
+> ### Aliases: plot_metrics_one_cor
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_metrics_one_cor(data, use_private, sd_age)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_metrics_one_grouped")
+> ### * plot_metrics_one_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_metrics_one_grouped
+> ### Title: Output averages for multiple variables
+> ### Aliases: plot_metrics_one_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_metrics_one_grouped(data, sd_age, sd_gender)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("print.vlkr_list")
+> ### * print.vlkr_list
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: print.vlkr_list
+> ### Title: Printing method for volker lists
+> ### Aliases: print.vlkr_list
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> rp <- report_metrics(data, sd_age, sd_gender, effect = TRUE)
+> print(rp)
+
+
+|Gender  | min|   q1| median|   q3| max| mean|   sd|   n|
+|:-------|---:|----:|------:|----:|---:|----:|----:|---:|
+|female  |  18| 25.8|   38.0| 44.2|  63| 37.5| 13.4|  40|
+|male    |  19| 32.5|   38.5| 52.0|  68| 41.2| 14.0|  60|
+|diverse |  33| 33.0|   33.0| 33.0|  33| 33.0|     |   1|
+|total   |  18| 27.0|   38.0| 52.0|  68| 39.7| 13.8| 101|
+
+
+|Term               | estimate| ci low| ci high|    se|     t|     p| stars|
+|:------------------|--------:|------:|-------:|-----:|-----:|-----:|-----:|
+|(Intercept)        |    37.52|  33.21|   41.84|  2.18| 17.24| 0.000|   ***|
+|female (Reference) |         |       |        |      |      |      |      |
+|male               |     3.69|  -1.88|    9.27|  2.81|  1.31| 0.192|      |
+|diverse            |    -4.52| -32.18|   23.13| 13.94| -0.32| 0.746|      |
+
+
+|Statistic          | Value|
+|:------------------|-----:|
+|Adjusted R-squared |     0|
+|F                  |  0.98|
+|df                 |     2|
+|residual df        |    98|
+|p                  |  0.38|
+|stars              |      |
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("print.vlkr_plt")
+> ### * print.vlkr_plt
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: print.vlkr_plt
+> ### Title: Printing method for volker plots
+> ### Aliases: print.vlkr_plt plot.vlkr_plt
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> pl <- plot_metrics(data, sd_age)
+> print(pl)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("print.vlkr_rprt")
+> ### * print.vlkr_rprt
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: print.vlkr_rprt
+> ### Title: Printing method for volker reports
+> ### Aliases: print.vlkr_rprt
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> rp <- report_metrics(data, sd_age)
+> print(rp)
+
+
+|Age    | value|
+|:------|-----:|
+|min    |    18|
+|q1     |    27|
+|median |    38|
+|q3     |    52|
+|max    |    68|
+|mean   |  39.7|
+|sd     |  13.8|
+|n      |   101|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("print.vlkr_tbl")
+> ### * print.vlkr_tbl
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: print.vlkr_tbl
+> ### Title: Printing method for volker tables.
+> ### Aliases: print.vlkr_tbl
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tb <- tab_metrics(data, sd_age)
+> print(tb)
+
+
+|Age    | value|
+|:------|-----:|
+|min    |    18|
+|q1     |    27|
+|median |    38|
+|q3     |    52|
+|max    |    68|
+|mean   |  39.7|
+|sd     |  13.8|
+|n      |   101|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("report_counts")
+> ### * report_counts
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: report_counts
+> ### Title: Create table and plot for categorical variables
+> ### Aliases: report_counts
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> report_counts(data, sd_gender)
+
+
+|Gender  |   n|    p|
+|:-------|---:|----:|
+|female  |  40|  40%|
+|male    |  60|  59%|
+|diverse |   1|   1%|
+|total   | 101| 100%|
+
+n=101.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("report_metrics")
+> ### * report_metrics
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: report_metrics
+> ### Title: Create table and plot for metric variables
+> ### Aliases: report_metrics
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> report_metrics(data, sd_age)
+
+
+|Age    | value|
+|:------|-----:|
+|min    |    18|
+|q1     |    27|
+|median |    38|
+|q3     |    52|
+|max    |    68|
+|mean   |  39.7|
+|sd     |  13.8|
+|n      |   101|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("skim_metrics")
+> ### * skim_metrics
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: skim_metrics
+> ### Title: A reduced skimmer for metric variables Returns a five point
+> ###   summary, mean and sd, items count and alpha for scales added by
+> ###   add_index()
+> ### Aliases: skim_metrics
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> skim_metrics(data)
+── Data Summary ────────────────────────
+                           Values
+Name                       data  
+Number of rows             101   
+Number of columns          19    
+_______________________          
+Column type frequency:           
+  character                1     
+  factor                   2     
+  numeric                  16    
+________________________         
+Group variables            None  
+
+── Variable type: character ────────────────────────────────────────────────────
+  skim_variable   n missing min max empty n_unique whitespace
+1 cg_activities 101       0   1 355     0       99          0
+
+── Variable type: factor ───────────────────────────────────────────────────────
+  skim_variable   n missing ordered n_unique top_counts                       
+1 adopter       101       0 FALSE          4 I t: 63, I w: 22, I t: 15, I o: 1
+2 sd_gender     101       0 FALSE          3 mal: 60, fem: 40, div: 1, [no: 0 
+
+── Variable type: numeric ──────────────────────────────────────────────────────
+   skim_variable              n missing min  q1 median   q3  max   mean      sd
+ 1 case                     101       0 170 542    936 1199 1549 880.   385.   
+ 2 use_private              101       0   1   2      2    3    5   2.59   1.01 
+ 3 use_work                 101       0   1   1      2    4    5   2.41   1.39 
+ 4 cg_adoption_advantage_01 101       0  -9   3      4    4    5   3.21   2.02 
+ 5 cg_adoption_advantage_02 101       0   1   2      3    4    5   2.69   1.21 
+ 6 cg_adoption_advantage_03 101       0   1   3      4    4    5   3.58   1.07 
+ 7 cg_adoption_advantage_04 101       0   1   3      4    4    5   3.53   0.996
+ 8 cg_adoption_fearofuse_01 101       0   1   2      3    4    5   3.12   1.13 
+ 9 cg_adoption_fearofuse_02 101       0   1   2      3    4    5   3.07   1.15 
+10 cg_adoption_fearofuse_03 101       0  -9   3      3    4    5   3.08   1.59 
+11 cg_adoption_fearofuse_04 101       0   1   2      3    3    5   2.73   1.09 
+12 cg_adoption_social_01    101       0  -9   2      2    3    5   2.39   1.60 
+13 cg_adoption_social_02    101       0   1   1      2    3    5   2.36   1.16 
+14 cg_adoption_social_03    101       0  -9   1      2    3    5   1.88   1.59 
+15 cg_adoption_social_04    101       0   1   1      2    3    5   2.33   1.23 
+16 sd_age                   101       0  18  27     38   52   68  39.7   13.8  
+   ci.low ci.high items alpha
+ 1 804.    956.   NA    NA   
+ 2   2.39    2.79 NA    NA   
+ 3   2.13    2.68 NA    NA   
+ 4   2.81    3.61 NA    NA   
+ 5   2.45    2.93 NA    NA   
+ 6   3.37    3.80 NA    NA   
+ 7   3.34    3.73 NA    NA   
+ 8   2.90    3.34 NA    NA   
+ 9   2.84    3.30 NA    NA   
+10   2.77    3.39 NA    NA   
+11   2.52    2.95 NA    NA   
+12   2.07    2.70 NA    NA   
+13   2.13    2.59 NA    NA   
+14   1.57    2.19 NA    NA   
+15   2.08    2.57 NA    NA   
+16  37.0    42.4  NA    NA   
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_counts")
+> ### * tab_counts
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_counts
+> ### Title: Output a frequency table
+> ### Aliases: tab_counts
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_counts(data, sd_gender)
+
+
+|Gender  |   n|    p|
+|:-------|---:|----:|
+|female  |  40|  40%|
+|male    |  60|  59%|
+|diverse |   1|   1%|
+|total   | 101| 100%|
+
+n=101.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_counts_items")
+> ### * tab_counts_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_counts_items
+> ### Title: Output frequencies for multiple variables
+> ### Aliases: tab_counts_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_counts_items(data, starts_with("cg_adoption_"))
+
+
+|Expectations                                                | strongly disagree| disagree|  neutral|    agree| strongly agree|     total|
+|:-----------------------------------------------------------|-----------------:|--------:|--------:|--------:|--------------:|---------:|
+|ChatGPT has clear advantages compared to similar offerings. |            6% (6)|   8% (8)| 35% (34)| 36% (35)|       14% (14)| 100% (97)|
+|Using ChatGPT brings financial benefits.                    |          22% (21)| 22% (21)| 30% (29)| 21% (20)|         6% (6)| 100% (97)|
+|Using ChatGPT is advantageous in many tasks.                |            6% (6)| 10% (10)| 21% (20)| 46% (45)|       16% (16)| 100% (97)|
+|Compared to other systems, using ChatGPT is more fun.       |            6% (6)|   4% (4)| 36% (35)| 39% (38)|       14% (14)| 100% (97)|
+|Much can go wrong when using ChatGPT.                       |            6% (6)| 27% (26)| 32% (31)| 22% (21)|       13% (13)| 100% (97)|
+|There are legal issues with using ChatGPT.                  |          10% (10)| 19% (18)| 41% (40)| 14% (14)|       15% (15)| 100% (97)|
+|The security of user data is not guaranteed with ChatGPT.   |            3% (3)| 22% (21)| 42% (41)| 19% (18)|       14% (14)| 100% (97)|
+|Using ChatGPT could bring personal disadvantages.           |          11% (11)| 35% (34)| 29% (28)| 18% (17)|         7% (7)| 100% (97)|
+|In my environment, using ChatGPT is standard.               |          20% (19)| 34% (33)| 26% (25)| 15% (15)|         5% (5)| 100% (97)|
+|Almost everyone in my environment uses ChatGPT.             |          27% (26)| 31% (30)| 26% (25)| 10% (10)|         6% (6)| 100% (97)|
+|Not using ChatGPT is considered being an outsider.          |          46% (45)| 27% (26)| 14% (14)|   7% (7)|         5% (5)| 100% (97)|
+|Using ChatGPT brings me recognition from my environment.    |          33% (32)| 27% (26)| 21% (20)| 13% (13)|         6% (6)| 100% (97)|
+
+4 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_counts_items_cor")
+> ### * tab_counts_items_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_counts_items_cor
+> ### Title: Compare the values in multiple items by a metric column that
+> ###   will be split into groups
+> ### Aliases: tab_counts_items_cor
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> tab_counts_items_cor(
++   data, starts_with("cg_adoption_"), sd_age,
++   category=c("agree", "strongly agree")
++ )
+
+
+|Expectations                                                |    total|  Low Age| High Age|
+|:-----------------------------------------------------------|--------:|--------:|--------:|
+|ChatGPT has clear advantages compared to similar offerings. | 51% (49)| 58% (26)| 44% (23)|
+|Using ChatGPT brings financial benefits.                    | 27% (26)| 36% (16)| 19% (10)|
+|Using ChatGPT is advantageous in many tasks.                | 63% (61)| 69% (31)| 58% (30)|
+|Compared to other systems, using ChatGPT is more fun.       | 54% (52)| 58% (26)| 50% (26)|
+|Much can go wrong when using ChatGPT.                       | 35% (34)| 33% (15)| 37% (19)|
+|There are legal issues with using ChatGPT.                  | 30% (29)| 24% (11)| 35% (18)|
+|The security of user data is not guaranteed with ChatGPT.   | 33% (32)| 42% (19)| 25% (13)|
+|Using ChatGPT could bring personal disadvantages.           | 25% (24)| 29% (13)| 21% (11)|
+|In my environment, using ChatGPT is standard.               | 21% (20)| 31% (14)|  12% (6)|
+|Almost everyone in my environment uses ChatGPT.             | 16% (16)|  20% (9)|  13% (7)|
+|Not using ChatGPT is considered being an outsider.          | 12% (12)|  18% (8)|   8% (4)|
+|Using ChatGPT brings me recognition from my environment.    | 20% (19)| 24% (11)|  15% (8)|
+
+Frequencies based on values: agree, strongly agree. Age split at median 38. 4 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_counts_items_grouped")
+> ### * tab_counts_items_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_counts_items_grouped
+> ### Title: Compare the values in multiple items by a grouping column
+> ### Aliases: tab_counts_items_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> tab_counts_items_grouped(
++   data, starts_with("cg_adoption_"), adopter,
++   category=c("agree", "strongly agree")
++ )
+
+
+|Expectations                                                |    total| I try new offers immediately| I try new offers rather quickly| I wait until offers establish themselves| I only use new offers when I have no other choice|
+|:-----------------------------------------------------------|--------:|----------------------------:|-------------------------------:|----------------------------------------:|-------------------------------------------------:|
+|ChatGPT has clear advantages compared to similar offerings. | 51% (49)|                      53% (8)|                        51% (31)|                                 50% (10)|                                            0% (0)|
+|Using ChatGPT brings financial benefits.                    | 27% (26)|                      53% (8)|                        26% (16)|                                  10% (2)|                                            0% (0)|
+|Using ChatGPT is advantageous in many tasks.                | 63% (61)|                     73% (11)|                        66% (40)|                                 50% (10)|                                            0% (0)|
+|Compared to other systems, using ChatGPT is more fun.       | 54% (52)|                     67% (10)|                        49% (30)|                                 60% (12)|                                            0% (0)|
+|Much can go wrong when using ChatGPT.                       | 35% (34)|                      33% (5)|                        38% (23)|                                  30% (6)|                                            0% (0)|
+|There are legal issues with using ChatGPT.                  | 30% (29)|                      47% (7)|                        31% (19)|                                  15% (3)|                                            0% (0)|
+|The security of user data is not guaranteed with ChatGPT.   | 33% (32)|                      60% (9)|                        30% (18)|                                  25% (5)|                                            0% (0)|
+|Using ChatGPT could bring personal disadvantages.           | 25% (24)|                      47% (7)|                        23% (14)|                                  15% (3)|                                            0% (0)|
+|In my environment, using ChatGPT is standard.               | 21% (20)|                     67% (10)|                         13% (8)|                                  10% (2)|                                            0% (0)|
+|Almost everyone in my environment uses ChatGPT.             | 16% (16)|                      60% (9)|                         10% (6)|                                   5% (1)|                                            0% (0)|
+|Not using ChatGPT is considered being an outsider.          | 12% (12)|                      53% (8)|                          5% (3)|                                   5% (1)|                                            0% (0)|
+|Using ChatGPT brings me recognition from my environment.    | 20% (19)|                      53% (8)|                         13% (8)|                                  15% (3)|                                            0% (0)|
+
+Frequencies based on values: agree, strongly agree. 4 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_counts_one")
+> ### * tab_counts_one
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_counts_one
+> ### Title: Output a frequency table for the values in one column
+> ### Aliases: tab_counts_one
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_counts_one(data, sd_gender)
+
+
+|Gender  |   n|    p|
+|:-------|---:|----:|
+|female  |  40|  40%|
+|male    |  60|  59%|
+|diverse |   1|   1%|
+|total   | 101| 100%|
+
+n=101.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_counts_one_cor")
+> ### * tab_counts_one_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_counts_one_cor
+> ### Title: Count values by a metric column that will be split into groups
+> ### Aliases: tab_counts_one_cor
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_counts_one_cor(data, adopter, sd_age)
+
+
+|Innovator type                                    |      total|  Low Age| High Age|
+|:-------------------------------------------------|----------:|--------:|--------:|
+|I try new offers immediately                      |   15% (15)| 10% (10)|   5% (5)|
+|I try new offers rather quickly                   |   62% (63)| 24% (24)| 39% (39)|
+|I wait until offers establish themselves          |   22% (22)| 12% (12)| 10% (10)|
+|I only use new offers when I have no other choice |     1% (1)|   0% (0)|   1% (1)|
+|total                                             | 100% (101)| 46% (46)| 54% (55)|
+
+n=101. Age split at median 38.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_counts_one_grouped")
+> ### * tab_counts_one_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_counts_one_grouped
+> ### Title: Output frequencies cross tabulated with a grouping column
+> ### Aliases: tab_counts_one_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_counts_one_grouped(data, adopter, sd_gender)
+
+
+|Innovator type                                    |      total|   female|     male| diverse|
+|:-------------------------------------------------|----------:|--------:|--------:|-------:|
+|I try new offers immediately                      |   15% (15)|   2% (2)| 12% (12)|  1% (1)|
+|I try new offers rather quickly                   |   62% (63)| 25% (25)| 38% (38)|  0% (0)|
+|I wait until offers establish themselves          |   22% (22)| 13% (13)|   9% (9)|  0% (0)|
+|I only use new offers when I have no other choice |     1% (1)|   0% (0)|   1% (1)|  0% (0)|
+|total                                             | 100% (101)| 40% (40)| 59% (60)|  1% (1)|
+
+n=101.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_metrics")
+> ### * tab_metrics
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_metrics
+> ### Title: Output a table with distribution parameters
+> ### Aliases: tab_metrics
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_metrics(data, sd_age)
+
+
+|Age    | value|
+|:------|-----:|
+|min    |    18|
+|q1     |    27|
+|median |    38|
+|q3     |    52|
+|max    |    68|
+|mean   |  39.7|
+|sd     |  13.8|
+|n      |   101|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_metrics_items")
+> ### * tab_metrics_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_metrics_items
+> ### Title: Output a five point summary table for multiple items
+> ### Aliases: tab_metrics_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_metrics_items(data, starts_with("cg_adoption_"))
+
+
+|Expectations                                                | min| q1| median| q3| max| mean|  sd|  n|
+|:-----------------------------------------------------------|---:|--:|------:|--:|---:|----:|---:|--:|
+|ChatGPT has clear advantages compared to similar offerings. |   1|  3|      4|  4|   5|  3.4| 1.0| 97|
+|Using ChatGPT brings financial benefits.                    |   1|  2|      3|  4|   5|  2.7| 1.2| 97|
+|Using ChatGPT is advantageous in many tasks.                |   1|  3|      4|  4|   5|  3.6| 1.1| 97|
+|Compared to other systems, using ChatGPT is more fun.       |   1|  3|      4|  4|   5|  3.5| 1.0| 97|
+|Much can go wrong when using ChatGPT.                       |   1|  2|      3|  4|   5|  3.1| 1.1| 97|
+|There are legal issues with using ChatGPT.                  |   1|  2|      3|  4|   5|  3.1| 1.2| 97|
+|The security of user data is not guaranteed with ChatGPT.   |   1|  3|      3|  4|   5|  3.2| 1.0| 97|
+|Using ChatGPT could bring personal disadvantages.           |   1|  2|      3|  3|   5|  2.7| 1.1| 97|
+|In my environment, using ChatGPT is standard.               |   1|  2|      2|  3|   5|  2.5| 1.1| 97|
+|Almost everyone in my environment uses ChatGPT.             |   1|  1|      2|  3|   5|  2.4| 1.2| 97|
+|Not using ChatGPT is considered being an outsider.          |   1|  1|      2|  3|   5|  2.0| 1.2| 97|
+|Using ChatGPT brings me recognition from my environment.    |   1|  1|      2|  3|   5|  2.3| 1.2| 97|
+
+4 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_metrics_items_cor")
+> ### * tab_metrics_items_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_metrics_items_cor
+> ### Title: Output a correlation table for item battery and one metric
+> ###   variable
+> ### Aliases: tab_metrics_items_cor
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_metrics_items_cor(
++   data,
++   starts_with("cg_adoption_adv"),
++   sd_age,
++   metric = TRUE
++ )
+
+
+|Expectations                                                |   Age|
+|:-----------------------------------------------------------|-----:|
+|ChatGPT has clear advantages compared to similar offerings. | -0.12|
+|Using ChatGPT brings financial benefits.                    | -0.09|
+|Using ChatGPT is advantageous in many tasks.                | -0.06|
+|Compared to other systems, using ChatGPT is more fun.       | -0.12|
+
+n=99. 2 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_metrics_items_cor_items")
+> ### * tab_metrics_items_cor_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_metrics_items_cor_items
+> ### Title: Output a correlation table for item battery and item battery
+> ### Aliases: tab_metrics_items_cor_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_metrics_items_cor_items(
++   data,
++   starts_with("cg_adoption_adv"),
++   starts_with("use"),
++   metric = TRUE
++ )
+
+
+|Expectations                                                |                   Usage| Pearson's r|
+|:-----------------------------------------------------------|-----------------------:|-----------:|
+|ChatGPT has clear advantages compared to similar offerings. |      in private context|        0.50|
+|ChatGPT has clear advantages compared to similar offerings. | in professional context|        0.27|
+|Using ChatGPT brings financial benefits.                    |      in private context|        0.17|
+|Using ChatGPT brings financial benefits.                    | in professional context|        0.53|
+|Using ChatGPT is advantageous in many tasks.                |      in private context|        0.34|
+|Using ChatGPT is advantageous in many tasks.                | in professional context|        0.35|
+|Compared to other systems, using ChatGPT is more fun.       |      in private context|        0.47|
+|Compared to other systems, using ChatGPT is more fun.       | in professional context|        0.27|
+
+2 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_metrics_items_grouped")
+> ### * tab_metrics_items_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_metrics_items_grouped
+> ### Title: Output the means for groups in one or multiple columns
+> ### Aliases: tab_metrics_items_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_metrics_items_grouped(data, starts_with("cg_adoption_"), sd_gender)
+
+
+|Expectations                                                |     total|    female|      male|  diverse|
+|:-----------------------------------------------------------|---------:|---------:|---------:|--------:|
+|ChatGPT has clear advantages compared to similar offerings. | 3.4 (1.0)| 3.6 (1.0)| 3.3 (1.0)| 4.0 (NA)|
+|Using ChatGPT brings financial benefits.                    | 2.7 (1.2)| 2.6 (1.2)| 2.7 (1.2)| 3.0 (NA)|
+|Using ChatGPT is advantageous in many tasks.                | 3.6 (1.1)| 3.7 (1.0)| 3.5 (1.1)| 4.0 (NA)|
+|Compared to other systems, using ChatGPT is more fun.       | 3.5 (1.0)| 3.6 (1.0)| 3.5 (1.0)| 3.0 (NA)|
+|Much can go wrong when using ChatGPT.                       | 3.1 (1.1)| 3.1 (1.0)| 3.1 (1.2)| 3.0 (NA)|
+|There are legal issues with using ChatGPT.                  | 3.1 (1.2)| 3.0 (1.0)| 3.1 (1.3)| 3.0 (NA)|
+|The security of user data is not guaranteed with ChatGPT.   | 3.2 (1.0)| 3.0 (1.0)| 3.3 (1.1)| 3.0 (NA)|
+|Using ChatGPT could bring personal disadvantages.           | 2.7 (1.1)| 2.5 (0.9)| 2.8 (1.2)| 4.0 (NA)|
+|In my environment, using ChatGPT is standard.               | 2.5 (1.1)| 2.5 (0.9)| 2.5 (1.3)| 4.0 (NA)|
+|Almost everyone in my environment uses ChatGPT.             | 2.4 (1.2)| 2.4 (1.0)| 2.3 (1.3)| 4.0 (NA)|
+|Not using ChatGPT is considered being an outsider.          | 2.0 (1.2)| 1.8 (1.0)| 2.1 (1.3)| 4.0 (NA)|
+|Using ChatGPT brings me recognition from my environment.    | 2.3 (1.2)| 2.4 (1.2)| 2.3 (1.3)| 3.0 (NA)|
+|n                                                           |        97|        37|        59|        1|
+
+4 missing case(s) omitted.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_metrics_one")
+> ### * tab_metrics_one
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_metrics_one
+> ### Title: Output a five point summary table for the values in multiple
+> ###   columns
+> ### Aliases: tab_metrics_one
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_metrics_one(data, sd_age)
+
+
+|Age    | value|
+|:------|-----:|
+|min    |    18|
+|q1     |    27|
+|median |    38|
+|q3     |    52|
+|max    |    68|
+|mean   |  39.7|
+|sd     |  13.8|
+|n      |   101|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_metrics_one_cor")
+> ### * tab_metrics_one_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_metrics_one_cor
+> ### Title: Correlate two columns
+> ### Aliases: tab_metrics_one_cor
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_metrics_one_cor(data, use_private, sd_age)
+
+
+|Item 1                    | Item 2|   n| Pearson's r|
+|:-------------------------|------:|---:|-----------:|
+|Usage: in private context |    Age| 101|       -0.19|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("tab_metrics_one_grouped")
+> ### * tab_metrics_one_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: tab_metrics_one_grouped
+> ### Title: Output a five point summary for groups
+> ### Aliases: tab_metrics_one_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> tab_metrics_one_grouped(data, sd_age, sd_gender)
+
+
+|Gender  | min|   q1| median|   q3| max| mean|   sd|   n|
+|:-------|---:|----:|------:|----:|---:|----:|----:|---:|
+|female  |  18| 25.8|   38.0| 44.2|  63| 37.5| 13.4|  40|
+|male    |  19| 32.5|   38.5| 52.0|  68| 41.2| 14.0|  60|
+|diverse |  33| 33.0|   33.0| 33.0|  33| 33.0|     |   1|
+|total   |  18| 27.0|   38.0| 52.0|  68| 39.7| 13.8| 101|
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("theme_vlkr")
+> ### * theme_vlkr
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: theme_vlkr
+> ### Title: Define a default theme for volker plots
+> ### Aliases: theme_vlkr
+> 
+> ### ** Examples
+> 
+> library(volker)
+> library(ggplot2)
+Warning: package 'ggplot2' was built under R version 4.4.3
+> data <- volker::chatgpt
+> 
+> theme_set(theme_vlkr(base_size=15, base_fill = list("red")))
+> plot_counts(data, sd_gender)
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+
+detaching 'package:ggplot2'
+
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  17.61 0.32 18 NA NA 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

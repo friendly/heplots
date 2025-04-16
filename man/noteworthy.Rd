@@ -4,14 +4,13 @@
 \alias{noteworthy}
 \title{Find noteworthy (unusual) points in a 2D plot}
 \usage{
-noteworthy(x, y, n = length(x), method = "mahal", level = NULL, ...)
+noteworthy(x, y = NULL, n = length(x), method = "mahal", level = NULL, ...)
 }
 \arguments{
-\item{x}{Plot coordinate: x}
+\item{x, y}{The x and y coordinates of a set of points. Alternatively, a single argument \code{x} can be provided,
+since \code{\link[grDevices]{xy.coords}(x, y)} is used for construction of the coordinates.}
 
-\item{y}{Plot coordinate: y}
-
-\item{n}{Maximum number of points to identify}
+\item{n}{Maximum number of points to identify.}
 
 \item{method}{Method of point identification. See Details.}
 

@@ -1,10 +1,10 @@
-## Version 1.7.4 (2025-01-03)
+## Version 1.7.4 (2025-04-15)
 
 * added plotting all X vs all Y to Rohwer doc
-* added `schoolsites` dataset
+* added `schoolsites` dataset providing additional variables related to the `schooldata` dataset.
 * `cqplot()` now prints a warning if there are missing cases and also returns the upper tail p-values corresponding to Mahalanobis $D^2$.
 * Default `method.id` in `cqplot()` changed to "r", to identify points with the largest $D^2$.
-* added `noteworthy()` as a utility to select "noteworthy" observations in a 2D plot.
+* added `noteworthy(x, y)` as a utility to select "noteworthy" observations in a 2D plot, extending the ideas in `car::showLabels()`
 
 ## Version 1.7.3 (2024-12-05)
 
