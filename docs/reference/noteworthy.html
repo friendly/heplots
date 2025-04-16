@@ -53,23 +53,20 @@ the mean of X or Y, absolute value of Y and absolute value of the residual in a 
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">noteworthy</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, method <span class="op">=</span> <span class="st">"mahal"</span>, level <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">noteworthy</span><span class="op">(</span><span class="va">x</span>, y <span class="op">=</span> <span class="cn">NULL</span>, n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, method <span class="op">=</span> <span class="st">"mahal"</span>, level <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>Plot coordinate: x</p></dd>
-
-
-<dt id="arg-y">y<a class="anchor" aria-label="anchor" href="#arg-y"></a></dt>
-<dd><p>Plot coordinate: y</p></dd>
+<dl><dt id="arg-x-y">x, y<a class="anchor" aria-label="anchor" href="#arg-x-y"></a></dt>
+<dd><p>The x and y coordinates of a set of points. Alternatively, a single argument <code>x</code> can be provided,
+since <code><a href="https://rdrr.io/r/grDevices/xy.coords.html" class="external-link">xy.coords</a>(x, y)</code> is used for construction of the coordinates.</p></dd>
 
 
 <dt id="arg-n">n<a class="anchor" aria-label="anchor" href="#arg-n"></a></dt>
-<dd><p>Maximum number of points to identify</p></dd>
+<dd><p>Maximum number of points to identify. If set to 0, no points are identified.</p></dd>
 
 
 <dt id="arg-method">method<a class="anchor" aria-label="anchor" href="#arg-method"></a></dt>
@@ -182,6 +179,12 @@ exceeds <code>level</code>. In this case, the number of points identified will b
 <span class="r-plt img"><img src="noteworthy-6.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 101 102 103</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in noteworthy(x, y, n = n, method = method, ...):</span> could not find function "noteworthy"</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># test use of xy.coords  </span></span></span>
+<span class="r-in"><span><span class="fu">noteworthy</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span>, n<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in noteworthy(data.frame(x, y), n = 4):</span> could not find function "noteworthy"</span>
+<span class="r-in"><span><span class="fu">noteworthy</span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, n<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in noteworthy(y ~ x, n = 4):</span> could not find function "noteworthy"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -1,6 +1,6 @@
 ## Version 1.7.4 (2025-04-15)
 
-This is largely a maintenance release, but adds a function to identify "noteworthy"" points in 2D scatterplots.
+This is largely a maintenance release, but adds a function to identify "noteworthy" points in 2D scatterplots.
 
 * added plotting all X vs all Y to Rohwer examples
 * added `schoolsites` dataset, providing additional variables related to the `schooldata` dataset.
