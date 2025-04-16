@@ -20,14 +20,17 @@ We checked 10 reverse dependencies, comparing R CMD check results across CRAN an
  * We failed to check 0 packages
 
 
-## Version 1.7.4 (2025-04-015)
+## Version 1.7.4 (2025-04-15)
 
-* added plotting all X vs all Y to Rohwer doc
-* added `schoolsites` dataset
+This is largely a maintenance release, but adds a function to identify "noteworthy" points in 2D scatterplots.
+
+* added plotting all X vs all Y to Rohwer examples
+* added `schoolsites` dataset, providing additional variables related to the `schooldata` dataset.
 * `cqplot()` now prints a warning if there are missing cases and also returns the upper tail p-values corresponding to Mahalanobis $D^2$.
 * Default `method.id` in `cqplot()` changed to "r", to identify points with the largest $D^2$.
-* added `noteworthy()` as a utility to select "noteworthy" observations in a 2D plot.
-
+* added `noteworthy(x, y)` as a utility to select "noteworthy" observations in a 2D plot, extending the ideas in `car::showLabels()`
+* corrected some minor documentation problems
+* fixed some 301 "moved" URLs
 
 
 
