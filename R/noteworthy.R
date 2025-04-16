@@ -83,6 +83,11 @@
 #'   # vector of case IDs
 #' testnote(x, y, n = 4, method = seq(10, 60, 10))
 #' testnote(x, y, n = 4, method = which(cooks.distance(mod) > .25))
+#' 
+#'   # test use of xy.coords  
+#' noteworthy(data.frame(x,y), n=4)
+#' noteworthy(y ~ x, n=4)
+
 
 
 noteworthy <- function(x, y = NULL, 
@@ -156,53 +161,4 @@ noteworthy <- function(x, y = NULL,
   index
   
 }
-  
-if(FALSE) {
-  set.seed(47)
-  x <- c(runif(100), 1.5, 1.6, 0)
-  y <- c(2*x[1:100] + rnorm(100, sd = 1.2), -2, 6, 6 )
-  XY <- data.frame(x, y)
-  plot(x, y)
-  abline(lm(y ~ x))
-  dsq <- Mahalanobis(XY)
-  out <- cqplot(XY, id.n = 4)
-  out
-  dsqr <- rowSums( qr.Q(qr(cbind(1, XY)))^2 )
-  dmod <- lm(dsq ~ dsqr)
-  coef(dmod)
-  
-  testnote <- function(x, y, n, method=NULL, ...)  {
-    plot(x, y)
-    abline(lm(y ~ x))
-    if (!is.null(method))
-      car::showLabels(x, y, n=n, method = method) |> print()
-    ids <- noteworthy(x, y, n=n, method = method, ...)
-    text(x[ids], y[ids], labels = ids, col = "red")
-    ids
-  }
-  
-  testnote(x, y, n=5, method = "mahal")
-  testnote(x, y, n=5, method = "mahal", level = .99)
-
-  testnote(x, y, n=5, method = "dsq")
-  
-  testnote(x, y, n=5, method = "y")
-  testnote(x, y, n=5, method = "r")
-  
-  # a vector of criterion values
-  testnote(x, y, n=5, method = Mahalanobis(data.frame(x,y)))
-  # NB: level doesn't apply here (-> warning)
-  testnote(x, y, n=5, method = Mahalanobis(data.frame(x,y)), level = 0.95)
-
-  # largest (positive) residuals
-  testnote(x, y, n=4, method = residuals(lm(y~x)))
-  # vector of case IDs
-  testnote(x, y, n = 4, method = seq(10, 60, 10))
-  testnote(x, y, n = 4, method = which(cooks.distance(mod) > .25)) 
-
-  # test use of xy.coords  
-  noteworthy(data.frame(x,y), n=4)
-  noteworthy(y ~ x, n=4)
-}
-  
   

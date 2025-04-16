@@ -7,7 +7,7 @@
 uniStats(x, ...)
 }
 \arguments{
-\item{x}{A \code{"mlm"} object fitted by \code{link[stats]{lm}} with two or more response variable3s}
+\item{x}{A \code{"mlm"} object fitted by \code{\link[stats]{lm}} with two or more response variable3s}
 
 \item{...}{Other arguments, ignored}
 }

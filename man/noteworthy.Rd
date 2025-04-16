@@ -10,7 +10,7 @@ noteworthy(x, y = NULL, n = length(x), method = "mahal", level = NULL, ...)
 \item{x, y}{The x and y coordinates of a set of points. Alternatively, a single argument \code{x} can be provided,
 since \code{\link[grDevices]{xy.coords}(x, y)} is used for construction of the coordinates.}
 
-\item{n}{Maximum number of points to identify.}
+\item{n}{Maximum number of points to identify. If set to 0, no points are identified.}
 
 \item{method}{Method of point identification. See Details.}
 
@@ -82,5 +82,9 @@ testnote(x, y, n = 5, method = z)
   # vector of case IDs
 testnote(x, y, n = 4, method = seq(10, 60, 10))
 testnote(x, y, n = 4, method = which(cooks.distance(mod) > .25))
+
+  # test use of xy.coords  
+noteworthy(data.frame(x,y), n=4)
+noteworthy(y ~ x, n=4)
 }
 \keyword{utilities}

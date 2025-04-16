@@ -4,6 +4,7 @@ Sys.setenv(RGL_USE_NULL = TRUE)
 # Check URL are correct
 # install.packages('urlchecker', repos = 'https://r-lib.r-universe.dev')
 urlchecker::url_check()
+urlchecker::url_update()
 
 # revdep
 #remotes::install_github("r-lib/revdepcheck")

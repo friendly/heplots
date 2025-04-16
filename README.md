@@ -7,10 +7,10 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
 [![R_Universe](https://friendly.r-universe.dev/badges/heplots)](https://friendly.r-universe.dev)
 [![Last
-Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://github.com/friendly/heplots)
+Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://github.com/friendly/heplots/)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
 [![DOI](https://zenodo.org/badge/13908453.svg)](https://zenodo.org/badge/latestdoi/13908453)
-[![Docs](https://img.shields.io/badge/pkgdown%20site-blue)](https://friendly.github.io/heplots)
+[![Docs](https://img.shields.io/badge/pkgdown%20site-blue)](https://friendly.github.io/heplots/)
 <!-- badges: end -->
 
 # heplots <img src="man/figures/logo.png" height="200" style="float:right; height:200px;"/>
@@ -135,8 +135,9 @@ effects in variable (**data**) space, for one or more response variables
 
 - `covEllipses()` draw covariance (data) ellipses for one or more group,
   optionally including the ellipse for the pooled within-group
-  covariance. `coefplot()` for an MLM object draws bivariate confidence
-  ellipses.
+  covariance.
+
+- `coefplot()` for an MLM object draws bivariate confidence ellipses.
 
 ### Repeated measure designs
 
@@ -298,7 +299,7 @@ For more than two response variables, a multivariate effect can be
 viewed more simply by projecting the data into canonical space — the
 linear combinations of the responses which show the greatest differences
 among the group means relative to within-group scatter. The computations
-are performed with the [`candisc`](http://github.com/friendly/candisc)
+are performed with the [`candisc`](https://github.com/friendly/candisc/)
 package, which has an `heplot.candisc()` method.
 
 ``` r
