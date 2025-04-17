@@ -13,9 +13,39 @@
 #' absolute value of distance from the mean of x or y, absolute value \eqn{|y|} of y  and absolute value of 
 #' the residual in a model \code{y ~ x}.
 #' 
+#' @details
+#' 
+#' The `method` argument determines how the points to be identified are selected:
+#' \describe{
+#'  \item{\code{"mahal"}}{Treat (x, y) as if it were a bivariate sample, 
+#'       and select cases according to their Mahalanobis distance from \code{(mean(x), mean(y))}.}
+#'  \item{\code{"dsq"}}{Similar to \code{"mahal"} but uses squared Euclidean distance.}  
+#'  \item{\code{"x"}}{Select points according to their value of \code{abs(x - mean(x))}.}
+#'  \item{\code{"y"}}{Select points according to their value of \code{abs(y - mean(y))}.}
+#'  \item{\code{"r"}}{Select points according to their value of \code{abs(y)}, as may be appropriate 
+#'       in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot.}
+#'  \item{\code{"ry"}}{Fit the linear model, \code{y ~ x} and select points according to their absolute residuals.}
+#'  \item{case IDs}{\code{method} can be an integer vector of case numbers in \code{1:length{x}}, in which case those cases 
+#'       will be labeled.}
+#'  \item{numeric vector}{\code{method} can be a vector of the same length as x consisting of values to determine the points 
+#'       to be labeled. For example, for a linear model \code{mod}, setting \code{method=cooks.distance(mod)} will label the 
+#'       \code{n} points corresponding to the largest values of Cook's distance. Warning: If missing data are present, 
+#'       points may be incorrectly selected.}
+#' }
+#' 
+#' In the case of \code{method == "mahal"} a value for \code{level} can be supplied.
+#' This is used as a filter to select cases whose criterion value
+#' exceeds \code{level}. In this case, the number of points identified will be less than or equal to \code{n}.
+#' 
 
 
-# Class
+#' StatNoteworthy
+#' @rdname stat_noteworthy
+#' @format NULL
+#' @usage NULL
+#' @keywords internal
+#' @export
+
 StatNoteworthy <- ggproto(
   "StatNoteworthy", Stat,
   
@@ -27,7 +57,17 @@ StatNoteworthy <- ggproto(
   }
 )
 
-# Constructor: standard stuff + method + n
+
+#' 
+#' @rdname stat_noteworthy
+#' @inheritParams ggplot2 layer
+#' @inheritParams ggplot2 geom_point
+#' @importFrom rlang list2
+#' @importFrom ggplot2 layer
+#' @export
+#' 
+
+# Constructor: standard stuff + method + n + level
 stat_noteworthy <- function(
     mapping = NULL, data = NULL, geom = "text", position = "identity",
     ..., method = "mahal", n = 5, level = NULL,
@@ -78,8 +118,24 @@ gp + stat_noteworthy(method = hatvalues(mod))
 data(peng, package = "heplots")
 # Multivariate outliers, using *all* numeric variables
 DSQ <- heplots::Mahalanobis(peng[, 3:6])
-noteworthy <- order(DSQ, decreasing = TRUE)[1:3] |> print()
+ids <- order(DSQ, decreasing = TRUE)[1:3] |> print()
 #> [1] 283  10  35
+
+
+
+ggplot(peng, 
+       aes(x = bill_length, y = bill_depth,
+           color = species, shape = species, fill=species)) +
+  geom_point() +
+  #  scale_size_manual(values = c(1.5, 4)) +
+  # geom_text(data = subset(peng_plot, note==TRUE),
+  #           aes(label = id),
+  #           nudge_y = .4, color = "black", size = 5) +
+  geom_smooth(method = "lm", formula = y ~ x,
+              se=FALSE, linewidth=2) +
+  stat_ellipse(geom = "polygon", level = 0.95, alpha = 0.1) +
+  stat_noteworthy(method = ids, label = ids)
+  
 
 }
 

@@ -22,7 +22,7 @@ library(devtools)
 
 # prepare pkgdown site
 devtools::build_readme()
-pkgdown::build_site()
+pkgdown::build_site(lazy = TRUE)
 
 devtools::build()
 # to test vignettes, built them, but then have to remove `doc/` directory
