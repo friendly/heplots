@@ -14,7 +14,7 @@ iris.mod <- lm(as.matrix(iris[,1:4]) ~ Species, data=iris)
 cqplot(iris.mod, id.n=3)
 ```
 
-Correct me if I'm wrong, but I do not find any similar facility for labeling points selectively in statistical
+Correct me if I'm wrong, but I do not find any similar facility for **easily** labeling points selectively in statistical
 applications of `ggplot`.
 
 For a simple ggplot example, I want to plot `Crime_pers` against `Literacy` in the `Guerry` data, and label those
@@ -54,16 +54,42 @@ gp +
 ```
 
 What I'm looking for is something like a `geom_noteworthy()` function. It provides similar methods to select points to be
-identified in a plot, and a `geom` argument that controls how the identified points are labeled in a plot.
+identified in a plot, and a `geom` argument that controls how the identified points are labeled in a plot. Something like:
 
 ```r
-geom_noteworthy(method = c("dsq", "mahal", "x", "y", "r"),
+geom_noteworthy(method = c("dsq", "mahal", "x", "y", "r", "ry"),
                 n =            # number of points to label,
                 geom =         # e.g.,   "text", "label", "repel",
-                ...)
+                ...)           # other args, passed to the geom
 ```
 
-To this end, I've written a `compute` function, `heplots::noteworthy(x, y, n, method, ...)` that tries to be very general,
-https://github.com/friendly/heplots/blob/master/R/noteworthy.R
+To this end, in the latest release (v 1.7.4) of `heplots`
+I've written a `compute` function, `heplots::noteworthy(x, y, n, method, ...)` that tries to be very general,
+https://github.com/friendly/heplots/blob/master/R/noteworthy.R.
 
+The `method` argument can be any of the following:
+ * a vector of row numbers: all are chosen
+ * a vector of length(x) numbers: the largest n are chosen, e.g., `cooks.distance(model)`
+ * a text string:  'x', 'y', 'mahal', 'dsq', 'r', 'ry'
 
+It returns the row IDs of the selected points
+
+```
+ids <- noteworthy(Guerry$Literacy, Guerry$Crime_pers, method = "mahal", n = 7) |> print()
+# [1]  7 21 66 86  8 23 37
+Guerry[ids, c("Literacy", "Crime_pers", "Department")]
+#    Literacy Crime_pers Department
+# 7        67      35203   Ardennes
+# 21       23      37014     Creuse
+# 66       71       7343  Haut-Rhin
+# 86       49       2199      Corse
+# 8        18       6173     Ariege
+# 23       73      11560      Doubs
+# 37       73      26221       Jura
+```
+
+If I had a `geom_noteworthy()`, I could simply do something like:
+
+```
+gp + geom_noteworthy(aes(label=Department), method="mahal", geom="repel", n=7)
+```
