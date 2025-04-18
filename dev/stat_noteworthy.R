@@ -2,16 +2,21 @@
 # library(ggplot2)
 # library(ggrepel)
 
-#' Label noteworthy (unusual) points in a 2D scatterplot
+#' Selectively label noteworthy (unusual) points in a 2D scatterplot
 #' 
 #' @description
-#' An important feature of many statistical plots is the ability to label "unusual" or "noteworthy"
+#' An important feature of many statistical plots is the ability to selectively label "unusual" or "noteworthy"
 #' observations such as those with large residuals, high leverage, or those outside a given confidence
 #' envelope in a QQ plot. \code{stat_noteworthy} provides a wide variety of methods for doing this.
 #' 
 #' Standard methods include Mahalanobis  and Euclidean distance from the centroid \eqn{(\bar{x}, \bar{y})},
 #' absolute value of distance from the mean of x or y, absolute value \eqn{|y|} of y  and absolute value of 
 #' the residual in a model \code{y ~ x}.
+#' 
+#' In simple cases, such labels can be added to a ggplot object using \code{stat_noteworthy()} directly, with a choice of
+#' \code{geom} to draw the label (e.g., \code{"text", "label", "repel"}).
+#' Alternatively, you can use \code{geom_text()}, \code{geom_label()}, ... and specify
+#' \code{stat = StatNoteworthy} to select the points to be labeled
 #' 
 #' @details
 #' 
@@ -41,6 +46,7 @@
 
 #' StatNoteworthy
 #' @rdname stat_noteworthy
+#' @importFrom dplyr row_number
 #' @format NULL
 #' @usage NULL
 #' @keywords internal
@@ -51,10 +57,18 @@ StatNoteworthy <- ggproto(
   
   required_aes = c("x", "y"),
   
-  compute_group = function(data, scales, method = "mahal", n = 5, level = NULL) {
+  # using compute_group rather than compute_panel here would allow for factor aesthetics
+  compute_panel = function(data, scales, method = "mahal", n = 5, level = NULL) {
+    
+    data <- data |>
+      mutate(id = dplyr::row_number())   # use `.id` here to avoid name clash?
+    
     idx <- heplots::noteworthy(x = data$x, y = data$y, n = n, method = method, level = level)
     data[idx, , drop = FALSE]
-  }
+  },
+  
+  default_aes = aes(label = after_stat(id))   # << set default label to row number  
+  
 )
 
 
@@ -136,7 +150,47 @@ ggplot(peng,
   stat_ellipse(geom = "polygon", level = 0.95, alpha = 0.1) +
   stat_noteworthy(method = ids, label = ids)
   
+# Test Gina's modifications
 
+peng |> 
+  dplyr::select(x = bill_length, y = bill_depth) |>
+  StatNoteworthy$compute_panel(n=3)
+
+# penguin colors
+peng_colors <- c(
+  "Adelie"    = "darkorange",
+  "Chinstrap" = "purple",
+  "Gentoo"    =  "cyan4"
+  )
+
+
+gpeng <- ggplot(peng, 
+               aes(x = bill_length, 
+                   y = bill_depth,
+                   color = species, 
+                   shape = species)) +
+  geom_point() +
+  geom_smooth(method = "lm", 
+              formula = y ~ x,
+              se = FALSE, 
+              linewidth = 2) +
+  stat_ellipse(aes(fill = species),
+               geom = "polygon", level = 0.95, alpha = 0.1) +
+  scale_color_manual(values = peng_colors) +
+  scale_fill_manual(values = peng_colors) 
+gpeng
+
+gpeng + 
+  geom_text(stat = StatNoteworthy, method = ids, n = 3, color = "black", size = 5)
+
+gpeng + 
+  geom_label(stat = StatNoteworthy, method = ids, n = 3, size = 5)
+
+
+
+# DOESN'T WORK
+gpeng + 
+  stat_noteworthy(method = ids, label = ids)
 }
 
 
