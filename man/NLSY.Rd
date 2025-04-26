@@ -25,14 +25,18 @@ More details are available at
 \url{http://web.archive.org/web/20060830061414/http://www.unc.edu/~curran/srcd-docs/srcdmeth.pdf}.
 }
 \description{
-The dataset come from a small random sample of the U.S. National
-Longitudinal Survey of Youth.
+The dataset `NLSY` comes from a small part of the National Longitudinal Survey of
+Youth, which is a series of annual surveys conducted by the 
+U.S. Department of Labor to examine the transition of young people into the labor force.
+This particular subset gives measures of 243 children on mathematics and reading achievement and also
+measures of behavioral problems (antisocial, hyperactivity). Also available are the yearly income
+and education of the child's father.
 }
 \details{
 In this dataset, \code{math} and \code{read} scores are taken at the outcome
 variables. Among the remaining predictors, \code{income} and \code{educ}
 might be considered as background variables necessary to control for.
-Interest might then be focused on whether the behavioural variables
+Interest might then be focused on whether the behavioral variables
 \code{antisoc} and \code{hyperact} contribute beyond that.
 }
 \examples{

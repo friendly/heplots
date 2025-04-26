@@ -1,3 +1,7 @@
+## Version 1.7.5 
+
+* Edit description of NLSY data
+
 ## Version 1.7.4 (2025-04-15)
 
 This is largely a maintenance release, but adds a function to identify "noteworthy" points in 2D scatterplots.
