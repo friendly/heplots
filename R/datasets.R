@@ -981,13 +981,19 @@ NULL
 #' This particular subset gives measures of 243 children on mathematics and reading achievement and also
 #' measures of behavioral problems (antisocial, hyperactivity). Also available are the yearly income
 #' and education of the child's father.
-
 #' 
-#' In this dataset, \code{math} and \code{read} scores are taken at the outcome
+#' @details
+#' 
+#' For the examples using this dataset, \code{math} and \code{read} scores are taken at the outcome
 #' variables. Among the remaining predictors, \code{income} and \code{educ}
 #' might be considered as background variables necessary to control for.
 #' Interest might then be focused on whether the behavioral variables
 #' \code{antisoc} and \code{hyperact} contribute beyond that.
+#' 
+#' The distribution of father's income is very highly skewed in the positive direction.
+#' Linear model analysis should probably use \code{log(income)}, but this is omitted for simplicity.
+#' 
+#' The dataset also contains a few unusual observations for you to discover.
 #' 
 #' @name NLSY
 #' @docType data
@@ -1020,7 +1026,7 @@ NULL
 #' 
 #' # test control variables by themselves
 #' # -------------------------------------
-#' mod1 <- lm(cbind(read,math) ~ income+educ, data=NLSY)
+#' mod1 <- lm(cbind(read, math) ~ income + educ, data=NLSY)
 #' Anova(mod1)
 #' heplot(mod1, fill=TRUE)
 #' 
@@ -1028,6 +1034,13 @@ NULL
 #' coefs <- rownames(coef(mod1))[-1]
 #' linearHypothesis(mod1, coefs)
 #' heplot(mod1, fill=TRUE, hypotheses=list("Overall"=coefs))
+#' 
+#' # coefficient plot
+#' coefplot(NLSY.mod1, fill = TRUE,
+#'          col = c("darkgreen", "brown"),
+#'          lwd = 2,
+#'          ylim = c(-0.5, 3),
+#'          main = "Bivariate coefficient plot for reading and math\nwith 95% confidence ellipses")
 #' 
 #'  
 #' # additional contribution of antisoc + hyperact over income + educ
@@ -1041,7 +1054,9 @@ NULL
 #' 
 #' heplot(mod2, fill=TRUE, hypotheses=list("mod2|mod1"=coefs[1:2]))
 #' 
-#' 
+#' # check for outliers
+#' idx < cqplot(NLSY.mod2, id.n = 5)
+#' idx
 NULL
 
 
