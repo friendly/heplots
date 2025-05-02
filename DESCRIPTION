@@ -41,7 +41,6 @@ Suggests:
     candisc,
     carData,
     effects,
-    reshape,
     gplots,
     nlme,
     lattice,
