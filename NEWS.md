@@ -1,6 +1,7 @@
 ## Version 1.7.5 
 
 * Edit description of NLSY data and extend the examples to show `coefplot()`, `cqplot()`
+* Revise documentation for `robmlm()`
 
 ## Version 1.7.4 (2025-04-15)
 

@@ -6,20 +6,23 @@
 
 
 #' Robust Fitting of Multivariate Linear Models
-#' 
+#'
+#' @description
+#'  
 #' Fit a multivariate linear model by robust regression using a simple M
 #' estimator.
-#' 
-#' These S3 methods are designed to provide a specification of a class of
-#' robust methods which extend \code{mlm}s, and are therefore compatible with
-#' other \code{mlm} extensions, including \code{\link[car]{Anova}} and
-#' \code{\link{heplot}}.
 #' 
 #' Fitting is done by iterated re-weighted least squares (IWLS), using weights
 #' based on the Mahalanobis squared distances of the current residuals from the
 #' origin, and a scaling (covariance) matrix calculated by
 #' \code{\link[MASS]{cov.trob}}. The design of these methods were loosely
 #' modeled on \code{\link[MASS]{rlm}}.
+#' 
+#' @details
+#' These S3 methods are designed to provide a specification of a class of
+#' robust methods which extend \code{mlm}s, and are therefore compatible with
+#' other \code{mlm} extensions, including \code{\link[car]{Anova}} and
+#' \code{\link{heplot}}.
 #' 
 #' An internal \code{vcov.mlm} function is an extension of the standard
 #' \code{\link[stats]{vcov}} method providing for observation weights.
