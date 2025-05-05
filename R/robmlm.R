@@ -10,7 +10,7 @@
 #' @description
 #'  
 #' Fit a multivariate linear model by robust regression using a simple M
-#' estimator.
+#' estimator that down-weights observations with large residuals
 #' 
 #' Fitting is done by iterated re-weighted least squares (IWLS), using weights
 #' based on the Mahalanobis squared distances of the current residuals from the
@@ -18,14 +18,30 @@
 #' \code{\link[MASS]{cov.trob}}. The design of these methods were loosely
 #' modeled on \code{\link[MASS]{rlm}}.
 #' 
-#' @details
 #' These S3 methods are designed to provide a specification of a class of
 #' robust methods which extend \code{mlm}s, and are therefore compatible with
 #' other \code{mlm} extensions, including \code{\link[car]{Anova}} and
 #' \code{\link{heplot}}.
 #' 
 #' An internal \code{vcov.mlm} function is an extension of the standard
-#' \code{\link[stats]{vcov}} method providing for observation weights.
+#' \code{\link[stats]{vcov}} method providing for the use of observation weights.
+
+#' @details
+#' 
+#' Weighted least squares provides a method for correcting a variety of problems in linear models
+#' by estimating parameters that minimize the \emph{weighted} sum of squares of residuals
+#' \eqn{\Sigma w_i e_i^2} for specified weights \eqn{w_i, i = 1, 2, \dots n}.
+#' 
+#' M-estimation generalizes this by minimizing the sum of a symmetric function 
+#' \eqn{\rho(e_i)} of the residuals, where the function is designed to reduce the influence
+#' of outliers or badly fit observations. The function \eqn{\rho(e_i) = | e_i |}
+#' minimizes the least absolute values, while the \emph{bisquare} function uses an upper bound
+#' on influence. For multivariate problems, a simple method is to use Mahalanobis \eqn{D^2 (\mathbf{e}_i)}
+#' to calculate the weights.
+#' 
+#' Because the weights and the estimated coefficients depend on each other, this is done
+#' iteratively, computing weights and then re-estimating the model with those weights
+#' until convergence.
 #' 
 #' @aliases print.robmlm print.summary.robmlm robmlm robmlm.default
 #'          robmlm.formula summary.robmlm
