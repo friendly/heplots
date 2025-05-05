@@ -40,6 +40,8 @@ labels <- c(
 pulp.mod <- lm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
 Anova(pulp.mod)
 
+cqplot(pulp.mod, id.n = 5)
+
 heplot(pulp.mod)
 pairs(pulp.mod,
       var.labels = labels[5:8])
