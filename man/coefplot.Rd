@@ -42,9 +42,9 @@ coefplot(object, ...)
 }
 \arguments{
 \item{object}{A multivariate linear model, such as fit by \code{lm(cbind(y1,
-y2, ...) ~ ...)}}
+y2, ...) ~ terms, ...)}}
 
-\item{\dots}{Other parameters passed to methods}
+\item{\dots}{Other parameters passed to \code{\link[graphics]{plot}}}
 
 \item{variables}{Response variables to plot, given as their indices or names}
 
