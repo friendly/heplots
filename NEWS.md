@@ -1,3 +1,10 @@
+## Version 1.7.5 
+
+* Edit description of NLSY data and extend the examples to show `coefplot()`, `cqplot()`
+* Revise documentation for `robmlm()`
+* Add dev/pulpfiber.R for a classic robust MLM example
+* fix default Y axis label in `plot.robmlm()`
+
 ## Version 1.7.4 (2025-04-15)
 
 This is largely a maintenance release, but adds a function to identify "noteworthy" points in 2D scatterplots.
