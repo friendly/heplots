@@ -14,7 +14,7 @@
   cex = par("cex"),
   segments = FALSE,
   xlab = "Case index",
-  ylab = "Weight in robust MANOVA",
+  ylab = "Weight in robust MLM",
   ...
 )
 }

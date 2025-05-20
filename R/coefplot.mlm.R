@@ -100,7 +100,7 @@ coefplot.mlm <- function(object,
   vcovParm <- function(vcov, var, parm) {
 #		which <- as.vector(t(outer( var, parm, paste, sep=":")))
   	which <- paste(var, parm, sep=':')
-  	vcov[which,which]
+  	vcov[which, which]
   }
 
   ell <- function(center = rep(0,2) , shape = diag(2) , radius = 1, n = 100,
@@ -112,11 +112,12 @@ coefplot.mlm <- function(object,
 
 	# determine parameters to plot; allow parameters to be passed by names or numbers
   cf <- coef(object)
+  if(!intercept) cf <- cf[-1,]
+
   if(is.null(parm)) parm <- 1:nrow(cf)
   if(is.numeric(parm) | is.logical(parm)) parm <- rownames(cf)[parm]
   if(is.character(parm)) parm <- which(rownames(cf) %in% parm)
-  if(!intercept) cf <- cf[-1,]
-
+  cf <- cf[parm, ]
 
   var.names <- colnames(cf)
   parm.names <- rownames(cf)

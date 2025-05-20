@@ -32,7 +32,8 @@ tasks can predict performance on some measures of aptitude and achievement.
 \details{
 The variables \code{SAT}, \code{PPVT} and \code{Raven} are responses to be
 potentially explained by performance on the paired-associate (PA) learning
-task\code{n}, \code{s}, \code{ns}, \code{na}, and \code{ss}.
+tasks, \code{n}, \code{s}, \code{ns}, \code{na}, and \code{ss},
+which differed in the syntactic and semantic relationship between the stimulus and response words in each pair.
 }
 \examples{
 
@@ -91,6 +92,9 @@ heplot(rohwer.ses2, add=TRUE, col=c("blue", "black"), grand.mean=TRUE, error.ell
 Friendly, M. (2007).  HE plots for Multivariate General Linear
 Models.  \emph{Journal of Computational and Graphical Statistics},
 \bold{16}(2) 421--444.  \url{http://datavis.ca/papers/jcgs-heplots.pdf}
+
+Rohwer, W.D., Jr., & Levin, J.R. (1968). Action, meaning and stimulus selection
+in paired-associate learning. \emph{Journal of Verbal Learning and Verbal Behavior}, \bold{7}: 137-141.
 }
 \concept{MANCOVA}
 \concept{MMRA}
