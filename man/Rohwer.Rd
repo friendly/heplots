@@ -34,6 +34,17 @@ The variables \code{SAT}, \code{PPVT} and \code{Raven} are responses to be
 potentially explained by performance on the paired-associate (PA) learning
 tasks, \code{n}, \code{s}, \code{ns}, \code{na}, and \code{ss},
 which differed in the syntactic and semantic relationship between the stimulus and response words in each pair.
+
+
+Timm (1975) does not give a source, but the most relevant studies are Rowher & Ammons (1968) and Rohwer & Levin (1971).
+The paired-associate tasks are described as:
+\describe{
+   \item{\code{n}}{(named): Simple paired-associate task where participants learn pairs of nouns with no additional context}
+   \item{\code{s}}{(sentence): Participants learn pairs embedded within a sentence}
+   \item{\code{ns}}{(named sentence): A combination where participants learn noun pairs with sentence context}
+   \item{\code{na}}{(named action): Pairs are learned with an action relationship between them}
+   \item{\code{ss}}{(sentence still): Similar to the sentence condition but with static presentation}
+}
 }
 \examples{
 
@@ -95,6 +106,9 @@ Models.  \emph{Journal of Computational and Graphical Statistics},
 
 Rohwer, W.D., Jr., & Levin, J.R. (1968). Action, meaning and stimulus selection
 in paired-associate learning. \emph{Journal of Verbal Learning and Verbal Behavior}, \bold{7}: 137-141.
+
+Rohwer, W. D., Jr., & Ammons, M. S. (1971). Elaboration training and paired-associate learning efficiency in children. 
+\emph{Journal of Educational Psychology}, \bold{62}(5), 376-383.
 }
 \concept{MANCOVA}
 \concept{MMRA}

@@ -6,6 +6,7 @@
 * fix default Y axis label in `plot.robmlm()`
 * fixed bug in `coefplot.mlm()` in selecting terms with `parm`.
 * `coefplot.mlm()` gains a `cex.lab` argument
+* Fleshed out details of Rohwer dataset PA measures
 
 ## Version 1.7.4 (2025-04-15)
 

@@ -1685,7 +1685,15 @@ NULL
 #' which differed in the syntactic and semantic relationship between the stimulus and response words in each pair.
 #' 
 #' @details
-#' 
+#' Timm (1975) does not give a source, but the most relevant studies are Rowher & Ammons (1968) and Rohwer & Levin (1971).
+#' The paired-associate tasks are described as:
+#' \describe{
+#'    \item{\code{n}}{(named): Simple paired-associate task where participants learn pairs of nouns with no additional context}
+#'    \item{\code{s}}{(sentence): Participants learn pairs embedded within a sentence}
+#'    \item{\code{ns}}{(named sentence): A combination where participants learn noun pairs with sentence context}
+#'    \item{\code{na}}{(named action): Pairs are learned with an action relationship between them}
+#'    \item{\code{ss}}{(sentence still): Similar to the sentence condition but with static presentation}
+#' }
 #' 
 #' @name Rohwer
 #' @docType data
@@ -1709,6 +1717,10 @@ NULL
 #' 
 #' Rohwer, W.D., Jr., & Levin, J.R. (1968). Action, meaning and stimulus selection
 #' in paired-associate learning. \emph{Journal of Verbal Learning and Verbal Behavior}, \bold{7}: 137-141.
+#' 
+#' Rohwer, W. D., Jr., & Ammons, M. S. (1971). Elaboration training and paired-associate learning efficiency in children. 
+#' \emph{Journal of Educational Psychology}, \bold{62}(5), 376-383.
+
 #' 
 #' @source 
 #' Timm, N.H. 1975).  \emph{Multivariate Analysis with Applications in
