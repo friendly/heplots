@@ -33,6 +33,7 @@ coefplot(object, ...)
   col = palette(),
   cex = 2,
   cex.label = 1.5,
+  cex.lab = par("cex.lab"),
   lty.zero = 3,
   col.zero = 1,
   pch.zero = "+",
@@ -93,8 +94,11 @@ ellipses will be filled.}
 
 \item{cex.label}{Character size for ellipse labels}
 
+\item{cex.lab}{Character size for axis labels. Defaults to \code{par("cex.lab")}.}
+
 \item{lty.zero, col.zero, pch.zero}{Line type, color and point symbol for
-horizontal and vertical lines at 0, 0.}
+horizontal and vertical lines at 0, 0. These default to \code{lty.zero = 3},
+\code{col.zero = 1} (black) and \code{pch.zero = '+'}.}
 
 \item{verbose}{logical.  Print parameter estimates and variance-covariance
 for each parameter?}
