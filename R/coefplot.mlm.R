@@ -5,6 +5,9 @@
 # -- now allow ellipses to be filled
 # -- now pass label.pos to label.ellipse
 
+# TODO: Allow passing cex.lab. Doesn't work, possibly b/c conflict with cex.label.
+# Calls for a refactoring: cex.label -> label.cex. Note: there is already label.pos
+
 
 
 #' Coefficient plots for Multivariate Linear Models
@@ -16,8 +19,8 @@
 #' 
 #' @aliases coefplot coefplot.mlm
 #' @param object A multivariate linear model, such as fit by \code{lm(cbind(y1,
-#'             y2, ...) ~ ...)}
-#' @param \dots Other parameters passed to methods
+#'             y2, ...) ~ terms, ...)}
+#' @param \dots Other parameters passed to \code{\link[graphics]{plot}}
 #' @param variables Response variables to plot, given as their indices or names
 #' @param parm Parameters to plot, given as their indices or names
 #' @param df Degrees of freedom for hypothesis tests
