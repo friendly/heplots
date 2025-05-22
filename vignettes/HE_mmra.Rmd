@@ -162,7 +162,6 @@ ggplot(Rohwer_long, aes(x, y, color = SES, shape = SES)) +
              scales = "free") +
   theme_bw(base_size = 16) +
   theme(legend.position = "bottom")
-
 ```
 
 Such plots form a framework for understanding model fits and statistical tests we turn to now.
@@ -343,7 +342,7 @@ knitr::include_graphics("fig/mmra-rohwer-HE3D.png")
 
 The MANCOVA model, `rohwer.mod`, has relatively simple interpretations
 (large effect of `SES`, with `ns` and `na` as the major predictors)
-but the test of relies on the assumption of homogeneity of slopes for the predictors.
+but the test of the `SES` effect relies on the assumption of homogeneity of slopes for the predictors.
 We can test this assumption as follows, by adding interactions of `SES`
 with each of the covariates:
 
@@ -358,8 +357,11 @@ stronger, however, when these terms are tested collectively using the
 `linearHypothesis()` function:
 
 ```{r, rohwer-mod2-test}
-(coefs <- rownames(coef(rohwer.mod2)))
-print(linearHypothesis(rohwer.mod2, coefs[grep(":", coefs)]), SSP=FALSE)
+# test interaction terms jointly
+coefs <- rownames(coef(Rohwer.mod2)) 
+interactions <- coefs[grep(":", coefs)] |> print()
+
+print(linearHypothesis(rohwer.mod2, interactions), SSP=FALSE)
 ```
 
 This model (`rohwer.mod2`) is similar in spirit to the two models

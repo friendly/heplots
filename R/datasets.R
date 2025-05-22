@@ -1016,6 +1016,7 @@ NULL
 #' \url{http://web.archive.org/web/20060830061414/http://www.unc.edu/~curran/srcd-docs/srcdmeth.pdf}.
 #' @keywords datasets
 #' @concept MMRA
+#' @concept robust
 #' @examples
 #' 
 #' library(car)

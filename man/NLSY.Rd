@@ -87,4 +87,5 @@ idx < cqplot(NLSY.mod2, id.n = 5)
 idx
 }
 \concept{MMRA}
+\concept{robust}
 \keyword{datasets}
