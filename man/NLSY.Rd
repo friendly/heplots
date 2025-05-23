@@ -54,14 +54,14 @@ scatterplotMatrix(NLSY, smooth=FALSE)
 
 # test control variables by themselves
 # -------------------------------------
-mod1 <- lm(cbind(read, math) ~ income + educ, data=NLSY)
-Anova(mod1)
-heplot(mod1, fill=TRUE)
+NLSY.mod1 <- lm(cbind(read, math) ~ income + educ, data=NLSY)
+Anova(NLSY.mod1)
+heplot(NLSY.mod1, fill=TRUE)
 
 # test of overall regression
-coefs <- rownames(coef(mod1))[-1]
-linearHypothesis(mod1, coefs)
-heplot(mod1, fill=TRUE, hypotheses=list("Overall"=coefs))
+coefs <- rownames(coef(NLSY.mod1))[-1]
+linearHypothesis(NLSY.mod1, coefs)
+heplot(NLSY.mod1, fill=TRUE, hypotheses=list("Overall"=coefs))
 
 # coefficient plot
 coefplot(NLSY.mod1, fill = TRUE,
@@ -73,17 +73,17 @@ coefplot(NLSY.mod1, fill = TRUE,
  
 # additional contribution of antisoc + hyperact over income + educ
 # ----------------------------------------------------------------
-mod2 <- lm(cbind(read,math) ~ antisoc + hyperact + income + educ, data=NLSY)
-Anova(mod2)
+NLSY.mod2 <- lm(cbind(read,math) ~ antisoc + hyperact + income + educ, data=NLSY)
+Anova(NLSY.mod2)
 
-coefs <- rownames(coef(mod2))[-1]
-heplot(mod2, fill=TRUE, hypotheses=list("Overall"=coefs, "mod2|mod1"=coefs[1:2]))
-linearHypothesis(mod2, coefs[1:2])
+coefs <- rownames(coef(NLSY.mod2))[-1]
+heplot(NLSY.mod2, fill=TRUE, hypotheses=list("Overall"=coefs, "mod2|mod1"=coefs[1:2]))
+linearHypothesis(NLSY.mod2, coefs[1:2])
 
-heplot(mod2, fill=TRUE, hypotheses=list("mod2|mod1"=coefs[1:2]))
+heplot(NLSY.mod2, fill=TRUE, hypotheses=list("mod2|mod1"=coefs[1:2]))
 
 # check for outliers
-idx < cqplot(NLSY.mod2, id.n = 5)
+idx <- cqplot(NLSY.mod2, id.n = 5)
 idx
 }
 \concept{MMRA}

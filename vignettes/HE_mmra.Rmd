@@ -252,15 +252,15 @@ slopes for the PA covariates to be equal.
 
 ```{r, rohwer-mod}
 # MANCOVA, assuming equal slopes
-rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, 
+Rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, 
                  data=Rohwer)
-Anova(rohwer.mod)
+Anova(Rohwer.mod)
 ```
 
 Note that, although the
 multivariate tests for two of the covariates (`ns` and `na`)
 are highly significant, univariate multiple regression tests for the
-separate responses [from `summary(rohwer.mod)`] are relatively weak.
+separate responses [from `summary(Rohwer.mod)`] are relatively weak.
 
 We can also test the global 5 df hypothesis, $\mathbf{B}=\mathbf{0}$, 
 that *all* covariates have null effects
@@ -271,17 +271,17 @@ of the PA tests predictors from the model.
 
 ```{r, rohwer-cov-names}
 covariates  <- c("n", "s", "ns", "na", "ss")
-# or: covariates <- rownames(coef(rohwer.mod))[-(1:2)]
+# or: covariates <- rownames(coef(Rohwer.mod))[-(1:2)]
 ```
 
 
 ```{r, rohwer-mod-test}
-Regr <- linearHypothesis(rohwer.mod, covariates)
+Regr <- linearHypothesis(Rohwer.mod, covariates)
 print(Regr, digits=4, SSP=FALSE)
 ```
 
 Then 2D views of the
-additive MANCOVA model `rohwer.mod` and the overall test for all covariates
+additive MANCOVA model `Rohwer.mod` and the overall test for all covariates
 are produced as follows, giving the plots in Figure \@ref(fig:rohwer-HE2).
 
 ```{r, rohwer-HE2}
@@ -293,14 +293,14 @@ are produced as follows, giving the plots in Figure \@ref(fig:rohwer-HE2).
 #| fig.cap="HE plot for `SAT` and `PPVT` (left) and for	`SAT` and `Raven` (right) using the MANCOVA model. The ellipses labeled 'Regr' show the test of the overall model, including all predictors."
 par(mar=c(4,4,3,1)+.1)
 colors <- c("red", "blue", rep("black",5), "#969696")
-heplot(rohwer.mod, 
+heplot(Rohwer.mod, 
        col=colors, variables=c(1,2),
        hypotheses=list("Regr" = covariates),
        fill = TRUE, fill.alpha = 0.1,
        cex=1.5, lwd=c(2, rep(3,5), 4),
        main="(SAT, PPVT) in Rohwer MANCOVA model")
 
-heplot(rohwer.mod, 
+heplot(Rohwer.mod, 
        col=colors,  variables=c(1,3),
        hypotheses=list("Regr" = covariates),
        fill = TRUE, fill.alpha = 0.1,
@@ -320,7 +320,7 @@ the `pairs.mlm()` function,
 ```{r, rohwer-HE3}
 #| fig.width=6,
 #| fig.height=6
-pairs(rohwer.mod, col=colors,
+pairs(Rohwer.mod, col=colors,
       hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")),
       cex=1.3, lwd=c(2, rep(3,5), 4))
 ```
@@ -328,7 +328,7 @@ pairs(rohwer.mod, col=colors,
 or as a 3D plot, using `heplot3d()` as shown in Figure \@ref(fig:rohwer-HE3D).
 ```{r, rohwer-HE3D-code, eval=FALSE}
 colors <- c("pink", "blue", rep("black",5), "#969696")
-heplot3d(rohwer.mod, col=colors,
+heplot3d(Rohwer.mod, col=colors,
 	hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
 ```
 ```{r rohwer-HE3D}
@@ -340,16 +340,16 @@ knitr::include_graphics("fig/mmra-rohwer-HE3D.png")
 
 ## Testing homogeneity of regression
 
-The MANCOVA model, `rohwer.mod`, has relatively simple interpretations
+The MANCOVA model, `Rohwer.mod`, has relatively simple interpretations
 (large effect of `SES`, with `ns` and `na` as the major predictors)
 but the test of the `SES` effect relies on the assumption of homogeneity of slopes for the predictors.
 We can test this assumption as follows, by adding interactions of `SES`
 with each of the covariates:
 
 ```{r, rohwer-mod2}
-rohwer.mod2 <- lm(cbind(SAT, PPVT, Raven) ~ SES * (n + s + ns + na + ss),
+Rohwer.mod2 <- lm(cbind(SAT, PPVT, Raven) ~ SES * (n + s + ns + na + ss),
                   data=Rohwer)
-Anova(rohwer.mod2)
+Anova(Rohwer.mod2)
 ```
 It appears from the above that there is only weak evidence of unequal slopes
 from the separate `SES:` terms. The evidence for heterogeneity is
@@ -361,16 +361,16 @@ stronger, however, when these terms are tested collectively using the
 coefs <- rownames(coef(Rohwer.mod2)) 
 interactions <- coefs[grep(":", coefs)] |> print()
 
-print(linearHypothesis(rohwer.mod2, interactions), SSP=FALSE)
+print(linearHypothesis(Rohwer.mod2, interactions), SSP=FALSE)
 ```
 
-This model (`rohwer.mod2`) is similar in spirit to the two models
+This model (`Rohwer.mod2`) is similar in spirit to the two models
 (`rohwer.ses1` and `rohwer.ses2`)
 fit for the two SES groups separately and show in Figure \@ref(fig:rohwer-HE1),
-except that model `rohwer.mod2` assumes a common within-groups error covariance matrix
+except that model `Rohwer.mod2` assumes a common within-groups error covariance matrix
 and allows overall tests.
 
-To illustrate model `rohwer.mod2`, we construct an HE plot for
+To illustrate model `Rohwer.mod2`, we construct an HE plot for
 `SAT` and `PPVT` shown in Figure \@ref(fig:rohwer-HE4). 
 To simplify this display, we show the hypothesis ellipses
 for the overall effects of the PA tests in the baseline high-SES group, and
@@ -387,10 +387,10 @@ in the low-SES group.
 ```{r, rohwer-HE4}
 #| echo=-1,
 #| out.width="70%",
-#| fig.cap="HE plot for `SAT` and `PPVT`, fitting the model `rohwer.mod2`	that allows unequal slopes for the covariates."
+#| fig.cap="HE plot for `SAT` and `PPVT`, fitting the model `Rohwer.mod2`	that allows unequal slopes for the covariates."
 par(mar=c(4,4,1,1)+.1)
 colors <- c("red", "blue", rep("black",5), "#969696")
-heplot(rohwer.mod2, col=c(colors, "brown"), 
+heplot(Rohwer.mod2, col=c(colors, "brown"), 
       terms=c("SES", "n", "s", "ns", "na", "ss"), 
       hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss"),
                       "Slopes" = coefs[grep(":", coefs)]))

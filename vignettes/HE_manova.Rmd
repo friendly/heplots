@@ -369,7 +369,6 @@ This plot overlays those for both scaling, using thicker lines for the
 effect scaling.
 
 ```{r, plastic1a, echo=-1}
-#| echo=-1,
 #| fig.cap = "HE plot for effects on `tear` and `gloss` according to the factors `rate`, `additive` and their interaction, `rate:additive`. The thicker lines show effect size scaling; the thinner lines show significance scaling."
 par(mar = c(4,4,1,1)+.1)
 ## Compare evidence and effect scaling 
