@@ -1,0 +1,15 @@
+
+https://bsky.app/profile/xangregg.bsky.social/post/3lfznpbs62226
+
+Small #dataviz
+ exercise: how would you communicate this college applicants data?
+https://www.dailytarheel.com/article/2025/01/university-common-data-set
+
+year,rate,applicants
+2019,22.63,42466
+2020,23.54,44382
+2021,19.24,53776
+2022,16.85,57221
+2023,18.74,57902
+2024,15.56,66535
+
