@@ -1,5 +1,7 @@
 ## Version 1.7.5 
 
+Fix bugs and add some args for better control
+
 * Edit description of NLSY data and extend the examples to show `coefplot()`, `cqplot()`
 * Revise documentation for `robmlm()`
 * Add dev/pulpfiber.R for a classic robust MLM example
