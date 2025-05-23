@@ -32,11 +32,44 @@ tasks can predict performance on some measures of aptitude and achievement.
 \details{
 The variables \code{SAT}, \code{PPVT} and \code{Raven} are responses to be
 potentially explained by performance on the paired-associate (PA) learning
-task\code{n}, \code{s}, \code{ns}, \code{na}, and \code{ss}.
+tasks, \code{n}, \code{s}, \code{ns}, \code{na}, and \code{ss},
+which differed in the syntactic and semantic relationship between the stimulus and response words in each pair.
+
+
+Timm (1975) does not give a source, but the most relevant studies are Rowher & Ammons (1968) and Rohwer & Levin (1971).
+The paired-associate tasks are described as:
+\describe{
+   \item{\code{n}}{(named): Simple paired-associate task where participants learn pairs of nouns with no additional context}
+   \item{\code{s}}{(sentence): Participants learn pairs embedded within a sentence}
+   \item{\code{ns}}{(named sentence): A combination where participants learn noun pairs with sentence context}
+   \item{\code{na}}{(named action): Pairs are learned with an action relationship between them}
+   \item{\code{ss}}{(sentence still): Similar to the sentence condition but with static presentation}
+}
 }
 \examples{
 
 str(Rohwer)
+
+# Plot responses against each predictor
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+
+yvars <- c("SAT", "PPVT", "Raven" )
+xvars <- c("n", "s", "ns", "na", "ss")
+Rohwer_long <- Rohwer \%>\%
+  pivot_longer(cols = all_of(xvars), names_to = "xvar", values_to = "x") |>
+  pivot_longer(cols = all_of(yvars), names_to = "yvar", values_to = "y") |>
+  mutate(xvar = factor(xvar, xvars), yvar = factor(yvar, yvars))
+
+ggplot(Rohwer_long, aes(x, y, color = SES, shape = SES, fill = SES)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ x) +
+  stat_ellipse(geom = "polygon", level = 0.68, alpha = 0.1) +
+  facet_grid(yvar ~ xvar, scales = "free") +
+  labs(x = "predictor", y = "response") +
+  theme_bw(base_size = 14)
+
 
 ## ANCOVA, assuming equal slopes
 rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, data=Rohwer)
@@ -70,6 +103,12 @@ heplot(rohwer.ses2, add=TRUE, col=c("blue", "black"), grand.mean=TRUE, error.ell
 Friendly, M. (2007).  HE plots for Multivariate General Linear
 Models.  \emph{Journal of Computational and Graphical Statistics},
 \bold{16}(2) 421--444.  \url{http://datavis.ca/papers/jcgs-heplots.pdf}
+
+Rohwer, W.D., Jr., & Levin, J.R. (1968). Action, meaning and stimulus selection
+in paired-associate learning. \emph{Journal of Verbal Learning and Verbal Behavior}, \bold{7}: 137-141.
+
+Rohwer, W. D., Jr., & Ammons, M. S. (1971). Elaboration training and paired-associate learning efficiency in children. 
+\emph{Journal of Educational Psychology}, \bold{62}(5), 376-383.
 }
 \concept{MANCOVA}
 \concept{MMRA}

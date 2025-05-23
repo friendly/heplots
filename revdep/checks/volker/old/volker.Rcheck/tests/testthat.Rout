@@ -1,0 +1,74 @@
+
+R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # This file is part of the standard setup for testthat.
+> # It is recommended that you do not modify it.
+> #
+> # Where should you do additional test configuration?
+> # Learn more about the roles of various files in:
+> # * https://r-pkgs.org/tests.html
+> # * https://testthat.r-lib.org/reference/test_package.html#special-files
+> 
+> library(testthat)
+Warning message:
+package 'testthat' was built under R version 4.4.3 
+> library(volker)
+
+Attaching package: 'volker'
+
+The following object is masked from 'package:stats':
+
+    filter
+
+> 
+> test_check("volker")
+
+
+processing file: tables.Rmd
+output file: tables.knit.md
+
+"C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS tables.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output tables.html --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --section-divs --template "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmd\h\default.html" --highlight-style pygments --css "C:/R/Projects/heplots/revdep/library/volker/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css" --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\friendly\AppData\Local\Temp\RtmpaiC5ZA\rmarkdown-str64484bf66f5f.html" 
+
+Output created: tables.html
+
+
+processing file: plots.Rmd
+output file: plots.knit.md
+
+"C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS plots.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output plots.html --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --section-divs --template "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmd\h\default.html" --highlight-style pygments --css "C:/R/Projects/heplots/revdep/library/volker/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css" --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\friendly\AppData\Local\Temp\RtmpaiC5ZA\rmarkdown-str644856c83f9f.html" 
+
+Output created: plots.html
+
+
+processing file: reports.Rmd
+output file: reports.knit.md
+
+"C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS reports.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output reports.html --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --template "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --variable theme=bootstrap --css "C:/R/Projects/heplots/revdep/checks/volker/old/volker.Rcheck/volker/extdata/styles.css" --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\friendly\AppData\Local\Temp\RtmpaiC5ZA\rmarkdown-str644863f63f84.html" 
+
+Output created: reports.html
+[ FAIL 0 | WARN 2 | SKIP 8 | PASS 131 ]
+
+══ Skipped tests (8) ═══════════════════════════════════════════════════════════
+• On CRAN (8): 'test-clusters.R:22:3', 'test-factors.R:14:3',
+  'test-idx.R:13:3', 'test-idx.R:22:3', 'test-idx.R:48:3',
+  'test-tables.R:112:3', 'test-tables.R:329:3', 'test_skim.R:17:3'
+
+[ FAIL 0 | WARN 2 | SKIP 8 | PASS 131 ]
+> 
+> proc.time()
+   user  system elapsed 
+  40.43    1.54   52.29 

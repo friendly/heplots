@@ -238,3 +238,4 @@ covEllipses(iris[,1:4], iris$Species,
 Michael Friendly
 }
 \keyword{hplot}
+\keyword{multivariate}

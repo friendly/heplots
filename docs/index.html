@@ -20,8 +20,8 @@
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Visualizing Hypothesis Tests in Multivariate Linear Models">
-<meta name="description" content="Provides HE plot and other functions for visualizing hypothesis tests in multivariate linear models. HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions). The related candisc package provides visualizations in a reduced-rank canonical discriminant space when there are more than a few response variables.">
-<meta property="og:description" content="Provides HE plot and other functions for visualizing hypothesis tests in multivariate linear models. HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions). The related candisc package provides visualizations in a reduced-rank canonical discriminant space when there are more than a few response variables.">
+<meta name="description" content="Provides HE plot and other functions for visualizing hypothesis tests in multivariate linear models. HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of the models such as robust methods and homogeneity of variance covariance matrices. The related candisc package provides visualizations in a reduced-rank canonical discriminant space when there are more than a few response variables.">
+<meta property="og:description" content="Provides HE plot and other functions for visualizing hypothesis tests in multivariate linear models. HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of the models such as robust methods and homogeneity of variance covariance matrices. The related candisc package provides visualizations in a reduced-rank canonical discriminant space when there are more than a few response variables.">
 <meta property="og:image" content="https://friendly.github.io/heplots/logo.png">
 </head>
 <body>
@@ -32,7 +32,7 @@
 
     <a class="navbar-brand me-2" href="index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,12 +75,12 @@
 <strong>Visualizing Hypothesis Tests in Multivariate Linear Models</strong><a class="anchor" aria-label="anchor" href="#visualizing-hypothesis-tests-in-multivariate-linear-models"></a>
 </h2>
 <!-- Version 1.7.2 -->
-<p>Version 1.7.3</p>
+<p>Version 1.7.4</p>
 </div>
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h2>
-<p>The <code>heplots</code> package provides functions for visualizing hypothesis tests in multivariate linear models (MANOVA, multivariate multiple regression, MANCOVA, and repeated measures designs).</p>
+<p>The <code>heplots</code> package provides functions for visualizing hypothesis tests in multivariate linear models (“MLM” = {MANOVA, multivariate multiple regression, MANCOVA, and repeated measures designs}). It also provides other tools for analysis and graphical display of MLMs.</p>
 <p>HE plots represent sums-of-squares-and-products matrices for linear hypotheses (<strong>H</strong>) and for error (<strong>E</strong>) using ellipses (in two dimensions), ellipsoids (in three dimensions), or by line segments in one dimension. For the theory and applications, see:</p>
 <ul>
 <li>
@@ -101,8 +101,8 @@
 <ul>
 <li>robust MLMs, using iteratively re-weighted least squared to down-weight observations with large multivariate residuals, <code><a href="reference/robmlm.html">robmlm()</a></code>.</li>
 <li>
-<code><a href="reference/Mahalanobis.html">Mahalanobis()</a></code> calculates classical and robust Mahalanobis squared distances using MCD and MVE estimators of center and covariance.</li>
-<li>visualizing tests for equality of covariance matrices in MLMs (Box’s M test), <code><a href="reference/boxM.html">boxM()</a></code> and <code><a href="reference/plot.boxM.html">plot.boxM()</a></code>.</li>
+<code><a href="reference/Mahalanobis.html">Mahalanobis()</a></code> calculates classical and <em>robust</em> Mahalanobis squared distances using MCD and MVE estimators of center and covariance.</li>
+<li>visualizing tests for equality of covariance matrices in MLMs (Box’s M test), <code><a href="reference/boxM.html">boxM()</a></code> and <code><a href="reference/plot.boxM.html">plot.boxM()</a></code>. Also: <code><a href="reference/bartlettTests.html">bartlettTests()</a></code> and <code>LeveneTests()</code> for homogeneity of variance for each response in a MLM.</li>
 <li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>χ</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math> Q-Q plots for MLMs (<code><a href="reference/cqplot.html">cqplot()</a></code>) to detect outliers and assess multivariate normality of residuals.</li>
 <li>bivariate coefficient plots showing elliptical confidence regions (<code><a href="reference/coefplot.html">coefplot()</a></code>).</li>
@@ -110,7 +110,7 @@
 <p>In this respect, the <code>heplots</code> package now aims to provide a wide range of tools for analyzing and visualizing multivariate response linear models, together with other packages:</p>
 <p><a href="https://friendly.github.io/candisc/" class="external-link"><img src="https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png" height="80" alt="candisc logo" style="float:right; height:80px;"></a></p>
 <ul>
-<li>The related <a href="https://friendly.github.io/candisc/" class="external-link"><code>candisc</code></a> package provides HE plots in <strong>canonical discriminant</strong> space, the space of linear combinations of the responses that show the maximum possible effects and for canonical correlation in multivariate regression designs.</li>
+<li>The related <a href="https://friendly.github.io/candisc/" class="external-link"><code>candisc</code></a> package provides HE plots in <strong>canonical discriminant</strong> space, the space of linear combinations of the responses that show the maximum possible effects and for canonical correlation in multivariate regression designs. See the <a href="https://friendly.github.io/candisc/" class="external-link">package documentation</a> for details.</li>
 </ul>
 <p><a href="https://friendly.github.io/mvinfluence/" class="external-link"><img src="https://raw.githubusercontent.com/friendly/mvinfluence/master/man/figures/logo.png" height="80" alt="mvinfluence logo" style="float:right; height:80px;"></a></p>
 <ul>
@@ -157,14 +157,15 @@
 <h2 id="other-functions">Other functions<a class="anchor" aria-label="anchor" href="#other-functions"></a>
 </h2>
 <ul>
-<li><p><code><a href="reference/glance.mlm.html">glance.mlm()</a></code> extends <code><a href="https://broom.tidymodels.org/reference/glance.lm.html" class="external-link">broom::glance.lm()</a></code> to multivariate response models, giving a one-line statistical summary for each response variable.</p></li>
+<li><p><code><a href="reference/glance.mlm.html">glance.mlm()</a></code> extends <code><a href="https://broom.tidymodels.org/reference/glance.lm.html" class="external-link">broom::glance.lm()</a></code> to multivariate response models, giving a one-line statistical summary for each response variable. <code><a href="reference/uniStats.html">uniStats()</a></code> does something similar, but formatted more like a ANOVA table.</p></li>
 <li><p><code><a href="reference/boxM.html">boxM()</a></code> Calculates Box’s <em>M</em> test for homogeneity of covariance matrices in a MANOVA design. A <code>plot</code> method displays a visual representation of the components of the test. Associated with this, <code>bartletTests()</code> and <code>levineTests()</code> give the univariate tests of homogeneity of variance for each response measure in a MLM.</p></li>
 <li><p><code><a href="reference/covEllipses.html">covEllipses()</a></code> draw covariance (data) ellipses for one or more group, optionally including the ellipse for the pooled within-group covariance.</p></li>
+<li><p><code><a href="reference/coefplot.html">coefplot()</a></code> for an MLM object draws bivariate confidence ellipses.</p></li>
 </ul>
 <div class="section level3">
 <h3 id="repeated-measure-designs">Repeated measure designs<a class="anchor" aria-label="anchor" href="#repeated-measure-designs"></a>
 </h3>
-<p>For repeated measure designs, between-subject effects and within-subject effects must be plotted separately, because the error terms (<strong>E</strong> matrices) differ. For terms involving within-subject effects, these functions carry out a linear transformation of the matrix <strong>Y</strong> of responses to a matrix <strong>Y M</strong>, where <strong>M</strong> is the model matrix for a term in the intra-subject design and produce plots of the H and E matrices in this transformed space. The vignette <code>"repeated"</code> describes these graphical methods for repeated measures designs. (At present, this vignette is only available at <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a>.)</p>
+<p>For repeated measure designs, between-subject effects and within-subject effects must be plotted separately, because the error terms (<strong>E</strong> matrices) differ. For terms involving within-subject effects, these functions carry out a linear transformation of the matrix <strong>Y</strong> of responses to a matrix <strong>Y M</strong>, where <strong>M</strong> is the model matrix for a term in the intra-subject design and produce plots of the <strong>H</strong> and <strong>E</strong> matrices in this transformed space. The vignette <code>"repeated"</code> describes these graphical methods for repeated measures designs. (This paper <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a> is now provided as a PDF vignette.)</p>
 </div>
 </div>
 <div class="section level2">
@@ -469,12 +470,16 @@ HE plot of sepal length and Sepal width for the iris data, showing lines reflect
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">iris.mod</span>, hypotheses<span class="op">=</span><span class="va">hyp</span>, hyp.labels<span class="op">=</span><span class="cn">FALSE</span>,</span>
 <span>      fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-iris3-1.png" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-iris3-1.png" alt="Scatterplot matrix of pairwise HE plots for the iris data." width="100%"><p class="caption">
+Scatterplot matrix of pairwise HE plots for the iris data.
+</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="canonical-discriminant-view">Canonical discriminant view<a class="anchor" aria-label="anchor" href="#canonical-discriminant-view"></a>
 </h3>
-<p>For more than two response variables, a multivariate effect can be viewed more simply by projecting the data into canonical space — the linear combinations of the responses which show the greatest differences among the group means relative to within-group scatter. The computations are performed with the <a href="http://github.com/friendly/candisc" class="external-link"><code>candisc</code></a> package, which has an <code>heplot.candisc()</code> method.</p>
+<p>For more than two response variables, a multivariate effect can be viewed more simply by projecting the data into canonical space — the linear combinations of the responses which show the greatest differences among the group means relative to within-group scatter. The computations are performed with the <a href="https://github.com/friendly/candisc/" class="external-link"><code>candisc</code></a> package, which has an <code>heplot.candisc()</code> method.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/friendly/candisc/" class="external-link">candisc</a></span><span class="op">)</span></span>
 <span><span class="va">iris.can</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://friendly.github.io/candisc/reference/candisc.html" class="external-link">candisc</a></span><span class="op">(</span><span class="va">iris.mod</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -497,18 +502,25 @@ HE plot of sepal length and Sepal width for the iris data, showing lines reflect
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># HE plot in canonical space</span></span>
 <span><span class="fu"><a href="reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">iris.can</span>, var.pos <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-iris-can-1.png" width="60%"></p>
+<div class="figure">
+<img src="reference/figures/README-iris-can-1.png" alt="Canonical HE plot for the iris data" width="60%"><p class="caption">
+Canonical HE plot for the iris data
+</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="covariance-ellipses">Covariance ellipses<a class="anchor" aria-label="anchor" href="#covariance-ellipses"></a>
 </h3>
 <p>MANOVA relies on the assumption that within-group covariance matrices are all equal. It is useful to visualize these in the space of some of the predictors. <code><a href="reference/covEllipses.html">covEllipses()</a></code> provides this both for classical and robust (<code>method="mve"</code>) estimates. The figure below shows these for the three Iris species and the pooled covariance matrix, which is the same as the <strong>E</strong> matrix used in MANOVA tests.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">4</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">+</span><span class="fl">.1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>, </span>
 <span>            fill<span class="op">=</span><span class="cn">TRUE</span>, method<span class="op">=</span><span class="st">"mve"</span>, add<span class="op">=</span><span class="cn">TRUE</span>, labels<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-iris4-1.png" width="80%"></p>
+<div class="figure">
+<img src="reference/figures/README-iris4-1.png" alt="Covariance ellipses for the iris data, showing the classical and robust estimates." width="80%"><p class="caption">
+Covariance ellipses for the iris data, showing the classical and robust estimates.
+</p>
+</div>
 </div>
 </div>
 <div class="section level2">
@@ -566,10 +578,10 @@ HE plot of sepal length and Sepal width for the iris data, showing lines reflect
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
 <li><a href="http://cran.r-project.org/package=heplots" class="external-link"><img src="http://www.r-pkg.org/badges/version/heplots" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://friendly.r-universe.dev" class="external-link"><img src="https://friendly.r-universe.dev/badges/heplots" alt="R_Universe"></a></li>
-<li><a href="https://github.com/friendly/heplots" class="external-link"><img src="https://img.shields.io/github/last-commit/friendly/heplots" alt="Last Commit"></a></li>
-<li><a href="https://cran.r-project.org/package=heplots" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/heplots"></a></li>
+<li><a href="https://github.com/friendly/heplots/" class="external-link"><img src="https://img.shields.io/github/last-commit/friendly/heplots" alt="Last Commit"></a></li>
+<li><a href="https://cran.r-project.org/package=heplots" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/heplots" alt="Downloads"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/13908453" class="external-link"><img src="https://zenodo.org/badge/13908453.svg" alt="DOI"></a></li>
-<li><a href="https://friendly.github.io/heplots"><img src="https://img.shields.io/badge/pkgdown%20site-blue"></a></li>
+<li><a href="https://friendly.github.io/heplots/"><img src="https://img.shields.io/badge/pkgdown%20site-blue" alt="Docs"></a></li>
 </ul>
 </div>
 

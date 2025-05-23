@@ -7,10 +7,10 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
 [![R_Universe](https://friendly.r-universe.dev/badges/heplots)](https://friendly.r-universe.dev)
 [![Last
-Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://github.com/friendly/heplots)
-[![](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
+Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://github.com/friendly/heplots/)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
 [![DOI](https://zenodo.org/badge/13908453.svg)](https://zenodo.org/badge/latestdoi/13908453)
-[![](https://img.shields.io/badge/pkgdown%20site-blue)](https://friendly.github.io/heplots)
+[![Docs](https://img.shields.io/badge/pkgdown%20site-blue)](https://friendly.github.io/heplots/)
 <!-- badges: end -->
 
 # heplots <img src="man/figures/logo.png" height="200" style="float:right; height:200px;"/>
@@ -19,13 +19,14 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 <!-- Version 1.7.2 -->
 
-Version 1.7.3
+Version 1.7.4
 
 ## Description
 
 The `heplots` package provides functions for visualizing hypothesis
-tests in multivariate linear models (MANOVA, multivariate multiple
-regression, MANCOVA, and repeated measures designs).
+tests in multivariate linear models (“MLM” = {MANOVA, multivariate
+multiple regression, MANCOVA, and repeated measures designs}). It also
+provides other tools for analysis and graphical display of MLMs.
 
 HE plots represent sums-of-squares-and-products matrices for linear
 hypotheses (**H**) and for error (**E**) using ellipses (in two
@@ -57,7 +58,7 @@ Other topics now addressed here include:
 - robust MLMs, using iteratively re-weighted least squared to
   down-weight observations with large multivariate residuals,
   `robmlm()`.
-- `Mahalanobis()` calculates classical and robust Mahalanobis squared
+- `Mahalanobis()` calculates classical and *robust* Mahalanobis squared
   distances using MCD and MVE estimators of center and covariance.
 - visualizing tests for equality of covariance matrices in MLMs (Box’s M
   test), `boxM()` and `plot.boxM()`. Also: `bartlettTests()` and
@@ -134,8 +135,9 @@ effects in variable (**data**) space, for one or more response variables
 
 - `covEllipses()` draw covariance (data) ellipses for one or more group,
   optionally including the ellipse for the pooled within-group
-  covariance. `coefplot()` for an MLM object draws bivariate confidence
-  ellipses.
+  covariance.
+
+- `coefplot()` for an MLM object draws bivariate confidence ellipses.
 
 ### Repeated measure designs
 
@@ -282,7 +284,14 @@ pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
       fill=TRUE, fill.alpha=0.1)
 ```
 
-<img src="man/figures/README-iris3-1.png" width="100%" />
+<div class="figure">
+
+<img src="man/figures/README-iris3-1.png" alt="Scatterplot matrix of pairwise HE plots for the iris data." width="100%" />
+<p class="caption">
+Scatterplot matrix of pairwise HE plots for the iris data.
+</p>
+
+</div>
 
 ### Canonical discriminant view
 
@@ -290,7 +299,7 @@ For more than two response variables, a multivariate effect can be
 viewed more simply by projecting the data into canonical space — the
 linear combinations of the responses which show the greatest differences
 among the group means relative to within-group scatter. The computations
-are performed with the [`candisc`](http://github.com/friendly/candisc)
+are performed with the [`candisc`](https://github.com/friendly/candisc/)
 package, which has an `heplot.candisc()` method.
 
 ``` r
@@ -323,7 +332,14 @@ variables.
 heplot(iris.can, var.pos = 1, scale = 40)
 ```
 
-<img src="man/figures/README-iris-can-1.png" width="60%" />
+<div class="figure">
+
+<img src="man/figures/README-iris-can-1.png" alt="Canonical HE plot for the iris data" width="60%" />
+<p class="caption">
+Canonical HE plot for the iris data
+</p>
+
+</div>
 
 ### Covariance ellipses
 
@@ -335,13 +351,20 @@ three Iris species and the pooled covariance matrix, which is the same
 as the **E** matrix used in MANOVA tests.
 
 ``` r
-par(mar=c(4,4,1,1)+.1)
 covEllipses(iris[,1:4], iris$Species)
 covEllipses(iris[,1:4], iris$Species, 
             fill=TRUE, method="mve", add=TRUE, labels="")
 ```
 
-<img src="man/figures/README-iris4-1.png" width="80%" />
+<div class="figure">
+
+<img src="man/figures/README-iris4-1.png" alt="Covariance ellipses for the iris data, showing the classical and robust estimates." width="80%" />
+<p class="caption">
+Covariance ellipses for the iris data, showing the classical and robust
+estimates.
+</p>
+
+</div>
 
 ## References
 

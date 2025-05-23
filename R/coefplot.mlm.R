@@ -5,6 +5,9 @@
 # -- now allow ellipses to be filled
 # -- now pass label.pos to label.ellipse
 
+# TODO: Allow passing cex.lab. Doesn't work, possibly b/c conflict with cex.label.
+# Calls for a refactoring: cex.label -> label.cex. Note: there is already label.pos
+
 
 
 #' Coefficient plots for Multivariate Linear Models
@@ -16,8 +19,8 @@
 #' 
 #' @aliases coefplot coefplot.mlm
 #' @param object A multivariate linear model, such as fit by \code{lm(cbind(y1,
-#'             y2, ...) ~ ...)}
-#' @param \dots Other parameters passed to methods
+#'             y2, ...) ~ terms, ...)}
+#' @param \dots Other parameters passed to \code{\link[graphics]{plot}}
 #' @param variables Response variables to plot, given as their indices or names
 #' @param parm Parameters to plot, given as their indices or names
 #' @param df Degrees of freedom for hypothesis tests
@@ -43,8 +46,10 @@
 #' @param col Colors for the confidence ellipses, points, lines
 #' @param cex Character size for points showing parameter estimates
 #' @param cex.label Character size for ellipse labels
+#' @param cex.lab Character size for axis labels. Defaults to \code{par("cex.lab")}.
 #' @param lty.zero,col.zero,pch.zero Line type, color and point symbol for
-#' horizontal and vertical lines at 0, 0.
+#'        horizontal and vertical lines at 0, 0. These default to \code{lty.zero = 3},
+#'        \code{col.zero = 1} (black) and \code{pch.zero = '+'}.
 #' @param verbose logical.  Print parameter estimates and variance-covariance
 #'        for each parameter?
 #' @return Returns invisibly a list of the coordinates of the ellipses drawn
@@ -92,6 +97,7 @@ coefplot.mlm <- function(object,
                          add=FALSE,
                          lwd = 1, lty = 1, pch = 19, col=palette(),
                          cex=2, cex.label=1.5,
+                         cex.lab = par("cex.lab"),
                          lty.zero = 3, col.zero = 1, pch.zero = '+',
                          verbose=FALSE,
                          ...)
@@ -100,7 +106,7 @@ coefplot.mlm <- function(object,
   vcovParm <- function(vcov, var, parm) {
 #		which <- as.vector(t(outer( var, parm, paste, sep=":")))
   	which <- paste(var, parm, sep=':')
-  	vcov[which,which]
+  	vcov[which, which]
   }
 
   ell <- function(center = rep(0,2) , shape = diag(2) , radius = 1, n = 100,
@@ -112,11 +118,12 @@ coefplot.mlm <- function(object,
 
 	# determine parameters to plot; allow parameters to be passed by names or numbers
   cf <- coef(object)
+  if(!intercept) cf <- cf[-1,]
+
   if(is.null(parm)) parm <- 1:nrow(cf)
   if(is.numeric(parm) | is.logical(parm)) parm <- rownames(cf)[parm]
   if(is.character(parm)) parm <- which(rownames(cf) %in% parm)
-  if(!intercept) cf <- cf[-1,]
-
+  cf <- cf[parm, ]
 
   var.names <- colnames(cf)
   parm.names <- rownames(cf)
@@ -189,7 +196,10 @@ coefplot.mlm <- function(object,
 	ylim <- if(missing(ylim)) c(min[2], max[2]) else ylim
 
   if (!add) {
-  	plot(xlim, ylim,  type = "n", xlab=xlab, ylab=ylab, main=main, axes=axes, ...)
+  	plot(xlim, ylim,  type = "n", 
+  	     xlab=xlab, ylab=ylab, 
+  	     main=main, axes=axes,
+  	     cex.lab = cex.lab, ...)
 #  	abline(h=0, lty=3)
 #  	abline(v=0, lty=3)
   	mark.H0(col=col.zero, lty=lty.zero, pch='+', cex=cex)

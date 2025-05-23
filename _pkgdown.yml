@@ -67,6 +67,7 @@ reference:
     - gsorth
     - interpPlot
     - label.ellipse
+    - noteworthy
     - termMeans
     - statList
     - trans.colors
@@ -84,6 +85,7 @@ reference:
     - MockJury
     - NLSY
     - NeuroCog
+    - oral
     - Oslo
     - Overdose
     - Parenting
@@ -105,5 +107,5 @@ reference:
     - WeightLoss
     - mathscore
     - schooldata
+    - schoolsites
     - dogfood
-    - oral

@@ -1,0 +1,53 @@
+Package: heplots
+Type: Package
+Title: Visualizing Hypothesis Tests in Multivariate Linear Models
+Version: 1.7.4
+Date: 2025-04-15
+Authors@R: c(
+            person(given = "Michael", 
+                   family = "Friendly", 
+                   role=c("aut", "cre"), 
+                   email="friendly@yorku.ca",
+                   comment = c(ORCID = "0000-0002-3237-0941")),
+            person(given = "John", 
+                   family = "Fox", role="aut",
+                   comment = c(ORCID = "0000-0002-1196-8012")),
+            person(given = "Georges", family = "Monette", role="aut", comment = c(ORCID = "0000-0003-0076-5532")),
+            person(given = "Phil", family="Chalmers", role="ctb", comment = c(ORCID="0000-0001-5332-2810")),
+            person(given = "Duncan", family = "Murdoch", role="ctb"))
+Maintainer: Michael Friendly <friendly@yorku.ca>
+Description: Provides HE plot and other functions for visualizing hypothesis
+    tests in multivariate linear models. HE plots represent sums-of-squares-and-products 
+    matrices for linear hypotheses and for error using ellipses (in two
+    dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of the models
+    such as robust methods and homogeneity of variance covariance matrices.
+    The related 'candisc' package provides visualizations in a reduced-rank canonical discriminant space when
+    there are more than a few response variables.
+Language: en-US
+Depends: R (>= 4.1.0), broom
+Imports: car, MASS, graphics, grDevices, stats, magrittr, purrr, rgl,
+        tibble
+Suggests: candisc, carData, effects, reshape, gplots, nlme, lattice,
+        reshape2, corrgram, animation, mvinfluence, knitr, litedown,
+        rmarkdown, markdown, dplyr, tidyr, ggplot2, bookdown,
+        patchwork, tinytable, glue, here, Sleuth2, rrcov, archdata,
+        qqtest, vcdExtra, R.rsp
+LazyLoad: yes
+LazyData: yes
+BugReports: https://github.com/friendly/heplots/issues
+License: GPL (>= 2)
+URL: http://friendly.github.io/heplots/,
+        https://github.com/friendly/heplots
+RoxygenNote: 7.3.2
+Encoding: UTF-8
+VignetteBuilder: knitr, R.rsp
+RemoteType: local
+RemoteUrl: C:\R\Projects\heplots
+NeedsCompilation: no
+Packaged: 2025-04-15 22:08:27 UTC; friendly
+Author: Michael Friendly [aut, cre] (<https://orcid.org/0000-0002-3237-0941>),
+  John Fox [aut] (<https://orcid.org/0000-0002-1196-8012>),
+  Georges Monette [aut] (<https://orcid.org/0000-0003-0076-5532>),
+  Phil Chalmers [ctb] (<https://orcid.org/0000-0001-5332-2810>),
+  Duncan Murdoch [ctb]
+Built: R 4.4.1; ; 2025-04-15 22:08:28 UTC; windows

@@ -1,0 +1,124 @@
+url: https://friendly.github.io/heplots
+
+template:
+  bootstrap: 5
+  # params:
+  #   bootswatch: cerulean
+  bslib:
+    base_font: {google: "Roboto"}
+    heading_font: {google: "Roboto Slab"}
+    code_font: {google: "JetBrains Mono"}
+
+
+figures:
+  other.parameters:
+    rgl:
+      fig.asp: 1
+
+navbar:
+  structure:
+    left:  [intro, reference, articles, news]
+    right: [search, github, bluesky]
+
+  components:
+    reference:
+      - title: HE plots
+        desc:  Hypothesis-Error plots
+        contents:
+        - starts_with("he")
+        - pairs.mlm
+        - mark.H0
+    
+      - title: Homogeneity of Variance
+        desc: Tests and plots for homogeneity of variances and covariances
+        contents:
+        - bartlettTests
+        - boxM
+        - leveneTests
+        - logdetCI
+        - plot.boxM
+    
+      - title: Robust MLMs
+        desc: Robust multivariate linear models
+        contents:
+        - cqplot
+        - Mahalanobis
+        - robmlm
+        - plot.robmlm
+        - summary.robmlm
+    
+      - title: Other plots & methods
+        desc: Other plots and methods for multivariate linear models
+        contents:
+        - coefplot
+        - covEllipses
+        - glance.mlm
+        - uniStats
+    
+      - title: Utility
+        desc: Utility functions
+        contents:
+        - arrow3d
+        - bbox3d
+        - colDevs
+        - colMeansList
+        - covList
+        - cross3d
+        - df.terms
+        - etasq
+        - Ellipsoid
+        - ellipse.axes
+        - ellipse.box
+        - ellipse3d.axes
+        - gsorth
+        - interpPlot
+        - label.ellipse
+        - termMeans
+        - statList
+        - trans.colors
+    
+      - title: Data sets
+        contents:
+        - AddHealth
+        - Adopted
+        - Bees
+        - Diabetes
+        - FootHead
+        - Headache
+        - Hernior
+        - Iwasaki_Big_Five
+        - MockJury
+        - NLSY
+        - NeuroCog
+        - Oslo
+        - Overdose
+        - Parenting
+        - peng
+        - Plastic
+        - Pottery2
+        - Probe1
+        - Probe2
+        - RatWeight
+        - ReactTime
+        - Rohwer
+        - RootStock
+        - Sake
+        - Skulls
+        - SocGrades
+        - SocialCog
+        - TIPI
+        - VocabGrowth
+        - WeightLoss
+        - mathscore
+        - schooldata
+        - schoolsites
+        - dogfood
+        - oral
+    
+  news:
+     text: News
+     href: news/index.html
+  bluesky:
+    icon: "fa-brands fa-bluesky fa-lg"
+    href: https://bsky.app/profile/datavisfriendly.bsky.social
+    aria-label: Bluesky

@@ -120,6 +120,7 @@
 #' 
 #' \code{\link[MASS]{cov.rob}}
 #' @keywords hplot
+#' @keywords multivariate
 #' @examples
 #' 
 #' 

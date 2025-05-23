@@ -1,0 +1,45 @@
+
+R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # This file is part of the standard setup for testthat.
+> # It is recommended that you do not modify it.
+> #
+> # Where should you do additional test configuration?
+> # Learn more about the roles of various files in:
+> # * https://r-pkgs.org/tests.html
+> # * https://testthat.r-lib.org/reference/test_package.html#special-files
+> 
+> library(testthat)
+Warning message:
+package 'testthat' was built under R version 4.4.3 
+> library(ICSClust)
+Loading required package: ICS
+Loading required package: mvtnorm
+Loading required package: ggplot2
+Warning messages:
+1: package 'ICS' was built under R version 4.4.3 
+2: package 'mvtnorm' was built under R version 4.4.3 
+3: package 'ggplot2' was built under R version 4.4.3 
+> 
+> test_check("ICSClust")
+[ FAIL 0 | WARN 7 | SKIP 0 | PASS 86 ]
+
+[ FAIL 0 | WARN 7 | SKIP 0 | PASS 86 ]
+> 
+> proc.time()
+   user  system elapsed 
+   2.03    0.57    2.61 

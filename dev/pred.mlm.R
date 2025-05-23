@@ -1,14 +1,53 @@
 #Multivariate Linear Regression Inference and Prediction
 #R Function for Multivariate Regression CIs and PIs
-# from: http://users.stat.umn.edu/~helwig/notes/mvlr-Notes.pdf
+
+# Goal: Extend the predict methods for linear models to multivariate ones.
+# This function is an attempt to put together the ideas in 
+#   http://users.stat.umn.edu/~helwig/notes/mvlr-Notes.pdf
+# with the framework for stats::predict.lm
+
+# Function from Nathaniel Helwig, slide 82
+
+pred.mlm0 <- function(object, newdata,
+                      se.fit = TRUE,
+                      level=0.95,
+                     interval = c("confidence", "prediction")){
+  form <- as.formula(paste("~",as.character(formula(object))[3]))
+  xnew <- model.matrix(form, newdata)
+  fit <- predict(object, newdata)
+  Y <- model.frame(object)[,1]
+  X <- model.matrix(object)
+  n <- nrow(Y)
+  m <- ncol(Y)
+  p <- ncol(X) - 1
+  sigmas <- colSums((Y - object$fitted.values)^2) / (n - p - 1)
+  fit.var <- diag(xnew %*% tcrossprod(solve(crossprod(X)), xnew))
+  if(interval[1]=="prediction") fit.var <- fit.var + 1
+  const <- qf(level, df1=m, df2=n-p-m) * m * (n - p - 1) / (n - p - m)
+  vmat <- (n/(n-p-1)) * outer(fit.var, sigmas)
+  lwr <- fit - sqrt(const) * sqrt(vmat)
+  upr <- fit + sqrt(const) * sqrt(vmat)
+  if(nrow(xnew)==1L){
+    ci <- rbind(fit, lwr, upr)
+    rownames(ci) <- c("fit", "lwr", "upr")
+  } else {
+    ci <- array(0, dim=c(nrow(xnew), m, 3))
+    dimnames(ci) <- list(1:nrow(xnew), colnames(Y), c("fit", "lwr", "upr") )
+    ci[,,1] <- fit
+    ci[,,2] <- lwr
+    ci[,,3] <- upr
+  }
+  ci
+}
 
 pred.mlm <- function(object, 
                      newdata, 
                      se.fit = FALSE, 
                      na.action = na.pass,
                      ...
+                     # interval = c("confidence", "prediction"),
                      # level=0.95,
-                     # interval = c("confidence", "prediction")
+                     # type = c("response", "terms")
                      ){
 
   
@@ -74,6 +113,7 @@ pred.mlm <- function(object,
 }
 
 if(FALSE){
+# For comparison, here is
 # stats:::predict.mlm
 predict.mlm <-
 function (object, newdata, se.fit = FALSE, na.action = na.pass, 
@@ -116,19 +156,26 @@ if (FALSE) {
   library(dplyr)
   library(car)
 
+  # univariate model
   cars.mod1 <- lm(mpg ~  cyl + am + carb, data=mtcars)
   newdata <- data.frame(cyl=6, am=1, carb=4)
   predict(cars.mod1, newdata = newdata, interval = "confidence")
 
+  # multivariate model
   Y <- as.matrix(mtcars[,c("mpg","disp","hp","wt")])
   mvmod <- lm(cbind(mpg, disp, hp, wt) ~ cyl + am + carb, data=mtcars)
   coef(mvmod)
 
 
+  # Extract univariate summaries from the mlm
 mvsum <- summary(mvmod)
+# mpg ~
 mvsum[[1]]
+# hp ~
+mvsum[[3]]
 
-predict(mvmod)
+
+predict(mvmod) |> head()
 
 # confidence interval
 predict(mvmod, newdata = newdata)
@@ -137,10 +184,21 @@ predict(mvmod, newdata)
 
 pred.mlm(mvmod, newdata)
 pred.mlm(mvmod, newdata, se.fit = TRUE)
+# prediction interval
+pred.mlm(mvmod, newdata, interval="prediction")
 
 # confidence interval (multiple new observations)
 new2 <- data.frame(cyl=c(4,6,8), am=c(0,1,1), carb=c(2,4,6))
 pred.mlm(mvmod, new2)
 pred.mlm(mvmod, new2, se.fit = TRUE)
+
+# original function
+pred.mlm0(mvmod, newdata)
+# prediction interval
+pred.mlm0(mvmod, newdata, interval="prediction")
+
+pred.mlm0(mvmod, new2, se.fit = TRUE)
+
+
 
 }

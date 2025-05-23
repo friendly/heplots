@@ -1,12 +1,16 @@
 # keep rgl from popping up windows
 Sys.setenv(RGL_USE_NULL = TRUE)
 
+# Check URL are correct
+# install.packages('urlchecker', repos = 'https://r-lib.r-universe.dev')
+urlchecker::url_check()
+urlchecker::url_update()
 
 # revdep
 #remotes::install_github("r-lib/revdepcheck")
 #library(revdepcheck)
 revdepcheck::revdep_reset()
-revdepcheck::revdep_check(num_workers = 4)
+revdepcheck::revdep_check(num_workers = 4, bioc=FALSE)
 
 # get list of possibly misspelled words
 wds <- spelling::spell_check_package() |> print()
@@ -18,7 +22,7 @@ library(devtools)
 
 # prepare pkgdown site
 devtools::build_readme()
-pkgdown::build_site()
+pkgdown::build_site(lazy = TRUE)
 
 devtools::build()
 # to test vignettes, built them, but then have to remove `doc/` directory

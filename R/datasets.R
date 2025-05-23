@@ -975,14 +975,25 @@ NULL
 
 #' National Longitudinal Survey of Youth Data
 #' 
-#' The dataset come from a small random sample of the U.S. National
-#' Longitudinal Survey of Youth.
+#' The dataset `NLSY` comes from a small part of the National Longitudinal Survey of
+#' Youth, which is a series of annual surveys conducted by the 
+#' U.S. Department of Labor to examine the transition of young people into the labor force.
+#' This particular subset gives measures of 243 children on mathematics and reading achievement and also
+#' measures of behavioral problems (antisocial, hyperactivity). Also available are the yearly income
+#' and education of the child's father.
 #' 
-#' In this dataset, \code{math} and \code{read} scores are taken at the outcome
+#' @details
+#' 
+#' For the examples using this dataset, \code{math} and \code{read} scores are taken at the outcome
 #' variables. Among the remaining predictors, \code{income} and \code{educ}
 #' might be considered as background variables necessary to control for.
-#' Interest might then be focused on whether the behavioural variables
+#' Interest might then be focused on whether the behavioral variables
 #' \code{antisoc} and \code{hyperact} contribute beyond that.
+#' 
+#' The distribution of father's income is very highly skewed in the positive direction.
+#' Linear model analysis should probably use \code{log(income)}, but this is omitted for simplicity.
+#' 
+#' The dataset also contains a few unusual observations for you to discover.
 #' 
 #' @name NLSY
 #' @docType data
@@ -1005,6 +1016,7 @@ NULL
 #' \url{http://web.archive.org/web/20060830061414/http://www.unc.edu/~curran/srcd-docs/srcdmeth.pdf}.
 #' @keywords datasets
 #' @concept MMRA
+#' @concept robust
 #' @examples
 #' 
 #' library(car)
@@ -1015,7 +1027,7 @@ NULL
 #' 
 #' # test control variables by themselves
 #' # -------------------------------------
-#' mod1 <- lm(cbind(read,math) ~ income+educ, data=NLSY)
+#' mod1 <- lm(cbind(read, math) ~ income + educ, data=NLSY)
 #' Anova(mod1)
 #' heplot(mod1, fill=TRUE)
 #' 
@@ -1023,6 +1035,13 @@ NULL
 #' coefs <- rownames(coef(mod1))[-1]
 #' linearHypothesis(mod1, coefs)
 #' heplot(mod1, fill=TRUE, hypotheses=list("Overall"=coefs))
+#' 
+#' # coefficient plot
+#' coefplot(NLSY.mod1, fill = TRUE,
+#'          col = c("darkgreen", "brown"),
+#'          lwd = 2,
+#'          ylim = c(-0.5, 3),
+#'          main = "Bivariate coefficient plot for reading and math\nwith 95% confidence ellipses")
 #' 
 #'  
 #' # additional contribution of antisoc + hyperact over income + educ
@@ -1036,7 +1055,9 @@ NULL
 #' 
 #' heplot(mod2, fill=TRUE, hypotheses=list("mod2|mod1"=coefs[1:2]))
 #' 
-#' 
+#' # check for outliers
+#' idx < cqplot(NLSY.mod2, id.n = 5)
+#' idx
 NULL
 
 
@@ -1661,7 +1682,19 @@ NULL
 #' 
 #' The variables \code{SAT}, \code{PPVT} and \code{Raven} are responses to be
 #' potentially explained by performance on the paired-associate (PA) learning
-#' task\code{n}, \code{s}, \code{ns}, \code{na}, and \code{ss}.
+#' tasks, \code{n}, \code{s}, \code{ns}, \code{na}, and \code{ss},
+#' which differed in the syntactic and semantic relationship between the stimulus and response words in each pair.
+#' 
+#' @details
+#' Timm (1975) does not give a source, but the most relevant studies are Rowher & Ammons (1968) and Rohwer & Levin (1971).
+#' The paired-associate tasks are described as:
+#' \describe{
+#'    \item{\code{n}}{(named): Simple paired-associate task where participants learn pairs of nouns with no additional context}
+#'    \item{\code{s}}{(sentence): Participants learn pairs embedded within a sentence}
+#'    \item{\code{ns}}{(named sentence): A combination where participants learn noun pairs with sentence context}
+#'    \item{\code{na}}{(named action): Pairs are learned with an action relationship between them}
+#'    \item{\code{ss}}{(sentence still): Similar to the sentence condition but with static presentation}
+#' }
 #' 
 #' @name Rohwer
 #' @docType data
@@ -1683,6 +1716,13 @@ NULL
 #' Models.  \emph{Journal of Computational and Graphical Statistics},
 #' \bold{16}(2) 421--444.  \url{http://datavis.ca/papers/jcgs-heplots.pdf}
 #' 
+#' Rohwer, W.D., Jr., & Levin, J.R. (1968). Action, meaning and stimulus selection
+#' in paired-associate learning. \emph{Journal of Verbal Learning and Verbal Behavior}, \bold{7}: 137-141.
+#' 
+#' Rohwer, W. D., Jr., & Ammons, M. S. (1971). Elaboration training and paired-associate learning efficiency in children. 
+#' \emph{Journal of Educational Psychology}, \bold{62}(5), 376-383.
+
+#' 
 #' @source 
 #' Timm, N.H. 1975).  \emph{Multivariate Analysis with Applications in
 #' Education and Psychology}.  Wadsworth (Brooks/Cole), Examples 4.3 (p. 281),
@@ -1693,6 +1733,27 @@ NULL
 #' @examples
 #' 
 #' str(Rohwer)
+#' 
+#' # Plot responses against each predictor
+#' library(tidyr)
+#' library(dplyr)
+#' library(ggplot2)
+#' 
+#' yvars <- c("SAT", "PPVT", "Raven" )
+#' xvars <- c("n", "s", "ns", "na", "ss")
+#' Rohwer_long <- Rohwer %>%
+#'   pivot_longer(cols = all_of(xvars), names_to = "xvar", values_to = "x") |>
+#'   pivot_longer(cols = all_of(yvars), names_to = "yvar", values_to = "y") |>
+#'   mutate(xvar = factor(xvar, xvars), yvar = factor(yvar, yvars))
+#' 
+#' ggplot(Rohwer_long, aes(x, y, color = SES, shape = SES, fill = SES)) +
+#'   geom_point() +
+#'   geom_smooth(method = "lm", se = FALSE, formula = y ~ x) +
+#'   stat_ellipse(geom = "polygon", level = 0.68, alpha = 0.1) +
+#'   facet_grid(yvar ~ xvar, scales = "free") +
+#'   labs(x = "predictor", y = "response") +
+#'   theme_bw(base_size = 14)
+#' 
 #' 
 #' ## ANCOVA, assuming equal slopes
 #' rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, data=Rohwer)
@@ -1845,39 +1906,50 @@ NULL
 
 #' School Data
 #' 
-#' School Data, from Charnes et al. (1981). The aim is to explain scores on 3
+#' School Data, from Charnes et al. (1981), a large scale social experiment in public school education.
+#' It was conceived in the late 1960's as a federally sponsored program charged with providing remedial
+#' assistance to educationally disadvantaged early primary school students.
+#' One aim is to explain scores on 3
 #' different tests, \code{reading}, \code{mathematics} and \code{selfesteem}
 #' from 70 school sites by means of 5 explanatory variables related to parents
 #' and teachers.
 #' 
-#' This dataset was shamelessly borrowed from the \code{FRB} package.
-#' 
-#' The relationships among these variables are unusual, a fact only revealed by
+#' A number of observations are unusual, a fact only revealed by
 #' plotting.
+#' 
+#' @details
+#' The study was designed to compare schools using Program Follow Through (PFT)
+#' management methods of taking actions to achieve goals with those of
+#' Non Follow Through (NFT). Observations \code{1:49} came from PFT sites
+#' and \code{50:70} from NFT sites.
+#' This and other descriptors are contained in the dataset \code{\link{schoolsites}}.
+#' 
 #' 
 #' @name schooldata
 #' @docType data
 #' @format A data frame with 70 observations on the following 8 variables.
 #' 
 #' \describe{ 
-#'   \item{\code{education}}{Education level of mother as measured in
-#'       terms of percentage of high school graduates among female parents}
-#'   \item{\code{occupation}}{ Highest occupation of a family member according
+#'   \item{\code{education}}{Education level of mother as measured by the percentage of high school graduates among female parents}
+#'   \item{\code{occupation}}{Highest occupation of a family member according
 #'       to a pre-arranged rating scale} 
-#'   \item{\code{visit}}{ Parental visits index
+#'   \item{\code{visit}}{ Parental visits index,
 #'      representing the number of visits to the school site}
-#'   \item{\code{counseling}}{ Parent counseling index calculated from data on
+#'   \item{\code{counseling}}{Parent counseling index, calculated from data on
 #'       time spent with child on school-related topics such as reading together, etc.} 
-#'   \item{\code{teacher}}{ Number of teachers at a given site}
+#'   \item{\code{teacher}}{Number of teachers at the given site}
 #'   \item{\code{reading}}{ Reading score as measured by the Metropolitan Achievement Test} 
 #'   \item{\code{mathematics}}{Mathematics score as measured by the Metropolitan Achievement Test} 
 #'   \item{\code{selfesteem}}{Coopersmith Self-Esteem Inventory, intended as a measure of self-esteem} 
 #' }
 #' @source 
+#' This dataset was came originally from the (now-defunct) \code{FRB} package.
+#' @references 
 #' A. Charnes, W.W. Cooper and E. Rhodes (1981). Evaluating Program and
 #' Managerial Efficiency: An Application of Data Envelopment Analysis to
 #' Program Follow Through. \emph{Management Science}, \bold{27}, 668-697.
 #' @keywords datasets
+#' @seealso \code{\link{schoolsites}}
 #' @concept MMRA
 #' @concept robust
 #' @examples
@@ -1891,6 +1963,10 @@ NULL
 #' corrgram(schooldata, 
 #'          lower.panel=panel.ellipse, 
 #'          upper.panel=panel.pts)
+#'
+#' # check for multivariate outliers
+#' res <- cqplot(schooldata, id.n = 5)
+#' res
 #' 
 #' #fit the MMreg model
 #' school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ 
@@ -1913,7 +1989,7 @@ NULL
 #' wts <- school.rmod$weights
 #' notable <- which(wts < 0.8)
 #' plot(wts, type = "h", col="gray", ylab = "Observation weight")
-#' points(1:length(wts), wts, 
+#' points(seq_along(wts), wts, 
 #'        pch=16,
 #'        col = ifelse(wts < 0.8, "red", "black"))
 #' 

@@ -1,0 +1,96 @@
+---
+title: "How to create reports?"
+output: 
+  volker::html_report
+vignette: >
+  %\VignetteIndexEntry{Reports}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include=FALSE}
+
+# Markdown options
+knitr::opts_chunk$set(echo = FALSE, warning = TRUE)
+
+# Load packages
+library(dplyr)
+library(volker)
+library(ggplot2)
+
+theme_set(theme_bw())
+
+data <- volker::chatgpt
+
+```
+
+
+# A single categorical variable
+
+```{r}
+report_counts(data, sd_gender, ci=TRUE)
+```
+
+# A cross table
+
+```{r}
+data %>% 
+  filter(sd_gender != "diverse") %>% 
+  report_counts(adopter, sd_gender, prop="rows", ci=TRUE, effect=TRUE)
+```
+
+# Automatic index calculation
+```{r}
+
+data %>% 
+  filter(sd_gender != "diverse") %>% 
+  report_counts(starts_with("cg_adoption_"), index=TRUE, ci=TRUE, effect=TRUE)
+
+```
+
+# Automatic factor calculation 
+```{r}
+data %>%  
+  report_metrics(starts_with("cg_adoption_"), factors = TRUE)
+```
+
+# Automatic cluster calculation 
+```{r}
+data %>%  
+  report_metrics(starts_with("cg_adoption_"), clusters = TRUE)
+```
+
+# Group comparisons of an index
+```{r}
+data %>% 
+  dplyr::filter(sd_gender != "diverse") %>% 
+  report_metrics(starts_with("cg_adoption_"), sd_gender, index=TRUE, ci=TRUE, effect=TRUE)
+
+```
+
+# Print lists
+```{r}
+rp <- report_metrics(data, sd_age, sd_gender, effect = TRUE)
+print(rp)
+
+```
+
+
+# Mixed content
+
+### Adoption types
+
+```{r}
+data %>% 
+  filter(sd_gender != "diverse") %>% 
+  report_counts(adopter, sd_gender, prop="rows", title= FALSE, close= FALSE)
+```
+
+
+##### Method
+Basis: Only male and female respondents.
+
+#### {-}
+
