@@ -25,6 +25,8 @@ How to write an update() method for a MLM?
 --> see also dev/add.R
   - add(), drop(), step() for MLMs
 
+--> see how this is done in the R source: src/library/stats/R/update.R
+
 “Extracting the call” in update() and similar functions uses getCall() which itself is a (S3) 
 generic function with a default method that simply gets x$call.
 
