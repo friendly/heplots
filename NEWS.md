@@ -1,5 +1,7 @@
 ## Version 1.7.5 
 
+Fix bugs and add some args for better control
+
 * Edit description of NLSY data and extend the examples to show `coefplot()`, `cqplot()`
 * Revise documentation for `robmlm()`
 * Add dev/pulpfiber.R for a classic robust MLM example
@@ -7,6 +9,7 @@
 * fixed bug in `coefplot.mlm()` in selecting terms with `parm`.
 * `coefplot.mlm()` gains a `cex.lab` argument
 * Fleshed out details of Rohwer dataset PA measures
+* Fixed nits from R CMD check
 
 ## Version 1.7.4 (2025-04-15)
 

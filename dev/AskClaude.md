@@ -16,6 +16,9 @@ for multivariate models of the form: `lm( cbind(y1, y2) = x1 + x2 + x3)`
 
 --> dev.boot_cov.R
 
+Help solve the problem described in
+https://stackoverflow.com/questions/45353073/bootstrapping-a-vector-of-results-by-group-in-r
+
 Bootstrapping eigenvalues of grouped covariance matrices, for use in plot.boxM
 
 ## update for MLMs

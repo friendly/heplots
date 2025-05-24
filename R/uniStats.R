@@ -8,7 +8,7 @@
 #' @return An object of class \code{c("anova", "data.frame")} containing, for each response variable
 #'         the overall \eqn{R^2} for all terms in the model and the overall \eqn{F} statistic
 #'         together with its degrees of freedom and p-value.
-#' @seealso \code{\link{glance.mlm()}}
+#' @seealso \code{\link{glance.mlm}}
 #' @export
 #'
 #' @examples

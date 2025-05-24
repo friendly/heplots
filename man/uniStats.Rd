@@ -30,5 +30,5 @@ plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
 car::Anova(plastic.mod)
 }
 \seealso{
-\code{\link{glance.mlm()}}
+\code{\link{glance.mlm}}
 }
