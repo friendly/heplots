@@ -59,15 +59,19 @@ linest-get              Auxillary functions for computing lsmeans,
 linest-matrix           Linear estimates matrix
 ls-means                Compute LS-means (aka population means or
                         marginal means)
+math_teachers           Height of math teachers
 mb_summary              Fast summary of microbenchmark object
 milkman                 Milk yield data for manually milked cows.
 model_stability_glm     Model stability for glm objects
 nir_milk                nir_milk
 parseGroupFormula       Extract components from a formula with
                         "conditioning bar"
+pick_elements           Extract (pick) elements without using brackets
 plot_lm                 Plot linear model object
 potatoes                Weight and size of 20 potatoes
 prostate                Prostate Tumor Gene Expression Dataset
+rbind_list              Bind list of data frames and add list names as
+                        a column
 reciprocal              Reciprocal function
 recodeVar               Recode values of a vector
 recover_pca_data        Recover data from principal component analysis

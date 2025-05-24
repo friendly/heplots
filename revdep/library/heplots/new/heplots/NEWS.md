@@ -1,10 +1,29 @@
-## Version 1.7.4 (2025-04-015)
+## Version 1.7.5 
 
-* added plotting all X vs all Y to Rohwer doc
-* added `schoolsites` dataset
+Fix bugs and add some args for better control
+
+* Edit description of NLSY data and extend the examples to show `coefplot()`, `cqplot()`
+* Revise documentation for `robmlm()`
+* Add dev/pulpfiber.R for a classic robust MLM example
+* fix default Y axis label in `plot.robmlm()`
+* fixed bug in `coefplot.mlm()` in selecting terms with `parm`.
+* `coefplot.mlm()` gains a `cex.lab` argument
+* Fleshed out details of Rohwer dataset PA measures
+* Fixed nits from R CMD check
+
+## Version 1.7.4 (2025-04-15)
+
+This is largely a maintenance release, but adds a function to identify "noteworthy" points in 2D scatterplots.
+
+* added plotting all X vs all Y to Rohwer examples
+* added `schoolsites` dataset, providing additional variables related to the `schooldata` dataset.
 * `cqplot()` now prints a warning if there are missing cases and also returns the upper tail p-values corresponding to Mahalanobis $D^2$.
 * Default `method.id` in `cqplot()` changed to "r", to identify points with the largest $D^2$.
-* added `noteworthy()` as a utility to select "noteworthy" observations in a 2D plot.
+* added `noteworthy(x, y)` as a utility to select "noteworthy" observations in a 2D plot, extending the ideas in `car::showLabels()`
+* corrected some minor documentation problems
+* fixed some 301 "moved" URLs
+* Now Depends: on R >= 4.1.0 because package uses native pipes |>
+* Added Suggests: KernSmooth, aplpack, foreign, used in some demos
 
 ## Version 1.7.3 (2024-12-05)
 

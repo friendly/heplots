@@ -86,4 +86,4 @@ attr(,"condition")
 > 
 > proc.time()
    user  system elapsed 
-   2.14    0.15    2.29 
+   2.59    0.26    3.20 

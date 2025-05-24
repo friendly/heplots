@@ -1,5 +1,5 @@
 Package: doBy
-Version: 4.6.26
+Version: 4.6.27
 Title: Groupwise Statistics, LSmeans, Linear Estimates, Utilities
 Authors@R: c(
     person(given = "Ulrich", family = "Halekoh",
@@ -27,9 +27,9 @@ Suggests: geepack, knitr, lme4, markdown, multcomp, pbkrtest (>=
         0.5.2), survival, testthat (>= 2.1.0)
 RoxygenNote: 7.3.2
 NeedsCompilation: no
-Packaged: 2025-04-02 15:46:16 UTC; sorenh
+Packaged: 2025-05-16 10:50:03 UTC; sorenh
 Author: Ulrich Halekoh [aut, cph],
   Søren Højsgaard [aut, cre, cph]
 Repository: CRAN
-Date/Publication: 2025-04-09 09:40:27 UTC
-Built: R 4.4.3; ; 2025-04-14 04:02:20 UTC; windows
+Date/Publication: 2025-05-16 12:20:02 UTC
+Built: R 4.4.3; ; 2025-05-23 23:58:08 UTC; windows

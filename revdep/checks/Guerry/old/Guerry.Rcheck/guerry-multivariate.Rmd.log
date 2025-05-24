@@ -324,7 +324,7 @@ Vector scale factor set to  3.10537
 > knitr::write_bib(pkgs, file = here::here("vignettes", 
 +     "packages.bib"))
 Warning in file(con, "w") :
-  cannot open file 'C:/Users/friendly/AppData/Local/Temp/RtmpeG1Vox/file6fe037056b2f/vignettes/vignettes/packages.bib': No such file or directory
+  cannot open file 'C:/Users/friendly/AppData/Local/Temp/RtmpGWAPXv/file2d9057606653/vignettes/vignettes/packages.bib': No such file or directory
 
   When sourcing 'guerry-multivariate.R':
 Error: cannot open the connection

@@ -2634,7 +2634,7 @@ mean of x
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  5.84 0.78 6.74 NA NA 
+Time elapsed:  6.25 0.74 7.09 NA NA 
 > grDevices::dev.off()
 pdf 
   2 

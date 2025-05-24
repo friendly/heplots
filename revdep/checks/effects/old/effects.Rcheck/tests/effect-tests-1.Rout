@@ -151,4 +151,4 @@ package 'carData' was built under R version 4.4.3
 > 
 > proc.time()
    user  system elapsed 
-   0.84    0.18    1.04 
+   0.79    0.26    1.07 
