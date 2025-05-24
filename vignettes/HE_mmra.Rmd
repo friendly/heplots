@@ -121,7 +121,8 @@ allow for this possibility.  The trick is to reshape the data from wide to long 
 and use facets in `ggplot2` to compose the pairwise scatterplots into the desired 
 rectangular matrix format.[^1]
 
-[^1]: This solution was suggested in an answer to a Stackoverflow question, https://stackoverflow.com/questions/73859139/how-to-make-a-scatterplot-rectangular-matrix-y1-y2-x1-x2-in-r
+[^1]: This solution was suggested in an answer to a [Stackoverflow question](https://bit.ly/3H8yRcm)
+<!-- https://stackoverflow.com/questions/73859139/how-to-make-a-scatterplot-rectangular-matrix-y1-y2-x1-x2-in-r -->
 
 <!-- TODO: retain original variable order -->
 
