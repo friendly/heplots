@@ -116,6 +116,7 @@ LSmeans.default	ls-means
 LSmeans.lmerMod	ls-means
 math	data_mathmark
 mathmark	data_mathmark
+math_teachers	math_teachers
 matrix2dataFrame2	doBy-internal
 matrix2set_list	set_list_set_matrix
 mb_summary	mb_summary
@@ -129,6 +130,9 @@ orderByOLD	doBy-internal
 order_by	by-order
 parseGroupFormula	parseGroupFormula
 personality	data_personality
+pick1	pick_elements
+pick2	pick_elements
+pick_elements	pick_elements
 plot_lm	plot_lm
 popMeans	ls-means
 popMeans.default	ls-means
@@ -141,6 +145,7 @@ print.lmBy	doBy-internal
 print.splitByData	doBy-internal
 print.summary_lmBy	doBy-internal
 prostate	data-prostate
+rbind_list	rbind_list
 reciprocal	reciprocal
 recodeVar	recodeVar
 recode_var	recodeVar

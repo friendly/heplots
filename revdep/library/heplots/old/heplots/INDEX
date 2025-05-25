@@ -68,6 +68,7 @@ logdetCI                Calculate confidence interval for log
                         determinant of covariance matrices
 mark.H0                 Mark a point null hypothesis in an HE plot
 mathscore               Math scores for basic math and word problems
+noteworthy              Find noteworthy (unusual) points in a 2D plot
 oral                    Effect of Delay in Oral Practice in Second
                         Language Learning
 pairs.mlm               Pairwise HE Plots
@@ -78,6 +79,7 @@ plot.robmlm             Plot observation weights from a robust
                         multivariate linear models
 robmlm                  Robust Fitting of Multivariate Linear Models
 schooldata              School Data
+schoolsites             Schooldata Sites
 statList                Calculate statistics for levels of factors
 termMeans               Calculate Means for a Term in a Multivariate
                         Linear Model

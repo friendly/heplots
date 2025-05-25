@@ -1,3 +1,12 @@
+doBy v4.6.27 (Release date: )
+=======================================
+
+* `pick1()` and `pick2()` functions added. Short for extract with one or two brackets.
+
+* `math_teachers` data dataset added.
+
+
+
 doBy v4.6.26 (Release date: 2025-04-02)
 =======================================
 

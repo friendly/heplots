@@ -36,4 +36,4 @@ https://doi.org/10.1093/bioinformatics/btac173
 > 
 > proc.time()
    user  system elapsed 
-   5.76    1.21   10.37 
+   4.14    0.76    5.14 

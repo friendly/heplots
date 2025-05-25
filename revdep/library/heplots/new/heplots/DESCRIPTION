@@ -1,8 +1,8 @@
 Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
-Version: 1.7.4
-Date: 2025-04-15
+Version: 1.7.5
+Date: 2025-04-26
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -31,7 +31,7 @@ Suggests: candisc, carData, effects, reshape, gplots, nlme, lattice,
         reshape2, corrgram, animation, mvinfluence, knitr, litedown,
         rmarkdown, markdown, dplyr, tidyr, ggplot2, bookdown,
         patchwork, tinytable, glue, here, Sleuth2, rrcov, archdata,
-        qqtest, vcdExtra, R.rsp
+        qqtest, vcdExtra, R.rsp, KernSmooth, aplpack, foreign
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
@@ -44,10 +44,10 @@ VignetteBuilder: knitr, R.rsp
 RemoteType: local
 RemoteUrl: C:\R\Projects\heplots
 NeedsCompilation: no
-Packaged: 2025-04-15 22:08:27 UTC; friendly
+Packaged: 2025-05-24 16:24:07 UTC; friendly
 Author: Michael Friendly [aut, cre] (<https://orcid.org/0000-0002-3237-0941>),
   John Fox [aut] (<https://orcid.org/0000-0002-1196-8012>),
   Georges Monette [aut] (<https://orcid.org/0000-0003-0076-5532>),
   Phil Chalmers [ctb] (<https://orcid.org/0000-0001-5332-2810>),
   Duncan Murdoch [ctb]
-Built: R 4.4.1; ; 2025-04-15 22:08:28 UTC; windows
+Built: R 4.4.1; ; 2025-05-24 16:24:08 UTC; windows

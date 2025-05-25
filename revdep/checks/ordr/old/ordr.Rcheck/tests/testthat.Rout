@@ -28,4 +28,4 @@ package 'ggplot2' was built under R version 4.4.3
 > 
 > proc.time()
    user  system elapsed 
-   1.95    0.79    2.84 
+   2.09    0.95    3.14 

@@ -19,7 +19,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 <!-- Version 1.7.2 -->
 
-Version 1.7.4
+Version 1.7.5
 
 ## Description
 

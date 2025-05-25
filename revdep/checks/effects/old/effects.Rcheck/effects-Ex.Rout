@@ -1368,7 +1368,7 @@ $extraversion
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  3.7 0.34 4.15 NA NA 
+Time elapsed:  3.92 0.45 4.45 NA NA 
 > grDevices::dev.off()
 null device 
           1 

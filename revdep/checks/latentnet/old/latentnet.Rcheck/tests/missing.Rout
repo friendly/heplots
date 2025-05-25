@@ -72,21 +72,21 @@ Model:     Bernoulli
 MCMC sample of size 4000, draws are 10 iterations apart, after burnin of 10000 iterations.
 Covariate coefficients posterior means:
             Estimate   2.5%  97.5% 2*min(Pr(>0),Pr(<0))    
-(Intercept)   2.1556 1.3569 3.0568            < 2.2e-16 ***
+(Intercept)   2.1590 1.3522 3.0512            < 2.2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Overall BIC:        379.8915 
-Likelihood BIC:     252.9999 
-Latent space/clustering BIC:     126.8915 
+Overall BIC:        379.2754 
+Likelihood BIC:     250.2134 
+Latent space/clustering BIC:     129.062 
 
 Covariate coefficients MKL:
             Estimate
-(Intercept)  1.05513
+(Intercept) 1.123884
 
 
 > plot(samp.fit,labels=TRUE)
 > 
 > proc.time()
    user  system elapsed 
-   4.79    0.20    5.01 
+   4.62    0.28    4.93 
