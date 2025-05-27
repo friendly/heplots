@@ -481,6 +481,7 @@ heplot.mlm <-
 	radius <- sqrt(2 * qf(level, 2, dfe))
 	
 	# assign colors and line styles
+	if (!inherits(col, "character")) stop(paste("`col` must be a character vector, not class", class(col)))
 	col <- he.rep(col, n.ell) 
 	lty <- he.rep(lty, n.ell)
 	lwd <- he.rep(lwd, n.ell)
