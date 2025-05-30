@@ -1,3 +1,7 @@
+## Version 1.7.6 
+
+* fixing data, group names in boxM to avoid necessity for `gplabel` in plots.
+
 ## Version 1.7.5 
 
 Fix bugs and add some args for better control

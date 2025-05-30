@@ -195,6 +195,8 @@ boxM.default <- function(Y, group, ...)
    return(out)
 }
 
+# NB: This relies on `print.htest()` Do we need a better print method?
+
 #' @rdname boxM
 #' @exportS3Method boxM formula
 boxM.formula <- function(Y, data, ...)
@@ -207,12 +209,24 @@ boxM.formula <- function(Y, data, ...)
 	Y <- mf[,1]
 	if (dim(Y)[2] < 2) stop("There must be two or more response variables.")
 
-	if(dim(mf)[2]==2) group <- mf[,2]
+	if(dim(mf)[2]==2) {
+	  group <- mf[,2]
+	  group.name <- names(mf[2])
+	}
 	else {
 		if (length(grep("\\+ | \\| | \\^ | \\:",form))>0) stop("Model must be completely crossed formula only.")
 		group <- interaction(mf[,2:dim(mf)[2]])
+		# **TESTME**
+		group.name <- paste0(names(mf[2:dim(mf)[2]]), sep = ":")
 	}
-	boxM.default(Y=Y, group=group, ...)
+
+	group.name <- names(mf[2])
+
+	res <- boxM.default(Y=Y, group=group, ...)
+	# fix up slot data names
+	res$data.name <- deparse(substitute(data))
+	res$group <- group.name
+	res
 
 }
 
