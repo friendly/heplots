@@ -39,9 +39,15 @@ either automatically, or by providing a simple getCall() method for that class.
 m <- lm(mpg ~ hp, data=mtcars)
 getCall(m)
 
+## Write a vignette for robust multivariate linear models and visualization
+
+
+
 ## Write a vignette for one or more datasets
 
 * Robust methods-- roblm()
+  - skulls data
+  - car::pottery data
   - schooldata, NLSY
   - pulpfiber example
   

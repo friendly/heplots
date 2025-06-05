@@ -29,7 +29,7 @@
 #' 
 #' data(Skulls)
 #' sk.rmod <- robmlm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
-#' plot(sk.rmod, col=Skulls$epoch)
+#' plot(sk.rmod, col=Skulls$epoch, segments=TRUE)
 #' axis(side=3, at=15+seq(0,120,30), labels=levels(Skulls$epoch), cex.axis=1)
 #' 
 #' # Pottery data
