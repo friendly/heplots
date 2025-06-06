@@ -1,0 +1,22 @@
+```{r irls-flowchart, fig.cap="IRLS Algorithm Flowchart"}
+library(DiagrammeR)
+mermaid(diagram = '
+flowchart TD
+    A[Start] --> B["Initialize coefficients<br/>$$\\hat{\boldsymbol{\\beta}}^{(0)}$$ using OLS"]
+    B --> C["Set iteration counter<br/>$$k = 0$$"]
+    C --> D["Compute residuals<br/>$$\\mathbf{r}_i = \\mathbf{y}_i - \\mathbf{X}_i\\hat{\\boldsymbol{\\beta}}^{(k)}$$"]
+    D --> E["Calculate robust covariance<br/>$$\\mathbf{S}$$ using cov.trob()"]
+    E --> F["Compute Mahalanobis distances<br/>$$d_i^2 = \\mathbf{r}_i^T \\mathbf{S}^{-1} \\mathbf{r}_i$$"]
+    F --> G["Assign weights<br/>$$w_i = \\rho(d_i^2)$$"]
+    G --> H["Update coefficients<br/>$$\\hat{\\boldsymbol{\\beta}}^{(k+1)}$$ using weighted LS"]
+    H --> I{"Converged?<br/>$$||\\hat{\\boldsymbol{\\beta}}^{(k+1)} - \\hat{\\boldsymbol{\\beta}}^{(k)}|| < \\text{tol}$$"}
+    I -->|No| J["$$k = k + 1$$"]
+    J --> D
+    I -->|Yes| K["Return final estimates<br/>$$\\hat{\\boldsymbol{\\beta}}$$, weights $$\\mathbf{w}$$, scale $$\\mathbf{S}$$"]
+    K --> L[End]
+    
+    style A fill:#e1f5fe
+    style L fill:#f3e5f5
+    style I fill:#fff3e0
+')
+```

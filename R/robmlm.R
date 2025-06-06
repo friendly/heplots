@@ -25,6 +25,8 @@
 #' 
 #' An internal \code{vcov.mlm} function is an extension of the standard
 #' \code{\link[stats]{vcov}} method providing for the use of observation weights.
+#' A \code{\link{plot.robmlm}} method provides simple index plots of case weights
+#' to visualize those that were down-weighted.
 
 #' @details
 #' 
@@ -94,6 +96,7 @@
 #' @author John Fox; packaged by Michael Friendly
 #' 
 #' @seealso
+#'  \code{\link{plot.robmlm}} for a plot method;
 #'     \code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
 #' @references 
 #' A. Marazzi (1993) \emph{Algorithms, Routines and S Functions for

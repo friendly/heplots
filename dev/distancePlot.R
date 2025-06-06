@@ -2,7 +2,12 @@
 
 #' Plot two sets of Mahalanobis distances for the same dataset
 #' 
-distancePlot <- function(X, Y, 
+
+#' @export distancePlot
+distancePlot <-
+  function(Y, ...) UseMethod("distancePlot")
+
+distancePlot.default <- function(X, Y, 
                          method = c("classical", "mcd", "mve"),
                          level = 0.975,
                          ids = rownames(X),
@@ -38,4 +43,9 @@ distancePlot <- function(X, Y,
   text(dist.X[out.rows], dist.Y[out.rows], 
        labels = ids[out.rows],
        pos = label.pos)
+}
+
+
+if (FALSE){
+  
 }

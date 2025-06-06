@@ -41,11 +41,37 @@ getCall(m)
 
 ## Write a vignette for robust multivariate linear models and visualization
 
+In the `heplots` package I define a general function `robmlm()` for fitting robust multivariate linear models.
+It uses simple iterative re-weighted least squares (IRLS) using weights proportional to  Mahalanobis squared distances 
+of the current residuals from the origin, and a scaling (covariance) matrix calculated by `MASS::cov.trob()`.
+It returns an `"robmlm"` object inheriting from c("mlm", "lm"). There is a `plot.robmlm()` method that
+plots the final weights against case number.
+
+I'd like you to help me develop a vignette for "robust multivariate linear models" for the package.
+It should begin with a brief general description of the problem of robust estimation for such models, with
+relevant citations, such as Rousseeuw, P. J., Van Aelst, S., Van Driessen, K., & Gulló, J. A. (2004). 
+Robust Multivariate Regression. Technometrics, 46(3), 293–305. https://doi.org/10.1198/004017004000000329
+Then give a brief description of how IRLS works.
+
+Once this is done, I'd like you to create some examples using datasets from this and other packages.
+But let's first work on the introduction and framework for the vignette.
+
+Let's start on a simple example using the dataset `carData::Pottery`. This is a MANOVA design with 5 response variables
+(Al, Fe, Mg, Ca, Na) recorded in samples at 4 sites, in the variable `Site`.
+1. Fit the standard MANOVA model and also the `robmlm()` equivalent. Compare the output from `car::Anova()` for each
+2. Plot the weights for the `robmlm()` version.
+3. Construct an `heplot()` for the first two response variables (`Al` and `Fe`) for the classical MANOVA model.
+4. Overlay this with the heplot for the robmlm model, using the argument `add=TRUE`
+Discuss what we can understand from this example
+
+Chat URL: https://claude.ai/chat/f445d123-621e-4591-b57c-dbcf12298e64
+
+
 
 
 ## Write a vignette for one or more datasets
 
-* Robust methods-- roblm()
+* Robust methods-- robmlm()
   - skulls data
   - car::pottery data
   - schooldata, NLSY
