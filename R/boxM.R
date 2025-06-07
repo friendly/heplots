@@ -239,6 +239,7 @@ boxM.lm <- function(Y, ...) {
     update(Y, formula(Y), data = data)
   }
   else update(Y, formula(Y))
+  
 	boxM.formula(formula(Y), data=eval(data, envir = environment(formula(Y))), ...)
 }
 

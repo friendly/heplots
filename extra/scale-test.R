@@ -18,7 +18,7 @@ mod1_std <- update(mod1, data = scale(Rohwer))
 # need to std. numerics first, but scale() returns a 1-col matrix for each variable
 Rohwer_std <- Rohwer |>
   as_tibble() |>
-  mutate(across(where(is.numeric),  ~ scale(.)[,1]))  
+  mutate(across(where(is.numeric),  ~ drop(scale(.))))
 
 mod1_std <- update(mod1, data = Rohwer_std)
 coef(mod1_std)

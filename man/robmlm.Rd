@@ -128,6 +128,8 @@ other \code{mlm} extensions, including \code{\link[car]{Anova}} and
 
 An internal \code{vcov.mlm} function is an extension of the standard
 \code{\link[stats]{vcov}} method providing for the use of observation weights.
+A \code{\link{plot.robmlm}} method provides simple index plots of case weights
+to visualize those that were down-weighted.
 }
 \details{
 Weighted least squares provides a method for correcting a variety of problems in linear models
@@ -222,7 +224,8 @@ A. Marazzi (1993) \emph{Algorithms, Routines and S Functions for
 Robust Statistics}.  Wadsworth & Brooks/Cole.
 }
 \seealso{
-\code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
+\code{\link{plot.robmlm}} for a plot method;
+    \code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
 }
 \author{
 John Fox; packaged by Michael Friendly

@@ -2,6 +2,7 @@
 
 ## John Fox 2012-06-02
 ## revised: 2013-08-20 to avoid calling summary.mlm() directly in vcov.mlm()
+## TODO: what about using MASS::cob.rob, allowing MCD, MVE?
 
 
 
