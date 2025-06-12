@@ -65,7 +65,7 @@
 #' @param X for the default method, a model matrix, including the constant (if
 #'        present)
 #' @param Y for the default method, a response matrix
-#' @param w prior weights
+#' @param w prior observation weights
 #' @param P two-tail probability, to find cutoff quantile for chisq (tuning
 #'        constant); default is set for bisquare weight function
 #' @param tune tuning constant (if given directly)
@@ -105,8 +105,9 @@
 #' @keywords multivariate robust
 #' @examples
 #' 
-#' ##############
 #' # Skulls data
+#' # -----------
+#' data(Skulls)
 #' 
 #' # make shorter labels for epochs and nicer variable labels in heplots
 #' Skulls$epoch <- factor(Skulls$epoch, labels=sub("c","",levels(Skulls$epoch)))
@@ -121,9 +122,9 @@
 #' coefficients(sk.rmod)
 #' 
 #' # index plot of weights
-#' plot(sk.rmod$weights, type="h", xlab="Case Index", ylab="Robust mlm weight", col="gray")
+#' plot(sk.rmod, segments = TRUE, col = Skulls$epoch)
 #' points(sk.rmod$weights, pch=16, col=Skulls$epoch)
-#' axis(side=1, at=15+seq(0,120,30), labels=levels(Skulls$epoch), tick=FALSE, cex.axis=1)
+#' text(x = 15+seq(0,120,30), y = 1.05, labels=levels(Skulls$epoch), xpd=TRUE)
 #' 
 #' # heplots to see effect of robmlm vs. mlm
 #' heplot(sk.mod, hypotheses=list(Lin="epoch.L", Quad="epoch.Q"), 
