@@ -12,7 +12,13 @@ pred.mlm0 <- function(object, newdata,
                       se.fit = TRUE,
                       level=0.95,
                      interval = c("confidence", "prediction")){
-  form <- as.formula(paste("~",as.character(formula(object))[3]))
+  
+  if (missing(newdata)) {
+    newdata <- as.data.frame(model.matrix(object))
+    X <- newdata
+    offset <- object$offset
+  }
+  form <- as.formula(paste("~", as.character(formula(object))[3]))
   xnew <- model.matrix(form, newdata)
   fit <- predict(object, newdata)
   Y <- model.frame(object)[,1]
@@ -52,7 +58,8 @@ pred.mlm <- function(object,
 
   
   if (missing(newdata)) {
-    X <- model.matrix(object)
+    newdata <- model.matrix(object)
+    X <- newdata
     offset <- object$offset
   }
   else {
@@ -155,6 +162,16 @@ if (FALSE) {
 
   library(dplyr)
   library(car)
+  
+  data(mathscore, package = "heplots")
+  math.mod <- lm(cbind(BM, WP) ~ group, data=mathscore)
+  predict(math.mod)
+  
+  pred.mlm(math.mod)
+  
+  pred.mlm0(math.mod)
+  
+  
 
   # univariate model
   cars.mod1 <- lm(mpg ~  cyl + am + carb, data=mtcars)
