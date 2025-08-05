@@ -191,6 +191,27 @@ gpeng +
 # DOESN'T WORK
 gpeng + 
   stat_noteworthy(method = ids, label = ids)
+
+# ------------------------
+# from: 
+peng_plot <- peng |>
+  tibble::rownames_to_column(var = "id") 
+
+ggplot(peng_plot, 
+       aes(x = bill_length, 
+           y = bill_depth,
+           color = species, 
+           shape = species, 
+           fill = species,
+           label = id)) +                        #<<
+  geom_point() +
+  geom_smooth(method = "lm", 
+              formula = y ~ x,
+              se = FALSE, 
+              linewidth = 2) +
+  stat_ellipse(geom = "polygon", level = 0.95, alpha = 0.1) +
+  geom_text(stat = StatNoteworthy, method = ids, color = "black")
+
 }
 
 
