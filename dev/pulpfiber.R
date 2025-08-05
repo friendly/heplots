@@ -78,6 +78,9 @@ abline(h = cutoff, v = cutoff)
 outIDs <- which(dist.X > cutoff | dist.resids > cutoff)
 text(dist.X[outIDs], dist.resids[outIDs], (1:nrow(pulpfiber))[outIDs], pos = 2)
 
+source("C:/R/Projects/heplots/dev/distancePlot.R")
+distancePlot.mlm(pulp.mod)
+
 # do the same for robust distances
 
 dist.X <- pulpfiber |>

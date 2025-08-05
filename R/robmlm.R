@@ -221,7 +221,8 @@ robmlm.default <- function(X, Y, w, P=2*pnorm(4.685, lower.tail=FALSE),
   B.last <- B.new <- fit.last$coefficients
   iter <- 0
   if (verbose){
-    coefnames <- abbreviate(outer(rownames(B.new), colnames(B.new), function(x, y) paste(x, ":", y, sep="")), 10)
+    coefnames <- abbreviate(outer(rownames(B.new), colnames(B.new), 
+                                  function(x, y) paste(x, ":", y, sep="")), 10)
     b <- as.vector(B.new)
     names(b) <- coefnames
     cat("\n", iter, ":\n", sep="")

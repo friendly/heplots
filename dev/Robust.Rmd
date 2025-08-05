@@ -5,9 +5,9 @@ date: "`r Sys.Date()`"
 package: heplots
 output: 
   bookdown::html_document2:
-  base_format: rmarkdown::html_vignette
-fig_caption: yes
-toc: true
+    base_format: rmarkdown::html_vignette
+    fig_caption: yes
+    toc: true
 pkgdown:
   as_is: true
 bibliography: "Robust.bib"
@@ -25,6 +25,7 @@ knitr::opts_chunk$set(
   warning = FALSE,
   fig.height=5,
   fig.width=5,
+  fig.align = "center",
   # results='hide',
   # fig.keep='none',
   fig.path='fig/robust-',
@@ -43,7 +44,8 @@ library(ggplot2)
 library(dplyr)
 ```
 
-
+**Abstract**
+This vignette describes and demonstrates the `robmlm()` function from the `heplots` package, which provides robust estimation for multivariate linear models using iteratively reweighted least squares.
 
 ## Introduction
 
@@ -52,11 +54,12 @@ Multivariate linear models (MLMs) extend the familiar univariate linear regressi
 The need for robust estimation in multivariate regression has been recognized since the early development of robust statistical methods [@Tukey1960;@Huber1964].
 Outliers in multivariate data can be particularly problematic because they may not be readily apparent when examining univariate marginal distributions, yet can exert substantial leverage on the fitted model. Furthermore, the curse of dimensionality means that as the number of response variables increases, the probability of encountering at least one outlying observation grows rapidly.
 
-Robust multivariate regression methods aim to provide reliable parameter estimates and inference procedures that remain stable in the presence of outlying observations. As noted by @Rousseeuw2004, "The main advantage of robust regression is that it provides reliable results even when some of the assumptions of classical regression are violated." 
+Robust multivariate regression methods aim to provide reliable parameter estimates and inference procedures that remain stable in the presence of outlying observations. As noted by @Rousseeuw2004, "_The main advantage of robust regression is that it provides reliable results even when some of the assumptions of classical regression are violated._" 
 
-<!-- (Rousseeuw, P. J., Van Aelst, S., Van Driessen, K., & Gulló, J. A. (2004). Robust Multivariate Regression. *Technometrics*, 46(3), 293–305). -->
 
-Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators [@Rousseeuw1984], and MM-estimators [@Yohai1987]. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions. The method implemented in the `robmlm()` function belongs to the class of M-estimators, which generalize maximum likelihood estimation by replacing the likelihood function with a more robust objective function.
+Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators [@Rousseeuw1984], and MM-estimators [@Yohai1987]. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions. 
+
+The method implemented in the `robmlm()` function belongs to the class of M-estimators, which generalize maximum likelihood estimation by replacing the likelihood function with a more robust objective function.
 
 One key idea is to relax the least squares criterion of minimizing $Q(\mathbf{e}) = \Sigma e_i^2 = \Sigma (y_i - \hat{y}_i)^2$ by considering more general functions $Q(\mathbf{e}, \rho)$, where the function $\rho (e_i)$ can be chosen to reduce the impact of large outliers. In these terms,
 
@@ -73,12 +76,15 @@ levels off thereafter,
 \end{cases}
 \]
 
-These functions look like this in a graph:
+These functions look like this in a graph. For the biweight function
 
 
-```{r echo=TRUE}
+```{r echo=FALSE, out.width="70%"}
+#| label: fig-weight-fns
+#| fig-align: "center"
 knitr::include_graphics(here::here("man", "figures", "weight-functions.jpg"))
 ```
+
 
 
 ## Methodology: Iteratively Reweighted Least Squares (IRLS)
@@ -87,19 +93,25 @@ The `robmlm()` function implements robust multivariate linear model fitting usin
 
 ### The IRLS Algorithm
 
-The IRLS algorithm for robust multivariate regression proceeds as follows:
+The IRLS algorithm for robust multivariate regression is shown in the figure below.
+
+```{r echo=FALSE, fig.align='center', out.width="70%"}
+knitr::include_graphics(here::here("man", "figures", "IRWLS-flowchart.jpg"))
+```
+
+The method proceeds as follows:
 
 1. **Initialization**: Begin with an initial estimate of the regression coefficients, typically obtained from ordinary least squares (OLS).
 
-2. **Residual Calculation**: Compute the multivariate residuals for each observation:
+2. **Residual calculation**: Compute the multivariate residuals for each observation:
    $$\mathbf{r}_i = \mathbf{y}_i - \mathbf{X}_i\hat{\boldsymbol{\beta}}$$
    where $\mathbf{y}_i$ is the $p \times 1$ response vector for observation $i$, $\mathbf{X}_i$ is the corresponding row of the design matrix, and $\hat{\boldsymbol{\beta}}$ is the current estimate of the coefficient matrix.
 
-3. **Distance Computation**: Calculate the squared Mahalanobis distance of each residual vector from the origin:
+3. **Distance computation**: Calculate the squared Mahalanobis distance of each residual vector from the origin:
    $$d_i^2 = \mathbf{r}_i^T \mathbf{S}^{-1} \mathbf{r}_i$$
    where $\mathbf{S}$ is a robust estimate of the residual covariance matrix, computed using `MASS::cov.trob()`.
 
-4. **Weight Assignment**: Assign weights to each observation based on their residual distances. Observations with larger distances receive smaller weights, effectively downweighting potential outliers:
+4. **Weight assignment**: Assign weights to each observation based on their residual distances. Observations with larger distances receive smaller weights, effectively downweighting potential outliers:
    $$w_i = \rho(d_i^2)$$
    where $\rho(\cdot)$ is a weight function that decreases as the distance increases.
 
@@ -107,7 +119,7 @@ The IRLS algorithm for robust multivariate regression proceeds as follows:
    $$\hat{\boldsymbol{\beta}}^{(new)} = (\mathbf{X}^T\mathbf{W}\mathbf{X})^{-1}\mathbf{X}^T\mathbf{W}\mathbf{Y}$$
    where $\mathbf{W}$ is a diagonal matrix of weights.
 
-6. **Convergence Check**: Repeat steps 2-5 until convergence, typically assessed by monitoring changes in the coefficient estimates or weights between iterations.
+6. **Convergence check**: Repeat steps 2-5 until convergence, typically assessed by monitoring changes in the coefficient estimates or weights between iterations.
 
 ### Key Features of the Implementation
 
@@ -135,6 +147,7 @@ The IRLS approach offers several desirable theoretical properties:
 
 - **Equivariance**: The estimates maintain appropriate equivariance properties under linear transformations of the data.
 
+<!--
 ## Structure of This Vignette
 
 In the following sections, we will demonstrate the practical application of `robmlm()` through several illustrative examples:
@@ -150,12 +163,13 @@ In the following sections, we will demonstrate the practical application of `rob
 5. **Advanced Topics**: Discussion of model selection, hypothesis testing, and confidence intervals in the robust multivariate regression context.
 
 Each example will include both the R code and interpretation of results, with particular attention to how robust methods can provide more reliable insights when data quality is questionable.
+-->
 
 
 ## Example 1: Pottery Data Analysis
 
 We begin with a simple but illustrative example using the pottery composition data from the `carData` package. This dataset contains measurements of five chemical elements (`Al`, `Fe`, `Mg`, `Ca`, `Na`) in pottery samples from four different archaeological sites. The goal is to determine whether the chemical composition differs significantly across sites, a classic one-way MANOVA problem. Alternatively, it can be framed as a problem in discriminant analysis, asking whether
-these chemical elements can be used to distinguish among the sites ...
+these chemical elements can be used to distinguish among the sites.
 
 ```{r pottery-data, message=FALSE}
 library(heplots)
@@ -173,16 +187,32 @@ The pottery dataset contains `r nrow(Pottery)` observations with measurements of
 str(Pottery)
 ```
 
-### Classical vs Robust MANOVA
+### Classical MANOVA
 
-We'll fit both a standard multivariate linear model and its robust counterpart, then compare their MANOVA results.
+We begin with the standard MANOVA model, and then examine some diagnostic plots.
 
-```{r pottery-models}
+```{r pottery-mlm}
 # Classical MANOVA model
 pottery.mlm <- lm(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = Pottery)
+Anova(pottery.mlm)
+```
 
+As an initial check, a `cqplot()` of the model gives a $\chi^2$ QQ plot of the residuals from the model,
+which would identify badly fit observations. None seem particularly large here.
+
+```{r pottery-cqplot}
+cqplot(pottery.mlm, id.n = 5)
+```
+
+
+### Robust MANOVA
+
+Now, fit the robust model using `robmlm()`.
+
+```{r pottery-rlm}
 # Robust MANOVA model
 pottery.rlm <- robmlm(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = Pottery)
+Anova(pottery.rlm)
 ```
 
 Let's compare the results.
@@ -206,16 +236,19 @@ The robust method provides `r ifelse(robust_anova$"Pr(>F)"[1] < classical_anova$
 
 ### Examining the Robust Weights
 
-The robust fitting procedure assigns weights to each observation based on their deviation from the fitted model. Observations that appear to be outliers receive lower weights.
+The robust fitting procedure assigns weights to each observation based on their deviation from the fitted model. Observations that appear to be outliers receive lower weights. The `plot()` method for a `"roblm"` object gives an index plot of the weight values.
 
 ```{r pottery-weights, fig.cap="Weights from robust MANOVA fitting showing potential outliers"}
 # Plot the weights from robust fitting
-plot(pottery.rlm, segments = TRUE)
+plot(pottery.rlm, col=Pottery$Site, segments=TRUE)
+xloc <- c(7.5, 15.5, 19.5, 24)
+text(xloc, rep(c(1.0, 1.05), length=5), 
+     levels(Pottery$Site), pos =3, xpd = TRUE)
 ```
 
 The weight plot reveals which observations were considered potentially problematic during the robust fitting process. Observations with weights substantially below 1.0 were downweighted, indicating they may be outliers in the multivariate space defined by the five chemical measurements.
 
-### Hypothesis-Error (HE) Plot Comparison
+### Hypothesis-Error (HE) plot comparison
 
 HE plots provide a visual representation of the multivariate hypothesis test by showing the relationship between hypothesis and error variation in a reduced dimensional space. We'll create HE plots for the first two variables (Al and Fe) and compare the classical and robust fits.
 
@@ -259,6 +292,4 @@ This indicates |r ifelse(abs(log10(robust_anova$"Pr(>F)"[1]) - log10(classical_a
 
 The robust approach demonstrates its value by providing a more stable analysis that is less susceptible to the influence of outlying observations, while still maintaining high efficiency when the data conform to standard assumptions.
 
----
-
-*This vignette demonstrates the `robmlm()` function from the `heplots` package, which provides robust estimation for multivariate linear models using iteratively reweighted least squares.*
+## References

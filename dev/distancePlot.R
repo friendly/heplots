@@ -55,6 +55,9 @@ distancePlot.default <- function(X, Y,
   
   method = match.arg(method)
   method.case <- ifelse(method == "classical", "Classical", toupper(method))
+
+  if(missing(xlab)) xlab <- paste("Mahalanobis distances of", deparse(substitute(X)))
+  if(missing(ylab)) ylab <- paste("Mahalanobis distances of", deparse(substitute(Y)))
   xlab <- paste(method.case, xlab)
   ylab <- paste(method.case, ylab)
   
@@ -70,8 +73,6 @@ distancePlot.default <- function(X, Y,
   
   # browser()
   
-  if(missing(xlab)) xlab <- paste("Mahalanobis distances of", deparse(substitute(X)))
-  if(missing(ylab)) ylab <- paste("Mahalanobis distances of", deparse(substitute(Y)))
   
   plot(distX, distY,
        pch = ifelse(out, pch[2], pch[1]),
