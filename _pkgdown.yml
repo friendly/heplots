@@ -46,6 +46,7 @@ reference:
     contents:
     - coefplot
     - covEllipses
+    - distancePlot
     - glance.mlm
     - uniStats
 

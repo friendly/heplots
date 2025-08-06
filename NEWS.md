@@ -1,12 +1,12 @@
 ## Version 1.7.8
 
-o Added `distancePlot` for plots of Mahalanobis distances of X vs Y
+o Added `distancePlot()` for plots of Mahalanobis distances of X vs Y
 o Added vignette on robust MLMs
 
 ## Version 1.7.6 
 
 * fixing data, group names in boxM to avoid necessity for `gplabel` in plots.
-* added reference for CI in plot.boxm()
+* added reference for CI in `plot.boxm()`
 
 ## Version 1.7.5 
 
