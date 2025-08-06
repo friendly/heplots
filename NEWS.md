@@ -1,3 +1,7 @@
+## Version 1.7.8
+
+o Added `distancePlot` for plots of Mahalanobis distances of X vs Y
+
 ## Version 1.7.6 
 
 * fixing data, group names in boxM to avoid necessity for `gplabel` in plots.
