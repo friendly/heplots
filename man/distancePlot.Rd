@@ -20,6 +20,7 @@ distancePlot(X, Y, ...)
   label.pos = 2,
   xlab,
   ylab,
+  verbose = FALSE,
   ...
 )
 
@@ -51,6 +52,8 @@ distancePlot(X, Y, ...)
 
 \item{ylab}{Label stub for vertical axis}
 
+\item{verbose}{Logical; if \code{TRUE} print the cutoff values to the console}
+
 \item{data}{For the formula method, the dataset containing the variables}
 }
 \value{
@@ -69,6 +72,18 @@ Observations with "large" distances on \code{X} or \code{Y} are labeled with the
 \eqn{\sqrt{\chi^2_{k, \text{level}}}}.
 }
 \examples{
+
+if(require("robustbase")) {
+  # Examples from Rousseeuw etal (2004)
+  data(pulpfiber, package="robustbase")
+  # Figure 1
+  distancePlot(pulpfiber[, 1:4], pulpfiber[, 5:8])   
+  # Figure 3
+  pulp.mod <- lm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
+  distancePlot(pulp.mod, method = "mcd")
+}
+
+# NLSY data
 data(NLSY, package = "heplots")
 NLSY.mlm <- lm(cbind(math, read) ~ income + educ + antisoc + hyperact,
                data = NLSY)
@@ -83,14 +98,16 @@ distancePlot(NLSY.mlm, method ="mve")
 # distancePlot(cbind(math, read) ~ income + educ + antisoc + hyperact,
 #                data = NLSY)
 
+# schooldata dataset
+data(schooldata)
+school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ ., data=schooldata)
+distancePlot(school.mod)
+
 data(Hernior)
 Hern.mod <- lm(cbind(leave, nurse, los) ~
                age + sex +  pstat +  build + cardiac + resp, data=Hernior)
 distancePlot(Hern.mod)
 
-data(schooldata)
-school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ ., data=schooldata)
-distancePlot(school.mod)
 }
 \references{
 Rousseeuw, P. J., Van Driessen, K., Van Aelst, S., & Agullo, J. (2004). Robust multivariate regression. 

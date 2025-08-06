@@ -29,6 +29,7 @@
 #' @param label.pos  Position of the label relative to the point; see \code{\link[graphics]{text}} 
 #' @param xlab    Label stub for horizontal axis
 #' @param ylab    Label stub for vertical axis
+#' @param verbose Logical; if \code{TRUE} print the cutoff values to the console
 #' @param ...     Other arguments passed to methods
 #'
 #' @return        Returns invisibly a data frame containing the distances, \code{distX}, \code{distY}
@@ -40,6 +41,18 @@
 #' @export
 #'
 #' @examples
+#'
+#' if(require("robustbase")) {
+#'   # Examples from Rousseeuw etal (2004)
+#'   data(pulpfiber, package="robustbase")
+#'   # Figure 1
+#'   distancePlot(pulpfiber[, 1:4], pulpfiber[, 5:8])   
+#'   # Figure 3
+#'   pulp.mod <- lm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
+#'   distancePlot(pulp.mod, method = "mcd")
+#' }
+#' 
+#' # NLSY data
 #' data(NLSY, package = "heplots")
 #' NLSY.mlm <- lm(cbind(math, read) ~ income + educ + antisoc + hyperact,
 #'                data = NLSY)
@@ -54,15 +67,16 @@
 #' # distancePlot(cbind(math, read) ~ income + educ + antisoc + hyperact,
 #' #                data = NLSY)
 #' 
+#' # schooldata dataset
+#' data(schooldata)
+#' school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ ., data=schooldata)
+#' distancePlot(school.mod)
+#' 
 #' data(Hernior)
 #' Hern.mod <- lm(cbind(leave, nurse, los) ~
 #'                age + sex +  pstat +  build + cardiac + resp, data=Hernior)
 #' distancePlot(Hern.mod)
 #' 
-#' data(schooldata)
-#' school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ ., data=schooldata)
-#' distancePlot(school.mod)
-
 #' @export distancePlot
 distancePlot <-
   function(X, Y, ...) UseMethod("distancePlot")
@@ -79,6 +93,7 @@ distancePlot.default <- function(X, Y,
                          label.pos = 2,
                          xlab,
                          ylab,
+                         verbose = FALSE,
                          ...) {
   
   if (nrow(X) != nrow(Y)) stop(paste("Number of rows in", deparse(substitute(X)), 
@@ -96,14 +111,15 @@ distancePlot.default <- function(X, Y,
   if(missing(ylab)) ylab <- paste("Mahalanobis distances of", deparse(substitute(Y)))
   xlab <- paste(method.case, xlab)
   ylab <- paste(method.case, ylab)
-  
+
+  # Calculate distances  
   distX <- Mahalanobis(X, method = method) |> sqrt()
   distY <- Mahalanobis(Y, method = method) |> sqrt()
   
   q <- ncol(X)
   p <- ncol(Y)
   cutoffs <- qchisq(level, c(q, p)) |> sqrt()
-  # cat(level, "distance cutoffs:", cutoffs, "\n")
+  cat(level, "distance cutoffs:", cutoffs, "\n")
   out <- (distX > cutoffs[1]) | distY > cutoffs[2]
   out.rows <- which(out)
   
