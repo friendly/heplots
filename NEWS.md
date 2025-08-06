@@ -1,6 +1,7 @@
 ## Version 1.7.8
 
 o Added `distancePlot` for plots of Mahalanobis distances of X vs Y
+o Added vignette on robust MLMs
 
 ## Version 1.7.6 
 

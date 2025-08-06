@@ -10,7 +10,7 @@ output:
     toc: true
 pkgdown:
   as_is: true
-bibliography: "Robust.bib"
+bibliography: "robust.bib"
 link-citations: yes
 csl: apa.csl
 vignette: >
@@ -28,40 +28,51 @@ knitr::opts_chunk$set(
   fig.align = "center",
   # results='hide',
   # fig.keep='none',
-  fig.path='fig/robust-',
+  fig.path='man/figures/robust-',
   echo=TRUE,
   collapse = TRUE,
   comment = "#>"
 )
+options(digits = 4)
+set.seed(1071)
+options(width=80, continue="  ")
 ```
 
-```{r setup, echo=FALSE}
-set.seed(1071)
-options(width=80, digits=5, continue="  ")
+
+**Abstract**
+
+This vignette describes the theory behind, and demonstrates the use of, the `robmlm()` function from the `heplots` package, which provides robust estimation for multivariate linear models (MLMs) using iteratively reweighted least squares (IRLS).
+
+It illustrates the central ideas behind robust estimation for MLMs, how the IRLS algorithm works, and presents examples of
+plots that help understand how robust models can contribute to data analysis.
+
+
+**Load packages**
+
+I use the following packages here:
+```{r setup}
 library(heplots)
 library(candisc)
 library(ggplot2)
 library(dplyr)
+library(mvinfluence)
 ```
-
-**Abstract**
-This vignette describes and demonstrates the `robmlm()` function from the `heplots` package, which provides robust estimation for multivariate linear models using iteratively reweighted least squares.
 
 ## Introduction
 
 Multivariate linear models (MLMs) extend the familiar univariate linear regression framework to situations where multiple response variables are modeled simultaneously as linear functions of a common set of predictor variables. While classical multivariate least squares estimation provides optimal results under ideal conditions (multivariate normality and absence of outliers), real-world data often violate these assumptions. The presence of outliers, heavy-tailed distributions, or other departures from normality can severely compromise the reliability of classical estimators, leading to biased parameter estimates and inflated error rates in hypothesis testing.
 
-The need for robust estimation in multivariate regression has been recognized since the early development of robust statistical methods [@Tukey1960;@Huber1964].
-Outliers in multivariate data can be particularly problematic because they may not be readily apparent when examining univariate marginal distributions, yet can exert substantial leverage on the fitted model. Furthermore, the curse of dimensionality means that as the number of response variables increases, the probability of encountering at least one outlying observation grows rapidly.
+The need for robust estimation in _multivariate_ regression has been recognized since the early development of robust statistical methods [@Tukey1960;@Huber1964].
+Outliers in multivariate data can be particularly problematic because they may not be readily apparent when examining univariate marginal distributions, yet can exert substantial leverage on the fitted model. Furthermore, the _curse of dimensionality_ means that as the number of response variables increases, the probability of encountering at least one outlying observation grows rapidly.
 
 Robust multivariate regression methods aim to provide reliable parameter estimates and inference procedures that remain stable in the presence of outlying observations. As noted by @Rousseeuw2004, "_The main advantage of robust regression is that it provides reliable results even when some of the assumptions of classical regression are violated._" 
 
 
 Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators [@Rousseeuw1984], and MM-estimators [@Yohai1987]. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions. 
 
-The method implemented in the `robmlm()` function belongs to the class of M-estimators, which generalize maximum likelihood estimation by replacing the likelihood function with a more robust objective function.
+The method implemented in the `robmlm()` function belongs to the class of **M-estimators**, which generalize maximum likelihood estimation by replacing the likelihood function with a more robust objective function.
 
-One key idea is to relax the least squares criterion of minimizing $Q(\mathbf{e}) = \Sigma e_i^2 = \Sigma (y_i - \hat{y}_i)^2$ by considering more general functions $Q(\mathbf{e}, \rho)$, where the function $\rho (e_i)$ can be chosen to reduce the impact of large outliers. In these terms,
+The key idea is to relax the least squares criterion of minimizing $Q(\mathbf{e}) = \Sigma e_i^2 = \Sigma (y_i - \hat{y}_i)^2$ by considering more general functions $Q(\mathbf{e}, \rho)$, where the function $\rho (e_i)$ can be chosen to reduce the impact of large outliers. In these terms,
 
 * OLS uses $\rho(e_i) = e_i^2$
 * $L_1$ estimation uses $\rho(e_i) = \vert e_i \vert$, the least absolute values
@@ -76,12 +87,15 @@ levels off thereafter,
 \end{cases}
 \]
 
-These functions look like this in a graph. For the biweight function
+These functions look like this in a graph. For the biweight function has a property
+like Windsorizing--- the squared error remains constant for residuals $e_i > c$,
+with $c = 4.685$ for `MASS::psi.bisquare()`.
 
 
 ```{r echo=FALSE, out.width="70%"}
 #| label: fig-weight-fns
 #| fig-align: "center"
+#| fig-cap: "Diagram ploting the function $\\rho(e_i)$ of the contributions of the residuals $e_i$ to what is minimized in various fitting methods."
 knitr::include_graphics(here::here("man", "figures", "weight-functions.jpg"))
 ```
 
@@ -121,11 +135,11 @@ The method proceeds as follows:
 
 6. **Convergence check**: Repeat steps 2-5 until convergence, typically assessed by monitoring changes in the coefficient estimates or weights between iterations.
 
-### Key Features of the Implementation
+### Features of the Implementation
 
 The `robmlm()` implementation incorporates several important features:
 
-- **Robust Covariance Estimation**: The use of `MASS::cov.trob()` provides a robust estimate of the residual covariance matrix, which is crucial for computing meaningful Mahalanobis distances in the presence of outliers.
+- **Robust covariance estimation**: The use of `MASS::cov.trob()` provides a robust estimate of the residual covariance matrix, which is crucial for computing meaningful Mahalanobis distances in the presence of outliers.
 This uses the multivariate $t$ distribution that allows for longer tails.
 (There are other robust covariance estimators, such as Minimum Covariance Determinant (MCD) and Minimum Volume Ellipse (MVE), which have a high tolerance---breakdown-bound-- for outliers. These might come to a future version of `robmlm()`.)
 
@@ -133,7 +147,7 @@ This uses the multivariate $t$ distribution that allows for longer tails.
 
 - **Weight Preservation**: The final weights are preserved in the fitted object, allowing users to identify influential observations and assess the impact of the robust fitting procedure.
 
-- **Diagnostic Capabilities**: The `plot.robmlm()` method provides immediate visual feedback on the weighting scheme, plotting final weights against case numbers to highlight observations that were downweighted during the fitting process.
+- **Diagnostic Capabilities**: The `plot.robmlm()` method provides immediate visual feedback on the weighting scheme, plotting final weights against case numbers to highlight observations that were down-weighted during the fitting process.
 
 ### Theoretical Properties
 
@@ -145,7 +159,7 @@ The IRLS approach offers several desirable theoretical properties:
 
 - **Asymptotic Efficiency**: Under ideal conditions (no outliers, multivariate normality), robust M-estimators achieve high efficiency relative to classical least squares estimators.
 
-- **Equivariance**: The estimates maintain appropriate equivariance properties under linear transformations of the data.
+- **Equivariance**: The robust estimates maintain appropriate equivariance properties under linear transformations of the data.
 
 <!--
 ## Structure of This Vignette
@@ -166,7 +180,7 @@ Each example will include both the R code and interpretation of results, with pa
 -->
 
 
-## Example 1: Pottery Data Analysis
+## Example: Pottery Data
 
 We begin with a simple but illustrative example using the pottery composition data from the `carData` package. This dataset contains measurements of five chemical elements (`Al`, `Fe`, `Mg`, `Ca`, `Na`) in pottery samples from four different archaeological sites. The goal is to determine whether the chemical composition differs significantly across sites, a classic one-way MANOVA problem. Alternatively, it can be framed as a problem in discriminant analysis, asking whether
 these chemical elements can be used to distinguish among the sites.
@@ -186,6 +200,13 @@ The pottery dataset contains `r nrow(Pottery)` observations with measurements of
 ```{r pottery-structure}
 str(Pottery)
 ```
+The pottery samples are not evenly distributed across the sites. The most come from Llanedyrn; there are only two from
+Caldicot.
+
+```{r}
+table(Pottery$Site)
+```
+
 
 ### Classical MANOVA
 
@@ -197,17 +218,31 @@ pottery.mlm <- lm(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = Pottery)
 Anova(pottery.mlm)
 ```
 
+**Chisquare QQ plot**:
 As an initial check, a `cqplot()` of the model gives a $\chi^2$ QQ plot of the residuals from the model,
 which would identify badly fit observations. None seem particularly large here.
 
-```{r pottery-cqplot}
+```{r pottery-cqplot, fig.cap="Chisquare QQ plot for the Pottery model."}
 cqplot(pottery.mlm, id.n = 5)
 ```
+**Influence plot**:
+An _influence plot_ for this model, done using `mvinfluence::influencePlot()` plots the leverage multivariate hat-values for the predictors (`site`) against squared multivariate studentized residuals, using the size of the point symbol proportional to a multivariate generalization of Cook's D statistic. 
 
+```{r pottery-inflplot, fig.cap = "Influence plot for the Pottery model."}
+res <- influencePlot(pottery.mlm, id.n = 2)
+res |>
+  arrange(desc(CookD))
+```
+
+Because `site` is a factor, the hat-values are inversely proportional to the sample size. Points for Llanedryn ($n=14$) are in the
+left-most column, followed by AshleyRails and IsleThorns (each with $n=5$) and then Caldicot ($n=14$).
+
+Here, case 25 stands out with the largest value of Cook's D, followed by 18 and 11. 
 
 ### Robust MANOVA
 
-Now, fit the robust model using `robmlm()`.
+Now, fit the robust model using `robmlm()`. Because this uses an interative IRLS method, points that might not seem unusual
+in the initial model can become more noteworthy when the extreme observations are down-weighted in a subsequent iteration.
 
 ```{r pottery-rlm}
 # Robust MANOVA model
@@ -215,24 +250,28 @@ pottery.rlm <- robmlm(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = Pottery)
 Anova(pottery.rlm)
 ```
 
-Let's compare the results.
+Let's compare the results. From the results of `Anova()` above, you can see that
+the $F$ statistic for the robust model is greater than that for OLS,
+which suggests that possible outliers may have reduced the strength of evidence for differences among the sites.
 
-#### Classical MANOVA using `lm()` {.nonumber}
+It is useful to compare the coefficients of the two models, and for this, their relative difference is
+a useful metric. The simple function `reldiff()` expresses these as the signed percent of difference
+between the classical and robust estimatges
 
-```{r pottery-mo}
-classical_anova <- Anova(pottery.mlm)
-print(classical_anova)
+```{r pottery-coefs}
+b.mlm <- coef(pottery.mlm)
+b.rlm <- coef(pottery.rlm)
 
-cat("\n\nRobust MANOVA Results:\n")
-robust_anova <- Anova(pottery.rlm)
-print(robust_anova)
+reldiff <- function(x, y, pct=TRUE) {
+  res <- abs(x - y) / x
+  if (pct) res <- 100 * res
+  res
+}
+
+reldiff(b.mlm, b.rlm)
 ```
 
-The comparison reveals some important differences between classical and robust approaches. 
-<!--
-DOESN'T WORK
-The robust method provides `r ifelse(robust_anova$"Pr(>F)"[1] < classical_anova$"Pr(>F)"[1], "stronger", "weaker")` evidence for site differences, which suggests that `r ifelse(robust_anova$"Pr(>F)"[1] < classical_anova$"Pr(>F)"[1], "outliers may have been masking the true signal", "outliers may have been inflating the apparent differences")` in the classical analysis.
--->
+Among these, the coefficients for IsleThorns are quite different for most of the variables.
 
 ### Examining the Robust Weights
 
@@ -246,9 +285,9 @@ text(xloc, rep(c(1.0, 1.05), length=5),
      levels(Pottery$Site), pos =3, xpd = TRUE)
 ```
 
-The weight plot reveals which observations were considered potentially problematic during the robust fitting process. Observations with weights substantially below 1.0 were downweighted, indicating they may be outliers in the multivariate space defined by the five chemical measurements.
+The weight plot reveals which observations were considered potentially problematic during the robust fitting process. Observations with weights substantially below 1.0 were down-weighted, indicating they may be outliers in the multivariate space defined by the five chemical measurements.
 
-### Hypothesis-Error (HE) plot comparison
+### Hypothesis-Error (HE) plots
 
 HE plots provide a visual representation of the multivariate hypothesis test by showing the relationship between hypothesis and error variation in a reduced dimensional space. We'll create HE plots for the first two variables (Al and Fe) and compare the classical and robust fits.
 
@@ -273,22 +312,35 @@ legend("topright",
        )
 ```
 
+The **H** and **E** ellipses have approximately the same shape and orientation for the classical and robust models, indicating
+that the pattern of differences among the group means is quite similar for both models. However, the **E** ellipse for the robust
+model is noticeably smaller. This goes into the greater $F$ statistic for the robust model.
+
+For a more complete interpretation of robust model, a scatterplot matrix of HE plots is shown below, using the `pairs()` method
+for a MLM.
+
+```{r pottery-pairs, fig.cap = "Pairwise HE plots for all response variables in the robust model `pottery.rlm`"}
+pairs(pottery.rlm, 
+      fill=TRUE, fill.alpha = 0.1)
+```
+
+
 ### Interpretation and Discussion
 
-Several important insights emerge from this pottery analysis:
+Several important insights emerge from this analysis of the Pottery data
 
-**Statistical Significance**: The comparison of MANOVA results shows ...
+* **Model evaluation**: The comparison of MANOVA results shows ...
 
 <!--
 |r ifelse(abs(log10(robust_anova$"Pr(>F)"[1]) - log10(classical_anova$"Pr(>F)"[1])) > 0.5, "substantial differences", "similar patterns")| between classical and robust approaches. 
 This indicates |r ifelse(abs(log10(robust_anova$"Pr(>F)"[1]) - log10(classical_anova$"Pr(>F)"[1])) > 0.5, "that outliers are influencing the classical analysis", "that the data are relatively well-behaved with respect to outliers")|.
 -->
 
-**Outlier Detection**: The weight plot identifies specific observations that deviate from the typical pattern. In archaeological studies, such outliers might represent pottery from different time periods, contaminated samples, or measurement errors that warrant further investigation.
+* **Outlier detection**: The weight plot identifies specific observations that deviate from the typical pattern. In archaeological studies, such outliers might represent pottery from different time periods, contaminated samples, or measurement errors that warrant further investigation.
 
-**Geometric Interpretation**: The HE plot comparison reveals how outliers affect the geometric representation of the hypothesis test. The hypothesis ellipse (representing the Site effect) and error ellipse (representing within-group variation) may differ substantially between classical and robust fits when influential outliers are present.
+* **Geometric interpretation**: The HE plot comparison reveals how outliers affect the geometric representation of the hypothesis test. The hypothesis ellipse (representing the Site effect) and error ellipse (representing within-group variation) may differ substantially between classical and robust fits when influential outliers are present.
 
-**Practical Implications**: For archaeologists studying pottery composition, the robust analysis provides more reliable conclusions about site differences by reducing the influence of potentially problematic observations. This is particularly important when making inferences about ancient trade routes, cultural practices, or chronological relationships based on chemical composition data.
+* **Practical implications**: For archaeologists studying pottery composition, the robust analysis provides more reliable conclusions about site differences by reducing the influence of potentially problematic observations. This is particularly important when making inferences about ancient trade routes, cultural practices, or chronological relationships based on chemical composition data.
 
 The robust approach demonstrates its value by providing a more stable analysis that is less susceptible to the influence of outlying observations, while still maintaining high efficiency when the data conform to standard assumptions.
 
