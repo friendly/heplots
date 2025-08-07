@@ -206,23 +206,39 @@ data(Rohwer, package="heplots")
 Rohwer2 <- subset(Rohwer, subset=group==2)
 Rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ n+s+ns+na+ss, data=Rohwer2)
 
+# Types of influence plots
 influencePlot(Rohwer.mod, id.n=4, type="stres")
+
 influencePlot(Rohwer.mod, id.n=4, type="LR")
+
 influencePlot(Rohwer.mod, id.n=4, type="cookd")
 
 # Sake data
 data(Sake, package="heplots")
 	Sake.mod <- lm(cbind(taste,smell) ~ ., data=Sake)
+	
 	influencePlot(Sake.mod, id.n=3, type="stres")
+	
 	influencePlot(Sake.mod, id.n=3, type="LR")
+	
 	influencePlot(Sake.mod, id.n=3, type="cookd")
 
 # Adopted data	
 data(Adopted, package="heplots")
 Adopted.mod <- lm(cbind(Age2IQ, Age4IQ, Age8IQ, Age13IQ) ~ AMED + BMIQ, data=Adopted)
+
 influencePlot(Adopted.mod, id.n=3)
+
 influencePlot(Adopted.mod, id.n=3, type="LR", ylim=c(-4,-1.5))
 
+# schooldata 
+data(schooldata, package = "heplots")
+school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ ., 
+                 data=schooldata)
+
+influencePlot(school.mod, id.n=4, type="stres")
+
+influencePlot(school.mod, id.n=4, type="LR")
 
 
 
@@ -267,6 +283,8 @@ library(car)
 dmod <- lm(prestige ~ income + education, data = Duncan)
 influencePlot(dmod, id.n=3)
 lrPlot(dmod, id.n=3)
+
+# NLSY data
 
 
 
@@ -332,6 +350,34 @@ mpower(MM, -1)
 Mhalf <- mpower(MM, 1/2)
 all.equal(MM, Mhalf %*% Mhalf)
 
+
+
+
+
+cleanEx()
+nameEx("mvinfluence-package")
+### * mvinfluence-package
+
+flush(stderr()); flush(stdout())
+
+### Name: mvinfluence-package
+### Title: Influence Measures and Diagnostic Plots for Multivariate Linear
+###   Models
+### Aliases: mvinfluence mvinfluence-package
+
+### ** Examples
+
+
+data(Rohwer, package="heplots")
+Rohwer2 <- subset(Rohwer, subset=group==2)
+rownames(Rohwer2) <- 1:nrow(Rohwer2)
+Rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ n+s+ns+na+ss, data=Rohwer2)
+
+influencePlot(Rohwer.mod, id.n = 3)
+# LR plot
+influencePlot(Rohwer.mod, id.n = 3, type = "LR")
+# 'cookd' plot
+influencePlot(Rohwer.mod, id.n = 3, type = "cookd")
 
 
 

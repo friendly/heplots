@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -40,7 +40,6 @@ Type 'q()' to quit R.
 > 
 > library(Guerry)
 > library(sp)
-Warning: package 'sp' was built under R version 4.4.3
 > library(RColorBrewer)
 > 
 > data(Guerry)
@@ -91,9 +90,7 @@ detaching 'package:RColorBrewer', 'package:sp'
 > ### ** Examples
 > 
 > library(car)
-Warning: package 'car' was built under R version 4.4.3
 Loading required package: carData
-Warning: package 'carData' was built under R version 4.4.3
 > data(Guerry)
 > 
 > # Is there a relation between crime and literacy?
@@ -131,7 +128,6 @@ Warning: package 'carData' was built under R version 4.4.3
 > # Re-arrange variables by PCA ordering.
 > 
 > library(corrgram)
-Warning: package 'corrgram' was built under R version 4.4.3
 > corrgram(Guerry[,4:9], upper=panel.ellipse, order=TRUE)
 > 
 > 
@@ -154,7 +150,6 @@ detaching 'package:corrgram', 'package:car', 'package:carData'
 > ### ** Examples
 > 
 > library(sp)
-Warning: package 'sp' was built under R version 4.4.3
 > data(gfrance)
 > names(gfrance)  ## list @data variables
  [1] "CODE_DEPT"       "COUNT"           "AVE_ID_GEO"      "dept"           
@@ -214,10 +209,8 @@ detaching 'package:sp'
 > data(gfrance85)
 > require(sp)
 Loading required package: sp
-Warning: package 'sp' was built under R version 4.4.3
 > require(scales)
 Loading required package: scales
-Warning: package 'scales' was built under R version 4.4.3
 > plot(gfrance85)   # plot the empty outline map
 > 
 > # extract some useful components
@@ -265,7 +258,7 @@ detaching 'package:scales', 'package:sp'
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  3.67 0.22 4.03 NA NA 
+Time elapsed:  28.59 1.8 46.7 NA NA 
 > grDevices::dev.off()
 null device 
           1 

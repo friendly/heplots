@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -146,9 +146,7 @@ Loading required package: effects
 Loading required package: carData
 lattice theme set by effectsTheme()
 See ?effectsTheme for details.
-Warning message:
-package 'carData' was built under R version 4.4.3 
 > 
 > proc.time()
    user  system elapsed 
-   0.79    0.26    1.07 
+   5.54    1.25    7.20 

@@ -1,7 +1,9 @@
 ## Version 1.7.8
 
+Several small maintenance fixes, plus a new diagnostic plot and a new vignette
+
 o Added `distancePlot()` for plots of Mahalanobis distances of X vs Y
-o Added vignette on robust MLMs
+o Added a vignette on robust MLMs using `robmlm()` and diagnostic plots
 
 ## Version 1.7.6 
 

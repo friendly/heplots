@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -130,7 +130,6 @@ Cumulative Proportion  1.0000 1.00000
 > 
 > # Initial version, using ggplot
 > library(ggplot2)
-Warning: package 'ggplot2' was built under R version 4.4.3
 > ggplot(aes(x=Year, y=Value), data=Bowley) +
 +   geom_point() +
 +   geom_smooth(method="loess", formula=y~x)
@@ -158,9 +157,7 @@ detaching 'package:ggplot2'
 > # Reproduce Figure 1 in Bellhouse (2011)
 > # He excluded age < 5 and made a point of the over-representation of deaths in quinquennial years.
 > library(ggplot2)
-Warning: package 'ggplot2' was built under R version 4.4.3
 > library(dplyr, warn.conflicts = FALSE)
-Warning: package 'dplyr' was built under R version 4.4.3
 > Breslau5 <- Breslau |>
 +   filter(age >= 5) |>
 +   mutate(div5 = factor(age %% 5 == 0))
@@ -299,8 +296,6 @@ detaching 'package:dplyr', 'package:ggplot2'
 +               xlab="Poor rate per pound of house value",
 +               ylab="Deaths from cholera in 1849 per 10,000")
 +   }
-Warning: package 'car' was built under R version 4.4.3
-Warning: package 'carData' was built under R version 4.4.3
              Hammersmith Hanover Square & Mayfair      St George Southwark 
                        1                        3                        4 
              West London            Bethnal Green                  Chelsea 
@@ -357,7 +352,6 @@ persons_house     0.9910483    0.9673772 1.015244e+00
 +   plot(eff)
 + }
 Loading required package: effects
-Warning: package 'effects' was built under R version 4.4.3
 lattice theme set by effectsTheme()
 See ?effectsTheme for details.
 > 
@@ -392,7 +386,6 @@ tibble [730 × 6] (S3: tbl_df/tbl/data.frame)
 > 
 > # Reproduce Farr's (1852) plate 2
 > library(ggplot2)
-Warning: package 'ggplot2' was built under R version 4.4.3
 > CholeraDeaths1849  |>
 +   ggplot(aes(x = date, y = deaths, colour = cause_of_death)) +
 +   geom_line(linewidth = 1.2) +
@@ -442,9 +435,7 @@ detaching 'package:ggplot2'
 + (CPaov <- Anova(CPmod, idata=Treats, idesign= ~Treatment))
 + }
 Loading required package: car
-Warning: package 'car' was built under R version 4.4.3
 Loading required package: carData
-Warning: package 'carData' was built under R version 4.4.3
 Note: model has only an intercept; equivalent type-III tests substituted.
 
 Type III Repeated Measures MANOVA Tests: Pillai test statistic
@@ -513,9 +504,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 +   pairs(CPmod, idata=Treats, idesign= ~Treatment, iterm="Treatment")
 + }
 Loading required package: heplots
-Warning: package 'heplots' was built under R version 4.4.3
 Loading required package: broom
-Warning: package 'broom' was built under R version 4.4.3
 Note: model has only an intercept; equivalent type-III tests substituted.
 Note: model has only an intercept; equivalent type-III tests substituted.
 > 
@@ -660,9 +649,7 @@ Number of Fisher Scoring iterations: 4
 > 
 > # fit the additive ANOVA model
 > library(car)  # for Anova()
-Warning: package 'car' was built under R version 4.4.3
 Loading required package: carData
-Warning: package 'carData' was built under R version 4.4.3
 > EDmod <- lm(Freq ~ County + year, data=EdgeworthDeaths)
 > Anova(EDmod)
 Anova Table (Type II tests)
@@ -678,10 +665,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 > # now, consider as a two-way table of frequencies
 > 
 > library(vcd)
-Warning: package 'vcd' was built under R version 4.4.3
 Loading required package: grid
 > library(MASS)
-Warning: package 'MASS' was built under R version 4.4.3
 > structable( ~ County + year, data=EdgeworthDeaths)
           year 1876 1877 1878 1879 1880 1881 1882
 County                                           
@@ -774,9 +759,7 @@ Whorls   0   1   2   3   4   5
 + 		}
 +   })
 Loading required package: car
-Warning: package 'car' was built under R version 4.4.3
 Loading required package: carData
-Warning: package 'carData' was built under R version 4.4.3
 > 
 > 
 > 
@@ -812,9 +795,7 @@ detaching 'package:car', 'package:carData'
 > 
 > ## reproduce Fig 2 in Hanley (2004)
 > library(car)
-Warning: package 'car' was built under R version 4.4.3
 Loading required package: carData
-Warning: package 'carData' was built under R version 4.4.3
 > scatterplot(childHeight ~ midparentHeight | gender, data=GaltonFamilies, 
 +     ellipse=TRUE, levels=0.68, legend.coords=list(x=64, y=78))
 Warning in plot.window(...) : "levels" is not a graphical parameter
@@ -1035,7 +1016,6 @@ error   3   4   5   6   7   8   9  10  11  12  13  14  15
 +   text.size=0.8))
 + }
 Loading required package: gplots
-Warning: package 'gplots' was built under R version 4.4.3
 
 Attaching package: 'gplots'
 
@@ -1056,14 +1036,12 @@ The following object is masked from 'package:stats':
 + abline(h=0)
 + }
 Loading required package: reshape
-Warning: package 'reshape' was built under R version 4.4.3
 'data.frame':	1027 obs. of  4 variables:
  $ actual   : num  3 3 3 3 3 3 3 3 3 3 ...
  $ estimated: num  3 3 3 3 3 3 3 3 3 3 ...
  $ frequency: num  23 23 23 23 23 23 23 23 23 23 ...
  $ error    : num  0 0 0 0 0 0 0 0 0 0 ...
 Loading required package: plyr
-Warning: package 'plyr' was built under R version 4.4.3
 
 Attaching package: 'plyr'
 
@@ -1142,7 +1120,6 @@ detaching 'package:plyr', 'package:reshape', 'package:gplots'
 +        labels=Langren1644$Name, srt=90, adj=c(-.1, .5), cex=0.8)
 +   par(op)
 + }
-Warning: package 'jpeg' was built under R version 4.4.3
 > 
 > ### Original implementation using ReadImages, now deprecated & shortly to be removed
 > ## Not run: 
@@ -1221,7 +1198,6 @@ Warning: package 'jpeg' was built under R version 4.4.3
 > ###########################################
 > 
 > library(lattice)
-Warning: package 'lattice' was built under R version 4.4.3
 > graph <- paste(Langren.all$Author, Langren.all$Year)
 > dotplot(Name ~ Longitude, data=Langren.all)
 > 
@@ -1442,7 +1418,6 @@ dev.new(): using pdf(file="Rplots1.pdf")
 + with(MacdonellDF, points(jitter(height), jitter(finger), cex=0.5))
 + }
 Loading required package: KernSmooth
-Warning: package 'KernSmooth' was built under R version 4.4.3
 KernSmooth 2.23 loaded
 Copyright M. P. Wand 1997-2009
 > 
@@ -1461,9 +1436,7 @@ Copyright M. P. Wand 1997-2009
 + 		}
 +   })
 Loading required package: car
-Warning: package 'car' was built under R version 4.4.3
 Loading required package: carData
-Warning: package 'carData' was built under R version 4.4.3
 > 
 > 
 > ############################################################
@@ -1558,11 +1531,8 @@ detaching 'package:car', 'package:carData', 'package:KernSmooth'
 > ### ** Examples
 > 
 > library(sp)
-Warning: package 'sp' was built under R version 4.4.3
 > library(effects)
-Warning: package 'effects' was built under R version 4.4.3
 Loading required package: carData
-Warning: package 'carData' was built under R version 4.4.3
 lattice theme set by effectsTheme()
 See ?effectsTheme for details.
 > data(Mayer)
@@ -1672,13 +1642,10 @@ detaching 'package:effects', 'package:carData', 'package:sp'
 > #' ## Load required packages
 > require(ggplot2)
 Loading required package: ggplot2
-Warning: package 'ggplot2' was built under R version 4.4.3
 > require(scales)
 Loading required package: scales
-Warning: package 'scales' was built under R version 4.4.3
 > require(gridExtra)
 Loading required package: gridExtra
-Warning: package 'gridExtra' was built under R version 4.4.3
 > 
 > #' ## plot path of troops, and another layer for city names
 >  plot_troops <- ggplot(Minard.troops, aes(long, lat)) +
@@ -1751,7 +1718,6 @@ detaching 'package:gridExtra', 'package:scales', 'package:ggplot2'
 > #  keep only Date and death rates
 > require(reshape)
 Loading required package: reshape
-Warning: package 'reshape' was built under R version 4.4.3
 > Night<- Nightingale[,c(1,8:10)]
 > melted <- melt(Night, "Date")
 > names(melted) <- c("Date", "Cause", "Deaths")
@@ -1774,7 +1740,6 @@ Warning: package 'reshape' was built under R version 4.4.3
 > 
 > require(ggplot2)
 Loading required package: ggplot2
-Warning: package 'ggplot2' was built under R version 4.4.3
 > # Before plot
 > cxc1 <- ggplot(Night1, aes(x = factor(Date), y=Deaths, fill = Cause)) +
 + 		# do it as a stacked bar chart first
@@ -1922,22 +1887,18 @@ detaching 'package:ggplot2', 'package:reshape'
 +         }
 +   })
 Loading required package: car
-Warning: package 'car' was built under R version 4.4.3
 Loading required package: carData
-Warning: package 'carData' was built under R version 4.4.3
 > 
 > ## separate plots for combinations of (chl, par)
 > 
 > # this doesn't quite work, because xyplot can't handle weights
 > require(lattice)
 Loading required package: lattice
-Warning: package 'lattice' was built under R version 4.4.3
 > xyplot(child ~ parent|par+chl, data=PearsonLee, type=c("p", "r", "smooth"), col.line="red")
 > 
 > # Using ggplot [thx: Dennis Murphy]
 > require(ggplot2)
 Loading required package: ggplot2
-Warning: package 'ggplot2' was built under R version 4.4.3
 > ggplot(PearsonLee, aes(x = parent, y = child, weight=frequency)) +
 +    geom_point(size = 1.5, position = position_jitter(width = 0.2)) +
 +    geom_smooth(method = lm, aes(weight = PearsonLee$frequency,
@@ -2083,9 +2044,7 @@ Bags      (.2 to R) Above R
 > # grouped histogram
 > # from: https://github.com/drjohnrussell/30DayChartChallenge/blob/main/2025/Challenge08.R
 > library(ggplot2)
-Warning: package 'ggplot2' was built under R version 4.4.3
 > library(dplyr)
-Warning: package 'dplyr' was built under R version 4.4.3
 
 Attaching package: 'dplyr'
 
@@ -2246,7 +2205,6 @@ detaching 'package:dplyr', 'package:ggplot2'
 > fit <- lm(Y ~ X1 + X2 + X3, data = Saturn)
 > # Same residuals of Stigler (1975), Table 1, last column.
 > library(sp)
-Warning: package 'sp' was built under R version 4.4.3
 > dd2dms(residuals(fit)/60)
  [1] 0d1'36.557"W 0d0'5"W      0d1'20.522"E 0d0'29.5"E   0d0'32.846"E
  [6] 0d1'5.731"E  0d0'8.611"E  0d0'52.431"E 0d0'28.797"W 0d1'23.269"W
@@ -2282,7 +2240,6 @@ detaching 'package:sp'
 > ## Plot deaths over time
 > require(lubridate)
 Loading required package: lubridate
-Warning: package 'lubridate' was built under R version 4.4.3
 
 Attaching package: 'lubridate'
 
@@ -2312,7 +2269,6 @@ The following objects are masked from 'package:base':
 > 
 > ## re-do this the sp way... [thx: Stephane Dray]
 > library(sp)
-Warning: package 'sp' was built under R version 4.4.3
 > 
 > # streets
 > slist <- split(Snow.streets[,c("x","y")],as.factor(Snow.streets[,"street"]))
@@ -2500,7 +2456,6 @@ detaching 'package:sp', 'package:lubridate'
 > 
 > require(lattice)
 Loading required package: lattice
-Warning: package 'lattice' was built under R version 4.4.3
 > # basic bar charts 
 > # TODO: frequencies should start at 0, not 1.
 > barchart(count~freq|sample, data=Yeast, ylab="Number of Cells", xlab="Frequency")
@@ -2634,7 +2589,7 @@ mean of x
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  6.25 0.74 7.09 NA NA 
+Time elapsed:  37.01 5.78 58.28 NA NA 
 > grDevices::dev.off()
 pdf 
   2 

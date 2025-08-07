@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -123,8 +123,8 @@ Object of class 'cdadata'; storing results of canonical discriminant analysis
 Variation explained by individual axes:
                                        Can1   Can2   Can3
 Eigenvalues                          4.4194 2.0049 0.3647
-Eigenvalues as percentages           0.6505 0.2951 0.0537
-Cumulative percentage of eigenvalues 0.6505 0.9456 0.9993
+Eigenvalues as percentages           0.6516 0.2956 0.0538
+Cumulative percentage of eigenvalues 0.6516 0.9472 1.0009
 
 Total canonical structure coefficients:
             Can1         Can2         Can3
@@ -2118,7 +2118,7 @@ Warning in FUN(X[[i]], ...) : NaNs produced
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  5.24 0.66 5.93 NA NA 
+Time elapsed:  32.3 4.22 39.06 NA NA 
 > grDevices::dev.off()
 null device 
           1 

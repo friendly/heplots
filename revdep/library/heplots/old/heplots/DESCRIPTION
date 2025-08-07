@@ -1,8 +1,8 @@
 Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
-Version: 1.7.4
-Date: 2025-04-15
+Version: 1.7.5
+Date: 2025-04-26
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -42,12 +42,13 @@ RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr, R.rsp
 NeedsCompilation: no
-Packaged: 2025-04-16 17:05:38 UTC; friendly
-Author: Michael Friendly [aut, cre] (<https://orcid.org/0000-0002-3237-0941>),
-  John Fox [aut] (<https://orcid.org/0000-0002-1196-8012>),
-  Georges Monette [aut] (<https://orcid.org/0000-0003-0076-5532>),
-  Phil Chalmers [ctb] (<https://orcid.org/0000-0001-5332-2810>),
+Packaged: 2025-05-24 16:50:06 UTC; friendly
+Author: Michael Friendly [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-3237-0941>),
+  John Fox [aut] (ORCID: <https://orcid.org/0000-0002-1196-8012>),
+  Georges Monette [aut] (ORCID: <https://orcid.org/0000-0003-0076-5532>),
+  Phil Chalmers [ctb] (ORCID: <https://orcid.org/0000-0001-5332-2810>),
   Duncan Murdoch [ctb]
 Repository: CRAN
-Date/Publication: 2025-04-16 18:10:02 UTC
-Built: R 4.4.3; ; 2025-05-04 04:19:27 UTC; windows
+Date/Publication: 2025-05-24 17:40:02 UTC
+Built: R 4.5.1; ; 2025-08-04 03:23:56 UTC; windows

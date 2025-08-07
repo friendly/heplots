@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -16,8 +16,6 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 Type 'q()' to quit R.
 
 > library(testthat)
-Warning message:
-package 'testthat' was built under R version 4.4.3 
 > library(MorphoTools2)
 MorphoTools2 v1.0.2.1.  For help: https://github.com/MarekSlenker/MorphoTools2/wiki
 
@@ -29,11 +27,9 @@ https://doi.org/10.1093/bioinformatics/btac173
 > #library(png)
 > 
 > test_check("MorphoTools2")
-[ FAIL 0 | WARN 3 | SKIP 0 | PASS 417 ]
-
-[ FAIL 0 | WARN 3 | SKIP 0 | PASS 417 ]
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 417 ]
 > 
 > 
 > proc.time()
    user  system elapsed 
-   4.14    0.76    5.14 
+  30.01    5.95   41.06 

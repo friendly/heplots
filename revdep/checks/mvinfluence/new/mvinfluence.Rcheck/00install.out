@@ -1,4 +1,5 @@
 * installing *source* package 'mvinfluence' ...
+** this is package 'mvinfluence' version '0.9.2'
 ** package 'mvinfluence' successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
@@ -6,22 +7,12 @@
 *** moving datasets to lazyload DB
 ** inst
 ** byte-compile and prepare package for lazy loading
-Warning messages:
-1: package 'car' was built under R version 4.4.3 
-2: package 'carData' was built under R version 4.4.3 
-3: package 'broom' was built under R version 4.4.3 
 ** help
 *** installing help indices
 *** copying figures
 ** building package indices
 ** installing vignettes
 ** testing if installed package can be loaded from temporary location
-Warning: package 'car' was built under R version 4.4.3
-Warning: package 'carData' was built under R version 4.4.3
-Warning: package 'broom' was built under R version 4.4.3
 ** testing if installed package can be loaded from final location
-Warning: package 'car' was built under R version 4.4.3
-Warning: package 'carData' was built under R version 4.4.3
-Warning: package 'broom' was built under R version 4.4.3
 ** testing if installed package keeps a record of temporary installation path
 * DONE (mvinfluence)

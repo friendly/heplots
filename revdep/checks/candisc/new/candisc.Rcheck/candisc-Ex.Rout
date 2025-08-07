@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -24,7 +24,6 @@ Type 'q()' to quit R.
 > library('candisc')
 Loading required package: heplots
 Loading required package: broom
-Warning: package 'broom' was built under R version 4.4.3
 
 Attaching package: 'candisc'
 
@@ -375,7 +374,6 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 + corrplot(M, method="ellipse", order="hclust", addrect=2, addCoef.col="black")
 + }
 Loading required package: corrplot
-Warning: package 'corrplot' was built under R version 4.4.3
 corrplot 0.95 loaded
 > 
 > 
@@ -940,7 +938,7 @@ max  3  2
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.64 0.14 1.86 NA NA 
+Time elapsed:  9.17 1.28 11.16 NA NA 
 > grDevices::dev.off()
 null device 
           1 

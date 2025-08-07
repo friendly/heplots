@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -994,7 +994,6 @@ In the plot, 4 missing case(s) omitted.
 > ### ** Examples
 > 
 > library(dplyr)
-Warning: package 'dplyr' was built under R version 4.4.3
 
 Attaching package: 'dplyr'
 
@@ -1044,7 +1043,6 @@ detaching 'package:dplyr'
 > ### ** Examples
 > 
 > library(dplyr)
-Warning: package 'dplyr' was built under R version 4.4.3
 
 Attaching package: 'dplyr'
 
@@ -2355,7 +2353,6 @@ n=99. 2 missing case(s) omitted.
 > 
 > library(volker)
 > library(ggplot2)
-Warning: package 'ggplot2' was built under R version 4.4.3
 > data <- volker::chatgpt
 > 
 > theme_set(theme_vlkr(base_size=15, base_fill = list("red")))
@@ -2371,7 +2368,7 @@ detaching 'package:ggplot2'
 
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  18.36 0.33 18.85 NA NA 
+Time elapsed:  69.43 1.51 75.36 NA NA 
 > grDevices::dev.off()
 null device 
           1 

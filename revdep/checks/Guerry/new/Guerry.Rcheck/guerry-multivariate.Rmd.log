@@ -9,30 +9,22 @@
 > library(Guerry)
 
 > library(car)
-Warning: package 'car' was built under R version 4.4.3
 Loading required package: carData
-Warning: package 'carData' was built under R version 4.4.3
 
 > library(effects)
-Warning: package 'effects' was built under R version 4.4.3
 lattice theme set by effectsTheme()
 See ?effectsTheme for details.
 
 > library(ggplot2)
-Warning: package 'ggplot2' was built under R version 4.4.3
 
 > library(ggrepel)
-Warning: package 'ggrepel' was built under R version 4.4.3
 
 > library(patchwork)
-Warning: package 'patchwork' was built under R version 4.4.3
 
 > library(heplots)
 Loading required package: broom
-Warning: package 'broom' was built under R version 4.4.3
 
 > library(candisc)
-Warning: package 'candisc' was built under R version 4.4.3
 
 Attaching package: 'candisc'
 
@@ -42,7 +34,6 @@ The following object is masked from 'package:stats':
 
 
 > library(dplyr)
-Warning: package 'dplyr' was built under R version 4.4.3
 
 Attaching package: 'dplyr'
 
@@ -60,7 +51,6 @@ The following objects are masked from 'package:base':
 
 
 > library(tidyr)
-Warning: package 'tidyr' was built under R version 4.4.3
 
 > data(Guerry)
 
@@ -175,7 +165,6 @@ Warning: The following aesthetics were dropped during statistical transformation
 > par(mar = rep(1, 4) + 0.1)
 
 > library(corrgram)
-Warning: package 'corrgram' was built under R version 4.4.3
 
 > corrgram(Guerry[, 4:9], upper = panel.pie)
 
@@ -323,7 +312,7 @@ Vector scale factor set to  3.10537
 > knitr::write_bib(pkgs, file = here::here("vignettes", 
 +     "packages.bib"))
 Warning in file(con, "w") :
-  cannot open file 'C:/Users/friendly/AppData/Local/Temp/RtmpuqIfP5/file2ec43fcd391b/vignettes/vignettes/packages.bib': No such file or directory
+  cannot open file 'C:/Users/friendly/AppData/Local/Temp/Rtmpw1Do2x/file1eb01cb737d8/vignettes/vignettes/packages.bib': No such file or directory
 
   When sourcing 'guerry-multivariate.R':
 Error: cannot open the connection

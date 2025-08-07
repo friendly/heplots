@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -30,10 +30,8 @@ Attaching package: 'statnet.common'
 
 The following objects are masked from 'package:base':
 
-    attr, order
+    attr, order, replace
 
-Warning message:
-package 'statnet.common' was built under R version 4.4.3 
 > opttest({  # only run if ENABLE_MPI_TESTS flag is set, to avoid on windows where MPI is hard to get working. 
 + 
 + library(latentnet)
@@ -57,4 +55,4 @@ parallel_MPI test(s) skipped. Set ENABLE_MPI_TESTS environment variable to run.
 > 
 > proc.time()
    user  system elapsed 
-   0.07    0.06    0.23 
+   0.50    0.42    0.82 

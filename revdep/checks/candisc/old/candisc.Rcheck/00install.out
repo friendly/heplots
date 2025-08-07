@@ -1,4 +1,5 @@
 * installing *source* package 'candisc' ...
+** this is package 'candisc' version '0.9.0'
 ** package 'candisc' successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
@@ -7,18 +8,11 @@
 ** demo
 ** inst
 ** byte-compile and prepare package for lazy loading
-Warning messages:
-1: package 'heplots' was built under R version 4.4.3 
-2: package 'broom' was built under R version 4.4.3 
 ** help
 *** installing help indices
 ** building package indices
 ** installing vignettes
 ** testing if installed package can be loaded from temporary location
-Warning: package 'heplots' was built under R version 4.4.3
-Warning: package 'broom' was built under R version 4.4.3
 ** testing if installed package can be loaded from final location
-Warning: package 'heplots' was built under R version 4.4.3
-Warning: package 'broom' was built under R version 4.4.3
 ** testing if installed package keeps a record of temporary installation path
 * DONE (candisc)

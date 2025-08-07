@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -23,7 +23,6 @@ Type 'q()' to quit R.
 > options(pager = "console")
 > library('effects')
 Loading required package: carData
-Warning: package 'carData' was built under R version 4.4.3
 lattice theme set by effectsTheme()
 See ?effectsTheme for details.
 > 
@@ -135,7 +134,6 @@ neuroticism          0         6        12        18        24
 + 
 + }
 Loading required package: nnet
-Warning: package 'nnet' was built under R version 4.4.3
 # weights:  36 (22 variable)
 initial  value 1675.383740 
 iter  10 value 1240.047788
@@ -153,7 +151,6 @@ converged
 + 
 + }
 Loading required package: MASS
-Warning: package 'MASS' was built under R version 4.4.3
 
 Re-fitting to get Hessian
 
@@ -176,7 +173,6 @@ Re-fitting to get Hessian
 +     detach(package:nlme)
 + }
 Loading required package: nlme
-Warning: package 'nlme' was built under R version 4.4.3
 > 
 > if (require(lme4)){
 +     data(cake, package="lme4")
@@ -187,9 +183,7 @@ Warning: package 'nlme' was built under R version 4.4.3
 +     detach(package:lme4)
 + }
 Loading required package: lme4
-Warning: package 'lme4' was built under R version 4.4.3
 Loading required package: Matrix
-Warning: package 'Matrix' was built under R version 4.4.3
 > 
 > 
 > 
@@ -204,9 +198,7 @@ Warning: package 'Matrix' was built under R version 4.4.3
 +     detach(package:heplots)
 + }
 Loading required package: heplots
-Warning: package 'heplots' was built under R version 4.4.3
 Loading required package: broom
-Warning: package 'broom' was built under R version 4.4.3
 > 
 > # svyglm() example (adapting an example from the survey package)
 > 
@@ -284,7 +276,8 @@ detaching 'package:broom', 'package:Matrix', 'package:MASS',
 > ### Title: Plots of Effects and Predictor Effects
 > ### Aliases: plot.effect plot.effects plot.predictoreff
 > ###   plot.predictorefflist plot.eff plot.effpoly plot.efflist
-> ###   plot.mlm.efflist [.efflist
+> ###   plot.mlm.efflist [.efflist levels2dates levels2dates.eff
+> ###   levels2dates.effpoly
 > ### Keywords: hplot models
 > 
 > ### ** Examples
@@ -375,7 +368,6 @@ neuroticism          0         6        12        18        24
 +          lines=list(col=c("blue", "red", "orange")))
 + }
 Loading required package: nnet
-Warning: package 'nnet' was built under R version 4.4.3
 # weights:  36 (22 variable)
 initial  value 1675.383740 
 iter  10 value 1240.047788
@@ -391,7 +383,6 @@ converged
 + 
 + }
 Loading required package: MASS
-Warning: package 'MASS' was built under R version 4.4.3
 
 Re-fitting to get Hessian
 
@@ -416,6 +407,38 @@ Re-fitting to get Hessian
 > plot(p1, lines=list(multiline=TRUE), grid=TRUE,
 +      lattice=list(key.args=list(space="right", border=TRUE)),
 +      axes=list(y=list(transform=exp, lab="prestige")))
+>      
+> # plotting an effect with a date variable
+> 
+> data("airquality", package="datasets")
+> airquality$Date <- with(airquality, as.Date(paste("1973", Month, Day, sep="-"),
++                                             format="%Y-%m-%d"))
+> airquality$Date.num <- as.numeric(airquality$Date)
+> m1.date <- lm(Ozone ~ Date.num + Solar.R + Wind + Temp, data=airquality)
+> eff.date.1 <- Effect("Date.num", m1.date)
+> plot(eff.date.1, axes=list(x=list(Date.num=list(lab="Date", 
++     ticks=list(at=levels2dates(eff.date.1, "Date.num", "1970-01-01"))), 
++     rotate=45)), main="Date Effect")
+> plot(eff.date.1, axes=list(x=list(Date.num=list(lab="Date", 
++     ticks=list(at=levels2dates(eff.date.1, "Date.num", "1970-01-01", n=4))))), 
++     main="Date Effect")
+> 
+> eff.date.df <- as.data.frame(eff.date.1)
+> eff.date.df$Date <- as.Date(eff.date.df$Date.num, origin="1970-01-01")
+> eff.date.df
+  Date.num      fit       se    lower    upper       Date
+1     1220 48.48236 4.293309 39.97046 56.99427 1973-05-05
+2     1250 46.05668 3.087362 39.93568 52.17768 1973-06-04
+3     1290 42.82243 2.039556 38.77882 46.86605 1973-07-14
+4     1330 39.58819 2.492245 34.64707 44.52931 1973-08-23
+5     1370 36.35394 3.960593 28.50168 44.20620 1973-10-02
+> 
+> m2.date <- lm(Ozone ~ Date.num*Temp + Solar.R + Wind, data=airquality)
+> eff.date.2 <- Effect(c("Date.num", "Temp"), m2.date, xlevels=6)
+> plot(eff.date.2, axes=list(x=list(Date.num=list(lab="Date", 
++   ticks=list(at=levels2dates(eff.date.2, "Date.num", "1970-01-01", n=3))), 
++   rotate=45)), main="Date Effect by Temperature")
+> 
 > 
 > 
 > 
@@ -1368,7 +1391,7 @@ $extraversion
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  3.92 0.45 4.45 NA NA 
+Time elapsed:  27.43 3.25 37.55 NA NA 
 > grDevices::dev.off()
 null device 
           1 

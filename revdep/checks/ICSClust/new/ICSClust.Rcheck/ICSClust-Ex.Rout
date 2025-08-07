@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -23,11 +23,8 @@ Type 'q()' to quit R.
 > options(pager = "console")
 > library('ICSClust')
 Loading required package: ICS
-Warning: package 'ICS' was built under R version 4.4.3
 Loading required package: mvtnorm
-Warning: package 'mvtnorm' was built under R version 4.4.3
 Loading required package: ggplot2
-Warning: package 'ggplot2' was built under R version 4.4.3
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
@@ -331,13 +328,13 @@ attr(,"class")
        X4                  X5                 X6                 X7          
  Min.   :-3.202110   Min.   :-3.21319   Min.   :-3.00805   Min.   :-2.99510  
  1st Qu.:-0.651968   1st Qu.:-0.60718   1st Qu.:-0.70744   1st Qu.:-0.76888  
- Median :-0.023335   Median : 0.06738   Median :-0.04533   Median :-0.01778  
+ Median :-0.023335   Median : 0.06737   Median :-0.04533   Median :-0.01778  
  Mean   :-0.009739   Mean   : 0.01997   Mean   :-0.05367   Mean   :-0.03261  
  3rd Qu.: 0.693150   3rd Qu.: 0.64635   3rd Qu.: 0.60464   3rd Qu.: 0.71366  
  Max.   : 2.649167   Max.   : 3.81028   Max.   : 2.56509   Max.   : 3.15397  
        X8                 X9                X10           
  Min.   :-2.79596   Min.   :-2.97230   Min.   :-3.539586  
- 1st Qu.:-0.61596   1st Qu.:-0.76166   1st Qu.:-0.664837  
+ 1st Qu.:-0.61597   1st Qu.:-0.76166   1st Qu.:-0.664837  
  Median : 0.03788   Median :-0.10525   Median :-0.031595  
  Mean   : 0.05534   Mean   :-0.07803   Mean   :-0.003895  
  3rd Qu.: 0.77551   3rd Qu.: 0.65798   3rd Qu.: 0.599192  
@@ -574,7 +571,7 @@ attr(,"class")
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  4.45 0.41 4.86 NA NA 
+Time elapsed:  29.22 2.56 33.4 NA NA 
 > grDevices::dev.off()
 null device 
           1 

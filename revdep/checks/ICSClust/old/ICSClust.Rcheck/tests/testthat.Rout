@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -24,16 +24,10 @@ Type 'q()' to quit R.
 > # * https://testthat.r-lib.org/reference/test_package.html#special-files
 > 
 > library(testthat)
-Warning message:
-package 'testthat' was built under R version 4.4.3 
 > library(ICSClust)
 Loading required package: ICS
 Loading required package: mvtnorm
 Loading required package: ggplot2
-Warning messages:
-1: package 'ICS' was built under R version 4.4.3 
-2: package 'mvtnorm' was built under R version 4.4.3 
-3: package 'ggplot2' was built under R version 4.4.3 
 > 
 > test_check("ICSClust")
 [ FAIL 0 | WARN 7 | SKIP 0 | PASS 86 ]
@@ -42,4 +36,4 @@ Warning messages:
 > 
 > proc.time()
    user  system elapsed 
-   2.51    0.48    3.06 
+  16.82    4.46   24.95 

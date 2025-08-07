@@ -1,9 +1,9 @@
 * using log directory 'C:/R/Projects/heplots/revdep/checks/candisc/new/candisc.Rcheck'
-* using R version 4.4.1 (2024-06-14 ucrt)
+* using R version 4.5.1 (2025-06-13 ucrt)
 * using platform: x86_64-w64-mingw32
 * R was compiled by
-    gcc.exe (GCC) 13.2.0
-    GNU Fortran (GCC) 13.2.0
+    gcc.exe (GCC) 14.2.0
+    GNU Fortran (GCC) 14.2.0
 * running under: Windows 10 x64 (build 19044)
 * using session charset: UTF-8
 * using options '--no-manual --no-build-vignettes'
@@ -18,10 +18,7 @@
 * checking for executable files ... OK
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
-* checking whether package 'candisc' can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package 'broom' was built under R version 4.4.3
-See 'C:/R/Projects/heplots/revdep/checks/candisc/new/candisc.Rcheck/00install.out' for details.
+* checking whether package 'candisc' can be installed ... OK
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking 'build' directory ... OK
@@ -63,4 +60,4 @@ See 'C:/R/Projects/heplots/revdep/checks/candisc/new/candisc.Rcheck/00install.ou
   'diabetes.Rmd' using 'UTF-8'... OK
 * checking re-building of vignette outputs ... SKIPPED
 * DONE
-Status: 1 WARNING
+Status: OK

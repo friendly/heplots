@@ -1,15 +1,15 @@
 * using log directory 'C:/R/Projects/heplots/revdep/checks/ICSClust/old/ICSClust.Rcheck'
-* using R version 4.4.1 (2024-06-14 ucrt)
+* using R version 4.5.1 (2025-06-13 ucrt)
 * using platform: x86_64-w64-mingw32
 * R was compiled by
-    gcc.exe (GCC) 13.2.0
-    GNU Fortran (GCC) 13.2.0
+    gcc.exe (GCC) 14.2.0
+    GNU Fortran (GCC) 14.2.0
 * running under: Windows 10 x64 (build 19044)
 * using session charset: UTF-8
 * using options '--no-manual --no-build-vignettes'
 * checking for file 'ICSClust/DESCRIPTION' ... OK
 * checking extension type ... Package
-* this is package 'ICSClust' version '0.1.0'
+* this is package 'ICSClust' version '0.1.1'
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... OK
@@ -18,13 +18,8 @@
 * checking for executable files ... OK
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
-* checking whether package 'ICSClust' can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package 'ICS' was built under R version 4.4.3
-  Warning: package 'mvtnorm' was built under R version 4.4.3
-  Warning: package 'ggplot2' was built under R version 4.4.3
-See 'C:/R/Projects/heplots/revdep/checks/ICSClust/old/ICSClust.Rcheck/00install.out' for details.
-* used C++ compiler: 'G__~1.EXE (GCC) 13.2.0'
+* checking whether package 'ICSClust' can be installed ... OK
+* used C++ compiler: 'G__~1.EXE (GCC) 14.2.0'
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking DESCRIPTION meta-information ... OK
@@ -65,4 +60,4 @@ See 'C:/R/Projects/heplots/revdep/checks/ICSClust/old/ICSClust.Rcheck/00install.
 * checking tests ... OK
   Running 'testthat.R'
 * DONE
-Status: 1 WARNING
+Status: OK

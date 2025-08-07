@@ -190,7 +190,8 @@ flush(stderr()); flush(stdout())
 ### Title: Plots of Effects and Predictor Effects
 ### Aliases: plot.effect plot.effects plot.predictoreff
 ###   plot.predictorefflist plot.eff plot.effpoly plot.efflist
-###   plot.mlm.efflist [.efflist
+###   plot.mlm.efflist [.efflist levels2dates levels2dates.eff
+###   levels2dates.effpoly
 ### Keywords: hplot models
 
 ### ** Examples
@@ -267,6 +268,32 @@ plot(p1, lines=list(multiline=TRUE),
 plot(p1, lines=list(multiline=TRUE), grid=TRUE,
      lattice=list(key.args=list(space="right", border=TRUE)),
      axes=list(y=list(transform=exp, lab="prestige")))
+     
+# plotting an effect with a date variable
+
+data("airquality", package="datasets")
+airquality$Date <- with(airquality, as.Date(paste("1973", Month, Day, sep="-"),
+                                            format="%Y-%m-%d"))
+airquality$Date.num <- as.numeric(airquality$Date)
+m1.date <- lm(Ozone ~ Date.num + Solar.R + Wind + Temp, data=airquality)
+eff.date.1 <- Effect("Date.num", m1.date)
+plot(eff.date.1, axes=list(x=list(Date.num=list(lab="Date", 
+    ticks=list(at=levels2dates(eff.date.1, "Date.num", "1970-01-01"))), 
+    rotate=45)), main="Date Effect")
+plot(eff.date.1, axes=list(x=list(Date.num=list(lab="Date", 
+    ticks=list(at=levels2dates(eff.date.1, "Date.num", "1970-01-01", n=4))))), 
+    main="Date Effect")
+
+eff.date.df <- as.data.frame(eff.date.1)
+eff.date.df$Date <- as.Date(eff.date.df$Date.num, origin="1970-01-01")
+eff.date.df
+
+m2.date <- lm(Ozone ~ Date.num*Temp + Solar.R + Wind, data=airquality)
+eff.date.2 <- Effect(c("Date.num", "Temp"), m2.date, xlevels=6)
+plot(eff.date.2, axes=list(x=list(Date.num=list(lab="Date", 
+  ticks=list(at=levels2dates(eff.date.2, "Date.num", "1970-01-01", n=3))), 
+  rotate=45)), main="Date Effect by Temperature")
+
 
 
 

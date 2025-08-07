@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -23,7 +23,6 @@ Type 'q()' to quit R.
 > options(pager = "console")
 > library('latentnet')
 Loading required package: network
-Warning: package 'network' was built under R version 4.4.3
 
 'network' 1.19.0 (2024-12-08), part of the Statnet Project
 * 'news(package="network")' for changes since last version
@@ -31,9 +30,8 @@ Warning: package 'network' was built under R version 4.4.3
 * 'https://statnet.org' for help, support, and other information
 
 Loading required package: ergm
-Warning: package 'ergm' was built under R version 4.4.3
 
-'ergm' 4.8.1 (2025-01-20), part of the Statnet Project
+'ergm' 4.9.0 (2025-06-09), part of the Statnet Project
 * 'news(package="ergm")' for changes since last version
 * 'citation("ergm")' for citation information
 * 'https://statnet.org' for help, support, and other information
@@ -311,7 +309,7 @@ Warning in backoff.check(model, burnin.sample, burnin.control) :
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.82 0.17 1.02 NA NA 
+Time elapsed:  6.45 1.08 8.66 NA NA 
 > grDevices::dev.off()
 null device 
           1 

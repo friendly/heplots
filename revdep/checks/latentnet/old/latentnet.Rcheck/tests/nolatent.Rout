@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -34,7 +34,7 @@ Loading required package: network
 
 Loading required package: ergm
 
-'ergm' 4.8.1 (2025-01-20), part of the Statnet Project
+'ergm' 4.9.0 (2025-06-09), part of the Statnet Project
 * 'news(package="ergm")' for changes since last version
 * 'citation("ergm")' for citation information
 * 'https://statnet.org' for help, support, and other information
@@ -50,19 +50,14 @@ changes.
 * 'https://statnet.org' for help, support, and other information
 NOTE: BIC calculation prior to latentnet 2.7.0 had a bug in the calculation of the effective number of parameters. See help(summary.ergmm) for details.
 NOTE: Prior to version 2.8.0, handling of fixed effects for directed networks had a bug: the covariate matrix was transposed.
-Warning messages:
-1: package 'network' was built under R version 4.4.3 
-2: package 'ergm' was built under R version 4.4.3 
 > library(statnet.common)
 
 Attaching package: 'statnet.common'
 
 The following objects are masked from 'package:base':
 
-    attr, order
+    attr, order, replace
 
-Warning message:
-package 'statnet.common' was built under R version 4.4.3 
 > 
 > data(sampson)
 > 
@@ -70,18 +65,18 @@ package 'statnet.common' was built under R version 4.4.3
 > mcmc.diagnostics(monks.nmr)
 Chain 1 
 Lag 0 
-                   lpY      beta.1     beta.2 receiver.1
-lpY         1.00000000 -0.06521678  0.1188699  0.3496449
-beta.1     -0.06521678  1.00000000 -0.5447995 -0.4322473
-beta.2      0.11886995 -0.54479952  1.0000000  0.2315118
-receiver.1  0.34964490 -0.43224726  0.2315118  1.0000000
+                  lpY     beta.1     beta.2 receiver.1
+lpY         1.0000000 -0.1127681  0.1530891  0.3639174
+beta.1     -0.1127681  1.0000000 -0.5225309 -0.4575255
+beta.2      0.1530891 -0.5225309  1.0000000  0.2153718
+receiver.1  0.3639174 -0.4575255  0.2153718  1.0000000
 
 Lag 10 
                    lpY      beta.1      beta.2  receiver.1
-lpY         0.08305993 -0.05643737  0.05900278  0.05552844
-beta.1     -0.04813340  0.31590421 -0.17919175 -0.19224839
-beta.2      0.09700273 -0.15906505  0.29470208  0.14668187
-receiver.1  0.06410113 -0.19591074  0.14815540  0.16836500
+lpY         0.11521651 -0.06765017  0.09795581  0.06614087
+beta.1     -0.04534282  0.29532511 -0.14443281 -0.17068831
+beta.2      0.05874262 -0.14792290  0.28168528  0.07317084
+receiver.1  0.06338551 -0.22857385  0.15235387  0.20942279
 
 [[1]]
 
@@ -91,10 +86,10 @@ Probability (s) = 0.95
                                                   
             Burn-in  Total Lower bound  Dependence
             (M)      (N)   (Nmin)       factor (I)
- lpY        30       6610  600          11.0      
- beta.1     50       9050  600          15.1      
- beta.2     40       7970  600          13.3      
- receiver.1 20       6330  600          10.6      
+ lpY        20       6330  600          10.6      
+ beta.1     50       8670  600          14.4      
+ beta.2     40       7800  600          13.0      
+ receiver.1 20       6210  600          10.4      
 
 
 > 
@@ -111,20 +106,20 @@ Model:     Bernoulli
 MCMC sample of size 4000, draws are 10 iterations apart, after burnin of 10000 iterations.
 Covariate coefficients posterior means:
                 Estimate    2.5%   97.5% 2*min(Pr(>0),Pr(<0))    
-(Intercept)      -2.2852 -2.9533 -1.6859            < 2.2e-16 ***
-nodematch.group   3.0597  2.3945  3.8050            < 2.2e-16 ***
+(Intercept)      -2.2845 -3.0025 -1.6648            < 2.2e-16 ***
+nodematch.group   3.0478  2.3690  3.7476            < 2.2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Receiver effect variance: 1.010293.
-Overall BIC:        288.4109 
-Likelihood BIC:     245.5583 
-Receiver effect BIC:     42.85262 
+Receiver effect variance: 1.012453.
+Overall BIC:        288.9866 
+Likelihood BIC:     245.7261 
+Receiver effect BIC:     43.26052 
 
 Covariate coefficients MKL:
-                 Estimate
-(Intercept)     -2.423523
-nodematch.group  2.870917
+                Estimate
+(Intercept)     -1.84860
+nodematch.group  2.85942
 
 
 > # Should produce a meaningful error message.
@@ -169,4 +164,4 @@ Some non-latent-space test(s) skipped. Set ENABLE_statnet_TESTS environment vari
 > 
 > proc.time()
    user  system elapsed 
-   3.06    0.18    3.29 
+  12.29    1.14   13.71 

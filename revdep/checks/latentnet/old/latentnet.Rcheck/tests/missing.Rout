@@ -1,6 +1,6 @@
 
-R version 4.4.1 (2024-06-14 ucrt) -- "Race for Your Life"
-Copyright (C) 2024 The R Foundation for Statistical Computing
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -34,7 +34,7 @@ Loading required package: network
 
 Loading required package: ergm
 
-'ergm' 4.8.1 (2025-01-20), part of the Statnet Project
+'ergm' 4.9.0 (2025-06-09), part of the Statnet Project
 * 'news(package="ergm")' for changes since last version
 * 'citation("ergm")' for citation information
 * 'https://statnet.org' for help, support, and other information
@@ -50,9 +50,6 @@ changes.
 * 'https://statnet.org' for help, support, and other information
 NOTE: BIC calculation prior to latentnet 2.7.0 had a bug in the calculation of the effective number of parameters. See help(summary.ergmm) for details.
 NOTE: Prior to version 2.8.0, handling of fixed effects for directed networks had a bug: the covariate matrix was transposed.
-Warning messages:
-1: package 'network' was built under R version 4.4.3 
-2: package 'ergm' was built under R version 4.4.3 
 > data(sampson)
 > ym<-as.matrix(samplike)
 > ym[1,5]<-NA
@@ -72,21 +69,21 @@ Model:     Bernoulli
 MCMC sample of size 4000, draws are 10 iterations apart, after burnin of 10000 iterations.
 Covariate coefficients posterior means:
             Estimate   2.5%  97.5% 2*min(Pr(>0),Pr(<0))    
-(Intercept)   2.1590 1.3522 3.0512            < 2.2e-16 ***
+(Intercept)   2.1580 1.3572 3.0371            < 2.2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Overall BIC:        379.2754 
-Likelihood BIC:     250.2134 
-Latent space/clustering BIC:     129.062 
+Overall BIC:        380.0216 
+Likelihood BIC:     252.7703 
+Latent space/clustering BIC:     127.2513 
 
 Covariate coefficients MKL:
             Estimate
-(Intercept) 1.123884
+(Intercept) 1.061883
 
 
 > plot(samp.fit,labels=TRUE)
 > 
 > proc.time()
    user  system elapsed 
-   4.62    0.28    4.93 
+  23.07    1.45   26.53 
