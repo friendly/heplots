@@ -5,7 +5,7 @@
 #' @title
 #' Distance Plot for Multivariate Model Diagnosis
 #' 
-#' @description This plot, suggested by Rousseeu et al. (2004) typically plots Mahalanobis distances (\eqn{D}) of the \code{Y} response
+#' @description This plot, suggested by Rousseeuw & van Zomeren (1991), Rousseeu et al. (2004) typically plots Mahalanobis distances (\eqn{D}) of the \code{Y} response
 #' variables against the distances of the \code{X} variables in a multivariate linear model (MLM).
 #' When applied to a multivariate linear model itself, it plots the distances of the \emph{residuals} for the \code{Y} variables
 #' against the predictor terms in the \emph{model.matrix} \code{X}.
@@ -36,6 +36,10 @@
 #' 
 #' @seealso \code{\link{Mahalanobis}}
 #' @references 
+#' Rousseeuw P. J. & van Zomeren B. C. (1991). “Robust Distances: Simulation and Cutoff Values.”
+#' In W Stahel, S Weisberg (eds.), \emph{Directions in Robust Statistics and Diagnostics, Part II}.
+#' Springer-Verlag, New York.
+#' 
 #' Rousseeuw, P. J., Van Driessen, K., Van Aelst, S., & Agullo, J. (2004). Robust multivariate regression. 
 #' \emph{Technometrics}, \bold{46}(3), 293–305. \doi{10.1198/004017004000000329}.
 #' @export

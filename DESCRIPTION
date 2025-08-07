@@ -76,3 +76,4 @@ URL: http://friendly.github.io/heplots/, https://github.com/friendly/heplots
 RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr, R.rsp
+# Roxygen: list(markdown = TRUE)

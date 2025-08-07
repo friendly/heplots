@@ -67,7 +67,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Robust Multivariate Linear Models</h1>
                         <h4 data-toc-skip class="author">Michael Friendly</h4>
             
-            <h4 data-toc-skip class="date">2025-08-06</h4>
+            <h4 data-toc-skip class="date">2025-08-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/friendly/heplots/blob/HEAD/vignettes/Robust.Rmd" class="external-link"><code>vignettes/Robust.Rmd</code></a></small>
       <div class="d-none name"><code>Robust.Rmd</code></div>
@@ -87,88 +87,89 @@ plots that help understand how robust models can contribute to data analysis.</p
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/friendly/mvinfluence" class="external-link">mvinfluence</a></span><span class="op">)</span></span></code></pre></div>
-<div class="section level2" number="1">
-<h2 id="introduction">
-<span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <p>Multivariate linear models (MLMs) extend the familiar univariate linear regression framework to situations where multiple response variables are modeled simultaneously as linear functions of a common set of predictor variables. While classical multivariate least squares estimation provides optimal results under ideal conditions (multivariate normality and absence of outliers), real-world data often violate these assumptions. The presence of outliers, heavy-tailed distributions, or other departures from normality can severely compromise the reliability of classical estimators, leading to biased parameter estimates and inflated error rates in hypothesis testing.</p>
 <p>The need for robust estimation in <em>multivariate</em> regression has been recognized since the early development of robust statistical methods <span class="citation">(<a href="#ref-Huber1964">Huber, 1964</a>; <a href="#ref-Tukey1960">Tukey, 1960</a>)</span>.
 Outliers in multivariate data can be particularly problematic because they may not be readily apparent when examining univariate marginal distributions, yet can exert substantial leverage on the fitted model. Furthermore, the <em>curse of dimensionality</em> means that as the number of response variables increases, the probability of encountering at least one outlying observation grows rapidly.</p>
 <p>Robust multivariate regression methods aim to provide reliable parameter estimates and inference procedures that remain stable in the presence of outlying observations. As noted by <span class="citation">Rousseeuw, Van Aelst, Van Driessen, &amp; Gulló (<a href="#ref-Rousseeuw2004">2004</a>)</span>, “<em>The main advantage of robust regression is that it provides reliable results even when some of the assumptions of classical regression are violated.</em>”</p>
-<p>Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators <span class="citation">(<a href="#ref-Rousseeuw1984">Rousseeuw &amp; Yohai, 1984</a>)</span>, and MM-estimators <span class="citation">(<a href="#ref-Yohai1987">Yohai, 1987</a>)</span>. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions.</p>
+<p>Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators <span class="citation">(<a href="#ref-Rousseeuw1984">Rousseeuw &amp; Yohai, 1984</a>)</span>, and MM-estimators <span class="citation">(<a href="#ref-Yohai1987">Yohai, 1987</a>)</span>. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions. See the <a href="https://cran.r-project.org/web/views/Robust.html" class="external-link">CRAN Task View: Robust Statistical Methods</a> for an extensive list of
+robust methods in R and the <a href="https://cran.r-project.org/web/packages/rrcov/vignettes/rrcov.pdf" class="external-link">vignette</a> for the <a href="https://cran.r-project.org/package=rrcov" class="external-link">rrcov package</a> for a general overview of multivariate robust methods.</p>
 <p>The method implemented in the <code><a href="../reference/robmlm.html">robmlm()</a></code> function belongs to the class of <strong>M-estimators</strong>, which generalize maximum likelihood estimation by replacing the likelihood function with a more robust objective function.</p>
-<p>The key idea is to relax the least squares criterion of minimizing <span class="math inline">\(Q(\mathbf{e}) = \Sigma e_i^2 = \Sigma (y_i - \hat{y}_i)^2\)</span> by considering more general functions <span class="math inline">\(Q(\mathbf{e}, \rho)\)</span>, where the function <span class="math inline">\(\rho (e_i)\)</span> can be chosen to reduce the impact of large outliers. In these terms,</p>
+<p>The key idea is to relax the least squares criterion of minimizing <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐞</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>Σ</mi><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mo>=</mo><mi>Σ</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>y</mi><mi>i</mi></msub><mo>−</mo><msub><mover><mi>y</mi><mo accent="true">̂</mo></mover><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">Q(\mathbf{e}) = \Sigma e_i^2 = \Sigma (y_i - \hat{y}_i)^2</annotation></semantics></math> by considering more general functions <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐞</mi><mo>,</mo><mi>ρ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Q(\mathbf{e}, \rho)</annotation></semantics></math>, where the function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\rho (e_i)</annotation></semantics></math> can be chosen to reduce the impact of large outliers. In these terms,</p>
 <ul>
-<li>OLS uses <span class="math inline">\(\rho(e_i) = e_i^2\)</span>
+<li>OLS uses <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\rho(e_i) = e_i^2</annotation></semantics></math>
 </li>
 <li>
-<span class="math inline">\(L_1\)</span> estimation uses <span class="math inline">\(\rho(e_i) = \vert e_i \vert\)</span>, the least absolute values</li>
-<li>A bit more complicated, the <strong>biweight</strong> function uses a squared measure of error up to some value <span class="math inline">\(c\)</span> and then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>L</mi><mn>1</mn></msub><annotation encoding="application/x-tex">L_1</annotation></semantics></math> estimation uses <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo stretchy="false" form="postfix">|</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">|</mo></mrow><annotation encoding="application/x-tex">\rho(e_i) = \vert e_i \vert</annotation></semantics></math>, the least absolute values</li>
+<li>A bit more complicated, the <strong>biweight</strong> function uses a squared measure of error up to some value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math> and then
 levels off thereafter,</li>
 </ul>
-<p><span class="math display">\[
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msup><mrow><mo stretchy="true" form="prefix">[</mo><mn>1</mn><mo>−</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msub><mi>e</mi><mi>i</mi></msub><mi>c</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo stretchy="true" form="postfix">]</mo></mrow><mn>2</mn></msup></mtd><mtd columnalign="left" style="text-align: left"><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mi>c</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>&gt;</mo><mi>c</mi><mi>.</mi></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
 \rho(e_i) =
-\begin{cases}
+\begin{cases} 
 \left[ 1 - \left( \frac{e_i}{c} \right)^2 \right]^2 &amp; |e_i| \leq c, \\
 1 &amp; |e_i| &gt; c.
 \end{cases}
-\]</span></p>
+</annotation></semantics></math></p>
 <p>These functions look like this in a graph. For the biweight function has a property
-like Windsorizing— the squared error remains constant for residuals <span class="math inline">\(e_i &gt; c\)</span>,
-with <span class="math inline">\(c = 4.685\)</span> for <code><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">MASS::psi.bisquare()</a></code>.</p>
+like Windsorizing— the squared error remains constant for residuals <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>i</mi></msub><mo>&gt;</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">e_i &gt; c</annotation></semantics></math>,
+with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>4.685</mn></mrow><annotation encoding="application/x-tex">c = 4.685</annotation></semantics></math> for <code><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">MASS::psi.bisquare()</a></code>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:fig-weight-fns"></span>
 <img src="../reference/figures/weight-functions.jpg" alt="Diagram ploting the function $\rho(e_i)$ of the contributions of the residuals $e_i$ to what is minimized in various fitting methods." width="70%"><p class="caption">
-Figure 1: Diagram ploting the function <span class="math inline">\(\rho(e_i)\)</span> of the contributions of the residuals <span class="math inline">\(e_i\)</span> to what is minimized in various fitting methods.
+Figure 1: Diagram ploting the function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\rho(e_i)</annotation></semantics></math> of the contributions of the residuals <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mi>i</mi></msub><annotation encoding="application/x-tex">e_i</annotation></semantics></math> to what is minimized in various fitting methods.
 </p>
 </div>
 </div>
-<div class="section level2" number="2">
-<h2 id="methodology-iteratively-reweighted-least-squares-irls">
-<span class="header-section-number">2</span> Methodology: Iteratively Reweighted Least Squares (IRLS)<a class="anchor" aria-label="anchor" href="#methodology-iteratively-reweighted-least-squares-irls"></a>
+<div class="section level2">
+<h2 id="methodology-iteratively-reweighted-least-squares-irls">Methodology: Iteratively Reweighted Least Squares (IRLS)<a class="anchor" aria-label="anchor" href="#methodology-iteratively-reweighted-least-squares-irls"></a>
 </h2>
 <p>The <code><a href="../reference/robmlm.html">robmlm()</a></code> function implements robust multivariate linear model fitting using Iteratively Reweighted Least Squares (IRLS), a flexible and computationally efficient approach that belongs to the family of M-estimators. The core idea behind IRLS is to iteratively downweight observations that appear to be outliers based on their residual distances from the fitted model.</p>
-<div class="section level3" number="2.1">
-<h3 id="the-irls-algorithm">
-<span class="header-section-number">2.1</span> The IRLS Algorithm<a class="anchor" aria-label="anchor" href="#the-irls-algorithm"></a>
+<div class="section level3">
+<h3 id="the-irls-algorithm">The IRLS Algorithm<a class="anchor" aria-label="anchor" href="#the-irls-algorithm"></a>
 </h3>
 <p>The IRLS algorithm for robust multivariate regression is shown in the figure below.</p>
-<p><img src="../reference/figures/IRWLS-flowchart.jpg" width="70%" style="display: block; margin: auto;"></p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="../reference/figures/IRWLS-flowchart.jpg" alt="Flowchart for the iteratively reweighted least squares algorithm" width="70%"><p class="caption">
+Figure 2: Flowchart for the iteratively reweighted least squares algorithm
+</p>
+</div>
 <p>The method proceeds as follows:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Initialization</strong>: Begin with an initial estimate of the regression coefficients, typically obtained from ordinary least squares (OLS).</p></li>
 <li><p><strong>Residual calculation</strong>: Compute the multivariate residuals for each observation:
-<span class="math display">\[\mathbf{r}_i = \mathbf{y}_i - \mathbf{X}_i\hat{\boldsymbol{\beta}}\]</span>
-where <span class="math inline">\(\mathbf{y}_i\)</span> is the <span class="math inline">\(p \times 1\)</span> response vector for observation <span class="math inline">\(i\)</span>, <span class="math inline">\(\mathbf{X}_i\)</span> is the corresponding row of the design matrix, and <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is the current estimate of the coefficient matrix.</p></li>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐫</mi><mi>i</mi></msub><mo>=</mo><msub><mi>𝐲</mi><mi>i</mi></msub><mo>−</mo><msub><mi>𝐗</mi><mi>i</mi></msub><mover><mi>𝛃</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf{r}_i = \mathbf{y}_i - \mathbf{X}_i\hat{\boldsymbol{\beta}}</annotation></semantics></math>
+where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐲</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\mathbf{y}_i</annotation></semantics></math> is the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>×</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p \times 1</annotation></semantics></math> response vector for observation <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐗</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\mathbf{X}_i</annotation></semantics></math> is the corresponding row of the design matrix, and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>𝛃</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{\boldsymbol{\beta}}</annotation></semantics></math> is the current estimate of the coefficient matrix.</p></li>
 <li><p><strong>Distance computation</strong>: Calculate the squared Mahalanobis distance of each residual vector from the origin:
-<span class="math display">\[d_i^2 = \mathbf{r}_i^T \mathbf{S}^{-1} \mathbf{r}_i\]</span>
-where <span class="math inline">\(\mathbf{S}\)</span> is a robust estimate of the residual covariance matrix, computed using <code><a href="https://rdrr.io/pkg/MASS/man/cov.trob.html" class="external-link">MASS::cov.trob()</a></code>.</p></li>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>d</mi><mi>i</mi><mn>2</mn></msubsup><mo>=</mo><msubsup><mi>𝐫</mi><mi>i</mi><mi>T</mi></msubsup><msup><mi>𝐒</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>𝐫</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">d_i^2 = \mathbf{r}_i^T \mathbf{S}^{-1} \mathbf{r}_i</annotation></semantics></math>
+where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐒</mi><annotation encoding="application/x-tex">\mathbf{S}</annotation></semantics></math> is a robust estimate of the residual covariance matrix, computed using <code><a href="https://rdrr.io/pkg/MASS/man/cov.trob.html" class="external-link">MASS::cov.trob()</a></code>.</p></li>
 <li><p><strong>Weight assignment</strong>: Assign weights to each observation based on their residual distances. Observations with larger distances receive smaller weights, effectively downweighting potential outliers:
-<span class="math display">\[w_i = \rho(d_i^2)\]</span>
-where <span class="math inline">\(\rho(\cdot)\)</span> is a weight function that decreases as the distance increases.</p></li>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>d</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">w_i = \rho(d_i^2)</annotation></semantics></math>
+where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>⋅</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\rho(\cdot)</annotation></semantics></math> is a weight function that decreases as the distance increases.</p></li>
 <li><p><strong>Weighted Least Squares</strong>: Update the coefficient estimates using weighted least squares:
-<span class="math display">\[\hat{\boldsymbol{\beta}}^{(new)} = (\mathbf{X}^T\mathbf{W}\mathbf{X})^{-1}\mathbf{X}^T\mathbf{W}\mathbf{Y}\]</span>
-where <span class="math inline">\(\mathbf{W}\)</span> is a diagonal matrix of weights.</p></li>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover><mi>𝛃</mi><mo accent="true">̂</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mi>e</mi><mi>w</mi><mo stretchy="true" form="postfix">)</mo></mrow></msup><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐗</mi><mi>T</mi></msup><mi>𝐖</mi><mi>𝐗</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msup><msup><mi>𝐗</mi><mi>T</mi></msup><mi>𝐖</mi><mi>𝐘</mi></mrow><annotation encoding="application/x-tex">\hat{\boldsymbol{\beta}}^{(new)} = (\mathbf{X}^T\mathbf{W}\mathbf{X})^{-1}\mathbf{X}^T\mathbf{W}\mathbf{Y}</annotation></semantics></math>
+where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐖</mi><annotation encoding="application/x-tex">\mathbf{W}</annotation></semantics></math> is a diagonal matrix of weights.</p></li>
 <li><p><strong>Convergence check</strong>: Repeat steps 2-5 until convergence, typically assessed by monitoring changes in the coefficient estimates or weights between iterations.</p></li>
 </ol>
 </div>
-<div class="section level3" number="2.2">
-<h3 id="features-of-the-implementation">
-<span class="header-section-number">2.2</span> Features of the Implementation<a class="anchor" aria-label="anchor" href="#features-of-the-implementation"></a>
+<div class="section level3">
+<h3 id="features-of-the-implementation">Features of the Implementation<a class="anchor" aria-label="anchor" href="#features-of-the-implementation"></a>
 </h3>
 <p>The <code><a href="../reference/robmlm.html">robmlm()</a></code> implementation incorporates several important features:</p>
 <ul>
 <li><p><strong>Robust covariance estimation</strong>: The use of <code><a href="https://rdrr.io/pkg/MASS/man/cov.trob.html" class="external-link">MASS::cov.trob()</a></code> provides a robust estimate of the residual covariance matrix, which is crucial for computing meaningful Mahalanobis distances in the presence of outliers.
-This uses the multivariate <span class="math inline">\(t\)</span> distribution that allows for longer tails.
+This uses the multivariate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math> distribution that allows for longer tails.
 (There are other robust covariance estimators, such as Minimum Covariance Determinant (MCD) and Minimum Volume Ellipse (MVE), which have a high tolerance—breakdown-bound– for outliers. These might come to a future version of <code><a href="../reference/robmlm.html">robmlm()</a></code>.)</p></li>
 <li><p><strong>Inheritance Structure</strong>: The returned object inherits from both <code>"mlm"</code> and <code>"lm"</code> classes, ensuring compatibility with existing R infrastructure for linear models while adding robust-specific methods.</p></li>
 <li><p><strong>Weight Preservation</strong>: The final weights are preserved in the fitted object, allowing users to identify influential observations and assess the impact of the robust fitting procedure.</p></li>
 <li><p><strong>Diagnostic Capabilities</strong>: The <code><a href="../reference/plot.robmlm.html">plot.robmlm()</a></code> method provides immediate visual feedback on the weighting scheme, plotting final weights against case numbers to highlight observations that were down-weighted during the fitting process.</p></li>
 </ul>
 </div>
-<div class="section level3" number="2.3">
-<h3 id="theoretical-properties">
-<span class="header-section-number">2.3</span> Theoretical Properties<a class="anchor" aria-label="anchor" href="#theoretical-properties"></a>
+<div class="section level3">
+<h3 id="theoretical-properties">Theoretical Properties<a class="anchor" aria-label="anchor" href="#theoretical-properties"></a>
 </h3>
 <p>The IRLS approach offers several desirable theoretical properties:</p>
 <ul>
@@ -196,9 +197,8 @@ Each example will include both the R code and interpretation of results, with pa
 -->
 </div>
 </div>
-<div class="section level2" number="3">
-<h2 id="example-pottery-data">
-<span class="header-section-number">3</span> Example: Pottery Data<a class="anchor" aria-label="anchor" href="#example-pottery-data"></a>
+<div class="section level2">
+<h2 id="example-pottery-data">Example: Pottery Data<a class="anchor" aria-label="anchor" href="#example-pottery-data"></a>
 </h2>
 <p>We begin with a simple but illustrative example using the pottery composition data from the <code>carData</code> package. This dataset contains measurements of five chemical elements (<code>Al</code>, <code>Fe</code>, <code>Mg</code>, <code>Ca</code>, <code>Na</code>) in pottery samples from four different archaeological sites. The goal is to determine whether the chemical composition differs significantly across sites, a classic one-way MANOVA problem. Alternatively, it can be framed as a problem in discriminant analysis, asking whether
 these chemical elements can be used to distinguish among the sites.</p>
@@ -234,9 +234,8 @@ Caldicot.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; AshleyRails    Caldicot  IsleThorns   Llanedyrn </span></span>
 <span><span class="co">#&gt;           5           2           5          14</span></span></code></pre></div>
-<div class="section level3" number="3.1">
-<h3 id="classical-manova">
-<span class="header-section-number">3.1</span> Classical MANOVA<a class="anchor" aria-label="anchor" href="#classical-manova"></a>
+<div class="section level3">
+<h3 id="classical-manova">Classical MANOVA<a class="anchor" aria-label="anchor" href="#classical-manova"></a>
 </h3>
 <p>We begin with the standard MANOVA model, and then examine some diagnostic plots.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -250,14 +249,14 @@ Caldicot.</p>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p><strong>Chisquare QQ plot</strong>:
-As an initial check, a <code><a href="../reference/cqplot.html">cqplot()</a></code> of the model gives a <span class="math inline">\(\chi^2\)</span> QQ plot of the residuals from the model,
+As an initial check, a <code><a href="../reference/cqplot.html">cqplot()</a></code> of the model gives a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>χ</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math> QQ plot of the residuals from the model,
 which would identify badly fit observations. None seem particularly large here.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/cqplot.html">cqplot</a></span><span class="op">(</span><span class="va">pottery.mlm</span>, id.n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-cqplot"></span>
 <img src="fig/robust-pottery-cqplot-1.png" alt="Chisquare QQ plot for the Pottery model."><p class="caption">
-Figure 2: Chisquare QQ plot for the Pottery model.
+Figure 3: Chisquare QQ plot for the Pottery model.
 </p>
 </div>
 <p><strong>Influence plot</strong>:
@@ -267,7 +266,7 @@ An <em>influence plot</em> for this model, done using <code>mvinfluence::influen
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-inflplot"></span>
 <img src="fig/robust-pottery-inflplot-1.png" alt="Influence plot for the Pottery model."><p class="caption">
-Figure 3: Influence plot for the Pottery model.
+Figure 4: Influence plot for the Pottery model.
 </p>
 </div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -279,13 +278,12 @@ Figure 3: Influence plot for the Pottery model.
 <span><span class="co">#&gt; 11 0.07143 0.587152 0.23067 0.07692 0.63232</span></span>
 <span><span class="co">#&gt; 16 0.50000 0.006379 0.01754 1.00000 0.01276</span></span>
 <span><span class="co">#&gt; 15 0.50000 0.006379 0.01754 1.00000 0.01276</span></span></code></pre></div>
-<p>Because <code>site</code> is a factor, the hat-values are inversely proportional to the sample size. Points for Llanedryn (<span class="math inline">\(n=14\)</span>) are in the
-left-most column, followed by AshleyRails and IsleThorns (each with <span class="math inline">\(n=5\)</span>) and then Caldicot (<span class="math inline">\(n=14\)</span>).</p>
+<p>Because <code>site</code> is a factor, the hat-values are inversely proportional to the sample size. Points for Llanedryn (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">n=14</annotation></semantics></math>) are in the
+left-most column, followed by AshleyRails and IsleThorns (each with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">n=5</annotation></semantics></math>) and then Caldicot (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">n=14</annotation></semantics></math>).</p>
 <p>Here, case 25 stands out with the largest value of Cook’s D, followed by 18 and 11.</p>
 </div>
-<div class="section level3" number="3.2">
-<h3 id="robust-manova">
-<span class="header-section-number">3.2</span> Robust MANOVA<a class="anchor" aria-label="anchor" href="#robust-manova"></a>
+<div class="section level3">
+<h3 id="robust-manova">Robust MANOVA<a class="anchor" aria-label="anchor" href="#robust-manova"></a>
 </h3>
 <p>Now, fit the robust model using <code><a href="../reference/robmlm.html">robmlm()</a></code>. Because this uses an interative IRLS method, points that might not seem unusual
 in the initial model can become more noteworthy when the extreme observations are down-weighted in a subsequent iteration.</p>
@@ -300,7 +298,7 @@ in the initial model can become more noteworthy when the extreme observations ar
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>Let’s compare the results. From the results of <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova()</a></code> above, you can see that
-the <span class="math inline">\(F\)</span> statistic for the robust model is greater than that for OLS,
+the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math> statistic for the robust model is greater than that for OLS,
 which suggests that possible outliers may have reduced the strength of evidence for differences among the sites.</p>
 <p>It is useful to compare the coefficients of the two models, and for this, their relative difference is
 a useful metric. The simple function <code>reldiff()</code> expresses these as the signed percent of difference
@@ -323,9 +321,8 @@ between the classical and robust estimatges</p>
 <span><span class="co">#&gt; SiteLlanedyrn  -11.559   9.969  2.0078   6.241 22.7443</span></span></code></pre></div>
 <p>Among these, the coefficients for IsleThorns are quite different for most of the variables.</p>
 </div>
-<div class="section level3" number="3.3">
-<h3 id="examining-the-robust-weights">
-<span class="header-section-number">3.3</span> Examining the Robust Weights<a class="anchor" aria-label="anchor" href="#examining-the-robust-weights"></a>
+<div class="section level3">
+<h3 id="examining-the-robust-weights">Examining the Robust Weights<a class="anchor" aria-label="anchor" href="#examining-the-robust-weights"></a>
 </h3>
 <p>The robust fitting procedure assigns weights to each observation based on their deviation from the fitted model. Observations that appear to be outliers receive lower weights. The <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> method for a <code>"roblm"</code> object gives an index plot of the weight values.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -337,14 +334,13 @@ between the classical and robust estimatges</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-weights"></span>
 <img src="fig/robust-pottery-weights-1.png" alt="Weights from robust MANOVA fitting showing potential outliers"><p class="caption">
-Figure 4: Weights from robust MANOVA fitting showing potential outliers
+Figure 5: Weights from robust MANOVA fitting showing potential outliers
 </p>
 </div>
 <p>The weight plot reveals which observations were considered potentially problematic during the robust fitting process. Observations with weights substantially below 1.0 were down-weighted, indicating they may be outliers in the multivariate space defined by the five chemical measurements.</p>
 </div>
-<div class="section level3" number="3.4">
-<h3 id="hypothesis-error-he-plots">
-<span class="header-section-number">3.4</span> Hypothesis-Error (HE) plots<a class="anchor" aria-label="anchor" href="#hypothesis-error-he-plots"></a>
+<div class="section level3">
+<h3 id="hypothesis-error-he-plots">Hypothesis-Error (HE) plots<a class="anchor" aria-label="anchor" href="#hypothesis-error-he-plots"></a>
 </h3>
 <p>HE plots provide a visual representation of the multivariate hypothesis test by showing the relationship between hypothesis and error variation in a reduced dimensional space. We’ll create HE plots for the first two variables (Al and Fe) and compare the classical and robust fits.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -369,12 +365,12 @@ Figure 4: Weights from robust MANOVA fitting showing potential outliers
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-heplot"></span>
 <img src="fig/robust-pottery-heplot-1.png" alt="HE plot comparing classical (blue) and robust (red) MANOVA for Al vs Fe"><p class="caption">
-Figure 5: HE plot comparing classical (blue) and robust (red) MANOVA for Al vs Fe
+Figure 6: HE plot comparing classical (blue) and robust (red) MANOVA for Al vs Fe
 </p>
 </div>
 <p>The <strong>H</strong> and <strong>E</strong> ellipses have approximately the same shape and orientation for the classical and robust models, indicating
 that the pattern of differences among the group means is quite similar for both models. However, the <strong>E</strong> ellipse for the robust
-model is noticeably smaller. This goes into the greater <span class="math inline">\(F\)</span> statistic for the robust model.</p>
+model is noticeably smaller. This goes into the greater <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math> statistic for the robust model.</p>
 <p>For a more complete interpretation of robust model, a scatterplot matrix of HE plots is shown below, using the <code><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs()</a></code> method
 for a MLM.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -383,13 +379,12 @@ for a MLM.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-pairs"></span>
 <img src="fig/robust-pottery-pairs-1.png" alt="Pairwise HE plots for all response variables in the robust model `pottery.rlm`"><p class="caption">
-Figure 6: Pairwise HE plots for all response variables in the robust model <code>pottery.rlm</code>
+Figure 7: Pairwise HE plots for all response variables in the robust model <code>pottery.rlm</code>
 </p>
 </div>
 </div>
-<div class="section level3" number="3.5">
-<h3 id="interpretation-and-discussion">
-<span class="header-section-number">3.5</span> Interpretation and Discussion<a class="anchor" aria-label="anchor" href="#interpretation-and-discussion"></a>
+<div class="section level3">
+<h3 id="interpretation-and-discussion">Interpretation and Discussion<a class="anchor" aria-label="anchor" href="#interpretation-and-discussion"></a>
 </h3>
 <p>Several important insights emerge from this analysis of the Pottery data</p>
 <ul>
