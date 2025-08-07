@@ -90,7 +90,7 @@ levels off thereafter,
 \end{cases}
 \]
 
-These functions look like this in a graph. For the biweight function has a property
+These functions look like this in a graph. The biweight function has a property
 like Windsorizing--- the squared error remains constant for residuals $e_i > c$,
 with $c = 4.685$ for `MASS::psi.bisquare()`.
 
