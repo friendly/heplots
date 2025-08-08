@@ -23,10 +23,26 @@ Calculates the relative difference, defined as
 \deqn{\frac{\vert x - y \vert}{x} }
 between two arrays or data frames, where \code{x} are considered reference values.
 }
+\details{
+Beyond the obvious, a natural use case is to compare coefficients for alternative models for the same data, e.g., a classical
+and a robust model.
+}
 \examples{
-# example code
+# simple example
 m1 <- cbind(c(0,1), c(1,1))
 m2 <- cbind(c(0,1), c(1.01,1.11))
 rel_diff(m1, m2, pct = FALSE) 
 rel_diff(m1, m2) 
+
+# compare coefficients
+data(Skulls)
+
+# fit manova model, classically and robustly
+sk.mlm <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
+sk.rlm <- robmlm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
+rel_diff(coef(sk.mlm),
+         coef(sk.rlm))
+}
+\seealso{
+\code{link{robmlm}}
 }
