@@ -5,6 +5,7 @@ Several small maintenance fixes, plus a new diagnostic plot and a new vignette
 o Added `distancePlot()` for plots of Mahalanobis distances of X vs Y
 o Added a vignette on robust MLMs using `robmlm()` and diagnostic plots
 o Added `rel_diff()` to calulate relative difference between two arrays or data frames
+o Fixed buglet in plot.robmlm()
 
 ## Version 1.7.6 
 

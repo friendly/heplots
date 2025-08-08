@@ -71,7 +71,7 @@ plot.robmlm <-
 	n <- length(weights)
 	ind <- 1:n
 	bad <- weights < id.weight
-	text(ind[bad], weights[bad], labels[bad], pos = id.pos, xpd=TRUE)
+	if(sum(bad) > 0) text(ind[bad], weights[bad], labels[bad], pos = id.pos, xpd=TRUE)
 	
 	if(segments)
 		segments(1:n, 1, 1:n, weights, col=col)
