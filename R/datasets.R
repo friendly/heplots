@@ -1294,9 +1294,9 @@ NULL
 
 #' Plastic Film Data
 #' 
-#' An experiment was conducted to determine the optimum conditions for
+#' An experiment was conducted to determine the optimal conditions for
 #' extruding plastic film.  Three responses were measured in relation to two
-#' factors, rate of extrusion and amount of an additive.
+#' factors, change in rate of extrusion and amount of an additive, both with two levels and \eqn{n=5} observations per cell.
 #' 
 #' 
 #' @name Plastic

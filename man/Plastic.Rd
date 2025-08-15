@@ -19,9 +19,9 @@ Johnson, R.A. & Wichern, D.W. (1992). \emph{Applied Multivariate
 Statistical Analysis}, 3rd ed., Prentice-Hall. Example 6.12 (p. 266).
 }
 \description{
-An experiment was conducted to determine the optimum conditions for
+An experiment was conducted to determine the optimal conditions for
 extruding plastic film.  Three responses were measured in relation to two
-factors, rate of extrusion and amount of an additive.
+factors, change in rate of extrusion and amount of an additive, both with two levels and \eqn{n=5} observations per cell.
 }
 \examples{
 
