@@ -29,6 +29,7 @@ o Added a vignette on robust MLMs using `robmlm()` and diagnostic plots
 o Added `rel_diff()` to calulate relative difference between two arrays or data frames
 o Fixed buglet in plot.robmlm()
 o Fixed some non-canonical URLs
+o Fixed cex buglet in `distancePlot()`
 
 ## Version 1.7.6 
 
