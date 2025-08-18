@@ -74,7 +74,7 @@
 #' # schooldata dataset
 #' data(schooldata)
 #' school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ ., data=schooldata)
-#' distancePlot(school.mod)
+#' distancePlot(school.mod, cex = 1.5, cex.lab = 1.2)
 #' 
 #' data(Hernior)
 #' Hern.mod <- lm(cbind(leave, nurse, los) ~
