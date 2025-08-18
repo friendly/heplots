@@ -175,7 +175,10 @@ Springer-Verlag, New York.</p>
 <span class="r-in"><span>  <span class="fu">distancePlot</span><span class="op">(</span><span class="va">pulp.mod</span>, method <span class="op">=</span> <span class="st">"mcd"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: robustbase</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in distancePlot(pulpfiber[, 1:4], pulpfiber[, 5:8]):</span> could not find function "distancePlot"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.975 distance cutoffs: 3.338156 3.338156 </span>
+<span class="r-plt img"><img src="distancePlot-1.png" alt="" width="700" height="433"></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.975 distance cutoffs: 3.338156 3.338156 </span>
+<span class="r-plt img"><img src="distancePlot-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># NLSY data</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">NLSY</span>, package <span class="op">=</span> <span class="st">"heplots"</span><span class="op">)</span></span></span>
@@ -183,14 +186,17 @@ Springer-Verlag, New York.</p>
 <span class="r-in"><span>               data <span class="op">=</span> <span class="va">NLSY</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">distancePlot</span><span class="op">(</span><span class="va">NLSY.mlm</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in distancePlot(NLSY.mlm):</span> could not find function "distancePlot"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.975 distance cutoffs: 3.338156 2.716203 </span>
+<span class="r-plt img"><img src="distancePlot-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># gives the same result</span></span></span>
 <span class="r-in"><span><span class="fu">distancePlot</span><span class="op">(</span><span class="va">NLSY</span><span class="op">[</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">NLSY.mlm</span><span class="op">)</span>, level <span class="op">=</span> <span class="fl">0.975</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in distancePlot(NLSY[, 3:6], residuals(NLSY.mlm), level = 0.975):</span> could not find function "distancePlot"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.975 distance cutoffs: 3.338156 2.716203 </span>
+<span class="r-plt img"><img src="distancePlot-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">distancePlot</span><span class="op">(</span><span class="va">NLSY.mlm</span>, method <span class="op">=</span><span class="st">"mve"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in distancePlot(NLSY.mlm, method = "mve"):</span> could not find function "distancePlot"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.975 distance cutoffs: 3.338156 2.716203 </span>
+<span class="r-plt img"><img src="distancePlot-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># distancePlot(cbind(math, read) ~ income + educ + antisoc + hyperact,</span></span></span>
 <span class="r-in"><span><span class="co">#                data = NLSY)</span></span></span>
@@ -199,13 +205,15 @@ Springer-Verlag, New York.</p>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">schooldata</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">school.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">reading</span>, <span class="va">mathematics</span>, <span class="va">selfesteem</span><span class="op">)</span> <span class="op">~</span> <span class="va">.</span>, data<span class="op">=</span><span class="va">schooldata</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">distancePlot</span><span class="op">(</span><span class="va">school.mod</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in distancePlot(school.mod):</span> could not find function "distancePlot"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.975 distance cutoffs: 3.582248 3.057516 </span>
+<span class="r-plt img"><img src="distancePlot-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Hernior</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Hern.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">leave</span>, <span class="va">nurse</span>, <span class="va">los</span><span class="op">)</span> <span class="op">~</span></span></span>
 <span class="r-in"><span>               <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span>  <span class="va">pstat</span> <span class="op">+</span>  <span class="va">build</span> <span class="op">+</span> <span class="va">cardiac</span> <span class="op">+</span> <span class="va">resp</span>, data<span class="op">=</span><span class="va">Hernior</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">distancePlot</span><span class="op">(</span><span class="va">Hern.mod</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in distancePlot(Hern.mod):</span> could not find function "distancePlot"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.975 distance cutoffs: 3.801233 3.057516 </span>
+<span class="r-plt img"><img src="distancePlot-7.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

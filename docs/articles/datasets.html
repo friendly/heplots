@@ -67,7 +67,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Data sets in the heplots package</h1>
                         <h4 data-toc-skip class="author">Michael Friendly</h4>
             
-            <h4 data-toc-skip class="date">2025-08-08</h4>
+            <h4 data-toc-skip class="date">2025-08-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/friendly/heplots/blob/HEAD/vignettes/datasets.Rmd" class="external-link"><code>vignettes/datasets.Rmd</code></a></small>
       <div class="d-none name"><code>datasets.Rmd</code></div>
@@ -178,19 +178,6 @@ linear hypotheses concerning factors:</p>
           } else {
               console.warn(`Cell at (${i}, ${j}) not found.`);
           }
-      }
-      function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_1shdr96edz0u7yumdwm6');
-        // Find the row with data-row attribute matching i
-        var targetRow = table.querySelector(`tr [data-row="${i}"]`).closest('tr');
-        var newRow = table.insertRow(targetRow.rowIndex);
-        var newCell = newRow.insertCell(0);
-        newCell.setAttribute("colspan", colspan);
-        newCell.setAttribute("data-col", "0");
-        newCell.setAttribute("data-row", i - 1);
-        // newCell.innerText = content;
-        // this may be unsafe, but innerText does not interpret <br>
-        newCell.innerHTML = content;
       }
       function spanCell_1shdr96edz0u7yumdwm6(i, j, rowspan, colspan) {
         var table = document.getElementById("tinytable_1shdr96edz0u7yumdwm6");
@@ -513,19 +500,6 @@ linear hypotheses concerning factors:</p>
           } else {
               console.warn(`Cell at (${i}, ${j}) not found.`);
           }
-      }
-      function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_3pnbrl1ohp3iu3bu52op');
-        // Find the row with data-row attribute matching i
-        var targetRow = table.querySelector(`tr [data-row="${i}"]`).closest('tr');
-        var newRow = table.insertRow(targetRow.rowIndex);
-        var newCell = newRow.insertCell(0);
-        newCell.setAttribute("colspan", colspan);
-        newCell.setAttribute("data-col", "0");
-        newCell.setAttribute("data-row", i - 1);
-        // newCell.innerText = content;
-        // this may be unsafe, but innerText does not interpret <br>
-        newCell.innerHTML = content;
       }
       function spanCell_3pnbrl1ohp3iu3bu52op(i, j, rowspan, colspan) {
         var table = document.getElementById("tinytable_3pnbrl1ohp3iu3bu52op");

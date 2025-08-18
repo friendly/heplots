@@ -78,16 +78,44 @@ between two arrays or data frames, where <code>x</code> are considered reference
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>An array or data frame the same size as <code>x</code> and <code>y</code> containing the relative differences</p>
     </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Beyond the obvious, a natural use case is to compare coefficients for alternative models for the same data, e.g., a classical
+and a robust model.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p><code>link{robmlm}</code></p></div>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># example code</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># simple example</span></span></span>
 <span class="r-in"><span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.01</span>,<span class="fl">1.11</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">rel_diff</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, pct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in rel_diff(m1, m2, pct = FALSE):</span> could not find function "rel_diff"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    0 0.01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    0 0.11</span>
 <span class="r-in"><span><span class="fu">rel_diff</span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span><span class="op">)</span> </span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in rel_diff(m1, m2):</span> could not find function "rel_diff"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    0    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    0   11</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># compare coefficients</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># fit manova model, classically and robustly</span></span></span>
+<span class="r-in"><span><span class="va">sk.mlm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sk.rlm</span> <span class="op">&lt;-</span> <span class="fu"><a href="robmlm.html">robmlm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">rel_diff</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">sk.mlm</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>         <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">sk.rlm</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       mb          bh           bl           nh</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)   0.01446592  0.08977463   0.04729215   0.08496078</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> epoch.L       3.46042186 -0.59951299  -3.48922244   3.87957519</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> epoch.Q     -20.74713900 -3.30993862 -51.99508454 125.92364818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> epoch.C     -25.78059257 -1.43305167   4.19962200  -0.62550036</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> epoch^4      85.33424274  9.19478314 -15.44695305 -49.00471013</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
