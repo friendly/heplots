@@ -70,8 +70,9 @@ Outliers in multivariate data can be particularly problematic because they may n
 Robust multivariate regression methods aim to provide reliable parameter estimates and inference procedures that remain stable in the presence of outlying observations. As noted by @Rousseeuw2004, "_The main advantage of robust regression is that it provides reliable results even when some of the assumptions of classical regression are violated._" 
 
 
-Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators [@Rousseeuw1984], and MM-estimators [@Yohai1987]. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions. See the [CRAN Task View: Robust Statistical Methods](https://cran.r-project.org/web/views/Robust.html) for an extensive list of
-robust methods in R and the [vignette](https://cran.r-project.org/web/packages/rrcov/vignettes/rrcov.pdf) for the [rrcov package](https://cran.r-project.org/package=rrcov) for a general overview of multivariate robust methods.
+Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators [@Rousseeuw1984], and MM-estimators [@Yohai1987]. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions. See the [CRAN Task View: Robust Statistical Methods](https://cran.r-project.org/view=Robust) for an extensive list of
+robust methods in R. The vignette for the [rrcov package](https://cran.r-project.org/package=rrcov), obtained by `vignette(package = "rrcov")`,
+contains a general overview of multivariate robust methods.
 
 The method implemented in the `robmlm()` function belongs to the class of **M-estimators**, which generalize maximum likelihood estimation by replacing the likelihood function with a more robust objective function.
 
