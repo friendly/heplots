@@ -1,6 +1,6 @@
 ## Test environments
 * local Windows 10 install, 4.5.1 (2025-06-13 ucrt)
-* win-builder R Under development (unstable) (2025-08-05 r88509 ucrt)
+* win-builder R Under development (unstable) (2025-08-17 r88631 ucrt)
 * devtools::check_mac_release() using R version 4.5.1 Patched (2025-07-10 r88405)
 
 ## R CMD check results
