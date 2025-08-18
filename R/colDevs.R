@@ -19,8 +19,8 @@
 #' @param center A function used to center the values (for each group if
 #'         \code{group} is specified. The function must take a vector argument and
 #'         return a scalar result.
-#' @param group.var logical. If \code{TRUE}, the \code{group} variable containing factor levels is prepended to the
-#'        matrix of deviations.
+#' @param group.var logical or character. If \code{TRUE}, the \code{group} variable containing factor levels is prepended to the
+#'        matrix of deviations. If a character variable, this is taken as the name to be used for the group variable.
 #' @param \dots Arguments passed down
 #' @return By default, it returns a numeric matrix containing the deviations from the centering
 #'         function. If \code{levels==TRUE}, it returns a data.frame containing the group factor prepended to the

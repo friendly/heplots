@@ -19,8 +19,8 @@ factors.}
 \code{group} is specified. The function must take a vector argument and
 return a scalar result.}
 
-\item{group.var}{logical. If \code{TRUE}, the \code{group} variable containing factor levels is prepended to the
-matrix of deviations.}
+\item{group.var}{logical or character. If \code{TRUE}, the \code{group} variable containing factor levels is prepended to the
+matrix of deviations. If a character variable, this is taken as the name to be used for the group variable.}
 
 \item{\dots}{Arguments passed down}
 }
