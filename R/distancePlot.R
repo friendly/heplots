@@ -123,7 +123,7 @@ distancePlot.default <- function(X, Y,
   q <- ncol(X)
   p <- ncol(Y)
   cutoffs <- qchisq(level, c(q, p)) |> sqrt()
-  cat(level, "distance cutoffs:", cutoffs, "\n")
+  cat(level, "X, Y distance cutoffs:", cutoffs, "\n")
   out <- (distX > cutoffs[1]) | distY > cutoffs[2]
   out.rows <- which(out)
   
@@ -138,7 +138,7 @@ distancePlot.default <- function(X, Y,
   abline(v = cutoffs[1], h = cutoffs[2], col = col[2])
   text(distX[out.rows], distY[out.rows], 
        labels = ids[out.rows],
-       pos = label.pos)
+       pos = label.pos, ...)
   
   res <- data.frame(distX = distX, distY = distY)
   rownames(res) <- ids
