@@ -64,12 +64,7 @@ label_demo <- function(ell) {
   for (i in 0:4) {
     label.ellipse(ell, label=paste(i, ":", labs[i+1]), label.pos = i)
   }
-  # labs <- c("S", "W", "N", "E")
-  # for (i in 1:4) {
-  #   label.ellipse(ell, label=labs[i], label.pos = c(1, 4, 2, 1)[i])
-  # }
-  
-  for( i in 6*c(1,2, 4,5, 7,8, 10,11)) {
+  for( i in 5*c(1,2, 4,5, 7,8, 10,11)) {
     points(ell[i,1], ell[i,2], pch=16)
     label.ellipse(ell, label=i, label.pos=i)
   }
@@ -77,12 +72,6 @@ label_demo <- function(ell) {
 
 circ <- circle(radius=1.8)
 label_demo(circ)
-# also show:
-labs <- c("NE", "NW", "SW", "SE")
-  for (i in 1:4) {
-     label.ellipse(ell, label=labs[i], label.pos = labs[i])
-      }
-
 
 ell <-circ \%*\% chol(matrix( c(1, .5, .5, 1), 2, 2)) 
 label_demo(ell)
