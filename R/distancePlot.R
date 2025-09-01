@@ -1,4 +1,6 @@
 # plot two sets of Malahanobis distances
+# 
+# TODO: Test cases where p or q = 1!
 
 #' @name distancePlot
 #' 

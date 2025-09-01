@@ -7,6 +7,8 @@
 \method{plot}{robmlm}(
   x,
   labels,
+  groups,
+  group.axis = TRUE,
   id.weight = 0.7,
   id.pos = 4,
   pch = 19,
@@ -21,21 +23,25 @@
 \arguments{
 \item{x}{A \code{"robmlm"} object}
 
-\item{labels}{Observation labels; if not specified, uses rownames from the
+\item{labels}{Observation labels for point identification. If not specified, uses \code{rownames} from the
 original data}
+
+\item{groups}{Optional grouping variable, a factor with length equal to the number of observations, used to  identify groups in the plot.}
+
+\item{group.axis}{Logical; whether to draw an axis at the top identifying the groups. Not drawn if \code{groups} is missing.}
 
 \item{id.weight}{Threshold for identifying observations with small weights}
 
 \item{id.pos}{Position of observation label relative to the point}
 
 \item{pch}{Point symbol(s); can be a vector of length equal to the number of
-observations in the data frame}
+observations in the data frame.}
 
-\item{col}{Point color(s)}
+\item{col}{Point color(s).  Multiple colors can be specified so that each point can be given its own color. If there are fewer colors than points they are recycled in the standard fashion.}
 
 \item{cex}{Point character size(s)}
 
-\item{segments}{logical; if \code{TRUE}, draw line segments from 1.o down to
+\item{segments}{logical; if \code{TRUE}, draw line segments from 1.0 down to
 the point}
 
 \item{xlab}{x axis label}
@@ -72,8 +78,22 @@ plot(pottery.rmod, col=Pottery$Site, segments=TRUE)
 data(SocialCog)
 SC.rmod <- robmlm(cbind( MgeEmotions, ToM, ExtBias, PersBias) ~ Dx,
                data=SocialCog)
-plot(SC.rmod, col=SocialCog$Dx, segments=TRUE)
+plot(SC.rmod, 
+     col=SocialCog$Dx, segments=TRUE)
+# label the groups 
+ctr <- split(seq(nrow(SocialCog)), SocialCog$Dx) |> lapply(mean)
+axis(side = 3, at=ctr, labels = names(ctr), cex.axis=1.2)
 
+# use the groups arg
+colors = c("red", "darkgreen", "blue") 
+ids <- plot(SC.rmod, 
+     groups=SocialCog$Dx, 
+     col = colors,
+     pch = 15:17,
+     segments=TRUE)
+
+# the cases labeled and their weights
+ids
 
 
 }
