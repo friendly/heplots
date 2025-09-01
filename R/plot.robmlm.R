@@ -24,6 +24,7 @@
 #' @param \dots other arguments passed to \code{\link[graphics]{plot}}
 #' @return Returns invisibly the weights for the observations labeled in the
 #'        plot
+#' @importFrom graphics axis
 #' @author Michael Friendly
 #' @seealso \code{\link{robmlm}}
 #' @keywords hplot
@@ -93,7 +94,7 @@ plot.robmlm <-
 	 if (n.groups > 1 & length(pch) == n.groups) pch = pch[groups]
 	 if (n.groups > 1 & length(col) == n.groups) col = col[as.integer(groups)]
 
-   browser()
+  # browser()
 	
 	plot(weights, pch=pch, col=col, cex=cex, 
 		xlab = xlab, ylab = ylab,
@@ -106,7 +107,7 @@ plot.robmlm <-
 	if(segments)
 		segments(1:nobs, 1, 1:nobs, weights, col=col)
 	
-	if (group.axis) {
+	if (group.axis & !missing(groups)) {
   	if(n.groups > 1 & !is.unsorted(groups)) {
   	  ctr <- split(seq(nobs), groups) |> lapply(mean)
       axis(side = 3, at=ctr, labels = names(ctr), cex.axis=1.2)
