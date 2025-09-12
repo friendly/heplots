@@ -7,7 +7,7 @@
 
 
 
-#' Measures of Partial Association (\eqn{\eqn{\eta^2}}) for Linear Models
+#' Measures of Partial Association (\eqn{\eta^2}) for Linear Models
 #' 
 #' Calculates partial eta-squared for linear models or multivariate analogs of
 #' eta-squared (or R^2), indicating the partial association for each term in a

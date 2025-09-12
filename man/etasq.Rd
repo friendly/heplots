@@ -5,7 +5,7 @@
 \alias{etasq.lm}
 \alias{etasq.mlm}
 \alias{etasq.Anova.mlm}
-\title{Measures of Partial Association (\eqn{\eqn{\eta^2}}) for Linear Models}
+\title{Measures of Partial Association (\eqn{\eta^2}) for Linear Models}
 \usage{
 etasq(x, ...)
 
