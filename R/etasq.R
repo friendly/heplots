@@ -7,11 +7,16 @@
 
 
 
-#' Measures of Partial Association (Eta-squared) for Linear Models
+#' Measures of Partial Association (\eqn{\eqn{\eta^2}}) for Linear Models
 #' 
 #' Calculates partial eta-squared for linear models or multivariate analogs of
 #' eta-squared (or R^2), indicating the partial association for each term in a
-#' multivariate linear model. There is a different analog for each of the four
+#' multivariate linear model. For a multivariate model, this is a summary 
+#' across all response variables.
+#' 
+#' @details
+#' 
+#' There is a different analog of \eqn{\eta^2} for each of the four
 #' standard multivariate test statistics: Pillai's trace, Hotelling-Lawley
 #' trace, Wilks' Lambda and Roy's maximum root test.
 #' 
@@ -60,6 +65,7 @@
 #' Measures Applications. \emph{Journal of the American Statistical
 #' Association}, \bold{87}, 1209-1226.
 #' @keywords multivariate
+#' @seealso \code{\link[effectsize]{eta_squared}} for a function that calculates this effect size measure for each response variable separately.
 #' @concept effect size
 #' @concept strength of association
 #' @examples
