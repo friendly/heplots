@@ -5,7 +5,7 @@
 #'  somewhere around the periphery in a very flexible way.
 #'
 #' @details 
-#' If \code{label.pos=NULL}, the function uses the sign of the correlation
+#' If \code{label.pos=NULL}, the function uses the sign of the correlation \eqn{r}
 #' represented by the ellipse to determine a position
 #' at the top (\eqn{r>=0}) or bottom (\eqn{r<0}) of the ellipse.
 
@@ -14,10 +14,12 @@
 #' and to the right of the max/min coordinates of the ellipse.
 #' Label positions can also be specified as the corresponding character strings
 #' \code{c("center", "bottom", "left", "top", "right")}, or compass directions, 
-#' \code{c("C", "S", "W", "N", "E")}, or  
-#
+#' \code{c("C", "S", "W", "N", "E")}, or  ADD FURTHER DESCRIPTION for NE, NW, SE, SW
+#'
+#' # TODO: DELETE THIS -- too hard to use in terms of figuring out the indices of the rows of the ellipse
 #' Other integer \code{label.pos} values, \code{5:nrow(ellipse)} are taken as indices of the row coordinates
 #' to be used for the ellipse label. 
+#' 
 #' Equivalently, \code{label.pos} can also be a \emph{fraction} in (0,1), interpreted
 #' as the fraction of the way around the unit circle, counterclockwise from the point (1,0).
 #'
@@ -26,7 +28,8 @@
 #' @param col     Label color
 #' @param label.pos  Label position relative to the ellipse.  See details 
 #' @param xpd     Should the label be allowed to extend beyond the plot limits?
-#' @param tweak   A vector of two lengths used to tweak label positions
+#' @param tweak   A vector of two lengths used to tweak label positions. The defaults are 0.5 times the height and width of the character \code{"M"} added
+#'                or subtracted to the calculated (x, y) values.
 #' @param ...     Other parameters passed to \code{text}, e.g., \code{cex}, \dots
 #' 
 #' @author Michael Friendly
@@ -39,32 +42,39 @@
 #'    t( c(center) + t( circle ))
 #' }
 #' 
-#' label_demo <- function(ell) {
+#' label_demo <- function(ell, show = c("pos", "compass")) {
 #'   plot(-2:2, -2:2, type="n", asp=1, main="label.pos values and points (0:60)")
 #'   lines(ell, col="gray")
 #'   points(0, 0, pch="+", cex=2)
 #'   
-#'   labs <- c("center", "bot", "left", "top", "right")
-#'   for (i in 0:4) {
+#'   if ("pos" %in% show) {
+#'     labs <- c("center", "bot", "left", "top", "right")
+#'     for (i in 0:4) {
 #'     label.ellipse(ell, label=paste(i, ":", labs[i+1]), label.pos = i)
+#'     }
 #'   }
-#'   # labs <- c("S", "W", "N", "E")
-#'   # for (i in 1:4) {
-#'   #   label.ellipse(ell, label=labs[i], label.pos = c(1, 4, 2, 1)[i])
-#'   # }
+#'   if ("compass" %in% show) {
+#'     labs <- c("S", "W", "N", "E")
+#'     for (i in 1:4) {
+#'       label.ellipse(ell, label=labs[i], 
+#'                     label.pos = c(1, 4, 2, 1)[i],
+#'                     color = "red")
+#'     }
+#'   }
 #'   
-#'   for( i in 6*c(1,2, 4,5, 7,8, 10,11)) {
-#'     points(ell[i,1], ell[i,2], pch=16)
-#'     label.ellipse(ell, label=i, label.pos=i)
-#'   }
+#'   # for( i in 6*c(1,2, 4,5, 7,8, 10,11)) {
+#'   #  points(ell[i,1], ell[i,2], pch=16)
+#'   #  label.ellipse(ell, label=i, label.pos=i)
+#'   #}
 #' }
 #' 
 #' circ <- circle(radius=1.8)
 #' label_demo(circ)
+#' 
 #' # also show:
 #' labs <- c("NE", "NW", "SW", "SE")
 #'   for (i in 1:4) {
-#'      label.ellipse(ell, label=labs[i], label.pos = labs[i])
+#'      label.ellipse(ell, label=labs[i], label.pos = labs[i], col = "blue")
 #'       }
 #'
 #' 
@@ -72,9 +82,13 @@
 #' label_demo(ell)
 
 #' @export label.ellipse
-label.ellipse <- function(ellipse, label, col="black", 
-				label.pos=NULL, xpd=TRUE, 
-				tweak=0.5*c(strwidth("M"), strheight("M")), ...){
+label.ellipse <- function(
+    ellipse, 
+    label, 
+    col="black", 
+		label.pos=NULL, 
+		xpd=TRUE, 
+		tweak=0.5*c(strwidth("M"), strheight("M")), ...){
 		
 	ellipse <- as.matrix(ellipse)
 	if (ncol(ellipse) < 2) stop("ellipse must be a 2-column matrix")
@@ -90,8 +104,10 @@ label.ellipse <- function(ellipse, label, col="black",
 	
 	#		index <- if (1:4 %% 2) ... 
 
+  # translate nmemonics to standard numerical text positions 1:4,
 	posn <- c("center", "bottom", "left", "top", "right")
 	poss <- c("C",      "S",      "W",    "N",   "E")
+  # TODO: add compass positions SE, SW, ...
 	post <- c("SE", "SW", "NW", "NE")
 	numt <- c(.125, .375, .625, .875)
 	if (is.character(label.pos)) {
