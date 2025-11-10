@@ -67,7 +67,8 @@ Suggests:
     KernSmooth,
     aplpack,
     foreign,
-    robustbase
+    robustbase,
+    effectsize
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues

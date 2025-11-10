@@ -5,7 +5,7 @@
 \alias{etasq.lm}
 \alias{etasq.mlm}
 \alias{etasq.Anova.mlm}
-\title{Measures of Partial Association (Eta-squared) for Linear Models}
+\title{Measures of Partial Association (\eqn{\eta^2}) for Linear Models}
 \usage{
 etasq(x, ...)
 
@@ -37,11 +37,14 @@ containing the eta-squared values and the test statistics produced by
 \description{
 Calculates partial eta-squared for linear models or multivariate analogs of
 eta-squared (or R^2), indicating the partial association for each term in a
-multivariate linear model. There is a different analog for each of the four
-standard multivariate test statistics: Pillai's trace, Hotelling-Lawley
-trace, Wilks' Lambda and Roy's maximum root test.
+multivariate linear model. For a multivariate model, this is a summary 
+across all response variables.
 }
 \details{
+There is a different analog of \eqn{\eta^2} for each of the four
+standard multivariate test statistics: Pillai's trace, Hotelling-Lawley
+trace, Wilks' Lambda and Roy's maximum root test.
+
 For univariate linear models, classical 
 \eqn{\eta^2} = SSH / SST and partial
 \eqn{\eta^2} = SSH / (SSH + SSE).  These are identical in one-way designs.
@@ -88,6 +91,8 @@ Association}, \bold{87}, 1209-1226.
 }
 \seealso{
 \code{\link[car]{Anova}}
+
+\code{\link[effectsize]{eta_squared}} for a function that calculates this effect size measure for each response variable separately.
 }
 \author{
 Michael Friendly
