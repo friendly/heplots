@@ -1,3 +1,7 @@
+## Version 1.8.0
+
+* describe more fully constructing the datasets table using concept tags
+
 ## Version 1.7.9
 
 * plot.robmlm() gains a `groups` arg to vary point color and `pch`
