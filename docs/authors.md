@@ -24,7 +24,7 @@ Visualizing Tests in Multivariate Linear Models. R package version
 1.8.0. URL https://CRAN.R-project.org/package=heplots
 
     @Manual{,
-      title = {{heplots}: Visualizing Tests in Multivariate Linear Models},
+      title = {heplots: Visualizing Tests in Multivariate Linear Models},
       author = {Michael Friendly and John Fox and Georges Monette},
       year = {2025},
       note = {R package version 1.8.0},
