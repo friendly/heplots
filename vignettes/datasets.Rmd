@@ -11,7 +11,7 @@ toc: true
 pkgdown:
   as_is: true
 bibliography: "HE-examples.bib"
-link-citations: yes
+link-citations: true
 csl: apa.csl
 vignette: >
   %\VignetteIndexEntry{Data sets in the heplots package}
