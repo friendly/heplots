@@ -1,5 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file and knit again -->
+
 <!-- badges: start -->
 
 [![Lifecycle:
@@ -19,7 +20,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 <!-- Version 1.7.2 -->
 
-Version 1.7.8
+Version 1.8.0
 
 ## Description
 
@@ -227,6 +228,7 @@ heplot(iris.mod)
 
 <img src="man/figures/README-iris1-1.png" alt="HE plot of sepal length and Sepal width for the iris data" width="70%" />
 <p class="caption">
+
 HE plot of sepal length and Sepal width for the iris data
 </p>
 
@@ -266,6 +268,7 @@ heplot(iris.mod, hypotheses=hyp,
 
 <img src="man/figures/README-iris2-1.png" alt="HE plot of sepal length and Sepal width for the iris data, showing lines reflecting two contrasts among iris species." width="70%" />
 <p class="caption">
+
 HE plot of sepal length and Sepal width for the iris data, showing lines
 reflecting two contrasts among iris species.
 </p>
@@ -288,6 +291,7 @@ pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
 
 <img src="man/figures/README-iris3-1.png" alt="Scatterplot matrix of pairwise HE plots for the iris data." width="100%" />
 <p class="caption">
+
 Scatterplot matrix of pairwise HE plots for the iris data.
 </p>
 
@@ -336,6 +340,7 @@ heplot(iris.can, var.pos = 1, scale = 40)
 
 <img src="man/figures/README-iris-can-1.png" alt="Canonical HE plot for the iris data" width="60%" />
 <p class="caption">
+
 Canonical HE plot for the iris data
 </p>
 
@@ -360,6 +365,7 @@ covEllipses(iris[,1:4], iris$Species,
 
 <img src="man/figures/README-iris4-1.png" alt="Covariance ellipses for the iris data, showing the classical and robust estimates." width="80%" />
 <p class="caption">
+
 Covariance ellipses for the iris data, showing the classical and robust
 estimates.
 </p>

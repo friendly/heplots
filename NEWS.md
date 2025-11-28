@@ -1,5 +1,6 @@
 ## Version 1.8.0
 
+* describe more fully constructing the datasets table using concept tags
 * added `text.usr()` to add text in normalized device coordinates
 * begin to convert documentation to use markdown via {roxygen2md}
 

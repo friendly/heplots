@@ -11,7 +11,7 @@ toc: true
 pkgdown:
   as_is: true
 bibliography: "HE-examples.bib"
-link-citations: yes
+link-citations: true
 csl: apa.csl
 vignette: >
   %\VignetteIndexEntry{Data sets in the heplots package}
@@ -41,6 +41,7 @@ library(heplots)
 library(candisc)
 library(ggplot2)
 library(dplyr)
+library(tidyr)
 ```
 
 ## Documenting package datasets {-}
@@ -81,7 +82,48 @@ processing, these concepts along with the keywords, appear in the **Index** sect
 site for this package, they are also searchable in the **search** box.
 
 With a bit of extra processing, I created a dataset [datasets.csv](https://raw.githubusercontent.com/friendly/heplots/master/extra/datasets.csv)
-used below.
+used below. 
+
+How this is done is described in this [StackExchange question](). The first step is to extract the `concept` tags from the `man/*.Rd` files:
+
+```{r concept-tags}
+#| eval: false
+concepts <- readLines(pipe("grep concept man/*.Rd")) %>%
+  grep("concept{", ., fixed = TRUE, value = TRUE) %>% 
+  read.table(text = ., sep = "{", comment.char = "}", 
+    col.names = c("dataset", "tags")) %>%
+  separate(dataset, c(NA, "dataset"), extra = "drop") %>%
+  summarize(tags = paste(tags, collapse = " "), .by = dataset) %>%
+  arrange(dataset)
+
+head(concepts)
+```
+
+Then, I use `vcdExtra::datasets()` to extract title and other information for the datasets in the package, munge the result and `left_join()` with `concepts`:
+
+```{r}
+#| eval: FALSE
+dsets <- vcdExtra::datasets("heplots")[, c("Item", "dim", "Title")]     
+rowcols <- as.data.frame(stringr::str_split_fixed(dsets$dim,"x", 2))
+colnames(rowcols) <- c("rows", "cols")
+
+dsets <- cbind(dsets, rowcols) |>
+  rename(dataset = Item) |>
+  select(-dim) |>
+  relocate(c(rows, cols), .after=dataset) |>
+  left_join(concepts, by = "dataset") 
+```
+
+For use in pkgdown documentation, I also turn the name of the dataset into a hyperlink to the documentation.
+
+```{r}
+#| eval: FALSE
+refurl <- "http://friendly.github.io/candisc/reference/"
+
+dsets <- dsets |>
+  mutate(dataset = glue::glue("[{dataset}]({refurl}{dataset}.html)")) 
+```
+
 
 ## Methods {-}
 The main methods used in the example datasets are shown in the table below:
