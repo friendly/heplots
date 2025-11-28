@@ -26,8 +26,8 @@ matrix of deviations. If a character variable, this is taken as the name to be u
 }
 \value{
 By default, it returns a numeric matrix containing the deviations from the centering
-        function. If \code{levels==TRUE}, it returns a data.frame containing the group factor prepended to the
-        matrix of deviations.
+function. If \code{levels==TRUE}, it returns a data.frame containing the group factor prepended to the
+matrix of deviations.
 }
 \description{
 \code{colDevs} calculates the column deviations of data values from a

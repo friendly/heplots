@@ -6,16 +6,16 @@
 \title{Adolescent Mental Health Data}
 \format{
 A data frame with 4344 observations on the following 3 variables.
-\describe{ 
-  \item{\code{grade}}{an ordered factor with levels \code{7} <
-      \code{8} < \code{9} < \code{10} < \code{11} < \code{12}}
-  \item{\code{depression}}{a numeric vector} 
-  \item{\code{anxiety}}{a numeric vector} 
-  }
+\describe{
+\item{\code{grade}}{an ordered factor with levels \code{7} <
+\code{8} < \code{9} < \code{10} < \code{11} < \code{12}}
+\item{\code{depression}}{a numeric vector}
+\item{\code{anxiety}}{a numeric vector}
+}
 }
 \source{
 Warne, R. T. (2014). A primer on Multivariate Analysis of Variance
-(MANOVA) for Behavioral Scientists.  
+(MANOVA) for Behavioral Scientists.
 \emph{Practical Assessment, Research & Evaluation}, 19 (1).
 }
 \description{
@@ -31,8 +31,7 @@ often did you feel depressed or blue?"
 did you have trouble relaxing?"
 
 The responses for \code{depression} and \code{anxiety} were recorded on a
-5-point Likert scale, with categories \code{0="Never", 1="Rarely",
-2="Occasionally", 3="Often", 4="Every day"}
+5-point Likert scale, with categories \verb{0="Never", 1="Rarely", 2="Occasionally", 3="Often", 4="Every day"}
 }
 \examples{
 

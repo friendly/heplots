@@ -85,8 +85,8 @@ below).}
 ellipse for the intercept even if it is in the MANOVA table.}
 
 \item{type}{``type'' of sum-of-squares-and-products matrices to compute; one
-of \code{"II"}, \code{"III"}, \code{"2"}, or \code{"3"}, where \code{"II"}
-is the default (and \code{"2"} is a synonym).}
+of \code{"II"}, `"III"`, `"2"`, or `"3"`, where `"II"`
+is the default (and `"2"` is a synonym).}
 
 \item{idata}{an optional data frame giving a factor or factors defining the
 intra-subject model for multivariate repeated-measures data.  See Details of
@@ -98,9 +98,9 @@ factors.}
 specifying the intra-subject design for repeated measure models.}
 
 \item{icontrasts}{names of contrast-generating functions to be applied by
- default to factors and ordered factors, respectively, in the within-subject
+default to factors and ordered factors, respectively, in the within-subject
 ``data''; the contrasts must produce an intra-subject model matrix in which
- different terms are orthogonal. The default is c("contr.sum", "contr.poly").}
+different terms are orthogonal. The default is c("contr.sum", "contr.poly").}
 
 \item{imatrix}{In lieu of \code{idata} and \code{idesign}, you can specify
 the intra-subject design matrix directly via \code{imatrix}, in the form of
@@ -121,8 +121,8 @@ in repeated calls.}
 \item{size}{how to scale the hypothesis ellipse relative to the error
 ellipse; if \code{"evidence"}, the default, the scaling is done so that a
 ``significant'' hypothesis ellipse at level \code{alpha} extends outside of
-the error ellipse. \code{size = "significance"} is a synonym and does the same thing.
-If \code{"effect.size"}, the hypothesis ellipse is on the
+the error ellipse. `size = "significance"` is a synonym and does the same thing.
+If `"effect.size"`, the hypothesis ellipse is on the
 same scale as the error ellipse.}
 
 \item{level}{equivalent coverage of ellipse  (assuming normally-distributed errors).
@@ -142,9 +142,8 @@ first color is used for the error ellipse; the remaining colors --- recycled
 as necessary --- are used for the hypothesis ellipses.  A single color can
 be given, in which case it is used for all ellipses.  For convenience, the
 default colors for all heplots produced in a given session can be changed by
-assigning a color vector via \code{options(heplot.colors =c(...)}.
-Otherwise, the default colors are \code{c("red", "blue", "black",
-"darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.}
+assigning a color vector via \verb{options(heplot.colors =c(...)}.
+Otherwise, the default colors are \code{c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.}
 
 \item{lty}{vector of line types to use for plotting the ellipses; the first
 is used for the error ellipse, the rest --- possibly recycled --- for the
@@ -177,9 +176,9 @@ with coordinates for the various hypothesis ellipses and the error ellipse,
 and the limits of the horizontal and vertical axes.  (No methods for
 manipulating these objects are currently available.)
 
-The components are: 
-\item{H}{ranges for the hypothesis terms} 
-\item{E}{range for E} 
+The components are:
+\item{H}{ranges for the hypothesis terms}
+\item{E}{range for E}
 \item{xlim}{x-axis limits}
 }
 \description{
@@ -189,13 +188,11 @@ hypotheses in a multivariate linear model.
 }
 \details{
 In particular, for a given response, the 1-D representations of H and E
-matrices correspond to line segments.  The E ``ellipse'' is shown as a
-filled rectangle whose width equals the mean squared error for that
-response.  The H ``ellipse'' for each model term is shown as a line segment
+matrices correspond to line segments.  The E \verb{ellipse'' is shown as a filled rectangle whose width equals the mean squared error for that response.  The H }ellipse'' for each model term is shown as a line segment
 whose length represents either the size of the effect or the evidence for
 that effect.
 
-\bold{This version is an initial sketch.  Details of the implementation are
+\strong{This version is an initial sketch.  Details of the implementation are
 subject to change.}
 }
 \examples{
@@ -215,10 +212,10 @@ heplot1d(bees.mod, variables=2)
 }
 \seealso{
 \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for
-      hypothesis tests in \code{mlm}s
+hypothesis tests in \code{mlm}s
 
-   \code{\link{heplot}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}} for
-      other HE plot methods
+\code{\link{heplot}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}} for
+other HE plot methods
 }
 \author{
 Michael Friendly

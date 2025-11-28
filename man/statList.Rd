@@ -12,7 +12,7 @@ statList(X, factors, FUN, drop = FALSE, ...)
 \item{X}{A matrix or data frame containing the variables to be summarized}
 
 \item{factors}{A vector, matrix or data frame containing the factors for
-which \code{X} is to be summarized.  If \code{factors} is not specified,  
+which \code{X} is to be summarized.  If \code{factors} is not specified,
 the result is calculated for all of the data in \code{X}.}
 
 \item{FUN}{A function to be applied to the pieces of \code{X}, as split by \code{factors}.}
@@ -24,9 +24,9 @@ to be dropped from the result.}
 }
 \value{
 Returns a list of items corresponding to the unique elements in
-       \code{factors}, or the interaction of \code{factors}. Each item is the
-       result of applying \code{FUN} to that collection of rows of \code{X}. The
-       items are named according to the levels in \code{factors}.
+\code{factors}, or the interaction of \code{factors}. Each item is the
+result of applying \code{FUN} to that collection of rows of \code{X}. The
+items are named according to the levels in \code{factors}.
 }
 \description{
 \code{statList} provides a general method for calculating univariate or

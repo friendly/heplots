@@ -26,7 +26,7 @@ distribution.}
 plotted.  The default is the first 2.}
 
 \item{level}{The coverage level of a simultaneous region of the ellipse.  The
-default is 0.95, for a 95\% region.  This is used to control the size of the
+default is 0.95, for a 95\\% region.  This is used to control the size of the
 ellipse.}
 
 \item{radius}{The size of the ellipsoid may also be controlled by specifying the
@@ -35,7 +35,7 @@ for a given \code{level} on 2 degrees of freedom, however in a small sample of \
 a more accurate value is \code{sqrt(2 * qf(level, 2, n - 1 ))}.}
 
 \item{factor}{A function defining the conjugate axes used to transform the unit
-         circle into an ellipse.  \code{\link{chol}}, uses the right Cholesky
+circle into an ellipse.  \code{\link{chol}}, uses the right Cholesky
 factor of \code{x}.}
 
 \item{draw}{What to draw? \code{"box"}, \code{"diameters"} or \code{"both"}}

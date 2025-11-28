@@ -52,7 +52,7 @@ the point}
 }
 \value{
 Returns invisibly the weights for the observations labeled in the
-       plot
+plot
 }
 \description{
 Creates an index plot of the observation weights assigned in the last

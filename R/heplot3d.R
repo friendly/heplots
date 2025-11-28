@@ -47,42 +47,42 @@ savedvars <- new.env(parent=emptyenv())
 #' \code{\link[rgl]{play3d}} and \code{\link[rgl]{movie3d}} for details on
 #' creating animations.
 #' 
-#' The arguments \code{xlim}, \code{ylim}, and \code{zlim} can be used to
+#' The arguments `xlim`, `ylim`, and `zlim` can be used to
 #' expand the bounding box of the axes, but cannot decrease it.
 #' 
 #' @aliases heplot3d heplot3d.mlm
-#' @param mod a model object of class \code{"mlm"}.
+#' @param mod a model object of class `"mlm"`.
 #' @param terms a logical value or character vector of terms in the model for
-#'        which to plot hypothesis matrices; if missing or \code{TRUE}, defaults to
-#'        all terms; if \code{FALSE}, no terms are plotted.
+#'        which to plot hypothesis matrices; if missing or `TRUE`, defaults to
+#'        all terms; if `FALSE`, no terms are plotted.
 #' @param hypotheses optional list of linear hypotheses for which to plot
 #'        hypothesis matrices; hypotheses are specified as for the
-#'        \code{\link[car]{linearHypothesis}} function in the \code{car} package; the
+#'        \code{\link[car]{linearHypothesis}} function in the `car` package; the
 #'        list elements can be named, in which case the names are used.
 #' @param term.labels logical value or character vector of names for the terms
-#'        to be plotted. If \code{TRUE} (the default) the names of the terms are used;
-#'        if \code{FALSE}, term labels are not plotted.
+#'        to be plotted. If `TRUE` (the default) the names of the terms are used;
+#'        if `FALSE`, term labels are not plotted.
 #' @param hyp.labels logical value or character vector of names for the
-#'        hypotheses to be plotted. If \code{TRUE} (the default) the names of
-#'        components of the list of hypotheses are used; if \code{FALSE}, hypothesis
+#'        hypotheses to be plotted. If `TRUE` (the default) the names of
+#'        components of the list of hypotheses are used; if `FALSE`, hypothesis
 #'        labels are not plotted.
 #' @param err.label Label for the error ellipse
 #' @param variables indices or names of the three response variables to be
-#'        plotted; defaults to \code{1:3}.
-#' @param error.ellipsoid if \code{TRUE}, plot the error ellipsoid; defaults to
-#'        \code{TRUE}, if the argument \code{add} is \code{FALSE} (see below).
+#'        plotted; defaults to `1:3`.
+#' @param error.ellipsoid if `TRUE`, plot the error ellipsoid; defaults to
+#'        `TRUE`, if the argument `add` is `FALSE` (see below).
 #' @param factor.means logical value or character vector of names of factors
-#'        for which the means are to be plotted, or \code{TRUE} or \code{FALSE};
-#'        defaults to \code{TRUE}, if the argument \code{add} is \code{FALSE} (see
+#'        for which the means are to be plotted, or `TRUE` or `FALSE`;
+#'        defaults to `TRUE`, if the argument `add` is `FALSE` (see
 #'        below).
-#' @param grand.mean if \code{TRUE}, plot the centroid for all of the data;
-#'        defaults to \code{TRUE}, if the argument \code{add} is \code{FALSE} (see
+#' @param grand.mean if `TRUE`, plot the centroid for all of the data;
+#'        defaults to `TRUE`, if the argument `add` is `FALSE` (see
 #'        below).
-#' @param remove.intercept if \code{TRUE} (the default), do not plot the
+#' @param remove.intercept if `TRUE` (the default), do not plot the
 #'        ellipsoid for the intercept even if it is in the MANOVA table.
 #' @param type ``type'' of sum-of-squares-and-products matrices to compute; one
-#'        of \code{"II"}, \code{"III"}, \code{"2"}, or \code{"3"}, where \code{"II"}
-#'        is the default (and \code{"2"} is a synonym).
+#'        of `"II"`, `"III"`, `"2"`, or `"3"`, where `"II"`
+#'        is the default (and `"2"` is a synonym).
 #' @param idata an optional data frame giving a factor or factors defining the
 #'        intra-subject model for multivariate repeated-measures data.  See Details of
 #'        \code{\link[car]{Anova}} for an explanation of the intra-subject design and
@@ -94,60 +94,60 @@ savedvars <- new.env(parent=emptyenv())
 #'        default to factors and ordered factors, respectively, in the within-subject
 #'        ``data''; the contrasts must produce an intra-subject model matrix in which
 #'        different terms are orthogonal. The default is c("contr.sum", "contr.poly").
-#' @param imatrix In lieu of \code{idata} and \code{idesign}, you can specify
-#'        the intra-subject design matrix directly via \code{imatrix}, in the form of
+#' @param imatrix In lieu of `idata` and `idesign`, you can specify
+#'        the intra-subject design matrix directly via `imatrix`, in the form of
 #'        list of named elements.  Each element gives the columns of the
 #'        within-subject model matrix for an intra-subject term to be tested, and must
 #'        have as many rows as there are responses; the columns of the within-subject
-#'        model matrix for \emph{different} terms must be mutually orthogonal.
+#'        model matrix for *different* terms must be mutually orthogonal.
 #' @param iterm For repeated measures designs, you must specify one
 #'        intra-subject term (a character string) to select the SSPE (E) matrix used
-#'        in the HE plot.  Hypothesis terms plotted include the \code{iterm} effect as
-#'        well as all interactions of \code{iterm} with \code{terms}.
-#' @param manova optional \code{Anova.mlm} object for the model; if absent a
+#'        in the HE plot.  Hypothesis terms plotted include the `iterm` effect as
+#'        well as all interactions of `iterm` with `terms`.
+#' @param manova optional `Anova.mlm` object for the model; if absent a
 #'        MANOVA is computed. Specifying the argument can therefore save computation
 #'        in repeated calls.
 #' @param size how to scale the hypothesis ellipse relative to the error
-#'        ellipse; if \code{"evidence"}, the default, the scaling is done so that a
-#'        ``significant'' hypothesis ellipse at level \code{alpha} extends outside of
-#'        the error ellipse. \code{size = "significance"} is a synonym and does the same thing.
-#'        If \code{"effect.size"}, the hypothesis ellipse is on the
+#'        ellipse; if `"evidence"`, the default, the scaling is done so that a
+#'        ``significant'' hypothesis ellipse at level `alpha` extends outside of
+#'        the error ellipse. `size = "significance"` is a synonym and does the same thing.
+#'        If `"effect.size"`, the hypothesis ellipse is on the
 #'        same scale as the error ellipse.
 #' @param level equivalent coverage of ellipse  (assuming normally-distributed errors).
-#'        This defaults to \code{0.68}, giving a standard 1 SD bivariate ellipse.
+#'        This defaults to `0.68`, giving a standard 1 SD bivariate ellipse.
 #' @param alpha significance level for Roy's greatest-root test statistic; if
-#'        \code{size="evidence"} or \code{size="significance"}, then the hypothesis ellipse is scaled so that it
+#'        `size="evidence"` or `size="significance"`, then the hypothesis ellipse is scaled so that it
 #'        just touches the error ellipse at the specified alpha level. A larger
-#'        hypothesis ellipse \emph{somewhere} in the space of the response variables
-#'        therefore indicates statistical significance; defaults to \code{0.05}.
-#' @param segments number of segments composing each ellipsoid; defaults to \code{40}.
+#'        hypothesis ellipse *somewhere* in the space of the response variables
+#'        therefore indicates statistical significance; defaults to `0.05`.
+#' @param segments number of segments composing each ellipsoid; defaults to `40`.
 #' @param col a color or vector of colors to use in plotting ellipsoids; the
 #'        first color is used for the error ellipsoid; the remaining colors ---
 #'        recycled as necessary --- are used for the hypothesis ellipsoid.  A single
 #'        color can be given, in which case it is used for all ellipsoid.  For
 #'        convenience, the default colors for all heplots produced in a given session
-#'        can be changed by assigning a color vector via \code{options(heplot3d.colors=c(...)}.  
-#'        Otherwise, the default colors are \code{c("pink", "blue",
-#'        "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.
+#'        can be changed by assigning a color vector via `options(heplot3d.colors=c(...)`.  
+#'        Otherwise, the default colors are `c("pink", "blue",
+#'        "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")`.
 #' @param lwd a two-element vector giving the line width for drawing ellipsoids
 #'        (including those that degenerate to an ellipse) and for drawing ellipsoids
-#'        that degenerate to a line segment. The default is \code{c(1, 4)}.
+#'        that degenerate to a line segment. The default is `c(1, 4)`.
 #' @param shade a logical scalar or vector, indicating whether the ellipsoids
-#'        should be rendered with \code{\link[rgl]{shade3d}}. Works like \code{col},
-#'        except that \code{FALSE} is used for any 1 df degenerate ellipsoid.
-#' @param shade.alpha a numeric value in the range [0,1], or a vector of such
+#'        should be rendered with \code{\link[rgl]{shade3d}}. Works like `col`,
+#'        except that `FALSE` is used for any 1 df degenerate ellipsoid.
+#' @param shade.alpha a numeric value in the range (0,1), or a vector of such
 #'        values, giving the alpha transparency for ellipsoids rendered with
-#'        \code{shade=TRUE}.
+#'        `shade=TRUE`.
 #' @param wire a logical scalar or vector, indicating whether the ellipsoids
-#'        should be rendered with \code{\link[rgl]{wire3d}}. Works like \code{col},
-#'        except that \code{TRUE} is used for any 1 df degenerate ellipsoid.
-#' @param bg.col background colour, \code{"white"} or \code{"black"},
-#'        defaulting to \code{"white"}.
+#'        should be rendered with \code{\link[rgl]{wire3d}}. Works like `col`,
+#'        except that `TRUE` is used for any 1 df degenerate ellipsoid.
+#' @param bg.col background colour, `"white"` or `"black"`,
+#'        defaulting to `"white"`.
 #' @param fogtype type of ``fog'' to use for depth-cueing; the default is
-#'        \code{"none"}. See \code{\link[rgl]{bg}}.
+#'        `"none"`. See \code{\link[rgl]{bg}}.
 #' @param fov field of view angle; controls perspective.  See
 #'        \code{\link[rgl]{viewpoint}}.
-#' @param offset proportion of axes to off set labels; defaults to \code{0.01}.
+#' @param offset proportion of axes to off set labels; defaults to `0.01`.
 #' @param xlab x-axis label; defaults to name of the x variable.
 #' @param ylab y-axis label; defaults to name of the y variable.
 #' @param zlab z-axis label; defaults to name of the z variable.
@@ -155,23 +155,23 @@ savedvars <- new.env(parent=emptyenv())
 #' @param ylim y-axis limits; if absent, will be computed from the data.
 #' @param zlim z-axis limits; if absent, will be computed from the data.
 #' @param cex.label text size for ellipse labels
-#' @param add if \code{TRUE}, add to the current plot; the default is
-#'        \code{FALSE}.  If \code{TRUE}, the error ellipsoid is neither plotted nor
+#' @param add if `TRUE`, add to the current plot; the default is
+#'        `FALSE`.  If `TRUE`, the error ellipsoid is neither plotted nor
 #'        returned in the output object.
-#' @param verbose if \code{TRUE}, print the MANOVA table and details of
-#'        hypothesis tests; the default is \code{FALSE}.
-#' @param warn.rank if \code{TRUE}, do not suppress warnings about the rank of
+#' @param verbose if `TRUE`, print the MANOVA table and details of
+#'        hypothesis tests; the default is `FALSE`.
+#' @param warn.rank if `TRUE`, do not suppress warnings about the rank of
 #'        the hypothesis matrix when the ellipsoid collapses to an ellipse or line;
-#'        the default is \code{FALSE}.
+#'        the default is `FALSE`.
 #' @param \dots arguments passed from generic.
-#' @return \code{heplot3d} invisibly returns a list containing the bounding
+#' @return `heplot3d` invisibly returns a list containing the bounding
 #' boxes of the error (E) ellipsoid and for each term or linear hypothesis
 #' specified in the call.  Each of these is a 2 x 3 matrix with rownames "min"
 #' and "max" and colnames corresponding to the variables plotted. An additional
-#' component, \code{center}, contains the coordinates of the centroid in the
+#' component, `center`, contains the coordinates of the centroid in the
 #' plot.
 #' 
-#' The function also leaves an object named \code{.frame} in the global
+#' The function also leaves an object named `.frame` in the global
 #' environment, containing the rgl object IDs for the axes, axis labels, and
 #' bounding box; these are deleted and the axes, etc.  redrawn if the plot is
 #' added to.
@@ -180,21 +180,21 @@ savedvars <- new.env(parent=emptyenv())
 #'    details on MANOVA tests and linear hypotheses
 #' 
 #'    \code{\link{heplot}}, \code{\link{pairs.mlm}}, for other plotting methods
-#'    for \code{mlm} objects
+#'    for `mlm` objects
 #' 
-#'    \code{\link[rgl]{rgl-package}}, for details about 3D plots with \code{rgl}
+#'    \code{\link[rgl]{rgl-package}}, for details about 3D plots with `rgl`
 #' 
 #'    \code{\link[candisc]{heplot3d.candisc}} for 3D HE plots in canonical space.
 #' 
 #' @references 
 #' Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 #' Displays for Multivariate Linear Models: SAS Software and Examples
-#' \emph{Journal of Statistical Software}, 17(6), 1-42.
-#' \url{https://www.jstatsoft.org/v17/i06/}
+#' *Journal of Statistical Software*, 17(6), 1-42.
+#' <https://www.jstatsoft.org/v17/i06/>
 #' 
 #' Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
-#' \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
-#' \url{http://datavis.ca/papers/jcgs-heplots.pdf}
+#' *Journal of Computational and Graphical Statistics*, 16(2) 421-444.
+#' <http://datavis.ca/papers/jcgs-heplots.pdf>
 #' @keywords hplot aplot dynamic multivariate
 #' @examples
 #' 

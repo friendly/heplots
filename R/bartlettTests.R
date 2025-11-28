@@ -19,16 +19,16 @@
 #'        In the case of a formula or model, the  variables on the right-hand-side of the model must all 
 #'        be factors and must be completely crossed.
 #' @param group a vector or factor object giving the group for the
-#'        corresponding elements of the rows of \code{y} for the default method
+#'        corresponding elements of the rows of `y` for the default method
 #' @param \dots other arguments, passed to \code{\link[stats]{bartlett.test}}
 #' @return An object of classes "anova" and "data.frame", with one observation
-#' for each response variable in \code{y}. 
+#' for each response variable in `y`. 
 #' @author Michael Friendly
 #' @seealso \code{\link{boxM}} for Box's M test for all responses together.
 #' @references 
 #' Bartlett, M. S. (1937). Properties of sufficiency and
-#' statistical tests.  \emph{Proceedings of the Royal Society of London Series
-#' A}, \bold{160}, 268-282.
+#' statistical tests.  *Proceedings of the Royal Society of London Series
+#' A*, **160**, 268-282.
 #' @keywords htest
 #' @examples
 #' 
@@ -75,7 +75,7 @@ bartlettTests.default <-
 	BT
 }
 
-#' @param data  the data set, for the \code{formula} method
+#' @param data  the data set, for the `formula` method
 #' @rdname bartlettTests
 #' @exportS3Method 
 bartlettTests.formula <- function(y, data, ...) {

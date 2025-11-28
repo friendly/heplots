@@ -15,15 +15,15 @@
 #' sample size, \eqn{n} and number of variables, \eqn{p}.
 #' 
 #' This function is included here only to provide an approximation to
-#' \emph{graphical accuracy} for use with Box's M test for equality of
+#' *graphical accuracy* for use with Box's M test for equality of
 #' covariance matrices, \code{\link{boxM}} and its associated
 #' \code{\link{plot.boxM}} method.
 #' 
 #' 
 #' Cai et. al (2015) claim that their Theorem 1 holds with either \eqn{p} fixed
 #' or \eqn{p(n)} growing with \eqn{n}, as long as \eqn{p(n) \le n}. Their
-#' Corollary 1 (\code{method=2}) is the special case when \eqn{p} is fixed.
-#' Their Corollary 2 (\code{method=3}) is the special case when \eqn{0 \le p/n
+#' Corollary 1 (`method=2`) is the special case when \eqn{p} is fixed.
+#' Their Corollary 2 (`method=3`) is the special case when \eqn{0 \le p/n
 #' < 1} is fixed.
 #' 
 #' The properties of this CI estimator are unknown in small to moderate sample
@@ -44,12 +44,12 @@
 #' @param n sample size, or vector of sample sizes, one for each covariance matrix
 #' @param conf confidence level
 #' @param method Three methods are provided, based on Cai et. al Theorem 1
-#'        (\code{method=1}), Corollary 1 (\code{method=2}) and Corollary 2
-#'        (\code{method=3}), each with different bias and SE values.
-#' @param bias.adj logical; set \code{FALSE} to exclude the bias correction term.
-#' @return A data frame with one row for each covariance matrix. \code{lower}
-#'        and \code{upper} are the boundaries of the confidence intervals. Other
-#'        columns are \code{logdet, bias, se}. 
+#'        (`method=1`), Corollary 1 (`method=2`) and Corollary 2
+#'        (`method=3`), each with different bias and SE values.
+#' @param bias.adj logical; set `FALSE` to exclude the bias correction term.
+#' @return A data frame with one row for each covariance matrix. `lower`
+#'        and `upper` are the boundaries of the confidence intervals. Other
+#'        columns are `logdet, bias, se`. 
 #'        
 #' @author Michael Friendly
 #' @seealso \code{\link{boxM}}, \code{\link{plot.boxM}}
@@ -57,8 +57,8 @@
 #' 
 #' Cai, T. T.; Liang, T. & Zhou, H. H. (2015) Law of log determinant of sample
 #' covariance matrix and optimal estimation of differential entropy for
-#' high-dimensional Gaussian distributions. \emph{Journal of Multivariate
-#' Analysis}, 137, 161-172.
+#' high-dimensional Gaussian distributions. *Journal of Multivariate
+#' Analysis*, 137, 161-172.
 #' \doi{10.1016/j.jmva.2015.02.003}
 #' @keywords manip
 #' @examples

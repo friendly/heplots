@@ -14,13 +14,13 @@
 \value{
 A \code{\link[tibble]{tibble}} with one row for each response variable and the columns:
 \describe{
-  \item{\code{r.squared}}{R squared statistic, or the percent of variation explained by the model.}
-  \item{\code{sigma}}{Estimated standard error of the residuals}
-  \item{\code{fstatitic}}{Overall F statistic for the model}
-  \item{\code{numdf}}{Numerator degrees of freedom for the overall test}
-  \item{\code{dendf}}{Denominator degrees of freedom for the overall test}
-  \item{\code{p.value}}{P-value corresponding to the F statistic}
-  \item{\code{nobs}}{Number of observations used}
+\item{\code{r.squared}}{R squared statistic, or the percent of variation explained by the model.}
+\item{\code{sigma}}{Estimated standard error of the residuals}
+\item{\code{fstatitic}}{Overall F statistic for the model}
+\item{\code{numdf}}{Numerator degrees of freedom for the overall test}
+\item{\code{dendf}}{Denominator degrees of freedom for the overall test}
+\item{\code{p.value}}{P-value corresponding to the F statistic}
+\item{\code{nobs}}{Number of observations used}
 }
 }
 \description{

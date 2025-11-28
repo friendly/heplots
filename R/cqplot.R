@@ -15,7 +15,7 @@
 #' analyses, this is often used both to assess multivariate normality and check
 #' for or identify outliers.  
 #' 
-#' For a data frame of numeric variables or a matrix supplied as the argument \code{x},
+#' For a data frame of numeric variables or a matrix supplied as the argument `x`,
 #' it uses the Mahalanobis squared distances (\eqn{D^2}) of
 #' observations \eqn{\mathbf{x}} from the centroid \eqn{\bar{\mathbf{x}}}
 #' taking the sample covariance matrix \eqn{\mathbf{S}} into account,
@@ -23,12 +23,12 @@
 #' D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} - \bar{\mathbf{x}}) \; .
 #' }
 #' 
-#' The method for \code{"mlm"} objects fit using \code{\link[stats]{lm}} for a multivariate response
+#' The method for `"mlm"` objects fit using \code{\link[stats]{lm}} for a multivariate response
 #' applies this to the residuals from the model.
 #' 
 #' @details
 #' 
-#' \code{cqplot} is a more general version of similar functions in other
+#' `cqplot` is a more general version of similar functions in other
 #' packages that produce chi square QQ plots. It allows for classical
 #' Mahalanobis squared distances as well as robust estimates based on the MVE
 #' and MCD; it provides an approximate confidence (concentration) envelope
@@ -41,11 +41,11 @@
 #' \subsection{Confidence envelope}{
 #' In the typical use of QQ plots, it essential to have something in the nature of a confidence band
 #' around the points to be able to appreciate whether, and to what degree the observed data points
-#' differ from the reference distribution. For \code{cqplot}, this helps to assess whether the
+#' differ from the reference distribution. For `cqplot`, this helps to assess whether the
 #' data are reasonably distributed as multivariate normal and also to flag potential outliers.
 #' 
 #' The calculation of the confidence envelope here follows that used in the SAS
-#' program, \url{http://www.datavis.ca/sasmac/cqplot.html} which comes from
+#' program, <http://www.datavis.ca/sasmac/cqplot.html> which comes from
 #' Chambers et al. (1983), Section 6.8.
 #' 
 #' The essential formula computes the standard errors as: 
@@ -57,7 +57,7 @@
 #' \eqn{d(q_i)} is the density of the chi square distribution at the quantile
 #' \eqn{q_i}. 
 #' 
-#' The pointwise confidence envelope of coverage \code{conf} = \eqn{1-\alpha} is then calculated as
+#' The pointwise confidence envelope of coverage `conf` = \eqn{1-\alpha} is then calculated as
 #' \eqn{D^2_{(i)} \pm z_{1-\alpha/2} \text{se} ( D^2_{(i)} )}
 #' 
 #' Note that this confidence envelope applies only to the \eqn{D^2} computed
@@ -70,24 +70,24 @@
 #' 
 #' @aliases cqplot cqplot.default cqplot.mlm
 #' @param x either a numeric data frame or matrix for the default method, or an
-#'          object of class \code{"mlm"} representing a multivariate linear model.  In
+#'          object of class `"mlm"` representing a multivariate linear model.  In
 #'          the latter case, residuals from the model are plotted.
 #' @param \dots Other arguments passed to methods
 #' @param method estimation method used for center and covariance, one of:
-#'               \code{"classical"} (product-moment), \code{"mcd"} (minimum covariance
-#'               determinant), or \code{"mve"} (minimum volume ellipsoid).
-#' @param detrend logical; if \code{FALSE}, the plot shows values of \eqn{D^2}
-#'                vs. \eqn{\chi^2}. if \code{TRUE}, the ordinate shows values of \eqn{D^2 -
+#'               `"classical"` (product-moment), `"mcd"` (minimum covariance
+#'               determinant), or `"mve"` (minimum volume ellipsoid).
+#' @param detrend logical; if `FALSE`, the plot shows values of \eqn{D^2}
+#'                vs. \eqn{\chi^2}. if `TRUE`, the ordinate shows values of \eqn{D^2 -
 #' \chi^2}
 #' @param pch plot symbol for points. Can be a vector of length equal to the
-#'            number of rows in \code{x}.
+#'            number of rows in `x`.
 #' @param col color for points. Can be a vector of length equal to the
-#'            number of rows in \code{x}.
-#'            The default is the \emph{first} entry in the
+#'            number of rows in `x`.
+#'            The default is the *first* entry in the
 #'            current color palette (see \code{\link[grDevices]{palette}} and
 #'            \code{\link[graphics]{par}}).
 #' @param cex character symbol size for points.  Can be a vector of length
-#'            equal to the number of rows in \code{x}.
+#'            equal to the number of rows in `x`.
 #' @param ref.col Color for the reference line
 #' @param ref.lwd Line width for the reference line
 #' @param conf confidence coverage for the approximate confidence envelope
@@ -95,15 +95,15 @@
 #' @param env.lwd line width for the confidence envelope
 #' @param env.lty line type for the confidence envelope
 #' @param env.fill logical; should the confidence envelope be filled?
-#' @param fill.alpha transparency value for \code{fill.color}
+#' @param fill.alpha transparency value for `fill.color`
 #' @param fill.color color used to fill the confidence envelope
 #' @param labels vector of text strings to be used to identify points, defaults
-#'            to \code{rownames(x)} or observation numbers if \code{rownames(x)} is
-#'            \code{NULL}
-#' @param id.n number of points labeled. If \code{id.n=0}, the default, no
+#'            to `rownames(x)` or observation numbers if `rownames(x)` is
+#'            `NULL`
+#' @param id.n number of points labeled. If `id.n=0`, the default, no
 #'             point identification occurs.
 #' @param id.method point identification method. The default
-#'             \code{id.method="r"} will identify the \code{id.n} points with the largest
+#'             `id.method="r"` will identify the `id.n` points with the largest
 #'             value of abs(y), i.e., the largest Mahalanobis DSQ. See \code{\link[car]{showLabels}} for other
 #'             options.
 #' @param id.cex size of text for point labels
@@ -112,13 +112,13 @@
 #' @param ylab label for vertical (empirical quantiles) axis
 #' @param main plot title
 #' @param what the name of the object plotted; used in the construction of
-#'             \code{main} when that is not specified.
+#'             `main` when that is not specified.
 #' @param ylim limits for vertical axis.  If not specified, the range of the
 #'             confidence envelope is used.
-#' @return Returns invisibly a data.frame containing squared Mahalanobis distances (\code{DSQ}), 
-#'         their \code{quantile}s and \code{p}-values
-#'             corresponding to the rows of \code{x} or the residuals of the model for the identified points, 
-#'             else \code{NULL} if no points are identified.
+#' @return Returns invisibly a data.frame containing squared Mahalanobis distances (`DSQ`), 
+#'         their `quantile`s and `p`-values
+#'             corresponding to the rows of `x` or the residuals of the model for the identified points, 
+#'             else `NULL` if no points are identified.
 #' @author Michael Friendly
 #' @seealso \code{\link{Mahalanobis}} for calculation of Mahalanobis squared distance;
 #' 
@@ -127,10 +127,10 @@
 #'          \code{\link[qqtest]{qqtest}} has many features for all types of QQ plots.
 #' @references 
 #' J. Chambers, W. S. Cleveland, B. Kleiner, P. A. Tukey (1983).
-#' \emph{Graphical methods for data analysis}, Wadsworth.
+#' *Graphical methods for data analysis*, Wadsworth.
 #' 
 #' R. W. Oldford (2016), "Self calibrating quantile-quantile plots", 
-#' \emph{The American Statistician}, 70, 74-90.
+#' *The American Statistician*, 70, 74-90.
 #' @keywords hplot
 #' @keywords multivariate
 #' @examples

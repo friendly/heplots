@@ -7,23 +7,23 @@
 #' @title
 #' Distance Plot for Multivariate Model Diagnosis
 #' 
-#' @description This plot, suggested by Rousseeuw & van Zomeren (1991), Rousseeu et al. (2004) typically plots Mahalanobis distances (\eqn{D}) of the \code{Y} response
-#' variables against the distances of the \code{X} variables in a multivariate linear model (MLM).
-#' When applied to a multivariate linear model itself, it plots the distances of the \emph{residuals} for the \code{Y} variables
-#' against the predictor terms in the \emph{model.matrix} \code{X}.
+#' @description This plot, suggested by Rousseeuw & van Zomeren (1991), Rousseeu et al. (2004) typically plots Mahalanobis distances (\eqn{D}) of the `Y` response
+#' variables against the distances of the `X` variables in a multivariate linear model (MLM).
+#' When applied to a multivariate linear model itself, it plots the distances of the *residuals* for the `Y` variables
+#' against the predictor terms in the *model.matrix* `X`.
 #' 
 #' This diagnostic plot combines the information on regression outliers and leverage points, and often more useful than either distance separately.
 #' 
 #' @details
 #' 
-#' Observations with "large" distances on \code{X} or \code{Y} are labeled with their \code{ids}. The cutoffs are calculated as 
+#' Observations with "large" distances on `X` or `Y` are labeled with their `ids`. The cutoffs are calculated as 
 #' \eqn{\sqrt{\chi^2_{k, \text{level}}}}.
 #'
 #' @param X       A multivariate linear model fit by \code{\link[stats]{lm}}, or a numeric data frame giving the predictors in the MLM
 #' @param Y       A numeric data frame giving the responses in the MLM or the residuals
 #' @param data    For the formula method, the dataset containing the variables
-#' @param method  Estimation method used for center and covariance, one of: \code{"classical"} (product-moment), 
-#'                \code{"mcd"} (minimum covariance determinant), or \code{"mve"} (minimum volume ellipsoid). 
+#' @param method  Estimation method used for center and covariance, one of: `"classical"` (product-moment), 
+#'                `"mcd"` (minimum covariance determinant), or `"mve"` (minimum volume ellipsoid). 
 #' @param level   Lower-tail probability beyond which observations will be labeled.
 #' @param ids     Labels for observations
 #' @param pch     A vector of two point symbols, for the regular points and those beyond the cutoffs
@@ -31,19 +31,19 @@
 #' @param label.pos  Position of the label relative to the point; see \code{\link[graphics]{text}} 
 #' @param xlab    Label stub for horizontal axis
 #' @param ylab    Label stub for vertical axis
-#' @param verbose Logical; if \code{TRUE} print the cutoff values to the console
+#' @param verbose Logical; if `TRUE` print the cutoff values to the console
 #' @param ...     Other arguments passed to methods
 #'
-#' @return        Returns invisibly a data frame containing the distances, \code{distX}, \code{distY}
+#' @return        Returns invisibly a data frame containing the distances, `distX`, `distY`
 #' 
 #' @seealso \code{\link{Mahalanobis}}
 #' @references 
 #' Rousseeuw P. J. & van Zomeren B. C. (1991). “Robust Distances: Simulation and Cutoff Values.”
-#' In W Stahel, S Weisberg (eds.), \emph{Directions in Robust Statistics and Diagnostics, Part II}.
+#' In W Stahel, S Weisberg (eds.), *Directions in Robust Statistics and Diagnostics, Part II*.
 #' Springer-Verlag, New York.
 #' 
 #' Rousseeuw, P. J., Van Driessen, K., Van Aelst, S., & Agullo, J. (2004). Robust multivariate regression. 
-#' \emph{Technometrics}, \bold{46}(3), 293–305. \doi{10.1198/004017004000000329}.
+#' *Technometrics*, **46**(3), 293–305. \doi{10.1198/004017004000000329}.
 #' @export
 #'
 #' @examples

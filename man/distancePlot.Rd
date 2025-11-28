@@ -35,7 +35,7 @@ distancePlot(X, Y, ...)
 
 \item{...}{Other arguments passed to methods}
 
-\item{method}{Estimation method used for center and covariance, one of: \code{"classical"} (product-moment), 
+\item{method}{Estimation method used for center and covariance, one of: \code{"classical"} (product-moment),
 \code{"mcd"} (minimum covariance determinant), or \code{"mve"} (minimum volume ellipsoid).}
 
 \item{level}{Lower-tail probability beyond which observations will be labeled.}
@@ -57,7 +57,8 @@ distancePlot(X, Y, ...)
 \item{data}{For the formula method, the dataset containing the variables}
 }
 \value{
-Returns invisibly a data frame containing the distances, \code{distX}, \code{distY}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{   Returns invisibly a data frame containing the distances, `distX`, `distY`
+}\if{html}{\out{</div>}}
 }
 \description{
 This plot, suggested by Rousseeuw & van Zomeren (1991), Rousseeu et al. (2004) typically plots Mahalanobis distances (\eqn{D}) of the \code{Y} response
@@ -68,7 +69,7 @@ against the predictor terms in the \emph{model.matrix} \code{X}.
 This diagnostic plot combines the information on regression outliers and leverage points, and often more useful than either distance separately.
 }
 \details{
-Observations with "large" distances on \code{X} or \code{Y} are labeled with their \code{ids}. The cutoffs are calculated as 
+Observations with "large" distances on \code{X} or \code{Y} are labeled with their \code{ids}. The cutoffs are calculated as
 \eqn{\sqrt{\chi^2_{k, \text{level}}}}.
 }
 \examples{
@@ -114,8 +115,8 @@ Rousseeuw P. J. & van Zomeren B. C. (1991). “Robust Distances: Simulation and 
 In W Stahel, S Weisberg (eds.), \emph{Directions in Robust Statistics and Diagnostics, Part II}.
 Springer-Verlag, New York.
 
-Rousseeuw, P. J., Van Driessen, K., Van Aelst, S., & Agullo, J. (2004). Robust multivariate regression. 
-\emph{Technometrics}, \bold{46}(3), 293–305. \doi{10.1198/004017004000000329}.
+Rousseeuw, P. J., Van Driessen, K., Van Aelst, S., & Agullo, J. (2004). Robust multivariate regression.
+\emph{Technometrics}, \strong{46}(3), 293–305. \doi{10.1198/004017004000000329}.
 }
 \seealso{
 \code{\link{Mahalanobis}}

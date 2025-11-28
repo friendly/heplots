@@ -39,9 +39,9 @@ of \code{"II"}, \code{"III"}, \code{"2"}, or \code{"3"}, where \code{"II"}
 is the default (and \code{"2"} is a synonym).}
 
 \item{idata}{an optional data frame giving a factor or factors defining the
-       intra-subject model for multivariate repeated-measures data.  See Details of
+intra-subject model for multivariate repeated-measures data.  See Details of
 \code{\link[car]{Anova}} for an explanation of the intra-subject design and
-       for further explanation of the other arguments relating to intra-subject factors.}
+for further explanation of the other arguments relating to intra-subject factors.}
 
 \item{idesign}{a one-sided model formula using the ``data'' in idata and
 specifying the intra-subject design for repeated measure models.}
@@ -73,13 +73,13 @@ in repeated calls.}
 the \code{"digits"} option.}
 
 \item{fill}{A logical vector indicating whether each ellipse should be
-       filled or not.  The first value is used for the error ellipse, the rest ---
-       possibly recycled --- for the hypothesis ellipses; a single fill value can
-       be given.  Defaults to FALSE for backward compatibility. See Details of
+filled or not.  The first value is used for the error ellipse, the rest ---
+possibly recycled --- for the hypothesis ellipses; a single fill value can
+be given.  Defaults to FALSE for backward compatibility. See Details of
 \code{\link{heplot}}}
 
 \item{fill.alpha}{Alpha transparency for filled ellipses, a numeric scalar
-or vector of values within \code{[0,1]}, where 0 means fully transparent and
+or vector of values within \verb{[0,1]}, where 0 means fully transparent and
 1 means fully opaque. Defaults to 0.3.}
 
 \item{\dots}{arguments to pass down to \code{heplot}, which is used to draw

@@ -18,7 +18,7 @@ bartlettTests(y, ...)
 \arguments{
 \item{y}{A data frame or matrix of numeric response variables for the default method,
 or a model formula for a multivariate linear model, or the multivariate linear model itself.
-In the case of a formula or model, the  variables on the right-hand-side of the model must all 
+In the case of a formula or model, the  variables on the right-hand-side of the model must all
 be factors and must be completely crossed.}
 
 \item{\dots}{other arguments, passed to \code{\link[stats]{bartlett.test}}}
@@ -56,7 +56,7 @@ bartlettTests(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 \references{
 Bartlett, M. S. (1937). Properties of sufficiency and
 statistical tests.  \emph{Proceedings of the Royal Society of London Series
-A}, \bold{160}, 268-282.
+A}, \strong{160}, 268-282.
 }
 \seealso{
 \code{\link{boxM}} for Box's M test for all responses together.

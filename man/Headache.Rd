@@ -6,14 +6,14 @@
 \title{Treatment of Headache Sufferers for Sensitivity to Noise}
 \format{
 A data frame with 98 observations on the following 6 variables.
-\describe{ 
-  \item{\code{type}}{Type of headache, a factor with levels \code{Migrane} \code{Tension}} 
-  \item{\code{treatment}}{Treatment group, a factor with levels \code{T1} \code{T2} \code{T3} 
-      \code{Control}.  See Details} 
-  \item{\code{u1}}{Noise level rated as Uncomfortable, initial measure} 
-  \item{\code{du1}}{Noise level rated as Definitely Uncomfortable, initial measure} 
-  \item{\code{u2}}{Noise level rated as Uncomfortable, final measure} 
-  \item{\code{du2}}{Noise level rated as Definitely Uncomfortable, final measure} 
+\describe{
+\item{\code{type}}{Type of headache, a factor with levels \code{Migrane} \code{Tension}}
+\item{\code{treatment}}{Treatment group, a factor with levels \code{T1} \code{T2} \code{T3}
+\code{Control}.  See Details}
+\item{\code{u1}}{Noise level rated as Uncomfortable, initial measure}
+\item{\code{du1}}{Noise level rated as Definitely Uncomfortable, initial measure}
+\item{\code{u2}}{Noise level rated as Uncomfortable, final measure}
+\item{\code{du2}}{Noise level rated as Definitely Uncomfortable, final measure}
 }
 }
 \source{
@@ -35,15 +35,15 @@ visual imagery to distract them from discomfort.  One of four treatments was
 then applied, and all patients were reassessed for the noise volume they
 considered uncomfortable (U) and definitely uncomfortable (DU).
 
-The treatments are described as follows: 
+The treatments are described as follows:
 \describe{
-  \item{\code{T1}}{Listened again to the tone at their initial DU level, for
-         the same amount of time they were able to tolerate it before.}
-  \item{\code{T2}}{Same as T1, with one additional minute exposure}
-  \item{\code{T3}}{Same as T2, but were explicitly instructed to use the
-        relaxation techniques} 
-  \item{\code{Control}}{These subject experienced no
-        further exposure to the noise tone until the final sensitivity measures were taken} 
+\item{\code{T1}}{Listened again to the tone at their initial DU level, for
+the same amount of time they were able to tolerate it before.}
+\item{\code{T2}}{Same as T1, with one additional minute exposure}
+\item{\code{T3}}{Same as T2, but were explicitly instructed to use the
+relaxation techniques}
+\item{\code{Control}}{These subject experienced no
+further exposure to the noise tone until the final sensitivity measures were taken}
 }
 
 Hand and Taylor described several substantive hypotheses related to the

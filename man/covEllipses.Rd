@@ -121,9 +121,8 @@ data; defaults to \code{2}.}
 recycled as necessary--- see Details. A single color can be given, in which case it is used
 for all ellipses.  For convenience, the default colors for all plots
 produced in a given session can be changed by assigning a color vector via
-\code{options(heplot.colors =c(...)}.  Otherwise, the default colors are
-\code{c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown",
-"darkgray")}.}
+\verb{options(heplot.colors =c(...)}.  Otherwise, the default colors are
+\code{c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.}
 
 \item{lty}{vector of line types to use for plotting the ellipses---
 recycled as necessary--- see Details.  Defaults to \code{1}.}
@@ -136,7 +135,7 @@ recycled as necessary--- see Details.  Defaults to
 filled or not--- recycled as necessary--- see Details.   Defaults to \code{FALSE}.}
 
 \item{fill.alpha}{Alpha transparency for filled ellipses, a numeric scalar
-or vector of values within \code{[0,1]}, where 0 means fully transparent and
+or vector of values within \verb{[0,1]}, where 0 means fully transparent and
 1 means fully opaque. Defaults to 0.3.}
 
 \item{label.pos}{Label position, a vector of integers (in \code{0:4}) or
@@ -175,8 +174,8 @@ are plotted.}
 }
 \value{
 Nothing is returned.  The function is used for its side-effect of
-producing a plot. %Returns invisibly an object of class \code{"covEllipse"},
-%which is a list of the coordinates for the ellipses drawn.
+producing a plot. \%Returns invisibly an object of class \code{"covEllipse"},
+\%which is a list of the coordinates for the ellipses drawn.
 }
 \description{
 The function draws covariance ellipses for one or more groups and optionally
@@ -196,8 +195,8 @@ robust covariance matrices by overlaying the two in a single plot (via \code{add
 \details{
 The arguments \code{labels},
 \code{col}, \code{lty}, \code{lwd}, \code{fill}, \code{fill.alpha} and \code{label.pos} are used to
-draw the ellipses for the groups and also for the pooled, within-group covariance, which is the \bold{last} in a list
-when these are computed by the functions. 
+draw the ellipses for the groups and also for the pooled, within-group covariance, which is the \strong{last} in a list
+when these are computed by the functions.
 These arguments are each taken in the order specified, and recycled as necessary.
 }
 \examples{

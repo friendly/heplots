@@ -6,13 +6,13 @@
 \title{Social Cognitive Measures in Psychiatric Groups}
 \format{
 A data frame with 139 observations on the following 5 variables.
-\describe{ 
-  \item{\code{Dx}}{Diagnostic group, a factor with levels
-      \code{Schizophrenia}, \code{Schizoaffective}, \code{Control}}
-  \item{\code{MgeEmotions}}{Score on the Managing emotions test, a numeric vector} 
-  \item{\code{ToM}}{Score on the The Reading the Mind in the Eyes test (theory of mind), a numeric vector}
-  \item{\code{ExtBias}}{Externalizing Bias score, a numeric vector}
-  \item{\code{PersBias}}{Personal Bias score, a numeric vector} 
+\describe{
+\item{\code{Dx}}{Diagnostic group, a factor with levels
+\code{Schizophrenia}, \code{Schizoaffective}, \code{Control}}
+\item{\code{MgeEmotions}}{Score on the Managing emotions test, a numeric vector}
+\item{\code{ToM}}{Score on the The Reading the Mind in the Eyes test (theory of mind), a numeric vector}
+\item{\code{ExtBias}}{Externalizing Bias score, a numeric vector}
+\item{\code{PersBias}}{Personal Bias score, a numeric vector}
 }
 }
 \source{
@@ -21,7 +21,7 @@ One Condition or Two? Unpublished PhD dissertation, York University.
 
 Heinrichs, R.W., Pinnock, F., Muharib, E., Hartman, L.I., Goldberg, J.O., &
 McDermid Vaz, S. (2015).  Neurocognitive normality in schizophrenia
-revisited.  \emph{Schizophrenia Research: Cognition}, \bold{2} (4), 227-232.
+revisited.  \emph{Schizophrenia Research: Cognition}, \strong{2} (4), 227-232.
 doi: 10.1016/j.scog.2015.09.001
 }
 \description{

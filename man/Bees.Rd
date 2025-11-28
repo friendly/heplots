@@ -6,22 +6,22 @@
 \title{Captive and maltreated bees}
 \format{
 A data frame with 246 observations on the following 6 variables.
-\describe{ 
-  \item{\code{caste}}{a factor with levels \code{Queen} \code{Worker}} 
-  \item{\code{treat}}{a factor with levels \code{""} \code{CAP} \code{MAL}} 
-  \item{\code{time}}{an ordered factor: time of treatment} 
-  \item{\code{Iz}}{an index of ovarian development}
-  \item{\code{Iy}}{an index of ovarian reabsorption} 
-  \item{\code{trtime}}{a factor with levels \code{0} \code{CAP05} \code{CAP07} \code{CAP10}
-      \code{CAP12} \code{CAP15} \code{MAL05} \code{MAL07} \code{MAL10}
-      \code{MAL12} \code{MAL15}} 
+\describe{
+\item{\code{caste}}{a factor with levels \code{Queen} \code{Worker}}
+\item{\code{treat}}{a factor with levels \code{""} \code{CAP} \code{MAL}}
+\item{\code{time}}{an ordered factor: time of treatment}
+\item{\code{Iz}}{an index of ovarian development}
+\item{\code{Iy}}{an index of ovarian reabsorption}
+\item{\code{trtime}}{a factor with levels \code{0} \code{CAP05} \code{CAP07} \code{CAP10}
+\code{CAP12} \code{CAP15} \code{MAL05} \code{MAL07} \code{MAL10}
+\code{MAL12} \code{MAL15}}
 }
 }
 \source{
 Pabalan, N., Davey, K. G. & Packe, L. (2000). Escalation of
 Aggressive Interactions During Staged Encounters in Halictus ligatus Say
 (Hymenoptera: Halictidae), with a Comparison of Circle Tube Behaviors with
-Other Halictine Species \emph{Journal of Insect Behavior}, \bold{13},
+Other Halictine Species \emph{Journal of Insect Behavior}, \strong{13},
 627-650.
 }
 \description{
@@ -110,7 +110,7 @@ if(require(effects)) {
 \references{
 Friendly, M. (2006). Data Ellipses, HE Plots and Reduced-Rank
 Displays for Multivariate Linear Models: SAS Software and Examples
-\emph{Journal of Statistical Software}, \bold{17}, 1-42.
+\emph{Journal of Statistical Software}, \strong{17}, 1-42.
 }
 \concept{MANOVA}
 \keyword{datasets}

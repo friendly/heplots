@@ -13,23 +13,23 @@
 #' @param centre,center The center of the ellipse
 #' @param scale If x is a correlation matrix, then the standard deviations of
 #'          each parameter can be given in the scale parameter.  This defaults to
-#'          \code{c(1, 1, 1)}, so no rescaling will be done.
+#'          `c(1, 1, 1)`, so no rescaling will be done.
 #' @param level The coverage level of a simultaneous region.  The
 #'          default is 0.95, for a 95\% region.  This is used to control the size of the
 #'          ellipsoid.
 #' @param t The size of the ellipsoid may also be controlled by specifying the
 #'          value of a t-statistic on its boundary, which defaults to the square root of a chi-square statistic
-#'          for a given \code{level} on 3 degrees of freedom.
+#'          for a given `level` on 3 degrees of freedom.
 #' @param which An integer vector to select which variables from the object will be
 #'          plotted.  The default is the first 3.
 #' @param labels Either a logical value, a character string, or a character
-#'          vector of length 3.  If \code{TRUE}, the default, the axes are labeled PC1,
+#'          vector of length 3.  If `TRUE`, the default, the axes are labeled PC1,
 #'          PC2, PC3.  If a single character string, the digits 1, 2, 3 are pasted on
 #'          the end.
 #' @param label.ends A vector of length 3 indicating which ends of the axes
 #'          should be labeled, corresponding to a selection of rows of the 6 x 3 matrix
-#'          of axes end points.  Default: \code{c(2,4,6)}.
-#' @param \dots Other arguments passed to \code{segments3d} and \code{text3d}.
+#'          of axes end points.  Default: `c(2,4,6)`.
+#' @param \dots Other arguments passed to `segments3d` and `text3d`.
 #' @return Returns a 6 x 3 matrix containing the end points of the three axis
 #'         lines in pairs by rows.
 #' @author Michael Friendly

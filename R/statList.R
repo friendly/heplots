@@ -1,28 +1,28 @@
 #' Calculate statistics for levels of factors
 #' 
-#' \code{statList} provides a general method for calculating univariate or
+#' `statList` provides a general method for calculating univariate or
 #' multivariate statistics for a matrix or data.frame stratified by one or more
 #' factors.
 #' 
-#' \code{statList} is the general function. \code{X} is first \code{split} by
-#' \code{factors}, and \code{FUN} is applied to the result.
+#' `statList` is the general function. `X` is first `split` by
+#' `factors`, and `FUN` is applied to the result.
 #' 
-#' \code{colMeansList} and \code{covList} are just calls to \code{statList}
-#' with the appropriate \code{FUN}.
+#' `colMeansList` and `covList` are just calls to `statList`
+#' with the appropriate `FUN`.
 #' 
 #' @aliases statList covList colMeansList
 #' @param X A matrix or data frame containing the variables to be summarized
 #' @param factors A vector, matrix or data frame containing the factors for
-#'        which \code{X} is to be summarized.  If \code{factors} is not specified,  
-#'        the result is calculated for all of the data in \code{X}.
-#' @param FUN A function to be applied to the pieces of \code{X}, as split by \code{factors}.
-#' @param drop Logical, indicating whether empty levels of \code{factors} are
+#'        which `X` is to be summarized.  If `factors` is not specified,  
+#'        the result is calculated for all of the data in `X`.
+#' @param FUN A function to be applied to the pieces of `X`, as split by `factors`.
+#' @param drop Logical, indicating whether empty levels of `factors` are
 #'        to be dropped from the result.
-#' @param \dots Other arguments, passed to \code{FUN}.
+#' @param \dots Other arguments, passed to `FUN`.
 #' @return Returns a list of items corresponding to the unique elements in
-#'        \code{factors}, or the interaction of \code{factors}. Each item is the
-#'        result of applying \code{FUN} to that collection of rows of \code{X}. The
-#'        items are named according to the levels in \code{factors}.
+#'        `factors`, or the interaction of `factors`. Each item is the
+#'        result of applying `FUN` to that collection of rows of `X`. The
+#'        items are named according to the levels in `factors`.
 #' @author Michael Friendly
 #' @seealso \code{\link[base]{colMeans}}, \code{\link{termMeans}}
 #' @keywords utilities multivariate

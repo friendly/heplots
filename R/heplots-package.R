@@ -1,7 +1,7 @@
 
 #' Visualizing Hypothesis Tests in Multivariate Linear Models
 #' 
-#' The \code{heplots} package provides functions for visualizing hypothesis
+#' The `heplots` package provides functions for visualizing hypothesis
 #' tests in multivariate linear models (MANOVA, multivariate multiple
 #' regression, MANCOVA, and repeated measures designs).  HE plots represent
 #' sums-of-squares-and-products matrices for linear hypotheses and for error
@@ -22,7 +22,7 @@
 #' graphical displays.
 #' 
 #' Several tutorial vignettes are also included.  See
-#' \code{vignette(package="heplots")}.
+#' `vignette(package="heplots")`.
 #' 
 #' The graphical functions contained here all display multivariate model
 #' effects in variable (data) space, for one or more response variables (or
@@ -46,10 +46,10 @@
 #' For repeated measure designs, between-subject effects and within-subject
 #' effects must be plotted separately, because the error terms (E matrices)
 #' differ.  For terms involving within-subject effects, these functions carry
-#' out a linear transformation of the matrix \bold{Y} of responses to a matrix
-#' \bold{Y M}, where \bold{M} is the model matrix for a term in the
+#' out a linear transformation of the matrix **Y** of responses to a matrix
+#' **Y M**, where **M** is the model matrix for a term in the
 #' intra-subject design and produce plots of the H and E matrices in this
-#' transformed space. The vignette \code{repeated} describes these graphical
+#' transformed space. The vignette `repeated` describes these graphical
 #' methods for repeated measures designs.
 #' 
 #' The related \pkg{car} package calculates Type II and Type III tests of
@@ -62,16 +62,16 @@
 #' \pkg{candisc} package now also includes related methods for canonical
 #' correlation analysis.
 #' 
-#' The \code{heplots} package also contains a large number of multivariate data
+#' The `heplots` package also contains a large number of multivariate data
 #' sets with examples of analyses and graphic displays.  Use
-#' \code{data(package="heplots")} to see the current list.
+#' `data(package="heplots")` to see the current list.
 #' 
 #' @name heplots-package
 #' @aliases heplots-package heplots _PACKAGE
 #' @author 
 #'    Michael Friendly, John Fox, and Georges Monette
 #' 
-#'    Maintainer: Michael Friendly, \email{friendly@yorku.ca}, \url{http://datavis.ca}
+#'    Maintainer: Michael Friendly, \email{friendly@yorku.ca}, <http://datavis.ca>
 #' @seealso 
 #'     \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for Anova.mlm computations and tests
 #' 
@@ -82,37 +82,37 @@
 #' @references 
 #' Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 #' Displays for Multivariate Linear Models: SAS Software and Examples.
-#' \emph{Journal of Statistical Software}, 17(6), 1-42. %
-#' \url{https://www.jstatsoft.org/v17/i06/},
+#' *Journal of Statistical Software*, 17(6), 1-42. %
+#' <https://www.jstatsoft.org/v17/i06/>,
 #' \doi{10.18637/jss.v017.i06}
 #' 
 #' Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
-#' \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
-#' \url{http://datavis.ca/papers/jcgs-heplots.pdf},
+#' *Journal of Computational and Graphical Statistics*, 16(2) 421-444.
+#' <http://datavis.ca/papers/jcgs-heplots.pdf>,
 #' \doi{10.1198/106186007X208407}
 #' 
 #' Fox, J., Friendly, M. & Monette, G. (2007).  Visual hypothesis tests in
-#' multivariate linear models: The heplots package for R.  \emph{DSC 2007:
-#' Directions in Statistical Computing}.
-#' \url{https://socialsciences.mcmaster.ca/jfox/heplots-dsc-paper.pdf}
+#' multivariate linear models: The heplots package for R.  *DSC 2007:
+#' Directions in Statistical Computing*.
+#' <https://socialsciences.mcmaster.ca/jfox/heplots-dsc-paper.pdf>
 #' 
-#' Friendly, M. (2010). HE Plots for Repeated Measures Designs. \emph{Journal
-#' of Statistical Software}, 37(4), 1-40. 
+#' Friendly, M. (2010). HE Plots for Repeated Measures Designs. *Journal
+#' of Statistical Software*, 37(4), 1-40. 
 #' \doi{10.18637/jss.v037.i04}.
 #' 
 #' Fox, J., Friendly, M. & Weisberg, S. (2013).  Hypothesis Tests for
-#' Multivariate Linear Models Using the car Package.  \emph{The R Journal},
-#' \bold{5}(1),
-#' \url{https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf}.
+#' Multivariate Linear Models Using the car Package.  *The R Journal*,
+#' **5**(1),
+#' <https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf>.
 #' 
 #' Friendly, M., Monette, G. & Fox, J. (2013).  Elliptical Insights:
 #' Understanding Statistical Methods Through Elliptical Geometry.
-#' \emph{Statistical Science}, 2013, \bold{28} (1), 1-39,
-#' \url{http://datavis.ca/papers/ellipses.pdf}.
+#' *Statistical Science*, 2013, **28** (1), 1-39,
+#' <http://datavis.ca/papers/ellipses.pdf>.
 #' 
 #' Friendly, M. & Sigal, M. (2014). Recent Advances in Visualizing Multivariate
-#' Linear Models. \emph{Revista Colombiana de Estadistica}, \bold{37}, 261-283
-#' % \url{http://ref.scielo.org/6gq33g}.
+#' Linear Models. *Revista Colombiana de Estadistica*, **37**, 261-283
+#' % <http://ref.scielo.org/6gq33g>.
 #' 
 #' Friendly, M. & Sigal, M. (2016). Graphical Methods for Multivariate Linear
 #' Models in Psychological Research: An R Tutorial. Submitted for publication.

@@ -18,12 +18,12 @@ leveneTests(y, ...)
 \arguments{
 \item{y}{A data frame or matrix of numeric response variables for the default method,
 or a model formula for a multivariate linear model, or the multivariate linear model itself.
-In the case of a formula or model, the  variables on the right-hand-side of the model must all 
+In the case of a formula or model, the  variables on the right-hand-side of the model must all
 be factors and must be completely crossed.}
 
-\item{\dots}{arguments to be passed down to \code{\link[car]{leveneTest}}, e.g., \code{data} for the 
-\code{formula} and \code{lm} methods; can also 
-be used to pass arguments to the function given by center (e.g., center=mean and trim=0.1 specify 
+\item{\dots}{arguments to be passed down to \code{\link[car]{leveneTest}}, e.g., \code{data} for the
+\code{formula} and \code{lm} methods; can also
+be used to pass arguments to the function given by center (e.g., center=mean and trim=0.1 specify
 the 10\% trimmed mean) other arguments.}
 
 \item{group}{a vector or factor object giving the group for the
@@ -37,7 +37,7 @@ corresponding elements of the rows of \code{y} for the default method}
 }
 \value{
 An object of classes "anova" and "data.frame", with one observation
-        for each response variable in \code{y}.
+for each response variable in \code{y}.
 }
 \description{
 This function extends \code{\link[car]{leveneTest}} to a multivariate
@@ -73,7 +73,7 @@ Statistics: Essays in Honor of Harold Hotelling}, Stanford University Press,
 278-292.
 
 Brown, M. B. & Forsythe, A. B. (1974). Robust Tests For Equality Of
-Variances \emph{Journal of the American Statistical Association}, \bold{69},
+Variances \emph{Journal of the American Statistical Association}, \strong{69},
 364-367.
 }
 \seealso{

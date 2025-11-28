@@ -14,8 +14,8 @@ factors in the term must be included in the model, even if they are in the
 model data frame.}
 
 \item{label.factors}{If true, the rownames for each row in the result
-include the name(s) of the factor(s) involved, followed by the 
-level values. Otherwise, the rownames include only the levels of 
+include the name(s) of the factor(s) involved, followed by the
+level values. Otherwise, the rownames include only the levels of
 the factor(s), with multiple factors separated by ':'}
 
 \item{abbrev.levels}{Either a logical or an integer, specifying whether the
@@ -25,8 +25,8 @@ abbreviation for each factor in the term.}
 }
 \value{
 Returns a matrix whose columns correspond to the response variables
-        in the model and whose rows correspond to the levels of the factor(s) in the
-        \code{term}.
+in the model and whose rows correspond to the levels of the factor(s) in the
+\code{term}.
 }
 \description{
 \code{termMeans} is a utility function designed to calculate means for the

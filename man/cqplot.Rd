@@ -51,7 +51,7 @@ the latter case, residuals from the model are plotted.}
 determinant), or \code{"mve"} (minimum volume ellipsoid).}
 
 \item{detrend}{logical; if \code{FALSE}, the plot shows values of \eqn{D^2}
-               vs. \eqn{\chi^2}. if \code{TRUE}, the ordinate shows values of \eqn{D^2 -
+vs. \eqn{\chi^2}. if \code{TRUE}, the ordinate shows values of \eqn{D^2 -
 \chi^2}}
 
 \item{pch}{plot symbol for points. Can be a vector of length equal to the
@@ -113,17 +113,17 @@ options.}
 confidence envelope is used.}
 }
 \value{
-Returns invisibly a data.frame containing squared Mahalanobis distances (\code{DSQ}), 
-        their \code{quantile}s and \code{p}-values
-            corresponding to the rows of \code{x} or the residuals of the model for the identified points, 
-            else \code{NULL} if no points are identified.
+Returns invisibly a data.frame containing squared Mahalanobis distances (\code{DSQ}),
+their \code{quantile}s and \code{p}-values
+corresponding to the rows of \code{x} or the residuals of the model for the identified points,
+else \code{NULL} if no points are identified.
 }
 \description{
 A chi square quantile-quantile plots show the relationship between
 data-based values which should be distributed as \eqn{\chi^2} and
 corresponding quantiles from the \eqn{\chi^2} distribution.  In multivariate
 analyses, this is often used both to assess multivariate normality and check
-for or identify outliers.  
+for or identify outliers.
 
 For a data frame of numeric variables or a matrix supplied as the argument \code{x},
 it uses the Mahalanobis squared distances (\eqn{D^2}) of
@@ -157,14 +157,14 @@ The calculation of the confidence envelope here follows that used in the SAS
 program, \url{http://www.datavis.ca/sasmac/cqplot.html} which comes from
 Chambers et al. (1983), Section 6.8.
 
-The essential formula computes the standard errors as: 
+The essential formula computes the standard errors as:
 \deqn{ \text{se} ( D^2_{(i)} ) = \frac{\hat{b}} {d ( q_i)} \times \sqrt{  p_i (1-p_i) / n } }
 where \eqn{D^2_{(i)}} is the i-th
 ordered value of \eqn{D^2}, \eqn{\hat{b}} is an estimate of the slope of
 the reference line obtained from the ratio of the interquartile range of the
 \eqn{D^2} values to that of the \eqn{\chi^2_p} distribution and
 \eqn{d(q_i)} is the density of the chi square distribution at the quantile
-\eqn{q_i}. 
+\eqn{q_i}.
 
 The pointwise confidence envelope of coverage \code{conf} = \eqn{1-\alpha} is then calculated as
 \eqn{D^2_{(i)} \pm z_{1-\alpha/2} \text{se} ( D^2_{(i)} )}
@@ -223,15 +223,15 @@ cqplot(stackloss[, 1:3], id.n=4, method="mcd")
 J. Chambers, W. S. Cleveland, B. Kleiner, P. A. Tukey (1983).
 \emph{Graphical methods for data analysis}, Wadsworth.
 
-R. W. Oldford (2016), "Self calibrating quantile-quantile plots", 
+R. W. Oldford (2016), "Self calibrating quantile-quantile plots",
 \emph{The American Statistician}, 70, 74-90.
 }
 \seealso{
 \code{\link{Mahalanobis}} for calculation of Mahalanobis squared distance;
 
 \code{\link[stats]{qqplot}}; \code{\link[car]{qqPlot}} can give a similar
-         result for Mahalanobis squared distances of data or residuals;
-         \code{\link[qqtest]{qqtest}} has many features for all types of QQ plots.
+result for Mahalanobis squared distances of data or residuals;
+\code{\link[qqtest]{qqtest}} has many features for all types of QQ plots.
 }
 \author{
 Michael Friendly

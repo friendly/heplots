@@ -7,23 +7,23 @@
 \alias{Probe2}
 \title{Response Speed in a Probe Experiment}
 \format{
-\code{Probe1}: A data frame with 11 observations on the following 5 variables.  
-\describe{ 
-  \item{\code{p1}}{speed at position 1}
-  \item{\code{p2}}{speed at position 2} 
-  \item{\code{p3}}{speed at position 3} 
-  \item{\code{p4}}{speed at position 4} 
-  \item{\code{p5}}{speed at position 5} 
+\code{Probe1}: A data frame with 11 observations on the following 5 variables.
+\describe{
+\item{\code{p1}}{speed at position 1}
+\item{\code{p2}}{speed at position 2}
+\item{\code{p3}}{speed at position 3}
+\item{\code{p4}}{speed at position 4}
+\item{\code{p5}}{speed at position 5}
 }
 
-\code{Probe2}: A data frame with 20 observations on the following 6 variables.  
-\describe{ 
-  \item{\code{stm}}{Short term memory capacity: a factor with levels \code{High} \code{Low}} 
-  \item{\code{p1}}{speed at position 1} 
-  \item{\code{p2}}{speed at position 2} 
-  \item{\code{p3}}{speed at position 3} 
-  \item{\code{p4}}{speed at position 4}
-  \item{\code{p5}}{speed at position 5} 
+\code{Probe2}: A data frame with 20 observations on the following 6 variables.
+\describe{
+\item{\code{stm}}{Short term memory capacity: a factor with levels \code{High} \code{Low}}
+\item{\code{p1}}{speed at position 1}
+\item{\code{p2}}{speed at position 2}
+\item{\code{p3}}{speed at position 3}
+\item{\code{p4}}{speed at position 4}
+\item{\code{p5}}{speed at position 5}
 }
 }
 \source{
@@ -42,7 +42,7 @@ subject had to respond with the word which immediately followed the probe
 word in the sentence.  The dependent measure is response speed =
 k(1/reaction time).
 
-Sample sentence: 
+Sample sentence:
 \preformatted{
 *       The tall man met the young girl who got the new hat.
 Pos'ns:      1    2            3    4    5

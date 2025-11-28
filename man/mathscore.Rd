@@ -7,11 +7,11 @@
 \format{
 A data frame with 12 observations on the following 3 variables.
 
-\describe{ 
-  \item{\code{group}}{a factor with levels \code{1} \code{2}}
-  \item{\code{BM}}{Basic Math score, a numeric vector} 
-  \item{\code{WP}}{Word Problems score, a numeric vector} 
-  }
+\describe{
+\item{\code{group}}{a factor with levels \code{1} \code{2}}
+\item{\code{BM}}{Basic Math score, a numeric vector}
+\item{\code{WP}}{Word Problems score, a numeric vector}
+}
 }
 \source{
 Fictitious data

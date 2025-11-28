@@ -6,15 +6,15 @@
 \title{Vocabulary growth data}
 \format{
 A data frame with 64 observations on the following 4 variables.
-\describe{ 
-  \item{\code{grade8}}{Grade 8 vocabulary score}
-  \item{\code{grade9}}{Grade 9 vocabulary score} 
-  \item{\code{grade10}}{Grade 10 vocabulary score} 
-  \item{\code{grade11}}{Grade 11 vocabulary score} 
+\describe{
+\item{\code{grade8}}{Grade 8 vocabulary score}
+\item{\code{grade9}}{Grade 9 vocabulary score}
+\item{\code{grade10}}{Grade 10 vocabulary score}
+\item{\code{grade11}}{Grade 11 vocabulary score}
 }
 }
 \source{
-R.D.  
+R.D.
 Bock, \emph{Multivariate statistical methods in behavioral research}, McGraw-Hill, New York, 1975, pp453.
 }
 \description{

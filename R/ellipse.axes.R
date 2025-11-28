@@ -11,31 +11,31 @@
 #' @param centre,center The center of the ellipse
 #' @param scale If x is a correlation matrix, then the standard deviations of
 #'          each parameter can be given in the scale parameter.  This defaults to
-#'          \code{c(1, 1)}, so no rescaling will be done.
-#' @param which An integer vector to select which variables from the object \code{x} will be
+#'          `c(1, 1)`, so no rescaling will be done.
+#' @param which An integer vector to select which variables from the object `x` will be
 #'          plotted.  The default is the first 2.
 #' @param level The coverage level of a simultaneous region of the ellipse.  The
-#'          default is 0.95, for a 95\% region.  This is used to control the size of the
+#'          default is 0.95, for a 95% region.  This is used to control the size of the
 #'          ellipse.
 #' @param radius The size of the ellipsoid may also be controlled by specifying the
 #'          value of a t-statistic on its boundary. This defaults to the square root of a chi-square statistic
-#'          for a given \code{level} on 2 degrees of freedom, however in a small sample of \code{n} observations,
-#'          a more accurate value is \code{sqrt(2 * qf(level, 2, n - 1 ))}.
-#' @param extend Fraction to extend the \code{radius} (default: 0). For example, use \code{extend = 0.1} to extend
-#'          the ellipse axes by 10\%.
+#'          for a given `level` on 2 degrees of freedom, however in a small sample of `n` observations,
+#'          a more accurate value is `sqrt(2 * qf(level, 2, n - 1 ))`.
+#' @param extend Fraction to extend the `radius` (default: 0). For example, use `extend = 0.1` to extend
+#'          the ellipse axes by 10%.
 #' @param labels Either a logical value, a character string, or a character
-#'          vector of length 2.  If \code{TRUE}, the default, the axes are labeled "PC1",
+#'          vector of length 2.  If `TRUE`, the default, the axes are labeled "PC1",
 #'          "PC2".  If a single character string, the digits 1, and 2 are pasted on
 #'          the end.
-#' @param label.ends A vector of indices in the range \code{1:4} indicating which ends of the axes
+#' @param label.ends A vector of indices in the range `1:4` indicating which ends of the axes
 #'          should be labeled, corresponding to a selection of rows of the 4 x 2 matrix
-#'          of axes end points. Values \code{1:2} represent the minimum and maximum of the first dimension respectively.
-#'          Values \code{3:4} represent the minimum and maximum of the second dimension.
-#'          Default: \code{c(2, 4)}.
+#'          of axes end points. Values `1:2` represent the minimum and maximum of the first dimension respectively.
+#'          Values `3:4` represent the minimum and maximum of the second dimension.
+#'          Default: `c(2, 4)`.
 #' @param label.pos Positions of text labels relative to the ends of the axes used in \code{\link[graphics]{text}} for
-#'          the four possible \code{label.ends}. 1, 2, 3, 4 represent below, to the left, above and to the right.
-#'          The default, \code{c(2, 4, 1, 3)}, positions the labels outside the axes.
-#' @param type Character. Draw \code{"lines"} or \code{"arrows"}.
+#'          the four possible `label.ends`. 1, 2, 3, 4 represent below, to the left, above and to the right.
+#'          The default, `c(2, 4, 1, 3)`, positions the labels outside the axes.
+#' @param type Character. Draw `"lines"` or `"arrows"`.
 #' @param \dots Other arguments passed to \code{\link[graphics]{lines}} and \code{\link[graphics]{text}}.
 #'
 #' @return Invisibly returns a 4 x 2 matrix containing the end points of the axes in pairs (min, max) by rows.

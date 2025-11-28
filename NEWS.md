@@ -1,3 +1,8 @@
+## Version 1.8.0
+
+* added `text.usr()` to add text in normalized device coordinates
+* begin to convert documentation to use markdown via {roxygen2md}
+
 ## Version 1.7.9
 
 * plot.robmlm() gains a `groups` arg to vary point color and `pch`
