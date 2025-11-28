@@ -2,11 +2,7 @@ Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
 Version: 1.8.0
-<<<<<<< HEAD
 Date: 2025-11-28
-=======
-Date: 2025-11-23
->>>>>>> f99556dfa63b0850bf93e3c18d04034374fcc644
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -16,8 +12,10 @@ Authors@R: c(
             person(given = "John", 
                    family = "Fox", role="aut",
                    comment = c(ORCID = "0000-0002-1196-8012")),
-            person(given = "Georges", family = "Monette", role="aut", comment = c(ORCID = "0000-0003-0076-5532")),
-            person(given = "Phil", family="Chalmers", role="ctb", comment = c(ORCID="0000-0001-5332-2810")),
+            person(given = "Georges", family = "Monette", role="aut", 
+                   comment = c(ORCID = "0000-0003-0076-5532")),
+            person(given = "Phil", family="Chalmers", role="ctb", 
+                   comment = c(ORCID="0000-0001-5332-2810")),
             person(given = "Duncan", family = "Murdoch", role="ctb"))
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Description: Provides HE plot and other functions for visualizing hypothesis

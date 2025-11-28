@@ -3,7 +3,7 @@
 #' Add Text to a Plot at Normalized Device Coordinates
 #' 
 #' @description
-#' `text.usr()` draws the strings given in the vector labels at the coordinates given by `x` and `y`, 
+#' `text_usr()` draws the strings given in the vector labels at the coordinates given by `x` and `y`, 
 #' but using normalized device coordinates (0, 1) to position text at absolute locations in a plot.
 #' This is useful when you know where in a plot you want to add some text annotation, but don't want to figure
 #' out what the data coordinates are.
@@ -18,6 +18,7 @@
 #'        `x` and `y` differs, the shorter one is recycled. Alternatively, a single argument `x` can be provided.
 #' @param labels a character vector or \code{\link[base]{expression}} specifying the text to be written
 #' @param ...    other arguments passed to \code{\link[graphics]{text}}, such as `pos`, `cex`, `col`, ...
+#' @keywords utilities
 #' @source From <https://stackoverflow.com/questions/25450719/plotting-text-in-r-at-absolute-position>
 #' @importFrom graphics text
 #' 
@@ -29,13 +30,13 @@
 #' plot(x, y, pch = 16,
 #'      xlim = c(0,1),
 #'      ylim = c(0,1))
-#' text.usr(0.05, 0.95, "topleft",    pos = 4)
-#' text.usr(0.95, 0.95, "topright",   pos = 2)
-#' text.usr(0.05, 0.05, "bottomleft", pos = 4)
-#' text.usr(0.95, 0.05, "bottomright",pos = 2)
+#' text_usr(0.05, 0.95, "topleft",    pos = 4)
+#' text_usr(0.95, 0.95, "topright",   pos = 2)
+#' text_usr(0.05, 0.05, "bottomleft", pos = 4)
+#' text_usr(0.95, 0.05, "bottomright",pos = 2)
 #'
  
-text.usr <- function(x, y, labels, ...) {
+text_usr <- function(x, y, labels, ...) {
   xlim <- par("usr")[1:2]
   ylim <- par("usr")[3:4]
   
