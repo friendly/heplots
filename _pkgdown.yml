@@ -73,6 +73,7 @@ reference:
     - termMeans
     - statList
     - trans.colors
+    - text_usr
 
   - title: Data sets
     contents:

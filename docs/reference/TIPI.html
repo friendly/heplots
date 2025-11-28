@@ -64,56 +64,55 @@ which we obtained this version.</p>
     <p>A data frame with 1799 observations on the following 16 variables.</p><dl><dt><code>Extraversion</code></dt>
 <dd><p>a numeric vector</p></dd>
 
-  <dt><code>Neuroticism</code></dt>
+<dt><code>Neuroticism</code></dt>
 <dd><p>a numeric vector</p></dd>
 
-  <dt><code>Conscientiousness</code></dt>
+<dt><code>Conscientiousness</code></dt>
 <dd><p>a numeric vector</p></dd>
 
-  <dt><code>Agreeableness</code></dt>
+<dt><code>Agreeableness</code></dt>
 <dd><p>a numeric vector</p></dd>
 
-  <dt><code>Openness</code></dt>
+<dt><code>Openness</code></dt>
 <dd><p>a numeric vector</p></dd>
 
-  <dt><code>education</code></dt>
+<dt><code>education</code></dt>
 <dd><p>an ordered factor with levels
-      <code>&lt;HS</code> &lt; <code>HS</code> &lt; <code>Univ</code> &lt; <code>Grad</code></p></dd>
+<code>&lt;HS</code> &lt; <code>HS</code> &lt; <code>Univ</code> &lt; <code>Grad</code></p></dd>
 
-  <dt><code>urban</code></dt>
+<dt><code>urban</code></dt>
 <dd><p>an ordered factor with levels <code>Rural</code> &lt; <code>Suburban</code> &lt; <code>Urban</code></p></dd>
 
-  <dt><code>gender</code></dt>
+<dt><code>gender</code></dt>
 <dd><p>a factor with levels <code>M</code> <code>F</code></p></dd>
 
-  <dt><code>engnat</code></dt>
+<dt><code>engnat</code></dt>
 <dd><p>a factor with levels <code>Native</code> <code>Non-native</code></p></dd>
 
-  <dt><code>age</code></dt>
+<dt><code>age</code></dt>
 <dd><p>a numeric vector</p></dd>
 
-  <dt><code>religion</code></dt>
-<dd><p>a factor with levels <code>Agnostic</code> <code>Atheist</code> <code>Buddhist</code> <code>Christian
-      (Catholic)</code> <code>Christian (Mormon)</code> <code>Christian (Protestant)</code>
-      <code>Christian (Other)</code> <code>Hindu</code> <code>Jewish</code> <code>Muslim</code>
-      <code>Sikh</code> <code>Other</code></p></dd>
+<dt><code>religion</code></dt>
+<dd><p>a factor with levels <code>Agnostic</code> <code>Atheist</code> <code>Buddhist</code> <code>Christian (Catholic)</code> <code>Christian (Mormon)</code> <code>Christian (Protestant)</code>
+<code>Christian (Other)</code> <code>Hindu</code> <code>Jewish</code> <code>Muslim</code>
+<code>Sikh</code> <code>Other</code></p></dd>
 
-  <dt><code>orientation</code></dt>
+<dt><code>orientation</code></dt>
 <dd><p>a factor with levels <code>Heterosexual</code> <code>Bisexual</code> <code>Homosexual</code>
-      <code>Asexual</code> <code>Other</code></p></dd>
+<code>Asexual</code> <code>Other</code></p></dd>
 
-  <dt><code>race</code></dt>
+<dt><code>race</code></dt>
 <dd><p>a factor with levels <code>Asian</code>
-      <code>Arab</code> <code>Black</code> <code>Indig-White</code> <code>Other</code></p></dd>
+<code>Arab</code> <code>Black</code> <code>Indig-White</code> <code>Other</code></p></dd>
 
-  <dt><code>voted</code></dt>
+<dt><code>voted</code></dt>
 <dd><p>a factor with levels <code>Yes</code> <code>No</code></p></dd>
 
-  <dt><code>married</code></dt>
+<dt><code>married</code></dt>
 <dd><p>a factor with levels <code>Never married</code>
-      <code>Currently married</code> <code>Previously married</code></p></dd>
+<code>Currently married</code> <code>Previously married</code></p></dd>
 
-  <dt><code>familysize</code></dt>
+<dt><code>familysize</code></dt>
 <dd><p>a numeric vector</p></dd>
 
 
@@ -122,7 +121,7 @@ which we obtained this version.</p>
     <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
     <p>Jones, P.J., Mair, P., Simon, T. et al. (2020). Network Trees: A
 Method for Recursively Partitioning Covariance Structures.
-<em>Psychometrika</em>, <b>85</b>, 926?945.
+<em>Psychometrika</em>, <strong>85</strong>, 926?945.
 https://doi.org/10.1007/s11336-020-09731-4</p>
     </div>
     <div class="section level2">
@@ -133,19 +132,16 @@ multivariate analyses.</p>
 <p>Scores on each personality domain were calculated by averaging items
 assigned to each domain (after reverse scoring specific items). In this
 version, total scores for each scale were calculated by averaging the
-positively and negatively coded items, for example, <code>TIPI$Extraversion
-&lt;- (TIPI$E + (8-TIPI$E_r))/2</code>.</p>
+positively and negatively coded items, for example, <code>TIPI$Extraversion &lt;- (TIPI$E + (8-TIPI$E_r))/2</code>.</p>
 <p>Then, for the present purposes, some tidying was done:</p><ul><li><p>100
-cases with `gender=="Other" were deleted;</p></li>
-<li><p>codes for levels of
-`education`, `engnat` and `race` were abbreviated for ease of use in
+cases with <code>gender=="Other" were deleted; \item codes for levels of </code>education<code>, </code>engnat<code>and</code>race` were abbreviated for ease of use in
 graphics.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Gosling, S. D., Rentfrow, P. J., &amp; Swann, W. B, Jr. (2003). A
 very brief measure of the Big-Five personality domains. <em>Journal of
-Research in Personality</em>, <b>37</b>, 504?528.</p>
+Research in Personality</em>, <strong>37</strong>, 504?528.</p>
     </div>
 
     <div class="section level2">
@@ -209,7 +205,7 @@ Research in Personality</em>, <b>37</b>, 504?528.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>
