@@ -1,11 +1,11 @@
 #'  Label an ellipse
 #'
 #' @description 
-#'  \code{label.ellipse} is used to a draw text label on an ellipse at its center or
+#'  `label.ellipse` is used to a draw text label on an ellipse at its center or
 #'  somewhere around the periphery in a very flexible way.
 #'
 #' @details 
-#' If \code{label.pos=NULL}, the function uses the sign of the correlation
+#' If `label.pos=NULL`, the function uses the sign of the correlation
 #' represented by the ellipse to determine a position
 #' at the top (\eqn{r>=0}) or bottom (\eqn{r<0}) of the ellipse.
 
@@ -13,12 +13,12 @@
 #' at the center, below, to the left of, above 
 #' and to the right of the max/min coordinates of the ellipse.
 #' Label positions can also be specified as the corresponding character strings
-#' \code{c("center", "bottom", "left", "top", "right")}, or compass directions, 
-#' \code{c("C", "S", "W", "N", "E")}, or  
+#' `c("center", "bottom", "left", "top", "right")`, or compass directions, 
+#' `c("C", "S", "W", "N", "E")`, or  
 #
-#' Other integer \code{label.pos} values, \code{5:nrow(ellipse)} are taken as indices of the row coordinates
+#' Other integer `label.pos` values, `5:nrow(ellipse)` are taken as indices of the row coordinates
 #' to be used for the ellipse label. 
-#' Equivalently, \code{label.pos} can also be a \emph{fraction} in (0,1), interpreted
+#' Equivalently, `label.pos` can also be a *fraction* in (0,1), interpreted
 #' as the fraction of the way around the unit circle, counterclockwise from the point (1,0).
 #'
 #' @param ellipse A two-column matrix of coordinates for the ellipse boundary
@@ -27,7 +27,7 @@
 #' @param label.pos  Label position relative to the ellipse.  See details 
 #' @param xpd     Should the label be allowed to extend beyond the plot limits?
 #' @param tweak   A vector of two lengths used to tweak label positions
-#' @param ...     Other parameters passed to \code{text}, e.g., \code{cex}, \dots
+#' @param ...     Other parameters passed to `text`, e.g., `cex`, \dots
 #' 
 #' @author Michael Friendly
 #' @export

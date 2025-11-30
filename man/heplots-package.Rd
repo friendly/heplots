@@ -34,7 +34,7 @@ The graphical functions contained here all display multivariate model
 effects in variable (data) space, for one or more response variables (or
 contrasts among response variables in repeated measures designs).
 
-\describe{ 
+\describe{
 \item{list(list("heplot"))}{constructs two-dimensional HE plots
 for model terms and linear hypotheses for pairs of response variables in
 multivariate linear models.}
@@ -46,14 +46,14 @@ response variables.}
 plots.}
 
 \item{list(list("heplot1d"))}{constructs 1-dimensional analogs of HE plots
-for model terms and linear hypotheses for single response variables.} 
+for model terms and linear hypotheses for single response variables.}
 }
 
 For repeated measure designs, between-subject effects and within-subject
 effects must be plotted separately, because the error terms (E matrices)
 differ.  For terms involving within-subject effects, these functions carry
-out a linear transformation of the matrix \bold{Y} of responses to a matrix
-\bold{Y M}, where \bold{M} is the model matrix for a term in the
+out a linear transformation of the matrix \strong{Y} of responses to a matrix
+\strong{Y M}, where \strong{M} is the model matrix for a term in the
 intra-subject design and produce plots of the H and E matrices in this
 transformed space. The vignette \code{repeated} describes these graphical
 methods for repeated measures designs.
@@ -75,7 +75,7 @@ sets with examples of analyses and graphic displays.  Use
 \references{
 Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 Displays for Multivariate Linear Models: SAS Software and Examples.
-\emph{Journal of Statistical Software}, 17(6), 1-42. %
+\emph{Journal of Statistical Software}, 17(6), 1-42. \%
 \url{https://www.jstatsoft.org/v17/i06/},
 \doi{10.18637/jss.v017.i06}
 
@@ -90,37 +90,38 @@ Directions in Statistical Computing}.
 \url{https://socialsciences.mcmaster.ca/jfox/heplots-dsc-paper.pdf}
 
 Friendly, M. (2010). HE Plots for Repeated Measures Designs. \emph{Journal
-of Statistical Software}, 37(4), 1-40. 
+of Statistical Software}, 37(4), 1-40.
 \doi{10.18637/jss.v037.i04}.
 
 Fox, J., Friendly, M. & Weisberg, S. (2013).  Hypothesis Tests for
 Multivariate Linear Models Using the car Package.  \emph{The R Journal},
-\bold{5}(1),
+\strong{5}(1),
 \url{https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf}.
 
 Friendly, M., Monette, G. & Fox, J. (2013).  Elliptical Insights:
 Understanding Statistical Methods Through Elliptical Geometry.
-\emph{Statistical Science}, 2013, \bold{28} (1), 1-39,
+\emph{Statistical Science}, 2013, \strong{28} (1), 1-39,
 \url{http://datavis.ca/papers/ellipses.pdf}.
 
 Friendly, M. & Sigal, M. (2014). Recent Advances in Visualizing Multivariate
-Linear Models. \emph{Revista Colombiana de Estadistica}, \bold{37}, 261-283
-% \url{http://ref.scielo.org/6gq33g}.
+Linear Models. \emph{Revista Colombiana de Estadistica}, \strong{37}, 261-283
+\% \url{http://ref.scielo.org/6gq33g}.
 
 Friendly, M. & Sigal, M. (2016). Graphical Methods for Multivariate Linear
 Models in Psychological Research: An R Tutorial. Submitted for publication.
 }
 \seealso{
-\code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for Anova.mlm computations and tests
+\if{html}{\out{<div class="sourceCode">}}\preformatted{\code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for Anova.mlm computations and tests
 
-    \code{\link[candisc]{candisc-package}} for reduced-rank views in canonical space
+\code{\link[candisc]{candisc-package}} for reduced-rank views in canonical space
 
-    \code{\link[stats]{manova}} for a different approach to testing effects in MANOVA designs
+\code{\link[stats]{manova}} for a different approach to testing effects in MANOVA designs
+}\if{html}{\out{</div>}}
 }
 \author{
 Michael Friendly, John Fox, and Georges Monette
 
-   Maintainer: Michael Friendly, \email{friendly@yorku.ca}, \url{http://datavis.ca}
+Maintainer: Michael Friendly, \email{friendly@yorku.ca}, \url{http://datavis.ca}
 }
 \keyword{aplot}
 \keyword{hplot}

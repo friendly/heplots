@@ -21,8 +21,8 @@ logdetCI(cov, n, conf = 0.95, method = 1, bias.adj = TRUE)
 }
 \value{
 A data frame with one row for each covariance matrix. \code{lower}
-       and \code{upper} are the boundaries of the confidence intervals. Other
-       columns are \code{logdet, bias, se}.
+and \code{upper} are the boundaries of the confidence intervals. Other
+columns are \verb{logdet, bias, se}.
 }
 \description{
 This function uses asymptotic results described by Cai et. al (2016),
@@ -30,9 +30,9 @@ Theorem 1, to calculate approximate, normal theory confidence intervals
 (CIs) for the log determinant of one or more sample covariance matrices.
 }
 \details{
-Their results are translated into a CI via the approximation 
-\deqn{ \log det( \widehat{\Sigma} ) - bias \pm z_{1 - \alpha/2} \times SE } 
-where \eqn{\widehat{\Sigma}} 
+Their results are translated into a CI via the approximation
+\deqn{ \log det( \widehat{\Sigma} ) - bias \pm z_{1 - \alpha/2} \times SE }
+where \eqn{\widehat{\Sigma}}
 is the sample estimate of a population covariance matrix,
 \eqn{bias} is a bias correction constant and \eqn{SE} is a width factor for
 the confidence interval.  Both \eqn{bias} and \eqn{SE} are functions of the
@@ -42,7 +42,6 @@ This function is included here only to provide an approximation to
 \emph{graphical accuracy} for use with Box's M test for equality of
 covariance matrices, \code{\link{boxM}} and its associated
 \code{\link{plot.boxM}} method.
-
 
 Cai et. al (2015) claim that their Theorem 1 holds with either \eqn{p} fixed
 or \eqn{p(n)} growing with \eqn{n}, as long as \eqn{p(n) \le n}. Their

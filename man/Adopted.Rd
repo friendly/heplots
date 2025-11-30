@@ -6,14 +6,14 @@
 \title{Adopted Children}
 \format{
 A data frame with 62 observations on the following 6 variables.
-\describe{ 
-  \item{\code{AMED}}{adoptive mother's years of education (proxy
-for her IQ)} 
-  \item{\code{BMIQ}}{biological mother's score on IQ test}
-  \item{\code{Age2IQ}}{IQ of child at age 2} 
-  \item{\code{Age4IQ}}{IQ of child at age 4} 
-  \item{\code{Age8IQ}}{IQ of child at age 8}
-  \item{\code{Age13IQ}}{IQ of child at age 13} 
+\describe{
+\item{\code{AMED}}{adoptive mother's years of education (proxy
+for her IQ)}
+\item{\code{BMIQ}}{biological mother's score on IQ test}
+\item{\code{Age2IQ}}{IQ of child at age 2}
+\item{\code{Age4IQ}}{IQ of child at age 4}
+\item{\code{Age8IQ}}{IQ of child at age 8}
+\item{\code{Age13IQ}}{IQ of child at age 13}
 }
 }
 \source{
@@ -89,8 +89,8 @@ Friendly, M.  (2010). HE Plots for Repeated Measures Designs.
 \doi{10.18637/jss.v037.i04}.
 
 Skodak, M. and Skeels, H.M. (1949). A Final Follow-up Study of One Hundred
-Adopted Children, 
-\emph{Journal of Genetic Psychology} \bold{75}: 85--125.
+Adopted Children,
+\emph{Journal of Genetic Psychology} \strong{75}: 85--125.
 }
 \seealso{
 \code{\link[Sleuth2]{ex1605}}

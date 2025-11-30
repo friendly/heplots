@@ -6,21 +6,21 @@
 \title{Recovery from Elective Herniorrhaphy}
 \format{
 A data frame with 32 observations on the following 9 variables.
-\describe{ 
-  \item{\code{age}}{patient age} 
-  \item{\code{sex}}{patient sex, a factor with levels \code{f} \code{m}} 
-  \item{\code{pstat}}{physical status (ignoring that associated with the operation). 
-      A 1-5 scale, with 1=perfect health, 5=very poor health.} 
-  \item{\code{build}}{body build, a 1-5 scale, with 1=emaciated, 2=thin, 3=average, 4=fat, 5=obese.}
-  \item{\code{cardiac}}{preoperative complications with heart, 1-4 scale, with 1=none, 2=mild, 3=moderate, 4=severe.} 
-  \item{\code{resp}}{preoperative complications with respiration, 1-4 scale, with 1=none, 2=mild, 
-      3=moderate, 4=severe.} 
-  \item{\code{leave}}{condition upon leaving the recovery room, a 1-4 scale, with 1=routine recovery, 2=intensive care for observation
-      overnight, 3=intensive care, with moderate care required, 4=intensive care,
-      with moderate care required.  } 
-  \item{\code{los}}{length of stay in hospital after operation (days)}
-  \item{\code{nurse}}{level of nursing required one week after operation, a
-      1-5 scale, with 1=intense, 2=heavy, 3=moderate, 4=light, 5=none (?); see Details}
+\describe{
+\item{\code{age}}{patient age}
+\item{\code{sex}}{patient sex, a factor with levels \code{f} \code{m}}
+\item{\code{pstat}}{physical status (ignoring that associated with the operation).
+A 1-5 scale, with 1=perfect health, 5=very poor health.}
+\item{\code{build}}{body build, a 1-5 scale, with 1=emaciated, 2=thin, 3=average, 4=fat, 5=obese.}
+\item{\code{cardiac}}{preoperative complications with heart, 1-4 scale, with 1=none, 2=mild, 3=moderate, 4=severe.}
+\item{\code{resp}}{preoperative complications with respiration, 1-4 scale, with 1=none, 2=mild,
+3=moderate, 4=severe.}
+\item{\code{leave}}{condition upon leaving the recovery room, a 1-4 scale, with 1=routine recovery, 2=intensive care for observation
+overnight, 3=intensive care, with moderate care required, 4=intensive care,
+with moderate care required.  }
+\item{\code{los}}{length of stay in hospital after operation (days)}
+\item{\code{nurse}}{level of nursing required one week after operation, a
+1-5 scale, with 1=intense, 2=heavy, 3=moderate, 4=light, 5=none (?); see Details}
 }
 }
 \source{

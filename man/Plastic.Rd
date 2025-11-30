@@ -6,12 +6,12 @@
 \title{Plastic Film Data}
 \format{
 A data frame with 20 observations on the following 5 variables.
-\describe{ 
-  \item{\code{tear}}{a numeric vector: tear resistance}
-  \item{\code{gloss}}{a numeric vector: film gloss} 
-  \item{\code{opacity}}{a numeric vector: film opacity} 
-  \item{\code{rate}}{a factor representing change in the rate of extrusion with levels \code{Low} (-10\%), \code{High} (10\%)} 
-  \item{\code{additive}}{a factor with levels \code{Low} (1.0\%), \code{High} (1.5\%)} 
+\describe{
+\item{\code{tear}}{a numeric vector: tear resistance}
+\item{\code{gloss}}{a numeric vector: film gloss}
+\item{\code{opacity}}{a numeric vector: film opacity}
+\item{\code{rate}}{a factor representing change in the rate of extrusion with levels \code{Low} (-10\%), \code{High} (10\%)}
+\item{\code{additive}}{a factor with levels \code{Low} (1.0\%), \code{High} (1.5\%)}
 }
 }
 \source{

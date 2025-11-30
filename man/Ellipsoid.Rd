@@ -38,8 +38,8 @@ least 3 columns.}
 
 \item{which}{This parameter selects which variables from the object will be plotted. The default is the first 3.}
 
-\item{method}{the covariance method to be used: classical product-moment (\code{"classical"}), 
-or minimum volume ellipsoid (\code{"mve"}), or 
+\item{method}{the covariance method to be used: classical product-moment (\code{"classical"}),
+or minimum volume ellipsoid (\code{"mve"}), or
 minimum covariance determinant (\code{"mcd"}}
 
 \item{center}{center of the ellipsoid, a vector of length 3, typically the mean vector of data}
@@ -70,7 +70,7 @@ minimum covariance determinant (\code{"mcd"}}
 }
 \value{
 returns the bounding box of the ellipsoid invisibly; otherwise used for it's side effect of
-        drawing the ellipsoid
+drawing the ellipsoid
 }
 \description{
 This is an experimental function designed to separate internal code in \code{link{heplot3d}}.

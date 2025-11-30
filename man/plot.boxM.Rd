@@ -49,8 +49,7 @@ the vertical axis.}
 
 \item{xlim}{x limits for the plot}
 
-\item{conf}{coverage for approximate confidence intervals, \code{0 <= conf <
-1} ; use \code{conf=0} to suppress these}
+\item{conf}{coverage for approximate confidence intervals, \verb{0 <= conf < 1} ; use \code{conf=0} to suppress these}
 
 \item{method}{confidence interval method; see \code{\link{logdetCI}}}
 
@@ -101,12 +100,12 @@ plot(skulls.boxm, gplabel="Epoch", bias.adj=FALSE)
 
 }
 \references{
-Cai, T. T., Liang, T., & Zhou, H. H. (2015). 
-Law of log determinant of sample covariance matrix and optimal estimation of differential entropy for high-dimensional Gaussian distributions. 
-\emph{Journal of Multivariate Analysis}, \bold{137}, 161–172. \doi{10.1016/j.jmva.2015.02.003}.
+Cai, T. T., Liang, T., & Zhou, H. H. (2015).
+Law of log determinant of sample covariance matrix and optimal estimation of differential entropy for high-dimensional Gaussian distributions.
+\emph{Journal of Multivariate Analysis}, \strong{137}, 161–172. \doi{10.1016/j.jmva.2015.02.003}.
 
-Friendly, M., & Sigal, M. (2018). Visualizing Tests for Equality of Covariance Matrices. 
-\emph{The American Statistician}, \bold{72}(4);
+Friendly, M., & Sigal, M. (2018). Visualizing Tests for Equality of Covariance Matrices.
+\emph{The American Statistician}, \strong{72}(4);
 \doi{10.1080/00031305.2018.1497537}.
 Online: \url{https://www.datavis.ca/papers/EqCov-TAS.pdf}.
 }

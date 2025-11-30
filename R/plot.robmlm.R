@@ -6,18 +6,18 @@
 #' respect to the fitted model.
 #' 
 #' 
-#' @param x A \code{"robmlm"} object
-#' @param labels Observation labels for point identification. If not specified, uses \code{rownames} from the
+#' @param x A `"robmlm"` object
+#' @param labels Observation labels for point identification. If not specified, uses `rownames` from the
 #'        original data
 #' @param groups Optional grouping variable, a factor with length equal to the number of observations, used to  identify groups in the plot.
-#' @param group.axis Logical; whether to draw an axis at the top identifying the groups. Not drawn if \code{groups} is missing.
+#' @param group.axis Logical; whether to draw an axis at the top identifying the groups. Not drawn if `groups` is missing.
 #' @param id.weight Threshold for identifying observations with small weights
 #' @param id.pos Position of observation label relative to the point
 #' @param pch Point symbol(s); can be a vector of length equal to the number of
 #'        observations in the data frame.
 #' @param col Point color(s).  Multiple colors can be specified so that each point can be given its own color. If there are fewer colors than points they are recycled in the standard fashion.
 #' @param cex Point character size(s)
-#' @param segments logical; if \code{TRUE}, draw line segments from 1.0 down to
+#' @param segments logical; if `TRUE`, draw line segments from 1.0 down to
 #'        the point
 #' @param xlab x axis label
 #' @param ylab y axis label

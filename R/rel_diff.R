@@ -5,7 +5,7 @@
 #'  
 #' Calculates the relative difference, defined as
 #' \deqn{\frac{\vert x - y \vert}{x} }
-#' between two arrays or data frames, where \code{x} are considered reference values.
+#' between two arrays or data frames, where `x` are considered reference values.
 #' 
 #' @details
 #' Beyond the obvious, a natural use case is to compare coefficients for alternative models for the same data, e.g., a classical
@@ -14,9 +14,9 @@
 #'
 #' @param x  An array or data frame, considered the reference values
 #' @param y  Comparison array or data frame
-#' @param pct Logical; if \code{TRUE} the relative differences are multiplied by 100, giving values in percent difference from \code{x}.
+#' @param pct Logical; if `TRUE` the relative differences are multiplied by 100, giving values in percent difference from `x`.
 #' @param epsilon Threshold for values near zero
-#' @return An array or data frame the same size as \code{x} and \code{y} containing the relative differences
+#' @return An array or data frame the same size as `x` and `y` containing the relative differences
 #' @export
 #' @seealso \code{link{robmlm}}
 #' @examples

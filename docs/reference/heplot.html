@@ -154,14 +154,14 @@ labels are not plotted.</p></dd>
 
 <dt id="arg-label-pos">label.pos<a class="anchor" aria-label="anchor" href="#arg-label-pos"></a></dt>
 <dd><p>Label position, a vector of integers (in <code>0:4</code>) or
-             character strings (in <code>c("center", "bottom", "left", "top", "right")</code>,
-             or in <code>c("C", "S", "W", "N", "E")</code> use in labeling ellipses, recycled
-             as necessary.  Values of 1, 2, 3 and 4, respectively indicate positions
-             below, to the left of, above and to the right of the max/min coordinates of
-             the ellipse; the value 0 specifies the centroid of the <code>ellipse</code>
-             object.  The default, <code>label.pos=NULL</code> uses the correlation of the
+character strings (in <code>c("center", "bottom", "left", "top", "right")</code>,
+or in <code>c("C", "S", "W", "N", "E")</code> use in labeling ellipses, recycled
+as necessary.  Values of 1, 2, 3 and 4, respectively indicate positions
+below, to the left of, above and to the right of the max/min coordinates of
+the ellipse; the value 0 specifies the centroid of the <code>ellipse</code>
+object.  The default, <code>label.pos=NULL</code> uses the correlation of the
 <code>ellipse</code> to determine "top" (r&gt;=0) or "bottom" (r&lt;0).  Even more
-             flexible options are described in <code><a href="label.ellipse.html">label.ellipse</a></code></p></dd>
+flexible options are described in <code><a href="label.ellipse.html">label.ellipse</a></code></p></dd>
 
 
 <dt id="arg-variables">variables<a class="anchor" aria-label="anchor" href="#arg-variables"></a></dt>
@@ -194,8 +194,8 @@ ellipse for the intercept even if it is in the MANOVA table.</p></dd>
 
 <dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
 <dd><p>“type” of sum-of-squares-and-products matrices to compute; one
-of <code>"II"</code>, <code>"III"</code>, <code>"2"</code>, or <code>"3"</code>, where <code>"II"</code>
-is the default (and <code>"2"</code> is a synonym).</p></dd>
+of <code>"II"</code>, `"III"`, `"2"`, or `"3"`, where `"II"`
+is the default (and `"2"` is a synonym).</p></dd>
 
 
 <dt id="arg-idata">idata<a class="anchor" aria-label="anchor" href="#arg-idata"></a></dt>
@@ -251,8 +251,8 @@ in repeated calls.</p></dd>
 <dd><p>how to scale the hypothesis ellipse relative to the error
 ellipse; if <code>"evidence"</code>, the default, the scaling is done so that a
 “significant” hypothesis ellipse at level <code>alpha</code> extends outside of
-the error ellipse. <code>size = "significance"</code> is a synonym and does the same thing.
-If <code>"effect.size"</code>, the hypothesis ellipse is on the
+the error ellipse. `size = "significance"` is a synonym and does the same thing.
+If `"effect.size"`, the hypothesis ellipse is on the
 same scale as the error ellipse.</p></dd>
 
 
@@ -289,8 +289,7 @@ as necessary — are used for the hypothesis ellipses.  A single color can
 be given, in which case it is used for all ellipses.  For convenience, the
 default colors for all heplots produced in a given session can be changed by
 assigning a color vector via <code>options(heplot.colors =c(...)</code>.
-Otherwise, the default colors are <code>c("red", "blue", "black",
-"darkgreen", "darkcyan", "magenta", "brown", "darkgray")</code>.</p></dd>
+Otherwise, the default colors are <code>c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")</code>.</p></dd>
 
 
 <dt id="arg-lty">lty<a class="anchor" aria-label="anchor" href="#arg-lty"></a></dt>
@@ -406,8 +405,7 @@ test has a particularly simple visual interpretation, exploited in the
 <p>For a 1 df hypothesis term (a quantitative regressor, a single contrast or
 parameter test), the H matrix has rank 1 (one non-zero latent root of \(H
 E^{-1}\)) and the H "ellipse" collapses to a degenerate line.</p>
-<p>Typically, you fit a mlm with <code>mymlm &lt;- lm(cbind(y1, y2, y3, ...) ~
-modelterms)</code>, and plot some or all of the <code>modelterms</code> with
+<p>Typically, you fit a mlm with <code>mymlm &lt;- lm(cbind(y1, y2, y3, ...) ~ modelterms)</code>, and plot some or all of the <code>modelterms</code> with
 <code>heplot(mymlm, ...)</code>.  Arbitrary linear hypotheses related to the terms
 in the model (e.g., contrasts of an effect) can be included in the plot
 using the <code>hypotheses</code> argument.  See
@@ -417,7 +415,7 @@ or more variates observed under a within-subject design, between-subject
 effects and within-subject effects must be plotted separately, because the
 error terms (E matrices) differ.  When you specify an intra-subject term
 (<code>iterm</code>), the analysis and HE plots amount to analysis of the matrix
-<b>Y</b> of responses post-multiplied by a matrix <b>M</b> determined by the
+<strong>Y</strong> of responses post-multiplied by a matrix <strong>M</strong> determined by the
 intra-subject design for that term.  See Friendly (2010) or the
 <code>vignette("repeated")</code> in this package for an extended discussion and
 examples.</p>
@@ -437,22 +435,22 @@ value of <code>lty=0</code> in the corresponding position.</p>
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 Displays for Multivariate Linear Models: SAS Software and Examples
-<em>Journal of Statistical Software</em>, <b>17</b>(6), 1–42. <!-- % -->
+<em>Journal of Statistical Software</em>, <strong>17</strong>(6), 1–42. %
 <a href="https://www.jstatsoft.org/v17/i06/" class="external-link">https://www.jstatsoft.org/v17/i06/</a>,
 DOI: 10.18637/jss.v017.i06</p>
 <p>Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
-<em>Journal of Computational and Graphical Statistics</em>, <b>16</b>(2)
+<em>Journal of Computational and Graphical Statistics</em>, <strong>16</strong>(2)
 421–444.  <a href="http://datavis.ca/papers/jcgs-heplots.pdf" class="external-link">http://datavis.ca/papers/jcgs-heplots.pdf</a></p>
 <p>Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
 <em>Journal of Statistical Software</em>, 37(4), 1-40.
 DOI: 10.18637/jss.v037.i04.</p>
 <p>Fox, J., Friendly, M. &amp; Weisberg, S. (2013). Hypothesis Tests for
 Multivariate Linear Models Using the car Package. <em>The R Journal</em>,
-<b>5</b>(1),
+<strong>5</strong>(1),
 <a href="https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf" class="external-link">https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf</a>.</p>
 <p>Friendly, M. &amp; Sigal, M. (2014) Recent Advances in Visualizing Multivariate
-Linear Models. <em>Revista Colombiana de Estadistica</em>, <b>37</b>, 261-283.
-<!-- %\url{http://ref.scielo.org/6gq33g}. --></p>
+Linear Models. <em>Revista Colombiana de Estadistica</em>, <strong>37</strong>, 261-283.
+%<a href="http://ref.scielo.org/6gq33g" class="external-link">http://ref.scielo.org/6gq33g</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -591,7 +589,7 @@ reduced-rank views of <code>mlm</code>s in canonical space.</p></div>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>

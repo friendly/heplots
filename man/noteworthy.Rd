@@ -14,34 +14,34 @@ since \code{\link[grDevices]{xy.coords}(x, y)} is used for construction of the c
 
 \item{method}{Method of point identification. See Details.}
 
-\item{level}{Where appropriate, if supplied, the identified points are filtered so that only those for which the 
-criterion is \code{< level}}
+\item{level}{Where appropriate, if supplied, the identified points are filtered so that only those for which the
+criterion is \verb{< level}}
 
 \item{...}{Other arguments, silently ignored}
 }
 \description{
 This function extends the logic used by \code{\link[car]{showLabels}} to provide a more general
 collection of methods to identify unusual or "noteworthy" points in a two-dimensional display.
-Standard methods include Mahalanobis  and Euclidean distance from the centroid, absolute value of distance from 
+Standard methods include Mahalanobis  and Euclidean distance from the centroid, absolute value of distance from
 the mean of X or Y, absolute value of Y and absolute value of the residual in a model \code{Y ~ X}.
 }
 \details{
-The `method` argument determines how the points to be identified are selected:
+The \code{method} argument determines how the points to be identified are selected:
 \describe{
- \item{\code{"mahal"}}{Treat (x, y) as if it were a bivariate sample, 
-      and select cases according to their Mahalanobis distance from \code{(mean(x), mean(y))}.}
- \item{\code{"dsq"}}{Similar to \code{"mahal"} but uses squared Euclidean distance.}  
- \item{\code{"x"}}{Select points according to their value of \code{abs(x - mean(x))}.}
- \item{\code{"y"}}{Select points according to their value of \code{abs(y - mean(y))}.}
- \item{\code{"r"}}{Select points according to their value of \code{abs(y)}, as may be appropriate 
-      in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot.}
- \item{\code{"ry"}}{Fit the linear model, \code{y ~ x} and select points according to their absolute residuals.}
- \item{case IDs}{\code{method} can be an integer vector of case numbers in \code{1:length{x}}, in which case those cases 
-      will be labeled.}
- \item{numeric vector}{\code{method} can be a vector of the same length as x consisting of values to determine the points 
-      to be labeled. For example, for a linear model \code{mod}, setting \code{method=cooks.distance(mod)} will label the 
-      \code{n} points corresponding to the largest values of Cook's distance. Warning: If missing data are present, 
-      points may be incorrectly selected.}
+\item{\code{"mahal"}}{Treat (x, y) as if it were a bivariate sample,
+and select cases according to their Mahalanobis distance from \verb{(mean(x), mean(y))}.}
+\item{\code{"dsq"}}{Similar to \code{"mahal"} but uses squared Euclidean distance.}
+\item{\code{"x"}}{Select points according to their value of \code{abs(x - mean(x))}.}
+\item{\code{"y"}}{Select points according to their value of \code{abs(y - mean(y))}.}
+\item{\code{"r"}}{Select points according to their value of \code{abs(y)}, as may be appropriate
+in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot.}
+\item{\code{"ry"}}{Fit the linear model, \code{y ~ x} and select points according to their absolute residuals.}
+\item{case IDs}{\code{method} can be an integer vector of case numbers in \code{1:length{x}}, in which case those cases
+will be labeled.}
+\item{numeric vector}{\code{method} can be a vector of the same length as x consisting of values to determine the points
+to be labeled. For example, for a linear model \code{mod}, setting \code{method=cooks.distance(mod)} will label the
+\code{n} points corresponding to the largest values of Cook's distance. Warning: If missing data are present,
+points may be incorrectly selected.}
 }
 
 In the case of \code{method == "mahal"} a value for \code{level} can be supplied.

@@ -2,7 +2,7 @@ Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
 Version: 1.8.0
-Date: 2025-11-23
+Date: 2025-11-28
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -76,7 +76,8 @@ LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
 License: GPL (>= 2)
 URL: https://friendly.github.io/heplots/, https://github.com/friendly/heplots
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Encoding: UTF-8
 VignetteBuilder: knitr, R.rsp
 # Roxygen: list(markdown = TRUE)
+Roxygen: list(markdown = TRUE)

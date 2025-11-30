@@ -1,7 +1,7 @@
 # Find the bounding box of a mesh3d object
 # -- taken from gellipsoid package
 
-#' Find the bounding box of a \code{rgl::mesh3d} or \code{rgl::qmesh3d} object
+#' Find the bounding box of a `rgl::mesh3d` or `rgl::qmesh3d` object
 #' 
 #' Ellipsoids are created by \pkg{rgl} functions as meshes of points, segments, ... from coordinates
 #' in various forms. This function calculates the bounding box, defined as the range of the

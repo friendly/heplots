@@ -15,20 +15,20 @@
 #' This is an experimental function designed to separate internal code in \code{link{heplot3d}}.
 #'
 #' @param x      An object. In the default method the parameter x should be a square positive definite matrix at               least 3x3 in size. It will be treated as the correlation or covariance of a multivariate normal
-#'               distribution. For the \code{data.frame} method, it should be a numeric data frame with at
+#'               distribution. For the `data.frame` method, it should be a numeric data frame with at
 #'               least 3 columns.
 #' @param center center of the ellipsoid, a vector of length 3, typically the mean vector of data
 #' @param which  This parameter selects which variables from the object will be plotted. The default is the first 3.
-#' @param method For the \code{data.frame} method, a character string to specify the covariance method to 
-#'               be used: \emph{classical} product-moment (\code{"classical"}),  or \emph{minimum volume ellipsoid} 
-#'               (\code{"mve"}), or \emph{minimum covariance determinant} (\code{"mcd"}).
+#' @param method For the `data.frame` method, a character string to specify the covariance method to 
+#'               be used: *classical* product-moment (`"classical"`),  or *minimum volume ellipsoid* 
+#'               (`"mve"`), or *minimum covariance determinant* (`"mcd"`).
 #' @param radius size of the ellipsoid
 #' @param df     degrees of freedom associated with the covariance matrix, used to calculate the appropriate F statistic
 #' @param label  label for the ellipsoid
 #' @param cex.label text size of label
 #' @param col    color of the ellipsoid
 #' @param lwd    line with for the wire-frame version
-#' @param segments number of segments composing each ellipsoid; defaults to \code{40}.
+#' @param segments number of segments composing each ellipsoid; defaults to `40`.
 #' @param shade  logical; should the ellipsoid be smoothly shaded?
 #' @param alpha  transparency of the shaded ellipsoid
 #' @param wire   logical; should the ellipsoid be drawn as a wire frame?
@@ -46,9 +46,9 @@
 Ellipsoid <-
   function(x, ...) UseMethod("Ellipsoid")
 
-#' @param method  the covariance method to be used: classical product-moment (\code{"classical"}), 
-#'        or minimum volume ellipsoid (\code{"mve"}), or 
-#'        minimum covariance determinant (\code{"mcd"}
+#' @param method  the covariance method to be used: classical product-moment (`"classical"`), 
+#'        or minimum volume ellipsoid (`"mve"`), or 
+#'        minimum covariance determinant (`"mcd"`
         
 #' @rdname Ellipsoid
 #' @exportS3Method Ellipsoid data.frame

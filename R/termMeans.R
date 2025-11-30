@@ -1,6 +1,6 @@
 #' Calculate Means for a Term in a Multivariate Linear Model
 #' 
-#' \code{termMeans} is a utility function designed to calculate means for the
+#' `termMeans` is a utility function designed to calculate means for the
 #' levels of factor(s) for any term in a multivariate linear model.
 #' 
 #' 
@@ -13,12 +13,12 @@
 #'            level values. Otherwise, the rownames include only the levels of 
 #'            the factor(s), with multiple factors separated by ':'
 #' @param abbrev.levels Either a logical or an integer, specifying whether the
-#'            levels values of the factors in the \code{term} are to be abbreviated in
+#'            levels values of the factors in the `term` are to be abbreviated in
 #'            constructing the rownames.  An integer specifies the minimum length of the
 #'            abbreviation for each factor in the term.
 #' @return Returns a matrix whose columns correspond to the response variables
 #'         in the model and whose rows correspond to the levels of the factor(s) in the
-#'         \code{term}.
+#'         `term`.
 #' @author Michael Friendly
 #' @seealso \code{\link[stats]{aggregate}}, \code{\link[base]{colMeans}}
 #' 

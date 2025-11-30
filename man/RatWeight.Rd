@@ -6,13 +6,13 @@
 \title{Weight Gain in Rats Exposed to Thiouracil and Thyroxin}
 \format{
 A data frame with 27 observations on the following 6 variables.
-\describe{ 
-  \item{\code{trt}}{a factor with levels \code{Control} \code{Thiouracil} \code{Thyroxin}} 
-  \item{\code{wt0}}{Weight at Week 0 (baseline weight)} 
-  \item{\code{wt1}}{Weight at Week 1}
-  \item{\code{wt2}}{Weight at Week 2} 
-  \item{\code{wt3}}{Weight at Week 3}
-  \item{\code{wt4}}{Weight at Week 4} 
+\describe{
+\item{\code{trt}}{a factor with levels \code{Control} \code{Thiouracil} \code{Thyroxin}}
+\item{\code{wt0}}{Weight at Week 0 (baseline weight)}
+\item{\code{wt1}}{Weight at Week 1}
+\item{\code{wt2}}{Weight at Week 2}
+\item{\code{wt3}}{Weight at Week 3}
+\item{\code{wt4}}{Weight at Week 4}
 }
 }
 \source{
@@ -69,7 +69,7 @@ Box, G.E.P. (1950). Problems in the analysis of growth and wear
 curves.  \emph{Biometrics}, 6, 362-389.
 
 Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
-\emph{Journal of Statistical Software}, 37(4), 1-40. 
+\emph{Journal of Statistical Software}, 37(4), 1-40.
 \doi{10.18637/jss.v037.i04}.
 }
 \concept{MANOVA}

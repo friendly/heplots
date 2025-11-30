@@ -6,31 +6,31 @@
 \title{Oslo Transect Subset Data}
 \format{
 A data frame with 332 observations on the following 14 variables.
-\describe{ 
-  \item{\code{site}}{transect site ID, a factor with levels
-     \code{102} \code{103} \code{104} \code{105} \code{106} \code{107} \code{108}
-     \code{109} \code{111} \code{112} \code{113} \code{114} \code{115} \code{116}
-     \code{117} \code{118} \code{119} \code{121} \code{122} \code{123} \code{124}
-     \code{125} \code{126} \code{127} \code{128} \code{129} \code{131} \code{132}
-     \code{133} \code{134} \code{135} \code{136} \code{138} \code{139} \code{141}
-     \code{142} \code{143} \code{144}} 
-  \item{\code{XC}}{X coordinate, a numeric vector} 
-  \item{\code{YC}}{Y coordinate, a numeric vector}
-  \item{\code{forest}}{forest type, a factor with levels \code{birspr}
-      \code{mixdec} \code{pine} \code{sprbir} \code{sprpin} \code{spruce}}
-  \item{\code{weather}}{weather type, a factor with levels \code{cloud}
-      \code{moist} \code{nice} \code{rain}} \item{\code{litho}}{lithological
-      type, a factor with levels \code{camsed} (Cambro-Silurian sedimentary),
-     \code{gneis_o} (Precambrian gneisses - Oslo), \code{gneis_r} (- Randsfjord),
-     \code{magm} (Magmatic rocks)} 
-  \item{\code{altitude}}{altitude, a numeric vector} 
-  \item{\code{Cu}}{Copper, a numeric vector} 
-  \item{\code{Fe}}{Iron, a numeric vector} 
-  \item{\code{K}}{Potassium, a numeric vector}
-  \item{\code{Mg}}{Magnesium, a numeric vector} 
-  \item{\code{Mn}}{Manganese, a numeric vector} 
-  \item{\code{P}}{Lead, a numeric vector}
-  \item{\code{Zn}}{Zinc, a numeric vector} 
+\describe{
+\item{\code{site}}{transect site ID, a factor with levels
+\code{102} \code{103} \code{104} \code{105} \code{106} \code{107} \code{108}
+\code{109} \code{111} \code{112} \code{113} \code{114} \code{115} \code{116}
+\code{117} \code{118} \code{119} \code{121} \code{122} \code{123} \code{124}
+\code{125} \code{126} \code{127} \code{128} \code{129} \code{131} \code{132}
+\code{133} \code{134} \code{135} \code{136} \code{138} \code{139} \code{141}
+\code{142} \code{143} \code{144}}
+\item{\code{XC}}{X coordinate, a numeric vector}
+\item{\code{YC}}{Y coordinate, a numeric vector}
+\item{\code{forest}}{forest type, a factor with levels \code{birspr}
+\code{mixdec} \code{pine} \code{sprbir} \code{sprpin} \code{spruce}}
+\item{\code{weather}}{weather type, a factor with levels \code{cloud}
+\code{moist} \code{nice} \code{rain}} \item{\code{litho}}{lithological
+type, a factor with levels \code{camsed} (Cambro-Silurian sedimentary),
+\code{gneis_o} (Precambrian gneisses - Oslo), \code{gneis_r} (- Randsfjord),
+\code{magm} (Magmatic rocks)}
+\item{\code{altitude}}{altitude, a numeric vector}
+\item{\code{Cu}}{Copper, a numeric vector}
+\item{\code{Fe}}{Iron, a numeric vector}
+\item{\code{K}}{Potassium, a numeric vector}
+\item{\code{Mg}}{Magnesium, a numeric vector}
+\item{\code{Mn}}{Manganese, a numeric vector}
+\item{\code{P}}{Lead, a numeric vector}
+\item{\code{Zn}}{Zinc, a numeric vector}
 }
 }
 \source{

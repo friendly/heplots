@@ -6,11 +6,11 @@
 \title{Dogfood Preferences}
 \format{
 A data frame with 16 observations on the following 3 variables.
- \describe{
-   \item{\code{formula}}{factor, a factor with levels \code{Old}, \code{New}, \code{Major}, \code{Alps}}
-   \item{\code{start}}{numeric, time to start eating}
-   \item{\code{amount}}{numeric, amount eaten}
- }
+\describe{
+\item{\code{formula}}{factor, a factor with levels \code{Old}, \code{New}, \code{Major}, \code{Alps}}
+\item{\code{start}}{numeric, time to start eating}
+\item{\code{amount}}{numeric, amount eaten}
+}
 }
 \source{
 Used in my Psych 6140 lecture notes, \url{http://friendly.apps01.yorku.ca/psy6140/}
@@ -29,10 +29,10 @@ were presented with a bowl of one \code{formula} and the time to \code{start} ea
 In addition to testing the overall effects of \code{formula},
 three useful (and orthogonal) contrasts can specified for this 3-df factor:
 \itemize{
-  \item \code{Ours} vs. \code{Theirs}, with weights \code{c(1, 1, -1, -1)}
-  \item \code{Major} vs. \code{Alps}, with weights \code{c(0, 0,  1, -1)}
-  \item \code{Old} vs. \code{New}, with weights \code{c(1, -1, 0, 0)}
-  }
+\item \code{Ours} vs. \code{Theirs}, with weights \code{c(1, 1, -1, -1)}
+\item \code{Major} vs. \code{Alps}, with weights \code{c(0, 0,  1, -1)}
+\item \code{Old} vs. \code{New}, with weights \code{c(1, -1, 0, 0)}
+}
 Because these are orthogonal contrasts, they fully decompose the main effect of \code{formula},
 in that their sum of squares add to the overall sum of squares.
 }

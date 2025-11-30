@@ -6,18 +6,18 @@
 \title{Grades in a Sociology Course}
 \format{
 A data frame with 40 observations on the following 10 variables.
-\describe{ 
-  \item{\code{class}}{Social class, an ordered factor with levels
-      \code{1} > \code{2} > \code{3}} 
-  \item{\code{sex}}{sex, a factor with levels \code{F} \code{M}} 
-  \item{\code{gpa}}{grade point average}
-  \item{\code{boards}}{College Board test scores}
-  \item{\code{hssoc}}{previous high school unit in sociology, a factor with 2 \code{no}, \code{yes}} 
-  \item{\code{pretest}}{score on course pretest}
-  \item{\code{midterm1}}{score on first midterm exam}
-  \item{\code{midterm2}}{score on second midterm exam}
-  \item{\code{final}}{score on final exam} 
-  \item{\code{eval}}{course evaluation} }
+\describe{
+\item{\code{class}}{Social class, an ordered factor with levels
+\code{1} > \code{2} > \code{3}}
+\item{\code{sex}}{sex, a factor with levels \code{F} \code{M}}
+\item{\code{gpa}}{grade point average}
+\item{\code{boards}}{College Board test scores}
+\item{\code{hssoc}}{previous high school unit in sociology, a factor with 2 \code{no}, \code{yes}}
+\item{\code{pretest}}{score on course pretest}
+\item{\code{midterm1}}{score on first midterm exam}
+\item{\code{midterm2}}{score on second midterm exam}
+\item{\code{final}}{score on final exam}
+\item{\code{eval}}{course evaluation} }
 }
 \source{
 Marascuilo, L. A. and Levin, J. R. (1983). \emph{Multivariate

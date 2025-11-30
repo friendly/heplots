@@ -6,29 +6,29 @@
 \title{Effects Of Physical Attractiveness Upon Mock Jury Decisions}
 \format{
 A data frame with 114 observations on the following 17 variables.
-\describe{ 
-  \item{\code{Attr}}{Attractiveness of the photo, a factor with levels \code{Beautiful} \code{Average} \code{Unattractive}}
-  \item{\code{Crime}}{Type of crime, a factor with levels \code{Burglary} (theft of items from victim's room) \code{Swindle} (conned a male victim)}
-  \item{\code{Years}}{length of sentence given the defendant by the mock juror subject} 
-  \item{\code{Serious}}{a rating of how serious the subject thought the defendant's crime was} 
-  \item{\code{exciting}}{rating of the photo for 'exciting'} 
-  \item{\code{calm}}{rating of the photo for 'calm'}
-  \item{\code{independent}}{rating of the photo for 'independent'}
-  \item{\code{sincere}}{rating of the photo for 'sincere'}
-  \item{\code{warm}}{rating of the photo for 'warm'}
-  \item{\code{phyattr}}{rating of the photo for 'physical attractiveness'}
-  \item{\code{sociable}}{rating of the photo for 'exciting'}
-  \item{\code{kind}}{rating of the photo for 'kind'}
-  \item{\code{intelligent}}{rating of the photo for 'intelligent'}
-  \item{\code{strong}}{rating of the photo for 'strong'}
-  \item{\code{sophisticated}}{rating of the photo for 'sophisticated'}
-  \item{\code{happy}}{rating of the photo for 'happy'}
-  \item{\code{ownPA}}{self-rating of the subject for 'physical attractiveness'} 
+\describe{
+\item{\code{Attr}}{Attractiveness of the photo, a factor with levels \code{Beautiful} \code{Average} \code{Unattractive}}
+\item{\code{Crime}}{Type of crime, a factor with levels \code{Burglary} (theft of items from victim's room) \code{Swindle} (conned a male victim)}
+\item{\code{Years}}{length of sentence given the defendant by the mock juror subject}
+\item{\code{Serious}}{a rating of how serious the subject thought the defendant's crime was}
+\item{\code{exciting}}{rating of the photo for 'exciting'}
+\item{\code{calm}}{rating of the photo for 'calm'}
+\item{\code{independent}}{rating of the photo for 'independent'}
+\item{\code{sincere}}{rating of the photo for 'sincere'}
+\item{\code{warm}}{rating of the photo for 'warm'}
+\item{\code{phyattr}}{rating of the photo for 'physical attractiveness'}
+\item{\code{sociable}}{rating of the photo for 'exciting'}
+\item{\code{kind}}{rating of the photo for 'kind'}
+\item{\code{intelligent}}{rating of the photo for 'intelligent'}
+\item{\code{strong}}{rating of the photo for 'strong'}
+\item{\code{sophisticated}}{rating of the photo for 'sophisticated'}
+\item{\code{happy}}{rating of the photo for 'happy'}
+\item{\code{ownPA}}{self-rating of the subject for 'physical attractiveness'}
 }
 }
 \source{
 Originally obtained from Dr. Wuensch's StatData page at East Carolina University. No longer exists.
-% was: https://core.ecu.edu/wuenschk/StatData/PLASTER.dat
+\% was: https://core.ecu.edu/wuenschk/StatData/PLASTER.dat
 }
 \description{
 Male participants were shown a picture of one of three young women.  Pilot

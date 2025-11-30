@@ -7,18 +7,18 @@
 \format{
 A data frame with 70 observations on the following 8 variables.
 
-\describe{ 
-  \item{\code{education}}{Education level of mother as measured by the percentage of high school graduates among female parents}
-  \item{\code{occupation}}{Highest occupation of a family member according
-      to a pre-arranged rating scale} 
-  \item{\code{visit}}{ Parental visits index,
-     representing the number of visits to the school site}
-  \item{\code{counseling}}{Parent counseling index, calculated from data on
-      time spent with child on school-related topics such as reading together, etc.} 
-  \item{\code{teacher}}{Number of teachers at the given site}
-  \item{\code{reading}}{ Reading score as measured by the Metropolitan Achievement Test} 
-  \item{\code{mathematics}}{Mathematics score as measured by the Metropolitan Achievement Test} 
-  \item{\code{selfesteem}}{Coopersmith Self-Esteem Inventory, intended as a measure of self-esteem} 
+\describe{
+\item{\code{education}}{Education level of mother as measured by the percentage of high school graduates among female parents}
+\item{\code{occupation}}{Highest occupation of a family member according
+to a pre-arranged rating scale}
+\item{\code{visit}}{ Parental visits index,
+representing the number of visits to the school site}
+\item{\code{counseling}}{Parent counseling index, calculated from data on
+time spent with child on school-related topics such as reading together, etc.}
+\item{\code{teacher}}{Number of teachers at the given site}
+\item{\code{reading}}{ Reading score as measured by the Metropolitan Achievement Test}
+\item{\code{mathematics}}{Mathematics score as measured by the Metropolitan Achievement Test}
+\item{\code{selfesteem}}{Coopersmith Self-Esteem Inventory, intended as a measure of self-esteem}
 }
 }
 \source{
@@ -36,7 +36,6 @@ and teachers.
 \details{
 A number of observations are unusual, a fact only revealed by
 plotting.
-
 
 The study was designed to compare schools using Program Follow Through (PFT)
 management methods of taking actions to achieve goals with those of
@@ -106,7 +105,7 @@ heplot(school.rmod,
 \references{
 A. Charnes, W.W. Cooper and E. Rhodes (1981). Evaluating Program and
 Managerial Efficiency: An Application of Data Envelopment Analysis to
-Program Follow Through. \emph{Management Science}, \bold{27}, 668-697.
+Program Follow Through. \emph{Management Science}, \strong{27}, 668-697.
 }
 \seealso{
 \code{\link{schoolsites}}

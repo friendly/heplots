@@ -6,14 +6,14 @@
 \title{Reaction Time Data}
 \format{
 A data frame with 10 observations giving the reaction time for the 6
-conditions.  
-\describe{ 
-  \item{\code{deg0NA}}{a numeric vector}
-  \item{\code{deg4NA}}{a numeric vector} 
-  \item{\code{deg8NA}}{a numeric vector} 
-  \item{\code{deg0NP}}{a numeric vector} 
-  \item{\code{deg4NP}}{a numeric vector} 
-  \item{\code{deg8NP}}{a numeric vector} 
+conditions.
+\describe{
+\item{\code{deg0NA}}{a numeric vector}
+\item{\code{deg4NA}}{a numeric vector}
+\item{\code{deg8NA}}{a numeric vector}
+\item{\code{deg0NP}}{a numeric vector}
+\item{\code{deg4NP}}{a numeric vector}
+\item{\code{deg8NP}}{a numeric vector}
 }
 }
 \source{
@@ -63,7 +63,7 @@ with(means.df, {
 }
 \references{
 Michael Friendly (2010). HE Plots for Repeated Measures Designs.
-\emph{Journal of Statistical Software}, 37(4), 1-40. 
+\emph{Journal of Statistical Software}, 37(4), 1-40.
 \doi{10.18637/jss.v037.i04}.
 
 Maxwell, S. E. & Delaney, H. D. (1990).  \emph{Designing Experiments and

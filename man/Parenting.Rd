@@ -6,12 +6,12 @@
 \title{Father Parenting Competence}
 \format{
 A data frame with 60 observations on the following 4 variables.
-\describe{ 
-  \item{\code{group}}{a factor with levels \code{Normal}
-      \code{Physical Disability} \code{Mental Disability}}
-  \item{\code{caring}}{caretaking responsibilities, a numeric vector}
-  \item{\code{emotion}}{emotional support provided to the child, a numeric vector} 
-  \item{\code{play}}{recreational time spent with the child, a numeric vector} 
+\describe{
+\item{\code{group}}{a factor with levels \code{Normal}
+\verb{Physical Disability} \verb{Mental Disability}}
+\item{\code{caring}}{caretaking responsibilities, a numeric vector}
+\item{\code{emotion}}{emotional support provided to the child, a numeric vector}
+\item{\code{play}}{recreational time spent with the child, a numeric vector}
 }
 }
 \source{

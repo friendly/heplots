@@ -44,18 +44,18 @@ suppressed}
 }
 \value{
 A list with class \code{c("htest", "boxM")} containing the following
-components: 
+components:
 \item{statistic }{an approximated value of the chi-square
-distribution.} 
+distribution.}
 \item{parameter }{the degrees of freedom related of the test
 statistic in this case that it follows a Chi-square distribution.}
-\item{p.value }{the p-value of the test.} 
+\item{p.value }{the p-value of the test.}
 \item{cov }{a list containing the
-within covariance matrix for each level of \code{grouping}.} 
-\item{pooled}{the pooled covariance matrix.} 
+within covariance matrix for each level of \code{grouping}.}
+\item{pooled}{the pooled covariance matrix.}
 \item{logDet }{a vector containing the natural logarithm of each matrix in \code{cov}, followed by the value for
-the pooled covariance matrix} 
-\item{means}{a matrix of the means for all groups, followed by the grand means} 
+the pooled covariance matrix}
+\item{means}{a matrix of the means for all groups, followed by the grand means}
 \item{df}{a vector of the degrees of freedom for all groups, followed by that for the pooled covariance matrix}
 \item{data.name }{a character string giving the names of the data.}
 \item{method }{the character string "Box's M-test for Homogeneity of
@@ -89,15 +89,15 @@ worse.
 
 The \code{summary} method prints a variety of additional statistics based on
 the eigenvalues of the covariance matrices.  These are returned invisibly,
-as a list containing the following components: 
-\itemize{ 
-\item \code{logDet} - log determinants 
-\item \code{eigs} - eigenvalues of the covariance matrices 
-\item \code{eigstats} - statistics computed on the eigenvalues for each covariance matrix:\cr 
-    \code{product}: the product of eigenvalues, \eqn{\prod{\lambda_i}};\cr 
-    \code{sum}: the sum of eigenvalues, \eqn{\sum{\lambda_i}};\cr 
-    \code{precision}: the average precision of eigenvalues, \eqn{1/\sum(1/\lambda_i)};\cr 
-    \code{max}: the maximum eigenvalue, \eqn{\lambda_1} 
+as a list containing the following components:
+\itemize{
+\item \code{logDet} - log determinants
+\item \code{eigs} - eigenvalues of the covariance matrices
+\item \code{eigstats} - statistics computed on the eigenvalues for each covariance matrix:\cr
+\code{product}: the product of eigenvalues, \eqn{\prod{\lambda_i}};\cr
+\code{sum}: the sum of eigenvalues, \eqn{\sum{\lambda_i}};\cr
+\code{precision}: the average precision of eigenvalues, \eqn{1/\sum(1/\lambda_i)};\cr
+\code{max}: the maximum eigenvalue, \eqn{\lambda_1}
 }
 }
 \examples{

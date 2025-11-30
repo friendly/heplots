@@ -34,7 +34,7 @@ interpPlot(
 \item{xy2}{Second data set, a 2-column matrix or data.frame}
 
 \item{alpha}{The value of the interpolation fraction, typically (but not
-necessarily) \code{0 <= alpha <= 1)}.}
+necessarily) \verb{0 <= alpha <= 1)}.}
 
 \item{xlim, ylim}{x, y limits for the plot.  If not specified, the function
 uses the ranges of \code{rbind(xy1, xy2)}.}
@@ -88,7 +88,7 @@ line, and line segments showing the movement of points.
 
 Interpolations other than linear can be obtained by using a non-linear
 series of \code{alpha} values.  For example
-\code{alpha=sin(seq(0,1,.1)/sin(1)} will give a sinusoid interpolation.
+\verb{alpha=sin(seq(0,1,.1)/sin(1)} will give a sinusoid interpolation.
 }
 \note{
 The examples here just use on-screen animations to the console
@@ -205,7 +205,7 @@ saveGIF({
 }
 \seealso{
 \code{\link[car]{dataEllipse}}, \code{\link[car]{showLabels}},
-   \code{\link[animation]{animation}}
+\code{\link[animation]{animation}}
 }
 \author{
 Michael Friendly

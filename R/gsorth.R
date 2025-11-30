@@ -10,12 +10,12 @@
 
 #' Orthogonalize successive columns of a data frame or matrix
 #' 
-#' \code{gsorth} uses sequential, orthogonal projections, as in the
+#' `gsorth` uses sequential, orthogonal projections, as in the
 #' Gram-Schmidt method, to transform a matrix or numeric columns of a data
 #' frame into an uncorrelated set, possibly retaining the same column means and
 #' standard deviations as the original.
 #' 
-#' In statistical applications, interpretation depends on the \code{order} of
+#' In statistical applications, interpretation depends on the `order` of
 #' the variables orthogonalized. In multivariate linear models, orthogonalizing
 #' the response, Y variables provides the equivalent of step-down tests, where
 #' Y1 is tested alone, and then Y2.1, Y3.12, etc. can be tested to determine
@@ -24,24 +24,24 @@
 #' Similarly, orthogonalizing the model X variables provides the equivalent of
 #' Type I tests, such as provided by \code{\link[stats]{anova}}.
 #' 
-#' The method is equivalent to setting each of columns \code{2:p} to the
+#' The method is equivalent to setting each of columns `2:p` to the
 #' residuals from a linear regression of that column on all prior columns,
 #' i.e.,
 #' 
-#' \code{z[,j] <- resid( lm( z[,j] ~ as.matrix(z[,1:(j-1)]), data=z) )}
+#' `z[,j] <- resid( lm( z[,j] ~ as.matrix(z[,1:(j-1)]), data=z) )`
 #' 
 #' However, for accuracy and speed the transformation is carried out using the
 #' QR decomposition.
 #' 
 #' @param y A numeric data frame or matrix
 #' @param order An integer vector specifying the order of and/or a subset of
-#'        the columns of \code{y} to be orthogonalized. If missing, \code{order=1:p}
-#'        where \code{p=ncol(y)}.
-#' @param recenter If \code{TRUE}, the result has same column means as
-#'        original; else means = 0 for cols \code{2:p}.
-#' @param rescale If \code{TRUE}, the result has same column standard
-#'        deviations as original; else sd = residual variance for cols \code{2:p}
-#' @param adjnames If \code{TRUE}, the column names of the result are adjusted
+#'        the columns of `y` to be orthogonalized. If missing, `order=1:p`
+#'        where `p=ncol(y)`.
+#' @param recenter If `TRUE`, the result has same column means as
+#'        original; else means = 0 for cols `2:p`.
+#' @param rescale If `TRUE`, the result has same column standard
+#'        deviations as original; else sd = residual variance for cols `2:p`
+#' @param adjnames If `TRUE`, the column names of the result are adjusted
 #'        to the form Y1, Y2.1, Y3.12, by adding the suffixes '.1', '.12', etc. to the
 #'        original column names.
 #' @return Returns a matrix or data frame with uncorrelated columns.  Row and

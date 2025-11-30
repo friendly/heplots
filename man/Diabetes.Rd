@@ -6,18 +6,18 @@
 \title{Diabetes Dataset}
 \format{
 A data frame with 145 observations on the following 6 variables.
-\describe{ 
-  \item{\code{relwt}}{relative weight, expressed as the ratio of actual weight to expected weight, given the person's height, a numeric vector} 
-  \item{\code{glufast}}{fasting plasma glucose level, a numeric vector} 
-  \item{\code{glutest}}{test plasma glucose level, a measure of glucose intolerance, a numeric vector} 
-  \item{\code{instest}}{plasma insulin during test, a measure of insulin response to oral glucose, a numeric vector} 
-  \item{\code{sspg}}{steady state plasma glucose, a measure of insulin resistance, a numeric vector} 
-  \item{\code{group}}{diagnostic group, a factor with levels \code{Normal} \code{Chemical_Diabetic}
-      \code{Overt_Diabetic}} 
+\describe{
+\item{\code{relwt}}{relative weight, expressed as the ratio of actual weight to expected weight, given the person's height, a numeric vector}
+\item{\code{glufast}}{fasting plasma glucose level, a numeric vector}
+\item{\code{glutest}}{test plasma glucose level, a measure of glucose intolerance, a numeric vector}
+\item{\code{instest}}{plasma insulin during test, a measure of insulin response to oral glucose, a numeric vector}
+\item{\code{sspg}}{steady state plasma glucose, a measure of insulin resistance, a numeric vector}
+\item{\code{group}}{diagnostic group, a factor with levels \code{Normal} \code{Chemical_Diabetic}
+\code{Overt_Diabetic}}
 }
 }
 \source{
-Andrews, D. F. & Herzberg, A. M. (1985).  
+Andrews, D. F. & Herzberg, A. M. (1985).
 \emph{Data: A Collection
 of Problems from Many Fields for the Student and Research Worker},
 Springer-Verlag, Ch. 36.
