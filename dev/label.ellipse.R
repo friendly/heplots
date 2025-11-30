@@ -1,17 +1,25 @@
+# Dev version of label.ellipse
+# 
+# TODO: Generalize the `label.pos` argument to accept, in addition to values `0:4` and corresponding compass directions, N, S, E, W values:
+#   * `NE`, `SE`, `SW`, `NW` to mean at circular angles 45, 135, 225, 315
+
+
 #'  Label an ellipse
 #'
 #' @description 
 #'  \code{label.ellipse} is used to a draw text label on an ellipse at its center or
-#'  somewhere around the periphery in a very flexible way.
+#'  somewhere around the periphery in a very flexible way. It is used in \code{link{heplot}}, \code{link{covEllipses}}, and
+#'  \code{link{coefplot.mlm}}, but is also useful as a utility when plotting ellipses in base R graphics.
+#'  }
 #'
 #' @details 
 #' If \code{label.pos=NULL}, the function uses the sign of the correlation \eqn{r}
 #' represented by the ellipse to determine a position
-#' at the top (\eqn{r>=0}) or bottom (\eqn{r<0}) of the ellipse.
+#' at the "top" (\eqn{r>=0}) or "bottom" (\eqn{r<0}) of the ellipse.
 
 #' Integer values of 0, 1, 2, 3 and 4, respectively indicate positions 
 #' at the center, below, to the left of, above 
-#' and to the right of the max/min coordinates of the ellipse.
+#' and to the right of the max/min coordinates of the `ellipse`.
 #' Label positions can also be specified as the corresponding character strings
 #' \code{c("center", "bottom", "left", "top", "right")}, or compass directions, 
 #' \code{c("C", "S", "W", "N", "E")}, or  ADD FURTHER DESCRIPTION for NE, NW, SE, SW
@@ -102,14 +110,14 @@ label.ellipse <- function(
 	  label.pos <- label.pos[1]    # only use 1st if > 1
 	}
 	
-	#		index <- if (1:4 %% 2) ... 
 
+  # TODO: add compass positions SE, SW, ... 
+	# post <- c("SE", "SW", "NW", "NE")
+	# numt <- c(.125, .375, .625, .875)
+	
   # translate nmemonics to standard numerical text positions 1:4,
 	posn <- c("center", "bottom", "left", "top", "right")
 	poss <- c("C",      "S",      "W",    "N",   "E")
-  # TODO: add compass positions SE, SW, ...
-	post <- c("SE", "SW", "NW", "NE")
-	numt <- c(.125, .375, .625, .875)
 	if (is.character(label.pos)) {
 	  if (label.pos %in% posn) label.pos <- pmatch(label.pos, posn, nomatch=3) - 1
 	  if (label.pos %in% poss) label.pos <- pmatch(label.pos, poss, nomatch=3) - 1
@@ -144,6 +152,7 @@ label.ellipse <- function(
 			pos <-3
     	}
 	else  {  # use as index into ellipse coords
+	  # FIXME: This code was attempting to use a number between 0-1 as an index into the rows of the ellipse. Bad idea. Replace.
 	  if (0 < label.pos & label.pos < 1) 
 	    label.pos <- floor(label.pos * nrow(ellipse))
 	  index <- max(1, min(label.pos, nrow(ellipse)))

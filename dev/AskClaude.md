@@ -90,3 +90,9 @@ Would be similar to
 ```
 update(mod, data = scale(data))
 ```
+
+## label.ellipse
+
+A function, `label.ellipse()` in my {heplots} package is designed to draw labels on ellipses using base R graphics.
+The package is on Github at https://github.com/friendly/heplots. The version of this function I want help with is
+at: 
