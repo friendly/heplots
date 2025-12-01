@@ -33,34 +33,38 @@ or subtracted to the calculated (x, y) values.}
 }
 \description{
 \code{label.ellipse} is used to a draw text label on an ellipse at its center or
-somewhere around the periphery in a very flexible way. It is used in \code{link{heplot}}, \code{link{covEllipses}}, and
-\code{link{coefplot.mlm}}, but is also useful as a utility when plotting ellipses in base R graphics.
+somewhere around the periphery in a very flexible way. It is used in \code{\link{heplot}}, \code{\link{covEllipses}}, and
+\code{\link{coefplot.mlm}}, but is also useful as a utility when plotting ellipses in base R graphics.
 }
 \details{
 The function takes the coordinates of the input \code{ellipse} and uses that, together with \code{label.pos} to calculate the
 (x, y) coordinates to be passed to \code{\link[graphics]{text}} along with a computed \code{pos} argument.
-The values of \code{tweak} are applied to (x, y) to position the labels to the outside of the ellipse.
+The values of \code{tweak} are applied to (x, y) to position the labels to the outside of the ellipse by default.
 
 The \code{label.pos} argument implements a very general way to position the text label with respect to the ellipse:
 
-If \code{label.pos = NULL} (the default), the function uses the sign of the correlation \eqn{r}
+\itemize{
+
+\item If \code{label.pos = NULL} (the default), the function uses the sign of the correlation \eqn{r}
 represented by the ellipse to determine a position
 at the "top" (\eqn{r >= 0}) or "bottom" (\eqn{r < 0}) of the ellipse.
-Integer values of 0, 1, 2, 3 and 4, respectively indicate positions
+\item  Integer values of 0, 1, 2, 3 and 4, respectively indicate positions
 at the center, below, to the left of, above
 and to the right of the max/min coordinates of the \code{ellipse}, where the values \code{1:4} correspond to the
 usual values of \code{pos} in \code{\link[graphics]{text}}.
 
-Label positions can also be specified as the corresponding character strings
+\item  Label positions can also be specified as the corresponding character strings
 \code{c("center", "bottom", "left", "top", "right")}, or \emph{compass directions},
 \code{c("C", "S", "W", "N", "E")}. Additionally, \emph{diagonal} compass directions
 \code{c("NE", "SE", "SW", "NW")} can be used, corresponding to angles 45, 135, 225,
 and 315 degrees, clockwise from 0 at North.
 
-Even more generally, \code{label.pos} can also be a \emph{fraction} in (0,1), interpreted
-as the fraction of the way around the unit circle, counterclockwise from the North point (1,0).
+\item  Even more generally, \code{label.pos} can also be a \emph{fraction} in (0,1), interpreted
+as the fraction of the way around the unit circle, counterclockwise from the North point (0, 1).
+}
 }
 \examples{
+# Helper, to compute a circle
 circle <- function(center=c(0,0), radius=1, segments=60) {
   angles <- (0:segments)*2*pi/segments
   circle <- radius * cbind( cos(angles), sin(angles))
@@ -70,18 +74,19 @@ circle <- function(center=c(0,0), radius=1, segments=60) {
 # Create a circular ellipse
 circ <- circle(radius=1.5)
 
-plot(-2:2, -2:2, type="n", asp=1, 
+plot(-2:2, -2:2, 
+     type="n", asp=1, 
      main="Compass Directions on Circle\n(Cardinal + Diagonal)")
 lines(circ, col="gray", lwd=2)
 points(0, 0, pch="+", cex=2)
 
-# Cardinal directions (existing)
+# Cardinal directions 
 cardinal <- c("N", "E", "S", "W")
 for (pos in cardinal) {
   label.ellipse(circ, label=pos, label.pos=pos, col="red", cex=1.2, font=2)
 }
 
-# Diagonal directions (new)
+# Diagonal directions (recently added)
 diagonal <- c("NE", "SE", "SW", "NW")
 for (pos in diagonal) {
   label.ellipse(circ, label=pos, label.pos=pos, col="blue", cex=1.2, font=2)
@@ -95,12 +100,14 @@ abline(h=0, v=0, col="lightgray", lty=2)
 abline(a=0, b=1, col="lightgray", lty=2)   # 45° line
 abline(a=0, b=-1, col="lightgray", lty=2)  # -45° line
 
-legend("bottomleft", legend=c("Cardinal (N,E,S,W)", "Diagonal (NE,SE,SW,NW)", "Center"),
-       col=c("red", "blue", "darkgreen"), lwd=2, bty="n")
+legend("bottomleft", 
+       legend=c("Cardinal (N,E,S,W)", "Diagonal (NE,SE,SW,NW)", "Center"),
+       col=c("red", "blue", "darkgreen"),
+       lwd=2,  bty="n")
 
 }
 \seealso{
-\code{\link[car]{ellipse}}, \code{\link{heplot}}, \code{link{covEllipses}}
+\code{\link[graphics]{text}}, \code{\link[car]{ellipse}}, \code{\link{heplot}}, \code{\link{covEllipses}}
 }
 \author{
 Michael Friendly
