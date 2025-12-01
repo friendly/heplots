@@ -65,6 +65,45 @@ if(FALSE) {
   
   library(lm.beta)
   lm.beta::lm.beta(mod)
+  
+  # update method?
+  update(mod, 
+         data = Prestige |>
+           dplyr::mutate(across(where(is.numeric), scale)))
+
+  # does this work for an MLM? Only standardize the predictors?
+  data(dogfood, package = "heplots")
+  dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+  dogfood.mod
+
+  heplot(dogfood.mod, 
+         fill = TRUE, fill.alpha = 0.1)
+  
+  # try label.pos
+  heplot(dogfood.mod, 
+         fill = TRUE, fill.alpha = 0.1,
+         label.pos = c("NE", "SW"), cex = 1.4)
+  
+  #
+  
+  dogfood.std <- update(dogfood.mod,
+                        data = dogfood |>
+                          dplyr::mutate(across(where(is.numeric), scale)))
+  dogfood.std
+
+  # Problem: predictors aren't named  
+# Coefficients:
+#               [,1]     [,2]   
+# (Intercept)   -0.7726   1.0770
+# formulaNew     0.6506  -0.8058
+# formulaMajor   1.3012  -1.5187
+# formulaAlps    1.1386  -1.9836
+
+  heplot(dogfood.std)
+  
+# gives error:
+# Error in Y[, vars] : subscript out of bounds  
+    
 
   
 }

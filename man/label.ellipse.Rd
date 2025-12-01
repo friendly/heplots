@@ -107,6 +107,22 @@ legend("bottomleft",
        col=c("red", "blue", "darkgreen"),
        lwd=2,  bty="n")
 
+# Use in `heplot()`
+data(dogfood, package = "heplots")
+dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+
+# default: top or bottom, depending on sign of the ellipse
+heplot(dogfood.mod, 
+       fill = TRUE, fill.alpha = 0.1)
+       
+# change label.pos and cex
+heplot(dogfood.mod, 
+       fill = TRUE, fill.alpha = 0.1,
+       label.pos = c("NE", "SW"), cex = 1.4)
+
+
+# Define diagonal compass positions and their corresponding angular fractions
+# translate nmemonics to standard numerical text positions 1:4,
 }
 \seealso{
 \code{\link[graphics]{text}}, \code{\link[car]{ellipse}}, \code{\link{heplot}}, \code{\link{covEllipses}}

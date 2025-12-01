@@ -88,9 +88,15 @@ Chat URL: https://claude.ai/chat/f445d123-621e-4591-b57c-dbcf12298e64
 
 ## Transform a LM/MLM to use standardized variables.
 
---> dev/scale-test.R
+The main use for this is in plots of coefficients of linear and multivariate linear models, to put the predictor and
+response variables on standardized scales.
 
-Would be similar to
+Some examples of standardizing coefficients in  `dev/standardize.R`
+
+But what I want is something that will give a new "lm" or "mlm" object where all numeric variables
+have been replaced with their standardized (`scale()`) equivalents.
+
+The function should be called `lm.std()` and take exactly the same set of arguments that `lm()` allows.
 
 ```
 update(mod, data = scale(data))

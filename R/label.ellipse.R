@@ -99,11 +99,24 @@
 #'        col=c("red", "blue", "darkgreen"),
 #'        lwd=2,  bty="n")
 #' 
-#' @export label.ellipse
+#' # Use in `heplot()`
+#' data(dogfood, package = "heplots")
+#' dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+#' 
+#' # default: top or bottom, depending on sign of the ellipse
+#' heplot(dogfood.mod, 
+#'        fill = TRUE, fill.alpha = 0.1)
+#'        
+#' # change label.pos and cex
+#' heplot(dogfood.mod, 
+#'        fill = TRUE, fill.alpha = 0.1,
+#'        label.pos = c("NE", "SW"), cex = 1.4)
+#' 
+#' 
 label.ellipse <- function(
-    ellipse, 
-    label, 
-    col = "black", 
+    ellipse,
+    label,
+    col = "black",
 		label.pos = NULL, 
 		xpd = TRUE, 
 		tweak = 0.5*c(strwidth("M"), strheight("M")), 
@@ -122,11 +135,11 @@ label.ellipse <- function(
 	}
 	
 
-  # Define diagonal compass positions and their corresponding angular fractions
+#' # Define diagonal compass positions and their corresponding angular fractions
 	post <- c("NE", "SE", "SW", "NW")
 	numt <- c(45, 135, 225, 315) / 360  # Convert degrees to fraction of circle
 	
-  # translate nmemonics to standard numerical text positions 1:4,
+#' # translate nmemonics to standard numerical text positions 1:4,
 	posn <- c("center", "bottom", "left", "top", "right")
 	poss <- c("C",      "S",      "W",    "N",   "E")
 	
@@ -167,7 +180,7 @@ label.ellipse <- function(
 			x <- mean(ellipse[, 1])
 			y <- mean(ellipse[, 2]) - tweak[2]
 			pos <-3
-    	}
+     	}
 	else  {  # use as fraction of circle or index into ellipse coords
 	  if (0 < label.pos & label.pos < 1) {
 	    # label.pos is a fraction of the way around the circle
