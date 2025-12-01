@@ -3,9 +3,14 @@
 ## predict.mlm
 
 Goal: Extend the predict methods for linear models to multivariate ones. That is, the function `predict.lm()` 
-provides fitted values and standard errors for observations in any linear model fit by `lm()`.
-`predict.glm()` is similar for generalized linear models. What I want is a function `predict.mlm()`
+provides fitted values and standard errors for observations in any univariate linear model fit by `lm()`.
+`predict.glm()` is similar for generalized linear models. 
+
+What I want is a function `predict.mlm()`
 for multivariate models of the form: `lm( cbind(y1, y2) = x1 + x2 + x3)`
+The current version, `stats::predict.lm()` does handle multiple outcome variables, but does not provide standard errors
+as an `se.fit` component. That's because these become $p \times p$ matrices when there are $p > 1$ response variables.
+
 
 # This function is an attempt to put together the ideas in 
 #   http://users.stat.umn.edu/~helwig/notes/mvlr-Notes.pdf
@@ -95,4 +100,7 @@ update(mod, data = scale(data))
 
 A function, `label.ellipse()` in my {heplots} package is designed to draw labels on ellipses using base R graphics.
 The package is on Github at https://github.com/friendly/heplots. The version of this function I want help with is
-at: 
+at: https://raw.githubusercontent.com/friendly/heplots/refs/heads/master/dev/label.ellipse.R
+I want to generalize the `label.pos` argument that determines the position on the ellipse where the label
+is placed. It currently accepts `0:4` and corresponding compass directions, "C" (center) "N", "S", "E", "W" values.
+I'd like you to add code for another set of compass-like values, `NE`, `SE`, `SW`, `NW` to mean at circular angles 45, 135, 225, 315.
