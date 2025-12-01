@@ -167,7 +167,9 @@ label.ellipse <- function(
 	    center_y <- mean(ellipse[, 2])
 	    
 	    # Calculate target angle (in radians, counterclockwise from (1,0))
+	    # Convert to range [-pi, pi] to match atan2 output
 	    target_angle <- 2 * pi * label.pos
+	    if (target_angle > pi) target_angle <- target_angle - 2*pi
 	    
 	    # Calculate angles for all points on the ellipse relative to center
 	    angles <- atan2(ellipse[, 2] - center_y, ellipse[, 1] - center_x)

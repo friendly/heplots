@@ -22,7 +22,9 @@
 #' and to the right of the max/min coordinates of the `ellipse`.
 #' Label positions can also be specified as the corresponding character strings
 #' \code{c("center", "bottom", "left", "top", "right")}, or compass directions, 
-#' \code{c("C", "S", "W", "N", "E")}, or  ADD FURTHER DESCRIPTION for NE, NW, SE, SW
+#' \code{c("C", "S", "W", "N", "E")}. Additionally, diagonal compass directions
+#' \code{c("NE", "SE", "SW", "NW")} can be used, corresponding to angles 45, 135, 225, 
+#' and 315 degrees, respectively.
 #'
 #' # TODO: DELETE THIS -- too hard to use in terms of figuring out the indices of the rows of the ellipse
 #' Other integer \code{label.pos} values, \code{5:nrow(ellipse)} are taken as indices of the row coordinates
@@ -111,17 +113,23 @@ label.ellipse <- function(
 	}
 	
 
-  # TODO: add compass positions SE, SW, ... 
-	# post <- c("SE", "SW", "NW", "NE")
-	# numt <- c(.125, .375, .625, .875)
+  # Define diagonal compass positions and their corresponding angular fractions
+	post <- c("NE", "SE", "SW", "NW")
+	numt <- c(45, 135, 225, 315) / 360  # Convert degrees to fraction of circle
 	
   # translate nmemonics to standard numerical text positions 1:4,
 	posn <- c("center", "bottom", "left", "top", "right")
 	poss <- c("C",      "S",      "W",    "N",   "E")
+	
+	# Handle character input
 	if (is.character(label.pos)) {
 	  if (label.pos %in% posn) label.pos <- pmatch(label.pos, posn, nomatch=3) - 1
-	  if (label.pos %in% poss) label.pos <- pmatch(label.pos, poss, nomatch=3) - 1
-	  if (label.pos %in% post) label.pos <- pmatch(label.pos, post, nomatch=3)
+	  else if (label.pos %in% poss) label.pos <- pmatch(label.pos, poss, nomatch=3) - 1
+	  else if (label.pos %in% post) {
+	    # Convert diagonal compass to fractional position
+	    idx <- pmatch(label.pos, post, nomatch=1)
+	    label.pos <- numt[idx]
+	  }
 	}
 	
 	pos <- label.pos
@@ -151,17 +159,44 @@ label.ellipse <- function(
 			y <- mean(ellipse[, 2]) - tweak[2]
 			pos <-3
     	}
-	else  {  # use as index into ellipse coords
-	  # FIXME: This code was attempting to use a number between 0-1 as an index into the rows of the ellipse. Bad idea. Replace.
-	  if (0 < label.pos & label.pos < 1) 
-	    label.pos <- floor(label.pos * nrow(ellipse))
-	  index <- max(1, min(label.pos, nrow(ellipse)))
-	  x <- ellipse[index, 1]
-	  y <- ellipse[index, 2]
-	  pos <- 4 - floor(4*(index-1)/nrow(ellipse))
+	else  {  # use as fraction of circle or index into ellipse coords
+	  if (0 < label.pos & label.pos < 1) {
+	    # label.pos is a fraction of the way around the circle
+	    # Find the ellipse center
+	    center_x <- mean(ellipse[, 1])
+	    center_y <- mean(ellipse[, 2])
+	    
+	    # Calculate target angle (in radians, counterclockwise from (1,0))
+	    target_angle <- 2 * pi * label.pos
+	    
+	    # Calculate angles for all points on the ellipse relative to center
+	    angles <- atan2(ellipse[, 2] - center_y, ellipse[, 1] - center_x)
+	    
+	    # Find the point with angle closest to target angle
+	    # Need to handle angle wrapping (angles are in [-pi, pi])
+	    angle_diff <- abs(angles - target_angle)
+	    angle_diff <- pmin(angle_diff, 2*pi - angle_diff)  # Handle wrapping
+	    index <- which.min(angle_diff)
+	    
+	    # Get coordinates at this index
+	    x <- ellipse[index, 1]
+	    y <- ellipse[index, 2]
+	    
+	    # Determine text position based on angle
+	    # pos=1 (below), 2 (left), 3 (above), 4 (right)
+	    pos <- if (angles[index] >= -pi/4 & angles[index] < pi/4) 4       # right
+	           else if (angles[index] >= pi/4 & angles[index] < 3*pi/4) 3  # above
+	           else if (angles[index] >= 3*pi/4 | angles[index] < -3*pi/4) 2  # left
+	           else 1  # below
+	  }
+	  else {
+	    # Use as index into ellipse coords (legacy behavior)
+	    index <- max(1, min(label.pos, nrow(ellipse)))
+	    x <- ellipse[index, 1]
+	    y <- ellipse[index, 2]
+	    pos <- 4 - floor(4*(index-1)/nrow(ellipse))
+	  }
 	}
 	
 	text(x, y, label, pos=pos, xpd=xpd, col=col, ...)
 }
-
-
