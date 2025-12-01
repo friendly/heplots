@@ -25,7 +25,9 @@ label.ellipse(
 
 \item{xpd}{Should the label be allowed to extend beyond the plot limits?}
 
-\item{tweak}{A vector of two lengths used to tweak label positions. The defaults are 0.5 times the
+\item{tweak}{A vector of two lengths used to tweak label positions. Only used for label positions \code{1:4} or
+corresponding character or compass directions.
+The defaults are 0.5 times the
 height and width of the character \code{"M"} added
 or subtracted to the calculated (x, y) values.}
 

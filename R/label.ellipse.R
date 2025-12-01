@@ -2,6 +2,7 @@
 # 
 # DONE: ✔️ Generalize the `label.pos` argument to accept, in addition to values `0:4` and corresponding compass 
 #       directions, N, S, E, W values: `NE`, `SE`, `SW`, `NW` to mean at circular angles 45, 135, 225, 315
+# TODO: Allow to use `tweak` for diagonal positions.
 # TODO: Generalize to allow a vector of `label`, with corresponding vectors `label.pos`
 
 
@@ -46,7 +47,9 @@
 #' @param col     Label color
 #' @param label.pos  Label position relative to the ellipse.  See details 
 #' @param xpd     Should the label be allowed to extend beyond the plot limits?
-#' @param tweak   A vector of two lengths used to tweak label positions. The defaults are 0.5 times the 
+#' @param tweak   A vector of two lengths used to tweak label positions. Only used for label positions \code{1:4} or
+#'                corresponding character or compass directions.
+#'                The defaults are 0.5 times the 
 #'                height and width of the character \code{"M"} added
 #'                or subtracted to the calculated (x, y) values.
 #' @param ...     Other parameters passed to \code{\link[graphics]{text}}, e.g., \code{cex}, \code{col}, \dots
