@@ -31,20 +31,20 @@ label.ellipse(
 }
 \description{
 \code{label.ellipse} is used to a draw text label on an ellipse at its center or
- somewhere around the periphery in a very flexible way.
+somewhere around the periphery in a very flexible way.
 }
 \details{
 If \code{label.pos=NULL}, the function uses the sign of the correlation
 represented by the ellipse to determine a position
 at the top (\eqn{r>=0}) or bottom (\eqn{r<0}) of the ellipse.
-Integer values of 0, 1, 2, 3 and 4, respectively indicate positions 
-at the center, below, to the left of, above 
+Integer values of 0, 1, 2, 3 and 4, respectively indicate positions
+at the center, below, to the left of, above
 and to the right of the max/min coordinates of the ellipse.
 Label positions can also be specified as the corresponding character strings
-\code{c("center", "bottom", "left", "top", "right")}, or compass directions, 
-\code{c("C", "S", "W", "N", "E")}, or  
+\code{c("center", "bottom", "left", "top", "right")}, or compass directions,
+\code{c("C", "S", "W", "N", "E")}, or
 Other integer \code{label.pos} values, \code{5:nrow(ellipse)} are taken as indices of the row coordinates
-to be used for the ellipse label. 
+to be used for the ellipse label.
 Equivalently, \code{label.pos} can also be a \emph{fraction} in (0,1), interpreted
 as the fraction of the way around the unit circle, counterclockwise from the point (1,0).
 }

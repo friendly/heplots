@@ -79,14 +79,14 @@ labels are not plotted.}
 \item{err.label}{Label for the error ellipse}
 
 \item{label.pos}{Label position, a vector of integers (in \code{0:4}) or
-             character strings (in \code{c("center", "bottom", "left", "top", "right")},
-             or in \code{c("C", "S", "W", "N", "E")} use in labeling ellipses, recycled
-             as necessary.  Values of 1, 2, 3 and 4, respectively indicate positions
-             below, to the left of, above and to the right of the max/min coordinates of
-             the ellipse; the value 0 specifies the centroid of the \code{ellipse}
-             object.  The default, \code{label.pos=NULL} uses the correlation of the
+character strings (in \code{c("center", "bottom", "left", "top", "right")},
+or in \code{c("C", "S", "W", "N", "E")} use in labeling ellipses, recycled
+as necessary.  Values of 1, 2, 3 and 4, respectively indicate positions
+below, to the left of, above and to the right of the max/min coordinates of
+the ellipse; the value 0 specifies the centroid of the \code{ellipse}
+object.  The default, \code{label.pos=NULL} uses the correlation of the
 \code{ellipse} to determine "top" (r>=0) or "bottom" (r<0).  Even more
-             flexible options are described in \code{\link{label.ellipse}}}
+flexible options are described in \code{\link{label.ellipse}}}
 
 \item{variables}{indices or names of the two response variables to be
 plotted; defaults to \code{1:2}.}
@@ -107,8 +107,8 @@ below).}
 ellipse for the intercept even if it is in the MANOVA table.}
 
 \item{type}{``type'' of sum-of-squares-and-products matrices to compute; one
-of \code{"II"}, \code{"III"}, \code{"2"}, or \code{"3"}, where \code{"II"}
-is the default (and \code{"2"} is a synonym).}
+of \code{"II"}, `"III"`, `"2"`, or `"3"`, where `"II"`
+is the default (and `"2"` is a synonym).}
 
 \item{idata}{an optional data frame giving a factor or factors defining the
 intra-subject model for multivariate repeated-measures data.  See Friendly
@@ -148,8 +148,8 @@ in repeated calls.}
 \item{size}{how to scale the hypothesis ellipse relative to the error
 ellipse; if \code{"evidence"}, the default, the scaling is done so that a
 ``significant'' hypothesis ellipse at level \code{alpha} extends outside of
-the error ellipse. \code{size = "significance"} is a synonym and does the same thing.
-If \code{"effect.size"}, the hypothesis ellipse is on the
+the error ellipse. `size = "significance"` is a synonym and does the same thing.
+If `"effect.size"`, the hypothesis ellipse is on the
 same scale as the error ellipse.}
 
 \item{level}{equivalent coverage of ellipse  (assuming normally-distributed errors).
@@ -173,9 +173,8 @@ first color is used for the error ellipse; the remaining colors --- recycled
 as necessary --- are used for the hypothesis ellipses.  A single color can
 be given, in which case it is used for all ellipses.  For convenience, the
 default colors for all heplots produced in a given session can be changed by
-assigning a color vector via \code{options(heplot.colors =c(...)}.
-Otherwise, the default colors are \code{c("red", "blue", "black",
-"darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.}
+assigning a color vector via \verb{options(heplot.colors =c(...)}.
+Otherwise, the default colors are \code{c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.}
 
 \item{lty}{vector of line types to use for plotting the ellipses; the first
 is used for the error ellipse, the rest --- possibly recycled --- for the
@@ -192,7 +191,7 @@ possibly recycled --- for the hypothesis ellipses; a single fill value can
 be given.  Defaults to FALSE for backward compatibility. See Details below.}
 
 \item{fill.alpha}{Alpha transparency for filled ellipses, a numeric scalar
-or vector of values within \code{[0,1]}, where 0 means fully transparent and 1 means fully opaque.}
+or vector of values within \verb{[0,1]}, where 0 means fully transparent and 1 means fully opaque.}
 
 \item{xlab}{x-axis label; defaults to name of the x variable.}
 
@@ -228,10 +227,10 @@ available.)
 
 The components are:
 \describe{
-\item{H}{a list containing the coordinates of each ellipse for the hypothesis terms} 
-\item{E}{a matrix containing the coordinates for the error ellipse} 
-\item{center}{x,y coordinates of the centroid} 
-\item{xlim}{x-axis limits} 
+\item{H}{a list containing the coordinates of each ellipse for the hypothesis terms}
+\item{E}{a matrix containing the coordinates for the error ellipse}
+\item{center}{x,y coordinates of the centroid}
+\item{xlim}{x-axis limits}
 \item{ylim}{y-axis limits}
 \item{radius}{the radius for the unit circles used to generate the ellipses}
 }
@@ -262,8 +261,7 @@ For a 1 df hypothesis term (a quantitative regressor, a single contrast or
 parameter test), the H matrix has rank 1 (one non-zero latent root of \eqn{H
 E^{-1}}) and the H "ellipse" collapses to a degenerate line.
 
-Typically, you fit a mlm with \code{mymlm <- lm(cbind(y1, y2, y3, ...) ~
-modelterms)}, and plot some or all of the \code{modelterms} with
+Typically, you fit a mlm with \code{mymlm <- lm(cbind(y1, y2, y3, ...) ~ modelterms)}, and plot some or all of the \code{modelterms} with
 \code{heplot(mymlm, ...)}.  Arbitrary linear hypotheses related to the terms
 in the model (e.g., contrasts of an effect) can be included in the plot
 using the \code{hypotheses} argument.  See
@@ -274,7 +272,7 @@ or more variates observed under a within-subject design, between-subject
 effects and within-subject effects must be plotted separately, because the
 error terms (E matrices) differ.  When you specify an intra-subject term
 (\code{iterm}), the analysis and HE plots amount to analysis of the matrix
-\bold{Y} of responses post-multiplied by a matrix \bold{M} determined by the
+\strong{Y} of responses post-multiplied by a matrix \strong{M} determined by the
 intra-subject design for that term.  See Friendly (2010) or the
 \code{vignette("repeated")} in this package for an extended discussion and
 examples.
@@ -355,26 +353,26 @@ heplot3d(rohwer.mod, hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")), co
 \references{
 Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 Displays for Multivariate Linear Models: SAS Software and Examples
-\emph{Journal of Statistical Software}, \bold{17}(6), 1--42. %
+\emph{Journal of Statistical Software}, \strong{17}(6), 1--42. \%
 \url{https://www.jstatsoft.org/v17/i06/},
 DOI: 10.18637/jss.v017.i06
 
 Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
-\emph{Journal of Computational and Graphical Statistics}, \bold{16}(2)
+\emph{Journal of Computational and Graphical Statistics}, \strong{16}(2)
 421--444.  \url{http://datavis.ca/papers/jcgs-heplots.pdf}
 
 Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
-\emph{Journal of Statistical Software}, 37(4), 1-40.  
+\emph{Journal of Statistical Software}, 37(4), 1-40.
 DOI: 10.18637/jss.v037.i04.
 
 Fox, J., Friendly, M. & Weisberg, S. (2013). Hypothesis Tests for
 Multivariate Linear Models Using the car Package. \emph{The R Journal},
-\bold{5}(1),
+\strong{5}(1),
 \url{https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf}.
 
 Friendly, M. & Sigal, M. (2014) Recent Advances in Visualizing Multivariate
-Linear Models. \emph{Revista Colombiana de Estadistica}, \bold{37}, 261-283.
-%\url{http://ref.scielo.org/6gq33g}.
+Linear Models. \emph{Revista Colombiana de Estadistica}, \strong{37}, 261-283.
+\%\url{http://ref.scielo.org/6gq33g}.
 }
 \seealso{
 \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for

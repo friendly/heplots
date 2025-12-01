@@ -6,17 +6,17 @@
 \title{Taste Ratings of Japanese Rice Wine (Sake)}
 \format{
 A data frame with 30 observations on the following 10 variables.
-\describe{ 
-  \item{\code{taste}}{mean taste rating} 
-  \item{\code{smell}}{mean smell rating} 
-  \item{\code{pH}}{pH measurement} 
-  \item{\code{acidity1}}{one measure of acidity} 
-  \item{\code{acidity2}}{another measure of acidity}
-  \item{\code{sake}}{Sake-meter score} 
-  \item{\code{rsugar}}{direct reducing sugar content} 
-  \item{\code{tsugar}}{total sugar content}
-  \item{\code{alcohol}}{alcohol content}
-  \item{\code{nitrogen}}{formol-nitrogen content} 
+\describe{
+\item{\code{taste}}{mean taste rating}
+\item{\code{smell}}{mean smell rating}
+\item{\code{pH}}{pH measurement}
+\item{\code{acidity1}}{one measure of acidity}
+\item{\code{acidity2}}{another measure of acidity}
+\item{\code{sake}}{Sake-meter score}
+\item{\code{rsugar}}{direct reducing sugar content}
+\item{\code{tsugar}}{total sugar content}
+\item{\code{alcohol}}{alcohol content}
+\item{\code{nitrogen}}{formol-nitrogen content}
 }
 }
 \source{

@@ -97,8 +97,8 @@ below).}
 ellipsoid for the intercept even if it is in the MANOVA table.}
 
 \item{type}{``type'' of sum-of-squares-and-products matrices to compute; one
-of \code{"II"}, \code{"III"}, \code{"2"}, or \code{"3"}, where \code{"II"}
-is the default (and \code{"2"} is a synonym).}
+of \code{"II"}, `"III"`, `"2"`, or `"3"`, where `"II"`
+is the default (and `"2"` is a synonym).}
 
 \item{idata}{an optional data frame giving a factor or factors defining the
 intra-subject model for multivariate repeated-measures data.  See Details of
@@ -133,8 +133,8 @@ in repeated calls.}
 \item{size}{how to scale the hypothesis ellipse relative to the error
 ellipse; if \code{"evidence"}, the default, the scaling is done so that a
 ``significant'' hypothesis ellipse at level \code{alpha} extends outside of
-the error ellipse. \code{size = "significance"} is a synonym and does the same thing.
-If \code{"effect.size"}, the hypothesis ellipse is on the
+the error ellipse. `size = "significance"` is a synonym and does the same thing.
+If `"effect.size"`, the hypothesis ellipse is on the
 same scale as the error ellipse.}
 
 \item{level}{equivalent coverage of ellipse  (assuming normally-distributed errors).
@@ -153,9 +153,8 @@ first color is used for the error ellipsoid; the remaining colors ---
 recycled as necessary --- are used for the hypothesis ellipsoid.  A single
 color can be given, in which case it is used for all ellipsoid.  For
 convenience, the default colors for all heplots produced in a given session
-can be changed by assigning a color vector via \code{options(heplot3d.colors=c(...)}.  
-Otherwise, the default colors are \code{c("pink", "blue",
-"black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.}
+can be changed by assigning a color vector via \verb{options(heplot3d.colors=c(...)}.
+Otherwise, the default colors are \code{c("pink", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")}.}
 
 \item{lwd}{a two-element vector giving the line width for drawing ellipsoids
 (including those that degenerate to an ellipse) and for drawing ellipsoids
@@ -165,7 +164,7 @@ that degenerate to a line segment. The default is \code{c(1, 4)}.}
 should be rendered with \code{\link[rgl]{shade3d}}. Works like \code{col},
 except that \code{FALSE} is used for any 1 df degenerate ellipsoid.}
 
-\item{shade.alpha}{a numeric value in the range [0,1], or a vector of such
+\item{shade.alpha}{a numeric value in the range (0,1), or a vector of such
 values, giving the alpha transparency for ellipsoids rendered with
 \code{shade=TRUE}.}
 
@@ -270,14 +269,14 @@ Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
 }
 \seealso{
 \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}}, for
-   details on MANOVA tests and linear hypotheses
+details on MANOVA tests and linear hypotheses
 
-   \code{\link{heplot}}, \code{\link{pairs.mlm}}, for other plotting methods
-   for \code{mlm} objects
+\code{\link{heplot}}, \code{\link{pairs.mlm}}, for other plotting methods
+for \code{mlm} objects
 
-   \code{\link[rgl]{rgl-package}}, for details about 3D plots with \code{rgl}
+\code{\link[rgl]{rgl-package}}, for details about 3D plots with \code{rgl}
 
-   \code{\link[candisc]{heplot3d.candisc}} for 3D HE plots in canonical space.
+\code{\link[candisc]{heplot3d.candisc}} for 3D HE plots in canonical space.
 }
 \keyword{aplot}
 \keyword{dynamic}

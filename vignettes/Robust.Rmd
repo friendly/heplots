@@ -7,7 +7,9 @@ output:
   bookdown::html_document2:
     base_format: rmarkdown::html_vignette
     fig_caption: yes
+    number_sections: false
     toc: true
+    math_method: mathml
 pkgdown:
   as_is: true
 bibliography: "robust.bib"
@@ -68,7 +70,9 @@ Outliers in multivariate data can be particularly problematic because they may n
 Robust multivariate regression methods aim to provide reliable parameter estimates and inference procedures that remain stable in the presence of outlying observations. As noted by @Rousseeuw2004, "_The main advantage of robust regression is that it provides reliable results even when some of the assumptions of classical regression are violated._" 
 
 
-Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators [@Rousseeuw1984], and MM-estimators [@Yohai1987]. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions. 
+Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators [@Rousseeuw1984], and MM-estimators [@Yohai1987]. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions. See the [CRAN Task View: Robust Statistical Methods](https://cran.r-project.org/view=Robust) for an extensive list of
+robust methods in R. The vignette for the [rrcov package](https://cran.r-project.org/package=rrcov), obtained by `vignette(package = "rrcov")`,
+contains a general overview of multivariate robust methods.
 
 The method implemented in the `robmlm()` function belongs to the class of **M-estimators**, which generalize maximum likelihood estimation by replacing the likelihood function with a more robust objective function.
 
@@ -87,7 +91,7 @@ levels off thereafter,
 \end{cases}
 \]
 
-These functions look like this in a graph. For the biweight function has a property
+These functions look like this in a graph. The biweight function has a property
 like Windsorizing--- the squared error remains constant for residuals $e_i > c$,
 with $c = 4.685$ for `MASS::psi.bisquare()`.
 
@@ -109,7 +113,7 @@ The `robmlm()` function implements robust multivariate linear model fitting usin
 
 The IRLS algorithm for robust multivariate regression is shown in the figure below.
 
-```{r echo=FALSE, fig.align='center', out.width="70%"}
+```{r echo=FALSE, fig.align='center', out.width="70%", fig.cap="Flowchart for the iteratively reweighted least squares algorithm"}
 knitr::include_graphics(here::here("man", "figures", "IRWLS-flowchart.jpg"))
 ```
 

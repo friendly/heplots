@@ -12,8 +12,9 @@ bbox3d(x, ...)
 \item{...}{ignored}
 }
 \value{
-A 2 x 3 matrix, giving the minimum and maximum values in the rows and x, y, z coordinates
-            in the columns.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{A 2 x 3 matrix, giving the minimum and maximum values in the rows and x, y, z coordinates
+        in the columns.
+}\if{html}{\out{</div>}}
 }
 \description{
 Ellipsoids are created by \pkg{rgl} functions as meshes of points, segments, ... from coordinates

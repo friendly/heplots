@@ -6,13 +6,13 @@
 \title{National Longitudinal Survey of Youth Data}
 \format{
 A data frame with 243 observations on the following 6 variables.
-\describe{ 
-  \item{\code{math}}{Math achievement test score}
-  \item{\code{read}}{Reading achievement test score}
-  \item{\code{antisoc}}{score on a measure of child's antisocial behavior, \code{0:6}} 
-  \item{\code{hyperact}}{score on a measure of child's
-        hyperactive behavior, \code{0:5}} \item{\code{income}}{yearly income of child's father} 
-  \item{\code{educ}}{years of education of child's father} 
+\describe{
+\item{\code{math}}{Math achievement test score}
+\item{\code{read}}{Reading achievement test score}
+\item{\code{antisoc}}{score on a measure of child's antisocial behavior, \code{0:6}}
+\item{\code{hyperact}}{score on a measure of child's
+hyperactive behavior, \code{0:5}} \item{\code{income}}{yearly income of child's father}
+\item{\code{educ}}{years of education of child's father}
 }
 }
 \source{
@@ -25,8 +25,8 @@ More details are available at
 \url{http://web.archive.org/web/20060830061414/http://www.unc.edu/~curran/srcd-docs/srcdmeth.pdf}.
 }
 \description{
-The dataset `NLSY` comes from a small part of the National Longitudinal Survey of
-Youth, which is a series of annual surveys conducted by the 
+The dataset \code{NLSY} comes from a small part of the National Longitudinal Survey of
+Youth, which is a series of annual surveys conducted by the
 U.S. Department of Labor to examine the transition of young people into the labor force.
 This particular subset gives measures of 243 children on mathematics and reading achievement and also
 measures of behavioral problems (antisocial, hyperactivity). Also available are the yearly income

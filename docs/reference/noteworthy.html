@@ -13,7 +13,7 @@ the mean of X or Y, absolute value of Y and absolute value of the residual in a 
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,35 +85,35 @@ criterion is <code>&lt; level</code></p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The `method` argument determines how the points to be identified are selected:</p><dl><dt><code>"mahal"</code></dt>
+    <p>The <code>method</code> argument determines how the points to be identified are selected:</p><dl><dt><code>"mahal"</code></dt>
 <dd><p>Treat (x, y) as if it were a bivariate sample,
-      and select cases according to their Mahalanobis distance from <code>(mean(x), mean(y))</code>.</p></dd>
+and select cases according to their Mahalanobis distance from <code>(mean(x), mean(y))</code>.</p></dd>
 
- <dt><code>"dsq"</code></dt>
+<dt><code>"dsq"</code></dt>
 <dd><p>Similar to <code>"mahal"</code> but uses squared Euclidean distance.</p></dd>
 
- <dt><code>"x"</code></dt>
+<dt><code>"x"</code></dt>
 <dd><p>Select points according to their value of <code>abs(x - mean(x))</code>.</p></dd>
 
- <dt><code>"y"</code></dt>
+<dt><code>"y"</code></dt>
 <dd><p>Select points according to their value of <code>abs(y - mean(y))</code>.</p></dd>
 
- <dt><code>"r"</code></dt>
+<dt><code>"r"</code></dt>
 <dd><p>Select points according to their value of <code>abs(y)</code>, as may be appropriate
-      in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot.</p></dd>
+in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot.</p></dd>
 
- <dt><code>"ry"</code></dt>
+<dt><code>"ry"</code></dt>
 <dd><p>Fit the linear model, <code>y ~ x</code> and select points according to their absolute residuals.</p></dd>
 
- <dt>case IDs</dt>
+<dt>case IDs</dt>
 <dd><p><code>method</code> can be an integer vector of case numbers in <code>1:length{x}</code>, in which case those cases
-      will be labeled.</p></dd>
+will be labeled.</p></dd>
 
- <dt>numeric vector</dt>
+<dt>numeric vector</dt>
 <dd><p><code>method</code> can be a vector of the same length as x consisting of values to determine the points
-      to be labeled. For example, for a linear model <code>mod</code>, setting <code>method=cooks.distance(mod)</code> will label the
-      <code>n</code> points corresponding to the largest values of Cook's distance. Warning: If missing data are present,
-      points may be incorrectly selected.</p></dd>
+to be labeled. For example, for a linear model <code>mod</code>, setting <code>method=cooks.distance(mod)</code> will label the
+<code>n</code> points corresponding to the largest values of Cook's distance. Warning: If missing data are present,
+points may be incorrectly selected.</p></dd>
 
 
 </dl><p>In the case of <code>method == "mahal"</code> a value for <code>level</code> can be supplied.

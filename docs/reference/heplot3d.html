@@ -11,7 +11,7 @@ multivariate linear model."><meta property="og:image" content="https://friendly.
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -173,8 +173,8 @@ ellipsoid for the intercept even if it is in the MANOVA table.</p></dd>
 
 <dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
 <dd><p>“type” of sum-of-squares-and-products matrices to compute; one
-of <code>"II"</code>, <code>"III"</code>, <code>"2"</code>, or <code>"3"</code>, where <code>"II"</code>
-is the default (and <code>"2"</code> is a synonym).</p></dd>
+of <code>"II"</code>, `"III"`, `"2"`, or `"3"`, where `"II"`
+is the default (and `"2"` is a synonym).</p></dd>
 
 
 <dt id="arg-idata">idata<a class="anchor" aria-label="anchor" href="#arg-idata"></a></dt>
@@ -223,8 +223,8 @@ in repeated calls.</p></dd>
 <dd><p>how to scale the hypothesis ellipse relative to the error
 ellipse; if <code>"evidence"</code>, the default, the scaling is done so that a
 “significant” hypothesis ellipse at level <code>alpha</code> extends outside of
-the error ellipse. <code>size = "significance"</code> is a synonym and does the same thing.
-If <code>"effect.size"</code>, the hypothesis ellipse is on the
+the error ellipse. `size = "significance"` is a synonym and does the same thing.
+If `"effect.size"`, the hypothesis ellipse is on the
 same scale as the error ellipse.</p></dd>
 
 
@@ -252,8 +252,7 @@ recycled as necessary — are used for the hypothesis ellipsoid.  A single
 color can be given, in which case it is used for all ellipsoid.  For
 convenience, the default colors for all heplots produced in a given session
 can be changed by assigning a color vector via <code>options(heplot3d.colors=c(...)</code>.
-Otherwise, the default colors are <code>c("pink", "blue",
-"black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")</code>.</p></dd>
+Otherwise, the default colors are <code>c("pink", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown", "darkgray")</code>.</p></dd>
 
 
 <dt id="arg-lwd">lwd<a class="anchor" aria-label="anchor" href="#arg-lwd"></a></dt>
@@ -269,7 +268,7 @@ except that <code>FALSE</code> is used for any 1 df degenerate ellipsoid.</p></d
 
 
 <dt id="arg-shade-alpha">shade.alpha<a class="anchor" aria-label="anchor" href="#arg-shade-alpha"></a></dt>
-<dd><p>a numeric value in the range [0,1], or a vector of such
+<dd><p>a numeric value in the range (0,1), or a vector of such
 values, giving the alpha transparency for ellipsoids rendered with
 <code>shade=TRUE</code>.</p></dd>
 
@@ -381,9 +380,9 @@ Displays for Multivariate Linear Models: SAS Software and Examples
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code>, <code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></code>, for
-   details on MANOVA tests and linear hypotheses</p>
+details on MANOVA tests and linear hypotheses</p>
 <p><code><a href="heplot.html">heplot</a></code>, <code><a href="pairs.mlm.html">pairs.mlm</a></code>, for other plotting methods
-   for <code>mlm</code> objects</p>
+for <code>mlm</code> objects</p>
 <p><code><a href="https://dmurdoch.github.io/rgl/dev/reference/rgl-package.html" class="external-link">rgl-package</a></code>, for details about 3D plots with <code>rgl</code></p>
 <p><code><a href="https://friendly.github.io/candisc/reference/heplot.candisc.html" class="external-link">heplot3d.candisc</a></code> for 3D HE plots in canonical space.</p></div>
     </div>

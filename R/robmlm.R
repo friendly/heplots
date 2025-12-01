@@ -20,11 +20,11 @@
 #' modeled on \code{\link[MASS]{rlm}}.
 #' 
 #' These S3 methods are designed to provide a specification of a class of
-#' robust methods which extend \code{mlm}s, and are therefore compatible with
-#' other \code{mlm} extensions, including \code{\link[car]{Anova}} and
+#' robust methods which extend `mlm`s, and are therefore compatible with
+#' other `mlm` extensions, including \code{\link[car]{Anova}} and
 #' \code{\link{heplot}}.
 #' 
-#' An internal \code{vcov.mlm} function is an extension of the standard
+#' An internal `vcov.mlm` function is an extension of the standard
 #' \code{\link[stats]{vcov}} method providing for the use of observation weights.
 #' A \code{\link{plot.robmlm}} method provides simple index plots of case weights
 #' to visualize those that were down-weighted.
@@ -32,13 +32,13 @@
 #' @details
 #' 
 #' Weighted least squares provides a method for correcting a variety of problems in linear models
-#' by estimating parameters that minimize the \emph{weighted} sum of squares of residuals
+#' by estimating parameters that minimize the *weighted* sum of squares of residuals
 #' \eqn{\Sigma w_i e_i^2} for specified weights \eqn{w_i, i = 1, 2, \dots n}.
 #' 
 #' M-estimation generalizes this by minimizing the sum of a symmetric function 
 #' \eqn{\rho(e_i)} of the residuals, where the function is designed to reduce the influence
 #' of outliers or badly fit observations. The function \eqn{\rho(e_i) = | e_i |}
-#' minimizes the least absolute values, while the \emph{bisquare} function uses an upper bound
+#' minimizes the least absolute values, while the *bisquare* function uses an upper bound
 #' on influence. For multivariate problems, a simple method is to use Mahalanobis \eqn{D^2 (\mathbf{e}_i)}
 #' to calculate the weights.
 #' 
@@ -48,20 +48,20 @@
 #' 
 #' @aliases print.robmlm print.summary.robmlm robmlm robmlm.default
 #'          robmlm.formula summary.robmlm
-#' @param formula a formula of the form \code{cbind(y1, y2, ...) ~ x1 + x2 + ...}.
-#' @param data a data frame from which variables specified in \code{formula}
+#' @param formula a formula of the form `cbind(y1, y2, ...) ~ x1 + x2 + ...`.
+#' @param data a data frame from which variables specified in `formula`
 #'        are preferentially to be taken.
 #' @param subset An index vector specifying the cases to be used in fitting.
 #' @param weights a vector of prior weights for each case.
-#' @param na.action A function to specify the action to be taken if \code{NA}s
+#' @param na.action A function to specify the action to be taken if `NA`s
 #'        are found.  The 'factory-fresh' default action in R is
 #'        \code{\link[stats]{na.omit}}, and can be changed by
-#'        \code{\link[base]{options}}\code{(na.action=)}.
+#'        \code{\link[base]{options}}`(na.action=)`.
 #' @param model should the model frame be returned in the object?
 #' @param contrasts optional contrast specifications; see
 #'        \code{\link[stats]{lm}} for details.
 #' @param \dots other arguments, passed down. In particular relevant control
-#'         arguments can be passed to the to the \code{robmlm.default} method.
+#'         arguments can be passed to the to the `robmlm.default` method.
 #' @param X for the default method, a model matrix, including the constant (if
 #'        present)
 #' @param Y for the default method, a response matrix
@@ -74,15 +74,15 @@
 #'        the default
 #' @param tol convergence tolerance, maximum relative change in coefficients
 #' @param initialize modeling function to find start values for coefficients,
-#'        equation-by-equation; if absent WLS (\code{lm.wfit}) is used
-#' @param verbose show iteration history? (\code{TRUE} or \code{FALSE})
-#' @param x a \code{robmlm} object
-#' @param object a \code{robmlm} object
-#' @return An object of class \code{"robmlm"} inheriting from \code{c("mlm",
-#' "lm")}.
+#'        equation-by-equation; if absent WLS (`lm.wfit`) is used
+#' @param verbose show iteration history? (`TRUE` or `FALSE`)
+#' @param x a `robmlm` object
+#' @param object a `robmlm` object
+#' @return An object of class `"robmlm"` inheriting from `c("mlm",
+#' "lm")`.
 #' 
-#'  This means that the returned \code{"robmlm"} contains all the components of
-#'  \code{"mlm"} objects described for \code{\link[stats]{lm}}, plus the
+#'  This means that the returned `"robmlm"` contains all the components of
+#'  `"mlm"` objects described for \code{\link[stats]{lm}}, plus the
 #'  following: 
 #'  \describe{
 #'    \item{weights }{final observation weights} 
@@ -93,15 +93,15 @@
 #' The generic accessor functions \code{\link[stats]{coefficients}},
 #' \code{\link[stats]{effects}}, \code{\link[stats]{fitted.values}} and
 #' \code{\link[stats]{residuals}} extract various useful features of the value
-#' returned by \code{robmlm}.
+#' returned by `robmlm`.
 #' @author John Fox; packaged by Michael Friendly
 #' 
 #' @seealso
 #'  \code{\link{plot.robmlm}} for a plot method;
 #'     \code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
 #' @references 
-#' A. Marazzi (1993) \emph{Algorithms, Routines and S Functions for
-#' Robust Statistics}.  Wadsworth & Brooks/Cole.
+#' A. Marazzi (1993) *Algorithms, Routines and S Functions for
+#' Robust Statistics*.  Wadsworth & Brooks/Cole.
 #' @keywords multivariate robust
 #' @examples
 #' 

@@ -6,17 +6,17 @@
 \title{Neurocognitive Measures in Psychiatric Groups}
 \format{
 A data frame with 242 observations on the following 10 variables.
-\describe{ 
-  \item{\code{Dx}}{Diagnostic group, a factor with levels \code{Schizophrenia} \code{Schizoaffective} \code{Control}}
-  \item{\code{Speed}}{Speed of processing domain T score, a numeric vector}
-  \item{\code{Attention}}{Attention/Vigilance Domain T score, a numeric vector} 
-  \item{\code{Memory}}{Working memory a numeric vector}
-  \item{\code{Verbal}}{Verbal Learning Domain T score, a numeric vector}
-  \item{\code{Visual}}{Visual Learning Domain T score, a numeric vector}
-  \item{\code{ProbSolv}}{Reasoning/Problem Solving Domain T score, a numeric vector} 
-  \item{\code{SocialCog}}{Social Cognition Domain T score, a numeric vector} 
-  \item{\code{Age}}{Subject age, a numeric vector}
-  \item{\code{Sex}}{Subject gender, a factor with levels \code{Female} \code{Male}} 
+\describe{
+\item{\code{Dx}}{Diagnostic group, a factor with levels \code{Schizophrenia} \code{Schizoaffective} \code{Control}}
+\item{\code{Speed}}{Speed of processing domain T score, a numeric vector}
+\item{\code{Attention}}{Attention/Vigilance Domain T score, a numeric vector}
+\item{\code{Memory}}{Working memory a numeric vector}
+\item{\code{Verbal}}{Verbal Learning Domain T score, a numeric vector}
+\item{\code{Visual}}{Visual Learning Domain T score, a numeric vector}
+\item{\code{ProbSolv}}{Reasoning/Problem Solving Domain T score, a numeric vector}
+\item{\code{SocialCog}}{Social Cognition Domain T score, a numeric vector}
+\item{\code{Age}}{Subject age, a numeric vector}
+\item{\code{Sex}}{Subject gender, a factor with levels \code{Female} \code{Male}}
 }
 }
 \source{
@@ -25,8 +25,8 @@ One Condition or Two? Unpublished PhD dissertation, York University.
 
 Heinrichs, R.W., Pinnock, F., Muharib, E., Hartman, L.I., Goldberg, J.O., &
 McDermid Vaz, S. (2015).  Neurocognitive normality in schizophrenia
-revisited.  
-\emph{Schizophrenia Research: Cognition}, \bold{2} (4), 227-232.
+revisited.
+\emph{Schizophrenia Research: Cognition}, \strong{2} (4), 227-232.
 \code{doi: 10.1016/j.scog.2015.09.001}
 }
 \description{
@@ -91,14 +91,14 @@ if (require(candisc)) {
 \references{
 Heinrichs, R. W., Ammari, N., McDermid Vaz, S. & Miles, A.
 (2008). Are schizophrenia and schizoaffective disorder neuropsychologically
-distinguishable?  \emph{Schizophrenia Research}, \bold{99}, 149-154.
+distinguishable?  \emph{Schizophrenia Research}, \strong{99}, 149-154.
 
 Nuechterlein K.H., Green M.F., Kern R.S., Baade L.E., Barch D., Cohen J.,
 Essock S., Fenton W.S., Frese F.J., Gold J.M., Goldberg T., Heaton R., Keefe
 R.S.E., Kraemer H., Mesholam-Gately R., Seidman L.J., Stover E., Weinberger
 D.R., Young A.S., Zalcman S., Marder S.R. (2008) The MATRICS Consensus
 Cognitive Battery, Part 1: Test selection, reliability, and validity.
-\emph{American Journal of Psychiatry}, \bold{165} (2), 203-213.
+\emph{American Journal of Psychiatry}, \strong{165} (2), 203-213.
 \url{https://pubmed.ncbi.nlm.nih.gov/18172019/}.
 }
 \concept{MANOVA}

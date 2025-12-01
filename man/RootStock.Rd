@@ -6,12 +6,12 @@
 \title{Growth of Apple Trees from Different Root Stocks}
 \format{
 A data frame with 48 observations on the following 5 variables.
-\describe{ 
-  \item{\code{rootstock}}{a factor with levels \code{1} \code{2} \code{3} \code{4} \code{5} \code{6}} 
-  \item{\code{girth4}}{a numeric vector: trunk girth at 4 years (mm x 100)} 
-  \item{\code{ext4}}{a numeric vector: extension growth at 4 years (m)} 
-  \item{\code{girth15}}{a numeric vector: trunk girth at 15 years (mm x 100)} 
-  \item{\code{weight15}}{a numeric vector: weight of tree above ground at 15 years (lb x 1000)} 
+\describe{
+\item{\code{rootstock}}{a factor with levels \code{1} \code{2} \code{3} \code{4} \code{5} \code{6}}
+\item{\code{girth4}}{a numeric vector: trunk girth at 4 years (mm x 100)}
+\item{\code{ext4}}{a numeric vector: extension growth at 4 years (m)}
+\item{\code{girth15}}{a numeric vector: trunk girth at 15 years (mm x 100)}
+\item{\code{weight15}}{a numeric vector: weight of tree above ground at 15 years (lb x 1000)}
 }
 }
 \source{

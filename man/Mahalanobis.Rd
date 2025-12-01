@@ -17,14 +17,14 @@ Mahalanobis(
 \item{x}{a numeric matrix or data frame with, say, \eqn{p} columns}
 
 \item{center}{mean vector of the data; if this and \code{cov} are both supplied,
-the function simply calls \code{\link[stats]{mahalanobis}} to 
+the function simply calls \code{\link[stats]{mahalanobis}} to
 calculate the result}
 
 \item{cov}{covariance matrix (p x p) of the data}
 
 \item{method}{estimation method used for center and covariance, one of:
-\code{"classical"} (product-moment), 
-\code{"mcd"} (minimum covariance determinant), or           
+\code{"classical"} (product-moment),
+\code{"mcd"} (minimum covariance determinant), or
 \code{"mve"} (minimum volume ellipsoid).}
 
 \item{nsamp}{passed to \code{\link[MASS]{cov.rob}}}
@@ -32,7 +32,8 @@ calculate the result}
 \item{...}{other arguments passed to \code{\link[MASS]{cov.rob}}}
 }
 \value{
-a vector of length \code{nrow(x)} containing the squared distances.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{ a vector of length `nrow(x)` containing the squared distances.
+}\if{html}{\out{</div>}}
 }
 \description{
 This function is a convenience wrapper to \code{\link[stats]{mahalanobis}}

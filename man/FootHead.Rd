@@ -6,14 +6,14 @@
 \title{Head measurements of football players}
 \format{
 A data frame with 90 observations on the following 7 variables.
-\describe{ 
-  \item{\code{group}}{a factor with levels \code{High school} \code{College} \code{Non-football}} 
-  \item{\code{width}}{a numeric vector: head width at widest dimension} 
-  \item{\code{circum}}{a numeric vector: head circumference} 
-  \item{\code{front.back}}{a numeric vector: front to back distance at eye level} 
-  \item{\code{eye.top}}{a numeric vector: eye to top of head} 
-  \item{\code{ear.top}}{a numeric vector:ear to top of head}
-  \item{\code{jaw}}{a numeric vector: jaw width} 
+\describe{
+\item{\code{group}}{a factor with levels \verb{High school} \code{College} \code{Non-football}}
+\item{\code{width}}{a numeric vector: head width at widest dimension}
+\item{\code{circum}}{a numeric vector: head circumference}
+\item{\code{front.back}}{a numeric vector: front to back distance at eye level}
+\item{\code{eye.top}}{a numeric vector: eye to top of head}
+\item{\code{ear.top}}{a numeric vector:ear to top of head}
+\item{\code{jaw}}{a numeric vector: jaw width}
 }
 }
 \source{

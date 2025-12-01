@@ -7,11 +7,16 @@
 
 
 
-#' Measures of Partial Association (Eta-squared) for Linear Models
+#' Measures of Partial Association (\eqn{\eta^2}) for Linear Models
 #' 
 #' Calculates partial eta-squared for linear models or multivariate analogs of
 #' eta-squared (or R^2), indicating the partial association for each term in a
-#' multivariate linear model. There is a different analog for each of the four
+#' multivariate linear model. For a multivariate model, this is a summary 
+#' across all response variables.
+#' 
+#' @details
+#' 
+#' There is a different analog of \eqn{\eta^2} for each of the four
 #' standard multivariate test statistics: Pillai's trace, Hotelling-Lawley
 #' trace, Wilks' Lambda and Roy's maximum root test.
 #' 
@@ -36,30 +41,31 @@
 #' }
 #' 
 #' @aliases etasq etasq.lm etasq.mlm etasq.Anova.mlm
-#' @param x A \code{lm}, \code{mlm} or \code{Anova.mlm} object
+#' @param x A `lm`, `mlm` or `Anova.mlm` object
 #' @param anova A logical, indicating whether the result should also contain
-#'         the test statistics produced by \code{Anova()}.
+#'         the test statistics produced by `Anova()`.
 #' @param partial A logical, indicating whether to calculate partial or
 #'         classical eta^2.
 #' @param \dots Other arguments passed down to \code{\link[car]{Anova}}.
-#' @return When \code{anova=FALSE}, a one-column data frame containing the
+#' @return When `anova=FALSE`, a one-column data frame containing the
 #' eta-squared values for each term in the model.
 #' 
-#' When \code{anova=TRUE}, a 5-column (lm) or 7-column (mlm) data frame
+#' When `anova=TRUE`, a 5-column (lm) or 7-column (mlm) data frame
 #' containing the eta-squared values and the test statistics produced by
-#' \code{print.Anova()} for each term in the model.
+#' `print.Anova()` for each term in the model.
 #' 
 #' @author Michael Friendly
 #' @seealso \code{\link[car]{Anova}}
 #' @references Muller, K. E. and Peterson, B. L. (1984). Practical methods for
 #' computing power in testing the Multivariate General Linear Hypothesis
-#' \emph{Computational Statistics and Data Analysis}, \bold{2}, 143-158.
+#' *Computational Statistics and Data Analysis*, **2**, 143-158.
 #' 
 #' Muller, K. E. and LaVange, L. M. and Ramey, S. L. and Ramey, C. T. (1992).
 #' Power Calculations for General Linear Multivariate Models Including Repeated
-#' Measures Applications. \emph{Journal of the American Statistical
-#' Association}, \bold{87}, 1209-1226.
+#' Measures Applications. *Journal of the American Statistical
+#' Association*, **87**, 1209-1226.
 #' @keywords multivariate
+#' @seealso \code{\link[effectsize]{eta_squared}} for a function that calculates this effect size measure for each response variable separately.
 #' @concept effect size
 #' @concept strength of association
 #' @examples

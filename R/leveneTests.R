@@ -17,28 +17,28 @@
 #'        In the case of a formula or model, the  variables on the right-hand-side of the model must all 
 #'        be factors and must be completely crossed.
 #' @param group a vector or factor object giving the group for the
-#'        corresponding elements of the rows of \code{y} for the default method
+#'        corresponding elements of the rows of `y` for the default method
 #' @param center The name of a function to compute the center of each group;
-#'        \code{mean} gives the original Levene's (1960) test; the default,
-#'        \code{median}, provides a more robust test suggested by Brown and Forsythe (1974).
-#' @param \dots arguments to be passed down to \code{\link[car]{leveneTest}}, e.g., \code{data} for the 
-#'        \code{formula} and \code{lm} methods; can also 
+#'        `mean` gives the original Levene's (1960) test; the default,
+#'        `median`, provides a more robust test suggested by Brown and Forsythe (1974).
+#' @param \dots arguments to be passed down to \code{\link[car]{leveneTest}}, e.g., `data` for the 
+#'        `formula` and `lm` methods; can also 
 #'        be used to pass arguments to the function given by center (e.g., center=mean and trim=0.1 specify 
-#'        the 10\% trimmed mean) other arguments.
+#'        the 10% trimmed mean) other arguments.
 #' 
 #' @return An object of classes "anova" and "data.frame", with one observation
-#'         for each response variable in \code{y}.
+#'         for each response variable in `y`.
 #' @author Michael Friendly
 #' @seealso 
 #'    \code{\link[car]{leveneTest}}, \code{\link{bartlettTests}}
 #' @references 
 #' Levene, H. (1960). Robust Tests for Equality of Variances. In
-#' Olkin, I. \emph{et al.} (Eds.), \emph{Contributions to Probability and
-#' Statistics: Essays in Honor of Harold Hotelling}, Stanford University Press,
+#' Olkin, I. *et al.* (Eds.), *Contributions to Probability and
+#' Statistics: Essays in Honor of Harold Hotelling*, Stanford University Press,
 #' 278-292.
 #' 
 #' Brown, M. B. & Forsythe, A. B. (1974). Robust Tests For Equality Of
-#' Variances \emph{Journal of the American Statistical Association}, \bold{69},
+#' Variances *Journal of the American Statistical Association*, **69**,
 #' 364-367.
 #' @keywords htest
 #' @examples
@@ -98,7 +98,7 @@ leveneTests.default <-
 	LT
 }
 
-#' @param data  the data set, for the \code{formula} method
+#' @param data  the data set, for the `formula` method
 #' @rdname leveneTests
 #' @exportS3Method 
 leveneTests.formula <- function(y, data, ...) {

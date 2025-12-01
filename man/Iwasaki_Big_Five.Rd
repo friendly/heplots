@@ -6,20 +6,20 @@
 \title{Personality Traits of Cultural Groups}
 \format{
 A data frame with 203 observations on the following 7 variables.
-\describe{ 
-  \item{\code{ID}}{ID number} 
-  \item{\code{Group}}{a factor with
-        levels \code{Eur} \code{Asian_Amer} \code{Asian_Intl}}
-  \item{\code{N}}{Neuroticism score} 
-  \item{\code{E}}{Extraversion score}
-  \item{\code{O}}{Openness score} 
-  \item{\code{A}}{Agreeableness score}
-  \item{\code{C}}{Conscientiousness score} 
+\describe{
+\item{\code{ID}}{ID number}
+\item{\code{Group}}{a factor with
+levels \code{Eur} \code{Asian_Amer} \code{Asian_Intl}}
+\item{\code{N}}{Neuroticism score}
+\item{\code{E}}{Extraversion score}
+\item{\code{O}}{Openness score}
+\item{\code{A}}{Agreeableness score}
+\item{\code{C}}{Conscientiousness score}
 }
 }
 \source{
 Grice, J., & Iwasaki, M. (2007). A truly multivariate approach to
-MANOVA.  \emph{Applied Multivariate Research}, \bold{12}, 199-226.
+MANOVA.  \emph{Applied Multivariate Research}, \strong{12}, 199-226.
 https://doi.org/10.22329/amr.v12i3.660.
 }
 \description{
@@ -29,11 +29,11 @@ Five" personality traits: Neuroticism, Extraversion, Openness-to-Experience,
 Agreeableness, and Conscientiousness.
 }
 \details{
-The groups are: 
-\describe{ 
-  \item{Eur}{European Americans (Caucasians living in the United States their entire lives)} 
-  \item{Asian_Amer}{Asian Americans (Asians living in the United States since before the age of 6 years)}
-  \item{Asian_Intl}{Asian Internationals (Asians who moved to the United States after their 6th birthday)} 
+The groups are:
+\describe{
+\item{Eur}{European Americans (Caucasians living in the United States their entire lives)}
+\item{Asian_Amer}{Asian Americans (Asians living in the United States since before the age of 6 years)}
+\item{Asian_Intl}{Asian Internationals (Asians who moved to the United States after their 6th birthday)}
 }
 
 The factor \code{Group} is set up to compare E vs. Asian and the two Asian

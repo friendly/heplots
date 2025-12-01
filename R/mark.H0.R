@@ -15,14 +15,14 @@
 #' @param x Horizontal coordinate for H0
 #' @param y Vertical coordinate for H0
 #' @param z z coordinate for H0.  If not NULL, the function assumes that a
-#'        \code{heplot3d} plot has been drawn.
+#'        `heplot3d` plot has been drawn.
 #' @param label Text used to label the point. Defaults to
-#'        \code{expression(H[0])} in 2D plots.
+#'        `expression(H[0])` in 2D plots.
 #' @param cex Point and text size.  For 3D plots, the function uses
-#'        \code{size=5*cex} in a call to \code{\link[rgl]{points3d}}.
+#'        `size=5*cex` in a call to \code{\link[rgl]{points3d}}.
 #' @param pch Plot character.  Ignored for 3D plots.
 #' @param col Color for text, character and lines
-#' @param lty Line type for vertical and horizontal reference lines. Not drawn if \code{lty}=0.
+#' @param lty Line type for vertical and horizontal reference lines. Not drawn if `lty`=0.
 #' @param pos Position of text.  Ignored for 3D plots
 #' @return None. Used for side effect of drawing on the current plot. 
 #' 

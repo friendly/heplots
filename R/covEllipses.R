@@ -21,12 +21,12 @@
 #' same shape.  When centered at a common mean, they should also all overlap.
 #' 
 #' They can also be used to visualize the difference between classical and
-#' robust covariance matrices by overlaying the two in a single plot (via \code{add=TRUE}).
+#' robust covariance matrices by overlaying the two in a single plot (via `add=TRUE`).
 #' 
 #' @details
-#' The arguments \code{labels},
-#' \code{col}, \code{lty}, \code{lwd}, \code{fill}, \code{fill.alpha} and \code{label.pos} are used to
-#' draw the ellipses for the groups and also for the pooled, within-group covariance, which is the \bold{last} in a list
+#' The arguments `labels`,
+#' `col`, `lty`, `lwd`, `fill`, `fill.alpha` and `label.pos` are used to
+#' draw the ellipses for the groups and also for the pooled, within-group covariance, which is the **last** in a list
 #' when these are computed by the functions. 
 #' These arguments are each taken in the order specified, and recycled as necessary.
 #' 
@@ -34,86 +34,86 @@
 #' @aliases covEllipses covEllipses.boxM covEllipses.data.frame
 #'          covEllipses.matrix covEllipses.default
 #' @param x The generic argument. For the default method, this is a list of
-#' covariance matrices. For the \code{data.frame} and \code{matrix} methods,
+#' covariance matrices. For the `data.frame` and `matrix` methods,
 #' this is a numeric matrix of two or more columns supplying the variables to
 #' be analyzed.
-#' @param data For the \code{formula} method, a data.frame in which to evaluate.
+#' @param data For the `formula` method, a data.frame in which to evaluate.
 #' @param group a factor defining groups, or a vector of length
-#' \code{n=nrow(x)} doing the same. If missing, a single covariance ellipse is
+#' `n=nrow(x)` doing the same. If missing, a single covariance ellipse is
 #' drawn.
-#' @param pooled Logical; if \code{TRUE}, the pooled covariance matrix for the
+#' @param pooled Logical; if `TRUE`, the pooled covariance matrix for the
 #' total sample is also computed and plotted
 #' @param method the covariance method to be used: classical product-moment
-#' (\code{"classical"}), or minimum volume ellipsoid (\code{"mve"}), or minimum
-#' covariance determinant (\code{"mcd"}).
+#' (`"classical"`), or minimum volume ellipsoid (`"mve"`), or minimum
+#' covariance determinant (`"mcd"`).
 #' @param means For the default method, a matrix of the means for all groups
-#' (followed by the grand means, if \code{pooled=TRUE}). Rows are the groups,
+#' (followed by the grand means, if `pooled=TRUE`). Rows are the groups,
 #' and columns are the variables. It is assumed that the means have column
 #' names corresponding to the variables in the covariance matrices.
 #' @param df For the default method, a vector of the degrees of freedom for the
 #' covariance matrices
 #' @param labels Either a character vector of labels for the groups, or
-#' \code{TRUE}, indicating that group labels are taken as the names of the
-#' covariance matrices. Use \code{labels=""} to suppress group labels, e.g.,
-#' when \code{add=TRUE}
+#' `TRUE`, indicating that group labels are taken as the names of the
+#' covariance matrices. Use `labels=""` to suppress group labels, e.g.,
+#' when `add=TRUE`
 #' @param variables indices or names of the response variables to be plotted;
-#' defaults to \code{1:2}.  If more than two variables are supplied, the
+#' defaults to `1:2`.  If more than two variables are supplied, the
 #' function plots all pairwise covariance ellipses in a scatterplot matrix
 #' format.
 #' @param level equivalent coverage of a data ellipse for normally-distributed
-#' errors, defaults to \code{0.68}.
+#' errors, defaults to `0.68`.
 #' @param segments number of line segments composing each ellipse; defaults to
-#' \code{40}.
-#' @param center If \code{TRUE}, the covariance ellipses are centered at the
+#' `40`.
+#' @param center If `TRUE`, the covariance ellipses are centered at the
 #' centroid.
 #' @param center.pch character to use in plotting the centroid of the data;
-#' defaults to \code{"+"}.
+#' defaults to `"+"`.
 #' @param center.cex size of character to use in plotting the centroid (means) of the
-#' data; defaults to \code{2}.
+#' data; defaults to `2`.
 #' @param col a color or vector of colors to use in plotting ellipses---
 #' recycled as necessary--- see Details. A single color can be given, in which case it is used
 #' for all ellipses.  For convenience, the default colors for all plots
 #' produced in a given session can be changed by assigning a color vector via
-#' \code{options(heplot.colors =c(...)}.  Otherwise, the default colors are
-#' \code{c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown",
-#' "darkgray")}.
+#' `options(heplot.colors =c(...)`.  Otherwise, the default colors are
+#' `c("red", "blue", "black", "darkgreen", "darkcyan", "magenta", "brown",
+#' "darkgray")`.
 #' @param lty vector of line types to use for plotting the ellipses---
-#' recycled as necessary--- see Details.  Defaults to \code{1}.
+#' recycled as necessary--- see Details.  Defaults to `1`.
 #' @param lwd vector of line widths to use for plotting the ellipses---
 #' recycled as necessary--- see Details.  Defaults to
-#' \code{2}.
+#' `2`.
 #' @param fill A logical vector indicating whether each ellipse should be
-#' filled or not--- recycled as necessary--- see Details.   Defaults to \code{FALSE}. 
+#' filled or not--- recycled as necessary--- see Details.   Defaults to `FALSE`. 
 #' @param fill.alpha Alpha transparency for filled ellipses, a numeric scalar
-#' or vector of values within \code{[0,1]}, where 0 means fully transparent and
+#' or vector of values within `[0,1]`, where 0 means fully transparent and
 #' 1 means fully opaque. Defaults to 0.3.
-#' @param label.pos Label position, a vector of integers (in \code{0:4}) or
-#' character strings (in \code{c("center", "bottom", "left", "top", "right")})
+#' @param label.pos Label position, a vector of integers (in `0:4`) or
+#' character strings (in `c("center", "bottom", "left", "top", "right")`)
 #' use in labeling ellipses, recycled as necessary.  Values of 1, 2, 3 and 4,
 #' respectively indicate positions below, to the left of, above and to the
 #' right of the max/min coordinates of the ellipse; the value 0 specifies the
-#' centroid of the \code{ellipse} object.  The default, \code{label.pos=NULL}
-#' uses the correlation of the \code{ellipse} to determine "top" (r>=0) or
+#' centroid of the `ellipse` object.  The default, `label.pos=NULL`
+#' uses the correlation of the `ellipse` to determine "top" (r>=0) or
 #' "bottom" (r<0).
 #' @param xlab x-axis label; defaults to name of the x variable.
 #' @param ylab y-axis label; defaults to name of the y variable.
 #' @param vlabels Labels for the variables can also be supplied through this
-#' argument, which is more convenient when \code{length(variables) > 2}.
-#' @param var.cex character size for variable labels in the pairs plot, when \code{length(variables) > 2}.
-#' @param main main plot label; defaults to \code{""}, and presently has no
+#' argument, which is more convenient when `length(variables) > 2`.
+#' @param var.cex character size for variable labels in the pairs plot, when `length(variables) > 2`.
+#' @param main main plot label; defaults to `""`, and presently has no
 #' effect.
 #' @param xlim x-axis limits; if absent, will be computed from the data.
 #' @param ylim y-axis limits; if absent, will be computed from the data.
-#' @param axes Whether to draw the x, y axes; defaults to \code{TRUE}
+#' @param axes Whether to draw the x, y axes; defaults to `TRUE`
 #' @param offset.axes proportion to extend the axes in each direction if
 #' computed from the data; optional.
-#' @param add if \code{TRUE}, add to the current plot; the default is
-#' \code{FALSE}. This argument is has no effect when more than two variables
+#' @param add if `TRUE`, add to the current plot; the default is
+#' `FALSE`. This argument is has no effect when more than two variables
 #' are plotted.
-#' @param \dots Other arguments passed to the default method for \code{plot},
-#' \code{text}, and \code{points}
+#' @param \dots Other arguments passed to the default method for `plot`,
+#' `text`, and `points`
 #' @return Nothing is returned.  The function is used for its side-effect of
-#' producing a plot. %Returns invisibly an object of class \code{"covEllipse"},
+#' producing a plot. %Returns invisibly an object of class `"covEllipse"`,
 #' %which is a list of the coordinates for the ellipses drawn.
 #' @author Michael Friendly
 #' @seealso \code{\link{heplot}}, \code{\link{boxM}},

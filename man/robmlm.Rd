@@ -82,7 +82,7 @@ are preferentially to be taken.}
 \item{na.action}{A function to specify the action to be taken if \code{NA}s
 are found.  The 'factory-fresh' default action in R is
 \code{\link[stats]{na.omit}}, and can be changed by
-\code{\link[base]{options}}\code{(na.action=)}.}
+\code{\link[base]{options}}\verb{(na.action=)}.}
 
 \item{model}{should the model frame be returned in the object?}
 
@@ -94,17 +94,16 @@ are found.  The 'factory-fresh' default action in R is
 \item{object}{a \code{robmlm} object}
 }
 \value{
-An object of class \code{"robmlm"} inheriting from \code{c("mlm",
-"lm")}.
+An object of class \code{"robmlm"} inheriting from \code{c("mlm", "lm")}.
 
- This means that the returned \code{"robmlm"} contains all the components of
- \code{"mlm"} objects described for \code{\link[stats]{lm}}, plus the
- following: 
- \describe{
-   \item{weights }{final observation weights} 
-   \item{iterations }{number of iterations} 
-   \item{converged }{logical: did the IWLS process converge?}
- }
+This means that the returned \code{"robmlm"} contains all the components of
+\code{"mlm"} objects described for \code{\link[stats]{lm}}, plus the
+following:
+\describe{
+\item{weights }{final observation weights}
+\item{iterations }{number of iterations}
+\item{converged }{logical: did the IWLS process converge?}
+}
 
 The generic accessor functions \code{\link[stats]{coefficients}},
 \code{\link[stats]{effects}}, \code{\link[stats]{fitted.values}} and
@@ -136,7 +135,7 @@ Weighted least squares provides a method for correcting a variety of problems in
 by estimating parameters that minimize the \emph{weighted} sum of squares of residuals
 \eqn{\Sigma w_i e_i^2} for specified weights \eqn{w_i, i = 1, 2, \dots n}.
 
-M-estimation generalizes this by minimizing the sum of a symmetric function 
+M-estimation generalizes this by minimizing the sum of a symmetric function
 \eqn{\rho(e_i)} of the residuals, where the function is designed to reduce the influence
 of outliers or badly fit observations. The function \eqn{\rho(e_i) = | e_i |}
 minimizes the least absolute values, while the \emph{bisquare} function uses an upper bound
@@ -226,7 +225,7 @@ Robust Statistics}.  Wadsworth & Brooks/Cole.
 }
 \seealso{
 \code{\link{plot.robmlm}} for a plot method;
-    \code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
+\code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
 }
 \author{
 John Fox; packaged by Michael Friendly

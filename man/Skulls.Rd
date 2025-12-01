@@ -6,14 +6,14 @@
 \title{Egyptian Skulls}
 \format{
 A data frame with 150 observations on the following 5 variables.
-\describe{ 
-  \item{\code{epoch}}{the epoch the skull as assigned to, an
-      ordered factor with levels \code{c4000BC} \code{c3300BC}, \code{c1850BC},
-      \code{c200BC}, and \code{cAD150}, where the years are only given approximately, of course.} 
-  \item{\code{mb}}{maximal breadth of the skull.}
-  \item{\code{bh}}{basibregmatic height of the skull.}
-  \item{\code{bl}}{basialiveolar length of the skull.}
-  \item{\code{nh}}{nasal height of the skull.} 
+\describe{
+\item{\code{epoch}}{the epoch the skull as assigned to, an
+ordered factor with levels \code{c4000BC} \code{c3300BC}, \code{c1850BC},
+\code{c200BC}, and \code{cAD150}, where the years are only given approximately, of course.}
+\item{\code{mb}}{maximal breadth of the skull.}
+\item{\code{bh}}{basibregmatic height of the skull.}
+\item{\code{bl}}{basialiveolar length of the skull.}
+\item{\code{nh}}{nasal height of the skull.}
 }
 }
 \source{
@@ -25,12 +25,12 @@ Measurements made on Egyptian skulls from five epochs.
 }
 \details{
 The epochs correspond to the following periods of Egyptian history:
-\enumerate{ 
-  \item the early predynastic period (circa 4000 BC); 
-  \item the late predynastic period (circa 3300 BC); 
-  \item the 12th and 13th dynasties (circa 1850 BC); 
-  \item the Ptolemiac period (circa 200 BC); 
-  \item the Roman period (circa 150 AD). 
+\enumerate{
+\item the early predynastic period (circa 4000 BC);
+\item the late predynastic period (circa 3300 BC);
+\item the 12th and 13th dynasties (circa 1850 BC);
+\item the Ptolemiac period (circa 200 BC);
+\item the Roman period (circa 150 AD).
 }
 
 The question is whether the measurements change over time.  Non-constant

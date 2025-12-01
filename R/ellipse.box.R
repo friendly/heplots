@@ -4,19 +4,19 @@
 #'          treated as the correlation or covariance of a multivariate normal
 #'          distribution.
 #' @param center The center of the ellipse
-#' @param which An integer vector to select which variables from the object \code{x} will be
+#' @param which An integer vector to select which variables from the object `x` will be
 #'          plotted.  The default is the first 2.
 #' @param level The coverage level of a simultaneous region of the ellipse.  The
 #'          default is 0.95, for a 95\% region.  This is used to control the size of the
 #'          ellipse.
 #' @param radius The size of the ellipsoid may also be controlled by specifying the
 #'          value of a t-statistic on its boundary. This defaults to the square root of a chi-square statistic
-#'          for a given \code{level} on 2 degrees of freedom, however in a small sample of \code{n} observations,
-#'          a more accurate value is \code{sqrt(2 * qf(level, 2, n - 1 ))}. 
+#'          for a given `level` on 2 degrees of freedom, however in a small sample of `n` observations,
+#'          a more accurate value is `sqrt(2 * qf(level, 2, n - 1 ))`. 
 #' @param factor A function defining the conjugate axes used to transform the unit
 #'          circle into an ellipse.  \code{\link{chol}}, uses the right Cholesky
-#' factor of \code{x}. 
-#' @param draw What to draw? \code{"box"}, \code{"diameters"} or \code{"both"}
+#' factor of `x`. 
+#' @param draw What to draw? `"box"`, `"diameters"` or `"both"`
 #' @param \dots Other arguments passed to \code{\link[graphics]{lines}}.
 #'
 #' @return Invisibly returns a 2 column matrix containing the end points of lines.

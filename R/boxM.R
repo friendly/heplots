@@ -4,15 +4,15 @@
 
 #' Box's M-test
 #' 
-#' \code{boxM} performs the Box's (1949) M-test for homogeneity of covariance
+#' `boxM` performs the Box's (1949) M-test for homogeneity of covariance
 #' matrices obtained from multivariate normal data according to one or more
 #' classification factors. The test compares the product of the log
 #' determinants of the separate covariance matrices to the log determinant of
 #' the pooled covariance matrix, analogous to a likelihood ratio test. The test
 #' statistic uses a chi-square approximation.
 #' 
-#' As an object of class \code{"htest"}, the statistical test is printed
-#' normally by default. As an object of class \code{"boxM"}, a few methods are
+#' As an object of class `"htest"`, the statistical test is printed
+#' normally by default. As an object of class `"boxM"`, a few methods are
 #' available.
 #' 
 #' There is no general provision as yet for handling missing data.  Missing
@@ -28,36 +28,36 @@
 #' ignore the result unless it is very highly significant, e.g., p < .0001 or
 #' worse.
 #' 
-#' The \code{summary} method prints a variety of additional statistics based on
+#' The `summary` method prints a variety of additional statistics based on
 #' the eigenvalues of the covariance matrices.  These are returned invisibly,
 #' as a list containing the following components: 
 #' \itemize{ 
-#' \item \code{logDet} - log determinants 
-#' \item \code{eigs} - eigenvalues of the covariance matrices 
-#' \item \code{eigstats} - statistics computed on the eigenvalues for each covariance matrix:\cr 
-#'     \code{product}: the product of eigenvalues, \eqn{\prod{\lambda_i}};\cr 
-#'     \code{sum}: the sum of eigenvalues, \eqn{\sum{\lambda_i}};\cr 
-#'     \code{precision}: the average precision of eigenvalues, \eqn{1/\sum(1/\lambda_i)};\cr 
-#'     \code{max}: the maximum eigenvalue, \eqn{\lambda_1} 
+#' \item `logDet` - log determinants 
+#' \item `eigs` - eigenvalues of the covariance matrices 
+#' \item `eigstats` - statistics computed on the eigenvalues for each covariance matrix:\cr 
+#'     `product`: the product of eigenvalues, \eqn{\prod{\lambda_i}};\cr 
+#'     `sum`: the sum of eigenvalues, \eqn{\sum{\lambda_i}};\cr 
+#'     `precision`: the average precision of eigenvalues, \eqn{1/\sum(1/\lambda_i)};\cr 
+#'     `max`: the maximum eigenvalue, \eqn{\lambda_1} 
 #' }
 #' 
 #' @aliases boxM boxM.formula boxM.lm boxM.default summary.boxM
 #' @param Y The response variable matrix for the default method, or a
-#'         \code{"mlm"} or \code{"formula"} object for a multivariate linear model.  If
-#'         \code{Y} is a linear-model object or a formula, the variables on the
+#'         `"mlm"` or `"formula"` object for a multivariate linear model.  If
+#'         `Y` is a linear-model object or a formula, the variables on the
 #'         right-hand-side of the model must all be factors and must be completely
-#'         crossed, e.g., \code{A:B}
-#' @param data a numeric data.frame or matrix containing \emph{n} observations
-#'         of \emph{p} variables; it is expected that \emph{n > p}.
-#' @param group a factor defining groups, or a vector of length \emph{n} doing
+#'         crossed, e.g., `A:B`
+#' @param data a numeric data.frame or matrix containing *n* observations
+#'         of *p* variables; it is expected that *n > p*.
+#' @param group a factor defining groups, or a vector of length *n* doing
 #'         the same.
-#' @param object a \code{"boxM"} object for the \code{summary} method
-#' @param digits number of digits to print for the \code{summary} method
-#' @param cov logical; if \code{TRUE} the covariance matrices are printed.
-#' @param quiet logical; if \code{TRUE} printing from the \code{summary} is
+#' @param object a `"boxM"` object for the `summary` method
+#' @param digits number of digits to print for the `summary` method
+#' @param cov logical; if `TRUE` the covariance matrices are printed.
+#' @param quiet logical; if `TRUE` printing from the `summary` is
 #'         suppressed
 #' @param ... Arguments passed down to methods.
-#' @return A list with class \code{c("htest", "boxM")} containing the following
+#' @return A list with class `c("htest", "boxM")` containing the following
 #' components: 
 #' \item{statistic }{an approximated value of the chi-square
 #' distribution.} 
@@ -65,9 +65,9 @@
 #' statistic in this case that it follows a Chi-square distribution.}
 #' \item{p.value }{the p-value of the test.} 
 #' \item{cov }{a list containing the
-#' within covariance matrix for each level of \code{grouping}.} 
+#' within covariance matrix for each level of `grouping`.} 
 #' \item{pooled}{the pooled covariance matrix.} 
-#' \item{logDet }{a vector containing the natural logarithm of each matrix in \code{cov}, followed by the value for
+#' \item{logDet }{a vector containing the natural logarithm of each matrix in `cov`, followed by the value for
 #' the pooled covariance matrix} 
 #' \item{means}{a matrix of the means for all groups, followed by the grand means} 
 #' \item{df}{a vector of the degrees of freedom for all groups, followed by that for the pooled covariance matrix}
@@ -89,9 +89,9 @@
 #' several groups.
 #' @references 
 #' Box, G. E. P. (1949). A general distribution theory for a class
-#' of likelihood criteria. \emph{Biometrika}, 36, 317-346.
+#' of likelihood criteria. *Biometrika*, 36, 317-346.
 #' 
-#' Morrison, D.F. (1976) \emph{Multivariate Statistical Methods}.
+#' Morrison, D.F. (1976) *Multivariate Statistical Methods*.
 #' @examples
 #' 
 #' data(iris)

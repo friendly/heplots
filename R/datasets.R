@@ -6,29 +6,29 @@
 #' Health.  It is a cross-sectional sample of participants from grades 7--12,
 #' described and analyzed by Warne (2014).
 #' 
-#' \code{depression} is the response to the question "In the last month, how
+#' `depression` is the response to the question "In the last month, how
 #' often did you feel depressed or blue?"
 #' 
-#' \code{anxiety} is the response to the question "In the last month, how often
+#' `anxiety` is the response to the question "In the last month, how often
 #' did you have trouble relaxing?"
 #' 
-#' The responses for \code{depression} and \code{anxiety} were recorded on a
-#' 5-point Likert scale, with categories \code{0="Never", 1="Rarely",
-#' 2="Occasionally", 3="Often", 4="Every day"}
+#' The responses for `depression` and `anxiety` were recorded on a
+#' 5-point Likert scale, with categories `0="Never", 1="Rarely",
+#' 2="Occasionally", 3="Often", 4="Every day"`
 #' 
 #' @name AddHealth
 #' @docType data
 #' @format A data frame with 4344 observations on the following 3 variables.
 #' \describe{ 
-#'   \item{\code{grade}}{an ordered factor with levels \code{7} <
-#'       \code{8} < \code{9} < \code{10} < \code{11} < \code{12}}
-#'   \item{\code{depression}}{a numeric vector} 
-#'   \item{\code{anxiety}}{a numeric vector} 
+#'   \item{`grade`}{an ordered factor with levels `7` <
+#'       `8` < `9` < `10` < `11` < `12`}
+#'   \item{`depression`}{a numeric vector} 
+#'   \item{`anxiety`}{a numeric vector} 
 #'   }
 #' @source 
 #' Warne, R. T. (2014). A primer on Multivariate Analysis of Variance
 #' (MANOVA) for Behavioral Scientists.  
-#' \emph{Practical Assessment, Research & Evaluation}, 19 (1).
+#' *Practical Assessment, Research & Evaluation*, 19 (1).
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept ordered
@@ -93,30 +93,30 @@ NULL
 #' @docType data
 #' @format A data frame with 62 observations on the following 6 variables.
 #' \describe{ 
-#'   \item{\code{AMED}}{adoptive mother's years of education (proxy
+#'   \item{`AMED`}{adoptive mother's years of education (proxy
 #' for her IQ)} 
-#'   \item{\code{BMIQ}}{biological mother's score on IQ test}
-#'   \item{\code{Age2IQ}}{IQ of child at age 2} 
-#'   \item{\code{Age4IQ}}{IQ of child at age 4} 
-#'   \item{\code{Age8IQ}}{IQ of child at age 8}
-#'   \item{\code{Age13IQ}}{IQ of child at age 13} 
+#'   \item{`BMIQ`}{biological mother's score on IQ test}
+#'   \item{`Age2IQ`}{IQ of child at age 2} 
+#'   \item{`Age4IQ`}{IQ of child at age 4} 
+#'   \item{`Age8IQ`}{IQ of child at age 8}
+#'   \item{`Age13IQ`}{IQ of child at age 13} 
 #' }
 #' @seealso \code{\link[Sleuth2]{ex1605}}
 #' @references 
 #' Friendly, M.  (2010). HE Plots for Repeated Measures Designs.
-#' \emph{Journal of Statistical Software}, 37(4), 1-40.
+#' *Journal of Statistical Software*, 37(4), 1-40.
 #' \doi{10.18637/jss.v037.i04}.
 #' 
 #' Skodak, M. and Skeels, H.M. (1949). A Final Follow-up Study of One Hundred
 #' Adopted Children, 
-#' \emph{Journal of Genetic Psychology} \bold{75}: 85--125.
+#' *Journal of Genetic Psychology* **75**: 85--125.
 #' 
 #' @source 
-#' Ramsey, F.L. and Schafer, D.W. (2002). \emph{The Statistical Sleuth:
-#' A Course in Methods of Data Analysis (2nd ed)}, Duxbury.
+#' Ramsey, F.L. and Schafer, D.W. (2002). *The Statistical Sleuth:
+#' A Course in Methods of Data Analysis (2nd ed)*, Duxbury.
 #' 
 #' This data set is identical to \code{\link[Sleuth2]{ex1605}} in the
-#' \code{Sleuth2} package.
+#' `Sleuth2` package.
 #' @keywords datasets
 #' @concept MMRA
 #' @concept repeated
@@ -183,52 +183,52 @@ NULL
 #' 
 #' Bees were placed in a small tube and either held captive (CAP) or shaken
 #' periodically (MAL) for one of 5, 7.5, 10, 12.5 or 15 minutes, after which
-#' they were sacrificed and two measures: ovarian development (\code{Iz}) and
-#' ovarian reabsorption (\code{Iy}), were taken. A single control group was
+#' they were sacrificed and two measures: ovarian development (`Iz`) and
+#' ovarian reabsorption (`Iy`), were taken. A single control group was
 #' measured with no such treatment, i.e., at time 0; there are n=10 per group.
 #' 
-#' The design is thus nearly a three-way factorial, with factors \code{caste}
-#' (Queen, Worker), \code{treat} (CAP, MAL) and \code{time}, except that there
-#' are only 11 combinations of Treatment and Time; we call these \code{trtime}
+#' The design is thus nearly a three-way factorial, with factors `caste`
+#' (Queen, Worker), `treat` (CAP, MAL) and `time`, except that there
+#' are only 11 combinations of Treatment and Time; we call these `trtime`
 #' below.
 #' 
 #' Models for the three-way factorial design, using the formula
-#' \code{cbind(Iz,Iy) ~ caste*treat*time} ignore the control condition at
-#' \code{time==0}, where \code{treat==NA}.
+#' `cbind(Iz,Iy) ~ caste*treat*time` ignore the control condition at
+#' `time==0`, where `treat==NA`.
 #' 
-#' To handle the additional control group at \code{time==0}, while separating
+#' To handle the additional control group at `time==0`, while separating
 #' the effects of Treatment and Time, 10 contrasts can be defined for the
-#' \code{trtime} factor in the model \code{cbind(Iz,Iy) ~ caste*trtime} See
-#' \code{demo(bees.contrasts)} for details.
+#' `trtime` factor in the model `cbind(Iz,Iy) ~ caste*trtime` See
+#' `demo(bees.contrasts)` for details.
 #' 
-#' In the \code{heplot} examples below, the default \code{size="evidence"}
+#' In the `heplot` examples below, the default `size="evidence"`
 #' displays are too crowded to interpret, because some effects are so highly
-#' significant.  The alternative effect-size scaling, \code{size="effect"},
+#' significant.  The alternative effect-size scaling, `size="effect"`,
 #' makes the relations clearer.
 #' 
 #' @name Bees
 #' @docType data
 #' @format A data frame with 246 observations on the following 6 variables.
 #' \describe{ 
-#'   \item{\code{caste}}{a factor with levels \code{Queen} \code{Worker}} 
-#'   \item{\code{treat}}{a factor with levels \code{""} \code{CAP} \code{MAL}} 
-#'   \item{\code{time}}{an ordered factor: time of treatment} 
-#'   \item{\code{Iz}}{an index of ovarian development}
-#'   \item{\code{Iy}}{an index of ovarian reabsorption} 
-#'   \item{\code{trtime}}{a factor with levels \code{0} \code{CAP05} \code{CAP07} \code{CAP10}
-#'       \code{CAP12} \code{CAP15} \code{MAL05} \code{MAL07} \code{MAL10}
-#'       \code{MAL12} \code{MAL15}} 
+#'   \item{`caste`}{a factor with levels `Queen` `Worker`} 
+#'   \item{`treat`}{a factor with levels `""` `CAP` `MAL`} 
+#'   \item{`time`}{an ordered factor: time of treatment} 
+#'   \item{`Iz`}{an index of ovarian development}
+#'   \item{`Iy`}{an index of ovarian reabsorption} 
+#'   \item{`trtime`}{a factor with levels `0` `CAP05` `CAP07` `CAP10`
+#'       `CAP12` `CAP15` `MAL05` `MAL07` `MAL10`
+#'       `MAL12` `MAL15`} 
 #' }
 #' @references 
 #' Friendly, M. (2006). Data Ellipses, HE Plots and Reduced-Rank
 #' Displays for Multivariate Linear Models: SAS Software and Examples
-#' \emph{Journal of Statistical Software}, \bold{17}, 1-42.
+#' *Journal of Statistical Software*, **17**, 1-42.
 #' 
 #' @source 
 #' Pabalan, N., Davey, K. G. & Packe, L. (2000). Escalation of
 #' Aggressive Interactions During Staged Encounters in Halictus ligatus Say
 #' (Hymenoptera: Halictidae), with a Comparison of Circle Tube Behaviors with
-#' Other Halictine Species \emph{Journal of Insect Behavior}, \bold{13},
+#' Other Halictine Species *Journal of Insect Behavior*, **13**,
 #' 627-650.
 #' @keywords datasets
 #' @concept MANOVA
@@ -305,11 +305,11 @@ NULL
 #' the latent or chemical diabetic stage, with no symptoms of diabetes but
 #' demonstrable abnormality of oral or intravenous glucose tolerance.
 #' 
-#' \code{glutest} was defined as the "area under the plasma glucose curve for
+#' `glutest` was defined as the "area under the plasma glucose curve for
 #' the three hour oral glucose tolerance test."  Reaven & Miller refer to this
 #' variable as "Glucose area".
 #' 
-#' \code{instest} was defined as the "area under the plasma insulin curve", and
+#' `instest` was defined as the "area under the plasma insulin curve", and
 #' is referred to in the paper as "Insulin area".
 #' 
 #' This study was influential in defining the stages of development of Type 2
@@ -323,25 +323,25 @@ NULL
 #' @docType data
 #' @format A data frame with 145 observations on the following 6 variables.
 #' \describe{ 
-#'   \item{\code{relwt}}{relative weight, expressed as the ratio of actual weight to expected weight, given the person's height, a numeric vector} 
-#'   \item{\code{glufast}}{fasting plasma glucose level, a numeric vector} 
-#'   \item{\code{glutest}}{test plasma glucose level, a measure of glucose intolerance, a numeric vector} 
-#'   \item{\code{instest}}{plasma insulin during test, a measure of insulin response to oral glucose, a numeric vector} 
-#'   \item{\code{sspg}}{steady state plasma glucose, a measure of insulin resistance, a numeric vector} 
-#'   \item{\code{group}}{diagnostic group, a factor with levels \code{Normal} \code{Chemical_Diabetic}
-#'       \code{Overt_Diabetic}} 
+#'   \item{`relwt`}{relative weight, expressed as the ratio of actual weight to expected weight, given the person's height, a numeric vector} 
+#'   \item{`glufast`}{fasting plasma glucose level, a numeric vector} 
+#'   \item{`glutest`}{test plasma glucose level, a measure of glucose intolerance, a numeric vector} 
+#'   \item{`instest`}{plasma insulin during test, a measure of insulin response to oral glucose, a numeric vector} 
+#'   \item{`sspg`}{steady state plasma glucose, a measure of insulin resistance, a numeric vector} 
+#'   \item{`group`}{diagnostic group, a factor with levels `Normal` `Chemical_Diabetic`
+#'       `Overt_Diabetic`} 
 #' }
 #' @references 
 #' Reaven, G. M. and Miller, R. G. (1979).  An attempt to define
 #' the nature of chemical diabetes using a multidimensional analysis.
-#' \emph{Diabetologia}, 16, 17-24.
+#' *Diabetologia*, 16, 17-24.
 #' @source 
 #' Andrews, D. F. & Herzberg, A. M. (1985).  
-#' \emph{Data: A Collection
-#' of Problems from Many Fields for the Student and Research Worker},
+#' *Data: A Collection
+#' of Problems from Many Fields for the Student and Research Worker*,
 #' Springer-Verlag, Ch. 36.
 #' 
-#' Friendly, M. (1991). \emph{SAS System for Statistical Graphics}, Cary, NC:
+#' Friendly, M. (1991). *SAS System for Statistical Graphics*, Cary, NC:
 #' SAS Institute.
 #' @keywords datasets
 #' @concept MANOVA
@@ -399,16 +399,16 @@ NULL
 #' @docType data
 #' @format A data frame with 90 observations on the following 7 variables.
 #' \describe{ 
-#'   \item{\code{group}}{a factor with levels \code{High school} \code{College} \code{Non-football}} 
-#'   \item{\code{width}}{a numeric vector: head width at widest dimension} 
-#'   \item{\code{circum}}{a numeric vector: head circumference} 
-#'   \item{\code{front.back}}{a numeric vector: front to back distance at eye level} 
-#'   \item{\code{eye.top}}{a numeric vector: eye to top of head} 
-#'   \item{\code{ear.top}}{a numeric vector:ear to top of head}
-#'   \item{\code{jaw}}{a numeric vector: jaw width} 
+#'   \item{`group`}{a factor with levels `High school` `College` `Non-football`} 
+#'   \item{`width`}{a numeric vector: head width at widest dimension} 
+#'   \item{`circum`}{a numeric vector: head circumference} 
+#'   \item{`front.back`}{a numeric vector: front to back distance at eye level} 
+#'   \item{`eye.top`}{a numeric vector: eye to top of head} 
+#'   \item{`ear.top`}{a numeric vector:ear to top of head}
+#'   \item{`jaw`}{a numeric vector: jaw width} 
 #' }
 #' @source 
-#' Rencher, A. C. (1995), \emph{Methods of Multivariate Analysis}, New
+#' Rencher, A. C. (1995), *Methods of Multivariate Analysis*, New
 #' York: Wiley, Table 8.3.
 #' @keywords datasets
 #' @concept MMRA
@@ -472,35 +472,35 @@ NULL
 #' 
 #' The treatments are described as follows: 
 #' \describe{
-#'   \item{\code{T1}}{Listened again to the tone at their initial DU level, for
+#'   \item{`T1`}{Listened again to the tone at their initial DU level, for
 #'          the same amount of time they were able to tolerate it before.}
-#'   \item{\code{T2}}{Same as T1, with one additional minute exposure}
-#'   \item{\code{T3}}{Same as T2, but were explicitly instructed to use the
+#'   \item{`T2`}{Same as T1, with one additional minute exposure}
+#'   \item{`T3`}{Same as T2, but were explicitly instructed to use the
 #'         relaxation techniques} 
-#'   \item{\code{Control}}{These subject experienced no
+#'   \item{`Control`}{These subject experienced no
 #'         further exposure to the noise tone until the final sensitivity measures were taken} 
 #' }
 #' 
 #' Hand and Taylor described several substantive hypotheses related to the
-#' differences among treatments. In the \code{Headache} data frame, these have
-#' been included as \code{contrasts(Headache$treatment)}
+#' differences among treatments. In the `Headache` data frame, these have
+#' been included as `contrasts(Headache$treatment)`
 #' 
 #' @name Headache
 #' @docType data
 #' @format A data frame with 98 observations on the following 6 variables.
 #' \describe{ 
-#'   \item{\code{type}}{Type of headache, a factor with levels \code{Migrane} \code{Tension}} 
-#'   \item{\code{treatment}}{Treatment group, a factor with levels \code{T1} \code{T2} \code{T3} 
-#'       \code{Control}.  See Details} 
-#'   \item{\code{u1}}{Noise level rated as Uncomfortable, initial measure} 
-#'   \item{\code{du1}}{Noise level rated as Definitely Uncomfortable, initial measure} 
-#'   \item{\code{u2}}{Noise level rated as Uncomfortable, final measure} 
-#'   \item{\code{du2}}{Noise level rated as Definitely Uncomfortable, final measure} 
+#'   \item{`type`}{Type of headache, a factor with levels `Migrane` `Tension`} 
+#'   \item{`treatment`}{Treatment group, a factor with levels `T1` `T2` `T3` 
+#'       `Control`.  See Details} 
+#'   \item{`u1`}{Noise level rated as Uncomfortable, initial measure} 
+#'   \item{`du1`}{Noise level rated as Definitely Uncomfortable, initial measure} 
+#'   \item{`u2`}{Noise level rated as Uncomfortable, final measure} 
+#'   \item{`du2`}{Noise level rated as Definitely Uncomfortable, final measure} 
 #' }
 #' @source 
-#' D. J. Hand and C. C. Taylor (1987). \emph{Multivariate analysis of
+#' D. J. Hand and C. C. Taylor (1987). *Multivariate analysis of
 #' variance and repeated measures: a practical approach for behavioural
-#' scientists} London: Chapman and Hall. ISBN: 0412258005. Table E.1.
+#' scientists* London: Chapman and Hall. ISBN: 0412258005. Table E.1.
 #' 
 #' @keywords datasets
 #' @concept MANOVA
@@ -557,15 +557,15 @@ NULL
 #' A data set on measures of post-operative recovery of 32 patients undergoing
 #' an elective herniorrhaphy operation, in relation to pre-operative measures.
 #' 
-#' \code{leave}, \code{nurse} and \code{los} are outcome measures; the
+#' `leave`, `nurse` and `los` are outcome measures; the
 #' remaining variables are potential predictors of recovery status.
 #' 
-#' The variable \code{nurse} is recorded as 1-4, with remaining (20) entries
+#' The variable `nurse` is recorded as 1-4, with remaining (20) entries
 #' entered as "-" in both sources.  It is not clear whether this means "none"
 #' or NA.  The former interpretation was used in constructing the R data frame,
-#' so \code{nurse==5} for these observations. Using
-#' \code{Hernior$nurse[Hernior$nurse==5] <- NA} would change to the other
-#' interpretation, but render \code{nurse} useless in a multivariate analysis.
+#' so `nurse==5` for these observations. Using
+#' `Hernior$nurse[Hernior$nurse==5] <- NA` would change to the other
+#' interpretation, but render `nurse` useless in a multivariate analysis.
 #' 
 #' The ordinal predictors could instead be treated as factors, and there are
 #' also potential interactions to be explored.
@@ -574,30 +574,30 @@ NULL
 #' @docType data
 #' @format A data frame with 32 observations on the following 9 variables.
 #' \describe{ 
-#'   \item{\code{age}}{patient age} 
-#'   \item{\code{sex}}{patient sex, a factor with levels \code{f} \code{m}} 
-#'   \item{\code{pstat}}{physical status (ignoring that associated with the operation). 
+#'   \item{`age`}{patient age} 
+#'   \item{`sex`}{patient sex, a factor with levels `f` `m`} 
+#'   \item{`pstat`}{physical status (ignoring that associated with the operation). 
 #'       A 1-5 scale, with 1=perfect health, 5=very poor health.} 
-#'   \item{\code{build}}{body build, a 1-5 scale, with 1=emaciated, 2=thin, 3=average, 4=fat, 5=obese.}
-#'   \item{\code{cardiac}}{preoperative complications with heart, 1-4 scale, with 1=none, 2=mild, 3=moderate, 4=severe.} 
-#'   \item{\code{resp}}{preoperative complications with respiration, 1-4 scale, with 1=none, 2=mild, 
+#'   \item{`build`}{body build, a 1-5 scale, with 1=emaciated, 2=thin, 3=average, 4=fat, 5=obese.}
+#'   \item{`cardiac`}{preoperative complications with heart, 1-4 scale, with 1=none, 2=mild, 3=moderate, 4=severe.} 
+#'   \item{`resp`}{preoperative complications with respiration, 1-4 scale, with 1=none, 2=mild, 
 #'       3=moderate, 4=severe.} 
-#'   \item{\code{leave}}{condition upon leaving the recovery room, a 1-4 scale, with 1=routine recovery, 2=intensive care for observation
+#'   \item{`leave`}{condition upon leaving the recovery room, a 1-4 scale, with 1=routine recovery, 2=intensive care for observation
 #'       overnight, 3=intensive care, with moderate care required, 4=intensive care,
 #'       with moderate care required.  } 
-#'   \item{\code{los}}{length of stay in hospital after operation (days)}
-#'   \item{\code{nurse}}{level of nursing required one week after operation, a
+#'   \item{`los`}{length of stay in hospital after operation (days)}
+#'   \item{`nurse`}{level of nursing required one week after operation, a
 #'       1-5 scale, with 1=intense, 2=heavy, 3=moderate, 4=light, 5=none (?); see Details}
 #' }
 #' 
 #' @references 
 #' Hand, D. J., Daly, F., Lunn, A. D., McConway, K. J. and
-#' Ostrowski, E. (1994), \emph{A Handbook of Small Data Sets}, Number 484,
+#' Ostrowski, E. (1994), *A Handbook of Small Data Sets*, Number 484,
 #' 390-391.
 #' 
 #' @source 
-#' Mosteller, F. and Tukey, J. W. (1977), \emph{Data analysis and
-#' regression}, Reading, MA: Addison-Wesley. Data Exhibit 8, 567-568. Their
+#' Mosteller, F. and Tukey, J. W. (1977), *Data analysis and
+#' regression*, Reading, MA: Addison-Wesley. Data Exhibit 8, 567-568. Their
 #' source: A study by B. McPeek and J. P. Gilbert of the Harvard Anesthesia
 #' Center.
 #' @keywords datasets
@@ -661,30 +661,30 @@ NULL
 #'   \item{Asian_Intl}{Asian Internationals (Asians who moved to the United States after their 6th birthday)} 
 #' }
 #' 
-#' The factor \code{Group} is set up to compare E vs. Asian and the two Asian
+#' The factor `Group` is set up to compare E vs. Asian and the two Asian
 #' groups
 #' 
 #' @name Iwasaki_Big_Five
 #' @docType data
 #' @format A data frame with 203 observations on the following 7 variables.
 #' \describe{ 
-#'   \item{\code{ID}}{ID number} 
-#'   \item{\code{Group}}{a factor with
-#'         levels \code{Eur} \code{Asian_Amer} \code{Asian_Intl}}
-#'   \item{\code{N}}{Neuroticism score} 
-#'   \item{\code{E}}{Extraversion score}
-#'   \item{\code{O}}{Openness score} 
-#'   \item{\code{A}}{Agreeableness score}
-#'   \item{\code{C}}{Conscientiousness score} 
+#'   \item{`ID`}{ID number} 
+#'   \item{`Group`}{a factor with
+#'         levels `Eur` `Asian_Amer` `Asian_Intl`}
+#'   \item{`N`}{Neuroticism score} 
+#'   \item{`E`}{Extraversion score}
+#'   \item{`O`}{Openness score} 
+#'   \item{`A`}{Agreeableness score}
+#'   \item{`C`}{Conscientiousness score} 
 #' }
 #' @references 
-#' Costa Jr, P. T., & McCrae, R. R. (1992).  \emph{Revised NEO
+#' Costa Jr, P. T., & McCrae, R. R. (1992).  *Revised NEO
 #' Personality Inventory (NEO PI-R) and NEO Five-Factor Inventory (NEOFFI)
-#' professional manual}.  Psychological Assessment Resources.
+#' professional manual*.  Psychological Assessment Resources.
 #' 
 #' @source 
 #' Grice, J., & Iwasaki, M. (2007). A truly multivariate approach to
-#' MANOVA.  \emph{Applied Multivariate Research}, \bold{12}, 199-226.
+#' MANOVA.  *Applied Multivariate Research*, **12**, 199-226.
 #' https://doi.org/10.22329/amr.v12i3.660.
 #' @keywords datasets
 #' @concept MANOVA
@@ -749,9 +749,9 @@ NULL
 #' @format A data frame with 12 observations on the following 3 variables.
 #' 
 #' \describe{ 
-#'   \item{\code{group}}{a factor with levels \code{1} \code{2}}
-#'   \item{\code{BM}}{Basic Math score, a numeric vector} 
-#'   \item{\code{WP}}{Word Problems score, a numeric vector} 
+#'   \item{`group`}{a factor with levels `1` `2`}
+#'   \item{`BM`}{Basic Math score, a numeric vector} 
+#'   \item{`WP`}{Word Problems score, a numeric vector} 
 #'   }
 #' @source Fictitious data
 #' @keywords datasets
@@ -803,27 +803,27 @@ NULL
 #' @docType data
 #' @format A data frame with 114 observations on the following 17 variables.
 #' \describe{ 
-#'   \item{\code{Attr}}{Attractiveness of the photo, a factor with levels \code{Beautiful} \code{Average} \code{Unattractive}}
-#'   \item{\code{Crime}}{Type of crime, a factor with levels \code{Burglary} (theft of items from victim's room) \code{Swindle} (conned a male victim)}
-#'   \item{\code{Years}}{length of sentence given the defendant by the mock juror subject} 
-#'   \item{\code{Serious}}{a rating of how serious the subject thought the defendant's crime was} 
-#'   \item{\code{exciting}}{rating of the photo for 'exciting'} 
-#'   \item{\code{calm}}{rating of the photo for 'calm'}
-#'   \item{\code{independent}}{rating of the photo for 'independent'}
-#'   \item{\code{sincere}}{rating of the photo for 'sincere'}
-#'   \item{\code{warm}}{rating of the photo for 'warm'}
-#'   \item{\code{phyattr}}{rating of the photo for 'physical attractiveness'}
-#'   \item{\code{sociable}}{rating of the photo for 'exciting'}
-#'   \item{\code{kind}}{rating of the photo for 'kind'}
-#'   \item{\code{intelligent}}{rating of the photo for 'intelligent'}
-#'   \item{\code{strong}}{rating of the photo for 'strong'}
-#'   \item{\code{sophisticated}}{rating of the photo for 'sophisticated'}
-#'   \item{\code{happy}}{rating of the photo for 'happy'}
-#'   \item{\code{ownPA}}{self-rating of the subject for 'physical attractiveness'} 
+#'   \item{`Attr`}{Attractiveness of the photo, a factor with levels `Beautiful` `Average` `Unattractive`}
+#'   \item{`Crime`}{Type of crime, a factor with levels `Burglary` (theft of items from victim's room) `Swindle` (conned a male victim)}
+#'   \item{`Years`}{length of sentence given the defendant by the mock juror subject} 
+#'   \item{`Serious`}{a rating of how serious the subject thought the defendant's crime was} 
+#'   \item{`exciting`}{rating of the photo for 'exciting'} 
+#'   \item{`calm`}{rating of the photo for 'calm'}
+#'   \item{`independent`}{rating of the photo for 'independent'}
+#'   \item{`sincere`}{rating of the photo for 'sincere'}
+#'   \item{`warm`}{rating of the photo for 'warm'}
+#'   \item{`phyattr`}{rating of the photo for 'physical attractiveness'}
+#'   \item{`sociable`}{rating of the photo for 'exciting'}
+#'   \item{`kind`}{rating of the photo for 'kind'}
+#'   \item{`intelligent`}{rating of the photo for 'intelligent'}
+#'   \item{`strong`}{rating of the photo for 'strong'}
+#'   \item{`sophisticated`}{rating of the photo for 'sophisticated'}
+#'   \item{`happy`}{rating of the photo for 'happy'}
+#'   \item{`ownPA`}{self-rating of the subject for 'physical attractiveness'} 
 #' }
 #' @references 
-#' Data from the thesis by Plaster, M. E. (1989). \emph{Inmates as
-#' mock jurors: The effects of physical attractiveness upon juridic decisions.}
+#' Data from the thesis by Plaster, M. E. (1989). *Inmates as
+#' mock jurors: The effects of physical attractiveness upon juridic decisions.*
 #' M.A. thesis, Greenville, NC: East Carolina University.
 #' 
 #' 
@@ -905,29 +905,29 @@ NULL
 #' @docType data
 #' @format A data frame with 242 observations on the following 10 variables.
 #' \describe{ 
-#'   \item{\code{Dx}}{Diagnostic group, a factor with levels \code{Schizophrenia} \code{Schizoaffective} \code{Control}}
-#'   \item{\code{Speed}}{Speed of processing domain T score, a numeric vector}
-#'   \item{\code{Attention}}{Attention/Vigilance Domain T score, a numeric vector} 
-#'   \item{\code{Memory}}{Working memory a numeric vector}
-#'   \item{\code{Verbal}}{Verbal Learning Domain T score, a numeric vector}
-#'   \item{\code{Visual}}{Visual Learning Domain T score, a numeric vector}
-#'   \item{\code{ProbSolv}}{Reasoning/Problem Solving Domain T score, a numeric vector} 
-#'   \item{\code{SocialCog}}{Social Cognition Domain T score, a numeric vector} 
-#'   \item{\code{Age}}{Subject age, a numeric vector}
-#'   \item{\code{Sex}}{Subject gender, a factor with levels \code{Female} \code{Male}} 
+#'   \item{`Dx`}{Diagnostic group, a factor with levels `Schizophrenia` `Schizoaffective` `Control`}
+#'   \item{`Speed`}{Speed of processing domain T score, a numeric vector}
+#'   \item{`Attention`}{Attention/Vigilance Domain T score, a numeric vector} 
+#'   \item{`Memory`}{Working memory a numeric vector}
+#'   \item{`Verbal`}{Verbal Learning Domain T score, a numeric vector}
+#'   \item{`Visual`}{Visual Learning Domain T score, a numeric vector}
+#'   \item{`ProbSolv`}{Reasoning/Problem Solving Domain T score, a numeric vector} 
+#'   \item{`SocialCog`}{Social Cognition Domain T score, a numeric vector} 
+#'   \item{`Age`}{Subject age, a numeric vector}
+#'   \item{`Sex`}{Subject gender, a factor with levels `Female` `Male`} 
 #' }
 #' @references 
 #' Heinrichs, R. W., Ammari, N., McDermid Vaz, S. & Miles, A.
 #' (2008). Are schizophrenia and schizoaffective disorder neuropsychologically
-#' distinguishable?  \emph{Schizophrenia Research}, \bold{99}, 149-154.
+#' distinguishable?  *Schizophrenia Research*, **99**, 149-154.
 #' 
 #' Nuechterlein K.H., Green M.F., Kern R.S., Baade L.E., Barch D., Cohen J.,
 #' Essock S., Fenton W.S., Frese F.J., Gold J.M., Goldberg T., Heaton R., Keefe
 #' R.S.E., Kraemer H., Mesholam-Gately R., Seidman L.J., Stover E., Weinberger
 #' D.R., Young A.S., Zalcman S., Marder S.R. (2008) The MATRICS Consensus
 #' Cognitive Battery, Part 1: Test selection, reliability, and validity.
-#' \emph{American Journal of Psychiatry}, \bold{165} (2), 203-213.
-#' \url{https://pubmed.ncbi.nlm.nih.gov/18172019/}.
+#' *American Journal of Psychiatry*, **165** (2), 203-213.
+#' <https://pubmed.ncbi.nlm.nih.gov/18172019/>.
 #' 
 #' @source 
 #' Hartman, L. I. (2016). Schizophrenia and Schizoaffective Disorder:
@@ -936,8 +936,8 @@ NULL
 #' Heinrichs, R.W., Pinnock, F., Muharib, E., Hartman, L.I., Goldberg, J.O., &
 #' McDermid Vaz, S. (2015).  Neurocognitive normality in schizophrenia
 #' revisited.  
-#' \emph{Schizophrenia Research: Cognition}, \bold{2} (4), 227-232.
-#' \code{doi: 10.1016/j.scog.2015.09.001}
+#' *Schizophrenia Research: Cognition*, **2** (4), 227-232.
+#' `doi: 10.1016/j.scog.2015.09.001`
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept contrast
@@ -984,14 +984,14 @@ NULL
 #' 
 #' @details
 #' 
-#' For the examples using this dataset, \code{math} and \code{read} scores are taken at the outcome
-#' variables. Among the remaining predictors, \code{income} and \code{educ}
+#' For the examples using this dataset, `math` and `read` scores are taken at the outcome
+#' variables. Among the remaining predictors, `income` and `educ`
 #' might be considered as background variables necessary to control for.
 #' Interest might then be focused on whether the behavioral variables
-#' \code{antisoc} and \code{hyperact} contribute beyond that.
+#' `antisoc` and `hyperact` contribute beyond that.
 #' 
 #' The distribution of father's income is very highly skewed in the positive direction.
-#' Linear model analysis should probably use \code{log(income)}, but this is omitted for simplicity.
+#' Linear model analysis should probably use `log(income)`, but this is omitted for simplicity.
 #' 
 #' The dataset also contains a few unusual observations for you to discover.
 #' 
@@ -999,21 +999,21 @@ NULL
 #' @docType data
 #' @format A data frame with 243 observations on the following 6 variables.
 #' \describe{ 
-#'   \item{\code{math}}{Math achievement test score}
-#'   \item{\code{read}}{Reading achievement test score}
-#'   \item{\code{antisoc}}{score on a measure of child's antisocial behavior, \code{0:6}} 
-#'   \item{\code{hyperact}}{score on a measure of child's
-#'         hyperactive behavior, \code{0:5}} \item{\code{income}}{yearly income of child's father} 
-#'   \item{\code{educ}}{years of education of child's father} 
+#'   \item{`math`}{Math achievement test score}
+#'   \item{`read`}{Reading achievement test score}
+#'   \item{`antisoc`}{score on a measure of child's antisocial behavior, `0:6`} 
+#'   \item{`hyperact`}{score on a measure of child's
+#'         hyperactive behavior, `0:5`} \item{`income`}{yearly income of child's father} 
+#'   \item{`educ`}{years of education of child's father} 
 #' }
 #' @source 
 #' This dataset was derived from a larger one used by Patrick Curran at
 #' the 1997 meeting of the Society for Research on Child Development (SRCD). A
 #' description now only exists on the WayBack Machine,
-#' \url{http://web.archive.org/web/20050404145001/http://www.unc.edu/~curran/example.html}.
+#' <http://web.archive.org/web/20050404145001/http://www.unc.edu/~curran/example.html>.
 #' 
 #' More details are available at
-#' \url{http://web.archive.org/web/20060830061414/http://www.unc.edu/~curran/srcd-docs/srcdmeth.pdf}.
+#' <http://web.archive.org/web/20060830061414/http://www.unc.edu/~curran/srcd-docs/srcdmeth.pdf>.
 #' @keywords datasets
 #' @concept MMRA
 #' @concept robust
@@ -1068,7 +1068,7 @@ NULL
 #' The Oslo data set contains chemical concentrations of 332 samples of
 #' different plant species collected along a 120 km transect running through
 #' the city of Oslo, Norway. It is a subset of the
-#' \code{\link[rrcov]{OsloTransect}} data provided by the \code{rrcov} package.
+#' \code{\link[rrcov]{OsloTransect}} data provided by the `rrcov` package.
 #' 
 #' The \code{\link[rrcov]{OsloTransect}} contains 360 observations, with 9
 #' observations per site. Only 7 chemical elements were retained from the 25
@@ -1082,41 +1082,41 @@ NULL
 #' @docType data
 #' @format A data frame with 332 observations on the following 14 variables.
 #' \describe{ 
-#'   \item{\code{site}}{transect site ID, a factor with levels
-#'      \code{102} \code{103} \code{104} \code{105} \code{106} \code{107} \code{108}
-#'      \code{109} \code{111} \code{112} \code{113} \code{114} \code{115} \code{116}
-#'      \code{117} \code{118} \code{119} \code{121} \code{122} \code{123} \code{124}
-#'      \code{125} \code{126} \code{127} \code{128} \code{129} \code{131} \code{132}
-#'      \code{133} \code{134} \code{135} \code{136} \code{138} \code{139} \code{141}
-#'      \code{142} \code{143} \code{144}} 
-#'   \item{\code{XC}}{X coordinate, a numeric vector} 
-#'   \item{\code{YC}}{Y coordinate, a numeric vector}
-#'   \item{\code{forest}}{forest type, a factor with levels \code{birspr}
-#'       \code{mixdec} \code{pine} \code{sprbir} \code{sprpin} \code{spruce}}
-#'   \item{\code{weather}}{weather type, a factor with levels \code{cloud}
-#'       \code{moist} \code{nice} \code{rain}} \item{\code{litho}}{lithological
-#'       type, a factor with levels \code{camsed} (Cambro-Silurian sedimentary),
-#'      \code{gneis_o} (Precambrian gneisses - Oslo), \code{gneis_r} (- Randsfjord),
-#'      \code{magm} (Magmatic rocks)} 
-#'   \item{\code{altitude}}{altitude, a numeric vector} 
-#'   \item{\code{Cu}}{Copper, a numeric vector} 
-#'   \item{\code{Fe}}{Iron, a numeric vector} 
-#'   \item{\code{K}}{Potassium, a numeric vector}
-#'   \item{\code{Mg}}{Magnesium, a numeric vector} 
-#'   \item{\code{Mn}}{Manganese, a numeric vector} 
-#'   \item{\code{P}}{Lead, a numeric vector}
-#'   \item{\code{Zn}}{Zinc, a numeric vector} 
+#'   \item{`site`}{transect site ID, a factor with levels
+#'      `102` `103` `104` `105` `106` `107` `108`
+#'      `109` `111` `112` `113` `114` `115` `116`
+#'      `117` `118` `119` `121` `122` `123` `124`
+#'      `125` `126` `127` `128` `129` `131` `132`
+#'      `133` `134` `135` `136` `138` `139` `141`
+#'      `142` `143` `144`} 
+#'   \item{`XC`}{X coordinate, a numeric vector} 
+#'   \item{`YC`}{Y coordinate, a numeric vector}
+#'   \item{`forest`}{forest type, a factor with levels `birspr`
+#'       `mixdec` `pine` `sprbir` `sprpin` `spruce`}
+#'   \item{`weather`}{weather type, a factor with levels `cloud`
+#'       `moist` `nice` `rain`} \item{`litho`}{lithological
+#'       type, a factor with levels `camsed` (Cambro-Silurian sedimentary),
+#'      `gneis_o` (Precambrian gneisses - Oslo), `gneis_r` (- Randsfjord),
+#'      `magm` (Magmatic rocks)} 
+#'   \item{`altitude`}{altitude, a numeric vector} 
+#'   \item{`Cu`}{Copper, a numeric vector} 
+#'   \item{`Fe`}{Iron, a numeric vector} 
+#'   \item{`K`}{Potassium, a numeric vector}
+#'   \item{`Mg`}{Magnesium, a numeric vector} 
+#'   \item{`Mn`}{Manganese, a numeric vector} 
+#'   \item{`P`}{Lead, a numeric vector}
+#'   \item{`Zn`}{Zinc, a numeric vector} 
 #' }
 #' @references 
 #' Todorov V. and Filzmoser P. (2009) Robust statistic for the
-#' one-way MANOVA, submitted to the \emph{Journal of Environmetrics}.
+#' one-way MANOVA, submitted to the *Journal of Environmetrics*.
 #' 
 #' @source 
 #' Reimann, C., Arnoldussen, A., Boyd, R., Finne, T.E., Koller, F.,
 #' Nordgulen, Oe., And Englmaier, P. (2007) Element contents in leaves of four
 #' plant species (birch, mountain ash, fern and spruce) along anthropogenic and
-#' geogenic concentration gradients, \emph{The Science of the Total
-#' Environment}, 377, 416-433.
+#' geogenic concentration gradients, *The Science of the Total
+#' Environment*, 377, 416-433.
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept candisc
@@ -1159,38 +1159,38 @@ NULL
 #' abnormal blood pressure and irregular waves on the electrocardiogram (ECG).
 #' This dataset (originally from Rudorfer, 1982) gives data on 17 patients admitted to hospital after an overdose 
 #' of amitriptyline.
-#' The two response variables are: \code{TCAD} and \code{AMI}. The other variables are predictors.
+#' The two response variables are: `TCAD` and `AMI`. The other variables are predictors.
 #'
 #' @usage data("Overdose")
 #' @format
 #'  A data frame with 17 observations on the following 7 variables.
 #'  \describe{
-#'    \item{\code{TCAD}}{total TCAD plasma level, a numeric vector}
-#'    \item{\code{AMI}}{amount of amitriptyline present in the TCAD plasma level, a numeric vector}
-#'    \item{\code{Gender}}{a factor with levels \code{Male} \code{Female}}
-#'    \item{\code{amount}}{amount of drug taken at time of overdose, a numeric vector}
-#'    \item{\code{BP}}{diastolic blood pressure, a numeric vector}
-#'    \item{\code{ECG_PR}}{ECG PR wave measurement, a numeric vector}
-#'    \item{\code{ECG_QRS}}{ECG QRS wave measurement, a numeric vector}
+#'    \item{`TCAD`}{total TCAD plasma level, a numeric vector}
+#'    \item{`AMI`}{amount of amitriptyline present in the TCAD plasma level, a numeric vector}
+#'    \item{`Gender`}{a factor with levels `Male` `Female`}
+#'    \item{`amount`}{amount of drug taken at time of overdose, a numeric vector}
+#'    \item{`BP`}{diastolic blood pressure, a numeric vector}
+#'    \item{`ECG_PR`}{ECG PR wave measurement, a numeric vector}
+#'    \item{`ECG_QRS`}{ECG QRS wave measurement, a numeric vector}
 #'  }
 #'
 #' %% @details 
 #' %%  ~~ If necessary, more details than the __description__ above ~~
 #' @source 
-#' Johnson & Wichern (2005), \emph{Applied Multivariate Statistical Analysis},
+#' Johnson & Wichern (2005), *Applied Multivariate Statistical Analysis*,
 #' Exercise 7.25, p. 426.
 #' @references
 #' Rudorfer,  M. V. Cardiovascular changes and plasma drug levels after amitriptyline overdose. (1982).
-#' \emph{J. Toxicology - Clinical Toxicology}. \bold{19}(1),67-78. 
+#' *J. Toxicology - Clinical Toxicology*. **19**(1),67-78. 
 #' \doi{10.3109/15563658208990367}, PMID: 7154142.
 #' 
 #' Clay Ford, "Getting started with Multivariate Multiple Regression",
-#' \url{https://library.virginia.edu/data/articles/getting-started-with-multivariate-multiple-regression}.
+#' <https://library.virginia.edu/data/articles/getting-started-with-multivariate-multiple-regression>.
 #' 
 #' ECG measurements:
 #' \describe{
-#'    \item{PR}{\url{https://en.wikipedia.org/wiki/PR_interval}}
-#'    \item{QRS}{\url{https://en.wikipedia.org/wiki/QRS_complex}}
+#'    \item{PR}{<https://en.wikipedia.org/wiki/PR_interval>}
+#'    \item{QRS}{<https://en.wikipedia.org/wiki/QRS_complex>}
 #' }
 #' @concept MMRA
 #' @concept cancor
@@ -1234,16 +1234,16 @@ NULL
 #' @docType data
 #' @format A data frame with 60 observations on the following 4 variables.
 #' \describe{ 
-#'   \item{\code{group}}{a factor with levels \code{Normal}
-#'       \code{Physical Disability} \code{Mental Disability}}
-#'   \item{\code{caring}}{caretaking responsibilities, a numeric vector}
-#'   \item{\code{emotion}}{emotional support provided to the child, a numeric vector} 
-#'   \item{\code{play}}{recreational time spent with the child, a numeric vector} 
+#'   \item{`group`}{a factor with levels `Normal`
+#'       `Physical Disability` `Mental Disability`}
+#'   \item{`caring`}{caretaking responsibilities, a numeric vector}
+#'   \item{`emotion`}{emotional support provided to the child, a numeric vector} 
+#'   \item{`play`}{recreational time spent with the child, a numeric vector} 
 #' }
 #' @source 
-#' Meyers, L. S., Gamst, G, & Guarino, A. J. (2006). \emph{Applied
-#' Multivariate Research: Design and Interpretation}, Thousand Oaks, CA: Sage
-#' Publications, \url{https://study.sagepub.com/meyers3e}, Exercises 10B.
+#' Meyers, L. S., Gamst, G, & Guarino, A. J. (2006). *Applied
+#' Multivariate Research: Design and Interpretation*, Thousand Oaks, CA: Sage
+#' Publications, <https://study.sagepub.com/meyers3e>, Exercises 10B.
 #' @keywords datasets
 #' @concept MANOVA
 #' @examples
@@ -1294,28 +1294,28 @@ NULL
 
 #' Plastic Film Data
 #' 
-#' An experiment was conducted to determine the optimum conditions for
+#' An experiment was conducted to determine the optimal conditions for
 #' extruding plastic film.  Three responses were measured in relation to two
-#' factors, rate of extrusion and amount of an additive.
+#' factors, change in rate of extrusion and amount of an additive, both with two levels and \eqn{n=5} observations per cell.
 #' 
 #' 
 #' @name Plastic
 #' @docType data
 #' @format A data frame with 20 observations on the following 5 variables.
 #' \describe{ 
-#'   \item{\code{tear}}{a numeric vector: tear resistance}
-#'   \item{\code{gloss}}{a numeric vector: film gloss} 
-#'   \item{\code{opacity}}{a numeric vector: film opacity} 
-#'   \item{\code{rate}}{a factor representing change in the rate of extrusion with levels \code{Low} (-10\%), \code{High} (10\%)} 
-#'   \item{\code{additive}}{a factor with levels \code{Low} (1.0\%), \code{High} (1.5\%)} 
+#'   \item{`tear`}{a numeric vector: tear resistance}
+#'   \item{`gloss`}{a numeric vector: film gloss} 
+#'   \item{`opacity`}{a numeric vector: film opacity} 
+#'   \item{`rate`}{a factor representing change in the rate of extrusion with levels `Low` (-10%), `High` (10%)} 
+#'   \item{`additive`}{a factor with levels `Low` (1.0%), `High` (1.5%)} 
 #' }
 #' @references 
-#' Krzanowski, W. J. (1988). \emph{Principles of Multivariate
-#' Analysis. A User's Perspective}. Oxford.  (p. 381)
+#' Krzanowski, W. J. (1988). *Principles of Multivariate
+#' Analysis. A User's Perspective*. Oxford.  (p. 381)
 #' 
 #' @source 
-#' Johnson, R.A. & Wichern, D.W. (1992). \emph{Applied Multivariate
-#' Statistical Analysis}, 3rd ed., Prentice-Hall. Example 6.12 (p. 266).
+#' Johnson, R.A. & Wichern, D.W. (1992). *Applied Multivariate
+#' Statistical Analysis*, 3rd ed., Prentice-Hall. Example 6.12 (p. 266).
 #' @keywords datasets
 #' @concept MANOVA
 #' @examples
@@ -1338,51 +1338,51 @@ NULL
 #' than 0.01\%. This is the original data set from Tubb et al. (1980), in
 #' contrast to \code{\link[carData]{Pottery}}.
 #' 
-#' The specimens are identified by their \code{rownames} in the data frame.
-#' \code{Kiln} indicates at which kiln site the pottery was found; \code{Site}
+#' The specimens are identified by their `rownames` in the data frame.
+#' `Kiln` indicates at which kiln site the pottery was found; `Site`
 #' gives the location names of those sites. The kiln sites come from three
-#' \code{Region}s, \code{("Gl"=1, "Wales"=(2, 3), "NF"=(4, 5))}, where the full
+#' `Region`s, `("Gl"=1, "Wales"=(2, 3), "NF"=(4, 5))`, where the full
 #' names are "Gloucester", "Wales", and "New Forrest".
 #' 
-#' The variable \code{Kiln} comes pre-supplied with contrasts to test
-#' interesting hypotheses related to \code{Site} and \code{Region}.
+#' The variable `Kiln` comes pre-supplied with contrasts to test
+#' interesting hypotheses related to `Site` and `Region`.
 #' 
 #' @name Pottery2
 #' @docType data
 #' @format A data frame with 48 observations on the following 12 variables.
 #' \describe{ 
-#'   \item{\code{Region}}{a factor with levels \code{Gl} \code{NF}
-#'      \code{Wales}} 
-#'   \item{\code{Site}}{a factor with levels \code{AshleyRails}
-#'      \code{Caldicot} \code{Gloucester} \code{IsleThorns} \code{Llanedryn}}
-#'   \item{\code{Kiln}}{a factor with levels \code{1} \code{2} \code{3} \code{4}
-#'      \code{5}} 
-#'   \item{\code{Al}}{amount of aluminum oxide, \eqn{Al_2O_3}}
-#'   \item{\code{Fe}}{amount of iron oxide, \eqn{Fe_2O_3}}
-#'   \item{\code{Mg}}{amount of magnesium oxide, MgO} 
-#'   \item{\code{Ca}}{amount of calcium oxide, CaO} 
-#'   \item{\code{Na}}{amount of sodium oxide, \eqn{Na_2O}} 
-#'   \item{\code{K}}{amount of potassium oxide, \eqn{K_2O}}
-#'   \item{\code{Ti}}{amount of titanium oxide, \eqn{TiO_2} }
-#'   \item{\code{Mn}}{amount of manganese oxide, MnO} 
-#'   \item{\code{Ba}}{amount of BaO} 
+#'   \item{`Region`}{a factor with levels `Gl` `NF`
+#'      `Wales`} 
+#'   \item{`Site`}{a factor with levels `AshleyRails`
+#'      `Caldicot` `Gloucester` `IsleThorns` `Llanedryn`}
+#'   \item{`Kiln`}{a factor with levels `1` `2` `3` `4`
+#'      `5`} 
+#'   \item{`Al`}{amount of aluminum oxide, \eqn{Al_2O_3}}
+#'   \item{`Fe`}{amount of iron oxide, \eqn{Fe_2O_3}}
+#'   \item{`Mg`}{amount of magnesium oxide, MgO} 
+#'   \item{`Ca`}{amount of calcium oxide, CaO} 
+#'   \item{`Na`}{amount of sodium oxide, \eqn{Na_2O}} 
+#'   \item{`K`}{amount of potassium oxide, \eqn{K_2O}}
+#'   \item{`Ti`}{amount of titanium oxide, \eqn{TiO_2} }
+#'   \item{`Mn`}{amount of manganese oxide, MnO} 
+#'   \item{`Ba`}{amount of BaO} 
 #' }
 #' @seealso \code{\link[carData]{Pottery}} for the related (subset) data set;
 #'     \code{\link[archdata]{RBPottery}} for a newer version with more variables.
 #' 
-#' @references Baxter, M. J. 2003. \emph{Statistics in Archaeology}. Arnold,
+#' @references Baxter, M. J. 2003. *Statistics in Archaeology*. Arnold,
 #' London.
 #' 
-#' Carlson, David L. 2017. \emph{Quantitative Methods in Archaeology Using R}.
+#' Carlson, David L. 2017. *Quantitative Methods in Archaeology Using R*.
 #' Cambridge University Press, pp 247-255, 335-342.
 #' 
 #' Tubb, A., A. J. Parker, and G. Nickless. 1980.  The Analysis of
 #' Romano-British Pottery by Atomic Absorption Spectrophotometry.
-#' \emph{Archaeometry}, \bold{22}, 153-171.
+#' *Archaeometry*, **22**, 153-171.
 #' 
 #' @source Originally slightly modified from files by David Carlson, now at
 #' \code{\link[archdata]{RBPottery}}. %
-#' % \url{http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html}
+#' % <http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html>
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept candisc
@@ -1449,7 +1449,7 @@ NULL
 #' Function:   ADJ1 SUBJ        ADJ2  OBJ  REL.PN
 #' }
 #' 
-#' In \code{Probe2}, there are two groups of subjects, pre-selected on a test
+#' In `Probe2`, there are two groups of subjects, pre-selected on a test
 #' of short term memory.
 #' 
 #' These data sets (fictitious) are used as examples of single-sample and
@@ -1459,26 +1459,26 @@ NULL
 #' @name Probe
 #' @aliases Probe Probe1 Probe2
 #' @docType data
-#' @format \code{Probe1}: A data frame with 11 observations on the following 5 variables.  
+#' @format `Probe1`: A data frame with 11 observations on the following 5 variables.  
 #' \describe{ 
-#'   \item{\code{p1}}{speed at position 1}
-#'   \item{\code{p2}}{speed at position 2} 
-#'   \item{\code{p3}}{speed at position 3} 
-#'   \item{\code{p4}}{speed at position 4} 
-#'   \item{\code{p5}}{speed at position 5} 
+#'   \item{`p1`}{speed at position 1}
+#'   \item{`p2`}{speed at position 2} 
+#'   \item{`p3`}{speed at position 3} 
+#'   \item{`p4`}{speed at position 4} 
+#'   \item{`p5`}{speed at position 5} 
 #' }
 #' 
-#' \code{Probe2}: A data frame with 20 observations on the following 6 variables.  
+#' `Probe2`: A data frame with 20 observations on the following 6 variables.  
 #' \describe{ 
-#'   \item{\code{stm}}{Short term memory capacity: a factor with levels \code{High} \code{Low}} 
-#'   \item{\code{p1}}{speed at position 1} 
-#'   \item{\code{p2}}{speed at position 2} 
-#'   \item{\code{p3}}{speed at position 3} 
-#'   \item{\code{p4}}{speed at position 4}
-#'   \item{\code{p5}}{speed at position 5} 
+#'   \item{`stm`}{Short term memory capacity: a factor with levels `High` `Low`} 
+#'   \item{`p1`}{speed at position 1} 
+#'   \item{`p2`}{speed at position 2} 
+#'   \item{`p3`}{speed at position 3} 
+#'   \item{`p4`}{speed at position 4}
+#'   \item{`p5`}{speed at position 5} 
 #' }
-#' @source Timm, N. (1975) \emph{Multivariate analysis, with applications in
-#' education and psychology} Brooks/Cole.
+#' @source Timm, N. (1975) *Multivariate analysis, with applications in
+#' education and psychology* Brooks/Cole.
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept repeated
@@ -1539,35 +1539,35 @@ NULL
 #' accident at the beginning of the study, data on 3 rats from the thyroxin
 #' group are unavailable.
 #' 
-#' The \code{trt} factor comes supplied with contrasts comparing \code{Control}
-#' to each of \code{Thiouracil} and \code{Thyroxin}.
+#' The `trt` factor comes supplied with contrasts comparing `Control`
+#' to each of `Thiouracil` and `Thyroxin`.
 #' 
 #' @name RatWeight
 #' @docType data
 #' @format A data frame with 27 observations on the following 6 variables.
 #' \describe{ 
-#'   \item{\code{trt}}{a factor with levels \code{Control} \code{Thiouracil} \code{Thyroxin}} 
-#'   \item{\code{wt0}}{Weight at Week 0 (baseline weight)} 
-#'   \item{\code{wt1}}{Weight at Week 1}
-#'   \item{\code{wt2}}{Weight at Week 2} 
-#'   \item{\code{wt3}}{Weight at Week 3}
-#'   \item{\code{wt4}}{Weight at Week 4} 
+#'   \item{`trt`}{a factor with levels `Control` `Thiouracil` `Thyroxin`} 
+#'   \item{`wt0`}{Weight at Week 0 (baseline weight)} 
+#'   \item{`wt1`}{Weight at Week 1}
+#'   \item{`wt2`}{Weight at Week 2} 
+#'   \item{`wt3`}{Weight at Week 3}
+#'   \item{`wt4`}{Weight at Week 4} 
 #' }
 #' @references 
 #' Box, G.E.P. (1950). Problems in the analysis of growth and wear
-#' curves.  \emph{Biometrics}, 6, 362-389.
+#' curves.  *Biometrics*, 6, 362-389.
 #' 
 #' Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
-#' \emph{Journal of Statistical Software}, 37(4), 1-40. 
+#' *Journal of Statistical Software*, 37(4), 1-40. 
 #' \doi{10.18637/jss.v037.i04}.
 #' 
 #' @source 
 #' Originally from Box (1950), Table D (page 389), where the values for
 #' weeks 1-4 were recorded as the gain in weight for that week.
 #' 
-#' Fitzmaurice, G. M. and Laird, N. M. and Ware, J. H (2004). \emph{Applied
-#' Longitudinal Analysis}, New York, NY: Wiley-Interscience.
-#' \url{https://rdrr.io/rforge/ALA/}.
+#' Fitzmaurice, G. M. and Laird, N. M. and Ware, J. H (2004). *Applied
+#' Longitudinal Analysis*, New York, NY: Wiley-Interscience.
+#' <https://rdrr.io/rforge/ALA/>.
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept repeated
@@ -1616,25 +1616,25 @@ NULL
 #' @format A data frame with 10 observations giving the reaction time for the 6
 #' conditions.  
 #' \describe{ 
-#'   \item{\code{deg0NA}}{a numeric vector}
-#'   \item{\code{deg4NA}}{a numeric vector} 
-#'   \item{\code{deg8NA}}{a numeric vector} 
-#'   \item{\code{deg0NP}}{a numeric vector} 
-#'   \item{\code{deg4NP}}{a numeric vector} 
-#'   \item{\code{deg8NP}}{a numeric vector} 
+#'   \item{`deg0NA`}{a numeric vector}
+#'   \item{`deg4NA`}{a numeric vector} 
+#'   \item{`deg8NA`}{a numeric vector} 
+#'   \item{`deg0NP`}{a numeric vector} 
+#'   \item{`deg4NP`}{a numeric vector} 
+#'   \item{`deg8NP`}{a numeric vector} 
 #' }
 #' @references 
 #' Michael Friendly (2010). HE Plots for Repeated Measures Designs.
-#' \emph{Journal of Statistical Software}, 37(4), 1-40. 
+#' *Journal of Statistical Software*, 37(4), 1-40. 
 #' \doi{10.18637/jss.v037.i04}.
 #' 
-#' Maxwell, S. E. & Delaney, H. D. (1990).  \emph{Designing Experiments and
-#' Analyzing Data: A model comparison perspective}. Pacific Grove, CA:
+#' Maxwell, S. E. & Delaney, H. D. (1990).  *Designing Experiments and
+#' Analyzing Data: A model comparison perspective*. Pacific Grove, CA:
 #' Brooks/Cole.
 #' 
-#' @source Baron, J. and Li, Y. (2003).  \emph{Notes on the use of R for
-#' psychology experiments and questionnaires},
-#' \url{https://cran.r-project.org/doc/contrib/Baron-rpsych.pdf}
+#' @source Baron, J. and Li, Y. (2003).  *Notes on the use of R for
+#' psychology experiments and questionnaires*,
+#' <https://cran.r-project.org/doc/contrib/Baron-rpsych.pdf>
 #' @keywords datasets
 #' @concept repeated
 #' @examples
@@ -1680,52 +1680,52 @@ NULL
 #' designed to examine how well performance on a set of paired-associate (PA)
 #' tasks can predict performance on some measures of aptitude and achievement.
 #' 
-#' The variables \code{SAT}, \code{PPVT} and \code{Raven} are responses to be
+#' The variables `SAT`, `PPVT` and `Raven` are responses to be
 #' potentially explained by performance on the paired-associate (PA) learning
-#' tasks, \code{n}, \code{s}, \code{ns}, \code{na}, and \code{ss},
+#' tasks, `n`, `s`, `ns`, `na`, and `ss`,
 #' which differed in the syntactic and semantic relationship between the stimulus and response words in each pair.
 #' 
 #' @details
 #' Timm (1975) does not give a source, but the most relevant studies are Rowher & Ammons (1968) and Rohwer & Levin (1971).
 #' The paired-associate tasks are described as:
 #' \describe{
-#'    \item{\code{n}}{(named): Simple paired-associate task where participants learn pairs of nouns with no additional context}
-#'    \item{\code{s}}{(sentence): Participants learn pairs embedded within a sentence}
-#'    \item{\code{ns}}{(named sentence): A combination where participants learn noun pairs with sentence context}
-#'    \item{\code{na}}{(named action): Pairs are learned with an action relationship between them}
-#'    \item{\code{ss}}{(sentence still): Similar to the sentence condition but with static presentation}
+#'    \item{`n`}{(named): Simple paired-associate task where participants learn pairs of nouns with no additional context}
+#'    \item{`s`}{(sentence): Participants learn pairs embedded within a sentence}
+#'    \item{`ns`}{(named sentence): A combination where participants learn noun pairs with sentence context}
+#'    \item{`na`}{(named action): Pairs are learned with an action relationship between them}
+#'    \item{`ss`}{(sentence still): Similar to the sentence condition but with static presentation}
 #' }
 #' 
 #' @name Rohwer
 #' @docType data
 #' @format A data frame with 69 observations on the following 10 variables.
 #' \describe{ 
-#'   \item{\code{group}}{a numeric vector, corresponding to SES}
-#'   \item{\code{SES}}{Socioeconomic status, a factor with levels \code{Hi} \code{Lo}} 
-#'   \item{\code{SAT}}{a numeric vector: score on a Student Achievement Test} 
-#'   \item{\code{PPVT}}{a numeric vector: score on the Peabody Picture Vocabulary Test} 
-#'   \item{\code{Raven}}{a numeric vector: score on the Raven Progressive Matrices Test} 
-#'   \item{\code{n}}{a numeric vector: performance on a 'named' PA task} 
-#'   \item{\code{s}}{a numeric vector: performance on a 'still' PA task} 
-#'   \item{\code{ns}}{a numeric vector: performance on a 'named still' PA task} 
-#'   \item{\code{na}}{a numeric vector: performance on a 'named action' PA task} 
-#'   \item{\code{ss}}{a numeric vector: performance on a 'sentence still' PA task} 
+#'   \item{`group`}{a numeric vector, corresponding to SES}
+#'   \item{`SES`}{Socioeconomic status, a factor with levels `Hi` `Lo`} 
+#'   \item{`SAT`}{a numeric vector: score on a Student Achievement Test} 
+#'   \item{`PPVT`}{a numeric vector: score on the Peabody Picture Vocabulary Test} 
+#'   \item{`Raven`}{a numeric vector: score on the Raven Progressive Matrices Test} 
+#'   \item{`n`}{a numeric vector: performance on a 'named' PA task} 
+#'   \item{`s`}{a numeric vector: performance on a 'still' PA task} 
+#'   \item{`ns`}{a numeric vector: performance on a 'named still' PA task} 
+#'   \item{`na`}{a numeric vector: performance on a 'named action' PA task} 
+#'   \item{`ss`}{a numeric vector: performance on a 'sentence still' PA task} 
 #' }
 #' @references 
 #' Friendly, M. (2007).  HE plots for Multivariate General Linear
-#' Models.  \emph{Journal of Computational and Graphical Statistics},
-#' \bold{16}(2) 421--444.  \url{http://datavis.ca/papers/jcgs-heplots.pdf}
+#' Models.  *Journal of Computational and Graphical Statistics*,
+#' **16**(2) 421--444.  <http://datavis.ca/papers/jcgs-heplots.pdf>
 #' 
 #' Rohwer, W.D., Jr., & Levin, J.R. (1968). Action, meaning and stimulus selection
-#' in paired-associate learning. \emph{Journal of Verbal Learning and Verbal Behavior}, \bold{7}: 137-141.
+#' in paired-associate learning. *Journal of Verbal Learning and Verbal Behavior*, **7**: 137-141.
 #' 
 #' Rohwer, W. D., Jr., & Ammons, M. S. (1971). Elaboration training and paired-associate learning efficiency in children. 
-#' \emph{Journal of Educational Psychology}, \bold{62}(5), 376-383.
+#' *Journal of Educational Psychology*, **62**(5), 376-383.
 
 #' 
 #' @source 
-#' Timm, N.H. 1975).  \emph{Multivariate Analysis with Applications in
-#' Education and Psychology}.  Wadsworth (Brooks/Cole), Examples 4.3 (p. 281),
+#' Timm, N.H. 1975).  *Multivariate Analysis with Applications in
+#' Education and Psychology*.  Wadsworth (Brooks/Cole), Examples 4.3 (p. 281),
 #' 4.7 (p. 313), 4.13 (p. 344).
 #' @keywords datasets
 #' @concept MMRA
@@ -1799,18 +1799,18 @@ NULL
 #' @docType data
 #' @format A data frame with 48 observations on the following 5 variables.
 #' \describe{ 
-#'   \item{\code{rootstock}}{a factor with levels \code{1} \code{2} \code{3} \code{4} \code{5} \code{6}} 
-#'   \item{\code{girth4}}{a numeric vector: trunk girth at 4 years (mm x 100)} 
-#'   \item{\code{ext4}}{a numeric vector: extension growth at 4 years (m)} 
-#'   \item{\code{girth15}}{a numeric vector: trunk girth at 15 years (mm x 100)} 
-#'   \item{\code{weight15}}{a numeric vector: weight of tree above ground at 15 years (lb x 1000)} 
+#'   \item{`rootstock`}{a factor with levels `1` `2` `3` `4` `5` `6`} 
+#'   \item{`girth4`}{a numeric vector: trunk girth at 4 years (mm x 100)} 
+#'   \item{`ext4`}{a numeric vector: extension growth at 4 years (m)} 
+#'   \item{`girth15`}{a numeric vector: trunk girth at 15 years (mm x 100)} 
+#'   \item{`weight15`}{a numeric vector: weight of tree above ground at 15 years (lb x 1000)} 
 #' }
 #' @references 
-#' Rencher, A. C. (1995). \emph{Methods of Multivariate Analysis}.
+#' Rencher, A. C. (1995). *Methods of Multivariate Analysis*.
 #' New York: Wiley, Table 6.2
 #' @source 
-#' Andrews, D. and Herzberg, A. (1985). \emph{Data: A Collection of
-#' Problems from Many Fields for the Student and Research Worker}
+#' Andrews, D. and Herzberg, A. (1985). *Data: A Collection of
+#' Problems from Many Fields for the Student and Research Worker*
 #' Springer-Verlag, pp. 357--360.
 #' @keywords datasets
 #' @concept MANOVA
@@ -1844,8 +1844,8 @@ NULL
 #' Taste Ratings of Japanese Rice Wine (Sake)
 #' 
 #' Siotani et al. (1985) describe a study of Japanese rice wine (sake) used to
-#' investigate the relationship between two subjective ratings (\code{taste}
-#' and \code{smell}) and a number of physical measurements on 30 brands of
+#' investigate the relationship between two subjective ratings (`taste`
+#' and `smell`) and a number of physical measurements on 30 brands of
 #' sake.
 #' 
 #' These data provide one example of a case where a multivariate regression
@@ -1853,31 +1853,31 @@ NULL
 #' tests.  Barrett (2003) uses this data to illustrate influence measures for
 #' multivariate regression models.
 #' 
-#' The \code{taste} and \code{smell} values are the mean ratings of 10 experts
+#' The `taste` and `smell` values are the mean ratings of 10 experts
 #' on some unknown scale.
 #' 
 #' @name Sake
 #' @docType data
 #' @format A data frame with 30 observations on the following 10 variables.
 #' \describe{ 
-#'   \item{\code{taste}}{mean taste rating} 
-#'   \item{\code{smell}}{mean smell rating} 
-#'   \item{\code{pH}}{pH measurement} 
-#'   \item{\code{acidity1}}{one measure of acidity} 
-#'   \item{\code{acidity2}}{another measure of acidity}
-#'   \item{\code{sake}}{Sake-meter score} 
-#'   \item{\code{rsugar}}{direct reducing sugar content} 
-#'   \item{\code{tsugar}}{total sugar content}
-#'   \item{\code{alcohol}}{alcohol content}
-#'   \item{\code{nitrogen}}{formol-nitrogen content} 
+#'   \item{`taste`}{mean taste rating} 
+#'   \item{`smell`}{mean smell rating} 
+#'   \item{`pH`}{pH measurement} 
+#'   \item{`acidity1`}{one measure of acidity} 
+#'   \item{`acidity2`}{another measure of acidity}
+#'   \item{`sake`}{Sake-meter score} 
+#'   \item{`rsugar`}{direct reducing sugar content} 
+#'   \item{`tsugar`}{total sugar content}
+#'   \item{`alcohol`}{alcohol content}
+#'   \item{`nitrogen`}{formol-nitrogen content} 
 #' }
 #' @references 
 #' Barrett, B. E. (2003). Understanding Influence in Multivariate
-#' Regression. \emph{Communications in Statistics - Theory and Methods} 32 (3),
+#' Regression. *Communications in Statistics - Theory and Methods* 32 (3),
 #' 667-680.
 #' 
-#' @source Siotani, M. Hayakawa, T. & Fujikoshi, Y. (1985). \emph{Modern
-#' Multivariate Statistical Analysis: A Graduate Course and Handbook}. American
+#' @source Siotani, M. Hayakawa, T. & Fujikoshi, Y. (1985). *Modern
+#' Multivariate Statistical Analysis: A Graduate Course and Handbook*. American
 #' Sciences Press, p. 217.
 #' @keywords datasets
 #' @concept MMRA
@@ -1910,7 +1910,7 @@ NULL
 #' It was conceived in the late 1960's as a federally sponsored program charged with providing remedial
 #' assistance to educationally disadvantaged early primary school students.
 #' One aim is to explain scores on 3
-#' different tests, \code{reading}, \code{mathematics} and \code{selfesteem}
+#' different tests, `reading`, `mathematics` and `selfesteem`
 #' from 70 school sites by means of 5 explanatory variables related to parents
 #' and teachers.
 #' 
@@ -1920,8 +1920,8 @@ NULL
 #' @details
 #' The study was designed to compare schools using Program Follow Through (PFT)
 #' management methods of taking actions to achieve goals with those of
-#' Non Follow Through (NFT). Observations \code{1:49} came from PFT sites
-#' and \code{50:70} from NFT sites.
+#' Non Follow Through (NFT). Observations `1:49` came from PFT sites
+#' and `50:70` from NFT sites.
 #' This and other descriptors are contained in the dataset \code{\link{schoolsites}}.
 #' 
 #' 
@@ -1930,24 +1930,24 @@ NULL
 #' @format A data frame with 70 observations on the following 8 variables.
 #' 
 #' \describe{ 
-#'   \item{\code{education}}{Education level of mother as measured by the percentage of high school graduates among female parents}
-#'   \item{\code{occupation}}{Highest occupation of a family member according
+#'   \item{`education`}{Education level of mother as measured by the percentage of high school graduates among female parents}
+#'   \item{`occupation`}{Highest occupation of a family member according
 #'       to a pre-arranged rating scale} 
-#'   \item{\code{visit}}{ Parental visits index,
+#'   \item{`visit`}{ Parental visits index,
 #'      representing the number of visits to the school site}
-#'   \item{\code{counseling}}{Parent counseling index, calculated from data on
+#'   \item{`counseling`}{Parent counseling index, calculated from data on
 #'       time spent with child on school-related topics such as reading together, etc.} 
-#'   \item{\code{teacher}}{Number of teachers at the given site}
-#'   \item{\code{reading}}{ Reading score as measured by the Metropolitan Achievement Test} 
-#'   \item{\code{mathematics}}{Mathematics score as measured by the Metropolitan Achievement Test} 
-#'   \item{\code{selfesteem}}{Coopersmith Self-Esteem Inventory, intended as a measure of self-esteem} 
+#'   \item{`teacher`}{Number of teachers at the given site}
+#'   \item{`reading`}{ Reading score as measured by the Metropolitan Achievement Test} 
+#'   \item{`mathematics`}{Mathematics score as measured by the Metropolitan Achievement Test} 
+#'   \item{`selfesteem`}{Coopersmith Self-Esteem Inventory, intended as a measure of self-esteem} 
 #' }
 #' @source 
-#' This dataset was came originally from the (now-defunct) \code{FRB} package.
+#' This dataset was came originally from the (now-defunct) `FRB` package.
 #' @references 
 #' A. Charnes, W.W. Cooper and E. Rhodes (1981). Evaluating Program and
 #' Managerial Efficiency: An Application of Data Envelopment Analysis to
-#' Program Follow Through. \emph{Management Science}, \bold{27}, 668-697.
+#' Program Follow Through. *Management Science*, **27**, 668-697.
 #' @keywords datasets
 #' @seealso \code{\link{schoolsites}}
 #' @concept MMRA
@@ -2035,31 +2035,31 @@ NULL
 #' measurements of the skulls over time would indicate interbreeding with
 #' immigrant populations.
 #' 
-#' Note that using polynomial contrasts for \code{epoch} essentially treats the
+#' Note that using polynomial contrasts for `epoch` essentially treats the
 #' time points as equally spaced.
 #' 
 #' @name Skulls
 #' @docType data
 #' @format A data frame with 150 observations on the following 5 variables.
 #' \describe{ 
-#'   \item{\code{epoch}}{the epoch the skull as assigned to, an
-#'       ordered factor with levels \code{c4000BC} \code{c3300BC}, \code{c1850BC},
-#'       \code{c200BC}, and \code{cAD150}, where the years are only given approximately, of course.} 
-#'   \item{\code{mb}}{maximal breadth of the skull.}
-#'   \item{\code{bh}}{basibregmatic height of the skull.}
-#'   \item{\code{bl}}{basialiveolar length of the skull.}
-#'   \item{\code{nh}}{nasal height of the skull.} 
+#'   \item{`epoch`}{the epoch the skull as assigned to, an
+#'       ordered factor with levels `c4000BC` `c3300BC`, `c1850BC`,
+#'       `c200BC`, and `cAD150`, where the years are only given approximately, of course.} 
+#'   \item{`mb`}{maximal breadth of the skull.}
+#'   \item{`bh`}{basibregmatic height of the skull.}
+#'   \item{`bl`}{basialiveolar length of the skull.}
+#'   \item{`nh`}{nasal height of the skull.} 
 #' }
 #' @references 
-#' Thomson, A. and Randall-Maciver, R. (1905) \emph{Ancient Races
-#' of the Thebaid}, Oxford: Oxford University Press.
+#' Thomson, A. and Randall-Maciver, R. (1905) *Ancient Races
+#' of the Thebaid*, Oxford: Oxford University Press.
 #' 
 #' Hand, D. J., F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski (1994).
-#' \emph{A Handbook of Small Datasets}, Chapman and Hall/CRC, London.
+#' *A Handbook of Small Datasets*, Chapman and Hall/CRC, London.
 #' 
 #' @source
 #' D. J. Hand, F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski (1994).
-#' \emph{A Handbook of Small Datasets}, Chapman and Hall/CRC, London.
+#' *A Handbook of Small Datasets*, Chapman and Hall/CRC, London.
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept contrasts
@@ -2127,37 +2127,37 @@ NULL
 
 #' Grades in a Sociology Course
 #' 
-#' The data set \code{SocGrades} contains four outcome measures on student
+#' The data set `SocGrades` contains four outcome measures on student
 #' performance in an introductory sociology course together with six potential
 #' predictors. These data were used by Marascuilo and Levin (1983) for an
 #' example of canonical correlation analysis, but are also suitable as examples
 #' of multivariate multiple regression, MANOVA, MANCOVA and step-down analysis
 #' in multivariate linear models.
 #' 
-#' \code{midterm1}, \code{midterm2}, \code{final}, and possibly \code{eval} are
+#' `midterm1`, `midterm2`, `final`, and possibly `eval` are
 #' the response variables. All other variables are potential predictors.
 #' 
-#' The factors \code{class}, \code{sex}, and \code{hssoc} can be used with
-#' \code{as.numeric} in correlational analyses.
+#' The factors `class`, `sex`, and `hssoc` can be used with
+#' `as.numeric` in correlational analyses.
 #' 
 #' @name SocGrades
 #' @docType data
 #' @format A data frame with 40 observations on the following 10 variables.
 #' \describe{ 
-#'   \item{\code{class}}{Social class, an ordered factor with levels
-#'       \code{1} > \code{2} > \code{3}} 
-#'   \item{\code{sex}}{sex, a factor with levels \code{F} \code{M}} 
-#'   \item{\code{gpa}}{grade point average}
-#'   \item{\code{boards}}{College Board test scores}
-#'   \item{\code{hssoc}}{previous high school unit in sociology, a factor with 2 \code{no}, \code{yes}} 
-#'   \item{\code{pretest}}{score on course pretest}
-#'   \item{\code{midterm1}}{score on first midterm exam}
-#'   \item{\code{midterm2}}{score on second midterm exam}
-#'   \item{\code{final}}{score on final exam} 
-#'   \item{\code{eval}}{course evaluation} }
+#'   \item{`class`}{Social class, an ordered factor with levels
+#'       `1` > `2` > `3`} 
+#'   \item{`sex`}{sex, a factor with levels `F` `M`} 
+#'   \item{`gpa`}{grade point average}
+#'   \item{`boards`}{College Board test scores}
+#'   \item{`hssoc`}{previous high school unit in sociology, a factor with 2 `no`, `yes`} 
+#'   \item{`pretest`}{score on course pretest}
+#'   \item{`midterm1`}{score on first midterm exam}
+#'   \item{`midterm2`}{score on second midterm exam}
+#'   \item{`final`}{score on final exam} 
+#'   \item{`eval`}{course evaluation} }
 #' @source 
-#' Marascuilo, L. A. and Levin, J. R. (1983). \emph{Multivariate
-#' Statistics in the Social Sciences} Monterey, CA: Brooks/Cole, Table 5-1, p.
+#' Marascuilo, L. A. and Levin, J. R. (1983). *Multivariate
+#' Statistics in the Social Sciences* Monterey, CA: Brooks/Cole, Table 5-1, p.
 #' 192.
 #' @keywords datasets
 #' @concept MANOVA
@@ -2215,11 +2215,11 @@ NULL
 #' 
 #' The Social Cognitive measures were designed to tap various aspects of the
 #' perception and cognitive procession of emotions of others.  Emotion
-#' perception was assessed using a Managing Emotions (\code{MgeEmotions}) score
-#' from the MCCB.  A "theory of mind" (\code{ToM}) score assessed ability to
+#' perception was assessed using a Managing Emotions (`MgeEmotions`) score
+#' from the MCCB.  A "theory of mind" (`ToM`) score assessed ability to
 #' read the emotions of others from photographs of the eye region of male and
-#' female faces. Two other measures, externalizing bias (\code{ExtBias}) and
-#' personalizing bias (\code{PersBias}) were calculated from a scale measuring
+#' female faces. Two other measures, externalizing bias (`ExtBias`) and
+#' personalizing bias (`PersBias`) were calculated from a scale measuring
 #' the degree to which individuals attribute internal, personal or situational
 #' causal attributions to positive and negative social events.
 #' 
@@ -2234,12 +2234,12 @@ NULL
 #' @docType data
 #' @format A data frame with 139 observations on the following 5 variables.
 #' \describe{ 
-#'   \item{\code{Dx}}{Diagnostic group, a factor with levels
-#'       \code{Schizophrenia}, \code{Schizoaffective}, \code{Control}}
-#'   \item{\code{MgeEmotions}}{Score on the Managing emotions test, a numeric vector} 
-#'   \item{\code{ToM}}{Score on the The Reading the Mind in the Eyes test (theory of mind), a numeric vector}
-#'   \item{\code{ExtBias}}{Externalizing Bias score, a numeric vector}
-#'   \item{\code{PersBias}}{Personal Bias score, a numeric vector} 
+#'   \item{`Dx`}{Diagnostic group, a factor with levels
+#'       `Schizophrenia`, `Schizoaffective`, `Control`}
+#'   \item{`MgeEmotions`}{Score on the Managing emotions test, a numeric vector} 
+#'   \item{`ToM`}{Score on the The Reading the Mind in the Eyes test (theory of mind), a numeric vector}
+#'   \item{`ExtBias`}{Externalizing Bias score, a numeric vector}
+#'   \item{`PersBias`}{Personal Bias score, a numeric vector} 
 #' }
 #' @source 
 #' Hartman, L. I. (2016). Schizophrenia and Schizoaffective Disorder:
@@ -2247,7 +2247,7 @@ NULL
 #' 
 #' Heinrichs, R.W., Pinnock, F., Muharib, E., Hartman, L.I., Goldberg, J.O., &
 #' McDermid Vaz, S. (2015).  Neurocognitive normality in schizophrenia
-#' revisited.  \emph{Schizophrenia Research: Cognition}, \bold{2} (4), 227-232.
+#' revisited.  *Schizophrenia Research: Cognition*, **2** (4), 227-232.
 #' doi: 10.1016/j.scog.2015.09.001
 #' @keywords datasets
 #' @concept MANOVA
@@ -2294,8 +2294,8 @@ NULL
 #' Scores on each personality domain were calculated by averaging items
 #' assigned to each domain (after reverse scoring specific items). In this
 #' version, total scores for each scale were calculated by averaging the
-#' positively and negatively coded items, for example, \code{TIPI$Extraversion
-#' <- (TIPI$E + (8-TIPI$E_r))/2}.
+#' positively and negatively coded items, for example, `TIPI$Extraversion
+#' <- (TIPI$E + (8-TIPI$E_r))/2`.
 #' 
 #' Then, for the present purposes, some tidying was done: \itemize{ \item 100
 #' cases with `gender=="Other" were deleted; \item codes for levels of
@@ -2306,36 +2306,36 @@ NULL
 #' @docType data
 #' @format A data frame with 1799 observations on the following 16 variables.
 #' \describe{ 
-#'   \item{\code{Extraversion}}{a numeric vector}
-#'   \item{\code{Neuroticism}}{a numeric vector}
-#'   \item{\code{Conscientiousness}}{a numeric vector}
-#'   \item{\code{Agreeableness}}{a numeric vector} 
-#'   \item{\code{Openness}}{a numeric vector} 
-#'   \item{\code{education}}{an ordered factor with levels
-#'       \code{<HS} < \code{HS} < \code{Univ} < \code{Grad}} 
-#'   \item{\code{urban}}{an ordered factor with levels \code{Rural} < \code{Suburban} < \code{Urban}}
-#'   \item{\code{gender}}{a factor with levels \code{M} \code{F}}
-#'   \item{\code{engnat}}{a factor with levels \code{Native} \code{Non-native}}
-#'   \item{\code{age}}{a numeric vector} 
-#'   \item{\code{religion}}{a factor with levels \code{Agnostic} \code{Atheist} \code{Buddhist} \code{Christian
-#'       (Catholic)} \code{Christian (Mormon)} \code{Christian (Protestant)}
-#'       \code{Christian (Other)} \code{Hindu} \code{Jewish} \code{Muslim}
-#'       \code{Sikh} \code{Other}} 
-#'   \item{\code{orientation}}{a factor with levels \code{Heterosexual} \code{Bisexual} \code{Homosexual} 
-#'       \code{Asexual} \code{Other}} 
-#'   \item{\code{race}}{a factor with levels \code{Asian}
-#'       \code{Arab} \code{Black} \code{Indig-White} \code{Other}}
-#'   \item{\code{voted}}{a factor with levels \code{Yes} \code{No}}
-#'   \item{\code{married}}{a factor with levels \code{Never married}
-#'       \code{Currently married} \code{Previously married}}
-#'   \item{\code{familysize}}{a numeric vector} 
+#'   \item{`Extraversion`}{a numeric vector}
+#'   \item{`Neuroticism`}{a numeric vector}
+#'   \item{`Conscientiousness`}{a numeric vector}
+#'   \item{`Agreeableness`}{a numeric vector} 
+#'   \item{`Openness`}{a numeric vector} 
+#'   \item{`education`}{an ordered factor with levels
+#'       `<HS` < `HS` < `Univ` < `Grad`} 
+#'   \item{`urban`}{an ordered factor with levels `Rural` < `Suburban` < `Urban`}
+#'   \item{`gender`}{a factor with levels `M` `F`}
+#'   \item{`engnat`}{a factor with levels `Native` `Non-native`}
+#'   \item{`age`}{a numeric vector} 
+#'   \item{`religion`}{a factor with levels `Agnostic` `Atheist` `Buddhist` `Christian
+#'       (Catholic)` `Christian (Mormon)` `Christian (Protestant)`
+#'       `Christian (Other)` `Hindu` `Jewish` `Muslim`
+#'       `Sikh` `Other`} 
+#'   \item{`orientation`}{a factor with levels `Heterosexual` `Bisexual` `Homosexual` 
+#'       `Asexual` `Other`} 
+#'   \item{`race`}{a factor with levels `Asian`
+#'       `Arab` `Black` `Indig-White` `Other`}
+#'   \item{`voted`}{a factor with levels `Yes` `No`}
+#'   \item{`married`}{a factor with levels `Never married`
+#'       `Currently married` `Previously married`}
+#'   \item{`familysize`}{a numeric vector} 
 #' }
 #' @references Gosling, S. D., Rentfrow, P. J., & Swann, W. B, Jr. (2003). A
-#' very brief measure of the Big-Five personality domains. \emph{Journal of
-#' Research in Personality}, \bold{37}, 504?528.
+#' very brief measure of the Big-Five personality domains. *Journal of
+#' Research in Personality*, **37**, 504?528.
 #' @source Jones, P.J., Mair, P., Simon, T. et al. (2020). Network Trees: A
 #' Method for Recursively Partitioning Covariance Structures.
-#' \emph{Psychometrika}, \bold{85}, 926?945.
+#' *Psychometrika*, **85**, 926?945.
 #' https://doi.org/10.1007/s11336-020-09731-4
 #' @keywords datasets
 #' @concept MANOVA
@@ -2382,21 +2382,21 @@ NULL
 #' @docType data
 #' @format A data frame with 64 observations on the following 4 variables.
 #' \describe{ 
-#'   \item{\code{grade8}}{Grade 8 vocabulary score}
-#'   \item{\code{grade9}}{Grade 9 vocabulary score} 
-#'   \item{\code{grade10}}{Grade 10 vocabulary score} 
-#'   \item{\code{grade11}}{Grade 11 vocabulary score} 
+#'   \item{`grade8`}{Grade 8 vocabulary score}
+#'   \item{`grade9`}{Grade 9 vocabulary score} 
+#'   \item{`grade10`}{Grade 10 vocabulary score} 
+#'   \item{`grade11`}{Grade 11 vocabulary score} 
 #' }
 #' @references 
 #' Friendly, Michael (2010). HE Plots for Repeated Measures
-#' Designs. \emph{Journal of Statistical Software}, 37(4), 1-40.
+#' Designs. *Journal of Statistical Software*, 37(4), 1-40.
 #' \doi{10.18637/jss.v037.i04}.
 #' 
 #' Keesling, J.W., Bock, R.D. et al, "The Laboratory School study of vocabulary
 #' growth", University of Chicago, 1975.
 #' 
 #' @source R.D.  
-#' Bock, \emph{Multivariate statistical methods in behavioral research}, McGraw-Hill, New York, 1975, pp453.
+#' Bock, *Multivariate statistical methods in behavioral research*, McGraw-Hill, New York, 1975, pp453.
 #' @keywords datasets
 #' @concept repeated
 #' @concept contrasts
@@ -2445,27 +2445,27 @@ NULL
 #' groups of individuals: Control, Diet and Diet + Exercise. The data
 #' constitute a double-multivariate design.
 #' 
-#' Helmert contrasts are assigned to \code{group}, comparing \code{Control} vs.
-#' (\code{Diet} \code{DietEx}) and \code{Diet} vs. \code{DietEx}.
+#' Helmert contrasts are assigned to `group`, comparing `Control` vs.
+#' (`Diet` `DietEx`) and `Diet` vs. `DietEx`.
 #' 
 #' @name WeightLoss
 #' @docType data
 #' @format A data frame with 34 observations on the following 7 variables.
 #' \describe{ 
-#'   \item{\code{group}}{a factor with levels \code{Control}
-#'       \code{Diet} \code{DietEx}.} \item{\code{wl1}}{Weight loss at 1 month}
-#'   \item{\code{wl2}}{Weight loss at 2 months} 
-#'   \item{\code{wl3}}{Weight loss at 3 months} 
-#'   \item{\code{se1}}{Self esteem at 1 month}
-#'   \item{\code{se2}}{Self esteem at 2 months} 
-#'   \item{\code{se3}}{Self esteem at 3 months} 
+#'   \item{`group`}{a factor with levels `Control`
+#'       `Diet` `DietEx`.} \item{`wl1`}{Weight loss at 1 month}
+#'   \item{`wl2`}{Weight loss at 2 months} 
+#'   \item{`wl3`}{Weight loss at 3 months} 
+#'   \item{`se1`}{Self esteem at 1 month}
+#'   \item{`se2`}{Self esteem at 2 months} 
+#'   \item{`se3`}{Self esteem at 3 months} 
 #' }
 #' @references Friendly, Michael (2010). HE Plots for Repeated Measures
-#' Designs. \emph{Journal of Statistical Software}, 37(4), 1-40.
+#' Designs. *Journal of Statistical Software*, 37(4), 1-40.
 #' \doi{10.18637/jss.v037.i04}. 
 #' @source 
 #' Originally taken from
-#' \url{http://www.csun.edu/~ata20315/psy524/main.htm}, but modified slightly
+#' <http://www.csun.edu/~ata20315/psy524/main.htm>, but modified slightly
 #' @keywords datasets
 #' @examples
 #' 
@@ -2544,7 +2544,7 @@ NULL
 
 #' Size measurements for penguins near Palmer Station, Antarctica
 #'
-#' Data originally from \href{https://allisonhorst.github.io/palmerpenguins/}{\code{palmerpenguins}}. Includes
+#' Data originally from [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/). Includes
 #' measurements for penguin species, island in Palmer Archipelago,
 #' size (flipper length, body mass, bill dimensions), and sex.
 #' 
@@ -2553,13 +2553,13 @@ NULL
 #'
 #' @format A tibble with 333 rows and 8 variables:
 #' \describe{
-#'   \item{species}{a factor denoting penguin species (\code{"Adélie", "Chinstrap" or "Gentoo"})}
-#'   \item{island}{a factor denoting island in Palmer Archipelago, Antarctica (\code{"Biscoe", "Dream" or "Torgersen"})}
+#'   \item{species}{a factor denoting penguin species (`"Adélie", "Chinstrap" or "Gentoo"`)}
+#'   \item{island}{a factor denoting island in Palmer Archipelago, Antarctica (`"Biscoe", "Dream" or "Torgersen"`)}
 #'   \item{bill_length}{a number denoting bill length (millimeters)}
 #'   \item{bill_depth}{a number denoting bill depth (millimeters)}
 #'   \item{flipper_length}{an integer denoting flipper length (millimeters)}
 #'   \item{body_mass}{an integer denoting body mass (grams)}
-#'   \item{sex}{a factor denoting penguin sex (\code{"f", "m"})}
+#'   \item{sex}{a factor denoting penguin sex (`"f", "m"`)}
 #'   \item{year}{an integer denoting the study year (2007, 2008, or 2009)}
 #' }
 #' @source {Adélie penguins: Palmer Station Antarctica LTER and K. Gorman. 2020. 
@@ -2624,30 +2624,30 @@ NULL
 #' 
 #' A dogfood manufacturer wanted to study preference for different dogfood formulas, two of their own
 #' ("Old", "New") and two from other manufacturers ("Major", "Alps"). In a between-dog design, 4 dogs
-#' were presented with a bowl of one \code{formula} and the time to \code{start} eating and \code{amount} eaten were recorded.
+#' were presented with a bowl of one `formula` and the time to `start` eating and `amount` eaten were recorded.
 #'
 #' @details
-#' In addition to testing the overall effects of \code{formula},
+#' In addition to testing the overall effects of `formula`,
 #' three useful (and orthogonal) contrasts can specified for this 3-df factor:
 #' \itemize{
-#'   \item \code{Ours} vs. \code{Theirs}, with weights \code{c(1, 1, -1, -1)}
-#'   \item \code{Major} vs. \code{Alps}, with weights \code{c(0, 0,  1, -1)}
-#'   \item \code{Old} vs. \code{New}, with weights \code{c(1, -1, 0, 0)}
+#'   \item `Ours` vs. `Theirs`, with weights `c(1, 1, -1, -1)`
+#'   \item `Major` vs. `Alps`, with weights `c(0, 0,  1, -1)`
+#'   \item `Old` vs. `New`, with weights `c(1, -1, 0, 0)`
 #'   }
-#' Because these are orthogonal contrasts, they fully decompose the main effect of \code{formula},
+#' Because these are orthogonal contrasts, they fully decompose the main effect of `formula`,
 #' in that their sum of squares add to the overall sum of squares.
 #'
 #' @usage data("dogfood")
 #' @format
 #'  A data frame with 16 observations on the following 3 variables.
 #'  \describe{
-#'    \item{\code{formula}}{factor, a factor with levels \code{Old}, \code{New}, \code{Major}, \code{Alps}}
-#'    \item{\code{start}}{numeric, time to start eating}
-#'    \item{\code{amount}}{numeric, amount eaten}
+#'    \item{`formula`}{factor, a factor with levels `Old`, `New`, `Major`, `Alps`}
+#'    \item{`start`}{numeric, time to start eating}
+#'    \item{`amount`}{numeric, amount eaten}
 #'  }
 #'
 #' @source 
-#' Used in my Psych 6140 lecture notes, \url{http://friendly.apps01.yorku.ca/psy6140/}
+#' Used in my Psych 6140 lecture notes, <http://friendly.apps01.yorku.ca/psy6140/>
 #'
 #' @concept MANOVA
 #' @concept contrasts
@@ -2722,15 +2722,15 @@ NULL
 #' @format
 #'  A data frame with 56 observations on the following 5 variables.
 #'  \describe{
-#'    \item{\code{group}}{Group, a factor with levels \code{Control} \code{Exptl}}
-#'    \item{\code{listen}}{Listening test, a numeric vector}
-#'    \item{\code{speak}}{Speaking test, a numeric vector}
-#'    \item{\code{read}}{Reading test, a numeric vector}
-#'    \item{\code{write}}{Writing test, a numeric vector}
+#'    \item{`group`}{Group, a factor with levels `Control` `Exptl`}
+#'    \item{`listen`}{Listening test, a numeric vector}
+#'    \item{`speak`}{Speaking test, a numeric vector}
+#'    \item{`read`}{Reading test, a numeric vector}
+#'    \item{`write`}{Writing test, a numeric vector}
 #'  }
 #'
 #' @source 
-#' Timm, N. H. (1975). \emph{Multivariate Analysis with Applications in Education and Psychology}. Wadsworth (Brooks/Cole),
+#' Timm, N. H. (1975). *Multivariate Analysis with Applications in Education and Psychology*. Wadsworth (Brooks/Cole),
 #'     Exercise 3.12, p. 279.
 #' @references
 #' Postovsky, V. A. (1970). Effects of delay in oral practice at the start of second language training. Unpublished doctoral dissertation, 

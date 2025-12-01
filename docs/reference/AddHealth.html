@@ -11,7 +11,7 @@ described and analyzed by Warne (2014)."><meta property="og:image" content="http
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,12 +54,12 @@ described and analyzed by Warne (2014).</p>
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
     <p>A data frame with 4344 observations on the following 3 variables.</p><dl><dt><code>grade</code></dt>
 <dd><p>an ordered factor with levels <code>7</code> &lt;
-      <code>8</code> &lt; <code>9</code> &lt; <code>10</code> &lt; <code>11</code> &lt; <code>12</code></p></dd>
+<code>8</code> &lt; <code>9</code> &lt; <code>10</code> &lt; <code>11</code> &lt; <code>12</code></p></dd>
 
-  <dt><code>depression</code></dt>
+<dt><code>depression</code></dt>
 <dd><p>a numeric vector</p></dd>
 
-  <dt><code>anxiety</code></dt>
+<dt><code>anxiety</code></dt>
 <dd><p>a numeric vector</p></dd>
 
 
@@ -77,8 +77,7 @@ often did you feel depressed or blue?"</p>
 <p><code>anxiety</code> is the response to the question "In the last month, how often
 did you have trouble relaxing?"</p>
 <p>The responses for <code>depression</code> and <code>anxiety</code> were recorded on a
-5-point Likert scale, with categories <code>0="Never", 1="Rarely",
-2="Occasionally", 3="Often", 4="Every day"</code></p>
+5-point Likert scale, with categories <code>0="Never", 1="Rarely", 2="Occasionally", 3="Often", 4="Every day"</code></p>
     </div>
 
     <div class="section level2">
@@ -103,7 +102,7 @@ did you have trouble relaxing?"</p>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">means</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">anxiety</span>, y <span class="op">=</span> <span class="va">depression</span>, </span></span>
 <span class="r-in"><span>color <span class="op">=</span> <span class="va">grade</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_errorbarh.html" class="external-link">geom_errorbarh</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="va">anxiety</span> <span class="op">-</span> <span class="va">anx_se</span>, </span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html" class="external-link">geom_errorbarh</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="va">anxiety</span> <span class="op">-</span> <span class="va">anx_se</span>, </span></span>
 <span class="r-in"><span>                     xmax <span class="op">=</span> <span class="va">anxiety</span> <span class="op">+</span> <span class="va">anx_se</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html" class="external-link">geom_errorbar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">depression</span> <span class="op">-</span> <span class="va">dep_se</span>, </span></span>
 <span class="r-in"><span>                    ymax <span class="op">=</span> <span class="va">depression</span> <span class="op">+</span> <span class="va">dep_se</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
@@ -132,6 +131,8 @@ did you have trouble relaxing?"</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 10         1.27    0.956   817 0.043<span style="text-decoration: underline;">1</span> 0.038<span style="text-decoration: underline;">8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 11         1.37    1.12    790 0.042<span style="text-decoration: underline;">8</span> 0.041<span style="text-decoration: underline;">1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 12         1.34    1.10    673 0.043<span style="text-decoration: underline;">9</span> 0.042<span style="text-decoration: underline;">6</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`geom_errobarh()` was deprecated in ggplot2 4.0.0.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use the `orientation` argument of `geom_errorbar()` instead.</span>
 <span class="r-plt img"><img src="AddHealth-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># fit mlm</span></span></span>

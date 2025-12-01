@@ -32,7 +32,7 @@ specified)}
 \code{lwd}, etc. See \code{\link[rgl]{material3d}}.}
 }
 \value{
-Returns (invisibly): integer ID of the line added to the scene %%
+Returns (invisibly): integer ID of the line added to the scene \%\%
 }
 \description{
 Draws a 3D arrow in an rgl scene with barbs at the arrow head

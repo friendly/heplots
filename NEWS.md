@@ -1,9 +1,24 @@
+## Version 1.8.0
+
+* describe more fully constructing the datasets table using concept tags
+* added `text_usr()` to add text in normalized device coordinates
+* begin to convert documentation to use markdown via {roxygen2md}
+
+## Version 1.7.9
+
+* plot.robmlm() gains a `groups` arg to vary point color and `pch`
+* plot.robmlm() gains a `group.axis` arg to draw an axis identifying the groups at the top of the plot.
+
 ## Version 1.7.8
 
 Several small maintenance fixes, plus a new diagnostic plot and a new vignette
 
-o Added `distancePlot()` for plots of Mahalanobis distances of X vs Y
+o Added `distancePlot()` for plots of Mahalanobis distances of X vs Y. For an MLM, diagnoses high leverage and large residuals
 o Added a vignette on robust MLMs using `robmlm()` and diagnostic plots
+o Added `rel_diff()` to calculate relative difference between two arrays or data frames
+o Fixed buglet in plot.robmlm()
+o Fixed some non-canonical URLs
+o Fixed cex buglet in `distancePlot()`
 
 ## Version 1.7.6 
 

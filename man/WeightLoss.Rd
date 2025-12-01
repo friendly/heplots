@@ -6,14 +6,14 @@
 \title{Weight Loss Data}
 \format{
 A data frame with 34 observations on the following 7 variables.
-\describe{ 
-  \item{\code{group}}{a factor with levels \code{Control}
-      \code{Diet} \code{DietEx}.} \item{\code{wl1}}{Weight loss at 1 month}
-  \item{\code{wl2}}{Weight loss at 2 months} 
-  \item{\code{wl3}}{Weight loss at 3 months} 
-  \item{\code{se1}}{Self esteem at 1 month}
-  \item{\code{se2}}{Self esteem at 2 months} 
-  \item{\code{se3}}{Self esteem at 3 months} 
+\describe{
+\item{\code{group}}{a factor with levels \code{Control}
+\code{Diet} \code{DietEx}.} \item{\code{wl1}}{Weight loss at 1 month}
+\item{\code{wl2}}{Weight loss at 2 months}
+\item{\code{wl3}}{Weight loss at 3 months}
+\item{\code{se1}}{Self esteem at 1 month}
+\item{\code{se2}}{Self esteem at 2 months}
+\item{\code{se3}}{Self esteem at 3 months}
 }
 }
 \source{

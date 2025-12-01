@@ -1,8 +1,8 @@
 Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
-Version: 1.7.8
-Date: 2025-08-06
+Version: 1.8.0
+Date: 2025-11-28
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -12,8 +12,10 @@ Authors@R: c(
             person(given = "John", 
                    family = "Fox", role="aut",
                    comment = c(ORCID = "0000-0002-1196-8012")),
-            person(given = "Georges", family = "Monette", role="aut", comment = c(ORCID = "0000-0003-0076-5532")),
-            person(given = "Phil", family="Chalmers", role="ctb", comment = c(ORCID="0000-0001-5332-2810")),
+            person(given = "Georges", family = "Monette", role="aut", 
+                   comment = c(ORCID = "0000-0003-0076-5532")),
+            person(given = "Phil", family="Chalmers", role="ctb", 
+                   comment = c(ORCID="0000-0001-5332-2810")),
             person(given = "Duncan", family = "Murdoch", role="ctb"))
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Description: Provides HE plot and other functions for visualizing hypothesis
@@ -67,12 +69,15 @@ Suggests:
     KernSmooth,
     aplpack,
     foreign,
-    robustbase
+    robustbase,
+    effectsize
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
 License: GPL (>= 2)
-URL: http://friendly.github.io/heplots/, https://github.com/friendly/heplots
-RoxygenNote: 7.3.2
+URL: https://friendly.github.io/heplots/, https://github.com/friendly/heplots
+RoxygenNote: 7.3.3
 Encoding: UTF-8
 VignetteBuilder: knitr, R.rsp
+# Roxygen: list(markdown = TRUE)
+Roxygen: list(markdown = TRUE)

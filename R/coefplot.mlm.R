@@ -18,18 +18,18 @@
 #' 
 #' 
 #' @aliases coefplot coefplot.mlm
-#' @param object A multivariate linear model, such as fit by \code{lm(cbind(y1,
-#'             y2, ...) ~ terms, ...)}
+#' @param object A multivariate linear model, such as fit by `lm(cbind(y1,
+#'             y2, ...) ~ terms, ...)`
 #' @param \dots Other parameters passed to \code{\link[graphics]{plot}}
 #' @param variables Response variables to plot, given as their indices or names
 #' @param parm Parameters to plot, given as their indices or names
 #' @param df Degrees of freedom for hypothesis tests
 #' @param level Confidence level for the confidence ellipses
 #' @param intercept logical. Include the intercept?
-#' @param Scheffe If \code{TRUE}, confidence intervals for all parameters have
+#' @param Scheffe If `TRUE`, confidence intervals for all parameters have
 #'        Scheffe coverage, otherwise, individual coverage.
 #' @param bars Draw univariate confidence intervals for each of the variables?
-#' @param fill a logical value or vector. \code{TRUE} means the confidence
+#' @param fill a logical value or vector. `TRUE` means the confidence
 #'        ellipses will be filled.
 #' @param fill.alpha Opacity of the confidence ellipses
 #' @param labels Labels for the confidence ellipses
@@ -46,10 +46,10 @@
 #' @param col Colors for the confidence ellipses, points, lines
 #' @param cex Character size for points showing parameter estimates
 #' @param cex.label Character size for ellipse labels
-#' @param cex.lab Character size for axis labels. Defaults to \code{par("cex.lab")}.
+#' @param cex.lab Character size for axis labels. Defaults to `par("cex.lab")`.
 #' @param lty.zero,col.zero,pch.zero Line type, color and point symbol for
-#'        horizontal and vertical lines at 0, 0. These default to \code{lty.zero = 3},
-#'        \code{col.zero = 1} (black) and \code{pch.zero = '+'}.
+#'        horizontal and vertical lines at 0, 0. These default to `lty.zero = 3`,
+#'        `col.zero = 1` (black) and `pch.zero = '+'`.
 #' @param verbose logical.  Print parameter estimates and variance-covariance
 #'        for each parameter?
 #' @return Returns invisibly a list of the coordinates of the ellipses drawn

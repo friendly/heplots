@@ -5,7 +5,7 @@
 #' This function creates a simple dot chart showing the contributions (log
 #' determinants) of the various groups to Box's M test for equality of
 #' covariance matrices. An important virtue of these plots is that they can show
-#' \emph{how} the groups differ from each other, and from the pooled
+#' *how* the groups differ from each other, and from the pooled
 #' covariance matrix using a scalar like \eqn{ln | S |}. In this way, they
 #' can suggest more specific questions or hypotheses regarding the
 #' equality of covariance matrices, analogous to the use of contrasts
@@ -17,29 +17,29 @@
 #' eigenvalues of these covariance matrices.
 #' 
 #' Confidence intervals are only available for the default Box M test, using
-#' \code{which="logDet"}. The theory for this comes from Cai et-al. (2015).
+#' `which="logDet"`. The theory for this comes from Cai et-al. (2015).
 #' 
 #' @name plot.boxM
 #' @docType data
-#' @param x A \code{"boxM"} object resulting from \code{\link{boxM}}
+#' @param x A `"boxM"` object resulting from \code{\link{boxM}}
 #' @param gplabel character string used to label the group factor.
-#' @param which Measure to be plotted. The default, \code{"logDet"}, is the
-#' standard plot.  Other values are: \code{"product"}, \code{"sum"},
-#' \code{"precision"} and \code{"max"}
-#' @param log logical; if \code{TRUE}, the log of the measure is plotted. The
-#' default, \code{which=="product"}, produces a plot equivalent to the plot of
-#' \code{"logDet"}.
+#' @param which Measure to be plotted. The default, `"logDet"`, is the
+#' standard plot.  Other values are: `"product"`, `"sum"`,
+#' `"precision"` and `"max"`
+#' @param log logical; if `TRUE`, the log of the measure is plotted. The
+#' default, `which=="product"`, produces a plot equivalent to the plot of
+#' `"logDet"`.
 #' @param pch a vector of two point symbols to use for the individual groups
 #' and the pooled data, respectively
 #' @param cex character size of point symbols, a vector of length two for
 #' groups and pooled data, respectively
 #' @param col colors for point symbols, a vector of length two for the groups
 #' and the pooled data
-#' @param rev logical; if \code{TRUE}, the order of the groups is reversed on
+#' @param rev logical; if `TRUE`, the order of the groups is reversed on
 #' the vertical axis.
 #' @param xlim x limits for the plot
-#' @param conf coverage for approximate confidence intervals, \code{0 <= conf <
-#' 1} ; use \code{conf=0} to suppress these
+#' @param conf coverage for approximate confidence intervals, `0 <= conf <
+#' 1` ; use `conf=0` to suppress these
 #' @param method confidence interval method; see \code{\link{logdetCI}}
 #' @param bias.adj confidence interval bias adjustment; see
 #' \code{\link{logdetCI}}
@@ -52,12 +52,12 @@
 #' @references 
 #' Cai, T. T., Liang, T., & Zhou, H. H. (2015). 
 #' Law of log determinant of sample covariance matrix and optimal estimation of differential entropy for high-dimensional Gaussian distributions. 
-#' \emph{Journal of Multivariate Analysis}, \bold{137}, 161–172. \doi{10.1016/j.jmva.2015.02.003}.
+#' *Journal of Multivariate Analysis*, **137**, 161–172. \doi{10.1016/j.jmva.2015.02.003}.
 #' 
 #' Friendly, M., & Sigal, M. (2018). Visualizing Tests for Equality of Covariance Matrices. 
-#' \emph{The American Statistician}, \bold{72}(4);
+#' *The American Statistician*, **72**(4);
 #' \doi{10.1080/00031305.2018.1497537}.
-#' Online: \url{https://www.datavis.ca/papers/EqCov-TAS.pdf}.
+#' Online: <https://www.datavis.ca/papers/EqCov-TAS.pdf>.
 #' 
 #' 
 #' @keywords hgraph

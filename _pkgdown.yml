@@ -68,10 +68,12 @@ reference:
     - gsorth
     - interpPlot
     - label.ellipse
+    - rel_diff
     - noteworthy
     - termMeans
     - statList
     - trans.colors
+    - text_usr
 
   - title: Data sets
     contents:

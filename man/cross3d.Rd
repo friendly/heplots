@@ -15,7 +15,7 @@ cross3d(centre = rep(0, 3), scale = rep(1, 3), ...)
 }
 \value{
 Used for its side-effect, but returns (invisibly) a 6 by 3 matrix
-       containing the end-points of three axes, in pairs.
+containing the end-points of three axes, in pairs.
 }
 \description{
 Draws a 3D cross or axis vectors in an rgl scene.

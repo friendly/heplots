@@ -23,21 +23,21 @@
 #' line, and line segments showing the movement of points.
 #' 
 #' Interpolations other than linear can be obtained by using a non-linear
-#' series of \code{alpha} values.  For example
-#' \code{alpha=sin(seq(0,1,.1)/sin(1)} will give a sinusoid interpolation.
+#' series of `alpha` values.  For example
+#' `alpha=sin(seq(0,1,.1)/sin(1)` will give a sinusoid interpolation.
 #' 
 #' @param xy1 First data set, a 2-column matrix or data.frame
 #' @param xy2 Second data set, a 2-column matrix or data.frame
 #' @param alpha The value of the interpolation fraction, typically (but not
-#'        necessarily) \code{0 <= alpha <= 1)}.
+#'        necessarily) `0 <= alpha <= 1)`.
 #' @param xlim,ylim x, y limits for the plot.  If not specified, the function
-#'        uses the ranges of \code{rbind(xy1, xy2)}.
+#'        uses the ranges of `rbind(xy1, xy2)`.
 #' @param points Logical. Whether to plot the points in the current interpolation?
 #' @param col Color for plotted points.
 #' @param add Logical. Whether to add to an existing plot?
-#' @param ellipse logical. \code{TRUE} to plot a \code{dataEllipse}
-#' @param ellipse.args other arguments passed to \code{dataEllipse}
-#' @param abline logical. \code{TRUE} to plot the linear regression line for \code{XY}
+#' @param ellipse logical. `TRUE` to plot a `dataEllipse`
+#' @param ellipse.args other arguments passed to `dataEllipse`
+#' @param abline logical. `TRUE` to plot the linear regression line for `XY`
 #' @param col.lines line color
 #' @param lwd line width
 #' @param id.method How points are to be identified. See \code{\link[car]{showLabels}}.
@@ -45,9 +45,9 @@
 #' @param id.n Number of points to be identified. If set to zero, no points are identified.
 #' @param id.cex Controls the size of the plotted labels. The default is 1
 #' @param id.col Controls the color of the plotted labels.
-#' @param segments logical. \code{TRUE} to draw lines segments from \code{xy1} to \code{xy}
+#' @param segments logical. `TRUE` to draw lines segments from `xy1` to `xy`
 #' @param segment.col line color for segments
-#' @param \dots other arguments passed to \code{plot()}
+#' @param \dots other arguments passed to `plot()`
 #' @return Returns invisibly the interpolated XY points.
 #' @note 
 #' The examples here just use on-screen animations to the console

@@ -6,12 +6,12 @@
 \title{Plastic Film Data}
 \format{
 A data frame with 20 observations on the following 5 variables.
-\describe{ 
-  \item{\code{tear}}{a numeric vector: tear resistance}
-  \item{\code{gloss}}{a numeric vector: film gloss} 
-  \item{\code{opacity}}{a numeric vector: film opacity} 
-  \item{\code{rate}}{a factor representing change in the rate of extrusion with levels \code{Low} (-10\%), \code{High} (10\%)} 
-  \item{\code{additive}}{a factor with levels \code{Low} (1.0\%), \code{High} (1.5\%)} 
+\describe{
+\item{\code{tear}}{a numeric vector: tear resistance}
+\item{\code{gloss}}{a numeric vector: film gloss}
+\item{\code{opacity}}{a numeric vector: film opacity}
+\item{\code{rate}}{a factor representing change in the rate of extrusion with levels \code{Low} (-10\%), \code{High} (10\%)}
+\item{\code{additive}}{a factor with levels \code{Low} (1.0\%), \code{High} (1.5\%)}
 }
 }
 \source{
@@ -19,9 +19,9 @@ Johnson, R.A. & Wichern, D.W. (1992). \emph{Applied Multivariate
 Statistical Analysis}, 3rd ed., Prentice-Hall. Example 6.12 (p. 266).
 }
 \description{
-An experiment was conducted to determine the optimum conditions for
+An experiment was conducted to determine the optimal conditions for
 extruding plastic film.  Three responses were measured in relation to two
-factors, rate of extrusion and amount of an additive.
+factors, change in rate of extrusion and amount of an additive, both with two levels and \eqn{n=5} observations per cell.
 }
 \examples{
 

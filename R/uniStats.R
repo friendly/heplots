@@ -2,10 +2,10 @@
 
 #' Univariate Test Statistics for a Multivariate Linear Model
 #'
-#' @param x  A \code{"mlm"} object fitted by \code{\link[stats]{lm}} with two or more response variables
+#' @param x  A `"mlm"` object fitted by \code{\link[stats]{lm}} with two or more response variables
 #' @param ... Other arguments, ignored
 #'
-#' @return An object of class \code{c("anova", "data.frame")} containing, for each response variable
+#' @return An object of class `c("anova", "data.frame")` containing, for each response variable
 #'         the overall \eqn{R^2} for all terms in the model and the overall \eqn{F} statistic
 #'         together with its degrees of freedom and p-value.
 #' @seealso \code{\link{glance.mlm}}

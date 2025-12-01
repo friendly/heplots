@@ -1,29 +1,29 @@
 #' Calculate column deviations from central values
 #' 
-#' \code{colDevs} calculates the column deviations of data values from a
+#' `colDevs` calculates the column deviations of data values from a
 #' central value (mean, median, etc.), possibly stratified by a grouping
 #' variable.
 #' 
 #' Conceptually, the function is similar to a column-wise
-#' \code{\link[base]{sweep}}, by group, allowing an arbitrary \code{center}
+#' \code{\link[base]{sweep}}, by group, allowing an arbitrary `center`
 #' function.
 #' 
-#' Non-numeric columns of \code{x} are removed, with a warning.
+#' Non-numeric columns of `x` are removed, with a warning.
 #' 
 #' @param x A numeric data frame or matrix.
 #' @param group A factor (or variable that can be coerced to a factor)
-#'         indicating the membership of each observation in \code{x} in one or more
+#'         indicating the membership of each observation in `x` in one or more
 #'         groups. If missing, all the data is treated as a single group.
 #'         You can also specify the \code{\link[base]{interaction}} of two or more
 #'         factors.
 #' @param center A function used to center the values (for each group if
-#'         \code{group} is specified. The function must take a vector argument and
+#'         `group` is specified. The function must take a vector argument and
 #'         return a scalar result.
-#' @param group.var logical. If \code{TRUE}, the \code{group} variable containing factor levels is prepended to the
-#'        matrix of deviations.
+#' @param group.var logical or character. If `TRUE`, the `group` variable containing factor levels is prepended to the
+#'        matrix of deviations. If a character variable, this is taken as the name to be used for the group variable.
 #' @param \dots Arguments passed down
 #' @return By default, it returns a numeric matrix containing the deviations from the centering
-#'         function. If \code{levels==TRUE}, it returns a data.frame containing the group factor prepended to the
+#'         function. If `levels==TRUE`, it returns a data.frame containing the group factor prepended to the
 #'         matrix of deviations. 
 #' @author Michael Friendly
 #' @seealso \code{\link[base]{colMeans}} for column means,

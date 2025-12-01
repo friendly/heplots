@@ -6,17 +6,17 @@
 \title{Rohwer Data Set}
 \format{
 A data frame with 69 observations on the following 10 variables.
-\describe{ 
-  \item{\code{group}}{a numeric vector, corresponding to SES}
-  \item{\code{SES}}{Socioeconomic status, a factor with levels \code{Hi} \code{Lo}} 
-  \item{\code{SAT}}{a numeric vector: score on a Student Achievement Test} 
-  \item{\code{PPVT}}{a numeric vector: score on the Peabody Picture Vocabulary Test} 
-  \item{\code{Raven}}{a numeric vector: score on the Raven Progressive Matrices Test} 
-  \item{\code{n}}{a numeric vector: performance on a 'named' PA task} 
-  \item{\code{s}}{a numeric vector: performance on a 'still' PA task} 
-  \item{\code{ns}}{a numeric vector: performance on a 'named still' PA task} 
-  \item{\code{na}}{a numeric vector: performance on a 'named action' PA task} 
-  \item{\code{ss}}{a numeric vector: performance on a 'sentence still' PA task} 
+\describe{
+\item{\code{group}}{a numeric vector, corresponding to SES}
+\item{\code{SES}}{Socioeconomic status, a factor with levels \code{Hi} \code{Lo}}
+\item{\code{SAT}}{a numeric vector: score on a Student Achievement Test}
+\item{\code{PPVT}}{a numeric vector: score on the Peabody Picture Vocabulary Test}
+\item{\code{Raven}}{a numeric vector: score on the Raven Progressive Matrices Test}
+\item{\code{n}}{a numeric vector: performance on a 'named' PA task}
+\item{\code{s}}{a numeric vector: performance on a 'still' PA task}
+\item{\code{ns}}{a numeric vector: performance on a 'named still' PA task}
+\item{\code{na}}{a numeric vector: performance on a 'named action' PA task}
+\item{\code{ss}}{a numeric vector: performance on a 'sentence still' PA task}
 }
 }
 \source{
@@ -35,15 +35,14 @@ potentially explained by performance on the paired-associate (PA) learning
 tasks, \code{n}, \code{s}, \code{ns}, \code{na}, and \code{ss},
 which differed in the syntactic and semantic relationship between the stimulus and response words in each pair.
 
-
 Timm (1975) does not give a source, but the most relevant studies are Rowher & Ammons (1968) and Rohwer & Levin (1971).
 The paired-associate tasks are described as:
 \describe{
-   \item{\code{n}}{(named): Simple paired-associate task where participants learn pairs of nouns with no additional context}
-   \item{\code{s}}{(sentence): Participants learn pairs embedded within a sentence}
-   \item{\code{ns}}{(named sentence): A combination where participants learn noun pairs with sentence context}
-   \item{\code{na}}{(named action): Pairs are learned with an action relationship between them}
-   \item{\code{ss}}{(sentence still): Similar to the sentence condition but with static presentation}
+\item{\code{n}}{(named): Simple paired-associate task where participants learn pairs of nouns with no additional context}
+\item{\code{s}}{(sentence): Participants learn pairs embedded within a sentence}
+\item{\code{ns}}{(named sentence): A combination where participants learn noun pairs with sentence context}
+\item{\code{na}}{(named action): Pairs are learned with an action relationship between them}
+\item{\code{ss}}{(sentence still): Similar to the sentence condition but with static presentation}
 }
 }
 \examples{
@@ -102,13 +101,13 @@ heplot(rohwer.ses2, add=TRUE, col=c("blue", "black"), grand.mean=TRUE, error.ell
 \references{
 Friendly, M. (2007).  HE plots for Multivariate General Linear
 Models.  \emph{Journal of Computational and Graphical Statistics},
-\bold{16}(2) 421--444.  \url{http://datavis.ca/papers/jcgs-heplots.pdf}
+\strong{16}(2) 421--444.  \url{http://datavis.ca/papers/jcgs-heplots.pdf}
 
 Rohwer, W.D., Jr., & Levin, J.R. (1968). Action, meaning and stimulus selection
-in paired-associate learning. \emph{Journal of Verbal Learning and Verbal Behavior}, \bold{7}: 137-141.
+in paired-associate learning. \emph{Journal of Verbal Learning and Verbal Behavior}, \strong{7}: 137-141.
 
-Rohwer, W. D., Jr., & Ammons, M. S. (1971). Elaboration training and paired-associate learning efficiency in children. 
-\emph{Journal of Educational Psychology}, \bold{62}(5), 376-383.
+Rohwer, W. D., Jr., & Ammons, M. S. (1971). Elaboration training and paired-associate learning efficiency in children.
+\emph{Journal of Educational Psychology}, \strong{62}(5), 376-383.
 }
 \concept{MANCOVA}
 \concept{MMRA}

@@ -73,6 +73,7 @@ navbar:
         - gsorth
         - interpPlot
         - label.ellipse
+        - rel_diff
         - termMeans
         - statList
         - trans.colors
