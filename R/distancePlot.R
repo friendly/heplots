@@ -5,7 +5,10 @@
 #' @title
 #' Distance Plot for Multivariate Model Diagnosis
 #' 
-#' @description This plot, suggested by Rousseeu et al. (2004) typically plots Mahalanobis distances (\eqn{D}) of the \code{Y} response
+#' @description 
+#' `r lifecycle::badge('experimental')`
+#' 
+#' This plot, suggested by Rousseeu et al. (2004) typically plots Mahalanobis distances (\eqn{D}) of the \code{Y} response
 #' variables against the distances of the \code{X} variables in a multivariate linear model (MLM).
 #' When applied to a multivariate linear model itself, it plots the distances of the \emph{residuals} for the \code{Y} variables
 #' against the predictor terms in the \emph{model.matrix} \code{X}.
