@@ -43,7 +43,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models** 
 
 <!-- Version 1.7.2 -->
-Version `r getNamespaceVersion("heplots")`
+Version `r getNamespaceVersion("heplots")`; documentation built for `pkgdown` `r Sys.Date()`
 
 ## Description 
 

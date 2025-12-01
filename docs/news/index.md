@@ -3,6 +3,13 @@
 ## Version 1.8.0
 
 - describe more fully constructing the datasets table using concept tags
+- added
+  [`text_usr()`](https://friendly.github.io/heplots/reference/text_usr.md)
+  to add text in normalized device coordinates
+- begin to convert documentation to use markdown via {roxygen2md}
+- [`label.ellipse()`](https://friendly.github.io/heplots/reference/label.ellipse.md)
+  re-written to allow a fully general way to specify label positions
+  \[Thx: Claude\]
 
 ## Version 1.7.9
 

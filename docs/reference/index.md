@@ -117,7 +117,7 @@ Utility functions
   : Plot an Interpolation Between Two Related Data Sets
 
 - [`label.ellipse()`](https://friendly.github.io/heplots/reference/label.ellipse.md)
-  : Label an ellipse
+  : Label an Ellipse in a Plot
 
 - [`rel_diff()`](https://friendly.github.io/heplots/reference/rel_diff.md)
   : Relative Difference between two Arrays or Data Frames
@@ -130,6 +130,9 @@ Utility functions
 
 - [`trans.colors()`](https://friendly.github.io/heplots/reference/trans.colors.md)
   : Make Colors Transparent
+
+- [`text_usr()`](https://friendly.github.io/heplots/reference/text_usr.md)
+  : Add Text to a Plot at Normalized Device Coordinates
 
 ## Data sets
 

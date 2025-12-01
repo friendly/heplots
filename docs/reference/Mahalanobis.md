@@ -53,7 +53,7 @@ Mahalanobis(
 
 ## Value
 
-a vector of length `nrow(x)` containing the squared distances.
+     a vector of length `nrow(x)` containing the squared distances.
 
 ## Details
 

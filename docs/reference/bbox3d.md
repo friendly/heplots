@@ -22,5 +22,5 @@ bbox3d(x, ...)
 
 ## Value
 
-A 2 x 3 matrix, giving the minimum and maximum values in the rows and x,
-y, z coordinates in the columns.
+    A 2 x 3 matrix, giving the minimum and maximum values in the rows and x, y, z coordinates
+            in the columns.

@@ -101,8 +101,7 @@ distancePlot(X, ...)
 
 ## Value
 
-Returns invisibly a data frame containing the distances, `distX`,
-`distY`
+       Returns invisibly a data frame containing the distances, `distX`, `distY`
 
 ## Details
 

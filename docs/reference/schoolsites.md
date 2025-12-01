@@ -51,6 +51,9 @@ A data frame with 70 observations on the following 7 variables.
 
   size of the student population, a numeric vector
 
+% @details %% \~~ If necessary, more details than the **description**
+above \~~
+
 ## Source
 
 A. Charnes, W.W. Cooper and E. Rhodes (1981). Evaluating Program and

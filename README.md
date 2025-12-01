@@ -20,7 +20,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 <!-- Version 1.7.2 -->
 
-Version 1.8.0
+Version 1.8.0; documentation built for `pkgdown` 2025-12-01
 
 ## Description
 

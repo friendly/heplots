@@ -99,10 +99,9 @@ positively and negatively coded items, for example,
 
 Then, for the present purposes, some tidying was done:
 
-- 100 cases with \`gender=="Other" were deleted;
-
-- codes for levels of \`education\`, \`engnat\` and \`race\` were
-  abbreviated for ease of use in graphics.
+- 100 cases with
+  `gender=="Other" were deleted; \item codes for levels of `education`, `engnat`and`race\`
+  were abbreviated for ease of use in graphics.
 
 ## References
 

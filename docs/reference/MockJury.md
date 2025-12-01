@@ -83,7 +83,8 @@ A data frame with 114 observations on the following 17 variables.
 ## Source
 
 Originally obtained from Dr. Wuensch's StatData page at East Carolina
-University. No longer exists.
+University. No longer exists. % was:
+https://core.ecu.edu/wuenschk/StatData/PLASTER.dat
 
 ## Details
 

@@ -51,7 +51,7 @@ arrow3d(
 
 ## Value
 
-Returns (invisibly): integer ID of the line added to the scene
+Returns (invisibly): integer ID of the line added to the scene %%
 
 ## See also
 

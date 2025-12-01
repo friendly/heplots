@@ -1,7 +1,13 @@
-# Label an ellipse
+# Label an Ellipse in a Plot
 
 `label.ellipse` is used to a draw text label on an ellipse at its center
-or somewhere around the periphery in a very flexible way.
+or somewhere around the periphery in a very flexible way. It is used in
+[`heplot`](https://friendly.github.io/heplots/reference/heplot.md),
+[`covEllipses`](https://friendly.github.io/heplots/reference/covEllipses.md),
+and
+[`coefplot.mlm`](https://friendly.github.io/heplots/reference/coefplot.md),
+but is also useful as a utility when plotting ellipses in base R
+graphics.
 
 ## Usage
 
@@ -21,7 +27,9 @@ label.ellipse(
 
 - ellipse:
 
-  A two-column matrix of coordinates for the ellipse boundary
+  A two-column matrix of coordinates for the ellipse boundary, for
+  example as computed by
+  [`ellipse`](https://rdrr.io/pkg/car/man/Ellipses.html).
 
 - label:
 
@@ -41,30 +49,55 @@ label.ellipse(
 
 - tweak:
 
-  A vector of two lengths used to tweak label positions
+  A vector of two lengths used to tweak label positions. Only used for
+  label positions `1:4` or corresponding character or compass
+  directions. The defaults are 0.5 times the height and width of the
+  character `"M"` added or subtracted to the calculated (x, y) values.
 
 - ...:
 
-  Other parameters passed to `text`, e.g., `cex`, ...
+  Other parameters passed to
+  [`text`](https://rdrr.io/r/graphics/text.html), e.g., `cex`, `col`,
+  ...
 
 ## Details
 
-If `label.pos=NULL`, the function uses the sign of the correlation
-represented by the ellipse to determine a position at the top
-(\\r\>=0\\) or bottom (\\r\<0\\) of the ellipse. Integer values of 0, 1,
-2, 3 and 4, respectively indicate positions at the center, below, to the
-left of, above and to the right of the max/min coordinates of the
-ellipse. Label positions can also be specified as the corresponding
-character strings `c("center", "bottom", "left", "top", "right")`, or
-compass directions, `c("C", "S", "W", "N", "E")`, or Other integer
-`label.pos` values, `5:nrow(ellipse)` are taken as indices of the row
-coordinates to be used for the ellipse label. Equivalently, `label.pos`
-can also be a *fraction* in (0,1), interpreted as the fraction of the
-way around the unit circle, counterclockwise from the point (1,0).
+The function takes the coordinates of the input `ellipse` and uses that,
+together with `label.pos` to calculate the (x, y) coordinates to be
+passed to [`text`](https://rdrr.io/r/graphics/text.html) along with a
+computed `pos` argument. The values of `tweak` are applied to (x, y) to
+position the labels to the outside of the ellipse by default.
+
+The `label.pos` argument implements a very general way to position the
+text label with respect to the ellipse:
+
+- If `label.pos = NULL` (the default), the function uses the sign of the
+  correlation \\r\\ represented by the ellipse to determine a position
+  at the "top" (\\r \>= 0\\) or "bottom" (\\r \< 0\\) of the ellipse.
+
+- Integer values of 0, 1, 2, 3 and 4, respectively indicate positions at
+  the center, below, to the left of, above and to the right of the
+  max/min coordinates of the `ellipse`, where the values `1:4`
+  correspond to the usual values of `pos` in
+  [`text`](https://rdrr.io/r/graphics/text.html).
+
+- Label positions can also be specified as the corresponding character
+  strings `c("center", "bottom", "left", "top", "right")`, or *compass
+  directions*, `c("C", "S", "W", "N", "E")`. Additionally, *diagonal*
+  compass directions `c("NE", "SE", "SW", "NW")` can be used,
+  corresponding to angles 45, 135, 225, and 315 degrees, clockwise from
+  0 at North.
+
+- Even more generally, `label.pos` can also be a *fraction* in (0,1),
+  interpreted as the fraction of the way around the unit circle,
+  counterclockwise from the North point (0, 1).
 
 ## See also
 
-[`heplot`](https://friendly.github.io/heplots/reference/heplot.md)
+[`text`](https://rdrr.io/r/graphics/text.html),
+[`ellipse`](https://rdrr.io/pkg/car/man/Ellipses.html),
+[`heplot`](https://friendly.github.io/heplots/reference/heplot.md),
+[`covEllipses`](https://friendly.github.io/heplots/reference/covEllipses.md)
 
 ## Author
 
@@ -73,31 +106,66 @@ Michael Friendly
 ## Examples
 
 ``` r
+# Helper, to compute a circle
 circle <- function(center=c(0,0), radius=1, segments=60) {
-   angles <- (0:segments)*2*pi/segments
-   circle <- radius * cbind( cos(angles), sin(angles))
-   t( c(center) + t( circle ))
+  angles <- (0:segments)*2*pi/segments
+  circle <- radius * cbind( cos(angles), sin(angles))
+  t( c(center) + t( circle ))
 }
 
-label_demo <- function(ell) {
-  plot(-2:2, -2:2, type="n", asp=1, main="label.pos values and points (0:60)")
-  lines(ell, col="gray")
-  points(0, 0, pch="+", cex=2)
-  
-  labs <- c("center", "bot", "left", "top", "right")
-  for (i in 0:4) {
-    label.ellipse(ell, label=paste(i, ":", labs[i+1]), label.pos = i)
-  }
-  for( i in 5*c(1,2, 4,5, 7,8, 10,11)) {
-    points(ell[i,1], ell[i,2], pch=16)
-    label.ellipse(ell, label=i, label.pos=i)
-  }
+# Create a circular ellipse
+circ <- circle(radius=1.5)
+
+plot(-2:2, -2:2, 
+     type="n", asp=1, 
+     main="Compass Directions on Circle\n(Cardinal + Diagonal)")
+lines(circ, col="gray", lwd=2)
+points(0, 0, pch="+", cex=2)
+
+# Cardinal directions 
+cardinal <- c("N", "E", "S", "W")
+for (pos in cardinal) {
+  label.ellipse(circ, label=pos, label.pos=pos, col="red", cex=1.2, font=2)
 }
 
-circ <- circle(radius=1.8)
-label_demo(circ)
+# Diagonal directions (recently added)
+diagonal <- c("NE", "SE", "SW", "NW")
+for (pos in diagonal) {
+  label.ellipse(circ, label=pos, label.pos=pos, col="blue", cex=1.2, font=2)
+}
+#> Error in ellipse[index, 1]: no 'dimnames' attribute for array
+
+# Center
+label.ellipse(circ, label="C", label.pos="C", col="darkgreen", cex=1.2, font=2)
+
+# Add reference lines to show the angles
+abline(h=0, v=0, col="lightgray", lty=2)
+abline(a=0, b=1, col="lightgray", lty=2)   # 45° line
+abline(a=0, b=-1, col="lightgray", lty=2)  # -45° line
+
+legend("bottomleft", 
+       legend=c("Cardinal (N,E,S,W)", "Diagonal (NE,SE,SW,NW)", "Center"),
+       col=c("red", "blue", "darkgreen"),
+       lwd=2,  bty="n")
 
 
-ell <-circ %*% chol(matrix( c(1, .5, .5, 1), 2, 2)) 
-label_demo(ell)
+# Use in `heplot()`
+data(dogfood, package = "heplots")
+dogfood.mod <- lm(cbind(start, amount) ~ formula, data=dogfood)
+
+# default: top or bottom, depending on sign of the ellipse
+heplot(dogfood.mod, 
+       fill = TRUE, fill.alpha = 0.1)
+
+       
+# change label.pos and cex
+heplot(dogfood.mod, 
+       fill = TRUE, fill.alpha = 0.1,
+       label.pos = c("NE", "SW"), cex = 1.4)
+
+#> Error in ellipse[index, 1]: subscript out of bounds
+
+
+# Define diagonal compass positions and their corresponding angular fractions
+# translate nmemonics to standard numerical text positions 1:4,
 ```

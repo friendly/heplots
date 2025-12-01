@@ -43,7 +43,7 @@ noteworthy(x, y = NULL, n = length(x), method = "mahal", level = NULL, ...)
 
 ## Details
 
-The \`method\` argument determines how the points to be identified are
+The `method` argument determines how the points to be identified are
 selected:
 
 - `"mahal"`:

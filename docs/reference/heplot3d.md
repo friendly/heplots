@@ -126,8 +126,8 @@ heplot3d(
 - type:
 
   “type” of sum-of-squares-and-products matrices to compute; one of
-  `"II"`, `"III"`, `"2"`, or `"3"`, where `"II"` is the default (and
-  `"2"` is a synonym).
+  `"II"`, \`"III"\`, \`"2"\`, or \`"3"\`, where \`"II"\` is the default
+  (and \`"2"\` is a synonym).
 
 - idata:
 
@@ -177,9 +177,9 @@ heplot3d(
   how to scale the hypothesis ellipse relative to the error ellipse; if
   `"evidence"`, the default, the scaling is done so that a “significant”
   hypothesis ellipse at level `alpha` extends outside of the error
-  ellipse. `size = "significance"` is a synonym and does the same thing.
-  If `"effect.size"`, the hypothesis ellipse is on the same scale as the
-  error ellipse.
+  ellipse. \`size = "significance"\` is a synonym and does the same
+  thing. If \`"effect.size"\`, the hypothesis ellipse is on the same
+  scale as the error ellipse.
 
 - level:
 
@@ -227,9 +227,8 @@ heplot3d(
 
 - shade.alpha:
 
-  a numeric value in the range \[0,1\], or a vector of such values,
-  giving the alpha transparency for ellipsoids rendered with
-  `shade=TRUE`.
+  a numeric value in the range (0,1), or a vector of such values, giving
+  the alpha transparency for ellipsoids rendered with `shade=TRUE`.
 
 - wire:
 

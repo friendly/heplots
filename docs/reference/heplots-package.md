@@ -78,7 +78,7 @@ sets with examples of analyses and graphic displays. Use
 
 Friendly, M. (2006). Data Ellipses, HE Plots and Reduced-Rank Displays
 for Multivariate Linear Models: SAS Software and Examples. *Journal of
-Statistical Software*, 17(6), 1-42.
+Statistical Software*, 17(6), 1-42. %
 <https://www.jstatsoft.org/v17/i06/>,
 [doi:10.18637/jss.v017.i06](https://doi.org/10.18637/jss.v017.i06)
 
@@ -108,7 +108,7 @@ Understanding Statistical Methods Through Elliptical Geometry.
 
 Friendly, M. & Sigal, M. (2014). Recent Advances in Visualizing
 Multivariate Linear Models. *Revista Colombiana de Estadistica*, **37**,
-261-283
+261-283 % <http://ref.scielo.org/6gq33g>.
 
 Friendly, M. & Sigal, M. (2016). Graphical Methods for Multivariate
 Linear Models in Psychological Research: An R Tutorial. Submitted for
@@ -116,15 +116,11 @@ publication.
 
 ## See also
 
-[`Anova`](https://rdrr.io/pkg/car/man/Anova.html),
-[`linearHypothesis`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
-for Anova.mlm computations and tests
+    \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for Anova.mlm computations and tests
 
-[`candisc-package`](https://friendly.github.io/candisc/reference/candisc-package.html)
-for reduced-rank views in canonical space
+    \code{\link[candisc]{candisc-package}} for reduced-rank views in canonical space
 
-[`manova`](https://rdrr.io/r/stats/manova.html) for a different approach
-to testing effects in MANOVA designs
+    \code{\link[stats]{manova}} for a different approach to testing effects in MANOVA designs
 
 ## Author
 

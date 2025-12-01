@@ -37,8 +37,7 @@ ellipse.box(
 - level:
 
   The coverage level of a simultaneous region of the ellipse. The
-  default is 0.95, for a 95% region. This is used to control the size of
-  the ellipse.
+  default is 0.95, for a 95\\ ellipse.
 
 - radius:
 

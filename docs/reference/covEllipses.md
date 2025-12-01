@@ -250,7 +250,8 @@ covEllipses(
 ## Value
 
 Nothing is returned. The function is used for its side-effect of
-producing a plot.
+producing a plot. %Returns invisibly an object of class `"covEllipse"`,
+%which is a list of the coordinates for the ellipses drawn.
 
 ## Details
 

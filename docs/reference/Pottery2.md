@@ -3,8 +3,7 @@
 Results of chemical analyses of 48 specimens of Romano-British pottery
 published by Tubb et al. (1980). The numbers are the percentage of
 various metal oxides found in each sample for elements of concentrations
-greater than 0.01%. This is the original data set from Tubb et al.
-(1980), in contrast to
+greater than 0.01\\ contrast to
 [`Pottery`](https://rdrr.io/pkg/carData/man/Pottery.html).
 
 ## Format
@@ -63,7 +62,8 @@ A data frame with 48 observations on the following 12 variables.
 ## Source
 
 Originally slightly modified from files by David Carlson, now at
-[`RBPottery`](https://rdrr.io/pkg/archdata/man/RBPottery.html).
+[`RBPottery`](https://rdrr.io/pkg/archdata/man/RBPottery.html). % %
+[http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html](http://people.tamu.edu/~dcarlson/quant/data/RBPottery.md)
 
 ## Details
 

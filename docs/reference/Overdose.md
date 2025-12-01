@@ -48,6 +48,9 @@ A data frame with 17 observations on the following 7 variables.
 
   ECG QRS wave measurement, a numeric vector
 
+%% @details %% \~~ If necessary, more details than the **description**
+above \~~
+
 ## Source
 
 Johnson & Wichern (2005), *Applied Multivariate Statistical Analysis*,

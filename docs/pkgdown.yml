@@ -1,12 +1,12 @@
 pandoc: 3.6.3
-pkgdown: 2.1.3
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   datasets: datasets.html
   HE_manova: HE_manova.html
   HE_mmra: HE_mmra.html
   Robust: Robust.html
-last_built: 2025-11-28T17:43Z
+last_built: 2025-12-01T22:41Z
 urls:
   reference: https://friendly.github.io/heplots/reference
   article: https://friendly.github.io/heplots/articles

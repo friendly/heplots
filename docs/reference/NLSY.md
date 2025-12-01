@@ -1,12 +1,12 @@
 # National Longitudinal Survey of Youth Data
 
-The dataset \`NLSY\` comes from a small part of the National
-Longitudinal Survey of Youth, which is a series of annual surveys
-conducted by the U.S. Department of Labor to examine the transition of
-young people into the labor force. This particular subset gives measures
-of 243 children on mathematics and reading achievement and also measures
-of behavioral problems (antisocial, hyperactivity). Also available are
-the yearly income and education of the child's father.
+The dataset `NLSY` comes from a small part of the National Longitudinal
+Survey of Youth, which is a series of annual surveys conducted by the
+U.S. Department of Labor to examine the transition of young people into
+the labor force. This particular subset gives measures of 243 children
+on mathematics and reading achievement and also measures of behavioral
+problems (antisocial, hyperactivity). Also available are the yearly
+income and education of the child's father.
 
 ## Format
 

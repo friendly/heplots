@@ -143,8 +143,8 @@ heplot(
 - type:
 
   “type” of sum-of-squares-and-products matrices to compute; one of
-  `"II"`, `"III"`, `"2"`, or `"3"`, where `"II"` is the default (and
-  `"2"` is a synonym).
+  `"II"`, \`"III"\`, \`"2"\`, or \`"3"\`, where \`"II"\` is the default
+  (and \`"2"\` is a synonym).
 
 - idata:
 
@@ -202,9 +202,9 @@ heplot(
   how to scale the hypothesis ellipse relative to the error ellipse; if
   `"evidence"`, the default, the scaling is done so that a “significant”
   hypothesis ellipse at level `alpha` extends outside of the error
-  ellipse. `size = "significance"` is a synonym and does the same thing.
-  If `"effect.size"`, the hypothesis ellipse is on the same scale as the
-  error ellipse.
+  ellipse. \`size = "significance"\` is a synonym and does the same
+  thing. If \`"effect.size"\`, the hypothesis ellipse is on the same
+  scale as the error ellipse.
 
 - level:
 
@@ -411,7 +411,7 @@ value of `lty=0` in the corresponding position.
 
 Friendly, M. (2006). Data Ellipses, HE Plots and Reduced-Rank Displays
 for Multivariate Linear Models: SAS Software and Examples *Journal of
-Statistical Software*, **17**(6), 1–42.
+Statistical Software*, **17**(6), 1–42. %
 <https://www.jstatsoft.org/v17/i06/>, DOI: 10.18637/jss.v017.i06
 
 Friendly, M. (2007). HE plots for Multivariate General Linear Models.
@@ -429,7 +429,7 @@ Multivariate Linear Models Using the car Package. *The R Journal*,
 
 Friendly, M. & Sigal, M. (2014) Recent Advances in Visualizing
 Multivariate Linear Models. *Revista Colombiana de Estadistica*, **37**,
-261-283.
+261-283. %<http://ref.scielo.org/6gq33g>.
 
 ## See also
 

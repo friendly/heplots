@@ -2,7 +2,7 @@
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.7.8
+Version 1.8.0; documentation built for `pkgdown` 2025-12-01
 
 ## Description
 
