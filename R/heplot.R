@@ -27,7 +27,9 @@
 #  22 Feb 2013
 # -- added ... to label.ellipse to be able to pass cex=
 #  02 Dec 2025
-# added `label.cex` arg to allow control of H/E label sizes (not vectorized)
+# -- `heplot()`: added `label.cex` arg to allow control of H/E label sizes (not vectorized)
+# -- no longer pass ... to label.ellipse()
+# 
 
 
 
@@ -113,6 +115,7 @@
 #'              object.  The default, `label.pos=NULL` uses the correlation of the
 #' `ellipse` to determine "top" (r>=0) or "bottom" (r<0).  Even more
 #'              flexible options are described in \code{\link{label.ellipse}}
+#' @param label.cex Character size used for labels for the hypothesis, error ellipses.
 #' @param variables indices or names of the two response variables to be
 #'              plotted; defaults to `1:2`.
 #' @param error.ellipse if `TRUE`, plot the error ellipse; defaults to
@@ -562,7 +565,7 @@ heplot.mlm <-
 
 	if (error.ellipse){
 		polygon(E.ellipse, col=last(fill.col), border=last(col), lty=last(lty), lwd=last(lwd))
-		label.ellipse(E.ellipse, err.label, col=last(col), label.pos=last(label.pos), cex=label.cex, ...)
+		label.ellipse(E.ellipse, err.label, col=last(col), label.pos=last(label.pos), cex=label.cex)
 	}
 	term.labels <- if (n.terms == 0) NULL
 			else if (!is.logical(term.labels)) term.labels
@@ -570,7 +573,7 @@ heplot.mlm <-
 	if (n.terms > 0) for (term in 1:n.terms){
 			# TODO: avoid polygon if rank=1 ???
 			polygon(H.ellipse[[term]], col=fill.col[term], border=col[term],  lty=lty[term], lwd=lwd[term])
-			label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term], label.pos=label.pos[term], cex=label.cex, ...) 
+			label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term], label.pos=label.pos[term], cex=label.cex) 
 		}   
 
 	# draw and label the H ellipses for all terms
@@ -580,7 +583,7 @@ heplot.mlm <-
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
 			ell <- n.terms + hyp
 			polygon(H.ellipse[[ell]], col=fill.col[ell], border=col[ell],  lty=lty[ell], lwd=lwd[ell])
-			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell], label.pos=label.pos[hyp], cex=label.cex, ...)
+			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell], label.pos=label.pos[hyp], cex=label.cex)
 		}
 
 	if (!add && (!is.logical(factor.means) || factor.means)){

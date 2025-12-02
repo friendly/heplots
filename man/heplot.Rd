@@ -89,6 +89,8 @@ object.  The default, \code{label.pos=NULL} uses the correlation of the
 \code{ellipse} to determine "top" (r>=0) or "bottom" (r<0).  Even more
 flexible options are described in \code{\link{label.ellipse}}}
 
+\item{label.cex}{Character size used for labels for the hypothesis, error ellipses.}
+
 \item{variables}{indices or names of the two response variables to be
 plotted; defaults to \code{1:2}.}
 

@@ -6,12 +6,17 @@ This file provides guidelines for Claude Code when working on R packages, partic
 
 ### String Formatting and Console Output
 
-**PREFER** `glue::glue()` for string interpolation and console output:
+**PREFER** `glue::glue()` for string interpolation and console output, but `paste()` and `paste0()` are also OK. Avoid `sprintf()`.
 ```r
 # Good
 message(glue::glue("Processing {n} observations from {ngroups} groups"))
 warning(glue::glue("Groups {paste(singular_groups, collapse = ', ')} have been excluded"))
 cat(glue::glue("Chi-Sq statistic: {round(statistic, 4)}\n"))
+
+# OK
+message(paste("Processing", n,  "observations from", ngroups, "groups"))
+cat(paste("Chi-Sq statistic:", round(statistic, 3), "\n"))
+
 
 # Avoid
 message(sprintf("Processing %d observations from %d groups", n, ngroups))
@@ -56,7 +61,7 @@ for (i in seq_along(xvals)) {
 
 Follow roxygen2 conventions with clear, complete documentation. 
 
-This should use markdown style (`text`) where possible
+This should use markdown style (`text`) where possible,
 rather than the old Rd style (\code{text}) and similarly for the mention of linked functions (`heplot()`, `graphics::text()`)
 rather than `code{\link{heplots}}` or `\code{\link[graphics]{text}}
 
@@ -136,9 +141,21 @@ warning("Some groups have issues")
 
 ## Package Development Practices
 
+### Recording changes
+
+In the initial lines of functions, before the roxygen documentation, I use ordinary comments to record `TODO:`, `FIXME:` and `DONE:` items as follows.
+Continue this practice
+
+```r
+# DONE: ✔️ Generalize the `label.pos` argument to accept, in addition to values `0:4` and corresponding compass 
+#       directions, N, S, E, W values: `NE`, `SE`, `SW`, `NW` to mean at circular angles 45, 135, 225, 315
+# FIXME: Allow to use `tweak` for diagonal positions.
+# TODO: Generalize to allow a vector of `label`, with corresponding vectors `label.pos`
+```
+
 ### Backward Compatibility
 
-When extending functionality, maintain backward compatibility:
+When extending functionality, maintain backward compatibility. Warn if any proposed change will break this.
 
 ```r
 # Extend existing arguments rather than breaking them
@@ -189,6 +206,12 @@ function_name <- function(args) {
   invisible(result)
 }
 ```
+
+## Testing
+
+I'm not quite ready to use `usethis::use_testthat()` for this package. But when I do, I would like clear recommendations for what to test
+and how to test them.
+
 
 ## Graphics and Visualization
 
@@ -264,11 +287,12 @@ stopifnot(all(c("x", "y") %in% names(test_coords)))
 
 ### For heplots package specifically:
 
-1. **Ellipse matrices**: Always 2-column matrices with (x, y) coordinates
-2. **Color arguments**: Use `col` for primary colors, `fill` for fill colors
-3. **Size arguments**: Use `size` for relative sizing, `radius` for absolute
-4. **Label positioning**: Flexible system accepting multiple input types
-5. **S3 methods**: Provide `default`, `lm`, `mlm` methods where appropriate
+*  **Ellipse matrices**: I use 2-column matrices with (x, y) coordinates for 2D plots, 3-column matrices, (x, y, z) for 3D plots like `heplot3d()`.
+*  **Color arguments**: Use `col` for main colors. Various functions allow this to be a vector, applied to relevant objects. 
+*  **Drawing ellipses**: These functions have a `fill = TRUE/FALSE` argument to allow ellipses to be filled; there is usually also a `fill.alpha` argument which is applied to the `col` color, via `trans.colors()`.
+*  **Size arguments**: Use `size` for relative sizing, `radius` for absolute
+*  **Label positioning**: Flexible system accepting multiple input types
+*  **S3 methods**: Provide `default`, `lm`, `mlm` methods where appropriate
 
 ### Dependencies
 
@@ -330,6 +354,8 @@ valid_mats <- cov_mats[!singular]
 ```
 
 ## File Organization
+
+In what is shown below, I heavily use `dev/` for testing changes or new additions to functions that go in `R/`.
 
 ```
 package/
