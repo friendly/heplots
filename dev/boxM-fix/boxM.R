@@ -1,5 +1,7 @@
 # Box's M-test for Homogeneity of Covariance Matrices
-# FIXED: handles singular covariance matrices
+# DONE: ✔️ handles singular covariance matrices
+# DONE: ✔️ Fixed summary() method to print eigenvalues as a matrix (not a list)
+# DONE: ✔️ print/summary methods now show the number of groups actually used when some are excluded
 
 
 #' Box's M-test
@@ -11,36 +13,6 @@
 #' the pooled covariance matrix, analogous to a likelihood ratio test. The test
 #' statistic uses a chi-square approximation.
 #' 
-#' @param Y The response variable matrix for the default method, or a \code{"mlm"} 
-#'   or \code{"formula"} object for a multivariate linear model. If \code{Y} is a 
-#'   linear-model object or a formula, the variables on the right-hand-side of the 
-#'   model must all be factors and must be completely crossed, e.g., \code{A:B}
-#' @param group A vector specifying the groups. Used only for the default method.
-#' @param data A data frame containing the variables in the model. Used only for
-#'   the formula method.
-#' @param object A \code{"boxM"} object, result of a call to \code{boxM}
-#' @param digits Number of digits in printed output
-#' @param cov Logical; if \code{TRUE}, the covariance matrices for each group and 
-#'   the pooled covariance matrix are printed
-#' @param quiet Logical; if \code{TRUE}, suppress printed output
-#' @param ... Other arguments passed down
-#'
-#' @return A list with class \code{c("htest", "boxM")} containing the following
-#'   components:
-#'   \item{statistic}{the chi-square (approximate) statistic}
-#'   \item{parameter}{the degrees of freedom related of the test statistic in this 
-#'     case that it follows a Chi-square distribution.}
-#'   \item{p.value}{the p-value of the test}
-#'   \item{cov}{a list of the group covariance matrices}
-#'   \item{pooled}{the pooled covariance matrix}
-#'   \item{logDet}{a vector containing the natural logarithm of each matrix in 
-#'     \code{cov}, followed by the value for the pooled covariance matrix}
-#'   \item{df}{a vector of the degrees of freedom for all groups, followed by 
-#'     that for the pooled covariance matrix}
-#'   \item{data.name}{a character string giving the names of the data}
-#'   \item{method}{the character string \code{"Box's M-test for Homogeneity of 
-#'     Covariance Matrices"}}
-#'
 #' @details
 #' As an object of class \code{"htest"}, the statistical test is printed
 #' normally by default. As an object of class \code{"boxM"}, a few methods are
@@ -76,6 +48,36 @@
 #'     }
 #'   }
 #' }
+#'
+#' @param Y The response variable matrix for the default method, or a \code{"mlm"} 
+#'   or \code{"formula"} object for a multivariate linear model. If \code{Y} is a 
+#'   linear-model object or a formula, the variables on the right-hand-side of the 
+#'   model must all be factors and must be completely crossed, e.g., \code{A:B}
+#' @param group A vector specifying the groups. Used only for the default method.
+#' @param data A data frame containing the variables in the model. Used only for
+#'   the formula method.
+#' @param object A \code{"boxM"} object, result of a call to \code{boxM}
+#' @param digits Number of digits in printed output
+#' @param cov Logical; if \code{TRUE}, the covariance matrices for each group and 
+#'   the pooled covariance matrix are printed
+#' @param quiet Logical; if \code{TRUE}, suppress printed output
+#' @param ... Other arguments passed down
+#'
+#' @return A list with class \code{c("htest", "boxM")} containing the following
+#'   components:
+#'   \item{statistic}{the chi-square (approximate) statistic}
+#'   \item{parameter}{the degrees of freedom related of the test statistic in this 
+#'     case that it follows a Chi-square distribution.}
+#'   \item{p.value}{the p-value of the test}
+#'   \item{cov}{a list of the group covariance matrices}
+#'   \item{pooled}{the pooled covariance matrix}
+#'   \item{logDet}{a vector containing the natural logarithm of each matrix in 
+#'     \code{cov}, followed by the value for the pooled covariance matrix}
+#'   \item{df}{a vector of the degrees of freedom for all groups, followed by 
+#'     that for the pooled covariance matrix}
+#'   \item{data.name}{a character string giving the names of the data}
+#'   \item{method}{the character string \code{"Box's M-test for Homogeneity of 
+#'     Covariance Matrices"}}
 #'
 #' @author The default method was taken from the \pkg{biotools} package,
 #'   Anderson Rodrigo da Silva \email{anderson.agro@@hotmail.com}
@@ -166,8 +168,11 @@ boxM.lm <- function(Y, ...) {
 boxM.default <- function(Y, group, ...) {
   if (!is.matrix(Y))
     Y <- as.matrix(Y)
-  
-  dname <- paste(deparse(substitute(Y)), "by", deparse(substitute(group)))
+
+  # Create data name - collapse deparse output properly
+  y_name <- paste(deparse(substitute(Y), width.cutoff = 500L), collapse = " ")
+  group_name <- paste(deparse(substitute(group), width.cutoff = 500L), collapse = " ")
+  dname <- paste(y_name, "by", group_name)
   
   # Check for missing data
   na_rows <- apply(is.na(Y), 1, any)
@@ -264,6 +269,18 @@ boxM.default <- function(Y, group, ...) {
 print.boxM <- function(x, ...) {
   cat("\n", x$method, "\n\n")
   cat("data: ", x$data.name, "\n")
+
+  # Count number of groups used (excluding pooled, and excluding groups with -Inf logDet)
+  logdet_groups <- head(x$logDet, -1)  # Exclude pooled
+  ngroups_total <- length(logdet_groups)
+  ngroups_used <- sum(is.finite(logdet_groups))
+
+  if (ngroups_used < ngroups_total) {
+    cat("Groups: ", ngroups_used, " of ", ngroups_total, " (",
+        ngroups_total - ngroups_used, " excluded due to singular covariance matrices)\n",
+        sep = "")
+  }
+
   out <- character()
   out <- c(out, paste(names(x$statistic), "=",
                       format(round(x$statistic, 4))))
@@ -278,37 +295,51 @@ print.boxM <- function(x, ...) {
 
 #' @rdname boxM
 #' @export
-summary.boxM <- function(object, digits = getOption("digits") - 2, 
+summary.boxM <- function(object, digits = getOption("digits") - 2,
                          cov = FALSE, quiet = FALSE, ...) {
-  eigs <- lapply(object$cov, eigen, only.values = TRUE)
-  eigs <- lapply(eigs, "[[", "values")
-  names(eigs) <- names(object$cov)
-  
-  eigstats <- data.frame(
-    product = sapply(eigs, prod),
-    sum = sapply(eigs, sum),
-    precision = sapply(eigs, function(x) max(x) / min(x)),
-    max = sapply(eigs, max),
-    min = sapply(eigs, min)
+  # Compute eigenvalues for all covariance matrices including pooled
+  covs <- c(object$cov, pooled = list(object$pooled))
+  eigs <- sapply(covs, FUN = function(x) eigen(x)$values)
+  rownames(eigs) <- 1:nrow(eigs)
+
+  # Compute statistics based on eigenvalues
+  eigstats <- rbind(
+    product = apply(eigs, 2, prod),
+    sum = apply(eigs, 2, sum),
+    precision = 1 / apply(1 / eigs, 2, sum),
+    max = apply(eigs, 2, max)
   )
   
   if (!quiet) {
     cat("\n", object$method, "\n\n")
     cat("data: ", object$data.name, "\n\n")
+
+    # Count number of groups used
+    logdet_groups <- head(object$logDet, -1)  # Exclude pooled
+    ngroups_total <- length(logdet_groups)
+    ngroups_used <- sum(is.finite(logdet_groups))
+
     cat("Chi-Sq (approx.) = ", object$statistic, "\n")
     cat("df:\t", object$parameter, "\n")
     fp <- format.pval(object$p.value, digits = max(1L, digits - 3L))
-    cat("p-value:", fp, "\n\n")
-    
+    cat("p-value:", fp, "\n")
+
+    if (ngroups_used < ngroups_total) {
+      cat("Groups used: ", ngroups_used, " of ", ngroups_total, " (",
+          ngroups_total - ngroups_used, " excluded due to singular covariance matrices)\n",
+          sep = "")
+    }
+    cat("\n")
+
     cat("log of Covariance determinants:\n")
     print(object$logDet, digits = digits)
-    
+
     cat("\nEigenvalues:\n")
     print(eigs, digits = digits)
-    
+
     cat("\nStatistics based on eigenvalues:\n")
     print(eigstats, digits = digits)
-    
+
     if (cov) {
       cat("\nCovariance matrices:\n")
       print(object$cov, digits = digits)

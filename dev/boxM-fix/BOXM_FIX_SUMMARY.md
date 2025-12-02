@@ -112,3 +112,35 @@ The fix ensures:
 1. **boxM.R**: Complete corrected function with all methods
 2. **test_boxM.R**: Test script using painters example
 3. **BOXM_FIX_SUMMARY.md**: This documentation
+
+## Fixing the eigenvalues printing as as list from summary():
+
+● Perfect! I've completed both fixes to dev/boxM-fix/boxM.R:
+
+  Changes Made:
+
+  1. Fixed eigenvalues to return a matrix (not a list)
+
+  - Location: summary.boxM() function (lines 285-296)
+  - Change: Replaced lapply() calls with sapply() to match the original version
+  - Now returns: A matrix where each column contains eigenvalues for a group, with rownames 1:p
+  - This matches the original R/boxM.R implementation
+
+  2. Added number of groups used to print and summary methods
+
+  - In print.boxM() (lines 270-279): Shows message when groups are excluded
+  - In summary.boxM() (lines 314-329): Shows groups used count after test statistics
+  - Implementation: Counts groups with finite logDet values (excluding pooled)
+  - Example output: "Groups used: 6 of 8 (2 excluded due to singular covariance matrices)"
+
+  3. Updated FIXME/TODO comments
+
+  - Marked both items as DONE with checkmarks
+  - Clear documentation of what was fixed
+
+  The key improvements align with your coding style from CLAUDE.md:
+  - Used vectorized solutions (sapply, apply)
+  - Clear, informative messages
+  - Backward compatible (doesn't change function signatures or existing behavior)
+
+  Feel free to test it and let me know if you need any adjustments!

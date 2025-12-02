@@ -14,9 +14,9 @@ school <- c("Renaissance", "Mannerist", "Sciento", "Venetian",
 levels(painters$School) <- school
 
 # Check sample sizes
-cat("Sample sizes by School:\n")
+
 print(table(painters$School))
-cat("\n")
+
 
 # With p=4 variables, groups with n<=4 will have singular covariance matrices
 # Sciento and French both have n=4, so dfs=3 < p=4
@@ -27,16 +27,15 @@ painters.mod <- lm(cbind(Composition, Drawing, Colour, Expression) ~ School,
 
 # Test the corrected boxM function
 cat("Testing boxM with corrected handling of singular covariance matrices:\n")
-cat(rep("=", 70), "\n\n", sep = "")
 
 painters.boxM <- boxM(painters.mod)
 print(painters.boxM)
 
-cat("\n", rep("=", 70), "\n", sep = "")
 cat("Summary output:\n")
-cat(rep("=", 70), "\n\n", sep = "")
 
 summary(painters.boxM)
+
+# BUG: The Eigenvalues are printed as a named list rather than a matrix.
 
 cat("\n", rep("=", 70), "\n", sep = "")
 cat("Checking logDet values:\n")
