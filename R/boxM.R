@@ -19,8 +19,8 @@
 #' data are simply removed, with a warning.
 #' 
 #' As well, the computation assumes that the covariance matrix for each group
-#' is non-singular, so that \eqn{log det(S_i)} can be calculated for each
-#' group. At the minimum, this requires that \eqn{n > p} for each group.
+#' is non-singular, so that \eqn{\log det(S_i)} can be calculated for each
+#' group. At the minimum, this requires that \eqn{n_i > p} for each group.
 #' 
 #' Box's M test for a multivariate linear model highly sensitive to departures
 #' from multivariate normality, just as the analogous univariate test.  It is

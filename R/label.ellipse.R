@@ -53,6 +53,8 @@
 #'                height and width of the character \code{"M"} added
 #'                or subtracted to the calculated (x, y) values.
 #' @param ...     Other parameters passed to \code{\link[graphics]{text}}, e.g., \code{cex}, \code{col}, \dots
+#' @returns Mainly used for its side-effect of producing a call to \code{\link[graphics]{text}}, but also returns, invisibly,
+#'          the (x, y) coordinates where the label was placed.
 #' 
 #' @author Michael Friendly
 #' @export
@@ -86,8 +88,9 @@
 #'   label.ellipse(circ, label=pos, label.pos=pos, col="blue", cex=1.2, font=2)
 #' }
 #' 
-#' # Center
-#' label.ellipse(circ, label="C", label.pos="C", col="darkgreen", cex=1.2, font=2)
+#' # Center, & illustrate return
+#' xy <- label.ellipse(circ, label="C", label.pos="C", col="darkgreen", cex=1.2, font=2)
+#' xy
 #' 
 #' # Add reference lines to show the angles
 #' abline(h=0, v=0, col="lightgray", lty=2)
@@ -223,4 +226,6 @@ label.ellipse <- function(
 	}
 	
 	text(x, y, label, pos=pos, xpd=xpd, col=col, ...)
+	
+	return(invisible(c(x = x, y = y)))
 }

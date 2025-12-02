@@ -1,3 +1,8 @@
+## Version 1.8.1
+
+* `label.ellipse()` now returns invisibly the coordinates where the label was placed.
+* `heplot()` adds a `label.cex` argument to control the size of labels on H/E ellipses. The `label.pos` argument is vectorized, so that the changes to `label.ellipse()` now apply.
+
 ## Version 1.8.0
 
 * describe more fully constructing the datasets table using concept tags

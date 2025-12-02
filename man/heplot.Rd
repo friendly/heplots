@@ -15,6 +15,7 @@ heplot(mod, ...)
   hyp.labels = TRUE,
   err.label = "Error",
   label.pos = NULL,
+  label.cex = par("cex"),
   variables = 1:2,
   error.ellipse = !add,
   factor.means = !add,

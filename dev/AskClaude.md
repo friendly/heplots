@@ -102,7 +102,7 @@ The function should be called `lm.std()` and take exactly the same set of argume
 update(mod, data = scale(data))
 ```
 
-## label.ellipse
+## label.ellipse [DONE]
 
 A function, `label.ellipse()` in my {heplots} package is designed to draw labels on ellipses using base R graphics.
 The package is on Github at https://github.com/friendly/heplots. The version of this function I want help with is
@@ -110,3 +110,38 @@ at: https://raw.githubusercontent.com/friendly/heplots/refs/heads/master/dev/lab
 I want to generalize the `label.pos` argument that determines the position on the ellipse where the label
 is placed. It currently accepts `0:4` and corresponding compass directions, "C" (center) "N", "S", "E", "W" values.
 I'd like you to add code for another set of compass-like values, `NE`, `SE`, `SW`, `NW` to mean at circular angles 45, 135, 225, 315.
+
+## Fix `boxM`
+
+The function `boxM()` in this package calculates Box's M test for equality of covariance matrices in a MANOVA model.
+There is a problem, in that it gives `NaN` values if any one or more groups has a singular covariance matrix.
+The computation assumes that the covariance matrix for each group
+is non-singular, so that $\log det(S_i)$ can be calculated for each group. This requires that $n_i > p$ for each group.
+
+The source code is at: https://raw.githubusercontent.com/friendly/heplots/refs/heads/master/R/boxM.R
+Please read that and then I'll tell you what to do.
+
+The relevant code is inside the function `boxM.default` in lines 155-175. I think the way to fix this is to change the computation
+at lines 168-170 so that `logdet`, `minus2logM` and `sum1` are calculated only over those groups for which `dfs[i] > p`
+
+```
+   logdet <- log(unlist(lapply(mats, det)))
+   minus2logM <- sum(dfs) * log(det(pooled)) - sum(logdet * dfs)
+   sum1 <- sum(1 / dfs) 
+```
+
+The warning message on lines 159-160 should also be changed to say additionally that "groups ... have been excluded from the calculations"
+
+Here is a test case, where there are two groups with only `n = 4`.
+```
+data(painters, package = "MASS")
+school <- c("Renaissance", "Mannerist", "Sciento", "Venetian",
+		"Lombard", "16th C", "17th C", "French")
+levels(painters$School) <- school
+table(painters$School)
+
+painters.mod <- lm(cbind(Composition, Drawing, Colour, Expression) ~ School, data=painters)
+painters.boxM <- boxM(painters.mod) |> 
+  print()
+summary(painters.boxM)
+```
