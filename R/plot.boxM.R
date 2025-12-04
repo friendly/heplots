@@ -95,8 +95,14 @@ plot.boxM <-
     
     which <- match.arg(which)
     if (which=="logDet") {
-      measure <- x$logDet
+      # Filter out singular groups (those with -Inf or non-finite values)
+      # x$logDet includes group log dets and pooled as the last element
+      valid_idx <- is.finite(x$logDet)
+      measure <- x$logDet[valid_idx]
       xlab <- "log determinant"
+
+      # Track which groups are valid (excluding pooled)
+      valid_groups <- head(valid_idx, -1)
     }
     else {
       eigstats <- summary(x, quiet=TRUE)$eigstats
@@ -104,18 +110,23 @@ plot.boxM <-
       if(log) measure <- log(measure)
       xlab <- paste(if(log) "log" else "", which, "of eigenvalues" )
       conf <- 0
+      # For eigstats, filter is already handled by summary()
+      valid_groups <- rep(TRUE, length(x$logDet))
     }
-    
-    
+
+
     ng <- length(measure)-1
-    
+
     if (missing(xlim)) {
-      xlim <- range(measure)
+      xlim <- range(measure[is.finite(measure)])
     }
-    
+
     if (conf>0) {
-      cov <- c(x$cov, list(pooled=x$pooled))
-      n <- x$df + c(rep(1, ng), ng)
+      # Use only valid (non-singular) groups for confidence intervals
+      cov_valid <- x$cov[valid_groups]
+      cov <- c(cov_valid, list(pooled=x$pooled))
+      df_valid <- x$df[c(valid_groups, TRUE)]  # Include pooled
+      n <- df_valid + 1
       CI <- logdetCI( cov, n=n, conf=conf, method=method, bias.adj=bias.adj )
       xlim[1] <- min(xlim[1], CI$lower)
       xlim[2] <- max(xlim[2], CI$upper)

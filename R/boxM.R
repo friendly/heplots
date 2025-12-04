@@ -263,7 +263,10 @@ boxM.default <- function(Y, group, ...) {
     sum1 <- NA
   }
   names(logdet_all) <- lev
-  
+
+  # Append pooled log determinant
+  logdet_all <- c(logdet_all, pooled = log(det(pooled)))
+
   # Correction factors using valid groups only
   Co <- (((2 * p^2) + (3 * p) - 1) / (6 * (p + 1) * (nlev_valid - 1))) *
     (sum1 - (1 / sum(dfs_valid)))
@@ -342,7 +345,7 @@ summary.boxM <- function(object, digits = getOption("digits") - 2,
     cat("data: ", object$data.name, "\n\n")
 
     # Count number of groups used
-    logdet_groups <- x$logDet
+    logdet_groups <- object$logDet
     ngroups_total <- length(logdet_groups)
     ngroups_used <- sum(is.finite(logdet_groups))
 

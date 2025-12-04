@@ -159,3 +159,5 @@ In addition: Warning messages:
   longer object length is not a multiple of shorter object length
 2: In log(det(x)) : NaNs produced
 ```
+
+This is a continuation of the discussion regarding the `boxM` function in my `heplots
