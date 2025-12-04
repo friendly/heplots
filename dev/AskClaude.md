@@ -145,3 +145,17 @@ painters.boxM <- boxM(painters.mod) |>
   print()
 summary(painters.boxM)
 ```
+
+There is still a problem with the `plot.boxM()` when any groups have singular covariance matrices.
+For the `painters` data, there is an error and a warning. Can you correct this?
+
+
+```
+> plot(painters.boxM)
+Error in plot.window(xlim = xlim, ylim = ylim, log = log) : 
+  need finite 'xlim' values
+In addition: Warning messages:
+1: In x$df + c(rep(1, ng), ng) :
+  longer object length is not a multiple of shorter object length
+2: In log(det(x)) : NaNs produced
+```

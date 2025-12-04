@@ -65,6 +65,8 @@ This should use markdown style (`text`) where possible,
 rather than the old Rd style (\code{text}) and similarly for the mention of linked functions (`heplot()`, `graphics::text()`)
 rather than `code{\link{heplots}}` or `\code{\link[graphics]{text}}
 
+When there are long lines, e.g., in an `@param`, I prefer them to be wrapped at ~ 72 characters and subsequent lines indented by 8 characters.
+
 ```r
 #' Label an Ellipse
 #'
