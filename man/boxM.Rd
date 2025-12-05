@@ -52,19 +52,21 @@ the pooled covariance matrix are printed}
 \item{quiet}{Logical; if \code{TRUE}, suppress printed output}
 }
 \value{
-A list with class \code{c("htest", "boxM")} containing the following
+A list with class \code{c("boxM", "htest")} containing the following
 components:
-\item{statistic}{the chi-square (approximate) statistic}
-\item{parameter}{the degrees of freedom related of the test statistic in this
-case that it follows a Chi-square distribution.}
+\item{statistic}{the chi-square (approximate) statistic for Box's M test, where large values
+imply the covariance matrices differ.}
+\item{parameter}{the degrees of freedom for the test statistic.}
 \item{p.value}{the p-value of the test}
-\item{cov}{a list of the group covariance matrices}
+\item{ngroups}{the number of levels of the \code{group} variable}
+\item{cov}{a list of the group covariance matrices, of length \code{ngroups}}
 \item{pooled}{the pooled covariance matrix}
-\item{logDet}{a vector containing the natural logarithm of each matrix in
-\code{cov}, followed by the value for the pooled covariance matrix}
+\item{means}{a matrix whose \code{ngroups+1} rows are the means of the variables, followed by those for pooled data.}
+\item{logDet}{a vector of length \code{ngroups+1} containing the natural logarithm of each matrix in
+\code{cov}, followed by that for the pooled covariance matrix}
 \item{df}{a vector of the degrees of freedom for all groups, followed by
 that for the pooled covariance matrix}
-\item{data.name}{a character string giving the names of the data}
+\item{data.name}{a character string giving the names of the data, as extracted from the call}
 \item{method}{the character string \code{"Box's M-test for Homogeneity of 
     Covariance Matrices"}}
 }

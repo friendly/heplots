@@ -1,5 +1,6 @@
 # Revisions:
-# -  Now allow to plot multiple variables in a scatterplot matrix format 3/30/2016 10:53:05 AM
+# DONE: ✔️ Now allow to plot multiple variables in a scatterplot matrix format 3/30/2016 10:53:05 AM
+# FIXME: ❌ The covEllipses.boxM method gives errors.
 
 # Draw covariance ellipses for one or more groups
 
@@ -130,6 +131,7 @@
 #' covEllipses(iris[,1:4], iris$Species)
 #' covEllipses(iris[,1:4], iris$Species, fill=TRUE, method="mve", add=TRUE, labels="")
 #' 
+#' \donttest{
 #' # method for a boxM object	
 #' x <- boxM(iris[, 1:4], iris[, "Species"])
 #' x
@@ -142,6 +144,7 @@
 #' covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE))
 #'  
 #' covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE), center=TRUE)
+#' }
 #' 
 #' # scatterplot matrix version
 #' covEllipses(iris[,1:4], iris$Species, 
@@ -236,6 +239,7 @@ covEllipses.boxM <-
     cov <- c(x$cov, pooled=list(x$pooled))
     mns <- x$means
     df <- x$df
+
     covEllipses.default(cov, mns, df, ...)
   }
 

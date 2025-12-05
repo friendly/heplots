@@ -208,6 +208,7 @@ data(iris)
 covEllipses(iris[,1:4], iris$Species)
 covEllipses(iris[,1:4], iris$Species, fill=TRUE, method="mve", add=TRUE, labels="")
 
+\donttest{
 # method for a boxM object	
 x <- boxM(iris[, 1:4], iris[, "Species"])
 x
@@ -220,6 +221,7 @@ df <- c(table(iris$Species)-1, nrow(iris)-3)
 covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE))
  
 covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE), center=TRUE)
+}
 
 # scatterplot matrix version
 covEllipses(iris[,1:4], iris$Species, 

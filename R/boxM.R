@@ -2,7 +2,8 @@
 # DONE: ✔️ handles singular covariance matrices
 # DONE: ✔️ Fixed summary() method to print eigenvalues as a matrix (not a list)
 # DONE: ✔️ print/summary methods now show the number of groups actually used when some are excluded
-# TODO: Don't need "htest" because there's a `print.boxM()` method
+# TODO: 🚩 Don't need "htest" because there's a `print.boxM()` method
+# TODO: 🚩 simplify print and summary methods, now the `ngroups` is saved by boxM.default
 
 
 #' Box's M-test for Homogeneity of Covariance Matrices
@@ -66,19 +67,21 @@
 #' @param quiet Logical; if \code{TRUE}, suppress printed output
 #' @param ... Other arguments passed down
 #'
-#' @return A list with class \code{c("htest", "boxM")} containing the following
+#' @return A list with class \code{c("boxM", "htest")} containing the following
 #'   components:
-#'   \item{statistic}{the chi-square (approximate) statistic}
-#'   \item{parameter}{the degrees of freedom related of the test statistic in this 
-#'     case that it follows a Chi-square distribution.}
+#'   \item{statistic}{the chi-square (approximate) statistic for Box's M test, where large values 
+#'         imply the covariance matrices differ.}
+#'   \item{parameter}{the degrees of freedom for the test statistic.}
 #'   \item{p.value}{the p-value of the test}
-#'   \item{cov}{a list of the group covariance matrices}
+#'   \item{ngroups}{the number of levels of the `group` variable}
+#'   \item{cov}{a list of the group covariance matrices, of length `ngroups`}
 #'   \item{pooled}{the pooled covariance matrix}
-#'   \item{logDet}{a vector containing the natural logarithm of each matrix in 
-#'     \code{cov}, followed by the value for the pooled covariance matrix}
+#'   \item{means}{a matrix whose `ngroups+1` rows are the means of the variables, followed by those for pooled data.}
+#'   \item{logDet}{a vector of length `ngroups+1` containing the natural logarithm of each matrix in 
+#'     \code{cov}, followed by that for the pooled covariance matrix}
 #'   \item{df}{a vector of the degrees of freedom for all groups, followed by 
 #'     that for the pooled covariance matrix}
-#'   \item{data.name}{a character string giving the names of the data}
+#'   \item{data.name}{a character string giving the names of the data, as extracted from the call}
 #'   \item{method}{the character string \code{"Box's M-test for Homogeneity of 
 #'     Covariance Matrices"}}
 #'
@@ -191,6 +194,7 @@ boxM.lm <- function(Y, ...) {
 }
 
 #' @rdname boxM
+#' @importFrom stats aggregate
 #' @export
 boxM.default <- function(Y, group, ...) {
 
@@ -211,7 +215,7 @@ boxM.default <- function(Y, group, ...) {
   }
   
   group <- as.factor(as.character(group))
-  nlev <- nlevels(group)
+  ngroups <- nlevels(group)
   lev <- levels(group)
   
   # Sample sizes
@@ -224,7 +228,7 @@ boxM.default <- function(Y, group, ...) {
   
   # Compute covariance matrix for each group
   mats <- aux <- list()
-  for (i in 1:nlev) {
+  for (i in 1:ngroups) {
     mats[[i]] <- cov(Y[group == lev[i], , drop = FALSE])
     aux[[i]] <- mats[[i]] * dfs[i]
   }
@@ -232,6 +236,12 @@ boxM.default <- function(Y, group, ...) {
   
   # Pooled covariance matrix
   pooled <- Reduce("+", aux) / sum(dfs)
+  
+  # compute means (for use with `covEllises.boxm()`)
+  means <- aggregate(Y, by = list(group), FUN = mean)
+  gm <- colMeans(Y)
+  means <- rbind(means[, -1], gm)
+  row.names(means) <- c(lev, "pooled")
   
   # CORRECTED: Identify groups with singular covariance matrices
   # A group has singular cov matrix if dfs[i] < p (i.e., n[i] <= p)
@@ -250,7 +260,7 @@ boxM.default <- function(Y, group, ...) {
   nlev_valid <- sum(valid_idx)
   
   # CORRECTED: Calculate logdet, minus2logM, and sum1 using only valid groups
-  logdet_all <- rep(-Inf, nlev)  # Initialize with -Inf for all groups
+  logdet_all <- rep(-Inf, ngroups)  # Initialize with -Inf for all groups
   if (nlev_valid > 0) {
     # Compute log determinants only for valid groups
     logdet_valid <- log(sapply(mats[valid_idx], det))
@@ -283,8 +293,10 @@ boxM.default <- function(Y, group, ...) {
     statistic = c("Chi-Sq (approx.)" = X2),
     parameter = c(df = dfchi),
     p.value = pval,
+    ngroups = ngroups,
     cov = mats,
     pooled = pooled,
+    means = means,
     logDet = logdet_all,
     df = c(dfs, pooled = sum(dfs)),
     data.name = dname,
