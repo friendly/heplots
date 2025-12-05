@@ -5,8 +5,8 @@
 source(here::here("dev", "boxM-fix", "boxM.R"))  # Adjust path as needed
 
 # Load the painters data
-library(MASS)
-data(painters)
+#library(MASS)
+data(painters, package = "MASS")
 
 # Recode School factor
 school <- c("Renaissance", "Mannerist", "Sciento", "Venetian",
@@ -37,12 +37,10 @@ summary(painters.boxM)
 
 # BUG: The Eigenvalues are printed as a named list rather than a matrix.
 
-cat("\n", rep("=", 70), "\n", sep = "")
 cat("Checking logDet values:\n")
-cat(rep("=", 70), "\n", sep = "")
 print(painters.boxM$logDet)
-cat("\nNote: Sciento and French have -Inf logDet (singular matrices)\n")
-cat("but the test statistic is computed only using the non-singular groups.\n")
+cat("\nNote: Sciento and French have -Inf logDet (singular matrices)\n",
+    "but the test statistic is computed only using the non-singular groups.\n")
 
 # Verify the fix: test statistic should be finite
 cat("\n", rep("=", 70), "\n", sep = "")

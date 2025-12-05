@@ -132,7 +132,9 @@
 #' 
 #' # lm method
 #' skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
-#' boxM(skulls.mod)
+#' skulls.boxM <- boxM(skulls.mod) |>
+#'   print()
+#' summary(skulls.boxM)
 #' 
 #' @export
 boxM <- function(Y, ...) {
@@ -237,7 +239,7 @@ boxM.default <- function(Y, group, ...) {
   
   if (any(singular)) {
     singular_groups <- lev[singular]
-    warning("Groups ", paste(singular_groups, collapse = ", "), 
+    warning("Groups: ", paste0('"', paste(singular_groups, collapse='", "'), '"'),
             " have fewer observations than variables (n <= p) ",
             "and have been excluded from the calculations.")
   }
@@ -295,13 +297,14 @@ boxM.default <- function(Y, group, ...) {
 
 #' @rdname boxM
 #' @param x a class `"boxM"` object, for the `print()` method
+#' @importFrom utils head
 #' @export
 print.boxM <- function(x, ...) {
   cat("\n", x$method, "\n\n")
   cat("data: ", x$data.name, "\n")
 
   # Count number of groups used (excluding pooled, and excluding groups with -Inf logDet)
-  logdet_groups <- x$logDet
+  logdet_groups <- head(x$logDet, -1L)
   ngroups_total <- length(logdet_groups)
   ngroups_used <- sum(is.finite(logdet_groups))
 
@@ -344,8 +347,8 @@ summary.boxM <- function(object, digits = getOption("digits") - 2,
     cat("\n", object$method, "\n\n")
     cat("data: ", object$data.name, "\n\n")
 
-    # Count number of groups used
-    logdet_groups <- object$logDet
+    # Count number of groups used (excluding pooled)
+    logdet_groups <- head(object$logDet, -1L)
     ngroups_total <- length(logdet_groups)
     ngroups_used <- sum(is.finite(logdet_groups))
 

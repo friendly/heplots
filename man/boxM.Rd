@@ -144,7 +144,9 @@ data(Skulls)
 
 # lm method
 skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
-boxM(skulls.mod)
+skulls.boxM <- boxM(skulls.mod) |>
+  print()
+summary(skulls.boxM)
 
 }
 \references{
