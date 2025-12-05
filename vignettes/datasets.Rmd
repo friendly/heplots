@@ -78,13 +78,13 @@ the documentation for the `AddHealth` data contains these lines:
 ```
 
 With standard
-processing, these concepts along with the keywords, appear in the **Index** section of the manual constructed by `devtools::build_manual()`. In the `pkgdown`
+processing, these concepts along with the keywords, appear in the **Index** section of the manual constructed by `devtools::build_manual`. In the `pkgdown`
 site for this package, they are also searchable in the **search** box.
 
 With a bit of extra processing, I created a dataset [datasets.csv](https://raw.githubusercontent.com/friendly/heplots/master/extra/datasets.csv)
 used below. 
 
-How this is done is described in this [StackExchange question](). The first step is to extract the `concept` tags from the `man/*.Rd` files:
+How this is done is described in this [StackExchange question](https://stackoverflow.com/questions/79826855/find-and-process-concept-tags-in-rd-files). The first step is to extract the `concept` tags from the `man/*.Rd` files:
 
 ```{r concept-tags}
 #| eval: false
@@ -99,7 +99,7 @@ concepts <- readLines(pipe("grep concept man/*.Rd")) %>%
 head(concepts)
 ```
 
-Then, I use `vcdExtra::datasets()` to extract title and other information for the datasets in the package, munge the result and `left_join()` with `concepts`:
+Then, I use `vcdExtra::datasets` to extract title and other information for the datasets in the package, munge the result and `left_join` with `concepts`:
 
 ```{r}
 #| eval: FALSE

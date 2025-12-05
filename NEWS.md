@@ -3,6 +3,7 @@
 * `label.ellipse()` now returns invisibly the coordinates where the label was placed.
 * `heplot()` adds a `label.cex` argument to control the size of labels on H/E ellipses. The `label.pos` argument is vectorized, so that the changes to `label.ellipse()` now apply.
 * `boxM()` & `plot.boxM()` now correctly handle the situation where one or more groups have singular covariance matrices because !n>p
+* Fixed bug in `covEllipses.boxM()` method. `boxM()` now returns `ngroups` and `means` among it's components.
 
 ## Version 1.8.0
 

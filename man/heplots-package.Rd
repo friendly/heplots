@@ -96,7 +96,7 @@ of Statistical Software}, 37(4), 1-40.
 Fox, J., Friendly, M. & Weisberg, S. (2013).  Hypothesis Tests for
 Multivariate Linear Models Using the car Package.  \emph{The R Journal},
 \strong{5}(1),
-\url{https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf}.
+\url{https://journal.r-project.org/news/RJ-2013-1-fox-friendly-weisberg/RJ-2013-1-fox-friendly-weisberg.pdf}.
 
 Friendly, M., Monette, G. & Fox, J. (2013).  Elliptical Insights:
 Understanding Statistical Methods Through Elliptical Geometry.
@@ -105,7 +105,7 @@ Understanding Statistical Methods Through Elliptical Geometry.
 
 Friendly, M. & Sigal, M. (2014). Recent Advances in Visualizing Multivariate
 Linear Models. \emph{Revista Colombiana de Estadistica}, \strong{37}, 261-283
-\% \url{http://ref.scielo.org/6gq33g}.
+\doi{10.15446/rce.v37n2spe.47934}.
 
 Friendly, M. & Sigal, M. (2016). Graphical Methods for Multivariate Linear
 Models in Psychological Research: An R Tutorial. Submitted for publication.

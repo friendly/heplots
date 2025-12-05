@@ -160,4 +160,21 @@ In addition: Warning messages:
 2: In log(det(x)) : NaNs produced
 ```
 
-This is a continuation of the discussion regarding the `boxM` function in my `heplots
+First, read `CLAUDE.me`, so we're on the same page.
+This is a continuation of the discussion regarding the `boxM` function, source at `R/boxM.R` in my `heplots` package, but
+now involving the method `covEllipses.boxM` defined in `R/covEllipses.R`. The problem occurs in the examples shown at lines
+135-146 in `R/covEllipses.R`, where these are presently included as `\donttest()` because they give errors.
+
+```r
+# method for a boxM object	
+x <- boxM(iris[, 1:4], iris[, "Species"])
+covEllipses(x, fill=c(rep(FALSE,3), TRUE) )
+```
+
+Error:
+
+```r
+Error in if (n.ell != nrow(means)) stop(paste0("number of covariance matrices (",  : 
+  argument is of length zero
+```
+

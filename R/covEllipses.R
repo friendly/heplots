@@ -1,12 +1,12 @@
 # Revisions:
 # DONE: ✔️ Now allow to plot multiple variables in a scatterplot matrix format 3/30/2016 10:53:05 AM
-# FIXME: ❌ The covEllipses.boxM method gives errors.
+# DONE: ✔️ The covEllipses.boxM method gives errors. Fixed via adding `means` to result of boxM
 
 # Draw covariance ellipses for one or more groups
 
 
 
-#' Draw classical and robust covariance ellipses for one or more groups
+#' Draw classical and Robust Covariance Ellipses for one or more groups
 #' 
 #' @description
 #' 
@@ -129,24 +129,26 @@
 #' 
 #' # compare classical and robust covariance estimates
 #' covEllipses(iris[,1:4], iris$Species)
-#' covEllipses(iris[,1:4], iris$Species, fill=TRUE, method="mve", add=TRUE, labels="")
+#' # use `method="mve"`
+#' covEllipses(iris[,1:4], iris$Species, 
+#'     fill=TRUE, method="mve", add=TRUE, labels="")
 #' 
-#' \donttest{
 #' # method for a boxM object	
-#' x <- boxM(iris[, 1:4], iris[, "Species"])
-#' x
-#' covEllipses(x, fill=c(rep(FALSE,3), TRUE) )
-#' covEllipses(x, fill=c(rep(FALSE,3), TRUE), center=TRUE, label.pos=1:4 )
+#' iris.boxM <- boxM(iris[, 1:4], iris[, "Species"])
+#' iris.boxM
+#' # show the associated covariance ellipses
+#' covEllipses(iris.boxM, fill=c(rep(FALSE,3), TRUE) )
+#' # use centering
+#' covEllipses(iris.boxM, fill=c(rep(FALSE,3), TRUE), center=TRUE, label.pos=1:4 )
 #' 
 #' # method for a list of covariance matrices
-#' cov <- c(x$cov, pooled=list(x$pooled))
+#' cov <- c(iris.boxM$cov, pooled=list(iris.boxM$pooled))
 #' df <- c(table(iris$Species)-1, nrow(iris)-3)
-#' covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE))
+#' covEllipses(cov, iris.boxM$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE))
 #'  
-#' covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE), center=TRUE)
-#' }
+#' covEllipses(cov, iris.boxM$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE), center=TRUE)
 #' 
-#' # scatterplot matrix version
+#' # scatterplot matrix version, specifying `variables`
 #' covEllipses(iris[,1:4], iris$Species, 
 #' 	fill=c(rep(FALSE,3), TRUE), variables=1:4, 
 #' 	fill.alpha=.1)

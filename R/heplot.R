@@ -263,11 +263,11 @@
 #' Fox, J., Friendly, M. & Weisberg, S. (2013). Hypothesis Tests for
 #' Multivariate Linear Models Using the car Package. *The R Journal*,
 #' **5**(1),
-#' <https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf>.
+#' <https://journal.r-project.org/news/RJ-2013-1-fox-friendly-weisberg/RJ-2013-1-fox-friendly-weisberg.pdf>.
 #' 
 #' Friendly, M. & Sigal, M. (2014) Recent Advances in Visualizing Multivariate
 #' Linear Models. *Revista Colombiana de Estadistica*, **37**, 261-283.
-#' %<http://ref.scielo.org/6gq33g>.
+#' DOI: 10.15446/rce.v37n2spe.47934.
 #' @keywords hplot aplot multivariate
 #' @examples
 #' 
