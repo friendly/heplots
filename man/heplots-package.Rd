@@ -105,7 +105,7 @@ Understanding Statistical Methods Through Elliptical Geometry.
 
 Friendly, M. & Sigal, M. (2014). Recent Advances in Visualizing Multivariate
 Linear Models. \emph{Revista Colombiana de Estadistica}, \strong{37}, 261-283
-\% \url{http://ref.scielo.org/6gq33g}.
+\doi{10.15446/rce.v37n2spe.47934}.
 
 Friendly, M. & Sigal, M. (2016). Graphical Methods for Multivariate Linear
 Models in Psychological Research: An R Tutorial. Submitted for publication.

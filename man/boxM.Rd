@@ -5,64 +5,73 @@
 \alias{boxM.formula}
 \alias{boxM.lm}
 \alias{boxM.default}
+\alias{print.boxM}
 \alias{summary.boxM}
-\title{Box's M-test}
+\title{Box's M-test for Homogeneity of Covariance Matrices}
 \usage{
 boxM(Y, ...)
-
-\method{boxM}{default}(Y, group, ...)
 
 \method{boxM}{formula}(Y, data, ...)
 
 \method{boxM}{lm}(Y, ...)
 
-\method{summary}{boxM}(object, digits = getOption("digits"), cov = FALSE, quiet = FALSE, ...)
+\method{boxM}{default}(Y, group, ...)
+
+\method{print}{boxM}(x, ...)
+
+\method{summary}{boxM}(
+  object,
+  digits = getOption("digits") - 2,
+  cov = FALSE,
+  quiet = FALSE,
+  ...
+)
 }
 \arguments{
-\item{Y}{The response variable matrix for the default method, or a
-\code{"mlm"} or \code{"formula"} object for a multivariate linear model.  If
-\code{Y} is a linear-model object or a formula, the variables on the
-right-hand-side of the model must all be factors and must be completely
-crossed, e.g., \code{A:B}}
+\item{Y}{The response variable matrix for the default method, or a \code{"mlm"}
+or \code{"formula"} object for a multivariate linear model. If \code{Y} is a
+linear-model object or a formula, the variables on the right-hand-side of the
+model must all be factors and must be completely crossed, e.g., \code{A:B}}
 
-\item{...}{Arguments passed down to methods.}
+\item{...}{Other arguments passed down}
 
-\item{group}{a factor defining groups, or a vector of length \emph{n} doing
-the same.}
+\item{data}{A data frame containing the variables in the model. Used only for
+the formula method.}
 
-\item{data}{a numeric data.frame or matrix containing \emph{n} observations
-of \emph{p} variables; it is expected that \emph{n > p}.}
+\item{group}{A vector specifying the groups. Used only for the default method.}
 
-\item{object}{a \code{"boxM"} object for the \code{summary} method}
+\item{x}{a class \code{"boxM"} object, for the \code{print()} method}
 
-\item{digits}{number of digits to print for the \code{summary} method}
+\item{object}{A \code{"boxM"} object, result of a call to \code{boxM}}
 
-\item{cov}{logical; if \code{TRUE} the covariance matrices are printed.}
+\item{digits}{Number of digits in printed output}
 
-\item{quiet}{logical; if \code{TRUE} printing from the \code{summary} is
-suppressed}
+\item{cov}{Logical; if \code{TRUE}, the covariance matrices for each group and
+the pooled covariance matrix are printed}
+
+\item{quiet}{Logical; if \code{TRUE}, suppress printed output}
 }
 \value{
-A list with class \code{c("htest", "boxM")} containing the following
+A list with class \code{c("boxM", "htest")} containing the following
 components:
-\item{statistic }{an approximated value of the chi-square
-distribution.}
-\item{parameter }{the degrees of freedom related of the test
-statistic in this case that it follows a Chi-square distribution.}
-\item{p.value }{the p-value of the test.}
-\item{cov }{a list containing the
-within covariance matrix for each level of \code{grouping}.}
-\item{pooled}{the pooled covariance matrix.}
-\item{logDet }{a vector containing the natural logarithm of each matrix in \code{cov}, followed by the value for
-the pooled covariance matrix}
-\item{means}{a matrix of the means for all groups, followed by the grand means}
-\item{df}{a vector of the degrees of freedom for all groups, followed by that for the pooled covariance matrix}
-\item{data.name }{a character string giving the names of the data.}
-\item{method }{the character string "Box's M-test for Homogeneity of
-Covariance Matrices".}
+\item{statistic}{the chi-square (approximate) statistic for Box's M test, where large values
+imply the covariance matrices differ.}
+\item{parameter}{the degrees of freedom for the test statistic.}
+\item{p.value}{the p-value of the test}
+\item{ngroups}{the number of levels of the \code{group} variable}
+\item{cov}{a list of the group covariance matrices, of length \code{ngroups}}
+\item{pooled}{the pooled covariance matrix}
+\item{means}{a matrix whose \code{ngroups+1} rows are the means of the variables, followed by those for pooled data.}
+\item{logDet}{a vector of length \code{ngroups+1} containing the natural logarithm of each matrix in
+\code{cov}, followed by that for the pooled covariance matrix}
+\item{df}{a vector of the degrees of freedom for all groups, followed by
+that for the pooled covariance matrix}
+\item{data.name}{a character string giving the names of the data, as extracted from the call}
+\item{method}{the character string \code{"Box's M-test for Homogeneity of 
+    Covariance Matrices"}}
 }
 \description{
-\code{boxM} performs the Box's (1949) M-test for homogeneity of covariance
+\code{boxM()} performs the Box's (1949) M-test for homogeneity of covariance
 matrices obtained from multivariate normal data according to one or more
 classification factors. The test compares the product of the log
 determinants of the separate covariance matrices to the log determinant of
@@ -70,16 +79,15 @@ the pooled covariance matrix, analogous to a likelihood ratio test. The test
 statistic uses a chi-square approximation.
 }
 \details{
-As an object of class \code{"htest"}, the statistical test is printed
-normally by default. As an object of class \code{"boxM"}, a few methods are
-available.
+As an object of class \code{"boxM"}, a few methods are
+available:  \code{print.boxM()}, \code{summary.boxM()} and \code{plot.boxM()}.
 
 There is no general provision as yet for handling missing data.  Missing
 data are simply removed, with a warning.
 
 As well, the computation assumes that the covariance matrix for each group
 is non-singular, so that \eqn{\log det(S_i)} can be calculated for each
-group. At the minimum, this requires that \eqn{n_i > p} for each group.
+group. At the minimum, this requires that \eqn{n > p} for each group.
 
 Box's M test for a multivariate linear model highly sensitive to departures
 from multivariate normality, just as the analogous univariate test.  It is
@@ -87,53 +95,60 @@ also affected adversely by unbalanced designs.  Some people recommend to
 ignore the result unless it is very highly significant, e.g., p < .0001 or
 worse.
 
+In general, heterogeneity of covariance matrices can be more easily seen and understood by plotting
+the covariance ellipses using \code{\link{covEllipses}}.
+
 The \code{summary} method prints a variety of additional statistics based on
-the eigenvalues of the covariance matrices.  These are returned invisibly,
-as a list containing the following components:
-\itemize{
-\item \code{logDet} - log determinants
-\item \code{eigs} - eigenvalues of the covariance matrices
-\item \code{eigstats} - statistics computed on the eigenvalues for each covariance matrix:\cr
-\code{product}: the product of eigenvalues, \eqn{\prod{\lambda_i}};\cr
-\code{sum}: the sum of eigenvalues, \eqn{\sum{\lambda_i}};\cr
-\code{precision}: the average precision of eigenvalues, \eqn{1/\sum(1/\lambda_i)};\cr
-\code{max}: the maximum eigenvalue, \eqn{\lambda_1}
+the eigenvalues of the covariance matrices. These are returned invisibly, as
+a list containing the following components:
+\describe{
+\item{logDet}{the vector of log determinants}
+\item{eigs}{eigenvalues of the covariance matrices}
+\item{eigstats}{statistics computed on the eigenvalues for each covariance
+matrix:
+\describe{
+\item{product}{the product of eigenvalues, \eqn{\prod{\lambda_i}}}
+\item{sum}{the sum of eigenvalues, \eqn{\sum{\lambda_i}}}
+\item{precision}{the average precision of eigenvalues,
+\eqn{1/\sum(1/\lambda_i)}}
+\item{max}{the maximum eigenvalue, \eqn{\lambda_1}}
+}
+}
 }
 }
 \examples{
 
 data(iris)
 
-# default method
+# default method, using `Y`, `group` 
 res <- boxM(iris[, 1:4], iris[, "Species"])
 res
 
 # summary method gives details
 summary(res)
 
-# visualize (what is done in the plot method) 
+# visualize (this is what is done in the plot method)
 dets <- res$logDet
 ng <- length(res$logDet)-1
 dotchart(dets, xlab = "log determinant")
-points(dets , 1:4,  
-	cex=c(rep(1.5, ng), 2.5), 
-	pch=c(rep(16, ng), 15),
-	col= c(rep("blue", ng), "red"))
-	
-	# plot method gives confidence intervals for logDet
+points(dets , 1:4, cex=c(rep(1.5, ng), 2.5), pch=c(rep(16, ng), 15),
+       col= c(rep("blue", ng), "red"))
+
+# plot method gives confidence intervals for logDet
 plot(res, gplabel="Species")
 
 # formula method
-boxM( cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data=iris)
+boxM( cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species,
+      data=iris)
 
-### Skulls dat
+### Skulls data
 data(Skulls)
+
 # lm method
 skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
-boxM(skulls.mod)
-
-
-
+skulls.boxM <- boxM(skulls.mod) |>
+  print()
+summary(skulls.boxM)
 
 }
 \references{
@@ -146,7 +161,7 @@ Morrison, D.F. (1976) \emph{Multivariate Statistical Methods}.
 \code{\link[car]{leveneTest}} carries out homogeneity of variance
 tests for univariate models with better statistical properties.
 
-\code{\link{plot.boxM}}, a simple plot of the log determinants
+\code{\link{plot.boxM}}, a simple dot plot of the log determinants compared with that of the pooled covariance matrix, and also of other quantities computed from their eigenvalues
 
 \code{\link{covEllipses}} plots covariance ellipses in variable space for
 several groups.

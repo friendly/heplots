@@ -145,3 +145,36 @@ painters.boxM <- boxM(painters.mod) |>
   print()
 summary(painters.boxM)
 ```
+
+There is still a problem with the `plot.boxM()` when any groups have singular covariance matrices.
+For the `painters` data, there is an error and a warning. Can you correct this?
+
+
+```
+> plot(painters.boxM)
+Error in plot.window(xlim = xlim, ylim = ylim, log = log) : 
+  need finite 'xlim' values
+In addition: Warning messages:
+1: In x$df + c(rep(1, ng), ng) :
+  longer object length is not a multiple of shorter object length
+2: In log(det(x)) : NaNs produced
+```
+
+First, read `CLAUDE.me`, so we're on the same page.
+This is a continuation of the discussion regarding the `boxM` function, source at `R/boxM.R` in my `heplots` package, but
+now involving the method `covEllipses.boxM` defined in `R/covEllipses.R`. The problem occurs in the examples shown at lines
+135-146 in `R/covEllipses.R`, where these are presently included as `\donttest()` because they give errors.
+
+```r
+# method for a boxM object	
+x <- boxM(iris[, 1:4], iris[, "Species"])
+covEllipses(x, fill=c(rep(FALSE,3), TRUE) )
+```
+
+Error:
+
+```r
+Error in if (n.ell != nrow(means)) stop(paste0("number of covariance matrices (",  : 
+  argument is of length zero
+```
+

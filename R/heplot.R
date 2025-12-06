@@ -267,7 +267,7 @@
 #' 
 #' Friendly, M. & Sigal, M. (2014) Recent Advances in Visualizing Multivariate
 #' Linear Models. *Revista Colombiana de Estadistica*, **37**, 261-283.
-#' %<http://ref.scielo.org/6gq33g>.
+#' DOI: 10.15446/rce.v37n2spe.47934.
 #' @keywords hplot aplot multivariate
 #' @examples
 #' 

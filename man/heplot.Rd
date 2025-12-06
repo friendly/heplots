@@ -375,7 +375,7 @@ Multivariate Linear Models Using the car Package. \emph{The R Journal},
 
 Friendly, M. & Sigal, M. (2014) Recent Advances in Visualizing Multivariate
 Linear Models. \emph{Revista Colombiana de Estadistica}, \strong{37}, 261-283.
-\%\url{http://ref.scielo.org/6gq33g}.
+DOI: 10.15446/rce.v37n2spe.47934.
 }
 \seealso{
 \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for

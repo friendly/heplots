@@ -57,6 +57,27 @@ for (i in seq_along(xvals)) {
 }
 ```
 
+### Keeping track of changes
+
+I `R/` source files, I like to keep track of `TODO` and `FIXME` items, changing the status to `DONE` when they are completed.
+I started using the style below in initial comments, which appear in the initial lines of a file as simple `#` comments, 
+before the roxygen documentation comments, `#'` begin. Please use this style when making changes. Note that one example
+includes a timestamp, which would be useful when you make such changes.
+
+Some examples of this style:
+
+```r
+# DONE: ✔️ handles singular covariance matrices
+# DONE: ✔️ Fixed summary() method to print eigenvalues as a matrix (not a list)
+# DONE: ✔️ print/summary methods now show the number of groups actually used when some are excluded
+# TODO: 🚩 Don't need "htest" because there's a `print.boxM()` method
+# TODO: 🚩 simplify print and summary methods, now the `ngroups` is saved by boxM.default
+
+# DONE: ✔️ Now allow to plot multiple variables in a scatterplot matrix format 3/30/2016 10:53:05 AM
+# FIXME: ❌ The covEllipses.boxM method gives errors.
+```
+
+
 ### Function Documentation
 
 Follow roxygen2 conventions with clear, complete documentation. 
@@ -64,6 +85,8 @@ Follow roxygen2 conventions with clear, complete documentation.
 This should use markdown style (`text`) where possible,
 rather than the old Rd style (\code{text}) and similarly for the mention of linked functions (`heplot()`, `graphics::text()`)
 rather than `code{\link{heplots}}` or `\code{\link[graphics]{text}}
+
+When there are long lines, e.g., in an `@param`, I prefer them to be wrapped at ~ 72 characters and subsequent lines indented by 8 characters.
 
 ```r
 #' Label an Ellipse

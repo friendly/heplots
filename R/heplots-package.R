@@ -112,10 +112,11 @@
 #' 
 #' Friendly, M. & Sigal, M. (2014). Recent Advances in Visualizing Multivariate
 #' Linear Models. *Revista Colombiana de Estadistica*, **37**, 261-283
-#' % <http://ref.scielo.org/6gq33g>.
+#' \doi{10.15446/rce.v37n2spe.47934}.
 #' 
 #' Friendly, M. & Sigal, M. (2016). Graphical Methods for Multivariate Linear
 #' Models in Psychological Research: An R Tutorial. Submitted for publication.
+#' 
 #' @keywords package hplot aplot multivariate
 #' 
 #' @importFrom grDevices col2rgb gray palette rgb
