@@ -103,7 +103,7 @@
 #' Fox, J., Friendly, M. & Weisberg, S. (2013).  Hypothesis Tests for
 #' Multivariate Linear Models Using the car Package.  *The R Journal*,
 #' **5**(1),
-#' <https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf>.
+#' <https://journal.r-project.org/articles/RJ-2013-004/RJ-2013-004.pdf>.
 #' 
 #' Friendly, M., Monette, G. & Fox, J. (2013).  Elliptical Insights:
 #' Understanding Statistical Methods Through Elliptical Geometry.
