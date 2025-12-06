@@ -232,9 +232,14 @@ R. W. Oldford (2016), "Self calibrating quantile-quantile plots",
 \code{\link[stats]{qqplot}}; \code{\link[car]{qqPlot}} can give a similar
 result for Mahalanobis squared distances of data or residuals;
 \code{\link[qqtest]{qqtest}} has many features for all types of QQ plots.
+
+Other diagnostic plots: 
+\code{\link{distancePlot}()},
+\code{\link{plot.boxM}()}
 }
 \author{
 Michael Friendly
 }
+\concept{diagnostic plots}
 \keyword{hplot}
 \keyword{multivariate}

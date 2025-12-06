@@ -21,7 +21,10 @@
 #' @param ...    other arguments passed to \code{\link[MASS]{cov.rob}}
 #' @return      a vector of length `nrow(x)` containing the squared distances.
 #' @author Michael Friendly
+#' 
 #' @seealso \code{\link[stats]{mahalanobis}}, \code{\link[MASS]{cov.rob}}
+#' @family robust methods
+#' 
 #' @keywords multivariate
 #' @examples
 #' 

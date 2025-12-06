@@ -9,7 +9,10 @@
 #' @return Used for its side-effect, but returns (invisibly) a 6 by 3 matrix
 #'        containing the end-points of three axes, in pairs.
 #' @author Michael Friendly
+#' 
 #' @seealso \code{\link[rgl:points3d]{segments3d}}
+#' @family 3D plotting
+#' 
 #' @keywords aplot dynamic
 #' @export cross3d
 cross3d <- 

@@ -392,7 +392,13 @@ ellipses.
 
 \code{\link[candisc]{candisc}}, \code{\link[candisc]{heplot.candisc}} for
 reduced-rank views of \code{mlm}s in canonical space.
+
+Other HE plot functions: 
+\code{\link{heplot1d}()},
+\code{\link{heplot3d}()},
+\code{\link{pairs.mlm}()}
 }
+\concept{HE plot functions}
 \keyword{aplot}
 \keyword{hplot}
 \keyword{multivariate}

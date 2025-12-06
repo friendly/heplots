@@ -20,6 +20,8 @@
 #' @param \dots Other arguments passed to \code{\link[graphics]{lines}}.
 #'
 #' @return Invisibly returns a 2 column matrix containing the end points of lines.
+#' 
+#' @family covariance ellipses
 #' @export ellipse.box
 #'
 #' @examples

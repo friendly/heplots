@@ -226,9 +226,14 @@ Robust Statistics}.  Wadsworth & Brooks/Cole.
 \seealso{
 \code{\link{plot.robmlm}} for a plot method;
 \code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
+
+Other robust methods: 
+\code{\link{Mahalanobis}()},
+\code{\link{plot.robmlm}()}
 }
 \author{
 John Fox; packaged by Michael Friendly
 }
+\concept{robust methods}
 \keyword{multivariate}
 \keyword{robust}

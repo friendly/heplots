@@ -216,10 +216,16 @@ hypothesis tests in \code{mlm}s
 
 \code{\link{heplot}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}} for
 other HE plot methods
+
+Other HE plot functions: 
+\code{\link{heplot}()},
+\code{\link{heplot3d}()},
+\code{\link{pairs.mlm}()}
 }
 \author{
 Michael Friendly
 }
+\concept{HE plot functions}
 \keyword{aplot}
 \keyword{hplot}
 \keyword{multivariate}

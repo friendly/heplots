@@ -55,8 +55,13 @@ summary(Mahalanobis(iris[, 1:4], method="mcd"))
 }
 \seealso{
 \code{\link[stats]{mahalanobis}}, \code{\link[MASS]{cov.rob}}
+
+Other robust methods: 
+\code{\link{plot.robmlm}()},
+\code{\link{robmlm}()}
 }
 \author{
 Michael Friendly
 }
+\concept{robust methods}
 \keyword{multivariate}

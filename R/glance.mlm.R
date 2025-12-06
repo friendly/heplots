@@ -25,6 +25,9 @@
 #' @importFrom magrittr extract
 #' @importFrom purrr map_dfr map
 #' @importFrom tibble as_tibble
+#' 
+#' @family multivariate linear models
+#' 
 #' @keywords multivariate
 #' @export
 #' @examples 

@@ -117,9 +117,11 @@
 #' producing a plot. %Returns invisibly an object of class `"covEllipse"`,
 #' %which is a list of the coordinates for the ellipses drawn.
 #' @author Michael Friendly
+#' 
 #' @seealso \code{\link{heplot}}, \code{\link{boxM}},
 #' 
 #' \code{\link[MASS]{cov.rob}}
+#' @family covariance ellipses
 #' @keywords hplot
 #' @keywords multivariate
 #' @examples

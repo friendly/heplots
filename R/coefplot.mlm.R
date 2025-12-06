@@ -54,7 +54,9 @@
 #'        for each parameter?
 #' @return Returns invisibly a list of the coordinates of the ellipses drawn
 #' @author Michael Friendly
-#' @seealso \code{\link[car]{confidenceEllipse}},
+#' 
+#' @seealso \code{\link[car]{confidenceEllipse}}
+#' @family multivariate linear models
 #' @keywords hplot
 #' @examples
 #' 

@@ -38,6 +38,8 @@
 #' @return        Returns invisibly a data frame containing the distances, `distX`, `distY`
 #' 
 #' @seealso \code{\link{Mahalanobis}}
+#' @family diagnostic plots
+#' 
 #' @references 
 #' Rousseeuw P. J. & van Zomeren B. C. (1991). “Robust Distances: Simulation and Cutoff Values.”
 #' In W Stahel, S Weisberg (eds.), *Directions in Robust Statistics and Diagnostics, Part II*.
