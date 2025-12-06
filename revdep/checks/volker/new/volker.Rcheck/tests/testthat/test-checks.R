@@ -58,7 +58,7 @@ test_that("check_has_column", {
 # Check check_is_param method
 test_that("Parameter checks work as expected", {
 
-  expect_true(check_is_param("n", c("n", "p"), stopit = FALSE))
+  expect_equal(check_is_param("n", c("n", "p"), stopit = FALSE), c("n"))
 
   expect_false(check_is_param(NULL, c("n", "p"), stopit = FALSE))
 
@@ -66,7 +66,7 @@ test_that("Parameter checks work as expected", {
 
   expect_false(check_is_param(c("n", "p"), c("n", "p"), stopit = FALSE))
 
-  expect_true(check_is_param(c("n", "p"), c("n", "p"), allowmultiple = TRUE, stopit = FALSE))
+  expect_equal(check_is_param(c("n", "p"), c("n", "p"), allowmultiple = TRUE, stopit = FALSE), c("n", "p"))
 
   expect_false(check_is_param(c("n", "x"), c("n", "p"), allowmultiple = TRUE, stopit = FALSE))
 
@@ -79,5 +79,16 @@ test_that("Parameter checks work as expected", {
 })
 
 
+# Check parameter expansion
+test_that("Parameters are expanded", {
+
+  expect_error(check_is_param("class", c("reliability", "classification"), stopit = TRUE))
+  expect_error(check_is_param("club", c("reliability", "classification"), expand = TRUE, stopit = TRUE))
+
+  expect_equal(check_is_param("class", c("reliability", "classification"), expand = TRUE, stopit = FALSE), c("classification"))
+  expect_equal(check_is_param(c("rel", "cl"), c("reliability", "classification"), allowmultiple = TRUE, expand = TRUE, stopit = FALSE), c("reliability", "classification"))
+
+
+})
 
 

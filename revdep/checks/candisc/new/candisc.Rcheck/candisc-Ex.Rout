@@ -24,6 +24,7 @@ Type 'q()' to quit R.
 > library('candisc')
 Loading required package: heplots
 Loading required package: broom
+Warning: package 'broom' was built under R version 4.5.2
 
 Attaching package: 'candisc'
 
@@ -139,6 +140,71 @@ Vector scale factor set to  6.5031
 > ##D hsb.can
 > ## End(Not run)
 > 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("PsyAcad")
+> ### * PsyAcad
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: PsyAcad
+> ### Title: Psychological Measures and Academic Achievement
+> ### Aliases: PsyAcad
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(PsyAcad)
+> PsyAcad$Sex <- as.numeric(PsyAcad$Sex)
+> PsyAcad.can <- cancor(cbind(LocControl, SelfConcept, Motivation) ~ 
++        Read + Write + Math + Science + Sex, data = PsyAcad)
+Warning in model.matrix.default(mt, mf, contrasts) :
+  non-list contrasts argument ignored
+> 
+> PsyAcad.can
+
+Canonical correlation analysis of:
+	 5   X  variables:  Read, Write, Math, Science, Sex 
+  with	 3   Y  variables:  LocControl, SelfConcept, Motivation 
+
+    CanR  CanRSQ   Eigen percent    cum                          scree
+1 0.4641 0.21538 0.27450  87.336  87.34 ******************************
+2 0.1675 0.02806 0.02887   9.185  96.52 ***                           
+3 0.1040 0.01081 0.01093   3.478 100.00 *                             
+
+Test of H0: The canonical correlations in the 
+current row and all that follow are zero
+
+     CanR LR test stat approx F numDF  denDF   Pr(> F)    
+1 0.46409      0.75436  11.7157    15 1634.7 < 2.2e-16 ***
+2 0.16751      0.96143   2.9445     8 1186.0  0.002905 ** 
+3 0.10399      0.98919   2.1646     3  594.0  0.091092 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+> 
+> # redundancy analysis
+> redundancy(PsyAcad.can)
+
+Redundancies for the X variables & total X canonical redundancy
+
+    Xcan1     Xcan2     Xcan3 total X|Y 
+0.1130458 0.0070132 0.0009804 0.1210394 
+
+Redundancies for the Y variables & total Y canonical redundancy
+
+    Ycan1     Ycan2     Ycan3 total Y|X 
+ 0.081799  0.007270  0.003905  0.092974 
+> 
+> # Plots
+> canR <- PsyAcad.can$cancor
+> plot(PsyAcad.can, pch=16, id.n = 3)
+> text(-2, 3, paste("Can R =", round(canR[1], 3)), pos = 3)
+> 
+> plot(PsyAcad.can, which = 2, pch=16, id.n = 3)
+> text(-2, 3.5, paste("Can R =", round(canR[2], 3)), pos = 3)
 > 
 > 
 > 
@@ -311,7 +377,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: can_lm
-> ### Title: Transform a Multivariate Linear model mlm to a Canonical
+> ### Title: Transform a Multivariate Linear model 'mlm' to a Canonical
 > ###   Representation
 > ### Aliases: can_lm
 > 
@@ -541,7 +607,7 @@ detaching 'package:corrplot'
 > ### Name: candisc
 > ### Title: Canonical discriminant analysis
 > ### Aliases: candisc candisc.mlm coef.candisc plot.candisc print.candisc
-> ###   summary.candisc
+> ###   summary.candisc scores.candisc
 > ### Keywords: hplot multivariate
 > 
 > ### ** Examples
@@ -558,7 +624,30 @@ Species  7   0.01570   4.9756     35 103.389 1.039e-10 ***
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 > 
 > grass.can1 <-candisc(grass.mod, term="Species")
-> plot(grass.can1)
+> print(grass.can1)
+
+Canonical Discriminant Analysis for Species:
+
+    CanRsq Eigenvalue Difference   Percent Cumulative
+1 0.909573   10.05859     7.4384 76.094937     76.095
+2 0.723775    2.62024     7.4384 19.822550     95.917
+3 0.297819    0.42413     7.4384  3.208645     99.126
+4 0.093087    0.10264     7.4384  0.776506     99.903
+5 0.012706    0.01287     7.4384  0.097362    100.000
+
+Test of H0: The canonical correlations in the 
+current row and all that follow are zero
+
+  LR test stat approx F numDF  denDF   Pr(> F)    
+1      0.01570   5.7853    35 120.22 2.162e-13 ***
+2      0.17367   2.7800    24 102.38 0.0001923 ***
+3      0.62873   1.0156    15  83.22 0.4478651    
+4      0.89539   0.4402     8  62.00 0.8922329    
+5      0.98729   0.1373     3  32.00 0.9370206    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+> 
+> plot(grass.can1, var.lwd = 2)
 Vector scale factor set to 5.545
 > 
 > # library(heplots)
@@ -623,6 +712,114 @@ Vector scale factor set to 5.545
 > 
 > 
 > cleanEx()
+> nameEx("cereal")
+> ### * cereal
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cereal
+> ### Title: Breakfast Cereal Dataset
+> ### Aliases: cereal
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> library(dplyr)
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+> data(cereal)
+> str(cereal)
+tibble [77 × 16] (S3: tbl_df/tbl/data.frame)
+ $ name    : chr [1:77] "100% Bran" "100% Natural Bran" "All-Bran" "All-Bran with Extra Fiber" ...
+ $ mfr     : chr [1:77] "N" "Q" "K" "K" ...
+ $ type    : chr [1:77] "C" "C" "C" "C" ...
+ $ calories: num [1:77] 70 120 70 50 110 110 110 130 90 90 ...
+ $ protein : num [1:77] 4 3 4 4 2 2 2 3 2 3 ...
+ $ fat     : num [1:77] 1 5 1 0 2 2 0 2 1 0 ...
+ $ sodium  : num [1:77] 130 15 260 140 200 180 125 210 200 210 ...
+ $ fiber   : num [1:77] 10 2 9 14 1 1.5 1 2 4 5 ...
+ $ carbo   : num [1:77] 5 8 7 8 14 10.5 11 18 15 13 ...
+ $ sugars  : num [1:77] 6 8 5 0 8 10 14 8 6 5 ...
+ $ potass  : num [1:77] 280 135 320 330 NA 70 30 100 125 190 ...
+ $ vitamins: num [1:77] 25 0 25 25 25 25 25 25 25 25 ...
+ $ shelf   : num [1:77] 3 3 3 3 3 1 2 3 1 3 ...
+ $ weight  : num [1:77] 1 1 1 1 1 1 1 1.33 1 1 ...
+ $ cups    : num [1:77] 0.33 1 0.33 0.5 0.75 0.75 1 0.75 0.67 0.67 ...
+ $ rating  : num [1:77] 68.4 34 59.4 93.7 34.4 ...
+> 
+> # Add explicit name of manufacturer
+> # names for manufacturers
+> mfr_names <- c(
++   "A" = "American Home Foods",
++   "G" = "General Mills",
++   "K" = "Kellog",
++   "N" = "Nabisco",
++   "P" = "Post",
++   "Q" = "Quaker Oats",
++   "R" = "Ralston Purina"
++ )
+> 
+> # recode `mfr` as `mfr_name`
+> cereal <- cereal |>
++   mutate(mfr_name = recode(mfr, !!!mfr_names))
+> 
+> # density plot of ratings
+> library(ggplot2)
+Warning: package 'ggplot2' was built under R version 4.5.2
+> ggplot(data = cereal,
++        aes(x = rating, fill = mfr_name, color = mfr_name)) +
++   geom_density(alpha = 0.1) +
++   theme_classic(base_size = 14) + 
++   theme(legend.position = "bottom")
+Warning: Groups with fewer than two data points have been dropped.
+Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_density()`).
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching 'package:ggplot2', 'package:dplyr'
+
+> nameEx("cor_lda")
+> ### * cor_lda
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cor_lda
+> ### Title: Calculate Structure Correlations from Discriminant Analysis
+> ### Aliases: cor_lda
+> 
+> ### ** Examples
+> 
+> library(candisc)
+> library(MASS)   # for lda()
+> 
+> iris.lda <- lda(Species ~ ., iris)
+> cor_lda(iris.lda)
+                    LD1         LD2
+Sepal.Length -0.7918878 -0.21759312
+Sepal.Width   0.5307590 -0.75798931
+Petal.Length -0.9849513 -0.04603709
+Petal.Width  -0.9728120 -0.22290236
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching 'package:MASS'
+
 > nameEx("dataIndex")
 > ### * dataIndex
 > 
@@ -733,6 +930,58 @@ Vector scale factor set to  14.83312
 > 
 > 
 > cleanEx()
+> nameEx("painters2")
+> ### * painters2
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: painters2
+> ### Title: Painters Data with Historical Art Variables
+> ### Aliases: painters2
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(painters2)
+> 
+> # Compare original School with new Period grouping
+> with(painters2, table(School, Period))
+             Period
+School        Early Transition Baroque
+  Renaissance    10          0       0
+  Mannerist       0          6       0
+  Sciento         0          0       6
+  Venetian       10          0       0
+  Lombard         7          0       0
+  16th C          0          4       0
+  17th C          0          0       7
+  French          0          0       4
+> 
+> # Compare original School with new Period grouping
+> with(painters2, table(School, Emphasis))
+             Emphasis
+School        Form Color Drama
+  Renaissance   10     0     0
+  Mannerist      6     0     0
+  Sciento        0     0     6
+  Venetian       0    10     0
+  Lombard        0     7     0
+  16th C         4     0     0
+  17th C         0     0     7
+  French         0     4     0
+> 
+> # Summary of de Piles ratings by Period
+> aggregate(cbind(Composition, Drawing, Colour, Expression) ~ Period,
++           data = painters2, FUN = mean)
+      Period Composition  Drawing   Colour Expression
+1      Early    10.74074 12.44444 12.37037   6.333333
+2 Transition    10.20000 12.70000  8.20000   8.000000
+3    Baroque    13.64706 12.35294 10.29412   9.588235
+> 
+> 
+> 
+> 
+> cleanEx()
 > nameEx("plot.cancor")
 > ### * plot.cancor
 > 
@@ -785,6 +1034,151 @@ Vector scale factor set to  14.83312
 > 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
+> nameEx("plot_discrim")
+> ### * plot_discrim
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_discrim
+> ### Title: Discriminant Analysis Decision Plot using ggplot.
+> ### Aliases: plot_discrim
+> 
+> ### ** Examples
+> 
+> library(MASS)
+> library(ggplot2)
+Warning: package 'ggplot2' was built under R version 4.5.2
+> library(dplyr)
+
+Attaching package: 'dplyr'
+
+The following object is masked from 'package:MASS':
+
+    select
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+> 
+> iris.lda <- lda(Species ~ ., iris)
+> # formula call: y ~ x
+> plot_discrim(iris.lda, Petal.Length ~ Petal.Width)
+> 
+> # add data ellipses
+> plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
++              ellipse = TRUE) 
+> 
+> # add filled ellipses with transparency
+> plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
++              ellipse = TRUE,
++              ellipse.args = list(geom = "polygon", alpha = 0.2)) 
+> 
+> # customize ellipse level and line thickness
+> plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
++              ellipse = TRUE,
++              ellipse.args = list(level = 0.95, linewidth = 2)) 
+> 
+> # without contours
+> # data ellipses
+> plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
++              contour = FALSE) 
+> 
+> # specifying `vars` as character names for x, y
+> plot_discrim(iris.lda, c("Petal.Width", "Petal.Length"))
+> 
+> # Define custom colors and shapes, modify theme() and legend.position
+> iris.colors <- c("red", "darkgreen", "blue")
+> iris.pch <- 15:17
+> plot_discrim(iris.lda, Petal.Length ~ Petal.Width) +
++   scale_color_manual(values = iris.colors) +
++   scale_fill_manual(values = iris.colors) +
++   scale_shape_manual(values = iris.pch) +
++   theme_bw(base_size = 14) +
++   theme(legend.position = "inside",
++         legend.position.inside = c(.8, .25))
+> 
+> # Quadratic discriminant analysis gives quite a different result
+> iris.qda <- qda(Species ~ ., iris)
+> plot_discrim(iris.qda, Petal.Length ~ Petal.Width)
+> 
+> # Add class labels, with custom styling
+> plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
++              labels = TRUE,
++              labels.args = list(geom = "label", size = 6, fontface = "bold"))
+> 
+> # Add labels with position adjustments
+> plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
++              labels = TRUE,
++              labels.args = list(nudge_y = 0.1, size = 5))
+> 
+> # Plot in discriminant space
+> plot_discrim(iris.lda, LD2 ~ LD1)
+> 
+> # Reverse the horizontal axis in discriminant space
+> plot_discrim(iris.lda, LD2 ~ LD1, rev.axes = c(TRUE, FALSE))
+> 
+> # Control axis limits
+> plot_discrim(iris.lda, LD2 ~ LD1,
++              xlim = c(-10, 10), ylim = c(-8, 8))
+> 
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching 'package:dplyr', 'package:ggplot2', 'package:MASS'
+
+> nameEx("predict_discrim")
+> ### * predict_discrim
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: predict_discrim
+> ### Title: Predicted values for discriminant analysis
+> ### Aliases: predict_discrim
+> 
+> ### ** Examples
+> 
+> library(candisc)
+> library(MASS)   # for lda()
+> 
+> iris.lda <- lda(Species ~ ., iris)
+> pred_iris <- predict_discrim(iris.lda)
+> names(pred_iris)
+[1] "Species"      "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width" 
+> 
+> # include scores, exclude posterior
+> pred_iris <- predict_discrim(iris.lda, scores = TRUE, posterior = FALSE)
+> names(pred_iris)
+[1] "Species"      "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width" 
+[6] "LD1"          "LD2"         
+> 
+> data(peng, package="heplots")
+> peng.lda <- lda(species ~ bill_length + bill_depth + flipper_length + body_mass, 
++                 data = peng)
+> peng_pred <- predict_discrim(peng.lda, scores = TRUE)
+> str(peng_pred)
+'data.frame':	333 obs. of  7 variables:
+ $ species       : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ bill_length   : num  39.1 39.5 40.3 36.7 39.3 38.9 39.2 41.1 38.6 34.6 ...
+ $ bill_depth    : num  18.7 17.4 18 19.3 20.6 17.8 19.6 17.6 21.2 21.1 ...
+ $ flipper_length: num  181 186 195 193 190 181 195 182 191 198 ...
+ $ body_mass     : num  3750 3800 3250 3450 3650 ...
+ $ LD1           : num  4.32 2.44 2.98 4.54 5.66 ...
+ $ LD2           : num  0.967 0.97 -0.168 1.626 0.824 ...
+> 
+> 
+> 
+> cleanEx()
+
+detaching 'package:MASS'
+
 > nameEx("predictor.names")
 > ### * predictor.names
 > 
@@ -847,6 +1241,109 @@ Redundancies for the Ability variables & total Y canonical redundancy
 > 
 > 
 > cleanEx()
+> nameEx("reflect")
+> ### * reflect
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: reflect
+> ### Title: Reflect Columns in an Object, reversing the sign of all elements
+> ### Aliases: reflect reflect.data.frame reflect.cancor reflect.candisc
+> 
+> ### ** Examples
+> 
+> # reflect cols in a data.frame
+> X <- data.frame(x1 = 1:4, x2 = 5:8)
+> reflect(X)
+  x1 x2
+1 -1 -5
+2 -2 -6
+3 -3 -7
+4 -4 -8
+> reflect(X, 1)
+  x1 x2
+1 -1  5
+2 -2  6
+3 -3  7
+4 -4  8
+> reflect(X, 2)
+  x1 x2
+1  1 -5
+2  2 -6
+3  3 -7
+4  4 -8
+> cbind (X, letters[1:4]) |> reflect(1)
+  x1 x2 letters[1:4]
+1 -1  5            a
+2 -2  6            b
+3 -3  7            c
+4 -4  8            d
+> 
+> # reflect a candisc 
+> iris.mod <- lm(cbind(Petal.Length, Sepal.Length, Petal.Width, Sepal.Width) ~ Species, data=iris)
+> iris.can <- candisc(iris.mod, data=iris)
+> coef(iris.can)
+                   Can1        Can2
+Petal.Length  0.9472572  0.40103782
+Sepal.Length -0.4269548 -0.01240753
+Petal.Width   0.5751608 -0.58103986
+Sepal.Width  -0.5212417 -0.73526131
+> # reflect Can1
+> iris.can |> reflect(1) |> coef()
+                   Can1        Can2
+Petal.Length -0.9472572  0.40103782
+Sepal.Length  0.4269548 -0.01240753
+Petal.Width  -0.5751608 -0.58103986
+Sepal.Width   0.5212417 -0.73526131
+> 
+> # reflect a cancor
+> data(Rohwer, package="heplots")
+> X <- as.matrix(Rohwer[,6:10])  # the PA tests
+> Y <- as.matrix(Rohwer[,3:5])   # the aptitude/ability variables
+> Rohwer.can <- cancor(X, Y, set.names=c("PA", "Ability"))
+> coef(Rohwer)
+NULL
+> Rohwer.can |> reflect() |> coef()
+         Xcan1        Xcan2       Xcan3
+n   0.07746734  0.046929646  0.13442728
+s  -0.05421146 -0.111867775  0.23331362
+ns -0.11348543 -0.221792097 -0.09291490
+na  0.13877865  0.094120811 -0.05069181
+ss  0.08919774  0.008243993 -0.03600015
+> 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("scores.lda")
+> ### * scores.lda
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: scores.lda
+> ### Title: Extract Observation Discriminant Scores for Linear Discriminant
+> ###   Analysis
+> ### Aliases: scores.lda
+> 
+> ### ** Examples
+> 
+> library(MASS)   # for lda()
+> 
+> iris.lda <- lda(Species ~ ., iris)
+> scores(iris.lda) |>
++    str()
+'data.frame':	150 obs. of  2 variables:
+ $ LD1: num  8.06 7.13 7.49 6.81 8.13 ...
+ $ LD2: num  -0.3 0.787 0.265 0.671 -0.514 ...
+>  
+> 
+> 
+> 
+> cleanEx()
+
+detaching 'package:MASS'
+
 > nameEx("varOrder")
 > ### * varOrder
 > 
@@ -924,10 +1421,12 @@ max  3  2
 > ### ** Examples
 > 
 > 
-> plot(c(-3, 3), c(-3,3), type="n")
+> set.seed(1234)
+> plot(c(-3, 3), c(-3,3), type="n",
++      xlab = "X", ylab = "Y")
 > X <- matrix(rnorm(10), ncol=2)
 > rownames(X) <- LETTERS[1:5]
-> vectors(X, scale=2, col=palette())
+> vectors(X, scale=2, col=palette(), xpd = TRUE)
 > 
 > 
 > 
@@ -938,7 +1437,7 @@ max  3  2
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  9.17 1.28 11.16 NA NA 
+Time elapsed:  4.61 0.27 5.09 NA NA 
 > grDevices::dev.off()
 null device 
           1 

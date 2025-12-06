@@ -13,11 +13,12 @@ nameEx("Arbuthnot")
 flush(stderr()); flush(stdout())
 
 ### Name: Arbuthnot
-### Title: Arbuthnot's data on male and female birth ratios
+### Title: Arbuthnot's Data on Male and Female Birth Ratios
 ### Aliases: Arbuthnot
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Arbuthnot)
 # plot the sex ratios
@@ -29,6 +30,7 @@ lines(Arb.smooth$x, Arb.smooth$y, col="blue", lwd=2)
 
 # plot the total christenings to observe the anomalie in 1704
 with(Arbuthnot, plot(Year,Total, type='b', ylab="Total Christenings"))
+
 
 
 
@@ -44,6 +46,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Armada)
 # delete character and redundant variable
@@ -64,6 +67,7 @@ biplot(armada.pca, xlabs = fleet,
 
 
 
+
 cleanEx()
 nameEx("Bowley")
 ### * Bowley
@@ -76,6 +80,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Bowley)
 
@@ -90,9 +95,9 @@ running <- function(x, width = 5){
   as.vector(stats::filter(x, rep(1 / width, width), sides = 2))
   }
 
-mav3<-running(Bowley$Value, width=3)
-mav5<-running(Bowley$Value, width=5)
-mav9<-running(Bowley$Value, width=9)
+mav3 <- running(Bowley$Value, width=3)
+mav5 <- running(Bowley$Value, width=5)
+mav9 <- running(Bowley$Value, width=9)
 lines(Bowley$Year, mav3, col='blue', lty=2)
 lines(Bowley$Year, mav5, col='green3', lty=3)
 lines(Bowley$Year, mav9, col='brown', lty=4)
@@ -108,6 +113,7 @@ ggplot(aes(x=Year, y=Value), data=Bowley) +
 
 
 
+
 cleanEx()
 nameEx("Breslau")
 ### * Breslau
@@ -120,6 +126,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Breslau)
 
@@ -144,6 +151,7 @@ ggplot(Breslau5, aes(x=age, y=total), size=1.5) +
 
 
 
+
 cleanEx()
 nameEx("Cavendish")
 ### * Cavendish
@@ -156,6 +164,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Cavendish)
 summary(Cavendish)
@@ -174,6 +183,7 @@ abline(h=10^5 * G(5.517), col="red", lwd=2)
 
 
 
+
 cleanEx()
 nameEx("ChestSizes")
 ### * ChestSizes
@@ -186,6 +196,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(ChestSizes)
 
@@ -206,6 +217,7 @@ with(ChestSizes, diff(pnorm(c(32, chest) + .5, xbar, std)) * sum(count))
 
 
 
+
 cleanEx()
 nameEx("Cholera")
 ### * Cholera
@@ -218,6 +230,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Cholera)
 
@@ -271,6 +284,7 @@ if (require(effects)) {
 
 
 
+
 cleanEx()
 nameEx("CholeraDeaths1849")
 ### * CholeraDeaths1849
@@ -284,6 +298,7 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(CholeraDeaths1849)
 str(CholeraDeaths1849)
 
@@ -294,6 +309,7 @@ CholeraDeaths1849  |>
   geom_line(linewidth = 1.2) +
   theme_bw(base_size = 14) +
   theme(legend.position = "top")
+
 
 
 
@@ -311,6 +327,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(CushnyPeebles)
 # quick looks at the data
@@ -354,6 +371,7 @@ str(CPlong)
 
 
 
+
 cleanEx()
 nameEx("Dactyl")
 ### * Dactyl
@@ -366,6 +384,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Dactyl)
 
@@ -385,6 +404,7 @@ mosaicplot(xtabs(count ~ Foot+Lines, data=Dactyl), shade=TRUE)
 
 
 
+
 graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 cleanEx()
 nameEx("DrinksWages")
@@ -398,6 +418,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(DrinksWages)
 plot(DrinksWages) 
@@ -416,6 +437,7 @@ par(op)
 
 
 
+
 graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 cleanEx()
 nameEx("EdgeworthDeaths")
@@ -429,6 +451,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(EdgeworthDeaths)
 
@@ -452,6 +475,7 @@ mosaic( ~ County + year, data=EdgeworthDeaths,
 
 
 
+
 cleanEx()
 nameEx("Fingerprints")
 ### * Fingerprints
@@ -465,8 +489,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(Fingerprints)
 xtabs(count ~ Whorls + Loops, data=Fingerprints)
+
 
 
 
@@ -483,12 +509,7 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-## Don't show: 
-	# allow to work with car 1
-	if (packageDescription("car")[["Version"]] < 2) {
-		dataEllipse <- data.ellipse
-	}
-## End(Don't show)
+
 data(Galton)
 
 ###########################################################################
@@ -509,6 +530,7 @@ with(Galton,
 
 
 
+
 cleanEx()
 nameEx("GaltonFamilies")
 ### * GaltonFamilies
@@ -522,6 +544,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(GaltonFamilies)
 str(GaltonFamilies)
@@ -561,6 +584,7 @@ with(Parents, {
 
 
 
+
 cleanEx()
 nameEx("Guerry")
 ### * Guerry
@@ -575,8 +599,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(Guerry)
 ## maybe str(Guerry) ; plot(Guerry) ...
+
 
 
 
@@ -592,6 +618,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(HalleyLifeTable)
 # what was the estimated population of Breslau?
@@ -611,6 +638,7 @@ plot(ratio ~ age, data=HalleyLifeTable, ylab="Probability survive one more year"
 
 
 
+
 cleanEx()
 nameEx("HistData-package")
 ### * HistData-package
@@ -619,12 +647,14 @@ flush(stderr()); flush(stdout())
 
 ### Name: HistData-package
 ### Title: Data sets from the History of Statistics and Data Visualization
-### Aliases: HistData-package HistData
-### Keywords: package
+### Aliases: HistData-package HistData _PACKAGE
+### Keywords: aplot hplot multivariate package
 
 ### ** Examples
 
-# see examples for the separate data sets
+
+# see examples for the separate data sets, e.g., with ?Dataset or example(Dataset)
+
 
 
 
@@ -635,11 +665,12 @@ nameEx("Jevons")
 flush(stderr()); flush(stdout())
 
 ### Name: Jevons
-### Title: W. Stanley Jevons' data on numerical discrimination
+### Title: W. Stanley Jevons' data on Numerical Discrimination
 ### Aliases: Jevons
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Jevons)
 # show as tables
@@ -679,6 +710,7 @@ abline(h=0)
 
 
 
+
 cleanEx()
 nameEx("Langren")
 ### * Langren
@@ -691,6 +723,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets spatial
 
 ### ** Examples
+
 
 data(Langren1644)
 
@@ -836,6 +869,7 @@ anova(gap.mod, test="Chisq")
 
 
 
+
 graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 cleanEx()
 nameEx("Macdonell")
@@ -851,14 +885,15 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(Macdonell)
 
 # display the frequency table
 xtabs(frequency ~ finger+round(height,3), data=Macdonell)
 
 ## Some examples by james.hanley@mcgill.ca    October 16, 2011
-## http://www.biostat.mcgill.ca/hanley/
-## See:  http://www.biostat.mcgill.ca/hanley/Student/
+## https://jhanley.biostat.mcgill.ca/
+## See:  https://jhanley.biostat.mcgill.ca/Student/
 
 ###############################################
 ##  naive contour plots of height and finger ##
@@ -967,9 +1002,9 @@ c(mu,sigma)
 
 # see also the photographs from Student's notebook ('Original small sample data and notes")
 # under the link "Gosset' 750 samples of size n=4" 
-# on website http://www.biostat.mcgill.ca/hanley/Student/
+# on website https://jhanley.biostat.mcgill.ca/Student/
 # and while there, look at the cover of the Notebook containing his yeast-cell counts
-# http://www.medicine.mcgill.ca/epidemiology/hanley/Student/750samplesOf4/Covers.JPG
+# https://jhanley.biostat.mcgill.ca/Student/750samplesOf4
 # (Biometrika 1907) and decide for yourself why Gosset, when forced to write under a 
 # pen-name, might have taken the name he did!
 
@@ -1022,6 +1057,7 @@ abline(a=0, b=1, col="red", lwd=2)
 
 
 
+
 graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 cleanEx()
 nameEx("Mayer")
@@ -1035,6 +1071,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 library(sp)
 library(effects)
@@ -1067,6 +1104,7 @@ coeffs <- coef(fit_Mayer)
 
 
 
+
 cleanEx()
 nameEx("Michelson")
 ### * Michelson
@@ -1079,6 +1117,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Michelson)
 
@@ -1114,6 +1153,7 @@ points(1:5+.05, tm, pch=16, col="blue")
 
 
 
+
 cleanEx()
 nameEx("Minard")
 ### * Minard
@@ -1127,6 +1167,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets spatial
 
 ### ** Examples
+
 
 data(Minard.troops)
 data(Minard.cities)
@@ -1181,6 +1222,7 @@ grid.arrange(plot_minard, plot_temp, nrow=2, heights=c(3,1))
 
 
 
+
 cleanEx()
 nameEx("Nightingale")
 ### * Nightingale
@@ -1188,12 +1230,12 @@ nameEx("Nightingale")
 flush(stderr()); flush(stdout())
 
 ### Name: Nightingale
-### Title: Florence Nightingale's data on deaths from various causes in the
-###   Crimean War
+### Title: Florence Nightingale's data on deaths in the Crimean War
 ### Aliases: Nightingale
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Nightingale)
 
@@ -1307,6 +1349,7 @@ legend(as.Date("1854/8/20"), 60, c("Preventable disease", "Wounds and injuries",
 
 
 
+
 cleanEx()
 nameEx("OldMaps")
 ### * OldMaps
@@ -1320,10 +1363,12 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(OldMaps)
 ## maybe str(OldMaps) ; plot(OldMaps) ...
 
 with(OldMaps, plot(abs(long),abs(lat), pch=col, col=colors()[point]))
+
 
 
 
@@ -1334,12 +1379,13 @@ nameEx("PearsonLee")
 flush(stderr()); flush(stdout())
 
 ### Name: PearsonLee
-### Title: Pearson and Lee's data on the heights of parents and children
-###   classified by gender
+### Title: Pearson and Lee's data on the Heights of Parents and Children by
+###   Gender
 ### Aliases: PearsonLee
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(PearsonLee)
 str(PearsonLee)
@@ -1395,6 +1441,52 @@ ggplot(PearsonLee, aes(x = child, y = parent, weight=frequency)) +
 
 
 
+
+cleanEx()
+nameEx("Playfair1824")
+### * Playfair1824
+
+flush(stderr()); flush(stdout())
+
+### Name: Playfair1824
+### Title: Playfair's Linear Chronology
+### Aliases: Playfair1824
+### Keywords: datasets
+
+### ** Examples
+
+data(Playfair1824)
+str(Playfair1824)
+
+# Plot multiple time series with matplot()
+matplot(Playfair1824$Year, Playfair1824[, -1],
+        pch = c("S", "W", "B", "D", "E", "I", "X", "R"),
+        type = "b",
+        xlab = "Year",
+        ylab = "value",
+        ylim = c(0, 140),
+        main = "Linear Chronology, Exhibiting the Revenues, Expenditure, ... from 1770 to 1824")
+
+# main events
+events <- data.frame(
+  start = c(1776, 1793, 1804),
+  end = c(1782.2, 1802, 1815.2),
+  event = c("American War", "War: French Republic", "War: Napoleon")
+)
+
+with(events, {
+  arrows(x0 = start, x1 = end, 
+         y0 = 130, y1 = 130, 
+         lwd = 3,
+         code = 3,
+         angle = 90, length = 0.05)
+  text((start+end)/2, 132, event, pos = 3)
+})
+
+
+
+
+
 cleanEx()
 nameEx("PolioTrials")
 ### * PolioTrials
@@ -1408,8 +1500,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(PolioTrials)
 ## maybe str(PolioTrials) ; plot(PolioTrials) ...
+
 
 
 
@@ -1426,8 +1520,21 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(Pollen)
+
+# All pairwise plots -- just a bunch of blobs?
 pairs(Pollen)
+
+# plot ridge vs. nub
+plot(nub ~ ridge, data = Pollen, pch = 16)
+
+# zoom in to see the secret
+plot(nub ~ ridge, data = Pollen, pch = 16,
+     xlim = c(2, -3),
+     ylim = c(-1, 2))
+
+
 
 
 
@@ -1445,8 +1552,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(Prostitutes)
 ## maybe str(Prostitutes) ; plot(Prostitutes) ...
+
 
 
 
@@ -1462,6 +1571,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Pyx)
 # display as table
@@ -1490,6 +1600,7 @@ Pyx |>
 
 
 
+
 cleanEx()
 nameEx("Quarrels")
 ### * Quarrels
@@ -1503,8 +1614,10 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(Quarrels)
 str(Quarrels)
+
 
 
 
@@ -1521,6 +1634,7 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(Saturn)
 
 # some scatterplots
@@ -1533,6 +1647,7 @@ fit <- lm(Y ~ X1 + X2 + X3, data = Saturn)
 # Same residuals of Stigler (1975), Table 1, last column.
 library(sp)
 dd2dms(residuals(fit)/60)
+
 
 
 
@@ -1549,6 +1664,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets spatial
 
 ### ** Examples
+
 
 data(Snow.deaths)
 data(Snow.pumps)
@@ -1579,25 +1695,31 @@ SnowMap(xlim=c(7.5,16.5), ylim=c(7,16), polygons=TRUE, density=TRUE,
 
 
 ## re-do this the sp way... [thx: Stephane Dray]
-library(sp)
+## Not run: 
+##D library(sp)
+##D 
+##D # streets
+##D slist <- split(Snow.streets[,c("x","y")],as.factor(Snow.streets[,"street"]))
+##D Ll1 <- lapply(slist,Line)
+##D Lsl1 <- Lines(Ll1,"Street")
+##D Snow.streets.sp <- SpatialLines(list(Lsl1))
+##D plot(Snow.streets.sp, col="gray")
+##D title(main="Snow's Cholera Map of London (sp)")
+##D 
+##D # deaths
+##D Snow.deaths.sp = SpatialPoints(Snow.deaths[,c("x","y")])
+##D plot(Snow.deaths.sp, add=TRUE, 
+##D      col ='red', pch=15, cex=0.6)
+##D 
+##D # pumps
+##D spp <- SpatialPoints(Snow.pumps[,c("x","y")])
+##D Snow.pumps.sp <- SpatialPointsDataFrame(spp,Snow.pumps[,c("x","y")])
+##D plot(Snow.pumps.sp, add=TRUE, 
+##D      col='blue', pch=17, cex=1.5)
+##D text(Snow.pumps[,c("x","y")], 
+##D      labels=Snow.pumps$label, pos=1, cex=0.8)
+## End(Not run)
 
-# streets
-slist <- split(Snow.streets[,c("x","y")],as.factor(Snow.streets[,"street"]))
-Ll1 <- lapply(slist,Line)
-Lsl1 <- Lines(Ll1,"Street")
-Snow.streets.sp <- SpatialLines(list(Lsl1))
-plot(Snow.streets.sp, col="gray")
-title(main="Snow's Cholera Map of London (sp)")
-
-# deaths
-Snow.deaths.sp = SpatialPoints(Snow.deaths[,c("x","y")])
-plot(Snow.deaths.sp, add=TRUE, col ='red', pch=15, cex=0.6)
-
-# pumps
-spp <- SpatialPoints(Snow.pumps[,c("x","y")])
-Snow.pumps.sp <- SpatialPointsDataFrame(spp,Snow.pumps[,c("x","y")])
-plot(Snow.pumps.sp, add=TRUE, col='blue', pch=17, cex=1.5)
-text(Snow.pumps[,c("x","y")], labels=Snow.pumps$label, pos=1, cex=0.8)
 
 
 
@@ -1615,6 +1737,7 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 SnowMap()
 SnowMap(axis.labels=TRUE)
 SnowMap(deaths.args=list(col="darkgreen"))
@@ -1622,6 +1745,7 @@ SnowMap(deaths.args=list(col="darkgreen"))
 SnowMap(polygons=TRUE, main="Snow's Cholera Map with Pump Polygons")
 
 SnowMap(density=TRUE)
+
 
 
 
@@ -1640,6 +1764,7 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
+
 data(Virginis)
 data(Virginis.interp)
 
@@ -1657,6 +1782,7 @@ points(posangle ~ year, data=Virginis, cex=weight/2)
 
 
 
+
 cleanEx()
 nameEx("Wheat")
 ### * Wheat
@@ -1670,7 +1796,6 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-data(Wheat)
 
 data(Wheat)
 
@@ -1747,6 +1872,7 @@ with(Wheat.monarchs, {
 
 
 
+
 cleanEx()
 nameEx("Yeast")
 ### * Yeast
@@ -1759,6 +1885,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets
 
 ### ** Examples
+
 
 data(Yeast)
 
@@ -1775,6 +1902,7 @@ xyplot(freq~count|sample, data=Yeast, xlab="Number of Cells", ylab="Frequency",
 
 
 
+
 cleanEx()
 nameEx("ZeaMays")
 ### * ZeaMays
@@ -1787,6 +1915,7 @@ flush(stderr()); flush(stdout())
 ### Keywords: datasets nonparametric
 
 ### ** Examples
+
 
 data(ZeaMays)
 
@@ -1837,6 +1966,7 @@ abline(v=c(1, -1)*mean(ZeaMays$diff), col="red", lwd=2, lty=1:2)
 plot(density(allmeans), xlab="Mean difference, cross-self",
 	main="Density plot of all mean differences")
 abline(v=c(1, -1)*mean(ZeaMays$diff), col="red", lwd=2, lty=1:2)
+
 
 
 

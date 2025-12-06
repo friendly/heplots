@@ -64,7 +64,7 @@ Warning: Unable to replace NAs in characters AL, AW, ALW, AP in population PREL.
 > 
 > boxMTest(centaurea)
 Box's M-test for homogeneity of covariance matrices
- Chi-Sq (approx.) = 14628, df = 693, p-value < 2.2e-16
+ Chi-Sq (approx.) = 14628.48, df = 693, p-value = < 2.2e-16
 > 
 > 
 > 
@@ -2118,7 +2118,7 @@ Warning in FUN(X[[i]], ...) : NaNs produced
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  38.66 4.98 48.86 NA NA 
+Time elapsed:  4.98 0.63 5.7 NA NA 
 > grDevices::dev.off()
 null device 
           1 

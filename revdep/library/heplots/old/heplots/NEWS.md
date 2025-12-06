@@ -1,3 +1,20 @@
+## Version 1.7.8
+
+Several small maintenance fixes, plus a new diagnostic plot and a new vignette
+
+o Added `distancePlot()` for plots of Mahalanobis distances of X vs Y
+o Added a vignette on robust MLMs using `robmlm()` and diagnostic plots
+o Added `rel_diff()` to calulate relative difference between two arrays or data frames
+o Fixed buglet in plot.robmlm()
+o Fixed some non-canonical URLs
+o Fixed cex buglet in `distancePlot()`
+S
+
+## Version 1.7.6 
+
+* fixing data, group names in boxM to avoid necessity for `gplabel` in plots.
+* added reference for CI in `plot.boxm()`
+
 ## Version 1.7.5 
 
 Fix bugs and add some args for better control

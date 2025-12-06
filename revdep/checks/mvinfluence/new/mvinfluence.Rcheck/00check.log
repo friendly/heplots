@@ -18,7 +18,10 @@
 * checking for executable files ... OK
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
-* checking whether package 'mvinfluence' can be installed ... OK
+* checking whether package 'mvinfluence' can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package 'broom' was built under R version 4.5.2
+See 'C:/R/Projects/heplots/revdep/checks/mvinfluence/new/mvinfluence.Rcheck/00install.out' for details.
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking 'build' directory ... OK
@@ -60,4 +63,4 @@
   'uni-vs-multi.Rmd' using 'UTF-8'... OK
 * checking re-building of vignette outputs ... SKIPPED
 * DONE
-Status: OK
+Status: 1 WARNING

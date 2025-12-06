@@ -25,38 +25,48 @@ test_that("Cross table of categorical variables", {
 # tab_counts_one_grouped
 test_that("Cross table of categorical variables with cols", {
   expect_snapshot(volker::tab_counts(
-    data,
-    adopter,
-    sd_gender,
-    prop = "cols"), cran = TRUE)
+      data,
+      adopter,
+      sd_gender,
+      prop = "cols"
+    ),
+    cran = TRUE
+  )
 })
 
 # Cross table of categorical variables with p
 # tab_counts_one_grouped
 test_that("Cross table of categorical variables with percent", {
   expect_snapshot(volker::tab_counts(
-    data,
-    adopter,
-    sd_gender,
-    values = "p"), cran = TRUE)
+      data,
+      adopter,
+      sd_gender,
+      values = "p"
+    ),
+    cran = TRUE
+  )
 })
 
 # Cross table of categorical variables with counts
 # tab_counts_one_grouped
 test_that("Cross table of categorical variables with counts", {
   expect_snapshot(volker::tab_counts(
-    data,
-    adopter,
-    sd_gender,
-    values = "n"), cran = TRUE)
+      data,
+      adopter,
+      sd_gender,
+      values = "n"
+    ),
+    cran = TRUE
+  )
 })
 
 # Frequency table for multiple categorical variables
 # tab_counts_items
 test_that("Frequency table for multiple categorical variables", {
   expect_snapshot(
-    volker::tab_counts(
-      data, tidyselect::starts_with("cg_adoption_")), cran = TRUE)
+    volker::tab_counts(data, tidyselect::starts_with("cg_adoption_")),
+    cran = TRUE
+  )
 })
 
 # Frequency table for multiple categorical variables
@@ -66,8 +76,10 @@ test_that("Frequency table for multiple categorical variables with percent", {
     volker::tab_counts(
       data,
       tidyselect::starts_with("cg_adoption_"),
-      values = "p"),
-      cran = TRUE)
+      values = "p"
+    ),
+    cran = TRUE
+  )
 })
 
 # Frequency table for multiple categorical variables
@@ -77,8 +89,10 @@ test_that("Frequency table for multiple categorical variables with counts", {
     volker::tab_counts(
       data,
       tidyselect::starts_with("cg_adoption_"),
-    values = "n"),
-    cran = TRUE)
+      values = "n"
+    ),
+    cran = TRUE
+  )
 })
 
 # Frequency table for multiple categorical variables grouped
@@ -89,17 +103,20 @@ test_that("Frequency table for multiple categorical variables by grouping variab
       data,
       tidyselect::starts_with("cg_adoption_"),
       sd_gender,
-      category = c("agree", "strongly agree")),
-      cran = TRUE)
+      category = c("agree", "strongly agree")
+    ),
+    cran = TRUE
+  )
 
   expect_error(
     volker::tab_counts(
       data,
       tidyselect::starts_with("cg_adoption_"),
       sd_gender,
-      category = c("agree", "strongly")),
-      "One or more specified categories do not exist in the data."
-)
+      category = c("agree", "strongly")
+    ),
+    "One or more specified categories do not exist in the data."
+  )
 })
 
 # Frequency table for multiple categorical variables grouped
@@ -113,9 +130,10 @@ test_that("Frequency table for multiple categorical variables by binary grouping
     volker::tab_counts(
       data,
       tidyselect::starts_with("cg_adoption_advantage"),
-      sd_gender,
-      cran = TRUE)
-)
+      sd_gender
+    ),
+    cran = TRUE
+  )
 })
 
 # Distribution table for age
@@ -141,7 +159,10 @@ test_that("Correlations with two variables", {
   expect_snapshot(
     volker::tab_metrics(
       data, use_work, use_private,
-      metric=TRUE), cran = TRUE)
+      metric=TRUE
+    ),
+    cran = TRUE
+  )
 })
 
 test_that("Correlations with two variables with no common prefix", {
@@ -158,7 +179,10 @@ test_that("Correlation with two variables and ci", {
     volker::tab_metrics(
       data, use_work, use_private,
       metric=TRUE,
-      ci = TRUE), cran = TRUE)
+      ci = TRUE
+    ),
+    cran = TRUE
+  )
 })
 
 # tab_metrics_one_cor
@@ -167,7 +191,10 @@ test_that("Correlation with two variables and spearman", {
     volker::tab_metrics(
       data, use_work, use_private,
       metric=TRUE,
-      method = "spearman"), cran = TRUE)
+      method = "spearman"
+    ),
+    cran = TRUE
+  )
 })
 
 
@@ -177,15 +204,19 @@ test_that("Distribution table for multiple metric items", {
   expect_snapshot(
     volker::tab_metrics(
       data, tidyselect::starts_with("cg_adoption_")
-      ),cran = TRUE)
+    ),
+    cran = TRUE
+  )
 })
 
 test_that("Distribution table for multiple metric items with ci", {
   expect_snapshot(
     volker::tab_metrics(
       data, tidyselect::starts_with("cg_adoption_"),
-      ci = TRUE),
-    cran = TRUE)
+      ci = TRUE
+    ),
+    cran = TRUE
+  )
 })
 
 # Compare means of multiple items
@@ -196,14 +227,18 @@ test_that("Compare means of multiple items with and without common prefix", {
       data,
       tidyselect::starts_with("cg_adoption_"),
       sd_gender
-      ), cran = TRUE)
+    ),
+    cran = TRUE
+  )
 
   expect_snapshot(
     volker::tab_metrics(
       data,
       c("sd_age", "use_work"),
       sd_gender
-      ), cran = TRUE)
+    ),
+    cran = TRUE
+  )
 })
 
 
@@ -216,7 +251,9 @@ test_that("Compare means of multiple items with sd or mean", {
       tidyselect::starts_with("cg_adoption_"),
       sd_gender,
       values = "sd"
-    ), cran = TRUE)
+    ),
+    cran = TRUE
+  )
 
   expect_snapshot(
     volker::tab_metrics(
@@ -224,7 +261,9 @@ test_that("Compare means of multiple items with sd or mean", {
       tidyselect::starts_with("cg_adoption_"),
       sd_gender,
       values = "m"
-    ), cran = TRUE)
+    ),
+    cran = TRUE
+  )
 })
 
 
@@ -236,7 +275,9 @@ test_that("Correlations of an item battery with one variable", {
       data,
       tidyselect::starts_with("cg_adoption_"),
       sd_age, metric=TRUE
-      ), cran = TRUE)
+    ),
+    cran = TRUE
+  )
 })
 
 # Correlations of an item battery with one variable and spearman
@@ -247,7 +288,9 @@ test_that("Correlations of an item battery with one variable and spearman", {
       data,
       tidyselect::starts_with("cg_adoption_"),
       sd_age, metric=TRUE, method = "spearman"
-    ), cran = TRUE)
+    ),
+    cran = TRUE
+  )
 })
 
 # Correlations of two item batteries
@@ -259,7 +302,9 @@ test_that("Correlate two item batteries", {
       tidyselect::starts_with("cg_adoption_"),
       tidyselect::starts_with("use_"),
       metric=TRUE
-      ),cran = TRUE)
+    ),
+    cran = TRUE
+  )
 
   # shared prefix
   expect_snapshot(
@@ -268,7 +313,9 @@ test_that("Correlate two item batteries", {
       tidyselect::starts_with("cg_adoption_"),
       tidyselect::starts_with("cg_adoption_"),
       metric=TRUE
-    ),cran = TRUE)
+    ),
+    cran = TRUE
+  )
 })
 
 
@@ -280,7 +327,9 @@ test_that("Correlate two item batteries with ci", {
       data, starts_with("cg_adoption_adv"),
       starts_with("use_"),
       metric = TRUE, ci = T
-    ),cran = TRUE)
+    ),
+    cran = TRUE
+  )
 })
 
 # Correlations of two item batteries and spearman
@@ -292,12 +341,15 @@ test_that("Correlate two item batteries with spearman", {
       tidyselect::starts_with("cg_adoption_"),
       tidyselect::starts_with("use_"),
       metric=TRUE, method = "spearman",
-    ),cran = TRUE)
+    ),
+    cran = TRUE
+  )
 })
 
 
 # ...with missings
 test_that("Missing values make no trouble", {
+  data <- volker::chatgpt
   data %>%
 #    volker::labs_store() |>
     dplyr::bind_rows(tibble::tibble(sd_gender = c("X", "X", "X"))) %>%
@@ -317,9 +369,9 @@ test_that("Item order is kept", {
       1,     2,    1,
       2,     2,    2
     ) |>
-      tab_counts_items(c(f1:f10))
+      tab_counts_items(c(f1:f10)),
 
-    , cran = TRUE
+    cran = TRUE
   )
 })
 
@@ -337,6 +389,192 @@ test_that("Values are relabeled", {
           "male" = "Maennlich"
         )
       ) %>%
-      volker::tab_metrics(sd_age, sd_gender)
+      volker::tab_metrics(sd_age, sd_gender),
+
+    cran = TRUE
   )
+})
+
+
+test_that("Missing values are skipped in item batteries", {
+  options(vlkr.na.omit=FALSE)
+
+  data_with_missings <- tibble::tribble(
+    ~f1, ~f2, ~f3,
+    1,     NA,    1,
+    2,     2,    NA,
+    3,     3,    NA,
+    4,     4,    4
+  )
+
+  expect_snapshot(
+    volker::tab_counts(data_with_missings, starts_with("f")),
+    cran = TRUE
+  )
+
+  expect_snapshot(
+    volker::tab_metrics(data_with_missings, starts_with("f")),
+    cran = TRUE
+  )
+
+  options(vlkr.na.omit=TRUE)
+})
+
+test_that("Missing values are skipped in single variables", {
+  options(vlkr.na.omit=FALSE)
+
+  data_with_missings <-  tibble::tribble(
+    ~f1, ~f2, ~f3,
+    1,     NA,    1,
+    2,     2,    NA,
+    3,     3,    NA
+  )
+
+  expect_snapshot(
+    volker::tab_counts(data_with_missings, f2),
+    cran = TRUE
+  )
+
+  expect_snapshot(
+    volker::tab_metrics(data_with_missings, f2),
+    cran = TRUE
+  )
+
+  options(vlkr.na.omit=TRUE)
+})
+
+
+test_that("Missing values are skipped in item comparisons", {
+
+  options(vlkr.na.omit=FALSE)
+
+  data_with_missings <- tibble::tribble(
+    ~f1, ~f2, ~f3,  ~gr,
+    1,     NA,    1, "A",
+    2,     2,    NA, "B",
+    3,     3,    NA, "A",
+    4,     4,     4, "A",
+    5,     5,     5, NA
+  )
+
+  expect_snapshot(
+    volker::tab_counts(data_with_missings, starts_with("f"), gr),
+    cran = TRUE
+  )
+
+  expect_snapshot(
+    volker::tab_metrics(data_with_missings, starts_with("f"), gr),
+    cran = TRUE
+  )
+
+  options(vlkr.na.omit=TRUE)
+})
+
+test_that("Missing values are skipped in single variable comparisons", {
+
+  options(vlkr.na.omit=FALSE)
+
+  data_with_missings <- tibble::tribble(
+    ~f1, ~f2, ~f3,  ~gr,
+    1,     NA,    1, "A",
+    2,     2,    NA, "B",
+    3,     3,    NA, "A",
+    4,     4,     4, "A",
+    5,     5,     5, NA
+  )
+
+  expect_snapshot(
+    volker::tab_counts(data_with_missings, f2, gr),
+    cran = TRUE
+  )
+
+  expect_snapshot(
+    volker::tab_metrics(data_with_missings, f2, gr),
+    cran = TRUE
+  )
+
+  options(vlkr.na.omit=TRUE)
+})
+
+
+test_that("Missing values are skipped in single variable correlations", {
+
+  options(vlkr.na.omit=FALSE)
+
+  data_with_missings <- tibble::tribble(
+    ~f1, ~f2, ~f3,  ~gr,
+    1,     NA,    1, 1,
+    2,     2,    NA, 2,
+    3,     3,    NA, 3,
+    4,     4,     4, 4,
+    5,     5,     5, NA
+  )
+
+  expect_snapshot(
+    volker::tab_counts(data_with_missings, f2, gr, metric = TRUE),
+    cran = TRUE
+  )
+
+  expect_snapshot(
+    volker::tab_metrics_one_cor(data_with_missings, f2, gr, metric = TRUE),
+    cran = TRUE
+  )
+
+  options(vlkr.na.omit=TRUE)
+})
+
+
+test_that("Missing values are skipped in item correlations with another variable", {
+
+  options(vlkr.na.omit=FALSE)
+
+  data_with_missings <- tibble::tribble(
+    ~f1, ~f2, ~f3,  ~gr,
+    1,     NA,    1, 1,
+    2,     2,    NA, 2,
+    3,     3,    NA, 3,
+    4,     4,     4, 4,
+    5,     5,     5, NA,
+    6,     6,     6, 6
+  )
+
+  expect_snapshot(
+    volker::tab_counts(data_with_missings, starts_with("f"), gr, metric = TRUE),
+    cran = TRUE
+  )
+
+  expect_snapshot(
+    volker::tab_metrics_one_cor(data_with_missings, starts_with("f"), gr, metric = TRUE),
+    cran = TRUE
+  )
+
+  options(vlkr.na.omit=TRUE)
+})
+
+test_that("Missing values are skipped in item correlations with items", {
+
+  options(vlkr.na.omit=FALSE)
+
+  data_with_missings <- tibble::tribble(
+    ~f1, ~f2, ~g1,  ~g2,
+    1,     NA,    1, 1,
+    2,     2,    NA, 2,
+    3,     3,    NA, 3,
+    4,     4,     4, 4,
+    5,     5,     5, NA,
+    6,     6,     6, 6
+  )
+
+  # TODO: implement tab_counts_items_cor_items
+  #expect_snapshot(
+  #  volker::tab_counts(data_with_missings, starts_with("f"), starts_with("g"), metric = TRUE),
+  #  cran = TRUE
+  #)
+
+  expect_snapshot(
+    volker::tab_metrics(data_with_missings, starts_with("f"), starts_with("g"), metric = TRUE),
+    cran = TRUE
+  )
+
+  options(vlkr.na.omit=TRUE)
 })

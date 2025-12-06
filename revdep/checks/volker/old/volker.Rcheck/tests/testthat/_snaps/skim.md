@@ -3,7 +3,7 @@
     Code
       data
     Output
-      # A tibble: 101 x 19
+      # A tibble: 101 x 22
           case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
          <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
        1   170           4        4                        3                        4
@@ -17,7 +17,7 @@
        9   309           3        3                        3                        4
       10   325           2        1                        4                        1
       # i 91 more rows
-      # i 14 more variables: cg_adoption_advantage_03 <dbl>,
+      # i 17 more variables: cg_adoption_advantage_03 <dbl>,
       #   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
       #   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
       #   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,

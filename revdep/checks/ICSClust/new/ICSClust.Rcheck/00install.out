@@ -4,17 +4,24 @@
 ** using staged installation
 ** libs
 using C++ compiler: 'G__~1.EXE (GCC) 14.2.0'
-g++ -std=gnu++17  -I"C:/R/R-45~1.1/include" -DNDEBUG  -I'C:/R/Projects/heplots/revdep/library/ICSClust/Rcpp/include' -I'C:/R/Projects/heplots/revdep/library/ICSClust/RcppArmadillo/include'   -I"C:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp    -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c RcppExports.cpp -o RcppExports.o
-g++ -std=gnu++17  -I"C:/R/R-45~1.1/include" -DNDEBUG  -I'C:/R/Projects/heplots/revdep/library/ICSClust/Rcpp/include' -I'C:/R/Projects/heplots/revdep/library/ICSClust/RcppArmadillo/include'   -I"C:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp    -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c scatters.cpp -o scatters.o
+g++ -std=gnu++17  -I"C:/R/R-45~1.1/include" -DNDEBUG  -I'C:/R/Projects/heplots/revdep/library/ICSClust/Rcpp/include' -I'C:/R/Projects/heplots/revdep/library/heplots/new/RcppArmadillo/include'   -I"C:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp    -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++17  -I"C:/R/R-45~1.1/include" -DNDEBUG  -I'C:/R/Projects/heplots/revdep/library/ICSClust/Rcpp/include' -I'C:/R/Projects/heplots/revdep/library/heplots/new/RcppArmadillo/include'   -I"C:/rtools45/x86_64-w64-mingw32.static.posix/include"   -fopenmp    -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign    -c scatters.cpp -o scatters.o
 g++ -std=gnu++17 -shared -s -static-libgcc -o ICSClust.dll tmp.def RcppExports.o scatters.o -fopenmp -LC:/R/R-45~1.1/bin/x64 -lRlapack -LC:/R/R-45~1.1/bin/x64 -lRblas -lgfortran -lquadmath -LC:/rtools45/x86_64-w64-mingw32.static.posix/lib/x64 -LC:/rtools45/x86_64-w64-mingw32.static.posix/lib -LC:/R/R-45~1.1/bin/x64 -lR
 installing to C:/R/Projects/heplots/revdep/checks/ICSClust/new/ICSClust.Rcheck/00LOCK-ICSClust/00new/ICSClust/libs/x64
 ** R
 ** byte-compile and prepare package for lazy loading
+Warning messages:
+1: package 'ICS' was built under R version 4.5.2 
+2: package 'ggplot2' was built under R version 4.5.2 
 ** help
 *** installing help indices
 *** copying figures
 ** building package indices
 ** testing if installed package can be loaded from temporary location
+Warning: package 'ICS' was built under R version 4.5.2
+Warning: package 'ggplot2' was built under R version 4.5.2
 ** testing if installed package can be loaded from final location
+Warning: package 'ICS' was built under R version 4.5.2
+Warning: package 'ggplot2' was built under R version 4.5.2
 ** testing if installed package keeps a record of temporary installation path
 * DONE (ICSClust)

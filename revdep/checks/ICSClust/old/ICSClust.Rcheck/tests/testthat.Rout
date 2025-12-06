@@ -24,10 +24,15 @@ Type 'q()' to quit R.
 > # * https://testthat.r-lib.org/reference/test_package.html#special-files
 > 
 > library(testthat)
+Warning message:
+package 'testthat' was built under R version 4.5.2 
 > library(ICSClust)
 Loading required package: ICS
 Loading required package: mvtnorm
 Loading required package: ggplot2
+Warning messages:
+1: package 'ICS' was built under R version 4.5.2 
+2: package 'ggplot2' was built under R version 4.5.2 
 > 
 > test_check("ICSClust")
 [ FAIL 0 | WARN 7 | SKIP 0 | PASS 86 ]
@@ -36,4 +41,4 @@ Loading required package: ggplot2
 > 
 > proc.time()
    user  system elapsed 
-  16.82    4.46   24.95 
+   2.50    0.43    3.07 

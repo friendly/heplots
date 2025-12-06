@@ -15,14 +15,14 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> #  File tests/nomixing.R in package latentnet, part of the
-> #  Statnet suite of packages for network analysis, https://statnet.org .
+> #  File tests/nomixing.R in package latentnet, part of the Statnet suite of
+> #  packages for network analysis, https://statnet.org .
 > #
-> #  This software is distributed under the GPL-3 license.  It is free,
-> #  open source, and has the attribution requirements (GPL Section 7) at
+> #  This software is distributed under the GPL-3 license.  It is free, open
+> #  source, and has the attribution requirements (GPL Section 7) at
 > #  https://statnet.org/attribution .
 > #
-> #  Copyright 2003-2024 Statnet Commons
+> #  Copyright 2003-2025 Statnet Commons
 > ################################################################################
 > library(latentnet)
 Loading required package: network
@@ -34,7 +34,7 @@ Loading required package: network
 
 Loading required package: ergm
 
-'ergm' 4.9.0 (2025-06-09), part of the Statnet Project
+'ergm' 4.10.1 (2025-08-26), part of the Statnet Project
 * 'news(package="ergm")' for changes since last version
 * 'citation("ergm")' for citation information
 * 'https://statnet.org' for help, support, and other information
@@ -44,12 +44,15 @@ changes. Please type 'news(package="ergm")' for a list of major
 changes.
 
 
-'latentnet' 2.11.0 (2024-02-19), part of the Statnet Project
+'latentnet' 2.12.0 (2025-09-11), part of the Statnet Project
 * 'news(package="latentnet")' for changes since last version
 * 'citation("latentnet")' for citation information
 * 'https://statnet.org' for help, support, and other information
 NOTE: BIC calculation prior to latentnet 2.7.0 had a bug in the calculation of the effective number of parameters. See help(summary.ergmm) for details.
 NOTE: Prior to version 2.8.0, handling of fixed effects for directed networks had a bug: the covariate matrix was transposed.
+Warning messages:
+1: package 'network' was built under R version 4.5.2 
+2: package 'ergm' was built under R version 4.5.2 
 > 
 > data(sampson)
 > 
@@ -64,20 +67,20 @@ In cov2cor(beta.cov) :
 Chain 1 
 WARNING: Variables beta.1 did not mix AT ALL. MCMC should be rerun with different proposal parameters!
 Lag 0 
-                   lpY beta.1      Z.1.1       Z.1.2  receiver.1
-lpY         1.00000000    NaN -0.2790495 -0.01695986  0.36938953
-beta.1             NaN    NaN        NaN         NaN         NaN
-Z.1.1      -0.27904948    NaN  1.0000000 -0.16664543 -0.38339524
-Z.1.2      -0.01695986    NaN -0.1666454  1.00000000  0.04979892
-receiver.1  0.36938953    NaN -0.3833952  0.04979892  1.00000000
+                  lpY beta.1       Z.1.1      Z.1.2 receiver.1
+lpY        1.00000000    NaN  0.01552796  0.1705182  0.5098986
+beta.1            NaN    NaN         NaN        NaN        NaN
+Z.1.1      0.01552796    NaN  1.00000000 -0.1977717  0.1370650
+Z.1.2      0.17051818    NaN -0.19777175  1.0000000  0.3289236
+receiver.1 0.50989861    NaN  0.13706500  0.3289236  1.0000000
 
 Lag 1 
-                   lpY beta.1      Z.1.1        Z.1.2  receiver.1
-lpY         0.86482804    NaN -0.2814669 -0.003835899  0.36391433
-beta.1             NaN    NaN        NaN          NaN         NaN
-Z.1.1      -0.28405646    NaN  0.9584198 -0.170278116 -0.36939940
-Z.1.2      -0.01585826    NaN -0.1600016  0.951022880  0.03423036
-receiver.1  0.35242153    NaN -0.3954701  0.049090045  0.93605940
+                  lpY beta.1       Z.1.1      Z.1.2 receiver.1
+lpY        0.91900468    NaN  0.01565971  0.1641585  0.4901853
+beta.1            NaN    NaN         NaN        NaN        NaN
+Z.1.1      0.01132474    NaN  0.95694931 -0.1995745  0.1433562
+Z.1.2      0.18413640    NaN -0.19750445  0.9468877  0.3288154
+receiver.1 0.50090976    NaN  0.13327684  0.3098825  0.9223351
 
 [[1]]
 
@@ -87,14 +90,14 @@ Probability (s) = 0.95
                                                   
             Burn-in  Total Lower bound  Dependence
             (M)      (N)   (Nmin)       factor (I)
- lpY        11       1848  600           3.08     
- beta.1     <NA>     <NA>  600             NA     
- Z.1.1      18       2760  600           4.60     
- Z.1.2      18       3074  600           5.12     
- receiver.1 107      24381 600          40.60     
+ lpY        20       2840  600          4.73      
+ beta.1     <NA>     <NA>  600            NA      
+ Z.1.1      24       4546  600          7.58      
+ Z.1.2      21       3599  600          6.00      
+ receiver.1 19       3342  600          5.57      
 
 
 > 
 > proc.time()
    user  system elapsed 
-   4.50    1.17    5.75 
+   1.31    0.28    1.65 

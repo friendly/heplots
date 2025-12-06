@@ -1,5 +1,5 @@
 * installing *source* package 'latentnet' ...
-** this is package 'latentnet' version '2.11.0'
+** this is package 'latentnet' version '2.12.0'
 ** package 'latentnet' successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
@@ -25,10 +25,17 @@ installing to C:/R/Projects/heplots/revdep/checks/latentnet/new/latentnet.Rcheck
 ** data
 ** inst
 ** byte-compile and prepare package for lazy loading
+Warning messages:
+1: package 'network' was built under R version 4.5.2 
+2: package 'ergm' was built under R version 4.5.2 
 ** help
 *** installing help indices
 ** building package indices
 ** testing if installed package can be loaded from temporary location
+Warning: package 'network' was built under R version 4.5.2
+Warning: package 'ergm' was built under R version 4.5.2
 ** testing if installed package can be loaded from final location
+Warning: package 'network' was built under R version 4.5.2
+Warning: package 'ergm' was built under R version 4.5.2
 ** testing if installed package keeps a record of temporary installation path
 * DONE (latentnet)
