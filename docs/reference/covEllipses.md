@@ -1,4 +1,4 @@
-# Draw classical and robust covariance ellipses for one or more groups
+# Draw classical and Robust Covariance Ellipses for one or more groups
 
 The function draws covariance ellipses for one or more groups and
 optionally for the pooled total sample. It uses either the classical
@@ -268,6 +268,11 @@ in the order specified, and recycled as necessary.
 
 [`cov.rob`](https://rdrr.io/pkg/MASS/man/cov.rob.html)
 
+Other covariance ellipses:
+[`ellipse.axes()`](https://friendly.github.io/heplots/reference/ellipse.axes.md),
+[`ellipse.box()`](https://friendly.github.io/heplots/reference/ellipse.box.md),
+[`ellipse3d.axes()`](https://friendly.github.io/heplots/reference/ellipse3d.axes.md)
+
 ## Author
 
 Michael Friendly
@@ -280,33 +285,37 @@ data(iris)
 
 # compare classical and robust covariance estimates
 covEllipses(iris[,1:4], iris$Species)
-covEllipses(iris[,1:4], iris$Species, fill=TRUE, method="mve", add=TRUE, labels="")
+# use `method="mve"`
+covEllipses(iris[,1:4], iris$Species, 
+    fill=TRUE, method="mve", add=TRUE, labels="")
 
 
 # method for a boxM object  
-x <- boxM(iris[, 1:4], iris[, "Species"])
-x
+iris.boxM <- boxM(iris[, 1:4], iris[, "Species"])
+iris.boxM
 #> 
-#>  Box's M-test for Homogeneity of Covariance Matrices
+#>  Box's M-test for Homogeneity of Covariance Matrices 
 #> 
-#> data:  iris[, 1:4]
-#> Chi-Sq (approx.) = 140.94, df = 20, p-value < 2.2e-16
+#> data:  iris[, 1:4] by iris[, "Species"] 
+#> Chi-Sq (approx.) = 140.943, df = 20, p-value = < 2.2e-16
 #> 
-covEllipses(x, fill=c(rep(FALSE,3), TRUE) )
+# show the associated covariance ellipses
+covEllipses(iris.boxM, fill=c(rep(FALSE,3), TRUE) )
 
-covEllipses(x, fill=c(rep(FALSE,3), TRUE), center=TRUE, label.pos=1:4 )
+# use centering
+covEllipses(iris.boxM, fill=c(rep(FALSE,3), TRUE), center=TRUE, label.pos=1:4 )
 
 
 # method for a list of covariance matrices
-cov <- c(x$cov, pooled=list(x$pooled))
+cov <- c(iris.boxM$cov, pooled=list(iris.boxM$pooled))
 df <- c(table(iris$Species)-1, nrow(iris)-3)
-covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE))
+covEllipses(cov, iris.boxM$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE))
 
  
-covEllipses(cov, x$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE), center=TRUE)
+covEllipses(cov, iris.boxM$means, df, label.pos=3, fill=c(rep(FALSE,3), TRUE), center=TRUE)
 
 
-# scatterplot matrix version
+# scatterplot matrix version, specifying `variables`
 covEllipses(iris[,1:4], iris$Species, 
   fill=c(rep(FALSE,3), TRUE), variables=1:4, 
   fill.alpha=.1)

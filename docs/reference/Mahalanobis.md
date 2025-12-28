@@ -65,6 +65,10 @@ row.
 [`mahalanobis`](https://rdrr.io/r/stats/mahalanobis.html),
 [`cov.rob`](https://rdrr.io/pkg/MASS/man/cov.rob.html)
 
+Other robust methods:
+[`plot.robmlm()`](https://friendly.github.io/heplots/reference/plot.robmlm.md),
+[`robmlm()`](https://friendly.github.io/heplots/reference/robmlm.md)
+
 ## Author
 
 Michael Friendly

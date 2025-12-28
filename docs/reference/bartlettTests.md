@@ -66,6 +66,9 @@ Bartlett, M. S. (1937). Properties of sufficiency and statistical tests.
 [`boxM`](https://friendly.github.io/heplots/reference/boxM.md) for Box's
 M test for all responses together.
 
+Other homogeneity tests:
+[`leveneTests()`](https://friendly.github.io/heplots/reference/leveneTests.md)
+
 ## Author
 
 Michael Friendly

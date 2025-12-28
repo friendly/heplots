@@ -1,6 +1,6 @@
 # HE plot MMRA Examples
 
-Vignette built using `heplots`, version 1.8.0 and `candisc`, version
+Vignette built using `heplots`, version 1.8.1 and `candisc`, version
 1.1.0.
 
 ## Multivariate Multiple Regression Designs

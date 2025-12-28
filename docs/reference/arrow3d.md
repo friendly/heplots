@@ -58,6 +58,12 @@ Returns (invisibly): integer ID of the line added to the scene %%
 [`lines3d`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html),
 [`segments3d`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html),
 
+Other 3D plotting:
+[`bbox3d()`](https://friendly.github.io/heplots/reference/bbox3d.md),
+[`cross3d()`](https://friendly.github.io/heplots/reference/cross3d.md),
+[`ellipse3d.axes()`](https://friendly.github.io/heplots/reference/ellipse3d.axes.md),
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)
+
 ## Author
 
 Barry Rowlingson, posted to R-help, 1/10/2010

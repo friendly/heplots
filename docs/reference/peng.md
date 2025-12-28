@@ -105,10 +105,10 @@ covEllipses(peng[,3:6], peng$species,
 peng.boxm <- boxM(cbind(bill_length, bill_depth, flipper_length, body_mass) ~ species, data=peng)
 peng.boxm
 #> 
-#>  Box's M-test for Homogeneity of Covariance Matrices
+#>  Box's M-test for Homogeneity of Covariance Matrices 
 #> 
-#> data:  peng
-#> Chi-Sq (approx.) = 74.731, df = 20, p-value = 3.02e-08
+#> data:  peng 
+#> Chi-Sq (approx.) = 74.7315, df = 20, p-value = 3.02e-08
 #> 
 plot(peng.boxm, gplabel="Species")
 

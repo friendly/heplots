@@ -143,6 +143,11 @@ Friendly, M. (2007). HE plots for Multivariate General Linear Models.
 [`heplot`](https://friendly.github.io/heplots/reference/heplot.md),
 [`heplot3d`](https://friendly.github.io/heplots/reference/heplot3d.md)
 
+Other HE plot functions:
+[`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+[`heplot1d()`](https://friendly.github.io/heplots/reference/heplot1d.md),
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)
+
 ## Author
 
 Michael Friendly

@@ -111,10 +111,10 @@ covEllipses(Diabetes[,2:5], Diabetes$group, fill=TRUE, pooled=FALSE,
 diab.boxm <- boxM(Diabetes[,2:5], Diabetes$group)
 diab.boxm
 #> 
-#>  Box's M-test for Homogeneity of Covariance Matrices
+#>  Box's M-test for Homogeneity of Covariance Matrices 
 #> 
-#> data:  Diabetes[, 2:5]
-#> Chi-Sq (approx.) = 382.84, df = 20, p-value < 2.2e-16
+#> data:  Diabetes[, 2:5] by Diabetes$group 
+#> Chi-Sq (approx.) = 382.8363, df = 20, p-value = < 2.2e-16
 #> 
 plot(diab.boxm)
 

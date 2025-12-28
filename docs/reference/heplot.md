@@ -22,6 +22,7 @@ heplot(
   hyp.labels = TRUE,
   err.label = "Error",
   label.pos = NULL,
+  label.cex = par("cex"),
   variables = 1:2,
   error.ellipse = !add,
   factor.means = !add,
@@ -113,6 +114,10 @@ heplot(
   of the `ellipse` to determine "top" (r\>=0) or "bottom" (r\<0). Even
   more flexible options are described in
   [`label.ellipse`](https://friendly.github.io/heplots/reference/label.ellipse.md)
+
+- label.cex:
+
+  Character size used for labels for the hypothesis, error ellipses.
 
 - variables:
 
@@ -425,11 +430,11 @@ Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
 Fox, J., Friendly, M. & Weisberg, S. (2013). Hypothesis Tests for
 Multivariate Linear Models Using the car Package. *The R Journal*,
 **5**(1),
-<https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf>.
+<https://journal.r-project.org/articles/RJ-2013-004/RJ-2013-004.pdf>.
 
 Friendly, M. & Sigal, M. (2014) Recent Advances in Visualizing
 Multivariate Linear Models. *Revista Colombiana de Estadistica*, **37**,
-261-283. %<http://ref.scielo.org/6gq33g>.
+261-283. DOI: 10.15446/rce.v37n2spe.47934.
 
 ## See also
 
@@ -453,6 +458,11 @@ for labeling positions in plotting H and E ellipses.
 [`candisc`](https://friendly.github.io/candisc/reference/candisc.html),
 [`heplot.candisc`](https://friendly.github.io/candisc/reference/heplot.candisc.html)
 for reduced-rank views of `mlm`s in canonical space.
+
+Other HE plot functions:
+[`heplot1d()`](https://friendly.github.io/heplots/reference/heplot1d.md),
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md),
+[`pairs.mlm()`](https://friendly.github.io/heplots/reference/pairs.mlm.md)
 
 ## Examples
 

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +38,26 @@
       <small>Source: <a href="https://github.com/friendly/heplots/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.8.2" id="version-182">Version 1.8.2<a class="anchor" aria-label="anchor" href="#version-182"></a></h2>
+<ul><li>add <code>eigstatsCI()</code> to calculate bootstrapped confidence intervals for eigenvalue statistics, as used in <code><a href="../reference/plot.boxM.html">plot.boxM()</a></code>
+</li>
+<li>added <code><a href="../reference/plot_boxM_boot.html">plot_boxM_boot()</a></code> to plot these with bootstrapped CIs</li>
+<li>added <code>traceCI()</code> for use in <code><a href="../reference/plot.boxM.html">plot.boxM()</a></code>
+</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.8.1" id="version-181">Version 1.8.1<a class="anchor" aria-label="anchor" href="#version-181"></a></h2><p class="text-muted">CRAN release: 2025-12-07</p>
+<p>This is a large cumulative release of several versions since the last CRAN release.</p>
+<ul><li>
+<code><a href="../reference/label.ellipse.html">label.ellipse()</a></code> now returns invisibly the coordinates where the label was placed.</li>
+<li>
+<code><a href="../reference/heplot.html">heplot()</a></code> adds a <code>label.cex</code> argument to control the size of labels on H/E ellipses. The <code>label.pos</code> argument is vectorized, so that the changes to <code><a href="../reference/label.ellipse.html">label.ellipse()</a></code> now apply.</li>
+<li>
+<code><a href="../reference/boxM.html">boxM()</a></code> &amp; <code><a href="../reference/plot.boxM.html">plot.boxM()</a></code> now correctly handle the situation where one or more groups have singular covariance matrices because !n&gt;p</li>
+<li>Fixed bug in <code><a href="../reference/covEllipses.html">covEllipses.boxM()</a></code> method. <code><a href="../reference/boxM.html">boxM()</a></code> now returns <code>ngroups</code> and <code>means</code> among it’s components.</li>
+<li>add <a href="https://github.com/family" class="external-link">@family</a> tags to improve cross-referencing in documentation</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.8.0" id="version-180">Version 1.8.0<a class="anchor" aria-label="anchor" href="#version-180"></a></h2>
 <ul><li>describe more fully constructing the datasets table using concept tags</li>

@@ -252,6 +252,11 @@ result for Mahalanobis squared distances of data or residuals;
 [`qqtest`](https://rwoldford.github.io/qqtest/reference/qqtest.html) has
 many features for all types of QQ plots.
 
+Other diagnostic plots:
+[`distancePlot()`](https://friendly.github.io/heplots/reference/distancePlot.md),
+[`eigstatCI()`](https://friendly.github.io/heplots/reference/eigstatCI.md),
+[`plot.boxM()`](https://friendly.github.io/heplots/reference/plot.boxM.md)
+
 ## Author
 
 Michael Friendly

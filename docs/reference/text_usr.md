@@ -55,13 +55,9 @@ y = c(0.5, rep(c(0.05, 0.95), each=2))
 plot(x, y, pch = 16,
      xlim = c(0,1),
      ylim = c(0,1))
-
 text_usr(0.05, 0.95, "topleft",    pos = 4)
-#> Error in text_usr(0.05, 0.95, "topleft", pos = 4): could not find function "text_usr"
 text_usr(0.95, 0.95, "topright",   pos = 2)
-#> Error in text_usr(0.95, 0.95, "topright", pos = 2): could not find function "text_usr"
 text_usr(0.05, 0.05, "bottomleft", pos = 4)
-#> Error in text_usr(0.05, 0.05, "bottomleft", pos = 4): could not find function "text_usr"
 text_usr(0.95, 0.05, "bottomright",pos = 2)
-#> Error in text_usr(0.95, 0.05, "bottomright", pos = 2): could not find function "text_usr"
+
 ```

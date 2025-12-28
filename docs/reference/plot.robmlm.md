@@ -96,6 +96,10 @@ Returns invisibly the weights for the observations labeled in the plot
 
 [`robmlm`](https://friendly.github.io/heplots/reference/robmlm.md)
 
+Other robust methods:
+[`Mahalanobis()`](https://friendly.github.io/heplots/reference/Mahalanobis.md),
+[`robmlm()`](https://friendly.github.io/heplots/reference/robmlm.md)
+
 ## Author
 
 Michael Friendly

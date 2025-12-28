@@ -1,5 +1,43 @@
 # Changelog
 
+## Version 1.8.2
+
+- add `eigstatsCI()` to calculate bootstrapped confidence intervals for
+  eigenvalue statistics, as used in
+  [`plot.boxM()`](https://friendly.github.io/heplots/reference/plot.boxM.md)
+- added
+  [`plot_boxM_boot()`](https://friendly.github.io/heplots/reference/plot_boxM_boot.md)
+  to plot these with bootstrapped CIs
+- added `traceCI()` for use in
+  [`plot.boxM()`](https://friendly.github.io/heplots/reference/plot.boxM.md)
+
+## Version 1.8.1
+
+CRAN release: 2025-12-07
+
+This is a large cumulative release of several versions since the last
+CRAN release.
+
+- [`label.ellipse()`](https://friendly.github.io/heplots/reference/label.ellipse.md)
+  now returns invisibly the coordinates where the label was placed.
+- [`heplot()`](https://friendly.github.io/heplots/reference/heplot.md)
+  adds a `label.cex` argument to control the size of labels on H/E
+  ellipses. The `label.pos` argument is vectorized, so that the changes
+  to
+  [`label.ellipse()`](https://friendly.github.io/heplots/reference/label.ellipse.md)
+  now apply.
+- [`boxM()`](https://friendly.github.io/heplots/reference/boxM.md) &
+  [`plot.boxM()`](https://friendly.github.io/heplots/reference/plot.boxM.md)
+  now correctly handle the situation where one or more groups have
+  singular covariance matrices because !n\>p
+- Fixed bug in
+  [`covEllipses.boxM()`](https://friendly.github.io/heplots/reference/covEllipses.md)
+  method.
+  [`boxM()`](https://friendly.github.io/heplots/reference/boxM.md) now
+  returns `ngroups` and `means` among it’s components.
+- add [@family](https://github.com/family) tags to improve
+  cross-referencing in documentation
+
 ## Version 1.8.0
 
 - describe more fully constructing the datasets table using concept tags

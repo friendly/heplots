@@ -24,3 +24,11 @@ bbox3d(x, ...)
 
     A 2 x 3 matrix, giving the minimum and maximum values in the rows and x, y, z coordinates
             in the columns.
+
+## See also
+
+Other 3D plotting:
+[`arrow3d()`](https://friendly.github.io/heplots/reference/arrow3d.md),
+[`cross3d()`](https://friendly.github.io/heplots/reference/cross3d.md),
+[`ellipse3d.axes()`](https://friendly.github.io/heplots/reference/ellipse3d.axes.md),
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)

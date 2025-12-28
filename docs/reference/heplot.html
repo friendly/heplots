@@ -17,7 +17,7 @@ measures designs treated from a multivariate perspective."><meta property="og:im
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,6 +71,7 @@ measures designs treated from a multivariate perspective.</p>
 <span>  hyp.labels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  err.label <span class="op">=</span> <span class="st">"Error"</span>,</span>
 <span>  label.pos <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  label.cex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="st">"cex"</span><span class="op">)</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,</span>
 <span>  error.ellipse <span class="op">=</span> <span class="op">!</span><span class="va">add</span>,</span>
 <span>  factor.means <span class="op">=</span> <span class="op">!</span><span class="va">add</span>,</span>
@@ -162,6 +163,10 @@ the ellipse; the value 0 specifies the centroid of the <code>ellipse</code>
 object.  The default, <code>label.pos=NULL</code> uses the correlation of the
 <code>ellipse</code> to determine "top" (r&gt;=0) or "bottom" (r&lt;0).  Even more
 flexible options are described in <code><a href="label.ellipse.html">label.ellipse</a></code></p></dd>
+
+
+<dt id="arg-label-cex">label.cex<a class="anchor" aria-label="anchor" href="#arg-label-cex"></a></dt>
+<dd><p>Character size used for labels for the hypothesis, error ellipses.</p></dd>
 
 
 <dt id="arg-variables">variables<a class="anchor" aria-label="anchor" href="#arg-variables"></a></dt>
@@ -447,10 +452,10 @@ DOI: 10.18637/jss.v037.i04.</p>
 <p>Fox, J., Friendly, M. &amp; Weisberg, S. (2013). Hypothesis Tests for
 Multivariate Linear Models Using the car Package. <em>The R Journal</em>,
 <strong>5</strong>(1),
-<a href="https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf" class="external-link">https://journal.r-project.org/archive/2013-1/fox-friendly-weisberg.pdf</a>.</p>
+<a href="https://journal.r-project.org/articles/RJ-2013-004/RJ-2013-004.pdf" class="external-link">https://journal.r-project.org/articles/RJ-2013-004/RJ-2013-004.pdf</a>.</p>
 <p>Friendly, M. &amp; Sigal, M. (2014) Recent Advances in Visualizing Multivariate
 Linear Models. <em>Revista Colombiana de Estadistica</em>, <strong>37</strong>, 261-283.
-%<a href="http://ref.scielo.org/6gq33g" class="external-link">http://ref.scielo.org/6gq33g</a>.</p>
+DOI: 10.15446/rce.v37n2spe.47934.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -464,7 +469,11 @@ in MLMs.</p>
 <code><a href="label.ellipse.html">label.ellipse</a></code> for labeling positions in plotting H and E
 ellipses.</p>
 <p><code><a href="https://friendly.github.io/candisc/reference/candisc.html" class="external-link">candisc</a></code>, <code><a href="https://friendly.github.io/candisc/reference/heplot.candisc.html" class="external-link">heplot.candisc</a></code> for
-reduced-rank views of <code>mlm</code>s in canonical space.</p></div>
+reduced-rank views of <code>mlm</code>s in canonical space.</p>
+<p>Other HE plot functions:
+<code><a href="heplot1d.html">heplot1d()</a></code>,
+<code><a href="heplot3d.html">heplot3d()</a></code>,
+<code><a href="pairs.mlm.html">pairs.mlm()</a></code></p></div>
     </div>
 
     <div class="section level2">

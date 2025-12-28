@@ -131,6 +131,11 @@ Covariance Matrices. *The American Statistician*, **72**(4);
 
 [`dotchart`](https://rdrr.io/r/graphics/dotchart.html)
 
+Other diagnostic plots:
+[`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md),
+[`distancePlot()`](https://friendly.github.io/heplots/reference/distancePlot.md),
+[`eigstatCI()`](https://friendly.github.io/heplots/reference/eigstatCI.md)
+
 ## Author
 
 Michael Friendly

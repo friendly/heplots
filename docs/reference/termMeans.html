@@ -9,7 +9,7 @@ levels of factor(s) for any term in a multivariate linear model."><meta property
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,26 +105,26 @@ in the model and whose rows correspond to the levels of the factor(s) in the
 <span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Y1</span>,<span class="va">Y2</span><span class="op">)</span> <span class="op">~</span> <span class="va">A</span><span class="op">*</span><span class="va">B</span>, data<span class="op">=</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      Y1    Y2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  9.25  4.25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 18.50  5.75</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 15.50 12.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Y1    Y2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 18.5  5.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 15.5 12.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 10.0  4.00</span>
 <span class="r-in"><span><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A:B"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Y1   Y2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:1  3.0 12.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:1 17.5 11.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:1 14.5 10.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:2 15.5 -3.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:2 19.5  0.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:2 16.5 15.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:1 17.5 11.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:1 14.5 10.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:1 15.5 -3.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:2 19.5  0.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:2 16.5 15.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:2  4.5 11.5</span>
 <span class="r-in"><span><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A:B"</span>, label.factors<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Y1   Y2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A1:B1  3.0 12.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A2:B1 17.5 11.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A3:B1 14.5 10.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A1:B2 15.5 -3.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A2:B2 19.5  0.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A3:B2 16.5 15.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A1:B1 17.5 11.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A2:B1 14.5 10.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A3:B1 15.5 -3.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A1:B2 19.5  0.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A2:B2 16.5 15.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A3:B2  4.5 11.5</span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu">termMeans</span><span class="op">(</span><span class="va">mod</span>, <span class="st">"A:B:C"</span><span class="op">)</span>    <span class="co"># generates an error</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>

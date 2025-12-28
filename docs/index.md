@@ -2,7 +2,7 @@
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.8.0; documentation built for `pkgdown` 2025-12-01
+Version 1.8.0; documentation built for `pkgdown` 2025-12-05
 
 ## Description
 
@@ -18,11 +18,13 @@ one dimension. For the theory and applications, see:
 
 - [Friendly (2007)](http://datavis.ca/papers/jcgs-heplots.pdf) for the
   basic theory on which this is based.
-- [Fox, Friendly and Monette (2009)](NA) for a brief introduction,
+- [Fox, Friendly and Monette
+  (2009)](https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf) for a
+  brief introduction,
 - [Friendly (2010)](http://www.jstatsoft.org/v37/i04/paper) for the
   application of these ideas to repeated measure designs,
 - [Friendly, Monette and Fox
-  (2013)](http://datavis.ca/palers/ellipses-STS402.pdf) for a general
+  (2013)](http://datavis.ca/papers/ellipses-STS402.pdf) for a general
   discussion of the role of elliptical geometry in statistical
   understanding,
 - [Friendly & Sigal (2017)](https://doi.org/10.20982/tqmp.13.1.p020) for
@@ -364,12 +366,12 @@ Statistical Software*, **17**, 1-42.
 
 Friendly, M. (2007). [HE plots for Multivariate General Linear
 Models](http://datavis.ca/papers/jcgs-heplots.pdf). *Journal of
-Computational and Graphical Statistics*, **16**(2) 421-444.
-[DOI](http://dx.doi.org/10.1198/106186007X208407).
+Computational and Graphical Statistics*, **16**(2) 421-444. DOI:
+10.1198/106186007X208407.
 
 Fox, J., Friendly, M. & Monette, G. (2009). [Visualizing hypothesis
 tests in multivariate linear models: The heplots package for
-R](http://datavis.ca/palers/FoxFriendlyMonette-2009.pdf) *Computational
+R](https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf) *Computational
 Statistics*, **24**, 233-246.
 
 Friendly, M. (2010). [HE plots for repeated measures

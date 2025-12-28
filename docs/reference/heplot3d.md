@@ -355,6 +355,17 @@ for details about 3D plots with `rgl`
 [`heplot3d.candisc`](https://friendly.github.io/candisc/reference/heplot.candisc.html)
 for 3D HE plots in canonical space.
 
+Other HE plot functions:
+[`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+[`heplot1d()`](https://friendly.github.io/heplots/reference/heplot1d.md),
+[`pairs.mlm()`](https://friendly.github.io/heplots/reference/pairs.mlm.md)
+
+Other 3D plotting:
+[`arrow3d()`](https://friendly.github.io/heplots/reference/arrow3d.md),
+[`bbox3d()`](https://friendly.github.io/heplots/reference/bbox3d.md),
+[`cross3d()`](https://friendly.github.io/heplots/reference/cross3d.md),
+[`ellipse3d.axes()`](https://friendly.github.io/heplots/reference/ellipse3d.axes.md)
+
 ## Examples
 
 ``` r

@@ -6,6 +6,7 @@
 <url><loc>https://friendly.github.io/heplots/articles/index.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/articles/Robust.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/authors.html</loc></url>
+<url><loc>https://friendly.github.io/heplots/CLAUDE.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/index.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/news/index.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/AddHealth.html</loc></url>
@@ -24,6 +25,7 @@
 <url><loc>https://friendly.github.io/heplots/reference/Diabetes.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/distancePlot.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/dogfood.html</loc></url>
+<url><loc>https://friendly.github.io/heplots/reference/eigstatCI.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/ellipse.axes.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/ellipse.box.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/ellipse3d.axes.html</loc></url>
@@ -62,6 +64,7 @@
 <url><loc>https://friendly.github.io/heplots/reference/Plastic.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/plot.boxM.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/plot.robmlm.html</loc></url>
+<url><loc>https://friendly.github.io/heplots/reference/plot_boxM_boot.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/Pottery2.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/Probe.html</loc></url>
 <url><loc>https://friendly.github.io/heplots/reference/RatWeight.html</loc></url>

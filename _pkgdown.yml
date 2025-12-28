@@ -31,7 +31,7 @@ reference:
     - leveneTests
     - logdetCI
     - plot.boxM
-    - eigstatsCI
+    - eigstatCI
     - plot_boxM_boot
 
   - title: Robust MLMs
