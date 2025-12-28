@@ -123,6 +123,7 @@ Rousseeuw, P. J., Van Driessen, K., Van Aelst, S., & Agullo, J. (2004). Robust m
 
 Other diagnostic plots: 
 \code{\link{cqplot}()},
+\code{\link{eigstatCI}()},
 \code{\link{plot.boxM}()}
 }
 \concept{diagnostic plots}

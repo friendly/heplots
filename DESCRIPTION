@@ -38,7 +38,8 @@ Imports:
     magrittr,
     purrr,
     rgl,
-    tibble
+    tibble,
+    boot
 Suggests:
     candisc,
     carData,

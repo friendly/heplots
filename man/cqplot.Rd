@@ -235,6 +235,7 @@ result for Mahalanobis squared distances of data or residuals;
 
 Other diagnostic plots: 
 \code{\link{distancePlot}()},
+\code{\link{eigstatCI}()},
 \code{\link{plot.boxM}()}
 }
 \author{

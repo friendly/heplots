@@ -116,7 +116,8 @@ Online: \url{https://www.datavis.ca/papers/EqCov-TAS.pdf}.
 
 Other diagnostic plots: 
 \code{\link{cqplot}()},
-\code{\link{distancePlot}()}
+\code{\link{distancePlot}()},
+\code{\link{eigstatCI}()}
 }
 \author{
 Michael Friendly

@@ -85,6 +85,7 @@
 #' }
 #'
 #' @importFrom boot boot boot.ci
+#' @importFrom stats sd
 #' @export
 eigstatCI <- function(Y,
                       group,
