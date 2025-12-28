@@ -31,6 +31,8 @@ reference:
     - leveneTests
     - logdetCI
     - plot.boxM
+    - eigstatsCI
+    - plot_boxM_boot
 
   - title: Robust MLMs
     desc: Robust multivariate linear models

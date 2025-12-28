@@ -1,6 +1,8 @@
 ## Version 1.8.2
 
 * add `eigstatsCI()` to calculate bootstrapped confidence intervals for eigenvalue statistics, as used in `plot.boxM()`
+* added `plot_boxM_boot()` to plot these with bootstrapped CIs
+* added `traceCI()` for use in `plot.boxM()`
 
 ## Version 1.8.1
 
