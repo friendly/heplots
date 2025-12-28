@@ -1,6 +1,6 @@
 # Ask Claude
 
-## predict.mlm
+## `predict.mlm()` method
 
 Goal: Extend the predict methods for linear models to multivariate ones. That is, the function `predict.lm()` 
 provides fitted values and standard errors for observations in any univariate linear model fit by `lm()`.
@@ -17,14 +17,19 @@ as an `se.fit` component. That's because these become $p \times p$ matrices when
 # with the framework for stats::predict.lm
 
 
-## boot_cov.R
+## Bootstrap confidence intervals for functions of eigenvalues 
 
---> dev.boot_cov.R
 
 Help solve the problem described in
 https://stackoverflow.com/questions/45353073/bootstrapping-a-vector-of-results-by-group-in-r
 
-Bootstrapping eigenvalues of grouped covariance matrices, for use in plot.boxM
+Bootstrapping eigenvalues of grouped covariance matrices, for use in plot.boxM().
+That is, in the plot.boxM() function, the default `which = "logDet"` produces confidence
+intervals for each of the groups on this measure. However, analytic confiidence intervals
+aren't available for the other measures. The goal is to generate bootstrap CIs
+for these other measures.
+
+An initial attempt is in the file `dev/boot_cov.R`. Comments there describe the problems I encountered.
 
 ## update for MLMs
 
@@ -44,7 +49,7 @@ either automatically, or by providing a simple getCall() method for that class.
 m <- lm(mpg ~ hp, data=mtcars)
 getCall(m)
 
-## Write a vignette for robust multivariate linear models and visualization
+## Write a vignette for robust multivariate linear models and visualization [DONE]
 
 In the `heplots` package I define a general function `robmlm()` for fitting robust multivariate linear models.
 It uses simple iterative re-weighted least squares (IRLS) using weights proportional to  Mahalanobis squared distances 
@@ -111,7 +116,7 @@ I want to generalize the `label.pos` argument that determines the position on th
 is placed. It currently accepts `0:4` and corresponding compass directions, "C" (center) "N", "S", "E", "W" values.
 I'd like you to add code for another set of compass-like values, `NE`, `SE`, `SW`, `NW` to mean at circular angles 45, 135, 225, 315.
 
-## Fix `boxM`
+## Fix `boxM` [DONE]
 
 The function `boxM()` in this package calculates Box's M test for equality of covariance matrices in a MANOVA model.
 There is a problem, in that it gives `NaN` values if any one or more groups has a singular covariance matrix.
