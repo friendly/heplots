@@ -5,9 +5,12 @@
 library(testthat)
 library(volker)
 
+options(vlkr.na.omit=TRUE)
+
 # Load and recode data
 data <- volker::chatgpt
 data <- volker::data_clean(data)
+
 
 # Get labels
 test_that("Labels are retrieved", {

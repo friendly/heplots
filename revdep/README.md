@@ -10,16 +10,22 @@
 |collate  |English_Canada.utf8                                                                                                                                                                                |
 |ctype    |English_Canada.utf8                                                                                                                                                                                |
 |tz       |America/Toronto                                                                                                                                                                                    |
-|date     |2025-08-06                                                                                                                                                                                         |
-|rstudio  |2024.12.0+467 Kousa Dogwood (desktop)                                                                                                                                                              |
-|pandoc   |3.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)                                                                                                                 |
-|quarto   |ERROR: Unknown command "TMPDIR=C:/Users/friendly/AppData/Local/Temp/RtmpyYkHiV/filed0f47ecc74e1". Did you mean command "install"? @ C:\Users\friendly\AppData\Local\Programs\Quarto\bin\quarto.exe |
+|date     |2025-12-06                                                                                                                                                                                         |
+|rstudio  |2025.09.0+387 Cucumberleaf Sunflower (desktop)                                                                                                                                                     |
+|pandoc   |3.1.2 @ C:\PROGRA~1\Pandoc\pandoc.exe                                                                                                                                                              |
+|quarto   |ERROR: Unknown command "TMPDIR=C:/Users/friendly/AppData/Local/Temp/Rtmp0cUFOr/file1b19022de71c2". Did you mean command "render"? @ C:\Users\friendly\AppData\Local\Programs\Quarto\bin\quarto.exe |
 
 # Dependencies
 
-|package |old   |new   |Δ  |
-|:-------|:-----|:-----|:--|
-|heplots |1.7.5 |1.7.8 |*  |
+|package       |old   |new      |Δ  |
+|:-------------|:-----|:--------|:--|
+|heplots       |1.7.8 |1.8.1    |*  |
+|broom         |NA    |1.0.11   |*  |
+|doBy          |NA    |4.7.1    |*  |
+|htmltools     |NA    |0.5.9    |*  |
+|lme4          |NA    |1.1-38   |*  |
+|RcppArmadillo |NA    |15.2.2-1 |*  |
+|yaml          |NA    |2.3.11   |*  |
 
 # Revdeps
 

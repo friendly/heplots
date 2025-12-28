@@ -230,6 +230,7 @@
 #' \item{radius}{the radius for the unit circles used to generate the ellipses}
 #' }
 #' 
+#' @family HE plot functions
 #' @seealso \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for
 #' details on testing MLMs.
 #' 

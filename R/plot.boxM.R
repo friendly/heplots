@@ -45,10 +45,14 @@
 #' \code{\link{logdetCI}}
 #' @param lwd line width for confidence interval
 #' @param ... Arguments passed down to \code{\link[graphics]{dotchart}}.
+#' 
 #' @author Michael Friendly
+#' 
 #' @seealso \code{\link{boxM}}, \code{\link{logdetCI}}
 #' 
 #' \code{\link[graphics]{dotchart}}
+#' @family diagnostic plots
+#' 
 #' @references 
 #' Cai, T. T., Liang, T., & Zhou, H. H. (2015). 
 #' Law of log determinant of sample covariance matrix and optimal estimation of differential entropy for high-dimensional Gaussian distributions. 

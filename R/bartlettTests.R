@@ -24,7 +24,10 @@
 #' @return An object of classes "anova" and "data.frame", with one observation
 #' for each response variable in `y`. 
 #' @author Michael Friendly
+#' 
 #' @seealso \code{\link{boxM}} for Box's M test for all responses together.
+#' @family homogeneity tests
+#' 
 #' @references 
 #' Bartlett, M. S. (1937). Properties of sufficiency and
 #' statistical tests.  *Proceedings of the Royal Society of London Series

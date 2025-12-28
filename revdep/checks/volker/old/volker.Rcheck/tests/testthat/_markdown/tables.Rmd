@@ -20,6 +20,13 @@ theme_set(theme_bw())
 
 data <- volker::chatgpt
 
+# Test missing values
+# options(vlkr.na.omit=FALSE)
+# data$sd_gender[data$sd_gender == "diverse"] <- NA
+# data$sd_age[data$sd_age == 20] <- NA
+# data$cg_adoption_advantage_01[2] <- NA
+# data$adopter[1] <- NA
+
 ```
 
 ## Categorical variables

@@ -15,14 +15,14 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> #  File tests/nolatent.R in package latentnet, part of the
-> #  Statnet suite of packages for network analysis, https://statnet.org .
+> #  File tests/nolatent.R in package latentnet, part of the Statnet suite of
+> #  packages for network analysis, https://statnet.org .
 > #
-> #  This software is distributed under the GPL-3 license.  It is free,
-> #  open source, and has the attribution requirements (GPL Section 7) at
+> #  This software is distributed under the GPL-3 license.  It is free, open
+> #  source, and has the attribution requirements (GPL Section 7) at
 > #  https://statnet.org/attribution .
 > #
-> #  Copyright 2003-2024 Statnet Commons
+> #  Copyright 2003-2025 Statnet Commons
 > ################################################################################
 > library(latentnet)
 Loading required package: network
@@ -34,7 +34,7 @@ Loading required package: network
 
 Loading required package: ergm
 
-'ergm' 4.9.0 (2025-06-09), part of the Statnet Project
+'ergm' 4.10.1 (2025-08-26), part of the Statnet Project
 * 'news(package="ergm")' for changes since last version
 * 'citation("ergm")' for citation information
 * 'https://statnet.org' for help, support, and other information
@@ -44,12 +44,15 @@ changes. Please type 'news(package="ergm")' for a list of major
 changes.
 
 
-'latentnet' 2.11.0 (2024-02-19), part of the Statnet Project
+'latentnet' 2.12.0 (2025-09-11), part of the Statnet Project
 * 'news(package="latentnet")' for changes since last version
 * 'citation("latentnet")' for citation information
 * 'https://statnet.org' for help, support, and other information
 NOTE: BIC calculation prior to latentnet 2.7.0 had a bug in the calculation of the effective number of parameters. See help(summary.ergmm) for details.
 NOTE: Prior to version 2.8.0, handling of fixed effects for directed networks had a bug: the covariate matrix was transposed.
+Warning messages:
+1: package 'network' was built under R version 4.5.2 
+2: package 'ergm' was built under R version 4.5.2 
 > library(statnet.common)
 
 Attaching package: 'statnet.common'
@@ -58,6 +61,8 @@ The following objects are masked from 'package:base':
 
     attr, order, replace
 
+Warning message:
+package 'statnet.common' was built under R version 4.5.2 
 > 
 > data(sampson)
 > 
@@ -66,17 +71,17 @@ The following objects are masked from 'package:base':
 Chain 1 
 Lag 0 
                   lpY     beta.1     beta.2 receiver.1
-lpY         1.0000000 -0.1127681  0.1530891  0.3639174
-beta.1     -0.1127681  1.0000000 -0.5225309 -0.4575255
-beta.2      0.1530891 -0.5225309  1.0000000  0.2153718
-receiver.1  0.3639174 -0.4575255  0.2153718  1.0000000
+lpY         1.0000000 -0.1273394  0.1893021  0.4007383
+beta.1     -0.1273394  1.0000000 -0.5560017 -0.4495447
+beta.2      0.1893021 -0.5560017  1.0000000  0.2689288
+receiver.1  0.4007383 -0.4495447  0.2689288  1.0000000
 
 Lag 10 
                    lpY      beta.1      beta.2  receiver.1
-lpY         0.11521651 -0.06765017  0.09795581  0.06614087
-beta.1     -0.04534282  0.29532511 -0.14443281 -0.17068831
-beta.2      0.05874262 -0.14792290  0.28168528  0.07317084
-receiver.1  0.06338551 -0.22857385  0.15235387  0.20942279
+lpY         0.10069479 -0.07700462  0.09176612  0.06242638
+beta.1     -0.04795985  0.31681993 -0.18640734 -0.20419772
+beta.2      0.07879028 -0.21490136  0.33086138  0.14090726
+receiver.1  0.09229687 -0.20355952  0.14949582  0.19129146
 
 [[1]]
 
@@ -86,10 +91,10 @@ Probability (s) = 0.95
                                                   
             Burn-in  Total Lower bound  Dependence
             (M)      (N)   (Nmin)       factor (I)
- lpY        20       6330  600          10.6      
- beta.1     50       8670  600          14.4      
- beta.2     40       7800  600          13.0      
- receiver.1 20       6210  600          10.4      
+ lpY        20       6080  600          10.1      
+ beta.1     40       8310  600          13.8      
+ beta.2     40       7970  600          13.3      
+ receiver.1 30       7030  600          11.7      
 
 
 > 
@@ -106,20 +111,20 @@ Model:     Bernoulli
 MCMC sample of size 4000, draws are 10 iterations apart, after burnin of 10000 iterations.
 Covariate coefficients posterior means:
                 Estimate    2.5%   97.5% 2*min(Pr(>0),Pr(<0))    
-(Intercept)      -2.2845 -3.0025 -1.6648            < 2.2e-16 ***
-nodematch.group   3.0478  2.3690  3.7476            < 2.2e-16 ***
+(Intercept)      -2.2756 -3.0181 -1.6437            < 2.2e-16 ***
+nodematch.group   3.0550  2.3613  3.7719            < 2.2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Receiver effect variance: 1.012453.
-Overall BIC:        288.9866 
-Likelihood BIC:     245.7261 
-Receiver effect BIC:     43.26052 
+Receiver effect variance: 1.002928.
+Overall BIC:        288.735 
+Likelihood BIC:     245.6787 
+Receiver effect BIC:     43.05627 
 
 Covariate coefficients MKL:
-                Estimate
-(Intercept)     -1.84860
-nodematch.group  2.85942
+                 Estimate
+(Intercept)     -1.866498
+nodematch.group  2.866681
 
 
 > # Should produce a meaningful error message.
@@ -164,4 +169,4 @@ Some non-latent-space test(s) skipped. Set ENABLE_statnet_TESTS environment vari
 > 
 > proc.time()
    user  system elapsed 
-  12.29    1.14   13.71 
+   3.28    0.40    3.68 

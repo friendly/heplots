@@ -120,4 +120,9 @@ Rousseeuw, P. J., Van Driessen, K., Van Aelst, S., & Agullo, J. (2004). Robust m
 }
 \seealso{
 \code{\link{Mahalanobis}}
+
+Other diagnostic plots: 
+\code{\link{cqplot}()},
+\code{\link{plot.boxM}()}
 }
+\concept{diagnostic plots}

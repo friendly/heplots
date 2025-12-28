@@ -45,6 +45,7 @@ covEllipses             Draw classical and robust covariance ellipses
 cqplot                  Chi Square Quantile-Quantile plots
 cross3d                 Draw a 3D cross in an rgl scene
 df.terms                Find degrees of freedom for model terms
+distancePlot            Distance Plot for Multivariate Model Diagnosis
 dogfood                 Dogfood Preferences
 ellipse.axes            Draw Axes of a 2D Covariance Ellipse
 ellipse.box             Draw Conjugate Axes and Parallelogram
@@ -77,6 +78,8 @@ peng                    Size measurements for penguins near Palmer
 plot.boxM               Plot for Box's M test and generalizations
 plot.robmlm             Plot observation weights from a robust
                         multivariate linear models
+rel_diff                Relative Difference between two Arrays or Data
+                        Frames
 robmlm                  Robust Fitting of Multivariate Linear Models
 schooldata              School Data
 schoolsites             Schooldata Sites

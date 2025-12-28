@@ -9,7 +9,7 @@
 * using options '--no-manual --no-build-vignettes'
 * checking for file 'candisc/DESCRIPTION' ... OK
 * checking extension type ... Package
-* this is package 'candisc' version '0.9.0'
+* this is package 'candisc' version '1.1.0'
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... OK
@@ -18,7 +18,10 @@
 * checking for executable files ... OK
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
-* checking whether package 'candisc' can be installed ... OK
+* checking whether package 'candisc' can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package 'broom' was built under R version 4.5.2
+See 'C:/R/Projects/heplots/revdep/checks/candisc/new/candisc.Rcheck/00install.out' for details.
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking 'build' directory ... OK
@@ -54,10 +57,13 @@
 * checking installed files from 'inst/doc' ... OK
 * checking files in 'vignettes' ... OK
 * checking examples ... OK
+* checking for unstated dependencies in 'tests' ... OK
+* checking tests ... OK
+  Running 'testthat.R'
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes ... OK
 * checking running R code from vignettes ... OK
   'diabetes.Rmd' using 'UTF-8'... OK
 * checking re-building of vignette outputs ... SKIPPED
 * DONE
-Status: OK
+Status: 1 WARNING

@@ -21,3 +21,11 @@ Ellipsoids are created by \pkg{rgl} functions as meshes of points, segments, ...
 in various forms. This function calculates the bounding box, defined as the range of the
 x, y, and z coordinates.
 }
+\seealso{
+Other 3D plotting: 
+\code{\link{arrow3d}()},
+\code{\link{cross3d}()},
+\code{\link{ellipse3d.axes}()},
+\code{\link{heplot3d}()}
+}
+\concept{3D plotting}

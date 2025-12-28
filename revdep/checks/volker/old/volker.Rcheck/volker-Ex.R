@@ -63,6 +63,73 @@ volker::add_index(ds, starts_with("cg_adoption"))
 
 
 cleanEx()
+nameEx("add_model")
+### * add_model
+
+flush(stderr()); flush(stdout())
+
+### Name: add_model
+### Title: Add a column with predicted values from a regression model
+### Aliases: add_model
+### Keywords: internal
+
+### ** Examples
+
+library(volker)
+data <- filter(volker::chatgpt, sd_gender != "diverse")
+
+data <- data |>
+  add_model(use_work, categorical = c(sd_gender, adopter), metric = sd_age)
+
+
+
+
+cleanEx()
+nameEx("agree_tab")
+### * agree_tab
+
+flush(stderr()); flush(stdout())
+
+### Name: agree_tab
+### Title: Agreement for multiple items
+### Aliases: agree_tab
+### Keywords: internal
+
+### ** Examples
+
+library(dplyr)
+library(volker)
+
+data <- volker::chatgpt
+
+# Prepare example data.
+# First, recode "x" to TRUE/FALSE for the first coder's sample.
+data_coder1 <- data |>
+  mutate(across(starts_with("cg_act_"), ~ ifelse(is.na(.), FALSE, TRUE))) %>%
+  mutate(coder = "coder one")
+
+# Second, recode using a dictionary approach for the second coder's sample.
+data_coder2 <- data |>
+  mutate(across(starts_with("cg_act_"), ~ ifelse(is.na(.), FALSE, TRUE))) %>%
+  mutate(cg_act_write = grepl("write|text|translate", tolower(cg_activities))) %>%
+  mutate(coder="coder two")
+
+data_coded <- bind_rows(
+  data_coder1,
+  data_coder2
+)
+
+# Reliability coefficients are strictly only appropriate for manual codings
+agree_tab(data_coded, cg_act_write,  coder, case, method = "reli")
+
+# Better use classification performance indicators to compare the
+# dictionary approach with human coding
+agree_tab(data_coded, cg_act_write,  coder, case, method = "class")
+
+
+
+
+cleanEx()
 nameEx("cluster_plot")
 ### * cluster_plot
 
@@ -176,6 +243,101 @@ data_prepare(data, sd_age, sd_gender)
 
 
 cleanEx()
+nameEx("diagnostics_cooksd")
+### * diagnostics_cooksd
+
+flush(stderr()); flush(stdout())
+
+### Name: diagnostics_cooksd
+### Title: Cook's distance plot
+### Aliases: diagnostics_cooksd
+### Keywords: internal
+
+### ** Examples
+
+library(volker)
+data <- filter(volker::chatgpt, sd_gender != "diverse")
+
+data <- add_model(data, use_work, metric = sd_age)
+
+fit <- attr(data$prd_use_work, "lm.fit")
+diagnostics_cooksd(fit)
+
+
+
+
+cleanEx()
+nameEx("diagnostics_qq")
+### * diagnostics_qq
+
+flush(stderr()); flush(stdout())
+
+### Name: diagnostics_qq
+### Title: Normal Q-Q
+### Aliases: diagnostics_qq
+### Keywords: internal
+
+### ** Examples
+
+library(volker)
+data <- filter(volker::chatgpt, sd_gender != "diverse")
+
+data <- add_model(data, use_work, metric = sd_age)
+
+fit <- attr(data$prd_use_work, "lm.fit")
+diagnostics_qq(fit)
+
+
+
+
+cleanEx()
+nameEx("diagnostics_resid_fitted")
+### * diagnostics_resid_fitted
+
+flush(stderr()); flush(stdout())
+
+### Name: diagnostics_resid_fitted
+### Title: Residuals vs Fitted plot
+### Aliases: diagnostics_resid_fitted
+### Keywords: internal
+
+### ** Examples
+
+library(volker)
+data <- filter(volker::chatgpt, sd_gender != "diverse")
+
+data <- add_model(data, use_work, metric = sd_age)
+
+fit <- attr(data$prd_use_work, "lm.fit")
+diagnostics_resid_fitted(fit)
+
+
+
+cleanEx()
+nameEx("diagnostics_scale_location")
+### * diagnostics_scale_location
+
+flush(stderr()); flush(stdout())
+
+### Name: diagnostics_scale_location
+### Title: Scale-Location (Spread-Location)
+### Aliases: diagnostics_scale_location
+### Keywords: internal
+
+### ** Examples
+
+library(volker)
+data <- filter(volker::chatgpt, sd_gender != "diverse")
+
+data <- add_model(data, use_work, metric = sd_age)
+
+fit <- attr(data$prd_use_work, "lm.fit)
+diagnostics_scale_location(fit")
+
+
+
+
+cleanEx()
 nameEx("effect_counts")
 ### * effect_counts
 
@@ -212,6 +374,56 @@ library(volker)
 data <- volker::chatgpt
 
 effect_counts_items(data, starts_with("cg_adoption_adv"))
+
+
+
+
+cleanEx()
+nameEx("effect_counts_items_grouped")
+### * effect_counts_items_grouped
+
+flush(stderr()); flush(stdout())
+
+### Name: effect_counts_items_grouped
+### Title: Effect size and test for comparing multiple variables by a
+###   grouping variable
+### Aliases: effect_counts_items_grouped
+### Keywords: internal
+
+### ** Examples
+
+library(volker)
+data <- volker::chatgpt
+
+effect_counts_items_grouped(
+  data, starts_with("cg_adoption_adv"),  sd_gender
+)
+
+
+
+
+cleanEx()
+nameEx("effect_counts_items_grouped_items")
+### * effect_counts_items_grouped_items
+
+flush(stderr()); flush(stdout())
+
+### Name: effect_counts_items_grouped_items
+### Title: Effect size and test for comparing multiple variables by
+###   multiple grouping variables
+### Aliases: effect_counts_items_grouped_items
+### Keywords: internal
+
+### ** Examples
+
+library(volker)
+data <- volker::chatgpt
+
+effect_counts(
+  data,
+  starts_with("cg_adoption_adv"),
+  starts_with("use_")
+)
 
 
 
@@ -640,7 +852,7 @@ flush(stderr()); flush(stdout())
 
 ### Name: model_metrics_plot
 ### Title: Plot regression coefficients
-### Aliases: model_metrics_plot
+### Aliases: model_metrics_plot model_plot
 ### Keywords: internal
 
 ### ** Examples
@@ -664,7 +876,7 @@ flush(stderr()); flush(stdout())
 ### Name: model_metrics_tab
 ### Title: Output a regression table with estimates and macro statistics
 ###   for multiple categorical or metric independent variables
-### Aliases: model_metrics_tab
+### Aliases: model_metrics_tab model_tab
 ### Keywords: internal
 
 ### ** Examples
@@ -798,6 +1010,32 @@ plot_counts_items_grouped(
 plot_counts_items_grouped(
   data, starts_with("cg_adoption_"), adopter,
   category=c(4,5)
+)
+
+
+
+
+cleanEx()
+nameEx("plot_counts_items_grouped_items")
+### * plot_counts_items_grouped_items
+
+flush(stderr()); flush(stdout())
+
+### Name: plot_counts_items_grouped_items
+### Title: Correlation of categorical items with categorical items
+### Aliases: plot_counts_items_grouped_items
+### Keywords: internal
+
+### ** Examples
+
+library(volker)
+data <- volker::chatgpt
+
+plot_counts_items_grouped_items(
+  data,
+  starts_with("cg_adoption_advantage"),
+  starts_with("cg_adoption_fearofuse"),
+  method ="cramer"
 )
 
 

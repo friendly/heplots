@@ -183,6 +183,7 @@ Loading required package: nlme
 +     detach(package:lme4)
 + }
 Loading required package: lme4
+Warning: package 'lme4' was built under R version 4.5.2
 Loading required package: Matrix
 > 
 > 
@@ -198,7 +199,9 @@ Loading required package: Matrix
 +     detach(package:heplots)
 + }
 Loading required package: heplots
+Warning: package 'heplots' was built under R version 4.5.2
 Loading required package: broom
+Warning: package 'broom' was built under R version 4.5.2
 > 
 > # svyglm() example (adapting an example from the survey package)
 > 
@@ -1391,7 +1394,7 @@ $extraversion
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  27.43 3.25 37.55 NA NA 
+Time elapsed:  3.55 0.4 4.11 NA NA 
 > grDevices::dev.off()
 null device 
           1 

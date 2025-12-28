@@ -33,8 +33,11 @@
 #' @return Returns a 6 x 3 matrix containing the end points of the three axis
 #'         lines in pairs by rows.
 #' @author Michael Friendly
+#' 
 #' @seealso \code{\link[rgl:points3d]{segments3d}},
 #' \code{\link[rgl:texts]{text3d}}, \code{\link[rgl]{ellipse3d}}
+#' @family covariance ellipses
+#' @family 3D plotting
 #' @keywords aplot dynamic
 #' @examples
 #' 
