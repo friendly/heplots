@@ -46,6 +46,7 @@
 #' @param ncpus Number of CPUs to use if parallel=TRUE. Default is 2.
 #' @param seed Random seed for reproducibility. If NULL, no seed is set.
 #' @param ... Additional arguments (currently unused)
+#' @family diagnostic plots
 #'
 #' @return A data frame with one row for each group plus the pooled data.
 #'         Columns include:

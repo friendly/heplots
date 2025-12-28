@@ -3,6 +3,9 @@
 # This script demonstrates how to use the eigstatCI() function to compute
 # bootstrap confidence intervals for eigenvalue-based statistics
 # in the context of Box's M test.
+#
+# DONE: ✔️ Fixed plot_with_boot_ci() to show group labels on y-axis 12/28/2024
+# DONE: ✔️ Fixed plot_with_boot_ci() CI alignment - reorder CI bounds and points to match yorder 12/28/2024
 
 library(heplots)
 library(boot)
@@ -106,13 +109,14 @@ plot_with_boot_ci <- function(boxm_obj, ci_data, gplabel = NULL, main = NULL) {
   xlim <- range(c(ci_data$lower, ci_data$upper), na.rm = TRUE)
 
   dotchart(measure[yorder],
+           labels = ci_data$group[yorder],
            xlab = paste(which_stat, "of eigenvalues"),
            xlim = xlim,
            main = main)
 
   # Add bootstrap CIs as arrows
-  arrows(ci_data$lower, yorder,
-         ci_data$upper, yorder,
+  arrows(ci_data$lower[yorder], yorder,
+         ci_data$upper[yorder], yorder,
          lwd = 2, angle = 90, length = 0.075, code = 3,
          col = "gray50")
 
@@ -120,7 +124,7 @@ plot_with_boot_ci <- function(boxm_obj, ci_data, gplabel = NULL, main = NULL) {
   pch <- c(rep(16, ng), 15)
   cex <- c(rep(2, ng), 2.5)
   col <- c(rep("blue", ng), "red")
-  points(measure, yorder, cex = cex, pch = pch, col = col)
+  points(measure[yorder], yorder, cex = cex, pch = pch, col = col)
 
   # Add group label
   if (!is.null(gplabel)) {

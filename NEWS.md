@@ -1,3 +1,7 @@
+## Version 1.8.2
+
+* add `eigstatsCI()` to calculate bootstraped confidence intervals for eigenvalue statistics, as used in `plot.boxM()`
+
 ## Version 1.8.1
 
 This is a large cumulative release of several versions since the last CRAN release.

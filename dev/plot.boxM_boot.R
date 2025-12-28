@@ -3,6 +3,10 @@
 # This is a prototype modification of plot.boxM() that integrates
 # bootstrap confidence intervals for eigenvalue statistics.
 #
+# DONE: ✔️ Fixed dotchart labels - now shows group names on y-axis 12/28/2024
+# DONE: ✔️ Fixed CI alignment - reorder CI bounds and points to match yorder 12/28/2024
+# DONE: ✔️ Fixed pooled CI alignment - use CI$statistic instead of eigstats measure 12/28/2024
+#
 # Usage:
 #   source("dev/eigstatCI.R")
 #   source("dev/plot.boxM_with_bootstrap.R")
@@ -129,6 +133,7 @@ plot_boxM_boot <- function(x,
 
   # ============================================================================
   # Set up plot dimensions
+  # NOTE: ng is computed here, but may be updated after bootstrap CI computation
   # ============================================================================
 
   ng <- length(measure) - 1
@@ -183,6 +188,14 @@ plot_boxM_boot <- function(x,
         CI$upper <- log(CI$upper)
       }
 
+      # IMPORTANT: Use bootstrap statistic as the measure to plot
+      # This ensures perfect alignment between points and CIs
+      measure <- CI$statistic
+      names(measure) <- CI$group
+
+      # Recalculate ng in case measure length changed
+      ng <- length(measure) - 1
+
       # Update xlim to include CIs
       xlim[1] <- min(xlim[1], CI$lower, na.rm = TRUE)
       xlim[2] <- max(xlim[2], CI$upper, na.rm = TRUE)
@@ -195,15 +208,23 @@ plot_boxM_boot <- function(x,
 
   yorder <- if (rev) c(ng:1, ng + 1) else 1:(ng + 1)
 
+  # Get labels from measure names if available, or from CI data if bootstrap was used
+  if (!is.null(CI)) {
+    labels <- CI$group[yorder]
+  } else {
+    labels <- names(measure)[yorder]
+  }
+
   dotchart(measure[yorder],
+           labels = labels,
            xlab = xlab,
            xlim = xlim,
            ...)
 
   # Add confidence intervals
   if (conf > 0 && !is.null(CI)) {
-    arrows(CI$lower, yorder,
-           CI$upper, yorder,
+    arrows(CI$lower[yorder], yorder,
+           CI$upper[yorder], yorder,
            lwd = lwd,
            angle = 90,
            length = 0.075,
@@ -212,7 +233,7 @@ plot_boxM_boot <- function(x,
   }
 
   # Add points on top of CI bars
-  points(measure, yorder,
+  points(measure[yorder], yorder,
          cex = c(rep(cex[1], ng), cex[2]),
          pch = c(rep(pch[1], ng), pch[2]),
          col = c(rep(col[1], ng), col[2]))
@@ -265,7 +286,9 @@ if (FALSE) {  # Set to TRUE to run examples
   plot_boxM_boot(iris.boxm, Y = iris[, 1:4], group = iris$Species,
                  which = "sum", gplabel = "Species",
                  main = "Sum (bootstrap CI)", boot.R = 500)
-
+  
+  
+  
   # Skulls data
   data(Skulls)
   skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data = Skulls)

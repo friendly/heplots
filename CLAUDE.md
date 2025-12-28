@@ -123,6 +123,10 @@ When there are long lines, e.g., in an `@param`, I prefer them to be wrapped at 
 #' @export
 ```
 
+#### @rdname
+
+When multiple functions are documented in a single R file, use `@rdname` for all after the first with the same name as the first.
+
 ### Error Handling and Validation
 
 Provide clear, informative error messages. When possible, include information about what in the arguments
