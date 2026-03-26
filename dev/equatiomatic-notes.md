@@ -152,34 +152,44 @@ preds  <- colnames(B)
 
 ```r
 extract_eq.mlm <- function(model,
-                            response_form   = c("bold", "pmatrix", "bmatrix"),
-                            use_coefs       = FALSE,
-                            dots_threshold  = 3,
-                            coef_digits     = 2,
+                            response_form    = c("bold", "pmatrix", "bmatrix"),
+                            use_coefs        = FALSE,
+                            use_generic_names = FALSE,
+                            dots_threshold   = 3,
+                            coef_digits      = 2,
                             ...) { ... }
 ```
 
-`...` is passed to `equatiomatic::extract_eq()` for the prototype lm (for
-arguments like `wrap`, `greek_colors`, `var_colors`, etc.) **except** when
-`use_coefs = TRUE`, where the coefficient display is built directly.
+- `response_form`: controls LHS layout.
+- `use_coefs`: if `TRUE`, build full **B** matrix display from scratch using
+  `signif(coef(model), coef_digits)`, bypassing equatiomatic's `use_coefs`.
+- `use_generic_names`: `FALSE` (default) or character vector `"response"`,
+  `"predictors"`, or both — substitutes `y_j` / `x_j` generic labels.
+- `dots_threshold`: number of rows/cols to show before inserting `\vdots`/
+  `\cdots`/`\ddots`. Applied to both **B** matrix and predictor vector.
+- `...` passed to `equatiomatic::extract_eq()` on the prototype lm (e.g.,
+  `wrap`, `greek_colors`, `var_colors`) except when `use_coefs = TRUE`.
 
 ---
 
+## Resolved: additional details
+
+- **Underscores in names**: substitute `.` for `_` in both response and
+  predictor names (consistent with how nestedLogit handles this). So
+  `reaction_time` → `\mathbf{reaction.time}`.
+
+- **Generic labels**: `use_generic_names = FALSE` (default — use actual names).
+  Accepts a character vector to select which to genericise:
+  - `use_generic_names = "response"` → `\mathbf{y}_1, \mathbf{y}_2, \ldots`
+  - `use_generic_names = "predictors"` → `\boldsymbol{\beta}_1, \boldsymbol{\beta}_2, \ldots`
+    with `x_1, x_2, \ldots` for predictor names
+  - `use_generic_names = c("response", "predictors")` → both
+  This allows e.g. a paper to show a clean symbolic form without variable names.
+
+- **Coefficient precision**: use `signif(B, coef_digits)` (significant figures,
+  not decimal places). Default `coef_digits = 2`.
+
 ## Still to clarify
-
-- **Exact LHS label style**: `\mathbf{read}` uses the variable name verbatim —
-  should subscripts in variable names be escaped? (e.g. `y_1` → needs
-  `\mathbf{y_1}` which LaTeX renders as "y" with subscript "1", which is fine
-  in math mode; but `\mathbf{reaction_time}` would give subscript "time").
-  Possibly sanitize by replacing `_` with `\_` inside `\mathbf{}`, or
-  substitute `.` for `_` (as nestedLogit does).
-
-- **Generic labels option**: Should there be a `use_response_names = FALSE`
-  option that substitutes `\mathbf{y}_1, \mathbf{y}_2, \ldots` instead of
-  the actual variable names?
-
-- **Coefficient rounding**: `coef_digits` arg for `round(B, coef_digits)`.
-  Default 2 or 3?-- Use `coef_digits = 2`.
 
 - **`wrap` interaction**: when `wrap = TRUE` is passed through to the prototype
   `lm()` equation, does the post-processing still work cleanly on the multiline
