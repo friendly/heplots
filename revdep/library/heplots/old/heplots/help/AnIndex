@@ -30,6 +30,10 @@ cross3d	cross3d
 df.terms	df.terms
 df.terms.default	df.terms
 Diabetes	Diabetes
+distancePlot	distancePlot
+distancePlot.default	distancePlot
+distancePlot.formula	distancePlot
+distancePlot.mlm	distancePlot
 dogfood	dogfood
 ellipse.axes	ellipse.axes
 ellipse.box	ellipse.box
@@ -92,6 +96,7 @@ Probe1	Probe
 Probe2	Probe
 RatWeight	RatWeight
 ReactTime	ReactTime
+rel_diff	rel_diff
 robmlm	robmlm
 robmlm.default	robmlm
 robmlm.formula	robmlm

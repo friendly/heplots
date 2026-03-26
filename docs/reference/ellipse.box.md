@@ -66,6 +66,13 @@ ellipse.box(
 
 Invisibly returns a 2 column matrix containing the end points of lines.
 
+## See also
+
+Other covariance ellipses:
+[`covEllipses()`](https://friendly.github.io/heplots/reference/covEllipses.md),
+[`ellipse.axes()`](https://friendly.github.io/heplots/reference/ellipse.axes.md),
+[`ellipse3d.axes()`](https://friendly.github.io/heplots/reference/ellipse3d.axes.md)
+
 ## Examples
 
 ``` r

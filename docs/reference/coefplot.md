@@ -170,7 +170,10 @@ Returns invisibly a list of the coordinates of the ellipses drawn
 
 ## See also
 
-[`confidenceEllipse`](https://rdrr.io/pkg/car/man/Ellipses.html),
+[`confidenceEllipse`](https://rdrr.io/pkg/car/man/Ellipses.html)
+
+Other multivariate linear models:
+[`glance.mlm()`](https://friendly.github.io/heplots/reference/glance.mlm.md)
 
 ## Author
 

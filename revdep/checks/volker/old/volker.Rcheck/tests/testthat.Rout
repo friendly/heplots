@@ -24,6 +24,8 @@ Type 'q()' to quit R.
 > # * https://testthat.r-lib.org/reference/test_package.html#special-files
 > 
 > library(testthat)
+Warning message:
+package 'testthat' was built under R version 4.5.2 
 > library(volker)
 
 Attaching package: 'volker'
@@ -39,7 +41,7 @@ The following object is masked from 'package:stats':
 processing file: tables.Rmd
 output file: tables.knit.md
 
-"C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS tables.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output tables.html --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --section-divs --template "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmd\h\default.html" --highlight-style pygments --css "C:/R/Projects/heplots/revdep/library/volker/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css" --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\friendly\AppData\Local\Temp\Rtmpsvp8id\rmarkdown-stre7e466cc54f2.html" 
+"C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS tables.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output tables.html --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --section-divs --template "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmd\h\default.html" --highlight-style pygments --css "C:/R/Projects/heplots/revdep/library/volker/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css" --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\friendly\AppData\Local\Temp\RtmpYbiogN\rmarkdown-stre6e0624eb82.html" 
 
 Output created: tables.html
 
@@ -47,7 +49,7 @@ Output created: tables.html
 processing file: plots.Rmd
 output file: plots.knit.md
 
-"C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS plots.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output plots.html --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --section-divs --template "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmd\h\default.html" --highlight-style pygments --css "C:/R/Projects/heplots/revdep/library/volker/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css" --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\friendly\AppData\Local\Temp\Rtmpsvp8id\rmarkdown-stre7e477c3509d.html" 
+"C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS plots.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output plots.html --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --section-divs --template "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmd\h\default.html" --highlight-style pygments --css "C:/R/Projects/heplots/revdep/library/volker/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css" --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\friendly\AppData\Local\Temp\RtmpYbiogN\rmarkdown-stre6e050751269.html" 
 
 Output created: plots.html
 
@@ -55,18 +57,20 @@ Output created: plots.html
 processing file: reports.Rmd
 output file: reports.knit.md
 
-"C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS reports.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output reports.html --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\latex-div.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --template "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --variable theme=bootstrap --css "C:/R/Projects/heplots/revdep/checks/volker/old/volker.Rcheck/volker/extdata/styles.css" --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\friendly\AppData\Local\Temp\Rtmpsvp8id\rmarkdown-stre7e4111a79be.html" 
+"C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc" +RTS -K512m -RTS reports.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output reports.html --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\pagebreak.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\latex-div.lua" --lua-filter "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmarkdown\lua\table-classes.lua" --embed-resources --standalone --variable bs3=TRUE --section-divs --template "C:\R\Projects\heplots\revdep\library\volker\rmarkdown\rmd\h\default.html" --no-highlight --variable highlightjs=1 --variable theme=bootstrap --css "C:/R/Projects/heplots/revdep/checks/volker/old/volker.Rcheck/volker/extdata/styles.css" --mathjax --variable "mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" --include-in-header "C:\Users\friendly\AppData\Local\Temp\RtmpYbiogN\rmarkdown-stre6e065b23603.html" 
 
 Output created: reports.html
-[ FAIL 0 | WARN 0 | SKIP 8 | PASS 131 ]
+[ FAIL 0 | WARN 1 | SKIP 11 | PASS 165 ]
 
-══ Skipped tests (8) ═══════════════════════════════════════════════════════════
-• On CRAN (8): 'test-clusters.R:22:3', 'test-factors.R:14:3',
-  'test-idx.R:13:3', 'test-idx.R:22:3', 'test-idx.R:48:3',
-  'test-tables.R:112:3', 'test-tables.R:329:3', 'test_skim.R:17:3'
+══ Skipped tests (11) ══════════════════════════════════════════════════════════
+• On CRAN (9): 'test-clusters.R:5:1', 'test-clusters.R:20:1',
+  'test-factors.R:5:1', 'test-factors.R:18:1', 'test-idx.R:12:1',
+  'test-idx.R:21:1', 'test-idx.R:31:1', 'test-idx.R:60:1', 'test_skim.R:16:1'
+• R_LOCALTESTS not set; skipping visual tests. (1): 'test-plots.R:216:3'
+• empty test (1):
 
-[ FAIL 0 | WARN 0 | SKIP 8 | PASS 131 ]
+[ FAIL 0 | WARN 1 | SKIP 11 | PASS 165 ]
 > 
 > proc.time()
    user  system elapsed 
- 171.12    7.01  240.32 
+  58.14    2.06   77.46 

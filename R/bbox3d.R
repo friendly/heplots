@@ -11,8 +11,11 @@
 #' @param ...  ignored
 #' 
 #' @importFrom rgl asEuclidean
+#' 
 #' @return     A 2 x 3 matrix, giving the minimum and maximum values in the rows and x, y, z coordinates
 #'             in the columns.
+#'             
+#' @family 3D plotting
 #' @export
 bbox3d <- function(x, ...) {
   if (!inherits(x, "mesh3d"))

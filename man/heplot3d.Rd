@@ -277,7 +277,20 @@ for \code{mlm} objects
 \code{\link[rgl]{rgl-package}}, for details about 3D plots with \code{rgl}
 
 \code{\link[candisc]{heplot3d.candisc}} for 3D HE plots in canonical space.
+
+Other HE plot functions: 
+\code{\link{heplot}()},
+\code{\link{heplot1d}()},
+\code{\link{pairs.mlm}()}
+
+Other 3D plotting: 
+\code{\link{arrow3d}()},
+\code{\link{bbox3d}()},
+\code{\link{cross3d}()},
+\code{\link{ellipse3d.axes}()}
 }
+\concept{3D plotting}
+\concept{HE plot functions}
 \keyword{aplot}
 \keyword{dynamic}
 \keyword{hplot}

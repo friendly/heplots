@@ -3,103 +3,106 @@
     Code
       print(volker::codebook(data), n = Inf)
     Output
-      # A tibble: 94 x 6
+      # A tibble: 97 x 6
          item_name             item_group item_class item_label value_name value_label
          <chr>                 <chr>      <chr>      <chr>      <chr>      <chr>      
        1 case                  case       numeric    case       <NA>       <NA>       
        2 sd_age                sd         numeric    Age        <NA>       <NA>       
        3 cg_activities         cg         character  Activitie~ <NA>       <NA>       
-       4 adopter               adopter    factor     Innovator~ I try new~ I try new ~
-       5 adopter               adopter    factor     Innovator~ I try new~ I try new ~
-       6 adopter               adopter    factor     Innovator~ I wait un~ I wait unt~
-       7 adopter               adopter    factor     Innovator~ I only us~ I only use~
-       8 adopter               adopter    factor     Innovator~ [no answe~ [no answer]
-       9 sd_gender             sd         factor     Gender     female     female     
-      10 sd_gender             sd         factor     Gender     male       male       
-      11 sd_gender             sd         factor     Gender     diverse    diverse    
-      12 sd_gender             sd         factor     Gender     [no answe~ [no answer]
-      13 use_private           use        numeric    Usage: in~ 1          never      
-      14 use_private           use        numeric    Usage: in~ 2          rarely     
-      15 use_private           use        numeric    Usage: in~ 3          several ti~
-      16 use_private           use        numeric    Usage: in~ 4          several ti~
-      17 use_private           use        numeric    Usage: in~ 5          almost dai~
-      18 use_work              use        numeric    Usage: in~ 1          never      
-      19 use_work              use        numeric    Usage: in~ 2          rarely     
-      20 use_work              use        numeric    Usage: in~ 3          several ti~
-      21 use_work              use        numeric    Usage: in~ 4          several ti~
-      22 use_work              use        numeric    Usage: in~ 5          almost dai~
-      23 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
-      24 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
-      25 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
-      26 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
-      27 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
-      28 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
-      29 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
-      30 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
-      31 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
-      32 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
-      33 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
-      34 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
-      35 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
-      36 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
-      37 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
-      38 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
-      39 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
-      40 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
-      41 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
-      42 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
-      43 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
-      44 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
-      45 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
-      46 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
-      47 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
-      48 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
-      49 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
-      50 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
-      51 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
-      52 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
-      53 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
-      54 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
-      55 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
-      56 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
-      57 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
-      58 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
-      59 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
-      60 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
-      61 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
-      62 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
-      63 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
-      64 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
-      65 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
-      66 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
-      67 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
-      68 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
-      69 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
-      70 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
-      71 cg_adoption_social_01 cg         numeric    Expectati~ 1          strongly d~
-      72 cg_adoption_social_01 cg         numeric    Expectati~ 2          disagree   
-      73 cg_adoption_social_01 cg         numeric    Expectati~ 3          neutral    
-      74 cg_adoption_social_01 cg         numeric    Expectati~ 4          agree      
-      75 cg_adoption_social_01 cg         numeric    Expectati~ 5          strongly a~
-      76 cg_adoption_social_01 cg         numeric    Expectati~ -9         [no answer]
-      77 cg_adoption_social_02 cg         numeric    Expectati~ 1          strongly d~
-      78 cg_adoption_social_02 cg         numeric    Expectati~ 2          disagree   
-      79 cg_adoption_social_02 cg         numeric    Expectati~ 3          neutral    
-      80 cg_adoption_social_02 cg         numeric    Expectati~ 4          agree      
-      81 cg_adoption_social_02 cg         numeric    Expectati~ 5          strongly a~
-      82 cg_adoption_social_02 cg         numeric    Expectati~ -9         [no answer]
-      83 cg_adoption_social_03 cg         numeric    Expectati~ 1          strongly d~
-      84 cg_adoption_social_03 cg         numeric    Expectati~ 2          disagree   
-      85 cg_adoption_social_03 cg         numeric    Expectati~ 3          neutral    
-      86 cg_adoption_social_03 cg         numeric    Expectati~ 4          agree      
-      87 cg_adoption_social_03 cg         numeric    Expectati~ 5          strongly a~
-      88 cg_adoption_social_03 cg         numeric    Expectati~ -9         [no answer]
-      89 cg_adoption_social_04 cg         numeric    Expectati~ 1          strongly d~
-      90 cg_adoption_social_04 cg         numeric    Expectati~ 2          disagree   
-      91 cg_adoption_social_04 cg         numeric    Expectati~ 3          neutral    
-      92 cg_adoption_social_04 cg         numeric    Expectati~ 4          agree      
-      93 cg_adoption_social_04 cg         numeric    Expectati~ 5          strongly a~
-      94 cg_adoption_social_04 cg         numeric    Expectati~ -9         [no answer]
+       4 cg_act_write          cg         character  cg_act_wr~ <NA>       <NA>       
+       5 cg_act_test           cg         character  cg_act_te~ <NA>       <NA>       
+       6 cg_act_search         cg         character  cg_act_se~ <NA>       <NA>       
+       7 adopter               adopter    factor     Innovator~ I try new~ I try new ~
+       8 adopter               adopter    factor     Innovator~ I try new~ I try new ~
+       9 adopter               adopter    factor     Innovator~ I wait un~ I wait unt~
+      10 adopter               adopter    factor     Innovator~ I only us~ I only use~
+      11 adopter               adopter    factor     Innovator~ [no answe~ [no answer]
+      12 sd_gender             sd         factor     Gender     female     female     
+      13 sd_gender             sd         factor     Gender     male       male       
+      14 sd_gender             sd         factor     Gender     diverse    diverse    
+      15 sd_gender             sd         factor     Gender     [no answe~ [no answer]
+      16 use_private           use        numeric    Usage: in~ 1          never      
+      17 use_private           use        numeric    Usage: in~ 2          rarely     
+      18 use_private           use        numeric    Usage: in~ 3          several ti~
+      19 use_private           use        numeric    Usage: in~ 4          several ti~
+      20 use_private           use        numeric    Usage: in~ 5          almost dai~
+      21 use_work              use        numeric    Usage: in~ 1          never      
+      22 use_work              use        numeric    Usage: in~ 2          rarely     
+      23 use_work              use        numeric    Usage: in~ 3          several ti~
+      24 use_work              use        numeric    Usage: in~ 4          several ti~
+      25 use_work              use        numeric    Usage: in~ 5          almost dai~
+      26 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
+      27 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
+      28 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
+      29 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
+      30 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
+      31 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
+      32 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
+      33 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
+      34 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
+      35 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
+      36 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
+      37 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
+      38 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
+      39 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
+      40 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
+      41 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
+      42 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
+      43 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
+      44 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
+      45 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
+      46 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
+      47 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
+      48 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
+      49 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
+      50 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
+      51 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
+      52 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
+      53 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
+      54 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
+      55 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
+      56 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
+      57 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
+      58 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
+      59 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
+      60 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
+      61 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
+      62 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
+      63 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
+      64 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
+      65 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
+      66 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
+      67 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
+      68 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
+      69 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
+      70 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
+      71 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
+      72 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
+      73 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
+      74 cg_adoption_social_01 cg         numeric    Expectati~ 1          strongly d~
+      75 cg_adoption_social_01 cg         numeric    Expectati~ 2          disagree   
+      76 cg_adoption_social_01 cg         numeric    Expectati~ 3          neutral    
+      77 cg_adoption_social_01 cg         numeric    Expectati~ 4          agree      
+      78 cg_adoption_social_01 cg         numeric    Expectati~ 5          strongly a~
+      79 cg_adoption_social_01 cg         numeric    Expectati~ -9         [no answer]
+      80 cg_adoption_social_02 cg         numeric    Expectati~ 1          strongly d~
+      81 cg_adoption_social_02 cg         numeric    Expectati~ 2          disagree   
+      82 cg_adoption_social_02 cg         numeric    Expectati~ 3          neutral    
+      83 cg_adoption_social_02 cg         numeric    Expectati~ 4          agree      
+      84 cg_adoption_social_02 cg         numeric    Expectati~ 5          strongly a~
+      85 cg_adoption_social_02 cg         numeric    Expectati~ -9         [no answer]
+      86 cg_adoption_social_03 cg         numeric    Expectati~ 1          strongly d~
+      87 cg_adoption_social_03 cg         numeric    Expectati~ 2          disagree   
+      88 cg_adoption_social_03 cg         numeric    Expectati~ 3          neutral    
+      89 cg_adoption_social_03 cg         numeric    Expectati~ 4          agree      
+      90 cg_adoption_social_03 cg         numeric    Expectati~ 5          strongly a~
+      91 cg_adoption_social_03 cg         numeric    Expectati~ -9         [no answer]
+      92 cg_adoption_social_04 cg         numeric    Expectati~ 1          strongly d~
+      93 cg_adoption_social_04 cg         numeric    Expectati~ 2          disagree   
+      94 cg_adoption_social_04 cg         numeric    Expectati~ 3          neutral    
+      95 cg_adoption_social_04 cg         numeric    Expectati~ 4          agree      
+      96 cg_adoption_social_04 cg         numeric    Expectati~ 5          strongly a~
+      97 cg_adoption_social_04 cg         numeric    Expectati~ -9         [no answer]
 
 # Missing labels make no trouble
 
@@ -128,7 +131,7 @@
       data %>% volker::labs_store() %>% volker::labs_clear() %>% codebook() %>% print(
         n = Inf)
     Output
-      # A tibble: 26 x 6
+      # A tibble: 29 x 6
          item_name             item_group item_class item_label value_name value_label
          <chr>                 <chr>      <chr>      <chr>      <chr>      <chr>      
        1 case                  case       numeric    case       <NA>       <NA>       
@@ -148,15 +151,18 @@
       15 cg_adoption_social_04 cg         numeric    cg_adopti~ <NA>       <NA>       
       16 sd_age                sd         numeric    sd_age     <NA>       <NA>       
       17 cg_activities         cg         character  cg_activi~ <NA>       <NA>       
-      18 adopter               adopter    factor     adopter    I try new~ I try new ~
-      19 adopter               adopter    factor     adopter    I try new~ I try new ~
-      20 adopter               adopter    factor     adopter    I wait un~ I wait unt~
-      21 adopter               adopter    factor     adopter    I only us~ I only use~
-      22 adopter               adopter    factor     adopter    [no answe~ [no answer]
-      23 sd_gender             sd         factor     sd_gender  female     female     
-      24 sd_gender             sd         factor     sd_gender  male       male       
-      25 sd_gender             sd         factor     sd_gender  diverse    diverse    
-      26 sd_gender             sd         factor     sd_gender  [no answe~ [no answer]
+      18 cg_act_write          cg         character  cg_act_wr~ <NA>       <NA>       
+      19 cg_act_test           cg         character  cg_act_te~ <NA>       <NA>       
+      20 cg_act_search         cg         character  cg_act_se~ <NA>       <NA>       
+      21 adopter               adopter    factor     adopter    I try new~ I try new ~
+      22 adopter               adopter    factor     adopter    I try new~ I try new ~
+      23 adopter               adopter    factor     adopter    I wait un~ I wait unt~
+      24 adopter               adopter    factor     adopter    I only us~ I only use~
+      25 adopter               adopter    factor     adopter    [no answe~ [no answer]
+      26 sd_gender             sd         factor     sd_gender  female     female     
+      27 sd_gender             sd         factor     sd_gender  male       male       
+      28 sd_gender             sd         factor     sd_gender  diverse    diverse    
+      29 sd_gender             sd         factor     sd_gender  [no answe~ [no answer]
 
 # Store, clear and restore the codebook
 
@@ -164,103 +170,106 @@
       data %>% volker::labs_store() %>% volker::labs_clear() %>% volker::labs_restore() %>%
         codebook() %>% print(n = Inf)
     Output
-      # A tibble: 94 x 6
+      # A tibble: 97 x 6
          item_name             item_group item_class item_label value_name value_label
          <chr>                 <chr>      <chr>      <chr>      <chr>      <chr>      
        1 case                  case       numeric    case       <NA>       <NA>       
        2 sd_age                sd         numeric    Age        <NA>       <NA>       
        3 cg_activities         cg         character  Activitie~ <NA>       <NA>       
-       4 adopter               adopter    factor     Innovator~ I try new~ I try new ~
-       5 adopter               adopter    factor     Innovator~ I try new~ I try new ~
-       6 adopter               adopter    factor     Innovator~ I wait un~ I wait unt~
-       7 adopter               adopter    factor     Innovator~ I only us~ I only use~
-       8 adopter               adopter    factor     Innovator~ [no answe~ [no answer]
-       9 sd_gender             sd         factor     Gender     female     female     
-      10 sd_gender             sd         factor     Gender     male       male       
-      11 sd_gender             sd         factor     Gender     diverse    diverse    
-      12 sd_gender             sd         factor     Gender     [no answe~ [no answer]
-      13 use_private           use        numeric    Usage: in~ 1          never      
-      14 use_private           use        numeric    Usage: in~ 2          rarely     
-      15 use_private           use        numeric    Usage: in~ 3          several ti~
-      16 use_private           use        numeric    Usage: in~ 4          several ti~
-      17 use_private           use        numeric    Usage: in~ 5          almost dai~
-      18 use_work              use        numeric    Usage: in~ 1          never      
-      19 use_work              use        numeric    Usage: in~ 2          rarely     
-      20 use_work              use        numeric    Usage: in~ 3          several ti~
-      21 use_work              use        numeric    Usage: in~ 4          several ti~
-      22 use_work              use        numeric    Usage: in~ 5          almost dai~
-      23 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
-      24 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
-      25 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
-      26 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
-      27 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
-      28 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
-      29 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
-      30 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
-      31 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
-      32 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
-      33 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
-      34 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
-      35 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
-      36 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
-      37 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
-      38 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
-      39 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
-      40 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
-      41 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
-      42 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
-      43 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
-      44 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
-      45 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
-      46 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
-      47 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
-      48 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
-      49 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
-      50 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
-      51 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
-      52 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
-      53 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
-      54 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
-      55 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
-      56 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
-      57 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
-      58 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
-      59 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
-      60 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
-      61 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
-      62 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
-      63 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
-      64 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
-      65 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
-      66 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
-      67 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
-      68 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
-      69 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
-      70 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
-      71 cg_adoption_social_01 cg         numeric    Expectati~ 1          strongly d~
-      72 cg_adoption_social_01 cg         numeric    Expectati~ 2          disagree   
-      73 cg_adoption_social_01 cg         numeric    Expectati~ 3          neutral    
-      74 cg_adoption_social_01 cg         numeric    Expectati~ 4          agree      
-      75 cg_adoption_social_01 cg         numeric    Expectati~ 5          strongly a~
-      76 cg_adoption_social_01 cg         numeric    Expectati~ -9         [no answer]
-      77 cg_adoption_social_02 cg         numeric    Expectati~ 1          strongly d~
-      78 cg_adoption_social_02 cg         numeric    Expectati~ 2          disagree   
-      79 cg_adoption_social_02 cg         numeric    Expectati~ 3          neutral    
-      80 cg_adoption_social_02 cg         numeric    Expectati~ 4          agree      
-      81 cg_adoption_social_02 cg         numeric    Expectati~ 5          strongly a~
-      82 cg_adoption_social_02 cg         numeric    Expectati~ -9         [no answer]
-      83 cg_adoption_social_03 cg         numeric    Expectati~ 1          strongly d~
-      84 cg_adoption_social_03 cg         numeric    Expectati~ 2          disagree   
-      85 cg_adoption_social_03 cg         numeric    Expectati~ 3          neutral    
-      86 cg_adoption_social_03 cg         numeric    Expectati~ 4          agree      
-      87 cg_adoption_social_03 cg         numeric    Expectati~ 5          strongly a~
-      88 cg_adoption_social_03 cg         numeric    Expectati~ -9         [no answer]
-      89 cg_adoption_social_04 cg         numeric    Expectati~ 1          strongly d~
-      90 cg_adoption_social_04 cg         numeric    Expectati~ 2          disagree   
-      91 cg_adoption_social_04 cg         numeric    Expectati~ 3          neutral    
-      92 cg_adoption_social_04 cg         numeric    Expectati~ 4          agree      
-      93 cg_adoption_social_04 cg         numeric    Expectati~ 5          strongly a~
-      94 cg_adoption_social_04 cg         numeric    Expectati~ -9         [no answer]
+       4 cg_act_write          cg         character  cg_act_wr~ <NA>       <NA>       
+       5 cg_act_test           cg         character  cg_act_te~ <NA>       <NA>       
+       6 cg_act_search         cg         character  cg_act_se~ <NA>       <NA>       
+       7 adopter               adopter    factor     Innovator~ I try new~ I try new ~
+       8 adopter               adopter    factor     Innovator~ I try new~ I try new ~
+       9 adopter               adopter    factor     Innovator~ I wait un~ I wait unt~
+      10 adopter               adopter    factor     Innovator~ I only us~ I only use~
+      11 adopter               adopter    factor     Innovator~ [no answe~ [no answer]
+      12 sd_gender             sd         factor     Gender     female     female     
+      13 sd_gender             sd         factor     Gender     male       male       
+      14 sd_gender             sd         factor     Gender     diverse    diverse    
+      15 sd_gender             sd         factor     Gender     [no answe~ [no answer]
+      16 use_private           use        numeric    Usage: in~ 1          never      
+      17 use_private           use        numeric    Usage: in~ 2          rarely     
+      18 use_private           use        numeric    Usage: in~ 3          several ti~
+      19 use_private           use        numeric    Usage: in~ 4          several ti~
+      20 use_private           use        numeric    Usage: in~ 5          almost dai~
+      21 use_work              use        numeric    Usage: in~ 1          never      
+      22 use_work              use        numeric    Usage: in~ 2          rarely     
+      23 use_work              use        numeric    Usage: in~ 3          several ti~
+      24 use_work              use        numeric    Usage: in~ 4          several ti~
+      25 use_work              use        numeric    Usage: in~ 5          almost dai~
+      26 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
+      27 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
+      28 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
+      29 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
+      30 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
+      31 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
+      32 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
+      33 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
+      34 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
+      35 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
+      36 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
+      37 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
+      38 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
+      39 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
+      40 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
+      41 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
+      42 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
+      43 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
+      44 cg_adoption_advantag~ cg         numeric    Expectati~ 1          strongly d~
+      45 cg_adoption_advantag~ cg         numeric    Expectati~ 2          disagree   
+      46 cg_adoption_advantag~ cg         numeric    Expectati~ 3          neutral    
+      47 cg_adoption_advantag~ cg         numeric    Expectati~ 4          agree      
+      48 cg_adoption_advantag~ cg         numeric    Expectati~ 5          strongly a~
+      49 cg_adoption_advantag~ cg         numeric    Expectati~ -9         [no answer]
+      50 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
+      51 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
+      52 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
+      53 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
+      54 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
+      55 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
+      56 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
+      57 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
+      58 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
+      59 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
+      60 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
+      61 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
+      62 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
+      63 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
+      64 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
+      65 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
+      66 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
+      67 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
+      68 cg_adoption_fearofus~ cg         numeric    Expectati~ 1          strongly d~
+      69 cg_adoption_fearofus~ cg         numeric    Expectati~ 2          disagree   
+      70 cg_adoption_fearofus~ cg         numeric    Expectati~ 3          neutral    
+      71 cg_adoption_fearofus~ cg         numeric    Expectati~ 4          agree      
+      72 cg_adoption_fearofus~ cg         numeric    Expectati~ 5          strongly a~
+      73 cg_adoption_fearofus~ cg         numeric    Expectati~ -9         [no answer]
+      74 cg_adoption_social_01 cg         numeric    Expectati~ 1          strongly d~
+      75 cg_adoption_social_01 cg         numeric    Expectati~ 2          disagree   
+      76 cg_adoption_social_01 cg         numeric    Expectati~ 3          neutral    
+      77 cg_adoption_social_01 cg         numeric    Expectati~ 4          agree      
+      78 cg_adoption_social_01 cg         numeric    Expectati~ 5          strongly a~
+      79 cg_adoption_social_01 cg         numeric    Expectati~ -9         [no answer]
+      80 cg_adoption_social_02 cg         numeric    Expectati~ 1          strongly d~
+      81 cg_adoption_social_02 cg         numeric    Expectati~ 2          disagree   
+      82 cg_adoption_social_02 cg         numeric    Expectati~ 3          neutral    
+      83 cg_adoption_social_02 cg         numeric    Expectati~ 4          agree      
+      84 cg_adoption_social_02 cg         numeric    Expectati~ 5          strongly a~
+      85 cg_adoption_social_02 cg         numeric    Expectati~ -9         [no answer]
+      86 cg_adoption_social_03 cg         numeric    Expectati~ 1          strongly d~
+      87 cg_adoption_social_03 cg         numeric    Expectati~ 2          disagree   
+      88 cg_adoption_social_03 cg         numeric    Expectati~ 3          neutral    
+      89 cg_adoption_social_03 cg         numeric    Expectati~ 4          agree      
+      90 cg_adoption_social_03 cg         numeric    Expectati~ 5          strongly a~
+      91 cg_adoption_social_03 cg         numeric    Expectati~ -9         [no answer]
+      92 cg_adoption_social_04 cg         numeric    Expectati~ 1          strongly d~
+      93 cg_adoption_social_04 cg         numeric    Expectati~ 2          disagree   
+      94 cg_adoption_social_04 cg         numeric    Expectati~ 3          neutral    
+      95 cg_adoption_social_04 cg         numeric    Expectati~ 4          agree      
+      96 cg_adoption_social_04 cg         numeric    Expectati~ 5          strongly a~
+      97 cg_adoption_social_04 cg         numeric    Expectati~ -9         [no answer]
 
 # Item values are replaced and keep their order
 
@@ -347,14 +356,14 @@
     Output
       
       
-      |Expectations                                                | Stimme überhaupt nicht zu| Stimme nicht zu| Unentschieden| Stimme zu| Stimme voll und ganz zu|     total|
-      |:-----------------------------------------------------------|-------------------------:|---------------:|-------------:|---------:|-----------------------:|---------:|
-      |ChatGPT has clear advantages compared to similar offerings. |                    6% (6)|          8% (8)|      34% (34)|  37% (37)|                14% (14)| 100% (99)|
-      |Using ChatGPT brings financial benefits.                    |                  22% (22)|        21% (21)|      29% (29)|  21% (21)|                  6% (6)| 100% (99)|
-      |Using ChatGPT is advantageous in many tasks.                |                    6% (6)|        10% (10)|      21% (21)|  45% (45)|                17% (17)| 100% (99)|
-      |Compared to other systems, using ChatGPT is more fun.       |                    6% (6)|          4% (4)|      35% (35)|  39% (39)|                15% (15)| 100% (99)|
+      |Expectations                             | Stimme überhaupt nicht zu| Stimme nicht zu| Unentschieden| Stimme zu| Stimme voll und ganz zu|     total|
+      |:----------------------------------------|-------------------------:|---------------:|-------------:|---------:|-----------------------:|---------:|
+      |ChatGPT has clear advantages compared... |                    6% (6)|          8% (8)|      34% (34)|  37% (37)|                14% (14)| 100% (99)|
+      |Using ChatGPT brings financial benefits. |                  22% (22)|        21% (21)|      29% (29)|  21% (21)|                  6% (6)| 100% (99)|
+      |Using ChatGPT is advantageous in many... |                    6% (6)|        10% (10)|      21% (21)|  45% (45)|                17% (17)| 100% (99)|
+      |Compared to other systems, using Chat... |                    6% (6)|          4% (4)|      35% (35)|  39% (39)|                15% (15)| 100% (99)|
       
-      2 missing case(s) omitted.
+      n=99. 2 missing case(s) omitted.
       
 
 # Factor values are relabeled

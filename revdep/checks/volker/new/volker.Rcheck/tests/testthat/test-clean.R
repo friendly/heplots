@@ -119,6 +119,17 @@ test_that("Baseline for negatives", {
 
 })
 
+test_that("Baseline for missings", {
+  options(vlkr.na.omit=FALSE)
+  data <- tibble::tibble(var1 = c(1,2,NA,NA)) |>
+    data_rm_missings(var1)
+
+  result <- volker::tab_metrics(data, var1)
+  get_baseline(result) |>
+    expect_snapshot(cran = TRUE)
+  options(vlkr.na.omit=TRUE)
+})
+
 test_that("Zero removal", {
 
   # Zeros are removed

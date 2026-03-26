@@ -33,6 +33,12 @@ containing the end-points of three axes, in pairs.
 
 [`segments3d`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html)
 
+Other 3D plotting:
+[`arrow3d()`](https://friendly.github.io/heplots/reference/arrow3d.md),
+[`bbox3d()`](https://friendly.github.io/heplots/reference/bbox3d.md),
+[`ellipse3d.axes()`](https://friendly.github.io/heplots/reference/ellipse3d.axes.md),
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)
+
 ## Author
 
 Michael Friendly

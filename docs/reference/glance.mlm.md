@@ -65,6 +65,11 @@ In the multivariate case, it returns a
 row for each response variable, containing goodness of fit measures,
 F-tests and p-values.
 
+## See also
+
+Other multivariate linear models:
+[`coefplot()`](https://friendly.github.io/heplots/reference/coefplot.md)
+
 ## Examples
 
 ``` r

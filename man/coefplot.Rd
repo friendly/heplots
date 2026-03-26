@@ -127,9 +127,13 @@ coefplot(mod1, lwd=2, fill=TRUE, parm=(1:5),
 
 }
 \seealso{
-\code{\link[car]{confidenceEllipse}},
+\code{\link[car]{confidenceEllipse}}
+
+Other multivariate linear models: 
+\code{\link{glance.mlm}()}
 }
 \author{
 Michael Friendly
 }
+\concept{multivariate linear models}
 \keyword{hplot}

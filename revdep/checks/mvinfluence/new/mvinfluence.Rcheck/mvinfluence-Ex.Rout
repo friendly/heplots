@@ -26,6 +26,7 @@ Loading required package: car
 Loading required package: carData
 Loading required package: heplots
 Loading required package: broom
+Warning: package 'broom' was built under R version 4.5.2
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
@@ -795,7 +796,7 @@ Multivariate influence statistics for model:
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  7.5 1.55 11.47 NA NA 
+Time elapsed:  1.1 0.14 1.28 NA NA 
 > grDevices::dev.off()
 null device 
           1 

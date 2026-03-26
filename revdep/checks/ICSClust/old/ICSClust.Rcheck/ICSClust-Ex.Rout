@@ -23,8 +23,10 @@ Type 'q()' to quit R.
 > options(pager = "console")
 > library('ICSClust')
 Loading required package: ICS
+Warning: package 'ICS' was built under R version 4.5.2
 Loading required package: mvtnorm
 Loading required package: ggplot2
+Warning: package 'ggplot2' was built under R version 4.5.2
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
@@ -571,7 +573,7 @@ attr(,"class")
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  29.02 2.62 34 NA NA 
+Time elapsed:  6.22 0.34 6.68 NA NA 
 > grDevices::dev.off()
 null device 
           1 

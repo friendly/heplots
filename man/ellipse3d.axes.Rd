@@ -76,9 +76,22 @@ axes <- ellipse3d.axes(cov, centre=mu, level=0.68, color="gray", lwd=2)
 \seealso{
 \code{\link[rgl:points3d]{segments3d}},
 \code{\link[rgl:texts]{text3d}}, \code{\link[rgl]{ellipse3d}}
+
+Other covariance ellipses: 
+\code{\link{covEllipses}()},
+\code{\link{ellipse.axes}()},
+\code{\link{ellipse.box}()}
+
+Other 3D plotting: 
+\code{\link{arrow3d}()},
+\code{\link{bbox3d}()},
+\code{\link{cross3d}()},
+\code{\link{heplot3d}()}
 }
 \author{
 Michael Friendly
 }
+\concept{3D plotting}
+\concept{covariance ellipses}
 \keyword{aplot}
 \keyword{dynamic}

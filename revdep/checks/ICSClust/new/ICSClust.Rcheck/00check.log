@@ -18,7 +18,11 @@
 * checking for executable files ... OK
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
-* checking whether package 'ICSClust' can be installed ... OK
+* checking whether package 'ICSClust' can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package 'ICS' was built under R version 4.5.2
+  Warning: package 'ggplot2' was built under R version 4.5.2
+See 'C:/R/Projects/heplots/revdep/checks/ICSClust/new/ICSClust.Rcheck/00install.out' for details.
 * used C++ compiler: 'G__~1.EXE (GCC) 14.2.0'
 * checking installed package size ... OK
 * checking package directory ... OK
@@ -60,4 +64,4 @@
 * checking tests ... OK
   Running 'testthat.R'
 * DONE
-Status: OK
+Status: 1 WARNING

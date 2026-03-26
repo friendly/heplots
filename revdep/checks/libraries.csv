@@ -1,2 +1,8 @@
 package,old,new,delta
-heplots,1.7.5,1.7.8,*
+heplots,1.7.8,1.8.1,*
+broom,NA,1.0.11,*
+doBy,NA,4.7.1,*
+htmltools,NA,0.5.9,*
+lme4,NA,1.1-38,*
+RcppArmadillo,NA,15.2.2-1,*
+yaml,NA,2.3.11,*

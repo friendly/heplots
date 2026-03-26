@@ -63,7 +63,10 @@
 #' @param \dots arguments to pass down to `heplot`, which is used to draw
 #'        each panel of the display.
 #' @author Michael Friendly
+#' 
 #' @seealso \code{\link{heplot}}, \code{\link{heplot3d}}
+#' @family HE plot functions
+#' 
 #' @references 
 #' Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 #' Displays for Multivariate Linear Models: SAS Software and Examples

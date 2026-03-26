@@ -78,8 +78,12 @@ Variances \emph{Journal of the American Statistical Association}, \strong{69},
 }
 \seealso{
 \code{\link[car]{leveneTest}}, \code{\link{bartlettTests}}
+
+Other homogeneity tests: 
+\code{\link{bartlettTests}()}
 }
 \author{
 Michael Friendly
 }
+\concept{homogeneity tests}
 \keyword{htest}

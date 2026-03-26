@@ -8,7 +8,7 @@
 * using session charset: UTF-8
 * using options '--no-manual --no-build-vignettes'
 * checking for file 'latentnet/DESCRIPTION' ... OK
-* this is package 'latentnet' version '2.11.0'
+* this is package 'latentnet' version '2.12.0'
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... OK
@@ -17,7 +17,11 @@
 * checking for executable files ... OK
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
-* checking whether package 'latentnet' can be installed ... OK
+* checking whether package 'latentnet' can be installed ... WARNING
+Found the following significant warnings:
+  Warning: package 'network' was built under R version 4.5.2
+  Warning: package 'ergm' was built under R version 4.5.2
+See 'C:/R/Projects/heplots/revdep/checks/latentnet/new/latentnet.Rcheck/00install.out' for details.
 * used C compiler: 'gcc.exe (GCC) 14.2.0'
 * checking installed package size ... OK
 * checking package directory ... OK
@@ -62,6 +66,7 @@ GNU make is a SystemRequirements.
 * checking examples ... OK
 * checking for unstated dependencies in 'tests' ... OK
 * checking tests ... OK
+  Running 'binomial.R'
   Running 'missing.R'
   Running 'nofixed.R'
   Running 'nolatent.R'
@@ -70,4 +75,4 @@ GNU make is a SystemRequirements.
   Running 'normal.R'
   Running 'onlymcmc.R'
 * DONE
-Status: OK
+Status: 1 WARNING

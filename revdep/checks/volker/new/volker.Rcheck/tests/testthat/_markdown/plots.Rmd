@@ -218,6 +218,175 @@ data %>%
 
 ```
 
+## Missings
+
+```{r include=FALSE}
+options(vlkr.na.omit=FALSE)
+data$sd_gender[data$sd_gender == "diverse"] <- NA
+data$sd_age[data$sd_age == 20] <- NA
+data$cg_adoption_advantage_01[2] <- NA
+data$adopter[1] <- NA
+
+```
+
+## Categorical variables
+
+### plot_counts_one
+```{r}
+data |> 
+  plot_counts(adopter)
+```
+
+### plot_counts_one with binary data
+```{r}
+data |> 
+  mutate(adopter = adopter == "I try new offers immediately") |> 
+  plot_counts(adopter)
+```
+
+### plot_counts_one_grouped
+```{r}
+# Test order of items
+plot_counts(data, sd_gender, adopter)
+```
+
+### plot_counts_one_grouped with row props
+```{r}
+# The last categories' percentage should be omitted in ordered plots
+data |> 
+  plot_counts(adopter, sd_gender, prop = "rows", numbers="p")
+```
+
+### plot_counts_one_grouped with col props
+```{r}
+# Test whether the figure is flipped
+plot_counts(data, adopter, sd_gender, prop = "cols", numbers="p", ordered = -1)
+```
+
+### plot_counts_one_grouped with reversed levels
+```{r}
+data |> 
+  mutate(adopter = factor(adopter, levels = rev(levels(adopter)))) |> 
+  plot_counts(adopter, sd_gender, prop = "cols")
+
+```
+
+### plot_counts_items
+```{r}
+plot_counts(data, starts_with("cg_adoption_"), numbers = "p")
+```
+
+```{r}
+# Test whether order is kept
+data |> 
+  plot_counts(starts_with("cg_adoption_advantage"), ordered = -1)
+```
+
+### plot_counts_items_grouped
+```{r}
+plot_counts_items_grouped(
+   data, starts_with("cg_adoption_"), adopter,
+   category=c("agree","strongly agree")
+) 
+```
+
+### plot_counts_items with binary data
+```{r}
+data |> 
+  mutate(across(starts_with("cg_adoption_advantage"), \(x) x > 3)) |> 
+  plot_counts(starts_with("cg_adoption_advantage"))
+```
+
+### plot_counts_one_cor
+```{r}
+plot_counts_one_cor(data, adopter, sd_age)
+```
+
+### plot_counts_one_cor with rows
+```{r}
+plot_counts_one_cor(data, adopter, sd_age, prop = "rows")
+```
+
+### plot_counts_items_cor
+```{r}
+plot_counts_items_cor(
+    data, starts_with("cg_adoption_"), sd_age,
+    category=c(4,5)
+) 
+```
+
+## Metrics 
+### plot_metrics_one
+```{r}
+# TODO: Handle warnings 
+data |> 
+  plot_metrics(sd_age)
+```
+
+### plot_metrics_one with box
+```{r}
+plot_metrics(data, sd_age, box=TRUE)
+```
+
+### plot_metrics_one with ci
+```{r}
+plot_metrics(data, sd_age, ci=TRUE)
+```
+
+### plot_metrics_one_grouped
+```{r}
+plot_metrics(data, sd_age, sd_gender)
+```
+
+### plot_metrics_one_cor
+```{r}
+plot_metrics(data, sd_age, use_work, metric=TRUE)
+```
+
+### plot_metrics_one_cor with log 
+```{r}
+plot_metrics(data, sd_age, use_work, metric=TRUE, log=TRUE)
+```
+
+### plot_metrics_one_cor without title
+```{r}
+plot_metrics(data, sd_age, use_work, metric=TRUE, title = FALSE)
+```
+
+### plot_metrics_items
+```{r}
+plot_metrics(data, starts_with("cg_adoption_"))
+```
+
+### plot_metrics_items_grouped
+```{r}
+plot_metrics(data, starts_with("cg_adoption_"), sd_gender)
+```
+
+### plot_metrics_items_cor with pearson
+```{r}
+plot_metrics_items_cor(data, starts_with("use_"), sd_age)
+```
+
+### plot_metrics_items_cor with spearman
+```{r}
+plot_metrics_items_cor(data, starts_with("use_"), sd_age, method = "spearman")
+```
+
+### plot_metrics_items_cor_items with pearson
+```{r}
+plot_metrics_items_cor_items(data, starts_with("cg_adoption_adv"), starts_with("use_"))
+```
+
+### plot_metrics_items_cor_items with numbers
+```{r}
+plot_metrics_items_cor_items(
+  data, starts_with("cg_adoption_adv"), 
+  starts_with("use_"), 
+  numbers=TRUE
+)
+options(vlkr.na.omit=TRUE)
+```
 
 
 

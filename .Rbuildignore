@@ -23,3 +23,5 @@ NAMESPACE-old
 ^data-raw$
 ^dev$
 ^CLAUDE.md$
+^issues$
+^.claude$

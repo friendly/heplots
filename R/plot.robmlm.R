@@ -26,7 +26,10 @@
 #'        plot
 #' @importFrom graphics axis
 #' @author Michael Friendly
+#' 
 #' @seealso \code{\link{robmlm}}
+#' @family robust methods
+#' 
 #' @keywords hplot
 #' @examples
 #' 

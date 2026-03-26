@@ -70,6 +70,40 @@ heplot(hsb.can1, col=c("red", "black"))
 
 
 cleanEx()
+nameEx("PsyAcad")
+### * PsyAcad
+
+flush(stderr()); flush(stdout())
+
+### Name: PsyAcad
+### Title: Psychological Measures and Academic Achievement
+### Aliases: PsyAcad
+### Keywords: datasets
+
+### ** Examples
+
+data(PsyAcad)
+PsyAcad$Sex <- as.numeric(PsyAcad$Sex)
+PsyAcad.can <- cancor(cbind(LocControl, SelfConcept, Motivation) ~ 
+       Read + Write + Math + Science + Sex, data = PsyAcad)
+
+PsyAcad.can
+
+# redundancy analysis
+redundancy(PsyAcad.can)
+
+# Plots
+canR <- PsyAcad.can$cancor
+plot(PsyAcad.can, pch=16, id.n = 3)
+text(-2, 3, paste("Can R =", round(canR[1], 3)), pos = 3)
+
+plot(PsyAcad.can, which = 2, pch=16, id.n = 3)
+text(-2, 3.5, paste("Can R =", round(canR[2], 3)), pos = 3)
+
+
+
+
+cleanEx()
 nameEx("Wilks")
 ### * Wilks
 
@@ -171,7 +205,7 @@ nameEx("can_lm")
 flush(stderr()); flush(stdout())
 
 ### Name: can_lm
-### Title: Transform a Multivariate Linear model mlm to a Canonical
+### Title: Transform a Multivariate Linear model 'mlm' to a Canonical
 ###   Representation
 ### Aliases: can_lm
 
@@ -285,7 +319,7 @@ flush(stderr()); flush(stdout())
 ### Name: candisc
 ### Title: Canonical discriminant analysis
 ### Aliases: candisc candisc.mlm coef.candisc plot.candisc print.candisc
-###   summary.candisc
+###   summary.candisc scores.candisc
 ### Keywords: hplot multivariate
 
 ### ** Examples
@@ -295,7 +329,9 @@ grass.mod <- lm(cbind(N1,N9,N27,N81,N243) ~ Block + Species, data=Grass)
 car::Anova(grass.mod, test="Wilks")
 
 grass.can1 <-candisc(grass.mod, term="Species")
-plot(grass.can1)
+print(grass.can1)
+
+plot(grass.can1, var.lwd = 2)
 
 # library(heplots)
 heplot(grass.can1, scale=6, fill=TRUE)
@@ -346,6 +382,71 @@ plot(grass.canL, type="n", ask=FALSE)
 heplot(grass.canL$Species, scale=6)
 heplot(grass.canL$Block, scale=2)
 
+
+
+
+
+cleanEx()
+nameEx("cereal")
+### * cereal
+
+flush(stderr()); flush(stdout())
+
+### Name: cereal
+### Title: Breakfast Cereal Dataset
+### Aliases: cereal
+### Keywords: datasets
+
+### ** Examples
+
+library(dplyr)
+data(cereal)
+str(cereal)
+
+# Add explicit name of manufacturer
+# names for manufacturers
+mfr_names <- c(
+  "A" = "American Home Foods",
+  "G" = "General Mills",
+  "K" = "Kellog",
+  "N" = "Nabisco",
+  "P" = "Post",
+  "Q" = "Quaker Oats",
+  "R" = "Ralston Purina"
+)
+
+# recode `mfr` as `mfr_name`
+cereal <- cereal |>
+  mutate(mfr_name = recode(mfr, !!!mfr_names))
+
+# density plot of ratings
+library(ggplot2)
+ggplot(data = cereal,
+       aes(x = rating, fill = mfr_name, color = mfr_name)) +
+  geom_density(alpha = 0.1) +
+  theme_classic(base_size = 14) + 
+  theme(legend.position = "bottom")
+
+
+
+
+cleanEx()
+nameEx("cor_lda")
+### * cor_lda
+
+flush(stderr()); flush(stdout())
+
+### Name: cor_lda
+### Title: Calculate Structure Correlations from Discriminant Analysis
+### Aliases: cor_lda
+
+### ** Examples
+
+library(candisc)
+library(MASS)   # for lda()
+
+iris.lda <- lda(Species ~ ., iris)
+cor_lda(iris.lda)
 
 
 
@@ -456,6 +557,34 @@ heplot3d(pottery.can, var.lwd=3, scale=10, zlim=c(-3,3), wire=FALSE)
 
 
 cleanEx()
+nameEx("painters2")
+### * painters2
+
+flush(stderr()); flush(stdout())
+
+### Name: painters2
+### Title: Painters Data with Historical Art Variables
+### Aliases: painters2
+### Keywords: datasets
+
+### ** Examples
+
+data(painters2)
+
+# Compare original School with new Period grouping
+with(painters2, table(School, Period))
+
+# Compare original School with new Period grouping
+with(painters2, table(School, Emphasis))
+
+# Summary of de Piles ratings by Period
+aggregate(cbind(Composition, Drawing, Colour, Expression) ~ Period,
+          data = painters2, FUN = mean)
+
+
+
+
+cleanEx()
 nameEx("plot.cancor")
 ### * plot.cancor
 
@@ -508,6 +637,118 @@ text(xpos, scale*Ystruc, names(Ystruc), pos=1, col="darkgreen")
 
 graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 cleanEx()
+nameEx("plot_discrim")
+### * plot_discrim
+
+flush(stderr()); flush(stdout())
+
+### Name: plot_discrim
+### Title: Discriminant Analysis Decision Plot using ggplot.
+### Aliases: plot_discrim
+
+### ** Examples
+
+library(MASS)
+library(ggplot2)
+library(dplyr)
+
+iris.lda <- lda(Species ~ ., iris)
+# formula call: y ~ x
+plot_discrim(iris.lda, Petal.Length ~ Petal.Width)
+
+# add data ellipses
+plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
+             ellipse = TRUE) 
+
+# add filled ellipses with transparency
+plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
+             ellipse = TRUE,
+             ellipse.args = list(geom = "polygon", alpha = 0.2)) 
+
+# customize ellipse level and line thickness
+plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
+             ellipse = TRUE,
+             ellipse.args = list(level = 0.95, linewidth = 2)) 
+
+# without contours
+# data ellipses
+plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
+             contour = FALSE) 
+
+# specifying `vars` as character names for x, y
+plot_discrim(iris.lda, c("Petal.Width", "Petal.Length"))
+
+# Define custom colors and shapes, modify theme() and legend.position
+iris.colors <- c("red", "darkgreen", "blue")
+iris.pch <- 15:17
+plot_discrim(iris.lda, Petal.Length ~ Petal.Width) +
+  scale_color_manual(values = iris.colors) +
+  scale_fill_manual(values = iris.colors) +
+  scale_shape_manual(values = iris.pch) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "inside",
+        legend.position.inside = c(.8, .25))
+
+# Quadratic discriminant analysis gives quite a different result
+iris.qda <- qda(Species ~ ., iris)
+plot_discrim(iris.qda, Petal.Length ~ Petal.Width)
+
+# Add class labels, with custom styling
+plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
+             labels = TRUE,
+             labels.args = list(geom = "label", size = 6, fontface = "bold"))
+
+# Add labels with position adjustments
+plot_discrim(iris.lda, Petal.Length ~ Petal.Width, 
+             labels = TRUE,
+             labels.args = list(nudge_y = 0.1, size = 5))
+
+# Plot in discriminant space
+plot_discrim(iris.lda, LD2 ~ LD1)
+
+# Reverse the horizontal axis in discriminant space
+plot_discrim(iris.lda, LD2 ~ LD1, rev.axes = c(TRUE, FALSE))
+
+# Control axis limits
+plot_discrim(iris.lda, LD2 ~ LD1,
+             xlim = c(-10, 10), ylim = c(-8, 8))
+
+
+
+
+
+cleanEx()
+nameEx("predict_discrim")
+### * predict_discrim
+
+flush(stderr()); flush(stdout())
+
+### Name: predict_discrim
+### Title: Predicted values for discriminant analysis
+### Aliases: predict_discrim
+
+### ** Examples
+
+library(candisc)
+library(MASS)   # for lda()
+
+iris.lda <- lda(Species ~ ., iris)
+pred_iris <- predict_discrim(iris.lda)
+names(pred_iris)
+
+# include scores, exclude posterior
+pred_iris <- predict_discrim(iris.lda, scores = TRUE, posterior = FALSE)
+names(pred_iris)
+
+data(peng, package="heplots")
+peng.lda <- lda(species ~ bill_length + bill_depth + flipper_length + body_mass, 
+                data = peng)
+peng_pred <- predict_discrim(peng.lda, scores = TRUE)
+str(peng_pred)
+
+
+
+cleanEx()
 nameEx("predictor.names")
 ### * predictor.names
 
@@ -556,6 +797,66 @@ redundancy(cc)
 ##    0.2249    0.0369    0.0156    0.2774 
 
 
+
+
+
+cleanEx()
+nameEx("reflect")
+### * reflect
+
+flush(stderr()); flush(stdout())
+
+### Name: reflect
+### Title: Reflect Columns in an Object, reversing the sign of all elements
+### Aliases: reflect reflect.data.frame reflect.cancor reflect.candisc
+
+### ** Examples
+
+# reflect cols in a data.frame
+X <- data.frame(x1 = 1:4, x2 = 5:8)
+reflect(X)
+reflect(X, 1)
+reflect(X, 2)
+cbind (X, letters[1:4]) |> reflect(1)
+
+# reflect a candisc 
+iris.mod <- lm(cbind(Petal.Length, Sepal.Length, Petal.Width, Sepal.Width) ~ Species, data=iris)
+iris.can <- candisc(iris.mod, data=iris)
+coef(iris.can)
+# reflect Can1
+iris.can |> reflect(1) |> coef()
+
+# reflect a cancor
+data(Rohwer, package="heplots")
+X <- as.matrix(Rohwer[,6:10])  # the PA tests
+Y <- as.matrix(Rohwer[,3:5])   # the aptitude/ability variables
+Rohwer.can <- cancor(X, Y, set.names=c("PA", "Ability"))
+coef(Rohwer)
+Rohwer.can |> reflect() |> coef()
+
+
+
+
+
+cleanEx()
+nameEx("scores.lda")
+### * scores.lda
+
+flush(stderr()); flush(stdout())
+
+### Name: scores.lda
+### Title: Extract Observation Discriminant Scores for Linear Discriminant
+###   Analysis
+### Aliases: scores.lda
+
+### ** Examples
+
+library(MASS)   # for lda()
+
+iris.lda <- lda(Species ~ ., iris)
+scores(iris.lda) |>
+   str()
+ 
 
 
 
@@ -632,10 +933,12 @@ flush(stderr()); flush(stdout())
 ### ** Examples
 
 
-plot(c(-3, 3), c(-3,3), type="n")
+set.seed(1234)
+plot(c(-3, 3), c(-3,3), type="n",
+     xlab = "X", ylab = "Y")
 X <- matrix(rnorm(10), ncol=2)
 rownames(X) <- LETTERS[1:5]
-vectors(X, scale=2, col=palette())
+vectors(X, scale=2, col=palette(), xpd = TRUE)
 
 
 

@@ -40,7 +40,9 @@
 #'
 #' @return Invisibly returns a 4 x 2 matrix containing the end points of the axes in pairs (min, max) by rows.
 #' @author Michael Friendly
+#' 
 #' @seealso \code{\link[graphics]{lines}}, \code{\link[graphics]{text}}
+#' @family covariance ellipses
 #' @export ellipse.axes
 #'
 #' @examples

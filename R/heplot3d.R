@@ -186,6 +186,8 @@ savedvars <- new.env(parent=emptyenv())
 #' 
 #'    \code{\link[candisc]{heplot3d.candisc}} for 3D HE plots in canonical space.
 #' 
+#' @family HE plot functions
+#' @family 3D plotting
 #' @references 
 #' Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank
 #' Displays for Multivariate Linear Models: SAS Software and Examples

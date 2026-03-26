@@ -60,8 +60,12 @@ A}, \strong{160}, 268-282.
 }
 \seealso{
 \code{\link{boxM}} for Box's M test for all responses together.
+
+Other homogeneity tests: 
+\code{\link{leveneTests}()}
 }
 \author{
 Michael Friendly
 }
+\concept{homogeneity tests}
 \keyword{htest}

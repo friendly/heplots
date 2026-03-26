@@ -29,8 +29,11 @@
 #' @return An object of classes "anova" and "data.frame", with one observation
 #'         for each response variable in `y`.
 #' @author Michael Friendly
+#' 
 #' @seealso 
 #'    \code{\link[car]{leveneTest}}, \code{\link{bartlettTests}}
+#' @family homogeneity tests
+#' 
 #' @references 
 #' Levene, H. (1960). Robust Tests for Equality of Variances. In
 #' Olkin, I. *et al.* (Eds.), *Contributions to Probability and

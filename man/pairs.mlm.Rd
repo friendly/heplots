@@ -112,9 +112,15 @@ Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
 }
 \seealso{
 \code{\link{heplot}}, \code{\link{heplot3d}}
+
+Other HE plot functions: 
+\code{\link{heplot}()},
+\code{\link{heplot1d}()},
+\code{\link{heplot3d}()}
 }
 \author{
 Michael Friendly
 }
+\concept{HE plot functions}
 \keyword{hplot}
 \keyword{multivariate}

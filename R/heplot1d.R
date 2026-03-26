@@ -137,6 +137,7 @@
 #' 
 #'    \code{\link{heplot}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}} for
 #'       other HE plot methods
+#' @family HE plot functions
 #' @keywords hplot aplot multivariate
 #' @examples
 #' 

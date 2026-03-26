@@ -99,6 +99,9 @@
 #' @seealso
 #'  \code{\link{plot.robmlm}} for a plot method;
 #'     \code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
+#'  
+#' @family robust methods
+#' 
 #' @references 
 #' A. Marazzi (1993) *Algorithms, Routines and S Functions for
 #' Robust Statistics*.  Wadsworth & Brooks/Cole.

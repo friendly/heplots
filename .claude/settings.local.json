@@ -2,6 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(gh issue:*)"
+      "WebFetch(domain:stackoverflow.com)",
+      "Bash(Rscript:*)",
+      "WebSearch",
+      "WebFetch(domain:blogs.sas.com)",
+      "WebFetch(domain:projecteuclid.org)",
+      "WebFetch(domain:arxiv.org)"
     ]
   }
 }

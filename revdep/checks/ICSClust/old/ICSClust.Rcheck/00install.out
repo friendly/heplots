@@ -10,11 +10,18 @@ g++ -std=gnu++17 -shared -s -static-libgcc -o ICSClust.dll tmp.def RcppExports.o
 installing to C:/R/Projects/heplots/revdep/checks/ICSClust/old/ICSClust.Rcheck/00LOCK-ICSClust/00new/ICSClust/libs/x64
 ** R
 ** byte-compile and prepare package for lazy loading
+Warning messages:
+1: package 'ICS' was built under R version 4.5.2 
+2: package 'ggplot2' was built under R version 4.5.2 
 ** help
 *** installing help indices
 *** copying figures
 ** building package indices
 ** testing if installed package can be loaded from temporary location
+Warning: package 'ICS' was built under R version 4.5.2
+Warning: package 'ggplot2' was built under R version 4.5.2
 ** testing if installed package can be loaded from final location
+Warning: package 'ICS' was built under R version 4.5.2
+Warning: package 'ggplot2' was built under R version 4.5.2
 ** testing if installed package keeps a record of temporary installation path
 * DONE (ICSClust)

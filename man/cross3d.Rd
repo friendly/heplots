@@ -22,9 +22,16 @@ Draws a 3D cross or axis vectors in an rgl scene.
 }
 \seealso{
 \code{\link[rgl:points3d]{segments3d}}
+
+Other 3D plotting: 
+\code{\link{arrow3d}()},
+\code{\link{bbox3d}()},
+\code{\link{ellipse3d.axes}()},
+\code{\link{heplot3d}()}
 }
 \author{
 Michael Friendly
 }
+\concept{3D plotting}
 \keyword{aplot}
 \keyword{dynamic}

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,7 @@
 </div>
 <div class="section level3">
 <h3 id="vectorization-over-loops">Vectorization Over Loops<a class="anchor" aria-label="anchor" href="#vectorization-over-loops"></a></h3>
-<p><strong>ALWAYS</strong> prefer vectorized solutions over explicit loops when possible:</p>
+<p><strong>ALWAYS</strong> prefer vectorized solutions over explicit loops when possible. I’m not ready to go full-blown <code>purrr</code> versions.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good - Vectorized</span></span>
 <span><span class="va">logdet_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="va">nlev</span><span class="op">)</span></span>
@@ -90,10 +90,25 @@
 <span><span class="op">}</span></span></code></pre></div>
 </div>
 <div class="section level3">
+<h3 id="keeping-track-of-changes">Keeping track of changes<a class="anchor" aria-label="anchor" href="#keeping-track-of-changes"></a></h3>
+<p>In <code>R/</code> source files, I like to keep track of <code>TODO</code> and <code>FIXME</code> items, changing the status to <code>DONE</code> when they are completed. I started using the style below in initial comments, which appear in the initial lines of a file as simple <code>#</code> comments, before the roxygen documentation comments, <code>#'</code> begin. Please use this style when making changes. Note that one example includes a timestamp, which would be useful when you make such changes.</p>
+<p>Some examples of this style:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># DONE: ✔️ handles singular covariance matrices</span></span>
+<span><span class="co"># DONE: ✔️ Fixed summary() method to print eigenvalues as a matrix (not a list)</span></span>
+<span><span class="co"># DONE: ✔️ print/summary methods now show the number of groups actually used when some are excluded</span></span>
+<span><span class="co"># TODO: 🚩 Don't need "htest" because there's a `print.boxM()` method</span></span>
+<span><span class="co"># TODO: 🚩 simplify print and summary methods, now the `ngroups` is saved by boxM.default</span></span>
+<span></span>
+<span><span class="co"># DONE: ✔️ Now allow to plot multiple variables in a scatterplot matrix format 3/30/2016 10:53:05 AM</span></span>
+<span><span class="co"># FIXME: ❌ The covEllipses.boxM method gives errors.</span></span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="function-documentation">Function Documentation<a class="anchor" aria-label="anchor" href="#function-documentation"></a></h3>
 <p>Follow roxygen2 conventions with clear, complete documentation.</p>
 <p>This should use markdown style (<code>text</code>) where possible, rather than the old Rd style () and similarly for the mention of linked functions (<code><a href="reference/heplot.html">heplot()</a></code>, <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">graphics::text()</a></code>) rather than <code>code{\link{heplots}}</code> or `</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p>When there are long lines, e.g., in an <code>@param</code>, I prefer them to be wrapped at ~ 72 characters and subsequent lines indented by 8 characters.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' Label an Ellipse</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' @description </span></span>
@@ -125,11 +140,15 @@
 <span><span class="co">#' label.ellipse(ell, "Center", label.pos="C", col="red")</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' @export</span></span></code></pre></div>
+<div class="section level4">
+<h4 id="rdname">@rdname<a class="anchor" aria-label="anchor" href="#rdname"></a></h4>
+<p>When multiple functions are documented in a single R file, use <code>@rdname</code> for all after the first with the same name as the first.</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="error-handling-and-validation">Error Handling and Validation<a class="anchor" aria-label="anchor" href="#error-handling-and-validation"></a></h3>
-<p>Provide clear, informative error messages:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p>Provide clear, informative error messages. When possible, include information about what in the arguments caused an error.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">is.matrix</a></span><span class="op">(</span><span class="va">Y</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span><span class="st">"Y must be a matrix, got {class(Y)[1]}"</span><span class="op">)</span><span class="op">)</span></span>
@@ -148,7 +167,7 @@
 <div class="section level3">
 <h3 id="warnings-with-context">Warnings with Context<a class="anchor" aria-label="anchor" href="#warnings-with-context"></a></h3>
 <p>Make warnings informative and actionable:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">singular</span> <span class="op">&lt;-</span> <span class="va">dfs</span> <span class="op">&lt;</span> <span class="va">p</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="va">singular</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -168,7 +187,7 @@
 <div class="section level3">
 <h3 id="recording-changes">Recording changes<a class="anchor" aria-label="anchor" href="#recording-changes"></a></h3>
 <p>In the initial lines of functions, before the roxygen documentation, I use ordinary comments to record <code>TODO:</code>, <code>FIXME:</code> and <code>DONE:</code> items as follows. Continue this practice</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># DONE: ✔️ Generalize the `label.pos` argument to accept, in addition to values `0:4` and corresponding compass </span></span>
 <span><span class="co">#       directions, N, S, E, W values: `NE`, `SE`, `SW`, `NW` to mean at circular angles 45, 135, 225, 315</span></span>
 <span><span class="co"># FIXME: Allow to use `tweak` for diagonal positions.</span></span>
@@ -177,7 +196,7 @@
 <div class="section level3">
 <h3 id="backward-compatibility">Backward Compatibility<a class="anchor" aria-label="anchor" href="#backward-compatibility"></a></h3>
 <p>When extending functionality, maintain backward compatibility. Warn if any proposed change will break this.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Extend existing arguments rather than breaking them</span></span>
 <span><span class="co"># OLD: label.pos accepts 0:4 and "N", "S", "E", "W"</span></span>
 <span><span class="co"># NEW: Also accepts "NE", "SE", "SW", "NW"</span></span>
@@ -190,7 +209,7 @@
 <div class="section level3">
 <h3 id="return-values">Return Values<a class="anchor" aria-label="anchor" href="#return-values"></a></h3>
 <p>Be explicit about return values, even for side-effect functions:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good</span></span>
 <span><span class="va">label.ellipse</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">ellipse</span>, <span class="va">label</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># ... plotting code ...</span></span>
@@ -202,7 +221,7 @@
 <div class="section level3">
 <h3 id="code-organization">Code Organization<a class="anchor" aria-label="anchor" href="#code-organization"></a></h3>
 <p>Structure functions logically:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">args</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># 1. Input validation and preprocessing</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">is.matrix</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span> <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
@@ -232,7 +251,7 @@
 <div class="section level3">
 <h3 id="base-graphics-focus">Base Graphics Focus<a class="anchor" aria-label="anchor" href="#base-graphics-focus"></a></h3>
 <p>This package uses base R graphics. Maintain consistency:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Good - Using base graphics functions</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, labels <span class="op">=</span> <span class="va">label</span>, col <span class="op">=</span> <span class="va">col</span>, <span class="va">...</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">ellipse</span>, col <span class="op">=</span> <span class="va">line.col</span>, lwd <span class="op">=</span> <span class="va">lwd</span><span class="op">)</span></span>
@@ -248,7 +267,7 @@
 <div class="section level3">
 <h3 id="coordinate-calculations">Coordinate Calculations<a class="anchor" aria-label="anchor" href="#coordinate-calculations"></a></h3>
 <p>For geometric calculations (ellipses, angles, positions):</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Use clear variable names</span></span>
 <span><span class="va">target_angle</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/switch.html" class="external-link">switch</a></span><span class="op">(</span><span class="va">label.pos</span>,</span>
 <span>                       <span class="st">"NE"</span> <span class="op">=</span> <span class="va">pi</span><span class="op">/</span><span class="fl">4</span>,</span>
@@ -270,7 +289,7 @@
 <h2 id="testing-and-debugging">Testing and Debugging<a class="anchor" aria-label="anchor" href="#testing-and-debugging"></a></h2>
 <div class="section level3">
 <h3 id="create-comprehensive-test-scripts">Create Comprehensive Test Scripts<a class="anchor" aria-label="anchor" href="#create-comprehensive-test-scripts"></a></h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># test_label_ellipse.R</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://friendly.github.io/heplots/">heplots</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/car/" class="external-link">car</a></span><span class="op">)</span></span>
@@ -313,7 +332,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a></h3>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Prefer base R when possible</span></span>
 <span><span class="co"># Use these packages when needed:</span></span>
 <span><span class="co"># - car: for ellipse(), dataEllipse()</span></span>
@@ -337,7 +356,7 @@
 <h2 id="common-patterns-in-this-package">Common Patterns in This Package<a class="anchor" aria-label="anchor" href="#common-patterns-in-this-package"></a></h2>
 <div class="section level3">
 <h3 id="handling-different-input-types">Handling Different Input Types<a class="anchor" aria-label="anchor" href="#handling-different-input-types"></a></h3>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Pattern for flexible input handling</span></span>
 <span><span class="va">process_input</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">obj</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">inherits</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"lm"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -357,7 +376,7 @@
 </div>
 <div class="section level3">
 <h3 id="covariance-matrix-calculations">Covariance Matrix Calculations<a class="anchor" aria-label="anchor" href="#covariance-matrix-calculations"></a></h3>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Check for singular matrices</span></span>
 <span><span class="va">singular</span> <span class="op">&lt;-</span> <span class="va">dfs</span> <span class="op">&lt;</span> <span class="va">p</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="va">singular</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -378,6 +397,7 @@
 │   ├── heplot.R         # Main HE plot functions
 │   ├── label-ellipse.R  # Ellipse labeling utilities
 │   └── utils.R          # Helper functions
+├── issues               # Keep track of issues
 ├── man/                 # Generated by roxygen2
 ├── tests/
 │   └── testthat/        # Unit tests

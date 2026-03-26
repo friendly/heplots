@@ -125,6 +125,11 @@ Robust multivariate regression. *Technometrics*, **46**(3), 293–305.
 
 [`Mahalanobis`](https://friendly.github.io/heplots/reference/Mahalanobis.md)
 
+Other diagnostic plots:
+[`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md),
+[`eigstatCI()`](https://friendly.github.io/heplots/reference/eigstatCI.md),
+[`plot.boxM()`](https://friendly.github.io/heplots/reference/plot.boxM.md)
+
 ## Examples
 
 ``` r

@@ -1,8 +1,8 @@
 Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
-Version: 1.7.8
-Date: 2025-08-06
+Version: 1.8.1
+Date: 2025-12-02
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -12,8 +12,10 @@ Authors@R: c(
             person(given = "John", 
                    family = "Fox", role="aut",
                    comment = c(ORCID = "0000-0002-1196-8012")),
-            person(given = "Georges", family = "Monette", role="aut", comment = c(ORCID = "0000-0003-0076-5532")),
-            person(given = "Phil", family="Chalmers", role="ctb", comment = c(ORCID="0000-0001-5332-2810")),
+            person(given = "Georges", family = "Monette", role="aut", 
+                   comment = c(ORCID = "0000-0003-0076-5532")),
+            person(given = "Phil", family="Chalmers", role="ctb", 
+                   comment = c(ORCID="0000-0001-5332-2810")),
             person(given = "Duncan", family = "Murdoch", role="ctb"))
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Description: Provides HE plot and other functions for visualizing hypothesis
@@ -32,24 +34,26 @@ Suggests: candisc, carData, effects, reshape, gplots, nlme, lattice,
         rmarkdown, markdown, dplyr, tidyr, ggplot2, bookdown,
         patchwork, tinytable, glue, here, Sleuth2, rrcov, archdata,
         qqtest, vcdExtra, R.rsp, KernSmooth, aplpack, foreign,
-        robustbase
+        robustbase, effectsize
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
 License: GPL (>= 2)
-URL: http://friendly.github.io/heplots/,
+URL: https://friendly.github.io/heplots/,
         https://github.com/friendly/heplots
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Encoding: UTF-8
 VignetteBuilder: knitr, R.rsp
+# Roxygen: list(markdown = TRUE)
+Roxygen: list(markdown = TRUE)
 RemoteType: local
 RemoteUrl: C:\R\Projects\heplots
 NeedsCompilation: no
-Packaged: 2025-08-07 00:11:06 UTC; friendly
+Packaged: 2025-12-06 20:32:16 UTC; friendly
 Author: Michael Friendly [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-3237-0941>),
   John Fox [aut] (ORCID: <https://orcid.org/0000-0002-1196-8012>),
   Georges Monette [aut] (ORCID: <https://orcid.org/0000-0003-0076-5532>),
   Phil Chalmers [ctb] (ORCID: <https://orcid.org/0000-0001-5332-2810>),
   Duncan Murdoch [ctb]
-Built: R 4.5.1; ; 2025-08-07 00:11:16 UTC; windows
+Built: R 4.5.1; ; 2025-12-06 20:32:19 UTC; windows

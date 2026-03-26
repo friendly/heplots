@@ -15,14 +15,14 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> #  File tests/nomcmc.R in package latentnet, part of the
-> #  Statnet suite of packages for network analysis, https://statnet.org .
+> #  File tests/nomcmc.R in package latentnet, part of the Statnet suite of
+> #  packages for network analysis, https://statnet.org .
 > #
-> #  This software is distributed under the GPL-3 license.  It is free,
-> #  open source, and has the attribution requirements (GPL Section 7) at
+> #  This software is distributed under the GPL-3 license.  It is free, open
+> #  source, and has the attribution requirements (GPL Section 7) at
 > #  https://statnet.org/attribution .
 > #
-> #  Copyright 2003-2024 Statnet Commons
+> #  Copyright 2003-2025 Statnet Commons
 > ################################################################################
 > library(latentnet)
 Loading required package: network
@@ -34,7 +34,7 @@ Loading required package: network
 
 Loading required package: ergm
 
-'ergm' 4.9.0 (2025-06-09), part of the Statnet Project
+'ergm' 4.10.1 (2025-08-26), part of the Statnet Project
 * 'news(package="ergm")' for changes since last version
 * 'citation("ergm")' for citation information
 * 'https://statnet.org' for help, support, and other information
@@ -44,12 +44,15 @@ changes. Please type 'news(package="ergm")' for a list of major
 changes.
 
 
-'latentnet' 2.11.0 (2024-02-19), part of the Statnet Project
+'latentnet' 2.12.0 (2025-09-11), part of the Statnet Project
 * 'news(package="latentnet")' for changes since last version
 * 'citation("latentnet")' for citation information
 * 'https://statnet.org' for help, support, and other information
 NOTE: BIC calculation prior to latentnet 2.7.0 had a bug in the calculation of the effective number of parameters. See help(summary.ergmm) for details.
 NOTE: Prior to version 2.8.0, handling of fixed effects for directed networks had a bug: the covariate matrix was transposed.
+Warning messages:
+1: package 'network' was built under R version 4.5.2 
+2: package 'ergm' was built under R version 4.5.2 
 > 
 > data(sampson)
 > 
@@ -83,4 +86,4 @@ attr(,"condition")
 > 
 > proc.time()
    user  system elapsed 
-   9.29    1.28   10.92 
+   1.90    0.26    2.26 

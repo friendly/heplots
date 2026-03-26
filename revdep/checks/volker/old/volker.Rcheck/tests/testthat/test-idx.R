@@ -55,3 +55,16 @@ test_that("Items are reversed", {
   expect_equal(dist_reversed$alpha, dist_unreversed$alpha)
   expect_equal(6 - as.numeric(dist_unreversed$mean), as.numeric(dist_reversed$mean))
 })
+
+
+test_that("Missings are skipped", {
+  options(vlkr.na.omit=FALSE)
+  expect_snapshot({
+    data %>%
+      add_index(
+        tidyselect::starts_with("cg_adoption")
+      ) %>%
+      tab_metrics_one_grouped(idx_cg_adoption, adopter)
+  })
+  options(vlkr.na.omit=TRUE)
+})

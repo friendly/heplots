@@ -45,8 +45,15 @@ arrow3d(c(0,0,0), c(-2,2,2), barblen=.2, lwd=3, col="red")
 }
 \seealso{
 \code{\link[rgl]{lines3d}}, \code{\link[rgl]{segments3d}},
+
+Other 3D plotting: 
+\code{\link{bbox3d}()},
+\code{\link{cross3d}()},
+\code{\link{ellipse3d.axes}()},
+\code{\link{heplot3d}()}
 }
 \author{
 Barry Rowlingson, posted to R-help, 1/10/2010
 }
+\concept{3D plotting}
 \keyword{aplot}

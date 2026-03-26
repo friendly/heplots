@@ -60,6 +60,12 @@ label.ellipse(
   [`text`](https://rdrr.io/r/graphics/text.html), e.g., `cex`, `col`,
   ...
 
+## Value
+
+Mainly used for its side-effect of producing a call to
+[`text`](https://rdrr.io/r/graphics/text.html), but also returns,
+invisibly, the (x, y) coordinates where the label was placed.
+
 ## Details
 
 The function takes the coordinates of the input `ellipse` and uses that,
@@ -133,10 +139,12 @@ diagonal <- c("NE", "SE", "SW", "NW")
 for (pos in diagonal) {
   label.ellipse(circ, label=pos, label.pos=pos, col="blue", cex=1.2, font=2)
 }
-#> Error in ellipse[index, 1]: no 'dimnames' attribute for array
 
-# Center
-label.ellipse(circ, label="C", label.pos="C", col="darkgreen", cex=1.2, font=2)
+# Center, & illustrate return
+xy <- label.ellipse(circ, label="C", label.pos="C", col="darkgreen", cex=1.2, font=2)
+xy
+#>           x           y 
+#>  0.02459016 -0.05593923 
 
 # Add reference lines to show the angles
 abline(h=0, v=0, col="lightgray", lty=2)
@@ -163,7 +171,6 @@ heplot(dogfood.mod,
        fill = TRUE, fill.alpha = 0.1,
        label.pos = c("NE", "SW"), cex = 1.4)
 
-#> Error in ellipse[index, 1]: subscript out of bounds
 
 
 # Define diagonal compass positions and their corresponding angular fractions

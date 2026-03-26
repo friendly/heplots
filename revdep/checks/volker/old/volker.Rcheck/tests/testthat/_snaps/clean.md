@@ -89,19 +89,26 @@
     Code
       get_baseline(result)
     Output
-      [1] "Frequencies based on values: agree, strongly agree. 4 missing case(s) omitted."
+      [1] "n=97. Frequencies based on values: agree, strongly agree. 4 missing case(s) omitted."
 
 # Baseline for zeros
 
     Code
       get_baseline(result)
     Output
-      [1] "3 zero case(s) omitted."
+      [1] "3 case(s) with zero values."
 
 # Baseline for negatives
 
     Code
       get_baseline(result)
     Output
-      [1] "2 negative case(s) omitted."
+      [1] "n=2. 2 case(s) with negative values."
+
+# Baseline for missings
+
+    Code
+      get_baseline(result)
+    Output
+      [1] "n=4. 2 case(s) with missing values."
 

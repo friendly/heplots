@@ -149,4 +149,4 @@ See ?effectsTheme for details.
 > 
 > proc.time()
    user  system elapsed 
-   5.25    1.50    7.18 
+   0.85    0.20    1.14 

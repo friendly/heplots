@@ -48,7 +48,7 @@ The following object is masked from 'package:stats':
 > ds <- volker::chatgpt
 > 
 > volker::add_clusters(ds, starts_with("cg_adoption"), k = 3)
-# A tibble: 97 × 20
+# A tibble: 97 × 23
     case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
    <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
  1   170           4        4                        3                        4
@@ -62,7 +62,7 @@ The following object is masked from 'package:stats':
  9   309           3        3                        3                        4
 10   325           2        1                        4                        1
 # ℹ 87 more rows
-# ℹ 15 more variables: cg_adoption_advantage_03 <dbl>,
+# ℹ 18 more variables: cg_adoption_advantage_03 <dbl>,
 #   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
 #   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
 #   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,
@@ -88,7 +88,7 @@ The following object is masked from 'package:stats':
 > ds <- volker::chatgpt
 > 
 > volker::add_factors(ds, starts_with("cg_adoption"))
-# A tibble: 97 × 21
+# A tibble: 97 × 24
     case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
    <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
  1   170           4        4                        3                        4
@@ -102,7 +102,7 @@ The following object is masked from 'package:stats':
  9   309           3        3                        3                        4
 10   325           2        1                        4                        1
 # ℹ 87 more rows
-# ℹ 16 more variables: cg_adoption_advantage_03 <dbl>,
+# ℹ 19 more variables: cg_adoption_advantage_03 <dbl>,
 #   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
 #   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
 #   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,
@@ -125,7 +125,7 @@ The following object is masked from 'package:stats':
 > 
 > ds <- volker::chatgpt
 > volker::add_index(ds, starts_with("cg_adoption"))
-# A tibble: 97 × 20
+# A tibble: 97 × 23
     case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
    <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
  1   170           4        4                        3                        4
@@ -139,7 +139,7 @@ The following object is masked from 'package:stats':
  9   309           3        3                        3                        4
 10   325           2        1                        4                        1
 # ℹ 87 more rows
-# ℹ 15 more variables: cg_adoption_advantage_03 <dbl>,
+# ℹ 18 more variables: cg_adoption_advantage_03 <dbl>,
 #   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
 #   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
 #   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,
@@ -149,6 +149,113 @@ The following object is masked from 'package:stats':
 > 
 > 
 > cleanEx()
+> nameEx("add_model")
+> ### * add_model
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: add_model
+> ### Title: Add a column with predicted values from a regression model
+> ### Aliases: add_model
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- filter(volker::chatgpt, sd_gender != "diverse")
+> 
+> data <- data |>
++   add_model(use_work, categorical = c(sd_gender, adopter), metric = sd_age)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("agree_tab")
+> ### * agree_tab
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: agree_tab
+> ### Title: Agreement for multiple items
+> ### Aliases: agree_tab
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(dplyr)
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+> library(volker)
+> 
+> data <- volker::chatgpt
+> 
+> # Prepare example data.
+> # First, recode "x" to TRUE/FALSE for the first coder's sample.
+> data_coder1 <- data |>
++   mutate(across(starts_with("cg_act_"), ~ ifelse(is.na(.), FALSE, TRUE))) %>%
++   mutate(coder = "coder one")
+> 
+> # Second, recode using a dictionary approach for the second coder's sample.
+> data_coder2 <- data |>
++   mutate(across(starts_with("cg_act_"), ~ ifelse(is.na(.), FALSE, TRUE))) %>%
++   mutate(cg_act_write = grepl("write|text|translate", tolower(cg_activities))) %>%
++   mutate(coder="coder two")
+> 
+> data_coded <- bind_rows(
++   data_coder1,
++   data_coder2
++ )
+> 
+> # Reliability coefficients are strictly only appropriate for manual codings
+> agree_tab(data_coded, cg_act_write,  coder, case, method = "reli")
+
+
+|item         |   n| Coders| Categories| Holsti| Krippendorff's Alpha| Kappa| Gwet's AC1|
+|:------------|---:|------:|----------:|------:|--------------------:|-----:|----------:|
+|cg_act_write | 101|      2|          2|    0.7|                  0.4|  0.42|       0.42|
+
+
+|item         | agree| coder one| coder two|  n|    p|
+|:------------|-----:|---------:|---------:|--:|----:|
+|cg_act_write |  TRUE|     FALSE|     FALSE| 42| 0.42|
+|cg_act_write |  TRUE|      TRUE|      TRUE| 29| 0.29|
+|cg_act_write | FALSE|     FALSE|      TRUE|  5| 0.05|
+|cg_act_write | FALSE|      TRUE|     FALSE| 25| 0.25|
+> 
+> # Better use classification performance indicators to compare the
+> # dictionary approach with human coding
+> agree_tab(data_coded, cg_act_write,  coder, case, method = "class")
+
+
+|item         |   n| Ground truth| Categories| Accuracy| Precision| Recall|   F1|
+|:------------|---:|------------:|----------:|--------:|---------:|------:|----:|
+|cg_act_write | 101|    coder one|       TRUE|      0.7|      0.85|   0.54| 0.66|
+
+
+|item         | agree| coder one| coder two|  n|    p|
+|:------------|-----:|---------:|---------:|--:|----:|
+|cg_act_write |  TRUE|     FALSE|     FALSE| 42| 0.42|
+|cg_act_write |  TRUE|      TRUE|      TRUE| 29| 0.29|
+|cg_act_write | FALSE|     FALSE|      TRUE|  5| 0.05|
+|cg_act_write | FALSE|      TRUE|     FALSE| 25| 0.25|
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching 'package:dplyr'
+
 > nameEx("cluster_plot")
 > ### * cluster_plot
 > 
@@ -189,23 +296,23 @@ In the plot, 4 missing case(s) omitted.
 > cluster_tab(data, starts_with("cg_adoption"), k = 2)
 
 
-|Expectations                                                |     total| Cluster 1| Cluster 2|
-|:-----------------------------------------------------------|---------:|---------:|---------:|
-|ChatGPT has clear advantages compared to similar offerings. | 3.4 (1.0)| 3.8 (0.9)| 3.2 (1.0)|
-|Using ChatGPT brings financial benefits.                    | 2.7 (1.2)| 3.5 (0.9)| 2.2 (1.1)|
-|Using ChatGPT is advantageous in many tasks.                | 3.6 (1.1)| 4.0 (0.8)| 3.3 (1.2)|
-|Compared to other systems, using ChatGPT is more fun.       | 3.5 (1.0)| 4.0 (0.8)| 3.2 (1.0)|
-|Much can go wrong when using ChatGPT.                       | 3.1 (1.1)| 3.1 (1.1)| 3.1 (1.1)|
-|There are legal issues with using ChatGPT.                  | 3.1 (1.2)| 3.5 (1.0)| 2.8 (1.2)|
-|The security of user data is not guaranteed with ChatGPT.   | 3.2 (1.0)| 3.5 (1.0)| 3.0 (1.0)|
-|Using ChatGPT could bring personal disadvantages.           | 2.7 (1.1)| 3.1 (1.2)| 2.5 (1.0)|
-|In my environment, using ChatGPT is standard.               | 2.5 (1.1)| 3.5 (0.9)| 1.9 (0.8)|
-|Almost everyone in my environment uses ChatGPT.             | 2.4 (1.2)| 3.4 (1.0)| 1.8 (0.8)|
-|Not using ChatGPT is considered being an outsider.          | 2.0 (1.2)| 2.9 (1.2)| 1.4 (0.6)|
-|Using ChatGPT brings me recognition from my environment.    | 2.3 (1.2)| 3.4 (1.1)| 1.7 (0.8)|
-|n                                                           |        97|        36|        61|
+|Expectations                             |     total| Cluster 1| Cluster 2|
+|:----------------------------------------|---------:|---------:|---------:|
+|ChatGPT has clear advantages compared... | 3.4 (1.0)| 3.8 (0.9)| 3.2 (1.0)|
+|Using ChatGPT brings financial benefits. | 2.7 (1.2)| 3.5 (0.9)| 2.2 (1.1)|
+|Using ChatGPT is advantageous in many... | 3.6 (1.1)| 4.0 (0.8)| 3.3 (1.2)|
+|Compared to other systems, using Chat... | 3.5 (1.0)| 4.0 (0.8)| 3.2 (1.0)|
+|Much can go wrong when using ChatGPT.    | 3.1 (1.1)| 3.1 (1.1)| 3.1 (1.1)|
+|There are legal issues with using Cha... | 3.1 (1.2)| 3.5 (1.0)| 2.8 (1.2)|
+|The security of user data is not guar... | 3.2 (1.0)| 3.5 (1.0)| 3.0 (1.0)|
+|Using ChatGPT could bring personal di... | 2.7 (1.1)| 3.1 (1.2)| 2.5 (1.0)|
+|In my environment, using ChatGPT is s... | 2.5 (1.1)| 3.5 (0.9)| 1.9 (0.8)|
+|Almost everyone in my environment use... | 2.4 (1.2)| 3.4 (1.0)| 1.8 (0.8)|
+|Not using ChatGPT is considered being... | 2.0 (1.2)| 2.9 (1.2)| 1.4 (0.6)|
+|Using ChatGPT brings me recognition f... | 2.3 (1.2)| 3.4 (1.1)| 1.7 (0.8)|
+|n                                        |        97|        36|        61|
 
-4 missing case(s) omitted.
+n=97. 4 missing case(s) omitted.
 
 
 
@@ -240,20 +347,20 @@ n=97.
 > ### ** Examples
 > 
 > volker::codebook(volker::chatgpt)
-# A tibble: 94 × 6
+# A tibble: 97 × 6
    item_name     item_group item_class item_label         value_name value_label
    <chr>         <chr>      <chr>      <chr>              <chr>      <chr>      
  1 case          case       numeric    case               <NA>       <NA>       
  2 sd_age        sd         numeric    Age                <NA>       <NA>       
  3 cg_activities cg         character  Activities with C… <NA>       <NA>       
- 4 adopter       adopter    factor     Innovator type     I try new… I try new …
- 5 adopter       adopter    factor     Innovator type     I try new… I try new …
- 6 adopter       adopter    factor     Innovator type     I wait un… I wait unt…
- 7 adopter       adopter    factor     Innovator type     I only us… I only use…
- 8 adopter       adopter    factor     Innovator type     [no answe… [no answer]
- 9 sd_gender     sd         factor     Gender             female     female     
-10 sd_gender     sd         factor     Gender             male       male       
-# ℹ 84 more rows
+ 4 cg_act_write  cg         character  cg_act_write       <NA>       <NA>       
+ 5 cg_act_test   cg         character  cg_act_test        <NA>       <NA>       
+ 6 cg_act_search cg         character  cg_act_search      <NA>       <NA>       
+ 7 adopter       adopter    factor     Innovator type     I try new… I try new …
+ 8 adopter       adopter    factor     Innovator type     I try new… I try new …
+ 9 adopter       adopter    factor     Innovator type     I wait un… I wait unt…
+10 adopter       adopter    factor     Innovator type     I only us… I only use…
+# ℹ 87 more rows
 > 
 > 
 > 
@@ -308,7 +415,7 @@ n=97.
 > 
 > data <- volker::chatgpt
 > data_prepare(data, sd_age, sd_gender)
-# A tibble: 101 × 19
+# A tibble: 101 × 22
     case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
    <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
  1   170           4        4                        3                        4
@@ -322,12 +429,107 @@ n=97.
  9   309           3        3                        3                        4
 10   325           2        1                        4                        1
 # ℹ 91 more rows
-# ℹ 14 more variables: cg_adoption_advantage_03 <dbl>,
+# ℹ 17 more variables: cg_adoption_advantage_03 <dbl>,
 #   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
 #   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
 #   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,
 #   cg_adoption_social_02 <dbl>, cg_adoption_social_03 <dbl>,
 #   cg_adoption_social_04 <dbl>, adopter <fct>, sd_age <dbl>, …
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("diagnostics_cooksd")
+> ### * diagnostics_cooksd
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: diagnostics_cooksd
+> ### Title: Cook's distance plot
+> ### Aliases: diagnostics_cooksd
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- filter(volker::chatgpt, sd_gender != "diverse")
+> 
+> data <- add_model(data, use_work, metric = sd_age)
+> 
+> fit <- attr(data$prd_use_work, "lm.fit")
+> diagnostics_cooksd(fit)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("diagnostics_qq")
+> ### * diagnostics_qq
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: diagnostics_qq
+> ### Title: Normal Q-Q
+> ### Aliases: diagnostics_qq
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- filter(volker::chatgpt, sd_gender != "diverse")
+> 
+> data <- add_model(data, use_work, metric = sd_age)
+> 
+> fit <- attr(data$prd_use_work, "lm.fit")
+> diagnostics_qq(fit)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("diagnostics_resid_fitted")
+> ### * diagnostics_resid_fitted
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: diagnostics_resid_fitted
+> ### Title: Residuals vs Fitted plot
+> ### Aliases: diagnostics_resid_fitted
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- filter(volker::chatgpt, sd_gender != "diverse")
+> 
+> data <- add_model(data, use_work, metric = sd_age)
+> 
+> fit <- attr(data$prd_use_work, "lm.fit")
+> diagnostics_resid_fitted(fit)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("diagnostics_scale_location")
+> ### * diagnostics_scale_location
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: diagnostics_scale_location
+> ### Title: Scale-Location (Spread-Location)
+> ### Aliases: diagnostics_scale_location
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- filter(volker::chatgpt, sd_gender != "diverse")
+> 
+> data <- add_model(data, use_work, metric = sd_age)
+> 
+> fit <- attr(data$prd_use_work, "lm.fit)
++ diagnostics_scale_location(fit")
 > 
 > 
 > 
@@ -350,13 +552,28 @@ n=97.
 > effect_counts(data, sd_gender, adopter)
 
 
+|sd_gender |                                  adopter|  n|  p_x|  p_y| p_xy| ratio|   pmi|  npmi| fisher_p| fisher_stars|
+|:---------|----------------------------------------:|--:|----:|----:|----:|-----:|-----:|-----:|--------:|------------:|
+|female    |             I try new offers immediately|  2| 0.40| 0.15| 0.02|  0.34| -1.57| -0.28|    0.142|             |
+|female    |          I try new offers rather quickly| 25| 0.40| 0.62| 0.25|  1.00|  0.00|  0.00|    1.000|             |
+|female    | I wait until offers establish themselves| 13| 0.40| 0.22| 0.13|  1.49|  0.58|  0.20|    0.142|             |
+|male      |             I try new offers immediately| 12| 0.59| 0.15| 0.12|  1.35|  0.43|  0.14|    0.187|             |
+|male      |          I try new offers rather quickly| 38| 0.59| 0.62| 0.38|  1.02|  0.02|  0.02|    1.000|             |
+|male      | I wait until offers establish themselves|  9| 0.59| 0.22| 0.09|  0.69| -0.54| -0.15|    0.142|             |
+|male      | I only use new offers when I have no ...|  1| 0.59| 0.01| 0.01|  1.68|  0.75|  0.11|    1.000|             |
+|diverse   |             I try new offers immediately|  1| 0.01| 0.15| 0.01|  6.73|  2.75|  0.41|    0.238|             |
+
+Adjusted significance p values with fdr method.
+
+
+
 |Statistic   | Value|
 |:-----------|-----:|
 |Cramer's V  |  0.26|
-|n           |   101|
 |Chi-squared | 13.48|
+|n           |   101|
 |df          |      |
-|p           | 0.013|
+|p           | 0.017|
 |stars       |     *|
 > 
 > 
@@ -381,14 +598,90 @@ n=97.
 > effect_counts_items(data, starts_with("cg_adoption_adv"))
 
 
-|Expectations                                                | Gini coefficient|  n| Chi-squared|     p| stars|
-|:-----------------------------------------------------------|----------------:|--:|-----------:|-----:|-----:|
-|ChatGPT has clear advantages compared to similar offerings. |             0.36| 99|       43.47| 0.000|   ***|
-|Using ChatGPT brings financial benefits.                    |             0.19| 99|       14.28| 0.006|    **|
-|Using ChatGPT is advantageous in many tasks.                |             0.36| 99|       47.01| 0.000|   ***|
-|Compared to other systems, using ChatGPT is more fun.       |             0.40| 99|       53.68| 0.000|   ***|
+|Expectations                             | Gini coefficient|  n| Chi-squared|     p| stars|
+|:----------------------------------------|----------------:|--:|-----------:|-----:|-----:|
+|ChatGPT has clear advantages compared... |             0.36| 99|       43.47| 0.000|   ***|
+|Using ChatGPT brings financial benefits. |             0.19| 99|       14.28| 0.006|    **|
+|Using ChatGPT is advantageous in many... |             0.36| 99|       47.01| 0.000|   ***|
+|Compared to other systems, using Chat... |             0.40| 99|       53.68| 0.000|   ***|
 
-2 missing case(s) omitted.
+2 missing case(s) omitted. Adjusted significance p values with fdr method.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_counts_items_grouped")
+> ### * effect_counts_items_grouped
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_counts_items_grouped
+> ### Title: Effect size and test for comparing multiple variables by a
+> ###   grouping variable
+> ### Aliases: effect_counts_items_grouped
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_counts_items_grouped(
++   data, starts_with("cg_adoption_adv"),  sd_gender
++ )
+
+
+|Expectations: Correlation w...           | Cramer's V| Chi-squared|  n| df|     p| stars|
+|:----------------------------------------|----------:|-----------:|--:|--:|-----:|-----:|
+|ChatGPT has clear advantages compared... |       0.14|        3.76| 99|   | 0.858|      |
+|Using ChatGPT brings financial benefits. |       0.16|        4.99| 99|   | 0.858|      |
+|Using ChatGPT is advantageous in many... |       0.14|        3.78| 99|   | 0.858|      |
+|Compared to other systems, using Chat... |       0.13|        3.44| 99|   | 0.858|      |
+
+n=99. 2 missing case(s) omitted. Adjusted significance p values with fdr method.
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("effect_counts_items_grouped_items")
+> ### * effect_counts_items_grouped_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: effect_counts_items_grouped_items
+> ### Title: Effect size and test for comparing multiple variables by
+> ###   multiple grouping variables
+> ### Aliases: effect_counts_items_grouped_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> effect_counts(
++   data,
++   starts_with("cg_adoption_adv"),
++   starts_with("use_")
++ )
+
+
+|Expectations                             |                   Usage| Cramer's V| Chi-squared|  n| df|     p| stars|
+|:----------------------------------------|-----------------------:|----------:|-----------:|--:|--:|-----:|-----:|
+|ChatGPT has clear advantages compared... |      in private context|       0.32|       41.27| 99|   | 0.004|    **|
+|ChatGPT has clear advantages compared... | in professional context|       0.24|       23.46| 99|   | 0.116|      |
+|Using ChatGPT brings financial benefits. |      in private context|       0.24|       22.48| 99|   | 0.161|      |
+|Using ChatGPT brings financial benefits. | in professional context|       0.37|       53.99| 99|   | 0.004|    **|
+|Using ChatGPT is advantageous in many... |      in private context|       0.25|       24.15| 99|   | 0.116|      |
+|Using ChatGPT is advantageous in many... | in professional context|       0.30|       34.57| 99|   | 0.009|    **|
+|Compared to other systems, using Chat... |      in private context|       0.30|       34.62| 99|   | 0.009|    **|
+|Compared to other systems, using Chat... | in professional context|       0.20|       16.23| 99|   | 0.438|      |
+
+n=99. 2 missing case(s) omitted. Adjusted significance p values with fdr method.
 
 > 
 > 
@@ -445,13 +738,28 @@ n=97.
 > effect_counts_one_grouped(data, adopter, sd_gender)
 
 
+|adopter                                  | sd_gender|  n|  p_x|  p_y| p_xy| ratio|   pmi|  npmi| fisher_p| fisher_stars|
+|:----------------------------------------|---------:|--:|----:|----:|----:|-----:|-----:|-----:|--------:|------------:|
+|I try new offers immediately             |    female|  2| 0.15| 0.40| 0.02|  0.34| -1.57| -0.28|    0.142|             |
+|I try new offers immediately             |      male| 12| 0.15| 0.59| 0.12|  1.35|  0.43|  0.14|    0.187|             |
+|I try new offers immediately             |   diverse|  1| 0.15| 0.01| 0.01|  6.73|  2.75|  0.41|    0.238|             |
+|I try new offers rather quickly          |    female| 25| 0.62| 0.40| 0.25|  1.00|  0.00|  0.00|    1.000|             |
+|I try new offers rather quickly          |      male| 38| 0.62| 0.59| 0.38|  1.02|  0.02|  0.02|    1.000|             |
+|I wait until offers establish themselves |    female| 13| 0.22| 0.40| 0.13|  1.49|  0.58|  0.20|    0.142|             |
+|I wait until offers establish themselves |      male|  9| 0.22| 0.59| 0.09|  0.69| -0.54| -0.15|    0.142|             |
+|I only use new offers when I have no ... |      male|  1| 0.01| 0.59| 0.01|  1.68|  0.75|  0.11|    1.000|             |
+
+Adjusted significance p values with fdr method.
+
+
+
 |Statistic   | Value|
 |:-----------|-----:|
 |Cramer's V  |  0.26|
-|n           |   101|
 |Chi-squared | 13.48|
+|n           |   101|
 |df          |      |
-|p           | 0.020|
+|p           | 0.017|
 |stars       |     *|
 > 
 > 
@@ -479,17 +787,20 @@ n=97.
 |:------------------|--------:|------:|-------:|-----:|-----:|-----:|-----:|
 |(Intercept)        |    37.52|  33.21|   41.84|  2.18| 17.24| 0.000|   ***|
 |female (Reference) |         |       |        |      |      |      |      |
-|male               |     3.69|  -1.88|    9.27|  2.81|  1.31| 0.192|      |
+|male               |     3.69|  -1.88|    9.27|  2.81|  1.31| 0.288|      |
 |diverse            |    -4.52| -32.18|   23.13| 13.94| -0.32| 0.746|      |
+
+Adjusted significance p values with fdr method.
+
 
 
 |Statistic          | Value|
 |:------------------|-----:|
-|Adjusted R-squared |     0|
+|Adjusted R-squared | -0.00|
 |F                  |  0.98|
 |df                 |     2|
 |residual df        |    98|
-|p                  |  0.38|
+|p                  | 0.378|
 |stars              |      |
 > 
 > 
@@ -514,22 +825,22 @@ n=97.
 > effect_metrics_items(data, starts_with("cg_adoption"))
 
 
-|Expectations                                                | skewness| kurtosis|    W|     p| stars|  normality|
-|:-----------------------------------------------------------|--------:|--------:|----:|-----:|-----:|----------:|
-|ChatGPT has clear advantages compared to similar offerings. |    -0.51|    -0.05| 0.89| 0.000|   ***| not normal|
-|Using ChatGPT brings financial benefits.                    |     0.09|    -1.00| 0.90| 0.000|   ***| not normal|
-|Using ChatGPT is advantageous in many tasks.                |    -0.76|    -0.02| 0.86| 0.000|   ***| not normal|
-|Compared to other systems, using ChatGPT is more fun.       |    -0.66|     0.43| 0.86| 0.000|   ***| not normal|
-|Much can go wrong when using ChatGPT.                       |     0.12|    -0.85| 0.91| 0.000|   ***| not normal|
-|There are legal issues with using ChatGPT.                  |     0.07|    -0.66| 0.90| 0.000|   ***| not normal|
-|The security of user data is not guaranteed with ChatGPT.   |     0.22|    -0.61| 0.89| 0.000|   ***| not normal|
-|Using ChatGPT could bring personal disadvantages.           |     0.33|    -0.65| 0.91| 0.000|   ***| not normal|
-|In my environment, using ChatGPT is standard.               |     0.39|    -0.68| 0.90| 0.000|   ***| not normal|
-|Almost everyone in my environment uses ChatGPT.             |     0.56|    -0.51| 0.88| 0.000|   ***| not normal|
-|Not using ChatGPT is considered being an outsider.          |     1.08|     0.22| 0.79| 0.000|   ***| not normal|
-|Using ChatGPT brings me recognition from my environment.    |     0.57|    -0.77| 0.87| 0.000|   ***| not normal|
+|Expectations                             | skewness| kurtosis|    W|     p| stars|  normality|
+|:----------------------------------------|--------:|--------:|----:|-----:|-----:|----------:|
+|ChatGPT has clear advantages compared... |    -0.51|    -0.05| 0.89| 0.000|   ***| not normal|
+|Using ChatGPT brings financial benefits. |     0.09|    -1.00| 0.90| 0.000|   ***| not normal|
+|Using ChatGPT is advantageous in many... |    -0.76|    -0.02| 0.86| 0.000|   ***| not normal|
+|Compared to other systems, using Chat... |    -0.66|     0.43| 0.86| 0.000|   ***| not normal|
+|Much can go wrong when using ChatGPT.    |     0.12|    -0.85| 0.91| 0.000|   ***| not normal|
+|There are legal issues with using Cha... |     0.07|    -0.66| 0.90| 0.000|   ***| not normal|
+|The security of user data is not guar... |     0.22|    -0.61| 0.89| 0.000|   ***| not normal|
+|Using ChatGPT could bring personal di... |     0.33|    -0.65| 0.91| 0.000|   ***| not normal|
+|In my environment, using ChatGPT is s... |     0.39|    -0.68| 0.90| 0.000|   ***| not normal|
+|Almost everyone in my environment use... |     0.56|    -0.51| 0.88| 0.000|   ***| not normal|
+|Not using ChatGPT is considered being... |     1.08|     0.22| 0.79| 0.000|   ***| not normal|
+|Using ChatGPT brings me recognition f... |     0.57|    -0.77| 0.87| 0.000|   ***| not normal|
 
-4 missing case(s) omitted.
+4 missing case(s) omitted. Adjusted significance p values with fdr method.
 
 > 
 > 
@@ -558,14 +869,14 @@ n=97.
 + )
 
 
-|Expectations: Correlation with Age                          | R-squared|  n| Pearson's r| ci low| ci high| df|     t|     p| stars|
-|:-----------------------------------------------------------|---------:|--:|-----------:|------:|-------:|--:|-----:|-----:|-----:|
-|ChatGPT has clear advantages compared to similar offerings. |      0.01| 99|       -0.12|  -0.31|    0.08| 97| -1.16| 0.249|      |
-|Using ChatGPT brings financial benefits.                    |      0.01| 99|       -0.09|  -0.29|    0.11| 97| -0.93| 0.356|      |
-|Using ChatGPT is advantageous in many tasks.                |      0.00| 99|       -0.06|  -0.25|    0.14| 97| -0.56| 0.579|      |
-|Compared to other systems, using ChatGPT is more fun.       |      0.01| 99|       -0.12|  -0.31|    0.08| 97| -1.18| 0.239|      |
+|Expectations: Correlation w...           | Pearson's r| R-squared|  n| ci low| ci high| df|     t|     p| stars|
+|:----------------------------------------|-----------:|---------:|--:|------:|-------:|--:|-----:|-----:|-----:|
+|ChatGPT has clear advantages compared... |       -0.12|      0.01| 99|  -0.31|    0.08| 97| -1.16| 0.475|      |
+|Using ChatGPT brings financial benefits. |       -0.09|      0.01| 99|  -0.29|    0.11| 97| -0.93| 0.475|      |
+|Using ChatGPT is advantageous in many... |       -0.06|      0.00| 99|  -0.25|    0.14| 97| -0.56| 0.579|      |
+|Compared to other systems, using Chat... |       -0.12|      0.01| 99|  -0.31|    0.08| 97| -1.18| 0.475|      |
 
-2 missing case(s) omitted.
+n=99. 2 missing case(s) omitted. Adjusted significance p values with fdr method.
 
 > 
 > 
@@ -595,18 +906,18 @@ n=97.
 + )
 
 
-|Expectations                                                |                   Usage| R-squared|  n| Pearson's r| ci low| ci high| df|    t|     p| stars|
-|:-----------------------------------------------------------|-----------------------:|---------:|--:|-----------:|------:|-------:|--:|----:|-----:|-----:|
-|ChatGPT has clear advantages compared to similar offerings. |      in private context|      0.25| 99|        0.50|   0.33|    0.63| 97| 5.61| 0.000|   ***|
-|ChatGPT has clear advantages compared to similar offerings. | in professional context|      0.07| 99|        0.27|   0.07|    0.44| 97| 2.73| 0.008|    **|
-|Using ChatGPT brings financial benefits.                    |      in private context|      0.03| 99|        0.17|  -0.03|    0.36| 97| 1.73| 0.087|     .|
-|Using ChatGPT brings financial benefits.                    | in professional context|      0.28| 99|        0.53|   0.37|    0.66| 97| 6.19| 0.000|   ***|
-|Using ChatGPT is advantageous in many tasks.                |      in private context|      0.12| 99|        0.34|   0.16|    0.51| 97| 3.59| 0.001|   ***|
-|Using ChatGPT is advantageous in many tasks.                | in professional context|      0.12| 99|        0.35|   0.17|    0.51| 97| 3.71| 0.000|   ***|
-|Compared to other systems, using ChatGPT is more fun.       |      in private context|      0.22| 99|        0.47|   0.30|    0.61| 97| 5.28| 0.000|   ***|
-|Compared to other systems, using ChatGPT is more fun.       | in professional context|      0.07| 99|        0.27|   0.07|    0.44| 97| 2.73| 0.008|    **|
+|Expectations                             |                   Usage| Pearson's r| R-squared|  n| ci low| ci high| df|    t|     p| stars|
+|:----------------------------------------|-----------------------:|-----------:|---------:|--:|------:|-------:|--:|----:|-----:|-----:|
+|ChatGPT has clear advantages compared... |      in private context|        0.50|      0.25| 99|   0.33|    0.63| 97| 5.61| 0.000|   ***|
+|ChatGPT has clear advantages compared... | in professional context|        0.27|      0.07| 99|   0.07|    0.44| 97| 2.73| 0.009|    **|
+|Using ChatGPT brings financial benefits. |      in private context|        0.17|      0.03| 99|  -0.03|    0.36| 97| 1.73| 0.087|     .|
+|Using ChatGPT brings financial benefits. | in professional context|        0.53|      0.28| 99|   0.37|    0.66| 97| 6.19| 0.000|   ***|
+|Using ChatGPT is advantageous in many... |      in private context|        0.34|      0.12| 99|   0.16|    0.51| 97| 3.59| 0.001|   ***|
+|Using ChatGPT is advantageous in many... | in professional context|        0.35|      0.12| 99|   0.17|    0.51| 97| 3.71| 0.001|   ***|
+|Compared to other systems, using Chat... |      in private context|        0.47|      0.22| 99|   0.30|    0.61| 97| 5.28| 0.000|   ***|
+|Compared to other systems, using Chat... | in professional context|        0.27|      0.07| 99|   0.07|    0.44| 97| 2.73| 0.009|    **|
 
-2 missing case(s) omitted.
+n=99. 2 missing case(s) omitted. Adjusted significance p values with fdr method.
 
 > 
 > 
@@ -632,22 +943,22 @@ n=97.
 > effect_metrics(data, starts_with("cg_adoption_"), adopter)
 
 
-|Expectations                                                | Eta-squared|  Eta|  n|     F|     p| stars|
-|:-----------------------------------------------------------|-----------:|----:|--:|-----:|-----:|-----:|
-|ChatGPT has clear advantages compared to similar offerings. |        0.03| 0.18| 97|  1.03| 0.719|      |
-|Using ChatGPT brings financial benefits.                    |        0.08| 0.29| 97|  2.88| 0.011|     *|
-|Using ChatGPT is advantageous in many tasks.                |        0.01| 0.09| 97|  0.23| 0.578|      |
-|Compared to other systems, using ChatGPT is more fun.       |        0.03| 0.19| 97|  1.12| 0.103|      |
-|Much can go wrong when using ChatGPT.                       |        0.00| 0.07| 97|  0.16| 0.517|      |
-|There are legal issues with using ChatGPT.                  |        0.05| 0.21| 97|  1.47| 0.166|      |
-|The security of user data is not guaranteed with ChatGPT.   |        0.04| 0.21| 97|  1.37| 0.146|      |
-|Using ChatGPT could bring personal disadvantages.           |        0.04| 0.20| 97|  1.36| 0.133|      |
-|In my environment, using ChatGPT is standard.               |        0.22| 0.47| 97|  8.96| 0.000|   ***|
-|Almost everyone in my environment uses ChatGPT.             |        0.23| 0.48| 97|  9.05| 0.000|   ***|
-|Not using ChatGPT is considered being an outsider.          |        0.27| 0.52| 97| 11.63| 0.000|   ***|
-|Using ChatGPT brings me recognition from my environment.    |        0.25| 0.50| 97| 10.13| 0.000|   ***|
+|Expectations                             | Eta-squared|  Eta|  n|     F|     p| stars|
+|:----------------------------------------|-----------:|----:|--:|-----:|-----:|-----:|
+|ChatGPT has clear advantages compared... |        0.03| 0.18| 97|  1.03| 0.719|      |
+|Using ChatGPT brings financial benefits. |        0.08| 0.29| 97|  2.88| 0.026|     *|
+|Using ChatGPT is advantageous in many... |        0.01| 0.09| 97|  0.23| 0.630|      |
+|Compared to other systems, using Chat... |        0.03| 0.19| 97|  1.12| 0.206|      |
+|Much can go wrong when using ChatGPT.    |        0.00| 0.07| 97|  0.16| 0.621|      |
+|There are legal issues with using Cha... |        0.05| 0.21| 97|  1.47| 0.221|      |
+|The security of user data is not guar... |        0.04| 0.21| 97|  1.37| 0.219|      |
+|Using ChatGPT could bring personal di... |        0.04| 0.20| 97|  1.36| 0.219|      |
+|In my environment, using ChatGPT is s... |        0.22| 0.47| 97|  8.96| 0.000|   ***|
+|Almost everyone in my environment use... |        0.23| 0.48| 97|  9.05| 0.000|   ***|
+|Not using ChatGPT is considered being... |        0.27| 0.52| 97| 11.63| 0.000|   ***|
+|Using ChatGPT brings me recognition f... |        0.25| 0.50| 97| 10.13| 0.000|   ***|
 
-4 missing case(s) omitted.
+4 missing case(s) omitted. Adjusted significance p values with fdr method.
 
 > 
 > 
@@ -709,9 +1020,9 @@ n=97.
 
 |Statistic   | value|
 |:-----------|-----:|
+|Pearson's r | -0.19|
 |R-squared   |  0.03|
 |n           |   101|
-|Pearson's r | -0.19|
 |ci low      | -0.37|
 |ci high     |  0.01|
 |df          |    99|
@@ -745,17 +1056,20 @@ n=97.
 |:------------------|--------:|------:|-------:|-----:|-----:|-----:|-----:|
 |(Intercept)        |    37.52|  33.21|   41.84|  2.18| 17.24| 0.000|   ***|
 |female (Reference) |         |       |        |      |      |      |      |
-|male               |     3.69|  -1.88|    9.27|  2.81|  1.31| 0.192|      |
+|male               |     3.69|  -1.88|    9.27|  2.81|  1.31| 0.288|      |
 |diverse            |    -4.52| -32.18|   23.13| 13.94| -0.32| 0.746|      |
+
+Adjusted significance p values with fdr method.
+
 
 
 |Statistic          | Value|
 |:------------------|-----:|
-|Adjusted R-squared |     0|
+|Adjusted R-squared | -0.00|
 |F                  |  0.98|
 |df                 |     2|
 |residual df        |    98|
-|p                  |  0.38|
+|p                  | 0.378|
 |stars              |      |
 > 
 > 
@@ -801,30 +1115,30 @@ In the plot, 4 missing case(s) omitted.
 > volker::factor_tab(ds, starts_with("cg_adoption"), k = 3)
 
 
-|Expectations                                                | Component 1| Component 2| Component 3| communality|
-|:-----------------------------------------------------------|-----------:|-----------:|-----------:|-----------:|
-|ChatGPT has clear advantages compared to similar offerings. |         0.1|         0.9|         0.0|         0.8|
-|Using ChatGPT brings financial benefits.                    |         0.5|         0.5|         0.3|         0.6|
-|Using ChatGPT is advantageous in many tasks.                |         0.2|         0.8|         0.0|         0.7|
-|Compared to other systems, using ChatGPT is more fun.       |         0.2|         0.8|         0.0|         0.7|
-|Much can go wrong when using ChatGPT.                       |        -0.1|        -0.2|         0.8|         0.7|
-|There are legal issues with using ChatGPT.                  |         0.2|         0.2|         0.6|         0.5|
-|The security of user data is not guaranteed with ChatGPT.   |         0.1|         0.1|         0.7|         0.6|
-|Using ChatGPT could bring personal disadvantages.           |         0.2|        -0.1|         0.7|         0.6|
-|In my environment, using ChatGPT is standard.               |         0.9|         0.2|         0.0|         0.8|
-|Almost everyone in my environment uses ChatGPT.             |         0.8|         0.2|         0.1|         0.7|
-|Not using ChatGPT is considered being an outsider.          |         0.7|         0.0|         0.3|         0.6|
-|Using ChatGPT brings me recognition from my environment.    |         0.8|         0.2|         0.0|         0.6|
+|Expectations                             | Component 1| Component 2| Component 3| communality|
+|:----------------------------------------|-----------:|-----------:|-----------:|-----------:|
+|ChatGPT has clear advantages compared... |         0.1|         0.9|         0.0|         0.8|
+|Using ChatGPT brings financial benefits. |         0.5|         0.5|         0.3|         0.6|
+|Using ChatGPT is advantageous in many... |         0.2|         0.8|         0.0|         0.7|
+|Compared to other systems, using Chat... |         0.2|         0.8|         0.0|         0.7|
+|Much can go wrong when using ChatGPT.    |        -0.1|        -0.2|         0.8|         0.7|
+|There are legal issues with using Cha... |         0.2|         0.2|         0.6|         0.5|
+|The security of user data is not guar... |         0.1|         0.1|         0.7|         0.6|
+|Using ChatGPT could bring personal di... |         0.2|        -0.1|         0.7|         0.6|
+|In my environment, using ChatGPT is s... |         0.9|         0.2|         0.0|         0.8|
+|Almost everyone in my environment use... |         0.8|         0.2|         0.1|         0.7|
+|Not using ChatGPT is considered being... |         0.7|         0.0|         0.3|         0.6|
+|Using ChatGPT brings me recognition f... |         0.8|         0.2|         0.0|         0.6|
 
 4 missing case(s) omitted.
 
 
 
-|Component   | Eigenvalue| Proportion of variance| Cumulative proportion of variance|
-|:-----------|----------:|----------------------:|---------------------------------:|
-|Component 1 |        3.0|                    0.3|                               0.3|
-|Component 2 |        2.5|                    0.2|                               0.5|
-|Component 3 |        2.2|                    0.2|                               0.6|
+|Component   | Eigenvalue| Proportion of variance| Cumulative proportion of va...|
+|:-----------|----------:|----------------------:|------------------------------:|
+|Component 1 |        3.0|                    0.3|                            0.3|
+|Component 2 |        2.5|                    0.2|                            0.5|
+|Component 3 |        2.2|                    0.2|                            0.6|
 
 
 |Test          |                Statistic|  value|
@@ -921,7 +1235,7 @@ In the plot, 4 missing case(s) omitted.
 |Vorteile bei der Arbeit |   1|  3|      4|  4|   5|  3.6| 1.1| 99|
 |Macht mehr Spaß         |   1|  3|      4|  4|   5|  3.5| 1.0| 99|
 
-2 missing case(s) omitted.
+n=99. 2 missing case(s) omitted.
 
 > 
 > # Set value labels using the values-parameter
@@ -957,7 +1271,7 @@ In the plot, 4 missing case(s) omitted.
 > library(volker)
 > volker::chatgpt |>
 +   labs_clear()
-# A tibble: 101 × 19
+# A tibble: 101 × 22
     case use_private use_work cg_adoption_advantage_01 cg_adoption_advantage_02
    <dbl>       <dbl>    <dbl>                    <dbl>                    <dbl>
  1   170           4        4                        3                        4
@@ -971,7 +1285,7 @@ In the plot, 4 missing case(s) omitted.
  9   309           3        3                        3                        4
 10   325           2        1                        4                        1
 # ℹ 91 more rows
-# ℹ 14 more variables: cg_adoption_advantage_03 <dbl>,
+# ℹ 17 more variables: cg_adoption_advantage_03 <dbl>,
 #   cg_adoption_advantage_04 <dbl>, cg_adoption_fearofuse_01 <dbl>,
 #   cg_adoption_fearofuse_02 <dbl>, cg_adoption_fearofuse_03 <dbl>,
 #   cg_adoption_fearofuse_04 <dbl>, cg_adoption_social_01 <dbl>,
@@ -1024,6 +1338,9 @@ The following objects are masked from 'package:base':
 |mean   | 1984.3|
 |sd     |   13.8|
 |n      |    101|
+
+n=101.
+
 > 
 > 
 > 
@@ -1073,6 +1390,9 @@ The following objects are masked from 'package:base':
 |mean   | 1984.3|
 |sd     |   13.8|
 |n      |    101|
+
+n=101.
+
 > 
 > 
 > 
@@ -1087,7 +1407,7 @@ detaching 'package:dplyr'
 > 
 > ### Name: model_metrics_plot
 > ### Title: Plot regression coefficients
-> ### Aliases: model_metrics_plot
+> ### Aliases: model_metrics_plot model_plot
 > ### Keywords: internal
 > 
 > ### ** Examples
@@ -1111,7 +1431,7 @@ detaching 'package:dplyr'
 > ### Name: model_metrics_tab
 > ### Title: Output a regression table with estimates and macro statistics
 > ###   for multiple categorical or metric independent variables
-> ### Aliases: model_metrics_tab
+> ### Aliases: model_metrics_tab model_tab
 > ### Keywords: internal
 > 
 > ### ** Examples
@@ -1124,24 +1444,30 @@ detaching 'package:dplyr'
 +   model_metrics_tab(use_work, categorical = c(sd_gender, adopter), metric = sd_age)
 
 
-|Term                                              | estimate| ci low| ci high| standard error|     t|    p| stars|
-|:-------------------------------------------------|--------:|------:|-------:|--------------:|-----:|----:|-----:|
-|(Intercept)                                       |     4.67|   3.64|    5.70|           0.52|  9.00| 0.00|   ***|
-|female (Reference)                                |         |       |        |               |      |     |      |
-|male                                              |    -0.48|  -1.02|    0.06|           0.27| -1.75| 0.08|     .|
-|I try new offers immediately (Reference)          |         |       |        |               |      |     |      |
-|I try new offers rather quickly                   |    -1.52|  -2.29|   -0.76|           0.38| -3.96| 0.00|   ***|
-|I wait until offers establish themselves          |    -1.96|  -2.86|   -1.06|           0.45| -4.34| 0.00|   ***|
-|I only use new offers when I have no other choice |    -1.36|  -3.99|    1.27|           1.33| -1.03| 0.31|      |
-|sd_age                                            |    -0.01|  -0.03|    0.00|           0.01| -1.58| 0.12|      |
+|Term                                     | estimate| ci low| ci high| standard beta| standard error|     t|     p| stars|
+|:----------------------------------------|--------:|------:|-------:|-------------:|--------------:|-----:|-----:|-----:|
+|(Intercept)                              |     4.67|   3.64|    5.70|              |           0.52|  9.00| 0.000|   ***|
+|female (Reference)                       |         |       |        |              |               |      |      |      |
+|male                                     |    -0.48|  -1.02|    0.06|         -0.17|           0.27| -1.75| 0.124|      |
+|I try new offers immediately (Reference) |         |       |        |              |               |      |      |      |
+|I try new offers rather quickly          |    -1.52|  -2.29|   -0.76|         -0.53|           0.38| -3.96| 0.000|   ***|
+|I wait until offers establish themselves |    -1.96|  -2.86|   -1.06|         -0.59|           0.45| -4.34| 0.000|   ***|
+|I only use new offers when I have no ... |    -1.36|  -3.99|    1.27|         -0.10|           1.33| -1.03| 0.307|      |
+|sd_age                                   |    -0.01|  -0.03|    0.00|         -0.15|           0.01| -1.58| 0.142|      |
+
+Adjusted significance p values with fdr method.
 
 
-|Item      | Partial Eta Squared| Sum of Squares| Df|    F|    p| stars| GVIF| GVIF^(1/(2*Df))|
-|:---------|-------------------:|--------------:|--:|----:|----:|-----:|----:|---------------:|
-|sd_gender |                0.03|           4.96|  1| 3.08| 0.08|     .| 1.10|            1.05|
-|adopter   |                0.18|          32.78|  3| 6.78| 0.00|   ***| 1.12|            1.02|
-|sd_age    |                0.03|           4.01|  1| 2.49| 0.12|      | 1.05|            1.02|
-|Residuals |                    |         151.43| 94|     |     |      |     |                |
+
+|Item      | Partial Eta Squared| Sum of Squares| Df|    F|     p| stars| GVIF| GVIF^(1/(2*Df))|
+|:---------|-------------------:|--------------:|--:|----:|-----:|-----:|----:|---------------:|
+|sd_gender |                0.03|           4.96|  1| 3.08| 0.118|      | 1.10|            1.05|
+|adopter   |                0.18|          32.78|  3| 6.78| 0.001|    **| 1.12|            1.02|
+|sd_age    |                0.03|           4.01|  1| 2.49| 0.118|      | 1.05|            1.02|
+|Residuals |                    |         151.43| 94|     |      |      |     |                |
+
+Adjusted significance p values with fdr method.
+
 
 
 |Statistic                     |  value|
@@ -1220,7 +1546,6 @@ detaching 'package:dplyr'
 > 
 > plot_counts_items(data, starts_with("cg_adoption_"))
 In the plot, 4 missing case(s) omitted.
-In the plot, 4 missing case(s) omitted.
 > 
 > 
 > 
@@ -1283,6 +1608,32 @@ In the plot, 4 missing case(s) omitted.
 +   category=c(4,5)
 + )
 In the plot, 4 missing case(s) omitted.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot_counts_items_grouped_items")
+> ### * plot_counts_items_grouped_items
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot_counts_items_grouped_items
+> ### Title: Correlation of categorical items with categorical items
+> ### Aliases: plot_counts_items_grouped_items
+> ### Keywords: internal
+> 
+> ### ** Examples
+> 
+> library(volker)
+> data <- volker::chatgpt
+> 
+> plot_counts_items_grouped_items(
++   data,
++   starts_with("cg_adoption_advantage"),
++   starts_with("cg_adoption_fearofuse"),
++   method ="cramer"
++ )
 > 
 > 
 > 
@@ -1432,7 +1783,6 @@ In the plot, 4 missing case(s) omitted.
 > data <- volker::chatgpt
 > 
 > plot_metrics_items_cor_items(data, starts_with("cg_adoption_adv"), starts_with("use_"))
-In the plot, 2 missing case(s) omitted.
 > 
 > 
 > 
@@ -1550,22 +1900,28 @@ In the plot, 4 missing case(s) omitted.
 |diverse |  33| 33.0|   33.0| 33.0|  33| 33.0|     |   1|
 |total   |  18| 27.0|   38.0| 52.0|  68| 39.7| 13.8| 101|
 
+n=101.
+
+
 
 |Term               | estimate| ci low| ci high|    se|     t|     p| stars|
 |:------------------|--------:|------:|-------:|-----:|-----:|-----:|-----:|
 |(Intercept)        |    37.52|  33.21|   41.84|  2.18| 17.24| 0.000|   ***|
 |female (Reference) |         |       |        |      |      |      |      |
-|male               |     3.69|  -1.88|    9.27|  2.81|  1.31| 0.192|      |
+|male               |     3.69|  -1.88|    9.27|  2.81|  1.31| 0.288|      |
 |diverse            |    -4.52| -32.18|   23.13| 13.94| -0.32| 0.746|      |
+
+Adjusted significance p values with fdr method.
+
 
 
 |Statistic          | Value|
 |:------------------|-----:|
-|Adjusted R-squared |     0|
+|Adjusted R-squared | -0.00|
 |F                  |  0.98|
 |df                 |     2|
 |residual df        |    98|
-|p                  |  0.38|
+|p                  | 0.378|
 |stars              |      |
 > 
 > 
@@ -1623,6 +1979,9 @@ In the plot, 4 missing case(s) omitted.
 |mean   |  39.7|
 |sd     |  13.8|
 |n      |   101|
+
+n=101.
+
 > 
 > 
 > 
@@ -1657,6 +2016,9 @@ In the plot, 4 missing case(s) omitted.
 |mean   |  39.7|
 |sd     |  13.8|
 |n      |   101|
+
+n=101.
+
 > 
 > 
 > 
@@ -1720,6 +2082,9 @@ n=101.
 |mean   |  39.7|
 |sd     |  13.8|
 |n      |   101|
+
+n=101.
+
 > 
 > 
 > 
@@ -1747,10 +2112,10 @@ n=101.
                            Values
 Name                       data  
 Number of rows             101   
-Number of columns          19    
+Number of columns          22    
 _______________________          
 Column type frequency:           
-  character                1     
+  character                4     
   factor                   2     
   numeric                  16    
 ________________________         
@@ -1758,7 +2123,10 @@ Group variables            None
 
 ── Variable type: character ────────────────────────────────────────────────────
   skim_variable   n missing min max empty n_unique whitespace
-1 cg_activities 101       0   1 355     0       99          0
+1 cg_activities 101       0   1 304     0       96          0
+2 cg_act_write   54      47   1   1     0        1          0
+3 cg_act_test    17      84   1   1     0        1          0
+4 cg_act_search  32      69   1   1     0        1          0
 
 ── Variable type: factor ───────────────────────────────────────────────────────
   skim_variable   n missing ordered n_unique top_counts                       
@@ -1854,22 +2222,22 @@ n=101.
 > tab_counts_items(data, starts_with("cg_adoption_"))
 
 
-|Expectations                                                | strongly disagree| disagree|  neutral|    agree| strongly agree|     total|
-|:-----------------------------------------------------------|-----------------:|--------:|--------:|--------:|--------------:|---------:|
-|ChatGPT has clear advantages compared to similar offerings. |            6% (6)|   8% (8)| 35% (34)| 36% (35)|       14% (14)| 100% (97)|
-|Using ChatGPT brings financial benefits.                    |          22% (21)| 22% (21)| 30% (29)| 21% (20)|         6% (6)| 100% (97)|
-|Using ChatGPT is advantageous in many tasks.                |            6% (6)| 10% (10)| 21% (20)| 46% (45)|       16% (16)| 100% (97)|
-|Compared to other systems, using ChatGPT is more fun.       |            6% (6)|   4% (4)| 36% (35)| 39% (38)|       14% (14)| 100% (97)|
-|Much can go wrong when using ChatGPT.                       |            6% (6)| 27% (26)| 32% (31)| 22% (21)|       13% (13)| 100% (97)|
-|There are legal issues with using ChatGPT.                  |          10% (10)| 19% (18)| 41% (40)| 14% (14)|       15% (15)| 100% (97)|
-|The security of user data is not guaranteed with ChatGPT.   |            3% (3)| 22% (21)| 42% (41)| 19% (18)|       14% (14)| 100% (97)|
-|Using ChatGPT could bring personal disadvantages.           |          11% (11)| 35% (34)| 29% (28)| 18% (17)|         7% (7)| 100% (97)|
-|In my environment, using ChatGPT is standard.               |          20% (19)| 34% (33)| 26% (25)| 15% (15)|         5% (5)| 100% (97)|
-|Almost everyone in my environment uses ChatGPT.             |          27% (26)| 31% (30)| 26% (25)| 10% (10)|         6% (6)| 100% (97)|
-|Not using ChatGPT is considered being an outsider.          |          46% (45)| 27% (26)| 14% (14)|   7% (7)|         5% (5)| 100% (97)|
-|Using ChatGPT brings me recognition from my environment.    |          33% (32)| 27% (26)| 21% (20)| 13% (13)|         6% (6)| 100% (97)|
+|Expectations                             | strongly disagree| disagree|  neutral|    agree| strongly agree|     total|
+|:----------------------------------------|-----------------:|--------:|--------:|--------:|--------------:|---------:|
+|ChatGPT has clear advantages compared... |            6% (6)|   8% (8)| 35% (34)| 36% (35)|       14% (14)| 100% (97)|
+|Using ChatGPT brings financial benefits. |          22% (21)| 22% (21)| 30% (29)| 21% (20)|         6% (6)| 100% (97)|
+|Using ChatGPT is advantageous in many... |            6% (6)| 10% (10)| 21% (20)| 46% (45)|       16% (16)| 100% (97)|
+|Compared to other systems, using Chat... |            6% (6)|   4% (4)| 36% (35)| 39% (38)|       14% (14)| 100% (97)|
+|Much can go wrong when using ChatGPT.    |            6% (6)| 27% (26)| 32% (31)| 22% (21)|       13% (13)| 100% (97)|
+|There are legal issues with using Cha... |          10% (10)| 19% (18)| 41% (40)| 14% (14)|       15% (15)| 100% (97)|
+|The security of user data is not guar... |            3% (3)| 22% (21)| 42% (41)| 19% (18)|       14% (14)| 100% (97)|
+|Using ChatGPT could bring personal di... |          11% (11)| 35% (34)| 29% (28)| 18% (17)|         7% (7)| 100% (97)|
+|In my environment, using ChatGPT is s... |          20% (19)| 34% (33)| 26% (25)| 15% (15)|         5% (5)| 100% (97)|
+|Almost everyone in my environment use... |          27% (26)| 31% (30)| 26% (25)| 10% (10)|         6% (6)| 100% (97)|
+|Not using ChatGPT is considered being... |          46% (45)| 27% (26)| 14% (14)|   7% (7)|         5% (5)| 100% (97)|
+|Using ChatGPT brings me recognition f... |          33% (32)| 27% (26)| 21% (20)| 13% (13)|         6% (6)| 100% (97)|
 
-4 missing case(s) omitted.
+n=97. 4 missing case(s) omitted.
 
 > 
 > 
@@ -1897,22 +2265,22 @@ n=101.
 + )
 
 
-|Expectations                                                |    total|  Low Age| High Age|
-|:-----------------------------------------------------------|--------:|--------:|--------:|
-|ChatGPT has clear advantages compared to similar offerings. | 51% (49)| 58% (26)| 44% (23)|
-|Using ChatGPT brings financial benefits.                    | 27% (26)| 36% (16)| 19% (10)|
-|Using ChatGPT is advantageous in many tasks.                | 63% (61)| 69% (31)| 58% (30)|
-|Compared to other systems, using ChatGPT is more fun.       | 54% (52)| 58% (26)| 50% (26)|
-|Much can go wrong when using ChatGPT.                       | 35% (34)| 33% (15)| 37% (19)|
-|There are legal issues with using ChatGPT.                  | 30% (29)| 24% (11)| 35% (18)|
-|The security of user data is not guaranteed with ChatGPT.   | 33% (32)| 42% (19)| 25% (13)|
-|Using ChatGPT could bring personal disadvantages.           | 25% (24)| 29% (13)| 21% (11)|
-|In my environment, using ChatGPT is standard.               | 21% (20)| 31% (14)|  12% (6)|
-|Almost everyone in my environment uses ChatGPT.             | 16% (16)|  20% (9)|  13% (7)|
-|Not using ChatGPT is considered being an outsider.          | 12% (12)|  18% (8)|   8% (4)|
-|Using ChatGPT brings me recognition from my environment.    | 20% (19)| 24% (11)|  15% (8)|
+|Expectations                             |    total|  Low Age| High Age|
+|:----------------------------------------|--------:|--------:|--------:|
+|ChatGPT has clear advantages compared... | 51% (49)| 58% (26)| 44% (23)|
+|Using ChatGPT brings financial benefits. | 27% (26)| 36% (16)| 19% (10)|
+|Using ChatGPT is advantageous in many... | 63% (61)| 69% (31)| 58% (30)|
+|Compared to other systems, using Chat... | 54% (52)| 58% (26)| 50% (26)|
+|Much can go wrong when using ChatGPT.    | 35% (34)| 33% (15)| 37% (19)|
+|There are legal issues with using Cha... | 30% (29)| 24% (11)| 35% (18)|
+|The security of user data is not guar... | 33% (32)| 42% (19)| 25% (13)|
+|Using ChatGPT could bring personal di... | 25% (24)| 29% (13)| 21% (11)|
+|In my environment, using ChatGPT is s... | 21% (20)| 31% (14)|  12% (6)|
+|Almost everyone in my environment use... | 16% (16)|  20% (9)|  13% (7)|
+|Not using ChatGPT is considered being... | 12% (12)|  18% (8)|   8% (4)|
+|Using ChatGPT brings me recognition f... | 20% (19)| 24% (11)|  15% (8)|
 
-Frequencies based on values: agree, strongly agree. Age split at median 38. 4 missing case(s) omitted.
+n=97. Frequencies based on values: agree, strongly agree. Age split at median 38. 4 missing case(s) omitted.
 
 > 
 > 
@@ -1939,22 +2307,22 @@ Frequencies based on values: agree, strongly agree. Age split at median 38. 4 mi
 + )
 
 
-|Expectations                                                |    total| I try new offers immediately| I try new offers rather quickly| I wait until offers establish themselves| I only use new offers when I have no other choice|
-|:-----------------------------------------------------------|--------:|----------------------------:|-------------------------------:|----------------------------------------:|-------------------------------------------------:|
-|ChatGPT has clear advantages compared to similar offerings. | 51% (49)|                      53% (8)|                        51% (31)|                                 50% (10)|                                            0% (0)|
-|Using ChatGPT brings financial benefits.                    | 27% (26)|                      53% (8)|                        26% (16)|                                  10% (2)|                                            0% (0)|
-|Using ChatGPT is advantageous in many tasks.                | 63% (61)|                     73% (11)|                        66% (40)|                                 50% (10)|                                            0% (0)|
-|Compared to other systems, using ChatGPT is more fun.       | 54% (52)|                     67% (10)|                        49% (30)|                                 60% (12)|                                            0% (0)|
-|Much can go wrong when using ChatGPT.                       | 35% (34)|                      33% (5)|                        38% (23)|                                  30% (6)|                                            0% (0)|
-|There are legal issues with using ChatGPT.                  | 30% (29)|                      47% (7)|                        31% (19)|                                  15% (3)|                                            0% (0)|
-|The security of user data is not guaranteed with ChatGPT.   | 33% (32)|                      60% (9)|                        30% (18)|                                  25% (5)|                                            0% (0)|
-|Using ChatGPT could bring personal disadvantages.           | 25% (24)|                      47% (7)|                        23% (14)|                                  15% (3)|                                            0% (0)|
-|In my environment, using ChatGPT is standard.               | 21% (20)|                     67% (10)|                         13% (8)|                                  10% (2)|                                            0% (0)|
-|Almost everyone in my environment uses ChatGPT.             | 16% (16)|                      60% (9)|                         10% (6)|                                   5% (1)|                                            0% (0)|
-|Not using ChatGPT is considered being an outsider.          | 12% (12)|                      53% (8)|                          5% (3)|                                   5% (1)|                                            0% (0)|
-|Using ChatGPT brings me recognition from my environment.    | 20% (19)|                      53% (8)|                         13% (8)|                                  15% (3)|                                            0% (0)|
+|Expectations                             |    total| I try new offers immediately| I try new offers rather qui...| I wait until offers establi...| I only use new offers when ...|
+|:----------------------------------------|--------:|----------------------------:|------------------------------:|------------------------------:|------------------------------:|
+|ChatGPT has clear advantages compared... | 51% (49)|                      53% (8)|                       51% (31)|                       50% (10)|                         0% (0)|
+|Using ChatGPT brings financial benefits. | 27% (26)|                      53% (8)|                       26% (16)|                        10% (2)|                         0% (0)|
+|Using ChatGPT is advantageous in many... | 63% (61)|                     73% (11)|                       66% (40)|                       50% (10)|                         0% (0)|
+|Compared to other systems, using Chat... | 54% (52)|                     67% (10)|                       49% (30)|                       60% (12)|                         0% (0)|
+|Much can go wrong when using ChatGPT.    | 35% (34)|                      33% (5)|                       38% (23)|                        30% (6)|                         0% (0)|
+|There are legal issues with using Cha... | 30% (29)|                      47% (7)|                       31% (19)|                        15% (3)|                         0% (0)|
+|The security of user data is not guar... | 33% (32)|                      60% (9)|                       30% (18)|                        25% (5)|                         0% (0)|
+|Using ChatGPT could bring personal di... | 25% (24)|                      47% (7)|                       23% (14)|                        15% (3)|                         0% (0)|
+|In my environment, using ChatGPT is s... | 21% (20)|                     67% (10)|                        13% (8)|                        10% (2)|                         0% (0)|
+|Almost everyone in my environment use... | 16% (16)|                      60% (9)|                        10% (6)|                         5% (1)|                         0% (0)|
+|Not using ChatGPT is considered being... | 12% (12)|                      53% (8)|                         5% (3)|                         5% (1)|                         0% (0)|
+|Using ChatGPT brings me recognition f... | 20% (19)|                      53% (8)|                        13% (8)|                        15% (3)|                         0% (0)|
 
-Frequencies based on values: agree, strongly agree. 4 missing case(s) omitted.
+n=97. Frequencies based on values: agree, strongly agree. 4 missing case(s) omitted.
 
 > 
 > 
@@ -2011,13 +2379,13 @@ n=101.
 > tab_counts_one_cor(data, adopter, sd_age)
 
 
-|Innovator type                                    |      total|  Low Age| High Age|
-|:-------------------------------------------------|----------:|--------:|--------:|
-|I try new offers immediately                      |   15% (15)| 10% (10)|   5% (5)|
-|I try new offers rather quickly                   |   62% (63)| 24% (24)| 39% (39)|
-|I wait until offers establish themselves          |   22% (22)| 12% (12)| 10% (10)|
-|I only use new offers when I have no other choice |     1% (1)|   0% (0)|   1% (1)|
-|total                                             | 100% (101)| 46% (46)| 54% (55)|
+|Innovator type                           |      total|  Low Age| High Age|
+|:----------------------------------------|----------:|--------:|--------:|
+|I try new offers immediately             |   15% (15)| 10% (10)|   5% (5)|
+|I try new offers rather quickly          |   62% (63)| 24% (24)| 39% (39)|
+|I wait until offers establish themselves |   22% (22)| 12% (12)| 10% (10)|
+|I only use new offers when I have no ... |     1% (1)|   0% (0)|   1% (1)|
+|total                                    | 100% (101)| 46% (46)| 54% (55)|
 
 n=101. Age split at median 38.
 
@@ -2044,13 +2412,13 @@ n=101. Age split at median 38.
 > tab_counts_one_grouped(data, adopter, sd_gender)
 
 
-|Innovator type                                    |      total|   female|     male| diverse|
-|:-------------------------------------------------|----------:|--------:|--------:|-------:|
-|I try new offers immediately                      |   15% (15)|   2% (2)| 12% (12)|  1% (1)|
-|I try new offers rather quickly                   |   62% (63)| 25% (25)| 38% (38)|  0% (0)|
-|I wait until offers establish themselves          |   22% (22)| 13% (13)|   9% (9)|  0% (0)|
-|I only use new offers when I have no other choice |     1% (1)|   0% (0)|   1% (1)|  0% (0)|
-|total                                             | 100% (101)| 40% (40)| 59% (60)|  1% (1)|
+|Innovator type                           |      total|   female|     male| diverse|
+|:----------------------------------------|----------:|--------:|--------:|-------:|
+|I try new offers immediately             |   15% (15)|   2% (2)| 12% (12)|  1% (1)|
+|I try new offers rather quickly          |   62% (63)| 25% (25)| 38% (38)|  0% (0)|
+|I wait until offers establish themselves |   22% (22)| 13% (13)|   9% (9)|  0% (0)|
+|I only use new offers when I have no ... |     1% (1)|   0% (0)|   1% (1)|  0% (0)|
+|total                                    | 100% (101)| 40% (40)| 59% (60)|  1% (1)|
 
 n=101.
 
@@ -2086,6 +2454,9 @@ n=101.
 |mean   |  39.7|
 |sd     |  13.8|
 |n      |   101|
+
+n=101.
+
 > 
 > 
 > 
@@ -2109,22 +2480,22 @@ n=101.
 > tab_metrics_items(data, starts_with("cg_adoption_"))
 
 
-|Expectations                                                | min| q1| median| q3| max| mean|  sd|  n|
-|:-----------------------------------------------------------|---:|--:|------:|--:|---:|----:|---:|--:|
-|ChatGPT has clear advantages compared to similar offerings. |   1|  3|      4|  4|   5|  3.4| 1.0| 97|
-|Using ChatGPT brings financial benefits.                    |   1|  2|      3|  4|   5|  2.7| 1.2| 97|
-|Using ChatGPT is advantageous in many tasks.                |   1|  3|      4|  4|   5|  3.6| 1.1| 97|
-|Compared to other systems, using ChatGPT is more fun.       |   1|  3|      4|  4|   5|  3.5| 1.0| 97|
-|Much can go wrong when using ChatGPT.                       |   1|  2|      3|  4|   5|  3.1| 1.1| 97|
-|There are legal issues with using ChatGPT.                  |   1|  2|      3|  4|   5|  3.1| 1.2| 97|
-|The security of user data is not guaranteed with ChatGPT.   |   1|  3|      3|  4|   5|  3.2| 1.0| 97|
-|Using ChatGPT could bring personal disadvantages.           |   1|  2|      3|  3|   5|  2.7| 1.1| 97|
-|In my environment, using ChatGPT is standard.               |   1|  2|      2|  3|   5|  2.5| 1.1| 97|
-|Almost everyone in my environment uses ChatGPT.             |   1|  1|      2|  3|   5|  2.4| 1.2| 97|
-|Not using ChatGPT is considered being an outsider.          |   1|  1|      2|  3|   5|  2.0| 1.2| 97|
-|Using ChatGPT brings me recognition from my environment.    |   1|  1|      2|  3|   5|  2.3| 1.2| 97|
+|Expectations                             | min| q1| median| q3| max| mean|  sd|  n|
+|:----------------------------------------|---:|--:|------:|--:|---:|----:|---:|--:|
+|ChatGPT has clear advantages compared... |   1|  3|      4|  4|   5|  3.4| 1.0| 97|
+|Using ChatGPT brings financial benefits. |   1|  2|      3|  4|   5|  2.7| 1.2| 97|
+|Using ChatGPT is advantageous in many... |   1|  3|      4|  4|   5|  3.6| 1.1| 97|
+|Compared to other systems, using Chat... |   1|  3|      4|  4|   5|  3.5| 1.0| 97|
+|Much can go wrong when using ChatGPT.    |   1|  2|      3|  4|   5|  3.1| 1.1| 97|
+|There are legal issues with using Cha... |   1|  2|      3|  4|   5|  3.1| 1.2| 97|
+|The security of user data is not guar... |   1|  3|      3|  4|   5|  3.2| 1.0| 97|
+|Using ChatGPT could bring personal di... |   1|  2|      3|  3|   5|  2.7| 1.1| 97|
+|In my environment, using ChatGPT is s... |   1|  2|      2|  3|   5|  2.5| 1.1| 97|
+|Almost everyone in my environment use... |   1|  1|      2|  3|   5|  2.4| 1.2| 97|
+|Not using ChatGPT is considered being... |   1|  1|      2|  3|   5|  2.0| 1.2| 97|
+|Using ChatGPT brings me recognition f... |   1|  1|      2|  3|   5|  2.3| 1.2| 97|
 
-4 missing case(s) omitted.
+n=97. 4 missing case(s) omitted.
 
 > 
 > 
@@ -2155,12 +2526,12 @@ n=101.
 + )
 
 
-|Expectations                                                |   Age|
-|:-----------------------------------------------------------|-----:|
-|ChatGPT has clear advantages compared to similar offerings. | -0.12|
-|Using ChatGPT brings financial benefits.                    | -0.09|
-|Using ChatGPT is advantageous in many tasks.                | -0.06|
-|Compared to other systems, using ChatGPT is more fun.       | -0.12|
+|Expectations                             |   Age|
+|:----------------------------------------|-----:|
+|ChatGPT has clear advantages compared... | -0.12|
+|Using ChatGPT brings financial benefits. | -0.09|
+|Using ChatGPT is advantageous in many... | -0.06|
+|Compared to other systems, using Chat... | -0.12|
 
 n=99. 2 missing case(s) omitted.
 
@@ -2192,18 +2563,18 @@ n=99. 2 missing case(s) omitted.
 + )
 
 
-|Expectations                                                |                   Usage| Pearson's r|
-|:-----------------------------------------------------------|-----------------------:|-----------:|
-|ChatGPT has clear advantages compared to similar offerings. |      in private context|        0.50|
-|ChatGPT has clear advantages compared to similar offerings. | in professional context|        0.27|
-|Using ChatGPT brings financial benefits.                    |      in private context|        0.17|
-|Using ChatGPT brings financial benefits.                    | in professional context|        0.53|
-|Using ChatGPT is advantageous in many tasks.                |      in private context|        0.34|
-|Using ChatGPT is advantageous in many tasks.                | in professional context|        0.35|
-|Compared to other systems, using ChatGPT is more fun.       |      in private context|        0.47|
-|Compared to other systems, using ChatGPT is more fun.       | in professional context|        0.27|
+|Expectations                             |                   Usage| Pearson's r|
+|:----------------------------------------|-----------------------:|-----------:|
+|ChatGPT has clear advantages compared... |      in private context|        0.50|
+|ChatGPT has clear advantages compared... | in professional context|        0.27|
+|Using ChatGPT brings financial benefits. |      in private context|        0.17|
+|Using ChatGPT brings financial benefits. | in professional context|        0.53|
+|Using ChatGPT is advantageous in many... |      in private context|        0.34|
+|Using ChatGPT is advantageous in many... | in professional context|        0.35|
+|Compared to other systems, using Chat... |      in private context|        0.47|
+|Compared to other systems, using Chat... | in professional context|        0.27|
 
-2 missing case(s) omitted.
+n=99. 2 missing case(s) omitted. Adjusted significance p values with fdr method.
 
 > 
 > 
@@ -2228,23 +2599,23 @@ n=99. 2 missing case(s) omitted.
 > tab_metrics_items_grouped(data, starts_with("cg_adoption_"), sd_gender)
 
 
-|Expectations                                                |     total|    female|      male|  diverse|
-|:-----------------------------------------------------------|---------:|---------:|---------:|--------:|
-|ChatGPT has clear advantages compared to similar offerings. | 3.4 (1.0)| 3.6 (1.0)| 3.3 (1.0)| 4.0 (NA)|
-|Using ChatGPT brings financial benefits.                    | 2.7 (1.2)| 2.6 (1.2)| 2.7 (1.2)| 3.0 (NA)|
-|Using ChatGPT is advantageous in many tasks.                | 3.6 (1.1)| 3.7 (1.0)| 3.5 (1.1)| 4.0 (NA)|
-|Compared to other systems, using ChatGPT is more fun.       | 3.5 (1.0)| 3.6 (1.0)| 3.5 (1.0)| 3.0 (NA)|
-|Much can go wrong when using ChatGPT.                       | 3.1 (1.1)| 3.1 (1.0)| 3.1 (1.2)| 3.0 (NA)|
-|There are legal issues with using ChatGPT.                  | 3.1 (1.2)| 3.0 (1.0)| 3.1 (1.3)| 3.0 (NA)|
-|The security of user data is not guaranteed with ChatGPT.   | 3.2 (1.0)| 3.0 (1.0)| 3.3 (1.1)| 3.0 (NA)|
-|Using ChatGPT could bring personal disadvantages.           | 2.7 (1.1)| 2.5 (0.9)| 2.8 (1.2)| 4.0 (NA)|
-|In my environment, using ChatGPT is standard.               | 2.5 (1.1)| 2.5 (0.9)| 2.5 (1.3)| 4.0 (NA)|
-|Almost everyone in my environment uses ChatGPT.             | 2.4 (1.2)| 2.4 (1.0)| 2.3 (1.3)| 4.0 (NA)|
-|Not using ChatGPT is considered being an outsider.          | 2.0 (1.2)| 1.8 (1.0)| 2.1 (1.3)| 4.0 (NA)|
-|Using ChatGPT brings me recognition from my environment.    | 2.3 (1.2)| 2.4 (1.2)| 2.3 (1.3)| 3.0 (NA)|
-|n                                                           |        97|        37|        59|        1|
+|Expectations                             |     total|    female|      male|  diverse|
+|:----------------------------------------|---------:|---------:|---------:|--------:|
+|ChatGPT has clear advantages compared... | 3.4 (1.0)| 3.6 (1.0)| 3.3 (1.0)| 4.0 (NA)|
+|Using ChatGPT brings financial benefits. | 2.7 (1.2)| 2.6 (1.2)| 2.7 (1.2)| 3.0 (NA)|
+|Using ChatGPT is advantageous in many... | 3.6 (1.1)| 3.7 (1.0)| 3.5 (1.1)| 4.0 (NA)|
+|Compared to other systems, using Chat... | 3.5 (1.0)| 3.6 (1.0)| 3.5 (1.0)| 3.0 (NA)|
+|Much can go wrong when using ChatGPT.    | 3.1 (1.1)| 3.1 (1.0)| 3.1 (1.2)| 3.0 (NA)|
+|There are legal issues with using Cha... | 3.1 (1.2)| 3.0 (1.0)| 3.1 (1.3)| 3.0 (NA)|
+|The security of user data is not guar... | 3.2 (1.0)| 3.0 (1.0)| 3.3 (1.1)| 3.0 (NA)|
+|Using ChatGPT could bring personal di... | 2.7 (1.1)| 2.5 (0.9)| 2.8 (1.2)| 4.0 (NA)|
+|In my environment, using ChatGPT is s... | 2.5 (1.1)| 2.5 (0.9)| 2.5 (1.3)| 4.0 (NA)|
+|Almost everyone in my environment use... | 2.4 (1.2)| 2.4 (1.0)| 2.3 (1.3)| 4.0 (NA)|
+|Not using ChatGPT is considered being... | 2.0 (1.2)| 1.8 (1.0)| 2.1 (1.3)| 4.0 (NA)|
+|Using ChatGPT brings me recognition f... | 2.3 (1.2)| 2.4 (1.2)| 2.3 (1.3)| 3.0 (NA)|
+|n                                        |        97|        37|        59|        1|
 
-4 missing case(s) omitted.
+n=97. 4 missing case(s) omitted.
 
 > 
 > 
@@ -2280,6 +2651,9 @@ n=99. 2 missing case(s) omitted.
 |mean   |  39.7|
 |sd     |  13.8|
 |n      |   101|
+
+n=101.
+
 > 
 > 
 > 
@@ -2306,6 +2680,9 @@ n=99. 2 missing case(s) omitted.
 |Item 1                    | Item 2|   n| Pearson's r|
 |:-------------------------|------:|---:|-----------:|
 |Usage: in private context |    Age| 101|       -0.19|
+
+n=101.
+
 > 
 > 
 > 
@@ -2335,6 +2712,9 @@ n=99. 2 missing case(s) omitted.
 |male    |  19| 32.5|   38.5| 52.0|  68| 41.2| 14.0|  60|
 |diverse |  33| 33.0|   33.0| 33.0|  33| 33.0|     |   1|
 |total   |  18| 27.0|   38.0| 52.0|  68| 39.7| 13.8| 101|
+
+n=101.
+
 > 
 > 
 > 
@@ -2353,6 +2733,7 @@ n=99. 2 missing case(s) omitted.
 > 
 > library(volker)
 > library(ggplot2)
+Warning: package 'ggplot2' was built under R version 4.5.2
 > data <- volker::chatgpt
 > 
 > theme_set(theme_vlkr(base_size=15, base_fill = list("red")))
@@ -2368,7 +2749,7 @@ detaching 'package:ggplot2'
 
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  69.43 1.51 75.36 NA NA 
+Time elapsed:  21.53 0.47 22.61 NA NA 
 > grDevices::dev.off()
 null device 
           1 

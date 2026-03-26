@@ -1,9 +1,33 @@
+## Version 1.8.1
+
+* `label.ellipse()` now returns invisibly the coordinates where the label was placed.
+* `heplot()` adds a `label.cex` argument to control the size of labels on H/E ellipses. The `label.pos` argument is vectorized, so that the changes to `label.ellipse()` now apply.
+* `boxM()` & `plot.boxM()` now correctly handle the situation where one or more groups have singular covariance matrices because !n>p
+* Fixed bug in `covEllipses.boxM()` method. `boxM()` now returns `ngroups` and `means` among it's components.
+* add @family tags to improve cross-referencing in documentation
+
+## Version 1.8.0
+
+* describe more fully constructing the datasets table using concept tags
+* added `text_usr()` to add text in normalized device coordinates
+* begin to convert documentation to use markdown via {roxygen2md}
+* `label.ellipse()` re-written to allow a fully general way to specify label positions [Thx: Claude]
+
+## Version 1.7.9
+
+* plot.robmlm() gains a `groups` arg to vary point color and `pch`
+* plot.robmlm() gains a `group.axis` arg to draw an axis identifying the groups at the top of the plot.
+
 ## Version 1.7.8
 
 Several small maintenance fixes, plus a new diagnostic plot and a new vignette
 
-o Added `distancePlot()` for plots of Mahalanobis distances of X vs Y
+o Added `distancePlot()` for plots of Mahalanobis distances of X vs Y. For an MLM, diagnoses high leverage and large residuals
 o Added a vignette on robust MLMs using `robmlm()` and diagnostic plots
+o Added `rel_diff()` to calculate relative difference between two arrays or data frames
+o Fixed buglet in plot.robmlm()
+o Fixed some non-canonical URLs
+o Fixed cex buglet in `distancePlot()`
 
 ## Version 1.7.6 
 

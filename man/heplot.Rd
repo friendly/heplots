@@ -371,7 +371,7 @@ DOI: 10.18637/jss.v037.i04.
 Fox, J., Friendly, M. & Weisberg, S. (2013). Hypothesis Tests for
 Multivariate Linear Models Using the car Package. \emph{The R Journal},
 \strong{5}(1),
-\url{https://journal.r-project.org/news/RJ-2013-1-fox-friendly-weisberg/RJ-2013-1-fox-friendly-weisberg.pdf}.
+\url{https://journal.r-project.org/articles/RJ-2013-004/RJ-2013-004.pdf}.
 
 Friendly, M. & Sigal, M. (2014) Recent Advances in Visualizing Multivariate
 Linear Models. \emph{Revista Colombiana de Estadistica}, \strong{37}, 261-283.
@@ -392,7 +392,13 @@ ellipses.
 
 \code{\link[candisc]{candisc}}, \code{\link[candisc]{heplot.candisc}} for
 reduced-rank views of \code{mlm}s in canonical space.
+
+Other HE plot functions: 
+\code{\link{heplot1d}()},
+\code{\link{heplot3d}()},
+\code{\link{pairs.mlm}()}
 }
+\concept{HE plot functions}
 \keyword{aplot}
 \keyword{hplot}
 \keyword{multivariate}

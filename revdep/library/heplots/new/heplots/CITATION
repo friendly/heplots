@@ -7,7 +7,7 @@ note <- sprintf("R package version %s", meta$Version)
      
 bibentry(
   bibtype = "Manual",
-  title = "{heplots}: Visualizing Tests in Multivariate Linear Models",
+  title = "heplots: Visualizing Tests in Multivariate Linear Models",
   author = c(
             person(given = "Michael", 
                    family = "Friendly", 

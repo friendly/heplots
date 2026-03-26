@@ -131,6 +131,8 @@
 #' 
 #' R. W. Oldford (2016), "Self calibrating quantile-quantile plots", 
 #' *The American Statistician*, 70, 74-90.
+#' 
+#' @family diagnostic plots
 #' @keywords hplot
 #' @keywords multivariate
 #' @examples

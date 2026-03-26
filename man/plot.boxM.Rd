@@ -113,8 +113,14 @@ Online: \url{https://www.datavis.ca/papers/EqCov-TAS.pdf}.
 \code{\link{boxM}}, \code{\link{logdetCI}}
 
 \code{\link[graphics]{dotchart}}
+
+Other diagnostic plots: 
+\code{\link{cqplot}()},
+\code{\link{distancePlot}()},
+\code{\link{eigstatCI}()}
 }
 \author{
 Michael Friendly
 }
+\concept{diagnostic plots}
 \keyword{hgraph}

@@ -65,3 +65,10 @@ ellipse.box(cov, center=mu, level = 0.68,
 res <- ellipse.box(cov, center=mu, level = 0.68, factor = "chol", col = "green", lwd = 2 )
 res
 }
+\seealso{
+Other covariance ellipses: 
+\code{\link{covEllipses}()},
+\code{\link{ellipse.axes}()},
+\code{\link{ellipse3d.axes}()}
+}
+\concept{covariance ellipses}

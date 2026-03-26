@@ -230,6 +230,7 @@
 #' \item{radius}{the radius for the unit circles used to generate the ellipses}
 #' }
 #' 
+#' @family HE plot functions
 #' @seealso \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for
 #' details on testing MLMs.
 #' 
@@ -263,7 +264,7 @@
 #' Fox, J., Friendly, M. & Weisberg, S. (2013). Hypothesis Tests for
 #' Multivariate Linear Models Using the car Package. *The R Journal*,
 #' **5**(1),
-#' <https://journal.r-project.org/news/RJ-2013-1-fox-friendly-weisberg/RJ-2013-1-fox-friendly-weisberg.pdf>.
+#' <https://journal.r-project.org/articles/RJ-2013-004/RJ-2013-004.pdf>.
 #' 
 #' Friendly, M. & Sigal, M. (2014) Recent Advances in Visualizing Multivariate
 #' Linear Models. *Revista Colombiana de Estadistica*, **37**, 261-283.

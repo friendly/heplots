@@ -32,11 +32,12 @@ Type 'q()' to quit R.
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: Arbuthnot
-> ### Title: Arbuthnot's data on male and female birth ratios
+> ### Title: Arbuthnot's Data on Male and Female Birth Ratios
 > ### Aliases: Arbuthnot
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Arbuthnot)
 > # plot the sex ratios
@@ -48,6 +49,7 @@ Type 'q()' to quit R.
 > 
 > # plot the total christenings to observe the anomalie in 1704
 > with(Arbuthnot, plot(Year,Total, type='b', ylab="Total Christenings"))
+> 
 > 
 > 
 > 
@@ -63,6 +65,7 @@ Type 'q()' to quit R.
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Armada)
 > # delete character and redundant variable
@@ -92,6 +95,7 @@ Cumulative Proportion  1.0000 1.00000
 > 
 > 
 > 
+> 
 > cleanEx()
 > nameEx("Bowley")
 > ### * Bowley
@@ -104,6 +108,7 @@ Cumulative Proportion  1.0000 1.00000
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Bowley)
 > 
@@ -118,9 +123,9 @@ Cumulative Proportion  1.0000 1.00000
 +   as.vector(stats::filter(x, rep(1 / width, width), sides = 2))
 +   }
 > 
-> mav3<-running(Bowley$Value, width=3)
-> mav5<-running(Bowley$Value, width=5)
-> mav9<-running(Bowley$Value, width=9)
+> mav3 <- running(Bowley$Value, width=3)
+> mav5 <- running(Bowley$Value, width=5)
+> mav9 <- running(Bowley$Value, width=9)
 > lines(Bowley$Year, mav3, col='blue', lty=2)
 > lines(Bowley$Year, mav5, col='green3', lty=3)
 > lines(Bowley$Year, mav9, col='brown', lty=4)
@@ -130,9 +135,11 @@ Cumulative Proportion  1.0000 1.00000
 > 
 > # Initial version, using ggplot
 > library(ggplot2)
+Warning: package 'ggplot2' was built under R version 4.5.2
 > ggplot(aes(x=Year, y=Value), data=Bowley) +
 +   geom_point() +
 +   geom_smooth(method="loess", formula=y~x)
+> 
 > 
 > 
 > 
@@ -152,11 +159,13 @@ detaching 'package:ggplot2'
 > 
 > ### ** Examples
 > 
+> 
 > data(Breslau)
 > 
 > # Reproduce Figure 1 in Bellhouse (2011)
 > # He excluded age < 5 and made a point of the over-representation of deaths in quinquennial years.
 > library(ggplot2)
+Warning: package 'ggplot2' was built under R version 4.5.2
 > library(dplyr, warn.conflicts = FALSE)
 > Breslau5 <- Breslau |>
 +   filter(age >= 5) |>
@@ -171,6 +180,11 @@ detaching 'package:ggplot2'
 +   labs(x = "Age current at death",
 +        y = "Total number of deaths") +
 +   theme_bw()
+Warning in fortify(data, ...) : Arguments in `...` must be used.
+✖ Problematic argument:
+• size = 1.5
+ℹ Did you misspell an argument name?
+> 
 > 
 > 
 > 
@@ -190,6 +204,7 @@ detaching 'package:dplyr', 'package:ggplot2'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Cavendish)
 > summary(Cavendish)
@@ -218,6 +233,7 @@ detaching 'package:dplyr', 'package:ggplot2'
 > 
 > 
 > 
+> 
 > cleanEx()
 > nameEx("ChestSizes")
 > ### * ChestSizes
@@ -230,6 +246,7 @@ detaching 'package:dplyr', 'package:ggplot2'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(ChestSizes)
 > 
@@ -250,6 +267,7 @@ detaching 'package:dplyr', 'package:ggplot2'
 > 
 > 
 > 
+> 
 > cleanEx()
 > nameEx("Cholera")
 > ### * Cholera
@@ -262,6 +280,7 @@ detaching 'package:dplyr', 'package:ggplot2'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Cholera)
 > 
@@ -352,8 +371,10 @@ persons_house     0.9910483    0.9673772 1.015244e+00
 +   plot(eff)
 + }
 Loading required package: effects
+Warning: package 'effects' was built under R version 4.5.2
 lattice theme set by effectsTheme()
 See ?effectsTheme for details.
+> 
 > 
 > 
 > 
@@ -374,6 +395,7 @@ detaching 'package:effects', 'package:car', 'package:carData'
 > 
 > ### ** Examples
 > 
+> 
 > data(CholeraDeaths1849)
 > str(CholeraDeaths1849)
 tibble [730 × 6] (S3: tbl_df/tbl/data.frame)
@@ -386,11 +408,13 @@ tibble [730 × 6] (S3: tbl_df/tbl/data.frame)
 > 
 > # Reproduce Farr's (1852) plate 2
 > library(ggplot2)
+Warning: package 'ggplot2' was built under R version 4.5.2
 > CholeraDeaths1849  |>
 +   ggplot(aes(x = date, y = deaths, colour = cause_of_death)) +
 +   geom_line(linewidth = 1.2) +
 +   theme_bw(base_size = 14) +
 +   theme(legend.position = "top")
+> 
 > 
 > 
 > 
@@ -411,6 +435,7 @@ detaching 'package:ggplot2'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(CushnyPeebles)
 > # quick looks at the data
@@ -504,7 +529,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 +   pairs(CPmod, idata=Treats, idesign= ~Treatment, iterm="Treatment")
 + }
 Loading required package: heplots
+Warning: package 'heplots' was built under R version 4.5.2
 Loading required package: broom
+Warning: package 'broom' was built under R version 4.5.2
 Note: model has only an intercept; equivalent type-III tests substituted.
 Note: model has only an intercept; equivalent type-III tests substituted.
 > 
@@ -525,6 +552,7 @@ Note: model has only an intercept; equivalent type-III tests substituted.
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:heplots', 'package:broom', 'package:car',
@@ -541,6 +569,7 @@ detaching 'package:heplots', 'package:broom', 'package:car',
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Dactyl)
 > 
@@ -581,6 +610,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 > 
 > 
 > 
+> 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 > nameEx("DrinksWages")
@@ -594,6 +624,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(DrinksWages)
 > plot(DrinksWages) 
@@ -631,6 +662,7 @@ Number of Fisher Scoring iterations: 4
 > 
 > 
 > 
+> 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 > nameEx("EdgeworthDeaths")
@@ -644,6 +676,7 @@ Number of Fisher Scoring iterations: 4
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(EdgeworthDeaths)
 > 
@@ -693,6 +726,7 @@ Pearson          3.850641 30        1
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:MASS', 'package:vcd', 'package:grid', 'package:car',
@@ -710,6 +744,7 @@ detaching 'package:MASS', 'package:vcd', 'package:grid', 'package:car',
 > 
 > ### ** Examples
 > 
+> 
 > data(Fingerprints)
 > xtabs(count ~ Whorls + Loops, data=Fingerprints)
       Loops
@@ -720,6 +755,7 @@ Whorls   0   1   2   3   4   5
      3 125  38   7            
      4 104  26                
      5  50                    
+> 
 > 
 > 
 > 
@@ -736,12 +772,7 @@ Whorls   0   1   2   3   4   5
 > 
 > ### ** Examples
 > 
-> ## Don't show: 
-> 	# allow to work with car 1
-> 	if (packageDescription("car")[["Version"]] < 2) {
-+ 		dataEllipse <- data.ellipse
-+ 	}
-> ## End(Don't show)
+> 
 > data(Galton)
 > 
 > ###########################################################################
@@ -764,6 +795,7 @@ Loading required package: carData
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:car', 'package:carData'
@@ -780,6 +812,7 @@ detaching 'package:car', 'package:carData'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(GaltonFamilies)
 > str(GaltonFamilies)
@@ -886,6 +919,7 @@ Warning in title(...) : "legend.coords" is not a graphical parameter
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:car', 'package:carData'
@@ -903,8 +937,10 @@ detaching 'package:car', 'package:carData'
 > 
 > ### ** Examples
 > 
+> 
 > data(Guerry)
 > ## maybe str(Guerry) ; plot(Guerry) ...
+> 
 > 
 > 
 > 
@@ -920,6 +956,7 @@ detaching 'package:car', 'package:carData'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(HalleyLifeTable)
 > # what was the estimated population of Breslau?
@@ -940,6 +977,7 @@ detaching 'package:car', 'package:carData'
 > 
 > 
 > 
+> 
 > cleanEx()
 > nameEx("HistData-package")
 > ### * HistData-package
@@ -948,12 +986,14 @@ detaching 'package:car', 'package:carData'
 > 
 > ### Name: HistData-package
 > ### Title: Data sets from the History of Statistics and Data Visualization
-> ### Aliases: HistData-package HistData
-> ### Keywords: package
+> ### Aliases: HistData-package HistData _PACKAGE
+> ### Keywords: aplot hplot multivariate package
 > 
 > ### ** Examples
 > 
-> # see examples for the separate data sets
+> 
+> # see examples for the separate data sets, e.g., with ?Dataset or example(Dataset)
+> 
 > 
 > 
 > 
@@ -964,11 +1004,12 @@ detaching 'package:car', 'package:carData'
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: Jevons
-> ### Title: W. Stanley Jevons' data on numerical discrimination
+> ### Title: W. Stanley Jevons' data on Numerical Discrimination
 > ### Aliases: Jevons
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Jevons)
 > # show as tables
@@ -1016,6 +1057,17 @@ error   3   4   5   6   7   8   9  10  11  12  13  14  15
 +   text.size=0.8))
 + }
 Loading required package: gplots
+Warning: package 'gplots' was built under R version 4.5.2
+
+---------------------
+gplots 3.3.0 loaded:
+  * Use citation('gplots') for citation info.
+  * Homepage: https://talgalili.github.io/gplots/
+  * Report issues: https://github.com/talgalili/gplots/issues
+  * Ask questions: https://stackoverflow.com/questions/tagged/gplots
+  * Suppress this message with: suppressPackageStartupMessages(library(gplots))
+---------------------
+
 
 Attaching package: 'gplots'
 
@@ -1053,6 +1105,7 @@ The following objects are masked from 'package:reshape':
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:plyr', 'package:reshape', 'package:gplots'
@@ -1068,6 +1121,7 @@ detaching 'package:plyr', 'package:reshape', 'package:gplots'
 > ### Keywords: datasets spatial
 > 
 > ### ** Examples
+> 
 > 
 > data(Langren1644)
 > 
@@ -1229,6 +1283,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 > 
 > 
 > 
+> 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 
@@ -1246,6 +1301,7 @@ detaching 'package:lattice', 'package:jpeg'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Macdonell)
 > 
@@ -1341,8 +1397,8 @@ finger 5.714 5.797 5.88 5.964 6.047 6.13 6.214 6.297 6.38
   13.5     0     0    0     0     1    0     0     0    0
 > 
 > ## Some examples by james.hanley@mcgill.ca    October 16, 2011
-> ## http://www.biostat.mcgill.ca/hanley/
-> ## See:  http://www.biostat.mcgill.ca/hanley/Student/
+> ## https://jhanley.biostat.mcgill.ca/
+> ## See:  https://jhanley.biostat.mcgill.ca/Student/
 > 
 > ###############################################
 > ##  naive contour plots of height and finger ##
@@ -1458,9 +1514,9 @@ Loading required package: carData
 > 
 > # see also the photographs from Student's notebook ('Original small sample data and notes")
 > # under the link "Gosset' 750 samples of size n=4" 
-> # on website http://www.biostat.mcgill.ca/hanley/Student/
+> # on website https://jhanley.biostat.mcgill.ca/Student/
 > # and while there, look at the cover of the Notebook containing his yeast-cell counts
-> # http://www.medicine.mcgill.ca/epidemiology/hanley/Student/750samplesOf4/Covers.JPG
+> # https://jhanley.biostat.mcgill.ca/Student/750samplesOf4
 > # (Biometrika 1907) and decide for yourself why Gosset, when forced to write under a 
 > # pen-name, might have taken the name he did!
 > 
@@ -1513,6 +1569,7 @@ Loading required package: carData
 > 
 > 
 > 
+> 
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 
@@ -1530,8 +1587,10 @@ detaching 'package:car', 'package:carData', 'package:KernSmooth'
 > 
 > ### ** Examples
 > 
+> 
 > library(sp)
 > library(effects)
+Warning: package 'effects' was built under R version 4.5.2
 Loading required package: carData
 lattice theme set by effectsTheme()
 See ?effectsTheme for details.
@@ -1567,6 +1626,7 @@ See ?effectsTheme for details.
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:effects', 'package:carData', 'package:sp'
@@ -1582,6 +1642,7 @@ detaching 'package:effects', 'package:carData', 'package:sp'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Michelson)
 > 
@@ -1621,6 +1682,7 @@ detaching 'package:effects', 'package:carData', 'package:sp'
 > 
 > 
 > 
+> 
 > cleanEx()
 > nameEx("Minard")
 > ### * Minard
@@ -1635,6 +1697,7 @@ detaching 'package:effects', 'package:carData', 'package:sp'
 > 
 > ### ** Examples
 > 
+> 
 > data(Minard.troops)
 > data(Minard.cities)
 > data(Minard.temp)
@@ -1642,6 +1705,7 @@ detaching 'package:effects', 'package:carData', 'package:sp'
 > #' ## Load required packages
 > require(ggplot2)
 Loading required package: ggplot2
+Warning: package 'ggplot2' was built under R version 4.5.2
 > require(scales)
 Loading required package: scales
 > require(gridExtra)
@@ -1695,6 +1759,7 @@ Warning: Removed 1 row containing missing values or values outside the scale ran
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:gridExtra', 'package:scales', 'package:ggplot2'
@@ -1705,12 +1770,12 @@ detaching 'package:gridExtra', 'package:scales', 'package:ggplot2'
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: Nightingale
-> ### Title: Florence Nightingale's data on deaths from various causes in the
-> ###   Crimean War
+> ### Title: Florence Nightingale's data on deaths in the Crimean War
 > ### Aliases: Nightingale
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Nightingale)
 > 
@@ -1740,6 +1805,7 @@ Loading required package: reshape
 > 
 > require(ggplot2)
 Loading required package: ggplot2
+Warning: package 'ggplot2' was built under R version 4.5.2
 > # Before plot
 > cxc1 <- ggplot(Night1, aes(x = factor(Date), y=Deaths, fill = Cause)) +
 + 		# do it as a stacked bar chart first
@@ -1826,6 +1892,7 @@ Loading required package: ggplot2
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:ggplot2', 'package:reshape'
@@ -1842,10 +1909,12 @@ detaching 'package:ggplot2', 'package:reshape'
 > 
 > ### ** Examples
 > 
+> 
 > data(OldMaps)
 > ## maybe str(OldMaps) ; plot(OldMaps) ...
 > 
 > with(OldMaps, plot(abs(long),abs(lat), pch=col, col=colors()[point]))
+> 
 > 
 > 
 > 
@@ -1856,12 +1925,13 @@ detaching 'package:ggplot2', 'package:reshape'
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: PearsonLee
-> ### Title: Pearson and Lee's data on the heights of parents and children
-> ###   classified by gender
+> ### Title: Pearson and Lee's data on the Heights of Parents and Children by
+> ###   Gender
 > ### Aliases: PearsonLee
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(PearsonLee)
 > str(PearsonLee)
@@ -1899,6 +1969,7 @@ Loading required package: lattice
 > # Using ggplot [thx: Dennis Murphy]
 > require(ggplot2)
 Loading required package: ggplot2
+Warning: package 'ggplot2' was built under R version 4.5.2
 > ggplot(PearsonLee, aes(x = parent, y = child, weight=frequency)) +
 +    geom_point(size = 1.5, position = position_jitter(width = 0.2)) +
 +    geom_smooth(method = lm, aes(weight = PearsonLee$frequency,
@@ -1910,9 +1981,6 @@ Loading required package: ggplot2
 +                        values = c('green', 'red')) +
 +    theme(legend.position = c(0.14, 0.885),
 +         legend.background = element_rect(fill = 'white'))
-Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2
-3.5.0.
-ℹ Please use the `legend.position.inside` argument of `theme()` instead.
 Warning: Use of `PearsonLee$frequency` is discouraged.
 ℹ Use `frequency` instead.
 Warning: Use of `PearsonLee$frequency` is discouraged.
@@ -1943,11 +2011,67 @@ Warning: Use of `PearsonLee$frequency` is discouraged.
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:ggplot2', 'package:lattice', 'package:car',
   'package:carData'
 
+> nameEx("Playfair1824")
+> ### * Playfair1824
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Playfair1824
+> ### Title: Playfair's Linear Chronology
+> ### Aliases: Playfair1824
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(Playfair1824)
+> str(Playfair1824)
+'data.frame':	55 obs. of  9 variables:
+ $ Year       : num  1770 1771 1772 1773 1774 ...
+ $ Stocks     : num  79.6 76.3 78.7 75.8 77.2 ...
+ $ Wheat      : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Bread      : num  23.5 24.1 25.6 25.9 26.2 ...
+ $ Debt       : num  14 14 13.7 13.7 13.7 ...
+ $ Exports    : num  11.6 12.2 11.3 11 12.2 ...
+ $ Imports    : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Expenditure: num  9.21 9.21 9.22 9.22 9.23 ...
+ $ Revenue    : num  7.72 8.03 8.03 7.74 8.04 ...
+> 
+> # Plot multiple time series with matplot()
+> matplot(Playfair1824$Year, Playfair1824[, -1],
++         pch = c("S", "W", "B", "D", "E", "I", "X", "R"),
++         type = "b",
++         xlab = "Year",
++         ylab = "value",
++         ylim = c(0, 140),
++         main = "Linear Chronology, Exhibiting the Revenues, Expenditure, ... from 1770 to 1824")
+> 
+> # main events
+> events <- data.frame(
++   start = c(1776, 1793, 1804),
++   end = c(1782.2, 1802, 1815.2),
++   event = c("American War", "War: French Republic", "War: Napoleon")
++ )
+> 
+> with(events, {
++   arrows(x0 = start, x1 = end, 
++          y0 = 130, y1 = 130, 
++          lwd = 3,
++          code = 3,
++          angle = 90, length = 0.05)
++   text((start+end)/2, 132, event, pos = 3)
++ })
+> 
+> 
+> 
+> 
+> 
+> cleanEx()
 > nameEx("PolioTrials")
 > ### * PolioTrials
 > 
@@ -1960,8 +2084,10 @@ detaching 'package:ggplot2', 'package:lattice', 'package:car',
 > 
 > ### ** Examples
 > 
+> 
 > data(PolioTrials)
 > ## maybe str(PolioTrials) ; plot(PolioTrials) ...
+> 
 > 
 > 
 > 
@@ -1978,8 +2104,21 @@ detaching 'package:ggplot2', 'package:lattice', 'package:car',
 > 
 > ### ** Examples
 > 
+> 
 > data(Pollen)
+> 
+> # All pairwise plots -- just a bunch of blobs?
 > pairs(Pollen)
+> 
+> # plot ridge vs. nub
+> plot(nub ~ ridge, data = Pollen, pch = 16)
+> 
+> # zoom in to see the secret
+> plot(nub ~ ridge, data = Pollen, pch = 16,
++      xlim = c(2, -3),
++      ylim = c(-1, 2))
+> 
+> 
 > 
 > 
 > 
@@ -1997,8 +2136,10 @@ detaching 'package:ggplot2', 'package:lattice', 'package:car',
 > 
 > ### ** Examples
 > 
+> 
 > data(Prostitutes)
 > ## maybe str(Prostitutes) ; plot(Prostitutes) ...
+> 
 > 
 > 
 > 
@@ -2014,6 +2155,7 @@ detaching 'package:ggplot2', 'package:lattice', 'package:car',
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Pyx)
 > # display as table
@@ -2044,6 +2186,7 @@ Bags      (.2 to R) Above R
 > # grouped histogram
 > # from: https://github.com/drjohnrussell/30DayChartChallenge/blob/main/2025/Challenge08.R
 > library(ggplot2)
+Warning: package 'ggplot2' was built under R version 4.5.2
 > library(dplyr)
 
 Attaching package: 'dplyr'
@@ -2075,6 +2218,7 @@ The following objects are masked from 'package:base':
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:dplyr', 'package:ggplot2'
@@ -2090,6 +2234,7 @@ detaching 'package:dplyr', 'package:ggplot2'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Quarrels)
 > str(Quarrels)
@@ -2181,6 +2326,7 @@ detaching 'package:dplyr', 'package:ggplot2'
 > 
 > 
 > 
+> 
 > cleanEx()
 > nameEx("Saturn")
 > ### * Saturn
@@ -2193,6 +2339,7 @@ detaching 'package:dplyr', 'package:ggplot2'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Saturn)
 > 
@@ -2214,6 +2361,7 @@ detaching 'package:dplyr', 'package:ggplot2'
 > 
 > 
 > 
+> 
 > cleanEx()
 
 detaching 'package:sp'
@@ -2230,6 +2378,7 @@ detaching 'package:sp'
 > ### Keywords: datasets spatial
 > 
 > ### ** Examples
+> 
 > 
 > data(Snow.deaths)
 > data(Snow.pumps)
@@ -2268,31 +2417,37 @@ The following objects are masked from 'package:base':
 > 
 > 
 > ## re-do this the sp way... [thx: Stephane Dray]
-> library(sp)
+> ## Not run: 
+> ##D library(sp)
+> ##D 
+> ##D # streets
+> ##D slist <- split(Snow.streets[,c("x","y")],as.factor(Snow.streets[,"street"]))
+> ##D Ll1 <- lapply(slist,Line)
+> ##D Lsl1 <- Lines(Ll1,"Street")
+> ##D Snow.streets.sp <- SpatialLines(list(Lsl1))
+> ##D plot(Snow.streets.sp, col="gray")
+> ##D title(main="Snow's Cholera Map of London (sp)")
+> ##D 
+> ##D # deaths
+> ##D Snow.deaths.sp = SpatialPoints(Snow.deaths[,c("x","y")])
+> ##D plot(Snow.deaths.sp, add=TRUE, 
+> ##D      col ='red', pch=15, cex=0.6)
+> ##D 
+> ##D # pumps
+> ##D spp <- SpatialPoints(Snow.pumps[,c("x","y")])
+> ##D Snow.pumps.sp <- SpatialPointsDataFrame(spp,Snow.pumps[,c("x","y")])
+> ##D plot(Snow.pumps.sp, add=TRUE, 
+> ##D      col='blue', pch=17, cex=1.5)
+> ##D text(Snow.pumps[,c("x","y")], 
+> ##D      labels=Snow.pumps$label, pos=1, cex=0.8)
+> ## End(Not run)
 > 
-> # streets
-> slist <- split(Snow.streets[,c("x","y")],as.factor(Snow.streets[,"street"]))
-> Ll1 <- lapply(slist,Line)
-> Lsl1 <- Lines(Ll1,"Street")
-> Snow.streets.sp <- SpatialLines(list(Lsl1))
-> plot(Snow.streets.sp, col="gray")
-> title(main="Snow's Cholera Map of London (sp)")
-> 
-> # deaths
-> Snow.deaths.sp = SpatialPoints(Snow.deaths[,c("x","y")])
-> plot(Snow.deaths.sp, add=TRUE, col ='red', pch=15, cex=0.6)
-> 
-> # pumps
-> spp <- SpatialPoints(Snow.pumps[,c("x","y")])
-> Snow.pumps.sp <- SpatialPointsDataFrame(spp,Snow.pumps[,c("x","y")])
-> plot(Snow.pumps.sp, add=TRUE, col='blue', pch=17, cex=1.5)
-> text(Snow.pumps[,c("x","y")], labels=Snow.pumps$label, pos=1, cex=0.8)
 > 
 > 
 > 
 > cleanEx()
 
-detaching 'package:sp', 'package:lubridate'
+detaching 'package:lubridate'
 
 > nameEx("SnowMap")
 > ### * SnowMap
@@ -2307,6 +2462,7 @@ detaching 'package:sp', 'package:lubridate'
 > 
 > ### ** Examples
 > 
+> 
 > SnowMap()
 > SnowMap(axis.labels=TRUE)
 > SnowMap(deaths.args=list(col="darkgreen"))
@@ -2314,6 +2470,7 @@ detaching 'package:sp', 'package:lubridate'
 > SnowMap(polygons=TRUE, main="Snow's Cholera Map with Pump Polygons")
 > 
 > SnowMap(density=TRUE)
+> 
 > 
 > 
 > 
@@ -2332,6 +2489,7 @@ detaching 'package:sp', 'package:lubridate'
 > 
 > ### ** Examples
 > 
+> 
 > data(Virginis)
 > data(Virginis.interp)
 > 
@@ -2349,6 +2507,7 @@ detaching 'package:sp', 'package:lubridate'
 > 
 > 
 > 
+> 
 > cleanEx()
 > nameEx("Wheat")
 > ### * Wheat
@@ -2362,7 +2521,6 @@ detaching 'package:sp', 'package:lubridate'
 > 
 > ### ** Examples
 > 
-> data(Wheat)
 > 
 > data(Wheat)
 > 
@@ -2439,6 +2597,7 @@ detaching 'package:sp', 'package:lubridate'
 > 
 > 
 > 
+> 
 > cleanEx()
 > nameEx("Yeast")
 > ### * Yeast
@@ -2451,6 +2610,7 @@ detaching 'package:sp', 'package:lubridate'
 > ### Keywords: datasets
 > 
 > ### ** Examples
+> 
 > 
 > data(Yeast)
 > 
@@ -2465,6 +2625,7 @@ Loading required package: lattice
 > # same, using xyplot
 > xyplot(freq~count|sample, data=Yeast, xlab="Number of Cells", ylab="Frequency",
 + 	horizontal=FALSE, origin=0, type="h", lwd=10)
+> 
 > 
 > 
 > 
@@ -2483,6 +2644,7 @@ detaching 'package:lattice'
 > ### Keywords: datasets nonparametric
 > 
 > ### ** Examples
+> 
 > 
 > data(ZeaMays)
 > 
@@ -2584,12 +2746,13 @@ mean of x
 > 
 > 
 > 
+> 
 > ### * <FOOTER>
 > ###
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  37.01 5.78 58.28 NA NA 
+Time elapsed:  6.32 0.63 7.26 NA NA 
 > grDevices::dev.off()
 pdf 
   2 

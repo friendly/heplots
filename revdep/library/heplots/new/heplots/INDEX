@@ -36,11 +36,12 @@ arrow3d                 Draw a 3D Arrow in an RGL Scene
 bartlettTests           Bartlett Tests of Homogeneity of Variances
 bbox3d                  Find the bounding box of a 'rgl::mesh3d' or
                         'rgl::qmesh3d' object
-boxM                    Box's M-test
+boxM                    Box's M-test for Homogeneity of Covariance
+                        Matrices
 coefplot                Coefficient plots for Multivariate Linear
                         Models
 colDevs                 Calculate column deviations from central values
-covEllipses             Draw classical and robust covariance ellipses
+covEllipses             Draw classical and Robust Covariance Ellipses
                         for one or more groups
 cqplot                  Chi Square Quantile-Quantile plots
 cross3d                 Draw a 3D cross in an rgl scene
@@ -51,8 +52,8 @@ ellipse.axes            Draw Axes of a 2D Covariance Ellipse
 ellipse.box             Draw Conjugate Axes and Parallelogram
                         Surrounding a Covariance Ellipse
 ellipse3d.axes          Draw axes of a 3D ellipsoid
-etasq                   Measures of Partial Association (Eta-squared)
-                        for Linear Models
+etasq                   Measures of Partial Association (eta^2) for
+                        Linear Models
 glance.mlm              Glance at an mlm object
 gsorth                  Orthogonalize successive columns of a data
                         frame or matrix
@@ -63,7 +64,7 @@ heplots-package         Visualizing Hypothesis Tests in Multivariate
                         Linear Models
 interpPlot              Plot an Interpolation Between Two Related Data
                         Sets
-label.ellipse           Label an ellipse
+label.ellipse           Label an Ellipse in a Plot
 leveneTests             Levene Tests of Homogeneity of Variances
 logdetCI                Calculate confidence interval for log
                         determinant of covariance matrices
@@ -78,12 +79,16 @@ peng                    Size measurements for penguins near Palmer
 plot.boxM               Plot for Box's M test and generalizations
 plot.robmlm             Plot observation weights from a robust
                         multivariate linear models
+rel_diff                Relative Difference between two Arrays or Data
+                        Frames
 robmlm                  Robust Fitting of Multivariate Linear Models
 schooldata              School Data
 schoolsites             Schooldata Sites
 statList                Calculate statistics for levels of factors
 termMeans               Calculate Means for a Term in a Multivariate
                         Linear Model
+text_usr                Add Text to a Plot at Normalized Device
+                        Coordinates
 trans.colors            Make Colors Transparent
 uniStats                Univariate Test Statistics for a Multivariate
                         Linear Model

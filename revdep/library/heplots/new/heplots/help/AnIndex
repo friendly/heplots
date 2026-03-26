@@ -89,6 +89,7 @@ Plastic	Plastic
 plot.boxM	plot.boxM
 plot.robmlm	plot.robmlm
 Pottery2	Pottery2
+print.boxM	boxM
 print.robmlm	robmlm
 print.summary.robmlm	robmlm
 Probe	Probe
@@ -96,6 +97,7 @@ Probe1	Probe
 Probe2	Probe
 RatWeight	RatWeight
 ReactTime	ReactTime
+rel_diff	rel_diff
 robmlm	robmlm
 robmlm.default	robmlm
 robmlm.formula	robmlm
@@ -114,6 +116,7 @@ summary.boxM	boxM
 summary.robmlm	robmlm
 termInfo	heplots-internal
 termMeans	termMeans
+text_usr	text_usr
 TIPI	TIPI
 trans.colors	trans.colors
 uniStats	uniStats

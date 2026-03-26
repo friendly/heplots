@@ -62,7 +62,7 @@ when running code in 'guerry-multivariate.Rmd'
 > knitr::write_bib(pkgs, file = here::here("vignettes", 
 +     "packages.bib"))
 Warning in file(con, "w") :
-  cannot open file 'C:/Users/friendly/AppData/Local/Temp/RtmpUB9wun/fileb15c4bd56521/vignettes/vignettes/packages.bib': No such file or directory
+  cannot open file 'C:/Users/friendly/AppData/Local/Temp/Rtmp6puv6C/fileeea43a7b3abb/vignettes/vignettes/packages.bib': No such file or directory
 
   When sourcing 'guerry-multivariate.R':
 Error: cannot open the connection

@@ -214,6 +214,10 @@ Statistics*. Wadsworth & Brooks/Cole.
 for a plot method; [`rlm`](https://rdrr.io/pkg/MASS/man/rlm.html),
 [`cov.trob`](https://rdrr.io/pkg/MASS/man/cov.trob.html)
 
+Other robust methods:
+[`Mahalanobis()`](https://friendly.github.io/heplots/reference/Mahalanobis.md),
+[`plot.robmlm()`](https://friendly.github.io/heplots/reference/plot.robmlm.md)
+
 ## Author
 
 John Fox; packaged by Michael Friendly

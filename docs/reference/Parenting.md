@@ -56,10 +56,10 @@ car::Anova(parenting.mod)
 # Box's M test
 boxM(parenting.mod)
 #> 
-#>  Box's M-test for Homogeneity of Covariance Matrices
+#>  Box's M-test for Homogeneity of Covariance Matrices 
 #> 
-#> data:  eval(data, envir = environment(formula(Y)))
-#> Chi-Sq (approx.) = 28.343, df = 12, p-value = 0.004927
+#> data:  Y by group 
+#> Chi-Sq (approx.) = 28.3432, df = 12, p-value = 0.004927
 #> 
 plot(boxM(parenting.mod))
 

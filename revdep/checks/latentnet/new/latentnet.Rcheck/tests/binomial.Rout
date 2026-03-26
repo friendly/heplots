@@ -1,0 +1,98 @@
+
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> #  File tests/binomial.R in package latentnet, part of the Statnet suite of
+> #  packages for network analysis, https://statnet.org .
+> #
+> #  This software is distributed under the GPL-3 license.  It is free, open
+> #  source, and has the attribution requirements (GPL Section 7) at
+> #  https://statnet.org/attribution .
+> #
+> #  Copyright 2003-2025 Statnet Commons
+> ################################################################################
+> library(latentnet)
+Loading required package: network
+
+'network' 1.19.0 (2024-12-08), part of the Statnet Project
+* 'news(package="network")' for changes since last version
+* 'citation("network")' for citation information
+* 'https://statnet.org' for help, support, and other information
+
+Loading required package: ergm
+
+'ergm' 4.10.1 (2025-08-26), part of the Statnet Project
+* 'news(package="ergm")' for changes since last version
+* 'citation("ergm")' for citation information
+* 'https://statnet.org' for help, support, and other information
+
+'ergm' 4 is a major update that introduces some backwards-incompatible
+changes. Please type 'news(package="ergm")' for a list of major
+changes.
+
+
+'latentnet' 2.12.0 (2025-09-11), part of the Statnet Project
+* 'news(package="latentnet")' for changes since last version
+* 'citation("latentnet")' for citation information
+* 'https://statnet.org' for help, support, and other information
+NOTE: BIC calculation prior to latentnet 2.7.0 had a bug in the calculation of the effective number of parameters. See help(summary.ergmm) for details.
+NOTE: Prior to version 2.8.0, handling of fixed effects for directed networks had a bug: the covariate matrix was transposed.
+Warning messages:
+1: package 'network' was built under R version 4.5.2 
+2: package 'ergm' was built under R version 4.5.2 
+> data(sampson)
+> 
+> fit.1 <- ergmm(samplike ~ euclidean(2) + rreceiver, tofit = "mle")
+> eta <- function(par){
++   o <- par$beta - as.matrix(dist(par$Z)) + outer(rep(1, 18), par$receiver)
++   diag(o) <- -Inf
++   o
++ }
+> 
+> trials <- matrix(1000 + rgeom(18*18, 1/1000), 18, 18)
+> diag(trials) <- 0
+> 
+> Ym <- matrix(rbinom(18*18, trials, plogis(eta(fit.1$mle))), 18, 18)
+> 
+> Y <- as.network(Ym, ignore.eval = FALSE, names.eval = "a")
+> 
+> wrong.trials <- matrix(floor(runif(18*18, pmin(trials, Ym), trials*2 - pmin(trials, Ym) + 1)), 18, 18)
+> 
+> fit.mle <- ergmm(Y ~ euclidean(2) + rreceiver, response = "a", tofit = "mle", family = "binomial", fam.par = list(trials = trials))
+> fit.mle.wrong <- ergmm(Y ~ euclidean(2) + rreceiver, response = "a", tofit = "mle", family = "binomial", fam.par = list(trials = wrong.trials))
+> 
+> stopifnot(sqrt(mean(c((eta(fit.1$mle) - eta(fit.mle$mle))^2), na.rm=TRUE)) < sqrt(mean(c((eta(fit.1$mle) - eta(fit.mle.wrong$mle))^2), na.rm=TRUE)))
+> stopifnot(sqrt(mean(c((plogis(eta(fit.1$mle)) - plogis(eta(fit.mle$mle)))^2), na.rm=TRUE)) < sqrt(mean(c((plogis(eta(fit.1$mle)) - plogis(eta(fit.mle.wrong$mle)))^2), na.rm=TRUE)))
+> 
+> fit.mkl <- ergmm(Y ~ euclidean(2) + rreceiver, response = "a", tofit = "mkl", family = "binomial", fam.par = list(trials = trials))
+Warning messages:
+1: In backoff.check(model, burnin.sample, burnin.control) :
+  Backing off: too few acceptances. If you see this message several times in a row, use a longer burnin.
+2: In backoff.check(model, burnin.sample, burnin.control) :
+  Backing off: too few acceptances. If you see this message several times in a row, use a longer burnin.
+> fit.mkl.wrong <- ergmm(Y ~ euclidean(2) + rreceiver, response = "a", tofit = "mkl", family = "binomial", fam.par = list(trials = wrong.trials))
+Warning messages:
+1: In backoff.check(model, burnin.sample, burnin.control) :
+  Backing off: too few acceptances. If you see this message several times in a row, use a longer burnin.
+2: In backoff.check(model, burnin.sample, burnin.control) :
+  Backing off: too few acceptances. If you see this message several times in a row, use a longer burnin.
+> 
+> stopifnot(sqrt(mean(c((eta(fit.1$mle) - eta(fit.mkl$mkl))^2), na.rm=TRUE)) < sqrt(mean(c((eta(fit.1$mle) - eta(fit.mkl.wrong$mkl))^2), na.rm=TRUE)))
+> stopifnot(sqrt(mean(c((plogis(eta(fit.1$mle)) - plogis(eta(fit.mkl$mkl)))^2), na.rm=TRUE)) < sqrt(mean(c((plogis(eta(fit.1$mle)) - plogis(eta(fit.mkl.wrong$mkl)))^2), na.rm=TRUE)))
+> 
+> proc.time()
+   user  system elapsed 
+  16.76    0.53   17.57 

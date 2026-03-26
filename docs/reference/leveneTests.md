@@ -74,6 +74,9 @@ Variances *Journal of the American Statistical Association*, **69**,
 [`leveneTest`](https://rdrr.io/pkg/car/man/leveneTest.html),
 [`bartlettTests`](https://friendly.github.io/heplots/reference/bartlettTests.md)
 
+Other homogeneity tests:
+[`bartlettTests()`](https://friendly.github.io/heplots/reference/bartlettTests.md)
+
 ## Author
 
 Michael Friendly

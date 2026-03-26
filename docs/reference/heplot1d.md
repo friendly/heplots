@@ -285,6 +285,11 @@ for hypothesis tests in `mlm`s
 [`pairs.mlm`](https://friendly.github.io/heplots/reference/pairs.mlm.md)
 for other HE plot methods
 
+Other HE plot functions:
+[`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md),
+[`pairs.mlm()`](https://friendly.github.io/heplots/reference/pairs.mlm.md)
+
 ## Author
 
 Michael Friendly

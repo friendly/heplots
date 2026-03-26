@@ -109,6 +109,11 @@ in pairs (min, max) by rows.
 [`lines`](https://rdrr.io/r/graphics/lines.html),
 [`text`](https://rdrr.io/r/graphics/text.html)
 
+Other covariance ellipses:
+[`covEllipses()`](https://friendly.github.io/heplots/reference/covEllipses.md),
+[`ellipse.box()`](https://friendly.github.io/heplots/reference/ellipse.box.md),
+[`ellipse3d.axes()`](https://friendly.github.io/heplots/reference/ellipse3d.axes.md)
+
 ## Author
 
 Michael Friendly

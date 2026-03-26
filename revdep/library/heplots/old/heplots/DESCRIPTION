@@ -1,8 +1,8 @@
 Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
-Version: 1.7.5
-Date: 2025-04-26
+Version: 1.7.8
+Date: 2025-08-06
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -31,18 +31,20 @@ Suggests: candisc, carData, effects, reshape, gplots, nlme, lattice,
         reshape2, corrgram, animation, mvinfluence, knitr, litedown,
         rmarkdown, markdown, dplyr, tidyr, ggplot2, bookdown,
         patchwork, tinytable, glue, here, Sleuth2, rrcov, archdata,
-        qqtest, vcdExtra, R.rsp, KernSmooth, aplpack, foreign
+        qqtest, vcdExtra, R.rsp, KernSmooth, aplpack, foreign,
+        robustbase
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
 License: GPL (>= 2)
-URL: http://friendly.github.io/heplots/,
+URL: https://friendly.github.io/heplots/,
         https://github.com/friendly/heplots
 RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr, R.rsp
+# Roxygen: list(markdown = TRUE)
 NeedsCompilation: no
-Packaged: 2025-05-24 16:50:06 UTC; friendly
+Packaged: 2025-08-18 21:26:14 UTC; friendly
 Author: Michael Friendly [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-3237-0941>),
   John Fox [aut] (ORCID: <https://orcid.org/0000-0002-1196-8012>),
@@ -50,5 +52,5 @@ Author: Michael Friendly [aut, cre] (ORCID:
   Phil Chalmers [ctb] (ORCID: <https://orcid.org/0000-0001-5332-2810>),
   Duncan Murdoch [ctb]
 Repository: CRAN
-Date/Publication: 2025-05-24 17:40:02 UTC
-Built: R 4.5.1; ; 2025-08-04 03:23:56 UTC; windows
+Date/Publication: 2025-08-18 23:50:36 UTC
+Built: R 4.5.2; ; 2025-11-01 03:56:14 UTC; windows

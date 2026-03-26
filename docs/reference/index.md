@@ -26,8 +26,9 @@ Tests and plots for homogeneity of variances and covariances
 - [`bartlettTests()`](https://friendly.github.io/heplots/reference/bartlettTests.md)
   : Bartlett Tests of Homogeneity of Variances
 - [`boxM()`](https://friendly.github.io/heplots/reference/boxM.md)
+  [`print(`*`<boxM>`*`)`](https://friendly.github.io/heplots/reference/boxM.md)
   [`summary(`*`<boxM>`*`)`](https://friendly.github.io/heplots/reference/boxM.md)
-  : Box's M-test
+  : Box's M-test for Homogeneity of Covariance Matrices
 - [`leveneTests()`](https://friendly.github.io/heplots/reference/leveneTests.md)
   : Levene Tests of Homogeneity of Variances
 - [`logdetCI()`](https://friendly.github.io/heplots/reference/logdetCI.md)
@@ -35,6 +36,11 @@ Tests and plots for homogeneity of variances and covariances
   matrices
 - [`plot(`*`<boxM>`*`)`](https://friendly.github.io/heplots/reference/plot.boxM.md)
   : Plot for Box's M test and generalizations
+- [`eigstatCI()`](https://friendly.github.io/heplots/reference/eigstatCI.md)
+  [`eigstatCI_boxM()`](https://friendly.github.io/heplots/reference/eigstatCI.md)
+  : Bootstrap Confidence Intervals for Eigenvalue Statistics
+- [`plot_boxM_boot()`](https://friendly.github.io/heplots/reference/plot_boxM_boot.md)
+  : Plot for Box's M test with bootstrap CIs
 
 ## Robust MLMs
 
@@ -59,7 +65,7 @@ Other plots and methods for multivariate linear models
 - [`coefplot()`](https://friendly.github.io/heplots/reference/coefplot.md)
   : Coefficient plots for Multivariate Linear Models
 - [`covEllipses()`](https://friendly.github.io/heplots/reference/covEllipses.md)
-  : Draw classical and robust covariance ellipses for one or more groups
+  : Draw classical and Robust Covariance Ellipses for one or more groups
 - [`distancePlot()`](https://friendly.github.io/heplots/reference/distancePlot.md)
   : Distance Plot for Multivariate Model Diagnosis
 - [`glance(`*`<mlm>`*`)`](https://friendly.github.io/heplots/reference/glance.mlm.md)

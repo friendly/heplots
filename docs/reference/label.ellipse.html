@@ -11,7 +11,7 @@ coefplot.mlm, but is also useful as a utility when plotting ellipses in base R g
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,6 +99,11 @@ or subtracted to the calculated (x, y) values.</p></dd>
 
 </dl></div>
     <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>Mainly used for its side-effect of producing a call to <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code>, but also returns, invisibly,
+the (x, y) coordinates where the label was placed.</p>
+    </div>
+    <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The function takes the coordinates of the input <code>ellipse</code> and uses that, together with <code>label.pos</code> to calculate the
 (x, y) coordinates to be passed to <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code> along with a computed <code>pos</code> argument.
@@ -157,10 +162,12 @@ as the fraction of the way around the unit circle, counterclockwise from the Nor
 <span class="r-in"><span><span class="kw">for</span> <span class="op">(</span><span class="va">pos</span> <span class="kw">in</span> <span class="va">diagonal</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="fu">label.ellipse</span><span class="op">(</span><span class="va">circ</span>, label<span class="op">=</span><span class="va">pos</span>, label.pos<span class="op">=</span><span class="va">pos</span>, col<span class="op">=</span><span class="st">"blue"</span>, cex<span class="op">=</span><span class="fl">1.2</span>, font<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in ellipse[index, 1]:</span> no 'dimnames' attribute for array</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Center</span></span></span>
-<span class="r-in"><span><span class="fu">label.ellipse</span><span class="op">(</span><span class="va">circ</span>, label<span class="op">=</span><span class="st">"C"</span>, label.pos<span class="op">=</span><span class="st">"C"</span>, col<span class="op">=</span><span class="st">"darkgreen"</span>, cex<span class="op">=</span><span class="fl">1.2</span>, font<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Center, &amp; illustrate return</span></span></span>
+<span class="r-in"><span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu">label.ellipse</span><span class="op">(</span><span class="va">circ</span>, label<span class="op">=</span><span class="st">"C"</span>, label.pos<span class="op">=</span><span class="st">"C"</span>, col<span class="op">=</span><span class="st">"darkgreen"</span>, cex<span class="op">=</span><span class="fl">1.2</span>, font<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">xy</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           x           y </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.02459016 -0.05593923 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Add reference lines to show the angles</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h<span class="op">=</span><span class="fl">0</span>, v<span class="op">=</span><span class="fl">0</span>, col<span class="op">=</span><span class="st">"lightgray"</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
@@ -187,7 +194,6 @@ as the fraction of the way around the unit circle, counterclockwise from the Nor
 <span class="r-in"><span>       fill <span class="op">=</span> <span class="cn">TRUE</span>, fill.alpha <span class="op">=</span> <span class="fl">0.1</span>,</span></span>
 <span class="r-in"><span>       label.pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"NE"</span>, <span class="st">"SW"</span><span class="op">)</span>, cex <span class="op">=</span> <span class="fl">1.4</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="label.ellipse-3.png" alt="" width="700" height="433"></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in ellipse[index, 1]:</span> subscript out of bounds</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define diagonal compass positions and their corresponding angular fractions</span></span></span>

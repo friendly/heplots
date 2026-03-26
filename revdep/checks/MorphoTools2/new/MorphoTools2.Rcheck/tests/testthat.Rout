@@ -16,6 +16,8 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 Type 'q()' to quit R.
 
 > library(testthat)
+Warning message:
+package 'testthat' was built under R version 4.5.2 
 > library(MorphoTools2)
 MorphoTools2 v1.0.2.1.  For help: https://github.com/MarekSlenker/MorphoTools2/wiki
 
@@ -27,9 +29,11 @@ https://doi.org/10.1093/bioinformatics/btac173
 > #library(png)
 > 
 > test_check("MorphoTools2")
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 417 ]
+[ FAIL 0 | WARN 2 | SKIP 0 | PASS 417 ]
+
+[ FAIL 0 | WARN 2 | SKIP 0 | PASS 417 ]
 > 
 > 
 > proc.time()
    user  system elapsed 
-  26.12    5.60   35.01 
+   3.92    0.70    4.76 

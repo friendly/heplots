@@ -48,7 +48,7 @@ lines:
 
 With standard processing, these concepts along with the keywords, appear
 in the **Index** section of the manual constructed by
-[`devtools::build_manual()`](https://devtools.r-lib.org/reference/build_manual.html).
+[`devtools::build_manual`](https://devtools.r-lib.org/reference/build_manual.html).
 In the `pkgdown` site for this package, they are also searchable in the
 **search** box.
 
@@ -57,8 +57,9 @@ With a bit of extra processing, I created a dataset
 used below.
 
 How this is done is described in this [StackExchange
-question](https://friendly.github.io/heplots/articles/). The first step
-is to extract the `concept` tags from the `man/*.Rd` files:
+question](https://stackoverflow.com/questions/79826855/find-and-process-concept-tags-in-rd-files).
+The first step is to extract the `concept` tags from the `man/*.Rd`
+files:
 
 ``` r
 concepts <- readLines(pipe("grep concept man/*.Rd")) %>%
@@ -73,11 +74,9 @@ head(concepts)
 ```
 
 Then, I use
-[`vcdExtra::datasets()`](http://friendly.github.io/vcdExtra/reference/datasets.md)
+[`vcdExtra::datasets`](https://friendly.github.io/vcdExtra/reference/datasets.html)
 to extract title and other information for the datasets in the package,
-munge the result and
-[`left_join()`](https://dplyr.tidyverse.org/reference/mutate-joins.html)
-with `concepts`:
+munge the result and `left_join` with `concepts`:
 
 ``` r
 dsets <- vcdExtra::datasets("heplots")[, c("Item", "dim", "Title")]     

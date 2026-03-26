@@ -126,27 +126,27 @@ iris$Dummy <- sample(c("Hi","Lo"),150, replace=TRUE)
 colMeansList(iris[,1:4], iris[,5:6])
 #> $setosa.Hi
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>    5.0363636    3.4954545    1.4363636    0.2545455 
+#>    5.0652174    3.5000000    1.4695652    0.2304348 
 #> 
 #> $versicolor.Hi
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>     6.007407     2.766667     4.277778     1.329630 
+#>     5.889286     2.796429     4.257143     1.346429 
 #> 
 #> $virginica.Hi
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>        6.476        2.936        5.564        1.968 
+#>     6.530435     2.956522     5.530435     2.056522 
 #> 
 #> $setosa.Lo
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>    4.9821429    3.3750000    1.4821429    0.2392857 
+#>    4.9555556    3.3666667    1.4555556    0.2592593 
 #> 
 #> $versicolor.Lo
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>     5.852174     2.773913     4.239130     1.321739 
+#>     5.995455     2.736364     4.263636     1.300000 
 #> 
 #> $virginica.Lo
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>        6.700        3.012        5.540        2.084 
+#>     6.637037     2.988889     5.570370     2.000000 
 #> 
 
 
