@@ -23,6 +23,9 @@ eq1
 # Expected LHS: \mathbf{read}, \mathbf{math}
 # Expected: \boldsymbol{\alpha} + \boldsymbol{\beta}_{1}(\operatorname{income}) + ...
 
+# Comment: the LHS side should appear with () or [] here, e.g.,
+# \[ \mathbf{read}, \mathbf{math} \]
+
 # ---- 2. response_form = "pmatrix" -------------------------------------------
 
 eq2 <- extract_eq(mod, response_form = "pmatrix")
@@ -41,6 +44,8 @@ eq4
 # Expected: B is 2x3, x-vector has 3 elements (1, income, educ)
 # LHS auto-promoted to pmatrix
 
+# Comment: The output here has doubled $$ and the start and end of the output string.
+
 eq4b <- extract_eq(mod, use_coefs = TRUE, response_form = "bmatrix")
 eq4b
 
@@ -54,6 +59,8 @@ eq5
 eq6 <- extract_eq(mod, use_generic_names = "response")
 eq6
 # Expected LHS: \mathbf{y}_{1}, \mathbf{y}_{2}
+
+# Comment: needs () or [] here
 
 # ---- 7. Generic predictor names (symbolic) ----------------------------------
 

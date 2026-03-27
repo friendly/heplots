@@ -229,3 +229,18 @@ extract_eq(mod, use_coefs = TRUE)
 #   \begin{pmatrix}1\\\operatorname{income}\\\operatorname{educ}\end{pmatrix}
 #   + \boldsymbol{\epsilon}
 ```
+
+## Rendering in the RStudio Viewer pane
+
+Note that the {matlib} package has a wide array of functions for constructing LaTeX matrices,
+described in the vignette, https://friendly.github.io/matlib/articles/latex-equations.html.
+There are a bunch of `Eqn_*()` helper functions that could be used here.
+
+Importantly, `Eqn()` renders these equations directly in the Viewer panel.
+It prints the latex (without $$ .. $$) to the console
+
+```r
+library(matlib)
+# generate a symbolic matrix, with elements x_{ij}
+latexMatrix() |> Eqn()
+```
