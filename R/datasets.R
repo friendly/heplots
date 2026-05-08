@@ -1012,8 +1012,10 @@ NULL
 #' description now only exists on the WayBack Machine,
 #' <http://web.archive.org/web/20050404145001/http://www.unc.edu/~curran/example.html>.
 #' 
-#' More details are available at
+#' More details are available at:
 #' <http://web.archive.org/web/20060830061414/http://www.unc.edu/~curran/srcd-docs/srcdmeth.pdf>.
+#' 
+#' See also: The Index to the NLSY97 Cohort, <https://www.nlsinfo.org/content/cohorts/nlsy97>
 #' @keywords datasets
 #' @concept MMRA
 #' @concept robust
