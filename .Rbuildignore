@@ -25,3 +25,5 @@ NAMESPACE-old
 ^CLAUDE.md$
 ^issues$
 ^.claude$
+^\.positai$
+^\.claude$

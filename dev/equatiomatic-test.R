@@ -25,6 +25,10 @@ eq1
 
 # Comment: the LHS side should appear with () or [] here, e.g.,
 # \[ \mathbf{read}, \mathbf{math} \]
+# 
+# Error in check_dots(...) : unknown arguments: logit_notation
+# This occurs with version 0.4.6 of the package from the `logit-notation` branch
+# I've reverted to version 0.4.4
 
 # ---- 2. response_form = "pmatrix" -------------------------------------------
 

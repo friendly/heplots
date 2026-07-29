@@ -40,6 +40,14 @@ with a readable, reasonably compact notation.
 
 ---
 
+**NB**: In a book document, I used `providecommand{}` to define a large capital-like \epsilon symbol. It looks good in context, but
+that's not standard LaTeX, so would have to be defined somewhere to use it in this context.
+Or else, just use `\boldsymbol{\Large\varepsilon}`
+
+```latex
+\providecommand{\Epsilon}{\boldsymbol{\Large\varepsilon}}
+```
+
 ## Symbolic form (default, `use_coefs = FALSE`)
 
 For `lm(cbind(read, math) ~ income + educ)`:
@@ -230,7 +238,7 @@ extract_eq(mod, use_coefs = TRUE)
 #   + \boldsymbol{\epsilon}
 ```
 
-## Rendering in the RStudio Viewer pane
+## Using `matlib` package
 
 Note that the {matlib} package has a wide array of functions for constructing LaTeX matrices,
 described in the vignette, https://friendly.github.io/matlib/articles/latex-equations.html.
@@ -241,6 +249,6 @@ It prints the latex (without $$ .. $$) to the console
 
 ```r
 library(matlib)
-# generate a symbolic matrix, with elements x_{ij}
+# generate a symbolic matrix, **X**, with elements x_{ij}
 latexMatrix() |> Eqn()
 ```
