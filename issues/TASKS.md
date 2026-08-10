@@ -11,15 +11,21 @@ useful to see heplots status at a glance across packages.
   https://github.com/datalorax/equatiomatic/issues/243 (no response yet).
   Files: `dev/equatiomatic-notes.md`, `dev/equatiomatic.R`, `dev/equatiomatic-test.R`,
   `dev/equatiomatic-notes.html`
+  
 - [ ] `pred.mlm()` — extend `predict.lm`-style CIs/PIs to multivariate (`mlm`) models; draft only
   (`pred.mlm0`), not yet roxygenized or added to `R/`.
   File: `dev/pred.mlm.R`
+  
 - [ ] Decide finish-or-drop on two small utility drafts: `standardize.R` (standardized regression
   coefficients, adapted from `QuantPsyc::lm.beta`) and `se_variance.R` (SE of variance).
   Files: `dev/standardize.R`, `dev/se_variance.R`
+  
 - [ ] `Robust-flowchart.Rmd` — draft flowchart for robust MLM workflow; check whether it made it into
   the robust-MLM vignette already, otherwise finish or drop.
   File: `dev/Robust-flowchart.Rmd`
+
+- [ ] `pvPlot()` -- general partial variable plots akin to `car::avPlot()`. This is currently in the
+  Vis-MLM-book project. Notes for moving this here are contained in C:\R\Projects\friendly.github.io\blog\drafts\Ideas-Notes\partial-var-plots.md
 
 ## Clean-up candidates
 
