@@ -1,7 +1,7 @@
 # HE plot MMRA Examples
 
-Vignette built using `heplots`, version 1.8.1 and `candisc`, version
-1.1.0.
+Vignette built using `heplots`, version 1.8.3 and `candisc`, version
+1.1.1.
 
 ## Multivariate Multiple Regression Designs
 
@@ -42,7 +42,6 @@ children from an upper-class, white residential school. The data are in
 the data frame `Rohwer` in the `heplots` package:
 
 ``` r
-
 data(Rohwer)
 Rohwer |> dplyr::sample_n(6)
 #>    group SES SAT PPVT Raven n  s ns na ss
@@ -77,7 +76,6 @@ format and use facets in `ggplot2` to compose the pairwise scatterplots
 into the desired rectangular matrix format.
 
 ``` r
-
 library(tidyr)
 library(dplyr)
 library(ggplot2)
@@ -117,7 +115,6 @@ results in a separate regression line for the two SES groups produced by
 [`geom_smooth()`](https://ggplot2.tidyverse.org/reference/geom_smooth.html).
 
 ``` r
-
 ggplot(Rohwer_long, aes(x, y, color = SES, shape = SES)) +
   geom_jitter(size=1.5) +
   geom_smooth(method = "lm", 
@@ -151,7 +148,6 @@ each group than a combined analysis) and does not allow hypotheses about
 equality of slopes and intercepts to be tested directly.
 
 ``` r
-
 rohwer.ses1 <- lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data=Rohwer, 
                   subset=SES=="Hi")
 Anova(rohwer.ses1)
@@ -185,7 +181,6 @@ This fits separate slopes and intercepts for each of the two groups, but
 it is difficult to compare the coefficients numerically.
 
 ``` r
-
 coef(rohwer.ses1)
 #>                  SAT     PPVT    Raven
 #> (Intercept) -28.4675 39.69709 13.24384
@@ -214,7 +209,6 @@ given predictor is significant by a multivariate test if the ellipsoid
 excludes the point (0, 0, 0).
 
 ``` r
-
 coefplot(rohwer.ses1, fill=TRUE, cex.label=1.5, cex.lab=1.5)
 text(-10, 3, "High SES group", pos=4, cex=1.4)
 
@@ -242,7 +236,6 @@ several HE plots can be overlaid using the option `add=TRUE` as shown in
 Figure [1.3](#fig:rohwer-HE1).
 
 ``` r
-
 heplot(rohwer.ses1, 
        ylim=c(40,110),                        # allow more room for 2nd plot
        col=c("red", "black"), 
@@ -278,7 +271,6 @@ allows different means for the two SES groups on the responses, but
 constrains the slopes for the PA covariates to be equal.
 
 ``` r
-
 # MANCOVA, assuming equal slopes
 Rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, 
                  data=Rohwer)
@@ -309,13 +301,11 @@ model.
 takes a vector of the names coefficients to be tested simultaneously.
 
 ``` r
-
 covariates  <- c("n", "s", "ns", "na", "ss")
 # or: covariates <- rownames(coef(Rohwer.mod))[-(1:2)]
 ```
 
 ``` r
-
 Regr <- linearHypothesis(Rohwer.mod, covariates)
 print(Regr, digits=4, SSP=FALSE)
 #> 
@@ -334,7 +324,6 @@ test for all covariates are produced as follows, giving the plots in
 Figure [1.4](#fig:rohwer-HE2).
 
 ``` r
-
 colors <- c("red", "blue", rep("black",5), "#969696")
 heplot(Rohwer.mod, 
        col=colors, variables=c(1,2),
@@ -374,7 +363,6 @@ using the
 function,
 
 ``` r
-
 pairs(Rohwer.mod, col=colors,
       hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")),
       cex=1.3, lwd=c(2, rep(3,5), 4))
@@ -387,7 +375,6 @@ or as a 3D plot, using
 as shown in Figure [1.5](#fig:rohwer-HE3D).
 
 ``` r
-
 colors <- c("pink", "blue", rep("black",5), "#969696")
 heplot3d(Rohwer.mod, col=colors,
     hypotheses=list("Regr" = c("n", "s", "ns", "na", "ss")))
@@ -407,7 +394,6 @@ slopes for the predictors. We can test this assumption as follows, by
 adding interactions of `SES` with each of the covariates:
 
 ``` r
-
 Rohwer.mod2 <- lm(cbind(SAT, PPVT, Raven) ~ SES * (n + s + ns + na + ss),
                   data=Rohwer)
 Anova(Rohwer.mod2)
@@ -436,7 +422,6 @@ stronger, however, when these terms are tested collectively using the
 function:
 
 ``` r
-
 # test interaction terms jointly
 coefs <- rownames(coef(Rohwer.mod2)) 
 interactions <- coefs[grep(":", coefs)] |> print()
@@ -474,7 +459,6 @@ the ellipse for `Slopes` represents the joint hypothesis that slopes for
 the covariates do not differ in the low-SES group.
 
 ``` r
-
 colors <- c("red", "blue", rep("black",5), "#969696")
 heplot(Rohwer.mod2, col=c(colors, "brown"), 
       terms=c("SES", "n", "s", "ns", "na", "ss"), 
@@ -525,7 +509,6 @@ The predictor variables are:
   (`resp`), 1-4 scales, 1=none, …, 4=severe.
 
 ``` r
-
 data(Hernior)
 str(Hernior)
 #> 'data.frame':    32 obs. of  9 variables:
@@ -549,7 +532,6 @@ give tests for nonlinear effects of their relations with the responses.
 We ignore this possibility in this example.
 
 ``` r
-
 Hern.mod <- lm(cbind(leave, nurse, los) ~ age + sex +  pstat +  build + cardiac + resp, 
                data=Hernior)
 Anova(Hern.mod) 
@@ -577,7 +559,6 @@ The univariate models for each response are implicit in the MLM
 statistics for each univariate response model, as we do here.
 
 ``` r
-
 Hern.summary <- summary(Hern.mod)
 unlist(lapply(Hern.summary, function(x) x$r.squared))
 #> Response leave Response nurse   Response los 
@@ -593,7 +574,6 @@ MLM. The \\R^2\\ and \\F\\ statistics are those for each overall model
 assessing the impact of all predictors.
 
 ``` r
-
 glance.mlm(Hern.mod)
 #> # A tibble: 3 × 8
 #>   response r.squared sigma fstatistic numdf dendf  p.value  nobs
@@ -611,7 +591,6 @@ slightly promising. We proceed to a multivariate overall test of
 extracted from the rownames of the coefficients.
 
 ``` r
-
 # test overall regression
 (predictors <- rownames(coef(Hern.mod))[-1])
 #> [1] "age"     "sexm"    "pstat"   "build"   "cardiac" "resp"
@@ -629,7 +608,6 @@ print(Regr, digits=5, SSP=FALSE)
 ```
 
 ``` r
-
 clr <- c("red", "darkgray", "blue", "darkgreen", "magenta", "brown", "black")
 vlab <- c("LeaveCondition\n(leave)", 
           "NursingCare\n(nurse)", 
@@ -674,7 +652,6 @@ to calculate the canonical analyses for all predictor terms in
 `Hern.mod`.
 
 ``` r
-
 Hern.canL <- candiscList(Hern.mod)
 ```
 
@@ -682,7 +659,6 @@ Hern.canL <- candiscList(Hern.mod)
 interactively with a menu, simply by plotting the `Hern.canL` object.
 
 ``` r
-
 plot(Hern.canL)
 ```
 
@@ -692,7 +668,6 @@ Figure [2.2](#fig:hern-can1) and Figure [2.3](#fig:hern-can2).
 For `pstat` and `build`:
 
 ``` r
-
 plot(Hern.canL, term="pstat")
 plot(Hern.canL, term="build")
 ```
@@ -714,7 +689,6 @@ correlations of the responses with the 1D canonical scores.
 For `age` and `cardiac`:
 
 ``` r
-
 plot(Hern.canL, term="age")
 plot(Hern.canL, term="cardiac")
 ```
@@ -751,7 +725,8 @@ multiple regression, MANOVA, MANCOVA and step-down analysis in
 multivariate linear models.
 
 The outcome measures used here are three test scores during the course,
-`midterm1`, `midterm2`, `final`, and a course evaluation (`eval`).[^1]
+`midterm1`, `midterm2`, `final`, and a course evaluation
+(`eval`).[¹](#fn1)
 
 Predictor variables are:
 
@@ -765,7 +740,6 @@ Predictor variables are:
 - `pretest`, score on a course pretest.
 
 ``` r
-
 str(SocGrades)
 #> 'data.frame':    40 obs. of  10 variables:
 #>  $ class   : Ord.factor w/ 3 levels "3"<"2"<"1": 2 2 2 1 2 1 3 2 1 2 ...
@@ -785,7 +759,6 @@ str(SocGrades)
 The basic MLM is fit below as `grades.mod` with all predictor variables.
 
 ``` r
-
 data(SocGrades)
 grades.mod <- lm(cbind(midterm1, midterm2, final, eval) ~ 
                          class + sex + gpa + boards + hssoc + pretest, 
@@ -816,7 +789,6 @@ in the model, and the `^2` generates all products of terms, such as
 `class:sex`, `class:gpa`, and so forth.
 
 ``` r
-
 grades.mod2 <- update(grades.mod, . ~ .^2)
 Anova(grades.mod2, test="Roy")
 #> 
@@ -852,7 +824,6 @@ significant, and the main effects of `hssoc` and `pretest` remain
 insignificant. A revised model to explore is `grades.mod3`,
 
 ``` r
-
 grades.mod3 <- update(grades.mod, . ~ . + class:sex - hssoc - pretest)
 Anova(grades.mod3, test="Roy")
 #> 
@@ -874,7 +845,6 @@ The interaction of `class:sex` seems to be confined largely to
 `midterm1`.
 
 ``` r
-
 pairs(grades.mod3)
 ```
 
@@ -888,7 +858,6 @@ in a 3D HE plot when you can rotate it interactively. A snapshot is
 shown in Figure [3.2](#fig:grades-HE3D).
 
 ``` r
-
 heplot3d(grades.mod3, wire=FALSE)
 ```
 
@@ -911,7 +880,6 @@ to compute the canonical decompositions for all terms in the model, and
 extract the canonical \\R^2\\ from the terms in the result.
 
 ``` r
-
 # calculate canonical results for all terms
 grades.can <- candiscList(grades.mod3)
 # extract canonical R^2s
@@ -926,7 +894,6 @@ the `"candiscList"` object to show the effects of `class` in canonical
 space, giving Figure [3.3](#fig:grades-can-class).
 
 ``` r
-
 # plot class effect in canonical space
  heplot(grades.can, term="class", 
         scale=4, fill=TRUE, var.col="black", var.lwd=2)
@@ -949,7 +916,6 @@ response variables. The statements below produce the plots shown in
 Figure [3.4](#fig:grades-can-all).
 
 ``` r
-
 plot(grades.can, term="sex")
 plot(grades.can, term="gpa")
 ```
@@ -979,7 +945,9 @@ second course in statistics*. Reading: Addison-Wesley.
 Timm, N. H. (1975). *Multivariate analysis with applications in
 education and psychology*. Belmont, CA: Wadsworth (Brooks/Cole).
 
-[^1]: It is arguable that the students’ course evaluation should not be
+------------------------------------------------------------------------
+
+1.  It is arguable that the students’ course evaluation should not be
     considered a response variable here. It could be used as a predictor
     in a follow-up, step-down analysis, which would address the separate
     question of whether the effects on exam grades remain, when `eval`

@@ -106,7 +106,6 @@ reliability, and validity. *American Journal of Psychiatry*, **165**
 ## Examples
 
 ``` r
-
 library(car)
 data(NeuroCog)
 NC.mlm <- lm(cbind( Speed, Attention, Memory, Verbal, Visual, ProbSolv) ~ Dx,

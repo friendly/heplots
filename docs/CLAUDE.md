@@ -16,7 +16,6 @@ string interpolation and console output, but
 [`sprintf()`](https://rdrr.io/r/base/sprintf.html).
 
 ``` r
-
 # Good
 message(glue::glue("Processing {n} observations from {ngroups} groups"))
 warning(glue::glue("Groups {paste(singular_groups, collapse = ', ')} have been excluded"))
@@ -45,7 +44,6 @@ package-doc.R file)
 possible. I’m not ready to go full-blown `purrr` versions.
 
 ``` r
-
 # Good - Vectorized
 logdet_all <- rep(-Inf, nlev)
 logdet_all[valid_idx] <- log(sapply(mats[valid_idx], det))
@@ -82,7 +80,6 @@ make such changes.
 Some examples of this style:
 
 ``` r
-
 # DONE: ✔️ handles singular covariance matrices
 # DONE: ✔️ Fixed summary() method to print eigenvalues as a matrix (not a list)
 # DONE: ✔️ print/summary methods now show the number of groups actually used when some are excluded
@@ -108,7 +105,6 @@ wrapped at ~ 72 characters and subsequent lines indented by 8
 characters.
 
 ``` r
-
 #' Label an Ellipse
 #'
 #' @description 
@@ -153,7 +149,6 @@ Provide clear, informative error messages. When possible, include
 information about what in the arguments caused an error.
 
 ``` r
-
 # Good
 if (!is.matrix(Y)) {
   stop(glue::glue("Y must be a matrix, got {class(Y)[1]}"))
@@ -175,7 +170,6 @@ if (is.character(label.pos) && !label.pos %in% valid_positions) {
 Make warnings informative and actionable:
 
 ``` r
-
 # Good
 singular <- dfs < p
 if (any(singular)) {
@@ -199,7 +193,6 @@ use ordinary comments to record `TODO:`, `FIXME:` and `DONE:` items as
 follows. Continue this practice
 
 ``` r
-
 # DONE: ✔️ Generalize the `label.pos` argument to accept, in addition to values `0:4` and corresponding compass 
 #       directions, N, S, E, W values: `NE`, `SE`, `SW`, `NW` to mean at circular angles 45, 135, 225, 315
 # FIXME: Allow to use `tweak` for diagonal positions.
@@ -212,7 +205,6 @@ When extending functionality, maintain backward compatibility. Warn if
 any proposed change will break this.
 
 ``` r
-
 # Extend existing arguments rather than breaking them
 # OLD: label.pos accepts 0:4 and "N", "S", "E", "W"
 # NEW: Also accepts "NE", "SE", "SW", "NW"
@@ -228,7 +220,6 @@ label.pos <- match.arg(label.pos,
 Be explicit about return values, even for side-effect functions:
 
 ``` r
-
 # Good
 label.ellipse <- function(ellipse, label, ...) {
   # ... plotting code ...
@@ -243,7 +234,6 @@ label.ellipse <- function(ellipse, label, ...) {
 Structure functions logically:
 
 ``` r
-
 function_name <- function(args) {
   # 1. Input validation and preprocessing
   if (!is.matrix(X)) X <- as.matrix(X)
@@ -278,7 +268,6 @@ what to test and how to test them.
 This package uses base R graphics. Maintain consistency:
 
 ``` r
-
 # Good - Using base graphics functions
 text(x, y, labels = label, col = col, ...)
 lines(ellipse, col = line.col, lwd = lwd)
@@ -297,7 +286,6 @@ par(mar = c(4, 4, 2, 2))
 For geometric calculations (ellipses, angles, positions):
 
 ``` r
-
 # Use clear variable names
 target_angle <- switch(label.pos,
                        "NE" = pi/4,
@@ -320,7 +308,6 @@ closest_idx <- which.min(angle_diffs)
 ### Create Comprehensive Test Scripts
 
 ``` r
-
 # test_label_ellipse.R
 library(heplots)
 library(car)
@@ -366,7 +353,6 @@ stopifnot(all(c("x", "y") %in% names(test_coords)))
 ### Dependencies
 
 ``` r
-
 # Prefer base R when possible
 # Use these packages when needed:
 # - car: for ellipse(), dataEllipse()
@@ -391,7 +377,6 @@ NULL
 ### Handling Different Input Types
 
 ``` r
-
 # Pattern for flexible input handling
 process_input <- function(obj, ...) {
   if (inherits(obj, "lm")) {
@@ -413,7 +398,6 @@ process_input <- function(obj, ...) {
 ### Covariance Matrix Calculations
 
 ``` r
-
 # Check for singular matrices
 singular <- dfs < p
 if (any(singular)) {

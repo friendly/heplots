@@ -101,7 +101,6 @@ Michael Friendly
 ## Examples
 
 ``` r
-
 data(iris)
 iris3 <- iris[,1:3]
 cov <- cov(iris3)

@@ -281,7 +281,6 @@ Michael Friendly
 
 ``` r
 
-
 data(iris)
 
 # compare classical and robust covariance estimates

@@ -47,7 +47,6 @@ Wiley, Table 6.2
 ## Examples
 
 ``` r
-
 library(car)
 data(RootStock)
 str(RootStock)

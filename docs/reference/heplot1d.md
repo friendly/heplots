@@ -297,7 +297,6 @@ Michael Friendly
 ## Examples
 
 ``` r
-
 ## Plastics data
 plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
 heplot1d(plastic.mod, col=c("pink","blue"))

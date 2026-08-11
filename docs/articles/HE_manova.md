@@ -1,7 +1,7 @@
 # HE plot MANOVA Examples
 
-Vignette built using `heplots`, version 1.8.1 and `candisc`, version
-1.1.0.
+Vignette built using `heplots`, version 1.8.3 and `candisc`, version
+1.1.1.
 
 ## Multivariate Analysis of Variance Designs
 
@@ -36,7 +36,6 @@ default contrasts are taken as orthogonal polynomials with linear
 which decompose the total effect of grade.
 
 ``` r
-
 data(AddHealth, package="heplots")
 str(AddHealth)
 #> 'data.frame':    4344 obs. of  3 variables:
@@ -73,7 +72,6 @@ Using [`lm()`](https://rdrr.io/r/stats/lm.html) we get the coefficients
 for each of the polynomial terms in `grade`:
 
 ``` r
-
 lm(cbind(anxiety, depression) ~ grade, data=AddHealth)
 #> 
 #> Call:
@@ -96,7 +94,6 @@ models. As a first step, find the means, standard deviations, and
 standard errors of the means:
 
 ``` r
-
 library(ggplot2)
 library(dplyr)
 library(patchwork)
@@ -129,7 +126,6 @@ level of both depression and anxiety increase steadily with grade,
 except for grades 11 and 12 which don’t differ much.
 
 ``` r
-
 p1 <-ggplot(data = means, aes(x = grade, y = anxiety)) +
   geom_point(size = 4) +
   geom_line(aes(group = 1), linewidth = 1.2) +
@@ -159,7 +155,6 @@ Treating anxiety and depression as multivariate outcomes, we can also
 plot their bivariate means.
 
 ``` r
-
 ggplot(data = means, aes(x = anxiety, y = depression, 
                          color = grade)) +
   geom_point(size = 3) +
@@ -186,7 +181,6 @@ Because the variability of the scores is so large compared to the range
 of the means, I show the data ellipses with coverage of only 10%.
 
 ``` r
-
 covEllipses(AddHealth[, 3:2], group = AddHealth$grade,
             pooled = FALSE, level = 0.1,
             center.cex = 2.5, cex = 1.5, cex.lab = 1.5,
@@ -216,7 +210,6 @@ be rejected if any pair of means differ.
 display of the multivariate test, using the Pillai trace criterion.
 
 ``` r
-
 AH.mlm <- lm(cbind(anxiety, depression) ~ grade, data = AddHealth)
 
 # overall test of `grade`
@@ -233,7 +226,6 @@ The [`summary()`](https://rdrr.io/r/base/summary.html) method for this
 gives all four test statistics.
 
 ``` r
-
 ## show separate multivariate tests
 summary(Anova(AH.mlm)) |> print(SSP = FALSE)
 #> 
@@ -265,7 +257,6 @@ The joint test of the linear coefficients for anxiety and depression,
 \\H_0 : \boldsymbol{\beta}\_1 = \boldsymbol{0}\\ is highly significant,
 
 ``` r
-
 ## linear effect
 linearHypothesis(AH.mlm, "grade.L") |> print(SSP = FALSE)
 #> 
@@ -285,7 +276,6 @@ as we saw in the plots of their means, Figures
 [1.1](#fig:addhealth-means-each) and [1.2](#fig:addhealth-means-plot).
 
 ``` r
-
 ## quadratic effect
 linearHypothesis(AH.mlm, "grade.Q") |> print(SSP = FALSE)
 #> 
@@ -304,7 +294,6 @@ quadratic are zero, \\H_0 : \boldsymbol{\beta}\_3 =
 \boldsymbol{\beta}\_4 = \boldsymbol{\beta}\_5 = \boldsymbol{0}\\:
 
 ``` r
-
 ## joint test of all higher terms
 linearHypothesis(AH.mlm, rownames(coef(AH.mlm))[3:5]) |> print(SSP = FALSE)
 #> 
@@ -338,7 +327,6 @@ significance scaling, any effect is significant *iff* the corresponding
 **H** ellipse projects anywhere outside the **E** ellipse.
 
 ``` r
-
 heplot(AH.mlm, 
        hypotheses = c("grade.L", "grade.Q"), 
        hyp.labels = c("linear", "quad"),
@@ -366,7 +354,6 @@ values, High and Low. The data set comes from Johnson & Wichern
 ([1992](#ref-JohnsonWichern:92)).
 
 ``` r
-
 data(Plastic, package="heplots")
 str(Plastic)
 #> 'data.frame':    20 obs. of  5 variables:
@@ -407,7 +394,6 @@ emphasize that Roy’s test has a natural visual interpretation in HE
 plots.
 
 ``` r
-
 plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
 Anova(plastic.mod, test.statistic="Roy")
 #> 
@@ -433,7 +419,6 @@ object `plastic.mod`, which re-fits the model with only a single outcome
 variable.
 
 ``` r
-
 Anova(update(plastic.mod, tear ~ .))
 #> Anova Table (Type II tests)
 #> 
@@ -494,7 +479,6 @@ This plot overlays those for both scaling, using thicker lines for the
 effect scaling.
 
 ``` r
-
 ## Compare evidence and effect scaling 
 colors = c("red", "darkblue", "darkgreen", "brown")
 heplot(plastic.mod, size="evidence", 
@@ -540,7 +524,6 @@ the HE plot, because doing so in general can lead to messy displays. We
 can add them here for the term `rate:additive` as follows:
 
 ``` r
-
 # Compare evidence and effect scaling 
 colors = c("red", "darkblue", "darkgreen", "brown")
 heplot(plastic.mod, size="evidence", 
@@ -597,7 +580,6 @@ specified in terms of subsets or linear combinations of the model
 parameters.
 
 ``` r
-
 plastic.mod
 #> 
 #> Call:
@@ -615,7 +597,6 @@ Thus, for example, the joint test of both main effects tests the
 parameters `rateHigh` and `additiveHigh`.
 
 ``` r
-
 linearHypothesis(plastic.mod, c("rateHigh", "additiveHigh"), 
                  title="Main effects") |>
   print(SSP=FALSE)
@@ -649,7 +630,6 @@ these tests in the `hypothesis` argument to
 shown in Figure [2.3](#fig:plastic2).
 
 ``` r
-
 heplot(plastic.mod, 
        hypotheses=list("Group" =  c("rateHigh", "additiveHigh", "rateHigh:additiveHigh ")),
        col=c(colors, "purple"),
@@ -675,7 +655,6 @@ interactively to a view that shows both main effects protruding outside
 the error ellipsoid.
 
 ``` r
-
 colors = c("pink", "darkblue", "darkgreen", "brown")
 heplot3d(plastic.mod, col=colors)
 ```
@@ -698,10 +677,9 @@ scales of 1–9. These measures were used to check on the manipulation of
 Then the participants were told that the person in the photo had
 committed a Crime, and asked to rate the seriousness of the crime and
 recommend a prison sentence, in Years. The data are contained in the
-data frame `MockJury`.[^1]
+data frame `MockJury`.[¹](#fn1)
 
 ``` r
-
 data(MockJury, package = "heplots")
 str(MockJury)
 #> 'data.frame':    114 obs. of  17 variables:
@@ -729,7 +707,6 @@ three conditions of the attractiveness of the photo, and the
 combinations of this with `Crime`:
 
 ``` r
-
 table(MockJury$Attr)
 #> 
 #>    Beautiful      Average Unattractive 
@@ -762,7 +739,6 @@ To keep things simple, we consider only a few of the other ratings in a
 one-way MANOVA.
 
 ``` r
-
 (jury.mod1 <- lm( cbind(phyattr, happy, independent, sophisticated) ~ Attr, data=MockJury))
 #> 
 #> Call:
@@ -799,7 +775,6 @@ differences among group means on physical attractiveness contributes
 more to significance than do ratings on happy.
 
 ``` r
-
 heplot(jury.mod1, main="HE plot for manipulation check",
        fill = TRUE, fill.alpha = 0.1)
 ```
@@ -820,7 +795,6 @@ triangle rather than a line, suggesting that these attributes are indeed
 measuring different aspects of the photos.
 
 ``` r
-
 pairs(jury.mod1)
 ```
 
@@ -838,7 +812,6 @@ object that can be used to show an HE plot in the space of the canonical
 dimensions. This is plotted in Figure [3.3](#fig:jury-can1).
 
 ``` r
-
 jury.can <- candisc(jury.mod1)
 jury.can
 #> 
@@ -861,7 +834,6 @@ jury.can
 `heplot.candisc()` is the HE plot method for `candisc` objects
 
 ``` r
-
 heplot(jury.can, 
        rev.axes = TRUE,
        fill = c(TRUE,FALSE),
@@ -910,7 +882,6 @@ MANOVA of the responses `Years` and `Serious` in relation to the
 independent variables `Attr` and `Crime`.
 
 ``` r
-
 # influence of Attr of photo and nature of crime on Serious and Years
 jury.mod2 <- lm( cbind(Serious, Years) ~ Attr * Crime, data=MockJury)
 Anova(jury.mod2, test="Roy")
@@ -928,7 +899,6 @@ We see that there is a nearly significant interaction between `Attr` and
 `Crime` and a strong effect of `Attr`.
 
 ``` r
-
 heplot(jury.mod2)
 ```
 
@@ -951,7 +921,6 @@ crime. The model `jury.mod3` below is equivalent to an ANCOVA for
 `Years`.
 
 ``` r
-
 # stepdown test (ANCOVA), controlling for Serious
 jury.mod3 <- lm( Years ~ Serious + Attr * Crime, data=MockJury)
 t(coef(jury.mod3))
@@ -987,7 +956,6 @@ the predicted values for all high-order terms in a given model, and the
 statements below produce Figure [3.5](#fig:jury-mod3-eff).
 
 ``` r
-
 library(effects)
 jury.eff <- allEffects(jury.mod3)
 plot(jury.eff, ask=FALSE)
@@ -1028,7 +996,6 @@ Basialveolar length and nasal height are important anthropometric
 measures of “shape”.
 
 ``` r
-
 data(Skulls)
 str(Skulls)
 #> 'data.frame':    150 obs. of  5 variables:
@@ -1052,7 +1019,6 @@ For ease of labeling various outputs, it is useful to trim the `epoch`
 values and assign more meaningful variable labels.
 
 ``` r
-
 # make shorter labels for epochs
 Skulls$epoch <- factor(Skulls$epoch, labels=sub("c","",levels(Skulls$epoch)))
 # assign better variable labels
@@ -1065,7 +1031,6 @@ A `pairs` plot, Figure [4.2](#fig:skulls4), joining points by `epoch` is
 somewhat more revealing for the bivariate relations among means.
 
 ``` r
-
 means <- aggregate(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls, FUN=mean)[,-1]
 rownames(means) <- levels(Skulls$epoch)
 means
@@ -1078,7 +1043,6 @@ means
 ```
 
 ``` r
-
 pairs(means, vlab,
       panel = function(x, y) {
           text(x, y, levels(Skulls$epoch))
@@ -1098,7 +1062,6 @@ boxplots, joining means over `epoch`. Using
 The following code produces Figure [4.3](#fig:skulls-bwplot).
 
 ``` r
-
 library(lattice)
 library(reshape2)
 sklong <- melt(Skulls, id="epoch")
@@ -1127,7 +1090,6 @@ Now, fit the MANOVA model, and test the effect of `epoch` with
 the multivariate means differ substantially.
 
 ``` r
-
 # fit manova model
 sk.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 Anova(sk.mod)
@@ -1145,7 +1107,6 @@ being jointly equal to zero, for subsets of the (polynomial) contrasts
 in `epoch`.
 
 ``` r
-
 coef(sk.mod)
 #>                    mb        bh        bl       nh
 #> (Intercept) 133.97333 132.54667 96.460000 50.93333
@@ -1163,7 +1124,6 @@ that maximal breadth and nasal are increasing over time, while the other
 two measurements have negative slopes.
 
 ``` r
-
 coef(sk.mod)["epoch.L",]
 #>      mb      bh      bl      nh 
 #>  4.0266 -2.1925 -5.0175  1.0752
@@ -1186,7 +1146,6 @@ collectively, all non-linear terms are not significantly different from
 zero.
 
 ``` r
-
 print(linearHypothesis(sk.mod, c("epoch.Q", "epoch.C", "epoch^4")), SSP=FALSE)
 #> 
 #> Multivariate Tests: 
@@ -1208,7 +1167,6 @@ tests just shown for the linear trend component `epoch.L` as well as the
 joint test of all non-linear terms.
 
 ``` r
-
 pairs(sk.mod, variables=c(1,4,2,3),
     hypotheses=list(Lin="epoch.L", 
                     NonLin=c("epoch.Q", "epoch.C", "epoch^4")), 
@@ -1264,5 +1222,7 @@ Warne, F. T. (2014). A primer on multivariate analysis of
 variance(MANOVA) for behavioral scientists. *Practical Assessment,
 Research & Evaluation*, *19*(1).
 
-[^1]: The data were made available courtesy of Karl Wuensch, from a
+------------------------------------------------------------------------
+
+1.  The data were made available courtesy of Karl Wuensch, from a
     website that no longer exists.

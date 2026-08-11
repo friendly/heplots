@@ -81,7 +81,6 @@ Hand, D. J., Daly, F., Lunn, A. D., McConway, K. J. and Ostrowski, E.
 ## Examples
 
 ``` r
-
 library(car)
 data(Hernior)
 str(Hernior)

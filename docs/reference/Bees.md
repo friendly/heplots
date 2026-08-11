@@ -78,7 +78,6 @@ Statistical Software*, **17**, 1-42.
 ## Examples
 
 ``` r
-
 data(Bees)
 require(car)
 

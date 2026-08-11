@@ -107,7 +107,6 @@ Michael Friendly
 ## Examples
 
 ``` r
-
 data(Skulls)
 sk.rmod <- robmlm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 plot(sk.rmod, col=Skulls$epoch, segments=TRUE)

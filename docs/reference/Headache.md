@@ -78,7 +78,6 @@ been included as `contrasts(Headache$treatment)`
 ## Examples
 
 ``` r
-
 library(car)
 data(Headache)
 str(Headache)

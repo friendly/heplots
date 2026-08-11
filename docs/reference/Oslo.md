@@ -101,7 +101,6 @@ MANOVA, submitted to the *Journal of Environmetrics*.
 ## Examples
 
 ``` r
-
 data(Oslo)
 table(Oslo$litho)
 #> 

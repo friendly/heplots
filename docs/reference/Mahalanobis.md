@@ -76,7 +76,6 @@ Michael Friendly
 ## Examples
 
 ``` r
-
 summary(Mahalanobis(iris[, 1:4]))
 #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #>  0.3195  2.1871  3.0628  3.9733  4.8053 13.1011 

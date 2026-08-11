@@ -133,7 +133,6 @@ Other diagnostic plots:
 ## Examples
 
 ``` r
-
 if(require("robustbase")) {
   # Examples from Rousseeuw etal (2004)
   data(pulpfiber, package="robustbase")

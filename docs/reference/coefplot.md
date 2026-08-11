@@ -182,7 +182,6 @@ Michael Friendly
 ## Examples
 
 ``` r
-
 rohwer.mlm <- lm(cbind(SAT,PPVT,Raven)~n+s+ns, data=Rohwer)
 
 coefplot(rohwer.mlm, lwd=2, 

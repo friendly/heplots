@@ -79,7 +79,6 @@ Michael Friendly
 ## Examples
 
 ``` r
-
 Vocab.mod <- lm(cbind(grade8,grade9,grade10,grade11) ~ 1, data=VocabGrowth)
 idata <-data.frame(grade=ordered(8:11))
 

@@ -55,7 +55,6 @@ Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
 ## Examples
 
 ``` r
-
 data(WeightLoss)
 str(WeightLoss)
 #> 'data.frame':    34 obs. of  7 variables:

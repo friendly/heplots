@@ -73,7 +73,6 @@ Regression. *Communications in Statistics - Theory and Methods* 32 (3),
 ## Examples
 
 ``` r
-
 data(Sake)
 # quick look at the data
 boxplot(scale(Sake))

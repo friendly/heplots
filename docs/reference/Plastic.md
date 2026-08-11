@@ -43,7 +43,6 @@ Perspective*. Oxford. (p. 381)
 ## Examples
 
 ``` r
-
 str(Plastic)
 #> 'data.frame':    20 obs. of  5 variables:
 #>  $ tear    : num  6.5 6.2 5.8 6.5 6.5 6.9 7.2 6.9 6.1 6.3 ...

@@ -108,7 +108,6 @@ Educational Psychology*, **62**(5), 376-383.
 ## Examples
 
 ``` r
-
 str(Rohwer)
 #> 'data.frame':    69 obs. of  10 variables:
 #>  $ group: int  1 1 1 1 1 1 1 1 1 1 ...
