@@ -66,9 +66,9 @@ res <- ellipse.box(cov, center=mu, level = 0.68, factor = "chol", col = "green",
 res
 }
 \seealso{
-Other covariance ellipses: 
-\code{\link{covEllipses}()},
-\code{\link{ellipse.axes}()},
-\code{\link{ellipse3d.axes}()}
+Other covariance ellipses:
+\code{\link[=covEllipses]{covEllipses()}},
+\code{\link[=ellipse.axes]{ellipse.axes()}},
+\code{\link[=ellipse3d.axes]{ellipse3d.axes()}}
 }
 \concept{covariance ellipses}

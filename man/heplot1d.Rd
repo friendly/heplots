@@ -217,10 +217,10 @@ hypothesis tests in \code{mlm}s
 \code{\link{heplot}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}} for
 other HE plot methods
 
-Other HE plot functions: 
-\code{\link{heplot}()},
-\code{\link{heplot3d}()},
-\code{\link{pairs.mlm}()}
+Other HE plot functions:
+\code{\link[=heplot]{heplot()}},
+\code{\link[=heplot3d]{heplot3d()}},
+\code{\link[=pairs.mlm]{pairs.mlm()}}
 }
 \author{
 Michael Friendly

@@ -22,10 +22,10 @@ in various forms. This function calculates the bounding box, defined as the rang
 x, y, and z coordinates.
 }
 \seealso{
-Other 3D plotting: 
-\code{\link{arrow3d}()},
-\code{\link{cross3d}()},
-\code{\link{ellipse3d.axes}()},
-\code{\link{heplot3d}()}
+Other 3D plotting:
+\code{\link[=arrow3d]{arrow3d()}},
+\code{\link[=cross3d]{cross3d()}},
+\code{\link[=ellipse3d.axes]{ellipse3d.axes()}},
+\code{\link[=heplot3d]{heplot3d()}}
 }
 \concept{3D plotting}

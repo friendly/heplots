@@ -114,10 +114,10 @@ Online: \url{https://www.datavis.ca/papers/EqCov-TAS.pdf}.
 
 \code{\link[graphics]{dotchart}}
 
-Other diagnostic plots: 
-\code{\link{cqplot}()},
-\code{\link{distancePlot}()},
-\code{\link{eigstatCI}()}
+Other diagnostic plots:
+\code{\link[=cqplot]{cqplot()}},
+\code{\link[=distancePlot]{distancePlot()}},
+\code{\link[=eigstatCI]{eigstatCI()}}
 }
 \author{
 Michael Friendly

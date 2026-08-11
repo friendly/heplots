@@ -77,16 +77,16 @@ axes <- ellipse3d.axes(cov, centre=mu, level=0.68, color="gray", lwd=2)
 \code{\link[rgl:points3d]{segments3d}},
 \code{\link[rgl:texts]{text3d}}, \code{\link[rgl]{ellipse3d}}
 
-Other covariance ellipses: 
-\code{\link{covEllipses}()},
-\code{\link{ellipse.axes}()},
-\code{\link{ellipse.box}()}
+Other covariance ellipses:
+\code{\link[=covEllipses]{covEllipses()}},
+\code{\link[=ellipse.axes]{ellipse.axes()}},
+\code{\link[=ellipse.box]{ellipse.box()}}
 
-Other 3D plotting: 
-\code{\link{arrow3d}()},
-\code{\link{bbox3d}()},
-\code{\link{cross3d}()},
-\code{\link{heplot3d}()}
+Other 3D plotting:
+\code{\link[=arrow3d]{arrow3d()}},
+\code{\link[=bbox3d]{bbox3d()}},
+\code{\link[=cross3d]{cross3d()}},
+\code{\link[=heplot3d]{heplot3d()}}
 }
 \author{
 Michael Friendly

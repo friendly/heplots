@@ -227,9 +227,9 @@ Robust Statistics}.  Wadsworth & Brooks/Cole.
 \code{\link{plot.robmlm}} for a plot method;
 \code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
 
-Other robust methods: 
-\code{\link{Mahalanobis}()},
-\code{\link{plot.robmlm}()}
+Other robust methods:
+\code{\link[=Mahalanobis]{Mahalanobis()}},
+\code{\link[=plot.robmlm]{plot.robmlm()}}
 }
 \author{
 John Fox; packaged by Michael Friendly

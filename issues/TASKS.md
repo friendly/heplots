@@ -36,6 +36,12 @@ useful to see heplots status at a glance across packages.
   and a formula interface, factor-support caveats) remain in
   C:\R\Projects\friendly.github.io\blog\drafts\Ideas-Notes\partial-var-plots.md
 
+- [ ] Rebuild the pkgdown site — versions are out of sync. Site title says "heplots 1.8.2", but
+  the home page content says "Version 1.8.0; documentation built for pkgdown 2025-12-05" (noted
+  2026-08-10), CRAN is at 1.8.1, and local `DESCRIPTION` is already at 1.8.3. `.build-steps.R`
+  has the build sequence (`devtools::build_readme()` then `pkgdown::build_site(lazy = TRUE)`,
+  among other release-prep steps) — run it and push the rebuilt `docs/`.
+
 ## Clean-up candidates
 
 Scratch/debug work for features already shipped — see `NEWS.md` v1.8.1–1.8.2.

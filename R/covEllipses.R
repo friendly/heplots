@@ -32,8 +32,7 @@
 #' These arguments are each taken in the order specified, and recycled as necessary.
 #' 
 #' 
-#' @aliases covEllipses covEllipses.boxM covEllipses.data.frame
-#'          covEllipses.matrix covEllipses.default
+#' @aliases covEllipses covEllipses.boxM covEllipses.data.frame covEllipses.matrix covEllipses.default
 #' @param x The generic argument. For the default method, this is a list of
 #' covariance matrices. For the `data.frame` and `matrix` methods,
 #' this is a numeric matrix of two or more columns supplying the variables to

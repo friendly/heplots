@@ -23,11 +23,11 @@ Draws a 3D cross or axis vectors in an rgl scene.
 \seealso{
 \code{\link[rgl:points3d]{segments3d}}
 
-Other 3D plotting: 
-\code{\link{arrow3d}()},
-\code{\link{bbox3d}()},
-\code{\link{ellipse3d.axes}()},
-\code{\link{heplot3d}()}
+Other 3D plotting:
+\code{\link[=arrow3d]{arrow3d()}},
+\code{\link[=bbox3d]{bbox3d()}},
+\code{\link[=ellipse3d.axes]{ellipse3d.axes()}},
+\code{\link[=heplot3d]{heplot3d()}}
 }
 \author{
 Michael Friendly

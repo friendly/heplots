@@ -233,10 +233,10 @@ R. W. Oldford (2016), "Self calibrating quantile-quantile plots",
 result for Mahalanobis squared distances of data or residuals;
 \code{\link[qqtest]{qqtest}} has many features for all types of QQ plots.
 
-Other diagnostic plots: 
-\code{\link{distancePlot}()},
-\code{\link{eigstatCI}()},
-\code{\link{plot.boxM}()}
+Other diagnostic plots:
+\code{\link[=distancePlot]{distancePlot()}},
+\code{\link[=eigstatCI]{eigstatCI()}},
+\code{\link[=plot.boxM]{plot.boxM()}}
 }
 \author{
 Michael Friendly

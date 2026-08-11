@@ -46,8 +46,7 @@
 #' iteratively, computing weights and then re-estimating the model with those weights
 #' until convergence.
 #' 
-#' @aliases print.robmlm print.summary.robmlm robmlm robmlm.default
-#'          robmlm.formula summary.robmlm
+#' @aliases print.robmlm print.summary.robmlm robmlm robmlm.default robmlm.formula summary.robmlm
 #' @param formula a formula of the form `cbind(y1, y2, ...) ~ x1 + x2 + ...`.
 #' @param data a data frame from which variables specified in `formula`
 #'        are preferentially to be taken.

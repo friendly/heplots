@@ -102,10 +102,10 @@ ellipse.axes(cov, center=mu, level = 0.68,
 \seealso{
 \code{\link[graphics]{lines}}, \code{\link[graphics]{text}}
 
-Other covariance ellipses: 
-\code{\link{covEllipses}()},
-\code{\link{ellipse.box}()},
-\code{\link{ellipse3d.axes}()}
+Other covariance ellipses:
+\code{\link[=covEllipses]{covEllipses()}},
+\code{\link[=ellipse.box]{ellipse.box()}},
+\code{\link[=ellipse3d.axes]{ellipse3d.axes()}}
 }
 \author{
 Michael Friendly

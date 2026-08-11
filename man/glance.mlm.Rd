@@ -36,8 +36,8 @@ iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Spe
 glance(iris.mod)
 }
 \seealso{
-Other multivariate linear models: 
-\code{\link{coefplot}()}
+Other multivariate linear models:
+\code{\link[=coefplot]{coefplot()}}
 }
 \concept{multivariate linear models}
 \keyword{multivariate}

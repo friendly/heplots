@@ -77,8 +77,7 @@ LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues
 License: GPL (>= 2)
 URL: https://friendly.github.io/heplots/, https://github.com/friendly/heplots
-RoxygenNote: 7.3.3
 Encoding: UTF-8
 VignetteBuilder: knitr, R.rsp
-# Roxygen: list(markdown = TRUE)
 Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.0

@@ -128,10 +128,10 @@ Efron, B., & Tibshirani, R. J. (1994).
 \seealso{
 \code{\link{boxM}}, \code{\link{plot.boxM}}, \code{\link{logdetCI}}
 
-Other diagnostic plots: 
-\code{\link{cqplot}()},
-\code{\link{distancePlot}()},
-\code{\link{plot.boxM}()}
+Other diagnostic plots:
+\code{\link[=cqplot]{cqplot()}},
+\code{\link[=distancePlot]{distancePlot()}},
+\code{\link[=plot.boxM]{plot.boxM()}}
 }
 \author{
 Michael Friendly

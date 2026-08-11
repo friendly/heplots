@@ -100,9 +100,9 @@ ids
 \seealso{
 \code{\link{robmlm}}
 
-Other robust methods: 
-\code{\link{Mahalanobis}()},
-\code{\link{robmlm}()}
+Other robust methods:
+\code{\link[=Mahalanobis]{Mahalanobis()}},
+\code{\link[=robmlm]{robmlm()}}
 }
 \author{
 Michael Friendly

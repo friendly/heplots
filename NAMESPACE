@@ -74,6 +74,7 @@ export(logdetCI)
 export(mark.H0)
 export(noteworthy)
 export(plot_boxM_boot)
+export(pvPlot)
 export(rel_diff)
 export(robmlm)
 export(statList)
@@ -81,75 +82,89 @@ export(termMeans)
 export(text_usr)
 export(trans.colors)
 export(uniStats)
-importFrom(MASS,cov.trob)
-importFrom(MASS,psi.bisquare)
-importFrom(boot,boot)
-importFrom(boot,boot.ci)
+importFrom(MASS,
+  cov.trob,
+  psi.bisquare
+)
+importFrom(boot,
+  boot,
+  boot.ci
+)
 importFrom(broom,glance)
-importFrom(car,Anova)
-importFrom(car,dataEllipse)
-importFrom(car,linearHypothesis)
-importFrom(car,showLabels)
-importFrom(car,wcrossprod)
-importFrom(grDevices,col2rgb)
-importFrom(grDevices,gray)
-importFrom(grDevices,palette)
-importFrom(grDevices,rgb)
-importFrom(grDevices,xy.coords)
-importFrom(graphics,abline)
-importFrom(graphics,arrows)
-importFrom(graphics,axis)
-importFrom(graphics,box)
-importFrom(graphics,dotchart)
-importFrom(graphics,lines)
-importFrom(graphics,par)
-importFrom(graphics,points)
-importFrom(graphics,polygon)
-importFrom(graphics,rect)
-importFrom(graphics,strheight)
-importFrom(graphics,strwidth)
-importFrom(graphics,text)
+importFrom(car,
+  Anova,
+  dataEllipse,
+  linearHypothesis,
+  showLabels,
+  wcrossprod
+)
+importFrom(grDevices,
+  col2rgb,
+  gray,
+  palette,
+  rgb,
+  xy.coords
+)
+importFrom(graphics,
+  abline,
+  arrows,
+  axis,
+  box,
+  dotchart,
+  lines,
+  par,
+  points,
+  polygon,
+  rect,
+  strheight,
+  strwidth,
+  text
+)
 importFrom(magrittr,extract)
-importFrom(purrr,map)
-importFrom(purrr,map_dfr)
+importFrom(purrr,
+  map,
+  map_dfr
+)
 importFrom(rgl,asEuclidean)
-importFrom(stats,.getXlevels)
-importFrom(stats,IQR)
-importFrom(stats,SSD)
-importFrom(stats,aggregate)
-importFrom(stats,alias)
-importFrom(stats,coefficients)
-importFrom(stats,complete.cases)
-importFrom(stats,cor)
-importFrom(stats,cov)
-importFrom(stats,df.residual)
-importFrom(stats,estVar)
-importFrom(stats,formula)
-importFrom(stats,getCall)
-importFrom(stats,lm)
-importFrom(stats,lm.wfit)
-importFrom(stats,lsfit)
-importFrom(stats,mahalanobis)
-importFrom(stats,median)
-importFrom(stats,model.frame)
-importFrom(stats,model.matrix)
-importFrom(stats,model.response)
-importFrom(stats,model.weights)
-importFrom(stats,na.omit)
-importFrom(stats,offset)
-importFrom(stats,pchisq)
-importFrom(stats,pf)
-importFrom(stats,pnorm)
-importFrom(stats,ppoints)
-importFrom(stats,qchisq)
-importFrom(stats,qf)
-importFrom(stats,qnorm)
-importFrom(stats,residuals)
-importFrom(stats,runif)
-importFrom(stats,sd)
-importFrom(stats,terms)
-importFrom(stats,update)
-importFrom(stats,var)
-importFrom(stats,vcov)
+importFrom(stats,
+  .getXlevels,
+  IQR,
+  SSD,
+  aggregate,
+  alias,
+  coefficients,
+  complete.cases,
+  cor,
+  cov,
+  df.residual,
+  estVar,
+  formula,
+  getCall,
+  lm,
+  lm.wfit,
+  lsfit,
+  mahalanobis,
+  median,
+  model.frame,
+  model.matrix,
+  model.response,
+  model.weights,
+  na.omit,
+  offset,
+  pchisq,
+  pf,
+  pnorm,
+  ppoints,
+  qchisq,
+  qf,
+  qnorm,
+  residuals,
+  runif,
+  sd,
+  terms,
+  update,
+  var,
+  vcov
+)
 importFrom(tibble,as_tibble)
 importFrom(utils,head)

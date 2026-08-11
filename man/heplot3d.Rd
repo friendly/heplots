@@ -278,16 +278,16 @@ for \code{mlm} objects
 
 \code{\link[candisc]{heplot3d.candisc}} for 3D HE plots in canonical space.
 
-Other HE plot functions: 
-\code{\link{heplot}()},
-\code{\link{heplot1d}()},
-\code{\link{pairs.mlm}()}
+Other HE plot functions:
+\code{\link[=heplot]{heplot()}},
+\code{\link[=heplot1d]{heplot1d()}},
+\code{\link[=pairs.mlm]{pairs.mlm()}}
 
-Other 3D plotting: 
-\code{\link{arrow3d}()},
-\code{\link{bbox3d}()},
-\code{\link{cross3d}()},
-\code{\link{ellipse3d.axes}()}
+Other 3D plotting:
+\code{\link[=arrow3d]{arrow3d()}},
+\code{\link[=bbox3d]{bbox3d()}},
+\code{\link[=cross3d]{cross3d()}},
+\code{\link[=ellipse3d.axes]{ellipse3d.axes()}}
 }
 \concept{3D plotting}
 \concept{HE plot functions}

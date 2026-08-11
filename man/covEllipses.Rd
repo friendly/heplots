@@ -237,10 +237,10 @@ covEllipses(iris[,1:4], iris$Species,
 
 \code{\link[MASS]{cov.rob}}
 
-Other covariance ellipses: 
-\code{\link{ellipse.axes}()},
-\code{\link{ellipse.box}()},
-\code{\link{ellipse3d.axes}()}
+Other covariance ellipses:
+\code{\link[=ellipse.axes]{ellipse.axes()}},
+\code{\link[=ellipse.box]{ellipse.box()}},
+\code{\link[=ellipse3d.axes]{ellipse3d.axes()}}
 }
 \author{
 Michael Friendly
