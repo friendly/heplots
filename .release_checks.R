@@ -255,7 +255,23 @@ release_revdep <- function(num_workers = 4) {
 #'
 #' Run release_check() and release_revdep() first; this just assembles
 #' their output; it doesn't re-run either.
-release_cran_comments <- function() {
+#'
+#' @param known_issues Optional character vector of standing explanations
+#'        to append as a "## Known issues" section -- for things a remote
+#'        check (win-builder, R-hub) flags but a local devtools::check()
+#'        never sees, so they wouldn't otherwise show up here. Defaults to
+#'        heplots' one standing issue: URLs embedded in the static
+#'        repeated-JSS.pdf vignette (see below). Pass NULL to omit.
+release_cran_comments <- function(known_issues = paste(
+  "win-builder's CRAN-incoming-feasibility check flags several http://",
+  "URLs (CRAN.R-project.org, www.R-project.org, jstatsoft.org, amstat.org)",
+  "as non-canonical/moved. These are embedded in vignettes/repeated-JSS.pdf,",
+  "a static reproduction of the actual published Journal of Statistical",
+  "Software article (Friendly, 2010) included as a pre-built PDF vignette --",
+  "not generated from any .Rmd/.Rd source we control, and its LaTeX/bib",
+  "source is incomplete in this repo. Left as originally published rather",
+  "than alter a reproduction of a citable, already-published document."
+)) {
   info <- release_preflight()
 
   check_section <- if (file.exists(".release_check_result.rds")) {
@@ -287,6 +303,18 @@ release_cran_comments <- function() {
   end <- if (length(cran_row)) cran_row[1] - 1 else length(news)
   comments_section <- paste(trimws(news[seq_len(end)]), collapse = "\n")
 
+  known_issues_section <- if (!is.null(known_issues)) {
+    # glue::glue() always strips exactly one trailing newline from its
+    # result regardless of `trim` -- the extra \n here compensates so the
+    # blank line separating this from the next section survives
+    glue::glue(
+      "## Known issues\n\n{paste(known_issues, collapse = '\n\n')}\n\n\n",
+      trim = FALSE
+    )
+  } else {
+    ""
+  }
+
   content <- glue::glue(
     "## Test environments\n",
     "* local {Sys.info()[['sysname']]} {Sys.info()[['release']]} install, {R.version.string}\n",
@@ -295,6 +323,7 @@ release_cran_comments <- function() {
     "## R CMD check results\n",
     "{check_section}\n",
     "\n",
+    "{known_issues_section}",
     "## Reverse dependencies checks\n",
     "\n",
     "{revdep_section}\n",

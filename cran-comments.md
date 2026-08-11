@@ -1,11 +1,15 @@
 ## Test environments
-* local Windows 10 x64 install, R Under development (unstable) (2026-08-10 r90389 ucrt)
+* local Windows 10 x64 install, R version 4.6.1 (2026-06-24 ucrt)
 * win-builder (R-devel)
 
 ## R CMD check results
 0 error(s) | 0 warning(s) | 0 note(s)
 
 
+
+## Known issues
+
+win-builder's CRAN-incoming-feasibility check flags several http:// URLs (CRAN.R-project.org, www.R-project.org, jstatsoft.org, amstat.org) as non-canonical/moved. These are embedded in vignettes/repeated-JSS.pdf, a static reproduction of the actual published Journal of Statistical Software article (Friendly, 2010) included as a pre-built PDF vignette -- not generated from any .Rmd/.Rd source we control, and its LaTeX/bib source is incomplete in this repo. Left as originally published rather than alter a reproduction of a citable, already-published document.
 
 ## Reverse dependencies checks
 
