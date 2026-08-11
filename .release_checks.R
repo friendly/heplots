@@ -129,11 +129,33 @@ release_site <- function() {
 
 # ---- 4. Build & local check -------------------------------------------------
 
+#' Note: devtools::build_vignettes() *moves* (rather than copies) any
+#' vignettes/*.pdf.asis-referenced PDF into doc/, deleting it from
+#' vignettes/ -- the actual source location for that vignette. We restore
+#' those from doc/ afterward so vignettes/ never ends up missing a file.
 release_build <- function() {
   devtools::build()
+
+  asis_pdfs <- sub("\\.asis$", "", list.files("vignettes", pattern = "\\.pdf\\.asis$"))
+
   # to test vignettes, this builds them into doc/ -- remove that directory
   # afterwards if you don't want it left around
   devtools::build_vignettes()
+
+  missing_pdfs <- asis_pdfs[!file.exists(file.path("vignettes", asis_pdfs))]
+  for (pdf in missing_pdfs) {
+    src <- file.path("doc", pdf)
+    if (file.exists(src)) {
+      file.copy(src, file.path("vignettes", pdf))
+      cat(glue::glue("Restored vignettes/{pdf} (moved to doc/ by build_vignettes())\n"))
+    } else {
+      warning(glue::glue(
+        "vignettes/{pdf} went missing after build_vignettes() and isn't in ",
+        "doc/ either -- restore it manually, e.g. `git checkout -- vignettes/{pdf}`"
+      ))
+    }
+  }
+
   devtools::build_manual()
 }
 
