@@ -24,8 +24,17 @@ useful to see heplots status at a glance across packages.
   the robust-MLM vignette already, otherwise finish or drop.
   File: `dev/Robust-flowchart.Rmd`
 
-- [ ] `pvPlot()` -- general partial variable plots akin to `car::avPlot()`. This is currently in the
-  Vis-MLM-book project. Notes for moving this here are contained in C:\R\Projects\friendly.github.io\blog\drafts\Ideas-Notes\partial-var-plots.md
+- [ ] `pvPlot()` -- general partial variable plots akin to `car::avPlot()`. Copied here from the
+  Vis-MLM-book project: `dev/pvPlot.R`, `dev/pvPlot-test.R`, `dev/Ellipse.R` (2026-08-10).
+  NOT blocked on upstream car after all: `pvPlot.R` now calls `car::dataEllipse()` directly
+  (verified 2026-08-10 -- the `label.ellipse()` `cex` bug, filed at
+  https://github.com/bprice2652/car_repo/issues/1 and still unresolved, only triggers via
+  dataEllipse's `ellipse.label` arg, which pvPlot() never passes; full cex-varying test suite
+  passes against plain installed car 3.1.5). `dev/Ellipse.R` kept around for if/when a future
+  feature (e.g. group ellipse labeling) needs it. Not yet roxygenized into `R/` or added to
+  `NAMESPACE`. Background/design notes (examples, TODOs like a `pvPlots()` all-pairs wrapper
+  and a formula interface, factor-support caveats) remain in
+  C:\R\Projects\friendly.github.io\blog\drafts\Ideas-Notes\partial-var-plots.md
 
 ## Clean-up candidates
 
