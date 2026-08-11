@@ -50,6 +50,7 @@ reference:
     - covEllipses
     - distancePlot
     - glance.mlm
+    - pvPlot
     - uniStats
 
   - title: Utility

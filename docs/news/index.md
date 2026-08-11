@@ -1,5 +1,18 @@
 # Changelog
 
+## Version 1.8.3
+
+- Added a link to the NLSY97 Cohort Index in `NLSY`’s documentation.
+- Added
+  [`pvPlot()`](https://friendly.github.io/heplots/reference/pvPlot.md)
+  for partial variable plots: visualizes the partial correlation between
+  two variables after controlling for all others, as a scatterplot of
+  the residuals from regressing each on the rest, enhanced with a data
+  ellipse, regression line, and point labels for unusual cases. Similar
+  in spirit to
+  [`car::avPlots()`](https://rdrr.io/pkg/car/man/avPlots.html), but
+  works directly on a data frame rather than a fitted model.
+
 ## Version 1.8.2
 
 - add `eigstatsCI()` to calculate bootstrapped confidence intervals for

@@ -97,6 +97,7 @@ newer version with more variables.
 ## Examples
 
 ``` r
+
 library(car)
 data(Pottery2)
 # contrasts for Kiln correspond to between Region [,1:2] and within Region [,3:4]

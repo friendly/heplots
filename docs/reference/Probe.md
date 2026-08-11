@@ -71,6 +71,7 @@ response speed = k(1/reaction time).
 
 Sample sentence:
 
+
     *       The tall man met the young girl who got the new hat.
     Pos'ns:      1    2            3    4    5
     Function:   ADJ1 SUBJ        ADJ2  OBJ  REL.PN
@@ -85,6 +86,7 @@ structured contrasts.
 ## Examples
 
 ``` r
+
 data(Probe1)
 boxplot(Probe1)
 

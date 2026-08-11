@@ -467,6 +467,7 @@ Other HE plot functions:
 ## Examples
 
 ``` r
+
 ## iris data
 contrasts(iris$Species) <- matrix(c(0,-1,1, 2, -1, -1), 3,2)
 contrasts(iris$Species)

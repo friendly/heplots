@@ -70,6 +70,8 @@ Other plots and methods for multivariate linear models
   : Distance Plot for Multivariate Model Diagnosis
 - [`glance(`*`<mlm>`*`)`](https://friendly.github.io/heplots/reference/glance.mlm.md)
   : Glance at an mlm object
+- [`pvPlot()`](https://friendly.github.io/heplots/reference/pvPlot.md) :
+  Partial Variables Plot
 - [`uniStats()`](https://friendly.github.io/heplots/reference/uniStats.md)
   : Univariate Test Statistics for a Multivariate Linear Model
 

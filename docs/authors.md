@@ -19,15 +19,15 @@
 Source:
 [`inst/CITATION`](https://github.com/friendly/heplots/blob/HEAD/inst/CITATION)
 
-Michael Friendly and John Fox and Georges Monette (2025). heplots:
+Michael Friendly and John Fox and Georges Monette (2026). heplots:
 Visualizing Tests in Multivariate Linear Models. R package version
-1.8.2. URL https://CRAN.R-project.org/package=heplots
+1.8.3. URL https://CRAN.R-project.org/package=heplots
 
     @Manual{,
       title = {heplots: Visualizing Tests in Multivariate Linear Models},
       author = {Michael Friendly and John Fox and Georges Monette},
-      year = {2025},
-      note = {R package version 1.8.2},
+      year = {2026},
+      note = {R package version 1.8.3},
       url = {https://CRAN.R-project.org/package=heplots},
     }
 

@@ -2,7 +2,7 @@
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.8.0; documentation built for `pkgdown` 2025-12-05
+Version 1.8.3; documentation built for `pkgdown` 2026-08-10
 
 ## Description
 
@@ -218,6 +218,7 @@ orientation of the **H** ellipse: it is long in the directions of
 differences among the means.
 
 ``` r
+
 iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ 
                  Species, data=iris)
 heplot(iris.mod)
@@ -242,6 +243,7 @@ distinguishes the means of *versicolor* from *virginica*; the second
 contrast, `S:VV` distinguishes `setosa` from the other two.
 
 ``` r
+
 par(mar=c(4,4,1,1)+.1)
 contrasts(iris$Species)<-matrix(c(0, -1, 1, 
                                   2, -1, -1), nrow=3, ncol=2)
@@ -274,6 +276,7 @@ very highly correlated, in the order Setosa \< Versicolor \< Virginica,
 but this pattern doesn’t hold for relations with `Sepal.Width`.
 
 ``` r
+
 pairs(iris.mod, hypotheses=hyp, hyp.labels=FALSE,
       fill=TRUE, fill.alpha=0.1)
 ```
@@ -293,6 +296,7 @@ are performed with the [`candisc`](https://github.com/friendly/candisc/)
 package, which has an `heplot.candisc()` method.
 
 ``` r
+
 library(candisc)
 iris.can <- candisc(iris.mod) |> print()
 #> 
@@ -318,6 +322,7 @@ the first dimension show how `Sepal.Width` differs from the other size
 variables.
 
 ``` r
+
 # HE plot in canonical space
 heplot(iris.can, var.pos = 1, scale = 40)
 ```
@@ -339,6 +344,7 @@ covariance matrix, which is the same as the **E** matrix used in MANOVA
 tests.
 
 ``` r
+
 covEllipses(iris[,1:4], iris$Species)
 covEllipses(iris[,1:4], iris$Species, 
             fill=TRUE, method="mve", add=TRUE, labels="")
@@ -465,6 +471,8 @@ Other plots and methods for multivariate linear models
   : Distance Plot for Multivariate Model Diagnosis
 - [`glance(`*`<mlm>`*`)`](https://friendly.github.io/heplots/reference/glance.mlm.md)
   : Glance at an mlm object
+- [`pvPlot()`](https://friendly.github.io/heplots/reference/pvPlot.md) :
+  Partial Variables Plot
 - [`uniStats()`](https://friendly.github.io/heplots/reference/uniStats.md)
   : Univariate Test Statistics for a Multivariate Linear Model
 

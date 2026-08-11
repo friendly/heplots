@@ -112,6 +112,7 @@ Personality*, **37**, 504?528.
 ## Examples
 
 ``` r
+
 data(TIPI)
 # fit an mlm
 tipi.mlm <- lm(cbind(Extraversion, Neuroticism, Conscientiousness, Agreeableness, Openness) 

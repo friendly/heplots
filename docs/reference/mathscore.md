@@ -27,6 +27,7 @@ Fictitious data
 ## Examples
 
 ``` r
+
 data(mathscore)
 str(mathscore)
 #> 'data.frame':    12 obs. of  3 variables:

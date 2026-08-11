@@ -17,6 +17,7 @@ understand how robust models can contribute to data analysis.
 I use the following packages here:
 
 ``` r
+
 library(heplots)
 library(candisc)
 library(ggplot2)
@@ -86,7 +87,6 @@ outliers. In these terms,
   thereafter,
 
 ``` math
-
 \rho(e_i) =
 \begin{cases} 
 \left[ 1 - \left( \frac{e_i}{c} \right)^2 \right]^2 & |e_i| \leq c, \\
@@ -234,6 +234,7 @@ as a problem in discriminant analysis, asking whether these chemical
 elements can be used to distinguish among the sites.
 
 ``` r
+
 library(heplots)
 library(carData)
 library(car)
@@ -255,6 +256,7 @@ response variables representing chemical concentrations. Let’s examine
 the basic structure:
 
 ``` r
+
 str(Pottery)
 #> 'data.frame':    26 obs. of  6 variables:
 #>  $ Site: Factor w/ 4 levels "AshleyRails",..: 4 4 4 4 4 4 4 4 4 4 ...
@@ -269,6 +271,7 @@ The pottery samples are not evenly distributed across the sites. The
 most come from Llanedyrn; there are only two from Caldicot.
 
 ``` r
+
 table(Pottery$Site)
 #> 
 #> AshleyRails    Caldicot  IsleThorns   Llanedyrn 
@@ -281,6 +284,7 @@ We begin with the standard MANOVA model, and then examine some
 diagnostic plots.
 
 ``` r
+
 # Classical MANOVA model
 pottery.mlm <- lm(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = Pottery)
 Anova(pottery.mlm)
@@ -299,6 +303,7 @@ which would identify badly fit observations. None seem particularly
 large here.
 
 ``` r
+
 cqplot(pottery.mlm, id.n = 5)
 ```
 
@@ -314,6 +319,7 @@ studentized residuals, using the size of the point symbol proportional
 to a multivariate generalization of Cook’s D statistic.
 
 ``` r
+
 res <- influencePlot(pottery.mlm, id.n = 2)
 ```
 
@@ -323,6 +329,7 @@ model.](fig/robust-pottery-inflplot-1.png)
 Figure 4: Influence plot for the Pottery model.
 
 ``` r
+
 res |>
   arrange(desc(CookD))
 #>          H        Q   CookD       L       R
@@ -350,6 +357,7 @@ unusual in the initial model can become more noteworthy when the extreme
 observations are down-weighted in a subsequent iteration.
 
 ``` r
+
 # Robust MANOVA model
 pottery.rlm <- robmlm(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = Pottery)
 Anova(pottery.rlm)
@@ -373,6 +381,7 @@ this, their relative difference is a useful metric. The simple function
 the classical and robust estimatges
 
 ``` r
+
 b.mlm <- coef(pottery.mlm)
 b.rlm <- coef(pottery.rlm)
 
@@ -402,6 +411,7 @@ outliers receive lower weights. The
 `"roblm"` object gives an index plot of the weight values.
 
 ``` r
+
 # Plot the weights from robust fitting
 plot(pottery.rlm, col=Pottery$Site, segments=TRUE)
 xloc <- c(7.5, 15.5, 19.5, 24)
@@ -428,6 +438,7 @@ in a reduced dimensional space. We’ll create HE plots for the first two
 variables (Al and Fe) and compare the classical and robust fits.
 
 ``` r
+
 # Classical HE plot for Al and Fe
 heplot(pottery.mlm, variables = c("Al", "Fe"), 
        main = "Classical vs Robust MANOVA: Al vs Fe",
@@ -466,6 +477,7 @@ of HE plots is shown below, using the
 [`pairs()`](https://rdrr.io/r/graphics/pairs.html) method for a MLM.
 
 ``` r
+
 pairs(pottery.rlm, 
       fill=TRUE, fill.alpha = 0.1)
 ```

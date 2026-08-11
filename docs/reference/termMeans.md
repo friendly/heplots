@@ -56,6 +56,7 @@ Michael Friendly
 ## Examples
 
 ``` r
+
 factors <- expand.grid(A=factor(1:3),B=factor(1:2),C=factor(1:2))
 n <- nrow(factors)
 responses <-data.frame(Y1=10+round(10*rnorm(n)),Y2=10+round(10*rnorm(n)))
@@ -63,26 +64,26 @@ test <- data.frame(factors, responses)
 mod <- lm(cbind(Y1,Y2) ~ A*B, data=test)
 
 termMeans(mod, "A")
-#>     Y1    Y2
-#> 1 18.5  5.75
-#> 2 15.5 12.75
-#> 3 10.0  4.00
+#>      Y1    Y2
+#> 1  6.25  8.75
+#> 2  8.75 14.25
+#> 3 15.00 13.00
 termMeans(mod, "A:B")
 #>       Y1   Y2
-#> 1:1 17.5 11.5
-#> 2:1 14.5 10.5
-#> 3:1 15.5 -3.5
-#> 1:2 19.5  0.0
-#> 2:2 16.5 15.0
-#> 3:2  4.5 11.5
+#> 1:1 -0.5 13.0
+#> 2:1  8.5 25.5
+#> 3:1 12.0 11.5
+#> 1:2 13.0  4.5
+#> 2:2  9.0  3.0
+#> 3:2 18.0 14.5
 termMeans(mod, "A:B", label.factors=TRUE)
 #>         Y1   Y2
-#> A1:B1 17.5 11.5
-#> A2:B1 14.5 10.5
-#> A3:B1 15.5 -3.5
-#> A1:B2 19.5  0.0
-#> A2:B2 16.5 15.0
-#> A3:B2  4.5 11.5
+#> A1:B1 -0.5 13.0
+#> A2:B1  8.5 25.5
+#> A3:B1 12.0 11.5
+#> A1:B2 13.0  4.5
+#> A2:B2  9.0  3.0
+#> A3:B2 18.0 14.5
 if (FALSE) { # \dontrun{
 termMeans(mod, "A:B:C")    # generates an error
 } # }

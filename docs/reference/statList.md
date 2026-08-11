@@ -62,6 +62,7 @@ Michael Friendly
 ## Examples
 
 ``` r
+
 # grand means
 statList(iris[,1:4], FUN=colMeans)
 #> [[1]]
@@ -126,27 +127,27 @@ iris$Dummy <- sample(c("Hi","Lo"),150, replace=TRUE)
 colMeansList(iris[,1:4], iris[,5:6])
 #> $setosa.Hi
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>    5.0652174    3.5000000    1.4695652    0.2304348 
+#>    4.9882353    3.3470588    1.4647059    0.2294118 
 #> 
 #> $versicolor.Hi
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>     5.889286     2.796429     4.257143     1.346429 
+#>     6.000000     2.747826     4.226087     1.334783 
 #> 
 #> $virginica.Hi
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>     6.530435     2.956522     5.530435     2.056522 
+#>     6.657143     3.017857     5.560714     2.028571 
 #> 
 #> $setosa.Lo
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>    4.9555556    3.3666667    1.4555556    0.2592593 
+#>    5.0151515    3.4696970    1.4606061    0.2545455 
 #> 
 #> $versicolor.Lo
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>     5.995455     2.736364     4.263636     1.300000 
+#>     5.881481     2.788889     4.288889     1.318519 
 #> 
 #> $virginica.Lo
 #> Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-#>     6.637037     2.988889     5.570370     2.000000 
+#>     6.500000     2.918182     5.540909     2.022727 
 #> 
 
 
