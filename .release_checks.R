@@ -74,7 +74,8 @@ Sys.setenv(RGL_USE_NULL = TRUE)
 
 #' Cross-check DESCRIPTION's Version/Date against NEWS.md and CRAN
 release_preflight <- function() {
-  desc <- read.dcf("DESCRIPTION", fields = c("Version", "Date"))
+  desc <- read.dcf("DESCRIPTION", fields = c("Package", "Version", "Date"))
+  package <- desc[1, "Package"]
   version <- desc[1, "Version"]
   date <- desc[1, "Date"]
   news_top <- readLines("NEWS.md", n = 1)
@@ -101,11 +102,11 @@ release_preflight <- function() {
 
   cran_version <- tryCatch({
     avail <- utils::available.packages(repos = "https://cran.r-project.org/")
-    unname(avail["heplots", "Version"])
+    unname(avail[package, "Version"])
   }, error = function(e) NA)
   cat(glue::glue("Version currently on CRAN: {cran_version}\n"))
 
-  invisible(list(version = version, date = date, cran_version = cran_version))
+  invisible(list(package = package, version = version, date = date, cran_version = cran_version))
 }
 
 # ---- 2. Documentation & spelling -------------------------------------------
