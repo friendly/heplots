@@ -84,11 +84,11 @@
 #'              (the default), all variables in \code{X} other than \code{vars} are used.
 #' @param labels id labels for the points. If not supplied, rownames of the dataset are used.
 #' @param id    controls point identification; if \code{FALSE} (the default), no points are identified; 
-#'              can be a list of named arguments to the \code{\link[car]{showLabels} function
+#'              can be a list of named arguments to the \code{\link[car]{showLabels}} function
 #' @param ellipse    logical; whether to draw the data ellipse
 #' @param ellipse.args  a list of arguments controlling the ellipse: `levels`, `fill`,
 #'              `fill.alpha`, `robust`, and `col` (ellipse outline/fill color, independent
-#'              of the point `col`). See \code{\link[car]{dataEllipse} for what these mean.
+#'              of the point `col`). See \code{\link[car]{dataEllipse}} for what these mean.
 #' @param draw     logical; if \code{TRUE} produce graphical output; if \code{FALSE}, only invisibly return 
 #'              coordinates of ellipse(s).
 #' @param col   color used for points
@@ -190,10 +190,19 @@ pvPlot <- function(
   labels <- if (missing(labels)) rownames(X) else labels
   
   id <- car:::applyDefaults(id,
-                      defaults=list(method="mahal", 
-                                    n=5, cex=1, 
-                                    col="black", 
+                      defaults=list(method="mahal",
+                                    n=5, cex=1,
+                                    col="black",
                                     location="lr"), type="id")
+  # Wire the `labels` argument through: without this, it was computed above and
+  # never used -- dataEllipse()'s formula method auto-fills id$labels from
+  # row.names(res) when it's NULL, which happened to match the default (rownames
+  # of X), masking the fact that a user-supplied `labels` vector was silently
+  # ignored. Only set if not already supplied via id = list(labels = ...) directly.
+  # Guard on is.list(id): applyDefaults(FALSE, ...) returns plain FALSE (the
+  # default, unidentified-points case), and FALSE$labels errors ("$ operator is
+  # invalid for atomic vectors").
+  if (is.list(id) && is.null(id$labels)) id$labels <- labels
 
   if (draw) {
 
