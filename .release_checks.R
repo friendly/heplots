@@ -17,6 +17,54 @@
 #       -- it's interactive (a series of y/n prompts) and is the actual
 #       point of submission to CRAN
 
+# ---- Related tools / prior art (researched 2026-08-11) --------------------
+#
+# devtools::release() is itself DEPRECATED upstream (r-pkgs.org/release.html)
+# in favor of usethis::use_release_issue() + devtools::submit_cran() for the
+# actual non-interactive upload. TODO: 🚩 swap our final manual step over.
+#
+# usethis::use_release_issue() opens a GitHub issue with a release checklist
+# (via internal release_checklist(), customizable per-project via a
+# release_bullets() function). Its automatable checks are ~1:1 with what's
+# in this file (url_check, build_readme, check, check_win_devel, revdep) --
+# but it's a checklist/tracker, not an executor, it doesn't run anything.
+# What it has that we don't:
+#   - usethis::use_version() -- actually does the Version bump (still no
+#     NEWS content generation though)
+#   - usethis::use_github_release(), use_dev_version() -- post-acceptance
+#     housekeeping once CRAN accepts the release
+#
+# rhub v2 (rhub::rhub_setup() + rhub::rhub_check(), via GitHub Actions) --
+# real gap: release_check_win() only covers Windows (win-builder). rhub
+# covers Linux/macOS/more compiler flavors CRAN itself checks against.
+# TODO: 🚩 consider adding a release_check_rhub() step.
+#
+# fledge package -- auto-writes NEWS.md from git commit/merge messages and
+# bumps DESCRIPTION Version (no Date) on bump_version(). Could address the
+# still-manual "bump Version/Date, write NEWS" step, but needs disciplined
+# bullet-style commit messages throughout development to work well --
+# a workflow change, not a drop-in. Skipping for now.
+#
+# goodpractice package -- genuinely missing capability: bundles rcmdcheck +
+# covr (coverage) + lintr (style) + cyclocomp (complexity). None of our
+# release_*() steps touch coverage/style/complexity. Worth a look.
+#
+# INBO checklist / rOpenSci pkgcheck+pkgstats -- opinionated all-in-one
+# linting+check(+scaffolding) tools. More prescriptive (checklist) or aimed
+# at a different review pipeline (pkgcheck, for rOpenSci peer review) than
+# useful here; more relevant as reference for a brand-new package.
+#
+# r-lib/actions "check-standard" GitHub Actions workflow -- runs R CMD
+# check continuously on Ubuntu/Windows/macOS x release/devel/oldrel on every
+# push, vs. this script's local pre-submission gate. Complements rather than
+# replaces: CI catches platform breakage early and continuously; CRAN still
+# wants actual --as-cran + win-builder/rhub output and a cran-comments.md
+# at submission time, which CI alone doesn't produce. Best practice is both.
+#
+# foghorn package -- post-submission CRAN check-results monitor (terminal/
+# .Rprofile summary of your packages' live CRAN status). Not a pre-release
+# tool, but useful to know about for after this ships.
+
 library(devtools)
 
 # keep rgl from popping up windows during examples/vignettes
@@ -33,6 +81,16 @@ release_preflight <- function() {
 
   cat(glue::glue("DESCRIPTION: Version {version}, Date {date}\n"))
   cat(glue::glue("NEWS.md top line: {news_top}\n"))
+
+  # CRAN's incoming-feasibility check flags this at ~1 month old
+  date_age <- as.numeric(Sys.Date() - as.Date(date))
+  if (is.na(date_age) || date_age > 30) {
+    warning(glue::glue(
+      "DESCRIPTION's Date field ({date}) is {date_age} days old -- CRAN ",
+      "flags this once it's over a month old. Bump it right before actual ",
+      "submission (not earlier, or it'll just go stale again)."
+    ))
+  }
 
   if (!grepl(version, news_top, fixed = TRUE)) {
     warning(glue::glue(

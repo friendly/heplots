@@ -1,13 +1,11 @@
 ## Test environments
-* local Windows 10 x64 install, R version 4.6.1 (2026-06-24 ucrt)
+* local Windows 10 x64 install, R Under development (unstable) (2026-08-10 r90389 ucrt)
 * win-builder (R-devel)
 
 ## R CMD check results
-0 error(s) | 0 warning(s) | 1 note(s)
+0 error(s) | 0 warning(s) | 0 note(s)
 
-checking dependencies in R code ... NOTE
-Unexported object imported by a ':::' call: 'car:::applyDefaults'
-  See the note in ?`:::` about the use of this operator.
+
 
 ## Reverse dependencies checks
 

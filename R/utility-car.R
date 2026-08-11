@@ -35,3 +35,22 @@ df.terms.default <- function(model, term, ...){
 is.aliased <- function(model){
 	!is.null(alias(model)$Complete)
 }
+
+# taken from car:::applyDefaults -- avoids a `car:::` call (R CMD check
+# NOTE) for this one small, self-contained helper used by pvPlot() to
+# merge its `id` argument with defaults, the same way car's own
+# id-argument functions (e.g. dataEllipse()) do internally.
+applyDefaults <- function(args, defaults, type = "") {
+  if (isFALSE(args)) return(FALSE)
+  names <- names(args)
+  names <- names[names != ""]
+  if (!isTRUE(args) && !is.null(args) && length(names) != length(args)) {
+    warning("unnamed ", type, " arguments, will be ignored")
+  }
+  if (isTRUE(args) || is.null(names)) {
+    defaults
+  } else {
+    defaults[names] <- args[names]
+  }
+  as.list(defaults)
+}

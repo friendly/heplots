@@ -1384,7 +1384,6 @@ NULL
 #' 
 #' @source Originally slightly modified from files by David Carlson, now at
 #' \code{\link[archdata]{RBPottery}}. %
-#' % <http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html>
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept candisc

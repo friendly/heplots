@@ -185,7 +185,7 @@ pvPlot <- function(
   ylab <- paste(vars[2], "| others")
   labels <- if (missing(labels)) rownames(X) else labels
   
-  id <- car:::applyDefaults(id,
+  id <- applyDefaults(id,
                       defaults=list(method="mahal",
                                     n=5, cex=1,
                                     col="black",
