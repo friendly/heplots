@@ -249,68 +249,68 @@ plot_boxM_boot <- function(x,
 # Example usage and comparison
 # ============================================================================
 
-if (FALSE) {  # Set to TRUE to run examples
-
-  library(heplots)
-  library(boot)
-  source("dev/eigstatCI.R")
-
-  # Iris data
-  iris.boxm <- boxM(iris[, 1:4], iris[, "Species"])
-
-  # Original plot.boxM (analytic CI for logDet)
-  par(mfrow = c(1, 2))
-  plot(iris.boxm, gplabel = "Species", main = "Original plot.boxM")
-
-  # New version (same result for logDet)
-  plot_boxM_boot(iris.boxm, gplabel = "Species", main = "plot_boxM_boot")
-
-  # Compare eigenvalue statistics: old (no CI) vs new (bootstrap CI)
-  par(mfrow = c(2, 2), mar = c(5, 4, 3, 1))
-
-  # Product
-  plot(iris.boxm, which = "product", gplabel = "Species",
-       main = "Product (no CI)")
-
-  plot_boxM_boot(iris.boxm, Y = iris[, 1:4], group = iris$Species,
-                 which = "product", gplabel = "Species",
-                 main = "Product (bootstrap CI)", boot.R = 500)
-
-  # Sum
-  plot(iris.boxm, which = "sum", gplabel = "Species",
-       main = "Sum (no CI)")
-
-  plot_boxM_boot(iris.boxm, Y = iris[, 1:4], group = iris$Species,
-                 which = "sum", gplabel = "Species",
-                 main = "Sum (bootstrap CI)", boot.R = 500)
-  
-  
-  
-  # Skulls data
-  data(Skulls)
-  skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data = Skulls)
-  skulls.boxm <- boxM(skulls.mod)
-
-  par(mfrow = c(2, 2), mar = c(5, 4, 3, 1))
-
-  plot_boxM_boot(skulls.boxm, gplabel = "Epoch",
-                 main = "logDet (analytic CI)")
-
-  plot_boxM_boot(skulls.boxm,
-                 Y = as.matrix(Skulls[, c("mb", "bh", "bl", "nh")]),
-                 group = Skulls$epoch,
-                 which = "sum", gplabel = "Epoch",
-                 main = "Sum (bootstrap CI)", boot.R = 500)
-
-  plot_boxM_boot(skulls.boxm,
-                 Y = as.matrix(Skulls[, c("mb", "bh", "bl", "nh")]),
-                 group = Skulls$epoch,
-                 which = "precision", gplabel = "Epoch",
-                 main = "Precision (bootstrap CI)", boot.R = 500)
-
-  plot_boxM_boot(skulls.boxm,
-                 Y = as.matrix(Skulls[, c("mb", "bh", "bl", "nh")]),
-                 group = Skulls$epoch,
-                 which = "max", gplabel = "Epoch",
-                 main = "Max (bootstrap CI)", boot.R = 500)
-}
+# if (FALSE) {  # Set to TRUE to run examples
+#
+#   library(heplots)
+#   library(boot)
+#   source("dev/eigstatCI.R")
+#
+#   # Iris data
+#   iris.boxm <- boxM(iris[, 1:4], iris[, "Species"])
+#
+#   # Original plot.boxM (analytic CI for logDet)
+#   par(mfrow = c(1, 2))
+#   plot(iris.boxm, gplabel = "Species", main = "Original plot.boxM")
+#
+#   # New version (same result for logDet)
+#   plot_boxM_boot(iris.boxm, gplabel = "Species", main = "plot_boxM_boot")
+#
+#   # Compare eigenvalue statistics: old (no CI) vs new (bootstrap CI)
+#   par(mfrow = c(2, 2), mar = c(5, 4, 3, 1))
+#
+#   # Product
+#   plot(iris.boxm, which = "product", gplabel = "Species",
+#        main = "Product (no CI)")
+#
+#   plot_boxM_boot(iris.boxm, Y = iris[, 1:4], group = iris$Species,
+#                  which = "product", gplabel = "Species",
+#                  main = "Product (bootstrap CI)", boot.R = 500)
+#
+#   # Sum
+#   plot(iris.boxm, which = "sum", gplabel = "Species",
+#        main = "Sum (no CI)")
+#
+#   plot_boxM_boot(iris.boxm, Y = iris[, 1:4], group = iris$Species,
+#                  which = "sum", gplabel = "Species",
+#                  main = "Sum (bootstrap CI)", boot.R = 500)
+#
+#
+#
+#   # Skulls data
+#   data(Skulls)
+#   skulls.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data = Skulls)
+#   skulls.boxm <- boxM(skulls.mod)
+#
+#   par(mfrow = c(2, 2), mar = c(5, 4, 3, 1))
+#
+#   plot_boxM_boot(skulls.boxm, gplabel = "Epoch",
+#                  main = "logDet (analytic CI)")
+#
+#   plot_boxM_boot(skulls.boxm,
+#                  Y = as.matrix(Skulls[, c("mb", "bh", "bl", "nh")]),
+#                  group = Skulls$epoch,
+#                  which = "sum", gplabel = "Epoch",
+#                  main = "Sum (bootstrap CI)", boot.R = 500)
+#
+#   plot_boxM_boot(skulls.boxm,
+#                  Y = as.matrix(Skulls[, c("mb", "bh", "bl", "nh")]),
+#                  group = Skulls$epoch,
+#                  which = "precision", gplabel = "Epoch",
+#                  main = "Precision (bootstrap CI)", boot.R = 500)
+#
+#   plot_boxM_boot(skulls.boxm,
+#                  Y = as.matrix(Skulls[, c("mb", "bh", "bl", "nh")]),
+#                  group = Skulls$epoch,
+#                  which = "max", gplabel = "Epoch",
+#                  main = "Max (bootstrap CI)", boot.R = 500)
+# }

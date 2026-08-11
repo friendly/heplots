@@ -6,6 +6,8 @@
   each on the rest, enhanced with a data ellipse, regression line, and point labels for unusual
   cases. Similar in spirit to `car::avPlots()`, but works directly on a data frame rather than a
   fitted model.
+* Added cute 404 page for `pkgdown` 
+* Added a general `.release_checks.R` script in the repo (but `.Rbuildignore`d)
 
 ## Version 1.8.2
 

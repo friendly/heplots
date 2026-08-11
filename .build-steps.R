@@ -1,3 +1,5 @@
+library(devtools)
+
 # keep rgl from popping up windows
 Sys.setenv(RGL_USE_NULL = TRUE)
 
@@ -17,8 +19,6 @@ wds <- spelling::spell_check_package() |> print()
 cat(paste(wds[, "word"], collapse = "\n"))
 # to add all words
 spelling::update_wordlist()
-
-library(devtools)
 
 # prepare pkgdown site
 devtools::build_readme()

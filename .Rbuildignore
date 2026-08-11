@@ -5,6 +5,7 @@ README.md
 ^\.Rproj\.user$
 inst/doc/*\.pdf
 .build-steps.R
+.release_checks.R
 ^README\.Rmd$
 ^README-.*\.png$
 ^heplots-logo\.png$
@@ -27,3 +28,4 @@ NAMESPACE-old
 ^.claude$
 ^\.positai$
 ^\.claude$
+^\.github$

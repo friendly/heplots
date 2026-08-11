@@ -30,7 +30,7 @@ library(heplots)
 
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](http://cran.r-project.org/package=heplots)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/heplots)](https://CRAN.R-project.org/package=heplots)
 [![R_Universe](https://friendly.r-universe.dev/badges/heplots)](https://friendly.r-universe.dev)
 [![Last Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://github.com/friendly/heplots/)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
@@ -59,7 +59,7 @@ one dimension. For the theory and applications, see:
 
 -   [Friendly (2007)](http://datavis.ca/papers/jcgs-heplots.pdf) for the basic theory on which this is based.
 -   [Fox, Friendly and Monette (2009)](https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf) for a brief introduction,
--   [Friendly (2010)](http://www.jstatsoft.org/v37/i04/paper) for the application of these ideas to repeated
+-   [Friendly (2010)](https://www.jstatsoft.org/htaccess.php?volume=37&type=i&issue=04&filename=paper) for the application of these ideas to repeated
     measure designs,
 -   [Friendly, Monette and Fox (2013)](http://datavis.ca/papers/ellipses-STS402.pdf) for a general discussion of the role of elliptical geometry in statistical understanding, 
 -   [Friendly & Sigal (2017)](https://doi.org/10.20982/tqmp.13.1.p020) for an applied R tutorial, 
@@ -167,7 +167,7 @@ term in the intra-subject design and produce plots of the **H** and **E**
 matrices in this transformed space. The vignette `"repeated"` describes
 these graphical methods for repeated measures designs. (This
 paper [HE plots for repeated measures
-designs](http://www.jstatsoft.org/v37/i04/paper) is now provided as a PDF vignette.)
+designs](https://www.jstatsoft.org/htaccess.php?volume=37&type=i&issue=04&filename=paper) is now provided as a PDF vignette.)
 
 ## Datasets
 
@@ -175,7 +175,7 @@ The package also provides a large collection of data sets illustrating a
 variety of multivariate linear models of the types listed above,
 together with graphical displays. The table below classifies these with
 method tags. Their names are linked to their documentation with graphical output on the
-`pkgdown` website, [<http://friendly.github.io/heplots>].
+`pkgdown` website, [<https://friendly.github.io/heplots>].
 
 ```{r datasets, echo=FALSE}
 library(here)
@@ -186,7 +186,7 @@ dsets <- read.csv("https://raw.githubusercontent.com/friendly/heplots/master/ext
 dsets <- dsets |> dplyr::select(-X) |> arrange(tolower(dataset))
 
 # link dataset to pkgdown doc
-refurl <- "http://friendly.github.io/heplots/reference/"
+refurl <- "https://friendly.github.io/heplots/reference/"
 
 dsets <- dsets |>
   mutate(dataset = glue::glue("[{dataset}]({refurl}{dataset}.html)")) 
@@ -334,7 +334,7 @@ tests in multivariate linear models: The heplots package for R](https://datavis.
 
 
 Friendly, M. (2010). [HE plots for repeated measures
-designs](http://www.jstatsoft.org/v37/i04/paper). *Journal of
+designs](https://www.jstatsoft.org/htaccess.php?volume=37&type=i&issue=04&filename=paper). *Journal of
 Statistical Software*, **37**, 1--37.
 
 Friendly, M.; Monette, G. & Fox, J. (2013). [Elliptical Insights:

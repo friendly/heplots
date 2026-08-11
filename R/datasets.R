@@ -1688,7 +1688,7 @@ NULL
 #' which differed in the syntactic and semantic relationship between the stimulus and response words in each pair.
 #' 
 #' @details
-#' Timm (1975) does not give a source, but the most relevant studies are Rowher & Ammons (1968) and Rohwer & Levin (1971).
+#' Timm (1975) does not give a source, but the most relevant studies are Rohwer & Levin (1968) and Rohwer & Ammons (1971).
 #' The paired-associate tasks are described as:
 #' \describe{
 #'    \item{`n`}{(named): Simple paired-associate task where participants learn pairs of nouns with no additional context}

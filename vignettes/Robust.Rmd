@@ -204,7 +204,7 @@ The pottery dataset contains `r nrow(Pottery)` observations with measurements of
 ```{r pottery-structure}
 str(Pottery)
 ```
-The pottery samples are not evenly distributed across the sites. The most come from Llanedyrn; there are only two from
+The pottery samples are not evenly distributed across the sites. The most come from Llanedryn; there are only two from
 Caldicot.
 
 ```{r}
@@ -245,7 +245,7 @@ Here, case 25 stands out with the largest value of Cook's D, followed by 18 and 
 
 ### Robust MANOVA
 
-Now, fit the robust model using `robmlm()`. Because this uses an interative IRLS method, points that might not seem unusual
+Now, fit the robust model using `robmlm()`. Because this uses an iterative IRLS method, points that might not seem unusual
 in the initial model can become more noteworthy when the extreme observations are down-weighted in a subsequent iteration.
 
 ```{r pottery-rlm}
@@ -260,7 +260,7 @@ which suggests that possible outliers may have reduced the strength of evidence 
 
 It is useful to compare the coefficients of the two models, and for this, their relative difference is
 a useful metric. The simple function `reldiff()` expresses these as the signed percent of difference
-between the classical and robust estimatges
+between the classical and robust estimates.
 
 ```{r pottery-coefs}
 b.mlm <- coef(pottery.mlm)

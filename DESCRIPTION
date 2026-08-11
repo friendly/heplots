@@ -64,7 +64,7 @@ Suggests:
     tinytable,
     glue,
     here,
-    Sleuth2, rrcov, archdata, qqtest,
+    Sleuth2, rrcov, archdata, qqtest, ggbiplot,
     vcdExtra,
     R.rsp,
     KernSmooth,
