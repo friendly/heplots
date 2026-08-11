@@ -3,13 +3,17 @@
 * win-builder (R-devel)
 
 ## R CMD check results
-0 error(s) | 0 warning(s) | 0 note(s)
+0 error(s) | 0 warning(s) | 1 note(s)
 
 
 
 ## Known issues
 
-win-builder's CRAN-incoming-feasibility check flags several http:// URLs (CRAN.R-project.org, www.R-project.org, jstatsoft.org, amstat.org) as non-canonical/moved. These are embedded in vignettes/repeated-JSS.pdf, a static reproduction of the actual published Journal of Statistical Software article (Friendly, 2010) included as a pre-built PDF vignette -- not generated from any .Rmd/.Rd source we control, and its LaTeX/bib source is incomplete in this repo. Left as originally published rather than alter a reproduction of a citable, already-published document.
+win-builder's CRAN-incoming-feasibility check now flags several http:// URLs (CRAN.R-project.org, www.R-project.org, jstatsoft.org, amstat.org) as non-canonical/moved. These are all embedded in `vignettes/repeated-JSS.pdf`, a static reproduction of the actual published _Journal of Statistical Software_ article (Friendly, 2010) included as a pre-built PDF vignette -- not generated from any .Rmd/.Rd source we control, and its LaTeX/bib source is incomplete in this repo. I thought that was the purpose of the `.asis`
+designation: Just serve this as a package PDF vignette, without need to check.
+
+In this submission, this is left as originally published rather than alter a reproduction of a citable, already-published document.
+If there is another mechanism to do this without generating NOTEs, please let me know.
 
 ## Reverse dependencies checks
 
