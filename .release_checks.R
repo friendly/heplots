@@ -159,9 +159,14 @@ release_build <- function() {
   devtools::build_manual()
 }
 
-#' The actual `R CMD check --as-cran` run, locally
+#' The actual `R CMD check --as-cran` run, locally. Persists the result to
+#' .release_check_result.rds so release_cran_comments() can build the
+#' "R CMD check results" section from real output instead of you having
+#' to transcribe it by hand.
 release_check <- function() {
-  devtools::check()
+  res <- devtools::check()
+  saveRDS(res, ".release_check_result.rds")
+  invisible(res)
 }
 
 # ---- 5. Remote checks --------------------------------------------------------
@@ -180,7 +185,72 @@ release_revdep <- function(num_workers = 4) {
 # one-time setup if revdepcheck isn't installed:
 # remotes::install_github("r-lib/revdepcheck")
 
-# ---- 7. Orchestration ---------------------------------------------------------
+# ---- 7. cran-comments.md ---------------------------------------------------
+
+#' Regenerate cran-comments.md: fills in R CMD check results (from
+#' release_check()'s saved .release_check_result.rds), the reverse
+#' dependency summary (from revdep/cran.md, written by release_revdep()),
+#' and replaces the whole `## Comments` section with the NEWS.md entries
+#' added since the version currently on CRAN -- so it only describes what
+#' changed since CRAN last saw this package, not the full changelog.
+#'
+#' Run release_check() and release_revdep() first; this just assembles
+#' their output; it doesn't re-run either.
+release_cran_comments <- function() {
+  info <- release_preflight()
+
+  check_section <- if (file.exists(".release_check_result.rds")) {
+    res <- readRDS(".release_check_result.rds")
+    n_errors <- length(res$errors)
+    n_warnings <- length(res$warnings)
+    n_notes <- length(res$notes)
+    issues <- c(res$errors, res$warnings, res$notes)
+    detail <- if (length(issues)) paste(trimws(issues), collapse = "\n\n") else ""
+    glue::glue("{n_errors} error(s) | {n_warnings} warning(s) | {n_notes} note(s)\n\n{detail}")
+  } else {
+    warning("No .release_check_result.rds found -- run release_check() first. Leaving a placeholder.")
+    "(run release_check() first)"
+  }
+
+  revdep_section <- if (file.exists("revdep/cran.md")) {
+    revdep_lines <- readLines("revdep/cran.md")
+    # drop revdep/cran.md's own "## revdepcheck results" heading --
+    # redundant with the "## Reverse dependencies checks" heading below
+    revdep_lines <- revdep_lines[!grepl("^## ", revdep_lines)]
+    paste(trimws(revdep_lines), collapse = "\n")
+  } else {
+    warning("No revdep/cran.md found -- run release_revdep() first. Leaving a placeholder.")
+    "(run release_revdep() first)"
+  }
+
+  news <- readLines("NEWS.md")
+  cran_row <- grep(glue::glue("^## Version {info$cran_version}\\b"), news)
+  end <- if (length(cran_row)) cran_row[1] - 1 else length(news)
+  comments_section <- paste(trimws(news[seq_len(end)]), collapse = "\n")
+
+  content <- glue::glue(
+    "## Test environments\n",
+    "* local {Sys.info()[['sysname']]} {Sys.info()[['release']]} install, {R.version.string}\n",
+    "* win-builder (R-devel)\n",
+    "\n",
+    "## R CMD check results\n",
+    "{check_section}\n",
+    "\n",
+    "## Reverse dependencies checks\n",
+    "\n",
+    "{revdep_section}\n",
+    "\n",
+    "## Comments\n",
+    "\n",
+    "{comments_section}\n"
+  )
+
+  writeLines(content, "cran-comments.md")
+  cat("Wrote cran-comments.md\n")
+  invisible(content)
+}
+
+# ---- 8. Orchestration ---------------------------------------------------------
 
 #' Run one release step, catching (not swallowing) any error so the rest
 #' of the sequence still runs; failures are collected and reported at the
@@ -220,6 +290,7 @@ release_run_all <- function(full = FALSE, num_workers = 4) {
   if (full) {
     steps$release_check_win <- release_check_win
     steps$release_revdep <- function() release_revdep(num_workers = num_workers)
+    steps$release_cran_comments <- release_cran_comments
   }
 
   failures <- Map(run_step, names(steps), steps)
@@ -236,11 +307,12 @@ release_run_all <- function(full = FALSE, num_workers = 4) {
   cat("\nRemaining manual steps:\n")
   cat("  1. Review spelling/URL/check output above; fix anything flagged\n")
   if (!full) {
-    cat("  2. release_check_win() and release_revdep() (slow; not run by default)\n")
+    cat("  2. release_check_win(), release_revdep(), then release_cran_comments() (slow; not run by default)\n")
+  } else {
+    cat("  2. Review the regenerated cran-comments.md\n")
   }
-  cat("  3. Update cran-comments.md with the check/revdep summary\n")
-  cat("  4. Confirm Version/Date in DESCRIPTION and NEWS.md entry are correct\n")
-  cat("  5. devtools::release()\n")
+  cat("  3. Confirm Version/Date in DESCRIPTION and NEWS.md entry are correct\n")
+  cat("  4. devtools::release()\n")
 
   invisible(failures)
 }

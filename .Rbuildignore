@@ -6,6 +6,7 @@ README.md
 inst/doc/*\.pdf
 .build-steps.R
 .release_checks.R
+^\.release_check_result\.rds$
 ^README\.Rmd$
 ^README-.*\.png$
 ^heplots-logo\.png$

@@ -1,5 +1,7 @@
 ## Version 1.8.3
 
+This is a modest cumulative release of several versions since the last CRAN release (v 1.8.1)
+
 * Added a link to the NLSY97 Cohort Index in `NLSY`'s documentation.
 * Added `pvPlot()` for partial variable plots: visualizes the partial correlation between two
   variables after controlling for all others, as a scatterplot of the residuals from regressing
