@@ -1,7 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(gh issue:*)"
+      "Bash(gh issue:*)",
       "WebFetch(domain:stackoverflow.com)",
       "Bash(Rscript:*)",
       "WebSearch",
