@@ -40,7 +40,11 @@
 #' @seealso \code{\link{Mahalanobis}}
 #' @family diagnostic plots
 #' 
-#' @references 
+#' @references
+#' Rousseeuw, P. J., & van Zomeren, B. C. (1990). Unmasking multivariate outliers and leverage
+#' points. *Journal of the American Statistical Association*, **85**(411), 633-639.
+#' \doi{10.1080/01621459.1990.10474920}.
+#'
 #' Rousseeuw P. J. & van Zomeren B. C. (1991). “Robust Distances: Simulation and Cutoff Values.”
 #' In W Stahel, S Weisberg (eds.), *Directions in Robust Statistics and Diagnostics, Part II*.
 #' Springer-Verlag, New York.

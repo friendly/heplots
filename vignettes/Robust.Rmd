@@ -153,6 +153,8 @@ This uses the multivariate $t$ distribution that allows for longer tails.
 
 - **Diagnostic Capabilities**: The `plot.robmlm()` method provides immediate visual feedback on the weighting scheme, plotting final weights against case numbers to highlight observations that were down-weighted during the fitting process.
 
+- **Visualization methods**: Because a fitted `robmlm` object inherits the `"mlm"` class, it works directly with `heplots`' existing diagnostic and hypothesis-test plots. `distancePlot()` plots the Mahalanobis distances of the model-matrix predictors against the distances of the residuals, so cases with both high leverage and a large residual --- and so likely down-weighted during IRLS --- stand out just as they would for a classical `mlm`. `heplot()` goes further: fitting the classical and robust models separately and overlaying the robust **H** and **E** ellipses on the classical model's plot (`add = TRUE`) gives a direct geometric view of how down-weighting outliers reshapes the hypothesis and error variation --- typically a visibly smaller **E** ellipse for the robust fit. See the example below.
+
 ### Theoretical Properties
 
 The IRLS approach offers several desirable theoretical properties:
@@ -290,6 +292,21 @@ text(xloc, rep(c(1.0, 1.05), length=5),
 ```
 
 The weight plot reveals which observations were considered potentially problematic during the robust fitting process. Observations with weights substantially below 1.0 were down-weighted, indicating they may be outliers in the multivariate space defined by the five chemical measurements.
+
+### Distance Plot
+
+`distancePlot()` gives a complementary view of the same idea. It plots the Mahalanobis distances of the `Site` **predictors** (the model matrix `X`) against the distances of the **residuals** from the robust fit, labeling cases beyond the cutoff lines (dashed, `level = 0.975` by default). This plot method, due to
+Rousseeuw & van Zomeren [-@Rousseeuw1990; -@Rousseeuw1991] and Rousseeuw et al. [-@Rousseeuw2004], helps you see WHY observations are
+downweighted, by combining information on regression outliers (unusual in the `Y` responses) and leverage points
+(unusual in the `X`s).
+
+```{r pottery-distanceplot, fig.cap="Distance plot for the robust Pottery model: Mahalanobis distances of the Site predictors vs. distances of the residuals."}
+distancePlot(pottery.rlm)
+```
+
+Case 25 -- already flagged with the largest Cook's D in the classical influence plot above -- again stands out,
+here with an unusually large residual distance. Cases 15 and 16 stand out instead on the predictor (`Site`) side,
+reflecting their group's small sample size rather than an unusual response pattern.
 
 ### Hypothesis-Error (HE) plots
 
