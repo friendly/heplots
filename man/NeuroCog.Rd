@@ -99,7 +99,7 @@ R.S.E., Kraemer H., Mesholam-Gately R., Seidman L.J., Stover E., Weinberger
 D.R., Young A.S., Zalcman S., Marder S.R. (2008) The MATRICS Consensus
 Cognitive Battery, Part 1: Test selection, reliability, and validity.
 \emph{American Journal of Psychiatry}, \strong{165} (2), 203-213.
-\url{https://pubmed.ncbi.nlm.nih.gov/18172019/}.
+\url{https://doi.org/10.1176/appi.ajp.2007.07010042}.
 }
 \concept{MANOVA}
 \concept{candisc}

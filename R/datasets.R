@@ -927,7 +927,7 @@ NULL
 #' D.R., Young A.S., Zalcman S., Marder S.R. (2008) The MATRICS Consensus
 #' Cognitive Battery, Part 1: Test selection, reliability, and validity.
 #' *American Journal of Psychiatry*, **165** (2), 203-213.
-#' <https://pubmed.ncbi.nlm.nih.gov/18172019/>.
+#' <https://doi.org/10.1176/appi.ajp.2007.07010042>.
 #' 
 #' @source 
 #' Hartman, L. I. (2016). Schizophrenia and Schizoaffective Disorder:
