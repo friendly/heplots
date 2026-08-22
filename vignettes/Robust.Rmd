@@ -428,6 +428,37 @@ Under classical covariance (left), cases 60 and 62 -- which turn out to have the
 
 * Case 22 sits in between, at weight 0.43: moderately unusual on both axes without being fully downweighted -- a reminder that `robmlm()`'s weighting is continuous, not the all-or-nothing split the labels above suggest.
 
+### Multivariate Influence Plots
+
+What we can learn from a `distancePlot()` can be compared to alternative displays that
+generalize the traditional influence plots of residuals vs. leverage, which
+are extended to the MLM case in the `mvinfluence` package.
+
+`influencePlot()` for an `"mlm"` object draws a bubble plot, with circle areas proportional
+to a generalized Cook's distance, using one of three `type`s of axes. The default,
+`type = "stres"`, plots (squared) Studentized residuals directly against the hat values
+(leverage). `type = "LR"` instead plots transformed residual and leverage components, `R`
+and `L`, chosen so that contours of constant Cook's distance fall on diagonal lines --
+useful for seeing at a glance whether a case's influence comes mainly from an unusual
+response, an unusual predictor pattern, or both.
+
+```{r pulpfiber-influenceplot-stres, fig.cap="Default (`type = 'stres'`) multivariate influence plot for the OLS pulp fiber model."}
+influencePlot(pulp.mod, id.n = 5)
+```
+
+```{r pulpfiber-influenceplot-lr, fig.cap="`type = 'LR'` multivariate influence plot for the same model."}
+influencePlot(pulp.mod, id.n = 5, type = "LR")
+```
+
+Both types flag the same nine cases here (46, 51, 52, 56, 57, 58, 59, 60, 61) --
+switching `type` reorganizes how the same influence information is displayed, not which
+cases stand out. Case 61 has the largest bubble in both (generalized Cook's D = 1.79),
+consistent with its bad-leverage status above, and case 60 has by far the largest leverage
+component `L`, consistent with it being the more extreme of the two good-leverage cases.
+Case 62, though, doesn't appear here at all: `influencePlot()` uses the ordinary
+(non-robust) hat values from `pulp.mod`, under which case 62's leverage ranks only 11th of
+62 -- the same classical-covariance masking that hid it from the distance plot above.
+
 ### Interpretation and Discussion
 
 * **Model evaluation**: The gain from 2 to 4 significant predictors under the robust fit shows how a small number of outlying samples can mask genuine predictive relationships in classical multivariate regression -- a stronger contrast than in the Pottery example.

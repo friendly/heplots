@@ -132,5 +132,14 @@ distancePlot(pulp.rlm)
 distancePlot(pulp.mod, method ="mcd")
 distancePlot(pulp.rlm, method ="mcd")
 
+# Try mvinfluence
+
+library(mvinfluence)
+influencePlot(pulp.mod, id.n = 5)
+
+influencePlot(pulp.mod, id.n = 5, type="LR")
+
+
+
 
 
