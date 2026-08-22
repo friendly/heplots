@@ -64,13 +64,20 @@ distancePlot(X, Y, ...)
 This plot, suggested by Rousseeuw & van Zomeren (1991), Rousseeuw et al. (2004) typically plots Mahalanobis distances (\eqn{D}) of the \code{Y} response
 variables against the distances of the \code{X} variables in a multivariate linear model (MLM).
 When applied to a multivariate linear model itself, it plots the distances of the \emph{residuals} for the \code{Y} variables
-against the predictor terms in the \emph{model.matrix} \code{X}.
+against the predictor terms in the \emph{model.matrix} \code{X}. The motivation behind this plot was to contribute to
+understanding robust methods for multivariate linear models, such as implemented here in \code{\link[=robmlm]{robmlm()}}.
 
-This diagnostic plot combines the information on regression outliers and leverage points, and often more useful than either distance separately.
+This diagnostic plot combines the information on regression outliers and leverage points, and often more useful than either
+distance separately, because it shows WHY observations are unusual, either in \eqn{X} or \eqn{Y} space or both. In spirit,
+it is similar to the ideas behind influence plots for univariate models, such as \code{\link[car:influencePlot]{car::influencePlot()}} and the
+multivariate analogs provided in the \code{mvinfluence} package via \link[mvinfluence:influencePlot.mlm]{influencePlot()}.
 }
 \details{
 Observations with "large" distances on \code{X} or \code{Y} are labeled with their \code{ids}. The cutoffs are calculated as
 \eqn{\sqrt{\chi^2_{k, \text{level}}}}.
+
+The \code{method} argument provides a specification the covariance matrix used to calculate the Mahalanobis distances
+shown in this plot.
 }
 \examples{
 
@@ -111,6 +118,10 @@ distancePlot(Hern.mod)
 
 }
 \references{
+Rousseeuw, P. J., & van Zomeren, B. C. (1990). Unmasking multivariate outliers and leverage
+points. \emph{Journal of the American Statistical Association}, \strong{85}(411), 633-639.
+\doi{10.1080/01621459.1990.10474920}.
+
 Rousseeuw P. J. & van Zomeren B. C. (1991). “Robust Distances: Simulation and Cutoff Values.”
 In W Stahel, S Weisberg (eds.), \emph{Directions in Robust Statistics and Diagnostics, Part II}.
 Springer-Verlag, New York.
@@ -119,7 +130,7 @@ Rousseeuw, P. J., Van Driessen, K., Van Aelst, S., & Agullo, J. (2004). Robust m
 \emph{Technometrics}, \strong{46}(3), 293–305. \doi{10.1198/004017004000000329}.
 }
 \seealso{
-\code{\link{Mahalanobis}}
+\code{\link{Mahalanobis}}, \code{\link{robmlm}}
 
 Other diagnostic plots:
 \code{\link[=cqplot]{cqplot()}},
