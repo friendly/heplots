@@ -104,7 +104,7 @@ text(dist.X[outIDs], dist.resids[outIDs], (1:nrow(pulpfiber))[outIDs], pos = 2)
 
 # try distPlot()
 
-source(here::here("dev", "distancePlot.R"))
+#source(here::here("dev", "distancePlot.R"))
 
 distancePlot(pulpfiber[, 1:4], pulpfiber[, 5:8])
 
