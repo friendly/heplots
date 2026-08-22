@@ -139,7 +139,7 @@ distancePlot.default <- function(X, Y,
   q <- ncol(X)
   p <- ncol(Y)
   cutoffs <- qchisq(level, c(q, p)) |> sqrt()
-  cat(level, "X, Y distance cutoffs:", cutoffs, "\n")
+  if (verbose) cat(level, "X, Y distance cutoffs:", cutoffs, "\n")
   out <- (distX > cutoffs[1]) | distY > cutoffs[2]
   out.rows <- which(out)
   
