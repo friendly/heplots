@@ -58,6 +58,7 @@ pairs(pulp.rlm,
 
 # diagnostic plot: Mahalanobis distances of X vs distances of residuals
 # reproduce figs in Rousseeuw et al (2004), Robust Multivariate Regression
+# [Superceded by distancePlot(); this code was just for development of that]
 
 dist.X <- pulpfiber |>
   select(X1:X4) |>
@@ -79,7 +80,7 @@ outIDs <- which(dist.X > cutoff | dist.resids > cutoff)
 text(dist.X[outIDs], dist.resids[outIDs], (1:nrow(pulpfiber))[outIDs], pos = 2)
 
 #source("C:/R/Projects/heplots/dev/distancePlot.R")
-distancePlot.mlm(pulp.mod)
+distancePlot(pulp.mod)
 
 # do the same for robust distances
 

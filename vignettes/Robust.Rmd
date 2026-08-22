@@ -365,4 +365,60 @@ This indicates |r ifelse(abs(log10(robust_anova$"Pr(>F)"[1]) - log10(classical_a
 
 The robust approach demonstrates its value by providing a more stable analysis that is less susceptible to the influence of outlying observations, while still maintaining high efficiency when the data conform to standard assumptions.
 
+## Example: Pulp Fiber Data
+
+Our second example is more compact, and illustrates `robmlm()` in a  multivariate multiple regression rather than a MANOVA design. The `pulpfiber` data [in the `robustbase` package, @Rousseeuw2004; data from the unpublished thesis of Lee, 1992] give four pulp-fiber properties (`X1`-`X4`: fiber length, long fiber fraction, fine fiber fraction, zero-span tensile) measured on 62 samples, along with four properties of the paper produced from them (`Y1`-`Y4`: breaking length, elastic modulus, failure stress, burst strength). The goal is to predict the paper properties from the fiber properties.
+
+```{r pulpfiber-data, message=FALSE}
+data(pulpfiber, package = "robustbase")
+str(pulpfiber)
+```
+
+### Classical and Robust Fits
+
+To get started, fit the classical OLS multivariate regression and the robust version and run `car::Anova()` on each
+
+```{r pulpfiber-fit}
+pulp.mod <- lm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
+pulp.rlm <- robmlm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
+
+Anova(pulp.mod)
+Anova(pulp.rlm)
+```
+
+The contrast here is more dramatic than for Pottery: 
+
+* In the classical fit, `X2` and `X4` stand out clearly ($p < .0001$), `X3` is only marginally significant ($p = .011$), and `X1` falls just short of conventional significance ($p = .053$). 
+* In the robust fit, by contrast, all four fiber properties are highly significant predictors of the paper properties ($p < .001$ in every case). This suggests that a handful of atypical samples in the classical fit are masking real predictive relationships involving `X1` and `X3`.
+
+### Robust Weights
+
+```{r pulpfiber-weights, fig.cap="Weights from robust fitting of the pulp fiber data"}
+plot(pulp.rlm, segments = TRUE)
+```
+
+Four cases -- 51, 52, 56 and 61 -- are driven to (essentially) zero weight, while all other samples retain weights above 0.7. The weight plot alone doesn't say *why* these four are atypical; for that we turn to the distance plot.
+
+### Distance Plot
+
+```{r pulpfiber-distanceplot, fig.cap="MCD-based distance plot for the robust pulp fiber model: robust distances of the fiber (X) predictors vs. distances of the residuals."}
+distancePlot(pulp.rlm, method = "mcd")
+```
+
+Using `method = "mcd"` for the predictor distances -- as Rousseeuw et al. [-@Rousseeuw2004] do for this very dataset -- separates the flagged cases into three distinct patterns:
+
+* Cases 51, 52 and 56 have unremarkable fiber measurements (small distance on `X`) but very large residual distances: **vertical outliers**, poorly predicted by the fitted relationship regardless of their (ordinary) predictor values. These are exactly the three cases driven to zero weight above.
+
+* Case 61 is extreme on *both* axes: a **bad leverage point**, unusual in its fiber properties *and* poorly fit by the model -- correctly downweighted to zero along with the vertical outliers.
+
+* Cases 60 and 62 have the two largest predictor distances of any sample, by a wide margin, yet small residual distances: **good leverage points**. They are unusual fiber samples, but ones the fitted relationship predicts well, so `robmlm()` correctly leaves them at near-full weight (0.98 each) rather than downweighting them.
+
+### Interpretation and Discussion
+
+* **Model evaluation**: The gain from 2 to 4 significant predictors under the robust fit shows how a small number of outlying samples can mask genuine predictive relationships in classical multivariate regression -- a stronger contrast than in the Pottery example.
+
+* **Outlier detection**: The weight plot and distance plot together tell a more nuanced story than "outlier" vs. "not": some flagged cases (51, 52, 56, 61) are poorly fit and rightly downweighted, while others (60, 62) are merely unusual in their predictors and rightly are not. Distinguishing good from bad leverage points this way is exactly the diagnostic problem `distancePlot()` is designed to address.
+
+* **Practical implications**: For process data like this -- where fiber properties are measured to predict paper quality -- correctly identifying *which* atypical samples to downweight (vertical/bad-leverage cases) versus keep (good-leverage cases) matters for building a model that generalizes to new, unusual-but-plausible fiber batches, rather than one that has simply been fit to accommodate a few mismeasured samples.
+
 ## References
