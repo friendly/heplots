@@ -65,6 +65,17 @@ for a Gavin funding-application topic list).
   coefficients, adapted from `QuantPsyc::lm.beta`) and `se_variance.R` (SE of variance).
   Files: `dev/standardize.R`, `dev/se_variance.R`
 
+- [ ] Drop the hard `Depends: broom` in favor of `Imports: generics` for `glance.mlm()` --
+  register the S3 method against `generics::glance` (the lightweight package defining the
+  generic, which `broom` itself depends on) instead of `broom::glance`. Checked 2026-08-23:
+  master still has `Depends: broom` and nothing else in `R/` uses `broom::`, so this is still
+  fully applicable, not superseded. Abandoned mid-flight in 2023 on the `rm-glance` branch
+  (single commit `1f59fad`, kept as `origin/rm-glance`, not merged) -- would need
+  `DESCRIPTION` (`Depends`/`Imports`), `NAMESPACE`, `R/glance.mlm.R`, and `R/zzz.R`'s
+  `.onLoad()` registration all updated together. Deliberately not picked up during the
+  v1.8.4 CRAN resubmission; candidate for a later release.
+  Branch: `origin/rm-glance`
+
 - ✔️ **DONE** `pvPlot()` — general partial variable plots akin to `car::avPlot()`, shipped in
   v1.8.3 as `R/pvPlot.R` (see `NEWS.md`). Superseded dev drafts moved to "Clean-up candidates"
   below.
