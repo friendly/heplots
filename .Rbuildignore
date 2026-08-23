@@ -25,7 +25,9 @@ NAMESPACE-old
 ^data-raw$
 ^dev$
 ^CLAUDE.md$
+^AGENTS\.md$
 ^issues$
+^vignettes-old$
 ^.claude$
 ^\.positai$
 ^\.claude$
