@@ -1,3 +1,23 @@
+## Version 1.8.4
+
+CRAN resubmission of v1.8.3, addressing two `URL` findings from the win-builder
+CRAN-incoming-feasibility check.
+
+* Fixed the `NeuroCog` documentation to cite the Nuechterlein et al. (2008) reference by
+  DOI instead of a PubMed URL that CRAN flagged as needing an update.
+* Withdrew `vignettes/repeated-JSS.pdf` (a static reprint of the published *Journal of
+  Statistical Software* article, included via the `R.rsp::asis` engine) to `vignettes-old/`,
+  rather than continue explaining its embedded non-canonical URLs to CRAN on every
+  submission. Dropped the now-unused `R.rsp` from `Suggests`/`VignetteBuilder`.
+* Added a second, shorter worked example to the `Robust.Rmd` vignette using the
+  `robustbase::pulpfiber` data (Rousseeuw et al. 2004): a multivariate multiple regression
+  contrasted with the earlier Pottery MANOVA example, using the weight plot and an
+  MCD-based `distancePlot()` to distinguish vertical outliers, a bad leverage point, and
+  two good leverage points.
+* `distancePlot()` documentation now cross-links `robmlm()`, `car::influencePlot()`, and
+  `mvinfluence`'s `influencePlot.mlm()` method; fixed `verbose` argument not actually
+  gating the cutoff `cat()` line.
+
 ## Version 1.8.3
 
 This is a modest cumulative release of several versions since the last CRAN release (v 1.8.1)

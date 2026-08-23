@@ -260,18 +260,11 @@ release_revdep <- function(num_workers = 4) {
 #'        to append as a "## Known issues" section -- for things a remote
 #'        check (win-builder, R-hub) flags but a local devtools::check()
 #'        never sees, so they wouldn't otherwise show up here. Defaults to
-#'        heplots' one standing issue: URLs embedded in the static
-#'        repeated-JSS.pdf vignette (see below). Pass NULL to omit.
-release_cran_comments <- function(known_issues = paste(
-  "win-builder's CRAN-incoming-feasibility check flags several http://",
-  "URLs (CRAN.R-project.org, www.R-project.org, jstatsoft.org, amstat.org)",
-  "as non-canonical/moved. These are embedded in vignettes/repeated-JSS.pdf,",
-  "a static reproduction of the actual published Journal of Statistical",
-  "Software article (Friendly, 2010) included as a pre-built PDF vignette --",
-  "not generated from any .Rmd/.Rd source we control, and its LaTeX/bib",
-  "source is incomplete in this repo. Left as originally published rather",
-  "than alter a reproduction of a citable, already-published document."
-)) {
+#'        NULL (no standing issues). heplots' former standing issue --
+#'        non-canonical URLs embedded in the static repeated-JSS.pdf
+#'        vignette -- was resolved by withdrawing that vignette to
+#'        vignettes-old/ rather than keep explaining it to CRAN.
+release_cran_comments <- function(known_issues = NULL) {
   info <- release_preflight()
 
   check_section <- if (file.exists(".release_check_result.rds")) {

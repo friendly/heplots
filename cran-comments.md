@@ -1,47 +1,47 @@
 ## Test environments
-* local Windows 10 x64 install, R version 4.6.1 (2026-06-24 ucrt)
-* win-builder (R-devel)
+* local Windows 11 x64 install, R version 4.6.1 (2026-06-24 ucrt)
 
 ## R CMD check results
-0 error(s) | 0 warning(s) | 1 note(s)
+0 error(s) | 0 warning(s) | 0 note(s)
 
+## Resubmission of v1.8.3
 
+This resubmission addresses the two `URL` findings from CRAN's win-builder
+incoming-feasibility check on the v1.8.3 submission:
 
-## Known issues
+* `man/NeuroCog.Rd` cited the Nuechterlein et al. (2008) reference by a PubMed URL
+  (`https://pubmed.ncbi.nlm.nih.gov/18172019/`); replaced with the article's DOI.
+* `vignettes/repeated-JSS.pdf` (a static reprint of the published *Journal of Statistical
+  Software* article, included via the `R.rsp::asis` engine) had several embedded
+  non-canonical URLs that are part of the original, already-published document and not
+  under our control. Rather than continue explaining this on every submission, we've
+  withdrawn the vignette to `vignettes-old/` and dropped the now-unused `R.rsp` from
+  `Suggests`/`VignetteBuilder`.
 
-win-builder's CRAN-incoming-feasibility check now flags several http:// URLs (CRAN.R-project.org, www.R-project.org, jstatsoft.org, amstat.org) as non-canonical/moved. These are all embedded in `vignettes/repeated-JSS.pdf`, a static reproduction of the actual published _Journal of Statistical Software_ article (Friendly, 2010) included as a pre-built PDF vignette -- not generated from any .Rmd/.Rd source we control, and its LaTeX/bib source is incomplete in this repo. I thought that was the purpose of the `.asis`
-designation: Just serve this as a package PDF vignette, without need to check.
-
-In this submission, this is left as originally published rather than alter a reproduction of a citable, already-published document.
-If there is another mechanism to do this without generating NOTEs, please let me know.
-
-## Reverse dependencies checks
-
-
-We checked 9 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
-
-* We saw 0 new problems
-* We failed to check 0 packages
-
+Reverse dependencies were not re-checked for this resubmission: the only other change is a
+second worked example added to the `Robust.Rmd` vignette and a small `distancePlot()`
+documentation/bugfix update (gating a `cat()` call behind its existing `verbose` argument,
+which previously fired unconditionally). Nothing exported changed signature. The prior
+check of 9 reverse dependencies against v1.8.3, with 0 new problems, still applies.
 
 ## Comments
 
-## Version 1.8.3
+## Version 1.8.4
 
-This is a modest cumulative release of several versions since the last CRAN release (v 1.8.1)
+CRAN resubmission of v1.8.3, addressing two `URL` findings from the win-builder
+CRAN-incoming-feasibility check.
 
-* Added a link to the NLSY97 Cohort Index in `NLSY`'s documentation.
-* Added `pvPlot()` for partial variable plots: visualizes the partial correlation between two
-variables after controlling for all others, as a scatterplot of the residuals from regressing
-each on the rest, enhanced with a data ellipse, regression line, and point labels for unusual
-cases. Similar in spirit to `car::avPlots()`, but works directly on a data frame rather than a
-fitted model.
-* Added cute 404 page for `pkgdown`
-* Added a general `.release_checks.R` script in the repo (but `.Rbuildignore`d)
-
-## Version 1.8.2
-
-* add `eigstatsCI()` to calculate bootstrapped confidence intervals for eigenvalue statistics, as used in `plot.boxM()`
-* added `plot_boxM_boot()` to plot these with bootstrapped CIs
-* added `traceCI()` for use in `plot.boxM()`
-
+* Fixed the `NeuroCog` documentation to cite the Nuechterlein et al. (2008) reference by
+  DOI instead of a PubMed URL that CRAN flagged as needing an update.
+* Withdrew `vignettes/repeated-JSS.pdf` (a static reprint of the published *Journal of
+  Statistical Software* article, included via the `R.rsp::asis` engine) to `vignettes-old/`,
+  rather than continue explaining its embedded non-canonical URLs to CRAN on every
+  submission. Dropped the now-unused `R.rsp` from `Suggests`/`VignetteBuilder`.
+* Added a second, shorter worked example to the `Robust.Rmd` vignette using the
+  `robustbase::pulpfiber` data (Rousseeuw et al. 2004): a multivariate multiple regression
+  contrasted with the earlier Pottery MANOVA example, using the weight plot and an
+  MCD-based `distancePlot()` to distinguish vertical outliers, a bad leverage point, and
+  two good leverage points.
+* `distancePlot()` documentation now cross-links `robmlm()`, `car::influencePlot()`, and
+  `mvinfluence`'s `influencePlot.mlm()` method; fixed `verbose` argument not actually
+  gating the cutoff `cat()` line.

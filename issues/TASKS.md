@@ -4,24 +4,39 @@ Broken out from the cross-package working list in `C:\Users\friendly\Dropbox\R\T
 (2026-07-28). Update here as items are finished; sync back to the main list only if it's
 useful to see heplots status at a glance across packages.
 
-Updated 2026-08-21: package is now at v1.8.3 and appears prepped for CRAN resubmission
-(see "CRAN resubmission status" below); `pvPlot()` and the pkgdown rebuild shipped since
-the 2026-08-10 update; new `dev/GK-Project.md` planning doc added (Roy-Bargmann stepdown
-analysis, `predict.mlm()`, for a Gavin funding-application topic list).
+Updated 2026-08-22: v1.8.3 was submitted to CRAN 2026-08-19 and rejected over two `URL`
+findings from win-builder's incoming-feasibility check (see "CRAN resubmission status"
+below); package is now at v1.8.4, resubmission-ready with a clean local `R CMD check`
+(0/0/0). `pvPlot()` and the pkgdown rebuild shipped since the 2026-08-10 update; new
+`dev/GK-Project.md` planning doc added (Roy-Bargmann stepdown analysis, `predict.mlm()`,
+for a Gavin funding-application topic list).
 
 ## CRAN resubmission status
 
-- `DESCRIPTION` is at v1.8.3 (Date: 2026-08-19). `cran-comments.md` shows `0 error(s) |
-  0 warning(s) | 1 note(s)`, with the one NOTE explained (non-canonical URLs embedded in
-  the static `vignettes/repeated-JSS.pdf` reprint, not generated from repo sources) and
-  9 reverse dependencies checked with 0 new problems.
+- v1.8.3 (submitted 2026-08-19, commit `4ac13ce`) was rejected by CRAN over two `URL`
+  findings: a PubMed URL in `man/NeuroCog.Rd` (fixed on master directly, commit `9cb0769`,
+  replaced with the article's DOI), and non-canonical URLs embedded in the static
+  `vignettes/repeated-JSS.pdf` reprint.
 
-- Release-engineering helpers added this cycle: `release_preflight()`, `release_build()`,
-  `release_cran_comments()`, plus a `.release_checks.R` script (`.Rbuildignore`d).
+- Resolved the `repeated-JSS.pdf` issue by withdrawal rather than further explanation:
+  moved `repeated-JSS.pdf`/`repeated-JSS.pdf.asis`/`repeated.bib` to `vignettes-old/`,
+  dropped the now-unused `R.rsp` from `Suggests`/`VignetteBuilder` in `DESCRIPTION`, and
+  updated `release_cran_comments()`'s `known_issues` default to `NULL` (was the
+  repeated-JSS explanation text).
 
-- Git history through `d723fa5`/`c0d5054` shows the comments/checklist being finalized
-  for submission, but it's not clear from history alone whether the actual CRAN upload
-  happened yet — worth confirming before assuming this is closed out.
+- `DESCRIPTION` bumped to v1.8.4 (Date: 2026-08-22); `NEWS.md` and `cran-comments.md`
+  updated accordingly. Also merged in the `robust-vignette` branch: a second worked
+  example (`robustbase::pulpfiber`) for `vignettes/Robust.Rmd`, plus `distancePlot()`
+  doc/cross-reference improvements and a `verbose`-gating bugfix.
+
+- Local `devtools::check()` (R 4.6.1, `--as-cran`) is clean: 0 errors, 0 warnings,
+  0 notes, including a successful re-build of all vignette outputs. Reverse dependencies
+  were not re-checked this cycle (only docs/vignettes and one non-behavioral bugfix
+  changed since the 9-checked/0-new-problems result at v1.8.3) — win-builder and revdep
+  re-checks were deliberately skipped for this narrow resubmission.
+
+- Not yet done: actual upload to CRAN (`devtools::release()`/`devtools::submit_cran()`)
+  — deliberately left as a manual, interactive step.
 
 ## TODOs
 

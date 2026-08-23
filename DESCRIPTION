@@ -1,8 +1,8 @@
 Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
-Version: 1.8.3
-Date: 2026-08-19
+Version: 1.8.4
+Date: 2026-08-22
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -66,7 +66,6 @@ Suggests:
     here,
     Sleuth2, rrcov, archdata, qqtest, ggbiplot,
     vcdExtra,
-    R.rsp,
     KernSmooth,
     aplpack,
     foreign,
@@ -78,6 +77,6 @@ BugReports: https://github.com/friendly/heplots/issues
 License: GPL (>= 2)
 URL: https://friendly.github.io/heplots/, https://github.com/friendly/heplots
 Encoding: UTF-8
-VignetteBuilder: knitr, R.rsp
+VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 Config/roxygen2/version: 8.1.0
