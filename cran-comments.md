@@ -5,7 +5,7 @@
 ## R CMD check results
 0 error(s) | 0 warning(s) | 0 note(s)
 
-## Resubmission of v1.8.3
+## Resubmission of v1.8.3 -> v1.8.4
 
 This resubmission addresses the two `URL` findings from CRAN's win-builder
 incoming-feasibility check on the v1.8.3 submission:
@@ -25,7 +25,7 @@ incoming-feasibility check on the v1.8.3 submission:
 Reverse dependencies were not re-checked for this resubmission: the only other change is a
 second worked example added to the `Robust.Rmd` vignette and a small `distancePlot()`
 documentation/bugfix update (gating a `cat()` call behind its existing `verbose` argument,
-which previously fired unconditionally). Nothing exported changed signature. The prior
+which previously fired unconditionally). Nothing exported changed signature of any function. The prior
 check of 9 reverse dependencies against v1.8.3, with 0 new problems, still applies.
 
 ## Comments
