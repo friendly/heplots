@@ -25,8 +25,15 @@ incoming-feasibility check on the v1.8.3 submission:
 Reverse dependencies were not re-checked for this resubmission: the only other change is a
 second worked example added to the `Robust.Rmd` vignette and a small `distancePlot()`
 documentation/bugfix update (gating a `cat()` call behind its existing `verbose` argument,
-which previously fired unconditionally). Nothing exported changed signature of any function. The prior
-check of 9 reverse dependencies against v1.8.3, with 0 new problems, still applies.
+which previously fired unconditionally). Nothing exported changed signature of any function.
+
+## Reverse dependencies checks
+
+We checked 9 reverse dependencies, comparing R CMD check results across CRAN and dev versions
+of this package (against v1.8.3; not re-run for this resubmission, see above).
+
+* We saw 0 new problems
+* We failed to check 0 packages
 
 ## Comments
 
