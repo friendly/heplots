@@ -1,6 +1,47 @@
 # Changelog
 
+## Version 1.8.4
+
+CRAN release: 2026-08-23
+
+CRAN resubmission of v1.8.3, addressing two `URL` findings from the
+win-builder CRAN-incoming-feasibility check.
+
+- Fixed the `NeuroCog` documentation to cite the Nuechterlein et
+  al. (2008) reference by DOI instead of a PubMed URL that CRAN flagged
+  as needing an update. A win-builder dry run then flagged the
+  replacement itself: CRAN wants bare `doi.org` links written with the
+  `\doi{}` macro, not `\url{}`. Fixed that in `NeuroCog`, and found (and
+  fixed the same way) two more pre-existing bare `doi.org` references in
+  `Iwasaki_Big_Five` and `TIPI`’s documentation that hadn’t yet been
+  flagged.
+- Withdrew `vignettes/repeated-JSS.pdf` (a static reprint of the
+  published *Journal of Statistical Software* article, included via the
+  `R.rsp::asis` engine) to `vignettes-old/`, rather than continue
+  explaining its embedded non-canonical URLs to CRAN on every
+  submission. Dropped the now-unused `R.rsp` from
+  `Suggests`/`VignetteBuilder`.
+- Added a second, shorter worked example to the `Robust.Rmd` vignette
+  using the
+  [`robustbase::pulpfiber`](https://rdrr.io/pkg/robustbase/man/pulpfiber.html)
+  data (Rousseeuw et al. 2004): a multivariate multiple regression
+  contrasted with the earlier Pottery MANOVA example, using the weight
+  plot and an MCD-based
+  [`distancePlot()`](https://friendly.github.io/heplots/reference/distancePlot.md)
+  to distinguish vertical outliers, a bad leverage point, and two good
+  leverage points.
+- [`distancePlot()`](https://friendly.github.io/heplots/reference/distancePlot.md)
+  documentation now cross-links
+  [`robmlm()`](https://friendly.github.io/heplots/reference/robmlm.md),
+  [`car::influencePlot()`](https://rdrr.io/pkg/car/man/influencePlot.html),
+  and `mvinfluence`’s `influencePlot.mlm()` method; fixed `verbose`
+  argument not actually gating the cutoff
+  [`cat()`](https://rdrr.io/r/base/cat.html) line.
+
 ## Version 1.8.3
+
+This is a modest cumulative release of several versions since the last
+CRAN release (v 1.8.1)
 
 - Added a link to the NLSY97 Cohort Index in `NLSY`’s documentation.
 - Added
@@ -12,6 +53,9 @@
   in spirit to
   [`car::avPlots()`](https://rdrr.io/pkg/car/man/avPlots.html), but
   works directly on a data frame rather than a fitted model.
+- Added cute 404 page for `pkgdown`
+- Added a general `.release_checks.R` script in the repo (but
+  `.Rbuildignore`d)
 
 ## Version 1.8.2
 

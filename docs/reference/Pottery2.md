@@ -62,8 +62,7 @@ A data frame with 48 observations on the following 12 variables.
 ## Source
 
 Originally slightly modified from files by David Carlson, now at
-[`RBPottery`](https://rdrr.io/pkg/archdata/man/RBPottery.html). % %
-[http://people.tamu.edu/~dcarlson/quant/data/RBPottery.html](http://people.tamu.edu/~dcarlson/quant/data/RBPottery.md)
+[`RBPottery`](https://rdrr.io/pkg/archdata/man/RBPottery.html). %
 
 ## Details
 

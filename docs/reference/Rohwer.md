@@ -64,7 +64,7 @@ semantic relationship between the stimulus and response words in each
 pair.
 
 Timm (1975) does not give a source, but the most relevant studies are
-Rowher & Ammons (1968) and Rohwer & Levin (1971). The paired-associate
+Rohwer & Levin (1968) and Rohwer & Ammons (1971). The paired-associate
 tasks are described as:
 
 - `n`:

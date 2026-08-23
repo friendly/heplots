@@ -101,7 +101,9 @@ R., Keefe R.S.E., Kraemer H., Mesholam-Gately R., Seidman L.J., Stover
 E., Weinberger D.R., Young A.S., Zalcman S., Marder S.R. (2008) The
 MATRICS Consensus Cognitive Battery, Part 1: Test selection,
 reliability, and validity. *American Journal of Psychiatry*, **165**
-(2), 203-213. <https://pubmed.ncbi.nlm.nih.gov/18172019/>.
+(2), 203-213.
+[doi:10.1176/appi.ajp.2007.07010042](https://doi.org/10.1176/appi.ajp.2007.07010042)
+.
 
 ## Examples
 

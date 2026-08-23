@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,9 +39,22 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.8.4" id="version-184">Version 1.8.4<a class="anchor" aria-label="anchor" href="#version-184"></a></h2><p class="text-muted">CRAN release: 2026-08-23</p>
+<p>CRAN resubmission of v1.8.3, addressing two <code>URL</code> findings from the win-builder CRAN-incoming-feasibility check.</p>
+<ul><li>Fixed the <code>NeuroCog</code> documentation to cite the Nuechterlein et al. (2008) reference by DOI instead of a PubMed URL that CRAN flagged as needing an update. A win-builder dry run then flagged the replacement itself: CRAN wants bare <code>doi.org</code> links written with the <code>\doi{}</code> macro, not <code>\url{}</code>. Fixed that in <code>NeuroCog</code>, and found (and fixed the same way) two more pre-existing bare <code>doi.org</code> references in <code>Iwasaki_Big_Five</code> and <code>TIPI</code>’s documentation that hadn’t yet been flagged.</li>
+<li>Withdrew <code>vignettes/repeated-JSS.pdf</code> (a static reprint of the published <em>Journal of Statistical Software</em> article, included via the <code>R.rsp::asis</code> engine) to <code>vignettes-old/</code>, rather than continue explaining its embedded non-canonical URLs to CRAN on every submission. Dropped the now-unused <code>R.rsp</code> from <code>Suggests</code>/<code>VignetteBuilder</code>.</li>
+<li>Added a second, shorter worked example to the <code>Robust.Rmd</code> vignette using the <code><a href="https://rdrr.io/pkg/robustbase/man/pulpfiber.html" class="external-link">robustbase::pulpfiber</a></code> data (Rousseeuw et al. 2004): a multivariate multiple regression contrasted with the earlier Pottery MANOVA example, using the weight plot and an MCD-based <code><a href="../reference/distancePlot.html">distancePlot()</a></code> to distinguish vertical outliers, a bad leverage point, and two good leverage points.</li>
+<li>
+<code><a href="../reference/distancePlot.html">distancePlot()</a></code> documentation now cross-links <code><a href="../reference/robmlm.html">robmlm()</a></code>, <code><a href="https://rdrr.io/pkg/car/man/influencePlot.html" class="external-link">car::influencePlot()</a></code>, and <code>mvinfluence</code>’s <code>influencePlot.mlm()</code> method; fixed <code>verbose</code> argument not actually gating the cutoff <code><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat()</a></code> line.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.8.3" id="version-183">Version 1.8.3<a class="anchor" aria-label="anchor" href="#version-183"></a></h2>
+<p>This is a modest cumulative release of several versions since the last CRAN release (v 1.8.1)</p>
 <ul><li>Added a link to the NLSY97 Cohort Index in <code>NLSY</code>’s documentation.</li>
 <li>Added <code><a href="../reference/pvPlot.html">pvPlot()</a></code> for partial variable plots: visualizes the partial correlation between two variables after controlling for all others, as a scatterplot of the residuals from regressing each on the rest, enhanced with a data ellipse, regression line, and point labels for unusual cases. Similar in spirit to <code><a href="https://rdrr.io/pkg/car/man/avPlots.html" class="external-link">car::avPlots()</a></code>, but works directly on a data frame rather than a fitted model.</li>
+<li>Added cute 404 page for <code>pkgdown</code>
+</li>
+<li>Added a general <code>.release_checks.R</code> script in the repo (but <code>.Rbuildignore</code>d)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.8.2" id="version-182">Version 1.8.2<a class="anchor" aria-label="anchor" href="#version-182"></a></h2>

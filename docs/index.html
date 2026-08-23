@@ -31,7 +31,7 @@
 
     <a class="navbar-brand me-2" href="index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,11 +74,11 @@
 <h2 id="visualizing-hypothesis-tests-in-multivariate-linear-models">
 <strong>Visualizing Hypothesis Tests in Multivariate Linear Models</strong><a class="anchor" aria-label="anchor" href="#visualizing-hypothesis-tests-in-multivariate-linear-models"></a>
 </h2>
-<!-- Version 1.7.2 -->
-<p>Version 1.8.3; documentation built for <code>pkgdown</code> 2026-08-10</p>
+<!-- explicit version number now dynamic -->
+<p>Version 1.8.4; documentation built for <code>pkgdown</code> 2026-08-23</p>
 </div>
 <div class="section level2">
-<h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
+<h2 id="id_-description">📝 Description<a class="anchor" aria-label="anchor" href="#id_-description"></a>
 </h2>
 <p>The <code>heplots</code> package provides functions for visualizing hypothesis tests in multivariate linear models (“MLM” = {MANOVA, multivariate multiple regression, MANCOVA, and repeated measures designs}). It also provides other tools for analysis and graphical display of MLMs.</p>
 <p>HE plots represent sums-of-squares-and-products matrices for linear hypotheses (<strong>H</strong>) and for error (<strong>E</strong>) using ellipses (in two dimensions), ellipsoids (in three dimensions), or by line segments in one dimension. For the theory and applications, see:</p>
@@ -88,7 +88,7 @@
 <li>
 <a href="https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf" class="external-link">Fox, Friendly and Monette (2009)</a> for a brief introduction,</li>
 <li>
-<a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">Friendly (2010)</a> for the application of these ideas to repeated measure designs,</li>
+<a href="https://www.jstatsoft.org/htaccess.php?volume=37&amp;type=i&amp;issue=04&amp;filename=paper" class="external-link">Friendly (2010)</a> for the application of these ideas to repeated measure designs,</li>
 <li>
 <a href="http://datavis.ca/papers/ellipses-STS402.pdf" class="external-link">Friendly, Monette and Fox (2013)</a> for a general discussion of the role of elliptical geometry in statistical understanding,</li>
 <li>
@@ -108,7 +108,7 @@
 <li>bivariate coefficient plots showing elliptical confidence regions (<code><a href="reference/coefplot.html">coefplot()</a></code>).</li>
 </ul>
 <p>In this respect, the <code>heplots</code> package now aims to provide a wide range of tools for analyzing and visualizing multivariate response linear models, together with other packages:</p>
-<p><a href="https://friendly.github.io/candisc/" class="external-link"><img src="https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png" height="80" alt="candisc logo" style="float:right; height:80px;"></a></p>
+<p><a href="https://friendly.github.io/candisc/" class="external-link"><img src="https://raw.githubusercontent.com/friendly/candisc/master/man/figures/logo.png" height="80" alt="candisc logo" style="float:right; height:80px;"></a></p>
 <ul>
 <li>The related <a href="https://friendly.github.io/candisc/" class="external-link"><code>candisc</code></a> package provides HE plots in <strong>canonical discriminant</strong> space, the space of linear combinations of the responses that show the maximum possible effects and for canonical correlation in multivariate regression designs. See the <a href="https://friendly.github.io/candisc/" class="external-link">package documentation</a> for details.</li>
 </ul>
@@ -116,15 +116,14 @@
 <ul>
 <li>Another package, <a href="https://friendly.github.io/mvinfluence/" class="external-link"><code>mvinfluence</code></a>, provides diagnostic measures and plots for <strong>influential observations</strong> in MLM designs. See the <a href="https://friendly.github.io/mvinfluence/" class="external-link">package documentation</a> for details.</li>
 </ul>
-<p>Several tutorial vignettes are also included. See <code>vignette(package="heplots")</code>.</p>
 </div>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<h2 id="id_-installation">📂 Installation<a class="anchor" aria-label="anchor" href="#id_-installation"></a>
 </h2>
 <table class="table">
 <colgroup>
-<col width="50%">
-<col width="50%">
+<col width="21%">
+<col width="78%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -143,7 +142,7 @@
 </table>
 </div>
 <div class="section level2">
-<h2 id="he-plot-functions">HE plot functions<a class="anchor" aria-label="anchor" href="#he-plot-functions"></a>
+<h2 id="id_-he-plot-functions">📐 HE plot functions<a class="anchor" aria-label="anchor" href="#id_-he-plot-functions"></a>
 </h2>
 <p>The graphical functions contained here all display multivariate model effects in variable (<strong>data</strong>) space, for one or more response variables (or contrasts among response variables in repeated measures designs).</p>
 <ul>
@@ -154,7 +153,7 @@
 </ul>
 </div>
 <div class="section level2">
-<h2 id="other-functions">Other functions<a class="anchor" aria-label="anchor" href="#other-functions"></a>
+<h2 id="id_-other-functions">🔧 Other functions<a class="anchor" aria-label="anchor" href="#id_-other-functions"></a>
 </h2>
 <ul>
 <li><p><code><a href="reference/glance.mlm.html">glance.mlm()</a></code> extends <code><a href="https://broom.tidymodels.org/reference/glance.lm.html" class="external-link">broom::glance.lm()</a></code> to multivariate response models, giving a one-line statistical summary for each response variable. <code><a href="reference/uniStats.html">uniStats()</a></code> does something similar, but formatted more like a ANOVA table.</p></li>
@@ -165,20 +164,20 @@
 <div class="section level3">
 <h3 id="repeated-measure-designs">Repeated measure designs<a class="anchor" aria-label="anchor" href="#repeated-measure-designs"></a>
 </h3>
-<p>For repeated measure designs, between-subject effects and within-subject effects must be plotted separately, because the error terms (<strong>E</strong> matrices) differ. For terms involving within-subject effects, these functions carry out a linear transformation of the matrix <strong>Y</strong> of responses to a matrix <strong>Y M</strong>, where <strong>M</strong> is the model matrix for a term in the intra-subject design and produce plots of the <strong>H</strong> and <strong>E</strong> matrices in this transformed space. The vignette <code>"repeated"</code> describes these graphical methods for repeated measures designs. (This paper <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a> is now provided as a PDF vignette.)</p>
+<p>For repeated measure designs, between-subject effects and within-subject effects must be plotted separately, because the error terms (<strong>E</strong> matrices) differ. For terms involving within-subject effects, these functions carry out a linear transformation of the matrix <strong>Y</strong> of responses to a matrix <strong>Y M</strong>, where <strong>M</strong> is the model matrix for a term in the intra-subject design and produce plots of the <strong>H</strong> and <strong>E</strong> matrices in this transformed space. The paper <a href="https://www.jstatsoft.org/htaccess.php?volume=37&amp;type=i&amp;issue=04&amp;filename=paper" class="external-link">HE plots for repeated measures designs</a> describes these graphical methods for repeated measures designs.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a>
+<h2 id="id_️-datasets">🗃️ Datasets<a class="anchor" aria-label="anchor" href="#id_%EF%B8%8F-datasets"></a>
 </h2>
-<p>The package also provides a large collection of data sets illustrating a variety of multivariate linear models of the types listed above, together with graphical displays. The table below classifies these with method tags. Their names are linked to their documentation with graphical output on the <code>pkgdown</code> website, [<a href="http://friendly.github.io/heplots" class="external-link uri">http://friendly.github.io/heplots</a>].</p>
+<p>The package also provides a large collection of data sets illustrating a variety of multivariate linear models of the types listed above, together with graphical displays. The table below classifies these with method tags. Their names are linked to their documentation with graphical output on the <code>pkgdown</code> website, [<a href="https://friendly.github.io/heplots" class="uri">https://friendly.github.io/heplots</a>].</p>
 <table class="table">
 <colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
+<col width="45%">
+<col width="3%">
+<col width="3%">
+<col width="34%">
+<col width="13%">
 </colgroup>
 <thead><tr class="header">
 <th>dataset</th>
@@ -189,231 +188,231 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/AddHealth.html" class="external-link">AddHealth</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/AddHealth.html">AddHealth</a></td>
 <td>4344</td>
 <td>3</td>
 <td>Adolescent Health Data</td>
 <td>MANOVA ordered</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/Adopted.html" class="external-link">Adopted</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Adopted.html">Adopted</a></td>
 <td>62</td>
 <td>6</td>
 <td>Adopted Children</td>
 <td>MMRA repeated</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/Bees.html" class="external-link">Bees</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Bees.html">Bees</a></td>
 <td>246</td>
 <td>6</td>
 <td>Captive and maltreated bees</td>
 <td>MANOVA</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/Diabetes.html" class="external-link">Diabetes</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Diabetes.html">Diabetes</a></td>
 <td>145</td>
 <td>6</td>
 <td>Diabetes Dataset</td>
 <td>MANOVA</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/dogfood.html" class="external-link">dogfood</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/dogfood.html">dogfood</a></td>
 <td>16</td>
 <td>3</td>
 <td>Dogfood Preferences</td>
 <td>MANOVA contrasts candisc</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/FootHead.html" class="external-link">FootHead</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/FootHead.html">FootHead</a></td>
 <td>90</td>
 <td>7</td>
 <td>Head measurements of football players</td>
 <td>MANOVA contrasts</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/Headache.html" class="external-link">Headache</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Headache.html">Headache</a></td>
 <td>98</td>
 <td>6</td>
 <td>Treatment of Headache Sufferers for Sensitivity to Noise</td>
 <td>MANOVA repeated</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/Hernior.html" class="external-link">Hernior</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Hernior.html">Hernior</a></td>
 <td>32</td>
 <td>9</td>
 <td>Recovery from Elective Herniorrhaphy</td>
 <td>MMRA candisc</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html" class="external-link">Iwasaki_Big_Five</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html">Iwasaki_Big_Five</a></td>
 <td>203</td>
 <td>7</td>
 <td>Personality Traits of Cultural Groups</td>
 <td>MANOVA</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/mathscore.html" class="external-link">mathscore</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/mathscore.html">mathscore</a></td>
 <td>12</td>
 <td>3</td>
 <td>Math scores for basic math and word problems</td>
 <td>MANOVA</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/MockJury.html" class="external-link">MockJury</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/MockJury.html">MockJury</a></td>
 <td>114</td>
 <td>17</td>
 <td>Effects Of Physical Attractiveness Upon Mock Jury Decisions</td>
 <td>MANOVA candisc</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/NeuroCog.html" class="external-link">NeuroCog</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/NeuroCog.html">NeuroCog</a></td>
 <td>242</td>
 <td>10</td>
 <td>Neurocognitive Measures in Psychiatric Groups</td>
 <td>MANOVA candisc</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/NLSY.html" class="external-link">NLSY</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/NLSY.html">NLSY</a></td>
 <td>243</td>
 <td>6</td>
 <td>National Longitudinal Survey of Youth Data</td>
 <td>MMRA</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/oral.html" class="external-link">oral</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/oral.html">oral</a></td>
 <td>56</td>
 <td>5</td>
 <td>Effect of Delay in Oral Practice in Second Language Learning</td>
 <td>MANOVA</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/Oslo.html" class="external-link">Oslo</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Oslo.html">Oslo</a></td>
 <td>332</td>
 <td>14</td>
 <td>Oslo Transect Subset Data</td>
 <td>MANOVA candisc</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/Overdose.html" class="external-link">Overdose</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Overdose.html">Overdose</a></td>
 <td>17</td>
 <td>7</td>
 <td>Overdose of Amitriptyline</td>
 <td>MMRA cancor</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/Parenting.html" class="external-link">Parenting</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Parenting.html">Parenting</a></td>
 <td>60</td>
 <td>4</td>
 <td>Father Parenting Competence</td>
 <td>MANOVA contrasts</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/peng.html" class="external-link">peng</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/peng.html">peng</a></td>
 <td>333</td>
 <td>8</td>
 <td>Size measurements for adult foraging penguins near Palmer Station</td>
 <td>MANOVA</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/Plastic.html" class="external-link">Plastic</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Plastic.html">Plastic</a></td>
 <td>20</td>
 <td>5</td>
 <td>Plastic Film Data</td>
 <td>MANOVA</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/Pottery2.html" class="external-link">Pottery2</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Pottery2.html">Pottery2</a></td>
 <td>48</td>
 <td>12</td>
 <td>Chemical Analysis of Romano-British Pottery</td>
 <td>MANOVA candisc</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/Probe.html" class="external-link">Probe</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Probe.html">Probe</a></td>
 <td>11</td>
 <td>5</td>
 <td>Response Speed in a Probe Experiment</td>
 <td>MANOVA repeated</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/RatWeight.html" class="external-link">RatWeight</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/RatWeight.html">RatWeight</a></td>
 <td>27</td>
 <td>6</td>
 <td>Weight Gain in Rats Exposed to Thiouracil and Thyroxin</td>
 <td>MANOVA repeated</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/ReactTime.html" class="external-link">ReactTime</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/ReactTime.html">ReactTime</a></td>
 <td>10</td>
 <td>6</td>
 <td>Reaction Time Data</td>
 <td>repeated</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/Rohwer.html" class="external-link">Rohwer</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Rohwer.html">Rohwer</a></td>
 <td>69</td>
 <td>10</td>
 <td>Rohwer Data Set</td>
 <td>MMRA MANCOVA</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/RootStock.html" class="external-link">RootStock</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/RootStock.html">RootStock</a></td>
 <td>48</td>
 <td>5</td>
 <td>Growth of Apple Trees from Different Root Stocks</td>
 <td>MANOVA contrasts</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/Sake.html" class="external-link">Sake</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Sake.html">Sake</a></td>
 <td>30</td>
 <td>10</td>
 <td>Taste Ratings of Japanese Rice Wine (Sake)</td>
 <td>MMRA</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/schooldata.html" class="external-link">schooldata</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/schooldata.html">schooldata</a></td>
 <td>70</td>
 <td>8</td>
 <td>School Data</td>
 <td>MMRA robust</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/Skulls.html" class="external-link">Skulls</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/Skulls.html">Skulls</a></td>
 <td>150</td>
 <td>5</td>
 <td>Egyptian Skulls</td>
 <td>MANOVA contrasts</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/SocGrades.html" class="external-link">SocGrades</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/SocGrades.html">SocGrades</a></td>
 <td>40</td>
 <td>10</td>
 <td>Grades in a Sociology Course</td>
 <td>MANOVA candisc</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/SocialCog.html" class="external-link">SocialCog</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/SocialCog.html">SocialCog</a></td>
 <td>139</td>
 <td>5</td>
 <td>Social Cognitive Measures in Psychiatric Groups</td>
 <td>MANOVA candisc</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/TIPI.html" class="external-link">TIPI</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/TIPI.html">TIPI</a></td>
 <td>1799</td>
 <td>16</td>
 <td>Data on the Ten Item Personality Inventory</td>
 <td>MANOVA candisc</td>
 </tr>
 <tr class="even">
-<td><a href="http://friendly.github.io/heplots/reference/VocabGrowth.html" class="external-link">VocabGrowth</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/VocabGrowth.html">VocabGrowth</a></td>
 <td>64</td>
 <td>4</td>
 <td>Vocabulary growth data</td>
 <td>repeated</td>
 </tr>
 <tr class="odd">
-<td><a href="http://friendly.github.io/heplots/reference/WeightLoss.html" class="external-link">WeightLoss</a></td>
+<td><a href="https://friendly.github.io/heplots/reference/WeightLoss.html">WeightLoss</a></td>
 <td>34</td>
 <td>7</td>
 <td>Weight Loss Data</td>
@@ -423,7 +422,12 @@
 </table>
 </div>
 <div class="section level2">
-<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+<h2 id="id_-vignettes">📖 Vignettes<a class="anchor" aria-label="anchor" href="#id_-vignettes"></a>
+</h2>
+<p>Several tutorial vignettes are included, and can be browsed with <code>browseVignettes(package = "heplots")</code> once installed with <code>build_vignettes = TRUE</code>. Their rendered versions are also available as articles on the <a href="https://friendly.github.io/heplots/articles/">pkgdown site</a>:</p>
+</div>
+<div class="section level2">
+<h2 id="id_-examples">📊 Examples<a class="anchor" aria-label="anchor" href="#id_-examples"></a>
 </h2>
 <p>This example illustrates HE plots using the classic <code>iris</code> data set. How do the means of the flower variables differ by <code>Species</code>? This dataset was the impetus for R. A. Fisher (1936) to propose a method of discriminant analysis using data collected by Edgar Anderson (1928). Though some may rightly deprecate Fisher for being a supporter of eugenics, Anderson’s <code>iris</code> dataset should not be blamed.</p>
 <p>A basic HE plot shows the <strong>H</strong> and <strong>E</strong> ellipses for the first two response variables (here: <code>Sepal.Length</code> and <code>Sepal.Width</code>). The multivariate test is significant (by Roy’s test) <em>iff</em> the <strong>H</strong> ellipse projects <em>anywhere</em> outside the <strong>E</strong> ellipse.</p>
@@ -524,14 +528,14 @@ Covariance ellipses for the iris data, showing the classical and robust estimate
 </div>
 </div>
 <div class="section level2">
-<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+<h2 id="id_-references">📚 References<a class="anchor" aria-label="anchor" href="#id_-references"></a>
 </h2>
 <p>Anderson, E. (1928). The Problem of Species in the Northern Blue Flags, Iris versicolor L. and Iris virginica L. <em>Annals of the Missouri Botanical Garden</em>, <strong>13</strong>, 241–313.</p>
 <p>Fisher, R. A. (1936). The Use of Multiple Measurements in Taxonomic Problems. <em>Annals of Eugenics</em>, <strong>8</strong>, 379–388.</p>
 <p>Friendly, M. (2006). <a href="https://www.jstatsoft.org/article/view/v017i06" class="external-link">Data Ellipses, HE Plots and Reduced-Rank Displays for Multivariate Linear Models: SAS Software and Examples.</a> <em>Journal of Statistical Software</em>, <strong>17</strong>, 1-42.</p>
 <p>Friendly, M. (2007). <a href="http://datavis.ca/papers/jcgs-heplots.pdf" class="external-link">HE plots for Multivariate General Linear Models</a>. <em>Journal of Computational and Graphical Statistics</em>, <strong>16</strong>(2) 421-444. DOI: 10.1198/106186007X208407.</p>
 <p>Fox, J., Friendly, M. &amp; Monette, G. (2009). <a href="https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf" class="external-link">Visualizing hypothesis tests in multivariate linear models: The heplots package for R</a> <em>Computational Statistics</em>, <strong>24</strong>, 233-246.</p>
-<p>Friendly, M. (2010). <a href="http://www.jstatsoft.org/v37/i04/paper" class="external-link">HE plots for repeated measures designs</a>. <em>Journal of Statistical Software</em>, <strong>37</strong>, 1–37.</p>
+<p>Friendly, M. (2010). <a href="https://www.jstatsoft.org/htaccess.php?volume=37&amp;type=i&amp;issue=04&amp;filename=paper" class="external-link">HE plots for repeated measures designs</a>. <em>Journal of Statistical Software</em>, <strong>37</strong>, 1–37.</p>
 <p>Friendly, M.; Monette, G. &amp; Fox, J. (2013). <a href="http://datavis.ca/palers/ellipses-STS402.pdf" class="external-link">Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry</a> <em>Statistical Science</em>, <strong>28</strong>, 1-39.</p>
 <p>Friendly, M. &amp; Sigal, M. (2017). <a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">Graphical Methods for Multivariate Linear Models in Psychological Research: An R Tutorial.</a> <em>The Quantitative Methods for Psychology</em>, <strong>13</strong>, 20-45.</p>
 <p>Friendly, M. &amp; Sigal, M. (2018): <a href="https://www.datavis.ca/papers/EqCov-TAS.pdf" class="external-link">Visualizing Tests for Equality of Covariance Matrices</a>, <em>The American Statistician</em>, <a href="https://doi.org/10.1080/00031305.2018.1497537" class="external-link">DOI</a></p>
@@ -576,7 +580,7 @@ Covariance ellipses for the iris data, showing the classical and robust estimate
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
-<li><a href="http://cran.r-project.org/package=heplots" class="external-link"><img src="http://www.r-pkg.org/badges/version/heplots" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://CRAN.R-project.org/package=heplots" class="external-link"><img src="http://www.r-pkg.org/badges/version/heplots" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://friendly.r-universe.dev" class="external-link"><img src="https://friendly.r-universe.dev/badges/heplots" alt="R_Universe"></a></li>
 <li><a href="https://github.com/friendly/heplots/" class="external-link"><img src="https://img.shields.io/github/last-commit/friendly/heplots" alt="Last Commit"></a></li>
 <li><a href="https://cran.r-project.org/package=heplots" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/heplots" alt="Downloads"></a></li>

@@ -41,7 +41,7 @@ A data frame with 203 observations on the following 7 variables.
 
 Grice, J., & Iwasaki, M. (2007). A truly multivariate approach to
 MANOVA. *Applied Multivariate Research*, **12**, 199-226.
-https://doi.org/10.22329/amr.v12i3.660.
+[doi:10.22329/amr.v12i3.660](https://doi.org/10.22329/amr.v12i3.660) .
 
 ## Details
 

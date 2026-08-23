@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +67,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Robust Multivariate Linear Models</h1>
                         <h4 data-toc-skip class="author">Michael Friendly</h4>
             
-            <h4 data-toc-skip class="date">2026-08-11</h4>
+            <h4 data-toc-skip class="date">2026-08-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/friendly/heplots/blob/HEAD/vignettes/Robust.Rmd" class="external-link"><code>vignettes/Robust.Rmd</code></a></small>
       <div class="d-none name"><code>Robust.Rmd</code></div>
@@ -78,7 +78,10 @@
 <p><strong>Abstract</strong></p>
 <p>This vignette describes the theory behind, and demonstrates the use of, the <code><a href="../reference/robmlm.html">robmlm()</a></code> function from the <code>heplots</code> package, which provides robust estimation for multivariate linear models (MLMs) using iteratively reweighted least squares (IRLS).</p>
 <p>It illustrates the central ideas behind robust estimation for MLMs, how the IRLS algorithm works, and presents examples of
-plots that help understand how robust models can contribute to data analysis.</p>
+plots that help understand how robust models can contribute to data analysis.
+It uses two examples, one for a MANOVA design and another for a multivariate multiple regression
+to show features of robust methods and the graphical methods of this package that help to
+understand them.</p>
 <p><strong>Load packages</strong></p>
 <p>I use the following packages here:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -93,7 +96,10 @@ plots that help understand how robust models can contribute to data analysis.</p
 <p>Multivariate linear models (MLMs) extend the familiar univariate linear regression framework to situations where multiple response variables are modeled simultaneously as linear functions of a common set of predictor variables. While classical multivariate least squares estimation provides optimal results under ideal conditions (multivariate normality and absence of outliers), real-world data often violate these assumptions. The presence of outliers, heavy-tailed distributions, or other departures from normality can severely compromise the reliability of classical estimators, leading to biased parameter estimates and inflated error rates in hypothesis testing.</p>
 <p>The need for robust estimation in <em>multivariate</em> regression has been recognized since the early development of robust statistical methods <span class="citation">(<a href="#ref-Huber1964">Huber, 1964</a>; <a href="#ref-Tukey1960">Tukey, 1960</a>)</span>.
 Outliers in multivariate data can be particularly problematic because they may not be readily apparent when examining univariate marginal distributions, yet can exert substantial leverage on the fitted model. Furthermore, the <em>curse of dimensionality</em> means that as the number of response variables increases, the probability of encountering at least one outlying observation grows rapidly.</p>
-<p>Robust multivariate regression methods aim to provide reliable parameter estimates and inference procedures that remain stable in the presence of outlying observations. As noted by <span class="citation">Rousseeuw, Van Aelst, Van Driessen, &amp; Gulló (<a href="#ref-Rousseeuw2004">2004</a>)</span>, “<em>The main advantage of robust regression is that it provides reliable results even when some of the assumptions of classical regression are violated.</em>”</p>
+<p>Robust multivariate regression methods aim to provide reliable parameter estimates and inference procedures that remain stable in the presence of outlying observations. As noted by <span class="citation">Rousseeuw, Van Aelst, Van Driessen, &amp; Gulló (<a href="#ref-Rousseeuw2004">2004</a>)</span>,</p>
+<blockquote>
+<p>“<em>The main advantage of robust regression is that it provides reliable results even when some of the assumptions of classical regression are violated.</em>”</p>
+</blockquote>
 <p>Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators <span class="citation">(<a href="#ref-Rousseeuw1984">Rousseeuw &amp; Yohai, 1984</a>)</span>, and MM-estimators <span class="citation">(<a href="#ref-Yohai1987">Yohai, 1987</a>)</span>. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions. See the <a href="https://cran.r-project.org/view=Robust" class="external-link">CRAN Task View: Robust Statistical Methods</a> for an extensive list of
 robust methods in R. The vignette for the <a href="https://cran.r-project.org/package=rrcov" class="external-link">rrcov package</a>, obtained by <code>vignette(package = "rrcov")</code>,
 contains a general overview of multivariate robust methods.</p>
@@ -167,6 +173,7 @@ This uses the multivariate <math display="inline" xmlns="http://www.w3.org/1998/
 <li><p><strong>Inheritance Structure</strong>: The returned object inherits from both <code>"mlm"</code> and <code>"lm"</code> classes, ensuring compatibility with existing R infrastructure for linear models while adding robust-specific methods.</p></li>
 <li><p><strong>Weight Preservation</strong>: The final weights are preserved in the fitted object, allowing users to identify influential observations and assess the impact of the robust fitting procedure.</p></li>
 <li><p><strong>Diagnostic Capabilities</strong>: The <code><a href="../reference/plot.robmlm.html">plot.robmlm()</a></code> method provides immediate visual feedback on the weighting scheme, plotting final weights against case numbers to highlight observations that were down-weighted during the fitting process.</p></li>
+<li><p><strong>Visualization methods</strong>: Because a fitted <code>robmlm</code> object inherits the <code>"mlm"</code> class, it works directly with <code>heplots</code>’ existing diagnostic and hypothesis-test plots. <code><a href="../reference/distancePlot.html">distancePlot()</a></code> plots the Mahalanobis distances of the model-matrix predictors against the distances of the residuals, so cases with both high leverage and a large residual — and so likely down-weighted during IRLS — stand out just as they would for a classical <code>mlm</code>. <code><a href="../reference/heplot.html">heplot()</a></code> goes further: fitting the classical and robust models separately and overlaying the robust <strong>H</strong> and <strong>E</strong> ellipses on the classical model’s plot (<code>add = TRUE</code>) gives a direct geometric view of how down-weighting outliers reshapes the hypothesis and error variation — typically a visibly smaller <strong>E</strong> ellipse for the robust fit. See the example below.</p></li>
 </ul>
 </div>
 <div class="section level3">
@@ -228,7 +235,7 @@ these chemical elements can be used to distinguish among the sites.</p>
 <span><span class="co">#&gt;  $ Mg  : num  4.3 3.43 3.88 5.64 5.34 3.47 4.26 5.91 4.52 7.23 ...</span></span>
 <span><span class="co">#&gt;  $ Ca  : num  0.15 0.12 0.13 0.16 0.2 0.17 0.2 0.18 0.29 0.28 ...</span></span>
 <span><span class="co">#&gt;  $ Na  : num  0.51 0.17 0.2 0.14 0.2 0.22 0.18 0.16 0.3 0.2 ...</span></span></code></pre></div>
-<p>The pottery samples are not evenly distributed across the sites. The most come from Llanedyrn; there are only two from
+<p>The pottery samples are not evenly distributed across the sites. The most come from Llanedryn; there are only two from
 Caldicot.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">Pottery</span><span class="op">$</span><span class="va">Site</span><span class="op">)</span></span>
@@ -286,7 +293,7 @@ left-most column, followed by AshleyRails and IsleThorns (each with <math displa
 <div class="section level3">
 <h3 id="robust-manova">Robust MANOVA<a class="anchor" aria-label="anchor" href="#robust-manova"></a>
 </h3>
-<p>Now, fit the robust model using <code><a href="../reference/robmlm.html">robmlm()</a></code>. Because this uses an interative IRLS method, points that might not seem unusual
+<p>Now, fit the robust model using <code><a href="../reference/robmlm.html">robmlm()</a></code>. Because this uses an iterative IRLS method, points that might not seem unusual
 in the initial model can become more noteworthy when the extreme observations are down-weighted in a subsequent iteration.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Robust MANOVA model</span></span>
@@ -303,7 +310,7 @@ the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics
 which suggests that possible outliers may have reduced the strength of evidence for differences among the sites.</p>
 <p>It is useful to compare the coefficients of the two models, and for this, their relative difference is
 a useful metric. The simple function <code>reldiff()</code> expresses these as the signed percent of difference
-between the classical and robust estimatges</p>
+between the classical and robust estimates.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">b.mlm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">pottery.mlm</span><span class="op">)</span></span>
 <span><span class="va">b.rlm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">pottery.rlm</span><span class="op">)</span></span>
@@ -341,10 +348,30 @@ Figure 5: Weights from robust MANOVA fitting showing potential outliers
 <p>The weight plot reveals which observations were considered potentially problematic during the robust fitting process. Observations with weights substantially below 1.0 were down-weighted, indicating they may be outliers in the multivariate space defined by the five chemical measurements.</p>
 </div>
 <div class="section level3">
+<h3 id="distance-plot">Distance Plot<a class="anchor" aria-label="anchor" href="#distance-plot"></a>
+</h3>
+<p><code><a href="../reference/distancePlot.html">distancePlot()</a></code> gives a complementary view of the same idea. It plots the Mahalanobis distances of the <code>Site</code> <strong>predictors</strong> (the model matrix <code>X</code>) against the distances of the <strong>residuals</strong> from the robust fit, labeling cases beyond the cutoff lines (dashed, <code>level = 0.975</code> by default). This plot method, due to
+Rousseeuw &amp; van Zomeren <span class="citation">(<a href="#ref-Rousseeuw1990">1990</a>, <a href="#ref-Rousseeuw1991">1991</a>)</span> and Rousseeuw et al. <span class="citation">(<a href="#ref-Rousseeuw2004">2004</a>)</span>, helps you see WHY observations are
+downweighted, by combining information on regression outliers (unusual in the <code>Y</code> responses) and leverage points
+(unusual in the <code>X</code>s).</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/distancePlot.html">distancePlot</a></span><span class="op">(</span><span class="va">pottery.rlm</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 0.975 X, Y distance cutoffs: 3.058 3.582</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:pottery-distanceplot"></span>
+<img src="fig/robust-pottery-distanceplot-1.png" alt="Distance plot for the robust Pottery model: Mahalanobis distances of the Site predictors vs. distances of the residuals."><p class="caption">
+Figure 6: Distance plot for the robust Pottery model: Mahalanobis distances of the Site predictors vs. distances of the residuals.
+</p>
+</div>
+<p>Case 25 – already flagged with the largest Cook’s D in the classical influence plot above – again stands out,
+here with an unusually large residual distance. Cases 15 and 16 stand out instead on the predictor (<code>Site</code>) side,
+reflecting their group’s small sample size rather than an unusual response pattern.</p>
+</div>
+<div class="section level3">
 <h3 id="hypothesis-error-he-plots">Hypothesis-Error (HE) plots<a class="anchor" aria-label="anchor" href="#hypothesis-error-he-plots"></a>
 </h3>
 <p>HE plots provide a visual representation of the multivariate hypothesis test by showing the relationship between hypothesis and error variation in a reduced dimensional space. We’ll create HE plots for the first two variables (Al and Fe) and compare the classical and robust fits.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Classical HE plot for Al and Fe</span></span>
 <span><span class="fu"><a href="../reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">pottery.mlm</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Al"</span>, <span class="st">"Fe"</span><span class="op">)</span>, </span>
 <span>       main <span class="op">=</span> <span class="st">"Classical vs Robust MANOVA: Al vs Fe"</span>,</span>
@@ -366,7 +393,7 @@ Figure 5: Weights from robust MANOVA fitting showing potential outliers
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-heplot"></span>
 <img src="fig/robust-pottery-heplot-1.png" alt="HE plot comparing classical (blue) and robust (red) MANOVA for Al vs Fe"><p class="caption">
-Figure 6: HE plot comparing classical (blue) and robust (red) MANOVA for Al vs Fe
+Figure 7: HE plot comparing classical (blue) and robust (red) MANOVA for Al vs Fe
 </p>
 </div>
 <p>The <strong>H</strong> and <strong>E</strong> ellipses have approximately the same shape and orientation for the classical and robust models, indicating
@@ -374,13 +401,13 @@ that the pattern of differences among the group means is quite similar for both 
 model is noticeably smaller. This goes into the greater <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math> statistic for the robust model.</p>
 <p>For a more complete interpretation of robust model, a scatterplot matrix of HE plots is shown below, using the <code><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs()</a></code> method
 for a MLM.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">pottery.rlm</span>, </span>
 <span>      fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-pairs"></span>
 <img src="fig/robust-pottery-pairs-1.png" alt="Pairwise HE plots for all response variables in the robust model `pottery.rlm`"><p class="caption">
-Figure 7: Pairwise HE plots for all response variables in the robust model <code>pottery.rlm</code>
+Figure 8: Pairwise HE plots for all response variables in the robust model <code>pottery.rlm</code>
 </p>
 </div>
 </div>
@@ -397,10 +424,169 @@ Figure 7: Pairwise HE plots for all response variables in the robust model <code
 This indicates |r ifelse(abs(log10(robust_anova$"Pr(>F)"[1]) - log10(classical_anova$"Pr(>F)"[1])) > 0.5, "that outliers are influencing the classical analysis", "that the data are relatively well-behaved with respect to outliers")|.
 --><ul>
 <li><p><strong>Outlier detection</strong>: The weight plot identifies specific observations that deviate from the typical pattern. In archaeological studies, such outliers might represent pottery from different time periods, contaminated samples, or measurement errors that warrant further investigation.</p></li>
-<li><p><strong>Geometric interpretation</strong>: The HE plot comparison reveals how outliers affect the geometric representation of the hypothesis test. The hypothesis ellipse (representing the Site effect) and error ellipse (representing within-group variation) may differ substantially between classical and robust fits when influential outliers are present.</p></li>
-<li><p><strong>Practical implications</strong>: For archaeologists studying pottery composition, the robust analysis provides more reliable conclusions about site differences by reducing the influence of potentially problematic observations. This is particularly important when making inferences about ancient trade routes, cultural practices, or chronological relationships based on chemical composition data.</p></li>
+<li><p><strong>Geometric interpretation</strong>: The HE plot comparison reveals how outliers affect the geometric representation of the hypothesis test. The hypothesis ellipse (representing the Site effect) and error ellipse (representing within-group variation) may differ substantially between classical and robust fits when influential outliers are present. The usual effect is that of seeing hypothesis effects more strongly
+when potential outliers are down-weighted.</p></li>
+<li><p><strong>Practical implications</strong>: For archaeologists studying historical artifacts, the robust analysis provides more reliable conclusions about site or other factors differences by reducing the influence of potentially problematic observations. This is particularly important when making inferences about ancient trade routes, cultural practices, or chronological relationships based on chemical composition data. In some circumstances, the identification of such unusual observations can lead to insight about conventional theory.</p></li>
 </ul>
 <p>The robust approach demonstrates its value by providing a more stable analysis that is less susceptible to the influence of outlying observations, while still maintaining high efficiency when the data conform to standard assumptions.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="example-pulp-fiber-data">Example: Pulp Fiber Data<a class="anchor" aria-label="anchor" href="#example-pulp-fiber-data"></a>
+</h2>
+<p>Our second example is more compact, and illustrates <code><a href="../reference/robmlm.html">robmlm()</a></code> in a multivariate multiple regression rather than a MANOVA design. The <code>pulpfiber</code> data [in the <code>robustbase</code> package, <span class="citation">Rousseeuw et al. (<a href="#ref-Rousseeuw2004">2004</a>)</span>; data from the unpublished thesis of Lee, 1992] give four pulp-fiber properties (<code>X1</code>-<code>X4</code>: fiber length, long fiber fraction, fine fiber fraction, zero-span tensile) measured on 62 samples, along with four properties of the paper produced from them (<code>Y1</code>-<code>Y4</code>: breaking length, elastic modulus, failure stress, burst strength). The goal is to predict the paper properties from the fiber properties.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">pulpfiber</span>, package <span class="op">=</span> <span class="st">"robustbase"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">pulpfiber</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    62 obs. of  8 variables:</span></span>
+<span><span class="co">#&gt;  $ X1: num  -0.03 0.015 0.025 0.03 -0.07 -0.05 -0.247 -0.099 -0.242 -0.188 ...</span></span>
+<span><span class="co">#&gt;  $ X2: num  35.2 35.7 39.2 39.8 33 ...</span></span>
+<span><span class="co">#&gt;  $ X3: num  37 36.9 30.6 21.1 36.6 ...</span></span>
+<span><span class="co">#&gt;  $ X4: num  1.06 1.06 1.05 1.05 1.05 ...</span></span>
+<span><span class="co">#&gt;  $ Y1: num  21.3 21.2 20.7 19.5 20.4 ...</span></span>
+<span><span class="co">#&gt;  $ Y2: num  7.04 6.98 6.78 6.6 6.79 ...</span></span>
+<span><span class="co">#&gt;  $ Y3: num  5.33 5.24 5.06 4.48 4.91 ...</span></span>
+<span><span class="co">#&gt;  $ Y4: num  0.932 0.871 0.742 0.513 0.577 0.784 0.358 0.215 0.432 0.372 ...</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="classical-and-robust-fits">Classical and Robust Fits<a class="anchor" aria-label="anchor" href="#classical-and-robust-fits"></a>
+</h3>
+<p>To get started, fit the classical OLS multivariate regression and the robust version and run <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code> on each</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pulp.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Y1</span>, <span class="va">Y2</span>, <span class="va">Y3</span>, <span class="va">Y4</span><span class="op">)</span> <span class="op">~</span> <span class="va">X1</span> <span class="op">+</span> <span class="va">X2</span> <span class="op">+</span> <span class="va">X3</span> <span class="op">+</span> <span class="va">X4</span>, data <span class="op">=</span> <span class="va">pulpfiber</span><span class="op">)</span></span>
+<span><span class="va">pulp.rlm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/robmlm.html">robmlm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Y1</span>, <span class="va">Y2</span>, <span class="va">Y3</span>, <span class="va">Y4</span><span class="op">)</span> <span class="op">~</span> <span class="va">X1</span> <span class="op">+</span> <span class="va">X2</span> <span class="op">+</span> <span class="va">X3</span> <span class="op">+</span> <span class="va">X4</span>, data <span class="op">=</span> <span class="va">pulpfiber</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pulp.mod</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Type II MANOVA Tests: Pillai test statistic</span></span>
+<span><span class="co">#&gt;    Df test stat approx F num Df den Df  Pr(&gt;F)    </span></span>
+<span><span class="co">#&gt; X1  1     0.157     2.51      4     54   0.053 .  </span></span>
+<span><span class="co">#&gt; X2  1     0.404     9.16      4     54 1.0e-05 ***</span></span>
+<span><span class="co">#&gt; X3  1     0.211     3.62      4     54   0.011 *  </span></span>
+<span><span class="co">#&gt; X4  1     0.695    30.80      4     54 2.3e-13 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">pulp.rlm</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Type II MANOVA Tests: Pillai test statistic</span></span>
+<span><span class="co">#&gt;    Df test stat approx F num Df den Df  Pr(&gt;F)    </span></span>
+<span><span class="co">#&gt; X1  1     0.357      6.9      4     50 0.00016 ***</span></span>
+<span><span class="co">#&gt; X2  1     0.534     14.3      4     50 7.2e-08 ***</span></span>
+<span><span class="co">#&gt; X3  1     0.368      7.3      4     50 0.00011 ***</span></span>
+<span><span class="co">#&gt; X4  1     0.764     40.4      4     50 4.4e-15 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
+<p>The contrast here is more dramatic than for Pottery:</p>
+<ul>
+<li>In the classical fit, <code>X2</code> and <code>X4</code> stand out clearly (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&lt;</mo><mn>.0001</mn></mrow><annotation encoding="application/x-tex">p &lt; .0001</annotation></semantics></math>), <code>X3</code> is only marginally significant (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>.011</mn></mrow><annotation encoding="application/x-tex">p = .011</annotation></semantics></math>), and <code>X1</code> falls just short of conventional significance (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>.053</mn></mrow><annotation encoding="application/x-tex">p = .053</annotation></semantics></math>).</li>
+<li>In the robust fit, by contrast, all four fiber properties are highly significant predictors of the paper properties (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&lt;</mo><mn>.001</mn></mrow><annotation encoding="application/x-tex">p &lt; .001</annotation></semantics></math> in every case). This suggests that a handful of atypical samples in the classical fit are masking real predictive relationships involving <code>X1</code> and <code>X3</code>.</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="robust-weights">Robust Weights<a class="anchor" aria-label="anchor" href="#robust-weights"></a>
+</h3>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pulp.rlm</span>, segments <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:pulpfiber-weights"></span>
+<img src="fig/robust-pulpfiber-weights-1.png" alt="Weights from robust fitting of the pulp fiber data"><p class="caption">
+Figure 9: Weights from robust fitting of the pulp fiber data
+</p>
+</div>
+<p>Four cases – 51, 52, 56 and 61 – are driven to (essentially) zero weight; two more (22, 44) are markedly reduced (0.43 and 0.69); every other sample retains weight above 0.7. The weight plot alone doesn’t say <em>why</em> these six are atypical; for that we turn to the distance plot.</p>
+</div>
+<div class="section level3">
+<h3 id="distance-plot-1">Distance Plot<a class="anchor" aria-label="anchor" href="#distance-plot-1"></a>
+</h3>
+<p>A <code><a href="../reference/distancePlot.html">distancePlot()</a></code> involves two independent choices: which residuals define the <code>Y</code> (vertical) axis – from <code>pulp.mod</code> (OLS) or <code>pulp.rlm</code> (robust) – and which covariance estimator computes the distances themselves, via <code>method</code>. In this example, only the second choice matters much: with the default <code>method = "classical"</code>, the flagged cases are <em>identical</em> whether the residuals come from <code>pulp.mod</code> or <code>pulp.rlm</code> – the same eight cases (46, 51, 52, 56, 57, 58, 60, 61) either way. The main difference is seen in the covariance estimate, not the fit.</p>
+<p>The reason is a masking effect: classical covariance for the <code>X1</code>-<code>X4</code> fiber measurements is computed from all 62 samples, including the very outliers it is meant to help detect, so it is itself distorted by them and understates how unusual those samples really are. Rousseeuw et al. <span class="citation">(<a href="#ref-Rousseeuw2004">2004</a>)</span> address exactly this for the pulp fiber data by using the MCD covariance estimator instead, which is resistant to the outliers it’s estimating around. The panels below compare the two, both using the robust-fit residuals from <code>pulp.rlm</code>:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/distancePlot.html">distancePlot</a></span><span class="op">(</span><span class="va">pulp.rlm</span>, method <span class="op">=</span> <span class="st">"classical"</span>, main <span class="op">=</span> <span class="st">"Classical distances"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 0.975 X, Y distance cutoffs: 3.338 3.338</span></span>
+<span><span class="fu"><a href="../reference/distancePlot.html">distancePlot</a></span><span class="op">(</span><span class="va">pulp.rlm</span>, method <span class="op">=</span> <span class="st">"mcd"</span>, main <span class="op">=</span> <span class="st">"MCD distances"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 0.975 X, Y distance cutoffs: 3.338 3.338</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:pulpfiber-distanceplot"></span>
+<img src="fig/robust-pulpfiber-distanceplot-1.png" alt="Distance plots for the robust pulp fiber model, comparing classical (left) and MCD-based (right) covariance estimates for the fiber (X) predictor distances."><p class="caption">
+Figure 10: Distance plots for the robust pulp fiber model, comparing classical (left) and MCD-based (right) covariance estimates for the fiber (X) predictor distances.
+</p>
+</div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span></span></code></pre></div>
+<p>Under classical covariance (left), cases 60 and 62 – which turn out to have the two largest predictor distances of any sample once MCD is used – don’t stand out at all: their unusual fiber measurements are masked by a covariance matrix that treats them as ordinary. Under MCD (right), the picture sharpens considerably, flagging 21 cases rather than 8. Most of these retain weight above 0.8 in <code>pulp.rlm</code> – unusual in <code>X</code>, but well fit by the model – so we focus on the few that also matter for the robust fit:</p>
+<ul>
+<li><p>Cases 51, 52 and 56 have unremarkable fiber measurements (small distance on <code>X</code>) but very large residual distances: <strong>vertical outliers</strong>, poorly predicted by the fitted relationship regardless of their (ordinary) predictor values. These are exactly the three cases driven to zero weight above.</p></li>
+<li><p>Case 61 is extreme on <em>both</em> axes: a <strong>bad leverage point</strong>, unusual in its fiber properties <em>and</em> poorly fit by the model – correctly downweighted to zero along with the vertical outliers.</p></li>
+<li><p>Cases 60 and 62 have the two largest predictor distances of any sample, by a wide margin, yet small residual distances: <strong>good leverage points</strong>. They are unusual fiber samples, but ones the fitted relationship predicts well, so <code><a href="../reference/robmlm.html">robmlm()</a></code> correctly leaves them at near-full weight (0.98 each) rather than downweighting them.</p></li>
+<li><p>Case 22 sits in between, at weight 0.43: moderately unusual on both axes without being fully downweighted – a reminder that <code><a href="../reference/robmlm.html">robmlm()</a></code>’s weighting is continuous, not the all-or-nothing split the labels above suggest.</p></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="multivariate-influence-plots">Multivariate Influence Plots<a class="anchor" aria-label="anchor" href="#multivariate-influence-plots"></a>
+</h3>
+<p>What we can learn from a <code><a href="../reference/distancePlot.html">distancePlot()</a></code> can be compared to alternative displays that
+generalize the traditional influence plots of residuals vs. leverage, which
+are extended to the MLM case in the <code>mvinfluence</code> package.</p>
+<p><code><a href="https://rdrr.io/pkg/car/man/influencePlot.html" class="external-link">influencePlot()</a></code> for an <code>"mlm"</code> object draws a bubble plot, with circle areas proportional
+to a generalized Cook’s distance, using one of three <code>type</code>s of axes. The default,
+<code>type = "stres"</code>, plots (squared) Studentized residuals directly against the hat values
+(leverage). <code>type = "LR"</code> instead plots transformed residual and leverage components, <code>R</code>
+and <code>L</code>, chosen so that contours of constant Cook’s distance fall on diagonal lines –
+useful for seeing at a glance whether a case’s influence comes mainly from an unusual
+response, an unusual predictor pattern, or both.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/influencePlot.html" class="external-link">influencePlot</a></span><span class="op">(</span><span class="va">pulp.mod</span>, id.n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:pulpfiber-influenceplot-stres"></span>
+<img src="fig/robust-pulpfiber-influenceplot-stres-1.png" alt="Default (`type = 'stres'`) multivariate influence plot for the OLS pulp fiber model."><p class="caption">
+Figure 11: Default (<code>type = 'stres'</code>) multivariate influence plot for the OLS pulp fiber model.
+</p>
+</div>
+<pre><code><span><span class="co">#&gt;          H       Q  CookD       L       R</span></span>
+<span><span class="co">#&gt; 46 0.24366 0.05983 0.1662 0.32216 0.07911</span></span>
+<span><span class="co">#&gt; 51 0.06929 0.61222 0.4836 0.07445 0.65779</span></span>
+<span><span class="co">#&gt; 52 0.10600 0.41406 0.5004 0.11857 0.46316</span></span>
+<span><span class="co">#&gt; 56 0.12652 0.69124 0.9970 0.14485 0.79137</span></span>
+<span><span class="co">#&gt; 57 0.20519 0.04397 0.1029 0.25817 0.05532</span></span>
+<span><span class="co">#&gt; 58 0.21948 0.05280 0.1321 0.28119 0.06765</span></span>
+<span><span class="co">#&gt; 59 0.18955 0.18764 0.4055 0.23389 0.23153</span></span>
+<span><span class="co">#&gt; 60 0.49040 0.09928 0.5551 0.96231 0.19483</span></span>
+<span><span class="co">#&gt; 61 0.41128 0.38188 1.7904 0.69859 0.64865</span></span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/influencePlot.html" class="external-link">influencePlot</a></span><span class="op">(</span><span class="va">pulp.mod</span>, id.n <span class="op">=</span> <span class="fl">5</span>, type <span class="op">=</span> <span class="st">"LR"</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:pulpfiber-influenceplot-lr"></span>
+<img src="fig/robust-pulpfiber-influenceplot-lr-1.png" alt="`type = 'LR'` multivariate influence plot for the same model."><p class="caption">
+Figure 12: <code>type = 'LR'</code> multivariate influence plot for the same model.
+</p>
+</div>
+<pre><code><span><span class="co">#&gt;          H       Q  CookD       L       R</span></span>
+<span><span class="co">#&gt; 46 0.24366 0.05983 0.1662 0.32216 0.07911</span></span>
+<span><span class="co">#&gt; 51 0.06929 0.61222 0.4836 0.07445 0.65779</span></span>
+<span><span class="co">#&gt; 52 0.10600 0.41406 0.5004 0.11857 0.46316</span></span>
+<span><span class="co">#&gt; 56 0.12652 0.69124 0.9970 0.14485 0.79137</span></span>
+<span><span class="co">#&gt; 57 0.20519 0.04397 0.1029 0.25817 0.05532</span></span>
+<span><span class="co">#&gt; 58 0.21948 0.05280 0.1321 0.28119 0.06765</span></span>
+<span><span class="co">#&gt; 59 0.18955 0.18764 0.4055 0.23389 0.23153</span></span>
+<span><span class="co">#&gt; 60 0.49040 0.09928 0.5551 0.96231 0.19483</span></span>
+<span><span class="co">#&gt; 61 0.41128 0.38188 1.7904 0.69859 0.64865</span></span></code></pre>
+<p>Both types flag the same nine cases here (46, 51, 52, 56, 57, 58, 59, 60, 61) –
+switching <code>type</code> reorganizes how the same influence information is displayed, not which
+cases stand out. Case 61 has the largest bubble in both (generalized Cook’s D = 1.79),
+consistent with its bad-leverage status above, and case 60 has by far the largest leverage
+component <code>L</code>, consistent with it being the more extreme of the two good-leverage cases.
+Case 62, though, doesn’t appear here at all: <code><a href="https://rdrr.io/pkg/car/man/influencePlot.html" class="external-link">influencePlot()</a></code> uses the ordinary
+(non-robust) hat values from <code>pulp.mod</code>, under which case 62’s leverage ranks only 11th of
+62 – the same classical-covariance masking that hid it from the distance plot above.</p>
+</div>
+<div class="section level3">
+<h3 id="interpretation-and-discussion-1">Interpretation and Discussion<a class="anchor" aria-label="anchor" href="#interpretation-and-discussion-1"></a>
+</h3>
+<ul>
+<li><p><strong>Model evaluation</strong>: The gain from 2 to 4 significant predictors under the robust fit shows how a small number of outlying samples can mask genuine predictive relationships in classical multivariate regression – a stronger contrast than in the Pottery example.</p></li>
+<li><p><strong>Outlier detection</strong>: The weight plot and distance plot together tell a more nuanced story than “outlier” vs. “not”: some flagged cases (51, 52, 56, 61) are poorly fit and rightly downweighted, while others (60, 62) are merely unusual in their predictors and rightly are not. Distinguishing good from bad leverage points this way is exactly the diagnostic problem <code><a href="../reference/distancePlot.html">distancePlot()</a></code> is designed to address.</p></li>
+<li><p><strong>Practical implications</strong>: For process data like this – where fiber properties are measured to predict paper quality – correctly identifying <em>which</em> atypical samples to downweight (vertical/bad-leverage cases) versus keep (good-leverage cases) matters for building a model that generalizes to new, unusual-but-plausible fiber batches, rather than one that has simply been fit to accommodate a few mismeasured samples.</p></li>
+</ul>
 </div>
 </div>
 <div class="section level2 unnumbered">
@@ -415,6 +601,12 @@ Rousseeuw, P. J., Van Aelst, S., Van Driessen, K., &amp; Gulló, J. A. (2004). R
 </div>
 <div id="ref-Rousseeuw1984" class="csl-entry">
 Rousseeuw, P. J., &amp; Yohai, V. J. (1984). Robust regression by means of <span>S</span>-estimators. In J. Franke, W. Härdle, &amp; D. Martin (Eds.), <em>Robust and nonlinear time series analysis</em> (Vol. 26, pp. 256–272). New York: Springer.
+</div>
+<div id="ref-Rousseeuw1990" class="csl-entry">
+Rousseeuw, P. J., &amp; Zomeren, B. C. van. (1990). Unmasking multivariate outliers and leverage points. <em>Journal of the American Statistical Association</em>, <em>85</em>(411), 633–639. http://doi.org/<a href="https://doi.org/10.1080/01621459.1990.10474920" class="external-link">10.1080/01621459.1990.10474920</a>
+</div>
+<div id="ref-Rousseeuw1991" class="csl-entry">
+Rousseeuw, P. J., &amp; Zomeren, B. C. van. (1991). Robust distances: Simulation and cutoff values. In W. Stahel &amp; S. Weisberg (Eds.), <em>Directions in robust statistics and diagnostics, part II</em>. New York: Springer-Verlag.
 </div>
 <div id="ref-Tukey1960" class="csl-entry">
 Tukey, J. W. (1960). A survey of sampling from contaminated distributions.
