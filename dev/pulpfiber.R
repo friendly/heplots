@@ -12,19 +12,8 @@ library(car)
 
 data(pulpfiber, package="robustbase")
 
-# pulpfiber |>
-#   rename(
-#     fiber_len  = X1,
-#     long_frac = X2,
-#     fine_frac = X3,
-#     zero_span     = X4,
-# 
-#     breaking_len = Y1,
-#     elastic_mod = Y2,
-#     failure_stress  = Y3,
-#     burst_strength  = Y4
-#   )
 
+# Can these variable labels be used in the output?
 labels <- c(
   X1 = "fiber_len",
   X2 = "long_frac",
@@ -37,7 +26,23 @@ labels <- c(
   Y4 = "burst_stren"
   )
 
+# For this, consider:
+# pulpfiber |>
+#   rename(
+#     fiber_len  = X1,
+#     long_frac = X2,
+#     fine_frac = X3,
+#     zero_span = X4,
+# 
+#     breaking_len = Y1,
+#     elastic_mod = Y2,
+#     failure_stress  = Y3,
+#     burst_strength  = Y4
+#   )
 
+
+
+# Fit OLS model
 pulp.mod <- lm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
 Anova(pulp.mod)
 
@@ -47,6 +52,7 @@ heplot(pulp.mod)
 pairs(pulp.mod,
       var.labels = labels[5:8])
 
+# Fit robust model
 pulp.rlm <- robmlm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
 Anova(pulp.rlm)
 
@@ -58,6 +64,7 @@ pairs(pulp.rlm,
 
 # diagnostic plot: Mahalanobis distances of X vs distances of residuals
 # reproduce figs in Rousseeuw et al (2004), Robust Multivariate Regression
+# [Superceded by distancePlot(); this code was just for development of that]
 
 dist.X <- pulpfiber |>
   select(X1:X4) |>
@@ -79,7 +86,7 @@ outIDs <- which(dist.X > cutoff | dist.resids > cutoff)
 text(dist.X[outIDs], dist.resids[outIDs], (1:nrow(pulpfiber))[outIDs], pos = 2)
 
 #source("C:/R/Projects/heplots/dev/distancePlot.R")
-distancePlot.mlm(pulp.mod)
+distancePlot(pulp.mod)
 
 # do the same for robust distances
 
@@ -114,6 +121,16 @@ distancePlot(pulpfiber[, 1:4], residuals(pulp.mod),
 distancePlot(pulpfiber[, 1:4], residuals(pulp.mod),
              method ="mcd",
              ylab = "Mahalanobis distance of residuals")
+
+
+# Compare distancePlot for an OLS model vs. robust, and when specifying a `method = arg`
+# Why need to specify `ylab` ?
+
+distancePlot(pulp.mod)
+distancePlot(pulp.rlm)
+
+distancePlot(pulp.mod, method ="mcd")
+distancePlot(pulp.rlm, method ="mcd")
 
 
 

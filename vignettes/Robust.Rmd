@@ -47,6 +47,9 @@ This vignette describes the theory behind, and demonstrates the use of, the `rob
 
 It illustrates the central ideas behind robust estimation for MLMs, how the IRLS algorithm works, and presents examples of
 plots that help understand how robust models can contribute to data analysis.
+It uses two examples, one for a MANOVA design and another for a multivariate multiple regression
+to show features of robust methods and the graphical methods of this package that help to
+understand them.
 
 
 **Load packages**
@@ -67,7 +70,9 @@ Multivariate linear models (MLMs) extend the familiar univariate linear regressi
 The need for robust estimation in _multivariate_ regression has been recognized since the early development of robust statistical methods [@Tukey1960;@Huber1964].
 Outliers in multivariate data can be particularly problematic because they may not be readily apparent when examining univariate marginal distributions, yet can exert substantial leverage on the fitted model. Furthermore, the _curse of dimensionality_ means that as the number of response variables increases, the probability of encountering at least one outlying observation grows rapidly.
 
-Robust multivariate regression methods aim to provide reliable parameter estimates and inference procedures that remain stable in the presence of outlying observations. As noted by @Rousseeuw2004, "_The main advantage of robust regression is that it provides reliable results even when some of the assumptions of classical regression are violated._" 
+Robust multivariate regression methods aim to provide reliable parameter estimates and inference procedures that remain stable in the presence of outlying observations. As noted by @Rousseeuw2004, 
+
+>"_The main advantage of robust regression is that it provides reliable results even when some of the assumptions of classical regression are violated._" 
 
 
 Several approaches have been developed for robust multivariate regression, including M-estimators, S-estimators [@Rousseeuw1984], and MM-estimators [@Yohai1987]. Each approach offers different trade-offs between robustness properties, computational efficiency, and statistical efficiency under ideal conditions. See the [CRAN Task View: Robust Statistical Methods](https://cran.r-project.org/view=Robust) for an extensive list of
@@ -152,6 +157,8 @@ This uses the multivariate $t$ distribution that allows for longer tails.
 - **Weight Preservation**: The final weights are preserved in the fitted object, allowing users to identify influential observations and assess the impact of the robust fitting procedure.
 
 - **Diagnostic Capabilities**: The `plot.robmlm()` method provides immediate visual feedback on the weighting scheme, plotting final weights against case numbers to highlight observations that were down-weighted during the fitting process.
+
+- **Visualization methods**: Because a fitted `robmlm` object inherits the `"mlm"` class, it works directly with `heplots`' existing diagnostic and hypothesis-test plots. `distancePlot()` plots the Mahalanobis distances of the model-matrix predictors against the distances of the residuals, so cases with both high leverage and a large residual --- and so likely down-weighted during IRLS --- stand out just as they would for a classical `mlm`. `heplot()` goes further: fitting the classical and robust models separately and overlaying the robust **H** and **E** ellipses on the classical model's plot (`add = TRUE`) gives a direct geometric view of how down-weighting outliers reshapes the hypothesis and error variation --- typically a visibly smaller **E** ellipse for the robust fit. See the example below.
 
 ### Theoretical Properties
 
@@ -291,6 +298,21 @@ text(xloc, rep(c(1.0, 1.05), length=5),
 
 The weight plot reveals which observations were considered potentially problematic during the robust fitting process. Observations with weights substantially below 1.0 were down-weighted, indicating they may be outliers in the multivariate space defined by the five chemical measurements.
 
+### Distance Plot
+
+`distancePlot()` gives a complementary view of the same idea. It plots the Mahalanobis distances of the `Site` **predictors** (the model matrix `X`) against the distances of the **residuals** from the robust fit, labeling cases beyond the cutoff lines (dashed, `level = 0.975` by default). This plot method, due to
+Rousseeuw & van Zomeren [-@Rousseeuw1990; -@Rousseeuw1991] and Rousseeuw et al. [-@Rousseeuw2004], helps you see WHY observations are
+downweighted, by combining information on regression outliers (unusual in the `Y` responses) and leverage points
+(unusual in the `X`s).
+
+```{r pottery-distanceplot, fig.cap="Distance plot for the robust Pottery model: Mahalanobis distances of the Site predictors vs. distances of the residuals."}
+distancePlot(pottery.rlm)
+```
+
+Case 25 -- already flagged with the largest Cook's D in the classical influence plot above -- again stands out,
+here with an unusually large residual distance. Cases 15 and 16 stand out instead on the predictor (`Site`) side,
+reflecting their group's small sample size rather than an unusual response pattern.
+
 ### Hypothesis-Error (HE) plots
 
 HE plots provide a visual representation of the multivariate hypothesis test by showing the relationship between hypothesis and error variation in a reduced dimensional space. We'll create HE plots for the first two variables (Al and Fe) and compare the classical and robust fits.
@@ -342,10 +364,76 @@ This indicates |r ifelse(abs(log10(robust_anova$"Pr(>F)"[1]) - log10(classical_a
 
 * **Outlier detection**: The weight plot identifies specific observations that deviate from the typical pattern. In archaeological studies, such outliers might represent pottery from different time periods, contaminated samples, or measurement errors that warrant further investigation.
 
-* **Geometric interpretation**: The HE plot comparison reveals how outliers affect the geometric representation of the hypothesis test. The hypothesis ellipse (representing the Site effect) and error ellipse (representing within-group variation) may differ substantially between classical and robust fits when influential outliers are present.
+* **Geometric interpretation**: The HE plot comparison reveals how outliers affect the geometric representation of the hypothesis test. The hypothesis ellipse (representing the Site effect) and error ellipse (representing within-group variation) may differ substantially between classical and robust fits when influential outliers are present. The usual effect is that of seeing hypothesis effects more strongly
+when potential outliers are down-weighted.
 
-* **Practical implications**: For archaeologists studying pottery composition, the robust analysis provides more reliable conclusions about site differences by reducing the influence of potentially problematic observations. This is particularly important when making inferences about ancient trade routes, cultural practices, or chronological relationships based on chemical composition data.
+* **Practical implications**: For archaeologists studying historical artifacts, the robust analysis provides more reliable conclusions about site or other factors differences by reducing the influence of potentially problematic observations. This is particularly important when making inferences about ancient trade routes, cultural practices, or chronological relationships based on chemical composition data. In some circumstances, the identification of such unusual observations can lead to insight about conventional theory.
 
 The robust approach demonstrates its value by providing a more stable analysis that is less susceptible to the influence of outlying observations, while still maintaining high efficiency when the data conform to standard assumptions.
+
+## Example: Pulp Fiber Data
+
+Our second example is more compact, and illustrates `robmlm()` in a  multivariate multiple regression rather than a MANOVA design. The `pulpfiber` data [in the `robustbase` package, @Rousseeuw2004; data from the unpublished thesis of Lee, 1992] give four pulp-fiber properties (`X1`-`X4`: fiber length, long fiber fraction, fine fiber fraction, zero-span tensile) measured on 62 samples, along with four properties of the paper produced from them (`Y1`-`Y4`: breaking length, elastic modulus, failure stress, burst strength). The goal is to predict the paper properties from the fiber properties.
+
+```{r pulpfiber-data, message=FALSE}
+data(pulpfiber, package = "robustbase")
+str(pulpfiber)
+```
+
+### Classical and Robust Fits
+
+To get started, fit the classical OLS multivariate regression and the robust version and run `car::Anova()` on each
+
+```{r pulpfiber-fit}
+pulp.mod <- lm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
+pulp.rlm <- robmlm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
+
+Anova(pulp.mod)
+Anova(pulp.rlm)
+```
+
+The contrast here is more dramatic than for Pottery: 
+
+* In the classical fit, `X2` and `X4` stand out clearly ($p < .0001$), `X3` is only marginally significant ($p = .011$), and `X1` falls just short of conventional significance ($p = .053$). 
+* In the robust fit, by contrast, all four fiber properties are highly significant predictors of the paper properties ($p < .001$ in every case). This suggests that a handful of atypical samples in the classical fit are masking real predictive relationships involving `X1` and `X3`.
+
+### Robust Weights
+
+```{r pulpfiber-weights, fig.cap="Weights from robust fitting of the pulp fiber data"}
+plot(pulp.rlm, segments = TRUE)
+```
+
+Four cases -- 51, 52, 56 and 61 -- are driven to (essentially) zero weight; two more (22, 44) are markedly reduced (0.43 and 0.69); every other sample retains weight above 0.7. The weight plot alone doesn't say *why* these six are atypical; for that we turn to the distance plot.
+
+### Distance Plot
+
+A `distancePlot()` involves two independent choices: which residuals define the `Y` (vertical) axis -- from `pulp.mod` (OLS) or `pulp.rlm` (robust) -- and which covariance estimator computes the distances themselves, via `method`. In this example, only the second choice matters much: with the default `method = "classical"`, the flagged cases are *identical* whether the residuals come from `pulp.mod` or `pulp.rlm` -- the same eight cases (46, 51, 52, 56, 57, 58, 60, 61) either way. The main difference is seen in the covariance estimate, not the fit.
+
+The reason is a masking effect: classical covariance for the `X1`-`X4` fiber measurements is computed from all 62 samples, including the very outliers it is meant to help detect, so it is itself distorted by them and understates how unusual those samples really are. Rousseeuw et al. [-@Rousseeuw2004] address exactly this for the pulp fiber data by using the MCD covariance estimator instead, which is resistant to the outliers it's estimating around. The panels below compare the two, both using the robust-fit residuals from `pulp.rlm`:
+
+```{r pulpfiber-distanceplot, fig.width=9, fig.height=4.5, fig.cap="Distance plots for the robust pulp fiber model, comparing classical (left) and MCD-based (right) covariance estimates for the fiber (X) predictor distances."}
+op <- par(mfrow = c(1, 2))
+distancePlot(pulp.rlm, method = "classical", main = "Classical distances")
+distancePlot(pulp.rlm, method = "mcd", main = "MCD distances")
+par(op)
+```
+
+Under classical covariance (left), cases 60 and 62 -- which turn out to have the two largest predictor distances of any sample once MCD is used -- don't stand out at all: their unusual fiber measurements are masked by a covariance matrix that treats them as ordinary. Under MCD (right), the picture sharpens considerably, flagging 21 cases rather than 8. Most of these retain weight above 0.8 in `pulp.rlm` -- unusual in `X`, but well fit by the model -- so we focus on the few that also matter for the robust fit:
+
+* Cases 51, 52 and 56 have unremarkable fiber measurements (small distance on `X`) but very large residual distances: **vertical outliers**, poorly predicted by the fitted relationship regardless of their (ordinary) predictor values. These are exactly the three cases driven to zero weight above.
+
+* Case 61 is extreme on *both* axes: a **bad leverage point**, unusual in its fiber properties *and* poorly fit by the model -- correctly downweighted to zero along with the vertical outliers.
+
+* Cases 60 and 62 have the two largest predictor distances of any sample, by a wide margin, yet small residual distances: **good leverage points**. They are unusual fiber samples, but ones the fitted relationship predicts well, so `robmlm()` correctly leaves them at near-full weight (0.98 each) rather than downweighting them.
+
+* Case 22 sits in between, at weight 0.43: moderately unusual on both axes without being fully downweighted -- a reminder that `robmlm()`'s weighting is continuous, not the all-or-nothing split the labels above suggest.
+
+### Interpretation and Discussion
+
+* **Model evaluation**: The gain from 2 to 4 significant predictors under the robust fit shows how a small number of outlying samples can mask genuine predictive relationships in classical multivariate regression -- a stronger contrast than in the Pottery example.
+
+* **Outlier detection**: The weight plot and distance plot together tell a more nuanced story than "outlier" vs. "not": some flagged cases (51, 52, 56, 61) are poorly fit and rightly downweighted, while others (60, 62) are merely unusual in their predictors and rightly are not. Distinguishing good from bad leverage points this way is exactly the diagnostic problem `distancePlot()` is designed to address.
+
+* **Practical implications**: For process data like this -- where fiber properties are measured to predict paper quality -- correctly identifying *which* atypical samples to downweight (vertical/bad-leverage cases) versus keep (good-leverage cases) matters for building a model that generalizes to new, unusual-but-plausible fiber batches, rather than one that has simply been fit to accommodate a few mismeasured samples.
 
 ## References
