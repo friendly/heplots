@@ -1,5 +1,6 @@
 ## Test environments
 * local Windows 11 x64 install, R version 4.6.1 (2026-06-24 ucrt)
+* win-builder R Under development (unstable) (2026-08-22 r90443 ucrt)
 
 ## R CMD check results
 0 error(s) | 0 warning(s) | 0 note(s)
@@ -10,7 +11,10 @@ This resubmission addresses the two `URL` findings from CRAN's win-builder
 incoming-feasibility check on the v1.8.3 submission:
 
 * `man/NeuroCog.Rd` cited the Nuechterlein et al. (2008) reference by a PubMed URL
-  (`https://pubmed.ncbi.nlm.nih.gov/18172019/`); replaced with the article's DOI.
+  (`https://pubmed.ncbi.nlm.nih.gov/18172019/`); replaced with the article's DOI, written
+  with the `\doi{}` macro rather than `\url{}` (a win-builder dry run flagged the first
+  attempt for using `\url{}` around a `doi.org` link). Found and fixed two more
+  pre-existing bare `doi.org` references the same way, in `Iwasaki_Big_Five` and `TIPI`.
 * `vignettes/repeated-JSS.pdf` (a static reprint of the published *Journal of Statistical
   Software* article, included via the `R.rsp::asis` engine) had several embedded
   non-canonical URLs that are part of the original, already-published document and not
@@ -32,7 +36,11 @@ CRAN resubmission of v1.8.3, addressing two `URL` findings from the win-builder
 CRAN-incoming-feasibility check.
 
 * Fixed the `NeuroCog` documentation to cite the Nuechterlein et al. (2008) reference by
-  DOI instead of a PubMed URL that CRAN flagged as needing an update.
+  DOI instead of a PubMed URL that CRAN flagged as needing an update. A win-builder dry
+  run then flagged the replacement itself: CRAN wants bare `doi.org` links written with
+  the `\doi{}` macro, not `\url{}`. Fixed that in `NeuroCog`, and found (and fixed the
+  same way) two more pre-existing bare `doi.org` references in `Iwasaki_Big_Five` and
+  `TIPI`'s documentation that hadn't yet been flagged.
 * Withdrew `vignettes/repeated-JSS.pdf` (a static reprint of the published *Journal of
   Statistical Software* article, included via the `R.rsp::asis` engine) to `vignettes-old/`,
   rather than continue explaining its embedded non-canonical URLs to CRAN on every

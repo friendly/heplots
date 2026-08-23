@@ -35,7 +35,7 @@ A data frame with 1799 observations on the following 16 variables.
 Jones, P.J., Mair, P., Simon, T. et al. (2020). Network Trees: A
 Method for Recursively Partitioning Covariance Structures.
 \emph{Psychometrika}, \strong{85}, 926?945.
-https://doi.org/10.1007/s11336-020-09731-4
+\doi{10.1007/s11336-020-09731-4}.
 }
 \description{
 The Ten Item Personality Inventory (Gosling et al. 2003) is a brief

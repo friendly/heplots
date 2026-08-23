@@ -4,7 +4,11 @@ CRAN resubmission of v1.8.3, addressing two `URL` findings from the win-builder
 CRAN-incoming-feasibility check.
 
 * Fixed the `NeuroCog` documentation to cite the Nuechterlein et al. (2008) reference by
-  DOI instead of a PubMed URL that CRAN flagged as needing an update.
+  DOI instead of a PubMed URL that CRAN flagged as needing an update. A win-builder dry
+  run then flagged the replacement itself: CRAN wants bare `doi.org` links written with
+  the `\doi{}` macro, not `\url{}`. Fixed that in `NeuroCog`, and found (and fixed the
+  same way) two more pre-existing bare `doi.org` references in `Iwasaki_Big_Five` and
+  `TIPI`'s documentation that hadn't yet been flagged.
 * Withdrew `vignettes/repeated-JSS.pdf` (a static reprint of the published *Journal of
   Statistical Software* article, included via the `R.rsp::asis` engine) to `vignettes-old/`,
   rather than continue explaining its embedded non-canonical URLs to CRAN on every

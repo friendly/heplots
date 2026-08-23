@@ -685,7 +685,7 @@ NULL
 #' @source 
 #' Grice, J., & Iwasaki, M. (2007). A truly multivariate approach to
 #' MANOVA.  *Applied Multivariate Research*, **12**, 199-226.
-#' https://doi.org/10.22329/amr.v12i3.660.
+#' \doi{10.22329/amr.v12i3.660}.
 #' @keywords datasets
 #' @concept MANOVA
 #' @examples
@@ -927,9 +927,9 @@ NULL
 #' D.R., Young A.S., Zalcman S., Marder S.R. (2008) The MATRICS Consensus
 #' Cognitive Battery, Part 1: Test selection, reliability, and validity.
 #' *American Journal of Psychiatry*, **165** (2), 203-213.
-#' <https://doi.org/10.1176/appi.ajp.2007.07010042>.
-#' 
-#' @source 
+#' \doi{10.1176/appi.ajp.2007.07010042}.
+#'
+#' @source
 #' Hartman, L. I. (2016). Schizophrenia and Schizoaffective Disorder:
 #' One Condition or Two? Unpublished PhD dissertation, York University.
 #' 
@@ -2337,7 +2337,7 @@ NULL
 #' @source Jones, P.J., Mair, P., Simon, T. et al. (2020). Network Trees: A
 #' Method for Recursively Partitioning Covariance Structures.
 #' *Psychometrika*, **85**, 926?945.
-#' https://doi.org/10.1007/s11336-020-09731-4
+#' \doi{10.1007/s11336-020-09731-4}.
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept candisc

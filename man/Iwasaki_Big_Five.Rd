@@ -20,7 +20,7 @@ levels \code{Eur} \code{Asian_Amer} \code{Asian_Intl}}
 \source{
 Grice, J., & Iwasaki, M. (2007). A truly multivariate approach to
 MANOVA.  \emph{Applied Multivariate Research}, \strong{12}, 199-226.
-https://doi.org/10.22329/amr.v12i3.660.
+\doi{10.22329/amr.v12i3.660}.
 }
 \description{
 This dataset, from Grice & Iwasaki (2007), gives scores on the five
