@@ -45,7 +45,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 <!-- explicit version number now dynamic -->
 Version `r getNamespaceVersion("heplots")`; documentation built for `pkgdown` `r Sys.Date()`
 
-## Description 
+## 📝 Description
 
 The `heplots` package provides functions for visualizing hypothesis
 tests in multivariate linear models ("MLM" = {MANOVA, multivariate multiple
@@ -86,7 +86,7 @@ In this respect, the `heplots` package now aims to provide a wide range
 of tools for analyzing and visualizing multivariate response linear
 models, together with other packages:
 
-<a href="https://friendly.github.io/candisc/"><img src='https://raw.githubusercontent.com/friendly/candisc/master/candisc-logo.png' height='80' alt="candisc logo"   style="float:right; height:80px;"></a>
+<a href="https://friendly.github.io/candisc/"><img src='https://raw.githubusercontent.com/friendly/candisc/master/man/figures/logo.png' height='80' alt="candisc logo"   style="float:right; height:80px;"></a>
 
 -   The related [`candisc`](https://friendly.github.io/candisc/) package
     provides HE plots in **canonical discriminant** space, the space of
@@ -103,11 +103,7 @@ models, together with other packages:
     designs. See the [package documentation](https://friendly.github.io/mvinfluence/)
     for details.
 
-
-Several tutorial vignettes are also included. See
-`vignette(package="heplots")`.
-
-## Installation
+## 📂 Installation
 
 +-------------------+----------------------------------------------------------------------------+
 | CRAN version      | `install.packages("heplots")`                                              |
@@ -119,7 +115,7 @@ Several tutorial vignettes are also included. See
 +-------------------+----------------------------------------------------------------------------+
 
 
-## HE plot functions
+## 📐 HE plot functions
 
 The graphical functions contained here all display multivariate model
 effects in variable (**data**) space, for one or more response variables
@@ -138,7 +134,7 @@ effects in variable (**data**) space, for one or more response variables
 -   `heplot1d()` constructs 1-dimensional analogs of HE plots for model
     terms and linear hypotheses for single response variables.
 
-## Other functions
+## 🔧 Other functions
 
 -   `glance.mlm()` extends `broom::glance.lm()` to multivariate response
     models, giving a one-line statistical summary for each response
@@ -164,12 +160,11 @@ matrices) differ. For terms involving within-subject effects, these
 functions carry out a linear transformation of the matrix **Y** of
 responses to a matrix **Y M**, where **M** is the model matrix for a
 term in the intra-subject design and produce plots of the **H** and **E**
-matrices in this transformed space. The vignette `"repeated"` describes
-these graphical methods for repeated measures designs. (This
-paper [HE plots for repeated measures
-designs](https://www.jstatsoft.org/htaccess.php?volume=37&type=i&issue=04&filename=paper) is now provided as a PDF vignette.)
+matrices in this transformed space. The paper [HE plots for repeated measures
+designs](https://www.jstatsoft.org/htaccess.php?volume=37&type=i&issue=04&filename=paper)
+describes these graphical methods for repeated measures designs.
 
-## Datasets
+## 🗃️ Datasets
 
 The package also provides a large collection of data sets illustrating a
 variety of multivariate linear models of the types listed above,
@@ -195,7 +190,21 @@ tinytable::tt(dsets)
 #knitr::kable(dsets)
 ```
 
-## Examples
+## 📖 Vignettes
+
+Several tutorial vignettes are included, and can be browsed with
+`browseVignettes(package = "heplots")` once installed with
+`build_vignettes = TRUE`. Their rendered versions are also available as
+articles on the [pkgdown site](https://friendly.github.io/heplots/articles/):
+
+```{r vignettes, echo=FALSE, results="asis"}
+vigns <- as.data.frame(tools::getVignetteInfo("heplots")[, c("File", "Title")])
+articleurl <- "https://friendly.github.io/heplots/articles/"
+links <- glue::glue("- [{vigns$Title}]({articleurl}{tools::file_path_sans_ext(vigns$File)}.html)")
+cat(links, sep = "\n")
+```
+
+## 📊 Examples
 
 This example illustrates HE plots using the classic `iris` data set. How
 do the means of the flower variables differ by `Species`? This dataset
@@ -310,7 +319,7 @@ covEllipses(iris[,1:4], iris$Species,
             fill=TRUE, method="mve", add=TRUE, labels="")
 ```
 
-## References
+## 📚 References
 
 Anderson, E. (1928). The Problem of Species in the Northern Blue Flags,
 Iris versicolor L. and Iris virginica L. *Annals of the Missouri
