@@ -55,11 +55,14 @@ for a Gavin funding-application topic list).
   File: `dev/pred.mlm.R`
 
 - [ ] Roy-Bargmann stepdown analysis (`RoyBargmann()`) — candidate topic for Gavin's funding
-  application, not yet started as package code. Notes/goals (general function to fit the
-  sequential stepdown model set, plus a `heplot()`-based visualization story) in
-  `dev/GK-Project.md`, which also lists `predict.mlm()` above, robust-MLM extensions,
-  and effect-size/canonical-space tie-ins as related candidate topics.
-  File: `dev/GK-Project.md`
+  application, not yet started as package code. `dev/GK-Project.md` records the original
+  topic list (`predict.mlm()`, robust-MLM extensions, effect-size/canonical-space tie-ins as
+  related candidates) plus two competing sketches of the stepdown procedure. Confirmed
+  against Roy (1958) directly that the all-univariate sketch is correct; framework/background
+  (procedure definition, relation to overall Wilks' Lambda, an open Bargmann-attribution
+  question, and a rough shape for `RoyBargmann()`) now written up in `dev/Roy-Bargmann.md`.
+  Next step: sketch the actual `RoyBargmann()` function — Gavin or Michael, TBD.
+  Files: `dev/GK-Project.md`, `dev/Roy-Bargmann.md`
 
 - [ ] Decide finish-or-drop on two small utility drafts: `standardize.R` (standardized regression
   coefficients, adapted from `QuantPsyc::lm.beta`) and `se_variance.R` (SE of variance).
