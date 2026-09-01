@@ -222,6 +222,7 @@ Generalized by Michael Friendly and John Fox
 ## Examples
 
 ``` r
+
 data(iris)
 
 # default method, using `Y`, `group` 

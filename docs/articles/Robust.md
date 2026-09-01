@@ -20,6 +20,7 @@ methods of this package that help to understand them.
 I use the following packages here:
 
 ``` r
+
 library(heplots)
 library(candisc)
 library(ggplot2)
@@ -78,33 +79,37 @@ maximum likelihood estimation by replacing the likelihood function with
 a more robust objective function.
 
 The key idea is to relax the least squares criterion of minimizing
-$Q(\mathbf{e}) = \Sigma e_{i}^{2} = \Sigma\left( y_{i} - {\widehat{y}}_{i} \right)^{2}$
-by considering more general functions $Q(\mathbf{e},\rho)$, where the
-function $\rho\left( e_{i} \right)$ can be chosen to reduce the impact
-of large outliers. In these terms,
+$`Q(\mathbf{e}) = \Sigma e_i^2 = \Sigma (y_i - \hat{y}_i)^2`$ by
+considering more general functions $`Q(\mathbf{e}, \rho)`$, where the
+function $`\rho (e_i)`$ can be chosen to reduce the impact of large
+outliers. In these terms,
 
-- OLS uses $\rho\left( e_{i} \right) = e_{i}^{2}$
-- $L_{1}$ estimation uses $\rho\left( e_{i} \right) = |e_{i}|$, the
-  least absolute values
+- OLS uses $`\rho(e_i) = e_i^2`$
+- $`L_1`$ estimation uses $`\rho(e_i) = \vert e_i \vert`$, the least
+  absolute values
 - A bit more complicated, the **biweight** function uses a squared
-  measure of error up to some value $c$ and then levels off thereafter,
+  measure of error up to some value $`c`$ and then levels off
+  thereafter,
 
-$$\rho\left( e_{i} \right) = \begin{cases}
-\left\lbrack 1 - \left( \frac{e_{i}}{c} \right)^{2} \right\rbrack^{2} & {\left| e_{i} \right| \leq c,} \\
-1 & {\left| e_{i} \right| > c.} \\
-\end{cases}$$
+``` math
+\rho(e_i) =
+\begin{cases} 
+\left[ 1 - \left( \frac{e_i}{c} \right)^2 \right]^2 & |e_i| \leq c, \\
+1 & |e_i| > c.
+\end{cases}
+```
 
 These functions look like this in a graph. The biweight function has a
 property like Windsorizing— the squared error remains constant for
-residuals $e_{i} > c$, with $c = 4.685$ for
+residuals $`e_i > c`$, with $`c = 4.685`$ for
 [`MASS::psi.bisquare()`](https://rdrr.io/pkg/MASS/man/rlm.html).
 
 ![Diagram ploting the function \$\rho(e_i)\$ of the contributions of the
 residuals \$e_i\$ to what is minimized in various fitting
 methods.](../reference/figures/weight-functions.jpg)
 
-Figure 1: Diagram ploting the function $\rho\left( e_{i} \right)$ of the
-contributions of the residuals $e_{i}$ to what is minimized in various
+Figure 1: Diagram ploting the function $`\rho(e_i)`$ of the
+contributions of the residuals $`e_i`$ to what is minimized in various
 fitting methods.
 
 ## Methodology: Iteratively Reweighted Least Squares (IRLS)
@@ -135,29 +140,38 @@ The method proceeds as follows:
 
 2.  **Residual calculation**: Compute the multivariate residuals for
     each observation:
-    $$\mathbf{r}_{i} = \mathbf{y}_{i} - \mathbf{X}_{i}\widehat{\mathbf{β}}$$
-    where $\mathbf{y}_{i}$ is the $p \times 1$ response vector for
-    observation $i$, $\mathbf{X}_{i}$ is the corresponding row of the
-    design matrix, and $\widehat{\mathbf{β}}$ is the current estimate of
-    the coefficient matrix.
+    ``` math
+    \mathbf{r}_i = \mathbf{y}_i - \mathbf{X}_i\hat{\boldsymbol{\beta}}
+    ```
+    where $`\mathbf{y}_i`$ is the $`p \times 1`$ response vector for
+    observation $`i`$, $`\mathbf{X}_i`$ is the corresponding row of the
+    design matrix, and $`\hat{\boldsymbol{\beta}}`$ is the current
+    estimate of the coefficient matrix.
 
 3.  **Distance computation**: Calculate the squared Mahalanobis distance
     of each residual vector from the origin:
-    $$d_{i}^{2} = \mathbf{r}_{i}^{T}\mathbf{S}^{- 1}\mathbf{r}_{i}$$
-    where $\mathbf{S}$ is a robust estimate of the residual covariance
+    ``` math
+    d_i^2 = \mathbf{r}_i^T \mathbf{S}^{-1} \mathbf{r}_i
+    ```
+    where $`\mathbf{S}`$ is a robust estimate of the residual covariance
     matrix, computed using
     [`MASS::cov.trob()`](https://rdrr.io/pkg/MASS/man/cov.trob.html).
 
 4.  **Weight assignment**: Assign weights to each observation based on
     their residual distances. Observations with larger distances receive
     smaller weights, effectively downweighting potential outliers:
-    $$w_{i} = \rho\left( d_{i}^{2} \right)$$ where $\rho( \cdot )$ is a
-    weight function that decreases as the distance increases.
+    ``` math
+    w_i = \rho(d_i^2)
+    ```
+    where $`\rho(\cdot)`$ is a weight function that decreases as the
+    distance increases.
 
 5.  **Weighted Least Squares**: Update the coefficient estimates using
     weighted least squares:
-    $${\widehat{\mathbf{β}}}^{(new)} = \left( \mathbf{X}^{T}\mathbf{W}\mathbf{X} \right)^{- 1}\mathbf{X}^{T}\mathbf{W}\mathbf{Y}$$
-    where $\mathbf{W}$ is a diagonal matrix of weights.
+    ``` math
+    \hat{\boldsymbol{\beta}}^{(new)} = (\mathbf{X}^T\mathbf{W}\mathbf{X})^{-1}\mathbf{X}^T\mathbf{W}\mathbf{Y}
+    ```
+    where $`\mathbf{W}`$ is a diagonal matrix of weights.
 
 6.  **Convergence check**: Repeat steps 2-5 until convergence, typically
     assessed by monitoring changes in the coefficient estimates or
@@ -172,7 +186,7 @@ implementation incorporates several important features:
   [`MASS::cov.trob()`](https://rdrr.io/pkg/MASS/man/cov.trob.html)
   provides a robust estimate of the residual covariance matrix, which is
   crucial for computing meaningful Mahalanobis distances in the presence
-  of outliers. This uses the multivariate $t$ distribution that allows
+  of outliers. This uses the multivariate $`t`$ distribution that allows
   for longer tails. (There are other robust covariance estimators, such
   as Minimum Covariance Determinant (MCD) and Minimum Volume Ellipse
   (MVE), which have a high tolerance—breakdown-bound– for outliers.
@@ -241,6 +255,7 @@ as a problem in discriminant analysis, asking whether these chemical
 elements can be used to distinguish among the sites.
 
 ``` r
+
 library(heplots)
 library(carData)
 library(car)
@@ -262,6 +277,7 @@ response variables representing chemical concentrations. Let’s examine
 the basic structure:
 
 ``` r
+
 str(Pottery)
 #> 'data.frame':    26 obs. of  6 variables:
 #>  $ Site: Factor w/ 4 levels "AshleyRails",..: 4 4 4 4 4 4 4 4 4 4 ...
@@ -276,6 +292,7 @@ The pottery samples are not evenly distributed across the sites. The
 most come from Llanedryn; there are only two from Caldicot.
 
 ``` r
+
 table(Pottery$Site)
 #> 
 #> AshleyRails    Caldicot  IsleThorns   Llanedyrn 
@@ -288,6 +305,7 @@ We begin with the standard MANOVA model, and then examine some
 diagnostic plots.
 
 ``` r
+
 # Classical MANOVA model
 pottery.mlm <- lm(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = Pottery)
 Anova(pottery.mlm)
@@ -301,11 +319,12 @@ Anova(pottery.mlm)
 
 **Chisquare QQ plot**: As an initial check, a
 [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md) of
-the model gives a $\chi^{2}$ QQ plot of the residuals from the model,
+the model gives a $`\chi^2`$ QQ plot of the residuals from the model,
 which would identify badly fit observations. None seem particularly
 large here.
 
 ``` r
+
 cqplot(pottery.mlm, id.n = 5)
 ```
 
@@ -321,6 +340,7 @@ studentized residuals, using the size of the point symbol proportional
 to a multivariate generalization of Cook’s D statistic.
 
 ``` r
+
 res <- influencePlot(pottery.mlm, id.n = 2)
 ```
 
@@ -330,6 +350,7 @@ model.](fig/robust-pottery-inflplot-1.png)
 Figure 4: Influence plot for the Pottery model.
 
 ``` r
+
 res |>
   arrange(desc(CookD))
 #>          H        Q   CookD       L       R
@@ -341,9 +362,9 @@ res |>
 ```
 
 Because `site` is a factor, the hat-values are inversely proportional to
-the sample size. Points for Llanedryn ($n = 14$) are in the left-most
-column, followed by AshleyRails and IsleThorns (each with $n = 5$) and
-then Caldicot ($n = 14$).
+the sample size. Points for Llanedryn ($`n=14`$) are in the left-most
+column, followed by AshleyRails and IsleThorns (each with $`n=5`$) and
+then Caldicot ($`n=14`$).
 
 Here, case 25 stands out with the largest value of Cook’s D, followed by
 18 and 11.
@@ -357,6 +378,7 @@ unusual in the initial model can become more noteworthy when the extreme
 observations are down-weighted in a subsequent iteration.
 
 ``` r
+
 # Robust MANOVA model
 pottery.rlm <- robmlm(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = Pottery)
 Anova(pottery.rlm)
@@ -370,7 +392,7 @@ Anova(pottery.rlm)
 
 Let’s compare the results. From the results of
 [`Anova()`](https://rdrr.io/pkg/car/man/Anova.html) above, you can see
-that the $F$ statistic for the robust model is greater than that for
+that the $`F`$ statistic for the robust model is greater than that for
 OLS, which suggests that possible outliers may have reduced the strength
 of evidence for differences among the sites.
 
@@ -380,6 +402,7 @@ this, their relative difference is a useful metric. The simple function
 the classical and robust estimates.
 
 ``` r
+
 b.mlm <- coef(pottery.mlm)
 b.rlm <- coef(pottery.rlm)
 
@@ -409,6 +432,7 @@ outliers receive lower weights. The
 `"roblm"` object gives an index plot of the weight values.
 
 ``` r
+
 # Plot the weights from robust fitting
 plot(pottery.rlm, col=Pottery$Site, segments=TRUE)
 xloc <- c(7.5, 15.5, 19.5, 24)
@@ -441,6 +465,7 @@ downweighted, by combining information on regression outliers (unusual
 in the `Y` responses) and leverage points (unusual in the `X`s).
 
 ``` r
+
 distancePlot(pottery.rlm)
 #> 0.975 X, Y distance cutoffs: 3.058 3.582
 ```
@@ -466,6 +491,7 @@ in a reduced dimensional space. We’ll create HE plots for the first two
 variables (Al and Fe) and compare the classical and robust fits.
 
 ``` r
+
 # Classical HE plot for Al and Fe
 heplot(pottery.mlm, variables = c("Al", "Fe"), 
        main = "Classical vs Robust MANOVA: Al vs Fe",
@@ -496,13 +522,15 @@ The **H** and **E** ellipses have approximately the same shape and
 orientation for the classical and robust models, indicating that the
 pattern of differences among the group means is quite similar for both
 models. However, the **E** ellipse for the robust model is noticeably
-smaller. This goes into the greater $F$ statistic for the robust model.
+smaller. This goes into the greater $`F`$ statistic for the robust
+model.
 
 For a more complete interpretation of robust model, a scatterplot matrix
 of HE plots is shown below, using the
 [`pairs()`](https://rdrr.io/r/graphics/pairs.html) method for a MLM.
 
 ``` r
+
 pairs(pottery.rlm, 
       fill=TRUE, fill.alpha = 0.1)
 ```
@@ -564,6 +592,7 @@ strength). The goal is to predict the paper properties from the fiber
 properties.
 
 ``` r
+
 data(pulpfiber, package = "robustbase")
 str(pulpfiber)
 #> 'data.frame':    62 obs. of  8 variables:
@@ -584,6 +613,7 @@ robust version and run
 [`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html) on each
 
 ``` r
+
 pulp.mod <- lm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
 pulp.rlm <- robmlm(cbind(Y1, Y2, Y3, Y4) ~ X1 + X2 + X3 + X4, data = pulpfiber)
 
@@ -611,11 +641,11 @@ Anova(pulp.rlm)
 
 The contrast here is more dramatic than for Pottery:
 
-- In the classical fit, `X2` and `X4` stand out clearly ($p < .0001$),
-  `X3` is only marginally significant ($p = .011$), and `X1` falls just
-  short of conventional significance ($p = .053$).
+- In the classical fit, `X2` and `X4` stand out clearly ($`p < .0001`$),
+  `X3` is only marginally significant ($`p = .011`$), and `X1` falls
+  just short of conventional significance ($`p = .053`$).
 - In the robust fit, by contrast, all four fiber properties are highly
-  significant predictors of the paper properties ($p < .001$ in every
+  significant predictors of the paper properties ($`p < .001`$ in every
   case). This suggests that a handful of atypical samples in the
   classical fit are masking real predictive relationships involving `X1`
   and `X3`.
@@ -623,6 +653,7 @@ The contrast here is more dramatic than for Pottery:
 ### Robust Weights
 
 ``` r
+
 plot(pulp.rlm, segments = TRUE)
 ```
 
@@ -659,6 +690,7 @@ to the outliers it’s estimating around. The panels below compare the
 two, both using the robust-fit residuals from `pulp.rlm`:
 
 ``` r
+
 op <- par(mfrow = c(1, 2))
 distancePlot(pulp.rlm, method = "classical", main = "Classical distances")
 #> 0.975 X, Y distance cutoffs: 3.338 3.338
@@ -675,6 +707,7 @@ classical (left) and MCD-based (right) covariance estimates for the
 fiber (X) predictor distances.
 
 ``` r
+
 par(op)
 ```
 
@@ -730,6 +763,7 @@ useful for seeing at a glance whether a case’s influence comes mainly
 from an unusual response, an unusual predictor pattern, or both.
 
 ``` r
+
 influencePlot(pulp.mod, id.n = 5)
 ```
 
@@ -751,6 +785,7 @@ the OLS pulp fiber model.
     #> 61 0.41128 0.38188 1.7904 0.69859 0.64865
 
 ``` r
+
 influencePlot(pulp.mod, id.n = 5, type = "LR")
 ```
 

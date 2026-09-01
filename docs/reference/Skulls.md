@@ -65,6 +65,7 @@ Hand, D. J., F. Daly, A. D. Lunn, K. J. McConway and E. Ostrowski
 ## Examples
 
 ``` r
+
 data(Skulls)
 library(car)    # for Anova
 

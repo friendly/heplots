@@ -152,6 +152,7 @@ Other diagnostic plots:
 ## Examples
 
 ``` r
+
 if(require("robustbase")) {
   # Examples from Rousseeuw etal (2004)
   data(pulpfiber, package="robustbase")
@@ -162,9 +163,7 @@ if(require("robustbase")) {
   distancePlot(pulp.mod, method = "mcd")
 }
 #> Loading required package: robustbase
-#> 0.975 X, Y distance cutoffs: 3.338156 3.338156 
 
-#> 0.975 X, Y distance cutoffs: 3.338156 3.338156 
 
 
 # NLSY data
@@ -173,16 +172,13 @@ NLSY.mlm <- lm(cbind(math, read) ~ income + educ + antisoc + hyperact,
                data = NLSY)
 
 distancePlot(NLSY.mlm)
-#> 0.975 X, Y distance cutoffs: 3.338156 2.716203 
 
 
 # gives the same result
 distancePlot(NLSY[, 3:6], residuals(NLSY.mlm), level = 0.975)
-#> 0.975 X, Y distance cutoffs: 3.338156 2.716203 
 
 
 distancePlot(NLSY.mlm, method ="mve")
-#> 0.975 X, Y distance cutoffs: 3.338156 2.716203 
 
 
 # distancePlot(cbind(math, read) ~ income + educ + antisoc + hyperact,
@@ -192,13 +188,11 @@ distancePlot(NLSY.mlm, method ="mve")
 data(schooldata)
 school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ ., data=schooldata)
 distancePlot(school.mod, cex = 1.5, cex.lab = 1.2)
-#> 0.975 X, Y distance cutoffs: 3.582248 3.057516 
 
 
 data(Hernior)
 Hern.mod <- lm(cbind(leave, nurse, los) ~
                age + sex +  pstat +  build + cardiac + resp, data=Hernior)
 distancePlot(Hern.mod)
-#> 0.975 X, Y distance cutoffs: 3.801233 3.057516 
 
 ```

@@ -155,6 +155,7 @@ Michael Friendly
 ## Examples
 
 ``` r
+
 # ANCOVA, assuming equal slopes
 rohwer.mod <- lm(cbind(SAT, PPVT, Raven) ~ SES + n + s + ns + na + ss, data=Rohwer)
 

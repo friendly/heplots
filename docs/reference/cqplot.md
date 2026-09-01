@@ -265,6 +265,7 @@ Michael Friendly
 
 ``` r
 
+
 cqplot(iris[, 1:4])
 
 
