@@ -11,6 +11,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
 [![DOI](https://zenodo.org/badge/13908453.svg)](https://zenodo.org/badge/latestdoi/13908453)
 [![Docs](https://img.shields.io/badge/pkgdown%20site-blue)](https://friendly.github.io/heplots/)
+[![DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/friendly/heplots)
 <!-- badges: end -->
 
 # heplots <img src="man/figures/logo.png" height="200" style="float:right; height:200px;"/>
@@ -19,7 +20,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 <!-- explicit version number now dynamic -->
 
-Version 1.8.4; documentation built for `pkgdown` 2026-08-23
+Version 1.8.4; documentation built for `pkgdown` 2026-08-31
 
 ## 📝 Description
 
