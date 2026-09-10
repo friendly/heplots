@@ -23,6 +23,10 @@ versions of its response variable(s) and its numeric predictors, leaving
 factor-coded predictors on their original (raw 0/1 dummy) scale. This is the
 engine behind \code{\link[=stdcoef]{stdcoef()}} for multivariate models, and behind
 \code{coefplot.mlm(..., std = TRUE)}.
+
+Since the result is just an ordinary refit \code{"lm"}/\code{"mlm"} object, it also
+works with other tools that expect one, e.g. \code{\link[lmtest:coeftest]{lmtest::coeftest()}} and
+\code{\link[broom:tidy.coeftest]{broom::tidy.coeftest()}} on its result.
 }
 \details{
 Only the response(s) and \emph{numeric} predictors are standardized; factor
@@ -57,7 +61,7 @@ coef(rohwer.std)
 
 }
 \seealso{
-\code{\link[=stdcoef]{stdcoef()}}, \code{\link[=coefplot.mlm]{coefplot.mlm()}}
+\code{\link[=stdcoef]{stdcoef()}}, \code{\link[=coefplot.mlm]{coefplot.mlm()}}, \code{\link[lmtest:coeftest]{lmtest::coeftest()}}, \code{\link[broom:tidy.coeftest]{broom::tidy.coeftest()}}
 
 Other multivariate linear models:
 \code{\link[=coefplot]{coefplot()}},

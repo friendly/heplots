@@ -94,3 +94,27 @@ mod2 <- lm(cbind(SAT, PPVT, Raven) ~ SES * (n + s + ns + na + ss), data = Rohwer
 res6 <- tryCatch({ stdmodel(mod2); TRUE },
                   error = function(e) { cat("ERROR:", conditionMessage(e), "\n"); FALSE })
 pass("Rohwer interaction model: stdmodel() runs without error", res6)
+
+## 6. Interop with lmtest::coeftest() and broom::tidy.coeftest() -- Vis-MLM-book's
+##    Rohwer-ex.R calls coeftest(Rohwer.mod1) directly on the (raw) mlm object, so
+##    stdmodel()'s output -- itself just a refit "mlm" -- should work the same way.
+if (requireNamespace("lmtest", quietly = TRUE) && requireNamespace("broom", quietly = TRUE)) {
+  ct_std <- tryCatch(lmtest::coeftest(mod1.std <- stdmodel(mod1)), error = function(e) {
+    cat("ERROR:", conditionMessage(e), "\n"); NULL
+  })
+  pass("coeftest() runs on stdmodel(mod1)", !is.null(ct_std))
+
+  td_std <- tryCatch(broom::tidy(ct_std), error = function(e) {
+    cat("ERROR:", conditionMessage(e), "\n"); NULL
+  })
+  pass("broom::tidy() runs on coeftest(stdmodel(mod1))", is.data.frame(td_std))
+
+  pass("coeftest(stdmodel(mod1)) estimates match stdcoef(mod1)",
+       isTRUE(all.equal(unname(ct_std["SAT:n", "Estimate"]), unname(stdcoef(mod1)["n", "SAT"]))))
+
+  pass("coeftest() t/p-values unchanged by standardization (linear rescale)",
+       isTRUE(all.equal(unname(lmtest::coeftest(mod1)["SAT:n", c("t value", "Pr(>|t|)")]),
+                         unname(ct_std["SAT:n", c("t value", "Pr(>|t|)")]))))
+} else {
+  cat("SKIP -- lmtest/broom interop checks (one or both not installed)\n")
+}

@@ -42,7 +42,9 @@ stdcoef(rohwer.mod)
 
 }
 \seealso{
-\code{\link[=stdmodel]{stdmodel()}}, \code{\link[=coefplot.mlm]{coefplot.mlm()}}
+\code{\link[=stdmodel]{stdmodel()}}, \code{\link[=coefplot.mlm]{coefplot.mlm()}}. For standard errors, test statistics
+and p-values on the standardized scale, run \code{\link[lmtest:coeftest]{lmtest::coeftest()}} (and, for
+a tidy data frame, \code{\link[broom:tidy.coeftest]{broom::tidy.coeftest()}}) on \code{\link[=stdmodel]{stdmodel()}}'s result.
 
 Other multivariate linear models:
 \code{\link[=coefplot]{coefplot()}},

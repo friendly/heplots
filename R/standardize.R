@@ -10,6 +10,10 @@
 #' engine behind [stdcoef()] for multivariate models, and behind
 #' `coefplot.mlm(..., std = TRUE)`.
 #'
+#' Since the result is just an ordinary refit `"lm"`/`"mlm"` object, it also
+#' works with other tools that expect one, e.g. [lmtest::coeftest()] and
+#' [broom::tidy.coeftest()] on its result.
+#'
 #' @details
 #' Only the response(s) and *numeric* predictors are standardized; factor
 #' predictors are left as-is, since "one SD" isn't a meaningful unit for a
@@ -38,7 +42,7 @@
 #' @param ... Additional arguments. Not used.
 #' @return The refit model, of the same class as `object`
 #' @author Michael Friendly
-#' @seealso [stdcoef()], [coefplot.mlm()]
+#' @seealso [stdcoef()], [coefplot.mlm()], [lmtest::coeftest()], [broom::tidy.coeftest()]
 #' @family multivariate linear models
 #' @keywords manip
 #' @examples
@@ -108,7 +112,9 @@ stdmodel.lm <- function(object, ...) {
 #'   matrix of standardized coefficients (parameters x responses,
 #'   intercept row excluded).
 #' @author Michael Friendly
-#' @seealso [stdmodel()], [coefplot.mlm()]
+#' @seealso [stdmodel()], [coefplot.mlm()]. For standard errors, test statistics
+#'   and p-values on the standardized scale, run [lmtest::coeftest()] (and, for
+#'   a tidy data frame, [broom::tidy.coeftest()]) on [stdmodel()]'s result.
 #' @family multivariate linear models
 #' @keywords manip
 #' @examples

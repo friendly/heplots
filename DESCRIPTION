@@ -44,6 +44,7 @@ Suggests:
     broom,
     candisc,
     carData,
+    lmtest,
     effects,
     reshape,
     gplots,
