@@ -1,12 +1,17 @@
 # standardized regression coefficients
+# 
+# Goal: get coefficients and standard errors for a lm/mlm with standardized variables
+#   Useful for coefplot(), heplot(), etc.
+#   
+#   This doesn't make sense for factor predictors, so that should error.
 
 # from QuantPsyc::lm.beta
 stdcoef <- function (MOD)  {
-b <- summary(MOD)$coef[-1, 1]  
-sx <- sd(MOD$model[-1])
-sy <- sd(MOD$model[1])   
-beta <- b * sx/sy    
-return(beta) 
+b <- summary(MOD)$coef[-1, 1]
+sx <- sapply(MOD$model[-1], sd)
+sy <- sd(MOD$model[[1]])
+beta <- b * sx/sy
+return(beta)
 }
 
 # 
@@ -55,8 +60,11 @@ if(FALSE) {
   data(Prestige, package = "carData")
   mod <- lm(prestige ~ income + education, data=Prestige)
   coef(mod)
-  stdcoef(mod)
   
+  stdcoef(mod)
+# Error in is.data.frame(x) : 
+#   'list' object cannot be coerced to type 'double'  
+
   mod.std <- lm.beta(mod) 
   coef(mod.std)
   

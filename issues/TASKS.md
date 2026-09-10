@@ -73,6 +73,8 @@ for a Gavin funding-application topic list).
 - [ ] Decide finish-or-drop on two small utility drafts: `standardize.R` (standardized regression
   coefficients, adapted from `QuantPsyc::lm.beta`) and `se_variance.R` (SE of variance).
   Files: `dev/standardize.R`, `dev/se_variance.R`
+  MF: dev/se_variance.R can be ignored.
+    `dev/standardize.R` is worth pursuing to get standardized coefficients for a lm/mlm
 
 - ✔️ **DONE** (2026-09-10) Drop the hard `Depends: broom` in favor of `Imports: generics` for
   `glance.mlm()`. `broom` moved to `Suggests` (still needed for the `\link[broom]{glance.lm}`
