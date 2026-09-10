@@ -70,11 +70,15 @@ for a Gavin funding-application topic list).
   Next step: sketch the actual `RoyBargmann()` function — Gavin or Michael, TBD.
   Files: `dev/GK-Project.md`, `dev/Roy-Bargmann.md`
 
-- [ ] Decide finish-or-drop on two small utility drafts: `standardize.R` (standardized regression
-  coefficients, adapted from `QuantPsyc::lm.beta`) and `se_variance.R` (SE of variance).
-  Files: `dev/standardize.R`, `dev/se_variance.R`
-  MF: dev/se_variance.R can be ignored.
-    `dev/standardize.R` is worth pursuing to get standardized coefficients for a lm/mlm
+- ✔️ **DONE** (2026-09-10) `standardize.R` — standardized regression coefficients for `lm`/`mlm`,
+  adapted from `QuantPsyc::lm.beta`. Shipped as `R/standardize.R`: `stdmodel()` (S3 generic,
+  refits on z-scored response(s) + numeric predictors, factor predictors left raw -- verified
+  numerically equivalent to the analytic diagonal-rescale of `coef()`/`vcov()`) and `stdcoef()`
+  (coefficient summary built on `stdmodel()` for `mlm`; kept the pre-existing closed-form for
+  plain `lm`). Wired into `coefplot.mlm(std = TRUE)` for standardized-coefficient confidence
+  ellipses -- the motivating use case. See `NEWS.md` and `dev/standardize-mlm-test.R`
+  (verification script; local `devtools::check(cran = TRUE)` clean, 0/0/0).
+  `dev/se_variance.R` (SE of variance) -- MF: can be ignored, not pursued.
 
 - ✔️ **DONE** (2026-09-10) Drop the hard `Depends: broom` in favor of `Imports: generics` for
   `glance.mlm()`. `broom` moved to `Suggests` (still needed for the `\link[broom]{glance.lm}`

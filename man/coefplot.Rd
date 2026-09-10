@@ -14,6 +14,7 @@ coefplot(object, ...)
   df = NULL,
   level = 0.95,
   intercept = FALSE,
+  std = FALSE,
   Scheffe = FALSE,
   bars = TRUE,
   fill = FALSE,
@@ -55,6 +56,13 @@ coefplot(object, ...)
 \item{level}{Confidence level for the confidence ellipses}
 
 \item{intercept}{logical. Include the intercept?}
+
+\item{std}{logical. If \code{TRUE}, plot standardized coefficients instead --
+see \code{\link[=stdmodel]{stdmodel()}} for the standardization convention (response(s)
+and numeric predictors are standardized; factor predictors are
+left on their raw 0/1 scale). Not generally useful together with
+\code{intercept = TRUE}, since the intercept becomes ~0 once
+standardized.}
 
 \item{Scheffe}{If \code{TRUE}, confidence intervals for all parameters have
 Scheffe coverage, otherwise, individual coverage.}
@@ -124,13 +132,19 @@ mod1 <- lm(cbind(SAT,PPVT,Raven)~n+s+ns+na+ss, data=Rohwer)
 coefplot(mod1, lwd=2, fill=TRUE, parm=(1:5),
 	main="Bivariate 68\% coefficient plot for SAT and PPVT", level=0.68)
 
+# standardized coefficients, with a factor predictor (SES) in the model
+# but excluded from the plotted parm range
+mod2 <- lm(cbind(SAT,PPVT,Raven) ~ SES+n+s+ns+na+ss, data=Rohwer)
+coefplot(mod2, parm=2:6, std=TRUE, fill=TRUE, level=0.68)
 
 }
 \seealso{
 \code{\link[car]{confidenceEllipse}}
 
 Other multivariate linear models:
-\code{\link[=glance.mlm]{glance.mlm()}}
+\code{\link[=glance.mlm]{glance.mlm()}},
+\code{\link[=stdcoef]{stdcoef()}},
+\code{\link[=stdmodel]{stdmodel()}}
 }
 \author{
 Michael Friendly

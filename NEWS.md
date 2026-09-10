@@ -23,6 +23,11 @@
   depends on) instead, with `broom` moved to `Suggests`. `glance()` still works
   the same as before with just `library(heplots)`.
 
+* Added `stdmodel()` and `stdcoef()` for standardized ("beta") coefficients on
+  `lm`/`mlm` objects: responses and numeric predictors are standardized, factor
+  predictors are left raw. `coefplot.mlm()` gains a `std = TRUE` argument using
+  this to plot standardized-coefficient confidence ellipses.
+
 ## Version 1.8.4
 
 CRAN resubmission of v1.8.3, addressing two `URL` findings from the win-builder

@@ -26,6 +26,12 @@
 #' @param df Degrees of freedom for hypothesis tests
 #' @param level Confidence level for the confidence ellipses
 #' @param intercept logical. Include the intercept?
+#' @param std logical. If `TRUE`, plot standardized coefficients instead --
+#'        see [stdmodel()] for the standardization convention (response(s)
+#'        and numeric predictors are standardized; factor predictors are
+#'        left on their raw 0/1 scale). Not generally useful together with
+#'        `intercept = TRUE`, since the intercept becomes ~0 once
+#'        standardized.
 #' @param Scheffe If `TRUE`, confidence intervals for all parameters have
 #'        Scheffe coverage, otherwise, individual coverage.
 #' @param bars Draw univariate confidence intervals for each of the variables?
@@ -71,8 +77,13 @@
 #' mod1 <- lm(cbind(SAT,PPVT,Raven)~n+s+ns+na+ss, data=Rohwer)
 #' coefplot(mod1, lwd=2, fill=TRUE, parm=(1:5),
 #' 	main="Bivariate 68% coefficient plot for SAT and PPVT", level=0.68)
-#' 
-#' 
+#'
+#' # standardized coefficients, with a factor predictor (SES) in the model
+#' # but excluded from the plotted parm range
+#' mod2 <- lm(cbind(SAT,PPVT,Raven) ~ SES+n+s+ns+na+ss, data=Rohwer)
+#' coefplot(mod2, parm=2:6, std=TRUE, fill=TRUE, level=0.68)
+#'
+
 #' @export coefplot
 coefplot <- function(object, ...) {
 	UseMethod("coefplot")
@@ -83,11 +94,12 @@ coefplot <- function(object, ...) {
 #' 
 coefplot.mlm <- function(object, 
                          variables=1:2, 
-                         parm=NULL, 
-                         df = NULL, 
-                         level = 0.95, 
-                         intercept=FALSE, 
-                         Scheffe=FALSE, 
+                         parm=NULL,
+                         df = NULL,
+                         level = 0.95,
+                         intercept=FALSE,
+                         std = FALSE,
+                         Scheffe=FALSE,
                          bars=TRUE, 
                          fill=FALSE, fill.alpha=0.2,   # requires  trans.colors
                          labels = !add, 
@@ -117,6 +129,8 @@ coefplot.mlm <- function(object,
          t( c(center) + t( circle %*% chol(shape)))
   }
 
+
+  if (std) object <- stdmodel(object)
 
 	# determine parameters to plot; allow parameters to be passed by names or numbers
   cf <- coef(object)
@@ -159,8 +173,9 @@ coefplot.mlm <- function(object,
 	#subset for the variables to plot
 	cf  <- cf[,variables]
 	var.names  <- var.names[variables]
-	if (missing(xlab)) xlab <- paste(var.names[1], "coefficient")
-	if (missing(ylab)) ylab <- paste(var.names[2], "coefficient") 
+	coef.label <- if (std) "coefficient (std)" else "coefficient"
+	if (missing(xlab)) xlab <- paste(var.names[1], coef.label)
+	if (missing(ylab)) ylab <- paste(var.names[2], coef.label) 
 	
 	if (is.logical(labels)) {
 		parm.labels <- if (labels) parm.names else rep("", length.out=np)

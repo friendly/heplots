@@ -37,7 +37,9 @@ glance(iris.mod)
 }
 \seealso{
 Other multivariate linear models:
-\code{\link[=coefplot]{coefplot()}}
+\code{\link[=coefplot]{coefplot()}},
+\code{\link[=stdcoef]{stdcoef()}},
+\code{\link[=stdmodel]{stdmodel()}}
 }
 \concept{multivariate linear models}
 \keyword{multivariate}

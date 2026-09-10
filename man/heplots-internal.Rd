@@ -8,6 +8,7 @@
 \alias{he.rep}
 \alias{termInfo}
 \alias{last}
+\alias{zscore}
 \alias{Pillai}
 \alias{Wilks}
 \alias{HL}
@@ -27,6 +28,8 @@ Roy.crit(alpha, p, dfh, dfe)
 HLT.crit(alpha, p, dfh, dfe)
 
 he.rep(x, n)
+
+zscore(x)
 
 Pillai(eig, q, df.res)
 
