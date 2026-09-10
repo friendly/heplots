@@ -42,6 +42,9 @@
 <h2 class="pkg-version" data-toc-text="1.8.5" id="version-185">Version 1.8.5<a class="anchor" aria-label="anchor" href="#version-185"></a></h2>
 <ul><li><p>Added the <code>LearnDis</code> dataset (Tabachnick &amp; Fidell, 2013, Table 7.1): a small 3 (Disability: Mild/Moderate/Severe) x 2 (Treatment/Control) factorial giving reading (<code>WRAT_R</code>) and arithmetic (<code>WRAT_A</code>) achievement scores and <code>IQ</code>, for worked MANOVA/MANCOVA examples and, in particular, a citable, hand-checkable example for the Roy-Bargmann stepdown analysis under development. Its <code>Disability</code> factor is ordered (<code>Mild &lt; Moderate &lt; Severe</code>).</p></li>
 <li><p>Added the <code>ReadingDisability</code> dataset: 571 children classified into four reading-achievement groups (<code>Severe</code>/<code>Mild</code>/<code>Average</code>/<code>Superior</code>, an ordered factor) on six cognitive/achievement measures (<code>PPVT</code>, <code>RD</code>, <code>EF</code>, <code>VF</code>, <code>VMI</code>, <code>SIM</code>). Reconstructed by simulation from the group means, SDs, and pooled within-cells correlations in Bray &amp; Maxwell (1985, <em>Multivariate Analysis of Variance</em>, Table 2.3).</p></li>
+<li><p>Added <code><a href="../reference/traceCI.html">traceCI()</a></code>: analytic (Bai &amp; Silverstein, 2004) confidence intervals for the trace (sum of eigenvalues) of one or more covariance matrices, complementing <code><a href="../reference/logdetCI.html">logdetCI()</a></code> and <code><a href="../reference/eigstatCI.html">eigstatCI()</a></code>.</p></li>
+<li><p>Dropped the hard <code>Depends: broom</code> for <code><a href="../reference/glance.mlm.html">glance.mlm()</a></code>; now <code>Imports: generics</code> (the lightweight package defining the <code>glance</code> generic, which <code>broom</code> itself depends on) instead, with <code>broom</code> moved to <code>Suggests</code>. <code><a href="https://generics.r-lib.org/reference/glance.html" class="external-link">glance()</a></code> still works the same as before with just <code><a href="https://friendly.github.io/heplots/">library(heplots)</a></code>.</p></li>
+<li><p>Added <code><a href="../reference/stdmodel.html">stdmodel()</a></code> and <code><a href="../reference/stdcoef.html">stdcoef()</a></code> for standardized (“beta”) coefficients on <code>lm</code>/<code>mlm</code> objects: responses and numeric predictors are standardized, factor predictors are left raw. <code><a href="../reference/coefplot.html">coefplot.mlm()</a></code> gains a <code>std = TRUE</code> argument using this to plot standardized-coefficient confidence ellipses.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.8.4" id="version-184">Version 1.8.4<a class="anchor" aria-label="anchor" href="#version-184"></a></h2><p class="text-muted">CRAN release: 2026-08-23</p>
@@ -66,7 +69,7 @@
 <ul><li>add <code>eigstatsCI()</code> to calculate bootstrapped confidence intervals for eigenvalue statistics, as used in <code><a href="../reference/plot.boxM.html">plot.boxM()</a></code>
 </li>
 <li>added <code><a href="../reference/plot_boxM_boot.html">plot_boxM_boot()</a></code> to plot these with bootstrapped CIs</li>
-<li>added <code>traceCI()</code> for use in <code><a href="../reference/plot.boxM.html">plot.boxM()</a></code>
+<li>added <code><a href="../reference/traceCI.html">traceCI()</a></code> for use in <code><a href="../reference/plot.boxM.html">plot.boxM()</a></code>
 </li>
 </ul></div>
     <div class="section level2">

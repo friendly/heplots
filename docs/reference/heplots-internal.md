@@ -19,6 +19,8 @@ HLT.crit(alpha, p, dfh, dfe)
 
 he.rep(x, n)
 
+zscore(x)
+
 Pillai(eig, q, df.res)
 
 Wilks(eig, q, df.res)

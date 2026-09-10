@@ -68,7 +68,9 @@ F-tests and p-values.
 ## See also
 
 Other multivariate linear models:
-[`coefplot()`](https://friendly.github.io/heplots/reference/coefplot.md)
+[`coefplot()`](https://friendly.github.io/heplots/reference/coefplot.md),
+[`stdcoef()`](https://friendly.github.io/heplots/reference/stdcoef.md),
+[`stdmodel()`](https://friendly.github.io/heplots/reference/stdmodel.md)
 
 ## Examples
 

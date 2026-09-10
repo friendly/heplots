@@ -2,7 +2,7 @@
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.8.4; documentation built for `pkgdown` 2026-08-31
+Version 1.8.5; documentation built for `pkgdown` 2026-09-10
 
 ## 📝 Description
 
@@ -159,41 +159,43 @@ method tags. Their names are linked to their documentation with
 graphical output on the `pkgdown` website,
 \[<https://friendly.github.io/heplots>\].
 
-| dataset                                                                                | rows | cols | title                                                             | tags                     |
-|----------------------------------------------------------------------------------------|------|------|-------------------------------------------------------------------|--------------------------|
-| [AddHealth](https://friendly.github.io/heplots/reference/AddHealth.html)               | 4344 | 3    | Adolescent Health Data                                            | MANOVA ordered           |
-| [Adopted](https://friendly.github.io/heplots/reference/Adopted.html)                   | 62   | 6    | Adopted Children                                                  | MMRA repeated            |
-| [Bees](https://friendly.github.io/heplots/reference/Bees.html)                         | 246  | 6    | Captive and maltreated bees                                       | MANOVA                   |
-| [Diabetes](https://friendly.github.io/heplots/reference/Diabetes.html)                 | 145  | 6    | Diabetes Dataset                                                  | MANOVA                   |
-| [dogfood](https://friendly.github.io/heplots/reference/dogfood.html)                   | 16   | 3    | Dogfood Preferences                                               | MANOVA contrasts candisc |
-| [FootHead](https://friendly.github.io/heplots/reference/FootHead.html)                 | 90   | 7    | Head measurements of football players                             | MANOVA contrasts         |
-| [Headache](https://friendly.github.io/heplots/reference/Headache.html)                 | 98   | 6    | Treatment of Headache Sufferers for Sensitivity to Noise          | MANOVA repeated          |
-| [Hernior](https://friendly.github.io/heplots/reference/Hernior.html)                   | 32   | 9    | Recovery from Elective Herniorrhaphy                              | MMRA candisc             |
-| [Iwasaki_Big_Five](https://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html) | 203  | 7    | Personality Traits of Cultural Groups                             | MANOVA                   |
-| [mathscore](https://friendly.github.io/heplots/reference/mathscore.html)               | 12   | 3    | Math scores for basic math and word problems                      | MANOVA                   |
-| [MockJury](https://friendly.github.io/heplots/reference/MockJury.html)                 | 114  | 17   | Effects Of Physical Attractiveness Upon Mock Jury Decisions       | MANOVA candisc           |
-| [NeuroCog](https://friendly.github.io/heplots/reference/NeuroCog.html)                 | 242  | 10   | Neurocognitive Measures in Psychiatric Groups                     | MANOVA candisc           |
-| [NLSY](https://friendly.github.io/heplots/reference/NLSY.html)                         | 243  | 6    | National Longitudinal Survey of Youth Data                        | MMRA                     |
-| [oral](https://friendly.github.io/heplots/reference/oral.html)                         | 56   | 5    | Effect of Delay in Oral Practice in Second Language Learning      | MANOVA                   |
-| [Oslo](https://friendly.github.io/heplots/reference/Oslo.html)                         | 332  | 14   | Oslo Transect Subset Data                                         | MANOVA candisc           |
-| [Overdose](https://friendly.github.io/heplots/reference/Overdose.html)                 | 17   | 7    | Overdose of Amitriptyline                                         | MMRA cancor              |
-| [Parenting](https://friendly.github.io/heplots/reference/Parenting.html)               | 60   | 4    | Father Parenting Competence                                       | MANOVA contrasts         |
-| [peng](https://friendly.github.io/heplots/reference/peng.html)                         | 333  | 8    | Size measurements for adult foraging penguins near Palmer Station | MANOVA                   |
-| [Plastic](https://friendly.github.io/heplots/reference/Plastic.html)                   | 20   | 5    | Plastic Film Data                                                 | MANOVA                   |
-| [Pottery2](https://friendly.github.io/heplots/reference/Pottery2.html)                 | 48   | 12   | Chemical Analysis of Romano-British Pottery                       | MANOVA candisc           |
-| [Probe](https://friendly.github.io/heplots/reference/Probe.html)                       | 11   | 5    | Response Speed in a Probe Experiment                              | MANOVA repeated          |
-| [RatWeight](https://friendly.github.io/heplots/reference/RatWeight.html)               | 27   | 6    | Weight Gain in Rats Exposed to Thiouracil and Thyroxin            | MANOVA repeated          |
-| [ReactTime](https://friendly.github.io/heplots/reference/ReactTime.html)               | 10   | 6    | Reaction Time Data                                                | repeated                 |
-| [Rohwer](https://friendly.github.io/heplots/reference/Rohwer.html)                     | 69   | 10   | Rohwer Data Set                                                   | MMRA MANCOVA             |
-| [RootStock](https://friendly.github.io/heplots/reference/RootStock.html)               | 48   | 5    | Growth of Apple Trees from Different Root Stocks                  | MANOVA contrasts         |
-| [Sake](https://friendly.github.io/heplots/reference/Sake.html)                         | 30   | 10   | Taste Ratings of Japanese Rice Wine (Sake)                        | MMRA                     |
-| [schooldata](https://friendly.github.io/heplots/reference/schooldata.html)             | 70   | 8    | School Data                                                       | MMRA robust              |
-| [Skulls](https://friendly.github.io/heplots/reference/Skulls.html)                     | 150  | 5    | Egyptian Skulls                                                   | MANOVA contrasts         |
-| [SocGrades](https://friendly.github.io/heplots/reference/SocGrades.html)               | 40   | 10   | Grades in a Sociology Course                                      | MANOVA candisc           |
-| [SocialCog](https://friendly.github.io/heplots/reference/SocialCog.html)               | 139  | 5    | Social Cognitive Measures in Psychiatric Groups                   | MANOVA candisc           |
-| [TIPI](https://friendly.github.io/heplots/reference/TIPI.html)                         | 1799 | 16   | Data on the Ten Item Personality Inventory                        | MANOVA candisc           |
-| [VocabGrowth](https://friendly.github.io/heplots/reference/VocabGrowth.html)           | 64   | 4    | Vocabulary growth data                                            | repeated                 |
-| [WeightLoss](https://friendly.github.io/heplots/reference/WeightLoss.html)             | 34   | 7    | Weight Loss Data                                                  | repeated                 |
+| dataset                                                                                  | rows | cols | title                                                                     | tags                     |
+|------------------------------------------------------------------------------------------|------|------|---------------------------------------------------------------------------|--------------------------|
+| [AddHealth](https://friendly.github.io/heplots/reference/AddHealth.html)                 | 4344 | 3    | Adolescent Health Data                                                    | MANOVA ordered           |
+| [Adopted](https://friendly.github.io/heplots/reference/Adopted.html)                     | 62   | 6    | Adopted Children                                                          | MMRA repeated            |
+| [Bees](https://friendly.github.io/heplots/reference/Bees.html)                           | 246  | 6    | Captive and maltreated bees                                               | MANOVA                   |
+| [Diabetes](https://friendly.github.io/heplots/reference/Diabetes.html)                   | 145  | 6    | Diabetes Dataset                                                          | MANOVA                   |
+| [dogfood](https://friendly.github.io/heplots/reference/dogfood.html)                     | 16   | 3    | Dogfood Preferences                                                       | MANOVA contrasts candisc |
+| [FootHead](https://friendly.github.io/heplots/reference/FootHead.html)                   | 90   | 7    | Head measurements of football players                                     | MANOVA contrasts         |
+| [Headache](https://friendly.github.io/heplots/reference/Headache.html)                   | 98   | 6    | Treatment of Headache Sufferers for Sensitivity to Noise                  | MANOVA repeated          |
+| [Hernior](https://friendly.github.io/heplots/reference/Hernior.html)                     | 32   | 9    | Recovery from Elective Herniorrhaphy                                      | MMRA candisc             |
+| [Iwasaki_Big_Five](https://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html)   | 203  | 7    | Personality Traits of Cultural Groups                                     | MANOVA                   |
+| [LearnDis](https://friendly.github.io/heplots/reference/LearnDis.html)                   | 18   | 5    | Reading and Arithmetic Achievement in Children with Learning Disabilities | MANOVA MANCOVA           |
+| [mathscore](https://friendly.github.io/heplots/reference/mathscore.html)                 | 12   | 3    | Math scores for basic math and word problems                              | MANOVA                   |
+| [MockJury](https://friendly.github.io/heplots/reference/MockJury.html)                   | 114  | 17   | Effects Of Physical Attractiveness Upon Mock Jury Decisions               | MANOVA candisc           |
+| [NeuroCog](https://friendly.github.io/heplots/reference/NeuroCog.html)                   | 242  | 10   | Neurocognitive Measures in Psychiatric Groups                             | MANOVA candisc           |
+| [NLSY](https://friendly.github.io/heplots/reference/NLSY.html)                           | 243  | 6    | National Longitudinal Survey of Youth Data                                | MMRA                     |
+| [oral](https://friendly.github.io/heplots/reference/oral.html)                           | 56   | 5    | Effect of Delay in Oral Practice in Second Language Learning              | MANOVA                   |
+| [Oslo](https://friendly.github.io/heplots/reference/Oslo.html)                           | 332  | 14   | Oslo Transect Subset Data                                                 | MANOVA candisc           |
+| [Overdose](https://friendly.github.io/heplots/reference/Overdose.html)                   | 17   | 7    | Overdose of Amitriptyline                                                 | MMRA cancor              |
+| [Parenting](https://friendly.github.io/heplots/reference/Parenting.html)                 | 60   | 4    | Father Parenting Competence                                               | MANOVA contrasts         |
+| [peng](https://friendly.github.io/heplots/reference/peng.html)                           | 333  | 8    | Size measurements for adult foraging penguins near Palmer Station         | MANOVA                   |
+| [Plastic](https://friendly.github.io/heplots/reference/Plastic.html)                     | 20   | 5    | Plastic Film Data                                                         | MANOVA                   |
+| [Pottery2](https://friendly.github.io/heplots/reference/Pottery2.html)                   | 48   | 12   | Chemical Analysis of Romano-British Pottery                               | MANOVA candisc           |
+| [Probe](https://friendly.github.io/heplots/reference/Probe.html)                         | 11   | 5    | Response Speed in a Probe Experiment                                      | MANOVA repeated          |
+| [RatWeight](https://friendly.github.io/heplots/reference/RatWeight.html)                 | 27   | 6    | Weight Gain in Rats Exposed to Thiouracil and Thyroxin                    | MANOVA repeated          |
+| [ReactTime](https://friendly.github.io/heplots/reference/ReactTime.html)                 | 10   | 6    | Reaction Time Data                                                        | repeated                 |
+| [ReadingDisability](https://friendly.github.io/heplots/reference/ReadingDisability.html) | 571  | 7    | Cognitive and Achievement Test Scores by Reading Level                    | MANOVA                   |
+| [Rohwer](https://friendly.github.io/heplots/reference/Rohwer.html)                       | 69   | 10   | Rohwer Data Set                                                           | MMRA MANCOVA             |
+| [RootStock](https://friendly.github.io/heplots/reference/RootStock.html)                 | 48   | 5    | Growth of Apple Trees from Different Root Stocks                          | MANOVA contrasts         |
+| [Sake](https://friendly.github.io/heplots/reference/Sake.html)                           | 30   | 10   | Taste Ratings of Japanese Rice Wine (Sake)                                | MMRA                     |
+| [schooldata](https://friendly.github.io/heplots/reference/schooldata.html)               | 70   | 8    | School Data                                                               | MMRA robust              |
+| [Skulls](https://friendly.github.io/heplots/reference/Skulls.html)                       | 150  | 5    | Egyptian Skulls                                                           | MANOVA contrasts         |
+| [SocGrades](https://friendly.github.io/heplots/reference/SocGrades.html)                 | 40   | 10   | Grades in a Sociology Course                                              | MANOVA candisc           |
+| [SocialCog](https://friendly.github.io/heplots/reference/SocialCog.html)                 | 139  | 5    | Social Cognitive Measures in Psychiatric Groups                           | MANOVA candisc           |
+| [TIPI](https://friendly.github.io/heplots/reference/TIPI.html)                           | 1799 | 16   | Data on the Ten Item Personality Inventory                                | MANOVA candisc           |
+| [VocabGrowth](https://friendly.github.io/heplots/reference/VocabGrowth.html)             | 64   | 4    | Vocabulary growth data                                                    | repeated                 |
+| [WeightLoss](https://friendly.github.io/heplots/reference/WeightLoss.html)               | 34   | 7    | Weight Loss Data                                                          | repeated                 |
 
 ## 📖 Vignettes
 
@@ -450,6 +452,8 @@ Tests and plots for homogeneity of variances and covariances
   : Bootstrap Confidence Intervals for Eigenvalue Statistics
 - [`plot_boxM_boot()`](https://friendly.github.io/heplots/reference/plot_boxM_boot.md)
   : Plot for Box's M test with bootstrap CIs
+- [`traceCI()`](https://friendly.github.io/heplots/reference/traceCI.md)
+  : Calculate Confidence Interval for Trace of Covariance Matrices
 
 ## Robust MLMs
 
@@ -481,6 +485,10 @@ Other plots and methods for multivariate linear models
   : Glance at an mlm object
 - [`pvPlot()`](https://friendly.github.io/heplots/reference/pvPlot.md) :
   Partial Variables Plot
+- [`stdmodel()`](https://friendly.github.io/heplots/reference/stdmodel.md)
+  : Standardize a Fitted Linear Model
+- [`stdcoef()`](https://friendly.github.io/heplots/reference/stdcoef.md)
+  : Standardized Regression Coefficients
 - [`uniStats()`](https://friendly.github.io/heplots/reference/uniStats.md)
   : Univariate Test Statistics for a Multivariate Linear Model
 

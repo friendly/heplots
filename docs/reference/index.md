@@ -41,6 +41,8 @@ Tests and plots for homogeneity of variances and covariances
   : Bootstrap Confidence Intervals for Eigenvalue Statistics
 - [`plot_boxM_boot()`](https://friendly.github.io/heplots/reference/plot_boxM_boot.md)
   : Plot for Box's M test with bootstrap CIs
+- [`traceCI()`](https://friendly.github.io/heplots/reference/traceCI.md)
+  : Calculate Confidence Interval for Trace of Covariance Matrices
 
 ## Robust MLMs
 
@@ -72,6 +74,10 @@ Other plots and methods for multivariate linear models
   : Glance at an mlm object
 - [`pvPlot()`](https://friendly.github.io/heplots/reference/pvPlot.md) :
   Partial Variables Plot
+- [`stdmodel()`](https://friendly.github.io/heplots/reference/stdmodel.md)
+  : Standardize a Fitted Linear Model
+- [`stdcoef()`](https://friendly.github.io/heplots/reference/stdcoef.md)
+  : Standardized Regression Coefficients
 - [`uniStats()`](https://friendly.github.io/heplots/reference/uniStats.md)
   : Univariate Test Statistics for a Multivariate Linear Model
 

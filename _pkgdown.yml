@@ -33,6 +33,7 @@ reference:
     - plot.boxM
     - eigstatCI
     - plot_boxM_boot
+    - traceCI
 
   - title: Robust MLMs
     desc: Robust multivariate linear models
@@ -51,6 +52,8 @@ reference:
     - distancePlot
     - glance.mlm
     - pvPlot
+    - stdmodel
+    - stdcoef
     - uniStats
 
   - title: Utility

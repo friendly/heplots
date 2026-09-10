@@ -18,6 +18,7 @@ coefplot(
   df = NULL,
   level = 0.95,
   intercept = FALSE,
+  std = FALSE,
   Scheffe = FALSE,
   bars = TRUE,
   fill = FALSE,
@@ -77,6 +78,15 @@ coefplot(
 - intercept:
 
   logical. Include the intercept?
+
+- std:
+
+  logical. If `TRUE`, plot standardized coefficients instead – see
+  [`stdmodel()`](https://friendly.github.io/heplots/reference/stdmodel.md)
+  for the standardization convention (response(s) and numeric predictors
+  are standardized; factor predictors are left on their raw 0/1 scale).
+  Not generally useful together with `intercept = TRUE`, since the
+  intercept becomes ~0 once standardized.
 
 - Scheffe:
 
@@ -173,7 +183,9 @@ Returns invisibly a list of the coordinates of the ellipses drawn
 [`confidenceEllipse`](https://rdrr.io/pkg/car/man/Ellipses.html)
 
 Other multivariate linear models:
-[`glance.mlm()`](https://friendly.github.io/heplots/reference/glance.mlm.md)
+[`glance.mlm()`](https://friendly.github.io/heplots/reference/glance.mlm.md),
+[`stdcoef()`](https://friendly.github.io/heplots/reference/stdcoef.md),
+[`stdmodel()`](https://friendly.github.io/heplots/reference/stdmodel.md)
 
 ## Author
 
@@ -196,5 +208,10 @@ mod1 <- lm(cbind(SAT,PPVT,Raven)~n+s+ns+na+ss, data=Rohwer)
 coefplot(mod1, lwd=2, fill=TRUE, parm=(1:5),
   main="Bivariate 68% coefficient plot for SAT and PPVT", level=0.68)
 
+
+# standardized coefficients, with a factor predictor (SES) in the model
+# but excluded from the plotted parm range
+mod2 <- lm(cbind(SAT,PPVT,Raven) ~ SES+n+s+ns+na+ss, data=Rohwer)
+coefplot(mod2, parm=2:6, std=TRUE, fill=TRUE, level=0.68)
 
 ```

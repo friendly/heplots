@@ -17,6 +17,34 @@
   group means, SDs, and pooled within-cells correlations in Bray &
   Maxwell (1985, *Multivariate Analysis of Variance*, Table 2.3).
 
+- Added
+  [`traceCI()`](https://friendly.github.io/heplots/reference/traceCI.md):
+  analytic (Bai & Silverstein, 2004) confidence intervals for the trace
+  (sum of eigenvalues) of one or more covariance matrices, complementing
+  [`logdetCI()`](https://friendly.github.io/heplots/reference/logdetCI.md)
+  and
+  [`eigstatCI()`](https://friendly.github.io/heplots/reference/eigstatCI.md).
+
+- Dropped the hard `Depends: broom` for
+  [`glance.mlm()`](https://friendly.github.io/heplots/reference/glance.mlm.md);
+  now `Imports: generics` (the lightweight package defining the `glance`
+  generic, which `broom` itself depends on) instead, with `broom` moved
+  to `Suggests`.
+  [`glance()`](https://generics.r-lib.org/reference/glance.html) still
+  works the same as before with just
+  [`library(heplots)`](https://friendly.github.io/heplots/).
+
+- Added
+  [`stdmodel()`](https://friendly.github.io/heplots/reference/stdmodel.md)
+  and
+  [`stdcoef()`](https://friendly.github.io/heplots/reference/stdcoef.md)
+  for standardized (“beta”) coefficients on `lm`/`mlm` objects:
+  responses and numeric predictors are standardized, factor predictors
+  are left raw.
+  [`coefplot.mlm()`](https://friendly.github.io/heplots/reference/coefplot.md)
+  gains a `std = TRUE` argument using this to plot
+  standardized-coefficient confidence ellipses.
+
 ## Version 1.8.4
 
 CRAN release: 2026-08-23
@@ -82,7 +110,9 @@ CRAN release (v 1.8.1)
 - added
   [`plot_boxM_boot()`](https://friendly.github.io/heplots/reference/plot_boxM_boot.md)
   to plot these with bootstrapped CIs
-- added `traceCI()` for use in
+- added
+  [`traceCI()`](https://friendly.github.io/heplots/reference/traceCI.md)
+  for use in
   [`plot.boxM()`](https://friendly.github.io/heplots/reference/plot.boxM.md)
 
 ## Version 1.8.1
