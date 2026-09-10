@@ -21,7 +21,6 @@
 #'   \item{`p.value`}{P-value corresponding to the F statistic}
 #'   \item{`nobs`}{Number of observations used}
 #' }
-#' @importFrom broom glance
 #' @importFrom magrittr extract
 #' @importFrom purrr map_dfr map
 #' @importFrom tibble as_tibble

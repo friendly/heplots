@@ -27,10 +27,10 @@ Description: Provides HE plot and other functions for visualizing hypothesis
     there are more than a few response variables.
 Language: en-US
 Depends:
-    R (>= 4.1.0),
-    broom
+    R (>= 4.1.0)
 Imports:
     car,
+    generics,
     MASS,
     graphics,
     grDevices,
@@ -41,6 +41,7 @@ Imports:
     tibble,
     boot
 Suggests:
+    broom,
     candisc,
     carData,
     effects,

@@ -74,16 +74,21 @@ for a Gavin funding-application topic list).
   coefficients, adapted from `QuantPsyc::lm.beta`) and `se_variance.R` (SE of variance).
   Files: `dev/standardize.R`, `dev/se_variance.R`
 
-- [ ] Drop the hard `Depends: broom` in favor of `Imports: generics` for `glance.mlm()` --
-  register the S3 method against `generics::glance` (the lightweight package defining the
-  generic, which `broom` itself depends on) instead of `broom::glance`. Checked 2026-08-23:
-  master still has `Depends: broom` and nothing else in `R/` uses `broom::`, so this is still
-  fully applicable, not superseded. Abandoned mid-flight in 2023 on the `rm-glance` branch
-  (single commit `1f59fad`, kept as `origin/rm-glance`, not merged) -- would need
-  `DESCRIPTION` (`Depends`/`Imports`), `NAMESPACE`, `R/glance.mlm.R`, and `R/zzz.R`'s
-  `.onLoad()` registration all updated together. Deliberately not picked up during the
-  v1.8.4 CRAN resubmission; candidate for a later release.
-  Branch: `origin/rm-glance`
+- ✔️ **DONE** (2026-09-10) Drop the hard `Depends: broom` in favor of `Imports: generics` for
+  `glance.mlm()`. `broom` moved to `Suggests` (still needed for the `\link[broom]{glance.lm}`
+  Rd cross-reference and a vignette prose mention; nothing in `R/` calls `broom::` code).
+  Resolved differently than the abandoned `rm-glance` branch attempt (`origin/rm-glance`,
+  commit `1f59fad`, 2023) -- that commit imported `generics::glance` but never declared
+  `generics` anywhere in `DESCRIPTION` (would have failed `R CMD check`), and kept the
+  broom-specific dynamic `.onLoad()`/`setHook()` S3-registration workaround in `R/zzz.R`
+  pointed at `generics` instead, which was no longer needed once `generics` became a real
+  `Imports` dependency. Actual fix: added a standard roxygen2 generic re-export
+  (`R/reexports.R`: `#' @importFrom generics glance` / `#' @export` / `generics::glance`),
+  which keeps bare `glance(x)` working with just `library(heplots)` (verified: works with
+  neither `broom` nor `generics` attached to the search path) via static `NAMESPACE`
+  `S3method`/`importFrom`/`export` entries instead of a runtime hook; deleted the now-fully-
+  unused `R/zzz.R`. Local `devtools::check(cran = TRUE)` clean (0/0/0).
+  `origin/rm-glance` can be deleted whenever convenient -- superseded, not merged.
 
 - ✔️ **DONE** `pvPlot()` — general partial variable plots akin to `car::avPlot()`, shipped in
   v1.8.3 as `R/pvPlot.R` (see `NEWS.md`). Superseded dev drafts moved to "Clean-up candidates"

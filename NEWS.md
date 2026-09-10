@@ -18,6 +18,11 @@
   for the trace (sum of eigenvalues) of one or more covariance matrices,
   complementing `logdetCI()` and `eigstatCI()`.
 
+* Dropped the hard `Depends: broom` for `glance.mlm()`; now `Imports: generics`
+  (the lightweight package defining the `glance` generic, which `broom` itself
+  depends on) instead, with `broom` moved to `Suggests`. `glance()` still works
+  the same as before with just `library(heplots)`.
+
 ## Version 1.8.4
 
 CRAN resubmission of v1.8.3, addressing two `URL` findings from the win-builder

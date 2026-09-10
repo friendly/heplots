@@ -62,6 +62,7 @@ export(ellipse.axes)
 export(ellipse.box)
 export(ellipse3d.axes)
 export(etasq)
+export(glance)
 export(glance.mlm)
 export(gsorth)
 export(heplot)
@@ -91,7 +92,6 @@ importFrom(boot,
   boot,
   boot.ci
 )
-importFrom(broom,glance)
 importFrom(car,
   Anova,
   dataEllipse,
@@ -99,6 +99,7 @@ importFrom(car,
   showLabels,
   wcrossprod
 )
+importFrom(generics,glance)
 importFrom(grDevices,
   col2rgb,
   gray,
