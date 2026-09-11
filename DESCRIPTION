@@ -72,7 +72,8 @@ Suggests:
     aplpack,
     foreign,
     robustbase,
-    effectsize
+    effectsize,
+    parameters
 LazyLoad: yes
 LazyData: yes
 BugReports: https://github.com/friendly/heplots/issues

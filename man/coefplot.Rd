@@ -45,7 +45,7 @@ coefplot(object, ...)
 \arguments{
 \item{object}{A multivariate linear model, such as fit by \code{lm(cbind(y1, y2, ...) ~ terms, ...)}}
 
-\item{\dots}{Other parameters passed to \code{\link[graphics]{plot}}}
+\item{\dots}{Other parameters passed to \code{\link[graphics:plot]{graphics::plot()}}}
 
 \item{variables}{Response variables to plot, given as their indices or names}
 
@@ -77,7 +77,7 @@ ellipses will be filled.}
 \item{labels}{Labels for the confidence ellipses}
 
 \item{label.pos}{Positions of the labels for each ellipse.  See
-\code{\link{label.ellipse}}}
+\code{\link[=label.ellipse]{label.ellipse()}}}
 
 \item{xlab, ylab}{x, y axis labels}
 
@@ -115,9 +115,13 @@ Returns invisibly a list of the coordinates of the ellipses drawn
 }
 \description{
 Displays bivariate confidence ellipses for all parameters in an multivariate linear
-model, for a given pair of variables.  In contrast to a plot of confidence intervals for
-parameters in an ordinary linear model, these plots show how each predictor moves a pair of responses, in a way that can readily be compared.
-This function is also a generalization of \code{\link[car]{confidenceEllipse}} to a multivariate setting.
+model, for a given pair of variables.  In contrast to univariate coefficient plots for an
+ordinary linear model (e.g., \code{\link[parameters:model_parameters]{parameters::model_parameters()}}, plotted via its \code{plot()}
+method), which show confidence intervals for parameters one at a time, these plots show
+how each predictor moves a pair of responses jointly, in a way that can readily be compared.
+}
+\details{
+This function is also a generalization of \code{\link[car:confidenceEllipse]{car::confidenceEllipse()}} to a multivariate setting.
 Note that \code{confidenceEllipse()} also has an \code{mlm} method (via \code{\link[car:confidenceEllipse]{car::confidenceEllipse()}}),
 but it answers a different question: it fixes a \emph{pair of coefficients} (for one or more
 responses) as the plot axes, and shows their joint confidence region. \code{coefplot()} instead
@@ -147,7 +151,7 @@ coefplot(mod2, parm=2:6, std=TRUE, fill=TRUE, level=0.68)
 
 }
 \seealso{
-\code{\link[car]{confidenceEllipse}}
+\code{\link[car:confidenceEllipse]{car::confidenceEllipse()}}, \code{\link[parameters:model_parameters]{parameters::model_parameters()}}
 
 Other multivariate linear models:
 \code{\link[=glance.mlm]{glance.mlm()}},

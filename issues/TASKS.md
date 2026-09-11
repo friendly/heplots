@@ -60,6 +60,12 @@ for a Gavin funding-application topic list).
   (`pred.mlm0`), not yet roxygenized or added to `R/`.
   File: `dev/pred.mlm.R`
 
+- [ ] Modernize roxygen link style package-wide — convert remaining `\code{\link{fun}}` /
+  `\code{\link[pkg]{fun}}` references to markdown `[fun()]` / `[pkg::fun()]` syntax
+  (`Roxygen: list(markdown = TRUE)` is already set). Done for `R/coefplot.mlm.R` (2026-09-11,
+  while clarifying its docs vs `car::confidenceEllipse()`'s `mlm` method); the rest of `R/`
+  still has the old-style macros.
+
 - [ ] Roy-Bargmann stepdown analysis (`RoyBargmann()`) — candidate topic for Gavin's funding
   application, not yet started as package code. `dev/GK-Project.md` records the original
   topic list (`predict.mlm()`, robust-MLM extensions, effect-size/canonical-space tie-ins as

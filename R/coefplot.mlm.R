@@ -13,9 +13,13 @@
 #' Coefficient plots for Multivariate Linear Models
 #' 
 #' Displays bivariate confidence ellipses for all parameters in an multivariate linear
-#' model, for a given pair of variables.  In contrast to a plot of confidence intervals for
-#' parameters in an ordinary linear model, these plots show how each predictor moves a pair of responses, in a way that can readily be compared.
-#' This function is also a generalization of \code{\link[car]{confidenceEllipse}} to a multivariate setting.
+#' model, for a given pair of variables.  In contrast to univariate coefficient plots for an
+#' ordinary linear model (e.g., [parameters::model_parameters()], plotted via its `plot()`
+#' method), which show confidence intervals for parameters one at a time, these plots show
+#' how each predictor moves a pair of responses jointly, in a way that can readily be compared.
+#' 
+#' @details
+#' This function is also a generalization of [car::confidenceEllipse()] to a multivariate setting.
 #' Note that \code{confidenceEllipse()} also has an `mlm` method (via [car::confidenceEllipse()]),
 #' but it answers a different question: it fixes a *pair of coefficients* (for one or more
 #' responses) as the plot axes, and shows their joint confidence region. `coefplot()` instead
@@ -28,7 +32,7 @@
 #' @aliases coefplot coefplot.mlm
 #' @param object A multivariate linear model, such as fit by `lm(cbind(y1,
 #'             y2, ...) ~ terms, ...)`
-#' @param \dots Other parameters passed to \code{\link[graphics]{plot}}
+#' @param \dots Other parameters passed to [graphics::plot()]
 #' @param variables Response variables to plot, given as their indices or names
 #' @param parm Parameters to plot, given as their indices or names
 #' @param df Degrees of freedom for hypothesis tests
@@ -48,7 +52,7 @@
 #' @param fill.alpha Opacity of the confidence ellipses
 #' @param labels Labels for the confidence ellipses
 #' @param label.pos Positions of the labels for each ellipse.  See
-#'        \code{\link{label.ellipse}}
+#'        [label.ellipse()]
 #' @param xlab,ylab x, y axis labels
 #' @param xlim,ylim Axis limits
 #' @param axes Draw axes?
@@ -69,7 +73,7 @@
 #' @return Returns invisibly a list of the coordinates of the ellipses drawn
 #' @author Michael Friendly
 #' 
-#' @seealso \code{\link[car]{confidenceEllipse}}
+#' @seealso [car::confidenceEllipse()], [parameters::model_parameters()]
 #' @family multivariate linear models
 #' @keywords hplot
 #' @examples
