@@ -18,6 +18,12 @@
   for the trace (sum of eigenvalues) of one or more covariance matrices,
   complementing `logdetCI()` and `eigstatCI()`.
 
+* Clarified the `coefplot.mlm()` documentation to explain how it differs from
+  `car::confidenceEllipse()`'s `mlm` method: `coefplot()` fixes a pair of
+  *responses* as plot axes and overlays one ellipse per predictor, while
+  `confidenceEllipse()` fixes a pair of *coefficients* and shows their joint
+  confidence region.
+
 * Dropped the hard `Depends: broom` for `glance.mlm()`; now `Imports: generics`
   (the lightweight package defining the `glance` generic, which `broom` itself
   depends on) instead, with `broom` moved to `Suggests`. `glance()` still works

@@ -12,9 +12,17 @@
 
 #' Coefficient plots for Multivariate Linear Models
 #' 
-#' Displays confidence ellipses for all parameters in an multivariate linear
-#' model, for a given pair of variables.  As such, it is a generalization of
-#' \code{\link[car]{confidenceEllipse}}.
+#' Displays bivariate confidence ellipses for all parameters in an multivariate linear
+#' model, for a given pair of variables.  In contrast to a plot of confidence intervals for
+#' parameters in an ordinary linear model, these plots show how each predictor moves a pair of responses, in a way that can readily be compared.
+#' This function is also a generalization of \code{\link[car]{confidenceEllipse}} to a multivariate setting.
+#' Note that \code{confidenceEllipse()} also has an `mlm` method (via [car::confidenceEllipse()]),
+#' but it answers a different question: it fixes a *pair of coefficients* (for one or more
+#' responses) as the plot axes, and shows their joint confidence region. `coefplot()` instead
+#' fixes a *pair of responses* as the axes and overlays one ellipse per predictor -- use it when
+#' the question is "how does each predictor move these two responses together?", and
+#' `confidenceEllipse()` when the question is about the relationship between two specific
+#' coefficients.
 #' 
 #' 
 #' @aliases coefplot coefplot.mlm
