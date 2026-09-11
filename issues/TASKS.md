@@ -63,8 +63,14 @@ for a Gavin funding-application topic list).
 - [ ] Modernize roxygen link style package-wide — convert remaining `\code{\link{fun}}` /
   `\code{\link[pkg]{fun}}` references to markdown `[fun()]` / `[pkg::fun()]` syntax
   (`Roxygen: list(markdown = TRUE)` is already set). Done for `R/coefplot.mlm.R` (2026-09-11,
-  while clarifying its docs vs `car::confidenceEllipse()`'s `mlm` method); the rest of `R/`
-  still has the old-style macros.
+  while clarifying its docs vs `car::confidenceEllipse()`'s `mlm` method) and `R/heplot3d.R`
+  (2026-09-12, while adding the `rgl::rglwidget()` fix below); the rest of `R/` still has the
+  old-style macros. Confirmed convention (verified against a scratch test package,
+  2026-09-12): function-call links (with `()`) use plain `[pkg::fun()]` — roxygen2
+  auto-detects the parens and code-formats them regardless of backticks; a bare topic link with
+  no `()` (e.g. a package-overview page like `rgl-package`) needs backtick-quoting,
+  `` [`pkg::topic`] ``, to get code formatting — plain `[pkg::topic]` renders as a non-code
+  link.
 
 - [ ] Roy-Bargmann stepdown analysis (`RoyBargmann()`) — candidate topic for Gavin's funding
   application, not yet started as package code. `dev/GK-Project.md` records the original
