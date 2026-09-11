@@ -64,7 +64,7 @@ all terms; if \code{FALSE}, no terms are plotted.}
 
 \item{hypotheses}{optional list of linear hypotheses for which to plot
 hypothesis matrices; hypotheses are specified as for the
-\code{\link[car]{linearHypothesis}} function in the \code{car} package; the
+\code{\link[car:linearHypothesis]{car::linearHypothesis()}} function in the \code{car} package; the
 list elements can be named, in which case the names are used.}
 
 \item{term.labels}{logical value or character vector of names for the terms
@@ -102,7 +102,7 @@ is the default (and `"2"` is a synonym).}
 
 \item{idata}{an optional data frame giving a factor or factors defining the
 intra-subject model for multivariate repeated-measures data.  See Details of
-\code{\link[car]{Anova}} for an explanation of the intra-subject design and
+\code{\link[car:Anova]{car::Anova()}} for an explanation of the intra-subject design and
 for further explanation of the other arguments relating to intra-subject
 factors.}
 
@@ -161,7 +161,7 @@ Otherwise, the default colors are \code{c("pink", "blue", "black", "darkgreen", 
 that degenerate to a line segment. The default is \code{c(1, 4)}.}
 
 \item{shade}{a logical scalar or vector, indicating whether the ellipsoids
-should be rendered with \code{\link[rgl]{shade3d}}. Works like \code{col},
+should be rendered with \code{\link[rgl:shade3d]{rgl::shade3d()}}. Works like \code{col},
 except that \code{FALSE} is used for any 1 df degenerate ellipsoid.}
 
 \item{shade.alpha}{a numeric value in the range (0,1), or a vector of such
@@ -169,17 +169,17 @@ values, giving the alpha transparency for ellipsoids rendered with
 \code{shade=TRUE}.}
 
 \item{wire}{a logical scalar or vector, indicating whether the ellipsoids
-should be rendered with \code{\link[rgl]{wire3d}}. Works like \code{col},
+should be rendered with \code{\link[rgl:wire3d]{rgl::wire3d()}}. Works like \code{col},
 except that \code{TRUE} is used for any 1 df degenerate ellipsoid.}
 
 \item{bg.col}{background colour, \code{"white"} or \code{"black"},
 defaulting to \code{"white"}.}
 
 \item{fogtype}{type of ``fog'' to use for depth-cueing; the default is
-\code{"none"}. See \code{\link[rgl]{bg}}.}
+\code{"none"}. See \code{\link[rgl:bg3d]{rgl::bg3d()}}.}
 
 \item{fov}{field of view angle; controls perspective.  See
-\code{\link[rgl]{viewpoint}}.}
+\code{\link[rgl:view3d]{rgl::view3d()}}.}
 
 \item{offset}{proportion of axes to off set labels; defaults to \code{0.01}.}
 
@@ -227,13 +227,25 @@ sums-of-squares-and-products matrices for terms and linear hypotheses in a
 multivariate linear model.
 }
 \details{
-When the H matrix for a term has rank < 3, the ellipsoid collapses to an
-ellipse (rank(H)=2) or a line (rank(H)=1).
+It uses the \pkg{rgl} package for rendering, so it adds some arguments to those used
+in \code{\link[=heplot]{heplot()}}, but is otherwise the same.
 
 Rotating the plot can be particularly revealing, showing views in which H
 variation is particularly large or small in relation to E variation.  See
-\code{\link[rgl]{play3d}} and \code{\link[rgl]{movie3d}} for details on
+\code{\link[rgl:play3d]{rgl::play3d()}} and \code{\link[rgl:movie3d]{rgl::movie3d()}} for details on
 creating animations.
+
+For use in an R Markdown, Quarto, or \code{pkgdown} document, follow the call to \code{heplot3d()}
+with \code{\link[rgl:rglwidget]{rgl::rglwidget()}} to embed the plot as an interactive, rotatable widget instead of a
+static image. In a knitted document, call \code{\link[rgl:setupKnitr]{rgl::setupKnitr()}} with \code{autoprint = TRUE} once,
+near the top of the document, so that low-level \code{rgl} calls are captured automatically; on a
+\code{pkgdown} reference page, the trailing \code{rgl::rglwidget()} call in the example is enough by
+itself, and no \code{setupKnitr()} call is needed. Note that the widget capture depends on
+\code{rglwidget()} itself being the visibly-printed value -- \code{heplot3d()} returns its ellipsoid
+bounding boxes invisibly, so calling it alone does not trigger a plot in either context.
+
+When the H matrix for a term has rank < 3, the ellipsoid collapses to an
+ellipse (rank(H)=2) or a line (rank(H)=1).
 
 The arguments \code{xlim}, \code{ylim}, and \code{zlim} can be used to
 expand the bounding box of the axes, but cannot decrease it.
@@ -269,15 +281,15 @@ Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
 \url{http://datavis.ca/papers/jcgs-heplots.pdf}
 }
 \seealso{
-\code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}}, for
+\code{\link[car:Anova]{car::Anova()}}, \code{\link[car:linearHypothesis]{car::linearHypothesis()}}, for
 details on MANOVA tests and linear hypotheses
 
-\code{\link{heplot}}, \code{\link{pairs.mlm}}, for other plotting methods
+\code{\link[=heplot]{heplot()}}, \code{\link[=pairs.mlm]{pairs.mlm()}}, for other plotting methods
 for \code{mlm} objects
 
-\code{\link[rgl]{rgl-package}}, for details about 3D plots with \code{rgl}
+\code{\link[rgl:rgl-package]{rgl::rgl-package}}, for details about 3D plots with \code{rgl}
 
-\code{\link[candisc]{heplot3d.candisc}} for 3D HE plots in canonical space.
+\code{\link[candisc:heplot3d.candisc]{candisc::heplot3d.candisc()}} for 3D HE plots in canonical space.
 
 Other HE plot functions:
 \code{\link[=heplot]{heplot()}},

@@ -39,13 +39,27 @@ savedvars <- new.env(parent=emptyenv())
 #' sums-of-squares-and-products matrices for terms and linear hypotheses in a
 #' multivariate linear model.
 #' 
-#' When the H matrix for a term has rank < 3, the ellipsoid collapses to an
-#' ellipse (rank(H)=2) or a line (rank(H)=1).
-#' 
+#' It uses the \pkg{rgl} package for rendering, so it adds some arguments to those used
+#' in [heplot()], but is otherwise the same.
+#'
 #' Rotating the plot can be particularly revealing, showing views in which H
 #' variation is particularly large or small in relation to E variation.  See
-#' \code{\link[rgl]{play3d}} and \code{\link[rgl]{movie3d}} for details on
+#' [rgl::play3d()] and [rgl::movie3d()] for details on
 #' creating animations.
+#'
+#' @details
+#'
+#' For use in an R Markdown, Quarto, or `pkgdown` document, follow the call to `heplot3d()`
+#' with [rgl::rglwidget()] to embed the plot as an interactive, rotatable widget instead of a
+#' static image. In a knitted document, call [rgl::setupKnitr()] with `autoprint = TRUE` once,
+#' near the top of the document, so that low-level `rgl` calls are captured automatically; on a
+#' `pkgdown` reference page, the trailing `rgl::rglwidget()` call in the example is enough by
+#' itself, and no `setupKnitr()` call is needed. Note that the widget capture depends on
+#' `rglwidget()` itself being the visibly-printed value -- `heplot3d()` returns its ellipsoid
+#' bounding boxes invisibly, so calling it alone does not trigger a plot in either context.
+#'
+#' When the H matrix for a term has rank < 3, the ellipsoid collapses to an
+#' ellipse (rank(H)=2) or a line (rank(H)=1).
 #' 
 #' The arguments `xlim`, `ylim`, and `zlim` can be used to
 #' expand the bounding box of the axes, but cannot decrease it.
@@ -57,7 +71,7 @@ savedvars <- new.env(parent=emptyenv())
 #'        all terms; if `FALSE`, no terms are plotted.
 #' @param hypotheses optional list of linear hypotheses for which to plot
 #'        hypothesis matrices; hypotheses are specified as for the
-#'        \code{\link[car]{linearHypothesis}} function in the `car` package; the
+#'        [car::linearHypothesis()] function in the `car` package; the
 #'        list elements can be named, in which case the names are used.
 #' @param term.labels logical value or character vector of names for the terms
 #'        to be plotted. If `TRUE` (the default) the names of the terms are used;
@@ -85,7 +99,7 @@ savedvars <- new.env(parent=emptyenv())
 #'        is the default (and `"2"` is a synonym).
 #' @param idata an optional data frame giving a factor or factors defining the
 #'        intra-subject model for multivariate repeated-measures data.  See Details of
-#'        \code{\link[car]{Anova}} for an explanation of the intra-subject design and
+#'        [car::Anova()] for an explanation of the intra-subject design and
 #'        for further explanation of the other arguments relating to intra-subject
 #'        factors.
 #' @param idesign a one-sided model formula using the ``data'' in idata and
@@ -133,20 +147,20 @@ savedvars <- new.env(parent=emptyenv())
 #'        (including those that degenerate to an ellipse) and for drawing ellipsoids
 #'        that degenerate to a line segment. The default is `c(1, 4)`.
 #' @param shade a logical scalar or vector, indicating whether the ellipsoids
-#'        should be rendered with \code{\link[rgl]{shade3d}}. Works like `col`,
+#'        should be rendered with [rgl::shade3d()]. Works like `col`,
 #'        except that `FALSE` is used for any 1 df degenerate ellipsoid.
 #' @param shade.alpha a numeric value in the range (0,1), or a vector of such
 #'        values, giving the alpha transparency for ellipsoids rendered with
 #'        `shade=TRUE`.
 #' @param wire a logical scalar or vector, indicating whether the ellipsoids
-#'        should be rendered with \code{\link[rgl]{wire3d}}. Works like `col`,
+#'        should be rendered with [rgl::wire3d()]. Works like `col`,
 #'        except that `TRUE` is used for any 1 df degenerate ellipsoid.
 #' @param bg.col background colour, `"white"` or `"black"`,
 #'        defaulting to `"white"`.
 #' @param fogtype type of ``fog'' to use for depth-cueing; the default is
-#'        `"none"`. See \code{\link[rgl]{bg}}.
+#'        `"none"`. See [rgl::bg3d()].
 #' @param fov field of view angle; controls perspective.  See
-#'        \code{\link[rgl]{viewpoint}}.
+#'        [rgl::view3d()].
 #' @param offset proportion of axes to off set labels; defaults to `0.01`.
 #' @param xlab x-axis label; defaults to name of the x variable.
 #' @param ylab y-axis label; defaults to name of the y variable.
@@ -175,16 +189,16 @@ savedvars <- new.env(parent=emptyenv())
 #' environment, containing the rgl object IDs for the axes, axis labels, and
 #' bounding box; these are deleted and the axes, etc.  redrawn if the plot is
 #' added to.
-#' @seealso 
-#'    \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}}, for
+#' @seealso
+#'    [car::Anova()], [car::linearHypothesis()], for
 #'    details on MANOVA tests and linear hypotheses
-#' 
-#'    \code{\link{heplot}}, \code{\link{pairs.mlm}}, for other plotting methods
+#'
+#'    [heplot()], [pairs.mlm()], for other plotting methods
 #'    for `mlm` objects
-#' 
-#'    \code{\link[rgl]{rgl-package}}, for details about 3D plots with `rgl`
-#' 
-#'    \code{\link[candisc]{heplot3d.candisc}} for 3D HE plots in canonical space.
+#'
+#'    [`rgl::rgl-package`], for details about 3D plots with `rgl`
+#'
+#'    [candisc::heplot3d.candisc()] for 3D HE plots in canonical space.
 #' 
 #' @family HE plot functions
 #' @family 3D plotting
