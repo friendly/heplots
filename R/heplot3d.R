@@ -209,7 +209,8 @@ savedvars <- new.env(parent=emptyenv())
 #' pairs(soils.mod, terms="Depth", variables=c("pH", "N", "P", "Ca", "Mg"))
 #' 
 #' heplot3d(soils.mod, variables=c("Mg", "Ca", "Na"), wire=FALSE)
-#' 
+#' rgl::rglwidget()
+#'
 #' # Plastic data
 #' plastic.mod <- lm(cbind(tear, gloss, opacity) ~ rate*additive, data=Plastic)
 #' \dontrun{

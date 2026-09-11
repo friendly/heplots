@@ -24,6 +24,12 @@
   `confidenceEllipse()` fixes a pair of *coefficients* and shows their joint
   confidence region.
 
+* Added an explicit `rgl::rglwidget()` call to `heplot3d()`'s example, so its
+  pkgdown reference page shows an interactive 3D plot instead of nothing.
+  `rgl`'s automatic pkgdown widget support only fires for a visibly-returned
+  object of class `rglId`/`rglOpen3d`; `heplot3d()` returns a different class
+  invisibly, so nothing triggered it without this explicit call.
+
 * Dropped the hard `Depends: broom` for `glance.mlm()`; now `Imports: generics`
   (the lightweight package defining the `glance` generic, which `broom` itself
   depends on) instead, with `broom` moved to `Suggests`. `glance()` still works

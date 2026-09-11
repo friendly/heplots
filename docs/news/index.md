@@ -25,6 +25,18 @@
   and
   [`eigstatCI()`](https://friendly.github.io/heplots/reference/eigstatCI.md).
 
+- Clarified the
+  [`coefplot.mlm()`](https://friendly.github.io/heplots/reference/coefplot.md)
+  documentation to explain how it differs from
+  [`car::confidenceEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html)’s
+  `mlm` method:
+  [`coefplot()`](https://friendly.github.io/heplots/reference/coefplot.md)
+  fixes a pair of *responses* as plot axes and overlays one ellipse per
+  predictor, while
+  [`confidenceEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html)
+  fixes a pair of *coefficients* and shows their joint confidence
+  region.
+
 - Dropped the hard `Depends: broom` for
   [`glance.mlm()`](https://friendly.github.io/heplots/reference/glance.mlm.md);
   now `Imports: generics` (the lightweight package defining the `glance`

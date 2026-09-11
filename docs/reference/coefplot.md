@@ -1,9 +1,13 @@
 # Coefficient plots for Multivariate Linear Models
 
-Displays confidence ellipses for all parameters in an multivariate
-linear model, for a given pair of variables. As such, it is a
-generalization of
-[`confidenceEllipse`](https://rdrr.io/pkg/car/man/Ellipses.html).
+Displays bivariate confidence ellipses for all parameters in an
+multivariate linear model, for a given pair of variables. In contrast to
+univariate coefficient plots for an ordinary linear model (e.g.,
+[`parameters::model_parameters()`](https://easystats.github.io/parameters/reference/model_parameters.html),
+plotted via its [`plot()`](https://rdrr.io/r/graphics/plot.default.html)
+method), which show confidence intervals for parameters one at a time,
+these plots show how each predictor moves a pair of responses jointly,
+in a way that can readily be compared.
 
 ## Usage
 
@@ -57,7 +61,7 @@ coefplot(
 - ...:
 
   Other parameters passed to
-  [`plot`](https://rdrr.io/r/graphics/plot.default.html)
+  [`graphics::plot()`](https://rdrr.io/r/graphics/plot.default.html)
 
 - variables:
 
@@ -113,7 +117,7 @@ coefplot(
 - label.pos:
 
   Positions of the labels for each ellipse. See
-  [`label.ellipse`](https://friendly.github.io/heplots/reference/label.ellipse.md)
+  [`label.ellipse()`](https://friendly.github.io/heplots/reference/label.ellipse.md)
 
 - xlab, ylab:
 
@@ -178,9 +182,28 @@ coefplot(
 
 Returns invisibly a list of the coordinates of the ellipses drawn
 
+## Details
+
+This function is also a generalization of
+[`car::confidenceEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html)
+to a multivariate setting. Note that
+[`confidenceEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html) also
+has an `mlm` method (via
+[`car::confidenceEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html)),
+but it answers a different question: it fixes a *pair of coefficients*
+(for one or more responses) as the plot axes, and shows their joint
+confidence region. `coefplot()` instead fixes a *pair of responses* as
+the axes and overlays one ellipse per predictor – use it when the
+question is "how does each predictor move these two responses
+together?", and
+[`confidenceEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html) when
+the question is about the relationship between two specific
+coefficients.
+
 ## See also
 
-[`confidenceEllipse`](https://rdrr.io/pkg/car/man/Ellipses.html)
+[`car::confidenceEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html),
+[`parameters::model_parameters()`](https://easystats.github.io/parameters/reference/model_parameters.html)
 
 Other multivariate linear models:
 [`glance.mlm()`](https://friendly.github.io/heplots/reference/glance.mlm.md),
