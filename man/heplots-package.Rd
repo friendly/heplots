@@ -58,14 +58,14 @@ intra-subject design and produce plots of the H and E matrices in this
 transformed space. The vignette \code{repeated} describes these graphical
 methods for repeated measures designs.
 
-The related \pkg{car} package calculates Type II and Type III tests of
-multivariate linear hypotheses using the \code{\link[car]{Anova}} and
-\code{\link[car]{linearHypothesis}} functions.
+The related \code{car} package calculates Type II and Type III tests of
+multivariate linear hypotheses using the \code{\link[car:Anova]{car::Anova()}} and
+\code{\link[car:linearHypothesis]{car::linearHypothesis()}} functions.
 
-The \code{\link[candisc]{candisc-package}} package provides functions for
+The \code{\link[candisc:candisc-package]{candisc::candisc-package}} package provides functions for
 visualizing effects for MLM model terms in a low-dimensional canonical space
 that shows the largest hypothesis relative to error variation. The
-\pkg{candisc} package now also includes related methods for canonical
+\code{candisc} package now also includes related methods for canonical
 correlation analysis.
 
 The \code{heplots} package also contains a large number of multivariate data
@@ -111,11 +111,11 @@ Friendly, M. & Sigal, M. (2016). Graphical Methods for Multivariate Linear
 Models in Psychological Research: An R Tutorial. Submitted for publication.
 }
 \seealso{
-\if{html}{\out{<div class="sourceCode">}}\preformatted{\code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for Anova.mlm computations and tests
+\if{html}{\out{<div class="sourceCode">}}\preformatted{[car::Anova()], [car::linearHypothesis()] for Anova.mlm computations and tests
 
-\code{\link[candisc]{candisc-package}} for reduced-rank views in canonical space
+[`candisc::candisc-package`] for reduced-rank views in canonical space
 
-\code{\link[stats]{manova}} for a different approach to testing effects in MANOVA designs
+[stats::manova()] for a different approach to testing effects in MANOVA designs
 }\if{html}{\out{</div>}}
 }
 \author{

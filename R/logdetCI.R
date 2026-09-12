@@ -16,8 +16,8 @@
 #' 
 #' This function is included here only to provide an approximation to
 #' *graphical accuracy* for use with Box's M test for equality of
-#' covariance matrices, \code{\link{boxM}} and its associated
-#' \code{\link{plot.boxM}} method.
+#' covariance matrices, [boxM()] and its associated
+#' [plot.boxM()] method.
 #' 
 #' 
 #' Cai et. al (2015) claim that their Theorem 1 holds with either \eqn{p} fixed
@@ -52,7 +52,7 @@
 #'        columns are `logdet, bias, se`. 
 #'        
 #' @author Michael Friendly
-#' @seealso \code{\link{boxM}}, \code{\link{plot.boxM}}
+#' @seealso [boxM()], [plot.boxM()]
 #' @references
 #' 
 #' Cai, T. T.; Liang, T. & Zhou, H. H. (2015) Law of log determinant of sample

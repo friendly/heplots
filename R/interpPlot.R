@@ -40,7 +40,7 @@
 #' @param abline logical. `TRUE` to plot the linear regression line for `XY`
 #' @param col.lines line color
 #' @param lwd line width
-#' @param id.method How points are to be identified. See \code{\link[car]{showLabels}}.
+#' @param id.method How points are to be identified. See [car::showLabels()].
 #' @param labels observation labels
 #' @param id.n Number of points to be identified. If set to zero, no points are identified.
 #' @param id.cex Controls the size of the plotted labels. The default is 1
@@ -51,12 +51,12 @@
 #' @return Returns invisibly the interpolated XY points.
 #' @note 
 #' The examples here just use on-screen animations to the console
-#' graphics window. The \code{\link[animation]{animation}} package provides
+#' graphics window. The [`animation::animation`] package provides
 #' facilities to save these in various formats.
 #' @author Michael Friendly
 #' @seealso 
-#'    \code{\link[car]{dataEllipse}}, \code{\link[car]{showLabels}},
-#'    \code{\link[animation]{animation}}
+#'    [car::dataEllipse()], [car::showLabels()],
+#'    [`animation::animation`]
 #' @keywords hplot
 #' @examples
 #' 

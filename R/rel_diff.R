@@ -18,7 +18,7 @@
 #' @param epsilon Threshold for values near zero
 #' @return An array or data frame the same size as `x` and `y` containing the relative differences
 #' @export
-#' @seealso \code{link{robmlm}}
+#' @seealso [robmlm()]
 #' @examples
 #' # simple example
 #' m1 <- cbind(c(0,1), c(1,1))

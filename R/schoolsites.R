@@ -5,7 +5,7 @@
 #' Schooldata Sites
 #'
 #' @description
-#' Descriptors for the sites of the \code{\link{schooldata}} dataset, from Charnes et al. (1981).
+#' Descriptors for the sites of the [`schooldata`] dataset, from Charnes et al. (1981).
 #' The study was designed to compare schools using Program Follow Through (PFT)
 #' management methods of taking actions to achieve goals with those of
 #' Non Follow Through (NFT). Observations `1:49` came from PFT sites
@@ -34,7 +34,7 @@
 #' Managerial Efficiency: An Application of Data Envelopment Analysis to
 #' Program Follow Through. *Management Science*, **27**, 668-697, Exhibit C.
 #'
-#' @seealso \code{\link{schooldata}}
+#' @seealso [`schooldata`]
 #' @concept MANOVA
 #' @examples
 #' data(schoolsites)

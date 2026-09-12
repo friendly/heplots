@@ -24,7 +24,7 @@
 #'        result of applying `FUN` to that collection of rows of `X`. The
 #'        items are named according to the levels in `factors`.
 #' @author Michael Friendly
-#' @seealso \code{\link[base]{colMeans}}, \code{\link{termMeans}}
+#' @seealso [base::colMeans()], [termMeans()]
 #' @keywords utilities multivariate
 #' @examples
 #' 

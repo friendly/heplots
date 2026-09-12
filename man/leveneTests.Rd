@@ -21,7 +21,7 @@ or a model formula for a multivariate linear model, or the multivariate linear m
 In the case of a formula or model, the  variables on the right-hand-side of the model must all
 be factors and must be completely crossed.}
 
-\item{\dots}{arguments to be passed down to \code{\link[car]{leveneTest}}, e.g., \code{data} for the
+\item{\dots}{arguments to be passed down to \code{\link[car:leveneTest]{car::leveneTest()}}, e.g., \code{data} for the
 \code{formula} and \code{lm} methods; can also
 be used to pass arguments to the function given by center (e.g., center=mean and trim=0.1 specify
 the 10\% trimmed mean) other arguments.}
@@ -40,7 +40,7 @@ An object of classes "anova" and "data.frame", with one observation
 for each response variable in \code{y}.
 }
 \description{
-This function extends \code{\link[car]{leveneTest}} to a multivariate
+This function extends \code{\link[car:leveneTest]{car::leveneTest()}} to a multivariate
 response setting.  It performs the Levene test of homogeneity of variances
 for each of a set of response variables, and prints a compact summary.
 }
@@ -77,7 +77,7 @@ Variances \emph{Journal of the American Statistical Association}, \strong{69},
 364-367.
 }
 \seealso{
-\code{\link[car]{leveneTest}}, \code{\link{bartlettTests}}
+\code{\link[car:leveneTest]{car::leveneTest()}}, \code{\link[=bartlettTests]{bartlettTests()}}
 
 Other homogeneity tests:
 \code{\link[=bartlettTests]{bartlettTests()}}

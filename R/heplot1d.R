@@ -30,7 +30,7 @@
 #'           all terms; if `FALSE`, no terms are plotted.
 #' @param hypotheses optional list of linear hypotheses for which to plot
 #'           hypothesis matrices; hypotheses are specified as for the
-#'           \code{\link[car]{linearHypothesis}} function in the `car` package; the
+#'           [car::linearHypothesis()] function in the `car` package; the
 #'           list elements can be named, in which case the names are used.
 #' @param term.labels logical value or character vector of names for the terms
 #'           to be plotted. If `TRUE` (the default) the names of the terms are used;
@@ -57,7 +57,7 @@
 #'             is the default (and `"2"` is a synonym).
 #' @param idata an optional data frame giving a factor or factors defining the
 #'             intra-subject model for multivariate repeated-measures data.  See Details of
-#'             \code{\link[car]{Anova}} for an explanation of the intra-subject design and
+#'             [car::Anova()] for an explanation of the intra-subject design and
 #'             for further explanation of the other arguments relating to intra-subject
 #'             factors.
 #' @param idesign a one-sided model formula using the ``data'' in idata and
@@ -132,10 +132,10 @@
 #' 
 #' @author Michael Friendly
 #' @seealso 
-#'    \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for
+#'    [car::Anova()], [car::linearHypothesis()] for
 #'       hypothesis tests in `mlm`s
 #' 
-#'    \code{\link{heplot}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}} for
+#'    [heplot()], [heplot3d()], [pairs.mlm()] for
 #'       other HE plot methods
 #' @family HE plot functions
 #' @keywords hplot aplot multivariate

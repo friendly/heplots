@@ -20,9 +20,9 @@
 #'         in the model and whose rows correspond to the levels of the factor(s) in the
 #'         `term`.
 #' @author Michael Friendly
-#' @seealso \code{\link[stats]{aggregate}}, \code{\link[base]{colMeans}}
+#' @seealso [stats::aggregate()], [base::colMeans()]
 #' 
-#' \code{\link{statList}}, \code{\link{colMeansList}}
+#' [statList()], [colMeansList()]
 #' @keywords manip models
 #' @examples
 #' 

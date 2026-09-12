@@ -16,17 +16,17 @@
 #' Fitting is done by iterated re-weighted least squares (IWLS), using weights
 #' based on the Mahalanobis squared distances of the current residuals from the
 #' origin, and a scaling (covariance) matrix calculated by
-#' \code{\link[MASS]{cov.trob}}. The design of these methods were loosely
-#' modeled on \code{\link[MASS]{rlm}}.
+#' [MASS::cov.trob()]. The design of these methods were loosely
+#' modeled on [MASS::rlm()].
 #' 
 #' These S3 methods are designed to provide a specification of a class of
 #' robust methods which extend `mlm`s, and are therefore compatible with
-#' other `mlm` extensions, including \code{\link[car]{Anova}} and
-#' \code{\link{heplot}}.
+#' other `mlm` extensions, including [car::Anova()] and
+#' [heplot()].
 #' 
 #' An internal `vcov.mlm` function is an extension of the standard
-#' \code{\link[stats]{vcov}} method providing for the use of observation weights.
-#' A \code{\link{plot.robmlm}} method provides simple index plots of case weights
+#' [stats::vcov()] method providing for the use of observation weights.
+#' A [plot.robmlm()] method provides simple index plots of case weights
 #' to visualize those that were down-weighted.
 
 #' @details
@@ -54,11 +54,11 @@
 #' @param weights a vector of prior weights for each case.
 #' @param na.action A function to specify the action to be taken if `NA`s
 #'        are found.  The 'factory-fresh' default action in R is
-#'        \code{\link[stats]{na.omit}}, and can be changed by
-#'        \code{\link[base]{options}}`(na.action=)`.
+#'        [stats::na.omit()], and can be changed by
+#'        [base::options()]`(na.action=)`.
 #' @param model should the model frame be returned in the object?
 #' @param contrasts optional contrast specifications; see
-#'        \code{\link[stats]{lm}} for details.
+#'        [stats::lm()] for details.
 #' @param \dots other arguments, passed down. In particular relevant control
 #'         arguments can be passed to the to the `robmlm.default` method.
 #' @param X for the default method, a model matrix, including the constant (if
@@ -69,7 +69,7 @@
 #'        constant); default is set for bisquare weight function
 #' @param tune tuning constant (if given directly)
 #' @param max.iter maximum number of iterations
-#' @param psi robustness weight function; \code{\link[MASS]{psi.bisquare}} is
+#' @param psi robustness weight function; [MASS::psi.bisquare()] is
 #'        the default
 #' @param tol convergence tolerance, maximum relative change in coefficients
 #' @param initialize modeling function to find start values for coefficients,
@@ -81,7 +81,7 @@
 #' "lm")`.
 #' 
 #'  This means that the returned `"robmlm"` contains all the components of
-#'  `"mlm"` objects described for \code{\link[stats]{lm}}, plus the
+#'  `"mlm"` objects described for [stats::lm()], plus the
 #'  following: 
 #'  \describe{
 #'    \item{weights }{final observation weights} 
@@ -89,15 +89,15 @@
 #'    \item{converged }{logical: did the IWLS process converge?}
 #'  }
 #' 
-#' The generic accessor functions \code{\link[stats]{coefficients}},
-#' \code{\link[stats]{effects}}, \code{\link[stats]{fitted.values}} and
-#' \code{\link[stats]{residuals}} extract various useful features of the value
+#' The generic accessor functions [stats::coefficients()],
+#' [stats::effects()], [stats::fitted.values()] and
+#' [stats::residuals()] extract various useful features of the value
 #' returned by `robmlm`.
 #' @author John Fox; packaged by Michael Friendly
 #' 
 #' @seealso
-#'  \code{\link{plot.robmlm}} for a plot method;
-#'     \code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
+#'  [plot.robmlm()] for a plot method;
+#'     [MASS::rlm()], [MASS::cov.trob()]
 #'  
 #' @family robust methods
 #' 

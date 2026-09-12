@@ -8,7 +8,7 @@
 #' Find noteworthy (unusual) points in a 2D plot
 #'
 #' @description 
-#' This function extends the logic used by \code{\link[car]{showLabels}} to provide a more general
+#' This function extends the logic used by [car::showLabels()] to provide a more general
 #' collection of methods to identify unusual or "noteworthy" points in a two-dimensional display.
 #' Standard methods include Mahalanobis  and Euclidean distance from the centroid, absolute value of distance from 
 #' the mean of X or Y, absolute value of Y and absolute value of the residual in a model `Y ~ X`.
@@ -25,7 +25,7 @@
 #'  \item{`"r"`}{Select points according to their value of `abs(y)`, as may be appropriate 
 #'       in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot.}
 #'  \item{`"ry"`}{Fit the linear model, `y ~ x` and select points according to their absolute residuals.}
-#'  \item{case IDs}{`method` can be an integer vector of case numbers in \code{1:length{x}}, in which case those cases 
+#'  \item{case IDs}{`method` can be an integer vector of case numbers in `1:length{x}`, in which case those cases 
 #'       will be labeled.}
 #'  \item{numeric vector}{`method` can be a vector of the same length as x consisting of values to determine the points 
 #'       to be labeled. For example, for a linear model `mod`, setting `method=cooks.distance(mod)` will label the 
@@ -39,7 +39,7 @@
 #' 
 #' 
 #' @param x,y        The x and y coordinates of a set of points. Alternatively, a single argument `x` can be provided,
-#'                   since \code{\link[grDevices]{xy.coords}(x, y)} is used for construction of the coordinates.
+#'                   since `[grDevices::xy.coords()](x, y)` is used for construction of the coordinates.
 #' @param n          Maximum number of points to identify. If set to 0, no points are identified.
 #' @param method     Method of point identification. See Details.
 #' @param level      Where appropriate, if supplied, the identified points are filtered so that only those for which the 

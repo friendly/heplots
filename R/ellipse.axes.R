@@ -32,16 +32,16 @@
 #'          of axes end points. Values `1:2` represent the minimum and maximum of the first dimension respectively.
 #'          Values `3:4` represent the minimum and maximum of the second dimension.
 #'          Default: `c(2, 4)`.
-#' @param label.pos Positions of text labels relative to the ends of the axes used in \code{\link[graphics]{text}} for
+#' @param label.pos Positions of text labels relative to the ends of the axes used in [graphics::text()] for
 #'          the four possible `label.ends`. 1, 2, 3, 4 represent below, to the left, above and to the right.
 #'          The default, `c(2, 4, 1, 3)`, positions the labels outside the axes.
 #' @param type Character. Draw `"lines"` or `"arrows"`.
-#' @param \dots Other arguments passed to \code{\link[graphics]{lines}} and \code{\link[graphics]{text}}.
+#' @param \dots Other arguments passed to [graphics::lines()] and [graphics::text()].
 #'
 #' @return Invisibly returns a 4 x 2 matrix containing the end points of the axes in pairs (min, max) by rows.
 #' @author Michael Friendly
 #' 
-#' @seealso \code{\link[graphics]{lines}}, \code{\link[graphics]{text}}
+#' @seealso [graphics::lines()], [graphics::text()]
 #' @family covariance ellipses
 #' @export ellipse.axes
 #'

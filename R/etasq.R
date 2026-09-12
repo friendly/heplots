@@ -46,7 +46,7 @@
 #'         the test statistics produced by `Anova()`.
 #' @param partial A logical, indicating whether to calculate partial or
 #'         classical eta^2.
-#' @param \dots Other arguments passed down to \code{\link[car]{Anova}}.
+#' @param \dots Other arguments passed down to [car::Anova()].
 #' @return When `anova=FALSE`, a one-column data frame containing the
 #' eta-squared values for each term in the model.
 #' 
@@ -55,7 +55,7 @@
 #' `print.Anova()` for each term in the model.
 #' 
 #' @author Michael Friendly
-#' @seealso \code{\link[car]{Anova}}
+#' @seealso [car::Anova()]
 #' @references Muller, K. E. and Peterson, B. L. (1984). Practical methods for
 #' computing power in testing the Multivariate General Linear Hypothesis
 #' *Computational Statistics and Data Analysis*, **2**, 143-158.
@@ -65,7 +65,7 @@
 #' Measures Applications. *Journal of the American Statistical
 #' Association*, **87**, 1209-1226.
 #' @keywords multivariate
-#' @seealso \code{\link[effectsize]{eta_squared}} for a function that calculates this effect size measure for each response variable separately.
+#' @seealso [effectsize::eta_squared()] for a function that calculates this effect size measure for each response variable separately.
 #' @concept effect size
 #' @concept strength of association
 #' @examples

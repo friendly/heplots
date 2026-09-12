@@ -21,7 +21,7 @@ or a model formula for a multivariate linear model, or the multivariate linear m
 In the case of a formula or model, the  variables on the right-hand-side of the model must all
 be factors and must be completely crossed.}
 
-\item{\dots}{other arguments, passed to \code{\link[stats]{bartlett.test}}}
+\item{\dots}{other arguments, passed to \code{\link[stats:bartlett.test]{stats::bartlett.test()}}}
 
 \item{group}{a vector or factor object giving the group for the
 corresponding elements of the rows of \code{y} for the default method}
@@ -33,7 +33,7 @@ An object of classes "anova" and "data.frame", with one observation
 for each response variable in \code{y}.
 }
 \description{
-This function extends \code{\link[stats]{bartlett.test}} to a multivariate
+This function extends \code{\link[stats:bartlett.test]{stats::bartlett.test()}} to a multivariate
 response setting.  It performs the Bartlett test of homogeneity of variances
 for each of a set of response variables, and prints a compact summary.
 
@@ -59,7 +59,7 @@ statistical tests.  \emph{Proceedings of the Royal Society of London Series
 A}, \strong{160}, 268-282.
 }
 \seealso{
-\code{\link{boxM}} for Box's M test for all responses together.
+\code{\link[=boxM]{boxM()}} for Box's M test for all responses together.
 
 Other homogeneity tests:
 \code{\link[=leveneTests]{leveneTests()}}

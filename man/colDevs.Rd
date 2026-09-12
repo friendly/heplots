@@ -12,7 +12,7 @@ colDevs(x, group, center = mean, group.var = FALSE, ...)
 \item{group}{A factor (or variable that can be coerced to a factor)
 indicating the membership of each observation in \code{x} in one or more
 groups. If missing, all the data is treated as a single group.
-You can also specify the \code{\link[base]{interaction}} of two or more
+You can also specify the \code{\link[base:interaction]{base::interaction()}} of two or more
 factors.}
 
 \item{center}{A function used to center the values (for each group if
@@ -36,7 +36,7 @@ variable.
 }
 \details{
 Conceptually, the function is similar to a column-wise
-\code{\link[base]{sweep}}, by group, allowing an arbitrary \code{center}
+\code{\link[base:sweep]{base::sweep()}}, by group, allowing an arbitrary \code{center}
 function.
 
 Non-numeric columns of \code{x} are removed, with a warning.
@@ -67,9 +67,9 @@ colDevs(Plastic[,1:3], Plastic[,"additive"])
 #' colDevs(Plastic[,1:3], interaction(Plastic[,c("rate", "additive")]))
 }
 \seealso{
-\code{\link[base]{colMeans}} for column means,
+\code{\link[base:colMeans]{base::colMeans()}} for column means,
 
-\code{\link[base]{sweep}}
+\code{\link[base:sweep]{base::sweep()}}
 }
 \author{
 Michael Friendly

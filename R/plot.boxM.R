@@ -21,7 +21,7 @@
 #' 
 #' @name plot.boxM
 #' @docType data
-#' @param x A `"boxM"` object resulting from \code{\link{boxM}}
+#' @param x A `"boxM"` object resulting from [boxM()]
 #' @param gplabel character string used to label the group factor.
 #' @param which Measure to be plotted. The default, `"logDet"`, is the
 #' standard plot.  Other values are: `"product"`, `"sum"`,
@@ -40,17 +40,17 @@
 #' @param xlim x limits for the plot
 #' @param conf coverage for approximate confidence intervals, `0 <= conf <
 #' 1` ; use `conf=0` to suppress these
-#' @param method confidence interval method; see \code{\link{logdetCI}}
+#' @param method confidence interval method; see [logdetCI()]
 #' @param bias.adj confidence interval bias adjustment; see
-#' \code{\link{logdetCI}}
+#' [logdetCI()]
 #' @param lwd line width for confidence interval
-#' @param ... Arguments passed down to \code{\link[graphics]{dotchart}}.
+#' @param ... Arguments passed down to [graphics::dotchart()].
 #' 
 #' @author Michael Friendly
 #' 
-#' @seealso \code{\link{boxM}}, \code{\link{logdetCI}}
+#' @seealso [boxM()], [logdetCI()]
 #' 
-#' \code{\link[graphics]{dotchart}}
+#' [graphics::dotchart()]
 #' @family diagnostic plots
 #' 
 #' @references 

@@ -14,10 +14,10 @@
 #'          for a given `level` on 2 degrees of freedom, however in a small sample of `n` observations,
 #'          a more accurate value is `sqrt(2 * qf(level, 2, n - 1 ))`. 
 #' @param factor A function defining the conjugate axes used to transform the unit
-#'          circle into an ellipse.  \code{\link{chol}}, uses the right Cholesky
+#'          circle into an ellipse.  [base::chol()], uses the right Cholesky
 #' factor of `x`. 
 #' @param draw What to draw? `"box"`, `"diameters"` or `"both"`
-#' @param \dots Other arguments passed to \code{\link[graphics]{lines}}.
+#' @param \dots Other arguments passed to [graphics::lines()].
 #'
 #' @return Invisibly returns a 2 column matrix containing the end points of lines.
 #' 

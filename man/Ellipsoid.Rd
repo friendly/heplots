@@ -73,7 +73,7 @@ returns the bounding box of the ellipsoid invisibly; otherwise used for it's sid
 drawing the ellipsoid
 }
 \description{
-This is an experimental function designed to separate internal code in \code{link{heplot3d}}.
+This is an experimental function designed to separate internal code in \code{\link[=heplot3d]{heplot3d()}}.
 }
 \examples{
 # none yet

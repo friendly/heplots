@@ -228,13 +228,13 @@ multivariate linear model. It allow you to visualize model effects on three resp
 together, as opposed to the 2D views offered by \code{\link[=heplot]{heplot()}} and \code{\link[=pairs.mlm]{pairs.mlm()}}.
 }
 \details{
-It uses the \pkg{rgl} package for rendering, so it adds some arguments (e.g., \code{fogtype}) to those used
+It uses the \code{rgl} package for rendering, so it adds some arguments (e.g., \code{fogtype}) to those used
 in \code{\link[=heplot]{heplot()}}, but is otherwise the same.
 
 Rotating the plot can be particularly revealing, showing views in which $\mathbf{H}$
 variation is particularly large or small in relation to $\mathbf{E}$ variation.  If you find
 a view making $\mathbf{H}$ as large as possible, this corresponds closely to the canonical
-view chosen by the \pkg{candisc}.
+view chosen by the \code{candisc}.
 
 See \code{\link[rgl:play3d]{rgl::play3d()}} and \code{\link[rgl:movie3d]{rgl::movie3d()}} for details on creating animations, rotating the 3D scene around on or more coordinate axes, or zooming in/out to highlight some feature.
 

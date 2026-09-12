@@ -48,7 +48,7 @@ the point}
 
 \item{ylab}{y axis label}
 
-\item{\dots}{other arguments passed to \code{\link[graphics]{plot}}}
+\item{\dots}{other arguments passed to \code{\link[graphics:plot]{graphics::plot()}}}
 }
 \value{
 Returns invisibly the weights for the observations labeled in the
@@ -56,7 +56,7 @@ plot
 }
 \description{
 Creates an index plot of the observation weights assigned in the last
-iteration of \code{\link{robmlm}}.  Observations with low weights have large
+iteration of \code{\link[=robmlm]{robmlm()}}.  Observations with low weights have large
 residual squared distances and are potential multivariate outliers with
 respect to the fitted model.
 }
@@ -98,7 +98,7 @@ ids
 
 }
 \seealso{
-\code{\link{robmlm}}
+\code{\link[=robmlm]{robmlm()}}
 
 Other robust methods:
 \code{\link[=Mahalanobis]{Mahalanobis()}},

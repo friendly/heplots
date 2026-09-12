@@ -41,7 +41,7 @@ Y1 is tested alone, and then Y2.1, Y3.12, etc. can be tested to determine
 their additional contributions over the previous response variables.
 
 Similarly, orthogonalizing the model X variables provides the equivalent of
-Type I tests, such as provided by \code{\link[stats]{anova}}.
+Type I tests, such as provided by \code{\link[stats:anova]{stats::anova()}}.
 
 The method is equivalent to setting each of columns \code{2:p} to the
 residuals from a linear regression of that column on all prior columns,
@@ -86,7 +86,7 @@ heplot(rohwer.mod1)
 
 }
 \seealso{
-\code{\link[base]{qr}},
+\code{\link[base:qr]{base::qr()}},
 }
 \author{
 Michael Friendly

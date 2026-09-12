@@ -21,9 +21,9 @@
 #' @param names optional character vector of names for the colors
 #' @return A vector of color values of the form `"#rrggbbaa"`
 #' @author Michael Friendly
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
-#' \code{\link[grDevices]{col2rgb}}, \code{\link[grDevices]{rgb}},
-#' \code{\link[grDevices]{adjustcolor}},
+#' @seealso %% ~~objects to See Also as [utils::help()], ~~~
+#' [grDevices::col2rgb()], [grDevices::rgb()],
+#' [grDevices::adjustcolor()],
 #' @keywords color
 #' @examples
 #' 

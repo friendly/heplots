@@ -4,7 +4,7 @@
 
 #' Find degrees of freedom for model terms
 #' 
-#' @param model A model object, such as fit using \code{\link[stats]{lm}}.
+#' @param model A model object, such as fit using [stats::lm()].
 #' @param term  One or more terms from the model
 #' @param ...   Other arguments, ignored
 #'

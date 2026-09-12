@@ -33,9 +33,9 @@
 #' worse.
 #' 
 #' In general, heterogeneity of covariance matrices can be more easily seen and understood by plotting
-#' the covariance ellipses using \code{\link{covEllipses}}.
+#' the covariance ellipses using [covEllipses()].
 #' 
-#' The \code{summary} method prints a variety of additional statistics based on
+#' The `summary` method prints a variety of additional statistics based on
 #' the eigenvalues of the covariance matrices. These are returned invisibly, as
 #' a list containing the following components:
 #' \describe{
@@ -53,21 +53,21 @@
 #'   }
 #' }
 #'
-#' @param Y The response variable matrix for the default method, or a \code{"mlm"} 
-#'   or \code{"formula"} object for a multivariate linear model. If \code{Y} is a 
+#' @param Y The response variable matrix for the default method, or a `"mlm"` 
+#'   or `"formula"` object for a multivariate linear model. If `Y` is a 
 #'   linear-model object or a formula, the variables on the right-hand-side of the 
-#'   model must all be factors and must be completely crossed, e.g., \code{A:B}
+#'   model must all be factors and must be completely crossed, e.g., `A:B`
 #' @param group A vector specifying the groups. Used only for the default method.
 #' @param data A data frame containing the variables in the model. Used only for
 #'   the formula method.
-#' @param object A \code{"boxM"} object, result of a call to \code{boxM}
+#' @param object A `"boxM"` object, result of a call to `boxM`
 #' @param digits Number of digits in printed output
-#' @param cov Logical; if \code{TRUE}, the covariance matrices for each group and 
+#' @param cov Logical; if `TRUE`, the covariance matrices for each group and 
 #'   the pooled covariance matrix are printed
-#' @param quiet Logical; if \code{TRUE}, suppress printed output
+#' @param quiet Logical; if `TRUE`, suppress printed output
 #' @param ... Other arguments passed down
 #'
-#' @return A list with class \code{c("boxM", "htest")} containing the following
+#' @return A list with class `c("boxM", "htest")` containing the following
 #'   components:
 #'   \item{statistic}{the chi-square (approximate) statistic for Box's M test, where large values 
 #'         imply the covariance matrices differ.}
@@ -78,32 +78,32 @@
 #'   \item{pooled}{the pooled covariance matrix}
 #'   \item{means}{a matrix whose `ngroups+1` rows are the means of the variables, followed by those for pooled data.}
 #'   \item{logDet}{a vector of length `ngroups+1` containing the natural logarithm of each matrix in 
-#'     \code{cov}, followed by that for the pooled covariance matrix}
+#'     `cov`, followed by that for the pooled covariance matrix}
 #'   \item{df}{a vector of the degrees of freedom for all groups, followed by 
 #'     that for the pooled covariance matrix}
 #'   \item{data.name}{a character string giving the names of the data, as extracted from the call}
-#'   \item{method}{the character string \code{"Box's M-test for Homogeneity of 
-#'     Covariance Matrices"}}
+#'   \item{method}{the character string `"Box's M-test for Homogeneity of
+#'     Covariance Matrices"`}
 #'
-#' @author The default method was taken from the \pkg{biotools} package,
+#' @author The default method was taken from the `biotools` package,
 #'   Anderson Rodrigo da Silva \email{anderson.agro@@hotmail.com}
 #'   
 #'   Generalized by Michael Friendly and John Fox
 #'   
 #' @seealso 
-#' \code{\link[car]{leveneTest}} carries out homogeneity of variance
+#' [car::leveneTest()] carries out homogeneity of variance
 #' tests for univariate models with better statistical properties.
 #' 
-#' \code{\link{plot.boxM}}, a simple dot plot of the log determinants compared with that of the pooled covariance matrix, and also of other quantities computed from their eigenvalues
+#' [plot.boxM()], a simple dot plot of the log determinants compared with that of the pooled covariance matrix, and also of other quantities computed from their eigenvalues
 #' 
-#' \code{\link{covEllipses}} plots covariance ellipses in variable space for
+#' [covEllipses()] plots covariance ellipses in variable space for
 #' several groups.
 #' 
 #' @references 
 #' Box, G. E. P. (1949). A general distribution theory for a class
-#' of likelihood criteria. \emph{Biometrika}, 36, 317-346.
+#' of likelihood criteria. *Biometrika*, 36, 317-346.
 #' 
-#' Morrison, D.F. (1976) \emph{Multivariate Statistical Methods}.
+#' Morrison, D.F. (1976) *Multivariate Statistical Methods*.
 #' 
 #' @examples
 #' 

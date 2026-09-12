@@ -13,7 +13,7 @@
 #' The function draws covariance ellipses for one or more groups and optionally
 #' for the pooled total sample.  It uses either the classical product-moment
 #' covariance estimate, or a robust alternative, as provided by
-#' \code{\link[MASS]{cov.rob}}. Provisions are provided to do this for more
+#' [MASS::cov.rob()]. Provisions are provided to do this for more
 #' than two variables, in a scatterplot matrix format.
 #' 
 #' These plot methods provide one way to visualize possible heterogeneity of
@@ -117,9 +117,9 @@
 #' %which is a list of the coordinates for the ellipses drawn.
 #' @author Michael Friendly
 #' 
-#' @seealso \code{\link{heplot}}, \code{\link{boxM}},
+#' @seealso [heplot()], [boxM()],
 #' 
-#' \code{\link[MASS]{cov.rob}}
+#' [MASS::cov.rob()]
 #' @family covariance ellipses
 #' @keywords hplot
 #' @keywords multivariate

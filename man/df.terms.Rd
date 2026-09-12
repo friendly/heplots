@@ -10,7 +10,7 @@ df.terms(model, term, ...)
 \method{df.terms}{default}(model, term, ...)
 }
 \arguments{
-\item{model}{A model object, such as fit using \code{\link[stats]{lm}}.}
+\item{model}{A model object, such as fit using \code{\link[stats:lm]{stats::lm()}}.}
 
 \item{term}{One or more terms from the model}
 

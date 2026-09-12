@@ -15,7 +15,7 @@ label.ellipse(
 )
 }
 \arguments{
-\item{ellipse}{A two-column matrix of coordinates for the ellipse boundary, for example as computed by \code{\link[car]{ellipse}}.}
+\item{ellipse}{A two-column matrix of coordinates for the ellipse boundary, for example as computed by \code{\link[car:ellipse]{car::ellipse()}}.}
 
 \item{label}{Character string to be used as the ellipse label}
 
@@ -31,20 +31,20 @@ The defaults are 0.5 times the
 height and width of the character \code{"M"} added
 or subtracted to the calculated (x, y) values.}
 
-\item{...}{Other parameters passed to \code{\link[graphics]{text}}, e.g., \code{cex}, \code{col}, \dots}
+\item{...}{Other parameters passed to \code{\link[graphics:text]{graphics::text()}}, e.g., \code{cex}, \code{col}, \dots}
 }
 \value{
-Mainly used for its side-effect of producing a call to \code{\link[graphics]{text}}, but also returns, invisibly,
+Mainly used for its side-effect of producing a call to \code{\link[graphics:text]{graphics::text()}}, but also returns, invisibly,
 the (x, y) coordinates where the label was placed.
 }
 \description{
 \code{label.ellipse} is used to a draw text label on an ellipse at its center or
-somewhere around the periphery in a very flexible way. It is used in \code{\link{heplot}}, \code{\link{covEllipses}}, and
-\code{\link{coefplot.mlm}}, but is also useful as a utility when plotting ellipses in base R graphics.
+somewhere around the periphery in a very flexible way. It is used in \code{\link[=heplot]{heplot()}}, \code{\link[=covEllipses]{covEllipses()}}, and
+\code{\link[=coefplot.mlm]{coefplot.mlm()}}, but is also useful as a utility when plotting ellipses in base R graphics.
 }
 \details{
 The function takes the coordinates of the input \code{ellipse} and uses that, together with \code{label.pos} to calculate the
-(x, y) coordinates to be passed to \code{\link[graphics]{text}} along with a computed \code{pos} argument.
+(x, y) coordinates to be passed to \code{\link[graphics:text]{graphics::text()}} along with a computed \code{pos} argument.
 The values of \code{tweak} are applied to (x, y) to position the labels to the outside of the ellipse by default.
 
 The \code{label.pos} argument implements a very general way to position the text label with respect to the ellipse:
@@ -57,7 +57,7 @@ at the "top" (\eqn{r >= 0}) or "bottom" (\eqn{r < 0}) of the ellipse.
 \item  Integer values of 0, 1, 2, 3 and 4, respectively indicate positions
 at the center, below, to the left of, above
 and to the right of the max/min coordinates of the \code{ellipse}, where the values \code{1:4} correspond to the
-usual values of \code{pos} in \code{\link[graphics]{text}}.
+usual values of \code{pos} in \code{\link[graphics:text]{graphics::text()}}.
 
 \item  Label positions can also be specified as the corresponding character strings
 \code{c("center", "bottom", "left", "top", "right")}, or \emph{compass directions},
@@ -130,7 +130,7 @@ heplot(dogfood.mod,
 # translate nmemonics to standard numerical text positions 1:4,
 }
 \seealso{
-\code{\link[graphics]{text}}, \code{\link[car]{ellipse}}, \code{\link{heplot}}, \code{\link{covEllipses}}
+\code{\link[graphics:text]{graphics::text()}}, \code{\link[car:ellipse]{car::ellipse()}}, \code{\link[=heplot]{heplot()}}, \code{\link[=covEllipses]{covEllipses()}}
 }
 \author{
 Michael Friendly

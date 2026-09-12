@@ -28,7 +28,7 @@ mark.H0(
 \code{expression(H[0])} in 2D plots.}
 
 \item{cex}{Point and text size.  For 3D plots, the function uses
-\code{size=5*cex} in a call to \code{\link[rgl]{points3d}}.}
+\code{size=5*cex} in a call to \code{\link[rgl:points3d]{rgl::points3d()}}.}
 
 \item{pch}{Plot character.  Ignored for 3D plots.}
 
@@ -58,7 +58,7 @@ mark.H0()
 
 }
 \seealso{
-\code{\link{cross3d}}
+\code{\link[=cross3d]{cross3d()}}
 }
 \author{
 Michael Friendly

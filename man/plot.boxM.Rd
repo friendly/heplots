@@ -23,7 +23,7 @@
 )
 }
 \arguments{
-\item{x}{A \code{"boxM"} object resulting from \code{\link{boxM}}}
+\item{x}{A \code{"boxM"} object resulting from \code{\link[=boxM]{boxM()}}}
 
 \item{gplabel}{character string used to label the group factor.}
 
@@ -51,14 +51,14 @@ the vertical axis.}
 
 \item{conf}{coverage for approximate confidence intervals, \verb{0 <= conf < 1} ; use \code{conf=0} to suppress these}
 
-\item{method}{confidence interval method; see \code{\link{logdetCI}}}
+\item{method}{confidence interval method; see \code{\link[=logdetCI]{logdetCI()}}}
 
 \item{bias.adj}{confidence interval bias adjustment; see
-\code{\link{logdetCI}}}
+\code{\link[=logdetCI]{logdetCI()}}}
 
 \item{lwd}{line width for confidence interval}
 
-\item{...}{Arguments passed down to \code{\link[graphics]{dotchart}}.}
+\item{...}{Arguments passed down to \code{\link[graphics:dotchart]{graphics::dotchart()}}.}
 }
 \description{
 This function creates a simple dot chart showing the contributions (log
@@ -110,9 +110,9 @@ Friendly, M., & Sigal, M. (2018). Visualizing Tests for Equality of Covariance M
 Online: \url{https://www.datavis.ca/papers/EqCov-TAS.pdf}.
 }
 \seealso{
-\code{\link{boxM}}, \code{\link{logdetCI}}
+\code{\link[=boxM]{boxM()}}, \code{\link[=logdetCI]{logdetCI()}}
 
-\code{\link[graphics]{dotchart}}
+\code{\link[graphics:dotchart]{graphics::dotchart()}}
 
 Other diagnostic plots:
 \code{\link[=cqplot]{cqplot()}},

@@ -5,12 +5,12 @@
 #' 
 #' @param centre A scalar or vector of length 3, giving the centre of the 3D cross
 #' @param scale A scalar or vector of length 3, giving the lengths of the arms of the 3D cross
-#' @param \dots Other arguments, passed on to \code{\link[rgl]{segments3d}}
+#' @param \dots Other arguments, passed on to [rgl::segments3d()]
 #' @return Used for its side-effect, but returns (invisibly) a 6 by 3 matrix
 #'        containing the end-points of three axes, in pairs.
 #' @author Michael Friendly
 #' 
-#' @seealso \code{\link[rgl:points3d]{segments3d}}
+#' @seealso [rgl::segments3d()]
 #' @family 3D plotting
 #' 
 #' @keywords aplot dynamic

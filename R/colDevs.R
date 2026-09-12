@@ -5,7 +5,7 @@
 #' variable.
 #' 
 #' Conceptually, the function is similar to a column-wise
-#' \code{\link[base]{sweep}}, by group, allowing an arbitrary `center`
+#' [base::sweep()], by group, allowing an arbitrary `center`
 #' function.
 #' 
 #' Non-numeric columns of `x` are removed, with a warning.
@@ -14,7 +14,7 @@
 #' @param group A factor (or variable that can be coerced to a factor)
 #'         indicating the membership of each observation in `x` in one or more
 #'         groups. If missing, all the data is treated as a single group.
-#'         You can also specify the \code{\link[base]{interaction}} of two or more
+#'         You can also specify the [base::interaction()] of two or more
 #'         factors.
 #' @param center A function used to center the values (for each group if
 #'         `group` is specified. The function must take a vector argument and
@@ -26,9 +26,9 @@
 #'         function. If `levels==TRUE`, it returns a data.frame containing the group factor prepended to the
 #'         matrix of deviations. 
 #' @author Michael Friendly
-#' @seealso \code{\link[base]{colMeans}} for column means,
+#' @seealso [base::colMeans()] for column means,
 #' 
-#' \code{\link[base]{sweep}}
+#' [base::sweep()]
 #' @keywords manip
 #' @examples
 #' 

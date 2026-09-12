@@ -60,8 +60,8 @@ number of rows in \code{x}.}
 \item{col}{color for points. Can be a vector of length equal to the
 number of rows in \code{x}.
 The default is the \emph{first} entry in the
-current color palette (see \code{\link[grDevices]{palette}} and
-\code{\link[graphics]{par}}).}
+current color palette (see \code{\link[grDevices:palette]{grDevices::palette()}} and
+\code{\link[graphics:par]{graphics::par()}}).}
 
 \item{cex}{character symbol size for points.  Can be a vector of length
 equal to the number of rows in \code{x}.}
@@ -93,7 +93,7 @@ point identification occurs.}
 
 \item{id.method}{point identification method. The default
 \code{id.method="r"} will identify the \code{id.n} points with the largest
-value of abs(y), i.e., the largest Mahalanobis DSQ. See \code{\link[car]{showLabels}} for other
+value of abs(y), i.e., the largest Mahalanobis DSQ. See \code{\link[car:showLabels]{car::showLabels()}} for other
 options.}
 
 \item{id.cex}{size of text for point labels}
@@ -133,7 +133,7 @@ taking the sample covariance matrix \eqn{\mathbf{S}} into account,
 D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} - \bar{\mathbf{x}}) \; .
 }
 
-The method for \code{"mlm"} objects fit using \code{\link[stats]{lm}} for a multivariate response
+The method for \code{"mlm"} objects fit using \code{\link[stats:lm]{stats::lm()}} for a multivariate response
 applies this to the residuals from the model.
 }
 \details{
@@ -171,7 +171,7 @@ The pointwise confidence envelope of coverage \code{conf} = \eqn{1-\alpha} is th
 
 Note that this confidence envelope applies only to the \eqn{D^2} computed
 using the classical estimates of location (\eqn{\bar{\mathbf{x}}}) and scatter (\eqn{\mathbf{S}}). The
-\code{\link[car]{qqPlot}}
+\code{\link[car:qqPlot]{car::qqPlot()}}
 function provides for simulated envelopes, but only for
 a univariate measure. Oldford (2016) provides a general theory and methods
 for QQ plots.
@@ -227,11 +227,11 @@ R. W. Oldford (2016), "Self calibrating quantile-quantile plots",
 \emph{The American Statistician}, 70, 74-90.
 }
 \seealso{
-\code{\link{Mahalanobis}} for calculation of Mahalanobis squared distance;
+\code{\link[=Mahalanobis]{Mahalanobis()}} for calculation of Mahalanobis squared distance;
 
-\code{\link[stats]{qqplot}}; \code{\link[car]{qqPlot}} can give a similar
+\code{\link[stats:qqplot]{stats::qqplot()}}; \code{\link[car:qqPlot]{car::qqPlot()}} can give a similar
 result for Mahalanobis squared distances of data or residuals;
-\code{\link[qqtest]{qqtest}} has many features for all types of QQ plots.
+\code{\link[qqtest:qqtest]{qqtest::qqtest()}} has many features for all types of QQ plots.
 
 Other diagnostic plots:
 \code{\link[=distancePlot]{distancePlot()}},

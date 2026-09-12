@@ -29,7 +29,7 @@ distancePlot(X, Y, ...)
 \method{distancePlot}{mlm}(X, ...)
 }
 \arguments{
-\item{X}{A multivariate linear model fit by \code{\link[stats]{lm}}, or a numeric data frame giving the predictors in the MLM}
+\item{X}{A multivariate linear model fit by \code{\link[stats:lm]{stats::lm()}}, or a numeric data frame giving the predictors in the MLM}
 
 \item{Y}{A numeric data frame giving the responses in the MLM or the residuals}
 
@@ -46,7 +46,7 @@ distancePlot(X, Y, ...)
 
 \item{col}{A vector of two colors, for the regular points and those beyond the cutoffs}
 
-\item{label.pos}{Position of the label relative to the point; see \code{\link[graphics]{text}}}
+\item{label.pos}{Position of the label relative to the point; see \code{\link[graphics:text]{graphics::text()}}}
 
 \item{xlab}{Label stub for horizontal axis}
 
@@ -130,7 +130,7 @@ Rousseeuw, P. J., Van Driessen, K., Van Aelst, S., & Agullo, J. (2004). Robust m
 \emph{Technometrics}, \strong{46}(3), 293–305. \doi{10.1198/004017004000000329}.
 }
 \seealso{
-\code{\link{Mahalanobis}}, \code{\link{robmlm}}
+\code{\link[=Mahalanobis]{Mahalanobis()}}, \code{\link[=robmlm]{robmlm()}}
 
 Other diagnostic plots:
 \code{\link[=cqplot]{cqplot()}},

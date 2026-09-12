@@ -13,9 +13,9 @@ text_usr(x, y, labels, ...)
 \item{x, y}{numeric vectors of coordinates in (0, 1) where the text \code{labels} should be written. If the length of
 \code{x} and \code{y} differs, the shorter one is recycled. Alternatively, a single argument \code{x} can be provided.}
 
-\item{labels}{a character vector or \code{\link[base]{expression}} specifying the text to be written}
+\item{labels}{a character vector or \code{\link[base:expression]{base::expression()}} specifying the text to be written}
 
-\item{...}{other arguments passed to \code{\link[graphics]{text}}, such as \code{pos}, \code{cex}, \code{col}, ...}
+\item{...}{other arguments passed to \code{\link[graphics:text]{graphics::text()}}, such as \code{pos}, \code{cex}, \code{col}, ...}
 }
 \description{
 \code{text_usr()} draws the strings given in the vector labels at the coordinates given by \code{x} and \code{y},
@@ -24,7 +24,7 @@ This is useful when you know where in a plot you want to add some text annotatio
 out what the data coordinates are.
 }
 \details{
-\code{y} may be missing since \code{\link[grDevices]{xy.coords}} is used for construction of the coordinates.
+\code{y} may be missing since \code{\link[grDevices:xy.coords]{grDevices::xy.coords()}} is used for construction of the coordinates.
 
 The function also works with \code{par(xlog) == TRUE} and \code{par(ylog) == TRUE} when either of these is set
 for log scales.

@@ -74,8 +74,8 @@ axes <- ellipse3d.axes(cov, centre=mu, level=0.68, color="gray", lwd=2)
 
 }
 \seealso{
-\code{\link[rgl:points3d]{segments3d}},
-\code{\link[rgl:texts]{text3d}}, \code{\link[rgl]{ellipse3d}}
+\code{\link[rgl:segments3d]{rgl::segments3d()}},
+\code{\link[rgl:text3d]{rgl::text3d()}}, \code{\link[rgl:ellipse3d]{rgl::ellipse3d()}}
 
 Other covariance ellipses:
 \code{\link[=covEllipses]{covEllipses()}},

@@ -44,12 +44,12 @@ Environment}, 377, 416-433.
 The Oslo data set contains chemical concentrations of 332 samples of
 different plant species collected along a 120 km transect running through
 the city of Oslo, Norway. It is a subset of the
-\code{\link[rrcov]{OsloTransect}} data provided by the \code{rrcov} package.
+\code{\link[rrcov:OsloTransect]{rrcov::OsloTransect}} data provided by the \code{rrcov} package.
 }
 \details{
-The \code{\link[rrcov]{OsloTransect}} contains 360 observations, with 9
+The \code{\link[rrcov:OsloTransect]{rrcov::OsloTransect}} contains 360 observations, with 9
 observations per site. Only 7 chemical elements were retained from the 25
-contained in the \code{\link[rrcov]{OsloTransect}} data, and these were all
+contained in the \code{\link[rrcov:OsloTransect]{rrcov::OsloTransect}} data, and these were all
 log-transformed, following Todorov and Filzmoser (2009).
 
 Only complete cases on these variables were retained, and two lithological

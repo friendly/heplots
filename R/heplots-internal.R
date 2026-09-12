@@ -16,7 +16,7 @@
 #' @param dfh degrees of freedom for hypothesis
 #' @param dfe degrees of freedom for error
 #' @param test.statistic Test statistic used for the multivariate test
-#' @param x An argument to \code{\link{heplot}} or \code{\link{heplot3d}} that
+#' @param x An argument to [heplot()] or [heplot3d()] that
 #' is to be repeated for Error and all hypothesis terms
 #' @param n Number of hypothesis terms
 #' @author Michael Friendly \email{friendly@yorku.ca}

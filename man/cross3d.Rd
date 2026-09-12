@@ -11,7 +11,7 @@ cross3d(centre = rep(0, 3), scale = rep(1, 3), ...)
 
 \item{scale}{A scalar or vector of length 3, giving the lengths of the arms of the 3D cross}
 
-\item{\dots}{Other arguments, passed on to \code{\link[rgl]{segments3d}}}
+\item{\dots}{Other arguments, passed on to \code{\link[rgl:segments3d]{rgl::segments3d()}}}
 }
 \value{
 Used for its side-effect, but returns (invisibly) a 6 by 3 matrix
@@ -21,7 +21,7 @@ containing the end-points of three axes, in pairs.
 Draws a 3D cross or axis vectors in an rgl scene.
 }
 \seealso{
-\code{\link[rgl:points3d]{segments3d}}
+\code{\link[rgl:segments3d]{rgl::segments3d()}}
 
 Other 3D plotting:
 \code{\link[=arrow3d]{arrow3d()}},

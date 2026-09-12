@@ -46,9 +46,9 @@ trans.colors("red", alpha=seq(0,1, length=5), names=paste("red", 1:5, sep=""))
 
 }
 \seealso{
-\%\% ~~objects to See Also as \code{\link{help}}, ~~~
-\code{\link[grDevices]{col2rgb}}, \code{\link[grDevices]{rgb}},
-\code{\link[grDevices]{adjustcolor}},
+\%\% ~~objects to See Also as \code{\link[utils:help]{utils::help()}}, ~~~
+\code{\link[grDevices:col2rgb]{grDevices::col2rgb()}}, \code{\link[grDevices:rgb]{grDevices::rgb()}},
+\code{\link[grDevices:adjustcolor]{grDevices::adjustcolor()}},
 }
 \author{
 Michael Friendly

@@ -60,7 +60,7 @@ constant); default is set for bisquare weight function}
 
 \item{max.iter}{maximum number of iterations}
 
-\item{psi}{robustness weight function; \code{\link[MASS]{psi.bisquare}} is
+\item{psi}{robustness weight function; \code{\link[MASS:psi.bisquare]{MASS::psi.bisquare()}} is
 the default}
 
 \item{tol}{convergence tolerance, maximum relative change in coefficients}
@@ -81,13 +81,13 @@ are preferentially to be taken.}
 
 \item{na.action}{A function to specify the action to be taken if \code{NA}s
 are found.  The 'factory-fresh' default action in R is
-\code{\link[stats]{na.omit}}, and can be changed by
-\code{\link[base]{options}}\verb{(na.action=)}.}
+\code{\link[stats:na.omit]{stats::na.omit()}}, and can be changed by
+\code{\link[base:options]{base::options()}}\verb{(na.action=)}.}
 
 \item{model}{should the model frame be returned in the object?}
 
 \item{contrasts}{optional contrast specifications; see
-\code{\link[stats]{lm}} for details.}
+\code{\link[stats:lm]{stats::lm()}} for details.}
 
 \item{x}{a \code{robmlm} object}
 
@@ -97,7 +97,7 @@ are found.  The 'factory-fresh' default action in R is
 An object of class \code{"robmlm"} inheriting from \code{c("mlm", "lm")}.
 
 This means that the returned \code{"robmlm"} contains all the components of
-\code{"mlm"} objects described for \code{\link[stats]{lm}}, plus the
+\code{"mlm"} objects described for \code{\link[stats:lm]{stats::lm()}}, plus the
 following:
 \describe{
 \item{weights }{final observation weights}
@@ -105,9 +105,9 @@ following:
 \item{converged }{logical: did the IWLS process converge?}
 }
 
-The generic accessor functions \code{\link[stats]{coefficients}},
-\code{\link[stats]{effects}}, \code{\link[stats]{fitted.values}} and
-\code{\link[stats]{residuals}} extract various useful features of the value
+The generic accessor functions \code{\link[stats:coefficients]{stats::coefficients()}},
+\code{\link[stats:effects]{stats::effects()}}, \code{\link[stats:fitted.values]{stats::fitted.values()}} and
+\code{\link[stats:residuals]{stats::residuals()}} extract various useful features of the value
 returned by \code{robmlm}.
 }
 \description{
@@ -117,17 +117,17 @@ estimator that down-weights observations with large residuals
 Fitting is done by iterated re-weighted least squares (IWLS), using weights
 based on the Mahalanobis squared distances of the current residuals from the
 origin, and a scaling (covariance) matrix calculated by
-\code{\link[MASS]{cov.trob}}. The design of these methods were loosely
-modeled on \code{\link[MASS]{rlm}}.
+\code{\link[MASS:cov.trob]{MASS::cov.trob()}}. The design of these methods were loosely
+modeled on \code{\link[MASS:rlm]{MASS::rlm()}}.
 
 These S3 methods are designed to provide a specification of a class of
 robust methods which extend \code{mlm}s, and are therefore compatible with
-other \code{mlm} extensions, including \code{\link[car]{Anova}} and
-\code{\link{heplot}}.
+other \code{mlm} extensions, including \code{\link[car:Anova]{car::Anova()}} and
+\code{\link[=heplot]{heplot()}}.
 
 An internal \code{vcov.mlm} function is an extension of the standard
-\code{\link[stats]{vcov}} method providing for the use of observation weights.
-A \code{\link{plot.robmlm}} method provides simple index plots of case weights
+\code{\link[stats:vcov]{stats::vcov()}} method providing for the use of observation weights.
+A \code{\link[=plot.robmlm]{plot.robmlm()}} method provides simple index plots of case weights
 to visualize those that were down-weighted.
 }
 \details{
@@ -224,8 +224,8 @@ A. Marazzi (1993) \emph{Algorithms, Routines and S Functions for
 Robust Statistics}.  Wadsworth & Brooks/Cole.
 }
 \seealso{
-\code{\link{plot.robmlm}} for a plot method;
-\code{\link[MASS]{rlm}}, \code{\link[MASS]{cov.trob}}
+\code{\link[=plot.robmlm]{plot.robmlm()}} for a plot method;
+\code{\link[MASS:rlm]{MASS::rlm()}}, \code{\link[MASS:cov.trob]{MASS::cov.trob()}}
 
 Other robust methods:
 \code{\link[=Mahalanobis]{Mahalanobis()}},

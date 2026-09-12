@@ -9,15 +9,15 @@
 #' out what the data coordinates are.
 #' 
 #' @details
-#' `y` may be missing since \code{\link[grDevices]{xy.coords}} is used for construction of the coordinates.
+#' `y` may be missing since [grDevices::xy.coords()] is used for construction of the coordinates.
 #' 
 #' The function also works with `par(xlog) == TRUE` and `par(ylog) == TRUE` when either of these is set
 #' for log scales.
 #' 
 #' @param x,y  numeric vectors of coordinates in (0, 1) where the text `labels` should be written. If the length of 
 #'        `x` and `y` differs, the shorter one is recycled. Alternatively, a single argument `x` can be provided.
-#' @param labels a character vector or \code{\link[base]{expression}} specifying the text to be written
-#' @param ...    other arguments passed to \code{\link[graphics]{text}}, such as `pos`, `cex`, `col`, ...
+#' @param labels a character vector or [base::expression()] specifying the text to be written
+#' @param ...    other arguments passed to [graphics::text()], such as `pos`, `cex`, `col`, ...
 #' @keywords utilities
 #' @source From <https://stackoverflow.com/questions/25450719/plotting-text-in-r-at-absolute-position>
 #' @importFrom graphics text

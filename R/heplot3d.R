@@ -40,13 +40,13 @@ savedvars <- new.env(parent=emptyenv())
 #' multivariate linear model. It allow you to visualize model effects on three response variables
 #' together, as opposed to the 2D views offered by [heplot()] and [pairs.mlm()].
 #' 
-#' It uses the \pkg{rgl} package for rendering, so it adds some arguments (e.g., `fogtype`) to those used
+#' It uses the `rgl` package for rendering, so it adds some arguments (e.g., `fogtype`) to those used
 #' in [heplot()], but is otherwise the same.
 #'
 #' Rotating the plot can be particularly revealing, showing views in which $\mathbf{H}$
 #' variation is particularly large or small in relation to $\mathbf{E}$ variation.  If you find
 #' a view making $\mathbf{H}$ as large as possible, this corresponds closely to the canonical
-#' view chosen by the \pkg{candisc}.
+#' view chosen by the `candisc`.
 #' 
 #' See [rgl::play3d()] and [rgl::movie3d()] for details on creating animations, rotating the 3D scene around on or more coordinate axes, or zooming in/out to highlight some feature.
 #'

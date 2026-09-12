@@ -67,8 +67,7 @@ imply the covariance matrices differ.}
 \item{df}{a vector of the degrees of freedom for all groups, followed by
 that for the pooled covariance matrix}
 \item{data.name}{a character string giving the names of the data, as extracted from the call}
-\item{method}{the character string \code{"Box's M-test for Homogeneity of 
-    Covariance Matrices"}}
+\item{method}{the character string \code{"Box's M-test for Homogeneity of Covariance Matrices"}}
 }
 \description{
 \code{boxM()} performs the Box's (1949) M-test for homogeneity of covariance
@@ -96,7 +95,7 @@ ignore the result unless it is very highly significant, e.g., p < .0001 or
 worse.
 
 In general, heterogeneity of covariance matrices can be more easily seen and understood by plotting
-the covariance ellipses using \code{\link{covEllipses}}.
+the covariance ellipses using \code{\link[=covEllipses]{covEllipses()}}.
 
 The \code{summary} method prints a variety of additional statistics based on
 the eigenvalues of the covariance matrices. These are returned invisibly, as
@@ -158,16 +157,16 @@ of likelihood criteria. \emph{Biometrika}, 36, 317-346.
 Morrison, D.F. (1976) \emph{Multivariate Statistical Methods}.
 }
 \seealso{
-\code{\link[car]{leveneTest}} carries out homogeneity of variance
+\code{\link[car:leveneTest]{car::leveneTest()}} carries out homogeneity of variance
 tests for univariate models with better statistical properties.
 
-\code{\link{plot.boxM}}, a simple dot plot of the log determinants compared with that of the pooled covariance matrix, and also of other quantities computed from their eigenvalues
+\code{\link[=plot.boxM]{plot.boxM()}}, a simple dot plot of the log determinants compared with that of the pooled covariance matrix, and also of other quantities computed from their eigenvalues
 
-\code{\link{covEllipses}} plots covariance ellipses in variable space for
+\code{\link[=covEllipses]{covEllipses()}} plots covariance ellipses in variable space for
 several groups.
 }
 \author{
-The default method was taken from the \pkg{biotools} package,
+The default method was taken from the \code{biotools} package,
 Anderson Rodrigo da Silva \email{anderson.agro@hotmail.com}
 
 Generalized by Michael Friendly and John Fox

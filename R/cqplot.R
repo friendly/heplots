@@ -23,7 +23,7 @@
 #' D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} - \bar{\mathbf{x}}) \; .
 #' }
 #' 
-#' The method for `"mlm"` objects fit using \code{\link[stats]{lm}} for a multivariate response
+#' The method for `"mlm"` objects fit using [stats::lm()] for a multivariate response
 #' applies this to the residuals from the model.
 #' 
 #' @details
@@ -62,7 +62,7 @@
 #' 
 #' Note that this confidence envelope applies only to the \eqn{D^2} computed
 #' using the classical estimates of location (\eqn{\bar{\mathbf{x}}}) and scatter (\eqn{\mathbf{S}}). The
-#' \code{\link[car]{qqPlot}}
+#' [car::qqPlot()]
 #' function provides for simulated envelopes, but only for
 #' a univariate measure. Oldford (2016) provides a general theory and methods
 #' for QQ plots.
@@ -84,8 +84,8 @@
 #' @param col color for points. Can be a vector of length equal to the
 #'            number of rows in `x`.
 #'            The default is the *first* entry in the
-#'            current color palette (see \code{\link[grDevices]{palette}} and
-#'            \code{\link[graphics]{par}}).
+#'            current color palette (see [grDevices::palette()] and
+#'            [graphics::par()]).
 #' @param cex character symbol size for points.  Can be a vector of length
 #'            equal to the number of rows in `x`.
 #' @param ref.col Color for the reference line
@@ -104,7 +104,7 @@
 #'             point identification occurs.
 #' @param id.method point identification method. The default
 #'             `id.method="r"` will identify the `id.n` points with the largest
-#'             value of abs(y), i.e., the largest Mahalanobis DSQ. See \code{\link[car]{showLabels}} for other
+#'             value of abs(y), i.e., the largest Mahalanobis DSQ. See [car::showLabels()] for other
 #'             options.
 #' @param id.cex size of text for point labels
 #' @param id.col color for point labels
@@ -120,11 +120,11 @@
 #'             corresponding to the rows of `x` or the residuals of the model for the identified points, 
 #'             else `NULL` if no points are identified.
 #' @author Michael Friendly
-#' @seealso \code{\link{Mahalanobis}} for calculation of Mahalanobis squared distance;
+#' @seealso [Mahalanobis()] for calculation of Mahalanobis squared distance;
 #' 
-#' \code{\link[stats]{qqplot}}; \code{\link[car]{qqPlot}} can give a similar
+#' [stats::qqplot()]; [car::qqPlot()] can give a similar
 #'          result for Mahalanobis squared distances of data or residuals;
-#'          \code{\link[qqtest]{qqtest}} has many features for all types of QQ plots.
+#'          [qqtest::qqtest()] has many features for all types of QQ plots.
 #' @references 
 #' J. Chambers, W. S. Cleveland, B. Kleiner, P. A. Tukey (1983).
 #' *Graphical methods for data analysis*, Wadsworth.

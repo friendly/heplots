@@ -59,9 +59,9 @@ text(intMeans[,1], intMeans[,2], rownames(intMeans), adj=c(0.5,1), col="brown")
 
 }
 \seealso{
-\code{\link[stats]{aggregate}}, \code{\link[base]{colMeans}}
+\code{\link[stats:aggregate]{stats::aggregate()}}, \code{\link[base:colMeans]{base::colMeans()}}
 
-\code{\link{statList}}, \code{\link{colMeansList}}
+\code{\link[=statList]{statList()}}, \code{\link[=colMeansList]{colMeansList()}}
 }
 \author{
 Michael Friendly

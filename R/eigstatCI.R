@@ -61,11 +61,11 @@
 #'
 #' @author Michael Friendly
 #'
-#' @seealso \code{\link{boxM}}, \code{\link{plot.boxM}}, \code{\link{logdetCI}}
+#' @seealso [boxM()], [plot.boxM()], [logdetCI()]
 #'
 #' @references
 #' Efron, B., & Tibshirani, R. J. (1994).
-#' \emph{An Introduction to the Bootstrap}. CRC Press.
+#' *An Introduction to the Bootstrap*. CRC Press.
 #'
 #' @examples
 #' \dontrun{

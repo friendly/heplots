@@ -35,12 +35,12 @@ for a given \code{level} on 2 degrees of freedom, however in a small sample of \
 a more accurate value is \code{sqrt(2 * qf(level, 2, n - 1 ))}.}
 
 \item{factor}{A function defining the conjugate axes used to transform the unit
-circle into an ellipse.  \code{\link{chol}}, uses the right Cholesky
+circle into an ellipse.  \code{\link[base:chol]{base::chol()}}, uses the right Cholesky
 factor of \code{x}.}
 
 \item{draw}{What to draw? \code{"box"}, \code{"diameters"} or \code{"both"}}
 
-\item{\dots}{Other arguments passed to \code{\link[graphics]{lines}}.}
+\item{\dots}{Other arguments passed to \code{\link[graphics:lines]{graphics::lines()}}.}
 }
 \value{
 Invisibly returns a 2 column matrix containing the end points of lines.

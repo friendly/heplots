@@ -5,7 +5,7 @@
 #' 
 #' @description
 #' 
-#' This function extends \code{\link[stats]{bartlett.test}} to a multivariate
+#' This function extends [stats::bartlett.test()] to a multivariate
 #' response setting.  It performs the Bartlett test of homogeneity of variances
 #' for each of a set of response variables, and prints a compact summary.
 #' 
@@ -20,12 +20,12 @@
 #'        be factors and must be completely crossed.
 #' @param group a vector or factor object giving the group for the
 #'        corresponding elements of the rows of `y` for the default method
-#' @param \dots other arguments, passed to \code{\link[stats]{bartlett.test}}
+#' @param \dots other arguments, passed to [stats::bartlett.test()]
 #' @return An object of classes "anova" and "data.frame", with one observation
 #' for each response variable in `y`. 
 #' @author Michael Friendly
 #' 
-#' @seealso \code{\link{boxM}} for Box's M test for all responses together.
+#' @seealso [boxM()] for Box's M test for all responses together.
 #' @family homogeneity tests
 #' 
 #' @references 

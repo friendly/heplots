@@ -17,7 +17,7 @@ bbox3d(x, ...)
 }\if{html}{\out{</div>}}
 }
 \description{
-Ellipsoids are created by \pkg{rgl} functions as meshes of points, segments, ... from coordinates
+Ellipsoids are created by \code{rgl} functions as meshes of points, segments, ... from coordinates
 in various forms. This function calculates the bounding box, defined as the range of the
 x, y, and z coordinates.
 }

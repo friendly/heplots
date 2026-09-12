@@ -7,7 +7,7 @@
 #' 
 #' @description
 #' 
-#' This function extends \code{\link[car]{leveneTest}} to a multivariate
+#' This function extends [car::leveneTest()] to a multivariate
 #' response setting.  It performs the Levene test of homogeneity of variances
 #' for each of a set of response variables, and prints a compact summary.
 #' 
@@ -21,7 +21,7 @@
 #' @param center The name of a function to compute the center of each group;
 #'        `mean` gives the original Levene's (1960) test; the default,
 #'        `median`, provides a more robust test suggested by Brown and Forsythe (1974).
-#' @param \dots arguments to be passed down to \code{\link[car]{leveneTest}}, e.g., `data` for the 
+#' @param \dots arguments to be passed down to [car::leveneTest()], e.g., `data` for the 
 #'        `formula` and `lm` methods; can also 
 #'        be used to pass arguments to the function given by center (e.g., center=mean and trim=0.1 specify 
 #'        the 10% trimmed mean) other arguments.
@@ -31,7 +31,7 @@
 #' @author Michael Friendly
 #' 
 #' @seealso 
-#'    \code{\link[car]{leveneTest}}, \code{\link{bartlettTests}}
+#'    [car::leveneTest()], [bartlettTests()]
 #' @family homogeneity tests
 #' 
 #' @references 

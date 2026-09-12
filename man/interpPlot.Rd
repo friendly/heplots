@@ -55,7 +55,7 @@ uses the ranges of \code{rbind(xy1, xy2)}.}
 
 \item{lwd}{line width}
 
-\item{id.method}{How points are to be identified. See \code{\link[car]{showLabels}}.}
+\item{id.method}{How points are to be identified. See \code{\link[car:showLabels]{car::showLabels()}}.}
 
 \item{labels}{observation labels}
 
@@ -92,7 +92,7 @@ series of \code{alpha} values.  For example
 }
 \note{
 The examples here just use on-screen animations to the console
-graphics window. The \code{\link[animation]{animation}} package provides
+graphics window. The \code{\link[animation:animation]{animation::animation}} package provides
 facilities to save these in various formats.
 }
 \examples{
@@ -204,8 +204,8 @@ saveGIF({
 
 }
 \seealso{
-\code{\link[car]{dataEllipse}}, \code{\link[car]{showLabels}},
-\code{\link[animation]{animation}}
+\code{\link[car:dataEllipse]{car::dataEllipse()}}, \code{\link[car:showLabels]{car::showLabels()}},
+\code{\link[animation:animation]{animation::animation}}
 }
 \author{
 Michael Friendly

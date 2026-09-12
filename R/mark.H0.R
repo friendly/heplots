@@ -19,7 +19,7 @@
 #' @param label Text used to label the point. Defaults to
 #'        `expression(H[0])` in 2D plots.
 #' @param cex Point and text size.  For 3D plots, the function uses
-#'        `size=5*cex` in a call to \code{\link[rgl]{points3d}}.
+#'        `size=5*cex` in a call to [rgl::points3d()].
 #' @param pch Plot character.  Ignored for 3D plots.
 #' @param col Color for text, character and lines
 #' @param lty Line type for vertical and horizontal reference lines. Not drawn if `lty`=0.
@@ -27,7 +27,7 @@
 #' @return None. Used for side effect of drawing on the current plot. 
 #' 
 #' @author Michael Friendly
-#' @seealso \code{\link{cross3d}}
+#' @seealso [cross3d()]
 #' @keywords aplot
 #' @examples
 #' 

@@ -1,7 +1,7 @@
 #' Plot observation weights from a robust multivariate linear models
 #' 
 #' Creates an index plot of the observation weights assigned in the last
-#' iteration of \code{\link{robmlm}}.  Observations with low weights have large
+#' iteration of [robmlm()].  Observations with low weights have large
 #' residual squared distances and are potential multivariate outliers with
 #' respect to the fitted model.
 #' 
@@ -21,13 +21,13 @@
 #'        the point
 #' @param xlab x axis label
 #' @param ylab y axis label
-#' @param \dots other arguments passed to \code{\link[graphics]{plot}}
+#' @param \dots other arguments passed to [graphics::plot()]
 #' @return Returns invisibly the weights for the observations labeled in the
 #'        plot
 #' @importFrom graphics axis
 #' @author Michael Friendly
 #' 
-#' @seealso \code{\link{robmlm}}
+#' @seealso [robmlm()]
 #' @family robust methods
 #' 
 #' @keywords hplot

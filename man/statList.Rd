@@ -60,7 +60,7 @@ colMeansList(iris[,1:4], iris[,5:6])
 
 }
 \seealso{
-\code{\link[base]{colMeans}}, \code{\link{termMeans}}
+\code{\link[base:colMeans]{base::colMeans()}}, \code{\link[=termMeans]{termMeans()}}
 }
 \author{
 Michael Friendly

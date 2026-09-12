@@ -20,7 +20,7 @@ for her IQ)}
 Ramsey, F.L. and Schafer, D.W. (2002). \emph{The Statistical Sleuth:
 A Course in Methods of Data Analysis (2nd ed)}, Duxbury.
 
-This data set is identical to \code{\link[Sleuth2]{ex1605}} in the
+This data set is identical to \code{\link[Sleuth2:ex1605]{Sleuth2::ex1605}} in the
 \code{Sleuth2} package.
 }
 \description{
@@ -93,7 +93,7 @@ Adopted Children,
 \emph{Journal of Genetic Psychology} \strong{75}: 85--125.
 }
 \seealso{
-\code{\link[Sleuth2]{ex1605}}
+\code{\link[Sleuth2:ex1605]{Sleuth2::ex1605}}
 }
 \concept{MMRA}
 \concept{repeated}

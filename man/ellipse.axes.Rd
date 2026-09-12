@@ -57,13 +57,13 @@ of axes end points. Values \code{1:2} represent the minimum and maximum of the f
 Values \code{3:4} represent the minimum and maximum of the second dimension.
 Default: \code{c(2, 4)}.}
 
-\item{label.pos}{Positions of text labels relative to the ends of the axes used in \code{\link[graphics]{text}} for
+\item{label.pos}{Positions of text labels relative to the ends of the axes used in \code{\link[graphics:text]{graphics::text()}} for
 the four possible \code{label.ends}. 1, 2, 3, 4 represent below, to the left, above and to the right.
 The default, \code{c(2, 4, 1, 3)}, positions the labels outside the axes.}
 
 \item{type}{Character. Draw \code{"lines"} or \code{"arrows"}.}
 
-\item{\dots}{Other arguments passed to \code{\link[graphics]{lines}} and \code{\link[graphics]{text}}.}
+\item{\dots}{Other arguments passed to \code{\link[graphics:lines]{graphics::lines()}} and \code{\link[graphics:text]{graphics::text()}}.}
 }
 \value{
 Invisibly returns a 4 x 2 matrix containing the end points of the axes in pairs (min, max) by rows.
@@ -100,7 +100,7 @@ ellipse.axes(cov, center=mu, level = 0.68,
              type = "arrows", extend = 0.2)
 }
 \seealso{
-\code{\link[graphics]{lines}}, \code{\link[graphics]{text}}
+\code{\link[graphics:lines]{graphics::lines()}}, \code{\link[graphics:text]{graphics::text()}}
 
 Other covariance ellipses:
 \code{\link[=covEllipses]{covEllipses()}},

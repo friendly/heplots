@@ -44,5 +44,5 @@ rel_diff(coef(sk.mlm),
          coef(sk.rlm))
 }
 \seealso{
-\code{link{robmlm}}
+\code{\link[=robmlm]{robmlm()}}
 }

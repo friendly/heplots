@@ -101,7 +101,7 @@ NULL
 #'   \item{`Age8IQ`}{IQ of child at age 8}
 #'   \item{`Age13IQ`}{IQ of child at age 13} 
 #' }
-#' @seealso \code{\link[Sleuth2]{ex1605}}
+#' @seealso [`Sleuth2::ex1605`]
 #' @references 
 #' Friendly, M.  (2010). HE Plots for Repeated Measures Designs.
 #' *Journal of Statistical Software*, 37(4), 1-40.
@@ -115,7 +115,7 @@ NULL
 #' Ramsey, F.L. and Schafer, D.W. (2002). *The Statistical Sleuth:
 #' A Course in Methods of Data Analysis (2nd ed)*, Duxbury.
 #' 
-#' This data set is identical to \code{\link[Sleuth2]{ex1605}} in the
+#' This data set is identical to [`Sleuth2::ex1605`] in the
 #' `Sleuth2` package.
 #' @keywords datasets
 #' @concept MMRA
@@ -1070,11 +1070,11 @@ NULL
 #' The Oslo data set contains chemical concentrations of 332 samples of
 #' different plant species collected along a 120 km transect running through
 #' the city of Oslo, Norway. It is a subset of the
-#' \code{\link[rrcov]{OsloTransect}} data provided by the `rrcov` package.
+#' [`rrcov::OsloTransect`] data provided by the `rrcov` package.
 #' 
-#' The \code{\link[rrcov]{OsloTransect}} contains 360 observations, with 9
+#' The [`rrcov::OsloTransect`] contains 360 observations, with 9
 #' observations per site. Only 7 chemical elements were retained from the 25
-#' contained in the \code{\link[rrcov]{OsloTransect}} data, and these were all
+#' contained in the [`rrcov::OsloTransect`] data, and these were all
 #' log-transformed, following Todorov and Filzmoser (2009).
 #' 
 #' Only complete cases on these variables were retained, and two lithological
@@ -1338,7 +1338,7 @@ NULL
 #' published by Tubb et al. (1980).  The numbers are the percentage of various
 #' metal oxides found in each sample for elements of concentrations greater
 #' than 0.01\%. This is the original data set from Tubb et al. (1980), in
-#' contrast to \code{\link[carData]{Pottery}}.
+#' contrast to [`carData::Pottery`].
 #' 
 #' The specimens are identified by their `rownames` in the data frame.
 #' `Kiln` indicates at which kiln site the pottery was found; `Site`
@@ -1369,8 +1369,8 @@ NULL
 #'   \item{`Mn`}{amount of manganese oxide, MnO} 
 #'   \item{`Ba`}{amount of BaO} 
 #' }
-#' @seealso \code{\link[carData]{Pottery}} for the related (subset) data set;
-#'     \code{\link[archdata]{RBPottery}} for a newer version with more variables.
+#' @seealso [`carData::Pottery`] for the related (subset) data set;
+#'     [`archdata::RBPottery`] for a newer version with more variables.
 #' 
 #' @references Baxter, M. J. 2003. *Statistics in Archaeology*. Arnold,
 #' London.
@@ -1383,7 +1383,7 @@ NULL
 #' *Archaeometry*, **22**, 153-171.
 #' 
 #' @source Originally slightly modified from files by David Carlson, now at
-#' \code{\link[archdata]{RBPottery}}. %
+#' [`archdata::RBPottery`]. %
 #' @keywords datasets
 #' @concept MANOVA
 #' @concept candisc
@@ -1923,7 +1923,7 @@ NULL
 #' management methods of taking actions to achieve goals with those of
 #' Non Follow Through (NFT). Observations `1:49` came from PFT sites
 #' and `50:70` from NFT sites.
-#' This and other descriptors are contained in the dataset \code{\link{schoolsites}}.
+#' This and other descriptors are contained in the dataset [`schoolsites`].
 #' 
 #' 
 #' @name schooldata
@@ -1950,7 +1950,7 @@ NULL
 #' Managerial Efficiency: An Application of Data Envelopment Analysis to
 #' Program Follow Through. *Management Science*, **27**, 668-697.
 #' @keywords datasets
-#' @seealso \code{\link{schoolsites}}
+#' @seealso [`schoolsites`]
 #' @concept MMRA
 #' @concept robust
 #' @examples
@@ -2209,7 +2209,7 @@ NULL
 #' using a well-validated, comprehensive neurocognitive battery specifically
 #' designed for individuals with psychosis (Heinrichs et al. (2008))
 #' 
-#' The data here are for a subset of the observations in \code{\link{NeuroCog}}
+#' The data here are for a subset of the observations in [`NeuroCog`]
 #' for which measures on various scales of social cognition were also
 #' available. Interest here is on whether the schizophrenia group can be
 #' distinguished from the schizoaffective group on these measures.
@@ -2224,7 +2224,7 @@ NULL
 #' the degree to which individuals attribute internal, personal or situational
 #' causal attributions to positive and negative social events.
 #' 
-#' See \code{\link{NeuroCog}} for a description of the sample. Only those with
+#' See [`NeuroCog`] for a description of the sample. Only those with
 #' complete data on all the social cognitive measures are included in this data
 #' set.
 #' 

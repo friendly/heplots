@@ -40,8 +40,8 @@ sample size, \eqn{n} and number of variables, \eqn{p}.
 
 This function is included here only to provide an approximation to
 \emph{graphical accuracy} for use with Box's M test for equality of
-covariance matrices, \code{\link{boxM}} and its associated
-\code{\link{plot.boxM}} method.
+covariance matrices, \code{\link[=boxM]{boxM()}} and its associated
+\code{\link[=plot.boxM]{plot.boxM()}} method.
 
 Cai et. al (2015) claim that their Theorem 1 holds with either \eqn{p} fixed
 or \eqn{p(n)} growing with \eqn{n}, as long as \eqn{p(n) \le n}. Their
@@ -91,7 +91,7 @@ Analysis}, 137, 161-172.
 \doi{10.1016/j.jmva.2015.02.003}
 }
 \seealso{
-\code{\link{boxM}}, \code{\link{plot.boxM}}
+\code{\link[=boxM]{boxM()}}, \code{\link[=plot.boxM]{plot.boxM()}}
 }
 \author{
 Michael Friendly

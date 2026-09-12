@@ -7,12 +7,12 @@
 \method{glance}{mlm}(x, ...)
 }
 \arguments{
-\item{x}{An \code{"mlm"} object created by \code{\link[stats]{lm}}, i.e., with a multivariate response.}
+\item{x}{An \code{"mlm"} object created by \code{\link[stats:lm]{stats::lm()}}, i.e., with a multivariate response.}
 
 \item{...}{Additional arguments. Not used.}
 }
 \value{
-A \code{\link[tibble]{tibble}} with one row for each response variable and the columns:
+A \code{\link[tibble:tibble]{tibble::tibble()}} with one row for each response variable and the columns:
 \describe{
 \item{\code{r.squared}}{R squared statistic, or the percent of variation explained by the model.}
 \item{\code{sigma}}{Estimated standard error of the residuals}
@@ -24,11 +24,11 @@ A \code{\link[tibble]{tibble}} with one row for each response variable and the c
 }
 }
 \description{
-This function takes an "mlm" object, fit by \code{\link[stats]{lm}} with a multivariate response.
-The goal is to return something analogous to \code{\link[broom]{glance.lm}} for a univariate response linear model.
+This function takes an "mlm" object, fit by \code{\link[stats:lm]{stats::lm()}} with a multivariate response.
+The goal is to return something analogous to \code{\link[broom:glance.lm]{broom::glance.lm()}} for a univariate response linear model.
 }
 \details{
-In the multivariate case, it returns a \code{\link[tibble]{tibble}} with one row for each
+In the multivariate case, it returns a \code{\link[tibble:tibble]{tibble::tibble()}} with one row for each
 response variable, containing goodness of fit measures, F-tests and p-values.
 }
 \examples{

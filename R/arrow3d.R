@@ -16,11 +16,11 @@
 #' @param theta opening angle of barbs
 #' @param n number of barbs
 #' @param \dots args passed to lines3d for line styling, e.g., `color`,
-#'         `lwd`, etc. See \code{\link[rgl]{material3d}}.
+#'         `lwd`, etc. See [rgl::material3d()].
 #' @return Returns (invisibly): integer ID of the line added to the scene %%
 #' @author Barry Rowlingson, posted to R-help, 1/10/2010
 #' 
-#' @seealso \code{\link[rgl]{lines3d}}, \code{\link[rgl]{segments3d}},
+#' @seealso [rgl::lines3d()], [rgl::segments3d()],
 #' @family 3D plotting
 #' 
 #' @keywords aplot

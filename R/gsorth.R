@@ -22,7 +22,7 @@
 #' their additional contributions over the previous response variables.
 #' 
 #' Similarly, orthogonalizing the model X variables provides the equivalent of
-#' Type I tests, such as provided by \code{\link[stats]{anova}}.
+#' Type I tests, such as provided by [stats::anova()].
 #' 
 #' The method is equivalent to setting each of columns `2:p` to the
 #' residuals from a linear regression of that column on all prior columns,
@@ -48,7 +48,7 @@
 #' column names are copied to the result. 
 #' 
 #' @author Michael Friendly
-#' @seealso \code{\link[base]{qr}},
+#' @seealso [base::qr()],
 #' @keywords manip
 #' @examples
 #' 

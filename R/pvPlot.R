@@ -54,50 +54,50 @@
 #' @description
 #' A partial variable plot is a visualization of a partial correlation of two variables in the context
 #' of other variables in a dataset. For two variables \eqn{x_i} and \eqn{x_j}, 
-#' it is simply an enhanced scatterplot of the \emph{partial residuals},
+#' it is simply an enhanced scatterplot of the *partial residuals*,
 #' \eqn{e_i = (x_i - \hat{x}_i)} from a regression of \eqn{x_i} on all other variables \eqn{Z}
 #' against those \eqn{e_j = (x_j - \hat{x}_j)} for another variable $x_j$.
-#' Consequently, it shows directly the net, \emph{conditional relation} between \eqn{x_i, x_j \vert \text{others}} when
+#' Consequently, it shows directly the net, *conditional relation* between \eqn{x_i, x_j \vert \text{others}} when
 #' all of the others in \eqn{Z} have been controlled/adjusted-for.
 #' 
 #' As implemented here, the basic scatterplot of these residuals can be enhanced by also showing the data ellipse
 #' of these residuals, the linear regression line, which reflects the partial correlation, and point labels to identify unusual data.
 #' 
 #' @details
-#' Partial variable plots are intimately related to an \emph{added-variable plot},
-#' such as produced by \code{\link[car]{avPlots}}. However, that implementation
+#' Partial variable plots are intimately related to an *added-variable plot*,
+#' such as produced by [car::avPlots()]. However, that implementation
 #' is designed for a linear model, rather than a data.frame.
 #' 
 #' The present version assumes that all variables passed are numeric.
 #' 
-#' This function uses \code{\link[car]{dataEllipse}} for drawing, so further documentation of arguments passed there should be consulted.
+#' This function uses [car::dataEllipse()] for drawing, so further documentation of arguments passed there should be consulted.
 #' 
 #' 
 #'
 #' @param X     a data.frame of numeric variables
-#' @param vars  either the character names of two variables in \code{X} or their indices
-#' @param others character names or indices of the variables to partial out. If \code{NULL}
-#'              (the default), all variables in \code{X} other than \code{vars} are used.
+#' @param vars  either the character names of two variables in `X` or their indices
+#' @param others character names or indices of the variables to partial out. If `NULL`
+#'              (the default), all variables in `X` other than `vars` are used.
 #' @param labels id labels for the points. If not supplied, rownames of the dataset are used.
-#' @param id    controls point identification; if \code{FALSE} (the default), no points are identified; 
-#'              can be a list of named arguments to the \code{\link[car]{showLabels}} function
+#' @param id    controls point identification; if `FALSE` (the default), no points are identified; 
+#'              can be a list of named arguments to the [car::showLabels()] function
 #' @param ellipse    logical; whether to draw the data ellipse
 #' @param ellipse.args  a list of arguments controlling the ellipse: `levels`, `fill`,
 #'              `fill.alpha`, `robust`, and `col` (ellipse outline/fill color, independent
-#'              of the point `col`). See \code{\link[car]{dataEllipse}} for what these mean.
-#' @param draw     logical; if \code{TRUE} produce graphical output; if \code{FALSE}, only invisibly return 
+#'              of the point `col`). See [car::dataEllipse()] for what these mean.
+#' @param draw     logical; if `TRUE` produce graphical output; if `FALSE`, only invisibly return 
 #'              coordinates of ellipse(s).
 #' @param col   color used for points
 #' @param pch   the plotting character for points
 #' @param cex   Character expansion for points and labels
-#' @param axes  logical; if \code{TRUE} (the default), grey axes lines are drawn at 0 on both coordinates
-#' @param regline controls the regression line. \code{FALSE} suppresses it; \code{TRUE} (default)
-#'        draws it with default style; a list with named elements \code{col} and/or \code{lwd}
-#'        draws it with those attributes, e.g. \code{regline = list(col="red", lwd=3)}.
-#' @param show.partial controls whether the partial correlation value is displayed in the plot. If \code{FALSE}
-#'              the value is not shown. Otherwise, can be a list containing the location (\code{loc}) and 
-#'              character size (\code{cex}) of the label. 
-#' @param ...   other arguments passed to \code{\link[car]{dataEllipse}}
+#' @param axes  logical; if `TRUE` (the default), grey axes lines are drawn at 0 on both coordinates
+#' @param regline controls the regression line. `FALSE` suppresses it; `TRUE` (default)
+#'        draws it with default style; a list with named elements `col` and/or `lwd`
+#'        draws it with those attributes, e.g. `regline = list(col="red", lwd=3)`.
+#' @param show.partial controls whether the partial correlation value is displayed in the plot. If `FALSE`
+#'              the value is not shown. Otherwise, can be a list containing the location (`loc`) and 
+#'              character size (`cex`) of the label. 
+#' @param ...   other arguments passed to [car::dataEllipse()]
 #'
 #' @return      This functions is mainly used for their side effect of producing plots. For greater 
 #'              flexibility (e.g., adding plot annotations), it returns invisibly the coordinates of the residuals

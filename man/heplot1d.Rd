@@ -54,7 +54,7 @@ all terms; if \code{FALSE}, no terms are plotted.}
 
 \item{hypotheses}{optional list of linear hypotheses for which to plot
 hypothesis matrices; hypotheses are specified as for the
-\code{\link[car]{linearHypothesis}} function in the \code{car} package; the
+\code{\link[car:linearHypothesis]{car::linearHypothesis()}} function in the \code{car} package; the
 list elements can be named, in which case the names are used.}
 
 \item{term.labels}{logical value or character vector of names for the terms
@@ -90,7 +90,7 @@ is the default (and `"2"` is a synonym).}
 
 \item{idata}{an optional data frame giving a factor or factors defining the
 intra-subject model for multivariate repeated-measures data.  See Details of
-\code{\link[car]{Anova}} for an explanation of the intra-subject design and
+\code{\link[car:Anova]{car::Anova()}} for an explanation of the intra-subject design and
 for further explanation of the other arguments relating to intra-subject
 factors.}
 
@@ -211,10 +211,10 @@ heplot1d(bees.mod, variables=2)
 
 }
 \seealso{
-\code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for
+\code{\link[car:Anova]{car::Anova()}}, \code{\link[car:linearHypothesis]{car::linearHypothesis()}} for
 hypothesis tests in \code{mlm}s
 
-\code{\link{heplot}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}} for
+\code{\link[=heplot]{heplot()}}, \code{\link[=heplot3d]{heplot3d()}}, \code{\link[=pairs.mlm]{pairs.mlm()}} for
 other HE plot methods
 
 Other HE plot functions:

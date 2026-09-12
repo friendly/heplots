@@ -26,14 +26,14 @@ A data frame with 48 observations on the following 12 variables.
 }
 \source{
 Originally slightly modified from files by David Carlson, now at
-\code{\link[archdata]{RBPottery}}. \%
+\code{\link[archdata:RBPottery]{archdata::RBPottery}}. \%
 }
 \description{
 Results of chemical analyses of 48 specimens of Romano-British pottery
 published by Tubb et al. (1980).  The numbers are the percentage of various
 metal oxides found in each sample for elements of concentrations greater
 than 0.01\\%. This is the original data set from Tubb et al. (1980), in
-contrast to \code{\link[carData]{Pottery}}.
+contrast to \code{\link[carData:Pottery]{carData::Pottery}}.
 }
 \details{
 The specimens are identified by their \code{rownames} in the data frame.
@@ -96,8 +96,8 @@ Romano-British Pottery by Atomic Absorption Spectrophotometry.
 \emph{Archaeometry}, \strong{22}, 153-171.
 }
 \seealso{
-\code{\link[carData]{Pottery}} for the related (subset) data set;
-\code{\link[archdata]{RBPottery}} for a newer version with more variables.
+\code{\link[carData:Pottery]{carData::Pottery}} for the related (subset) data set;
+\code{\link[archdata:RBPottery]{archdata::RBPottery}} for a newer version with more variables.
 }
 \concept{MANOVA}
 \concept{candisc}

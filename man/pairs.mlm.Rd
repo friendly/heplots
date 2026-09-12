@@ -40,7 +40,7 @@ is the default (and \code{"2"} is a synonym).}
 
 \item{idata}{an optional data frame giving a factor or factors defining the
 intra-subject model for multivariate repeated-measures data.  See Details of
-\code{\link[car]{Anova}} for an explanation of the intra-subject design and
+\code{\link[car:Anova]{car::Anova()}} for an explanation of the intra-subject design and
 for further explanation of the other arguments relating to intra-subject factors.}
 
 \item{idesign}{a one-sided model formula using the ``data'' in idata and
@@ -76,7 +76,7 @@ the \code{"digits"} option.}
 filled or not.  The first value is used for the error ellipse, the rest ---
 possibly recycled --- for the hypothesis ellipses; a single fill value can
 be given.  Defaults to FALSE for backward compatibility. See Details of
-\code{\link{heplot}}}
+\code{\link[=heplot]{heplot()}}}
 
 \item{fill.alpha}{Alpha transparency for filled ellipses, a numeric scalar
 or vector of values within \verb{[0,1]}, where 0 means fully transparent and
@@ -87,8 +87,8 @@ each panel of the display.}
 }
 \description{
 The function (in the form of an \code{mlm} method for the generic
-\code{\link[graphics]{pairs}} function) constructs a ``matrix'' of pairwise
-HE plots (see \link{heplot}) for a multivariate linear model.
+\code{\link[graphics:pairs]{graphics::pairs()}} function) constructs a ``matrix'' of pairwise
+HE plots (see \code{\link[=heplot]{heplot()}}) for a multivariate linear model.
 }
 \examples{
 
@@ -111,7 +111,7 @@ Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
 \url{http://datavis.ca/papers/jcgs-heplots.pdf}
 }
 \seealso{
-\code{\link{heplot}}, \code{\link{heplot3d}}
+\code{\link[=heplot]{heplot()}}, \code{\link[=heplot3d]{heplot3d()}}
 
 Other HE plot functions:
 \code{\link[=heplot]{heplot()}},

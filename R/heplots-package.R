@@ -52,14 +52,14 @@
 #' transformed space. The vignette `repeated` describes these graphical
 #' methods for repeated measures designs.
 #' 
-#' The related \pkg{car} package calculates Type II and Type III tests of
-#' multivariate linear hypotheses using the \code{\link[car]{Anova}} and
-#' \code{\link[car]{linearHypothesis}} functions.
+#' The related `car` package calculates Type II and Type III tests of
+#' multivariate linear hypotheses using the [car::Anova()] and
+#' [car::linearHypothesis()] functions.
 #' 
-#' The \code{\link[candisc]{candisc-package}} package provides functions for
+#' The [`candisc::candisc-package`] package provides functions for
 #' visualizing effects for MLM model terms in a low-dimensional canonical space
 #' that shows the largest hypothesis relative to error variation. The
-#' \pkg{candisc} package now also includes related methods for canonical
+#' `candisc` package now also includes related methods for canonical
 #' correlation analysis.
 #' 
 #' The `heplots` package also contains a large number of multivariate data
@@ -73,11 +73,11 @@
 #' 
 #'    Maintainer: Michael Friendly, \email{friendly@yorku.ca}, <http://datavis.ca>
 #' @seealso 
-#'     \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for Anova.mlm computations and tests
+#'     [car::Anova()], [car::linearHypothesis()] for Anova.mlm computations and tests
 #' 
-#'     \code{\link[candisc]{candisc-package}} for reduced-rank views in canonical space
+#'     [`candisc::candisc-package`] for reduced-rank views in canonical space
 #' 
-#'     \code{\link[stats]{manova}} for a different approach to testing effects in MANOVA designs
+#'     [stats::manova()] for a different approach to testing effects in MANOVA designs
 #'     
 #' @references 
 #' Friendly, M. (2006).  Data Ellipses, HE Plots and Reduced-Rank

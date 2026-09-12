@@ -34,13 +34,13 @@ pvPlot(
 \item{labels}{id labels for the points. If not supplied, rownames of the dataset are used.}
 
 \item{id}{controls point identification; if \code{FALSE} (the default), no points are identified;
-can be a list of named arguments to the \code{\link[car]{showLabels}} function}
+can be a list of named arguments to the \code{\link[car:showLabels]{car::showLabels()}} function}
 
 \item{ellipse}{logical; whether to draw the data ellipse}
 
 \item{ellipse.args}{a list of arguments controlling the ellipse: \code{levels}, \code{fill},
 \code{fill.alpha}, \code{robust}, and \code{col} (ellipse outline/fill color, independent
-of the point \code{col}). See \code{\link[car]{dataEllipse}} for what these mean.}
+of the point \code{col}). See \code{\link[car:dataEllipse]{car::dataEllipse()}} for what these mean.}
 
 \item{draw}{logical; if \code{TRUE} produce graphical output; if \code{FALSE}, only invisibly return
 coordinates of ellipse(s).}
@@ -61,7 +61,7 @@ draws it with those attributes, e.g. \code{regline = list(col="red", lwd=3)}.}
 the value is not shown. Otherwise, can be a list containing the location (\code{loc}) and
 character size (\code{cex}) of the label.}
 
-\item{...}{other arguments passed to \code{\link[car]{dataEllipse}}}
+\item{...}{other arguments passed to \code{\link[car:dataEllipse]{car::dataEllipse()}}}
 }
 \value{
 \if{html}{\out{<div class="sourceCode">}}\preformatted{ This functions is mainly used for their side effect of producing plots. For greater 
@@ -83,12 +83,12 @@ of these residuals, the linear regression line, which reflects the partial corre
 }
 \details{
 Partial variable plots are intimately related to an \emph{added-variable plot},
-such as produced by \code{\link[car]{avPlots}}. However, that implementation
+such as produced by \code{\link[car:avPlots]{car::avPlots()}}. However, that implementation
 is designed for a linear model, rather than a data.frame.
 
 The present version assumes that all variables passed are numeric.
 
-This function uses \code{\link[car]{dataEllipse}} for drawing, so further documentation of arguments passed there should be consulted.
+This function uses \code{\link[car:dataEllipse]{car::dataEllipse()}} for drawing, so further documentation of arguments passed there should be consulted.
 }
 \examples{
 data(crime, package = "ggbiplot")

@@ -9,56 +9,56 @@
 #'  Label an Ellipse in a Plot
 #'
 #' @description 
-#'  \code{label.ellipse} is used to a draw text label on an ellipse at its center or
-#'  somewhere around the periphery in a very flexible way. It is used in \code{\link{heplot}}, \code{\link{covEllipses}}, and
-#'  \code{\link{coefplot.mlm}}, but is also useful as a utility when plotting ellipses in base R graphics.
+#'  `label.ellipse` is used to a draw text label on an ellipse at its center or
+#'  somewhere around the periphery in a very flexible way. It is used in [heplot()], [covEllipses()], and
+#'  [coefplot.mlm()], but is also useful as a utility when plotting ellipses in base R graphics.
 #' 
 #'
 #' @details 
-#' The function takes the coordinates of the input \code{ellipse} and uses that, together with \code{label.pos} to calculate the
-#' (x, y) coordinates to be passed to \code{\link[graphics]{text}} along with a computed \code{pos} argument.
-#' The values of \code{tweak} are applied to (x, y) to position the labels to the outside of the ellipse by default.
+#' The function takes the coordinates of the input `ellipse` and uses that, together with `label.pos` to calculate the
+#' (x, y) coordinates to be passed to [graphics::text()] along with a computed `pos` argument.
+#' The values of `tweak` are applied to (x, y) to position the labels to the outside of the ellipse by default.
 #' 
-#' The \code{label.pos} argument implements a very general way to position the text label with respect to the ellipse:
+#' The `label.pos` argument implements a very general way to position the text label with respect to the ellipse:
 #' 
 #' \itemize{
 #' 
-#'   \item If \code{label.pos = NULL} (the default), the function uses the sign of the correlation \eqn{r}
+#'   \item If `label.pos = NULL` (the default), the function uses the sign of the correlation \eqn{r}
 #' represented by the ellipse to determine a position
 #' at the "top" (\eqn{r >= 0}) or "bottom" (\eqn{r < 0}) of the ellipse.
 
 #'   \item  Integer values of 0, 1, 2, 3 and 4, respectively indicate positions 
 #' at the center, below, to the left of, above 
-#' and to the right of the max/min coordinates of the `ellipse`, where the values \code{1:4} correspond to the
-#' usual values of \code{pos} in \code{\link[graphics]{text}}.
+#' and to the right of the max/min coordinates of the `ellipse`, where the values `1:4` correspond to the
+#' usual values of `pos` in [graphics::text()].
 #' 
 #'   \item  Label positions can also be specified as the corresponding character strings
-#' \code{c("center", "bottom", "left", "top", "right")}, or \emph{compass directions}, 
-#' \code{c("C", "S", "W", "N", "E")}. Additionally, \emph{diagonal} compass directions
-#' \code{c("NE", "SE", "SW", "NW")} can be used, corresponding to angles 45, 135, 225, 
+#' `c("center", "bottom", "left", "top", "right")`, or *compass directions*, 
+#' `c("C", "S", "W", "N", "E")`. Additionally, *diagonal* compass directions
+#' `c("NE", "SE", "SW", "NW")` can be used, corresponding to angles 45, 135, 225, 
 #' and 315 degrees, clockwise from 0 at North. 
 #' 
-#'   \item  Even more generally, \code{label.pos} can also be a \emph{fraction} in (0,1), interpreted
+#'   \item  Even more generally, `label.pos` can also be a *fraction* in (0,1), interpreted
 #' as the fraction of the way around the unit circle, counterclockwise from the North point (0, 1).
 #' }
 #'
-#' @param ellipse A two-column matrix of coordinates for the ellipse boundary, for example as computed by \code{\link[car]{ellipse}}.
+#' @param ellipse A two-column matrix of coordinates for the ellipse boundary, for example as computed by [car::ellipse()].
 #' @param label   Character string to be used as the ellipse label 
 #' @param col     Label color
 #' @param label.pos  Label position relative to the ellipse.  See details 
 #' @param xpd     Should the label be allowed to extend beyond the plot limits?
-#' @param tweak   A vector of two lengths used to tweak label positions. Only used for label positions \code{1:4} or
+#' @param tweak   A vector of two lengths used to tweak label positions. Only used for label positions `1:4` or
 #'                corresponding character or compass directions.
 #'                The defaults are 0.5 times the 
-#'                height and width of the character \code{"M"} added
+#'                height and width of the character `"M"` added
 #'                or subtracted to the calculated (x, y) values.
-#' @param ...     Other parameters passed to \code{\link[graphics]{text}}, e.g., \code{cex}, \code{col}, \dots
-#' @returns Mainly used for its side-effect of producing a call to \code{\link[graphics]{text}}, but also returns, invisibly,
+#' @param ...     Other parameters passed to [graphics::text()], e.g., `cex`, `col`, \dots
+#' @returns Mainly used for its side-effect of producing a call to [graphics::text()], but also returns, invisibly,
 #'          the (x, y) coordinates where the label was placed.
 #' 
 #' @author Michael Friendly
 #' @export
-#' @seealso \code{\link[graphics]{text}}, \code{\link[car]{ellipse}}, \code{\link{heplot}}, \code{\link{covEllipses}}
+#' @seealso [graphics::text()], [car::ellipse()], [heplot()], [covEllipses()]
 #' @examples 
 #' # Helper, to compute a circle
 #' circle <- function(center=c(0,0), radius=1, segments=60) {

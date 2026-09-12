@@ -126,7 +126,7 @@ Efron, B., & Tibshirani, R. J. (1994).
 \emph{An Introduction to the Bootstrap}. CRC Press.
 }
 \seealso{
-\code{\link{boxM}}, \code{\link{plot.boxM}}, \code{\link{logdetCI}}
+\code{\link[=boxM]{boxM()}}, \code{\link[=plot.boxM]{plot.boxM()}}, \code{\link[=logdetCI]{logdetCI()}}
 
 Other diagnostic plots:
 \code{\link[=cqplot]{cqplot()}},

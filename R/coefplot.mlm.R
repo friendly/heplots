@@ -20,7 +20,7 @@
 #' 
 #' @details
 #' This function is also a generalization of [car::confidenceEllipse()] to a multivariate setting.
-#' Note that \code{confidenceEllipse()} also has an `mlm` method (via [car::confidenceEllipse()]),
+#' Note that `confidenceEllipse()` also has an `mlm` method (via [car::confidenceEllipse()]),
 #' but it answers a different question: it fixes a *pair of coefficients* (for one or more
 #' responses) as the plot axes, and shows their joint confidence region. `coefplot()` instead
 #' fixes a *pair of responses* as the axes and overlays one ellipse per predictor -- use it when

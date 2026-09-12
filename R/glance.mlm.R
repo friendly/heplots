@@ -2,16 +2,16 @@
 
 #' Glance at an mlm object
 #' 
-#' This function takes an "mlm" object, fit by \code{\link[stats]{lm}} with a multivariate response.
-#' The goal is to return something analogous to \code{\link[broom]{glance.lm}} for a univariate response linear model.
+#' This function takes an "mlm" object, fit by [stats::lm()] with a multivariate response.
+#' The goal is to return something analogous to [broom::glance.lm()] for a univariate response linear model.
 #' 
-#' In the multivariate case, it returns a \code{\link[tibble]{tibble}} with one row for each
+#' In the multivariate case, it returns a [tibble::tibble()] with one row for each
 #' response variable, containing goodness of fit measures, F-tests and p-values.
 #' 
-#' @param x An `"mlm"` object created by \code{\link[stats]{lm}}, i.e., with a multivariate response.
+#' @param x An `"mlm"` object created by [stats::lm()], i.e., with a multivariate response.
 #' @param ... Additional arguments. Not used.
 #' @method glance mlm
-#' @return A \code{\link[tibble]{tibble}} with one row for each response variable and the columns:
+#' @return A [tibble::tibble()] with one row for each response variable and the columns:
 #' \describe{
 #'   \item{`r.squared`}{R squared statistic, or the percent of variation explained by the model.}
 #'   \item{`sigma`}{Estimated standard error of the residuals}

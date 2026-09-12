@@ -12,7 +12,7 @@
 #' @title Draw an Ellipsoid in an rgl Scene
 #' 
 #' @description 
-#' This is an experimental function designed to separate internal code in \code{link{heplot3d}}.
+#' This is an experimental function designed to separate internal code in [heplot3d()].
 #'
 #' @param x      An object. In the default method the parameter x should be a square positive definite matrix at               least 3x3 in size. It will be treated as the correlation or covariance of a multivariate normal
 #'               distribution. For the `data.frame` method, it should be a numeric data frame with at

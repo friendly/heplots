@@ -8,7 +8,7 @@ noteworthy(x, y = NULL, n = length(x), method = "mahal", level = NULL, ...)
 }
 \arguments{
 \item{x, y}{The x and y coordinates of a set of points. Alternatively, a single argument \code{x} can be provided,
-since \code{\link[grDevices]{xy.coords}(x, y)} is used for construction of the coordinates.}
+since \verb{[grDevices::xy.coords()](x, y)} is used for construction of the coordinates.}
 
 \item{n}{Maximum number of points to identify. If set to 0, no points are identified.}
 
@@ -20,7 +20,7 @@ criterion is \verb{< level}}
 \item{...}{Other arguments, silently ignored}
 }
 \description{
-This function extends the logic used by \code{\link[car]{showLabels}} to provide a more general
+This function extends the logic used by \code{\link[car:showLabels]{car::showLabels()}} to provide a more general
 collection of methods to identify unusual or "noteworthy" points in a two-dimensional display.
 Standard methods include Mahalanobis  and Euclidean distance from the centroid, absolute value of distance from
 the mean of X or Y, absolute value of Y and absolute value of the residual in a model \code{Y ~ X}.
@@ -36,7 +36,7 @@ and select cases according to their Mahalanobis distance from \verb{(mean(x), me
 \item{\code{"r"}}{Select points according to their value of \code{abs(y)}, as may be appropriate
 in residual plots, or others with a meaningful origin at 0, such as a chi-square QQ plot.}
 \item{\code{"ry"}}{Fit the linear model, \code{y ~ x} and select points according to their absolute residuals.}
-\item{case IDs}{\code{method} can be an integer vector of case numbers in \code{1:length{x}}, in which case those cases
+\item{case IDs}{\code{method} can be an integer vector of case numbers in \verb{1:length\{x\}}, in which case those cases
 will be labeled.}
 \item{numeric vector}{\code{method} can be a vector of the same length as x consisting of values to determine the points
 to be labeled. For example, for a linear model \code{mod}, setting \code{method=cooks.distance(mod)} will label the

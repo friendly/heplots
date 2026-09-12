@@ -29,7 +29,7 @@ specified)}
 \item{n}{number of barbs}
 
 \item{\dots}{args passed to lines3d for line styling, e.g., \code{color},
-\code{lwd}, etc. See \code{\link[rgl]{material3d}}.}
+\code{lwd}, etc. See \code{\link[rgl:material3d]{rgl::material3d()}}.}
 }
 \value{
 Returns (invisibly): integer ID of the line added to the scene \%\%
@@ -44,7 +44,7 @@ arrow3d(c(0,0,0), c(-2,2,2), barblen=.2, lwd=3, col="red")
 
 }
 \seealso{
-\code{\link[rgl]{lines3d}}, \code{\link[rgl]{segments3d}},
+\code{\link[rgl:lines3d]{rgl::lines3d()}}, \code{\link[rgl:segments3d]{rgl::segments3d()}},
 
 Other 3D plotting:
 \code{\link[=bbox3d]{bbox3d()}},

@@ -27,7 +27,7 @@
 #' The `method` argument provides a specification the covariance matrix used to calculate the Mahalanobis distances
 #' shown in this plot.
 #'
-#' @param X       A multivariate linear model fit by \code{\link[stats]{lm}}, or a numeric data frame giving the predictors in the MLM
+#' @param X       A multivariate linear model fit by [stats::lm()], or a numeric data frame giving the predictors in the MLM
 #' @param Y       A numeric data frame giving the responses in the MLM or the residuals
 #' @param data    For the formula method, the dataset containing the variables
 #' @param method  Estimation method used for center and covariance, one of: `"classical"` (product-moment), 
@@ -36,7 +36,7 @@
 #' @param ids     Labels for observations
 #' @param pch     A vector of two point symbols, for the regular points and those beyond the cutoffs
 #' @param col     A vector of two colors, for the regular points and those beyond the cutoffs
-#' @param label.pos  Position of the label relative to the point; see \code{\link[graphics]{text}} 
+#' @param label.pos  Position of the label relative to the point; see [graphics::text()] 
 #' @param xlab    Label stub for horizontal axis
 #' @param ylab    Label stub for vertical axis
 #' @param verbose Logical; if `TRUE` print the cutoff values to the console
@@ -44,7 +44,7 @@
 #'
 #' @return        Returns invisibly a data frame containing the distances, `distX`, `distY`
 #' 
-#' @seealso \code{\link{Mahalanobis}}, \code{\link{robmlm}}
+#' @seealso [Mahalanobis()], [robmlm()]
 #' @family diagnostic plots
 #' 
 #' @references

@@ -64,7 +64,7 @@
 #' `heplot(mymlm, ...)`.  Arbitrary linear hypotheses related to the terms
 #' in the model (e.g., contrasts of an effect) can be included in the plot
 #' using the `hypotheses` argument.  See
-#' \code{\link[car]{linearHypothesis}} for details.
+#' [car::linearHypothesis()] for details.
 #' 
 #' For repeated measure designs, where the response variables correspond to one
 #' or more variates observed under a within-subject design, between-subject
@@ -76,11 +76,11 @@
 #' `vignette("repeated")` in this package for an extended discussion and
 #' examples.
 #' 
-#' The related \code{\link[candisc]{candisc}} package provides functions for
+#' The related [candisc::candisc()] package provides functions for
 #' visualizing a multivariate linear model in a low-dimensional view via a
 #' generalized canonical discriminant analyses.
-#' \code{\link[candisc]{heplot.candisc}} and
-#' \code{\link[candisc]{heplot3d.candisc}} provide a low-rank 2D (or 3D) view
+#' [candisc::heplot.candisc()] and
+#' [candisc::heplot3d.candisc()] provide a low-rank 2D (or 3D) view
 #' of the effects for a given term in the space of maximum discrimination.
 #' 
 #' When an element of `fill` is `TRUE`, the ellipse outline is drawn
@@ -96,7 +96,7 @@
 #'              all terms; if `FALSE`, no terms are plotted.
 #' @param hypotheses optional list of linear hypotheses for which to plot
 #'              hypothesis matrices; hypotheses are specified as for the
-#'              \code{\link[car]{linearHypothesis}} function in the `car` package; the
+#'              [car::linearHypothesis()] function in the `car` package; the
 #'              list elements can be named, in which case the names are used.
 #' @param term.labels logical value or character vector of names for the terms
 #'              to be plotted. If `TRUE` (the default) the names of the terms are used;
@@ -114,7 +114,7 @@
 #'              the ellipse; the value 0 specifies the centroid of the `ellipse`
 #'              object.  The default, `label.pos=NULL` uses the correlation of the
 #' `ellipse` to determine "top" (r>=0) or "bottom" (r<0).  Even more
-#'              flexible options are described in \code{\link{label.ellipse}}
+#'              flexible options are described in [label.ellipse()]
 #' @param label.cex Character size used for labels for the hypothesis, error ellipses.
 #' @param variables indices or names of the two response variables to be
 #'              plotted; defaults to `1:2`.
@@ -134,7 +134,7 @@
 #'              is the default (and `"2"` is a synonym).
 #' @param idata an optional data frame giving a factor or factors defining the
 #'              intra-subject model for multivariate repeated-measures data.  See Friendly
-#'              (2010) and Details of \code{\link[car]{Anova}} for an explanation of the
+#'              (2010) and Details of [car::Anova()] for an explanation of the
 #'              intra-subject design and for further explanation of the other arguments
 #'              relating to intra-subject factors.
 #' @param idesign a one-sided model formula using the ``data'' in idata and
@@ -154,7 +154,7 @@
 #'              in the HE plot.  Hypothesis terms plotted include the `iterm` effect as
 #'              well as all interactions of `iterm` with `terms`.
 #' @param markH0 A logical value (or else a list of arguments to
-#'              \code{\link{mark.H0}}) used to draw cross-hairs and a point indicating the
+#'              [mark.H0()]) used to draw cross-hairs and a point indicating the
 #'              value of a point null hypothesis.  The default is TRUE if `iterm` is
 #'              non-NULL.
 #' @param manova optional `Anova.mlm` object for the model; if absent a
@@ -231,19 +231,19 @@
 #' }
 #' 
 #' @family HE plot functions
-#' @seealso \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for
+#' @seealso [car::Anova()], [car::linearHypothesis()] for
 #' details on testing MLMs.
 #' 
-#' \code{\link{heplot1d}}, \code{\link{heplot3d}}, \code{\link{pairs.mlm}},
-#' \code{\link{mark.H0}} for other HE plot functions.
-#' \code{\link{coefplot.mlm}} for plotting confidence ellipses for parameters
+#' [heplot1d()], [heplot3d()], [pairs.mlm()],
+#' [mark.H0()] for other HE plot functions.
+#' [coefplot.mlm()] for plotting confidence ellipses for parameters
 #' in MLMs.
 #' 
-#' \code{\link{trans.colors}} for calculation of transparent colors.
-#' \code{\link{label.ellipse}} for labeling positions in plotting H and E
+#' [trans.colors()] for calculation of transparent colors.
+#' [label.ellipse()] for labeling positions in plotting H and E
 #' ellipses.
 #' 
-#' \code{\link[candisc]{candisc}}, \code{\link[candisc]{heplot.candisc}} for
+#' [candisc::candisc()], [candisc::heplot.candisc()] for
 #' reduced-rank views of `mlm`s in canonical space.
 #' 
 #' @references 
