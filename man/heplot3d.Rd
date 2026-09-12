@@ -222,33 +222,66 @@ bounding box; these are deleted and the axes, etc.  redrawn if the plot is
 added to.
 }
 \description{
-This function plots ellipsoids in 3D representing the hypothesis and error
+This function plots ellipsoids in 3D representing the hypothesis ($\mathbf{H}$) and error ($\mathbf{E}$)
 sums-of-squares-and-products matrices for terms and linear hypotheses in a
-multivariate linear model.
+multivariate linear model. It allow you to visualize model effects on three response variables
+together, as opposed to the 2D views offered by \code{\link[=heplot]{heplot()}} and \code{\link[=pairs.mlm]{pairs.mlm()}}.
 }
 \details{
-It uses the \pkg{rgl} package for rendering, so it adds some arguments to those used
+It uses the \pkg{rgl} package for rendering, so it adds some arguments (e.g., \code{fogtype}) to those used
 in \code{\link[=heplot]{heplot()}}, but is otherwise the same.
 
-Rotating the plot can be particularly revealing, showing views in which H
-variation is particularly large or small in relation to E variation.  See
-\code{\link[rgl:play3d]{rgl::play3d()}} and \code{\link[rgl:movie3d]{rgl::movie3d()}} for details on
-creating animations.
+Rotating the plot can be particularly revealing, showing views in which $\mathbf{H}$
+variation is particularly large or small in relation to $\mathbf{E}$ variation.  If you find
+a view making $\mathbf{H}$ as large as possible, this corresponds closely to the canonical
+view chosen by the \pkg{candisc}.
 
-For use in an R Markdown, Quarto, or \code{pkgdown} document, follow the call to \code{heplot3d()}
-with \code{\link[rgl:rglwidget]{rgl::rglwidget()}} to embed the plot as an interactive, rotatable widget instead of a
-static image. In a knitted document, call \code{\link[rgl:setupKnitr]{rgl::setupKnitr()}} with \code{autoprint = TRUE} once,
-near the top of the document, so that low-level \code{rgl} calls are captured automatically; on a
-\code{pkgdown} reference page, the trailing \code{rgl::rglwidget()} call in the example is enough by
-itself, and no \code{setupKnitr()} call is needed. Note that the widget capture depends on
-\code{rglwidget()} itself being the visibly-printed value -- \code{heplot3d()} returns its ellipsoid
-bounding boxes invisibly, so calling it alone does not trigger a plot in either context.
+See \code{\link[rgl:play3d]{rgl::play3d()}} and \code{\link[rgl:movie3d]{rgl::movie3d()}} for details on creating animations, rotating the 3D scene around on or more coordinate axes, or zooming in/out to highlight some feature.
 
 When the H matrix for a term has rank < 3, the ellipsoid collapses to an
 ellipse (rank(H)=2) or a line (rank(H)=1).
 
 The arguments \code{xlim}, \code{ylim}, and \code{zlim} can be used to
 expand the bounding box of the axes, but cannot decrease it.
+\subsection{Use in documents}{
+
+For use in an R Markdown, Quarto, or \code{pkgdown} document, follow the call to \code{heplot3d()}
+with \code{\link[rgl:rglwidget]{rgl::rglwidget()}} to embed the plot as an interactive, rotatable widget instead of a
+static image.
+\itemize{
+\item In a knitted document, call \code{\link[rgl:setupKnitr]{rgl::setupKnitr()}} with \code{autoprint = TRUE} once,
+near the top of the document, so that low-level \code{rgl} calls are captured automatically;
+\item On a \code{pkgdown} reference page like this, the trailing \code{rgl::rglwidget()} call in the example is enough by
+itself, and no \code{setupKnitr()} call is needed.
+}
+
+Note that the widget capture depends on
+\code{rglwidget()} itself being the visibly-printed value -- \code{heplot3d()} returns its ellipsoid
+bounding boxes invisibly (for compatibility with \code{heplot()}), so calling it alone does not trigger a plot in either context.
+
+For a \code{bookdown}-based vignette with \code{pkgdown: as_is: true} in its YAML header
+(needed for \verb{\\@ref()} figure/table numbering), calling \code{rglwidget()} directly
+renders fine in the standalone vignette (\verb{R CMD build}/\code{devtools::build_vignettes()})
+but shows as a blank box on the \code{pkgdown} site: \code{pkgdown} replaces the document's
+own \verb{<head>} when assembling the article page, silently dropping the \verb{<script>} tags
+the widget needs to render, even though its scene data is still present in the page.
+The fix is to pre-render the widget to a self-contained file and embed that with an
+\verb{<iframe>} instead, since body content (unlike the \verb{<head>}) survives \code{pkgdown}'s
+page assembly:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{w <- rgl::rglwidget()
+htmlwidgets::saveWidget(w, "vignettes/fig/myplot.html", selfcontained = TRUE)
+}\if{html}{\out{</div>}}
+
+and in the vignette text, in place of the live call:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{htmltools::tags$iframe(src = "fig/myplot.html", width = "100\%", height = "500",
+                       style = "border: none;")
+}\if{html}{\out{</div>}}
+
+\code{pkgdown} copies the referenced file into the built site automatically, the same
+way it already copies images referenced via \code{\link[knitr:include_graphics]{knitr::include_graphics()}}.
+}
 }
 \examples{
 

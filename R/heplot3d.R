@@ -35,28 +35,22 @@ savedvars <- new.env(parent=emptyenv())
 
 #' Three-Dimensional HE Plots
 #' 
-#' This function plots ellipsoids in 3D representing the hypothesis and error
+#' This function plots ellipsoids in 3D representing the hypothesis ($\mathbf{H}$) and error ($\mathbf{E}$)
 #' sums-of-squares-and-products matrices for terms and linear hypotheses in a
-#' multivariate linear model.
+#' multivariate linear model. It allow you to visualize model effects on three response variables
+#' together, as opposed to the 2D views offered by [heplot()] and [pairs.mlm()].
 #' 
-#' It uses the \pkg{rgl} package for rendering, so it adds some arguments to those used
+#' It uses the \pkg{rgl} package for rendering, so it adds some arguments (e.g., `fogtype`) to those used
 #' in [heplot()], but is otherwise the same.
 #'
-#' Rotating the plot can be particularly revealing, showing views in which H
-#' variation is particularly large or small in relation to E variation.  See
-#' [rgl::play3d()] and [rgl::movie3d()] for details on
-#' creating animations.
+#' Rotating the plot can be particularly revealing, showing views in which $\mathbf{H}$
+#' variation is particularly large or small in relation to $\mathbf{E}$ variation.  If you find
+#' a view making $\mathbf{H}$ as large as possible, this corresponds closely to the canonical
+#' view chosen by the \pkg{candisc}.
+#' 
+#' See [rgl::play3d()] and [rgl::movie3d()] for details on creating animations, rotating the 3D scene around on or more coordinate axes, or zooming in/out to highlight some feature.
 #'
 #' @details
-#'
-#' For use in an R Markdown, Quarto, or `pkgdown` document, follow the call to `heplot3d()`
-#' with [rgl::rglwidget()] to embed the plot as an interactive, rotatable widget instead of a
-#' static image. In a knitted document, call [rgl::setupKnitr()] with `autoprint = TRUE` once,
-#' near the top of the document, so that low-level `rgl` calls are captured automatically; on a
-#' `pkgdown` reference page, the trailing `rgl::rglwidget()` call in the example is enough by
-#' itself, and no `setupKnitr()` call is needed. Note that the widget capture depends on
-#' `rglwidget()` itself being the visibly-printed value -- `heplot3d()` returns its ellipsoid
-#' bounding boxes invisibly, so calling it alone does not trigger a plot in either context.
 #'
 #' When the H matrix for a term has rank < 3, the ellipsoid collapses to an
 #' ellipse (rank(H)=2) or a line (rank(H)=1).
@@ -64,6 +58,41 @@ savedvars <- new.env(parent=emptyenv())
 #' The arguments `xlim`, `ylim`, and `zlim` can be used to
 #' expand the bounding box of the axes, but cannot decrease it.
 #' 
+#' ### Use in documents
+#' For use in an R Markdown, Quarto, or `pkgdown` document, follow the call to `heplot3d()`
+#' with [rgl::rglwidget()] to embed the plot as an interactive, rotatable widget instead of a
+#' static image. 
+#' 
+#' * In a knitted document, call [rgl::setupKnitr()] with `autoprint = TRUE` once,
+#' near the top of the document, so that low-level `rgl` calls are captured automatically; 
+#' * On a `pkgdown` reference page like this, the trailing `rgl::rglwidget()` call in the example is enough by
+#' itself, and no `setupKnitr()` call is needed. 
+#' 
+#' Note that the widget capture depends on
+#' `rglwidget()` itself being the visibly-printed value -- `heplot3d()` returns its ellipsoid
+#' bounding boxes invisibly (for compatibility with `heplot()`), so calling it alone does not trigger a plot in either context.
+#'
+#' For a `bookdown`-based vignette with `pkgdown: as_is: true` in its YAML header
+#' (needed for `\@ref()` figure/table numbering), calling `rglwidget()` directly
+#' renders fine in the standalone vignette (`R CMD build`/`devtools::build_vignettes()`)
+#' but shows as a blank box on the `pkgdown` site: `pkgdown` replaces the document's
+#' own `<head>` when assembling the article page, silently dropping the `<script>` tags
+#' the widget needs to render, even though its scene data is still present in the page.
+#' The fix is to pre-render the widget to a self-contained file and embed that with an
+#' `<iframe>` instead, since body content (unlike the `<head>`) survives `pkgdown`'s
+#' page assembly:
+#' ```
+#' w <- rgl::rglwidget()
+#' htmlwidgets::saveWidget(w, "vignettes/fig/myplot.html", selfcontained = TRUE)
+#' ```
+#' and in the vignette text, in place of the live call:
+#' ```
+#' htmltools::tags$iframe(src = "fig/myplot.html", width = "100%", height = "500",
+#'                        style = "border: none;")
+#' ```
+#' `pkgdown` copies the referenced file into the built site automatically, the same
+#' way it already copies images referenced via [knitr::include_graphics()].
+#'
 #' @aliases heplot3d heplot3d.mlm
 #' @param mod a model object of class `"mlm"`.
 #' @param terms a logical value or character vector of terms in the model for

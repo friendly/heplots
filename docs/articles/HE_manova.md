@@ -804,12 +804,29 @@ photos on \`Attr\`](fig/manova-jury-mod1-pairs-1.png)
 Figure 3.2: HE plots for all pairs of ratings according to the
 classification of photos on `Attr`
 
+These relations among three of the variables, `phyattr`, `independent`
+and `sophisticated`, can also be viewed directly in 3D with
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)
+(Figure [3.3](#fig:jury-mod1-HE3D)), which can be rotated and zoomed in
+the HTML version of this vignette.
+
+``` r
+heplot3d(jury.mod1, variables = c("phyattr", "independent", "sophisticated"), wire = FALSE)
+rgl::rglwidget()
+```
+
+Figure 3.3: 3D HE plot for `phyattr`, `independent` and `sophisticated`
+according to the classification of photos on `Attr`
+
+3D HE plot for `phyattr`, `independent` and `sophisticated` according to
+the classification of photos on `Attr`
+
 With 3 groups and 4 variables, the \\\mathbf{H}\\ ellipsoid has only
 \\s=\min(df_h, p)=2\\ dimensions.
 [`candisc()`](https://friendly.github.io/candisc/reference/candisc.html)
 carries out a canonical discriminant analysis for the MLM and returns an
 object that can be used to show an HE plot in the space of the canonical
-dimensions. This is plotted in Figure [3.3](#fig:jury-can1).
+dimensions. This is plotted in Figure [3.4](#fig:jury-can1).
 
 ``` r
 jury.can <- candisc(jury.mod1)
@@ -845,7 +862,7 @@ heplot(jury.can,
 show the correlations of the predictors with the canonical
 dimensions.](fig/manova-jury-can1-1.png)
 
-Figure 3.3: Canonical discriminant HE plot for the MockJury data.
+Figure 3.4: Canonical discriminant HE plot for the MockJury data.
 Variable vectors show the correlations of the predictors with the
 canonical dimensions.
 
@@ -905,7 +922,7 @@ heplot(jury.mod2)
 ![HE plot for the two-way MANOVA for \`Years\` and
 \`Serious\`](fig/manova-jury-mod2-HE-1.png)
 
-Figure 3.4: HE plot for the two-way MANOVA for `Years` and `Serious`
+Figure 3.5: HE plot for the two-way MANOVA for `Years` and `Serious`
 
 The HE plot shows that the nearly significant interaction of
 `Attr:Crime` is mainly in terms of differences among the groups on the
@@ -953,7 +970,7 @@ univariate response models is provided by the `effects`. By default
 [`allEffects()`](https://rdrr.io/pkg/effects/man/effect.html) calculates
 the predicted values for all high-order terms in a given model, and the
 `plot` method produces plots of these values for each term. The
-statements below produce Figure [3.5](#fig:jury-mod3-eff).
+statements below produce Figure [3.6](#fig:jury-mod3-eff).
 
 ``` r
 library(effects)
@@ -964,7 +981,7 @@ plot(jury.eff, ask=FALSE)
 ![Effect plots for \`Serious\` and the \`Attr \* Crime\` interaction in
 the ANCOVA model \`jury.mod3\`.](fig/manova-jury-mod3-eff-1.png)
 
-Figure 3.5: Effect plots for `Serious` and the `Attr * Crime`
+Figure 3.6: Effect plots for `Serious` and the `Attr * Crime`
 interaction in the ANCOVA model `jury.mod3`.
 
 The effect plot for `Serious` shows the expected linear relation between
@@ -985,10 +1002,10 @@ whether and how these measurements change over time. Systematic changes
 over time is of interest because this would indicate interbreeding with
 immigrant populations.
 
-\<img src=“fig/skulls.jpg” alt=“Diagram of the skull measurements.
-Maximal breadth and basibregmatic height are the basic measures of”size”
-of a skull. Basialveolar length and nasal height are important
-anthropometric measures of “shape”.” width=“60%” /\>
+![Diagram of the skull measurements. Maximal breadth and basibregmatic
+height are the basic measures of "size" of a skull. Basialveolar length
+and nasal height are important anthropometric measures of
+"shape".](fig/skulls.jpg)
 
 Figure 4.1: Diagram of the skull measurements. Maximal breadth and
 basibregmatic height are the basic measures of “size” of a skull.

@@ -37,6 +37,17 @@
   fixes a pair of *coefficients* and shows their joint confidence
   region.
 
+- Added an explicit
+  [`rgl::rglwidget()`](https://dmurdoch.github.io/rgl/dev/reference/rglwidget.html)
+  call to
+  [`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)’s
+  example, so its pkgdown reference page shows an interactive 3D plot
+  instead of nothing. `rgl`’s automatic pkgdown widget support only
+  fires for a visibly-returned object of class `rglId`/`rglOpen3d`;
+  [`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)
+  returns a different class invisibly, so nothing triggered it without
+  this explicit call.
+
 - Dropped the hard `Depends: broom` for
   [`glance.mlm()`](https://friendly.github.io/heplots/reference/glance.mlm.md);
   now `Imports: generics` (the lightweight package defining the `glance`
@@ -230,10 +241,10 @@ This is largely a maintenance release, but adds a function to identify
   the `schooldata` dataset.
 - [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
   now prints a warning if there are missing cases and also returns the
-  upper tail p-values corresponding to Mahalanobis $D^{2}$.
+  upper tail p-values corresponding to Mahalanobis \\D^2\\.
 - Default `method.id` in
   [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
-  changed to “r”, to identify points with the largest $D^{2}$.
+  changed to “r”, to identify points with the largest \\D^2\\.
 - added `noteworthy(x, y)` as a utility to select “noteworthy”
   observations in a 2D plot, extending the ideas in
   [`car::showLabels()`](https://rdrr.io/pkg/car/man/showLabels.html)
