@@ -270,12 +270,12 @@ The fix is to pre-render the widget to a self-contained file and embed that with
 page assembly:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{w <- rgl::rglwidget()
-htmlwidgets::saveWidget(w, "vignettes/fig/myplot.html", selfcontained = TRUE)
+htmlwidgets::saveWidget(w, "vignettes/images/myplot.html", selfcontained = TRUE)
 }\if{html}{\out{</div>}}
 
 and in the vignette text, in place of the live call:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{htmltools::tags$iframe(src = "fig/myplot.html", width = "100\%", height = "500",
+\if{html}{\out{<div class="sourceCode">}}\preformatted{htmltools::tags$iframe(src = "images/myplot.html", width = "100\%", height = "500",
                        style = "border: none;")
 }\if{html}{\out{</div>}}
 

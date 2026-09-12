@@ -310,7 +310,7 @@ cqplot(pottery.mlm, id.n = 5)
 ```
 
 ![Chisquare QQ plot for the Pottery
-model.](fig/robust-pottery-cqplot-1.png)
+model.](images/robust-pottery-cqplot-1.png)
 
 Figure 3: Chisquare QQ plot for the Pottery model.
 
@@ -325,7 +325,7 @@ res <- influencePlot(pottery.mlm, id.n = 2)
 ```
 
 ![Influence plot for the Pottery
-model.](fig/robust-pottery-inflplot-1.png)
+model.](images/robust-pottery-inflplot-1.png)
 
 Figure 4: Influence plot for the Pottery model.
 
@@ -417,7 +417,7 @@ text(xloc, rep(c(1.0, 1.05), length=5),
 ```
 
 ![Weights from robust MANOVA fitting showing potential
-outliers](fig/robust-pottery-weights-1.png)
+outliers](images/robust-pottery-weights-1.png)
 
 Figure 5: Weights from robust MANOVA fitting showing potential outliers
 
@@ -446,7 +446,7 @@ distancePlot(pottery.rlm)
 
 ![Distance plot for the robust Pottery model: Mahalanobis distances of
 the Site predictors vs. distances of the
-residuals.](fig/robust-pottery-distanceplot-1.png)
+residuals.](images/robust-pottery-distanceplot-1.png)
 
 Figure 6: Distance plot for the robust Pottery model: Mahalanobis
 distances of the Site predictors vs. distances of the residuals.
@@ -486,7 +486,7 @@ legend("topright",
 ```
 
 ![HE plot comparing classical (blue) and robust (red) MANOVA for Al vs
-Fe](fig/robust-pottery-heplot-1.png)
+Fe](images/robust-pottery-heplot-1.png)
 
 Figure 7: HE plot comparing classical (blue) and robust (red) MANOVA for
 Al vs Fe
@@ -507,7 +507,7 @@ pairs(pottery.rlm,
 ```
 
 ![Pairwise HE plots for all response variables in the robust model
-\`pottery.rlm\`](fig/robust-pottery-pairs-1.png)
+\`pottery.rlm\`](images/robust-pottery-pairs-1.png)
 
 Figure 8: Pairwise HE plots for all response variables in the robust
 model `pottery.rlm`
@@ -626,7 +626,7 @@ plot(pulp.rlm, segments = TRUE)
 ```
 
 ![Weights from robust fitting of the pulp fiber
-data](fig/robust-pulpfiber-weights-1.png)
+data](images/robust-pulpfiber-weights-1.png)
 
 Figure 9: Weights from robust fitting of the pulp fiber data
 
@@ -665,7 +665,7 @@ distancePlot(pulp.rlm, method = "mcd", main = "MCD distances")
 
 ![Distance plots for the robust pulp fiber model, comparing classical
 (left) and MCD-based (right) covariance estimates for the fiber (X)
-predictor distances.](fig/robust-pulpfiber-distanceplot-1.png)
+predictor distances.](images/robust-pulpfiber-distanceplot-1.png)
 
 Figure 10: Distance plots for the robust pulp fiber model, comparing
 classical (left) and MCD-based (right) covariance estimates for the
@@ -731,7 +731,7 @@ influencePlot(pulp.mod, id.n = 5)
 ```
 
 ![Default (\`type = 'stres'\`) multivariate influence plot for the OLS
-pulp fiber model.](fig/robust-pulpfiber-influenceplot-stres-1.png)
+pulp fiber model.](images/robust-pulpfiber-influenceplot-stres-1.png)
 
 Figure 11: Default (`type = 'stres'`) multivariate influence plot for
 the OLS pulp fiber model.
@@ -752,7 +752,7 @@ influencePlot(pulp.mod, id.n = 5, type = "LR")
 ```
 
 ![\`type = 'LR'\` multivariate influence plot for the same
-model.](fig/robust-pulpfiber-influenceplot-lr-1.png)
+model.](images/robust-pulpfiber-influenceplot-lr-1.png)
 
 Figure 12: `type = 'LR'` multivariate influence plot for the same model.
 

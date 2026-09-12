@@ -36,7 +36,7 @@ knitr::opts_chunk$set(
   fig.width=5,
   # results='hide',
   # fig.keep='none',
-  fig.path='fig/manova-',
+  fig.path='images/manova-',
   echo=TRUE,
   collapse = TRUE,
   comment = "#>"
@@ -498,7 +498,7 @@ heplot3d(plastic.mod, col=colors)
 ```{r, plastic1-HE3D}
 #| echo=FALSE,
 #| fig.cap="3D HE plot for the plastic MLM"
-knitr::include_graphics("fig/plastic-HE3D.png")
+knitr::include_graphics("images/plastic-HE3D.png")
 ```
 
 
@@ -607,7 +607,7 @@ rgl::rglwidget()
 ```
 ```{r, jury-mod1-HE3D, echo=FALSE}
 htmltools::tags$iframe(
-  src = "fig/jury-mod1-HE3D.html",
+  src = "images/jury-mod1-HE3D.html",
   width = "100%", height = "500", style = "border: none;")
 ```
 *3D HE plot for `phyattr`, `independent` and `sophisticated` according to the classification of photos on `Attr`*
@@ -749,7 +749,7 @@ would indicate interbreeding with immigrant populations.
 #| echo=FALSE,
 #| out.width="60%",
 #| fig.cap='Diagram of the skull measurements. Maximal breadth and basibregmatic height are the basic measures of "size" of a skull.  Basialveolar length and nasal height are important anthropometric measures of "shape".'
-knitr::include_graphics("fig/skulls.jpg")
+knitr::include_graphics("images/skulls.jpg")
 ```
 
 

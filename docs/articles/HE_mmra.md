@@ -130,7 +130,7 @@ ggplot(Rohwer_long, aes(x, y, color = SES, shape = SES)) +
 ![Plot matrix of the response variables (\`SAT\`, \`PPVT\` and
 \`Raven\`) against each of three predictors (\`n\`, \`s\`, \`ns\`). The
 lines show separate linear regressions for each SES
-group.](fig/mmra-rohwer-long-ggplot-1.png)
+group.](images/mmra-rohwer-long-ggplot-1.png)
 
 Figure 1.1: Plot matrix of the response variables (`SAT`, `PPVT` and
 `Raven`) against each of three predictors (`n`, `s`, `ns`). The lines
@@ -219,11 +219,11 @@ text(-4.7, 2.5, "Low SES group", pos=4, cex=1.4)
 ![Coefficient plots for the separate models for the High and Low SES
 groups in the Rohwer data. The ellipses are 95% confidence regions for
 the pairs of regression coefficients of (SAT, PPVT) for each predictor
-in the model.](fig/mmra-rohwer-coefplot-1.png)![Coefficient plots for
+in the model.](images/mmra-rohwer-coefplot-1.png)![Coefficient plots for
 the separate models for the High and Low SES groups in the Rohwer data.
 The ellipses are 95% confidence regions for the pairs of regression
 coefficients of (SAT, PPVT) for each predictor in the
-model.](fig/mmra-rohwer-coefplot-2.png)
+model.](images/mmra-rohwer-coefplot-2.png)
 
 Figure 1.2: Coefficient plots for the separate models for the High and
 Low SES groups in the Rohwer data. The ellipses are 95% confidence
@@ -254,7 +254,7 @@ text(means[,2], means[,3], labels=means[,1], pos=3, cex=2, col="black")
 
 ![HE plot for \`SAT\` and \`PPVT\`, showing the effects for the PA
 predictors for the High and Low SES groups
-separately](fig/mmra-rohwer-HE1-1.png)
+separately](images/mmra-rohwer-HE1-1.png)
 
 Figure 1.3: HE plot for `SAT` and `PPVT`, showing the effects for the PA
 predictors for the High and Low SES groups separately
@@ -343,10 +343,10 @@ heplot(Rohwer.mod,
 ![HE plot for \`SAT\` and \`PPVT\` (left) and for \`SAT\` and \`Raven\`
 (right) using the MANCOVA model. The ellipses labeled 'Regr' show the
 test of the overall model, including all
-predictors.](fig/mmra-rohwer-HE2-1.png)![HE plot for \`SAT\` and
+predictors.](images/mmra-rohwer-HE2-1.png)![HE plot for \`SAT\` and
 \`PPVT\` (left) and for \`SAT\` and \`Raven\` (right) using the MANCOVA
 model. The ellipses labeled 'Regr' show the test of the overall model,
-including all predictors.](fig/mmra-rohwer-HE2-2.png)
+including all predictors.](images/mmra-rohwer-HE2-2.png)
 
 Figure 1.4: HE plot for `SAT` and `PPVT` (left) and for `SAT` and
 `Raven` (right) using the MANCOVA model. The ellipses labeled ‘Regr’
@@ -368,7 +368,7 @@ pairs(Rohwer.mod, col=colors,
       cex=1.3, lwd=c(2, rep(3,5), 4))
 ```
 
-![](fig/mmra-rohwer-HE3-1.png)
+![](images/mmra-rohwer-HE3-1.png)
 
 or as a 3D plot, using
 [`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)
@@ -381,7 +381,7 @@ heplot3d(Rohwer.mod, col=colors,
 ```
 
 ![3D HE plot for the MANCOVA model fit to the Rohwer
-data.](fig/mmra-rohwer-HE3D.png)
+data.](images/mmra-rohwer-HE3D.png)
 
 Figure 1.5: 3D HE plot for the MANCOVA model fit to the Rohwer data.
 
@@ -468,7 +468,7 @@ heplot(Rohwer.mod2, col=c(colors, "brown"),
 
 ![HE plot for \`SAT\` and \`PPVT\`, fitting the model \`Rohwer.mod2\`
 that allows unequal slopes for the
-covariates.](fig/mmra-rohwer-HE4-1.png)
+covariates.](images/mmra-rohwer-HE4-1.png)
 
 Figure 1.6: HE plot for `SAT` and `PPVT`, fitting the model
 `Rohwer.mod2` that allows unequal slopes for the covariates.
@@ -621,7 +621,7 @@ pairs(Hern.mod,
       cex=1.25)
 ```
 
-![HE pairs plot for Hernior data](fig/mmra-hern-pairs-1.png)
+![HE pairs plot for Hernior data](images/mmra-hern-pairs-1.png)
 
 Figure 2.1: HE pairs plot for Hernior data
 
@@ -675,11 +675,12 @@ plot(Hern.canL, term="build")
 ![1D Canonical discriminant plots for physical status (\`pstat\`) and
 \`build\`. The canonical scores are such that better outcomes are
 associated with smaller scores. Arrows show the correlations of the
-responses with the 1D canonical scores.](fig/mmra-hern-can1-1.png)![1D
-Canonical discriminant plots for physical status (\`pstat\`) and
-\`build\`. The canonical scores are such that better outcomes are
-associated with smaller scores. Arrows show the correlations of the
-responses with the 1D canonical scores.](fig/mmra-hern-can1-2.png)
+responses with the 1D canonical
+scores.](images/mmra-hern-can1-1.png)![1D Canonical discriminant plots
+for physical status (\`pstat\`) and \`build\`. The canonical scores are
+such that better outcomes are associated with smaller scores. Arrows
+show the correlations of the responses with the 1D canonical
+scores.](images/mmra-hern-can1-2.png)
 
 Figure 2.2: 1D Canonical discriminant plots for physical status
 (`pstat`) and `build`. The canonical scores are such that better
@@ -695,10 +696,10 @@ plot(Hern.canL, term="cardiac")
 
 ![1D Canonical discriminant plots for \`age\` and \`cardiac\`. The
 canonical scores are such that better outcomes are associated with
-smaller scores.](fig/mmra-hern-can2-1.png)![1D Canonical discriminant
+smaller scores.](images/mmra-hern-can2-1.png)![1D Canonical discriminant
 plots for \`age\` and \`cardiac\`. The canonical scores are such that
 better outcomes are associated with smaller
-scores.](fig/mmra-hern-can2-2.png)
+scores.](images/mmra-hern-can2-2.png)
 
 Figure 2.3: 1D Canonical discriminant plots for `age` and `cardiac`. The
 canonical scores are such that better outcomes are associated with
@@ -849,7 +850,7 @@ pairs(grades.mod3)
 ```
 
 ![HE pairs plot for SocGrade, model
-\`grades.mod3\`.](fig/mmra-grades-pairs-1.png)
+\`grades.mod3\`.](images/mmra-grades-pairs-1.png)
 
 Figure 3.1: HE pairs plot for SocGrade, model `grades.mod3`.
 
@@ -861,7 +862,8 @@ shown in Figure [3.2](#fig:grades-HE3D).
 heplot3d(grades.mod3, wire=FALSE)
 ```
 
-![3D HE plot for SocGrades, model \`grades.mod3\`](fig/grades-HE3D.png)
+![3D HE plot for SocGrades, model
+\`grades.mod3\`](images/grades-HE3D.png)
 
 Figure 3.2: 3D HE plot for SocGrades, model `grades.mod3`
 
@@ -900,7 +902,7 @@ space, giving Figure [3.3](#fig:grades-can-class).
 ```
 
 ![Canonical HE plot for \`class\` effect in
-\`grades.mod3\`](fig/mmra-grades-can-class-1.png)
+\`grades.mod3\`](images/mmra-grades-can-class-1.png)
 
 Figure 3.3: Canonical HE plot for `class` effect in `grades.mod3`
 
@@ -922,9 +924,9 @@ plot(grades.can, term="gpa")
 
 ![1D Canonical discriminant plots for \`sex\` and \`gpa\`. Higher
 canonical scores reflect better course
-performance.](fig/mmra-grades-can-all-1.png)![1D Canonical discriminant
-plots for \`sex\` and \`gpa\`. Higher canonical scores reflect better
-course performance.](fig/mmra-grades-can-all-2.png)
+performance.](images/mmra-grades-can-all-1.png)![1D Canonical
+discriminant plots for \`sex\` and \`gpa\`. Higher canonical scores
+reflect better course performance.](images/mmra-grades-can-all-2.png)
 
 Figure 3.4: 1D Canonical discriminant plots for `sex` and `gpa`. Higher
 canonical scores reflect better course performance.

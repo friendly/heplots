@@ -39,7 +39,7 @@ knitr::opts_chunk$set(
   fig.align = "center",
   # results='hide',
   # fig.keep='none',
-  fig.path='fig/mmra-',
+  fig.path='images/mmra-',
   echo=TRUE,
   collapse = TRUE,
   comment = "#>"
@@ -337,7 +337,7 @@ heplot3d(Rohwer.mod, col=colors,
 #| echo=FALSE,
 #| out.width="60%",
 #| fig.cap="3D HE plot for the MANCOVA model fit to the Rohwer data."
-knitr::include_graphics("fig/mmra-rohwer-HE3D.png")
+knitr::include_graphics("images/mmra-rohwer-HE3D.png")
 ```
 
 ## Testing homogeneity of regression
@@ -660,7 +660,7 @@ heplot3d(grades.mod3, wire=FALSE)
 #| echo=FALSE,
 #| out.width="70%",
 #| fig.cap="3D HE plot for SocGrades, model `grades.mod3`"
-knitr::include_graphics("fig/grades-HE3D.png")
+knitr::include_graphics("images/grades-HE3D.png")
 ```
 
 <!-- 	\includegraphics[width=.7\textwidth]{grades-HE3D} -->

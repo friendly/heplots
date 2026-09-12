@@ -146,7 +146,7 @@ p1 + p2
 ```
 
 ![Means of anxiety and depression by grade, with \$\pm 1\$ standard
-error bars.](fig/manova-addhealth-means-each-1.png)
+error bars.](images/manova-addhealth-means-each-1.png)
 
 Figure 1.1: Means of anxiety and depression by grade, with \\\pm 1\\
 standard error bars.
@@ -170,7 +170,7 @@ ggplot(data = means, aes(x = anxiety, y = depression,
 ```
 
 ![Joint plot of means of anxiety and depression by grade, with \$\pm 1\$
-standard error bars.](fig/manova-addhealth-means-plot-1.png)
+standard error bars.](images/manova-addhealth-means-plot-1.png)
 
 Figure 1.2: Joint plot of means of anxiety and depression by grade, with
 \\\pm 1\\ standard error bars.
@@ -188,7 +188,7 @@ covEllipses(AddHealth[, 3:2], group = AddHealth$grade,
 ```
 
 ![Within-group covariance ellipses for the \`grade\`
-groups.](fig/manova-addhealth-covellipse-1.png)
+groups.](images/manova-addhealth-covellipse-1.png)
 
 Figure 1.3: Within-group covariance ellipses for the `grade` groups.
 
@@ -338,7 +338,7 @@ heplot(AH.mlm,
 
 ![HE plot for the multivariate model \`AH.mlm\`, showing the overall
 effect of \`grade\` as well as tests for the linear and quadratic terms
-in this model.](fig/manova-addhealth-heplot-1.png)
+in this model.](images/manova-addhealth-heplot-1.png)
 
 Figure 1.4: HE plot for the multivariate model `AH.mlm`, showing the
 overall effect of `grade` as well as tests for the linear and quadratic
@@ -491,7 +491,7 @@ heplot(plastic.mod, size="effect",
 ![HE plot for effects on \`tear\` and \`gloss\` according to the factors
 \`rate\`, \`additive\` and their interaction, \`rate:additive\`. The
 thicker lines show effect size scaling; the thinner lines show
-significance scaling.](fig/manova-plastic1a-1.png)
+significance scaling.](images/manova-plastic1a-1.png)
 
 Figure 2.1: HE plot for effects on `tear` and `gloss` according to the
 factors `rate`, `additive` and their interaction, `rate:additive`. The
@@ -544,7 +544,7 @@ lines(intMeans[c(2,4),1], intMeans[c(2,4),2], col="brown")
 ![HE plot for effects on \`tear\` and \`gloss\` according to the factors
 \`rate\`, \`additive\` and their interaction, \`rate:additive\`.
 Annotations have added means for the combinations of \`rate\` and
-\`additive\`.](fig/manova-plastic1-1.png)
+\`additive\`.](images/manova-plastic1-1.png)
 
 Figure 2.2: HE plot for effects on `tear` and `gloss` according to the
 factors `rate`, `additive` and their interaction, `rate:additive`.
@@ -643,7 +643,7 @@ heplot(plastic.mod,
 
 ![HE plot for \`tear\` and \`gloss\`, supplemented with ellipses
 representing the joint tests of main effects and all group
-differences](fig/manova-plastic2-1.png)
+differences](images/manova-plastic2-1.png)
 
 Figure 2.3: HE plot for `tear` and `gloss`, supplemented with ellipses
 representing the joint tests of main effects and all group differences
@@ -659,7 +659,7 @@ colors = c("pink", "darkblue", "darkgreen", "brown")
 heplot3d(plastic.mod, col=colors)
 ```
 
-![3D HE plot for the plastic MLM](fig/plastic-HE3D.png)
+![3D HE plot for the plastic MLM](images/plastic-HE3D.png)
 
 Figure 2.4: 3D HE plot for the plastic MLM
 
@@ -780,7 +780,7 @@ heplot(jury.mod1, main="HE plot for manipulation check",
 ```
 
 ![HE plot for ratings of \`phyattr\` and \`happy\` according to the
-classification of photos on \`Attr\`](fig/manova-jury-mod1-HE-1.png)
+classification of photos on \`Attr\`](images/manova-jury-mod1-HE-1.png)
 
 Figure 3.1: HE plot for ratings of `phyattr` and `happy` according to
 the classification of photos on `Attr`
@@ -799,7 +799,7 @@ pairs(jury.mod1)
 ```
 
 ![HE plots for all pairs of ratings according to the classification of
-photos on \`Attr\`](fig/manova-jury-mod1-pairs-1.png)
+photos on \`Attr\`](images/manova-jury-mod1-pairs-1.png)
 
 Figure 3.2: HE plots for all pairs of ratings according to the
 classification of photos on `Attr`
@@ -858,7 +858,7 @@ heplot(jury.can,
 
 ![Canonical discriminant HE plot for the MockJury data. Variable vectors
 show the correlations of the predictors with the canonical
-dimensions.](fig/manova-jury-can1-1.png)
+dimensions.](images/manova-jury-can1-1.png)
 
 Figure 3.3: Canonical discriminant HE plot for the MockJury data.
 Variable vectors show the correlations of the predictors with the
@@ -918,7 +918,7 @@ heplot(jury.mod2)
 ```
 
 ![HE plot for the two-way MANOVA for \`Years\` and
-\`Serious\`](fig/manova-jury-mod2-HE-1.png)
+\`Serious\`](images/manova-jury-mod2-HE-1.png)
 
 Figure 3.4: HE plot for the two-way MANOVA for `Years` and `Serious`
 
@@ -977,7 +977,7 @@ plot(jury.eff, ask=FALSE)
 ```
 
 ![Effect plots for \`Serious\` and the \`Attr \* Crime\` interaction in
-the ANCOVA model \`jury.mod3\`.](fig/manova-jury-mod3-eff-1.png)
+the ANCOVA model \`jury.mod3\`.](images/manova-jury-mod3-eff-1.png)
 
 Figure 3.5: Effect plots for `Serious` and the `Attr * Crime`
 interaction in the ANCOVA model `jury.mod3`.
@@ -1003,7 +1003,7 @@ immigrant populations.
 ![Diagram of the skull measurements. Maximal breadth and basibregmatic
 height are the basic measures of "size" of a skull. Basialveolar length
 and nasal height are important anthropometric measures of
-"shape".](fig/skulls.jpg)
+"shape".](images/skulls.jpg)
 
 Figure 4.1: Diagram of the skull measurements. Maximal breadth and
 basibregmatic height are the basic measures of “size” of a skull.
@@ -1066,7 +1066,7 @@ pairs(means, vlab,
 ```
 
 ![Pairs plot of means of Skulls data, by
-epoch.](fig/manova-skulls4-1.png)
+epoch.](images/manova-skulls4-1.png)
 
 Figure 4.2: Pairs plot of means of Skulls data, by epoch.
 
@@ -1093,7 +1093,7 @@ bwplot(value ~ epoch | variable, data=sklong, scales="free",
 ```
 
 ![Boxplots of Skulls data, by epoch, for each
-variable.](fig/manova-skulls-bwplot-1.png)
+variable.](images/manova-skulls-bwplot-1.png)
 
 Figure 4.3: Boxplots of Skulls data, by epoch, for each variable.
 
@@ -1190,7 +1190,7 @@ pairs(sk.mod, variables=c(1,4,2,3),
 
 ![Pairs HE plot of Skulls data, showing multivariate tests of \`epoch\`,
 as well as tests of linear and nonlinear
-trends.](fig/manova-skulls-HE-pairs-1.png)
+trends.](images/manova-skulls-HE-pairs-1.png)
 
 Figure 4.4: Pairs HE plot of Skulls data, showing multivariate tests of
 `epoch`, as well as tests of linear and nonlinear trends.

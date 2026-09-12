@@ -83,11 +83,11 @@ savedvars <- new.env(parent=emptyenv())
 #' page assembly:
 #' ```
 #' w <- rgl::rglwidget()
-#' htmlwidgets::saveWidget(w, "vignettes/fig/myplot.html", selfcontained = TRUE)
+#' htmlwidgets::saveWidget(w, "vignettes/images/myplot.html", selfcontained = TRUE)
 #' ```
 #' and in the vignette text, in place of the live call:
 #' ```
-#' htmltools::tags$iframe(src = "fig/myplot.html", width = "100%", height = "500",
+#' htmltools::tags$iframe(src = "images/myplot.html", width = "100%", height = "500",
 #'                        style = "border: none;")
 #' ```
 #' `pkgdown` copies the referenced file into the built site automatically, the same

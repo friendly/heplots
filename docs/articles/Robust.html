@@ -265,7 +265,7 @@ which would identify badly fit observations. None seem particularly large here.<
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/cqplot.html">cqplot</a></span><span class="op">(</span><span class="va">pottery.mlm</span>, id.n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-cqplot"></span>
-<img src="fig/robust-pottery-cqplot-1.png" alt="Chisquare QQ plot for the Pottery model."><p class="caption">
+<img src="images/robust-pottery-cqplot-1.png" alt="Chisquare QQ plot for the Pottery model."><p class="caption">
 Figure 3: Chisquare QQ plot for the Pottery model.
 </p>
 </div>
@@ -275,7 +275,7 @@ An <em>influence plot</em> for this model, done using <code>mvinfluence::influen
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/influencePlot.html" class="external-link">influencePlot</a></span><span class="op">(</span><span class="va">pottery.mlm</span>, id.n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-inflplot"></span>
-<img src="fig/robust-pottery-inflplot-1.png" alt="Influence plot for the Pottery model."><p class="caption">
+<img src="images/robust-pottery-inflplot-1.png" alt="Influence plot for the Pottery model."><p class="caption">
 Figure 4: Influence plot for the Pottery model.
 </p>
 </div>
@@ -343,7 +343,7 @@ between the classical and robust estimates.</p>
 <span>     <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">Pottery</span><span class="op">$</span><span class="va">Site</span><span class="op">)</span>, pos <span class="op">=</span><span class="fl">3</span>, xpd <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-weights"></span>
-<img src="fig/robust-pottery-weights-1.png" alt="Weights from robust MANOVA fitting showing potential outliers"><p class="caption">
+<img src="images/robust-pottery-weights-1.png" alt="Weights from robust MANOVA fitting showing potential outliers"><p class="caption">
 Figure 5: Weights from robust MANOVA fitting showing potential outliers
 </p>
 </div>
@@ -360,7 +360,7 @@ downweighted, by combining information on regression outliers (unusual in the <c
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/distancePlot.html">distancePlot</a></span><span class="op">(</span><span class="va">pottery.rlm</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-distanceplot"></span>
-<img src="fig/robust-pottery-distanceplot-1.png" alt="Distance plot for the robust Pottery model: Mahalanobis distances of the Site predictors vs. distances of the residuals."><p class="caption">
+<img src="images/robust-pottery-distanceplot-1.png" alt="Distance plot for the robust Pottery model: Mahalanobis distances of the Site predictors vs. distances of the residuals."><p class="caption">
 Figure 6: Distance plot for the robust Pottery model: Mahalanobis distances of the Site predictors vs. distances of the residuals.
 </p>
 </div>
@@ -393,7 +393,7 @@ reflecting their group’s small sample size rather than an unusual response pat
 <span>       <span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-heplot"></span>
-<img src="fig/robust-pottery-heplot-1.png" alt="HE plot comparing classical (blue) and robust (red) MANOVA for Al vs Fe"><p class="caption">
+<img src="images/robust-pottery-heplot-1.png" alt="HE plot comparing classical (blue) and robust (red) MANOVA for Al vs Fe"><p class="caption">
 Figure 7: HE plot comparing classical (blue) and robust (red) MANOVA for Al vs Fe
 </p>
 </div>
@@ -407,7 +407,7 @@ for a MLM.</p>
 <span>      fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pottery-pairs"></span>
-<img src="fig/robust-pottery-pairs-1.png" alt="Pairwise HE plots for all response variables in the robust model `pottery.rlm`"><p class="caption">
+<img src="images/robust-pottery-pairs-1.png" alt="Pairwise HE plots for all response variables in the robust model `pottery.rlm`"><p class="caption">
 Figure 8: Pairwise HE plots for all response variables in the robust model <code>pottery.rlm</code>
 </p>
 </div>
@@ -489,7 +489,7 @@ when potential outliers are down-weighted.</p></li>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pulp.rlm</span>, segments <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pulpfiber-weights"></span>
-<img src="fig/robust-pulpfiber-weights-1.png" alt="Weights from robust fitting of the pulp fiber data"><p class="caption">
+<img src="images/robust-pulpfiber-weights-1.png" alt="Weights from robust fitting of the pulp fiber data"><p class="caption">
 Figure 9: Weights from robust fitting of the pulp fiber data
 </p>
 </div>
@@ -506,7 +506,7 @@ Figure 9: Weights from robust fitting of the pulp fiber data
 <span><span class="fu"><a href="../reference/distancePlot.html">distancePlot</a></span><span class="op">(</span><span class="va">pulp.rlm</span>, method <span class="op">=</span> <span class="st">"mcd"</span>, main <span class="op">=</span> <span class="st">"MCD distances"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pulpfiber-distanceplot"></span>
-<img src="fig/robust-pulpfiber-distanceplot-1.png" alt="Distance plots for the robust pulp fiber model, comparing classical (left) and MCD-based (right) covariance estimates for the fiber (X) predictor distances."><p class="caption">
+<img src="images/robust-pulpfiber-distanceplot-1.png" alt="Distance plots for the robust pulp fiber model, comparing classical (left) and MCD-based (right) covariance estimates for the fiber (X) predictor distances."><p class="caption">
 Figure 10: Distance plots for the robust pulp fiber model, comparing classical (left) and MCD-based (right) covariance estimates for the fiber (X) predictor distances.
 </p>
 </div>
@@ -537,7 +537,7 @@ response, an unusual predictor pattern, or both.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/influencePlot.html" class="external-link">influencePlot</a></span><span class="op">(</span><span class="va">pulp.mod</span>, id.n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pulpfiber-influenceplot-stres"></span>
-<img src="fig/robust-pulpfiber-influenceplot-stres-1.png" alt="Default (`type = 'stres'`) multivariate influence plot for the OLS pulp fiber model."><p class="caption">
+<img src="images/robust-pulpfiber-influenceplot-stres-1.png" alt="Default (`type = 'stres'`) multivariate influence plot for the OLS pulp fiber model."><p class="caption">
 Figure 11: Default (<code>type = 'stres'</code>) multivariate influence plot for the OLS pulp fiber model.
 </p>
 </div>
@@ -555,7 +555,7 @@ Figure 11: Default (<code>type = 'stres'</code>) multivariate influence plot for
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/influencePlot.html" class="external-link">influencePlot</a></span><span class="op">(</span><span class="va">pulp.mod</span>, id.n <span class="op">=</span> <span class="fl">5</span>, type <span class="op">=</span> <span class="st">"LR"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pulpfiber-influenceplot-lr"></span>
-<img src="fig/robust-pulpfiber-influenceplot-lr-1.png" alt="`type = 'LR'` multivariate influence plot for the same model."><p class="caption">
+<img src="images/robust-pulpfiber-influenceplot-lr-1.png" alt="`type = 'LR'` multivariate influence plot for the same model."><p class="caption">
 Figure 12: <code>type = 'LR'</code> multivariate influence plot for the same model.
 </p>
 </div>
