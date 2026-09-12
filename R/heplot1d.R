@@ -8,12 +8,12 @@
 
 #' One-Dimensional HE Plots
 #' 
-#' This function plots a 1-dimensional representation of the hypothesis (H) and
-#' error (E) sums-of-squares-and-products matrices for terms and linear
+#' This function plots a 1-dimensional representation of the hypothesis (\eqn{\mathbf{H}}{H}) and
+#' error (\eqn{\mathbf{E}}{E}) sums-of-squares-and-products matrices for terms and linear
 #' hypotheses in a multivariate linear model.
 #' 
-#' In particular, for a given response, the 1-D representations of H and E
-#' matrices correspond to line segments.  The E ``ellipse'' is shown as a
+#' In particular, for a given response, the 1-D representations of \eqn{\mathbf{H}}{H} and \eqn{\mathbf{E}}{E}
+#' matrices correspond to line segments.  The \eqn{\mathbf{E}}{E} ``ellipse'' is shown as a
 #' filled rectangle whose width equals the mean squared error for that
 #' response.  The H ``ellipse'' for each model term is shown as a line segment
 #' whose length represents either the size of the effect or the evidence for
@@ -73,7 +73,7 @@
 #'             have as many rows as there are responses; the columns of the within-subject
 #'             model matrix for *different* terms must be mutually orthogonal.
 #' @param iterm For repeated measures designs, you must specify one
-#'             intra-subject term (a character string) to select the SSPE (E) matrix used
+#'             intra-subject term (a character string) to select the SSPE (\eqn{\mathbf{E}}{E}) matrix used
 #'             in the HE plot.  Hypothesis terms plotted include the `iterm` effect as
 #'             well as all interactions of `iterm` with `terms`.
 #' @param manova optional `Anova.mlm` object for the model; if absent a

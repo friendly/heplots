@@ -50,11 +50,11 @@ for model terms and linear hypotheses for single response variables.}
 }
 
 For repeated measure designs, between-subject effects and within-subject
-effects must be plotted separately, because the error terms (E matrices)
+effects must be plotted separately, because the error terms (\eqn{\mathbf{E}}{E} matrices)
 differ.  For terms involving within-subject effects, these functions carry
 out a linear transformation of the matrix \strong{Y} of responses to a matrix
 \strong{Y M}, where \strong{M} is the model matrix for a term in the
-intra-subject design and produce plots of the H and E matrices in this
+intra-subject design and produce plots of the \eqn{\mathbf{H}}{H} and \eqn{\mathbf{E}}{E} matrices in this
 transformed space. The vignette \code{repeated} describes these graphical
 methods for repeated measures designs.
 

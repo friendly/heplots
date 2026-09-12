@@ -122,7 +122,7 @@ have as many rows as there are responses; the columns of the within-subject
 model matrix for \emph{different} terms must be mutually orthogonal.}
 
 \item{iterm}{For repeated measures designs, you must specify one
-intra-subject term (a character string) to select the SSPE (E) matrix used
+intra-subject term (a character string) to select the SSPE (\eqn{\mathbf{E}}{E}) matrix used
 in the HE plot.  Hypothesis terms plotted include the \code{iterm} effect as
 well as all interactions of \code{iterm} with \code{terms}.}
 
@@ -210,7 +210,7 @@ the default is \code{FALSE}.}
 }
 \value{
 \code{heplot3d} invisibly returns a list containing the bounding
-boxes of the error (E) ellipsoid and for each term or linear hypothesis
+boxes of the error (\eqn{\mathbf{E}}{E}) ellipsoid and for each term or linear hypothesis
 specified in the call.  Each of these is a 2 x 3 matrix with rownames "min"
 and "max" and colnames corresponding to the variables plotted. An additional
 component, \code{center}, contains the coordinates of the centroid in the
@@ -222,7 +222,7 @@ bounding box; these are deleted and the axes, etc.  redrawn if the plot is
 added to.
 }
 \description{
-This function plots ellipsoids in 3D representing the hypothesis ($\mathbf{H}$) and error ($\mathbf{E}$)
+This function plots ellipsoids in 3D representing the hypothesis (\eqn{\mathbf{H}}{H}) and error (\eqn{\mathbf{E}}{E})
 sums-of-squares-and-products matrices for terms and linear hypotheses in a
 multivariate linear model. It allow you to visualize model effects on three response variables
 together, as opposed to the 2D views offered by \code{\link[=heplot]{heplot()}} and \code{\link[=pairs.mlm]{pairs.mlm()}}.
@@ -231,15 +231,15 @@ together, as opposed to the 2D views offered by \code{\link[=heplot]{heplot()}} 
 It uses the \code{rgl} package for rendering, so it adds some arguments (e.g., \code{fogtype}) to those used
 in \code{\link[=heplot]{heplot()}}, but is otherwise the same.
 
-Rotating the plot can be particularly revealing, showing views in which $\mathbf{H}$
-variation is particularly large or small in relation to $\mathbf{E}$ variation.  If you find
-a view making $\mathbf{H}$ as large as possible, this corresponds closely to the canonical
+Rotating the plot can be particularly revealing, showing views in which \eqn{\mathbf{H}}{H}
+variation is particularly large or small in relation to \eqn{\mathbf{E}}{E} variation.  If you find
+a view making \eqn{\mathbf{H}}{H} as large as possible, this corresponds closely to the canonical
 view chosen by the \code{candisc}.
 
 See \code{\link[rgl:play3d]{rgl::play3d()}} and \code{\link[rgl:movie3d]{rgl::movie3d()}} for details on creating animations, rotating the 3D scene around on or more coordinate axes, or zooming in/out to highlight some feature.
 
-When the H matrix for a term has rank < 3, the ellipsoid collapses to an
-ellipse (rank(H)=2) or a line (rank(H)=1).
+When the \eqn{\mathbf{H}}{H} matrix for a term has rank < 3, the ellipsoid collapses to an
+ellipse (rank(\eqn{\mathbf{H}}{H})=2) or a line (rank(\eqn{\mathbf{H}}{H})=1).
 
 The arguments \code{xlim}, \code{ylim}, and \code{zlim} can be used to
 expand the bounding box of the axes, but cannot decrease it.

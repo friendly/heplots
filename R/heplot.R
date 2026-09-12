@@ -43,8 +43,8 @@
 #' measures designs treated from a multivariate perspective.
 #' 
 #' The `heplot` function plots a representation of the covariance ellipses
-#' for hypothesized model terms and linear hypotheses (H) and the corresponding
-#' error (E) matrices for two response variables in a multivariate linear model
+#' for hypothesized model terms and linear hypotheses (\eqn{\mathbf{H}}{H}) and the corresponding
+#' error (\eqn{\mathbf{E}}{E}) matrices for two response variables in a multivariate linear model
 #' (mlm).
 #' 
 #' The plot helps to visualize the nature and dimensionality response variation
@@ -56,8 +56,8 @@
 #' `alpha`.
 #' 
 #' For a 1 df hypothesis term (a quantitative regressor, a single contrast or
-#' parameter test), the H matrix has rank 1 (one non-zero latent root of \eqn{H
-#' E^{-1}}) and the H "ellipse" collapses to a degenerate line.
+#' parameter test), the \eqn{\mathbf{H}}{H} matrix has rank 1 (one non-zero latent root of
+#' \eqn{\mathbf{H} \mathbf{E}^{-1}}{H E^-1}) and the \eqn{\mathbf{H}}{H} "ellipse" collapses to a degenerate line.
 #' 
 #' Typically, you fit a mlm with `mymlm <- lm(cbind(y1, y2, y3, ...) ~
 #' modelterms)`, and plot some or all of the `modelterms` with
@@ -150,7 +150,7 @@
 #'              have as many rows as there are responses; the columns of the within-subject
 #'              model matrix for *different* terms must be mutually orthogonal.
 #' @param iterm For repeated measures designs, you must specify one
-#'              intra-subject term (a character string) to select the SSPE (E) matrix used
+#'              intra-subject term (a character string) to select the SSPE (\eqn{\mathbf{E}}{E}) matrix used
 #'              in the HE plot.  Hypothesis terms plotted include the `iterm` effect as
 #'              well as all interactions of `iterm` with `terms`.
 #' @param markH0 A logical value (or else a list of arguments to
@@ -240,7 +240,7 @@
 #' in MLMs.
 #' 
 #' [trans.colors()] for calculation of transparent colors.
-#' [label.ellipse()] for labeling positions in plotting H and E
+#' [label.ellipse()] for labeling positions in plotting \eqn{\mathbf{H}}{H} and \eqn{\mathbf{E}}{E}
 #' ellipses.
 #' 
 #' [candisc::candisc()], [candisc::heplot.candisc()] for

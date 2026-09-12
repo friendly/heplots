@@ -43,7 +43,7 @@
 #'         have as many rows as there are responses; the columns of the within-subject
 #'         model matrix for *different* terms must be mutually orthogonal.
 #' @param iterm For repeated measures designs, you must specify one
-#'        intra-subject term (a character string) to select the SSPE (E) matrix used
+#'        intra-subject term (a character string) to select the SSPE (\eqn{\mathbf{E}}{E}) matrix used
 #'        in the HE plot.  Hypothesis terms plotted include the `iterm` effect as
 #'        well as all interactions of `iterm` with `terms`.
 #' @param manova optional `Anova.mlm` object for the model; if absent a

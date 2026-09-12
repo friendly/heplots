@@ -35,7 +35,7 @@ savedvars <- new.env(parent=emptyenv())
 
 #' Three-Dimensional HE Plots
 #' 
-#' This function plots ellipsoids in 3D representing the hypothesis ($\mathbf{H}$) and error ($\mathbf{E}$)
+#' This function plots ellipsoids in 3D representing the hypothesis (\eqn{\mathbf{H}}{H}) and error (\eqn{\mathbf{E}}{E})
 #' sums-of-squares-and-products matrices for terms and linear hypotheses in a
 #' multivariate linear model. It allow you to visualize model effects on three response variables
 #' together, as opposed to the 2D views offered by [heplot()] and [pairs.mlm()].
@@ -43,17 +43,17 @@ savedvars <- new.env(parent=emptyenv())
 #' It uses the `rgl` package for rendering, so it adds some arguments (e.g., `fogtype`) to those used
 #' in [heplot()], but is otherwise the same.
 #'
-#' Rotating the plot can be particularly revealing, showing views in which $\mathbf{H}$
-#' variation is particularly large or small in relation to $\mathbf{E}$ variation.  If you find
-#' a view making $\mathbf{H}$ as large as possible, this corresponds closely to the canonical
+#' Rotating the plot can be particularly revealing, showing views in which \eqn{\mathbf{H}}{H}
+#' variation is particularly large or small in relation to \eqn{\mathbf{E}}{E} variation.  If you find
+#' a view making \eqn{\mathbf{H}}{H} as large as possible, this corresponds closely to the canonical
 #' view chosen by the `candisc`.
 #' 
 #' See [rgl::play3d()] and [rgl::movie3d()] for details on creating animations, rotating the 3D scene around on or more coordinate axes, or zooming in/out to highlight some feature.
 #'
 #' @details
 #'
-#' When the H matrix for a term has rank < 3, the ellipsoid collapses to an
-#' ellipse (rank(H)=2) or a line (rank(H)=1).
+#' When the \eqn{\mathbf{H}}{H} matrix for a term has rank < 3, the ellipsoid collapses to an
+#' ellipse (rank(\eqn{\mathbf{H}}{H})=2) or a line (rank(\eqn{\mathbf{H}}{H})=1).
 #' 
 #' The arguments `xlim`, `ylim`, and `zlim` can be used to
 #' expand the bounding box of the axes, but cannot decrease it.
@@ -144,7 +144,7 @@ savedvars <- new.env(parent=emptyenv())
 #'        have as many rows as there are responses; the columns of the within-subject
 #'        model matrix for *different* terms must be mutually orthogonal.
 #' @param iterm For repeated measures designs, you must specify one
-#'        intra-subject term (a character string) to select the SSPE (E) matrix used
+#'        intra-subject term (a character string) to select the SSPE (\eqn{\mathbf{E}}{E}) matrix used
 #'        in the HE plot.  Hypothesis terms plotted include the `iterm` effect as
 #'        well as all interactions of `iterm` with `terms`.
 #' @param manova optional `Anova.mlm` object for the model; if absent a
@@ -208,7 +208,7 @@ savedvars <- new.env(parent=emptyenv())
 #'        the default is `FALSE`.
 #' @param \dots arguments passed from generic.
 #' @return `heplot3d` invisibly returns a list containing the bounding
-#' boxes of the error (E) ellipsoid and for each term or linear hypothesis
+#' boxes of the error (\eqn{\mathbf{E}}{E}) ellipsoid and for each term or linear hypothesis
 #' specified in the call.  Each of these is a 2 x 3 matrix with rownames "min"
 #' and "max" and colnames corresponding to the variables plotted. An additional
 #' component, `center`, contains the coordinates of the centroid in the

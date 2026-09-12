@@ -59,7 +59,7 @@ have as many rows as there are responses; the columns of the within-subject
 model matrix for \emph{different} terms must be mutually orthogonal.}
 
 \item{iterm}{For repeated measures designs, you must specify one
-intra-subject term (a character string) to select the SSPE (E) matrix used
+intra-subject term (a character string) to select the SSPE (\eqn{\mathbf{E}}{E}) matrix used
 in the HE plot.  Hypothesis terms plotted include the \code{iterm} effect as
 well as all interactions of \code{iterm} with \code{terms}.}
 

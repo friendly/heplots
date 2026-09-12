@@ -30,7 +30,7 @@
 #' measures of (non-linear) strength of association in ANOVA models.
 #' 
 #' All multivariate tests are based on the \eqn{s=min(p, df_h)} latent roots of
-#' \eqn{H E^{-1}}. The analogous multivariate partial \eqn{\eta^2} measures are
+#' \eqn{\mathbf{H} \mathbf{E}^{-1}}{H E^-1}. The analogous multivariate partial \eqn{\eta^2} measures are
 #' calculated as:
 #' 
 #' \describe{ 
