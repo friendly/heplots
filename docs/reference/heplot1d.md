@@ -1,8 +1,8 @@
 # One-Dimensional HE Plots
 
-This function plots a 1-dimensional representation of the hypothesis (H)
-and error (E) sums-of-squares-and-products matrices for terms and linear
-hypotheses in a multivariate linear model.
+This function plots a 1-dimensional representation of the hypothesis
+(\\\mathbf{H}\\) and error (\\\mathbf{E}\\) sums-of-squares-and-products
+matrices for terms and linear hypotheses in a multivariate linear model.
 
 ## Usage
 
@@ -67,7 +67,7 @@ heplot1d(
 
   optional list of linear hypotheses for which to plot hypothesis
   matrices; hypotheses are specified as for the
-  [`linearHypothesis`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
+  [`car::linearHypothesis()`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
   function in the `car` package; the list elements can be named, in
   which case the names are used.
 
@@ -119,9 +119,9 @@ heplot1d(
 
   an optional data frame giving a factor or factors defining the
   intra-subject model for multivariate repeated-measures data. See
-  Details of [`Anova`](https://rdrr.io/pkg/car/man/Anova.html) for an
-  explanation of the intra-subject design and for further explanation of
-  the other arguments relating to intra-subject factors.
+  Details of [`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html)
+  for an explanation of the intra-subject design and for further
+  explanation of the other arguments relating to intra-subject factors.
 
 - idesign:
 
@@ -148,9 +148,9 @@ heplot1d(
 - iterm:
 
   For repeated measures designs, you must specify one intra-subject term
-  (a character string) to select the SSPE (E) matrix used in the HE
-  plot. Hypothesis terms plotted include the `iterm` effect as well as
-  all interactions of `iterm` with `terms`.
+  (a character string) to select the SSPE (\\\mathbf{E}\\) matrix used
+  in the HE plot. Hypothesis terms plotted include the `iterm` effect as
+  well as all interactions of `iterm` with `terms`.
 
 - manova:
 
@@ -265,8 +265,9 @@ The components are:
 
 ## Details
 
-In particular, for a given response, the 1-D representations of H and E
-matrices correspond to line segments. The E
+In particular, for a given response, the 1-D representations of
+\\\mathbf{H}\\ and \\\mathbf{E}\\ matrices correspond to line segments.
+The \\\mathbf{E}\\
 `ellipse'' is shown as a filled rectangle whose width equals the mean squared error for that response. The H `ellipse”
 for each model term is shown as a line segment whose length represents
 either the size of the effect or the evidence for that effect.
@@ -276,13 +277,13 @@ subject to change.**
 
 ## See also
 
-[`Anova`](https://rdrr.io/pkg/car/man/Anova.html),
-[`linearHypothesis`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
+[`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html),
+[`car::linearHypothesis()`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
 for hypothesis tests in `mlm`s
 
-[`heplot`](https://friendly.github.io/heplots/reference/heplot.md),
-[`heplot3d`](https://friendly.github.io/heplots/reference/heplot3d.md),
-[`pairs.mlm`](https://friendly.github.io/heplots/reference/pairs.mlm.md)
+[`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md),
+[`pairs.mlm()`](https://friendly.github.io/heplots/reference/pairs.mlm.md)
 for other HE plot methods
 
 Other HE plot functions:

@@ -12,8 +12,9 @@ uniStats(x, ...)
 
 - x:
 
-  A `"mlm"` object fitted by [`lm`](https://rdrr.io/r/stats/lm.html)
-  with two or more response variables
+  A `"mlm"` object fitted by
+  [`stats::lm()`](https://rdrr.io/r/stats/lm.html) with two or more
+  response variables
 
 - ...:
 
@@ -28,7 +29,7 @@ p-value.
 
 ## See also
 
-[`glance.mlm`](https://friendly.github.io/heplots/reference/glance.mlm.md)
+[`glance.mlm()`](https://friendly.github.io/heplots/reference/glance.mlm.md)
 
 ## Examples
 

@@ -2,10 +2,10 @@
 
 `label.ellipse` is used to a draw text label on an ellipse at its center
 or somewhere around the periphery in a very flexible way. It is used in
-[`heplot`](https://friendly.github.io/heplots/reference/heplot.md),
-[`covEllipses`](https://friendly.github.io/heplots/reference/covEllipses.md),
+[`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+[`covEllipses()`](https://friendly.github.io/heplots/reference/covEllipses.md),
 and
-[`coefplot.mlm`](https://friendly.github.io/heplots/reference/coefplot.md),
+[`coefplot.mlm()`](https://friendly.github.io/heplots/reference/coefplot.md),
 but is also useful as a utility when plotting ellipses in base R
 graphics.
 
@@ -29,7 +29,7 @@ label.ellipse(
 
   A two-column matrix of coordinates for the ellipse boundary, for
   example as computed by
-  [`ellipse`](https://rdrr.io/pkg/car/man/Ellipses.html).
+  [`car::ellipse()`](https://rdrr.io/pkg/car/man/Ellipses.html).
 
 - label:
 
@@ -57,22 +57,23 @@ label.ellipse(
 - ...:
 
   Other parameters passed to
-  [`text`](https://rdrr.io/r/graphics/text.html), e.g., `cex`, `col`,
-  ...
+  [`graphics::text()`](https://rdrr.io/r/graphics/text.html), e.g.,
+  `cex`, `col`, ...
 
 ## Value
 
 Mainly used for its side-effect of producing a call to
-[`text`](https://rdrr.io/r/graphics/text.html), but also returns,
-invisibly, the (x, y) coordinates where the label was placed.
+[`graphics::text()`](https://rdrr.io/r/graphics/text.html), but also
+returns, invisibly, the (x, y) coordinates where the label was placed.
 
 ## Details
 
 The function takes the coordinates of the input `ellipse` and uses that,
 together with `label.pos` to calculate the (x, y) coordinates to be
-passed to [`text`](https://rdrr.io/r/graphics/text.html) along with a
-computed `pos` argument. The values of `tweak` are applied to (x, y) to
-position the labels to the outside of the ellipse by default.
+passed to [`graphics::text()`](https://rdrr.io/r/graphics/text.html)
+along with a computed `pos` argument. The values of `tweak` are applied
+to (x, y) to position the labels to the outside of the ellipse by
+default.
 
 The `label.pos` argument implements a very general way to position the
 text label with respect to the ellipse:
@@ -85,7 +86,7 @@ text label with respect to the ellipse:
   the center, below, to the left of, above and to the right of the
   max/min coordinates of the `ellipse`, where the values `1:4`
   correspond to the usual values of `pos` in
-  [`text`](https://rdrr.io/r/graphics/text.html).
+  [`graphics::text()`](https://rdrr.io/r/graphics/text.html).
 
 - Label positions can also be specified as the corresponding character
   strings `c("center", "bottom", "left", "top", "right")`, or *compass
@@ -100,10 +101,10 @@ text label with respect to the ellipse:
 
 ## See also
 
-[`text`](https://rdrr.io/r/graphics/text.html),
-[`ellipse`](https://rdrr.io/pkg/car/man/Ellipses.html),
-[`heplot`](https://friendly.github.io/heplots/reference/heplot.md),
-[`covEllipses`](https://friendly.github.io/heplots/reference/covEllipses.md)
+[`graphics::text()`](https://rdrr.io/r/graphics/text.html),
+[`car::ellipse()`](https://rdrr.io/pkg/car/man/Ellipses.html),
+[`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+[`covEllipses()`](https://friendly.github.io/heplots/reference/covEllipses.md)
 
 ## Author
 

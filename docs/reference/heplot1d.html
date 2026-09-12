@@ -5,10 +5,10 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="One-Dimensional HE Plots — heplot1d"><meta name="description" content="This function plots a 1-dimensional representation of the hypothesis (H) and
-error (E) sums-of-squares-and-products matrices for terms and linear
-hypotheses in a multivariate linear model."><meta property="og:description" content="This function plots a 1-dimensional representation of the hypothesis (H) and
-error (E) sums-of-squares-and-products matrices for terms and linear
+</script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="One-Dimensional HE Plots — heplot1d"><meta name="description" content="This function plots a 1-dimensional representation of the hypothesis (\(\mathbf{H}\)) and
+error (\(\mathbf{E}\)) sums-of-squares-and-products matrices for terms and linear
+hypotheses in a multivariate linear model."><meta property="og:description" content="This function plots a 1-dimensional representation of the hypothesis (\(\mathbf{H}\)) and
+error (\(\mathbf{E}\)) sums-of-squares-and-products matrices for terms and linear
 hypotheses in a multivariate linear model."><meta property="og:image" content="https://friendly.github.io/heplots/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
@@ -50,8 +50,8 @@ hypotheses in a multivariate linear model."><meta property="og:image" content="h
     </div>
 
     <div class="ref-description section level2">
-    <p>This function plots a 1-dimensional representation of the hypothesis (H) and
-error (E) sums-of-squares-and-products matrices for terms and linear
+    <p>This function plots a 1-dimensional representation of the hypothesis (\(\mathbf{H}\)) and
+error (\(\mathbf{E}\)) sums-of-squares-and-products matrices for terms and linear
 hypotheses in a multivariate linear model.</p>
     </div>
 
@@ -118,7 +118,7 @@ all terms; if <code>FALSE</code>, no terms are plotted.</p></dd>
 <dt id="arg-hypotheses">hypotheses<a class="anchor" aria-label="anchor" href="#arg-hypotheses"></a></dt>
 <dd><p>optional list of linear hypotheses for which to plot
 hypothesis matrices; hypotheses are specified as for the
-<code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></code> function in the <code>car</code> package; the
+<code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">car::linearHypothesis()</a></code> function in the <code>car</code> package; the
 list elements can be named, in which case the names are used.</p></dd>
 
 
@@ -172,7 +172,7 @@ is the default (and `"2"` is a synonym).</p></dd>
 <dt id="arg-idata">idata<a class="anchor" aria-label="anchor" href="#arg-idata"></a></dt>
 <dd><p>an optional data frame giving a factor or factors defining the
 intra-subject model for multivariate repeated-measures data.  See Details of
-<code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code> for an explanation of the intra-subject design and
+<code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code> for an explanation of the intra-subject design and
 for further explanation of the other arguments relating to intra-subject
 factors.</p></dd>
 
@@ -200,7 +200,7 @@ model matrix for <em>different</em> terms must be mutually orthogonal.</p></dd>
 
 <dt id="arg-iterm">iterm<a class="anchor" aria-label="anchor" href="#arg-iterm"></a></dt>
 <dd><p>For repeated measures designs, you must specify one
-intra-subject term (a character string) to select the SSPE (E) matrix used
+intra-subject term (a character string) to select the SSPE (\(\mathbf{E}\)) matrix used
 in the HE plot.  Hypothesis terms plotted include the <code>iterm</code> effect as
 well as all interactions of <code>iterm</code> with <code>terms</code>.</p></dd>
 
@@ -310,8 +310,8 @@ manipulating these objects are currently available.)</p>
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>In particular, for a given response, the 1-D representations of H and E
-matrices correspond to line segments.  The E <code>ellipse'' is shown as a filled rectangle whose width equals the mean squared error for that response.  The H </code>ellipse” for each model term is shown as a line segment
+    <p>In particular, for a given response, the 1-D representations of \(\mathbf{H}\) and \(\mathbf{E}\)
+matrices correspond to line segments.  The \(\mathbf{E}\) <code>ellipse'' is shown as a filled rectangle whose width equals the mean squared error for that response.  The H </code>ellipse” for each model term is shown as a line segment
 whose length represents either the size of the effect or the evidence for
 that effect.</p>
 <p><strong>This version is an initial sketch.  Details of the implementation are
@@ -319,9 +319,9 @@ subject to change.</strong></p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code>, <code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></code> for
+    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code>, <code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">car::linearHypothesis()</a></code> for
 hypothesis tests in <code>mlm</code>s</p>
-<p><code><a href="heplot.html">heplot</a></code>, <code><a href="heplot3d.html">heplot3d</a></code>, <code><a href="pairs.mlm.html">pairs.mlm</a></code> for
+<p><code><a href="heplot.html">heplot()</a></code>, <code><a href="heplot3d.html">heplot3d()</a></code>, <code><a href="pairs.mlm.html">pairs.mlm()</a></code> for
 other HE plot methods</p>
 <p>Other HE plot functions:
 <code><a href="heplot.html">heplot()</a></code>,

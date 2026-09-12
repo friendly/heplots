@@ -36,10 +36,10 @@ one is replicated to make them of the same length.
 ## See also
 
 %% \~~objects to See Also as
-[`help`](https://rdrr.io/r/utils/help.html), \~\~~
-[`col2rgb`](https://rdrr.io/r/grDevices/col2rgb.html),
-[`rgb`](https://rdrr.io/r/grDevices/rgb.html),
-[`adjustcolor`](https://rdrr.io/r/grDevices/adjustcolor.html),
+[`utils::help()`](https://rdrr.io/r/utils/help.html), \~\~~
+[`grDevices::col2rgb()`](https://rdrr.io/r/grDevices/col2rgb.html),
+[`grDevices::rgb()`](https://rdrr.io/r/grDevices/rgb.html),
+[`grDevices::adjustcolor()`](https://rdrr.io/r/grDevices/adjustcolor.html),
 
 ## Author
 

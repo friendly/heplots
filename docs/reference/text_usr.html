@@ -77,16 +77,16 @@ out what the data coordinates are.</p>
 
 
 <dt id="arg-labels">labels<a class="anchor" aria-label="anchor" href="#arg-labels"></a></dt>
-<dd><p>a character vector or <code><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></code> specifying the text to be written</p></dd>
+<dd><p>a character vector or <code><a href="https://rdrr.io/r/base/expression.html" class="external-link">base::expression()</a></code> specifying the text to be written</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>other arguments passed to <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code>, such as <code>pos</code>, <code>cex</code>, <code>col</code>, ...</p></dd>
+<dd><p>other arguments passed to <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">graphics::text()</a></code>, such as <code>pos</code>, <code>cex</code>, <code>col</code>, ...</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>y</code> may be missing since <code><a href="https://rdrr.io/r/grDevices/xy.coords.html" class="external-link">xy.coords</a></code> is used for construction of the coordinates.</p>
+    <p><code>y</code> may be missing since <code><a href="https://rdrr.io/r/grDevices/xy.coords.html" class="external-link">grDevices::xy.coords()</a></code> is used for construction of the coordinates.</p>
 <p>The function also works with <code>par(xlog) == TRUE</code> and <code>par(ylog) == TRUE</code> when either of these is set
 for log scales.</p>
     </div>

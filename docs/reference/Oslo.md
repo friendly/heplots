@@ -3,8 +3,8 @@
 The Oslo data set contains chemical concentrations of 332 samples of
 different plant species collected along a 120 km transect running
 through the city of Oslo, Norway. It is a subset of the
-[`OsloTransect`](https://rdrr.io/pkg/rrcov/man/OsloTransect.html) data
-provided by the `rrcov` package.
+[`rrcov::OsloTransect`](https://rdrr.io/pkg/rrcov/man/OsloTransect.html)
+data provided by the `rrcov` package.
 
 ## Format
 
@@ -82,12 +82,13 @@ Total Environment*, 377, 416-433.
 
 ## Details
 
-The [`OsloTransect`](https://rdrr.io/pkg/rrcov/man/OsloTransect.html)
+The
+[`rrcov::OsloTransect`](https://rdrr.io/pkg/rrcov/man/OsloTransect.html)
 contains 360 observations, with 9 observations per site. Only 7 chemical
 elements were retained from the 25 contained in the
-[`OsloTransect`](https://rdrr.io/pkg/rrcov/man/OsloTransect.html) data,
-and these were all log-transformed, following Todorov and Filzmoser
-(2009).
+[`rrcov::OsloTransect`](https://rdrr.io/pkg/rrcov/man/OsloTransect.html)
+data, and these were all log-transformed, following Todorov and
+Filzmoser (2009).
 
 Only complete cases on these variables were retained, and two
 lithological types of low frequency were removed, leaving 332

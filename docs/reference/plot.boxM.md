@@ -45,7 +45,7 @@ plot(
 - x:
 
   A `"boxM"` object resulting from
-  [`boxM`](https://friendly.github.io/heplots/reference/boxM.md)
+  [`boxM()`](https://friendly.github.io/heplots/reference/boxM.md)
 
 - gplabel:
 
@@ -94,12 +94,12 @@ plot(
 - method:
 
   confidence interval method; see
-  [`logdetCI`](https://friendly.github.io/heplots/reference/logdetCI.md)
+  [`logdetCI()`](https://friendly.github.io/heplots/reference/logdetCI.md)
 
 - bias.adj:
 
   confidence interval bias adjustment; see
-  [`logdetCI`](https://friendly.github.io/heplots/reference/logdetCI.md)
+  [`logdetCI()`](https://friendly.github.io/heplots/reference/logdetCI.md)
 
 - lwd:
 
@@ -108,7 +108,7 @@ plot(
 - ...:
 
   Arguments passed down to
-  [`dotchart`](https://rdrr.io/r/graphics/dotchart.html).
+  [`graphics::dotchart()`](https://rdrr.io/r/graphics/dotchart.html).
 
 ## References
 
@@ -126,10 +126,10 @@ Covariance Matrices. *The American Statistician*, **72**(4);
 
 ## See also
 
-[`boxM`](https://friendly.github.io/heplots/reference/boxM.md),
-[`logdetCI`](https://friendly.github.io/heplots/reference/logdetCI.md)
+[`boxM()`](https://friendly.github.io/heplots/reference/boxM.md),
+[`logdetCI()`](https://friendly.github.io/heplots/reference/logdetCI.md)
 
-[`dotchart`](https://rdrr.io/r/graphics/dotchart.html)
+[`graphics::dotchart()`](https://rdrr.io/r/graphics/dotchart.html)
 
 Other diagnostic plots:
 [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md),

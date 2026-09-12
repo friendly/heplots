@@ -43,11 +43,11 @@ the `term`.
 
 ## See also
 
-[`aggregate`](https://rdrr.io/r/stats/aggregate.html),
-[`colMeans`](https://rdrr.io/r/base/colSums.html)
+[`stats::aggregate()`](https://rdrr.io/r/stats/aggregate.html),
+[`base::colMeans()`](https://rdrr.io/r/base/colSums.html)
 
-[`statList`](https://friendly.github.io/heplots/reference/statList.md),
-[`colMeansList`](https://friendly.github.io/heplots/reference/statList.md)
+[`statList()`](https://friendly.github.io/heplots/reference/statList.md),
+[`colMeansList()`](https://friendly.github.io/heplots/reference/statList.md)
 
 ## Author
 

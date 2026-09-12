@@ -87,7 +87,7 @@ interpPlot(
 - id.method:
 
   How points are to be identified. See
-  [`showLabels`](https://rdrr.io/pkg/car/man/showLabels.html).
+  [`car::showLabels()`](https://rdrr.io/pkg/car/man/showLabels.html).
 
 - labels:
 
@@ -139,14 +139,14 @@ will give a sinusoid interpolation.
 
 The examples here just use on-screen animations to the console graphics
 window. The
-[`animation`](https://rdrr.io/pkg/animation/man/animation-package.html)
+[`animation::animation`](https://rdrr.io/pkg/animation/man/animation-package.html)
 package provides facilities to save these in various formats.
 
 ## See also
 
-[`dataEllipse`](https://rdrr.io/pkg/car/man/Ellipses.html),
-[`showLabels`](https://rdrr.io/pkg/car/man/showLabels.html),
-[`animation`](https://rdrr.io/pkg/animation/man/animation-package.html)
+[`car::dataEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html),
+[`car::showLabels()`](https://rdrr.io/pkg/car/man/showLabels.html),
+[`animation::animation`](https://rdrr.io/pkg/animation/man/animation-package.html)
 
 ## Author
 

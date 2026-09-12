@@ -1,10 +1,10 @@
 # Classical and Robust Mahalanobis Distances
 
 This function is a convenience wrapper to
-[`mahalanobis`](https://rdrr.io/r/stats/mahalanobis.html) offering also
-the possibility to calculate robust Mahalanobis squared distances using
-MCD and MVE estimators of center and covariance (from
-[`cov.rob`](https://rdrr.io/pkg/MASS/man/cov.rob.html))
+[`stats::mahalanobis()`](https://rdrr.io/r/stats/mahalanobis.html)
+offering also the possibility to calculate robust Mahalanobis squared
+distances using MCD and MVE estimators of center and covariance (from
+[`MASS::cov.rob()`](https://rdrr.io/pkg/MASS/man/cov.rob.html))
 
 ## Usage
 
@@ -29,8 +29,8 @@ Mahalanobis(
 
   mean vector of the data; if this and `cov` are both supplied, the
   function simply calls
-  [`mahalanobis`](https://rdrr.io/r/stats/mahalanobis.html) to calculate
-  the result
+  [`stats::mahalanobis()`](https://rdrr.io/r/stats/mahalanobis.html) to
+  calculate the result
 
 - cov:
 
@@ -44,12 +44,13 @@ Mahalanobis(
 
 - nsamp:
 
-  passed to [`cov.rob`](https://rdrr.io/pkg/MASS/man/cov.rob.html)
+  passed to
+  [`MASS::cov.rob()`](https://rdrr.io/pkg/MASS/man/cov.rob.html)
 
 - ...:
 
   other arguments passed to
-  [`cov.rob`](https://rdrr.io/pkg/MASS/man/cov.rob.html)
+  [`MASS::cov.rob()`](https://rdrr.io/pkg/MASS/man/cov.rob.html)
 
 ## Value
 
@@ -62,8 +63,8 @@ row.
 
 ## See also
 
-[`mahalanobis`](https://rdrr.io/r/stats/mahalanobis.html),
-[`cov.rob`](https://rdrr.io/pkg/MASS/man/cov.rob.html)
+[`stats::mahalanobis()`](https://rdrr.io/r/stats/mahalanobis.html),
+[`MASS::cov.rob()`](https://rdrr.io/pkg/MASS/man/cov.rob.html)
 
 Other robust methods:
 [`plot.robmlm()`](https://friendly.github.io/heplots/reference/plot.robmlm.md),

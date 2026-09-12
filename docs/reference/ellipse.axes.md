@@ -84,10 +84,10 @@ ellipse.axes(
 - label.pos:
 
   Positions of text labels relative to the ends of the axes used in
-  [`text`](https://rdrr.io/r/graphics/text.html) for the four possible
-  `label.ends`. 1, 2, 3, 4 represent below, to the left, above and to
-  the right. The default, `c(2, 4, 1, 3)`, positions the labels outside
-  the axes.
+  [`graphics::text()`](https://rdrr.io/r/graphics/text.html) for the
+  four possible `label.ends`. 1, 2, 3, 4 represent below, to the left,
+  above and to the right. The default, `c(2, 4, 1, 3)`, positions the
+  labels outside the axes.
 
 - type:
 
@@ -96,8 +96,8 @@ ellipse.axes(
 - ...:
 
   Other arguments passed to
-  [`lines`](https://rdrr.io/r/graphics/lines.html) and
-  [`text`](https://rdrr.io/r/graphics/text.html).
+  [`graphics::lines()`](https://rdrr.io/r/graphics/lines.html) and
+  [`graphics::text()`](https://rdrr.io/r/graphics/text.html).
 
 ## Value
 
@@ -106,8 +106,8 @@ in pairs (min, max) by rows.
 
 ## See also
 
-[`lines`](https://rdrr.io/r/graphics/lines.html),
-[`text`](https://rdrr.io/r/graphics/text.html)
+[`graphics::lines()`](https://rdrr.io/r/graphics/lines.html),
+[`graphics::text()`](https://rdrr.io/r/graphics/text.html)
 
 Other covariance ellipses:
 [`covEllipses()`](https://friendly.github.io/heplots/reference/covEllipses.md),

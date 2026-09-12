@@ -6,20 +6,20 @@ estimator that down-weights observations with large residuals
 Fitting is done by iterated re-weighted least squares (IWLS), using
 weights based on the Mahalanobis squared distances of the current
 residuals from the origin, and a scaling (covariance) matrix calculated
-by [`cov.trob`](https://rdrr.io/pkg/MASS/man/cov.trob.html). The design
-of these methods were loosely modeled on
-[`rlm`](https://rdrr.io/pkg/MASS/man/rlm.html).
+by [`MASS::cov.trob()`](https://rdrr.io/pkg/MASS/man/cov.trob.html). The
+design of these methods were loosely modeled on
+[`MASS::rlm()`](https://rdrr.io/pkg/MASS/man/rlm.html).
 
 These S3 methods are designed to provide a specification of a class of
 robust methods which extend `mlm`s, and are therefore compatible with
 other `mlm` extensions, including
-[`Anova`](https://rdrr.io/pkg/car/man/Anova.html) and
-[`heplot`](https://friendly.github.io/heplots/reference/heplot.md).
+[`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html) and
+[`heplot()`](https://friendly.github.io/heplots/reference/heplot.md).
 
 An internal `vcov.mlm` function is an extension of the standard
-[`vcov`](https://rdrr.io/r/stats/vcov.html) method providing for the use
-of observation weights. A
-[`plot.robmlm`](https://friendly.github.io/heplots/reference/plot.robmlm.md)
+[`stats::vcov()`](https://rdrr.io/r/stats/vcov.html) method providing
+for the use of observation weights. A
+[`plot.robmlm()`](https://friendly.github.io/heplots/reference/plot.robmlm.md)
 method provides simple index plots of case weights to visualize those
 that were down-weighted.
 
@@ -101,7 +101,8 @@ print(x, ...)
 - psi:
 
   robustness weight function;
-  [`psi.bisquare`](https://rdrr.io/pkg/MASS/man/rlm.html) is the default
+  [`MASS::psi.bisquare()`](https://rdrr.io/pkg/MASS/man/rlm.html) is the
+  default
 
 - tol:
 
@@ -137,8 +138,9 @@ print(x, ...)
 
   A function to specify the action to be taken if `NA`s are found. The
   'factory-fresh' default action in R is
-  [`na.omit`](https://rdrr.io/r/stats/na.fail.html), and can be changed
-  by [`options`](https://rdrr.io/r/base/options.html)`(na.action=)`.
+  [`stats::na.omit()`](https://rdrr.io/r/stats/na.fail.html), and can be
+  changed by
+  [`base::options()`](https://rdrr.io/r/base/options.html)`(na.action=)`.
 
 - model:
 
@@ -147,7 +149,7 @@ print(x, ...)
 - contrasts:
 
   optional contrast specifications; see
-  [`lm`](https://rdrr.io/r/stats/lm.html) for details.
+  [`stats::lm()`](https://rdrr.io/r/stats/lm.html) for details.
 
 - x:
 
@@ -162,8 +164,8 @@ print(x, ...)
 An object of class `"robmlm"` inheriting from `c("mlm", "lm")`.
 
 This means that the returned `"robmlm"` contains all the components of
-`"mlm"` objects described for [`lm`](https://rdrr.io/r/stats/lm.html),
-plus the following:
+`"mlm"` objects described for
+[`stats::lm()`](https://rdrr.io/r/stats/lm.html), plus the following:
 
 - weights :
 
@@ -178,11 +180,11 @@ plus the following:
   logical: did the IWLS process converge?
 
 The generic accessor functions
-[`coefficients`](https://rdrr.io/r/stats/coef.html),
-[`effects`](https://rdrr.io/r/stats/effects.html),
-[`fitted.values`](https://rdrr.io/r/stats/fitted.values.html) and
-[`residuals`](https://rdrr.io/r/stats/residuals.html) extract various
-useful features of the value returned by `robmlm`.
+[`stats::coefficients()`](https://rdrr.io/r/stats/coef.html),
+[`stats::effects()`](https://rdrr.io/r/stats/effects.html),
+[`stats::fitted.values()`](https://rdrr.io/r/stats/fitted.values.html)
+and [`stats::residuals()`](https://rdrr.io/r/stats/residuals.html)
+extract various useful features of the value returned by `robmlm`.
 
 ## Details
 
@@ -210,9 +212,10 @@ Statistics*. Wadsworth & Brooks/Cole.
 
 ## See also
 
-[`plot.robmlm`](https://friendly.github.io/heplots/reference/plot.robmlm.md)
-for a plot method; [`rlm`](https://rdrr.io/pkg/MASS/man/rlm.html),
-[`cov.trob`](https://rdrr.io/pkg/MASS/man/cov.trob.html)
+[`plot.robmlm()`](https://friendly.github.io/heplots/reference/plot.robmlm.md)
+for a plot method;
+[`MASS::rlm()`](https://rdrr.io/pkg/MASS/man/rlm.html),
+[`MASS::cov.trob()`](https://rdrr.io/pkg/MASS/man/cov.trob.html)
 
 Other robust methods:
 [`Mahalanobis()`](https://friendly.github.io/heplots/reference/Mahalanobis.md),

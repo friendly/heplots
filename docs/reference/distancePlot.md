@@ -52,8 +52,8 @@ distancePlot(X, ...)
 - X:
 
   A multivariate linear model fit by
-  [`lm`](https://rdrr.io/r/stats/lm.html), or a numeric data frame
-  giving the predictors in the MLM
+  [`stats::lm()`](https://rdrr.io/r/stats/lm.html), or a numeric data
+  frame giving the predictors in the MLM
 
 - Y:
 
@@ -90,7 +90,7 @@ distancePlot(X, ...)
 - label.pos:
 
   Position of the label relative to the point; see
-  [`text`](https://rdrr.io/r/graphics/text.html)
+  [`graphics::text()`](https://rdrr.io/r/graphics/text.html)
 
 - xlab:
 
@@ -141,8 +141,8 @@ Robust multivariate regression. *Technometrics*, **46**(3), 293–305.
 
 ## See also
 
-[`Mahalanobis`](https://friendly.github.io/heplots/reference/Mahalanobis.md),
-[`robmlm`](https://friendly.github.io/heplots/reference/robmlm.md)
+[`Mahalanobis()`](https://friendly.github.io/heplots/reference/Mahalanobis.md),
+[`robmlm()`](https://friendly.github.io/heplots/reference/robmlm.md)
 
 Other diagnostic plots:
 [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md),

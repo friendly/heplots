@@ -52,8 +52,8 @@ appropriate `FUN`.
 
 ## See also
 
-[`colMeans`](https://rdrr.io/r/base/colSums.html),
-[`termMeans`](https://friendly.github.io/heplots/reference/termMeans.md)
+[`base::colMeans()`](https://rdrr.io/r/base/colSums.html),
+[`termMeans()`](https://friendly.github.io/heplots/reference/termMeans.md)
 
 ## Author
 

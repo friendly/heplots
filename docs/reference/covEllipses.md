@@ -3,9 +3,9 @@
 The function draws covariance ellipses for one or more groups and
 optionally for the pooled total sample. It uses either the classical
 product-moment covariance estimate, or a robust alternative, as provided
-by [`cov.rob`](https://rdrr.io/pkg/MASS/man/cov.rob.html). Provisions
-are provided to do this for more than two variables, in a scatterplot
-matrix format.
+by [`MASS::cov.rob()`](https://rdrr.io/pkg/MASS/man/cov.rob.html).
+Provisions are provided to do this for more than two variables, in a
+scatterplot matrix format.
 
 These plot methods provide one way to visualize possible heterogeneity
 of within-group covariance matrices in a one-way MANOVA design. When
@@ -263,10 +263,10 @@ in the order specified, and recycled as necessary.
 
 ## See also
 
-[`heplot`](https://friendly.github.io/heplots/reference/heplot.md),
-[`boxM`](https://friendly.github.io/heplots/reference/boxM.md),
+[`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+[`boxM()`](https://friendly.github.io/heplots/reference/boxM.md),
 
-[`cov.rob`](https://rdrr.io/pkg/MASS/man/cov.rob.html)
+[`MASS::cov.rob()`](https://rdrr.io/pkg/MASS/man/cov.rob.html)
 
 Other covariance ellipses:
 [`ellipse.axes()`](https://friendly.github.io/heplots/reference/ellipse.axes.md),

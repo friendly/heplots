@@ -6,10 +6,10 @@
     }
   };
 </script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Label an Ellipse in a Plot — label.ellipse"><meta name="description" content="label.ellipse is used to a draw text label on an ellipse at its center or
-somewhere around the periphery in a very flexible way. It is used in heplot, covEllipses, and
-coefplot.mlm, but is also useful as a utility when plotting ellipses in base R graphics."><meta property="og:description" content="label.ellipse is used to a draw text label on an ellipse at its center or
-somewhere around the periphery in a very flexible way. It is used in heplot, covEllipses, and
-coefplot.mlm, but is also useful as a utility when plotting ellipses in base R graphics."><meta property="og:image" content="https://friendly.github.io/heplots/logo.png"></head><body>
+somewhere around the periphery in a very flexible way. It is used in heplot(), covEllipses(), and
+coefplot.mlm(), but is also useful as a utility when plotting ellipses in base R graphics."><meta property="og:description" content="label.ellipse is used to a draw text label on an ellipse at its center or
+somewhere around the periphery in a very flexible way. It is used in heplot(), covEllipses(), and
+coefplot.mlm(), but is also useful as a utility when plotting ellipses in base R graphics."><meta property="og:image" content="https://friendly.github.io/heplots/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -51,8 +51,8 @@ coefplot.mlm, but is also useful as a utility when plotting ellipses in base R g
 
     <div class="ref-description section level2">
     <p><code>label.ellipse</code> is used to a draw text label on an ellipse at its center or
-somewhere around the periphery in a very flexible way. It is used in <code><a href="heplot.html">heplot</a></code>, <code><a href="covEllipses.html">covEllipses</a></code>, and
-<code><a href="coefplot.html">coefplot.mlm</a></code>, but is also useful as a utility when plotting ellipses in base R graphics.</p>
+somewhere around the periphery in a very flexible way. It is used in <code><a href="heplot.html">heplot()</a></code>, <code><a href="covEllipses.html">covEllipses()</a></code>, and
+<code><a href="coefplot.html">coefplot.mlm()</a></code>, but is also useful as a utility when plotting ellipses in base R graphics.</p>
     </div>
 
     <div class="section level2">
@@ -73,7 +73,7 @@ somewhere around the periphery in a very flexible way. It is used in <code><a hr
 
 
 <dl><dt id="arg-ellipse">ellipse<a class="anchor" aria-label="anchor" href="#arg-ellipse"></a></dt>
-<dd><p>A two-column matrix of coordinates for the ellipse boundary, for example as computed by <code><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">ellipse</a></code>.</p></dd>
+<dd><p>A two-column matrix of coordinates for the ellipse boundary, for example as computed by <code><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">car::ellipse()</a></code>.</p></dd>
 
 
 <dt id="arg-label">label<a class="anchor" aria-label="anchor" href="#arg-label"></a></dt>
@@ -101,18 +101,18 @@ or subtracted to the calculated (x, y) values.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Other parameters passed to <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code>, e.g., <code>cex</code>, <code>col</code>, ...</p></dd>
+<dd><p>Other parameters passed to <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">graphics::text()</a></code>, e.g., <code>cex</code>, <code>col</code>, ...</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Mainly used for its side-effect of producing a call to <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code>, but also returns, invisibly,
+    <p>Mainly used for its side-effect of producing a call to <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">graphics::text()</a></code>, but also returns, invisibly,
 the (x, y) coordinates where the label was placed.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The function takes the coordinates of the input <code>ellipse</code> and uses that, together with <code>label.pos</code> to calculate the
-(x, y) coordinates to be passed to <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code> along with a computed <code>pos</code> argument.
+(x, y) coordinates to be passed to <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">graphics::text()</a></code> along with a computed <code>pos</code> argument.
 The values of <code>tweak</code> are applied to (x, y) to position the labels to the outside of the ellipse by default.</p>
 <p>The <code>label.pos</code> argument implements a very general way to position the text label with respect to the ellipse:</p>
 <ul><li><p>If <code>label.pos = NULL</code> (the default), the function uses the sign of the correlation \(r\)
@@ -121,7 +121,7 @@ at the "top" (\(r &gt;= 0\)) or "bottom" (\(r &lt; 0\)) of the ellipse.</p></li>
 <li><p>Integer values of 0, 1, 2, 3 and 4, respectively indicate positions
 at the center, below, to the left of, above
 and to the right of the max/min coordinates of the <code>ellipse</code>, where the values <code>1:4</code> correspond to the
-usual values of <code>pos</code> in <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code>.</p></li>
+usual values of <code>pos</code> in <code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">graphics::text()</a></code>.</p></li>
 <li><p>Label positions can also be specified as the corresponding character strings
 <code>c("center", "bottom", "left", "top", "right")</code>, or <em>compass directions</em>,
 <code>c("C", "S", "W", "N", "E")</code>. Additionally, <em>diagonal</em> compass directions
@@ -132,7 +132,7 @@ as the fraction of the way around the unit circle, counterclockwise from the Nor
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></code>, <code><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">ellipse</a></code>, <code><a href="heplot.html">heplot</a></code>, <code><a href="covEllipses.html">covEllipses</a></code></p></div>
+    <div class="dont-index"><p><code><a href="https://rdrr.io/r/graphics/text.html" class="external-link">graphics::text()</a></code>, <code><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">car::ellipse()</a></code>, <code><a href="heplot.html">heplot()</a></code>, <code><a href="covEllipses.html">covEllipses()</a></code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

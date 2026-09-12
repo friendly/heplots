@@ -118,7 +118,7 @@ of these residuals, the linear regression line, which reflects the partial corre
 
 <dt id="arg-id">id<a class="anchor" aria-label="anchor" href="#arg-id"></a></dt>
 <dd><p>controls point identification; if <code>FALSE</code> (the default), no points are identified;
-can be a list of named arguments to the <code><a href="https://rdrr.io/pkg/car/man/showLabels.html" class="external-link">showLabels</a></code> function</p></dd>
+can be a list of named arguments to the <code><a href="https://rdrr.io/pkg/car/man/showLabels.html" class="external-link">car::showLabels()</a></code> function</p></dd>
 
 
 <dt id="arg-ellipse">ellipse<a class="anchor" aria-label="anchor" href="#arg-ellipse"></a></dt>
@@ -128,7 +128,7 @@ can be a list of named arguments to the <code><a href="https://rdrr.io/pkg/car/m
 <dt id="arg-ellipse-args">ellipse.args<a class="anchor" aria-label="anchor" href="#arg-ellipse-args"></a></dt>
 <dd><p>a list of arguments controlling the ellipse: <code>levels</code>, <code>fill</code>,
 <code>fill.alpha</code>, <code>robust</code>, and <code>col</code> (ellipse outline/fill color, independent
-of the point <code>col</code>). See <code><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></code> for what these mean.</p></dd>
+of the point <code>col</code>). See <code><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">car::dataEllipse()</a></code> for what these mean.</p></dd>
 
 
 <dt id="arg-draw">draw<a class="anchor" aria-label="anchor" href="#arg-draw"></a></dt>
@@ -165,7 +165,7 @@ character size (<code>cex</code>) of the label.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>other arguments passed to <code><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></code></p></dd>
+<dd><p>other arguments passed to <code><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">car::dataEllipse()</a></code></p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -177,10 +177,10 @@ character size (<code>cex</code>) of the label.</p></dd>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Partial variable plots are intimately related to an <em>added-variable plot</em>,
-such as produced by <code><a href="https://rdrr.io/pkg/car/man/avPlots.html" class="external-link">avPlots</a></code>. However, that implementation
+such as produced by <code><a href="https://rdrr.io/pkg/car/man/avPlots.html" class="external-link">car::avPlots()</a></code>. However, that implementation
 is designed for a linear model, rather than a data.frame.</p>
 <p>The present version assumes that all variables passed are numeric.</p>
-<p>This function uses <code><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></code> for drawing, so further documentation of arguments passed there should be consulted.</p>
+<p>This function uses <code><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">car::dataEllipse()</a></code> for drawing, so further documentation of arguments passed there should be consulted.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

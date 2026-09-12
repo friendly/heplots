@@ -16,7 +16,7 @@ df.terms(model, term, ...)
 - model:
 
   A model object, such as fit using
-  [`lm`](https://rdrr.io/r/stats/lm.html).
+  [`stats::lm()`](https://rdrr.io/r/stats/lm.html).
 
 - term:
 

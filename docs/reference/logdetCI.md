@@ -53,9 +53,9 @@ functions of the sample size, \\n\\ and number of variables, \\p\\.
 This function is included here only to provide an approximation to
 *graphical accuracy* for use with Box's M test for equality of
 covariance matrices,
-[`boxM`](https://friendly.github.io/heplots/reference/boxM.md) and its
+[`boxM()`](https://friendly.github.io/heplots/reference/boxM.md) and its
 associated
-[`plot.boxM`](https://friendly.github.io/heplots/reference/plot.boxM.md)
+[`plot.boxM()`](https://friendly.github.io/heplots/reference/plot.boxM.md)
 method.
 
 Cai et. al (2015) claim that their Theorem 1 holds with either \\p\\
@@ -89,8 +89,8 @@ Analysis*, 137, 161-172.
 
 ## See also
 
-[`boxM`](https://friendly.github.io/heplots/reference/boxM.md),
-[`plot.boxM`](https://friendly.github.io/heplots/reference/plot.boxM.md)
+[`boxM()`](https://friendly.github.io/heplots/reference/boxM.md),
+[`plot.boxM()`](https://friendly.github.io/heplots/reference/plot.boxM.md)
 
 ## Author
 

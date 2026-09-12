@@ -1,7 +1,7 @@
 # Levene Tests of Homogeneity of Variances
 
 This function extends
-[`leveneTest`](https://rdrr.io/pkg/car/man/leveneTest.html) to a
+[`car::leveneTest()`](https://rdrr.io/pkg/car/man/leveneTest.html) to a
 multivariate response setting. It performs the Levene test of
 homogeneity of variances for each of a set of response variables, and
 prints a compact summary.
@@ -34,9 +34,9 @@ leveneTests(y, ...)
 - ...:
 
   arguments to be passed down to
-  [`leveneTest`](https://rdrr.io/pkg/car/man/leveneTest.html), e.g.,
-  `data` for the `formula` and `lm` methods; can also be used to pass
-  arguments to the function given by center (e.g., center=mean and
+  [`car::leveneTest()`](https://rdrr.io/pkg/car/man/leveneTest.html),
+  e.g., `data` for the `formula` and `lm` methods; can also be used to
+  pass arguments to the function given by center (e.g., center=mean and
   trim=0.1 specify the 10% trimmed mean) other arguments.
 
 - group:
@@ -71,8 +71,8 @@ Variances *Journal of the American Statistical Association*, **69**,
 
 ## See also
 
-[`leveneTest`](https://rdrr.io/pkg/car/man/leveneTest.html),
-[`bartlettTests`](https://friendly.github.io/heplots/reference/bartlettTests.md)
+[`car::leveneTest()`](https://rdrr.io/pkg/car/man/leveneTest.html),
+[`bartlettTests()`](https://friendly.github.io/heplots/reference/bartlettTests.md)
 
 Other homogeneity tests:
 [`bartlettTests()`](https://friendly.github.io/heplots/reference/bartlettTests.md)

@@ -2,7 +2,7 @@
 
 Creates an index plot of the observation weights assigned in the last
 iteration of
-[`robmlm`](https://friendly.github.io/heplots/reference/robmlm.md).
+[`robmlm()`](https://friendly.github.io/heplots/reference/robmlm.md).
 Observations with low weights have large residual squared distances and
 are potential multivariate outliers with respect to the fitted model.
 
@@ -86,7 +86,7 @@ plot(
 - ...:
 
   other arguments passed to
-  [`plot`](https://rdrr.io/r/graphics/plot.default.html)
+  [`graphics::plot()`](https://rdrr.io/r/graphics/plot.default.html)
 
 ## Value
 
@@ -94,7 +94,7 @@ Returns invisibly the weights for the observations labeled in the plot
 
 ## See also
 
-[`robmlm`](https://friendly.github.io/heplots/reference/robmlm.md)
+[`robmlm()`](https://friendly.github.io/heplots/reference/robmlm.md)
 
 Other robust methods:
 [`Mahalanobis()`](https://friendly.github.io/heplots/reference/Mahalanobis.md),

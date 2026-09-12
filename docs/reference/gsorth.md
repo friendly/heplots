@@ -55,7 +55,7 @@ previous response variables.
 
 Similarly, orthogonalizing the model X variables provides the equivalent
 of Type I tests, such as provided by
-[`anova`](https://rdrr.io/r/stats/anova.html).
+[`stats::anova()`](https://rdrr.io/r/stats/anova.html).
 
 The method is equivalent to setting each of columns `2:p` to the
 residuals from a linear regression of that column on all prior columns,
@@ -68,7 +68,7 @@ the QR decomposition.
 
 ## See also
 
-[`qr`](https://rdrr.io/r/base/qr.html),
+[`base::qr()`](https://rdrr.io/r/base/qr.html),
 
 ## Author
 

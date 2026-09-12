@@ -45,7 +45,7 @@ mark.H0(
 
   Point and text size. For 3D plots, the function uses `size=5*cex` in a
   call to
-  [`points3d`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html).
+  [`rgl::points3d()`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html).
 
 - pch:
 
@@ -70,7 +70,7 @@ None. Used for side effect of drawing on the current plot.
 
 ## See also
 
-[`cross3d`](https://friendly.github.io/heplots/reference/cross3d.md)
+[`cross3d()`](https://friendly.github.io/heplots/reference/cross3d.md)
 
 ## Author
 

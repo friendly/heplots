@@ -42,7 +42,7 @@ model.
 
 ## See also
 
-`link{robmlm}`
+[`robmlm()`](https://friendly.github.io/heplots/reference/robmlm.md)
 
 ## Examples
 

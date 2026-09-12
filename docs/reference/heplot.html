@@ -138,7 +138,7 @@ all terms; if <code>FALSE</code>, no terms are plotted.</p></dd>
 <dt id="arg-hypotheses">hypotheses<a class="anchor" aria-label="anchor" href="#arg-hypotheses"></a></dt>
 <dd><p>optional list of linear hypotheses for which to plot
 hypothesis matrices; hypotheses are specified as for the
-<code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></code> function in the <code>car</code> package; the
+<code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">car::linearHypothesis()</a></code> function in the <code>car</code> package; the
 list elements can be named, in which case the names are used.</p></dd>
 
 
@@ -168,7 +168,7 @@ below, to the left of, above and to the right of the max/min coordinates of
 the ellipse; the value 0 specifies the centroid of the <code>ellipse</code>
 object.  The default, <code>label.pos=NULL</code> uses the correlation of the
 <code>ellipse</code> to determine "top" (r&gt;=0) or "bottom" (r&lt;0).  Even more
-flexible options are described in <code><a href="label.ellipse.html">label.ellipse</a></code></p></dd>
+flexible options are described in <code><a href="label.ellipse.html">label.ellipse()</a></code></p></dd>
 
 
 <dt id="arg-label-cex">label.cex<a class="anchor" aria-label="anchor" href="#arg-label-cex"></a></dt>
@@ -212,7 +212,7 @@ is the default (and `"2"` is a synonym).</p></dd>
 <dt id="arg-idata">idata<a class="anchor" aria-label="anchor" href="#arg-idata"></a></dt>
 <dd><p>an optional data frame giving a factor or factors defining the
 intra-subject model for multivariate repeated-measures data.  See Friendly
-(2010) and Details of <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code> for an explanation of the
+(2010) and Details of <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code> for an explanation of the
 intra-subject design and for further explanation of the other arguments
 relating to intra-subject factors.</p></dd>
 
@@ -240,14 +240,14 @@ model matrix for <em>different</em> terms must be mutually orthogonal.</p></dd>
 
 <dt id="arg-iterm">iterm<a class="anchor" aria-label="anchor" href="#arg-iterm"></a></dt>
 <dd><p>For repeated measures designs, you must specify one
-intra-subject term (a character string) to select the SSPE (E) matrix used
+intra-subject term (a character string) to select the SSPE (\(\mathbf{E}\)) matrix used
 in the HE plot.  Hypothesis terms plotted include the <code>iterm</code> effect as
 well as all interactions of <code>iterm</code> with <code>terms</code>.</p></dd>
 
 
 <dt id="arg-markh-">markH0<a class="anchor" aria-label="anchor" href="#arg-markh-"></a></dt>
 <dd><p>A logical value (or else a list of arguments to
-<code><a href="mark.H0.html">mark.H0</a></code>) used to draw cross-hairs and a point indicating the
+<code><a href="mark.H0.html">mark.H0()</a></code>) used to draw cross-hairs and a point indicating the
 value of a point null hypothesis.  The default is TRUE if <code>iterm</code> is
 non-NULL.</p></dd>
 
@@ -403,8 +403,8 @@ available.)</p>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The <code>heplot</code> function plots a representation of the covariance ellipses
-for hypothesized model terms and linear hypotheses (H) and the corresponding
-error (E) matrices for two response variables in a multivariate linear model
+for hypothesized model terms and linear hypotheses (\(\mathbf{H}\)) and the corresponding
+error (\(\mathbf{E}\)) matrices for two response variables in a multivariate linear model
 (mlm).</p>
 <p>The plot helps to visualize the nature and dimensionality response variation
 on the two variables jointly in relation to error variation that is
@@ -414,13 +414,13 @@ test has a particularly simple visual interpretation, exploited in the
 <code>size="evidence"</code> version of the plot. See the description of argument
 <code>alpha</code>.</p>
 <p>For a 1 df hypothesis term (a quantitative regressor, a single contrast or
-parameter test), the H matrix has rank 1 (one non-zero latent root of \(H
-E^{-1}\)) and the H "ellipse" collapses to a degenerate line.</p>
+parameter test), the \(\mathbf{H}\) matrix has rank 1 (one non-zero latent root of
+\(\mathbf{H} \mathbf{E}^{-1}\)) and the \(\mathbf{H}\) "ellipse" collapses to a degenerate line.</p>
 <p>Typically, you fit a mlm with <code>mymlm &lt;- lm(cbind(y1, y2, y3, ...) ~ modelterms)</code>, and plot some or all of the <code>modelterms</code> with
 <code>heplot(mymlm, ...)</code>.  Arbitrary linear hypotheses related to the terms
 in the model (e.g., contrasts of an effect) can be included in the plot
 using the <code>hypotheses</code> argument.  See
-<code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></code> for details.</p>
+<code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">car::linearHypothesis()</a></code> for details.</p>
 <p>For repeated measure designs, where the response variables correspond to one
 or more variates observed under a within-subject design, between-subject
 effects and within-subject effects must be plotted separately, because the
@@ -430,11 +430,11 @@ error terms (E matrices) differ.  When you specify an intra-subject term
 intra-subject design for that term.  See Friendly (2010) or the
 <code>vignette("repeated")</code> in this package for an extended discussion and
 examples.</p>
-<p>The related <code><a href="https://friendly.github.io/candisc/reference/candisc.html" class="external-link">candisc</a></code> package provides functions for
+<p>The related <code><a href="https://friendly.github.io/candisc/reference/candisc.html" class="external-link">candisc::candisc()</a></code> package provides functions for
 visualizing a multivariate linear model in a low-dimensional view via a
 generalized canonical discriminant analyses.
-<code><a href="https://friendly.github.io/candisc/reference/heplot.candisc.html" class="external-link">heplot.candisc</a></code> and
-<code><a href="https://friendly.github.io/candisc/reference/heplot.candisc.html" class="external-link">heplot3d.candisc</a></code> provide a low-rank 2D (or 3D) view
+<code><a href="https://friendly.github.io/candisc/reference/heplot.candisc.html" class="external-link">candisc::heplot.candisc()</a></code> and
+<code><a href="https://friendly.github.io/candisc/reference/heplot.candisc.html" class="external-link">candisc::heplot3d.candisc()</a></code> provide a low-rank 2D (or 3D) view
 of the effects for a given term in the space of maximum discrimination.</p>
 <p>When an element of <code>fill</code> is <code>TRUE</code>, the ellipse outline is drawn
 using the corresponding color in <code>col</code>, and the interior is filled with
@@ -465,16 +465,16 @@ DOI: 10.15446/rce.v37n2spe.47934.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code>, <code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></code> for
+    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code>, <code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">car::linearHypothesis()</a></code> for
 details on testing MLMs.</p>
-<p><code><a href="heplot1d.html">heplot1d</a></code>, <code><a href="heplot3d.html">heplot3d</a></code>, <code><a href="pairs.mlm.html">pairs.mlm</a></code>,
-<code><a href="mark.H0.html">mark.H0</a></code> for other HE plot functions.
-<code><a href="coefplot.html">coefplot.mlm</a></code> for plotting confidence ellipses for parameters
+<p><code><a href="heplot1d.html">heplot1d()</a></code>, <code><a href="heplot3d.html">heplot3d()</a></code>, <code><a href="pairs.mlm.html">pairs.mlm()</a></code>,
+<code><a href="mark.H0.html">mark.H0()</a></code> for other HE plot functions.
+<code><a href="coefplot.html">coefplot.mlm()</a></code> for plotting confidence ellipses for parameters
 in MLMs.</p>
-<p><code><a href="trans.colors.html">trans.colors</a></code> for calculation of transparent colors.
-<code><a href="label.ellipse.html">label.ellipse</a></code> for labeling positions in plotting H and E
+<p><code><a href="trans.colors.html">trans.colors()</a></code> for calculation of transparent colors.
+<code><a href="label.ellipse.html">label.ellipse()</a></code> for labeling positions in plotting \(\mathbf{H}\) and \(\mathbf{E}\)
 ellipses.</p>
-<p><code><a href="https://friendly.github.io/candisc/reference/candisc.html" class="external-link">candisc</a></code>, <code><a href="https://friendly.github.io/candisc/reference/heplot.candisc.html" class="external-link">heplot.candisc</a></code> for
+<p><code><a href="https://friendly.github.io/candisc/reference/candisc.html" class="external-link">candisc::candisc()</a></code>, <code><a href="https://friendly.github.io/candisc/reference/heplot.candisc.html" class="external-link">candisc::heplot.candisc()</a></code> for
 reduced-rank views of <code>mlm</code>s in canonical space.</p>
 <p>Other HE plot functions:
 <code><a href="heplot1d.html">heplot1d()</a></code>,

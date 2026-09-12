@@ -14,8 +14,8 @@ D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \\ \mathbf{S}^{-1} \\
 (\mathbf{x} - \bar{\mathbf{x}}) \\ . \$\$
 
 The method for `"mlm"` objects fit using
-[`lm`](https://rdrr.io/r/stats/lm.html) for a multivariate response
-applies this to the residuals from the model.
+[`stats::lm()`](https://rdrr.io/r/stats/lm.html) for a multivariate
+response applies this to the residuals from the model.
 
 ## Usage
 
@@ -88,8 +88,9 @@ cqplot(
 
   color for points. Can be a vector of length equal to the number of
   rows in `x`. The default is the *first* entry in the current color
-  palette (see [`palette`](https://rdrr.io/r/grDevices/palette.html) and
-  [`par`](https://rdrr.io/r/graphics/par.html)).
+  palette (see
+  [`grDevices::palette()`](https://rdrr.io/r/grDevices/palette.html) and
+  [`graphics::par()`](https://rdrr.io/r/graphics/par.html)).
 
 - cex:
 
@@ -147,8 +148,8 @@ cqplot(
   point identification method. The default `id.method="r"` will identify
   the `id.n` points with the largest value of abs(y), i.e., the largest
   Mahalanobis DSQ. See
-  [`showLabels`](https://rdrr.io/pkg/car/man/showLabels.html) for other
-  options.
+  [`car::showLabels()`](https://rdrr.io/pkg/car/man/showLabels.html) for
+  other options.
 
 - id.cex:
 
@@ -229,9 +230,9 @@ D^2\_{(i)} )\\
 Note that this confidence envelope applies only to the \\D^2\\ computed
 using the classical estimates of location (\\\bar{\mathbf{x}}\\) and
 scatter (\\\mathbf{S}\\). The
-[`qqPlot`](https://rdrr.io/pkg/car/man/qqPlot.html) function provides
-for simulated envelopes, but only for a univariate measure. Oldford
-(2016) provides a general theory and methods for QQ plots.
+[`car::qqPlot()`](https://rdrr.io/pkg/car/man/qqPlot.html) function
+provides for simulated envelopes, but only for a univariate measure.
+Oldford (2016) provides a general theory and methods for QQ plots.
 
 ## References
 
@@ -243,14 +244,14 @@ American Statistician*, 70, 74-90.
 
 ## See also
 
-[`Mahalanobis`](https://friendly.github.io/heplots/reference/Mahalanobis.md)
+[`Mahalanobis()`](https://friendly.github.io/heplots/reference/Mahalanobis.md)
 for calculation of Mahalanobis squared distance;
 
-[`qqplot`](https://rdrr.io/r/stats/qqnorm.html);
-[`qqPlot`](https://rdrr.io/pkg/car/man/qqPlot.html) can give a similar
-result for Mahalanobis squared distances of data or residuals;
-[`qqtest`](https://rwoldford.github.io/qqtest/reference/qqtest.html) has
-many features for all types of QQ plots.
+[`stats::qqplot()`](https://rdrr.io/r/stats/qqnorm.html);
+[`car::qqPlot()`](https://rdrr.io/pkg/car/man/qqPlot.html) can give a
+similar result for Mahalanobis squared distances of data or residuals;
+[`qqtest::qqtest()`](https://rwoldford.github.io/qqtest/reference/qqtest.html)
+has many features for all types of QQ plots.
 
 Other diagnostic plots:
 [`distancePlot()`](https://friendly.github.io/heplots/reference/distancePlot.md),

@@ -38,8 +38,8 @@ Ramsey, F.L. and Schafer, D.W. (2002). *The Statistical Sleuth: A Course
 in Methods of Data Analysis (2nd ed)*, Duxbury.
 
 This data set is identical to
-[`ex1605`](https://rdrr.io/pkg/Sleuth2/man/ex1605.html) in the `Sleuth2`
-package.
+[`Sleuth2::ex1605`](https://rdrr.io/pkg/Sleuth2/man/ex1605.html) in the
+`Sleuth2` package.
 
 ## Details
 
@@ -59,7 +59,7 @@ Hundred Adopted Children, *Journal of Genetic Psychology* **75**:
 
 ## See also
 
-[`ex1605`](https://rdrr.io/pkg/Sleuth2/man/ex1605.html)
+[`Sleuth2::ex1605`](https://rdrr.io/pkg/Sleuth2/man/ex1605.html)
 
 ## Examples
 

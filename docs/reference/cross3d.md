@@ -22,7 +22,7 @@ cross3d(centre = rep(0, 3), scale = rep(1, 3), ...)
 - ...:
 
   Other arguments, passed on to
-  [`segments3d`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html)
+  [`rgl::segments3d()`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html)
 
 ## Value
 
@@ -31,7 +31,7 @@ containing the end-points of three axes, in pairs.
 
 ## See also
 
-[`segments3d`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html)
+[`rgl::segments3d()`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html)
 
 Other 3D plotting:
 [`arrow3d()`](https://friendly.github.io/heplots/reference/arrow3d.md),

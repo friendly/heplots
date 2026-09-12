@@ -1,7 +1,7 @@
 # Draw an Ellipsoid in an rgl Scene
 
 This is an experimental function designed to separate internal code in
-`link{heplot3d}`.
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md).
 
 ## Usage
 

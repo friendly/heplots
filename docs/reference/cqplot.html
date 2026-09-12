@@ -17,7 +17,7 @@ taking the sample covariance matrix \(\mathbf{S}\) into account,
 $$
 D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} - \bar{\mathbf{x}}) \; .
 $$
-The method for "mlm" objects fit using lm for a multivariate response
+The method for "mlm" objects fit using stats::lm() for a multivariate response
 applies this to the residuals from the model.'><meta property="og:description" content='A chi square quantile-quantile plots show the relationship between
 data-based values which should be distributed as \(\chi^2\) and
 corresponding quantiles from the \(\chi^2\) distribution.  In multivariate
@@ -30,7 +30,7 @@ taking the sample covariance matrix \(\mathbf{S}\) into account,
 $$
 D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} - \bar{\mathbf{x}}) \; .
 $$
-The method for "mlm" objects fit using lm for a multivariate response
+The method for "mlm" objects fit using stats::lm() for a multivariate response
 applies this to the residuals from the model.'><meta property="og:image" content="https://friendly.github.io/heplots/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
@@ -84,7 +84,7 @@ taking the sample covariance matrix \(\mathbf{S}\) into account,
 $$
 D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} - \bar{\mathbf{x}}) \; .
 $$</p>
-<p>The method for <code>"mlm"</code> objects fit using <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></code> for a multivariate response
+<p>The method for <code>"mlm"</code> objects fit using <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">stats::lm()</a></code> for a multivariate response
 applies this to the residuals from the model.</p>
     </div>
 
@@ -161,8 +161,8 @@ number of rows in <code>x</code>.</p></dd>
 <dd><p>color for points. Can be a vector of length equal to the
 number of rows in <code>x</code>.
 The default is the <em>first</em> entry in the
-current color palette (see <code><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></code> and
-<code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></code>).</p></dd>
+current color palette (see <code><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">grDevices::palette()</a></code> and
+<code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">graphics::par()</a></code>).</p></dd>
 
 
 <dt id="arg-cex">cex<a class="anchor" aria-label="anchor" href="#arg-cex"></a></dt>
@@ -220,7 +220,7 @@ point identification occurs.</p></dd>
 <dt id="arg-id-method">id.method<a class="anchor" aria-label="anchor" href="#arg-id-method"></a></dt>
 <dd><p>point identification method. The default
 <code>id.method="r"</code> will identify the <code>id.n</code> points with the largest
-value of abs(y), i.e., the largest Mahalanobis DSQ. See <code><a href="https://rdrr.io/pkg/car/man/showLabels.html" class="external-link">showLabels</a></code> for other
+value of abs(y), i.e., the largest Mahalanobis DSQ. See <code><a href="https://rdrr.io/pkg/car/man/showLabels.html" class="external-link">car::showLabels()</a></code> for other
 options.</p></dd>
 
 
@@ -292,7 +292,7 @@ the reference line obtained from the ratio of the interquartile range of the
 \(D^2_{(i)} \pm z_{1-\alpha/2} \text{se} ( D^2_{(i)} )\)</p>
 <p>Note that this confidence envelope applies only to the \(D^2\) computed
 using the classical estimates of location (\(\bar{\mathbf{x}}\)) and scatter (\(\mathbf{S}\)). The
-<code><a href="https://rdrr.io/pkg/car/man/qqPlot.html" class="external-link">qqPlot</a></code>
+<code><a href="https://rdrr.io/pkg/car/man/qqPlot.html" class="external-link">car::qqPlot()</a></code>
 function provides for simulated envelopes, but only for
 a univariate measure. Oldford (2016) provides a general theory and methods
 for QQ plots.</p>
@@ -308,10 +308,10 @@ for QQ plots.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="Mahalanobis.html">Mahalanobis</a></code> for calculation of Mahalanobis squared distance;</p>
-<p><code><a href="https://rdrr.io/r/stats/qqnorm.html" class="external-link">qqplot</a></code>; <code><a href="https://rdrr.io/pkg/car/man/qqPlot.html" class="external-link">qqPlot</a></code> can give a similar
+    <div class="dont-index"><p><code><a href="Mahalanobis.html">Mahalanobis()</a></code> for calculation of Mahalanobis squared distance;</p>
+<p><code><a href="https://rdrr.io/r/stats/qqnorm.html" class="external-link">stats::qqplot()</a></code>; <code><a href="https://rdrr.io/pkg/car/man/qqPlot.html" class="external-link">car::qqPlot()</a></code> can give a similar
 result for Mahalanobis squared distances of data or residuals;
-<code><a href="https://rwoldford.github.io/qqtest/reference/qqtest.html" class="external-link">qqtest</a></code> has many features for all types of QQ plots.</p>
+<code><a href="https://rwoldford.github.io/qqtest/reference/qqtest.html" class="external-link">qqtest::qqtest()</a></code> has many features for all types of QQ plots.</p>
 <p>Other diagnostic plots:
 <code><a href="distancePlot.html">distancePlot()</a></code>,
 <code><a href="eigstatCI.html">eigstatCI()</a></code>,

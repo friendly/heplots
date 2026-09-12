@@ -1,8 +1,8 @@
 # Bartlett Tests of Homogeneity of Variances
 
 This function extends
-[`bartlett.test`](https://rdrr.io/r/stats/bartlett.test.html) to a
-multivariate response setting. It performs the Bartlett test of
+[`stats::bartlett.test()`](https://rdrr.io/r/stats/bartlett.test.html)
+to a multivariate response setting. It performs the Bartlett test of
 homogeneity of variances for each of a set of response variables, and
 prints a compact summary.
 
@@ -40,7 +40,7 @@ bartlettTests(y, ...)
 - ...:
 
   other arguments, passed to
-  [`bartlett.test`](https://rdrr.io/r/stats/bartlett.test.html)
+  [`stats::bartlett.test()`](https://rdrr.io/r/stats/bartlett.test.html)
 
 - group:
 
@@ -63,8 +63,8 @@ Bartlett, M. S. (1937). Properties of sufficiency and statistical tests.
 
 ## See also
 
-[`boxM`](https://friendly.github.io/heplots/reference/boxM.md) for Box's
-M test for all responses together.
+[`boxM()`](https://friendly.github.io/heplots/reference/boxM.md) for
+Box's M test for all responses together.
 
 Other homogeneity tests:
 [`leveneTests()`](https://friendly.github.io/heplots/reference/leveneTests.md)

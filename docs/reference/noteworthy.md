@@ -1,12 +1,12 @@
 # Find noteworthy (unusual) points in a 2D plot
 
 This function extends the logic used by
-[`showLabels`](https://rdrr.io/pkg/car/man/showLabels.html) to provide a
-more general collection of methods to identify unusual or "noteworthy"
-points in a two-dimensional display. Standard methods include
-Mahalanobis and Euclidean distance from the centroid, absolute value of
-distance from the mean of X or Y, absolute value of Y and absolute value
-of the residual in a model `Y ~ X`.
+[`car::showLabels()`](https://rdrr.io/pkg/car/man/showLabels.html) to
+provide a more general collection of methods to identify unusual or
+"noteworthy" points in a two-dimensional display. Standard methods
+include Mahalanobis and Euclidean distance from the centroid, absolute
+value of distance from the mean of X or Y, absolute value of Y and
+absolute value of the residual in a model `Y ~ X`.
 
 ## Usage
 
@@ -19,9 +19,8 @@ noteworthy(x, y = NULL, n = length(x), method = "mahal", level = NULL, ...)
 - x, y:
 
   The x and y coordinates of a set of points. Alternatively, a single
-  argument `x` can be provided, since
-  [`xy.coords`](https://rdrr.io/r/grDevices/xy.coords.html)`(x, y)` is
-  used for construction of the coordinates.
+  argument `x` can be provided, since `[grDevices::xy.coords()](x, y)`
+  is used for construction of the coordinates.
 
 - n:
 

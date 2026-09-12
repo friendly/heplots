@@ -50,8 +50,9 @@ ellipse.box(
 - factor:
 
   A function defining the conjugate axes used to transform the unit
-  circle into an ellipse. [`chol`](https://rdrr.io/r/base/chol.html),
-  uses the right Cholesky factor of `x`.
+  circle into an ellipse.
+  [`base::chol()`](https://rdrr.io/r/base/chol.html), uses the right
+  Cholesky factor of `x`.
 
 - draw:
 
@@ -60,7 +61,7 @@ ellipse.box(
 - ...:
 
   Other arguments passed to
-  [`lines`](https://rdrr.io/r/graphics/lines.html).
+  [`graphics::lines()`](https://rdrr.io/r/graphics/lines.html).
 
 ## Value
 

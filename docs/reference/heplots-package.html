@@ -104,20 +104,20 @@ for model terms and linear hypotheses for single response variables.</p></dd>
 
 
 </dl><p>For repeated measure designs, between-subject effects and within-subject
-effects must be plotted separately, because the error terms (E matrices)
+effects must be plotted separately, because the error terms (\(\mathbf{E}\) matrices)
 differ.  For terms involving within-subject effects, these functions carry
 out a linear transformation of the matrix <strong>Y</strong> of responses to a matrix
 <strong>Y M</strong>, where <strong>M</strong> is the model matrix for a term in the
-intra-subject design and produce plots of the H and E matrices in this
+intra-subject design and produce plots of the \(\mathbf{H}\) and \(\mathbf{E}\) matrices in this
 transformed space. The vignette <code>repeated</code> describes these graphical
 methods for repeated measures designs.</p>
-<p>The related <span class="pkg">car</span> package calculates Type II and Type III tests of
-multivariate linear hypotheses using the <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code> and
-<code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">linearHypothesis</a></code> functions.</p>
-<p>The <code><a href="https://friendly.github.io/candisc/reference/candisc-package.html" class="external-link">candisc-package</a></code> package provides functions for
+<p>The related <code>car</code> package calculates Type II and Type III tests of
+multivariate linear hypotheses using the <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code> and
+<code><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html" class="external-link">car::linearHypothesis()</a></code> functions.</p>
+<p>The <code><a href="https://friendly.github.io/candisc/reference/candisc-package.html" class="external-link">candisc::candisc-package</a></code> package provides functions for
 visualizing effects for MLM model terms in a low-dimensional canonical space
 that shows the largest hypothesis relative to error variation. The
-<span class="pkg">candisc</span> package now also includes related methods for canonical
+<code>candisc</code> package now also includes related methods for canonical
 correlation analysis.</p>
 <p>The <code>heplots</code> package also contains a large number of multivariate data
 sets with examples of analyses and graphic displays.  Use
@@ -159,11 +159,11 @@ Models in Psychological Research: An R Tutorial. Submitted for publication.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>\code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} <span class="cf">for</span> Anova.mlm computations and tests</span>
+    <div class="dont-index"><p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>[car<span class="sc">::</span><span class="fu">Anova</span>()], [car<span class="sc">::</span><span class="fu">linearHypothesis</span>()] <span class="cf">for</span> Anova.mlm computations and tests</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>\code{\link[candisc]{candisc<span class="sc">-</span>package}} <span class="cf">for</span> reduced<span class="sc">-</span>rank views <span class="cf">in</span> canonical space</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>[<span class="st">`</span><span class="at">candisc::candisc-package</span><span class="st">`</span>] <span class="cf">for</span> reduced<span class="sc">-</span>rank views <span class="cf">in</span> canonical space</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>\code{\link[stats]{manova}} <span class="cf">for</span> a different approach to testing effects <span class="cf">in</span> MANOVA designs</span></code></pre><p></p></div></div>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>[stats<span class="sc">::</span><span class="fu">manova</span>()] <span class="cf">for</span> a different approach to testing effects <span class="cf">in</span> MANOVA designs</span></code></pre><p></p></div></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

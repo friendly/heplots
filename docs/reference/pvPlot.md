@@ -62,7 +62,8 @@ pvPlot(
 
   controls point identification; if `FALSE` (the default), no points are
   identified; can be a list of named arguments to the
-  [`showLabels`](https://rdrr.io/pkg/car/man/showLabels.html) function
+  [`car::showLabels()`](https://rdrr.io/pkg/car/man/showLabels.html)
+  function
 
 - ellipse:
 
@@ -73,8 +74,8 @@ pvPlot(
   a list of arguments controlling the ellipse: `levels`, `fill`,
   `fill.alpha`, `robust`, and `col` (ellipse outline/fill color,
   independent of the point `col`). See
-  [`dataEllipse`](https://rdrr.io/pkg/car/man/Ellipses.html) for what
-  these mean.
+  [`car::dataEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html) for
+  what these mean.
 
 - draw:
 
@@ -115,7 +116,7 @@ pvPlot(
 - ...:
 
   other arguments passed to
-  [`dataEllipse`](https://rdrr.io/pkg/car/man/Ellipses.html)
+  [`car::dataEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html)
 
 ## Value
 
@@ -127,14 +128,16 @@ pvPlot(
 
 Partial variable plots are intimately related to an *added-variable
 plot*, such as produced by
-[`avPlots`](https://rdrr.io/pkg/car/man/avPlots.html). However, that
-implementation is designed for a linear model, rather than a data.frame.
+[`car::avPlots()`](https://rdrr.io/pkg/car/man/avPlots.html). However,
+that implementation is designed for a linear model, rather than a
+data.frame.
 
 The present version assumes that all variables passed are numeric.
 
 This function uses
-[`dataEllipse`](https://rdrr.io/pkg/car/man/Ellipses.html) for drawing,
-so further documentation of arguments passed there should be consulted.
+[`car::dataEllipse()`](https://rdrr.io/pkg/car/man/Ellipses.html) for
+drawing, so further documentation of arguments passed there should be
+consulted.
 
 ## Author
 

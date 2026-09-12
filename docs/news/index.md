@@ -48,6 +48,28 @@
   returns a different class invisibly, so nothing triggered it without
   this explicit call.
 
+- Added a live
+  [`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)
+  example to the `HE_manova` vignette’s MockJury section (ratings on
+  `phyattr`, `independent`, and `sophisticated`), shown as a rotatable,
+  zoomable 3D widget. Calling
+  [`rgl::rglwidget()`](https://dmurdoch.github.io/rgl/dev/reference/rglwidget.html)
+  directly works fine in a standalone vignette build but renders as a
+  blank box on the pkgdown site: `pkgdown` replaces the `<head>` of
+  `as_is` bookdown vignettes when assembling the article page, silently
+  dropping the `<script>` tags the widget needs. The fix – pre-rendering
+  the widget to a self-contained file and embedding it with an
+  `<iframe>` instead – is now documented in
+  [`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)’s
+  `@details` for reuse in other vignettes.
+
+- Fixed math rendering on the pkgdown site for all four `as_is`
+  vignettes (`HE_manova`, `HE_mmra`, `Robust`, `datasets`):
+  `_pkgdown.yml` never set `template: math-rendering`, which defaults to
+  `"mathml"` and, for `as_is` pages, meant no MathJax/KaTeX script was
+  ever injected – `$...$` math expressions rendered as literal text
+  instead of typeset equations. Now set to `"mathjax"`.
+
 - Dropped the hard `Depends: broom` for
   [`glance.mlm()`](https://friendly.github.io/heplots/reference/glance.mlm.md);
   now `Imports: generics` (the lightweight package defining the `glance`

@@ -28,20 +28,20 @@ From
 - labels:
 
   a character vector or
-  [`expression`](https://rdrr.io/r/base/expression.html) specifying the
-  text to be written
+  [`base::expression()`](https://rdrr.io/r/base/expression.html)
+  specifying the text to be written
 
 - ...:
 
   other arguments passed to
-  [`text`](https://rdrr.io/r/graphics/text.html), such as `pos`, `cex`,
-  `col`, ...
+  [`graphics::text()`](https://rdrr.io/r/graphics/text.html), such as
+  `pos`, `cex`, `col`, ...
 
 ## Details
 
 `y` may be missing since
-[`xy.coords`](https://rdrr.io/r/grDevices/xy.coords.html) is used for
-construction of the coordinates.
+[`grDevices::xy.coords()`](https://rdrr.io/r/grDevices/xy.coords.html)
+is used for construction of the coordinates.
 
 The function also works with `par(xlog) == TRUE` and `par(ylog) == TRUE`
 when either of these is set for log scales.

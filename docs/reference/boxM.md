@@ -157,7 +157,7 @@ e.g., p \< .0001 or worse.
 
 In general, heterogeneity of covariance matrices can be more easily seen
 and understood by plotting the covariance ellipses using
-[`covEllipses`](https://friendly.github.io/heplots/reference/covEllipses.md).
+[`covEllipses()`](https://friendly.github.io/heplots/reference/covEllipses.md).
 
 The `summary` method prints a variety of additional statistics based on
 the eigenvalues of the covariance matrices. These are returned
@@ -200,22 +200,22 @@ Morrison, D.F. (1976) *Multivariate Statistical Methods*.
 
 ## See also
 
-[`leveneTest`](https://rdrr.io/pkg/car/man/leveneTest.html) carries out
-homogeneity of variance tests for univariate models with better
-statistical properties.
+[`car::leveneTest()`](https://rdrr.io/pkg/car/man/leveneTest.html)
+carries out homogeneity of variance tests for univariate models with
+better statistical properties.
 
-[`plot.boxM`](https://friendly.github.io/heplots/reference/plot.boxM.md),
+[`plot.boxM()`](https://friendly.github.io/heplots/reference/plot.boxM.md),
 a simple dot plot of the log determinants compared with that of the
 pooled covariance matrix, and also of other quantities computed from
 their eigenvalues
 
-[`covEllipses`](https://friendly.github.io/heplots/reference/covEllipses.md)
+[`covEllipses()`](https://friendly.github.io/heplots/reference/covEllipses.md)
 plots covariance ellipses in variable space for several groups.
 
 ## Author
 
-The default method was taken from the biotools package, Anderson Rodrigo
-da Silva <anderson.agro@hotmail.com>
+The default method was taken from the `biotools` package, Anderson
+Rodrigo da Silva <anderson.agro@hotmail.com>
 
 Generalized by Michael Friendly and John Fox
 

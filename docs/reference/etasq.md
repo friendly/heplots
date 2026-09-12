@@ -29,7 +29,7 @@ etasq(x, anova = FALSE, partial = TRUE, ...)
 - ...:
 
   Other arguments passed down to
-  [`Anova`](https://rdrr.io/pkg/car/man/Anova.html).
+  [`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html).
 
 - anova:
 
@@ -67,8 +67,8 @@ measures of effect size or measures of (non-linear) strength of
 association in ANOVA models.
 
 All multivariate tests are based on the \\s=min(p, df_h)\\ latent roots
-of \\H E^{-1}\\. The analogous multivariate partial \\\eta^2\\ measures
-are calculated as:
+of \\\mathbf{H} \mathbf{E}^{-1}\\. The analogous multivariate partial
+\\\eta^2\\ measures are calculated as:
 
 - Pillai's trace (V):
 
@@ -99,9 +99,9 @@ Statistical Association*, **87**, 1209-1226.
 
 ## See also
 
-[`Anova`](https://rdrr.io/pkg/car/man/Anova.html)
+[`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html)
 
-[`eta_squared`](https://easystats.github.io/effectsize/reference/eta_squared.html)
+[`effectsize::eta_squared()`](https://easystats.github.io/effectsize/reference/eta_squared.html)
 for a function that calculates this effect size measure for each
 response variable separately.
 

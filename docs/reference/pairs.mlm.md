@@ -1,10 +1,10 @@
 # Pairwise HE Plots
 
 The function (in the form of an `mlm` method for the generic
-[`pairs`](https://rdrr.io/r/graphics/pairs.html) function) constructs a
-“matrix” of pairwise HE plots (see
-[heplot](https://friendly.github.io/heplots/reference/heplot.md)) for a
-multivariate linear model.
+[`graphics::pairs()`](https://rdrr.io/r/graphics/pairs.html) function)
+constructs a “matrix” of pairwise HE plots (see
+[`heplot()`](https://friendly.github.io/heplots/reference/heplot.md))
+for a multivariate linear model.
 
 ## Usage
 
@@ -60,9 +60,9 @@ pairs(
 
   an optional data frame giving a factor or factors defining the
   intra-subject model for multivariate repeated-measures data. See
-  Details of [`Anova`](https://rdrr.io/pkg/car/man/Anova.html) for an
-  explanation of the intra-subject design and for further explanation of
-  the other arguments relating to intra-subject factors.
+  Details of [`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html)
+  for an explanation of the intra-subject design and for further
+  explanation of the other arguments relating to intra-subject factors.
 
 - idesign:
 
@@ -89,9 +89,9 @@ pairs(
 - iterm:
 
   For repeated measures designs, you must specify one intra-subject term
-  (a character string) to select the SSPE (E) matrix used in the HE
-  plot. Hypothesis terms plotted include the `iterm` effect as well as
-  all interactions of `iterm` with `terms`.
+  (a character string) to select the SSPE (\\\mathbf{E}\\) matrix used
+  in the HE plot. Hypothesis terms plotted include the `iterm` effect as
+  well as all interactions of `iterm` with `terms`.
 
 - manova:
 
@@ -115,7 +115,7 @@ pairs(
   possibly recycled — for the hypothesis ellipses; a single fill value
   can be given. Defaults to FALSE for backward compatibility. See
   Details of
-  [`heplot`](https://friendly.github.io/heplots/reference/heplot.md)
+  [`heplot()`](https://friendly.github.io/heplots/reference/heplot.md)
 
 - fill.alpha:
 
@@ -140,8 +140,8 @@ Friendly, M. (2007). HE plots for Multivariate General Linear Models.
 
 ## See also
 
-[`heplot`](https://friendly.github.io/heplots/reference/heplot.md),
-[`heplot3d`](https://friendly.github.io/heplots/reference/heplot3d.md)
+[`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)
 
 Other HE plot functions:
 [`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),

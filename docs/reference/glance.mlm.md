@@ -1,10 +1,10 @@
 # Glance at an mlm object
 
 This function takes an "mlm" object, fit by
-[`lm`](https://rdrr.io/r/stats/lm.html) with a multivariate response.
-The goal is to return something analogous to
-[`glance.lm`](https://broom.tidymodels.org/reference/glance.lm.html) for
-a univariate response linear model.
+[`stats::lm()`](https://rdrr.io/r/stats/lm.html) with a multivariate
+response. The goal is to return something analogous to
+[`broom::glance.lm()`](https://broom.tidymodels.org/reference/glance.lm.html)
+for a univariate response linear model.
 
 ## Usage
 
@@ -17,8 +17,9 @@ glance(x, ...)
 
 - x:
 
-  An `"mlm"` object created by [`lm`](https://rdrr.io/r/stats/lm.html),
-  i.e., with a multivariate response.
+  An `"mlm"` object created by
+  [`stats::lm()`](https://rdrr.io/r/stats/lm.html), i.e., with a
+  multivariate response.
 
 - ...:
 
@@ -26,8 +27,9 @@ glance(x, ...)
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with
-one row for each response variable and the columns:
+A
+[`tibble::tibble()`](https://tibble.tidyverse.org/reference/tibble.html)
+with one row for each response variable and the columns:
 
 - `r.squared`:
 
@@ -61,9 +63,9 @@ one row for each response variable and the columns:
 ## Details
 
 In the multivariate case, it returns a
-[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with one
-row for each response variable, containing goodness of fit measures,
-F-tests and p-values.
+[`tibble::tibble()`](https://tibble.tidyverse.org/reference/tibble.html)
+with one row for each response variable, containing goodness of fit
+measures, F-tests and p-values.
 
 ## See also
 

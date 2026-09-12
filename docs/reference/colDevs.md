@@ -20,8 +20,9 @@ colDevs(x, group, center = mean, group.var = FALSE, ...)
   A factor (or variable that can be coerced to a factor) indicating the
   membership of each observation in `x` in one or more groups. If
   missing, all the data is treated as a single group. You can also
-  specify the [`interaction`](https://rdrr.io/r/base/interaction.html)
-  of two or more factors.
+  specify the
+  [`base::interaction()`](https://rdrr.io/r/base/interaction.html) of
+  two or more factors.
 
 - center:
 
@@ -48,16 +49,17 @@ containing the group factor prepended to the matrix of deviations.
 ## Details
 
 Conceptually, the function is similar to a column-wise
-[`sweep`](https://rdrr.io/r/base/sweep.html), by group, allowing an
-arbitrary `center` function.
+[`base::sweep()`](https://rdrr.io/r/base/sweep.html), by group, allowing
+an arbitrary `center` function.
 
 Non-numeric columns of `x` are removed, with a warning.
 
 ## See also
 
-[`colMeans`](https://rdrr.io/r/base/colSums.html) for column means,
+[`base::colMeans()`](https://rdrr.io/r/base/colSums.html) for column
+means,
 
-[`sweep`](https://rdrr.io/r/base/sweep.html)
+[`base::sweep()`](https://rdrr.io/r/base/sweep.html)
 
 ## Author
 

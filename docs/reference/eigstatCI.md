@@ -165,9 +165,9 @@ Bootstrap*. CRC Press.
 
 ## See also
 
-[`boxM`](https://friendly.github.io/heplots/reference/boxM.md),
-[`plot.boxM`](https://friendly.github.io/heplots/reference/plot.boxM.md),
-[`logdetCI`](https://friendly.github.io/heplots/reference/logdetCI.md)
+[`boxM()`](https://friendly.github.io/heplots/reference/boxM.md),
+[`plot.boxM()`](https://friendly.github.io/heplots/reference/plot.boxM.md),
+[`logdetCI()`](https://friendly.github.io/heplots/reference/logdetCI.md)
 
 Other diagnostic plots:
 [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md),

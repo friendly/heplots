@@ -47,7 +47,7 @@ arrow3d(
 
   args passed to lines3d for line styling, e.g., `color`, `lwd`, etc.
   See
-  [`material3d`](https://dmurdoch.github.io/rgl/dev/reference/material.html).
+  [`rgl::material3d()`](https://dmurdoch.github.io/rgl/dev/reference/material.html).
 
 ## Value
 
@@ -55,8 +55,8 @@ Returns (invisibly): integer ID of the line added to the scene %%
 
 ## See also
 
-[`lines3d`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html),
-[`segments3d`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html),
+[`rgl::lines3d()`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html),
+[`rgl::segments3d()`](https://dmurdoch.github.io/rgl/dev/reference/primitives.html),
 
 Other 3D plotting:
 [`bbox3d()`](https://friendly.github.io/heplots/reference/bbox3d.md),

@@ -106,7 +106,7 @@ the response, Y variables provides the equivalent of step-down tests, where
 Y1 is tested alone, and then Y2.1, Y3.12, etc. can be tested to determine
 their additional contributions over the previous response variables.</p>
 <p>Similarly, orthogonalizing the model X variables provides the equivalent of
-Type I tests, such as provided by <code><a href="https://rdrr.io/r/stats/anova.html" class="external-link">anova</a></code>.</p>
+Type I tests, such as provided by <code><a href="https://rdrr.io/r/stats/anova.html" class="external-link">stats::anova()</a></code>.</p>
 <p>The method is equivalent to setting each of columns <code>2:p</code> to the
 residuals from a linear regression of that column on all prior columns,
 i.e.,</p>
@@ -116,7 +116,7 @@ QR decomposition.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/r/base/qr.html" class="external-link">qr</a></code>,</p></div>
+    <div class="dont-index"><p><code><a href="https://rdrr.io/r/base/qr.html" class="external-link">base::qr()</a></code>,</p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

@@ -1,6 +1,6 @@
 # Find the bounding box of a `rgl::mesh3d` or `rgl::qmesh3d` object
 
-Ellipsoids are created by rgl functions as meshes of points, segments,
+Ellipsoids are created by `rgl` functions as meshes of points, segments,
 ... from coordinates in various forms. This function calculates the
 bounding box, defined as the range of the x, y, and z coordinates.
 

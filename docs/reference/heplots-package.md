@@ -49,25 +49,26 @@ contrasts among response variables in repeated measures designs).
   linear hypotheses for single response variables.
 
 For repeated measure designs, between-subject effects and within-subject
-effects must be plotted separately, because the error terms (E matrices)
-differ. For terms involving within-subject effects, these functions
-carry out a linear transformation of the matrix **Y** of responses to a
-matrix **Y M**, where **M** is the model matrix for a term in the
-intra-subject design and produce plots of the H and E matrices in this
-transformed space. The vignette `repeated` describes these graphical
-methods for repeated measures designs.
+effects must be plotted separately, because the error terms
+(\\\mathbf{E}\\ matrices) differ. For terms involving within-subject
+effects, these functions carry out a linear transformation of the matrix
+**Y** of responses to a matrix **Y M**, where **M** is the model matrix
+for a term in the intra-subject design and produce plots of the
+\\\mathbf{H}\\ and \\\mathbf{E}\\ matrices in this transformed space.
+The vignette `repeated` describes these graphical methods for repeated
+measures designs.
 
-The related car package calculates Type II and Type III tests of
+The related `car` package calculates Type II and Type III tests of
 multivariate linear hypotheses using the
-[`Anova`](https://rdrr.io/pkg/car/man/Anova.html) and
-[`linearHypothesis`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
+[`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html) and
+[`car::linearHypothesis()`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
 functions.
 
 The
-[`candisc-package`](https://friendly.github.io/candisc/reference/candisc-package.html)
+[`candisc::candisc-package`](https://friendly.github.io/candisc/reference/candisc-package.html)
 package provides functions for visualizing effects for MLM model terms
 in a low-dimensional canonical space that shows the largest hypothesis
-relative to error variation. The candisc package now also includes
+relative to error variation. The `candisc` package now also includes
 related methods for canonical correlation analysis.
 
 The `heplots` package also contains a large number of multivariate data
@@ -118,11 +119,11 @@ publication.
 
 ## See also
 
-    \code{\link[car]{Anova}}, \code{\link[car]{linearHypothesis}} for Anova.mlm computations and tests
+    [car::Anova()], [car::linearHypothesis()] for Anova.mlm computations and tests
 
-    \code{\link[candisc]{candisc-package}} for reduced-rank views in canonical space
+    [`candisc::candisc-package`] for reduced-rank views in canonical space
 
-    \code{\link[stats]{manova}} for a different approach to testing effects in MANOVA designs
+    [stats::manova()] for a different approach to testing effects in MANOVA designs
 
 ## Author
 

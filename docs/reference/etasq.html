@@ -81,7 +81,7 @@ across all response variables.</p>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Other arguments passed down to <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code>.</p></dd>
+<dd><p>Other arguments passed down to <code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code>.</p></dd>
 
 
 <dt id="arg-anova">anova<a class="anchor" aria-label="anchor" href="#arg-anova"></a></dt>
@@ -115,7 +115,7 @@ to a given factor, partialling out (excluding) other factors from the total
 nonerror variation. These are commonly used as measures of effect size or
 measures of (non-linear) strength of association in ANOVA models.</p>
 <p>All multivariate tests are based on the \(s=min(p, df_h)\) latent roots of
-\(H E^{-1}\). The analogous multivariate partial \(\eta^2\) measures are
+\(\mathbf{H} \mathbf{E}^{-1}\). The analogous multivariate partial \(\eta^2\) measures are
 calculated as:</p>
 <dl><dt>Pillai's trace (V)</dt>
 <dd><p>\(\eta^2 = V/s\)</p></dd>
@@ -143,8 +143,8 @@ Association</em>, <strong>87</strong>, 1209-1226.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code></p>
-<p><code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">eta_squared</a></code> for a function that calculates this effect size measure for each response variable separately.</p></div>
+    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code></p>
+<p><code><a href="https://easystats.github.io/effectsize/reference/eta_squared.html" class="external-link">effectsize::eta_squared()</a></code> for a function that calculates this effect size measure for each response variable separately.</p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

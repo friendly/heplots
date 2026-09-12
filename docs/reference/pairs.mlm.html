@@ -6,10 +6,10 @@
     }
   };
 </script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Pairwise HE Plots — pairs.mlm"><meta name="description" content="The function (in the form of an mlm method for the generic
-pairs function) constructs a “matrix” of pairwise
-HE plots (see heplot) for a multivariate linear model."><meta property="og:description" content="The function (in the form of an mlm method for the generic
-pairs function) constructs a “matrix” of pairwise
-HE plots (see heplot) for a multivariate linear model."><meta property="og:image" content="https://friendly.github.io/heplots/logo.png"></head><body>
+graphics::pairs() function) constructs a “matrix” of pairwise
+HE plots (see heplot()) for a multivariate linear model."><meta property="og:description" content="The function (in the form of an mlm method for the generic
+graphics::pairs() function) constructs a “matrix” of pairwise
+HE plots (see heplot()) for a multivariate linear model."><meta property="og:image" content="https://friendly.github.io/heplots/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -51,8 +51,8 @@ HE plots (see heplot) for a multivariate linear model."><meta property="og:image
 
     <div class="ref-description section level2">
     <p>The function (in the form of an <code>mlm</code> method for the generic
-<code><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></code> function) constructs a “matrix” of pairwise
-HE plots (see <a href="heplot.html">heplot</a>) for a multivariate linear model.</p>
+<code><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">graphics::pairs()</a></code> function) constructs a “matrix” of pairwise
+HE plots (see <code><a href="heplot.html">heplot()</a></code>) for a multivariate linear model.</p>
     </div>
 
     <div class="section level2">
@@ -109,7 +109,7 @@ is the default (and <code>"2"</code> is a synonym).</p></dd>
 <dt id="arg-idata">idata<a class="anchor" aria-label="anchor" href="#arg-idata"></a></dt>
 <dd><p>an optional data frame giving a factor or factors defining the
 intra-subject model for multivariate repeated-measures data.  See Details of
-<code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></code> for an explanation of the intra-subject design and
+<code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code> for an explanation of the intra-subject design and
 for further explanation of the other arguments relating to intra-subject factors.</p></dd>
 
 
@@ -136,7 +136,7 @@ model matrix for <em>different</em> terms must be mutually orthogonal.</p></dd>
 
 <dt id="arg-iterm">iterm<a class="anchor" aria-label="anchor" href="#arg-iterm"></a></dt>
 <dd><p>For repeated measures designs, you must specify one
-intra-subject term (a character string) to select the SSPE (E) matrix used
+intra-subject term (a character string) to select the SSPE (\(\mathbf{E}\)) matrix used
 in the HE plot.  Hypothesis terms plotted include the <code>iterm</code> effect as
 well as all interactions of <code>iterm</code> with <code>terms</code>.</p></dd>
 
@@ -161,7 +161,7 @@ the <code>"digits"</code> option.</p></dd>
 filled or not.  The first value is used for the error ellipse, the rest —
 possibly recycled — for the hypothesis ellipses; a single fill value can
 be given.  Defaults to FALSE for backward compatibility. See Details of
-<code><a href="heplot.html">heplot</a></code></p></dd>
+<code><a href="heplot.html">heplot()</a></code></p></dd>
 
 
 <dt id="arg-fill-alpha">fill.alpha<a class="anchor" aria-label="anchor" href="#arg-fill-alpha"></a></dt>
@@ -187,7 +187,7 @@ Displays for Multivariate Linear Models: SAS Software and Examples
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="heplot.html">heplot</a></code>, <code><a href="heplot3d.html">heplot3d</a></code></p>
+    <div class="dont-index"><p><code><a href="heplot.html">heplot()</a></code>, <code><a href="heplot3d.html">heplot3d()</a></code></p>
 <p>Other HE plot functions:
 <code><a href="heplot.html">heplot()</a></code>,
 <code><a href="heplot1d.html">heplot1d()</a></code>,

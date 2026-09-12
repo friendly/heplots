@@ -173,8 +173,7 @@ that for the pooled covariance matrix</p></dd>
 <dd><p>a character string giving the names of the data, as extracted from the call</p></dd>
 
 <dt>method</dt>
-<dd><p>the character string <code>"Box's M-test for Homogeneity of
-    Covariance Matrices"</code></p></dd>
+<dd><p>the character string <code>"Box's M-test for Homogeneity of Covariance Matrices"</code></p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -192,7 +191,7 @@ also affected adversely by unbalanced designs.  Some people recommend to
 ignore the result unless it is very highly significant, e.g., p &lt; .0001 or
 worse.</p>
 <p>In general, heterogeneity of covariance matrices can be more easily seen and understood by plotting
-the covariance ellipses using <code><a href="covEllipses.html">covEllipses</a></code>.</p>
+the covariance ellipses using <code><a href="covEllipses.html">covEllipses()</a></code>.</p>
 <p>The <code>summary</code> method prints a variety of additional statistics based on
 the eigenvalues of the covariance matrices. These are returned invisibly, as
 a list containing the following components:</p><dl><dt>logDet</dt>
@@ -229,15 +228,15 @@ of likelihood criteria. <em>Biometrika</em>, 36, 317-346.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/car/man/leveneTest.html" class="external-link">leveneTest</a></code> carries out homogeneity of variance
+    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/car/man/leveneTest.html" class="external-link">car::leveneTest()</a></code> carries out homogeneity of variance
 tests for univariate models with better statistical properties.</p>
-<p><code><a href="plot.boxM.html">plot.boxM</a></code>, a simple dot plot of the log determinants compared with that of the pooled covariance matrix, and also of other quantities computed from their eigenvalues</p>
-<p><code><a href="covEllipses.html">covEllipses</a></code> plots covariance ellipses in variable space for
+<p><code><a href="plot.boxM.html">plot.boxM()</a></code>, a simple dot plot of the log determinants compared with that of the pooled covariance matrix, and also of other quantities computed from their eigenvalues</p>
+<p><code><a href="covEllipses.html">covEllipses()</a></code> plots covariance ellipses in variable space for
 several groups.</p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
-    <p>The default method was taken from the <span class="pkg">biotools</span> package,
+    <p>The default method was taken from the <code>biotools</code> package,
 Anderson Rodrigo da Silva <a href="mailto:anderson.agro@hotmail.com">anderson.agro@hotmail.com</a></p>
 <p>Generalized by Michael Friendly and John Fox</p>
     </div>

@@ -82,7 +82,7 @@ heplot(
 
   optional list of linear hypotheses for which to plot hypothesis
   matrices; hypotheses are specified as for the
-  [`linearHypothesis`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
+  [`car::linearHypothesis()`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
   function in the `car` package; the list elements can be named, in
   which case the names are used.
 
@@ -113,7 +113,7 @@ heplot(
   `ellipse` object. The default, `label.pos=NULL` uses the correlation
   of the `ellipse` to determine "top" (r\>=0) or "bottom" (r\<0). Even
   more flexible options are described in
-  [`label.ellipse`](https://friendly.github.io/heplots/reference/label.ellipse.md)
+  [`label.ellipse()`](https://friendly.github.io/heplots/reference/label.ellipse.md)
 
 - label.cex:
 
@@ -156,9 +156,9 @@ heplot(
   an optional data frame giving a factor or factors defining the
   intra-subject model for multivariate repeated-measures data. See
   Friendly (2010) and Details of
-  [`Anova`](https://rdrr.io/pkg/car/man/Anova.html) for an explanation
-  of the intra-subject design and for further explanation of the other
-  arguments relating to intra-subject factors.
+  [`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html) for an
+  explanation of the intra-subject design and for further explanation of
+  the other arguments relating to intra-subject factors.
 
 - idesign:
 
@@ -185,14 +185,14 @@ heplot(
 - iterm:
 
   For repeated measures designs, you must specify one intra-subject term
-  (a character string) to select the SSPE (E) matrix used in the HE
-  plot. Hypothesis terms plotted include the `iterm` effect as well as
-  all interactions of `iterm` with `terms`.
+  (a character string) to select the SSPE (\\\mathbf{E}\\) matrix used
+  in the HE plot. Hypothesis terms plotted include the `iterm` effect as
+  well as all interactions of `iterm` with `terms`.
 
 - markH0:
 
   A logical value (or else a list of arguments to
-  [`mark.H0`](https://friendly.github.io/heplots/reference/mark.H0.md))
+  [`mark.H0()`](https://friendly.github.io/heplots/reference/mark.H0.md))
   used to draw cross-hairs and a point indicating the value of a point
   null hypothesis. The default is TRUE if `iterm` is non-NULL.
 
@@ -361,9 +361,9 @@ The components are:
 ## Details
 
 The `heplot` function plots a representation of the covariance ellipses
-for hypothesized model terms and linear hypotheses (H) and the
-corresponding error (E) matrices for two response variables in a
-multivariate linear model (mlm).
+for hypothesized model terms and linear hypotheses (\\\mathbf{H}\\) and
+the corresponding error (\\\mathbf{E}\\) matrices for two response
+variables in a multivariate linear model (mlm).
 
 The plot helps to visualize the nature and dimensionality response
 variation on the two variables jointly in relation to error variation
@@ -374,15 +374,16 @@ exploited in the `size="evidence"` version of the plot. See the
 description of argument `alpha`.
 
 For a 1 df hypothesis term (a quantitative regressor, a single contrast
-or parameter test), the H matrix has rank 1 (one non-zero latent root of
-\\H E^{-1}\\) and the H "ellipse" collapses to a degenerate line.
+or parameter test), the \\\mathbf{H}\\ matrix has rank 1 (one non-zero
+latent root of \\\mathbf{H} \mathbf{E}^{-1}\\) and the \\\mathbf{H}\\
+"ellipse" collapses to a degenerate line.
 
 Typically, you fit a mlm with
 `mymlm <- lm(cbind(y1, y2, y3, ...) ~ modelterms)`, and plot some or all
 of the `modelterms` with `heplot(mymlm, ...)`. Arbitrary linear
 hypotheses related to the terms in the model (e.g., contrasts of an
 effect) can be included in the plot using the `hypotheses` argument. See
-[`linearHypothesis`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
+[`car::linearHypothesis()`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
 for details.
 
 For repeated measure designs, where the response variables correspond to
@@ -396,13 +397,13 @@ Friendly (2010) or the `vignette("repeated")` in this package for an
 extended discussion and examples.
 
 The related
-[`candisc`](https://friendly.github.io/candisc/reference/candisc.html)
+[`candisc::candisc()`](https://friendly.github.io/candisc/reference/candisc.html)
 package provides functions for visualizing a multivariate linear model
 in a low-dimensional view via a generalized canonical discriminant
 analyses.
-[`heplot.candisc`](https://friendly.github.io/candisc/reference/heplot.candisc.html)
+[`candisc::heplot.candisc()`](https://friendly.github.io/candisc/reference/heplot.candisc.html)
 and
-[`heplot3d.candisc`](https://friendly.github.io/candisc/reference/heplot.candisc.html)
+[`candisc::heplot3d.candisc()`](https://friendly.github.io/candisc/reference/heplot.candisc.html)
 provide a low-rank 2D (or 3D) view of the effects for a given term in
 the space of maximum discrimination.
 
@@ -438,25 +439,26 @@ Multivariate Linear Models. *Revista Colombiana de Estadistica*, **37**,
 
 ## See also
 
-[`Anova`](https://rdrr.io/pkg/car/man/Anova.html),
-[`linearHypothesis`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
+[`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html),
+[`car::linearHypothesis()`](https://rdrr.io/pkg/car/man/linearHypothesis.html)
 for details on testing MLMs.
 
-[`heplot1d`](https://friendly.github.io/heplots/reference/heplot1d.md),
-[`heplot3d`](https://friendly.github.io/heplots/reference/heplot3d.md),
-[`pairs.mlm`](https://friendly.github.io/heplots/reference/pairs.mlm.md),
-[`mark.H0`](https://friendly.github.io/heplots/reference/mark.H0.md) for
-other HE plot functions.
-[`coefplot.mlm`](https://friendly.github.io/heplots/reference/coefplot.md)
+[`heplot1d()`](https://friendly.github.io/heplots/reference/heplot1d.md),
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md),
+[`pairs.mlm()`](https://friendly.github.io/heplots/reference/pairs.mlm.md),
+[`mark.H0()`](https://friendly.github.io/heplots/reference/mark.H0.md)
+for other HE plot functions.
+[`coefplot.mlm()`](https://friendly.github.io/heplots/reference/coefplot.md)
 for plotting confidence ellipses for parameters in MLMs.
 
-[`trans.colors`](https://friendly.github.io/heplots/reference/trans.colors.md)
+[`trans.colors()`](https://friendly.github.io/heplots/reference/trans.colors.md)
 for calculation of transparent colors.
-[`label.ellipse`](https://friendly.github.io/heplots/reference/label.ellipse.md)
-for labeling positions in plotting H and E ellipses.
+[`label.ellipse()`](https://friendly.github.io/heplots/reference/label.ellipse.md)
+for labeling positions in plotting \\\mathbf{H}\\ and \\\mathbf{E}\\
+ellipses.
 
-[`candisc`](https://friendly.github.io/candisc/reference/candisc.html),
-[`heplot.candisc`](https://friendly.github.io/candisc/reference/heplot.candisc.html)
+[`candisc::candisc()`](https://friendly.github.io/candisc/reference/candisc.html),
+[`candisc::heplot.candisc()`](https://friendly.github.io/candisc/reference/heplot.candisc.html)
 for reduced-rank views of `mlm`s in canonical space.
 
 Other HE plot functions:

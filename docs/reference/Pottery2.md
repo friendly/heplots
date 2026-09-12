@@ -4,7 +4,7 @@ Results of chemical analyses of 48 specimens of Romano-British pottery
 published by Tubb et al. (1980). The numbers are the percentage of
 various metal oxides found in each sample for elements of concentrations
 greater than 0.01\\ contrast to
-[`Pottery`](https://rdrr.io/pkg/carData/man/Pottery.html).
+[`carData::Pottery`](https://rdrr.io/pkg/carData/man/Pottery.html).
 
 ## Format
 
@@ -62,7 +62,8 @@ A data frame with 48 observations on the following 12 variables.
 ## Source
 
 Originally slightly modified from files by David Carlson, now at
-[`RBPottery`](https://rdrr.io/pkg/archdata/man/RBPottery.html). %
+[`archdata::RBPottery`](https://rdrr.io/pkg/archdata/man/RBPottery.html).
+%
 
 ## Details
 
@@ -88,10 +89,10 @@ Romano-British Pottery by Atomic Absorption Spectrophotometry.
 
 ## See also
 
-[`Pottery`](https://rdrr.io/pkg/carData/man/Pottery.html) for the
-related (subset) data set;
-[`RBPottery`](https://rdrr.io/pkg/archdata/man/RBPottery.html) for a
-newer version with more variables.
+[`carData::Pottery`](https://rdrr.io/pkg/carData/man/Pottery.html) for
+the related (subset) data set;
+[`archdata::RBPottery`](https://rdrr.io/pkg/archdata/man/RBPottery.html)
+for a newer version with more variables.
 
 ## Examples
 

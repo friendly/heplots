@@ -55,8 +55,9 @@ Roy(eig, q, df.res)
 - x:
 
   An argument to
-  [`heplot`](https://friendly.github.io/heplots/reference/heplot.md) or
-  [`heplot3d`](https://friendly.github.io/heplots/reference/heplot3d.md)
+  [`heplot()`](https://friendly.github.io/heplots/reference/heplot.md)
+  or
+  [`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)
   that is to be repeated for Error and all hypothesis terms
 
 - n:
