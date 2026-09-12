@@ -20,7 +20,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 <!-- explicit version number now dynamic -->
 
-Version 1.8.5; documentation built for `pkgdown` 2026-09-10
+Version 1.8.5; documentation built for `pkgdown` 2026-09-12
 
 ## 📝 Description
 
@@ -35,25 +35,34 @@ dimensions), ellipsoids (in three dimensions), or by line segments in
 one dimension. For the theory and applications, see:
 
 - [Friendly (2007)](http://datavis.ca/papers/jcgs-heplots.pdf) for the
-  basic theory on which this is based.
+  basic theory of HE plots on which this is based.
 - [Fox, Friendly and Monette
   (2009)](https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf) for a
-  brief introduction,
+  brief introduction with a few worked R examples
 - [Friendly
   (2010)](https://www.jstatsoft.org/htaccess.php?volume=37&type=i&issue=04&filename=paper)
-  for the application of these ideas to repeated measure designs,
+  for the extension of these ideas to repeated measure designs, with R
+  examples
 - [Friendly, Monette and Fox
   (2013)](http://datavis.ca/papers/ellipses-STS402.pdf) for a general
   discussion of the role of elliptical geometry in statistical
-  understanding,
+  understanding— ellipses and geometry are everywhere in statistical
+  models.
 - [Friendly & Sigal (2017)](https://doi.org/10.20982/tqmp.13.1.p020) for
-  an applied R tutorial,
+  an applied R tutorial with examples of MANOVA and multivariate
+  regression models for psychological data drawn from this package
 - [Friendly & Sigal (2018)](https://www.datavis.ca/papers/EqCov-TAS.pdf)
   for theory and examples of visualizing equality of covariance
   matrices.
 
+The ideas behind this and related packages are now the subject of a
+forthcoming book, [*Visualizing Multivariate Data and Models in
+R*](https://friendly.github.io/Vis-MLM-book/)
+
 If you use this work in teaching or research, please cite it as given by
 `citation("heplots")` or see [Citation](authors.html#citation).
+
+### Related methods and packages
 
 Other topics now addressed here include:
 
@@ -137,6 +146,10 @@ effects in variable (**data**) space, for one or more response variables
   covariance.
 
 - `coefplot()` for an MLM object draws bivariate confidence ellipses.
+
+- `stdmodel()` standardizes the numeric variables in a MLM model and
+  `stdcoef()` give you standardized (“beta”) coefficients that don’t
+  depend on units of measurement of the variables.
 
 ### Repeated measure designs
 
