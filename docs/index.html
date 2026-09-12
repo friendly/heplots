@@ -77,7 +77,7 @@
 <strong>Visualizing Hypothesis Tests in Multivariate Linear Models</strong><a class="anchor" aria-label="anchor" href="#visualizing-hypothesis-tests-in-multivariate-linear-models"></a>
 </h2>
 <!-- explicit version number now dynamic -->
-<p>Version 1.8.5; documentation built for <code>pkgdown</code> 2026-09-10</p>
+<p>Version 1.8.5; documentation built for <code>pkgdown</code> 2026-09-12</p>
 </div>
 <div class="section level2">
 <h2 id="id_-description">📝 Description<a class="anchor" aria-label="anchor" href="#id_-description"></a>
@@ -86,19 +86,23 @@
 <p>HE plots represent sums-of-squares-and-products matrices for linear hypotheses (<strong>H</strong>) and for error (<strong>E</strong>) using ellipses (in two dimensions), ellipsoids (in three dimensions), or by line segments in one dimension. For the theory and applications, see:</p>
 <ul>
 <li>
-<a href="http://datavis.ca/papers/jcgs-heplots.pdf" class="external-link">Friendly (2007)</a> for the basic theory on which this is based.</li>
+<a href="http://datavis.ca/papers/jcgs-heplots.pdf" class="external-link">Friendly (2007)</a> for the basic theory of HE plots on which this is based.</li>
 <li>
-<a href="https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf" class="external-link">Fox, Friendly and Monette (2009)</a> for a brief introduction,</li>
+<a href="https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf" class="external-link">Fox, Friendly and Monette (2009)</a> for a brief introduction with a few worked R examples</li>
 <li>
-<a href="https://www.jstatsoft.org/htaccess.php?volume=37&amp;type=i&amp;issue=04&amp;filename=paper" class="external-link">Friendly (2010)</a> for the application of these ideas to repeated measure designs,</li>
+<a href="https://www.jstatsoft.org/htaccess.php?volume=37&amp;type=i&amp;issue=04&amp;filename=paper" class="external-link">Friendly (2010)</a> for the extension of these ideas to repeated measure designs, with R examples</li>
 <li>
-<a href="http://datavis.ca/papers/ellipses-STS402.pdf" class="external-link">Friendly, Monette and Fox (2013)</a> for a general discussion of the role of elliptical geometry in statistical understanding,</li>
+<a href="http://datavis.ca/papers/ellipses-STS402.pdf" class="external-link">Friendly, Monette and Fox (2013)</a> for a general discussion of the role of elliptical geometry in statistical understanding— ellipses and geometry are everywhere in statistical models.</li>
 <li>
-<a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">Friendly &amp; Sigal (2017)</a> for an applied R tutorial,</li>
+<a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">Friendly &amp; Sigal (2017)</a> for an applied R tutorial with examples of MANOVA and multivariate regression models for psychological data drawn from this package</li>
 <li>
 <a href="https://www.datavis.ca/papers/EqCov-TAS.pdf" class="external-link">Friendly &amp; Sigal (2018)</a> for theory and examples of visualizing equality of covariance matrices.</li>
 </ul>
+<p>The ideas behind this and related packages are now the subject of a forthcoming book, <a href="https://friendly.github.io/Vis-MLM-book/" class="external-link"><em>Visualizing Multivariate Data and Models in R</em></a></p>
 <p>If you use this work in teaching or research, please cite it as given by <code>citation("heplots")</code> or see <a href="authors.html#citation">Citation</a>.</p>
+<div class="section level3">
+<h3 id="related-methods-and-packages">Related methods and packages<a class="anchor" aria-label="anchor" href="#related-methods-and-packages"></a>
+</h3>
 <p>Other topics now addressed here include:</p>
 <ul>
 <li>robust MLMs, using iteratively re-weighted least squared to down-weight observations with large multivariate residuals, <code><a href="reference/robmlm.html">robmlm()</a></code>.</li>
@@ -118,6 +122,7 @@
 <ul>
 <li>Another package, <a href="https://friendly.github.io/mvinfluence/" class="external-link"><code>mvinfluence</code></a>, provides diagnostic measures and plots for <strong>influential observations</strong> in MLM designs. See the <a href="https://friendly.github.io/mvinfluence/" class="external-link">package documentation</a> for details.</li>
 </ul>
+</div>
 </div>
 <div class="section level2">
 <h2 id="id_-installation">📂 Installation<a class="anchor" aria-label="anchor" href="#id_-installation"></a>
@@ -162,6 +167,7 @@
 <li><p><code><a href="reference/boxM.html">boxM()</a></code> Calculates Box’s <em>M</em> test for homogeneity of covariance matrices in a MANOVA design. A <code>plot</code> method displays a visual representation of the components of the test. Associated with this, <code>bartletTests()</code> and <code>levineTests()</code> give the univariate tests of homogeneity of variance for each response measure in a MLM.</p></li>
 <li><p><code><a href="reference/covEllipses.html">covEllipses()</a></code> draw covariance (data) ellipses for one or more group, optionally including the ellipse for the pooled within-group covariance.</p></li>
 <li><p><code><a href="reference/coefplot.html">coefplot()</a></code> for an MLM object draws bivariate confidence ellipses.</p></li>
+<li><p><code><a href="reference/stdmodel.html">stdmodel()</a></code> standardizes the numeric variables in a MLM model and <code><a href="reference/stdcoef.html">stdcoef()</a></code> give you standardized (“beta”) coefficients that don’t depend on units of measurement of the variables.</p></li>
 </ul>
 <div class="section level3">
 <h3 id="repeated-measure-designs">Repeated measure designs<a class="anchor" aria-label="anchor" href="#repeated-measure-designs"></a>
