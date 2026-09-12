@@ -105,13 +105,11 @@ $$
 $$
 or,
 $$
-\begin{eqnarray*}
-\begin{bmatrix} y_{\text{anx}} \\y_{\text{dep}} \end{bmatrix} & = &
+\begin{bmatrix} y_{\text{anx}} \\y_{\text{dep}} \end{bmatrix} =
 \begin{bmatrix} \beta_{0,\text{anx}} \\ \beta_{0,\text{dep}} \end{bmatrix} +
 \begin{bmatrix} \beta_{1,\text{anx}} \\ \beta_{1,\text{dep}} \end{bmatrix} \text{grade} +
 \begin{bmatrix} \beta_{2,\text{anx}} \\ \beta_{2,\text{dep}} \end{bmatrix} \text{grade}^2 + \cdots
 \begin{bmatrix} \beta_{5,\text{anx}} \\ \beta_{5,\text{dep}} \end{bmatrix} \text{grade}^5
-\end{eqnarray*}
 $$
 
 Using `lm()` we get the coefficients for each of the polynomial terms in `grade`:

@@ -11,13 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" sizes="any" href="favicon.ico">
 <link rel="manifest" href="site.webmanifest">
-<!-- mathjax math --><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script><script>
-  window.MathJax = {
-    chtml: {
-      fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
-    }
-  };
-</script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
@@ -28,6 +22,8 @@
 <meta name="description" content="Provides HE plot and other functions for visualizing hypothesis tests in multivariate linear models. HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of the models such as robust methods and homogeneity of variance covariance matrices. The related candisc package provides visualizations in a reduced-rank canonical discriminant space when there are more than a few response variables.">
 <meta property="og:description" content="Provides HE plot and other functions for visualizing hypothesis tests in multivariate linear models. HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of the models such as robust methods and homogeneity of variance covariance matrices. The related candisc package provides visualizations in a reduced-rank canonical discriminant space when there are more than a few response variables.">
 <meta property="og:image" content="https://friendly.github.io/heplots/logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -110,7 +106,7 @@
 <code><a href="reference/Mahalanobis.html">Mahalanobis()</a></code> calculates classical and <em>robust</em> Mahalanobis squared distances using MCD and MVE estimators of center and covariance.</li>
 <li>visualizing tests for equality of covariance matrices in MLMs (Box’s M test), <code><a href="reference/boxM.html">boxM()</a></code> and <code><a href="reference/plot.boxM.html">plot.boxM()</a></code>. Also: <code><a href="reference/bartlettTests.html">bartlettTests()</a></code> and <code>LeveneTests()</code> for homogeneity of variance for each response in a MLM.</li>
 <li>
-<span class="math inline">\(\chi^2\)</span> Q-Q plots for MLMs (<code><a href="reference/cqplot.html">cqplot()</a></code>) to detect outliers and assess multivariate normality of residuals.</li>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>χ</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math> Q-Q plots for MLMs (<code><a href="reference/cqplot.html">cqplot()</a></code>) to detect outliers and assess multivariate normality of residuals.</li>
 <li>bivariate coefficient plots showing elliptical confidence regions (<code><a href="reference/coefplot.html">coefplot()</a></code>).</li>
 </ul>
 <p>In this respect, the <code>heplots</code> package now aims to provide a wide range of tools for analyzing and visualizing multivariate response linear models, together with other packages:</p>

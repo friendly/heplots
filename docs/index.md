@@ -54,7 +54,7 @@ Other topics now addressed here include:
   [`bartlettTests()`](https://friendly.github.io/heplots/reference/bartlettTests.md)
   and `LeveneTests()` for homogeneity of variance for each response in a
   MLM.
-- \\\chi^2\\ Q-Q plots for MLMs
+- $\chi^{2}$ Q-Q plots for MLMs
   ([`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md))
   to detect outliers and assess multivariate normality of residuals.
 - bivariate coefficient plots showing elliptical confidence regions

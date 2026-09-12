@@ -105,12 +105,14 @@ win-builder CRAN-incoming-feasibility check.
   fixed the same way) two more pre-existing bare `doi.org` references in
   `Iwasaki_Big_Five` and `TIPI`’s documentation that hadn’t yet been
   flagged.
+
 - Withdrew `vignettes/repeated-JSS.pdf` (a static reprint of the
   published *Journal of Statistical Software* article, included via the
   `R.rsp::asis` engine) to `vignettes-old/`, rather than continue
   explaining its embedded non-canonical URLs to CRAN on every
   submission. Dropped the now-unused `R.rsp` from
   `Suggests`/`VignetteBuilder`.
+
 - Added a second, shorter worked example to the `Robust.Rmd` vignette
   using the
   [`robustbase::pulpfiber`](https://rdrr.io/pkg/robustbase/man/pulpfiber.html)
@@ -120,6 +122,7 @@ win-builder CRAN-incoming-feasibility check.
   [`distancePlot()`](https://friendly.github.io/heplots/reference/distancePlot.md)
   to distinguish vertical outliers, a bad leverage point, and two good
   leverage points.
+
 - [`distancePlot()`](https://friendly.github.io/heplots/reference/distancePlot.md)
   documentation now cross-links
   [`robmlm()`](https://friendly.github.io/heplots/reference/robmlm.md),
@@ -263,10 +266,10 @@ This is largely a maintenance release, but adds a function to identify
   the `schooldata` dataset.
 - [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
   now prints a warning if there are missing cases and also returns the
-  upper tail p-values corresponding to Mahalanobis \\D^2\\.
+  upper tail p-values corresponding to Mahalanobis $D^{2}$.
 - Default `method.id` in
   [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
-  changed to “r”, to identify points with the largest \\D^2\\.
+  changed to “r”, to identify points with the largest $D^{2}$.
 - added `noteworthy(x, y)` as a utility to select “noteworthy”
   observations in a 2D plot, extending the ideas in
   [`car::showLabels()`](https://rdrr.io/pkg/car/man/showLabels.html)

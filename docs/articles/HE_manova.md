@@ -59,14 +59,14 @@ the MLM:
 
 \\ \mathbf{y} = \boldsymbol{\beta}\_0 + \boldsymbol{\beta}\_1 x +
 \boldsymbol{\beta}\_2 x^2 + \cdots \boldsymbol{\beta}\_5 x^5 \tag{1.1}
-\\ or, \\ \begin{eqnarray\*} \begin{bmatrix} y\_{\text{anx}}
-\\y\_{\text{dep}} \end{bmatrix} & = & \begin{bmatrix}
-\beta\_{0,\text{anx}} \\ \beta\_{0,\text{dep}} \end{bmatrix} +
-\begin{bmatrix} \beta\_{1,\text{anx}} \\ \beta\_{1,\text{dep}}
-\end{bmatrix} \text{grade} + \begin{bmatrix} \beta\_{2,\text{anx}} \\
+\\ or, \\ \begin{bmatrix} y\_{\text{anx}} \\y\_{\text{dep}}
+\end{bmatrix} = \begin{bmatrix} \beta\_{0,\text{anx}} \\
+\beta\_{0,\text{dep}} \end{bmatrix} + \begin{bmatrix}
+\beta\_{1,\text{anx}} \\ \beta\_{1,\text{dep}} \end{bmatrix}
+\text{grade} + \begin{bmatrix} \beta\_{2,\text{anx}} \\
 \beta\_{2,\text{dep}} \end{bmatrix} \text{grade}^2 + \cdots
 \begin{bmatrix} \beta\_{5,\text{anx}} \\ \beta\_{5,\text{dep}}
-\end{bmatrix} \text{grade}^5 \end{eqnarray\*} \\
+\end{bmatrix} \text{grade}^5 \\
 
 Using [`lm()`](https://rdrr.io/r/stats/lm.html) we get the coefficients
 for each of the polynomial terms in `grade`:
