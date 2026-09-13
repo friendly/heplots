@@ -30,9 +30,6 @@ We checked 9 reverse dependencies, comparing R CMD check results across CRAN
 * We saw 0 new problems
 * We failed to check 0 packages
 
-One pre-existing issue appears in `Guerry`'s own vignette (a `here::here()`
-path problem when writing `packages.bib`) -- identical under both the CRAN
-and dev versions of heplots, so unrelated to this release.
 
 ## Comments
 
