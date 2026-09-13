@@ -179,7 +179,7 @@ The package also provides a large collection of data sets illustrating a
 variety of multivariate linear models of the types listed above,
 together with graphical displays. The table below classifies these with
 method tags. Their names are linked to their documentation with graphical output on the
-`pkgdown` website, [<https://friendly.github.io/heplots>].
+`pkgdown` website, [<https://friendly.github.io/heplots/>].
 
 ```{r datasets, echo=FALSE}
 library(here)

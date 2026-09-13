@@ -171,7 +171,7 @@ variety of multivariate linear models of the types listed above,
 together with graphical displays. The table below classifies these with
 method tags. Their names are linked to their documentation with
 graphical output on the `pkgdown` website,
-\[<https://friendly.github.io/heplots>\].
+\[<https://friendly.github.io/heplots/>\].
 
 | dataset                                                                                  | rows | cols | title                                                                     | tags                     |
 |------------------------------------------------------------------------------------------|------|------|---------------------------------------------------------------------------|--------------------------|

@@ -2,7 +2,7 @@ Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
 Version: 1.8.5
-Date: 2026-09-09
+Date: 2026-09-12
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -66,6 +66,7 @@ Suggests:
     tinytable,
     glue,
     here,
+    htmltools,
     Sleuth2, rrcov, archdata, qqtest, ggbiplot,
     vcdExtra,
     KernSmooth,
