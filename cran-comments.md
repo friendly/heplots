@@ -1,39 +1,38 @@
 ## Test environments
 * local Windows 11 x64 install, R version 4.6.1 (2026-06-24 ucrt)
-* win-builder R Under development (unstable) (2026-08-22 r90443 ucrt)
+* win-builder R Under development (unstable)
 
 ## R CMD check results
 0 error(s) | 0 warning(s) | 0 note(s)
 
-## Resubmission of v1.8.3 -> v1.8.4
+## Version 1.8.5
 
-This resubmission addresses the two `URL` findings from CRAN's win-builder
-incoming-feasibility check on the v1.8.3 submission:
+A feature release adding two datasets, a new confidence-interval function, and
+standardized-coefficient support, plus documentation/rendering maintenance (see
+NEWS.md for full details):
 
-* `man/NeuroCog.Rd` cited the Nuechterlein et al. (2008) reference by a PubMed URL
-  (`https://pubmed.ncbi.nlm.nih.gov/18172019/`); replaced with the article's DOI, written
-  with the `\doi{}` macro rather than `\url{}` (a win-builder dry run flagged the first
-  attempt for using `\url{}` around a `doi.org` link). Found and fixed two more
-  pre-existing bare `doi.org` references the same way, in `Iwasaki_Big_Five` and `TIPI`.
-* `vignettes/repeated-JSS.pdf` (a static reprint of the published *Journal of Statistical
-  Software* article, included via the `R.rsp::asis` engine) had several embedded
-  non-canonical URLs that are part of the original, already-published document and not
-  under our control. Rather than continue explaining this on every submission, we've
-  withdrawn the vignette to `vignettes-old/` and dropped the now-unused `R.rsp` from
-  `Suggests`/`VignetteBuilder`.
+* Added the `LearnDis` and `ReadingDisability` datasets, for worked
+  MANOVA/MANCOVA and Roy-Bargmann stepdown examples.
+* Added `traceCI()`, analytic confidence intervals for the trace of one or
+  more covariance matrices, complementing `logdetCI()` and `eigstatCI()`.
+* Added `stdmodel()` and `stdcoef()` for standardized ("beta") coefficients on
+  `lm`/`mlm` objects; `coefplot.mlm()` gains a `std = TRUE` argument using
+  this.
+* Added a live, rotatable/zoomable `heplot3d()` example to the `HE_manova`
+  vignette.
 
-Reverse dependencies were not re-checked for this resubmission: the only other change is a
-second worked example added to the `Robust.Rmd` vignette and a small `distancePlot()`
-documentation/bugfix update (gating a `cat()` call behind its existing `verbose` argument,
-which previously fired unconditionally). Nothing exported changed signature of any function.
 
 ## Reverse dependencies checks
 
-We checked 9 reverse dependencies, comparing R CMD check results across CRAN and dev versions
-of this package (against v1.8.3; not re-run for this resubmission, see above).
+We checked 9 reverse dependencies, comparing R CMD check results across CRAN
+(v1.8.4) and dev (v1.8.5) versions of this package.
 
 * We saw 0 new problems
 * We failed to check 0 packages
+
+One pre-existing issue appears in `Guerry`'s own vignette (a `here::here()`
+path problem when writing `packages.bib`) -- identical under both the CRAN
+and dev versions of heplots, so unrelated to this release.
 
 ## Comments
 
