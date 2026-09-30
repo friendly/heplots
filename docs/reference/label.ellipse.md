@@ -97,7 +97,8 @@ text label with respect to the ellipse:
 
 - Even more generally, `label.pos` can also be a *fraction* in (0,1),
   interpreted as the fraction of the way around the unit circle,
-  counterclockwise from the North point (0, 1).
+  counterclockwise from the East point (1, 0). Thus, `0.25` is the top,
+  `0.5` is the left, and `0.75` is the bottom.
 
 ## See also
 

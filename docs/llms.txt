@@ -2,7 +2,7 @@
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.8.5; documentation built for `pkgdown` 2026-09-12
+Version 1.8.5; documentation built for `pkgdown` 2026-09-30
 
 ## 📝 Description
 
@@ -172,7 +172,7 @@ variety of multivariate linear models of the types listed above,
 together with graphical displays. The table below classifies these with
 method tags. Their names are linked to their documentation with
 graphical output on the `pkgdown` website,
-\[<https://friendly.github.io/heplots>\].
+\[<https://friendly.github.io/heplots/>\].
 
 | dataset                                                                                  | rows | cols | title                                                                     | tags                     |
 |------------------------------------------------------------------------------------------|------|------|---------------------------------------------------------------------------|--------------------------|
@@ -228,6 +228,15 @@ site](https://friendly.github.io/heplots/articles/):
   Examples](https://friendly.github.io/heplots/articles/HE_mmra.html)
 - [Robust Multivariate Linear
   Models](https://friendly.github.io/heplots/articles/Robust.html)
+
+## 🗒️ Cheatsheet
+
+A two-page cheatsheet summarizes the main functions: fitting and
+visualizing multivariate linear models with HE plots, then checking
+assumptions, customizing plots and reporting statistics.
+
+[![heplots cheatsheet, pages 1 and
+2](reference/figures/cheatsheet-thumbs.png)](https://friendly.github.io/heplots/heplots-cheatsheet.pdf)
 
 ## 📊 Examples
 
