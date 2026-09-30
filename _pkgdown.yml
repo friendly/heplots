@@ -20,6 +20,15 @@ figures:
       fig.asp: 1
 
 
+navbar:
+  structure:
+    left: [intro, reference, articles, tutorials, news, cheatsheet]
+  components:
+    cheatsheet:
+      text: Cheatsheet
+      icon: fa-file-pdf
+      href: heplots-cheatsheet.pdf
+
 reference:
   - title: HE plots
     desc:  Hypothesis-Error plots

@@ -219,14 +219,51 @@ Cross-reference: **mvinfluence** for influence diagnostics.
 
 ---
 
+## Decisions & status (2026-09-30)
+
+* **Decided**: 2 pages; include a `candisc` panel (B6); no formula box.
+* **Q3 (main example)** — no reply; going with `iris` for page 1, `peng` for page 2.
+* **Q4 (production path)** — still open. The thumbnails are needed either way, so they
+  come first.
+* **Thumbnails**: `dev/cheatsheet-figs.R` → `dev/cheatsheet/fig/*.png` (22 images,
+  1.6 in square at 300 dpi, pointsize 7). Every panel image from the outline exists, except
+  A1 annotations and E2 (`stdcoef()`, which is text only).
+* **Still rough**: overlapping group labels in iris sepal space (A1b, B1, C1, B6);
+  crowded variable vectors in B6 (iris has one dominant canonical dimension); G4 robust vs.
+  classical differ little for `peng`. Maybe use `Skulls` there instead.
+* **Page 1 prototype (Quarto → Typst)**: `dev/cheatsheet/heplots-cheatsheet.qmd` →
+  `.pdf`. Layout is in raw Typst with `panel()` and `thumb()` helpers. The page setup
+  (landscape, margins, footer) is in the `page.typ` template partial; setting it in the
+  body gave a blank first page. The highlight color is the logo's blue `#4472C4`.
+  Still to do: fill about 1.3 in of empty space at the bottom (bigger thumbnails, or
+  move panels between columns), make the thumbnails schematic, and write page 2.
+* **Layout chosen: variant "C"** (two pages, by workflow): ① *Fit & visualize*, ② *Check,
+  refine & report*. B's "Other plots" and datasets list were merged into page 2. The trials
+  (`dev/cheatsheet/try-*`) are git-ignored and kept locally only.
+* **Build & publish**: `source("dev/cheatsheet/build.R")` regenerates the figures, renders
+  the PDF, and copies it to `pkgdown/assets/heplots-cheatsheet.pdf`, which is served at
+  <https://friendly.github.io/heplots/heplots-cheatsheet.pdf>. It also writes
+  `man/figures/cheatsheet-thumbs.png`. The README (section "Cheatsheet") and the pkgdown
+  navbar link to it.
+* **Package bugs found while doing this**:
+  - FIXED: `label.ellipse()` had `"SE"` / `"NW"` swapped.
+  - TODO: `covEllipses()` documents `label.pos = NULL` but errors on it (`rep_fun()`).
+  - TODO: `pvPlot()` fails on a tibble (`peng`); needs `as.data.frame()`.
+
 ## Open questions for the next pass
 
 1. **1 or 2 pages?** The content above needs 2. For 1 page, drop Panels E, I, and J,
    and move H into a narrow sidebar.
+   MF: Let's do 2 pages, as is most oftn done.
+   
 2. **Scope of candisc**: include a canonical panel (B6) even though it's a different package?
    It's the natural "next step" after an HE plot.
+   MF: Yes, show an analogous `candisc` example
 3. **Main example**: `iris` is familiar, but `peng` or `Plastic` would show more
    package-specific data. I'd use `iris` for Page 1 (familiar) and `peng` for Page 2.
+   
 4. **Production path**: PowerPoint template vs. Quarto (see §0).
+
 5. Should the Basics panel include a small formula box (H, E, Roy's θ,
    `H E⁻¹` eigenvalues), or keep the sheet formula-free?
+   MF: Keep the formula box out of it.

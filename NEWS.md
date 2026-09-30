@@ -4,6 +4,9 @@
   swapped. The documentation for a fractional `label.pos` now says correctly that it is
   measured counterclockwise from East (0 = right, 0.25 = top).
 
+* Added a two-page cheatsheet, `heplots-cheatsheet.pdf`, linked from the README and the
+  pkgdown navbar.
+
 ## Version 1.8.5
 
 * Added the `LearnDis` dataset (Tabachnick & Fidell, 2013, Table 7.1): a small

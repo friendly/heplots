@@ -20,7 +20,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 <!-- explicit version number now dynamic -->
 
-Version 1.8.5; documentation built for `pkgdown` 2026-09-12
+Version 1.8.5; documentation built for `pkgdown` 2026-09-30
 
 ## 📝 Description
 
@@ -227,6 +227,14 @@ site](https://friendly.github.io/heplots/articles/):
   Examples](https://friendly.github.io/heplots/articles/HE_mmra.html)
 - [Robust Multivariate Linear
   Models](https://friendly.github.io/heplots/articles/Robust.html)
+
+## 🗒️ Cheatsheet
+
+A two-page cheatsheet summarizes the main functions: fitting and
+visualizing multivariate linear models with HE plots, then checking
+assumptions, customizing plots and reporting statistics.
+
+<a href="https://friendly.github.io/heplots/heplots-cheatsheet.pdf"><img src="man/figures/cheatsheet-thumbs.png" width="630" alt="heplots cheatsheet, pages 1 and 2"/></a>
 
 ## 📊 Examples
 

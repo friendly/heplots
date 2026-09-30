@@ -213,6 +213,14 @@ links <- glue::glue("- [{vigns$Title}]({articleurl}{tools::file_path_sans_ext(vi
 cat(links, sep = "\n")
 ```
 
+## 🗒️ Cheatsheet
+
+A two-page cheatsheet summarizes the main functions: fitting and visualizing
+multivariate linear models with HE plots, then checking assumptions, customizing
+plots and reporting statistics.
+
+<a href="https://friendly.github.io/heplots/heplots-cheatsheet.pdf"><img src="man/figures/cheatsheet-thumbs.png" width="630" alt="heplots cheatsheet, pages 1 and 2"/></a>
+
 ## 📊 Examples
 
 This example illustrates HE plots using the classic `iris` data set. How

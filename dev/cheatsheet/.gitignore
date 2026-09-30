@@ -1,0 +1,7 @@
+# build by-products (the published PDF is pkgdown/assets/heplots-cheatsheet.pdf)
+.quarto/
+*.typ
+!page.typ
+heplots-cheatsheet.pdf
+# layout trials A/B/C, kept locally for reference
+try-*
