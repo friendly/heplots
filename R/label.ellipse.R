@@ -2,6 +2,8 @@
 # 
 # DONE: ✔️ Generalize the `label.pos` argument to accept, in addition to values `0:4` and corresponding compass 
 #       directions, N, S, E, W values: `NE`, `SE`, `SW`, `NW` to mean at circular angles 45, 135, 225, 315
+# DONE: ✔️ Fixed "SE" and "NW", which were swapped: fractions are counterclockwise from East, not
+#       clockwise from North. Corrected the doc for fractional label.pos to match. 2026-09-30
 # TODO: Allow to use `tweak` for diagonal positions.
 # TODO: Generalize to allow a vector of `label`, with corresponding vectors `label.pos`
 
@@ -39,7 +41,8 @@
 #' and 315 degrees, clockwise from 0 at North. 
 #' 
 #'   \item  Even more generally, `label.pos` can also be a *fraction* in (0,1), interpreted
-#' as the fraction of the way around the unit circle, counterclockwise from the North point (0, 1).
+#' as the fraction of the way around the unit circle, counterclockwise from the East point (1, 0).
+#' Thus, `0.25` is the top, `0.5` is the left, and `0.75` is the bottom.
 #' }
 #'
 #' @param ellipse A two-column matrix of coordinates for the ellipse boundary, for example as computed by [car::ellipse()].
@@ -139,8 +142,9 @@ label.ellipse <- function(
 	
 
 #' # Define diagonal compass positions and their corresponding angular fractions
+	# fractions are counterclockwise from East (see below), so SE = 315 deg, NW = 135 deg
 	post <- c("NE", "SE", "SW", "NW")
-	numt <- c(45, 135, 225, 315) / 360  # Convert degrees to fraction of circle
+	numt <- c(45, 315, 225, 135) / 360  # Convert degrees to fraction of circle
 	
 #' # translate nmemonics to standard numerical text positions 1:4,
 	posn <- c("center", "bottom", "left", "top", "right")

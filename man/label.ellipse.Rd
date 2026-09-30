@@ -66,7 +66,8 @@ usual values of \code{pos} in \code{\link[graphics:text]{graphics::text()}}.
 and 315 degrees, clockwise from 0 at North.
 
 \item  Even more generally, \code{label.pos} can also be a \emph{fraction} in (0,1), interpreted
-as the fraction of the way around the unit circle, counterclockwise from the North point (0, 1).
+as the fraction of the way around the unit circle, counterclockwise from the East point (1, 0).
+Thus, \code{0.25} is the top, \code{0.5} is the left, and \code{0.75} is the bottom.
 }
 }
 \examples{

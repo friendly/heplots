@@ -1,3 +1,9 @@
+## heplots (development version)
+
+* Fixed `label.ellipse()`: the diagonal positions `label.pos = "SE"` and `"NW"` were
+  swapped. The documentation for a fractional `label.pos` now says correctly that it is
+  measured counterclockwise from East (0 = right, 0.25 = top).
+
 ## Version 1.8.5
 
 * Added the `LearnDis` dataset (Tabachnick & Fidell, 2013, Table 7.1): a small
