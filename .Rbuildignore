@@ -24,8 +24,6 @@ NAMESPACE-old
 .nojekyll
 ^data-raw$
 ^dev$
-^CLAUDE.md$
-^AGENTS\.md$
 ^issues$
 ^vignettes-old$
 ^.claude$
