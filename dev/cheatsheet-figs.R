@@ -38,19 +38,24 @@ iris.col <- c("red", "blue", "darkgreen", "brown")
 
 # ---- PAGE 1 ---------------------------------------------------------------
 
+# Schematic choices: Sepal.Width x Petal.Length (vars 2, 3), where the species means
+# are well separated, so group labels don't collide at thumbnail size.
+iris.vars <- c(2, 3)
+
 # A1: key diagram strip — data ellipses -> HE plot
 thumb("A1a-data-ellipses",
-  covEllipses(iris[, 1:2], iris$Species, fill = TRUE, pooled = FALSE,
-              col = iris.col[-1], xlab = "", ylab = "", cex.lab = 0.1))
+  covEllipses(iris[, iris.vars], iris$Species, fill = TRUE, pooled = FALSE,
+              col = iris.col[-1], xlab = "", ylab = "", cex = 1.2))
 thumb("A1b-heplot",
-  heplot(iris.mod, fill = TRUE, fill.alpha = 0.1, xlab = "", ylab = "",
-         cex = 1.2, label.pos = c("S", "N")))
+  heplot(iris.mod, variables = iris.vars, fill = TRUE, fill.alpha = 0.1,
+         xlab = "", ylab = "", cex = 1.2))
 
 # B: HE plot family
 thumb("B1-heplot",
-  heplot(iris.mod, fill = TRUE, fill.alpha = 0.1, xlab = "", ylab = "", cex = 1.2))
+  heplot(iris.mod, variables = iris.vars, fill = TRUE, fill.alpha = 0.1,
+         xlab = "", ylab = "", cex = 1.2))
 thumb("B2-heplot-effect",
-  heplot(iris.mod, size = "effect", fill = TRUE, fill.alpha = 0.1,
+  heplot(iris.mod, variables = iris.vars, size = "effect", fill = TRUE, fill.alpha = 0.1,
          xlab = "", ylab = "", cex = 1.2))
 thumb("B3-pairs",
   pairs(iris.mod, variables = 1:3, fill = TRUE, fill.alpha = 0.1, var.cex = 1.1),
@@ -60,7 +65,8 @@ thumb("B5-heplot1d",
   mar = c(1, 1, 1, 1))
 iris.can <- candisc(iris.mod)
 thumb("B6-candisc",
-  heplot(iris.can, cex = 1.2, var.cex = 0.9, var.col = "black", var.lwd = 1,
+  heplot(iris.can, cex = 1.2, var.cex = 1.1, var.col = "black", var.lwd = 1.5,
+         var.labels = c("SL", "SW", "PL", "PW"),
          fill = TRUE, fill.alpha = 0.1, prefix = ""))
 # B4: 3D — static snapshot from the vignette
 file.copy(here::here("vignettes", "images", "plastic-HE3D.png"),
@@ -70,7 +76,7 @@ file.copy(here::here("vignettes", "images", "plastic-HE3D.png"),
 hyp <- list("S:VV"  = "Speciesversicolor + Speciesvirginica = 0",
             "Vc:Vg" = "Speciesversicolor = Speciesvirginica")
 thumb("C1-hypotheses",
-  heplot(iris.mod, hypotheses = hyp, fill = TRUE, fill.alpha = 0.1,
+  heplot(iris.mod, variables = iris.vars, hypotheses = hyp, fill = TRUE, fill.alpha = 0.1,
          xlab = "", ylab = "", cex = 1.1,
          col = c("red", "blue", "darkgreen", "purple")))
 thumb("C2-mmra",
@@ -98,8 +104,10 @@ thumb("E1-coefplot",
 
 # F: homogeneity of covariance
 thumb("F1-covEllipses",
-  covEllipses(peng[, 3:4], peng$species, fill = TRUE, pooled = TRUE,
-              xlab = "", ylab = "", cex = 1.1, center = TRUE))
+  # centered, so labels are spread around the ellipses instead of piled at the center
+  covEllipses(peng[, 3:4], peng$species, fill = TRUE, fill.alpha = 0.1, pooled = TRUE,
+              xlab = "", ylab = "", cex = 1.1, center = TRUE, label.pos = c(3, 1, 4, 2),
+              xlim = c(-7.5, 7.5), ylim = c(-3.3, 3.3)))
 thumb("F2-covEllipses-matrix",
   covEllipses(peng[, 3:6], peng$species, variables = 1:3, fill = TRUE, labels = "",
               var.cex = 1),
@@ -117,16 +125,28 @@ thumb("F4-boxM-boot",
 thumb("G1-cqplot",
   cqplot(peng.mod, main = "", xlab = "", ylab = "", id.n = 3))
 thumb("G2-distancePlot",
-  distancePlot(peng.mod, main = ""),
-  mar = c(2.5, 2.5, 0.5, 0.5), axes = TRUE)
+  { par(cex.lab = 0.7); distancePlot(peng.mod, main = "") },
+  mar = c(2.8, 2.8, 0.5, 0.5), axes = TRUE)
 peng.rob <- robmlm(cbind(bill_length, bill_depth, flipper_length, body_mass) ~ species,
                    data = peng)
 thumb("G3-robmlm-weights",
   plot(peng.rob, main = "", xlab = "", ylab = ""))
+# G4: simulated (schematic) — real data sets here have too few outliers to show the idea.
+# 3 groups, n = 30 each, plus 4 gross outliers in group "b".
 thumb("G4-robust-heplot", {
-  heplot(peng.rob, fill = TRUE, fill.alpha = 0.1, xlab = "", ylab = "", cex = 1.1)
-  heplot(peng.mod, add = TRUE, lty = 2, lwd = 1, term.labels = FALSE,
-         error.ellipse = TRUE)
+  set.seed(2026)
+  sim <- data.frame(g = factor(rep(c("a", "b", "c"), each = 30)))
+  mu <- cbind(c(0, 2, 4)[sim$g], c(0, 1.5, 0.5)[sim$g])
+  sim[c("y1", "y2")] <- mu + MASS::mvrnorm(90, c(0, 0), matrix(c(1, 0.6, 0.6, 1), 2))
+  out <- which(sim$g == "b")[1:4]
+  sim[out, c("y1", "y2")] <- cbind(c(8, 8.5, 9, 7.5), c(-4, -3.5, -4.5, -3))
+  sim.lm  <- lm(cbind(y1, y2) ~ g, data = sim)
+  sim.rob <- robmlm(cbind(y1, y2) ~ g, data = sim)
+  # effect scaling: the point is that outliers inflate the classical E ellipse
+  heplot(sim.lm, size = "effect", lty = 2, lwd = 1.5, col = c("red", "blue"),
+         xlab = "", ylab = "", term.labels = FALSE, cex = 1)
+  heplot(sim.rob, size = "effect", add = TRUE, fill = TRUE, fill.alpha = 0.1,
+         col = c("red", "blue"), lwd = 2, cex = 1, term.labels = "g", error.ellipse = TRUE)
 })
 
 # I: other plots

@@ -186,7 +186,7 @@ format:
     thumbv("G1-cqplot.png", "cqplot(mod)", [χ² QQ plot of squared Mahalanobis distances of residuals], w: 1.5in),
     thumbv("G2-distancePlot.png", "distancePlot(mod)", [distances of X vs. residuals, with cutoff; labeled outliers], w: 1.5in),
     thumbv("G3-robmlm-weights.png", "plot(robmlm(mod))", [observation weights from a robust MLM], w: 1.5in),
-    thumbv("G4-robust-heplot.png", "heplot(rmod)\nheplot(mod, add = TRUE)", [robust (solid) vs. classical (dashed) HE plot], w: 1.5in),
+    thumbv("G4-robust-heplot.png", "heplot(rmod)\nheplot(mod, add = TRUE)", [robust (solid) vs. classical (dashed): outliers inflate classical E (simulated)], w: 1.5in),
   )
   #v(0.2em)
   `Mahalanobis()`: with robust center/cov. `noteworthy()`: unusual points to label.
