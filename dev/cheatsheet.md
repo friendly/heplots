@@ -9,6 +9,23 @@ panels, and small thumbnails, each with a one-line call and a short description.
 * **Status (2026-09-30)**: first complete build of both pages. The content is settled;
   the work left is mostly visual polish of the thumbnails and page 1 layout.
 
+## Other cheatsheets to learn from
+
+* **Posit**: <https://github.com/rstudio/cheatsheets>. The model for the look of this
+  one (e.g., ggplot2), and a possible place to contribute it later.
+* **mlr3 family**: <https://github.com/mlr-org/mlr3cheatsheets>, published at
+  <https://cheatsheets.mlr-org.com/>. Five sheets: mlr, mlr3, mlr3pipelines,
+  mlr3tuning, mlr3fselect. Ideas worth a look:
+  - Several related sheets that share one design. **candisc** and **mvinfluence** could
+    get companion sheets.
+  - They're written in R Markdown with the **cheatdown** package
+    (<https://github.com/be-marc/cheatdown>): HTML/CSS layout, previewed in Chrome,
+    printed to PDF.
+  - GitHub Actions builds the PDFs and deploys them to `gh-pages`; only the sources and
+    images are committed. Here, `build.R` is run by hand and the PDF is committed.
+  - Not reviewed yet: how they lay out content and diagrams, which would be the most
+    useful part to borrow.
+
 ## Files & build
 
 | File | Role |
