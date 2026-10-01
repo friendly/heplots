@@ -1,13 +1,93 @@
-# heplots cheatsheet — outline (draft 1)
+# heplots cheatsheet — working notes
 
-Goal: a 2-page (landscape, US Letter / A4) cheatsheet in the style of the Posit
-cheatsheets (e.g., `C:\Dropbox\R\doc\ggplot2-3.5.1.pdf`): a banner title, hex
-logo top-right, colored section panels, many small thumbnail images each paired
-with a one-line code call and a short description.
+A 2-page landscape cheatsheet for **heplots**, in the style of the Posit cheatsheets
+(<https://github.com/rstudio/cheatsheets>): a banner title, hex logo, colored section
+panels, and small thumbnails, each with a one-line call and a short description.
 
-Working title: **Visualizing Multivariate Linear Models with heplots :: CHEATSHEET**
+* **Current PDF**: <https://friendly.github.io/heplots/heplots-cheatsheet.pdf>
+  (source copy: [`pkgdown/assets/heplots-cheatsheet.pdf`](../pkgdown/assets/heplots-cheatsheet.pdf))
+* **Status (2026-09-30)**: first complete build of both pages. The content is settled;
+  the work left is mostly visual polish of the thumbnails and page 1 layout.
+
+## Files & build
+
+| File | Role |
+|---|---|
+| [`dev/cheatsheet-figs.R`](cheatsheet-figs.R) | makes all thumbnails → `dev/cheatsheet/fig/*.png` (1.6 in square, 300 dpi, pointsize 7) |
+| [`dev/cheatsheet/heplots-cheatsheet.qmd`](cheatsheet/heplots-cheatsheet.qmd) | the sheet: Quarto → Typst; layout in raw Typst with `panel()` and `thumb()` helpers |
+| [`dev/cheatsheet/page.typ`](cheatsheet/page.typ) | Typst template partial: landscape page, margins, footer |
+| [`dev/cheatsheet/build.R`](cheatsheet/build.R) | does it all: figures → PDF → publish |
+
+```r
+source("dev/cheatsheet/build.R")   # from the package root; close the PDF in any viewer first
+```
+
+`build.R` copies the PDF to `pkgdown/assets/` (served at the site root on the next
+pkgdown build) and writes `man/figures/cheatsheet-thumbs.png`, which the README
+"Cheatsheet" section uses. The pkgdown navbar has a "Cheatsheet" link.
+Requires: Quarto (with Typst), and the **quarto**, **png**, **here**, **candisc**, **rgl** packages.
+
+Layout: page ① *Fit & visualize* (Basics, template, HE plot family, linear hypotheses);
+page ② *Check, refine & report* (covariance homogeneity, normality/outliers/robust,
+customizing, coefficients, other plots, model statistics, learn more + datasets).
+Highlight color is the logo blue `#4472C4`.
+
+## To do
+
+Ranked roughly by how much they'd improve the sheet.
+
+### Page 1
+
+- [ ] **Empty space**: about 1 in at the bottom of page 1. Use it for larger thumbnails,
+      or move a panel (e.g., *Coefficients*) over from page 2.
+- [ ] **Overlapping labels in iris sepal space** (A1b, B1, C1). Iris effects are so
+      large that, with evidence scaling, E is a dot and the group/"Error" labels pile up
+      in the center. Options: `size = "effect"` for these, a smaller `label.cex` with
+      nudged `label.pos`, or a dataset with moderate effects.
+- [ ] **A1 Basics diagram**: add the annotations from the outline ("E: residual
+      variation", "H: the term", "group means", "outside E ⇒ significant"), so that it
+      works like the "data + geom = plot" strip on the ggplot2 sheet.
+- [ ] **B3 `pairs(mod)`**: unreadable at thumbnail size. Drop the factor-mean labels or
+      show 3 variables.
+- [ ] **B4 `heplot3d`**: the big pink E ellipsoid and tiny axis text don't read as an
+      HE plot. Use a cleaner snapshot (e.g., `vignettes/images/plastic-HE3D.png`) or
+      remove the axis labels.
+- [ ] **B5 `heplot1d`**: the thick red bar is confusing, and "Species" overlaps it.
+- [ ] **B6 `candisc`** and **C2 Rohwer**: crowded variable vectors / hypothesis labels.
+      Iris has one dominant canonical dimension; another dataset may show the
+      variable vectors better.
+
+### Page 2
+
+- [ ] Overlapping labels in `coefplot` (Coefficients), the `robmlm` weights plot (G3),
+      and "SW"/"S" in the `label.pos` diagram.
+- [ ] G4 robust vs. classical currently uses simulated data; consider a real dataset
+      where they differ (e.g., `Skulls`).
+- [ ] Fix the call shown for `pvPlot()`: the first argument is `X`, so `pvPlot(X, vars)`.
+
+### Polish & build
+
+- [ ] Title: Posit sheets put spaces in the separator: `heplots : : CHEATSHEET`.
+- [ ] The version and date in the footer are typed into `page.typ`
+      ("heplots 1.8.5 • Updated: 2026-09"). Have `build.R` fill them in from `DESCRIPTION`.
+- [ ] Proofread all calls against the current API, and run each one as shown.
+- [ ] Check legibility in print (Posit asks for text no smaller than ~10pt; some
+      captions are smaller).
+- [ ] Later: offer it to `rstudio/cheatsheets` as a contributed cheatsheet
+      (license CC BY-SA 4.0), once it's stable.
+
+### Package bugs found while making it
+
+- [x] `label.ellipse()`: `"SE"` and `"NW"` were swapped (fixed in 9940881).
+- [ ] `covEllipses()`: documents `label.pos = NULL` but errors on it (in `rep_fun()`).
+- [ ] `pvPlot()`: fails on a tibble (e.g., `peng`); needs `as.data.frame()`.
 
 ---
+
+# Original outline (2026-09-29)
+
+The plan this was built from. Panel letters (A–J) and image IDs (A1, B3, …) match the
+file names in `dev/cheatsheet/fig/`. Some panels were moved in the final layout (see above).
 
 ## 0. Production notes
 
@@ -219,12 +299,11 @@ Cross-reference: **mvinfluence** for influence diagnostics.
 
 ---
 
-## Decisions & status (2026-09-30)
+## Decisions log (2026-09-30)
 
 * **Decided**: 2 pages; include a `candisc` panel (B6); no formula box.
 * **Q3 (main example)** — no reply; going with `iris` for page 1, `peng` for page 2.
-* **Q4 (production path)** — still open. The thumbnails are needed either way, so they
-  come first.
+* **Q4 (production path)** — Quarto → Typst, built reproducibly by `dev/cheatsheet/build.R`.
 * **Thumbnails**: `dev/cheatsheet-figs.R` → `dev/cheatsheet/fig/*.png` (22 images,
   1.6 in square at 300 dpi, pointsize 7). Every panel image from the outline exists, except
   A1 annotations and E2 (`stdcoef()`, which is text only).
@@ -250,7 +329,7 @@ Cross-reference: **mvinfluence** for influence diagnostics.
   - TODO: `covEllipses()` documents `label.pos = NULL` but errors on it (`rep_fun()`).
   - TODO: `pvPlot()` fails on a tibble (`peng`); needs `as.data.frame()`.
 
-## Open questions for the next pass
+## Questions from the outline (resolved; see the log above)
 
 1. **1 or 2 pages?** The content above needs 2. For 1 page, drop Panels E, I, and J,
    and move H into a narrow sidebar.
