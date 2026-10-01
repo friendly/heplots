@@ -56,6 +56,21 @@ for a Gavin funding-application topic list).
   2026-09-10 (see `NEWS.md`); the `dev/boxM/traceCI.R` source draft has been deleted as a
   stale duplicate.
 
+- ✔️ **DONE** (first version) Two-page cheatsheet, 2026-09-30. Built with Quarto + Typst:
+  page 1 is "Fit & visualize", page 2 is "Check, refine & report". Published at
+  https://friendly.github.io/heplots/heplots-cheatsheet.pdf and linked from the README
+  (thumbnail) and the pkgdown navbar. Rebuild with `source("dev/cheatsheet/build.R")`,
+  closing the PDF in any viewer first. The outline and decisions are in `dev/cheatsheet.md`.
+  Still open:
+  - [ ] B6 (`heplot(candisc(mod))`, iris) is crowded, because three variable arrows point
+    the same way; C2 (Rohwer MMRA) is busy but legible.
+  - [ ] Offer it to rstudio/cheatsheets as a contributed cheatsheet once stable.
+  - [ ] Bugs found while making it: `covEllipses()` documents `label.pos = NULL` but errors
+    on it (`rep_fun()`); `pvPlot()` fails on a tibble (e.g., `peng`).
+  - The `label.ellipse()` "SE"/"NW" swap found along the way is fixed (`NEWS.md`,
+    development version).
+  Files: `dev/cheatsheet/`, `dev/cheatsheet-figs.R`, `dev/cheatsheet.md`
+
 - [ ] `pred.mlm()` — extend `predict.lm`-style CIs/PIs to multivariate (`mlm`) models; draft only
   (`pred.mlm0`), not yet roxygenized or added to `R/`.
   File: `dev/pred.mlm.R`
