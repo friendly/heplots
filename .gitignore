@@ -11,3 +11,4 @@ inst/doc
 /Meta/
 .positai
 .release_check_result.rds
+.DS_Store
