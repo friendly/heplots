@@ -3,6 +3,7 @@
 ## John Fox 2012-06-02
 ## revised: 2013-08-20 to avoid calling summary.mlm() directly in vcov.mlm()
 ## TODO: what about using MASS::cob.rob, allowing MCD, MVE?
+## DONE: added a `robmlm.mlm()` method to directly use an "mlm" object
 
 
 
@@ -46,7 +47,7 @@
 #' iteratively, computing weights and then re-estimating the model with those weights
 #' until convergence.
 #' 
-#' @aliases print.robmlm print.summary.robmlm robmlm robmlm.default robmlm.formula summary.robmlm
+#' @aliases print.robmlm print.summary.robmlm robmlm robmlm.default robmlm.formula robmlm.mlm summary.robmlm
 #' @param formula a formula of the form `cbind(y1, y2, ...) ~ x1 + x2 + ...`.
 #' @param data a data frame from which variables specified in `formula`
 #'        are preferentially to be taken.
@@ -62,7 +63,9 @@
 #' @param \dots other arguments, passed down. In particular relevant control
 #'         arguments can be passed to the to the `robmlm.default` method.
 #' @param X for the default method, a model matrix, including the constant (if
-#'        present)
+#'        present); for the `mlm` method, a fitted classical `mlm` object
+#'        (e.g., from `lm(cbind(y1, y2, ...) ~ ...)`), which is refit robustly
+#'        using the same response, predictors, and contrasts
 #' @param Y for the default method, a response matrix
 #' @param w prior observation weights
 #' @param P two-tail probability, to find cutoff quantile for chisq (tuning
@@ -119,7 +122,11 @@
 #' # fit manova model, classically and robustly
 #' sk.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 #' sk.rmod <- robmlm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
-#' 
+#'
+#' # equivalently, refit an existing classical mlm object directly
+#' sk.rmod2 <- robmlm(sk.mod)
+#' all.equal(coef(sk.rmod), coef(sk.rmod2))
+#'
 #' # standard mlm methods apply here
 #' coefficients(sk.rmod)
 #' 
@@ -281,6 +288,32 @@ robmlm.formula <- function(formula, data, subset, weights, na.action, model = TR
   mod$call <- call
   mod$terms <- terms
   if (model)  mod$model <- mf
+  class(mod) <- c("robmlm", "mlm", "lm")
+  mod
+}
+
+# DONE: robmlm.mlm() lets robmlm() take an already-fitted classical mlm
+#       directly, e.g. robmlm(mod) instead of re-stating the formula/data.
+#       NB: can't refit via robmlm(formula(X), data = model.frame(X), ...) --
+#       model.frame() stores a cbind(y1, y2, ...) response as one matrix-
+#       valued column literally named "cbind(y1, y2, ...)", so re-parsing the
+#       formula against that data tries to re-evaluate cbind(y1, y2, ...) and
+#       fails to find y1 etc. as standalone columns. Pull Y/X off the fitted
+#       object directly instead (mirrors the tail of robmlm.formula()).
+#' @rdname robmlm
+#' @exportS3Method robmlm mlm
+robmlm.mlm <- function(X, ...) {
+  mf   <- model.frame(X)
+  Y    <- model.response(mf)
+  Xmat <- model.matrix(X)
+  w    <- model.weights(mf)
+  mod <- robmlm.default(Xmat, Y, w, ...)
+  mod$na.action <- X$na.action
+  mod$contrasts <- X$contrasts
+  mod$xlevels   <- X$xlevels
+  mod$call      <- match.call()
+  mod$terms     <- terms(X)
+  mod$model     <- mf
   class(mod) <- c("robmlm", "mlm", "lm")
   mod
 }

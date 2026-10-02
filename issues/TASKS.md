@@ -61,6 +61,10 @@ for a Gavin funding-application topic list).
   https://friendly.github.io/heplots/heplots-cheatsheet.pdf and linked from the README
   (thumbnail) and the pkgdown navbar. Rebuild with `source("dev/cheatsheet/build.R")`,
   closing the PDF in any viewer first. The outline and decisions are in `dev/cheatsheet.md`.
+  Reviewed by two separate agents afterward; findings and fix status tracked in
+  `dev/review-team.md` (package bugs and statistical-statement issues in its §1/§2 are
+  fixed; §3's G4 line-style mismatch is fixed -- see the `robmlm.mlm()` entry below; the
+  rest of §3 and all of §4 remain open).
   Still open:
   - [ ] B6 (`heplot(candisc(mod))`, iris) is crowded, because three variable arrows point
     the same way; C2 (Rohwer MMRA) is busy but legible.
@@ -69,7 +73,27 @@ for a Gavin funding-application topic list).
     on it (`rep_fun()`); `pvPlot()` fails on a tibble (e.g., `peng`).
   - The `label.ellipse()` "SE"/"NW" swap found along the way is fixed (`NEWS.md`,
     development version).
-  Files: `dev/cheatsheet/`, `dev/cheatsheet-figs.R`, `dev/cheatsheet.md`
+  Files: `dev/cheatsheet/`, `dev/cheatsheet-figs.R`, `dev/cheatsheet.md`, `dev/review-team.md`
+
+- ✔️ **DONE** (2026-10-02) `robmlm.mlm()` — new method so `robmlm()` accepts an existing
+  classical `mlm` fit directly (e.g., `robmlm(mod)`), prompted by `dev/review-team.md`'s
+  G3 finding (the cheatsheet caption `plot(robmlm(mod))` previously errored, since
+  `robmlm()` only had `.default(X, Y)` and `.formula` methods). Pulls `Y`/model matrix
+  off the fitted object directly rather than refitting through `model.frame()`/the
+  formula -- that more "standard" refit idiom fails specifically for `mlm`s, because
+  `model.frame()` stores a `cbind(y1, y2, ...)` response as one matrix-valued column
+  literally named `"cbind(y1, y2, ...)"`, so re-parsing the formula against that data
+  tries to re-evaluate `cbind(y1, y2, ...)` and can't find `y1` etc. as standalone
+  columns (see the comment above `robmlm.mlm()` in `R/robmlm.R`). Verified: coefficients
+  and weights identical to the formula-direct fit; `print()`/`summary()`/`car::Anova()`/
+  `plot.robmlm()`/`heplot()` all work on the result; checked against an interaction model
+  with contrasts (`Plastic`) and a `subset=`-fit model. Also fixes G4 (the
+  classical-vs-robust `heplot()` overlay in the cheatsheet's G4 thumbnail): the robust
+  fit's `heplot()` call in `dev/cheatsheet-figs.R` was missing an explicit `lty = 1`, so
+  it fell back to the default `lty = 2:1`, which (via `he.rep()`) assigns the dashed style
+  to **E** -- same as the classical fit -- defeating the "robust solid vs. classical
+  dashed" contrast the caption claims. Fixed by adding `lty = 1` to that call.
+  Files: `R/robmlm.R`, `dev/cheatsheet-figs.R`, `dev/review-team.md`
 
 - [ ] `pred.mlm()` — extend `predict.lm`-style CIs/PIs to multivariate (`mlm`) models; draft only
   (`pred.mlm0`), not yet roxygenized or added to `R/`.

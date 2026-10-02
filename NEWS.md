@@ -26,6 +26,9 @@
 * Added a two-page cheatsheet, `heplots-cheatsheet.pdf`, linked from the README and the
   pkgdown navbar.
 
+* Added a `robmlm.mlm()` method so `robmlm()` can be called directly on an existing
+  classical `mlm` fit (e.g., `robmlm(mod)`) instead of restating the formula and data.
+
 ## Version 1.8.5
 
 * Added the `LearnDis` dataset (Tabachnick & Fidell, 2013, Table 7.1): a small

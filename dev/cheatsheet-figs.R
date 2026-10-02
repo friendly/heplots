@@ -151,7 +151,7 @@ thumb("G4-robust-heplot", {
   heplot(sim.lm, size = "effect", lty = 2, lwd = 1.5, col = c("red", "blue"),
          xlab = "", ylab = "", term.labels = FALSE, cex = 1)
   heplot(sim.rob, size = "effect", add = TRUE, fill = TRUE, fill.alpha = 0.1,
-         col = c("red", "blue"), lwd = 2, cex = 1, term.labels = "g", error.ellipse = TRUE)
+         col = c("red", "blue"), lty = 1, lwd = 2, cex = 1, term.labels = "g", error.ellipse = TRUE)
 })
 
 # I: other plots

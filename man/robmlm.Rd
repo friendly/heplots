@@ -6,6 +6,7 @@
 \alias{print.summary.robmlm}
 \alias{robmlm.default}
 \alias{robmlm.formula}
+\alias{robmlm.mlm}
 \alias{summary.robmlm}
 \title{Robust Fitting of Multivariate Linear Models}
 \usage{
@@ -36,6 +37,8 @@ robmlm(X, ...)
   ...
 )
 
+\method{robmlm}{mlm}(X, ...)
+
 \method{print}{robmlm}(x, ...)
 
 \method{summary}{robmlm}(object, ...)
@@ -44,7 +47,9 @@ robmlm(X, ...)
 }
 \arguments{
 \item{X}{for the default method, a model matrix, including the constant (if
-present)}
+present); for the \code{mlm} method, a fitted classical \code{mlm} object
+(e.g., from \code{lm(cbind(y1, y2, ...) ~ ...)}), which is refit robustly
+using the same response, predictors, and contrasts}
 
 \item{\dots}{other arguments, passed down. In particular relevant control
 arguments can be passed to the to the \code{robmlm.default} method.}
@@ -160,6 +165,10 @@ vlab <- c("maxBreadth", "basibHeight", "basialLength", "nasalHeight")
 # fit manova model, classically and robustly
 sk.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 sk.rmod <- robmlm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
+
+# equivalently, refit an existing classical mlm object directly
+sk.rmod2 <- robmlm(sk.mod)
+all.equal(coef(sk.rmod), coef(sk.rmod2))
 
 # standard mlm methods apply here
 coefficients(sk.rmod)
