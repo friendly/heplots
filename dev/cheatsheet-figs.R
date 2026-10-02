@@ -118,7 +118,7 @@ thumb("F3-boxM",
   mar = c(2.2, 4.5, 0.5, 0.5), axes = TRUE)
 thumb("F4-boxM-boot",
   plot_boxM_boot(peng.boxm, Y = peng[, 3:6], group = peng$species,
-                 which = "sum", boot.R = 500, boot.seed = 42, gplabel = ""),
+                 which = "product", boot.R = 500, boot.seed = 42, gplabel = ""),  # log det, bootstrap CIs
   mar = c(2.2, 4.5, 0.5, 0.5), axes = TRUE)
 
 # G: normality, outliers, robust

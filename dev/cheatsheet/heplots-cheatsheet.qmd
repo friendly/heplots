@@ -170,7 +170,7 @@ format:
     thumbv("F1-covEllipses.png", "covEllipses(Y, group)", [within-group covariance ellipses (+ pooled)], w: 1.5in),
     thumbv("F2-covEllipses-matrix.png", "covEllipses(..., variables = 1:3)", [scatterplot matrix version], w: 1.5in),
     thumbv("F3-boxM.png", "plot(boxM(mod))", [log determinants of group covariance matrices, with CIs], w: 1.5in),
-    thumbv("F4-boxM-boot.png", "plot_boxM_boot(...)", [bootstrap CIs for other eigenvalue statistics], w: 1.5in),
+    thumbv("F4-boxM-boot.png", "plot_boxM_boot(...)", [the same, with bootstrap CIs; also for other eigenvalue statistics], w: 1.5in),
   )
   #v(0.2em)
   `boxM(Y, group)` or `boxM(mod)`: Box's M test. \
