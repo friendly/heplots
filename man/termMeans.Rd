@@ -26,7 +26,8 @@ abbreviation for each factor in the term.}
 \value{
 Returns a matrix whose columns correspond to the response variables
 in the model and whose rows correspond to the levels of the factor(s) in the
-\code{term}.
+\code{term}. Rows are in the order of the factor levels, with the first factor
+varying fastest. Cells with no observations are omitted.
 }
 \description{
 \code{termMeans} is a utility function designed to calculate means for the

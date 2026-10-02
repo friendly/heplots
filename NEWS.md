@@ -1,4 +1,10 @@
-## heplots (development version)
+## Version 1.8.6
+
+* Fixed `termMeans()`: when the data were not sorted in factor-level order, the row
+  labels were attached to the wrong means (e.g., `peng` species, or the `Plastic`
+  `rate:additive` cells in the `HE_manova` vignette). This also affected the mean labels
+  in `heplot1d()`. Rows are now in factor-level order (first factor varying fastest), and
+  empty cells are dropped instead of causing an error.
 
 * Fixed `label.ellipse()`: the diagonal positions `label.pos = "SE"` and `"NW"` were
   swapped. The documentation for a fractional `label.pos` now says correctly that it is

@@ -1,5 +1,9 @@
+# DONE: ✔️ Fixed mislabeled rows when the data are not in factor-level order: labels came from
+#       unique(), in order of appearance, but the means from tapply(), in level order. Empty
+#       cells are now dropped instead of causing an error. 10/1/2026
+
 #' Calculate Means for a Term in a Multivariate Linear Model
-#' 
+#'
 #' `termMeans` is a utility function designed to calculate means for the
 #' levels of factor(s) for any term in a multivariate linear model.
 #' 
@@ -18,7 +22,8 @@
 #'            abbreviation for each factor in the term.
 #' @return Returns a matrix whose columns correspond to the response variables
 #'         in the model and whose rows correspond to the levels of the factor(s) in the
-#'         `term`.
+#'         `term`. Rows are in the order of the factor levels, with the first factor
+#'         varying fastest. Cells with no observations are omitted.
 #' @author Michael Friendly
 #' @seealso [stats::aggregate()], [base::colMeans()]
 #' 
@@ -58,15 +63,16 @@ termMeans <- function(mod, term, label.factors=FALSE, abbrev.levels=FALSE){
 	term.factors <- unlist(strsplit(term, ":"))
 	if (any(which <- !term.factors %in% colnames(factors))) 
 		stop(paste(term.factors[which], collapse=", "), " not in the model")
-	n.factors <- length(term.factors)
 	factor.values <- factors[,term.factors, drop=FALSE]
-	rows <- nrow(levs <- unique(factor.values))
-	means <-matrix(0, nrow=rows, ncol=ncol(Y))
-	for (j in 1:ncol(Y)) {
-		mn <- tapply(Y[,j], factor.values, mean)
-		means[,j] <- as.vector(mn)
-	}
-	colnames(means) <- colnames(Y)
+	# cells in tapply() order (first factor varies fastest); labels must come from the
+	# same order, not from unique(), which follows the order of the rows in the data
+	levs <- expand.grid(dimnames(tapply(Y[,1], factor.values, mean)), stringsAsFactors=FALSE)
+	means <- matrix(sapply(seq_len(ncol(Y)), function(j) as.vector(tapply(Y[,j], factor.values, mean))),
+	                nrow=nrow(levs), dimnames=list(NULL, colnames(Y)))
+	# drop empty cells (unused levels or unobserved combinations)
+	observed <- !is.na(means[,1])
+	means <- means[observed, , drop=FALSE]
+	levs <- levs[observed, , drop=FALSE]
 	nms <- colnames(levs)
 	if (label.factors)
 		for (j in 1:ncol(levs)) levs[,j] <- paste(nms[j], levs[,j], sep="")
