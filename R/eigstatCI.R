@@ -4,6 +4,9 @@
 # of covariance matrices, to complement the analytic logdetCI() function.
 #
 # DONE: ✔️ Fixed parallel argument handling - convert FALSE to "no" for boot::boot() 12/28/2024
+# DONE: ✔️ Fixed "pooled": it used the total covariance cov(Y), ignoring groups. Now uses the
+#       pooled within-group covariance (as in boxM()$pooled), with a bootstrap stratified
+#       by group 10/1/2026
 
 #' Bootstrap Confidence Intervals for Eigenvalue Statistics
 #'
@@ -15,7 +18,9 @@
 #' @details
 #' For each group (and the pooled data), this function performs nonparametric
 #' bootstrap resampling to estimate the sampling distribution of the specified
-#' eigenvalue-based statistic. Confidence intervals are computed using the
+#' eigenvalue-based statistic. The "pooled" statistic is computed from the pooled
+#' within-group covariance matrix (as in `boxM()$pooled`), and is bootstrapped by
+#' resampling within groups (a stratified bootstrap). Confidence intervals are computed using the
 #' percentile method or bias-corrected and accelerated (BCa) method.
 #'
 #' Unlike `logdetCI()` which uses analytic approximations based on asymptotic
@@ -133,18 +138,27 @@ eigstatCI <- function(Y,
       return(NA)
     }
 
-    cov_mat <- cov(dat, use = "complete.obs")
+    eig_stat(cov(dat, use = "complete.obs"))
+  }
+
+  # The requested statistic for a covariance matrix
+  eig_stat <- function(cov_mat) {
     eigs <- eigen(cov_mat, symmetric = TRUE, only.values = TRUE)$values
-
-    # Compute the requested statistic
-    result <- switch(which,
-                     "product" = prod(eigs),
-                     "sum" = sum(eigs),
-                     "precision" = 1 / sum(1 / eigs),  # harmonic mean
-                     "max" = max(eigs)
+    switch(which,
+           "product" = prod(eigs),
+           "sum" = sum(eigs),
+           "precision" = 1 / sum(1 / eigs),  # harmonic mean
+           "max" = max(eigs)
     )
+  }
 
-    return(result)
+  # Statistic for the pooled within-group covariance matrix, as in boxM()$pooled.
+  # Used with strata = group, so each resample keeps the group sizes.
+  pooled_fun <- function(data, indices) {
+    dat <- data[indices, , drop = FALSE]
+    grp <- group[indices]
+    resid <- dat - apply(dat, 2, ave, grp)
+    eig_stat(crossprod(resid) / (nrow(dat) - length(unique(grp))))
   }
 
   # Helper function to extract CI from boot.ci object
@@ -250,7 +264,7 @@ eigstatCI <- function(Y,
     )
   }
 
-  # Bootstrap for pooled data
+  # Bootstrap for pooled within-group data: resample within groups
   boot_result_pooled <- tryCatch({
     # Convert parallel argument: FALSE -> "no", TRUE -> "multicore", otherwise use as-is
     parallel_arg <- if (isFALSE(parallel)) {
@@ -262,7 +276,8 @@ eigstatCI <- function(Y,
     }
 
     boot::boot(data = Y,
-               statistic = stat_fun,
+               statistic = pooled_fun,
+               strata = group,
                R = R,
                parallel = parallel_arg,
                ncpus = ncpus)

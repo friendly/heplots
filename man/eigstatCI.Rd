@@ -82,7 +82,9 @@ variable since these are not stored in the boxM object.
 \details{
 For each group (and the pooled data), this function performs nonparametric
 bootstrap resampling to estimate the sampling distribution of the specified
-eigenvalue-based statistic. Confidence intervals are computed using the
+eigenvalue-based statistic. The "pooled" statistic is computed from the pooled
+within-group covariance matrix (as in \code{boxM()$pooled}), and is bootstrapped by
+resampling within groups (a stratified bootstrap). Confidence intervals are computed using the
 percentile method or bias-corrected and accelerated (BCa) method.
 
 Unlike \code{logdetCI()} which uses analytic approximations based on asymptotic

@@ -6,6 +6,12 @@
   in `heplot1d()`. Rows are now in factor-level order (first factor varying fastest), and
   empty cells are dropped instead of causing an error.
 
+* Fixed `eigstatCI()`: the "pooled" statistic was computed from the total covariance
+  matrix `cov(Y)`, ignoring groups, so it included the between-group variation. It now
+  uses the pooled within-group covariance matrix, as in `boxM()$pooled`, and bootstraps it
+  by resampling within groups. This changes the "pooled" point and CI in
+  `plot_boxM_boot()`.
+
 * Fixed `label.ellipse()`: the diagonal positions `label.pos = "SE"` and `"NW"` were
   swapped. The documentation for a fractional `label.pos` now says correctly that it is
   measured counterclockwise from East (0 = right, 0.25 = top).
