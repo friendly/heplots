@@ -232,8 +232,11 @@ eugenics, Anderson's `iris` dataset should not be blamed.
 
 A basic HE plot shows the **H** and **E** ellipses for the first two
 response variables (here: `Sepal.Length` and `Sepal.Width`). The
-multivariate test is significant (by Roy's test) *iff* the **H** ellipse
-projects *anywhere* outside the **E** ellipse.
+multivariate test is significant (by Roy's test) *iff* the **H** ellipsoid
+projects *anywhere* outside the **E** ellipsoid in the space of *all* the
+responses. So if **H** sticks out beyond **E** in a plot, the effect is
+significant; but **H** inside **E** in one view does not mean "not significant",
+because the effect may lie in directions that view does not show.
 
 The positions of the group means show how they differ on the two
 response variables shown, and provide an interpretation of the

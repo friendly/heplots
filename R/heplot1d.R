@@ -2,6 +2,7 @@
 # Initial version 17-Apr-2009
 # Fixed buglet with hyp.labels 8-Dec-2009
 # last modified 1 Jan 2010 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
+# DONE: ✔️ Docs: `alpha` refers to the univariate F test for the response shown, not Roy's test 10/1/2026
 
 
 
@@ -87,11 +88,13 @@
 #'              same scale as the error ellipse.
 #' @param level equivalent coverage of ellipse  (assuming normally-distributed errors).
 #'              This defaults to `0.68`, giving a standard 1 SD bivariate ellipse.
-#' @param alpha significance level for Roy's greatest-root test statistic; if
-#'              `size="evidence"` or `size="significance"`, then the hypothesis ellipse is scaled so that it
-#'              just touches the error ellipse at the specified alpha level. A larger
-#'              hypothesis ellipse *somewhere* in the space of the response variables
-#'              therefore indicates statistical significance; defaults to `0.05`.
+#' @param alpha significance level for the univariate F test of the response shown;
+#'              if `size="evidence"` or `size="significance"`, then the hypothesis interval
+#'              is scaled so that it just matches the error interval at the specified alpha
+#'              level. A longer hypothesis interval therefore indicates that the term is
+#'              significant for *this response* by its univariate F test. This is not
+#'              Roy's multivariate test as in [heplot()]: a term can be significant
+#'              multivariately but not for any single response. Defaults to `0.05`.
 #' @param center.pch character to use in plotting the centroid of the data;
 #'             defaults to `"|"`.
 #' @param col a color or vector of colors to use in plotting ellipses; the

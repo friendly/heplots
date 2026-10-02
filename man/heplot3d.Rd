@@ -143,8 +143,11 @@ This defaults to \code{0.68}, giving a standard 1 SD bivariate ellipse.}
 \item{alpha}{significance level for Roy's greatest-root test statistic; if
 \code{size="evidence"} or \code{size="significance"}, then the hypothesis ellipse is scaled so that it
 just touches the error ellipse at the specified alpha level. A larger
-hypothesis ellipse \emph{somewhere} in the space of the response variables
-therefore indicates statistical significance; defaults to \code{0.05}.}
+hypothesis ellipse \emph{somewhere} in the space of all the response variables
+therefore indicates statistical significance. With more than three responses,
+an H ellipsoid inside E in this 3D view does not mean "not significant": the
+effect may lie in directions not shown (see Details in \code{\link[=heplot]{heplot()}}).
+Defaults to \code{0.05}.}
 
 \item{segments}{number of segments composing each ellipsoid; defaults to \code{40}.}
 

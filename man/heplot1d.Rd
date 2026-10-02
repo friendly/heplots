@@ -128,11 +128,13 @@ same scale as the error ellipse.}
 \item{level}{equivalent coverage of ellipse  (assuming normally-distributed errors).
 This defaults to \code{0.68}, giving a standard 1 SD bivariate ellipse.}
 
-\item{alpha}{significance level for Roy's greatest-root test statistic; if
-\code{size="evidence"} or \code{size="significance"}, then the hypothesis ellipse is scaled so that it
-just touches the error ellipse at the specified alpha level. A larger
-hypothesis ellipse \emph{somewhere} in the space of the response variables
-therefore indicates statistical significance; defaults to \code{0.05}.}
+\item{alpha}{significance level for the univariate F test of the response shown;
+if \code{size="evidence"} or \code{size="significance"}, then the hypothesis interval
+is scaled so that it just matches the error interval at the specified alpha
+level. A longer hypothesis interval therefore indicates that the term is
+significant for \emph{this response} by its univariate F test. This is not
+Roy's multivariate test as in \code{\link[=heplot]{heplot()}}: a term can be significant
+multivariately but not for any single response. Defaults to \code{0.05}.}
 
 \item{center.pch}{character to use in plotting the centroid of the data;
 defaults to \code{"|"}.}

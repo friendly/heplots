@@ -161,8 +161,10 @@ This defaults to \code{0.68}, giving a standard 1 SD bivariate ellipse.}
 \item{alpha}{significance level for Roy's greatest-root test statistic; if
 \code{size="evidence"} or \code{size="significance"}, then the hypothesis ellipse is scaled so that it
 just touches the error ellipse at the specified alpha level. A larger
-hypothesis ellipse \emph{somewhere} in the space of the response variables
-therefore indicates statistical significance; defaults to \code{0.05}.}
+hypothesis ellipse \emph{somewhere} in the space of all the response variables
+therefore indicates statistical significance. In a plot of only two
+responses, an H ellipse inside E does not mean "not significant" (see
+Details). Defaults to \code{0.05}.}
 
 \item{segments}{number of line segments composing each ellipse; defaults to \code{60}.}
 
@@ -259,6 +261,25 @@ Pillai trace, Hotelling-Lawley trace, Roy maximum root). Roy's maximum root
 test has a particularly simple visual interpretation, exploited in the
 \code{size="evidence"} version of the plot. See the description of argument
 \code{alpha}.
+
+With \code{size="evidence"}, a term is significant by Roy's test if and only if
+its \eqn{\mathbf{H}}{H} ellipsoid protrudes outside the \eqn{\mathbf{E}}{E}
+ellipsoid \emph{somewhere in the full space of all p responses}. A 2D HE plot shows
+only the projection onto two responses, so in a plot the rule works in one
+direction only:
+\itemize{
+\item If \eqn{\mathbf{H}}{H} extends outside \eqn{\mathbf{E}}{E} in any view, the
+term is significant.
+\item If \eqn{\mathbf{H}}{H} lies inside \eqn{\mathbf{E}}{E} in a given view, the
+term may still be significant, because the effect may lie in directions that
+view does not show. Check other views with \code{\link[=pairs.mlm]{pairs.mlm()}} or \code{\link[=heplot3d]{heplot3d()}}, a
+canonical view (\code{candisc::heplot.candisc()}), or the tests from
+\code{car::Anova()}.
+}
+
+For example, in the \code{Plastic} data, \code{additive} is significant (Roy's
+p = .025), but its \eqn{\mathbf{H}}{H} line stays inside \eqn{\mathbf{E}}{E} in
+all three pairwise plots of the responses.
 
 For a 1 df hypothesis term (a quantitative regressor, a single contrast or
 parameter test), the \eqn{\mathbf{H}}{H} matrix has rank 1 (one non-zero latent root of

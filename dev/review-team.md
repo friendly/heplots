@@ -18,7 +18,7 @@ Sections 1 and 2 are the must-fix items. Two of them are **package bugs** (§1.1
 
 ## 1. Package bugs
 
-### 1.1 `termMeans()` mislabels rows when data aren't in factor-level order
+### 1.1 `termMeans()` mislabels rows when data aren't in factor-level order — **FIXED** (670a80c)
 
 In `R/termMeans.R:63–66`, the row names come from `unique(factor.values)`, which is in
 order of appearance. The values come from `tapply()`, which is in factor-level order.
@@ -50,7 +50,7 @@ Where it shows up:
 **Fix:** take the row labels from the `tapply()` result (or from the factor levels)
 instead of from `unique()`.
 
-### 1.2 `eigstatCI()` "pooled" is really the total covariance
+### 1.2 `eigstatCI()` "pooled" is really the total covariance — **FIXED** (c351db8)
 
 The "pooled" bootstrap in `R/eigstatCI.R:253–268` resamples all rows of `Y` and ignores
 `group`. It therefore estimates `cov(Y)`, which includes the between-group spread, rather

@@ -29,6 +29,8 @@
 #  02 Dec 2025
 # -- `heplot()`: added `label.cex` arg to allow control of H/E label sizes (not vectorized)
 # -- no longer pass ... to label.ellipse()
+# DONE: ✔️ Docs: the "H outside E iff significant" rule holds in the full response space; in a
+#       2D view it works one way only (outside => significant; inside does not mean n.s.) 10/1/2026
 # 
 
 
@@ -54,7 +56,24 @@
 #' test has a particularly simple visual interpretation, exploited in the
 #' `size="evidence"` version of the plot. See the description of argument
 #' `alpha`.
-#' 
+#'
+#' With `size="evidence"`, a term is significant by Roy's test if and only if
+#' its \eqn{\mathbf{H}}{H} ellipsoid protrudes outside the \eqn{\mathbf{E}}{E}
+#' ellipsoid *somewhere in the full space of all p responses*. A 2D HE plot shows
+#' only the projection onto two responses, so in a plot the rule works in one
+#' direction only:
+#' * If \eqn{\mathbf{H}}{H} extends outside \eqn{\mathbf{E}}{E} in any view, the
+#'   term is significant.
+#' * If \eqn{\mathbf{H}}{H} lies inside \eqn{\mathbf{E}}{E} in a given view, the
+#'   term may still be significant, because the effect may lie in directions that
+#'   view does not show. Check other views with [pairs.mlm()] or [heplot3d()], a
+#'   canonical view (`candisc::heplot.candisc()`), or the tests from
+#'   `car::Anova()`.
+#'
+#' For example, in the `Plastic` data, `additive` is significant (Roy's
+#' p = .025), but its \eqn{\mathbf{H}}{H} line stays inside \eqn{\mathbf{E}}{E} in
+#' all three pairwise plots of the responses.
+#'
 #' For a 1 df hypothesis term (a quantitative regressor, a single contrast or
 #' parameter test), the \eqn{\mathbf{H}}{H} matrix has rank 1 (one non-zero latent root of
 #' \eqn{\mathbf{H} \mathbf{E}^{-1}}{H E^-1}) and the \eqn{\mathbf{H}}{H} "ellipse" collapses to a degenerate line.
@@ -171,8 +190,10 @@
 #' @param alpha significance level for Roy's greatest-root test statistic; if
 #'              `size="evidence"` or `size="significance"`, then the hypothesis ellipse is scaled so that it
 #'              just touches the error ellipse at the specified alpha level. A larger
-#'              hypothesis ellipse *somewhere* in the space of the response variables
-#'              therefore indicates statistical significance; defaults to `0.05`.
+#'              hypothesis ellipse *somewhere* in the space of all the response variables
+#'              therefore indicates statistical significance. In a plot of only two
+#'              responses, an H ellipse inside E does not mean "not significant" (see
+#'              Details). Defaults to `0.05`.
 #' @param segments number of line segments composing each ellipse; defaults to `60`.
 #' @param center.pch character to use in plotting the centroid of the data;
 #'              defaults to `"+"`.

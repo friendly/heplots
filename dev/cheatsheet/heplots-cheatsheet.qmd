@@ -98,9 +98,10 @@ format:
   #grid(columns: (1fr, 1fr), align: center,
     text(size: 7pt)[data ellipses, by group], text(size: 7pt)[HE plot: H & E])
 
-  - *Significance scaling* (default, `size = "evidence"`): a term is
-    significant by Roy's test (α = .05) *iff its H ellipse projects outside E*
-    somewhere.
+  - *Significance scaling* (default, `size = "evidence"`): if H sticks out
+    beyond E *anywhere in a plot*, the term is significant by Roy's test
+    (α = .05). But H inside E in one view does *not* mean "not significant":
+    the effect may lie in other directions (try `pairs()` or `candisc`).
   - `size = "effect"`: H and E on the scale of the data (effect size).
   - The *orientation* of H shows _how_ the responses relate to the effect.
 ]

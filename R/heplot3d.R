@@ -27,6 +27,7 @@
 # 10/20/2020 Fixed moire problem in heplot3d when dfh <3 (Thx: Duncan Murdoch)
 # -- uses back="culled" & depth_mask=FALSE properties
 # 9/22/2022  Add cex.label arg
+# DONE: ✔️ Docs: with p > 3, H inside E in a 3D view does not mean "not significant" 10/1/2026
 
 # TODO what is this doing here?
 savedvars <- new.env(parent=emptyenv())
@@ -161,8 +162,11 @@ savedvars <- new.env(parent=emptyenv())
 #' @param alpha significance level for Roy's greatest-root test statistic; if
 #'        `size="evidence"` or `size="significance"`, then the hypothesis ellipse is scaled so that it
 #'        just touches the error ellipse at the specified alpha level. A larger
-#'        hypothesis ellipse *somewhere* in the space of the response variables
-#'        therefore indicates statistical significance; defaults to `0.05`.
+#'        hypothesis ellipse *somewhere* in the space of all the response variables
+#'        therefore indicates statistical significance. With more than three responses,
+#'        an H ellipsoid inside E in this 3D view does not mean "not significant": the
+#'        effect may lie in directions not shown (see Details in [heplot()]).
+#'        Defaults to `0.05`.
 #' @param segments number of segments composing each ellipsoid; defaults to `40`.
 #' @param col a color or vector of colors to use in plotting ellipsoids; the
 #'        first color is used for the error ellipsoid; the remaining colors ---

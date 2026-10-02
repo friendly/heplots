@@ -12,6 +12,13 @@
   by resampling within groups. This changes the "pooled" point and CI in
   `plot_boxM_boot()`.
 
+* Clarified the significance interpretation of HE plots in `heplot()`, `heplot3d()`, the
+  README and the `HE_manova` vignette: **H** protrudes outside **E** somewhere in the
+  *full* response space iff the term is significant by Roy's test, but in a 2D (or 3D) view
+  the rule works one way only. **H** outside **E** means significant; **H** inside **E**
+  does not mean "not significant". The `alpha` argument of `heplot1d()` is now correctly
+  described as referring to the univariate F test for the response shown.
+
 * Fixed `label.ellipse()`: the diagonal positions `label.pos = "SE"` and `"NW"` were
   swapped. The documentation for a fractional `label.pos` now says correctly that it is
   measured counterclockwise from East (0 = right, 0.25 = top).
