@@ -62,12 +62,25 @@ for a Gavin funding-application topic list).
   (thumbnail) and the pkgdown navbar. Rebuild with `source("dev/cheatsheet/build.R")`,
   closing the PDF in any viewer first. The outline and decisions are in `dev/cheatsheet.md`.
   Reviewed by two separate agents afterward; findings and fix status tracked in
-  `dev/review-team.md` (package bugs and statistical-statement issues in its §1/§2 are
-  fixed; §3's G4 line-style mismatch is fixed -- see the `robmlm.mlm()` entry below; the
-  rest of §3 and all of §4 remain open).
+  `dev/review-team.md`. §1/§2 (package bugs, statistical-statement issues) fixed.
+  §3 ("calls that don't run") is now **entirely fixed** -- see the two entries below
+  for G3/G4, plus (2026-10-02) caption fixes for I1, F4 (bookkeeping only --
+  already fixed earlier, just never marked), B1/B2/C1 (`variables = 2:3`), B5
+  (`variables = 3`), B4 (now notes the thumbnail is `Plastic`, not iris), B6
+  (`library(candisc)`), C1 (`hyp` placeholder shown as `<hyp>`, matching the
+  template panel's own angle-bracket convention -- the full contrast list doesn't
+  fit that column), C2 (reworded to "the five PA predictors"), and the
+  Customizing bullet ("(first = E)"). Verified by rebuilding and inspecting both
+  pages at full resolution -- nothing overflows, though C1 now wraps to 5 short
+  lines (matches C2's pre-existing density in that narrow column, not a new
+  problem). §4 ("worth considering") still open, including the agreed-but-not-yet-
+  done G2 swap to an MMRA (`Rohwer`) example instead of the current degenerate
+  one-way-MANOVA `distancePlot`.
   Still open:
-  - [ ] B6 (`heplot(candisc(mod))`, iris) is crowded, because three variable arrows point
-    the same way; C2 (Rohwer MMRA) is busy but legible.
+  - [ ] G2: swap `distancePlot(mod)` from the one-way MANOVA `peng` model to an
+    MMRA example (`Rohwer`, agreed 2026-10-02) -- needs a new figure and possibly
+    a tweak to the panel's "`peng` data" subtitle, since `Rohwer` would be the
+    odd one out in that grid.
   - [ ] Offer it to rstudio/cheatsheets as a contributed cheatsheet once stable.
   - [ ] Bugs found while making it: `covEllipses()` documents `label.pos = NULL` but errors
     on it (`rep_fun()`); `pvPlot()` fails on a tibble (e.g., `peng`).

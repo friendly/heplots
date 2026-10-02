@@ -129,21 +129,21 @@ format:
 [
 #panel("HE plot family", subtitle: raw("mod <- lm(cbind(Sepal.Length, …, Petal.Width) ~ Species, data = iris)"))[
   #grid(columns: (1fr, 1fr, 1fr), column-gutter: 14pt, row-gutter: 9pt,
-    thumbv("B1-heplot.png", "heplot(mod)", [2D HE plot for two responses]),
-    thumbv("B2-heplot-effect.png", "heplot(mod, size = \"effect\")", [effect scaling: same E; H not inflated, so it shows effect size]),
+    thumbv("B1-heplot.png", "heplot(mod, variables = 2:3)", [2D HE plot for two responses]),
+    thumbv("B2-heplot-effect.png", "heplot(mod, variables = 2:3,\n  size = \"effect\")", [effect scaling: same E; H not inflated, so it shows effect size]),
     thumbv("B3-pairs.png", "pairs(mod)", [all pairwise HE plots: an HE plot matrix]),
-    thumbv("B4-heplot3d.png", "heplot3d(mod)", [3D HE ellipsoids (rgl); spin & zoom]),
-    thumbv("B5-heplot1d.png", "heplot1d(mod)", [1D HE plot: H & E as intervals]),
-    thumbv("B6-candisc.png", "heplot(candisc(mod))", [*candisc*: HE plot in canonical space, with variable vectors]),
+    thumbv("B4-heplot3d.png", "heplot3d(mod)", [3D HE ellipsoids (rgl); spin & zoom -- shown here for `Plastic`, not iris]),
+    thumbv("B5-heplot1d.png", "heplot1d(mod, variables = 3)", [1D HE plot: H & E as intervals]),
+    thumbv("B6-candisc.png", "library(candisc)\nheplot(candisc(mod))", [*candisc*: HE plot in canonical space, with variable vectors]),
   )
 ]
 
 #panel("Tests of linear hypotheses", subtitle: [`hypotheses =`: contrasts or linear combinations of coefficients])[
   #grid(columns: (1fr, 1fr, 0.8fr), column-gutter: 12pt, align: horizon,
-    thumb("C1-hypotheses.png", "heplot(mod, hypotheses = hyp)",
+    thumb("C1-hypotheses.png", "heplot(mod, variables = 2:3,\n  hypotheses = <hyp>)",
       [1-df contrasts are drawn as *lines*: e.g., setosa vs. others; versicolor vs. virginica], w: 1.55in),
     thumb("C2-mmra.png", "heplot(mod, hypotheses =\n  list(Regr = preds))",
-      [MMRA: overall test of all predictors vs. each one (`Rohwer`)], w: 1.55in),
+      [MMRA: the five PA predictors jointly vs. each one (`Rohwer`)], w: 1.55in),
     [
       A 1-df H "ellipse" is a line. For a quantitative predictor, it shows the
       direction of its regression coefficients in the response space.
@@ -202,7 +202,7 @@ format:
   - `variables`: which responses (indices or names)
   - `terms`, `hypotheses`: what to draw; `term.labels`, `hyp.labels`
   - `size = "evidence" | "effect"`, `alpha`, `level`
-  - `col`, `lty`, `lwd`, `fill`, `fill.alpha`: one per ellipse
+  - `col`, `lty`, `lwd`, `fill`, `fill.alpha`: one per ellipse (first = E)
   - `factor.means`, `grand.mean`, `markH0`, `center.pch`
   - `add = TRUE`: overlay; `xlim`, `ylim`, `offset.axes`
   - Repeated measures: `idata`, `idesign`, `imatrix`, `iterm`
@@ -230,7 +230,7 @@ format:
 
 #panel("Other plots", subtitle: [`peng` data])[
   #grid(columns: (1fr, 1fr), column-gutter: 8pt,
-    thumbv("I1-interpPlot.png", "interpPlot(xy1, xy2)",
+    thumbv("I1-interpPlot.png", "interpPlot(xy1, xy2,\n  alpha = 1)",
       [interpolate between two data sets, e.g., data → residuals], w: 0.95in),
     thumbv("I2-pvPlot.png", "pvPlot(Y, vars)",
       [partial variables plot: two variables, controlling for the others], w: 0.95in),
