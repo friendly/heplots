@@ -48,7 +48,9 @@ eq4
 # Expected: B is 2x3, x-vector has 3 elements (1, income, educ)
 # LHS auto-promoted to pmatrix
 
-# Comment: The output here has doubled $$ and the start and end of the output string.
+# FIXED (2026-10-02): previously had doubled $$ at the start and end of the
+# output string -- .build_coef_matrix_eq() was double-wrapping on top of what
+# equatiomatic's own print.equation() adds. Now shows a single clean $$ pair.
 
 eq4b <- extract_eq(mod, use_coefs = TRUE, response_form = "bmatrix")
 eq4b

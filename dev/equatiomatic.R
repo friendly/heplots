@@ -1,7 +1,11 @@
 # TODO: 🚩 Move to R/equatiomatic.R once design is confirmed; add equatiomatic
 #          to Suggests: in DESCRIPTION and @exportS3Method to NAMESPACE.
-# TODO: 🚩 Test with wrap = TRUE to verify post-processing works on multiline
-#          align environments.
+# DONE: ✔️ Tested with wrap = TRUE (2026-10-02) -- post-processing works cleanly
+#       on multiline align environments.
+# DONE: ✔️ Fixed doubled "$$" in use_coefs = TRUE output (2026-10-02) --
+#       .build_coef_matrix_eq() was manually wrapping in $$...$$ on top of the
+#       $$...$$ that equatiomatic's own print.equation()/format.equation() add
+#       at display time. Now returns the bare body, like the symbolic path.
 # TODO: 🚩 use_generic_names = "predictors" for symbolic form is limited to
 #          simple continuous main effects. Factor variables and interactions
 #          need further work.
@@ -284,8 +288,11 @@ extract_eq.mlm <- function(model,
   b_mat <- .build_matrix_latex(B_sig, dots_threshold, mat_type)
   x_vec <- .build_vector_latex(pred_display, dots_threshold, mat_type)
 
-  eq_body <- paste0(lhs, " = ", b_mat, x_vec, " + \\boldsymbol{\\epsilon}")
-  eq_str  <- paste0("$$\n", eq_body, "\n$$")
+  # No manual $$ wrap here: equatiomatic's own print.equation()/format.equation()
+  # add the $$...$$ delimiters at display time (confirmed: the symbolic path's
+  # raw string, built by equatiomatic::extract_eq() + substitution below, also
+  # has none embedded). Wrapping it here too produced doubled $$ on print.
+  eq_str <- paste0(lhs, " = ", b_mat, x_vec, " + \\boldsymbol{\\epsilon}")
 
   class(eq_str) <- c("equation", "character")
   eq_str

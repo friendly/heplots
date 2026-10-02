@@ -42,11 +42,23 @@ for a Gavin funding-application topic list).
 
 - [ ] `extract_eq.mlm()` for `equatiomatic` — S3 method to make `equatiomatic::extract_eq()` work on
   `mlm` objects (currently produces garbled LaTeX). Filed as an issue upstream:
-  https://github.com/datalorax/equatiomatic/issues/243 (no response yet). Design work has
-  progressed substantially since the last update (`dev/equatiomatic-notes.md` now has a
-  resolved implementation strategy — refit-prototype-lm-then-post-process — a concrete
-  function signature, and resolved decisions on notation/generic names/coefficient
-  precision); still not implemented in `R/`.
+  https://github.com/datalorax/equatiomatic/issues/243 (no response yet; code already takes
+  the right approach regardless -- `@exportS3Method equatiomatic::extract_eq mlm`, not
+  waiting on upstream, same pattern `nestedLogit` uses).
+  Re-verified 2026-10-02 against the currently-installed `equatiomatic` 0.4.9 (the file's
+  earlier `logit_notation`/`check_dots()` error was tied to an unreleased 0.4.6 dev branch
+  and is moot now): symbolic form (default/`pmatrix`/`bmatrix`, generic names), `wrap = TRUE`
+  (resolving the notes' "still to clarify" item), `dots_threshold` truncation, and underscore
+  sanitization all work correctly. Found and fixed one real bug: `use_coefs = TRUE` produced
+  doubled `$$` in the output, because `.build_coef_matrix_eq()` manually wrapped its result
+  in `$$...$$` on top of what `equatiomatic`'s own `print.equation()`/`format.equation()` add
+  at display time (confirmed by inspecting the raw string's literal `$$` count before/after).
+  Fix: return the bare body, matching the symbolic path. Remaining known limitation (documented,
+  not urgent): `use_generic_names = "predictors"` only substitutes simple continuous main
+  effects, not factor/interaction terms.
+  Still not implemented in `R/` -- next step is the move-to-R/ workflow (`git mv`, add
+  `equatiomatic` to `Suggests:`, `devtools::document()`, `R CMD check`, `NEWS.md`,
+  `_pkgdown.yml`, clean up `dev/` scratch).
   Files: `dev/equatiomatic-notes.md`, `dev/equatiomatic.R`, `dev/equatiomatic-test.R`,
   `dev/equatiomatic-notes.html`
 
