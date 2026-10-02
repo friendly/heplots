@@ -164,10 +164,14 @@ and `Mahalanobis()`. The `label.pos` caption "0:4 = C, S, W, N, E" matches
 
 ## 4. Worth considering
 
-* **G2 `distancePlot` on a one-way MANOVA is degenerate.** The X are dummy codes, so the
-  X distances take only 3 values (1.13, 1.34, 1.97): three vertical stripes. The X cutoff,
-  `sqrt(qchisq(.975, 2))` = 2.72, falls off the plot. An MMRA model (`NLSY`, the doc
-  example, or `Rohwer`) would show what the plot is for.
+* **G2 `distancePlot` on a one-way MANOVA is degenerate — FIXED (2026-10-02).** The X
+  were dummy codes, so the X distances took only 3 values (1.13, 1.34, 1.97): three
+  vertical stripes. The X cutoff, `sqrt(qchisq(.975, 2))` = 2.72, fell off the plot.
+  Switched G2 to `rohwer.mod` (already defined for C2's MMRA example, continuous `n`/
+  `s`/`ns`/`na`/`ss` predictors) instead of `peng.mod`, giving a proper spread of X
+  distances and real labeled outliers (cases 7, 42, 47). Panel subtitle stays "`peng`
+  data" (true for G1/G3/G4); G2's own caption now notes "MMRA model shown (`Rohwer`),
+  not `peng`".
 * **Use `Plastic` instead of iris for Basics?** In iris every effect is huge, so E
   collapses to a dot. `Plastic` has one clearly significant term (`rate`), one
   non-significant one (`rate:additive`, p = .30), and `additive`, which shows the 2-D

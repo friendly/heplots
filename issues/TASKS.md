@@ -73,14 +73,17 @@ for a Gavin funding-application topic list).
   Customizing bullet ("(first = E)"). Verified by rebuilding and inspecting both
   pages at full resolution -- nothing overflows, though C1 now wraps to 5 short
   lines (matches C2's pre-existing density in that narrow column, not a new
-  problem). §4 ("worth considering") still open, including the agreed-but-not-yet-
-  done G2 swap to an MMRA (`Rohwer`) example instead of the current degenerate
-  one-way-MANOVA `distancePlot`.
+  problem).
+
+  Also from §4 ("worth considering"): ✔️ **DONE** (2026-10-02) G2 switched from the
+  degenerate one-way-MANOVA `distancePlot(peng.mod)` (X distances only took 3
+  discrete values; the X cutoff fell off the plot) to `distancePlot(rohwer.mod)`
+  -- reusing the MMRA model already defined for C2 -- giving a proper continuous
+  spread of X distances and real labeled outliers. Panel subtitle stays "`peng`
+  data" (still true for G1/G3/G4); G2's own caption now notes the `Rohwer`
+  exception. Rest of §4 still open (see `dev/review-team.md`): iris-vs-`Plastic`
+  for Basics, a few short caption notes, a couple of one-liners.
   Still open:
-  - [ ] G2: swap `distancePlot(mod)` from the one-way MANOVA `peng` model to an
-    MMRA example (`Rohwer`, agreed 2026-10-02) -- needs a new figure and possibly
-    a tweak to the panel's "`peng` data" subtitle, since `Rohwer` would be the
-    odd one out in that grid.
   - [ ] Offer it to rstudio/cheatsheets as a contributed cheatsheet once stable.
   - [ ] Bugs found while making it: `covEllipses()` documents `label.pos = NULL` but errors
     on it (`rep_fun()`); `pvPlot()` fails on a tibble (e.g., `peng`).

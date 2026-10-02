@@ -129,8 +129,12 @@ thumb("F4-boxM-boot",
 # G: normality, outliers, robust
 thumb("G1-cqplot",
   cqplot(peng.mod, main = "", xlab = "", ylab = "", id.n = 3))
+# G2 uses rohwer.mod (MMRA, defined above for C2), not peng.mod: a one-way MANOVA's
+# X distances come from group-dummy codes only, so they take just a few discrete
+# values and the X cutoff falls off the plot (degenerate). An MMRA model's continuous
+# predictors give a proper spread, showing what the plot is actually for.
 thumb("G2-distancePlot",
-  { par(cex.lab = 0.7); distancePlot(peng.mod, main = "") },
+  { par(cex.lab = 0.7); distancePlot(rohwer.mod, main = "") },
   mar = c(2.8, 2.8, 0.5, 0.5), axes = TRUE)
 peng.rob <- robmlm(cbind(bill_length, bill_depth, flipper_length, body_mass) ~ species,
                    data = peng)
