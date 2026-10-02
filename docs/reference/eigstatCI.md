@@ -147,9 +147,11 @@ A data frame with bootstrap confidence intervals
 
 For each group (and the pooled data), this function performs
 nonparametric bootstrap resampling to estimate the sampling distribution
-of the specified eigenvalue-based statistic. Confidence intervals are
-computed using the percentile method or bias-corrected and accelerated
-(BCa) method.
+of the specified eigenvalue-based statistic. The "pooled" statistic is
+computed from the pooled within-group covariance matrix (as in
+`boxM()$pooled`), and is bootstrapped by resampling within groups (a
+stratified bootstrap). Confidence intervals are computed using the
+percentile method or bias-corrected and accelerated (BCa) method.
 
 Unlike
 [`logdetCI()`](https://friendly.github.io/heplots/reference/logdetCI.md)

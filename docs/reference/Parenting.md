@@ -40,6 +40,7 @@ The scores on the response variables are discrete.
 ## Examples
 
 ``` r
+
 data(Parenting)
 require(car)
 

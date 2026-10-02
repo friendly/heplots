@@ -105,6 +105,7 @@ thesis, Greenville, NC: East Carolina University.
 ## Examples
 
 ``` r
+
 # manipulation check:  test ratings of the photos classified by Attractiveness
 jury.mod1 <- lm( cbind(phyattr, happy, independent, sophisticated) ~ Attr, data=MockJury)
 car::Anova(jury.mod1, test="Roy")

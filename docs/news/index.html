@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,8 +40,10 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="heplots-development-version">heplots (development version)<a class="anchor" aria-label="anchor" href="#heplots-development-version"></a></h2>
-<ul><li><p>Fixed <code><a href="../reference/label.ellipse.html">label.ellipse()</a></code>: the diagonal positions <code>label.pos = "SE"</code> and <code>"NW"</code> were swapped. The documentation for a fractional <code>label.pos</code> now says correctly that it is measured counterclockwise from East (0 = right, 0.25 = top).</p></li>
+<h2 class="pkg-version" data-toc-text="1.8.6" id="version-186">Version 1.8.6<a class="anchor" aria-label="anchor" href="#version-186"></a></h2>
+<ul><li><p>Fixed <code><a href="../reference/termMeans.html">termMeans()</a></code>: when the data were not sorted in factor-level order, the row labels were attached to the wrong means (e.g., <code>peng</code> species, or the <code>Plastic</code> <code>rate:additive</code> cells in the <code>HE_manova</code> vignette). This also affected the mean labels in <code><a href="../reference/heplot1d.html">heplot1d()</a></code>. Rows are now in factor-level order (first factor varying fastest), and empty cells are dropped instead of causing an error.</p></li>
+<li><p>Fixed <code><a href="../reference/eigstatCI.html">eigstatCI()</a></code>: the “pooled” statistic was computed from the total covariance matrix <code>cov(Y)</code>, ignoring groups, so it included the between-group variation. It now uses the pooled within-group covariance matrix, as in <code>boxM()$pooled</code>, and bootstraps it by resampling within groups. This changes the “pooled” point and CI in <code><a href="../reference/plot_boxM_boot.html">plot_boxM_boot()</a></code>.</p></li>
+<li><p>Fixed <code><a href="../reference/label.ellipse.html">label.ellipse()</a></code>: the diagonal positions <code>label.pos = "SE"</code> and <code>"NW"</code> were swapped. The documentation for a fractional <code>label.pos</code> now says correctly that it is measured counterclockwise from East (0 = right, 0.25 = top).</p></li>
 <li><p>Added a two-page cheatsheet, <code>heplots-cheatsheet.pdf</code>, linked from the README and the pkgdown navbar.</p></li>
 </ul></div>
     <div class="section level2">

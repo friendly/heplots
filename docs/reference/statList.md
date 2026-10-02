@@ -62,6 +62,7 @@ Michael Friendly
 ## Examples
 
 ``` r
+
 # grand means
 statList(iris[,1:4], FUN=colMeans)
 #> [[1]]

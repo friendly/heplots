@@ -54,6 +54,7 @@ Brooks/Cole.
 ## Examples
 
 ``` r
+
 data(ReactTime)
 (RT.mod <- lm(as.matrix(ReactTime)~1))
 #> 

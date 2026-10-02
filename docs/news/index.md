@@ -1,6 +1,25 @@
 # Changelog
 
-## heplots (development version)
+## Version 1.8.6
+
+- Fixed
+  [`termMeans()`](https://friendly.github.io/heplots/reference/termMeans.md):
+  when the data were not sorted in factor-level order, the row labels
+  were attached to the wrong means (e.g., `peng` species, or the
+  `Plastic` `rate:additive` cells in the `HE_manova` vignette). This
+  also affected the mean labels in
+  [`heplot1d()`](https://friendly.github.io/heplots/reference/heplot1d.md).
+  Rows are now in factor-level order (first factor varying fastest), and
+  empty cells are dropped instead of causing an error.
+
+- Fixed
+  [`eigstatCI()`](https://friendly.github.io/heplots/reference/eigstatCI.md):
+  the “pooled” statistic was computed from the total covariance matrix
+  `cov(Y)`, ignoring groups, so it included the between-group variation.
+  It now uses the pooled within-group covariance matrix, as in
+  `boxM()$pooled`, and bootstraps it by resampling within groups. This
+  changes the “pooled” point and CI in
+  [`plot_boxM_boot()`](https://friendly.github.io/heplots/reference/plot_boxM_boot.md).
 
 - Fixed
   [`label.ellipse()`](https://friendly.github.io/heplots/reference/label.ellipse.md):
@@ -309,10 +328,10 @@ This is largely a maintenance release, but adds a function to identify
   the `schooldata` dataset.
 - [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
   now prints a warning if there are missing cases and also returns the
-  upper tail p-values corresponding to Mahalanobis $D^{2}$.
+  upper tail p-values corresponding to Mahalanobis $`D^2`$.
 - Default `method.id` in
   [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
-  changed to “r”, to identify points with the largest $D^{2}$.
+  changed to “r”, to identify points with the largest $`D^2`$.
 - added `noteworthy(x, y)` as a utility to select “noteworthy”
   observations in a 2D plot, extending the ideas in
   [`car::showLabels()`](https://rdrr.io/pkg/car/man/showLabels.html)

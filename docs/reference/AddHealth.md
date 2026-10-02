@@ -42,6 +42,7 @@ Likert scale, with categories
 ## Examples
 
 ``` r
+
 data(AddHealth)
 
 if(require(dplyr) & require(ggplot2)) {

@@ -39,7 +39,8 @@ termMeans(mod, term, label.factors = FALSE, abbrev.levels = FALSE)
 
 Returns a matrix whose columns correspond to the response variables in
 the model and whose rows correspond to the levels of the factor(s) in
-the `term`.
+the `term`. Rows are in the order of the factor levels, with the first
+factor varying fastest. Cells with no observations are omitted.
 
 ## See also
 
@@ -56,6 +57,7 @@ Michael Friendly
 ## Examples
 
 ``` r
+
 factors <- expand.grid(A=factor(1:3),B=factor(1:2),C=factor(1:2))
 n <- nrow(factors)
 responses <-data.frame(Y1=10+round(10*rnorm(n)),Y2=10+round(10*rnorm(n)))

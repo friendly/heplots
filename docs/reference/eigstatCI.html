@@ -17,7 +17,7 @@ variable since these are not stored in the boxM object.'><meta property="og:imag
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -180,7 +180,9 @@ Columns include:</p><dl><dt>group</dt>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>For each group (and the pooled data), this function performs nonparametric
 bootstrap resampling to estimate the sampling distribution of the specified
-eigenvalue-based statistic. Confidence intervals are computed using the
+eigenvalue-based statistic. The "pooled" statistic is computed from the pooled
+within-group covariance matrix (as in <code>boxM()$pooled</code>), and is bootstrapped by
+resampling within groups (a stratified bootstrap). Confidence intervals are computed using the
 percentile method or bias-corrected and accelerated (BCa) method.</p>
 <p>Unlike <code><a href="logdetCI.html">logdetCI()</a></code> which uses analytic approximations based on asymptotic
 theory, this function makes no distributional assumptions and can handle
