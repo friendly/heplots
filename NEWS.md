@@ -1,33 +1,38 @@
 ## Version 1.8.6
 
-* Fixed `termMeans()`: when the data were not sorted in factor-level order, the row
-  labels were attached to the wrong means (e.g., `peng` species, or the `Plastic`
-  `rate:additive` cells in the `HE_manova` vignette). This also affected the mean labels
-  in `heplot1d()`. Rows are now in factor-level order (first factor varying fastest), and
-  empty cells are dropped instead of causing an error.
+### Enhancements
 
-* Fixed `eigstatCI()`: the "pooled" statistic was computed from the total covariance
-  matrix `cov(Y)`, ignoring groups, so it included the between-group variation. It now
-  uses the pooled within-group covariance matrix, as in `boxM()$pooled`, and bootstraps it
-  by resampling within groups. This changes the "pooled" point and CI in
-  `plot_boxM_boot()`.
+* Added a two-page cheatsheet, `heplots-cheatsheet.pdf`, linked from the README and the
+  pkgdown navbar, to provide a visual overview of the package.
 
-* Clarified the significance interpretation of HE plots in `heplot()`, `heplot3d()`, the
+* Added a `robmlm.mlm()` method so `robmlm()` can be called directly on an existing
+  classical `mlm` fit (e.g., `robmlm(mod)`) instead of restating the formula and data.
+
+* Doc fix: Clarified the **significance interpretation** of HE plots in `heplot()`, `heplot3d()`, the
   README and the `HE_manova` vignette: **H** protrudes outside **E** somewhere in the
   *full* response space iff the term is significant by Roy's test, but in a 2D (or 3D) view
   the rule works one way only. **H** outside **E** means significant; **H** inside **E**
   does not mean "not significant". The `alpha` argument of `heplot1d()` is now correctly
   described as referring to the univariate F test for the response shown.
 
+### Bug fixes
+
+* Fixed `termMeans()`: when the data were not sorted in factor-level order, the row
+  labels were attached to the wrong means (e.g., `peng` species, or the `Plastic`
+  `rate:additive` cells in the `HE_manova` vignette). This also affected the mean labels
+  in `heplot1d()`. Rows are now in **factor-level order** (first factor varying fastest), and
+  empty cells are dropped instead of causing an error.
+
+* Fixed `eigstatCI()`: the "pooled" statistic was computed from the total covariance
+  matrix `cov(Y)`, ignoring groups, so it included the between-group variation. It now
+  uses the pooled within-group covariance matrix, as in `boxM()$pooled`, and bootstraps it
+  by resampling within groups. This changes the "pooled" point and CI in
+  `plot_boxM_boot()`. This achieves a long-standing goal to make the plot methods related
+  to `boxM()` more general, using bootstrap methods instead of asymptotic theory.
+
 * Fixed `label.ellipse()`: the diagonal positions `label.pos = "SE"` and `"NW"` were
   swapped. The documentation for a fractional `label.pos` now says correctly that it is
   measured counterclockwise from East (0 = right, 0.25 = top).
-
-* Added a two-page cheatsheet, `heplots-cheatsheet.pdf`, linked from the README and the
-  pkgdown navbar.
-
-* Added a `robmlm.mlm()` method so `robmlm()` can be called directly on an existing
-  classical `mlm` fit (e.g., `robmlm(mod)`) instead of restating the formula and data.
 
 ## Version 1.8.5
 
