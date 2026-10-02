@@ -43,12 +43,16 @@ iris.col <- c("red", "blue", "darkgreen", "brown")
 iris.vars <- c(2, 3)
 
 # A1: key diagram strip — data ellipses -> HE plot
-thumb("A1a-data-ellipses",
+thumb("A1a-data-ellipses", {
   covEllipses(iris[, iris.vars], iris$Species, fill = TRUE, pooled = FALSE,
-              col = iris.col[-1], xlab = "", ylab = "", cex = 1.2))
+              col = iris.col[-1], xlab = "", ylab = "", cex = 1.2)
+  a1.usr <- par("usr")    # axis limits, reused for A1b
+})
+# effect scaling on the same axes as A1a, so the arrow reads correctly:
+# E = pooled within-group ellipse, H spans the group means
 thumb("A1b-heplot",
-  heplot(iris.mod, variables = iris.vars, fill = TRUE, fill.alpha = 0.1,
-         xlab = "", ylab = "", cex = 1.2))
+  heplot(iris.mod, variables = iris.vars, size = "effect", fill = TRUE, fill.alpha = 0.1,
+         xlab = "", ylab = "", cex = 1.2, xlim = a1.usr[1:2], ylim = a1.usr[3:4]))
 
 # B: HE plot family
 thumb("B1-heplot",
@@ -97,7 +101,8 @@ thumb("D1-label-pos", {
 # E: coefficients
 thumb("E1-coefplot",
   coefplot(lm(cbind(SAT, PPVT, Raven) ~ n + s + ns + na + ss, data = Rohwer),
-           fill = TRUE, lwd = 1.5, level = 0.68, main = "", xlab = "", ylab = "",
+           fill = TRUE, lwd = 1.5, level = 0.95, main = "", xlab = "", ylab = "",
+           ylim = c(-1.8, 2.8),    # room for the labels above the 95% ellipses
            cex = 1.1))
 
 # ---- PAGE 2 ---------------------------------------------------------------

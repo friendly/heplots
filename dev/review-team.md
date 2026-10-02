@@ -76,7 +76,7 @@ A separate problem: on raw `peng` units, `body_mass` is 99.97% of the pooled tra
 
 ## 2. Statistical statements on the sheet
 
-### 2.1 p.1 Basics: "significant by Roy's test (α = .05) iff its H ellipse projects outside E"
+### 2.1 p.1 Basics: "significant by Roy's test (α = .05) iff its H ellipse projects outside E" — **FIXED** (668daff; the optional point on the Roy F approximation is not addressed)
 
 This "iff" is exact only in the **full** response space. A 2-D view uses `H[v,v]` and
 `E[v,v]`. The largest root of the 2-D pair can't exceed the largest root in the full
@@ -104,7 +104,7 @@ reps), H crossed E 5.2% of the time for a 1-df term, 16% at iris dimensions (p =
 df_h = 2, df_e = 147), and 33% with p = 4, df_h = 3, df_e = 60. Saying "α = .05" on the
 sheet slightly overstates its precision for multi-df terms.
 
-### 2.2 p.2 Coefficients: "an ellipse excluding (0, 0) is significant"
+### 2.2 p.2 Coefficients: "an ellipse excluding (0, 0) is significant" — **FIXED**
 
 `coefplot.mlm()` draws an unadjusted joint region for the **two plotted responses**,
 with radius `sqrt(2 * qf(level, 2, dfe))`. The E1 thumbnail is drawn at `level = 0.68`
@@ -122,7 +122,7 @@ with radius `sqrt(2 * qf(level, 2, dfe))`. The E1 thumbnail is drawn at `level =
 ellipse excluding (0, 0) ⇒ the predictor is significant for these two responses jointly
 (unadjusted)".
 
-### 2.3 p.1 B2 / Basics: "H and E on the data scale"; the data ellipses → HE plot arrow
+### 2.3 p.1 B2 / Basics: "H and E on the data scale"; the data ellipses → HE plot arrow — **FIXED**
 
 * **E is identical under both scalings** (`E/dfe`, `R/heplot.R:527`); only H changes.
   The B2 caption implies that both change. Suggested caption: "E = residual covariance

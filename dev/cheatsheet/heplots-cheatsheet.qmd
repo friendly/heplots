@@ -96,13 +96,14 @@ format:
     image("fig/A1a-data-ellipses.png"), text(size: 14pt, fill: hl)[→],
     image("fig/A1b-heplot.png"))
   #grid(columns: (1fr, 1fr), align: center,
-    text(size: 7pt)[data ellipses, by group], text(size: 7pt)[HE plot: H & E])
+    text(size: 7pt)[data ellipses, by group], text(size: 7pt)[HE plot (effect scaling)])
 
   - *Significance scaling* (default, `size = "evidence"`): if H sticks out
     beyond E *anywhere in a plot*, the term is significant by Roy's test
     (α = .05). But H inside E in one view does *not* mean "not significant":
     the effect may lie in other directions (try `pairs()` or `candisc`).
-  - `size = "effect"`: H and E on the scale of the data (effect size).
+  - `size = "effect"`: H at its actual size relative to E (effect size).
+    E, the residual covariance, is the same in both; only H is rescaled.
   - The *orientation* of H shows _how_ the responses relate to the effect.
 ]
 
@@ -129,7 +130,7 @@ format:
 #panel("HE plot family", subtitle: raw("mod <- lm(cbind(Sepal.Length, …, Petal.Width) ~ Species, data = iris)"))[
   #grid(columns: (1fr, 1fr, 1fr), column-gutter: 14pt, row-gutter: 9pt,
     thumbv("B1-heplot.png", "heplot(mod)", [2D HE plot for two responses]),
-    thumbv("B2-heplot-effect.png", "heplot(mod, size = \"effect\")", [effect-size scaling: H and E on the data scale]),
+    thumbv("B2-heplot-effect.png", "heplot(mod, size = \"effect\")", [effect scaling: same E; H not inflated, so it shows effect size]),
     thumbv("B3-pairs.png", "pairs(mod)", [all pairwise HE plots: an HE plot matrix]),
     thumbv("B4-heplot3d.png", "heplot3d(mod)", [3D HE ellipsoids (rgl); spin & zoom]),
     thumbv("B5-heplot1d.png", "heplot1d(mod)", [1D HE plot: H & E as intervals]),
@@ -220,8 +221,9 @@ format:
 
 #panel("Coefficients", subtitle: [`Rohwer` data])[
   #thumb("E1-coefplot.png", "coefplot(mod)",
-    [joint confidence ellipses for the coefficients of each predictor; an ellipse
-     excluding (0, 0) is significant], w: 0.95in)
+    [joint 95% confidence ellipses for each predictor's coefficients on two
+     responses; excluding (0, 0) ⇒ significant for those two responses jointly
+     (unadjusted)], w: 0.95in)
   #v(0.2em)
   `stdcoef(mod)`, `stdmodel(mod)`: standardized coefficients & model
 ]
