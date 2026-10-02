@@ -25,6 +25,21 @@ panels, and small thumbnails, each with a one-line call and a short description.
     images are committed. Here, `build.R` is run by hand and the PDF is committed.
   - Not reviewed yet: how they lay out content and diagrams, which would be the most
     useful part to borrow.
+* **cheatdown** (reviewed 2026-10-01): **not useful here**. It's an R Markdown output
+  format that pours `##` sections into four columns on an A4 landscape page, then
+  prints to PDF with headless Chrome. It can't do the panel/thumbnail-grid layout this
+  sheet uses, and it hasn't been updated since 2021 (version 0.0.0.9000; depends on
+  **crrri**, which is GitHub-only and also no longer maintained). Quarto + Typst already
+  does more. `pagedown::chrome_print()` (CRAN) does the same Chrome printing if it's ever
+  needed.
+
+### Idea: an HTML version
+
+Posit asks for text-based HTML versions of cheatsheets (`html/*.qmd` in their repo)
+because they're accessible to screen readers and searchable, which a PDF of thumbnails
+isn't. A Quarto HTML page with the same sections, calls and captions, with alt text on
+the few images that are kept, could go on the pkgdown site next to the PDF. Best done
+once the PDF content is stable, so the two don't drift apart.
 
 ## Files & build
 
