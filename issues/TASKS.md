@@ -142,6 +142,13 @@ for a Gavin funding-application topic list).
     `contrasts`, `formula`) was silently ignored, giving a fit to all cases. Now an error.
     Test script: `dev/robmlm-mlm-test.R`.
 
+  - ✔️ (2026-10-03) An unnamed extra argument, e.g. `robmlm(mod, mysubset)`, got past
+    that check and was taken as `robmlm.default()`'s `P` (the outlier cutoff). Now an
+    error asking for named arguments. Found by a code review of `fd3e4ded`, fixed in
+    `f87fb122`. The review's other finding, that the stored call assumes the model came
+    from `lm()` and could mislabel arguments for an `aov()` model, didn't reproduce:
+    `aov()` stores its call without its own extra arguments. Not changed.
+
 - [ ] `pred.mlm()` — extend `predict.lm`-style CIs/PIs to multivariate (`mlm`) models; draft only
   (`pred.mlm0`), not yet roxygenized or added to `R/`.
   File: `dev/pred.mlm.R`
