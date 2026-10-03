@@ -30,3 +30,4 @@ NAMESPACE-old
 ^\.positai$
 ^\.claude$
 ^\.github$
+^AGENTS\.md$

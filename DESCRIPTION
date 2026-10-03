@@ -40,7 +40,8 @@ Imports:
     purrr,
     rgl,
     tibble,
-    boot
+    boot,
+    glue
 Suggests:
     broom,
     candisc,
@@ -65,7 +66,6 @@ Suggests:
     bookdown,
     patchwork,
     tinytable,
-    glue,
     here,
     htmltools,
     Sleuth2, rrcov, archdata, qqtest, ggbiplot,
