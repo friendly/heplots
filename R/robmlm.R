@@ -7,6 +7,8 @@
 ## DONE: ✔️ `robmlm.mlm()` now stores the call as `robmlm(formula = , data = , ...)`, so `update()`
 ##       works on the result; it was `robmlm.mlm(X = mod)`, which `update()` can't find. 2026-10-03
 ## DONE: ✔️ `robmlm.mlm()` now stops if given `subset`, `weights`, etc., which were silently ignored
+## DONE: ✔️ `robmlm.mlm()` now stops on unnamed extra arguments, which bound by position to
+##       `robmlm.default()`'s `P` (e.g., `robmlm(mod, mysubset)`). 2026-10-03
 
 
 
@@ -317,6 +319,14 @@ robmlm.mlm <- function(X, ...) {
   # the model frame is taken from the fitted object, so arguments that would
   # change it can't be honored here
   dots <- match.call(expand.dots = FALSE)$...
+  # an unnamed argument would bind by position to robmlm.default()'s P, etc.
+  n.unnamed <- if (is.null(names(dots))) length(dots) else sum(names(dots) == "")
+  if (n.unnamed > 0) {
+    stop(glue::glue(
+      "robmlm() for an 'mlm' object needs named arguments, ",
+      "e.g., robmlm(mod, P = 0.01); got {n.unnamed} unnamed."
+    ))
+  }
   mf.args <- c("formula", "data", "subset", "weights", "na.action", "contrasts")
   bad <- intersect(names(dots), mf.args)
   if (length(bad) > 0) {

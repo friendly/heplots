@@ -10,7 +10,8 @@
   The result records its call as `robmlm(formula = , data = , ...)`, just as if it had been
   fit from the formula, so `update()` works on it. Arguments that would change the model
   frame (`subset`, `weights`, `data`, ...) now signal an error rather than being silently
-  ignored; set them in the `lm()` call, or use `update()` on the result.
+  ignored; set them in the `lm()` call, or use `update()` on the result. Other arguments
+  must be named (e.g., `robmlm(mod, P = 0.01)`), since an unnamed one would be taken as `P`.
 
 * Doc fix: Clarified the **significance interpretation** of HE plots in `heplot()`, `heplot3d()`, the
   README and the `HE_manova` vignette: **H** protrudes outside **E** somewhere in the
