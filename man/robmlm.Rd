@@ -49,7 +49,13 @@ robmlm(X, ...)
 \item{X}{for the default method, a model matrix, including the constant (if
 present); for the \code{mlm} method, a fitted classical \code{mlm} object
 (e.g., from \code{lm(cbind(y1, y2, ...) ~ ...)}), which is refit robustly
-using the same response, predictors, and contrasts}
+using the same response, predictors, contrasts, and any \code{subset},
+\code{weights} or \code{na.action} given in the original \code{lm()} call. These
+can't be changed in the call to \code{robmlm()} (an error is
+signaled); only the control arguments of the default method
+(\code{tune}, \code{max.iter}, ...) can be given. The result records
+the call as if it had been fit with the formula method, so
+\code{\link[stats:update]{stats::update()}} works on it.}
 
 \item{\dots}{other arguments, passed down. In particular relevant control
 arguments can be passed to the to the \code{robmlm.default} method.}
@@ -169,6 +175,8 @@ sk.rmod <- robmlm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 # equivalently, refit an existing classical mlm object directly
 sk.rmod2 <- robmlm(sk.mod)
 all.equal(coef(sk.rmod), coef(sk.rmod2))
+# the result can be updated like one fit from a formula
+update(sk.rmod2, subset = epoch != "200BC")
 
 # standard mlm methods apply here
 coefficients(sk.rmod)

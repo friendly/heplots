@@ -1,0 +1,40 @@
+# Tests of robmlm.mlm(): stored call, update(), rejected arguments
+# Run from the package root
+suppressPackageStartupMessages({library(car); library(candisc)})
+devtools::load_all(quiet = TRUE)
+try1 <- function(label, expr) cat(sprintf("%-36s %s\n", label,
+  tryCatch({force(expr); "OK"}, error=function(e) paste("ERROR:", conditionMessage(e)))))
+data(peng, package="heplots")
+peng.mlm <- lm(cbind(bill_length, bill_depth, flipper_length, body_mass) ~ species, data=peng)
+f <- robmlm(cbind(bill_length, bill_depth, flipper_length, body_mass) ~ species, data=peng)
+m <- robmlm(peng.mlm)
+print(m$call)
+cat("identical coef/weights:", identical(coef(f), coef(m)), identical(f$weights, m$weights), "\n")
+cat("identical call:", identical(f$call, m$call), "\n")
+u <- update(m, . ~ . + sex); cat("update(+sex) terms:", attr(terms(u), "term.labels"), " class:", class(u)[1], "\n")
+u2 <- update(m, subset = species != "Gentoo"); cat("update(subset) n:", length(u2$weights), "\n")
+try1("eval(call$data)", stopifnot(is.data.frame(eval(m$call$data))))
+try1("call$formula", stopifnot(inherits(eval(m$call$formula), "formula")))
+try1("Anova/candisc/predict/heplot", {Anova(m); candisc(m); predict(m, newdata=peng[1:3,]); pdf(NULL); heplot(m); plot(m); dev.off()})
+print(m)
+cat("\n")
+try1("robmlm(mlm, subset=)", robmlm(peng.mlm, subset = species != "Gentoo"))
+try1("robmlm(mlm, data=, weights=)", robmlm(peng.mlm, data = peng, weights = 1))
+# control args are kept in the call and survive update()
+m3 <- robmlm(peng.mlm, max.iter = 200, tol = 1e-8); print(m3$call)
+cat("update keeps control args:", identical(coef(update(m3)), coef(m3)), "\n")
+# positional lm() call, extra lm-only args, subset + weights in the lm
+set.seed(2); peng$pw <- runif(nrow(peng), .5, 1.5)
+p1 <- lm(cbind(bill_length, bill_depth) ~ species + sex, peng, species != "Adelie", pw, x = TRUE, model = TRUE)
+r1 <- robmlm(p1); print(r1$call)
+r1f <- robmlm(cbind(bill_length, bill_depth) ~ species + sex, data = peng, subset = species != "Adelie", weights = pw)
+cat("matches formula fit:", all.equal(coef(r1), coef(r1f)), " update() same:", all.equal(coef(update(r1)), coef(r1)), "\n")
+# mlm built by update(), and robmlm of a robmlm
+p2 <- update(peng.mlm, . ~ . + island)
+r2 <- robmlm(p2); print(r2$call)
+r3 <- robmlm(m); print(r3$call); cat("robmlm(robmlm) same coef:", all.equal(coef(r3), coef(m)), "\n")
+# lm called via stats::lm, and inside a function
+q <- stats::lm(cbind(bill_length, bill_depth) ~ species, data = peng); print(robmlm(q)$call)
+# package examples
+data(Skulls); sk.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
+cat("Skulls:", all.equal(coef(robmlm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)), coef(robmlm(sk.mod))), "\n")

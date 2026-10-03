@@ -132,6 +132,16 @@ for a Gavin funding-application topic list).
   dashed" contrast the caption claims. Fixed by adding `lty = 1` to that call.
   Files: `R/robmlm.R`, `dev/cheatsheet-figs.R`, `dev/review-team.md`
 
+  - ✔️ (2026-10-03) Follow-up, found when converting the Vis-MLM-book examples to
+    `robmlm(mod)`: the stored call was `robmlm.mlm(X = mod)`, so `update()` failed with
+    "could not find function "robmlm.mlm"" and the call had no `formula`/`data`. Now
+    rebuilt from the `lm()` call as `robmlm(formula = , data = , ...)`, identical to the
+    call from the formula method, with any control args (`tune`, `max.iter`, ...) appended.
+
+  - ✔️ (2026-10-03) `robmlm(mod, subset = ...)` (also `data`, `weights`, `na.action`,
+    `contrasts`, `formula`) was silently ignored, giving a fit to all cases. Now an error.
+    Test script: `dev/robmlm-mlm-test.R`.
+
 - [ ] `pred.mlm()` — extend `predict.lm`-style CIs/PIs to multivariate (`mlm`) models; draft only
   (`pred.mlm0`), not yet roxygenized or added to `R/`.
   File: `dev/pred.mlm.R`
