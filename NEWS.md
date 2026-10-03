@@ -34,6 +34,11 @@
   swapped. The documentation for a fractional `label.pos` now says correctly that it is
   measured counterclockwise from East (0 = right, 0.25 = top).
 
+* Fixed `covEllipses()`: `label.pos = NULL`, documented as giving automatic label
+  positions, failed with "cannot replicate NULL". It now works. The documentation also
+  wrongly said `NULL` was the default; the default is `0` (the ellipse center), and is
+  unchanged.
+
 ## Version 1.8.5
 
 * Added the `LearnDis` dataset (Tabachnick & Fidell, 2013, Table 7.1): a small

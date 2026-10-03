@@ -142,9 +142,10 @@ or vector of values within \verb{[0,1]}, where 0 means fully transparent and
 character strings (in \code{c("center", "bottom", "left", "top", "right")})
 use in labeling ellipses, recycled as necessary.  Values of 1, 2, 3 and 4,
 respectively indicate positions below, to the left of, above and to the
-right of the max/min coordinates of the ellipse; the value 0 specifies the
-centroid of the \code{ellipse} object.  The default, \code{label.pos=NULL}
-uses the correlation of the \code{ellipse} to determine "top" (r>=0) or
+right of the max/min coordinates of the ellipse; the value 0 (the default)
+specifies the centroid of the \code{ellipse} object.  Compass directions
+and fractions are also allowed; see \code{\link[=label.ellipse]{label.ellipse()}}.  \code{label.pos = NULL}
+uses the correlation of each ellipse to determine "top" (r>=0) or
 "bottom" (r<0).}
 
 \item{xlab}{x-axis label; defaults to name of the x variable.}

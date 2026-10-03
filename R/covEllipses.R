@@ -1,6 +1,8 @@
 # Revisions:
 # DONE: ✔️ Now allow to plot multiple variables in a scatterplot matrix format 3/30/2016 10:53:05 AM
 # DONE: ✔️ The covEllipses.boxM method gives errors. Fixed via adding `means` to result of boxM
+# DONE: ✔️ `label.pos = NULL` (documented) gave "cannot replicate NULL" from rep_len(); now passed
+#       through to label.ellipse() for automatic positions. Doc said NULL was the default; it is 0. 2026-10-03
 
 # Draw covariance ellipses for one or more groups
 
@@ -91,9 +93,10 @@
 #' character strings (in `c("center", "bottom", "left", "top", "right")`)
 #' use in labeling ellipses, recycled as necessary.  Values of 1, 2, 3 and 4,
 #' respectively indicate positions below, to the left of, above and to the
-#' right of the max/min coordinates of the ellipse; the value 0 specifies the
-#' centroid of the `ellipse` object.  The default, `label.pos=NULL`
-#' uses the correlation of the `ellipse` to determine "top" (r>=0) or
+#' right of the max/min coordinates of the ellipse; the value 0 (the default)
+#' specifies the centroid of the `ellipse` object.  Compass directions
+#' and fractions are also allowed; see [label.ellipse()].  `label.pos = NULL`
+#' uses the correlation of each ellipse to determine "top" (r>=0) or
 #' "bottom" (r<0).
 #' @param xlab x-axis label; defaults to name of the x variable.
 #' @param ylab y-axis label; defaults to name of the y variable.
@@ -324,7 +327,8 @@ covEllipses.default <-
 	fill <- rep_fun(fill, n.ell)
 	fill.alpha <- rep_fun(fill.alpha, n.ell)
 	fill.col <- trans.colors(col, fill.alpha)
-	label.pos <- rep_fun(label.pos, n.ell)
+	# NULL means automatic positions, chosen per ellipse in label.ellipse()
+	if (!is.null(label.pos)) label.pos <- rep_fun(label.pos, n.ell)
 	fill.col <- ifelse(fill, fill.col, NA)
 	
 	panel_covEllipses <- function(vars, xlab, ylab, xlim, ylim, offset.axes) {
