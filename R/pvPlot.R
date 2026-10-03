@@ -4,6 +4,7 @@
 # see also: stuff relevant to a pairs version
 # https://stackoverflow.com/questions/35591033/plot-scatterplot-matrix-with-partial-correlation-coefficients-in-r
 # TODO: Just as there is an avPlots() function to do avPlot() for all Xs, perhaps develop a pvPlots() function to do all pairs.
+# DONE: ✔️ Works on a tibble (e.g., peng): X is now converted with as.data.frame(). 2026-10-03
 
 # Usage note: pvPlot() uses plain, unpatched car::dataEllipse() directly (verified
 # 2026-08-10 -- see below). dev/Ellipse.R (a locally patched dataEllipse fixing a
@@ -74,7 +75,7 @@
 #' 
 #' 
 #'
-#' @param X     a data.frame of numeric variables
+#' @param X     a data.frame (or tibble) of numeric variables
 #' @param vars  either the character names of two variables in `X` or their indices
 #' @param others character names or indices of the variables to partial out. If `NULL`
 #'              (the default), all variables in `X` other than `vars` are used.
@@ -154,6 +155,8 @@ pvPlot <- function(
   if (!requireNamespace("car", quietly = TRUE))
     stop("Package 'car' is required by pvPlot().")
 
+  # a tibble's X[, v] stays a 1-column tibble, which breaks lsfit() and the formula below
+  X <- as.data.frame(X)
   nv <- ncol(X)
   nr <- nrow(X)
   

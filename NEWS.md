@@ -39,6 +39,10 @@
   wrongly said `NULL` was the default; the default is `0` (the ellipse center), and is
   unchanged.
 
+* Fixed `pvPlot()` for tibbles (e.g., `peng`): it failed with "invalid type (list)",
+  because selecting one column of a tibble does not give a vector. `X` is now converted
+  with `as.data.frame()`.
+
 ## Version 1.8.5
 
 * Added the `LearnDis` dataset (Tabachnick & Fidell, 2013, Table 7.1): a small

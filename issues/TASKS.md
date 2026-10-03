@@ -99,7 +99,7 @@ for a Gavin funding-application topic list).
   - [ ] Offer it to rstudio/cheatsheets as a contributed cheatsheet once stable.
   - ✔️ `covEllipses()` failed on the documented `label.pos = NULL`: fixed 2026-10-03
     (`NEWS.md`, 1.8.6).
-  - [ ] `pvPlot()` fails on a tibble (e.g., `peng`), found while making the cheatsheet.
+  - ✔️ `pvPlot()` failed on a tibble (e.g., `peng`): fixed 2026-10-03 (`NEWS.md`, 1.8.6).
   - The `label.ellipse()` "SE"/"NW" swap found along the way is fixed (`NEWS.md`,
     development version).
   Files: `dev/cheatsheet/`, `dev/cheatsheet-figs.R`, `dev/cheatsheet.md`, `dev/review-team.md`

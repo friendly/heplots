@@ -24,7 +24,7 @@ pvPlot(
 )
 }
 \arguments{
-\item{X}{a data.frame of numeric variables}
+\item{X}{a data.frame (or tibble) of numeric variables}
 
 \item{vars}{either the character names of two variables in \code{X} or their indices}
 
