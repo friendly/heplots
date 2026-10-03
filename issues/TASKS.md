@@ -4,6 +4,11 @@ Broken out from the cross-package working list in `C:\Users\friendly\Dropbox\R\T
 (2026-07-28). Update here as items are finished; sync back to the main list only if it's
 useful to see heplots status at a glance across packages.
 
+Updated 2026-10-03: two bugs found while making the cheatsheet are fixed (`covEllipses()`
+with `label.pos = NULL`; `pvPlot()` on a tibble), the cheatsheet has an "Other options"
+list on page 1, and the stale `CRAN-SUBMISSION` file was removed. `DESCRIPTION` is at
+v1.8.6.
+
 Updated 2026-08-22: v1.8.3 was submitted to CRAN 2026-08-19 and rejected over two `URL`
 findings from win-builder's incoming-feasibility check (see "CRAN resubmission status"
 below); package is now at v1.8.4, resubmission-ready with a clean local `R CMD check`
@@ -100,6 +105,9 @@ for a Gavin funding-application topic list).
   - ✔️ `covEllipses()` failed on the documented `label.pos = NULL`: fixed 2026-10-03
     (`NEWS.md`, 1.8.6).
   - ✔️ `pvPlot()` failed on a tibble (e.g., `peng`): fixed 2026-10-03 (`NEWS.md`, 1.8.6).
+  - ✔️ (2026-10-03) Page 1: an "Other options" list under "Complete the template" (`col`,
+    `alpha`, `level`, `fill.alpha`, `label.pos`/`cex`, `add`), pointing to page 2 for the
+    rest. Republished; still 2 pages.
   - The `label.ellipse()` "SE"/"NW" swap found along the way is fixed (`NEWS.md`,
     development version).
   Files: `dev/cheatsheet/`, `dev/cheatsheet-figs.R`, `dev/cheatsheet.md`, `dev/review-team.md`
