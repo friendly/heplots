@@ -122,6 +122,16 @@ format:
       fill = TRUE)
     ```
   ]
+  #v(0.1em)
+  #block(below: 0.25em)[*Other options* you may want:]
+  #set text(size: 7pt)
+  #grid(columns: (1fr, 1fr), column-gutter: 6pt, row-gutter: 3pt,
+    [`col`: colors, E first, then H], [`alpha = .05`: test level],
+    [`level = .68`: coverage of E], [`fill.alpha`: opacity of fill],
+    [`label.pos`, `cex`: labels], [`add = TRUE`: overlay a plot],
+  )
+  #v(0.15em)
+  More arguments: page 2, _Customizing HE plots_.
 ]
 ],
 
