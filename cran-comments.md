@@ -5,11 +5,44 @@
 ## R CMD check results
 0 error(s) | 0 warning(s) | 0 note(s)
 
+## Version 1.8.6
+
+A maintenance release with bug fixes, a new `robmlm()` method, documentation
+clarifications, and a new cheatsheet (see NEWS.md for full details):
+
+* Bug fixes: `termMeans()` attached row labels to the wrong means when the data
+  were not sorted in factor-level order (also affecting `heplot1d()`);
+  `eigstatCI()` computed its "pooled" statistic from the total rather than the
+  pooled within-group covariance matrix (affecting `plot_boxM_boot()`); and
+  fixes to `label.ellipse()`, `covEllipses()` and `pvPlot()`.
+* Added a `robmlm.mlm()` method, so `robmlm()` can be applied directly to an
+  existing `mlm` fit.
+* Clarified in the documentation and vignettes how significance can be read
+  from HE plots: **H** extending outside **E** in a 2D view implies
+  significance, but not the converse.
+* Added a two-page cheatsheet, linked from the README and the pkgdown site.
+
+
+## Reverse dependencies checks
+
+We checked 9 reverse dependencies, comparing R CMD check results across CRAN
+(v1.8.5) and dev (v1.8.6) versions of this package.
+
+* We saw 0 new problems
+* We failed to check 0 packages
+
+One reverse dependency, `Guerry` (which I also maintain), shows a vignette
+ERROR with both the CRAN and dev versions of heplots: its vignette refers to an
+image by a relative path into the package source. This is unrelated to heplots
+and will be fixed in the next `Guerry` release.
+
+
+## Comments
+
 ## Version 1.8.5
 
 A feature release adding two datasets, a new confidence-interval function, and
-standardized-coefficient support, plus documentation/rendering maintenance (see
-NEWS.md for full details):
+standardized-coefficient support, plus documentation/rendering maintenance:
 
 * Added the `LearnDis` and `ReadingDisability` datasets, for worked
   MANOVA/MANCOVA and Roy-Bargmann stepdown examples.
@@ -20,39 +53,3 @@ NEWS.md for full details):
   this.
 * Added a live, rotatable/zoomable `heplot3d()` example to the `HE_manova`
   vignette.
-
-
-## Reverse dependencies checks
-
-We checked 9 reverse dependencies, comparing R CMD check results across CRAN
-(v1.8.4) and dev (v1.8.5) versions of this package.
-
-* We saw 0 new problems
-* We failed to check 0 packages
-
-
-## Comments
-
-## Version 1.8.4
-
-CRAN resubmission of v1.8.3, addressing two `URL` findings from the win-builder
-CRAN-incoming-feasibility check.
-
-* Fixed the `NeuroCog` documentation to cite the Nuechterlein et al. (2008) reference by
-  DOI instead of a PubMed URL that CRAN flagged as needing an update. A win-builder dry
-  run then flagged the replacement itself: CRAN wants bare `doi.org` links written with
-  the `\doi{}` macro, not `\url{}`. Fixed that in `NeuroCog`, and found (and fixed the
-  same way) two more pre-existing bare `doi.org` references in `Iwasaki_Big_Five` and
-  `TIPI`'s documentation that hadn't yet been flagged.
-* Withdrew `vignettes/repeated-JSS.pdf` (a static reprint of the published *Journal of
-  Statistical Software* article, included via the `R.rsp::asis` engine) to `vignettes-old/`,
-  rather than continue explaining its embedded non-canonical URLs to CRAN on every
-  submission. Dropped the now-unused `R.rsp` from `Suggests`/`VignetteBuilder`.
-* Added a second, shorter worked example to the `Robust.Rmd` vignette using the
-  `robustbase::pulpfiber` data (Rousseeuw et al. 2004): a multivariate multiple regression
-  contrasted with the earlier Pottery MANOVA example, using the weight plot and an
-  MCD-based `distancePlot()` to distinguish vertical outliers, a bad leverage point, and
-  two good leverage points.
-* `distancePlot()` documentation now cross-links `robmlm()`, `car::influencePlot()`, and
-  `mvinfluence`'s `influencePlot.mlm()` method; fixed `verbose` argument not actually
-  gating the cutoff `cat()` line.
