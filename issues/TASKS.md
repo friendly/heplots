@@ -4,6 +4,16 @@ Broken out from the cross-package working list in `C:\Users\friendly\Dropbox\R\T
 (2026-07-28). Update here as items are finished; sync back to the main list only if it's
 useful to see heplots status at a glance across packages.
 
+Updated 2026-10-04: **v1.8.6 released.** Submitted to CRAN 2026-10-04 and accepted.
+Before submission: `R CMD check --as-cran` clean (0/0/0), after fixing two notes (`stats::ave`
+not imported in `eigstatCI()`; the re-tracked `AGENTS.md` not in `.Rbuildignore`);
+win-builder (R-devel) clean; 9 reverse dependencies checked (see `cran-comments.md`).
+`glue` moved from `Suggests` to `Imports`, since package code calls `glue::glue()`
+unconditionally. GitHub release and tag `v1.8.6` (on `74a9dc8e`):
+https://github.com/friendly/heplots/releases/tag/v1.8.6. Main changes: the cheatsheet,
+`robmlm.mlm()`, and bug fixes to `termMeans()`, `eigstatCI()`, `label.ellipse()`,
+`covEllipses()` and `pvPlot()` (see `NEWS.md`).
+
 Updated 2026-10-03: two bugs found while making the cheatsheet are fixed (`covEllipses()`
 with `label.pos = NULL`; `pvPlot()` on a tibble), the cheatsheet has an "Other options"
 list on page 1, and the stale `CRAN-SUBMISSION` file was removed. `DESCRIPTION` is at
