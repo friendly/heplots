@@ -12,3 +12,6 @@ inst/doc
 .positai
 .release_check_result.rds
 .DS_Store
+
+# Claude Code per-machine permissions (each machine keeps its own)
+.claude/settings.local.json
