@@ -26,8 +26,10 @@ message(paste("Processing", n, "observations from", ngroups, "groups"))
 **Benefits**: More readable, cleaner syntax, explicit variable interpolation.
 
 **Package Setup**: 
-- Add `Suggests: glue` to DESCRIPTION file
-- Add `@importFrom glue glue` in any R file (typically in a utils.R or package-doc.R file)
+- `glue` is in `Imports:` in DESCRIPTION, not `Suggests:`, because package code calls
+  `glue::glue()` unconditionally (in messages, warnings and errors). A package only in
+  `Suggests:` might not be installed, and then those calls fail.
+- Call it as `glue::glue()`; no `@importFrom glue glue` is needed.
 
 ### Vectorization Over Loops
 
@@ -334,15 +336,11 @@ stopifnot(all(c("x", "y") %in% names(test_coords)))
 #   Use glue::glue() notation (don't import entire package)
 
 # In DESCRIPTION:
-# Imports: car
-# Suggests: MASS, glue, rgl (for 3D plotting)
+# Imports: car, glue (glue is used unconditionally, so it must be in Imports)
+# Suggests: MASS, rgl (for 3D plotting)
 
-# In R/utils.R or R/heplots-package.R:
-#' @importFrom glue glue
-NULL
-
-# This allows glue::glue() to work throughout the package
-# Alternative: put @importFrom glue glue in the roxygen docs of any function that uses it
+# With glue in Imports, glue::glue() works throughout the package;
+# no @importFrom glue glue is needed.
 ```
 
 ## Common Patterns in This Package
