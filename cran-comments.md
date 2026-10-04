@@ -1,6 +1,6 @@
 ## Test environments
 * local Windows 11 x64 install, R version 4.6.1 (2026-06-24 ucrt)
-* win-builder R Under development (unstable)
+* win-builder R Under development (unstable) (2026-09-30 r90605 ucrt)
 
 ## R CMD check results
 0 error(s) | 0 warning(s) | 0 note(s)
@@ -39,17 +39,36 @@ and will be fixed in the next `Guerry` release.
 
 ## Comments
 
-## Version 1.8.5
+  *full* response space iff the term is significant by Roy's test, but in a 2D (or 3D) view
+  the rule works one way only. **H** outside **E** means significant; **H** inside **E**
+  does not mean "not significant". The `alpha` argument of `heplot1d()` is now correctly
+  described as referring to the univariate F test for the response shown.
 
-A feature release adding two datasets, a new confidence-interval function, and
-standardized-coefficient support, plus documentation/rendering maintenance:
+### Bug fixes
 
-* Added the `LearnDis` and `ReadingDisability` datasets, for worked
-  MANOVA/MANCOVA and Roy-Bargmann stepdown examples.
-* Added `traceCI()`, analytic confidence intervals for the trace of one or
-  more covariance matrices, complementing `logdetCI()` and `eigstatCI()`.
-* Added `stdmodel()` and `stdcoef()` for standardized ("beta") coefficients on
-  `lm`/`mlm` objects; `coefplot.mlm()` gains a `std = TRUE` argument using
-  this.
-* Added a live, rotatable/zoomable `heplot3d()` example to the `HE_manova`
-  vignette.
+* Fixed `termMeans()`: when the data were not sorted in factor-level order, the row
+  labels were attached to the wrong means (e.g., `peng` species, or the `Plastic`
+  `rate:additive` cells in the `HE_manova` vignette). This also affected the mean labels
+  in `heplot1d()`. Rows are now in **factor-level order** (first factor varying fastest), and
+  empty cells are dropped instead of causing an error.
+
+* Fixed `eigstatCI()`: the "pooled" statistic was computed from the total covariance
+  matrix `cov(Y)`, ignoring groups, so it included the between-group variation. It now
+  uses the pooled within-group covariance matrix, as in `boxM()$pooled`, and bootstraps it
+  by resampling within groups. This changes the "pooled" point and CI in
+  `plot_boxM_boot()`. This achieves a long-standing goal to make the plot methods related
+  to `boxM()` more general, using bootstrap methods instead of asymptotic theory.
+
+* Fixed `label.ellipse()`: the diagonal positions `label.pos = "SE"` and `"NW"` were
+  swapped. The documentation for a fractional `label.pos` now says correctly that it is
+  measured counterclockwise from East (0 = right, 0.25 = top).
+
+* Fixed `covEllipses()`: `label.pos = NULL`, documented as giving automatic label
+  positions, failed with "cannot replicate NULL". It now works. The documentation also
+  wrongly said `NULL` was the default; the default is `0` (the ellipse center), and is
+  unchanged.
+
+* Fixed `pvPlot()` for tibbles (e.g., `peng`): it failed with "invalid type (list)",
+  because selecting one column of a tibble does not give a vector. `X` is now converted
+  with `as.data.frame()`.
+
