@@ -99,7 +99,7 @@ heplot(rohwer.ses2, add=TRUE, col=c("blue", "black"), grand.mean=TRUE, error.ell
 
 }
 \references{
-Friendly, M. (2007).  HE plots for Multivariate General Linear
+Friendly, M. (2007).  HE Plots for Multivariate Linear
 Models.  \emph{Journal of Computational and Graphical Statistics},
 \strong{16}(2) 421--444.  \url{http://datavis.ca/papers/jcgs-heplots.pdf}
 

@@ -241,7 +241,7 @@ savedvars <- new.env(parent=emptyenv())
 #' *Journal of Statistical Software*, 17(6), 1-42.
 #' <https://www.jstatsoft.org/v17/i06/>
 #' 
-#' Friendly, M. (2007).  HE plots for Multivariate General Linear Models.
+#' Friendly, M. (2007).  HE Plots for Multivariate Linear Models.
 #' *Journal of Computational and Graphical Statistics*, 16(2) 421-444.
 #' <http://datavis.ca/papers/jcgs-heplots.pdf>
 #' @keywords hplot aplot dynamic multivariate

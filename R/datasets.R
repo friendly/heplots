@@ -1713,7 +1713,7 @@ NULL
 #'   \item{`ss`}{a numeric vector: performance on a 'sentence still' PA task} 
 #' }
 #' @references 
-#' Friendly, M. (2007).  HE plots for Multivariate General Linear
+#' Friendly, M. (2007).  HE Plots for Multivariate Linear
 #' Models.  *Journal of Computational and Graphical Statistics*,
 #' **16**(2) 421--444.  <http://datavis.ca/papers/jcgs-heplots.pdf>
 #' 

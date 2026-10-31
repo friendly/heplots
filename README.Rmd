@@ -353,7 +353,7 @@ Friendly, M. (2006).
 SAS Software and Examples.](https://www.jstatsoft.org/article/view/v017i06) 
 _Journal of Statistical Software_, **17**, 1-42.
 
-Friendly, M. (2007).  [HE plots for Multivariate General Linear Models](http://datavis.ca/papers/jcgs-heplots.pdf).
+Friendly, M. (2007).  [HE Plots for Multivariate Linear Models](http://datavis.ca/papers/jcgs-heplots.pdf).
 _Journal of Computational and Graphical Statistics_, **16**(2) 421-444.
 DOI: 10.1198/106186007X208407.
 

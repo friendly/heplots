@@ -59,14 +59,14 @@ keywords:
 - visualizing-hypothesis-tests
 references:
 - type: article
-  title: HE plots for Multivariate General Linear Models
+  title: HE Plots for Multivariate Linear Models
   authors:
   - family-names: Friendly
     given-names: Michael
   year: '2007'
   journal: Journal of Computational and Graphical Statistics
   volume: '16'
-  issue: '4'
+  issue: '2'
   start: '421'
   end: '444'
 - type: article
