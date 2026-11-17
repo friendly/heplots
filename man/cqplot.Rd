@@ -154,7 +154,7 @@ differ from the reference distribution. For \code{cqplot}, this helps to assess 
 data are reasonably distributed as multivariate normal and also to flag potential outliers.
 
 The calculation of the confidence envelope here follows that used in the SAS
-program, \url{http://www.datavis.ca/sasmac/cqplot.html} which comes from
+program, \url{https://github.com/friendly/SAS-macros/blob/master/cqplot.sas} which comes from
 Chambers et al. (1983), Section 6.8.
 
 The essential formula computes the standard errors as:

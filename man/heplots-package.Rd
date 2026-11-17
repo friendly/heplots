@@ -81,7 +81,7 @@ Displays for Multivariate Linear Models: SAS Software and Examples.
 
 Friendly, M. (2007).  HE Plots for Multivariate Linear Models.
 \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
-\url{http://datavis.ca/papers/jcgs-heplots.pdf},
+\url{https://doi.org/10.1198/106186007X208407},
 \doi{10.1198/106186007X208407}
 
 Fox, J., Friendly, M. & Monette, G. (2007).  Visual hypothesis tests in
@@ -101,7 +101,7 @@ Multivariate Linear Models Using the car Package.  \emph{The R Journal},
 Friendly, M., Monette, G. & Fox, J. (2013).  Elliptical Insights:
 Understanding Statistical Methods Through Elliptical Geometry.
 \emph{Statistical Science}, 2013, \strong{28} (1), 1-39,
-\url{http://datavis.ca/papers/ellipses.pdf}.
+\url{https://doi.org/10.1214/12-STS402}.
 
 Friendly, M. & Sigal, M. (2014). Recent Advances in Visualizing Multivariate
 Linear Models. \emph{Revista Colombiana de Estadistica}, \strong{37}, 261-283
@@ -121,7 +121,7 @@ Models in Psychological Research: An R Tutorial. Submitted for publication.
 \author{
 Michael Friendly, John Fox, and Georges Monette
 
-Maintainer: Michael Friendly, \email{friendly@yorku.ca}, \url{http://datavis.ca}
+Maintainer: Michael Friendly, \email{friendly@yorku.ca}, \url{https://friendly.github.io/}
 }
 \keyword{aplot}
 \keyword{hplot}

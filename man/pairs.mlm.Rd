@@ -108,7 +108,7 @@ Displays for Multivariate Linear Models: SAS Software and Examples
 
 Friendly, M. (2007).  HE Plots for Multivariate Linear Models.
 \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
-\url{http://datavis.ca/papers/jcgs-heplots.pdf}
+\url{https://doi.org/10.1198/106186007X208407}
 }
 \seealso{
 \code{\link[=heplot]{heplot()}}, \code{\link[=heplot3d]{heplot3d()}}

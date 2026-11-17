@@ -71,7 +71,7 @@
 #' @author 
 #'    Michael Friendly, John Fox, and Georges Monette
 #' 
-#'    Maintainer: Michael Friendly, \email{friendly@yorku.ca}, <http://datavis.ca>
+#'    Maintainer: Michael Friendly, \email{friendly@yorku.ca}, <https://friendly.github.io/>
 #' @seealso 
 #'     [car::Anova()], [car::linearHypothesis()] for Anova.mlm computations and tests
 #' 
@@ -88,7 +88,7 @@
 #' 
 #' Friendly, M. (2007).  HE Plots for Multivariate Linear Models.
 #' *Journal of Computational and Graphical Statistics*, 16(2) 421-444.
-#' <http://datavis.ca/papers/jcgs-heplots.pdf>,
+#' <https://doi.org/10.1198/106186007X208407>,
 #' \doi{10.1198/106186007X208407}
 #' 
 #' Fox, J., Friendly, M. & Monette, G. (2007).  Visual hypothesis tests in
@@ -108,7 +108,7 @@
 #' Friendly, M., Monette, G. & Fox, J. (2013).  Elliptical Insights:
 #' Understanding Statistical Methods Through Elliptical Geometry.
 #' *Statistical Science*, 2013, **28** (1), 1-39,
-#' <http://datavis.ca/papers/ellipses.pdf>.
+#' <https://doi.org/10.1214/12-STS402>.
 #' 
 #' Friendly, M. & Sigal, M. (2014). Recent Advances in Visualizing Multivariate
 #' Linear Models. *Revista Colombiana de Estadistica*, **37**, 261-283

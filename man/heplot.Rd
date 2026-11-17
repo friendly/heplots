@@ -383,7 +383,7 @@ DOI: 10.18637/jss.v017.i06
 
 Friendly, M. (2007).  HE Plots for Multivariate Linear Models.
 \emph{Journal of Computational and Graphical Statistics}, \strong{16}(2)
-421--444.  \url{http://datavis.ca/papers/jcgs-heplots.pdf}
+421--444.  \url{https://doi.org/10.1198/106186007X208407}
 
 Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
 \emph{Journal of Statistical Software}, 37(4), 1-40.

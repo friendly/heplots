@@ -35,24 +35,24 @@ hypotheses (**H**) and for error (**E**) using ellipses (in two
 dimensions), ellipsoids (in three dimensions), or by line segments in
 one dimension. For the theory and applications, see:
 
-- [Friendly (2007)](http://datavis.ca/papers/jcgs-heplots.pdf) for the
+- [Friendly (2007)](https://doi.org/10.1198/106186007X208407) for the
   basic theory of HE plots on which this is based.
 - [Fox, Friendly and Monette
-  (2009)](https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf) for a
+  (2009)](https://friendly.github.io/papers/FoxFriendlyMonette-2009.pdf) for a
   brief introduction with a few worked R examples
 - [Friendly
   (2010)](https://www.jstatsoft.org/htaccess.php?volume=37&type=i&issue=04&filename=paper)
   for the extension of these ideas to repeated measure designs, with R
   examples
 - [Friendly, Monette and Fox
-  (2013)](http://datavis.ca/papers/ellipses-STS402.pdf) for a general
+  (2013)](https://doi.org/10.1214/12-STS402) for a general
   discussion of the role of elliptical geometry in statistical
   understanding— ellipses and geometry are everywhere in statistical
   models.
 - [Friendly & Sigal (2017)](https://doi.org/10.20982/tqmp.13.1.p020) for
   an applied R tutorial with examples of MANOVA and multivariate
   regression models for psychological data drawn from this package
-- [Friendly & Sigal (2018)](https://www.datavis.ca/papers/EqCov-TAS.pdf)
+- [Friendly & Sigal (2018)](https://friendly.github.io/papers/EqCov-TAS.pdf)
   for theory and examples of visualizing equality of covariance
   matrices.
 
@@ -420,13 +420,13 @@ Examples.](https://www.jstatsoft.org/article/view/v017i06) *Journal of
 Statistical Software*, **17**, 1-42.
 
 Friendly, M. (2007). [HE Plots for Multivariate Linear
-Models](http://datavis.ca/papers/jcgs-heplots.pdf). *Journal of
+Models](https://doi.org/10.1198/106186007X208407). *Journal of
 Computational and Graphical Statistics*, **16**(2) 421-444. DOI:
 10.1198/106186007X208407.
 
 Fox, J., Friendly, M. & Monette, G. (2009). [Visualizing hypothesis
 tests in multivariate linear models: The heplots package for
-R](https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf) *Computational
+R](https://friendly.github.io/papers/FoxFriendlyMonette-2009.pdf) *Computational
 Statistics*, **24**, 233-246.
 
 Friendly, M. (2010). [HE plots for repeated measures
@@ -435,7 +435,7 @@ designs](https://www.jstatsoft.org/htaccess.php?volume=37&type=i&issue=04&filena
 
 Friendly, M.; Monette, G. & Fox, J. (2013). [Elliptical Insights:
 Understanding Statistical Methods Through Elliptical
-Geometry](http://datavis.ca/palers/ellipses-STS402.pdf) *Statistical
+Geometry](https://doi.org/10.1214/12-STS402) *Statistical
 Science*, **28**, 1-39.
 
 Friendly, M. & Sigal, M. (2017). [Graphical Methods for Multivariate
@@ -444,6 +444,6 @@ Tutorial.](https://doi.org/10.20982/tqmp.13.1.p020) *The Quantitative
 Methods for Psychology*, **13**, 20-45.
 
 Friendly, M. & Sigal, M. (2018): [Visualizing Tests for Equality of
-Covariance Matrices](https://www.datavis.ca/papers/EqCov-TAS.pdf), *The
+Covariance Matrices](https://friendly.github.io/papers/EqCov-TAS.pdf), *The
 American Statistician*,
 [DOI](https://doi.org/10.1080/00031305.2018.1497537)

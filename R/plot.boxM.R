@@ -61,7 +61,7 @@
 #' Friendly, M., & Sigal, M. (2018). Visualizing Tests for Equality of Covariance Matrices. 
 #' *The American Statistician*, **72**(4);
 #' \doi{10.1080/00031305.2018.1497537}.
-#' Online: <https://www.datavis.ca/papers/EqCov-TAS.pdf>.
+#' Online: <https://friendly.github.io/papers/EqCov-TAS.pdf>.
 #' 
 #' 
 #' @keywords hgraph

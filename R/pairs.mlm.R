@@ -75,7 +75,7 @@
 #' 
 #' Friendly, M. (2007).  HE Plots for Multivariate Linear Models.
 #' *Journal of Computational and Graphical Statistics*, 16(2) 421-444.
-#' <http://datavis.ca/papers/jcgs-heplots.pdf>
+#' <https://doi.org/10.1198/106186007X208407>
 #' @keywords hplot multivariate
 #' @examples
 #' 
