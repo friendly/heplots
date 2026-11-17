@@ -15,3 +15,7 @@ inst/doc
 
 # Claude Code per-machine permissions (each machine keeps its own)
 .claude/settings.local.json
+
+# pkgdown renders every top-level .md; AGENTS.md is for Codex, not the site
+docs/AGENTS.html
+docs/AGENTS.md

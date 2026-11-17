@@ -271,8 +271,10 @@ This defaults to <code>0.68</code>, giving a standard 1 SD bivariate ellipse.</p
 <dd><p>significance level for Roy's greatest-root test statistic; if
 <code>size="evidence"</code> or <code>size="significance"</code>, then the hypothesis ellipse is scaled so that it
 just touches the error ellipse at the specified alpha level. A larger
-hypothesis ellipse <em>somewhere</em> in the space of the response variables
-therefore indicates statistical significance; defaults to <code>0.05</code>.</p></dd>
+hypothesis ellipse <em>somewhere</em> in the space of all the response variables
+therefore indicates statistical significance. In a plot of only two
+responses, an H ellipse inside E does not mean "not significant" (see
+Details). Defaults to <code>0.05</code>.</p></dd>
 
 
 <dt id="arg-segments">segments<a class="anchor" aria-label="anchor" href="#arg-segments"></a></dt>
@@ -408,6 +410,20 @@ Pillai trace, Hotelling-Lawley trace, Roy maximum root). Roy's maximum root
 test has a particularly simple visual interpretation, exploited in the
 <code>size="evidence"</code> version of the plot. See the description of argument
 <code>alpha</code>.</p>
+<p>With <code>size="evidence"</code>, a term is significant by Roy's test if and only if
+its \(\mathbf{H}\) ellipsoid protrudes outside the \(\mathbf{E}\)
+ellipsoid <em>somewhere in the full space of all p responses</em>. A 2D HE plot shows
+only the projection onto two responses, so in a plot the rule works in one
+direction only:</p><ul><li><p>If \(\mathbf{H}\) extends outside \(\mathbf{E}\) in any view, the
+term is significant.</p></li>
+<li><p>If \(\mathbf{H}\) lies inside \(\mathbf{E}\) in a given view, the
+term may still be significant, because the effect may lie in directions that
+view does not show. Check other views with <code><a href="pairs.mlm.html">pairs.mlm()</a></code> or <code><a href="heplot3d.html">heplot3d()</a></code>, a
+canonical view (<code><a href="https://friendly.github.io/candisc/reference/heplot.candisc.html" class="external-link">candisc::heplot.candisc()</a></code>), or the tests from
+<code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code>.</p></li>
+</ul><p>For example, in the <code>Plastic</code> data, <code>additive</code> is significant (Roy's
+p = .025), but its \(\mathbf{H}\) line stays inside \(\mathbf{E}\) in
+all three pairwise plots of the responses.</p>
 <p>For a 1 df hypothesis term (a quantitative regressor, a single contrast or
 parameter test), the \(\mathbf{H}\) matrix has rank 1 (one non-zero latent root of
 \(\mathbf{H} \mathbf{E}^{-1}\)) and the \(\mathbf{H}\) "ellipse" collapses to a degenerate line.</p>

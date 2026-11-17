@@ -21,7 +21,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 <!-- explicit version number now dynamic -->
 
-Version 1.8.6; documentation built for `pkgdown` 2026-10-01
+Version 1.8.6; documentation built for `pkgdown` 2026-10-04
 
 ## 📝 Description
 
@@ -419,7 +419,7 @@ for Multivariate Linear Models: SAS Software and
 Examples.](https://www.jstatsoft.org/article/view/v017i06) *Journal of
 Statistical Software*, **17**, 1-42.
 
-Friendly, M. (2007). [HE plots for Multivariate General Linear
+Friendly, M. (2007). [HE Plots for Multivariate Linear
 Models](http://datavis.ca/papers/jcgs-heplots.pdf). *Journal of
 Computational and Graphical Statistics*, **16**(2) 421-444. DOI:
 10.1198/106186007X208407.

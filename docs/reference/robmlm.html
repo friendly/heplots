@@ -117,6 +117,9 @@ to visualize those that were down-weighted.</p>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># S3 method for class 'mlm'</span></span>
+<span><span class="fu">robmlm</span><span class="op">(</span><span class="va">X</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
 <span><span class="co"># S3 method for class 'robmlm'</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
@@ -133,7 +136,15 @@ to visualize those that were down-weighted.</p>
 
 <dl><dt id="arg-x">X<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>for the default method, a model matrix, including the constant (if
-present)</p></dd>
+present); for the <code>mlm</code> method, a fitted classical <code>mlm</code> object
+(e.g., from <code>lm(cbind(y1, y2, ...) ~ ...)</code>), which is refit robustly
+using the same response, predictors, contrasts, and any <code>subset</code>,
+<code>weights</code> or <code>na.action</code> given in the original <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> call. These
+can't be changed in the call to <code>robmlm()</code> (an error is
+signaled); only the control arguments of the default method
+(<code>tune</code>, <code>max.iter</code>, ...) can be given. The result records
+the call as if it had been fit with the formula method, so
+<code><a href="https://rdrr.io/r/stats/update.html" class="external-link">stats::update()</a></code> works on it.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -289,6 +300,26 @@ Robust Statistics</em>.  Wadsworth &amp; Brooks/Cole.</p>
 <span class="r-in"><span><span class="co"># fit manova model, classically and robustly</span></span></span>
 <span class="r-in"><span><span class="va">sk.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">sk.rmod</span> <span class="op">&lt;-</span> <span class="fu">robmlm</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">mb</span>, <span class="va">bh</span>, <span class="va">bl</span>, <span class="va">nh</span><span class="op">)</span> <span class="op">~</span> <span class="va">epoch</span>, data<span class="op">=</span><span class="va">Skulls</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># equivalently, refit an existing classical mlm object directly</span></span></span>
+<span class="r-in"><span><span class="va">sk.rmod2</span> <span class="op">&lt;-</span> <span class="fu">robmlm</span><span class="op">(</span><span class="va">sk.mod</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">sk.rmod</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">sk.rmod2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
+<span class="r-in"><span><span class="co"># the result can be updated like one fit from a formula</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">sk.rmod2</span>, subset <span class="op">=</span> <span class="va">epoch</span> <span class="op">!=</span> <span class="st">"200BC"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> robmlm(formula = cbind(mb, bh, bl, nh) ~ epoch, data = Skulls, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     subset = epoch != "200BC")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              mb        bh        bl        nh      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  133.5768  132.7151   96.9592   50.6251</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> epoch.L        3.8214   -1.9466   -4.3374    0.6160</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> epoch.Q        0.4997   -1.2898   -1.1385    0.6869</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> epoch.C       -0.6110   -1.5234    0.6876    0.1215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iterations =  8</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># standard mlm methods apply here</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coefficients</a></span><span class="op">(</span><span class="va">sk.rmod</span><span class="op">)</span></span></span>

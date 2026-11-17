@@ -2,6 +2,44 @@
 
 ## Version 1.8.6
 
+CRAN release: 2026-10-04
+
+### Enhancements
+
+- Added a two-page cheatsheet, `heplots-cheatsheet.pdf`, linked from the
+  README and the pkgdown navbar, to provide a visual overview of the
+  package.
+
+- Added a
+  [`robmlm.mlm()`](https://friendly.github.io/heplots/reference/robmlm.md)
+  method so
+  [`robmlm()`](https://friendly.github.io/heplots/reference/robmlm.md)
+  can be called directly on an existing classical `mlm` fit (e.g.,
+  `robmlm(mod)`) instead of restating the formula and data. The result
+  records its call as `robmlm(formula = , data = , ...)`, just as if it
+  had been fit from the formula, so
+  [`update()`](https://rdrr.io/r/stats/update.html) works on it.
+  Arguments that would change the model frame (`subset`, `weights`,
+  `data`, …) now signal an error rather than being silently ignored; set
+  them in the [`lm()`](https://rdrr.io/r/stats/lm.html) call, or use
+  [`update()`](https://rdrr.io/r/stats/update.html) on the result. Other
+  arguments must be named (e.g., `robmlm(mod, P = 0.01)`), since an
+  unnamed one would be taken as `P`.
+
+- Doc fix: Clarified the **significance interpretation** of HE plots in
+  [`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+  [`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md),
+  the README and the `HE_manova` vignette: **H** protrudes outside **E**
+  somewhere in the *full* response space iff the term is significant by
+  Roy’s test, but in a 2D (or 3D) view the rule works one way only.
+  **H** outside **E** means significant; **H** inside **E** does not
+  mean “not significant”. The `alpha` argument of
+  [`heplot1d()`](https://friendly.github.io/heplots/reference/heplot1d.md)
+  is now correctly described as referring to the univariate F test for
+  the response shown.
+
+### Bug fixes
+
 - Fixed
   [`termMeans()`](https://friendly.github.io/heplots/reference/termMeans.md):
   when the data were not sorted in factor-level order, the row labels
@@ -9,8 +47,8 @@
   `Plastic` `rate:additive` cells in the `HE_manova` vignette). This
   also affected the mean labels in
   [`heplot1d()`](https://friendly.github.io/heplots/reference/heplot1d.md).
-  Rows are now in factor-level order (first factor varying fastest), and
-  empty cells are dropped instead of causing an error.
+  Rows are now in **factor-level order** (first factor varying fastest),
+  and empty cells are dropped instead of causing an error.
 
 - Fixed
   [`eigstatCI()`](https://friendly.github.io/heplots/reference/eigstatCI.md):
@@ -20,6 +58,9 @@
   `boxM()$pooled`, and bootstraps it by resampling within groups. This
   changes the “pooled” point and CI in
   [`plot_boxM_boot()`](https://friendly.github.io/heplots/reference/plot_boxM_boot.md).
+  This achieves a long-standing goal to make the plot methods related to
+  [`boxM()`](https://friendly.github.io/heplots/reference/boxM.md) more
+  general, using bootstrap methods instead of asymptotic theory.
 
 - Fixed
   [`label.ellipse()`](https://friendly.github.io/heplots/reference/label.ellipse.md):
@@ -27,8 +68,19 @@
   documentation for a fractional `label.pos` now says correctly that it
   is measured counterclockwise from East (0 = right, 0.25 = top).
 
-- Added a two-page cheatsheet, `heplots-cheatsheet.pdf`, linked from the
-  README and the pkgdown navbar.
+- Fixed
+  [`covEllipses()`](https://friendly.github.io/heplots/reference/covEllipses.md):
+  `label.pos = NULL`, documented as giving automatic label positions,
+  failed with “cannot replicate NULL”. It now works. The documentation
+  also wrongly said `NULL` was the default; the default is `0` (the
+  ellipse center), and is unchanged.
+
+- Fixed
+  [`pvPlot()`](https://friendly.github.io/heplots/reference/pvPlot.md)
+  for tibbles (e.g., `peng`): it failed with “invalid type (list)”,
+  because selecting one column of a tibble does not give a vector. `X`
+  is now converted with
+  [`as.data.frame()`](https://rdrr.io/r/base/as.data.frame.html).
 
 ## Version 1.8.5
 

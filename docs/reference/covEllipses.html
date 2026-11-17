@@ -259,9 +259,10 @@ or vector of values within <code>[0,1]</code>, where 0 means fully transparent a
 character strings (in <code>c("center", "bottom", "left", "top", "right")</code>)
 use in labeling ellipses, recycled as necessary.  Values of 1, 2, 3 and 4,
 respectively indicate positions below, to the left of, above and to the
-right of the max/min coordinates of the ellipse; the value 0 specifies the
-centroid of the <code>ellipse</code> object.  The default, <code>label.pos=NULL</code>
-uses the correlation of the <code>ellipse</code> to determine "top" (r&gt;=0) or
+right of the max/min coordinates of the ellipse; the value 0 (the default)
+specifies the centroid of the <code>ellipse</code> object.  Compass directions
+and fractions are also allowed; see <code><a href="label.ellipse.html">label.ellipse()</a></code>.  <code>label.pos = NULL</code>
+uses the correlation of each ellipse to determine "top" (r&gt;=0) or
 "bottom" (r&lt;0).</p></dd>
 
 

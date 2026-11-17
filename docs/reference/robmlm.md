@@ -55,6 +55,9 @@ robmlm(
   ...
 )
 
+# S3 method for class 'mlm'
+robmlm(X, ...)
+
 # S3 method for class 'robmlm'
 print(x, ...)
 
@@ -70,7 +73,16 @@ print(x, ...)
 - X:
 
   for the default method, a model matrix, including the constant (if
-  present)
+  present); for the `mlm` method, a fitted classical `mlm` object (e.g.,
+  from `lm(cbind(y1, y2, ...) ~ ...)`), which is refit robustly using
+  the same response, predictors, contrasts, and any `subset`, `weights`
+  or `na.action` given in the original
+  [`lm()`](https://rdrr.io/r/stats/lm.html) call. These can't be changed
+  in the call to `robmlm()` (an error is signaled); only the control
+  arguments of the default method (`tune`, `max.iter`, ...) can be
+  given. The result records the call as if it had been fit with the
+  formula method, so
+  [`stats::update()`](https://rdrr.io/r/stats/update.html) works on it.
 
 - ...:
 
@@ -241,6 +253,26 @@ vlab <- c("maxBreadth", "basibHeight", "basialLength", "nasalHeight")
 # fit manova model, classically and robustly
 sk.mod <- lm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
 sk.rmod <- robmlm(cbind(mb, bh, bl, nh) ~ epoch, data=Skulls)
+
+# equivalently, refit an existing classical mlm object directly
+sk.rmod2 <- robmlm(sk.mod)
+all.equal(coef(sk.rmod), coef(sk.rmod2))
+#> [1] TRUE
+# the result can be updated like one fit from a formula
+update(sk.rmod2, subset = epoch != "200BC")
+#> 
+#> Call:
+#> robmlm(formula = cbind(mb, bh, bl, nh) ~ epoch, data = Skulls, 
+#>     subset = epoch != "200BC")
+#> 
+#> Coefficients:
+#>              mb        bh        bl        nh      
+#> (Intercept)  133.5768  132.7151   96.9592   50.6251
+#> epoch.L        3.8214   -1.9466   -4.3374    0.6160
+#> epoch.Q        0.4997   -1.2898   -1.1385    0.6869
+#> epoch.C       -0.6110   -1.5234    0.6876    0.1215
+#> 
+#> iterations =  8
 
 # standard mlm methods apply here
 coefficients(sk.rmod)

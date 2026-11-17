@@ -78,7 +78,7 @@
 <strong>Visualizing Hypothesis Tests in Multivariate Linear Models</strong><a class="anchor" aria-label="anchor" href="#visualizing-hypothesis-tests-in-multivariate-linear-models"></a>
 </h2>
 <!-- explicit version number now dynamic -->
-<p>Version 1.8.5; documentation built for <code>pkgdown</code> 2026-09-30</p>
+<p>Version 1.8.6; documentation built for <code>pkgdown</code> 2026-10-04</p>
 </div>
 <div class="section level2">
 <h2 id="pencil-description">📝 Description<a class="anchor" aria-label="anchor" href="#pencil-description"></a>
@@ -130,8 +130,8 @@
 </h2>
 <table class="table">
 <colgroup>
-<col width="21%">
-<col width="78%">
+<col width="50%">
+<col width="50%">
 </colgroup>
 <tbody>
 <tr>
@@ -182,11 +182,11 @@
 <p>The package also provides a large collection of data sets illustrating a variety of multivariate linear models of the types listed above, together with graphical displays. The table below classifies these with method tags. Their names are linked to their documentation with graphical output on the <code>pkgdown</code> website, [<a href="https://friendly.github.io/heplots/" class="uri">https://friendly.github.io/heplots/</a>].</p>
 <table class="table">
 <colgroup>
-<col width="44%">
-<col width="2%">
-<col width="2%">
-<col width="36%">
-<col width="12%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
+<col width="20%">
 </colgroup>
 <thead><tr>
 <th>dataset</th>
@@ -448,12 +448,6 @@
 <h2 id="open_book-vignettes">📖 Vignettes<a class="anchor" aria-label="anchor" href="#open_book-vignettes"></a>
 </h2>
 <p>Several tutorial vignettes are included, and can be browsed with <code>browseVignettes(package = "heplots")</code> once installed with <code>build_vignettes = TRUE</code>. Their rendered versions are also available as articles on the <a href="https://friendly.github.io/heplots/articles/">pkgdown site</a>:</p>
-<ul>
-<li><a href="https://friendly.github.io/heplots/articles/datasets.html">Data sets in the heplots package</a></li>
-<li><a href="https://friendly.github.io/heplots/articles/HE_manova.html">HE plot MANOVA Examples</a></li>
-<li><a href="https://friendly.github.io/heplots/articles/HE_mmra.html">HE plot MMRA Examples</a></li>
-<li><a href="https://friendly.github.io/heplots/articles/Robust.html">Robust Multivariate Linear Models</a></li>
-</ul>
 </div>
 <div class="section level2">
 <h2 id="spiral_notepad-cheatsheet">🗒️ Cheatsheet<a class="anchor" aria-label="anchor" href="#spiral_notepad-cheatsheet"></a>
@@ -465,7 +459,7 @@
 <h2 id="bar_chart-examples">📊 Examples<a class="anchor" aria-label="anchor" href="#bar_chart-examples"></a>
 </h2>
 <p>This example illustrates HE plots using the classic <code>iris</code> data set. How do the means of the flower variables differ by <code>Species</code>? This dataset was the impetus for R. A. Fisher (1936) to propose a method of discriminant analysis using data collected by Edgar Anderson (1928). Though some may rightly deprecate Fisher for being a supporter of eugenics, Anderson’s <code>iris</code> dataset should not be blamed.</p>
-<p>A basic HE plot shows the <strong>H</strong> and <strong>E</strong> ellipses for the first two response variables (here: <code>Sepal.Length</code> and <code>Sepal.Width</code>). The multivariate test is significant (by Roy’s test) <em>iff</em> the <strong>H</strong> ellipse projects <em>anywhere</em> outside the <strong>E</strong> ellipse.</p>
+<p>A basic HE plot shows the <strong>H</strong> and <strong>E</strong> ellipses for the first two response variables (here: <code>Sepal.Length</code> and <code>Sepal.Width</code>). The multivariate test is significant (by Roy’s test) <em>iff</em> the <strong>H</strong> ellipsoid projects <em>anywhere</em> outside the <strong>E</strong> ellipsoid in the space of <em>all</em> the responses. So if <strong>H</strong> sticks out beyond <strong>E</strong> in a plot, the effect is significant; but <strong>H</strong> inside <strong>E</strong> in one view does not mean “not significant”, because the effect may lie in directions that view does not show.</p>
 <p>The positions of the group means show how they differ on the two response variables shown, and provide an interpretation of the orientation of the <strong>H</strong> ellipse: it is long in the directions of differences among the means.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Sepal.Length</span>, <span class="va">Sepal.Width</span>, <span class="va">Petal.Length</span>, <span class="va">Petal.Width</span><span class="op">)</span> <span class="op">~</span> </span>

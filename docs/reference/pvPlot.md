@@ -42,7 +42,7 @@ pvPlot(
 
 - X:
 
-  a data.frame of numeric variables
+  a data.frame (or tibble) of numeric variables
 
 - vars:
 

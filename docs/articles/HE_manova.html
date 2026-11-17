@@ -70,7 +70,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>HE plot MANOVA Examples</h1>
                         <h4 data-toc-skip class="author">Michael Friendly</h4>
             
-            <h4 data-toc-skip class="date">2026-10-01</h4>
+            <h4 data-toc-skip class="date">2026-10-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/friendly/heplots/blob/HEAD/vignettes/HE_manova.Rmd" class="external-link"><code>vignettes/HE_manova.Rmd</code></a></small>
       <div class="d-none name"><code>HE_manova.Rmd</code></div>
@@ -358,7 +358,10 @@ The linear effect corresponds to the major axis of the <strong>H</strong> ellips
 <p>Again, to preserve resolution in the plot, I show the <strong>H</strong> and <strong>E</strong> ellipses with only 10% coverage,
 but it is only the relative size of an <strong>H</strong> ellipse relative to <strong>E</strong> that matters:
 With the default significance scaling, any effect is significant <em>iff</em> the
-corresponding <strong>H</strong> ellipse projects anywhere outside the <strong>E</strong> ellipse.</p>
+corresponding <strong>H</strong> ellipsoid projects anywhere outside the <strong>E</strong> ellipsoid in the
+space of all the responses. In a 2D plot, <strong>H</strong> outside <strong>E</strong> therefore means the effect
+is significant, but <strong>H</strong> inside <strong>E</strong> does not mean it is not: the effect may lie in
+directions not shown in that view.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">AH.mlm</span>, </span>
 <span>       hypotheses <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grade.L"</span>, <span class="st">"grade.Q"</span><span class="op">)</span>, </span>
@@ -488,7 +491,9 @@ When, as here, the model terms have 1 degree of freedom, the
 <span class="math inline">\(\mathbf{E}\)</span> to show <strong>significance</strong> of effects (<code>size="evidence"</code>),
 or <strong>effect size</strong> (<code>size="effect"</code>). In the former case, a model term
 is significant (using Roy’s maximum root test) <em>iff</em> the
-<span class="math inline">\(\mathbf{H}\)</span> projects anywhere outside the <span class="math inline">\(\mathbf{E}\)</span> ellipse.</p>
+<span class="math inline">\(\mathbf{H}\)</span> ellipsoid projects anywhere outside the <span class="math inline">\(\mathbf{E}\)</span> ellipsoid
+in the full space of the responses. In a particular 2D view, this works one way only,
+as the next example shows.</p>
 <p>This plot overlays those for both scaling, using thicker lines for the
 effect scaling.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -514,14 +519,21 @@ matrices are both divided by the error df, giving multivariate analogs of univar
 measures of effect size, e.g., <span class="math inline">\((\bar{y}_1-\bar{y}_2) / s\)</span>.
 With significance scaling, the <span class="math inline">\(\mathbf{H}\)</span> ellipse is further divided by
 <span class="math inline">\(\lambda_\alpha\)</span>, the critical value of Roy’s largest root statistic.
-This scaling has the property that an <span class="math inline">\(\mathbf{H}\)</span> ellipse will protrude somewhere
-outside the <span class="math inline">\(\mathbf{E}\)</span> ellipse <em>iff</em> the
+This scaling has the property that an <span class="math inline">\(\mathbf{H}\)</span> ellipsoid will protrude somewhere
+outside the <span class="math inline">\(\mathbf{E}\)</span> ellipsoid in the full space of the responses <em>iff</em> the
 multivariate test is significant at level <span class="math inline">\(\alpha\)</span>.
 Figure <a href="#fig:plastic1">2.2</a> shows both scalings, using a thinner line for significance scaling.
-Note that the (degenerate) ellipse for <code>additive</code> is significant, but
-does not protrude outside the <span class="math inline">\(\mathbf{E}\)</span> ellipse in this view.
+Note that the (degenerate) ellipse for <code>additive</code> is significant (<span class="math inline">\(p = .025\)</span>), but
+does not protrude outside the <span class="math inline">\(\mathbf{E}\)</span> ellipse in this view, nor in either of the
+other two pairwise views of the responses.
 All that is guaranteed is that it will protrude somewhere in the 3D space of
-the responses.</p>
+the responses (Figure <a href="#fig:plastic1-HE3D">2.4</a>).</p>
+<p>So, in any 2D (or 3D) view, the rule works in one direction only:
+if an <span class="math inline">\(\mathbf{H}\)</span> ellipse extends outside <span class="math inline">\(\mathbf{E}\)</span>, the effect is significant;
+but if it lies inside <span class="math inline">\(\mathbf{E}\)</span>, the effect may still be significant in some direction
+not shown. To check, look at other views (<code><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs()</a></code>, <code><a href="../reference/heplot3d.html">heplot3d()</a></code>), a canonical view
+(<code>candisc::heplot()</code>), where the directions of largest effect are shown, or the tests from
+<code><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">car::Anova()</a></code>.</p>
 <p>By design, means for the levels of interaction terms are not shown in the HE plot,
 because doing so in general can lead to messy displays.
 We can add them here for the term <code>rate:additive</code> as follows:</p>

@@ -2,7 +2,7 @@
 
 ## **Visualizing Hypothesis Tests in Multivariate Linear Models**
 
-Version 1.8.5; documentation built for `pkgdown` 2026-09-30
+Version 1.8.6; documentation built for `pkgdown` 2026-10-04
 
 ## 📝 Description
 
@@ -220,15 +220,6 @@ Several tutorial vignettes are included, and can be browsed with
 articles on the [pkgdown
 site](https://friendly.github.io/heplots/articles/):
 
-- [Data sets in the heplots
-  package](https://friendly.github.io/heplots/articles/datasets.html)
-- [HE plot MANOVA
-  Examples](https://friendly.github.io/heplots/articles/HE_manova.html)
-- [HE plot MMRA
-  Examples](https://friendly.github.io/heplots/articles/HE_mmra.html)
-- [Robust Multivariate Linear
-  Models](https://friendly.github.io/heplots/articles/Robust.html)
-
 ## 🗒️ Cheatsheet
 
 A two-page cheatsheet summarizes the main functions: fitting and
@@ -249,8 +240,12 @@ eugenics, Anderson’s `iris` dataset should not be blamed.
 
 A basic HE plot shows the **H** and **E** ellipses for the first two
 response variables (here: `Sepal.Length` and `Sepal.Width`). The
-multivariate test is significant (by Roy’s test) *iff* the **H** ellipse
-projects *anywhere* outside the **E** ellipse.
+multivariate test is significant (by Roy’s test) *iff* the **H**
+ellipsoid projects *anywhere* outside the **E** ellipsoid in the space
+of *all* the responses. So if **H** sticks out beyond **E** in a plot,
+the effect is significant; but **H** inside **E** in one view does not
+mean “not significant”, because the effect may lie in directions that
+view does not show.
 
 The positions of the group means show how they differ on the two
 response variables shown, and provide an interpretation of the

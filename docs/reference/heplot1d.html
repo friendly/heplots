@@ -221,11 +221,13 @@ This defaults to <code>0.68</code>, giving a standard 1 SD bivariate ellipse.</p
 
 
 <dt id="arg-alpha">alpha<a class="anchor" aria-label="anchor" href="#arg-alpha"></a></dt>
-<dd><p>significance level for Roy's greatest-root test statistic; if
-<code>size="evidence"</code> or <code>size="significance"</code>, then the hypothesis ellipse is scaled so that it
-just touches the error ellipse at the specified alpha level. A larger
-hypothesis ellipse <em>somewhere</em> in the space of the response variables
-therefore indicates statistical significance; defaults to <code>0.05</code>.</p></dd>
+<dd><p>significance level for the univariate F test of the response shown;
+if <code>size="evidence"</code> or <code>size="significance"</code>, then the hypothesis interval
+is scaled so that it just matches the error interval at the specified alpha
+level. A longer hypothesis interval therefore indicates that the term is
+significant for <em>this response</em> by its univariate F test. This is not
+Roy's multivariate test as in <code><a href="heplot.html">heplot()</a></code>: a term can be significant
+multivariately but not for any single response. Defaults to <code>0.05</code>.</p></dd>
 
 
 <dt id="arg-center-pch">center.pch<a class="anchor" aria-label="anchor" href="#arg-center-pch"></a></dt>

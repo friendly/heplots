@@ -174,12 +174,15 @@ heplot1d(
 
 - alpha:
 
-  significance level for Roy's greatest-root test statistic; if
+  significance level for the univariate F test of the response shown; if
   `size="evidence"` or `size="significance"`, then the hypothesis
-  ellipse is scaled so that it just touches the error ellipse at the
-  specified alpha level. A larger hypothesis ellipse *somewhere* in the
-  space of the response variables therefore indicates statistical
-  significance; defaults to `0.05`.
+  interval is scaled so that it just matches the error interval at the
+  specified alpha level. A longer hypothesis interval therefore
+  indicates that the term is significant for *this response* by its
+  univariate F test. This is not Roy's multivariate test as in
+  [`heplot()`](https://friendly.github.io/heplots/reference/heplot.md):
+  a term can be significant multivariately but not for any single
+  response. Defaults to `0.05`.
 
 - center.pch:
 

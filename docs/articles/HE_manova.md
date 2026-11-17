@@ -335,7 +335,10 @@ Again, to preserve resolution in the plot, I show the **H** and **E**
 ellipses with only 10% coverage, but it is only the relative size of an
 **H** ellipse relative to **E** that matters: With the default
 significance scaling, any effect is significant *iff* the corresponding
-**H** ellipse projects anywhere outside the **E** ellipse.
+**H** ellipsoid projects anywhere outside the **E** ellipsoid in the
+space of all the responses. In a 2D plot, **H** outside **E** therefore
+means the effect is significant, but **H** inside **E** does not mean it
+is not: the effect may lie in directions not shown in that view.
 
 ``` r
 
@@ -488,7 +491,9 @@ In HE plots, the \\\mathbf{H}\\ ellipses can be scaled relative to the
 \\\mathbf{E}\\ to show **significance** of effects (`size="evidence"`),
 or **effect size** (`size="effect"`). In the former case, a model term
 is significant (using Roy’s maximum root test) *iff* the \\\mathbf{H}\\
-projects anywhere outside the \\\mathbf{E}\\ ellipse.
+ellipsoid projects anywhere outside the \\\mathbf{E}\\ ellipsoid in the
+full space of the responses. In a particular 2D view, this works one way
+only, as the next example shows.
 
 This plot overlays those for both scaling, using thicker lines for the
 effect scaling.
@@ -527,13 +532,26 @@ multivariate analogs of univariate measures of effect size, e.g.,
 \\(\bar{y}\_1-\bar{y}\_2) / s\\. With significance scaling, the
 \\\mathbf{H}\\ ellipse is further divided by \\\lambda\_\alpha\\, the
 critical value of Roy’s largest root statistic. This scaling has the
-property that an \\\mathbf{H}\\ ellipse will protrude somewhere outside
-the \\\mathbf{E}\\ ellipse *iff* the multivariate test is significant at
-level \\\alpha\\. Figure [2.2](#fig:plastic1) shows both scalings, using
-a thinner line for significance scaling. Note that the (degenerate)
-ellipse for `additive` is significant, but does not protrude outside the
-\\\mathbf{E}\\ ellipse in this view. All that is guaranteed is that it
-will protrude somewhere in the 3D space of the responses.
+property that an \\\mathbf{H}\\ ellipsoid will protrude somewhere
+outside the \\\mathbf{E}\\ ellipsoid in the full space of the responses
+*iff* the multivariate test is significant at level \\\alpha\\. Figure
+[2.2](#fig:plastic1) shows both scalings, using a thinner line for
+significance scaling. Note that the (degenerate) ellipse for `additive`
+is significant (\\p = .025\\), but does not protrude outside the
+\\\mathbf{E}\\ ellipse in this view, nor in either of the other two
+pairwise views of the responses. All that is guaranteed is that it will
+protrude somewhere in the 3D space of the responses (Figure
+[2.4](#fig:plastic1-HE3D)).
+
+So, in any 2D (or 3D) view, the rule works in one direction only: if an
+\\\mathbf{H}\\ ellipse extends outside \\\mathbf{E}\\, the effect is
+significant; but if it lies inside \\\mathbf{E}\\, the effect may still
+be significant in some direction not shown. To check, look at other
+views ([`pairs()`](https://rdrr.io/r/graphics/pairs.html),
+[`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md)),
+a canonical view (`candisc::heplot()`), where the directions of largest
+effect are shown, or the tests from
+[`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html).
 
 By design, means for the levels of interaction terms are not shown in
 the HE plot, because doing so in general can lead to messy displays. We

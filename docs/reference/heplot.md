@@ -222,8 +222,9 @@ heplot(
   `size="evidence"` or `size="significance"`, then the hypothesis
   ellipse is scaled so that it just touches the error ellipse at the
   specified alpha level. A larger hypothesis ellipse *somewhere* in the
-  space of the response variables therefore indicates statistical
-  significance; defaults to `0.05`.
+  space of all the response variables therefore indicates statistical
+  significance. In a plot of only two responses, an H ellipse inside E
+  does not mean "not significant" (see Details). Defaults to `0.05`.
 
 - segments:
 
@@ -372,6 +373,30 @@ Lambda, Pillai trace, Hotelling-Lawley trace, Roy maximum root). Roy's
 maximum root test has a particularly simple visual interpretation,
 exploited in the `size="evidence"` version of the plot. See the
 description of argument `alpha`.
+
+With `size="evidence"`, a term is significant by Roy's test if and only
+if its \\\mathbf{H}\\ ellipsoid protrudes outside the \\\mathbf{E}\\
+ellipsoid *somewhere in the full space of all p responses*. A 2D HE plot
+shows only the projection onto two responses, so in a plot the rule
+works in one direction only:
+
+- If \\\mathbf{H}\\ extends outside \\\mathbf{E}\\ in any view, the term
+  is significant.
+
+- If \\\mathbf{H}\\ lies inside \\\mathbf{E}\\ in a given view, the term
+  may still be significant, because the effect may lie in directions
+  that view does not show. Check other views with
+  [`pairs.mlm()`](https://friendly.github.io/heplots/reference/pairs.mlm.md)
+  or
+  [`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md),
+  a canonical view
+  ([`candisc::heplot.candisc()`](https://friendly.github.io/candisc/reference/heplot.candisc.html)),
+  or the tests from
+  [`car::Anova()`](https://rdrr.io/pkg/car/man/Anova.html).
+
+For example, in the `Plastic` data, `additive` is significant (Roy's p =
+.025), but its \\\mathbf{H}\\ line stays inside \\\mathbf{E}\\ in all
+three pairwise plots of the responses.
 
 For a 1 df hypothesis term (a quantitative regressor, a single contrast
 or parameter test), the \\\mathbf{H}\\ matrix has rank 1 (one non-zero

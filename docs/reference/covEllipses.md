@@ -198,10 +198,12 @@ covEllipses(
   (in `c("center", "bottom", "left", "top", "right")`) use in labeling
   ellipses, recycled as necessary. Values of 1, 2, 3 and 4, respectively
   indicate positions below, to the left of, above and to the right of
-  the max/min coordinates of the ellipse; the value 0 specifies the
-  centroid of the `ellipse` object. The default, `label.pos=NULL` uses
-  the correlation of the `ellipse` to determine "top" (r\>=0) or
-  "bottom" (r\<0).
+  the max/min coordinates of the ellipse; the value 0 (the default)
+  specifies the centroid of the `ellipse` object. Compass directions and
+  fractions are also allowed; see
+  [`label.ellipse()`](https://friendly.github.io/heplots/reference/label.ellipse.md).
+  `label.pos = NULL` uses the correlation of each ellipse to determine
+  "top" (r\>=0) or "bottom" (r\<0).
 
 - xlab:
 
