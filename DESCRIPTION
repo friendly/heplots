@@ -48,7 +48,6 @@ Suggests:
     carData,
     lmtest,
     effects,
-    reshape,
     gplots,
     nlme,
     lattice,
