@@ -104,8 +104,8 @@ Cai, T. T., Liang, T., & Zhou, H. H. (2015).
 Law of log determinant of sample covariance matrix and optimal estimation of differential entropy for high-dimensional Gaussian distributions.
 \emph{Journal of Multivariate Analysis}, \strong{137}, 161–172. \doi{10.1016/j.jmva.2015.02.003}.
 
-Friendly, M., & Sigal, M. (2018). Visualizing Tests for Equality of Covariance Matrices.
-\emph{The American Statistician}, \strong{72}(4);
+Friendly, M., & Sigal, M. (2020). Visualizing Tests for Equality of Covariance Matrices.
+\emph{The American Statistician}, \strong{74}(2), 144–155;
 \doi{10.1080/00031305.2018.1497537}.
 Online: \url{https://friendly.github.io/papers/EqCov-TAS.pdf}.
 }

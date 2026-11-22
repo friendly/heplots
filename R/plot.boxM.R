@@ -58,8 +58,8 @@
 #' Law of log determinant of sample covariance matrix and optimal estimation of differential entropy for high-dimensional Gaussian distributions. 
 #' *Journal of Multivariate Analysis*, **137**, 161–172. \doi{10.1016/j.jmva.2015.02.003}.
 #' 
-#' Friendly, M., & Sigal, M. (2018). Visualizing Tests for Equality of Covariance Matrices. 
-#' *The American Statistician*, **72**(4);
+#' Friendly, M., & Sigal, M. (2020). Visualizing Tests for Equality of Covariance Matrices. 
+#' *The American Statistician*, **74**(2), 144–155;
 #' \doi{10.1080/00031305.2018.1497537}.
 #' Online: <https://friendly.github.io/papers/EqCov-TAS.pdf>.
 #' 
