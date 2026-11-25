@@ -23,6 +23,7 @@ heplot(
   err.label = "Error",
   label.pos = NULL,
   label.cex = par("cex"),
+  means.pos = 3,
   variables = 1:2,
   error.ellipse = !add,
   factor.means = !add,
@@ -118,6 +119,17 @@ heplot(
 - label.cex:
 
   Character size used for labels for the hypothesis, error ellipses.
+
+- means.pos:
+
+  Position(s) of the labels for the factor means (see `factor.means`),
+  as in [`graphics::text()`](https://rdrr.io/r/graphics/text.html): 1,
+  2, 3 and 4 indicate below, to the left of, above and to the right of
+  the mean. Either an unnamed vector, recycled over the levels of each
+  factor, or a vector named by factor levels, e.g.,
+  `means.pos = c(setosa = 1)`, to move only those labels; the others
+  stay at the default, 3 (above). Useful when the labels for two means
+  overlap.
 
 - variables:
 
@@ -445,9 +457,9 @@ for Multivariate Linear Models: SAS Software and Examples *Journal of
 Statistical Software*, **17**(6), 1–42. %
 <https://www.jstatsoft.org/v17/i06/>, DOI: 10.18637/jss.v017.i06
 
-Friendly, M. (2007). HE plots for Multivariate General Linear Models.
-*Journal of Computational and Graphical Statistics*, **16**(2) 421–444.
-<http://datavis.ca/papers/jcgs-heplots.pdf>
+Friendly, M. (2007). HE Plots for Multivariate Linear Models. *Journal
+of Computational and Graphical Statistics*, **16**(2) 421–444.
+<https://doi.org/10.1198/106186007X208407>
 
 Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
 *Journal of Statistical Software*, 37(4), 1-40. DOI:
@@ -523,6 +535,12 @@ heplot(iris.mod, hypotheses=hyp, fill=TRUE,
 # vary label position and fill.alpha
 heplot(iris.mod, hypotheses=hyp, fill=TRUE, fill.alpha=c(0.3,0.1), col=c("red", "blue"), 
        lty=c(0,0,1,1), label.pos=0:3)
+
+
+# move overlapping labels for the means: by level name, or recycled over the levels
+heplot(iris.mod, means.pos = c(setosa = 1))
+
+heplot(iris.mod, means.pos = c(1, 3, 4))
 
 
 # what is returned?

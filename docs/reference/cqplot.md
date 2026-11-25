@@ -212,8 +212,8 @@ potential outliers.
 
 The calculation of the confidence envelope here follows that used in the
 SAS program,
-[http://www.datavis.ca/sasmac/cqplot.html](http://www.datavis.ca/sasmac/cqplot.md)
-which comes from Chambers et al. (1983), Section 6.8.
+<https://github.com/friendly/SAS-macros/blob/master/cqplot.sas> which
+comes from Chambers et al. (1983), Section 6.8.
 
 The essential formula computes the standard errors as: \$\$ \text{se} (
 D^2\_{(i)} ) = \frac{\hat{b}} {d ( q_i)} \times \sqrt{ p_i (1-p_i) / n }

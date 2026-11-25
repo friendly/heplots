@@ -1,7 +1,7 @@
 # HE plot MANOVA Examples
 
-Vignette built using `heplots`, version 1.8.6 and `candisc`, version
-1.1.1.
+Vignette built using `heplots`, version 1.8.7 and `candisc`, version
+1.1.2.
 
 ## Multivariate Analysis of Variance Designs
 
@@ -1284,8 +1284,8 @@ Friendly, M. (2006). Data ellipses, HE plots and reduced-rank displays
 for multivariate linear models: SAS software and examples. *Journal of
 Statistical Software*, *17*(6), 1–42.
 
-Friendly, M. (2007). HE plots for multivariate general linear models.
-*Journal of Computational and Graphical Statistics*, *16*(2), 421–444.
+Friendly, M. (2007). HE plots for multivariate linear models. *Journal
+of Computational and Graphical Statistics*, *16*(2), 421–444.
 
 Johnson, R., & Wichern, D. (1992). *Applied multivariate statistical
 analysis*. Englewood Cliffs, N.J: Prentice Hall.

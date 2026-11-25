@@ -13,9 +13,9 @@
 <link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
-<link href="deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
-<link href="deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.5.0/font.css" rel="stylesheet">
+<link href="deps/JetBrains_Mono-0.5.0/font.css" rel="stylesheet">
+<link href="deps/Roboto_Slab-0.5.0/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Visualizing Hypothesis Tests in Multivariate Linear Models">
@@ -33,7 +33,7 @@
 
     <a class="navbar-brand me-2" href="index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.7</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,17 +87,17 @@
 <p>HE plots represent sums-of-squares-and-products matrices for linear hypotheses (<strong>H</strong>) and for error (<strong>E</strong>) using ellipses (in two dimensions), ellipsoids (in three dimensions), or by line segments in one dimension. For the theory and applications, see:</p>
 <ul>
 <li>
-<a href="http://datavis.ca/papers/jcgs-heplots.pdf" class="external-link">Friendly (2007)</a> for the basic theory of HE plots on which this is based.</li>
+<a href="https://doi.org/10.1198/106186007X208407" class="external-link">Friendly (2007)</a> for the basic theory of HE plots on which this is based.</li>
 <li>
-<a href="https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf" class="external-link">Fox, Friendly and Monette (2009)</a> for a brief introduction with a few worked R examples</li>
+<a href="https://friendly.github.io/papers/FoxFriendlyMonette-2009.pdf" class="external-link">Fox, Friendly and Monette (2009)</a> for a brief introduction with a few worked R examples</li>
 <li>
 <a href="https://www.jstatsoft.org/htaccess.php?volume=37&amp;type=i&amp;issue=04&amp;filename=paper" class="external-link">Friendly (2010)</a> for the extension of these ideas to repeated measure designs, with R examples</li>
 <li>
-<a href="http://datavis.ca/papers/ellipses-STS402.pdf" class="external-link">Friendly, Monette and Fox (2013)</a> for a general discussion of the role of elliptical geometry in statistical understanding— ellipses and geometry are everywhere in statistical models.</li>
+<a href="https://doi.org/10.1214/12-STS402" class="external-link">Friendly, Monette and Fox (2013)</a> for a general discussion of the role of elliptical geometry in statistical understanding— ellipses and geometry are everywhere in statistical models.</li>
 <li>
 <a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">Friendly &amp; Sigal (2017)</a> for an applied R tutorial with examples of MANOVA and multivariate regression models for psychological data drawn from this package</li>
 <li>
-<a href="https://www.datavis.ca/papers/EqCov-TAS.pdf" class="external-link">Friendly &amp; Sigal (2018)</a> for theory and examples of visualizing equality of covariance matrices.</li>
+<a href="https://friendly.github.io/papers/EqCov-TAS.pdf" class="external-link">Friendly &amp; Sigal (2018)</a> for theory and examples of visualizing equality of covariance matrices.</li>
 </ul>
 <p>The ideas behind this and related packages are now the subject of a forthcoming book, <a href="https://friendly.github.io/Vis-MLM-book/" class="external-link"><em>Visualizing Multivariate Data and Models in R</em></a></p>
 <p>If you use this work in teaching or research, please cite it as given by <code>citation("heplots")</code> or see <a href="authors.html#citation">Citation</a>.</p>
@@ -562,12 +562,12 @@ Covariance ellipses for the iris data, showing the classical and robust estimate
 <p>Anderson, E. (1928). The Problem of Species in the Northern Blue Flags, Iris versicolor L. and Iris virginica L. <em>Annals of the Missouri Botanical Garden</em>, <strong>13</strong>, 241–313.</p>
 <p>Fisher, R. A. (1936). The Use of Multiple Measurements in Taxonomic Problems. <em>Annals of Eugenics</em>, <strong>8</strong>, 379–388.</p>
 <p>Friendly, M. (2006). <a href="https://www.jstatsoft.org/article/view/v017i06" class="external-link">Data Ellipses, HE Plots and Reduced-Rank Displays for Multivariate Linear Models: SAS Software and Examples.</a> <em>Journal of Statistical Software</em>, <strong>17</strong>, 1-42.</p>
-<p>Friendly, M. (2007). <a href="http://datavis.ca/papers/jcgs-heplots.pdf" class="external-link">HE plots for Multivariate General Linear Models</a>. <em>Journal of Computational and Graphical Statistics</em>, <strong>16</strong>(2) 421-444. DOI: 10.1198/106186007X208407.</p>
-<p>Fox, J., Friendly, M. &amp; Monette, G. (2009). <a href="https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf" class="external-link">Visualizing hypothesis tests in multivariate linear models: The heplots package for R</a> <em>Computational Statistics</em>, <strong>24</strong>, 233-246.</p>
+<p>Friendly, M. (2007). <a href="https://doi.org/10.1198/106186007X208407" class="external-link">HE Plots for Multivariate Linear Models</a>. <em>Journal of Computational and Graphical Statistics</em>, <strong>16</strong>(2) 421-444. DOI: 10.1198/106186007X208407.</p>
+<p>Fox, J., Friendly, M. &amp; Monette, G. (2009). <a href="https://friendly.github.io/papers/FoxFriendlyMonette-2009.pdf" class="external-link">Visualizing hypothesis tests in multivariate linear models: The heplots package for R</a> <em>Computational Statistics</em>, <strong>24</strong>, 233-246.</p>
 <p>Friendly, M. (2010). <a href="https://www.jstatsoft.org/htaccess.php?volume=37&amp;type=i&amp;issue=04&amp;filename=paper" class="external-link">HE plots for repeated measures designs</a>. <em>Journal of Statistical Software</em>, <strong>37</strong>, 1–37.</p>
-<p>Friendly, M.; Monette, G. &amp; Fox, J. (2013). <a href="http://datavis.ca/palers/ellipses-STS402.pdf" class="external-link">Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry</a> <em>Statistical Science</em>, <strong>28</strong>, 1-39.</p>
+<p>Friendly, M.; Monette, G. &amp; Fox, J. (2013). <a href="https://doi.org/10.1214/12-STS402" class="external-link">Elliptical Insights: Understanding Statistical Methods Through Elliptical Geometry</a> <em>Statistical Science</em>, <strong>28</strong>, 1-39.</p>
 <p>Friendly, M. &amp; Sigal, M. (2017). <a href="https://doi.org/10.20982/tqmp.13.1.p020" class="external-link">Graphical Methods for Multivariate Linear Models in Psychological Research: An R Tutorial.</a> <em>The Quantitative Methods for Psychology</em>, <strong>13</strong>, 20-45.</p>
-<p>Friendly, M. &amp; Sigal, M. (2018): <a href="https://www.datavis.ca/papers/EqCov-TAS.pdf" class="external-link">Visualizing Tests for Equality of Covariance Matrices</a>, <em>The American Statistician</em>, <a href="https://doi.org/10.1080/00031305.2018.1497537" class="external-link">DOI</a></p>
+<p>Friendly, M. &amp; Sigal, M. (2018): <a href="https://friendly.github.io/papers/EqCov-TAS.pdf" class="external-link">Visualizing Tests for Equality of Covariance Matrices</a>, <em>The American Statistician</em>, <a href="https://doi.org/10.1080/00031305.2018.1497537" class="external-link">DOI</a></p>
 </div>
 </div>
 
