@@ -218,6 +218,20 @@ for a Gavin funding-application topic list).
 - ✔️ **DONE** Rebuild the pkgdown site — was stale (site title/home page/CRAN version
   mismatched); rebuilt via commits `9d65d13`/`2acdd84` and now reflects 1.8.3.
 
+- [ ] **Explore `Pottery2` with examples** (noted 2026-11-25, from the "How Big Is My Matrix?"
+  blog draft). Every Pottery example in heplots, candisc and the Vis-MLM book uses
+  `carData::Pottery` (26 pots, 5 oxides, 4 sites), which is exactly `Pottery2` minus
+  Gloucester and the last four oxides. `Pottery2` (48 pots, 9 oxides) adds a 5th site and a
+  3-level `Region` (Gl; NF: Ashley Rails, Isle Thorns; Wales: Caldicot, Llanedryn), but its
+  help page reaches `Region` only through linear hypotheses on the `Kiln` contrasts. Ideas:
+  - an analysis by `Region`, and Region vs. Site within Region as nested terms, with HE plots
+    (how big is **H** for Region relative to **H** for Site within Region?);
+  - a `robmlm()` example, as for `carData::Pottery` in `?robmlm` and the Robust vignette;
+  - maybe an mvinfluence example (influence of cases, or pairs, within the small sites;
+    Caldicot has only 2 pots).
+  Side issues: site spelled `Llanedryn` here vs `Llanedyrn` in carData (Llanedeyrn? unchecked);
+  `Vis-MLM-book/working-text/exercises-test-03.qmd` loads a non-existent `heplots::Pottery`.
+
 ## Clean-up candidates
 
 Scratch/debug work for features already shipped — see `NEWS.md` v1.8.1–1.8.3. None of these
