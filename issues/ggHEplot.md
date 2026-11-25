@@ -25,15 +25,128 @@ So the first step, whatever the approach, is to **split out a pure computation f
 `heplot_compute(mod, terms, hypotheses, size, level, variables, ...)`, returning everything
 needed to draw, with no drawing:
 
-- `ellipses`: long data frame — `term`, `type` ("H"/"E"), `x`, `y`, `rank` (so a renderer
-  can draw a rank-1 H as a segment, not a filled polygon)
-- `means`: data frame — `factor`, `level`, `x`, `y`
-- `labels`: label positions from the `label.ellipse()` logic, as data
-- `center`, `radius`, `xlim`, `ylim`, `dfe`, per-term scaling factor
+- `ellipses`: a **symbolic** representation (center, shape, radius, rank, ...), not boundary
+  points — see "The `ellipses` slot: symbolic, not points" below
+- `means`: data frame of factor-level means on all `p` responses
+- `center`, `level`, `dfe`, `p`, `size`, `alpha`, `response.names`
+
+Points (and label positions, axis limits) are produced from it only when rendering.
 
 `heplot.mlm()` then becomes the base-graphics renderer of that object (fully backward
 compatible). Any ggplot renderer becomes a thin layer. Worth doing even with no ggplot
 plans: it makes `heplot()` testable (useful for a future testthat setup).
+
+### The `ellipses` slot: symbolic, not points
+
+**What happens now.** `ell(center, shape, radius)` (`R/heplot.R:418`) maps a unit circle of
+`segments + 1` points through a pivoted Cholesky factor of `shape`. Each H is subset to the
+two plotted `variables`, scaled by `scale/factor` (`factor = lambda.crit(alpha, p, dfh, dfe)`
+for `size = "evidence"`, `:529-541`), passed to `ell()`, and the **scaled 2x2 matrix is then
+discarded**. `H.rank` is computed for terms (`:541`), never for hypotheses, and not returned
+(hence the stalled `# TODO: take account of rank=1?` at `:519`, `:603`). The returned object
+is just `H` (list of 61x2 point matrices), `E`, `center`, `xlim`, `ylim`, `radius`; the docs
+say "No methods for manipulating these objects are currently available." It is the
+*rendering*, minus the information that defines it.
+
+**Why symbolic.** An ellipse here is fully determined by (center, shape, radius) + rank:
+
+1. Existing helpers already want it: `ellipse.axes(x, center, scale, radius, ...)` and
+   `ellipse.box(x, center, radius, ...)` take a *shape matrix*. Today users can't add axes
+   or a box to an HE plot without recomputing H themselves.
+2. Rank-1 handling: with shape + rank, draw the segment `center ± radius*sqrt(λ1)*v1`
+   instead of a collapsed polygon — resolves both TODOs.
+3. Points on demand at any resolution (60 segments for base, more for smooth PDF/ggplot,
+   a mesh for `heplot3d()`).
+4. Rescale after the fact: `size = "evidence"` vs `"effect"` differ only by the scalar
+   `factor`; store it and switching size / `alpha` / `level` needs no new `Anova()`.
+5. **Store full p x p scaled matrices, not 2x2.** Because `scale` and `lambda.crit()` already
+   use full `p`, the scaled p x p H and E are correct for *every* pair of variables; the 2x2
+   for any pair is a submatrix.
+   - `pairs.mlm()` calls `heplot()` per panel (`R/pairs.mlm.R:175`), re-scaling each time;
+     it could compute once and subset.
+   - Removes the `p` problem for a ggplot `stat_he()` (it reads a precomputed object
+     instead of refitting on two variables).
+   - Canonical / other projections are just `t(A) %*% H %*% A`.
+6. Proper `print()`, `summary()`, `plot()`, `as.data.frame()` methods, generating points
+   only for output.
+
+**Sketch:**
+```r
+he <- heplot_compute(mod, terms, hypotheses, size, level, alpha, ...)
+# $ ellipses: one element per H term / hypothesis, plus E
+#     $ <term>: list(shape  = <p x p scaled matrix>,
+#                    type   = "H" | "E",
+#                    source = "term" | "hypothesis",
+#                    df     = dfh,
+#                    factor = lambda.crit(...) or 1,   # size scaling already applied
+#                    rank   = qr(shape)$rank)
+# $ center  : grand mean (length p)
+# $ level, dfe, p, size, alpha, response.names
+# $ means   : factor-level means on all p responses
+
+as.data.frame(he, variables = c("SL", "SW"), segments = 100)   # expand to points
+#   term type  x  y  rank
+```
+
+Caveat on `radius`: it is dimension-dependent (`sqrt(2 * qf(level, 2, dfe))` in 2-D, 3 in
+`heplot3d()`), so compute it at expansion time from `level`, `dfe` and the target dimension
+rather than storing a single value.
+
+### Making `heplot()`'s result useful for base-R add-ons
+
+Independent of ggplot, the symbolic object makes the *returned value* of `heplot()` a
+toolkit for annotating the plot just drawn. Today a user gets point matrices and axis
+limits, and anything beyond `lines(he$H$group)` means recomputing H.
+
+What users plausibly want to add, and what it needs:
+
+| Add-on | Needs | Today |
+|---|---|---|
+| Ellipse axes / principal directions | shape, center, radius → `ellipse.axes()` | recompute H |
+| Bounding box / conjugate diameters | shape → `ellipse.box()` | recompute H |
+| Rank-1 H as a segment / arrow | shape + rank (eigenvector) | not available |
+| Re-draw one term, different style / fill | points for one term | `polygon(he$H$term)` ok |
+| Extra labels, own placement | `label.ellipse()` on points | ok, but label positions not returned |
+| Overlay a second `level` / `size` | shape + factor + dfe | re-run `heplot()` |
+| Data ellipse or points on same scale | center, `xlim`/`ylim`, variables used | partly (`center`, lims) |
+| Factor means, re-labelled / highlighted | `means` | recompute with `aggregate()` |
+| Projection of an observation / contrast direction | shape (for Mahalanobis-type scaling) | recompute |
+
+Proposals (all additive; existing `he$H`, `he$E`, `he$center`, `he$xlim`, `he$ylim`,
+`he$radius` stay exactly as now):
+
+- Add components to the `"heplot"` result: `shapes` (the scaled 2x2 H and E actually
+  drawn), `rank`, `factor`, `df`, `variables`, `means`, `label.xy` (where labels went —
+  `label.ellipse()` already returns its coordinates invisibly), and the drawing attributes
+  used (`col`, `lty`, `lwd`, `fill.col`) so add-ons can match styles.
+  Alternatively attach the full `heplot_compute()` object, e.g. `he$compute`.
+- Small `add` helpers that accept a `"heplot"` object and a term name:
+  ```r
+  he <- heplot(mod)
+  ellipse.axes(he, term = "Species")      # new method dispatching on "heplot"
+  ellipse.box(he, term = "E")
+  lines(he, term = "Species", lwd = 3)    # lines.heplot / points.heplot methods
+  ```
+  Making `ellipse.axes()` / `ellipse.box()` generic (with `.default` = current behaviour)
+  keeps backward compatibility.
+- `print.heplot()` / `summary.heplot()`: show terms, df, rank, size factor, and the 2x2
+  shapes — currently printing the result dumps raw coordinates.
+- Document the components in `@return` with a worked "annotating an HE plot" example
+  (axes for one term, rank-1 arrow, re-labelled means).
+
+### Bug found: hypothesis label positions (checked 2026-11-25)
+
+In `heplot.mlm()`, hypothesis labels use `label.pos[hyp]` (`R/heplot.R:619`), but
+`label.pos` was expanded by `he.rep(label.pos, n.ell)` to the order `H1, ..., Hn, E`, so the
+right index is `label.pos[ell]` (as already used for `col[ell]`, `lty[ell]`, `lwd[ell]`).
+Hypotheses therefore take the positions meant for the first *terms*. Verified by tracing
+`label.ellipse()` with
+`heplot(lm(cbind(Sepal.Length, Sepal.Width) ~ Species, iris), hypotheses = list("V-S" = ..., "V-Vi" = ...), label.pos = c("S", "N", "E", "W"))`:
+`Species` → N (correct), `V-S` → N (should be E), `V-Vi` → E (should be W), Error → S.
+Only visible when `label.pos` has length > 1 and `hypotheses` are given. `heplot1d()`,
+`heplot3d()` don't index `label.pos` this way. One-character fix; not yet applied.
+
+Also: `H.rank` is not computed for hypotheses (`:544-555`).
 
 ### Approaches, least → most ambitious
 
