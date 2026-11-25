@@ -135,6 +135,12 @@
 #' `ellipse` to determine "top" (r>=0) or "bottom" (r<0).  Even more
 #'              flexible options are described in [label.ellipse()]
 #' @param label.cex Character size used for labels for the hypothesis, error ellipses.
+#' @param means.pos Position(s) of the labels for the factor means (see `factor.means`), as in
+#'              [graphics::text()]: 1, 2, 3 and 4 indicate below, to the left of, above and to the
+#'              right of the mean. Either an unnamed vector, recycled over the levels of each
+#'              factor, or a vector named by factor levels, e.g., `means.pos = c(setosa = 1)`, to
+#'              move only those labels; the others stay at the default, 3 (above). Useful when
+#'              the labels for two means overlap.
 #' @param variables indices or names of the two response variables to be
 #'              plotted; defaults to `1:2`.
 #' @param error.ellipse if `TRUE`, plot the error ellipse; defaults to
@@ -315,6 +321,10 @@
 #' heplot(iris.mod, hypotheses=hyp, fill=TRUE, fill.alpha=c(0.3,0.1), col=c("red", "blue"), 
 #'        lty=c(0,0,1,1), label.pos=0:3)
 #' 
+#' # move overlapping labels for the means: by level name, or recycled over the levels
+#' heplot(iris.mod, means.pos = c(setosa = 1))
+#' heplot(iris.mod, means.pos = c(1, 3, 4))
+#' 
 #' # what is returned?
 #' hep <-heplot(iris.mod, variables=c(1,3),  hypotheses=hyp)
 #' str(hep)
@@ -367,6 +377,7 @@ heplot.mlm <-
 				err.label = "Error",
 				label.pos = NULL,    # label positions: NULL or 0:4
 				label.cex = par("cex"),
+				means.pos = 3,       # positions of factor mean labels: 1:4, recycled or named by level
 				variables = 1:2,     # x,y variables for the plot [variable names or numbers]
 				error.ellipse = !add,
 				factor.means = !add,
@@ -609,10 +620,16 @@ heplot.mlm <-
 		}
 
 	if (!add && (!is.logical(factor.means) || factor.means)){
+		if (!is.null(names(means.pos))) {
+			bad <- setdiff(names(means.pos), unlist(lapply(factors, levels)))
+			if (length(bad)) warning("means.pos: not levels of the factors plotted: ",
+			                         paste(bad, collapse = ", "))
+		}
 		for (fac in factors){
 			means <- aggregate(Y, list(fac), mean)
 			points(means[,2], means[,3], pch=16, xpd=TRUE, ...)
-			text(means[,2], means[,3], labels=as.character(means[,1]), pos=3, xpd=TRUE, ...)
+			text(means[,2], means[,3], labels=as.character(means[,1]), 
+			     pos=level_pos(means.pos, as.character(means[,1])), xpd=TRUE, ...)
 		}
 	}
 	
@@ -634,4 +651,17 @@ heplot.mlm <-
 			          radius=radius)
 	class(result) <- "heplot"
 	invisible(result)
+}
+
+# Positions for the labels of factor means in heplot.mlm(): `pos` is either an unnamed
+# vector, recycled over `levels`, or a vector named by (some of) the levels, the rest
+# getting `default`.
+level_pos <- function(pos, levels, default = 3) {
+	if (!is.numeric(pos) || anyNA(pos) || !all(pos %in% 1:4))
+		stop("means.pos must contain values in 1:4")
+	if (is.null(names(pos))) return(rep_len(pos, length(levels)))
+	res <- stats::setNames(rep(default, length(levels)), levels)
+	hit <- intersect(names(pos), levels)
+	res[hit] <- pos[hit]
+	unname(res)
 }

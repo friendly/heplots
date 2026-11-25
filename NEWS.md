@@ -1,3 +1,12 @@
+## Version 1.8.7 (in development)
+
+### Enhancements
+
+* `heplot()` gains a `means.pos` argument for the positions of the labels of factor means,
+  which were always drawn above the means (`pos = 3`). It is either recycled over the levels,
+  or named by level to move only some labels, e.g., `means.pos = c(setosa = 1)`. This helps
+  when the labels for two means overlap.
+
 ## Version 1.8.6
 
 ### Enhancements

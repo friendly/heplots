@@ -16,6 +16,7 @@ heplot(mod, ...)
   err.label = "Error",
   label.pos = NULL,
   label.cex = par("cex"),
+  means.pos = 3,
   variables = 1:2,
   error.ellipse = !add,
   factor.means = !add,
@@ -90,6 +91,13 @@ object.  The default, \code{label.pos=NULL} uses the correlation of the
 flexible options are described in \code{\link[=label.ellipse]{label.ellipse()}}}
 
 \item{label.cex}{Character size used for labels for the hypothesis, error ellipses.}
+
+\item{means.pos}{Position(s) of the labels for the factor means (see \code{factor.means}), as in
+\code{\link[graphics:text]{graphics::text()}}: 1, 2, 3 and 4 indicate below, to the left of, above and to the
+right of the mean. Either an unnamed vector, recycled over the levels of each
+factor, or a vector named by factor levels, e.g., \code{means.pos = c(setosa = 1)}, to
+move only those labels; the others stay at the default, 3 (above). Useful when
+the labels for two means overlap.}
 
 \item{variables}{indices or names of the two response variables to be
 plotted; defaults to \code{1:2}.}
@@ -337,6 +345,10 @@ heplot(iris.mod, hypotheses=hyp, fill=TRUE,
 # vary label position and fill.alpha
 heplot(iris.mod, hypotheses=hyp, fill=TRUE, fill.alpha=c(0.3,0.1), col=c("red", "blue"), 
        lty=c(0,0,1,1), label.pos=0:3)
+
+# move overlapping labels for the means: by level name, or recycled over the levels
+heplot(iris.mod, means.pos = c(setosa = 1))
+heplot(iris.mod, means.pos = c(1, 3, 4))
 
 # what is returned?
 hep <-heplot(iris.mod, variables=c(1,3),  hypotheses=hyp)
