@@ -31,7 +31,9 @@
 # -- no longer pass ... to label.ellipse()
 # DONE: ✔️ Docs: the "H outside E iff significant" rule holds in the full response space; in a
 #       2D view it works one way only (outside => significant; inside does not mean n.s.) 10/1/2026
-# 
+# DONE: ✔️ Fixed hypothesis labels to use `label.pos[ell]`, not `label.pos[hyp]`, which gave
+#       hypotheses the positions meant for the first terms 11/25/2026
+#
 
 
 
@@ -616,7 +618,7 @@ heplot.mlm <-
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
 			ell <- n.terms + hyp
 			polygon(H.ellipse[[ell]], col=fill.col[ell], border=col[ell],  lty=lty[ell], lwd=lwd[ell])
-			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell], label.pos=label.pos[hyp], cex=label.cex)
+			label.ellipse(H.ellipse[[ell]], hyp.labels[hyp], col=col[ell], label.pos=label.pos[ell], cex=label.cex)
 		}
 
 	if (!add && (!is.logical(factor.means) || factor.means)){

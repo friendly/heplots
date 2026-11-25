@@ -7,6 +7,13 @@
   or named by level to move only some labels, e.g., `means.pos = c(setosa = 1)`. This helps
   when the labels for two means overlap.
 
+### Bug fixes
+
+* `heplot()`: with `hypotheses` and a vector `label.pos`, the hypothesis labels used the
+  positions meant for the first model terms, not their own. They now use their own
+  positions, so plots that combine `hypotheses` with a vector `label.pos` may place those
+  labels differently.
+
 ## Version 1.8.6
 
 ### Enhancements

@@ -121,12 +121,14 @@ Proposals (all additive; existing `he$H`, `he$E`, `he$center`, `he$xlim`, `he$yl
   used (`col`, `lty`, `lwd`, `fill.col`) so add-ons can match styles.
   Alternatively attach the full `heplot_compute()` object, e.g. `he$compute`.
 - Small `add` helpers that accept a `"heplot"` object and a term name:
+
   ```r
   he <- heplot(mod)
   ellipse.axes(he, term = "Species")      # new method dispatching on "heplot"
   ellipse.box(he, term = "E")
   lines(he, term = "Species", lwd = 3)    # lines.heplot / points.heplot methods
   ```
+
   Making `ellipse.axes()` / `ellipse.box()` generic (with `.default` = current behaviour)
   keeps backward compatibility.
 - `print.heplot()` / `summary.heplot()`: show terms, df, rank, size factor, and the 2x2
@@ -144,7 +146,9 @@ Hypotheses therefore take the positions meant for the first *terms*. Verified by
 `heplot(lm(cbind(Sepal.Length, Sepal.Width) ~ Species, iris), hypotheses = list("V-S" = ..., "V-Vi" = ...), label.pos = c("S", "N", "E", "W"))`:
 `Species` → N (correct), `V-S` → N (should be E), `V-Vi` → E (should be W), Error → S.
 Only visible when `label.pos` has length > 1 and `hypotheses` are given. `heplot1d()`,
-`heplot3d()` don't index `label.pos` this way. One-character fix; not yet applied.
+`heplot3d()` don't index `label.pos` this way. **Fixed 2026-11-25** (v1.8.7). Affected
+examples (labels move, now as their `label.pos` specifies): iris in `?heplot`, `?Parenting`,
+and the AddHealth figure in the `HE_manova` vignette. All examples run cleanly.
 
 Also: `H.rank` is not computed for hypotheses (`:544-555`).
 
