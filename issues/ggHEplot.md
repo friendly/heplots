@@ -217,3 +217,51 @@ Also: `H.rank` is not computed for hypotheses (`:544-555`).
 3. Prototype `autoplot.mlm()` in `dev/`, reproducing a few vignette examples
    (Iris, Plastic, Rohwer) to see where the API pain is.
 4. Only then decide whether `stat_he()` or a separate package is worth it.
+
+## First-pass prototype: `dev/heplot_compute.R` (2026-11-25)
+
+`heplot_compute.mlm()` + `as.data.frame()` (points for any 2 responses) + `print()`;
+checked by `dev/heplot_compute-test.R` against the coordinates `heplot()` returns.
+**Identical (max diff 0)** for iris (hypotheses, variables by name / reversed,
+`size = "effect"`), Parenting, AddHealth, Rohwer (terms, a 2-var subset, a hypothesis),
+RatWeight and Adopted within-S — except one case, below. This confirms that the full p x p
+scaled shapes + submatrix give exactly what `heplot()` draws for any pair of variables.
+
+### Choices it turned up
+
+1. **Rank depends on the view.** Stored `rank` is in the full response space; the rank of a
+   2-D projection can be lower (e.g. a 2-df term seen in a view where it collapses). So
+   rank must be recomputed when points are made (`as.data.frame()` does, per view); the
+   stored one is only informative. Decide whether to keep both.
+2. **Pre-scaled shapes vs raw SSP.** The prototype stores `SSP * scale / factor` and records
+   `factor`. Storing the raw SSP plus `scale`/`factor` would make switching `size` or `alpha`
+   a cheap rescale rather than a recompute. Pre-scaled is simpler for users adding
+   `ellipse.axes()` etc.
+3. **Hypotheses in repeated-measures designs — possible bug in `heplot()`.** With `iterm`,
+   `heplot.mlm()` does the within-S work in the transformed space `Y %*% P[[iterm]]` (e.g.
+   `Age.L, Age.Q, Age.C`), but `car::linearHypothesis(mod, h)` returns SSPH in the
+   *untransformed* responses (`Age2IQ, Age4IQ, ...`), which are then subset
+   `[variables, variables]`. So in `example(Adopted)`'s within-S plot, the `"Reg"` ellipse
+   seems to be in a different space from E and the other H's. The prototype passes
+   `P = P[[iterm]]` to `linearHypothesis()`; its `Reg` ellipse differs (max diff 19).
+   **Needs your judgement** on what a between-S hypothesis should mean in a within-S plot
+   (presumably the hypothesis × `iterm` interaction, which is what `P =` gives).
+4. **Labels for unnamed hypotheses.** For `hypotheses = c("grade.L", "grade.Q")`, the H
+   components of `heplot()`'s result are named `NA` (names come from `names(hypotheses)`).
+   The prototype uses the hypothesis text when unnamed. Same fix could go into `heplot()`.
+5. **Radius is 2-D specific.** Kept out of the object; `as.data.frame()` computes
+   `sqrt(2 * qf(level, 2, dfe))` and accepts a different `level`. A 3-D expander would use 3.
+6. **Terms with a different-sized SSP** (the "Skipping H term" case) are dropped with a
+   warning at compute time, since the shape must be p x p; `heplot()` checks per plotted
+   variables instead.
+7. **Center.** `heplot.mlm()` has `gmean <- if (missing(data)) c(0,0) else colMeans(Y)`,
+   but `data` is not an argument (it's `model.frame(mod)`), so this is always `colMeans(Y)`.
+   The prototype just uses `colMeans(Y)`; dead branch to remove in `heplot()`.
+8. **Class.** New `"heplot_compute"` class vs adding the symbolic parts to `"heplot"`;
+   and whether `heplot()` should return it (e.g. as `$compute`) for base-R add-ons.
+
+### Next steps
+
+- Decide 2, 3, 8; then have `heplot.mlm()` call `heplot_compute()` (the test script becomes
+  the regression check).
+- `ellipse.axes()` / `ellipse.box()` methods for these objects; segment output for rank 1.
