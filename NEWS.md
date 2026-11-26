@@ -1,4 +1,4 @@
-## Version 1.8.7 (in development)
+## Version 1.8.7
 
 ### Enhancements
 
