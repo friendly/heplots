@@ -81,10 +81,15 @@ Other topics now addressed here include:
 -   `Mahalanobis()` calculates classical and _robust_ Mahalanobis squared
     distances using MCD and MVE estimators of center and covariance.
 -   visualizing tests for equality of covariance matrices in MLMs (Box's
-    M test), `boxM()` and `plot.boxM()`. Also: `bartlettTests()` and `LeveneTests()`
+    M test), `boxM()` and `plot.boxM()`. Also: `bartlettTests()` and `leveneTests()`
     for homogeneity of variance for each response in a MLM.
 -   $\chi^2$ Q-Q plots for MLMs (`cqplot()`) to detect outliers and
     assess multivariate normality of residuals.
+-   **multivariate Box-Cox transformations** for MLMs: `bcProfile()`
+    plots the profile likelihood for the powers estimated by
+    `car::powerTransform()`, and can show at the same time how well each
+    choice equalizes the covariance matrices (Box's M); `bcRefit()` refits
+    the model with the transformed responses.
 -   bivariate coefficient plots showing elliptical confidence regions
     (`coefplot()`).
 
@@ -149,12 +154,20 @@ effects in variable (**data**) space, for one or more response variables
 -   `boxM()` Calculates Box's *M* test for homogeneity of covariance
     matrices in a MANOVA design. A `plot` method displays a visual
     representation of the components of the test. Associated with this,
-    `bartletTests()` and `levineTests()` give the univariate tests of
+    `bartlettTests()` and `leveneTests()` give the univariate tests of
     homogeneity of variance for each response measure in a MLM.
 
 -   `covEllipses()` draw covariance (data) ellipses for one or more
     group, optionally including the ellipse for the pooled within-group
-    covariance. 
+    covariance.
+
+-   `bcProfile()`, `bcRefit()` and `bcBoxM()` help choose and apply
+    **multivariate Box-Cox transformations** of the responses in a MLM.
+    `bcProfile()` gives 1-D and 2-D profile likelihood plots for the powers
+    estimated by `car::powerTransform()`, optionally with Box's M for the
+    homogeneity of covariance matrices on the same plot; `bcRefit()` refits
+    the model with transformed responses; `bcBoxM()` finds the powers that
+    make the covariance matrices most alike.
     
 -   `coefplot()` for an MLM object draws bivariate confidence ellipses.
 
@@ -245,7 +258,8 @@ differences among the means.
 
 ```{r iris1}
 #| echo=-1,
-#| out.width="70%",
+#| out.width="85%",
+#| dpi = 150,
 #| fig.cap = "HE plot of sepal length and Sepal width for the iris data"
 par(mar=c(4,4,1,1)+.1)
 iris.mod <- lm(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ 
@@ -313,7 +327,8 @@ The HE plot in canonical space shows that the differences among species are near
 entirely one-dimensional. The weights for the variables on the first dimension
 show how `Sepal.Width` differs from the other size variables.
 ```{r iris-can}
-#| out.width = "60%",
+#| out.width = "85%",
+#| dpi = 150,
 #| echo = -1,
 #| fig.cap = "Canonical HE plot for the iris data"
 par(mar=c(4,4,1,1)+.1)
@@ -335,9 +350,34 @@ in MANOVA tests.
 #| fig.cap = "Covariance ellipses for the iris data, showing the classical and robust estimates."
 par(mar=c(4,4,1,1)+.1)
 covEllipses(iris[,1:4], iris$Species)
-covEllipses(iris[,1:4], iris$Species, 
+covEllipses(iris[,1:4], iris$Species,
             fill=TRUE, method="mve", add=TRUE, labels="")
 ```
+
+### Transformations
+
+When the responses are skewed, a transformation can make the residuals closer to
+multivariate normal, and often also makes the covariance matrices more alike.
+`car::powerTransform()` estimates the Box-Cox powers for a MLM; `bcProfile()` shows the
+profile log-likelihood for each one. The `Dystrophy` data compare four blood enzymes in
+carriers and noncarriers of muscular dystrophy. The plots below show that creatine kinase
+(`CK`) wants a power near $-0.5$ and hemopexin (`Hpx`) a power near 2 (it is skewed to the
+left), and that no transformation ($\lambda = 1$, red) is far outside the 95% intervals.
+The green curve, Box's M against each power, shows that these choices also make the
+covariance matrices of the two groups more alike.
+
+```{r dystrophy-bc, out.width="100%", fig.width = 9, fig.height = 4.5}
+#| fig.cap = "Profile log-likelihood (blue) and Box's M (green) for the Box-Cox powers of CK and Hpx in the Dystrophy data."
+dmd.mod <- lm(cbind(CK, Hpx, PK, LD) ~ group + age + month, data = Dystrophy)
+dmd.pt <- car::powerTransform(dmd.mod)
+op <- par(mfrow = c(1, 2), mar = c(4, 4, 4, 4))
+for (v in c("CK", "Hpx"))
+  plot(bcProfile(dmd.pt, v, extend_range = TRUE, group = Dystrophy$group), main = v)
+par(op)
+```
+
+`bcRefit(dmd.mod, dmd.pt)` then refits the model with the rounded powers, for comparison
+with `cqplot()`, `boxM()` and `heplot()`.
 
 ## 📚 References
 

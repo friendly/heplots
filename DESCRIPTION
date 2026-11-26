@@ -2,7 +2,7 @@ Package: heplots
 Type: Package
 Title: Visualizing Hypothesis Tests in Multivariate Linear Models
 Version: 1.8.7
-Date: 2026-11-24
+Date: 2026-11-26
 Authors@R: c(
             person(given = "Michael", 
                    family = "Friendly", 
@@ -23,7 +23,8 @@ Description: Provides HE plot and other functions for visualizing hypothesis
     tests in multivariate linear models. HE plots represent sums-of-squares-and-products 
     matrices for linear hypotheses and for error using ellipses (in two
     dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of the models
-    such as robust methods and homogeneity of variance covariance matrices.
+    such as robust methods, multivariate Box-Cox transformations, and homogeneity of variance
+    covariance matrices.
     The related 'candisc' package provides visualizations in a reduced-rank canonical discriminant space when
     there are more than a few response variables.
 Language: en-US

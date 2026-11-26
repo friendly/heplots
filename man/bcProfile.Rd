@@ -8,7 +8,7 @@
 \alias{print.bcProfile}
 \alias{bcRefit}
 \alias{bcBoxM}
-\title{Multivariate Box-Cox Transformations for Multivariate Linear Models}
+\title{Multivariate Box-Cox Transformations}
 \usage{
 bcProfile(object, ...)
 
@@ -57,7 +57,7 @@ bcBoxM(Y, group, start = rep(1, ncol(Y)))
 \code{car::powerTransform(object)} is called first}
 
 \item{...}{Arguments passed to the \code{"powerTransform"} method (for the
-\code{"mlm"} method), or to \code{\link[=plot]{plot()}}}
+\code{"mlm"} method), or to \code{\link[base:plot]{base::plot()}}}
 
 \item{variables}{One or two responses, by name or number. One gives a 1-D
 profile, two a 2-D profile}
@@ -173,6 +173,11 @@ transformed responses are most alike across groups, by minimizing Box's M.
 For a MANOVA, homogeneity of the covariance matrices is often a more
 important assumption than normality.
 }
+
+This development is a new contribution to diagnostic methods for multivariate
+models. It stemmed from reading Rencher & Christensen's (2012, Section 4.5)
+description of the problem, and the recognition that \code{\link[car:powerTransform]{car::powerTransform()}}
+had already done the heavy lifting of estimation and testing.
 }
 \details{
 \strong{The log-likelihood.} For multivariate normality (Andrews, Gnanadesikan &
@@ -212,7 +217,18 @@ transformed responses get syntactic names: a power of 1 keeps the name, 0 gives
 \code{\link[stats:update]{stats::update()}} using the data frame named in the original call, with these
 new columns added, so the call must have a \code{data} argument.
 
-Only the \code{"bcPower"} family is supported, so the responses must be positive.
+\strong{Positive responses only.} Only the \code{"bcPower"} family is supported, so the
+responses must be positive. For responses with zeros or negative values,
+\code{\link[car:powerTransform]{car::powerTransform()}} can estimate powers with other families, though these
+functions do not yet handle them:
+\itemize{
+\item \code{family = "bcnPower"}: the Box-Cox transformation with negatives
+(Hawkins & Weisberg, 2017), which estimates a location shift along with
+the power (\code{\link[car:bcnPower]{car::bcnPower()}});
+\item \code{family = "yjPower"}: the Yeo-Johnson (2000) transformation, defined for
+all real values (\code{\link[car:yjPower]{car::yjPower()}});
+\item or add a start (shift) to each response before using \code{"bcPower"}.
+}
 }
 \examples{
 data(Dystrophy)
@@ -269,8 +285,16 @@ multivariate data. \emph{Biometrics}, 27, 825--840.
 Box, G. E. P., & Cox, D. R. (1964). An analysis of transformations.
 \emph{Journal of the Royal Statistical Society, Series B}, 26, 211--252.
 
+Hawkins, D., & Weisberg, S. (2017). Combining the Box-Cox power and
+generalized log transformations to accommodate nonpositive responses in linear
+and mixed-effects linear models. \emph{South African Statistical Journal}, 51,
+317--328.
+
 Rencher, A. C., & Christensen, W. F. (2012). \emph{Methods of Multivariate
 Analysis}, 3rd ed. Hoboken, NJ: Wiley. Section 4.5.
+
+Yeo, I.-K., & Johnson, R. A. (2000). A new family of power transformations to
+improve normality or symmetry. \emph{Biometrika}, 87, 954--959.
 }
 \seealso{
 Estimation and tests: \code{\link[car:powerTransform]{car::powerTransform()}}, \code{\link[car:testTransform]{car::testTransform()}};
