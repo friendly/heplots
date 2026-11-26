@@ -79,8 +79,8 @@ if (requireNamespace("rgl", quietly = TRUE)) {
 } else cat("heplot3d(): rgl not installed, skipped\n")
 
 # ---- 4. Old vs new: only within-S hypotheses change ---------------------------------------
-# Load the committed (pre-fix) heplot.mlm() from git, in the package namespace
-old_src <- tryCatch(system2("git", c("show", "HEAD:R/heplot.R"), stdout = TRUE), error = function(e) NULL)
+# Load the pre-fix heplot.mlm() from git (commit 6a22dec5, before the fix), in the package namespace
+old_src <- tryCatch(system2("git", c("show", "6a22dec5:R/heplot.R"), stdout = TRUE), error = function(e) NULL)
 if (length(old_src)) {
   old_env <- new.env(parent = asNamespace("heplots"))
   eval(parse(text = old_src), envir = old_env)
@@ -109,7 +109,7 @@ if (length(old_src)) {
   cat(sprintf("%-66s %.1f\n", "  max |old - new| for 'Reg'", maxdiff(o$H$Reg, n$H$Reg)))
 
   # heplot1d(), factor models: same ellipses, limits and plotted means as the old version
-  eval(parse(text = system2("git", c("show", "HEAD:R/heplot1d.R"), stdout = TRUE)), envir = old_env)
+  eval(parse(text = system2("git", c("show", "6a22dec5:R/heplot1d.R"), stdout = TRUE)), envir = old_env)
   heplot1d_old <- old_env$heplot1d.mlm
   # record what points() draws, to compare the factor means
   drawn <- function(f, ...) {
