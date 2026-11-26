@@ -16,6 +16,7 @@ transformed responses, and before/after comparisons with HE plots, `cqplot()` an
 - **Univariate (4.42)**, Box & Cox (1964): choose λ to maximize
   ℓ(λ) = −(n/2) log s²_λ + (λ − 1) Σ log yᵢ, where s²_λ is the ML variance of the transformed
   y^(λ) = (y^λ − 1)/λ (log y for λ = 0). In practice, plot ℓ(λ) against λ.
+  
 - **Multivariate (4.43)**, Andrews, Gnanadesikan & Warner (1971): choose λ = (λ₁, …, λ_p) to
   maximize
   ℓ(λ) = −(n/2) log |S_λ| + Σⱼ (λⱼ − 1) Σᵢ log yᵢⱼ,
@@ -24,6 +25,7 @@ transformed responses, and before/after comparisons with HE plots, `cqplot()` an
   of p transformations obtained when targeting marginal normality", although "in practice,
   the collection of univariately transformed variables will often be very close". The book
   suggests maximizing directly or evaluating ℓ(λ) on a p-dimensional grid.
+  
 - **Example 4.5.2**, soil data of Table 3.3 (Fe, K, Mg): univariate λ = (1.0, −0.3, 0.1);
   multivariate, by a grid search, λ = (1.0, −0.4, 0.2), "predictably similar". Figure 4.8
   shows histograms before and after, and the univariate ℓ(λ) curves. (Table 3.3 is not in
@@ -38,13 +40,16 @@ transformed responses, and before/after comparisons with HE plots, `cqplot()` an
   Wald intervals, and LR tests of λ = 0 (all logs) and λ = 1 (no transformation);
   `testTransform(p, lambda)` tests any other vector; `coef(p, round = TRUE)` gives
   convenient powers. Returned components include `lambda`, `roundlam`, `invHess`, `llik`.
+  
 - **Marginal vs conditional.** `powerTransform(Y)` makes the *responses* as normal as
   possible; `powerTransform(mlm)` (or `powerTransform(cbind(...) ~ group, data)`) makes the
   *residuals* as normal as possible, which is what MANOVA and HE plots assume. They usually
   differ a little.
+  
 - **`car::boxCox()`** draws the profile log-likelihood with a confidence interval, but only
   for a univariate response: on an mlm it stops with "This function is for univariate
   response only". `MASS::boxcox()` is also univariate.
+  
 - **heplots** has `cqplot()` (including `cqplot.mlm()` for residuals), `boxM()` and its
   plots, `robmlm()`, `covEllipses()`: everything needed to show *whether* a transformation
   helped. Nothing in heplots currently mentions Box-Cox or `powerTransform`.
@@ -84,13 +89,21 @@ exactly the workflow below.
   other λs (a true profile) or holding them at their MLEs (a slice, much cheaper). Mark the
   MLE, the rounded value and a 95% interval (χ²₁ cut-off), as `car::boxCox()` does for one
   response. This is the multivariate version of the book's Figure 4.8, middle row.
+  
 - **2-D contours for a pair (λⱼ, λₖ):** contours of the profile log-likelihood, with the
   LR confidence region (χ²₂ cut-off) and, overlaid, the **Wald confidence ellipse** from
   `invHess`. That's a data ellipse for parameters, in the spirit of `heplots`, and it shows
   how well the quadratic (Wald) approximation works. Candidate values (0, ½, 1, 2, −½, −1)
   as reference lines, so you can see which "nice" powers fall inside.
+  
+  MF: Need a fine enough grid of \lambda values so contours become smooth-ish.
+  It would be nice to display these as lightly filled contours varying in alspha, so the maximum region is clear
+  Could the same function do both 1D and 2D profiles, depending on what is passed
+  as the `variables` argument?
+  
 - A `pairs()` version: all pairs of λs, 2-D contours below the diagonal, 1-D profiles on
   the diagonal.
+  
 - Possible names: `plot.powerTransform()` (but that's a method for a car class; better
   proposed to car, or provided by heplots as a separate function), or
   `boxCoxPlot(mod, ...)` / `profileBC(mod, ...)` in heplots.
@@ -108,6 +121,8 @@ It would apply `car::bcPower()` to each response column with its λ, rename the 
 (`CK^-0.5`, `Hpx^2`, `log(PK)`, …), and `update()` the model. Questions: keep the Box-Cox
 scaling (y^λ − 1)/λ, which preserves the direction of the effect for negative λ, or use
 plain powers? Use `bcnPower` when there are zeros or negatives?
+
+MF: Keep the BC scaling. Renaming responses: (`CK^-0.5`, `Hpx^2`, `log(PK)`, …) aren't valid names in R
 
 ### 3. Before/after comparisons
 
@@ -162,3 +177,130 @@ Write `dev/box-cox-demo.R` for the dystrophy data:
 
 That would show whether the plots in point 1 are worth turning into a heplots function,
 and whether point 4 (homogeneity) gives a different answer from normality on real data.
+
+## First step done: `dev/box-cox-demo.R` (2026-11-26)
+
+Uses `heplots::Dystrophy`, `cbind(CK, Hpx, PK, LD) ~ group + age + month`. Prototype
+functions in the script:
+
+- `bc_loglik(lambda, pt)`: the log-likelihood (4.43), with residuals from the model.
+  **Reproduces car's `testTransform()` LR statistics exactly** (a `stopifnot()` checks it),
+  so it can drive the plots without re-implementing the estimation.
+- `bc_profile(pt, variables, type = c("profile", "slice"), range = 3.5, n)`: **one function
+  for 1-D and 2-D**, depending on `length(variables)` (MF comment). A "profile" maximizes over
+  the other λs at each grid point (warm-started `optim()`); a "slice" holds them at the MLE.
+  The grid is ±`range` Wald SEs around the MLE, 101 points in 1-D, 61 × 61 in 2-D.
+- `plot.bc_profile()`: 1-D: log-likelihood curve with the χ²₁ cut-off, LR interval, MLE and
+  rounded power. 2-D: **nested, lightly filled LR regions** (coverage .99, .95, .90, .75, .50,
+  .25, .10), each with a low alpha so the fill builds up toward the MLE (MF comment); the 95%
+  LR contour; the 95% **Wald ellipse** (marginal `invHess` for a profile, conditional
+  `solve(hessian)` for a slice); reference lines at nice powers; MLE and rounded points.
+- `bc_refit(mod, lambda)`: refits with `car::bcPower()`, **keeping the Box-Cox scaling**
+  (MF). Response names are syntactic: λ = 1 keeps the name, λ = 0 gives `logPK`, others
+  `CK_m0.5`, `Hpx_2` (MF: `CK^-0.5` is not a valid name). The λs are kept in
+  `attr(mod2, "lambda")`.
+
+### What it shows
+
+- **Profile vs slice:** almost the same here. The λ estimates are nearly uncorrelated
+  (largest correlation from `invHess`, CK–PK, 0.13), so the cheap slice would do for these
+  data. That won't hold in general; keep both.
+- **LR region vs Wald ellipse:** nearly coincide for (CK, Hpx) and (CK, PK); the quadratic
+  approximation is good. The one visible difference is along Hpx, whose profile is slightly
+  asymmetric (1-D LR interval 1.61–3.02 around 2.25): the LR region reaches a little higher
+  and less far down than the symmetric Wald ellipse.
+- **Timing:** a 61 × 61 2-D profile takes about 9.5 s (3721 small `optim()` calls). Fine for
+  a dev plot; a function might default to `type = "slice"` for 2-D, or a coarser grid with
+  smoothing, or `n` as an argument (it is).
+- **1-D intervals:** CK (−0.61, −0.12) excludes log (0) as well as −1; Hpx (1.61, 3.02)
+  excludes 1, so hemopexin really does want squaring.
+- **Before / after** (raw; the demo's log CK, PK, LD; Box-Cox (−0.5, 2, 0, 0)):
+
+  | | raw | demo logs | Box-Cox |
+  |---|---|---|---|
+  | Pillai, group | 0.349 | 0.439 | 0.469 |
+  | Pillai, age | 0.091 | 0.086 | 0.090 |
+  | Pillai, month | 0.118 | 0.129 | 0.133 |
+  | Box's M (group), p | 134.5, < 1e-23 | 28.3, .0016 | 13.6, **.19** |
+
+  `cqplot()`s: raw residuals far from multinormal; logs leave one large outlier; Box-Cox
+  residuals lie within the envelope. The HE plots look much alike in shape: the
+  transformation changes the fit to the assumptions more than the geometry of the effects.
+- **Point 4 (equal covariance) gives a related but different answer.** Minimizing Box's M
+  over λ (`optim()`, M is invariant to rescaling, so no Jacobian needed) gives
+  λ = (−1.13, 1.76, −0.24, −0.18), vs the normality MLE (−0.36, 2.25, −0.15, 0.02):
+  M falls from 15.5 to 8.1. Same direction for every variable, but CK is pushed further
+  (toward a reciprocal). Normality alone already removes most of the heterogeneity here
+  (raw M = 134.5); a plot of both criteria against λ would show the trade-off.
+
+### Next decisions
+
+- Response naming in `bc_refit()`: this scheme, or keep the original names and put λ in
+  the axis labels?
+- Default `type` for 2-D (profile is slow; slice is a good approximation when the λs are
+  nearly uncorrelated, which `cov2cor(invHess)` shows).
+- `pairs()` version (1-D on the diagonal, 2-D below); names (`bcProfile()`?
+  `plot.bc_profile()`?); whether to propose a `plot()` method for `powerTransform` to car.
+
+## Second round (2026-11-26): MF comments, a second dataset
+
+MF: response names `CK_m0.5`, `Hpx_2`, `logPK`, `logLD` are OK; show λ on the axis
+labels; add `extend_range` to show how far λ = 1 is; try another dataset; minimizing Box's M
+is a great idea.
+
+- Functions moved to **`dev/box-cox-functions.R`**, sourced by `dev/box-cox-demo.R`
+  (Dystrophy) and the new **`dev/box-cox-diabetes.R`** (`heplots::Diabetes`).
+- **λ in axis labels:** `λ_CK` etc. (plotmath) in 1-D and 2-D plots. (The earlier PNGs
+  lacked it only because `pdftoppm` had no Symbol font.)
+- **`extend_range = TRUE`** (with `ref = 1`, recycled) widens each axis to include the
+  reference powers, and the plot marks them (orange lines and point), annotates the LR test
+  of λ = ref for those variables, profiling over the others (χ²₁ in 1-D, χ²₂ in 2-D), and in
+  2-D adds gray labelled deviance contours between the filled regions and the reference
+  point, so you can see how fast the likelihood falls off toward it. Use a larger `n`
+  (81) with the wider range.
+- Legend goes in the corner farthest from the MLE, rounded and reference points.
+- **`bc_boxM(Y, group, start)`**: λ minimizing Box's M (Nelder-Mead), with `M_of()` returned
+  for evaluating other λs.
+
+### Diabetes: `cbind(relwt, glufast, glutest, instest, sspg) ~ group`
+
+- ML powers (1.19, −0.76, −0.27, 0.19, 0.55); rounded (1, −1, −0.5, 0.33, 0.5); LR test of
+  the rounded vs the MLE χ²₅ = 6.4, p = .27. No transformation: χ²₅ = 337.
+- `relwt` needs nothing (λ = 1 inside its interval, p = .74); `glufast` and `glutest` want
+  strong transformations (≈ reciprocal and reciprocal square root), `instest` ≈ cube root,
+  `sspg` ≈ square root.
+- **Profile vs slice differ here**, for `glufast` and `glutest`, whose estimates are
+  correlated (0.40): in 1-D, the slice falls off faster away from the MLE; in 2-D the region
+  is tilted. So the slice is only a safe shortcut when `cov2cor(invHess)` is near diagonal.
+  2-D profile with 3 other λs: 13 s on 61 × 61.
+- **`covEllipses()` before/after** is the clearest picture of the gain: raw, the overt
+  diabetics' ellipse dwarfs the others; after Box-Cox the three are much closer in size
+  (orientation still differs).
+- Pillai for `group`: 1.22 raw, 1.32 after.
+
+### Normality vs equal covariance: the two criteria on both datasets
+
+| Diabetes λ (relwt, glufast, glutest, instest, sspg) | LR vs normality MLE | Box's M |
+|---|---|---|
+| none (1, 1, 1, 1, 1) | 337, p ≈ 0 | 397 |
+| normality MLE (1.19, −0.76, −0.27, 0.19, 0.55) | 0 | 149 |
+| normality, rounded (1, −1, −0.5, 0.33, 0.5) | 6.4, p = .27 | 145 |
+| min Box's M (6.33, −1.01, −0.60, 0.31, 0.57) | 76, p ≈ 0 | 138 |
+
+- The normality transformation already removes most of the heterogeneity (M 397 → 145).
+  Minimizing M directly gains little more (138), and every M is still hugely significant:
+  the overt diabetics really are more variable, and no power transformation fixes that.
+- **Caution:** minimizing M sent `relwt` to λ = 6.3, where M is nearly flat in λ, at a large
+  cost in normality (LR 76). Minimizing M needs bounds or a penalty, or better, should be
+  shown as a *plot*: M (or −log p) against λⱼ beside the normality profile, so a flat
+  direction is visible rather than optimized blindly.
+- On Dystrophy the two criteria agreed better (same direction for every λ, CK pushed toward
+  −1; M 15.5 → 8.1).
+
+### Next decisions
+
+- A 1-D plot showing **both criteria** against λⱼ (log-likelihood profile and Box's M, two
+  y axes or two panels) would make the trade-off visible; and/or a combined criterion.
+- Default 2-D `type`: "profile" is right in general (Diabetes shows the slice can mislead),
+  but slow; maybe "profile" with a coarser grid and smoothing.
+- `pairs()` version; function names.
