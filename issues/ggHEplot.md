@@ -246,6 +246,7 @@ scaled shapes + submatrix give exactly what `heplot()` draws for any pair of var
    `P = P[[iterm]]` to `linearHypothesis()`; its `Reg` ellipse differs (max diff 19).
    **Needs your judgement** on what a between-S hypothesis should mean in a within-S plot
    (presumably the hypothesis × `iterm` interaction, which is what `P =` gives).
+   **Resolved and fixed 2026-11-25** (commit 56cf2760): yes, the interaction; see below.
 4. **Labels for unnamed hypotheses.** For `hypotheses = c("grade.L", "grade.Q")`, the H
    components of `heplot()`'s result are named `NA` (names come from `names(hypotheses)`).
    The prototype uses the hypothesis text when unnamed. Same fix could go into `heplot()`.
@@ -265,3 +266,28 @@ scaled shapes + submatrix give exactly what `heplot()` draws for any pair of var
 - Decide 2, 3, 8; then have `heplot.mlm()` call `heplot_compute()` (the test script becomes
   the regression check).
 - `ellipse.axes()` / `ellipse.box()` methods for these objects; segment output for rank 1.
+
+## Reviews: Codex and Claude (2026-11-25)
+
+Two independent reviews of these notes and the prototype, from the same brief:
+
+- `ggHEplot-review-brief.md`: the brief.
+- `ggHEplot-codex-review.md`: Codex CLI 0.172.0, read-only sandbox. It couldn't run R there,
+  so its "verified" means verified by reading the source.
+- `ggHEplot-claude-review.md`: Claude, with checks run in R.
+- `ggHEplot-review-comparison.md`: the two compared (agreements, single-reviewer findings,
+  differences), with suggested next steps.
+
+Both agree on: decision 2, store raw SSP + df and derive the shapes; decision 3, a real bug;
+decision 8, a new class, leaving the `"heplot"` result unchanged; stable IDs for ellipses;
+and a ggplot layer built from the computed object, so p is not a problem.
+
+### Fixed: repeated-measures hypotheses (decision 3), commit 56cf2760
+
+`heplot()`, `heplot1d()` and `heplot3d()` now pass `P = P[[iterm]]` to
+`car::linearHypothesis()`, so a between-S hypothesis in a within-S plot is its interaction
+with `iterm` (L B P = 0). Check: hypothesis `"AMED"` gives exactly the `AMED:Age` term
+ellipse. The same commit fixes `heplot1d()` failing for any covariate or within-S term
+(it called `termMeans()` for every term), and its hypothesis labels drawn as `NA`.
+`dev/repeated-hypotheses-test.R` checks all of this against the pre-fix commit 6a22dec5,
+with a before/after plot for `Adopted`.
