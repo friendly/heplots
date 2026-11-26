@@ -7,6 +7,18 @@
   or named by level to move only some labels, e.g., `means.pos = c(setosa = 1)`. This helps
   when the labels for two means overlap.
 
+### New datasets
+
+Three datasets from Rencher & Christensen (2012), *Methods of Multivariate Analysis*, taken
+from the `rencher` package, with factor coding, contrasts, and variable names from the book:
+
+* `SnapBeans`: a balanced two-way MANOVA (sowing date × variety) in which both main effects
+  and the interaction are large, with polynomial contrasts for sowing date.
+* `Dystrophy`: carriers vs noncarriers of Duchenne muscular dystrophy, with age and month as
+  covariates (MANCOVA) and skewed enzyme measurements.
+* `Phosphate`: plasma phosphate in control and obese patients at 8 unequally spaced times
+  after a glucose challenge; repeated measures with a strong group × time interaction.
+
 ### Bug fixes
 
 * `heplot()`: with `hypotheses` and a vector `label.pos`, the hypothesis labels used the

@@ -420,3 +420,26 @@ vs 1 and 3, polynomial sowing date; cheap vs expensive enzymes; polynomial hours
 
 **Also worth adding, from the book but not in rencher:** Table 6.20, Box's fabric wear data,
 as both a three-way MANOVA and a growth curve (see above).
+
+### What to do
+
+For the datasets selected for inclusion in heplots:
+
+* Create a script, `data-raw/Rencher-import.R`, that gets the datasets from the `rencher` pkg,
+does the factor coding & variable name stuff, sets up the contrasts for the factors, and
+save these to `data/`
+
+* Dataset names should follow the conventions of those already in the package, eg `AddHealth`, ...
+
+* Document these in `R/Rencher.R`. Include some sample analysis steps and plots
+
+  - Variable descriptions can follow those in `rencher`, but if something isn't clear, refer to
+  the descriptions in the book.
+  - Use the @concept tags for analysis methods
+
+
+
+**Done (2026-11-26):** the three first picks are in the package as `SnapBeans` (`table6.18`),
+`Dystrophy` (`table5.7`) and `Phosphate` (`table6.28`): built by `data-raw/Rencher-import.R`,
+documented in `R/Rencher.R`. Still open: the PK / LD order in `Dystrophy` (check Andrews &
+Herzberg), and Table 6.20 (Box's fabric wear), which would need typing in.
