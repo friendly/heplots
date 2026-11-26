@@ -304,3 +304,47 @@ is a great idea.
 - Default 2-D `type`: "profile" is right in general (Diabetes shows the slice can mislead),
   but slow; maybe "profile" with a coarser grid and smoothing.
 - `pairs()` version; function names.
+
+## Third round (2026-11-26): both criteria in one plot
+
+`bc_profile(..., group = )` now also computes **Box's M at every grid point**, at the same
+full λ vector as the log-likelihood (for a profile, the other λs at their profile optimum).
+`plot()` shows M on a **second (right) axis** in 1-D and as **dashed contours** in 2-D, and
+marks its minimum on the grid (an open triangle / "still falling" in the legend when the
+minimum is at the edge of the grid). A fast `bc_M_fun(Y, group)` gives the same statistic
+as `boxM()` (checked with `stopifnot()`) at about 0.2 ms a call; a 2-D 81 × 81 profile with M
+takes about 20 s. Script: **`dev/box-cox-tradeoff.R`**.
+
+What the plots show (much clearer than optimizing M blindly):
+
+- **Diabetes:** for `glufast`, `glutest`, `instest`, `sspg`, M is smallest close to the
+  normality MLE: the criteria **agree**. In 2-D (`glufast`, `glutest`) the M minimum sits
+  almost on the rounded powers (−1, −0.5), inside the 95% region.
+- **`relwt` explains the λ = 6.3 from `bc_boxM()`:** M decreases monotonically in λ, but only
+  from 158 to 145, so its "minimum" is wherever the search stops. In 2-D (`relwt`,
+  `glufast`) the M contours are horizontal: M depends on `glufast`, not on `relwt`.
+- **Dystrophy:** M is minimized inside the LR interval for Hpx (1.74), PK (−0.2) and LD
+  (−0.17); only for **CK do the criteria disagree**: M keeps falling below −0.89, beyond the
+  LR interval (−0.62, −0.12), i.e. toward a reciprocal.
+- So the useful summary is per variable: agree / disagree / M flat. A table of that, from
+  the 1-D results, might be worth returning.
+
+Next: a `pairs()` layout; a summary table per variable (normality MLE and interval, M
+minimum, agree?); then decide what goes into the package.
+
+## Moved to `R/` (2026-11-26)
+
+MF: all the proposals OK; larger `cex.lab` by default; scope `bcPower` only (zeros and
+negative values, `bcnPower`, are a separate story).
+
+- **`R/bcProfile.R`**: `bcProfile()` (generic; methods for `"powerTransform"` and `"mlm"`),
+  `plot.bcProfile()`, `print.bcProfile()`, `bcRefit()`, `bcBoxM()`; internal helpers
+  `bc_loglik()`, `bc_M_fun()`, `bc_index()`, `bc_names()`, `bc_lab()`, `bc_fmt_p()`,
+  `bc_corner()`. `bcRefit()` also accepts a `powerTransform` object (uses its rounded powers).
+- Plot colours are arguments: `col` (blue), `ref.col` (`NULL`: red in 1-D, darkorange in
+  2-D), `round.col` (purple), `wald.col` (black), `M.col` (darkgreen); `cex.lab = 1.3`.
+- The λ = 1 annotation is plotmath, not Unicode, so it works on `pdf()` devices.
+- Examples: Dystrophy (1-D, ~1 s; 2-D in `\donttest`, ~30 s), `bcRefit()` before/after
+  `cqplot()` and `boxM()`, `bcBoxM()` on Diabetes without `relwt`.
+- NEWS, pkgdown reference section "Transformations".
+- The dev files (`box-cox-functions.R` etc.) are kept as the record of the prototypes.

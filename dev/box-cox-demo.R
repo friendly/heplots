@@ -56,7 +56,7 @@ for (v in colnames(pt$y)) {
   prof <- bc_profile(pt, v, extend_range = TRUE)
   plot(prof, main = v)
   slice <- bc_profile(pt, v, type = "slice", extend_range = TRUE)
-  lines(slice$axes[[1]], slice$loglik, lty = 2, col = "darkgreen")
+  lines(slice$axes[[1]], slice$loglik, lty = 2, col = "gray40", lwd = 2)
 }
 par(op)
 # The profile and slice are close: the estimates are nearly uncorrelated (invHess)

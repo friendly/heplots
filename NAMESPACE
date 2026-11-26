@@ -5,6 +5,8 @@ S3method(Ellipsoid,default)
 S3method(bartlettTests,default)
 S3method(bartlettTests,formula)
 S3method(bartlettTests,lm)
+S3method(bcProfile,mlm)
+S3method(bcProfile,powerTransform)
 S3method(boxM,default)
 S3method(boxM,formula)
 S3method(boxM,lm)
@@ -31,8 +33,10 @@ S3method(leveneTests,default)
 S3method(leveneTests,formula)
 S3method(leveneTests,lm)
 S3method(pairs,mlm)
+S3method(plot,bcProfile)
 S3method(plot,boxM)
 S3method(plot,robmlm)
+S3method(print,bcProfile)
 S3method(print,boxM)
 S3method(print,robmlm)
 S3method(print,summary.robmlm)
@@ -50,6 +54,9 @@ export(Mahalanobis)
 export(arrow3d)
 export(bartlettTests)
 export(bbox3d)
+export(bcBoxM)
+export(bcProfile)
+export(bcRefit)
 export(boxM)
 export(coefplot)
 export(colDevs)
@@ -108,6 +115,7 @@ importFrom(car,
 importFrom(generics,glance)
 importFrom(grDevices,
   col2rgb,
+  contourLines,
   gray,
   palette,
   rgb,
@@ -118,15 +126,20 @@ importFrom(graphics,
   arrows,
   axis,
   box,
+  contour,
   dotchart,
+  legend,
   lines,
+  mtext,
   par,
   points,
   polygon,
   rect,
+  segments,
   strheight,
   strwidth,
-  text
+  text,
+  title
 )
 importFrom(magrittr,extract)
 importFrom(purrr,
@@ -161,6 +174,7 @@ importFrom(stats,
   model.weights,
   na.omit,
   offset,
+  optim,
   pchisq,
   pf,
   pnorm,

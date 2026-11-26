@@ -70,6 +70,11 @@ reference:
     - stdcoef
     - uniStats
 
+  - title: Transformations
+    desc: Multivariate Box-Cox transformations for MLMs
+    contents:
+    - bcProfile
+
   - title: Utility
     desc: Utility functions
     contents:

@@ -7,6 +7,23 @@
   or named by level to move only some labels, e.g., `means.pos = c(setosa = 1)`. This helps
   when the labels for two means overlap.
 
+### New functions: multivariate Box-Cox transformations
+
+`car::powerTransform()` estimates Box-Cox powers that make the residuals of an `mlm` as close to
+multivariate normal as possible. These functions add the graphics and the workflow around it:
+
+* `bcProfile()` computes the profile log-likelihood for one or two of the powers, from a
+  `powerTransform` object or an `mlm`, and its `plot()` method draws a curve (1-D) or nested,
+  lightly filled likelihood regions with the Wald confidence ellipse (2-D). `extend_range = TRUE`
+  shows how far "no transformation" (all powers 1) is from the estimate. With `group =`, Box's M
+  for the homogeneity of the covariance matrices is computed and drawn too, showing whether the
+  powers that give normality also make the covariance matrices most alike.
+* `bcRefit()` refits an `mlm` with Box-Cox transformed responses, for comparisons before and after
+  with `heplot()`, `cqplot()` and `boxM()`.
+* `bcBoxM()` finds the powers that minimize Box's M.
+
+Only the `bcPower` family (positive responses) is supported for now.
+
 ### New datasets
 
 Three datasets from Rencher & Christensen (2012), *Methods of Multivariate Analysis*, taken
