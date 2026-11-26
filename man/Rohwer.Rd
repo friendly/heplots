@@ -101,7 +101,7 @@ heplot(rohwer.ses2, add=TRUE, col=c("blue", "black"), grand.mean=TRUE, error.ell
 \references{
 Friendly, M. (2007).  HE Plots for Multivariate Linear
 Models.  \emph{Journal of Computational and Graphical Statistics},
-\strong{16}(2) 421--444.  \url{https://doi.org/10.1198/106186007X208407}
+\strong{16}(2) 421--444.  \doi{10.1198/106186007X208407}
 
 Rohwer, W.D., Jr., & Levin, J.R. (1968). Action, meaning and stimulus selection
 in paired-associate learning. \emph{Journal of Verbal Learning and Verbal Behavior}, \strong{7}: 137-141.

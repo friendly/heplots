@@ -314,7 +314,7 @@ Displays for Multivariate Linear Models: SAS Software and Examples
 
 Friendly, M. (2007).  HE Plots for Multivariate Linear Models.
 \emph{Journal of Computational and Graphical Statistics}, 16(2) 421-444.
-\url{https://doi.org/10.1198/106186007X208407}
+\doi{10.1198/106186007X208407}
 }
 \seealso{
 \code{\link[car:Anova]{car::Anova()}}, \code{\link[car:linearHypothesis]{car::linearHypothesis()}}, for
