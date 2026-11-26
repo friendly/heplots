@@ -5,12 +5,13 @@
 #
 # Run from the package root:   source("dev/Rencher-demos.R")
 # Each section first fixes the data: tibble -> data.frame, numeric group codes -> factors,
-# generic y1, y2, ... -> names. Names marked (book) come from Rencher & Christensen (2012),
-# not from the rencher help pages, and should be checked against the book.
+# generic y1, y2, ... -> names from Rencher & Christensen (2012), not from the rencher help
+# pages. Problem numbers refer to the book.
 #
-# TODO: 🚩 table6.18: check the meanings of y1-y4 and the sowing dates in the book;
-#       they are left as y1-y4 here
-# TODO: 🚩 table5.7: check the variable order (age, month, CK, H, PK, LD) in the book
+# DONE: ✔️ table6.18: variable names from Problem 6.28 (the book gives no sowing dates) 11/25/2026
+# DONE: ✔️ table5.7: names from Problem 5.19; the book lists y5 = LD, y6 = PK, but the
+#       values fit PK, LD (see dev/Rencher-datasets.md), so PK, LD are used here 11/25/2026
+# TODO: 🚩 table5.7: confirm the PK / LD order in Andrews & Herzberg (1985), pp. 223-228
 
 library(heplots)
 library(car)
@@ -25,7 +26,10 @@ ld <- function(name) {                       # a rencher dataset, as a plain dat
 # ==========================================================================================
 # 1. table6.18: Snap beans, 4 sowing dates x 3 varieties, 5 plots per cell
 # ==========================================================================================
+# Problem 6.28 (Keuls et al. 1984): y1 = yield earliness, y2 = specific leaf area (SLA)
+# earliness, y3 = total yield, y4 = average SLA
 beans <- ld("table6.18")
+names(beans)[4:7] <- c("yieldEarly", "SLAEarly", "yield", "SLA")
 beans <- within(beans, {
   S  <- ordered(S, labels = paste0("S", 1:4))   # sowing date: ordered -> polynomial contrasts
   V  <- factor(V,  labels = paste0("V", 1:3))   # variety
@@ -34,20 +38,32 @@ beans <- within(beans, {
 str(beans)
 with(beans, table(S, V))                        # balanced: 5 per cell
 
-beans.mod <- lm(cbind(y1, y2, y3, y4) ~ S * V, data = beans)
+# Contrasts for variety, as the book asks: V2 vs V1 and V3 ("in previous experiments, the
+# second variety gave higher yields"), and V1 vs V3
+contrasts(beans$V) <- cbind("2vs13" = c(-1, 2, -1), "1vs3" = c(1, 0, -1))
+
+beans.mod <- lm(cbind(yieldEarly, SLAEarly, yield, SLA) ~ S * V, data = beans)
 Anova(beans.mod)                                # S, V and S:V all highly significant
 
 # HE plot: three effects of different rank. S (3 df) is almost one-dimensional
 # (96% of its eigenvalues on the first dimension); S:V is not.
-heplot(beans.mod, fill = TRUE, fill.alpha = 0.1,
+heplot(beans.mod, variables = c("yield", "SLA"), fill = TRUE, fill.alpha = 0.1,
        main = "Snap beans: sowing date x variety")
 
-# Polynomial contrasts for sowing date: is the S effect mostly linear?
-hyp <- list("S linear" = "S.L", "S quad" = "S.Q")
-heplot(beans.mod, terms = "S", hypotheses = hyp,
-       main = "Sowing date: linear and quadratic components")
-linearHypothesis(beans.mod, "S.L") |> print(SSP = FALSE)
-linearHypothesis(beans.mod, "S.Q") |> print(SSP = FALSE)
+# Polynomial contrasts for sowing date (the book: linear, quadratic, cubic; "interpretation
+# of these for mean vectors is not as straightforward as for univariate means")
+hyp <- list("S linear" = "S.L", "S quad" = "S.Q", "S cubic" = "S.C")
+heplot(beans.mod, terms = "S", hypotheses = hyp, variables = c("yield", "SLA"),
+       main = "Sowing date: polynomial components")
+for (h in hyp) print(linearHypothesis(beans.mod, h), SSP = FALSE)
+
+# Variety: V2 vs V1 and V3
+heplot(beans.mod, terms = "V", hypotheses = list("V2 vs V1,V3" = "V2vs13"),
+       variables = c("yield", "SLA"), main = "Variety 2 vs varieties 1 and 3")
+linearHypothesis(beans.mod, "V2vs13") |> print(SSP = FALSE)
+# Pillai 0.92, but V2 has the *lowest* total yield here (mean about 40.9 vs about 41.7),
+# the opposite of the book's "in previous experiments, the second variety gave higher yields"
+aggregate(cbind(yield, SLA) ~ V, data = beans, FUN = mean)
 
 pairs(beans.mod, fill = TRUE, fill.alpha = 0.1)
 
@@ -65,10 +81,11 @@ heplot(beans.canSV, factor.means = FALSE, main = "Canonical HE plot for S:V")
 # ==========================================================================================
 # 2. table5.7: Carriers vs noncarriers of Duchenne muscular dystrophy
 # ==========================================================================================
-# The help page calls y1-y6 "biomarkers". From the data ranges and the book (check!):
-#   y1 age (20-59), y2 month blood was taken (1-11), then four serum enzymes:
-#   y3 creatine kinase (CK), y4 hemopexin (H), y5 pyruvate kinase (PK), y6 lactate
-#   dehydrogenase (LD). Hemopexin is named Hpx here, so it isn't confused with the H matrix.
+# The help page calls y1-y6 "biomarkers". Problem 5.19: y1 age, y2 month in which
+#   measurements are taken, y3 creatine kinase (CK), y4 hemopexin (H), then y5, y6 listed as
+#   lactate dehydrogenase (LD), pyruvate kinase (PK). The values (y5 3.5-110, y6 87-412) and
+#   the original data's order say y5 = PK, y6 = LD, which is used here.
+#   Hemopexin is named Hpx here, so it isn't confused with the H matrix.
 dmd <- ld("table5.7")
 names(dmd) <- c("group", "age", "month", "CK", "Hpx", "PK", "LD")
 dmd$group <- factor(dmd$group, levels = c("Noncarriers", "Carriers"))
@@ -90,6 +107,16 @@ Anova(dmd.mod)
 heplot(dmd.mod, variables = c("logCK", "logPK"), fill = TRUE, fill.alpha = 0.1,
        main = "Carrier status, adjusting for age and month")
 pairs(dmd.mod, fill = TRUE, fill.alpha = 0.1)
+
+# Problem 5.19(b): CK and H are cheap to measure, PK and LD expensive. Do PK and LD add to
+# the separation of the groups beyond CK and H? Equivalently: with CK and H as covariates,
+# is there still a group effect on PK and LD?
+dmd.mod2 <- lm(cbind(logPK, logLD) ~ group + logCK + Hpx + age + month, data = dmd)
+Anova(dmd.mod2)
+heplot(dmd.mod2, fill = TRUE, fill.alpha = 0.1,
+       main = "PK and LD, adjusting for CK, H, age and month")
+# Yes: group Pillai 0.19, p = .001; the group ellipse still extends beyond E. (The means
+# drawn are the unadjusted group means.)
 
 # Robust fit: does down-weighting the outliers change the picture?
 dmd.rob <- robmlm(cbind(logCK, Hpx, logPK, logLD) ~ group + age + month, data = dmd)

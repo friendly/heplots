@@ -272,6 +272,72 @@ scaled shapes + submatrix give exactly what `heplot()` draws for any pair of var
 - Decide 8 (2 and 3 done); then have `heplot.mlm()` call `heplot_compute()` (the test script becomes
   the regression check).
 - `ellipse.axes()` / `ellipse.box()` methods for these objects; segment output for rank 1.
+- Rewrite the two hand-made ggplot HE figures from the blog on top of the prototype, as a
+  test of the API (below).
+
+## Test case for the API: HE plots already drawn by hand in ggplot (2026-11-25)
+
+The ggplot question didn't come from nowhere. Two figures in the draft blog post "How big is
+it?" are HE plots drawn in ggplot2 *without* `heplot()`, because they needed things base
+`heplot()` doesn't do easily: side-by-side panels (patchwork) in the same style as the
+post's other ggplot figures, annotations (brackets for √λ, "E = I"), and hand-placed labels
+(the Ashley Rails / Isle Thorns overlap that `means.pos` now fixes in heplots, but not yet in
+candisc). The extending-lm post, by contrast, uses `heplot()` / `heplot.candisc()`
+throughout.
+
+In `friendly.github.io/blog/drafts/How-big/R/`:
+
+- **`h-relative-e.R`** (117 lines) is "How big is H, relative to E?" for `mathscore`, in three
+  panels: (A) data space, where H is a line (2 groups); (B) after `z = E^{-1/2}(y - ybar)`, so E
+  is the unit circle; (C) rotated to the axes of H*, leaving only the λs.
+- **`pottery-he.R`** (129 lines) is Pottery in two panels: (A) Al vs Fe in data space, one
+  "shadow" of five dimensions; (C) canonical space, with E = I, H on the axes (semi-axes
+  √λ), structure-correlation arrows and site labels.
+
+Each one re-implements, in about 30 lines, what `heplot()` computes internally:
+
+- H and E from `car::Anova()`, divided by `dfe` (effect scaling only; evidence scaling
+  would need `lambda.crit()`, which isn't exported);
+- its own `msqrt()` and `ell()`, to turn a shape matrix into points for `geom_polygon()`;
+- the canonical transformation `A = E^{-1/2} W` (W the eigenvectors of E^{-1/2} H E^{-1/2}),
+  with `stopifnot()` checks that `A'EA = I` and `A'HA = diag(λ)`;
+- the factor means, from `aggregate()`, and mapping them through the same `A`.
+
+That duplication is what `heplot_compute()` is meant to remove, so **rewriting these two
+scripts on top of the prototype is a realistic test of the API**: it shows what's awkward
+before any `geom_he()` is written. What each panel would need:
+
+| panel | needs | prototype has it? |
+|---|---|---|
+| data space, 2 chosen responses | `as.data.frame(hc, variables = c("Al", "Fe"), size = "effect")` | yes |
+| factor means in that view | `hc$means`, columns for the 2 responses | yes, but a long frame for *all* factors; needs the ones for a term |
+| E as the unit circle (metric change, `E^{-1/2}`) | a **linear view**: shapes `t(A) %*% SSP %*% A`, center and means mapped by `A` | **no** |
+| canonical space (rotate to H*) | the same linear view with `A` from the eigenvectors, plus the λs | **no**; λs not stored |
+| √λ brackets, `λ` text | eigenvalues of E^{-1} H for a term | **no** (both reviews: store them) |
+| structure-correlation arrows | `cor(Y, Z)`: needs the data, not just the SSPs | no; belongs to candisc |
+| scaled shape for annotations | `he_shape(hc, "Site", size = "effect")` | yes (decision 2) |
+
+So the rewrite would turn up the main missing piece: a **projection, or "linear view"**,
+`as.data.frame(hc, A = <p x 2 matrix>)` (or a `project(hc, A)` that returns another object),
+applying `t(A) %*% SSP %*% A` to every ellipse and `A` to `center` and `means`. Codex's
+review recommended this ("A linear view with basis `A` uses `crossprod(A, SSP %*% A)` and
+projects the center and means by the same `A`."), and it is also what candisc's canonical
+plots do. With it, panel A of `pottery-he.R` becomes roughly
+
+```r
+hc <- heplot_compute(lm(cbind(Al, Fe, Mg, Ca, Na) ~ Site, data = Pottery))
+ggplot(as.data.frame(hc, variables = c("Al", "Fe"), size = "effect"),
+       aes(x, y, group = ellipse, colour = type)) +
+  geom_polygon(fill = NA) + coord_equal()
+```
+
+and panel C the same with `A = canonical_basis(hc, "Site")` in place of `variables`.
+
+**Suggested test:** write `dev/pottery-he-compute.R` that reproduces `figures/pottery-he.png`
+from `heplot_compute()` plus the smallest additions it forces (a linear view, stored
+eigenvalues, means for one term), and compare the coordinates with those the blog script
+computes. Then do the same for `h-relative-e.R`, whose panel B (metric change but no
+rotation) checks that the linear view isn't limited to canonical bases.
 
 ## Reviews: Codex and Claude (2026-11-25)
 

@@ -14,6 +14,12 @@ as a possible heplots example.
   have something to show. The script is in the session scratchpad, not here; the numbers
   below are from it.
 
+**Checked against the book (2026-11-25)**, `Dropbox/Documents/books/Rencher-Methods of
+Multivariate Analysis-2012.pdf`: variable definitions, designs and the problems that use
+each table (problem numbers below). Earlier *(book)* guesses are now confirmed or corrected;
+noted in each entry below. Values spot-checked against the printed tables for 5.7, 6.17,
+6.18 and 6.28 all match.
+
 **Tags** (as in `@concept`): `MANOVA`, `MANCOVA`, `MMRA`, `repeated`, `candisc`, `cancor`,
 `contrasts`, `robust`. Also used here:
 - `T2`: two groups (Hotelling T²; the H ellipse is a line, rank 1)
@@ -48,7 +54,7 @@ available elsewhere · – not useful for heplots.
 | `table10.1` | 19 × 7 | Chemical reaction, 3 yields ~ 3 conditions | MMRA | ★★ |
 | `table6.16` | 27 × 6 | Potthoff & Roy dental growth, boys vs girls | repeated, growth | ★★ |
 | `table6.26` | 36 × 8 | Dogs' coronary potassium, 4 groups × 7 times | repeated | ★★ |
-| `table6.29` | 18 × 11 | Mandible: 3 measures × 3 times, 2 groups | doubly, repeated | ★★ |
+| `table6.29` | 18 × 11 | Mandible: 3 activators × 3 times, 2 groups | repeated (2 within-S factors) | ★★ |
 | `table6.19` | 20 × 13 | Blood: 3 measures × 4 reagents | doubly, repeated | ★★ |
 | `table6.21` | 28 × 5 | Cork borings N, E, S, W (Rao) | repeated, contrasts | ★★ |
 | `table5.5` | 39 × 6 | Flea beetles, 2 species | T2, candisc | ★★ |
@@ -62,7 +68,7 @@ available elsewhere · – not useful for heplots.
 | `table3.7` | 20 × 5 | Ramus bone length, 4 ages | growth | ★ |
 | `table3.8` | 25 × 4 | First and second sons' heads (Frets) | cancor | ★ |
 | `table7.2` | 46 × 11 | Temperature, humidity, evaporation | MMRA, cancor | ★ |
-| `table3.9` | 49 × 6 | Blood glucose on 3 occasions, two sets | cancor, MMRA | ★ |
+| `table3.9` | 49 × 6 | Blood glucose, fasting and 1 hour, 3 occasions | repeated (2 within-S factors), cancor | ★ |
 | `table5.8` | 19 × 6 | Consumer vs producer goods cycles | T2 | ★ |
 | `table8.1` | 12 × 3 | Steel at 2 rolling temperatures | T2 | ★ |
 | `table4.2` | 51 × 7 | Hematology on 51 workers | robust (one sample) | ★ |
@@ -84,8 +90,22 @@ available elsewhere · – not useful for heplots.
 ### `table6.18`: Snap beans, sowing date × variety ★★★
 `MANOVA` `candisc` `contrasts`
 
-60 plots: 4 sowing dates (`S`) × 3 varieties (`V`) × 5 replicates (`ID`). Four responses
-`y1`–`y4` (*book*: yield and quality measures of snap beans; Keuls et al. 1984).
+60 plots: 4 sowing dates (`S`) × 3 varieties (`V`) × 5 replicates (`ID`), Keuls et al.
+(1984). From the book (Problem 6.28): `y1` = yield earliness, `y2` = specific leaf area
+(SLA) earliness, `y3` = total yield, `y4` = average SLA. So the responses come in pairs:
+earliness (y1, y2) and totals (y3, y4), yield (y1, y3) and leaf area (y2, y4). The book
+doesn't give the actual sowing dates.
+
+The book's problem asks for: all four MANOVA tests; a contrast of **variety 2 vs varieties
+1 and 3** ("in previous experiments, the second variety gave higher yields"); **linear,
+quadratic and cubic contrasts for sowing date** ("interpretation of these for mean vectors
+is not as straightforward as for univariate means", which is a good reason for an HE plot);
+and step-down tests of y3, y4 adjusted for y1, y2. Problem 7.27 tests equality of the 12
+covariance matrices (`boxM()`).
+
+In `dev/Rencher-demos.R`: the V2-vs-(V1, V3) contrast is strong (Pillai 0.92), but variety 2
+has the *lowest* total yield in these data (about 40.9 vs 41.7), the opposite of the book's
+expectation. That's a nice point for an HE plot with the contrast drawn in.
 
 - A balanced two-way MANOVA with **all three effects large**:
   `S` Pillai 2.36 (df 3, dims 96/3/1), `V` Pillai 1.10 (df 2, dims 98/2), and the
@@ -102,10 +122,30 @@ available elsewhere · – not useful for heplots.
 `T2` `MANCOVA` `robust`
 
 73 women, 34 carriers and 39 noncarriers of Duchenne muscular dystrophy (Andrews & Herzberg
-1985). The help page calls `y1`–`y6` "biomarkers", but the ranges match the book: *(book)*
-`y1` age (20–59), `y2` month of the year the blood was taken (1–11), then four serum
-enzymes: `y3` creatine kinase (15–657, very skewed), `y4` hemopexin, `y5` pyruvate kinase
-(3.5–110), `y6` lactate dehydrogenase.
+1985, pp. 223–228). The help page calls `y1`–`y6` "biomarkers". The book (Problem 5.19)
+gives `y1` age, `y2` month in which measurements are taken, `y3` creatine kinase (CK),
+`y4` hemopexin (H), `y5` lactate dehydrogenase (LD), `y6` pyruvate kinase (PK).
+
+**Check `y5` and `y6`.** The book lists LD before PK, but the values suggest the reverse:
+`y5` runs 3.5–110 and `y6` 87–412. LD is normally in the hundreds, and the original data
+(Andrews & Herzberg; the StatLib "biomed" file) have the order CK, H, PK, LD. This is
+probably a labelling slip in the book; `dev/Rencher-demos.R` uses PK = `y5`, LD = `y6`.
+Worth confirming in Andrews & Herzberg.
+
+The book's questions make a good HE-plot story:
+- (a) T² for the four enzymes.
+- (b) "`y3` and `y4` are relatively inexpensive to measure compared to `y5` and `y6`. Do
+  `y5` and `y6` contribute an important amount to T² above and beyond `y3` and `y4`?"
+- (c) "The levels of `y3`–`y6` may depend on age and season, `y1` and `y2`. Do `y1` and
+  `y2` contribute a significant amount to T² when adjusted for `y3`–`y6`?"
+
+Answer to (b), from `dev/Rencher-demos.R`: with log CK and H (and age, month) as
+covariates, the group effect on log PK and log LD is still significant (Pillai 0.19,
+p = .001), so the expensive enzymes do add something.
+
+The table is also used for Box's M (7.23), discriminant analysis and classification (ch. 8,
+9) and principal components (ch. 12), so one dataset could illustrate several heplots tools
+(`boxM()`, `covEllipses()`, `cqplot()`).
 
 - Two groups clearly separated: Pillai 0.50, F(6, 66) = 11.1, p < 1e-8.
 - More interesting than a plain T²: **age and month are covariates**, not responses, so the
@@ -118,7 +158,11 @@ enzymes: `y3` creatine kinase (15–657, very skewed), `y4` hemopexin, `y5` pyru
 `repeated` `growth`
 
 33 patients (13 control, 20 obese) measured at 8 times after a glucose challenge,
-`H_0`, `H_0.5`, …, `H_5` (hours; Zerbe 1979).
+`H_0`, `H_0.5`, …, `H_5` (hours; Zerbe 1979a). The book's Problem 6.43 first deletes the
+½- and 1½-hour times "so that the time points are equally spaced", then 6.44 uses all eight
+with the methods for unequal spacing (Sec. 6.10), which is what `dev/Rencher-demos.R` does
+with `contr.poly(8, scores = hours)`. A footnote notes that patient 1 in each group has
+nearly identical values ("coincidental"): they differ only at 4 and 5 hours.
 
 - Strong within-S effects: `hour` Pillai 0.92 (p < 1e-11), and a large **group × hour
   interaction**, Pillai 0.62, F(7, 25) = 5.7, p = 0.0005. Group is also significant.
@@ -146,8 +190,13 @@ needs reshaping to 36 rows × (method + 4 scores).
 - After reshaping: method Pillai 0.86, F(8, 62) = 5.9, p < 1e-4, with dims 96/4. The
   canonical plot is essentially one-dimensional; an example where `candisc` shows that
   four sensory scores line up on one axis.
-- Check in the book whether the 12 rows are 12 judges (then it's repeated measures on
-  judges) or 12 independent fish (one-way MANOVA, as Rencher treats it).
+- **Confirmed one-way MANOVA** (Problem 6.27): "Twelve fish were cooked by each method",
+  and each entry is "an average score for the judges on that fish", so the rows are
+  independent fish, not judges.
+- The book asks whether "the essential dimensionality of the space containing the mean
+  vectors [is] equal to 1 or 2" (the quick fit says 1: dims 96/4), and for contrasts
+  **1 and 2 vs 3** and **1 vs 2**. Both suit `hypotheses =` in an HE plot. Also a profile
+  analysis (6.33) and Box's M (7.25).
 
 ### `table6.22`: Cancer survival with ascorbate ★★
 `MANCOVA` `robust` `candisc`
@@ -161,6 +210,8 @@ treatment stopped (Cameron & Pauling 1978).
 - Survival times are very skewed, so they need logging, and the pairing (treated vs control)
   suggests analysing differences or ratios. It makes a good example of "think before you
   MANOVA", but needs care.
+- The book (Problem 6.36) treats `y1`–`y4` as a **within-S factor** (repeated measures) with
+  the unbalanced two-way design (type × gender) between subjects; that's the better framing.
 - `TypeofCancer` and `Gender` are numeric codes; the help page gives the labels.
 
 ### `table10.1`: Chemical reaction ★★
@@ -198,23 +249,31 @@ at 7 times after coronary occlusion (Grizzle & Allen 1969).
   plot than with two groups.
 
 ### `table6.29`: Mandible measurements ★★
-`doubly` `repeated`
+`repeated` (two within-S factors)
 
-18 subjects in 2 groups; three measurements `A1`, `A2`, `A3` *(the help page says three
-"activators"; the very different scales, about 117, 60 and 20, suggest three different
-measurements)*, each at three times (Timm 1980).
+18 subjects in 2 groups; three activator treatments `A1`, `A2`, `A3`, each measured at
+three times (Timm 1980). The book (Problem 6.45) confirms **activator is a within-S factor**:
+"Analyze as a repeated measures design with two within-subjects factors and one
+between-subjects factor. Use linear and quadratic contrasts for time." (My earlier guess
+that `A1`–`A3` were different measurements was wrong. Their very different levels, about
+117, 60 and 20, mean the activator "effect" is huge but uninteresting.)
 
-- Measures and times differ hugely; group and all its interactions are null (p > 0.4).
-- Useful mainly as a **doubly multivariate** example with `imatrix`, which heplots documents
-  with few examples. With no group effect, it shows what "nothing between-S" looks like.
-- The quick fit treated the 9 columns as a 3 × 3 within-S factorial; a proper doubly
-  multivariate analysis would use `imatrix`.
+- Activators and times differ hugely; group and all its interactions are null (p > 0.4).
+- Useful mainly as an example of **two within-S factors** (`idesign = ~activator * time`)
+  with a between-S group, which heplots has few examples of. With no group effect, it shows
+  what "nothing between-S" looks like.
+- The quick fit treated the 9 columns as a 3 × 3 within-S factorial, which is the book's
+  design. So this is two within-S factors, not doubly multivariate.
 
 ### `table6.19`: Blood data, four reagents ★★
 `doubly` `repeated`
 
-20 subjects, three blood measurements (`y1`–`y3`) each with 4 reagents (Burdick 1979).
-The help page lists only 3 reagents; the data have 4 (`R1_*` … `R4_*`).
+20 subjects, three blood measurements each with 4 reagents (Burdick 1979). From the book
+(Problem 6.30): `y1` = white blood count, `y2` = red blood count, `y3` = hemoglobin.
+"The first reagent is the one presently in use and the other three are less expensive";
+the book asks for a randomized block analysis (subjects as blocks) and a **contrast of
+reagent 1 vs the other three**. The help page lists only 3 reagents; the data have 4
+(`R1_*` … `R4_*`).
 
 - One sample. Reagent effect significant (p < 1e-4) and a large measure × reagent
   interaction. A doubly multivariate within-S design with no between-S factor.
@@ -222,7 +281,9 @@ The help page lists only 3 reagents; the data have 4 (`R1_*` … `R4_*`).
 ### `table6.21`: Cork borings ★★
 `repeated` `contrasts`
 
-28 trees, weight of cork borings in the four directions N, E, S, W (Rao's classic).
+28 trees, weight of cork borings (cg) in the four directions N, E, S, W (Rao 1948).
+The book (Problem 6.34): "the primary comparison of interest is north and south vs. east
+and west", tested with a contrast matrix, then each row of it.
 
 - One sample; direction significant (Pillai 0.43, p = 0.002). The natural contrasts
   (N + S vs E + W, N vs S, E vs W) make it a good example for `hypotheses =` with a
@@ -231,7 +292,10 @@ The help page lists only 3 reagents; the data have 4 (`R1_*` … `R4_*`).
 ### `table5.5`: Flea beetles ★★
 `T2` `candisc`
 
-39 beetles of two species (*Haltica oleracea* 19, *H. carduorum* 20), four measurements.
+39 beetles of two species (*Haltica oleracea* 19, *H. carduorum* 20), Lubischew (1962).
+Book (Problem 5.16): `y1` = distance of transverse groove from posterior border of
+prothorax, `y2` = length of elytra, `y3`, `y4` = lengths of the second and third antennal
+joints. Problem 5.17 asks for a profile analysis.
 
 - Very strong separation: Pillai 0.78, p < 1e-10. A two-group example: the H ellipse is a
   line, the rank-1 case. (`tourr::flea` is a different flea-beetle dataset: 3 species,
@@ -239,14 +303,19 @@ The help page lists only 3 reagents; the data have 4 (`R1_*` … `R4_*`).
 
 ## Usable but limited (★)
 
-- **`table5.1`**: Beall (1945), 4 psych tests, 32 men and 32 women. T², very significant
+- **`table5.1`**: Beall (1945), 32 men and 32 women; `y1` pictorial inconsistencies, `y2`
+  paper form board, `y3` tool recognition, `y4` vocabulary. T², very significant
   (Pillai 0.61). Simple and clean, but just two groups.
-- **`table5.6`**: 20 engineer apprentices and 20 pilots, 6 tests, stored side by side
-  (`E_y1 … E_y6`, `P_y1 … P_y6`). After reshaping, T² Pillai 0.64, p < 1e-5. The help page
-  lists `E_y3` twice and no `E_y6`; the data are fine.
-- **`table6.6`**: Bar steel (Posten 1962), 4 lubricants × 2 levels of `A` *(book: probably
-  two temperatures)*, torque and strain, 4 per cell; stored wide. Only `A` is significant
-  (p = 0.0002); lubricant and the interaction are null.
+- **`table5.6`**: 20 engineer apprentices and 20 pilots (Travers 1939), stored side by side
+  (`E_y1 … E_y6`, `P_y1 … P_y6`): `y1` intelligence, `y2` form relations, `y3`
+  dynamometer, `y4` dotting, `y5` sensory motor coordination, `y6` perseveration. After
+  reshaping, T² Pillai 0.64, p < 1e-5. The help page lists `E_y3` twice and no `E_y6`; the
+  data are fine.
+- **`table6.6`**: Bar steel (Posten 1962), Example 6.5.2, worked in the text. 2 × 4 design,
+  4 replicates: `A` = rotational velocity (A1 fast, A2 slow), `B` = lubricant (4 types);
+  `y1` = ultimate torque, `y2` = ultimate strain; stored wide. Only velocity is significant
+  (p = 0.0002); lubricant and the interaction are null. Problem 6.29 re-analyses it with
+  lubricants as random.
 - **`table6.8`**: Guinea pigs, 3 vitamin E levels × 5, weights at weeks 1, 3, 4, 5, 6, 7.
   `week` strong; group and the interaction not significant (p = 0.38, 0.09). The help page
   says weeks 1–7; the data have 6 weeks.
@@ -261,10 +330,17 @@ The help page lists only 3 reagents; the data have 4 (`R1_*` … `R4_*`).
 - **`table7.2`**: 46 days of air and soil temperature, humidity, wind and evaporation. Can be
   set up as soil temperatures ~ air temperature + humidity + wind (several significant), but
   Rencher uses it for tests of covariance structure, and the variables are many and similar.
-- **`table3.9`**: Blood glucose on three occasions, two sets of three (`y1`–`y3`, `x1`–`x3`;
-  *(book) fasting and one hour after sugar intake*). As MMRA only `x3` is significant
-  (p = 0.04). The help page says 50 rows; there are 49.
-- **`table5.8`**: Consumer vs producer goods, 4 cycle measures, 9 vs 10 items. T², p = 0.03.
+- **`table3.9`**: Blood glucose on three occasions, two sets of three. The book (Problem
+  6.35) says `y` = fasting and `x` = one hour after the test, so it is really a one-sample
+  repeated measures design with **two within-S factors** (fasting vs 1 hour × occasion 1–3),
+  not MMRA. As MMRA only `x3` was significant (p = 0.04). Also a test of independence of
+  the y's and x's (7.29). The help page says 50 rows; there are 49.
+- **`table3.5`**: (already in heplots as part of `Diabetes`.) Book: `x1` glucose
+  intolerance, `x2` insulin response to oral glucose, `x3` insulin resistance; `y1`
+  relative weight, `y2` fasting plasma glucose; normal patients only.
+- **`table5.8`**: Consumer vs producer goods (Tintner 1946), 9 vs 10 items; `y1` length of
+  cycle, `y2` percentage of rising prices, `y3` cyclical amplitude, `y4` rate of change.
+  T², p = 0.03.
 - **`table8.1`**: Steel at 2 rolling temperatures, yield point and strength, 5 vs 7.
   T², p = 0.004; tiny.
 - **`table4.2`**: Hematology, 51 workers, 6 measures. One sample: for `cqplot()` /
@@ -273,6 +349,39 @@ The help page lists only 3 reagents; the data have 4 (`R1_*` … `R4_*`).
   pipes; informal vs formal essays; treated vs matched controls). The difference columns are
   already included in 5.3 and 5.9. An HE plot of a paired T² is a one-sample test on the
   differences.
+
+## Tables in the book that are not in the rencher package
+
+From a scan of the book's table captions. Two would be good heplots examples, but would
+need typing in.
+
+- **Table 6.20: Wear of coated fabrics in three periods (Box 1950)** ★★★. 24 specimens in a
+  2 × 2 × 3 design, surface treatment (T0, T1) × filler (F1, F2) × proportion of filler
+  (25%, 50%, 75%), 2 replicates; `y1`, `y2`, `y3` = wear (mg) in the first, second and
+  third 1000 revolutions of the abrasive wheel. The book uses it twice:
+  - Problem 6.31: a **three-way MANOVA** (ignoring the repeated measures), with main effects
+    and all interactions.
+  - Problem 6.32: a **growth curve**: period as a within-S factor with linear and quadratic
+    contrasts, crossed with the three-way between-S design.
+
+  That is the same data as a three-way MANOVA and as repeated measures, which heplots
+  doesn't have, and it's small (24 × 3 + 3 factors). Box (1950) is also the source of
+  `RatWeight`.
+- **Table 6.14: two within-S factors and one between-S factor** ★★. 20 subjects in 2
+  groups (C1, C2), a 3 × 3 within-S design (A × B); worked as an example in the text. A
+  clean, balanced design for showing `idesign = ~A * B` with `iterm =` each of A, B, A:B.
+  The source isn't given (it may be constructed).
+- Table 6.12, calculator speed: 5 subjects, 2 × 2 within. Too small.
+- Table 6.2, rootstock: already in heplots as `RootStock`.
+- Table 3.3, Baker corn field: 11 soil and yield variables on a spatial grid (x, y); not a
+  design for HE plots.
+- Table 14.1, statistics course grades (SEM chapter); 15.3, athletic records; 16.2, 16.5,
+  16.15, 16.18: dissimilarities and contingency tables. Not useful here.
+
+## Small errors in the book
+
+- Problem 6.37 says "the ramus bone data of Table 3.9"; the ramus data are Table 3.7.
+- Problem 5.19 lists `y5` = LD, `y6` = PK, which looks reversed (see `table5.7` above).
 
 ## Not useful for heplots (–)
 
@@ -305,5 +414,9 @@ the factor-analysis, cluster, MDS and correspondence-analysis data: `table13.1`,
 3. **`table6.28` (phosphate)**: repeated measures with a strong group × time interaction and
    unequal time spacing.
 
-Each would need factor coding, real variable names from the book, and a check of the
-*(book)* claims above before it goes into `R/datasets.R`.
+Each would need factor coding and the variable names from the book before it goes into
+`R/datasets.R`. The book's problems give natural `hypotheses =` contrasts for each (variety 2
+vs 1 and 3, polynomial sowing date; cheap vs expensive enzymes; polynomial hours).
+
+**Also worth adding, from the book but not in rencher:** Table 6.20, Box's fabric wear data,
+as both a three-way MANOVA and a growth curve (see above).
