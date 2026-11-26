@@ -14,6 +14,21 @@
   positions, so plots that combine `hypotheses` with a vector `label.pos` may place those
   labels differently.
 
+* `heplot()`, `heplot1d()`, `heplot3d()`: in repeated-measures plots (`idata`, `iterm`),
+  ellipses for `hypotheses` were computed from the original responses but drawn in the
+  within-S space of `iterm`, so they did not match the term and error ellipses. Hypotheses
+  are now tested with `P` for `iterm` (`car::linearHypothesis(..., P = )`), i.e., as their
+  interaction with the within-S term. For example, `hypotheses = list(Reg = c("AMED", "BMIQ"))`
+  in the within-S plot for `Adopted` now shows the joint test of `AMED:Age` and `BMIQ:Age`.
+  Between-S plots are unchanged.
+
+* `heplot1d()` failed with "... not in the model" for any model with a covariate (e.g.,
+  `Adopted`) or for repeated-measures plots, because it looked up factor means for every
+  term with `termMeans()`. It now draws means only for terms made of factors, computed in
+  the space plotted (the transformed responses for `iterm`), respects `factor.means`, and
+  widens `xlim` to include cell means of interaction terms, which could fall outside the
+  plot. Hypothesis labels were also drawn as `NA` when the plot had terms; fixed.
+
 ## Version 1.8.6
 
 ### Enhancements

@@ -399,12 +399,14 @@ heplot3d.mlm <-
 	if (is.null(idata) && is.null(imatrix)) {
 		Y <- model.response(data) 
 		SSPE <- manova$SSPE
+		P <- NULL
 	} 
 	else {
 		if (is.null(iterm)) stop("Must specify a within-S iterm for repeated measures designs" )
 		### FIXME::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
 		if (is.null(names(manova$P))) names(manova$P) <- names(manova$SSPE)
-		Y <- model.response(data) %*% manova$P[[iterm]]
+		P <- manova$P[[iterm]]
+		Y <- model.response(data) %*% P
 		SSPE <- manova$SSPE[[iterm]]
 	}   
 	
@@ -505,7 +507,7 @@ if (!add){
 			else if (!is.logical(hyp.labels)) hyp.labels
 			else if (hyp.labels) names(hypotheses) else rep("", n.hyp)  
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
-			lh <- car::linearHypothesis(mod, hypotheses[[hyp]])
+			lh <- car::linearHypothesis(mod, hypotheses[[hyp]], P = P)  # P: within-S space for iterm
 			H <- lh$SSPH[variables, variables]
 			dfh <- lh$df
 			factor <- if (size == "evidence") lambda.crit(alpha, p, dfh, dfe) else 1  

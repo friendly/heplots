@@ -229,12 +229,14 @@ heplot1d.mlm <-
 	if (is.null(idata) && is.null(imatrix)) {
 		Y <- model.response(data) 
 		SSPE <- manova$SSPE
+		P <- NULL
 	} 
 	else {
 		if (is.null(iterm)) stop("Must specify a within-S iterm for repeated measures designs" )
 		### FIXME::car -- workaround for car::Anova.mlm bug: no names assigned to $P component
 		if (is.null(names(manova$P))) names(manova$P) <- names(manova$SSPE)
-		Y <- model.response(data) %*% manova$P[[iterm]]
+		P <- manova$P[[iterm]]
+		Y <- model.response(data) %*% P
 		SSPE <- manova$SSPE[[iterm]]
 	}   
 	if (!is.null(rownames(SSPE))) {response.names <- rownames(SSPE)}
@@ -279,9 +281,29 @@ heplot1d.mlm <-
 	n.ell <- n.terms + n.hyp
 	if (n.ell == 0) stop("Nothing to plot.")
 
-	Y <- Y[,vars] 
+	Y <- Y[,vars]
 	gmean <- if (missing(data))  0 else mean(Y)
 #			else colMeans(Y)
+
+	# Means of the plotted response for the cells of each term, in the space plotted (Y is
+	# already transformed for iterm). Within-S parts of a term (e.g., Age in AMED:Age) are not
+	# in the model frame and are dropped, since Y already represents them. Only terms whose
+	# remaining parts are all factors (and selected by factor.means) get means; terms with a
+	# covariate get none. termMeans() was used before, which fails for covariates and
+	# within-S terms, and uses the untransformed responses.
+	is.fac <- vapply(data, is.factor, logical(1))
+	show.fac <- if (!is.logical(factor.means)) factor.means
+	            else if (factor.means) names(data)[is.fac] else character(0)
+	term.means <- lapply(if (n.terms > 0) terms else character(0), function(term) {
+		parts <- unlist(strsplit(term, ":"))
+		parts <- parts[parts %in% names(data)]
+		if (!length(parts) || !all(parts %in% show.fac) || !all(is.fac[parts])) return(NULL)
+		m <- tapply(Y, data[, parts, drop=FALSE], mean)
+		cells <- expand.grid(dimnames(m), stringsAsFactors=FALSE)
+		observed <- !is.na(m)                    # drop empty cells
+		stats::setNames(as.vector(m)[observed],
+		                apply(cells[observed, , drop=FALSE], 1, paste, collapse=":"))
+	})
 
 	if (missing(xlab)) xlab <- vars[1]
 	dfe <- manova$error.df
@@ -314,7 +336,7 @@ heplot1d.mlm <-
 		}
 	if (n.hyp > 0) for (hyp in 1:n.hyp){
 #			lh <- linear.hypothesis(mod, hypotheses[[hyp]])
-			lh <- car::linearHypothesis(mod, hypotheses[[hyp]])
+			lh <- car::linearHypothesis(mod, hypotheses[[hyp]], P = P)  # P: within-S space for iterm
 			H <- lh$SSPH[variables, variables]
 			dfh <- lh$df
 			factor <- if (size == "evidence") F.crit(alpha, p, dfh, dfe) else 1
@@ -353,6 +375,11 @@ heplot1d.mlm <-
 				max <- max(max, means[,2])
 			}
 		}
+		# the cell means for interaction terms can fall outside the marginal means
+		if (length(unlist(term.means))) {
+			min <- min(min, unlist(term.means))
+			max <- max(max, unlist(term.means))
+		}
 		if (!missing(offset.axes)){
 			range <- max - min
 			min <- min - offset.axes*range
@@ -383,18 +410,19 @@ heplot1d.mlm <-
 #			label.ellipse(H.ellipse[[term]], term.labels[term], col=col[term]) 
 			text(xlim[1],term, term.labels[term], col=col[term], adj=c(0,0))
 			term.name <- terms[term]
-			means <- termMeans(mod, term.name, label.factors=FALSE)
-			points(means[,vars], rep(term,nrow(means)), pch=16, xpd=TRUE, ...)
-			widths <- strwidth(rownames(means))
-# TODO: determin pos based on whether there is overlap of labels
-			pos <- rep(c(1,3),length=nrow(means))
-			text(means[,vars], rep(term,nrow(means)), labels=rownames(means), 
-					pos=pos, xpd=TRUE, ...)
-			if (verbose){
-				cat("\n",term.name, " means:\n")
-				print(means[,vars,drop=FALSE])
+			means <- term.means[[term]]
+			if (length(means)) {
+				points(means, rep(term, length(means)), pch=16, xpd=TRUE, ...)
+# TODO: determine pos based on whether there is overlap of labels
+				pos <- rep(c(1,3), length=length(means))
+				text(means, rep(term, length(means)), labels=names(means),
+						pos=pos, xpd=TRUE, ...)
+				if (verbose){
+					cat("\n",term.name, " means:\n")
+					print(means)
+				}
 			}
-		}   
+		}
 	hyp.labels <- if (n.hyp == 0) NULL
 			else if (!is.logical(hyp.labels)) hyp.labels
 			else if (hyp.labels) names(hypotheses) else rep("", n.hyp)  
@@ -402,7 +430,7 @@ heplot1d.mlm <-
 			term <- n.terms + hyp
 			lines(x=H.ellipse[[term]], y=rep(term,2), col=col[term], lty=lty[term], lwd=lwd[term])
 #			label.ellipse(H.ellipse[[term]], hyp.labels[hyp], col=col[term])
-			text(xlim[1],term, hyp.labels[term], col=col[term], adj=c(0,0))
+			text(xlim[1],term, hyp.labels[hyp], col=col[term], adj=c(0,0))
 		}
 
 #	if (!add && (!is.logical(factor.means) || factor.means)){
