@@ -61,7 +61,8 @@ data(Adopted)
 Adopted.mod <- lm(cbind(Age2IQ, Age4IQ, Age8IQ, Age13IQ) ~ AMED + BMIQ, data=Adopted)
 Age <- data.frame(Age=ordered(c(2,4,8,13)))
 compare("Adopted, within-S, no hypotheses", Adopted.mod, idata = Age, idesign = ~Age, iterm = "Age")
-# expected to differ for "Reg": heplot() does not transform the hypothesis by P[[iterm]]
+# "Reg" differed (max 19) until heplot() was fixed to transform hypotheses by P[[iterm]]
+# (commit 56cf2760); now it matches
 r <- compare("Adopted, within-S, hypothesis 'Reg'", Adopted.mod, idata = Age, idesign = ~Age,
              iterm = "Age", hypotheses = list("Reg" = c("AMED", "BMIQ")))
 
@@ -73,3 +74,29 @@ print(hc)
 cat("\nRank-2 term `Species`, full space:", hc$ellipses$Species$rank, "\n")
 pts <- as.data.frame(hc, variables = c("Sepal.Length", "Sepal.Width"))
 print(unique(pts[, c("ellipse", "type", "rank")]))
+
+# --- raw SSP, scaled on demand (decision 2) ----------------------------------------
+cat("\nRaw SSP stored, rescaled without refitting:\n")
+check <- function(label, cond) cat(format(label, width = 60), if (isTRUE(cond)) "PASS" else "FAIL", "\n")
+aov <- car::Anova(iris.mod)
+check("SSP for Species is the raw Anova() SSP",
+      isTRUE(all.equal(unname(hc$ellipses$Species$SSP), unname(aov$SSP$Species))))
+check("SSP for Error is the raw SSPE",
+      isTRUE(all.equal(unname(hc$ellipses$Error$SSP), unname(aov$SSPE))))
+check("he_shape(Error) == SSPE / dfe",
+      isTRUE(all.equal(he_shape(hc, "Error"), hc$ellipses$Error$SSP / hc$dfe)))
+
+# switching size / alpha on a saved object == refitting with them == heplot()
+same_pts <- function(a, b) max(abs(a$x - b$x), abs(a$y - b$y)) < 1e-10
+check("as.data.frame(size = 'effect') == heplot_compute(size = 'effect')",
+      same_pts(as.data.frame(hc, size = "effect"),
+               as.data.frame(heplot_compute(iris.mod, hypotheses = hyp, size = "effect"))))
+check("as.data.frame(alpha = 0.01) == heplot_compute(alpha = 0.01)",
+      same_pts(as.data.frame(hc, alpha = 0.01),
+               as.data.frame(heplot_compute(iris.mod, hypotheses = hyp, alpha = 0.01))))
+pdf(NULL)
+old01 <- heplot(iris.mod, hypotheses = hyp, alpha = 0.01)
+dev.off()
+new01 <- as.data.frame(hc, alpha = 0.01)
+check("as.data.frame(alpha = 0.01) == heplot(alpha = 0.01), Species",
+      max(abs(unname(old01$H$Species) - as.matrix(new01[new01$ellipse == "Species", c("x", "y")]))) < 1e-10)

@@ -237,6 +237,12 @@ scaled shapes + submatrix give exactly what `heplot()` draws for any pair of var
    `factor`. Storing the raw SSP plus `scale`/`factor` would make switching `size` or `alpha`
    a cheap rescale rather than a recompute. Pre-scaled is simpler for users adding
    `ellipse.axes()` etc.
+   **Done 2026-11-25:** the prototype now stores the raw `SSP` and `df`.
+   `he_factor(x, ellipse, size, alpha)` and `he_shape(x, ellipse, size, alpha)` give the
+   scaling and the scaled `p x p` shape on demand (the one-call answer for `ellipse.axes()`),
+   and `as.data.frame()` takes `size =` and `alpha =`. Checked in
+   `dev/heplot_compute-test.R`: rescaling a saved object equals refitting, and equals
+   `heplot(alpha = 0.01)`.
 3. **Hypotheses in repeated-measures designs — possible bug in `heplot()`.** With `iterm`,
    `heplot.mlm()` does the within-S work in the transformed space `Y %*% P[[iterm]]` (e.g.
    `Age.L, Age.Q, Age.C`), but `car::linearHypothesis(mod, h)` returns SSPH in the
@@ -263,7 +269,7 @@ scaled shapes + submatrix give exactly what `heplot()` draws for any pair of var
 
 ### Next steps
 
-- Decide 2, 3, 8; then have `heplot.mlm()` call `heplot_compute()` (the test script becomes
+- Decide 8 (2 and 3 done); then have `heplot.mlm()` call `heplot_compute()` (the test script becomes
   the regression check).
 - `ellipse.axes()` / `ellipse.box()` methods for these objects; segment output for rank 1.
 

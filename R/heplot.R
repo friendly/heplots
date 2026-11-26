@@ -33,6 +33,9 @@
 #       2D view it works one way only (outside => significant; inside does not mean n.s.) 10/1/2026
 # DONE: ✔️ Fixed hypothesis labels to use `label.pos[ell]`, not `label.pos[hyp]`, which gave
 #       hypotheses the positions meant for the first terms 11/25/2026
+# DONE: ✔️ Fixed `hypotheses` in repeated-measures plots: they were tested in the original
+#       responses but drawn in the within-S space of `iterm`; now linearHypothesis(..., P = P),
+#       the hypothesis x `iterm` interaction (dev/repeated-hypotheses-test.R) 11/25/2026
 #
 
 

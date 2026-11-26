@@ -28,6 +28,8 @@
 # -- uses back="culled" & depth_mask=FALSE properties
 # 9/22/2022  Add cex.label arg
 # DONE: ✔️ Docs: with p > 3, H inside E in a 3D view does not mean "not significant" 10/1/2026
+# DONE: ✔️ Fixed `hypotheses` in repeated-measures plots: now linearHypothesis(..., P = P), the
+#       hypothesis x `iterm` interaction, as in heplot() 11/25/2026
 
 # TODO what is this doing here?
 savedvars <- new.env(parent=emptyenv())

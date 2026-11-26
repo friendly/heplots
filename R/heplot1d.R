@@ -3,6 +3,12 @@
 # Fixed buglet with hyp.labels 8-Dec-2009
 # last modified 1 Jan 2010 by M. Friendly -- added idate=, idesign=, icontrasts, iterm for repeated measures
 # DONE: ✔️ Docs: `alpha` refers to the univariate F test for the response shown, not Roy's test 10/1/2026
+# DONE: ✔️ Fixed `hypotheses` in repeated-measures plots: now linearHypothesis(..., P = P), the
+#       hypothesis x `iterm` interaction, as in heplot() 11/25/2026
+# DONE: ✔️ Fixed failure ("... not in the model") for covariates and within-S terms: term means
+#       are now computed here, only for factor terms, in the plotted space, instead of with
+#       termMeans(); xlim includes interaction cell means 11/25/2026
+# DONE: ✔️ Fixed hypothesis labels drawn as NA: `hyp.labels[hyp]`, not `hyp.labels[term]` 11/25/2026
 
 
 
