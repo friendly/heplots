@@ -348,3 +348,12 @@ negative values, `bcnPower`, are a separate story).
   `cqplot()` and `boxM()`, `bcBoxM()` on Diabetes without `relwt`.
 - NEWS, pkgdown reference section "Transformations".
 - The dev files (`box-cox-functions.R` etc.) are kept as the record of the prototypes.
+
+## Next: `pairs()`, and what it should leave out (2026-11-26)
+
+MF: "A pairs method has to decide what to show and what to exclude to show something
+useful." The design questions (which pairs, which variables, lower = likelihood / upper =
+Box's M, shared axes vs zoom, cost, annotation, and whether a per-variable interval plot is
+the better display) are written up in the blog notes:
+`C:\R\Projects\friendly.github.io\blog\drafts\MLM-extensions\box-cox-addendum.md`,
+section "Next: a `pairs()` method, and what it should leave out". Read that before starting.
