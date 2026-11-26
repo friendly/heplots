@@ -82,7 +82,6 @@ of chemical diabetes using a multidimensional analysis. *Diabetologia*,
 ## Examples
 
 ``` r
-
 data(Diabetes)
 col <- c("blue", "red", "darkgreen")[Diabetes$group]
 pch <- c(16,15,17)[Diabetes$group]

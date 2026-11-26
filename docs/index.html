@@ -19,8 +19,8 @@
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Visualizing Hypothesis Tests in Multivariate Linear Models">
-<meta name="description" content="Provides HE plot and other functions for visualizing hypothesis tests in multivariate linear models. HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of the models such as robust methods and homogeneity of variance covariance matrices. The related candisc package provides visualizations in a reduced-rank canonical discriminant space when there are more than a few response variables.">
-<meta property="og:description" content="Provides HE plot and other functions for visualizing hypothesis tests in multivariate linear models. HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of the models such as robust methods and homogeneity of variance covariance matrices. The related candisc package provides visualizations in a reduced-rank canonical discriminant space when there are more than a few response variables.">
+<meta name="description" content="Provides HE plot and other functions for visualizing hypothesis tests in multivariate linear models. HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of the models such as robust methods, multivariate Box-Cox transformations, and homogeneity of variance covariance matrices. The related candisc package provides visualizations in a reduced-rank canonical discriminant space when there are more than a few response variables.">
+<meta property="og:description" content="Provides HE plot and other functions for visualizing hypothesis tests in multivariate linear models. HE plots represent sums-of-squares-and-products matrices for linear hypotheses and for error using ellipses (in two dimensions) and ellipsoids (in three dimensions). It also provides other tools for analysis and graphical display of the models such as robust methods, multivariate Box-Cox transformations, and homogeneity of variance covariance matrices. The related candisc package provides visualizations in a reduced-rank canonical discriminant space when there are more than a few response variables.">
 <meta property="og:image" content="https://friendly.github.io/heplots/logo.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
@@ -78,10 +78,10 @@
 <strong>Visualizing Hypothesis Tests in Multivariate Linear Models</strong><a class="anchor" aria-label="anchor" href="#visualizing-hypothesis-tests-in-multivariate-linear-models"></a>
 </h2>
 <!-- explicit version number now dynamic -->
-<p>Version 1.8.6; documentation built for <code>pkgdown</code> 2026-10-04</p>
+<p>Version 1.8.7; documentation built for <code>pkgdown</code> 2026-11-26</p>
 </div>
 <div class="section level2">
-<h2 id="pencil-description">📝 Description<a class="anchor" aria-label="anchor" href="#pencil-description"></a>
+<h2 id="id_-description">📝 Description<a class="anchor" aria-label="anchor" href="#id_-description"></a>
 </h2>
 <p>The <code>heplots</code> package provides functions for visualizing hypothesis tests in multivariate linear models (“MLM” = {MANOVA, multivariate multiple regression, MANCOVA, and repeated measures designs}). It also provides other tools for analysis and graphical display of MLMs.</p>
 <p>HE plots represent sums-of-squares-and-products matrices for linear hypotheses (<strong>H</strong>) and for error (<strong>E</strong>) using ellipses (in two dimensions), ellipsoids (in three dimensions), or by line segments in one dimension. For the theory and applications, see:</p>
@@ -109,9 +109,11 @@
 <li>robust MLMs, using iteratively re-weighted least squared to down-weight observations with large multivariate residuals, <code><a href="reference/robmlm.html">robmlm()</a></code>.</li>
 <li>
 <code><a href="reference/Mahalanobis.html">Mahalanobis()</a></code> calculates classical and <em>robust</em> Mahalanobis squared distances using MCD and MVE estimators of center and covariance.</li>
-<li>visualizing tests for equality of covariance matrices in MLMs (Box’s M test), <code><a href="reference/boxM.html">boxM()</a></code> and <code><a href="reference/plot.boxM.html">plot.boxM()</a></code>. Also: <code><a href="reference/bartlettTests.html">bartlettTests()</a></code> and <code>LeveneTests()</code> for homogeneity of variance for each response in a MLM.</li>
+<li>visualizing tests for equality of covariance matrices in MLMs (Box’s M test), <code><a href="reference/boxM.html">boxM()</a></code> and <code><a href="reference/plot.boxM.html">plot.boxM()</a></code>. Also: <code><a href="reference/bartlettTests.html">bartlettTests()</a></code> and <code><a href="reference/leveneTests.html">leveneTests()</a></code> for homogeneity of variance for each response in a MLM.</li>
 <li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>χ</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\chi^2</annotation></semantics></math> Q-Q plots for MLMs (<code><a href="reference/cqplot.html">cqplot()</a></code>) to detect outliers and assess multivariate normality of residuals.</li>
+<li>
+<strong>multivariate Box-Cox transformations</strong> for MLMs: <code><a href="reference/bcProfile.html">bcProfile()</a></code> plots the profile likelihood for the powers estimated by <code><a href="https://rdrr.io/pkg/car/man/powerTransform.html" class="external-link">car::powerTransform()</a></code>, and can show at the same time how well each choice equalizes the covariance matrices (Box’s M); <code><a href="reference/bcProfile.html">bcRefit()</a></code> refits the model with the transformed responses.</li>
 <li>bivariate coefficient plots showing elliptical confidence regions (<code><a href="reference/coefplot.html">coefplot()</a></code>).</li>
 </ul>
 <p>In this respect, the <code>heplots</code> package now aims to provide a wide range of tools for analyzing and visualizing multivariate response linear models, together with other packages:</p>
@@ -126,23 +128,23 @@
 </div>
 </div>
 <div class="section level2">
-<h2 id="open_file_folder-installation">📂 Installation<a class="anchor" aria-label="anchor" href="#open_file_folder-installation"></a>
+<h2 id="id_-installation">📂 Installation<a class="anchor" aria-label="anchor" href="#id_-installation"></a>
 </h2>
 <table class="table">
 <colgroup>
-<col width="50%">
-<col width="50%">
+<col width="21%">
+<col width="78%">
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td>CRAN version</td>
 <td><code>install.packages("heplots")</code></td>
 </tr>
-<tr>
+<tr class="even">
 <td>R-universe</td>
 <td><code>install.packages("heplots", repos = c('https://friendly.r-universe.dev')</code></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Development version</td>
 <td><code>remotes::install_github("friendly/heplots")</code></td>
 </tr>
@@ -150,7 +152,7 @@
 </table>
 </div>
 <div class="section level2">
-<h2 id="triangular_ruler-he-plot-functions">📐 HE plot functions<a class="anchor" aria-label="anchor" href="#triangular_ruler-he-plot-functions"></a>
+<h2 id="id_-he-plot-functions">📐 HE plot functions<a class="anchor" aria-label="anchor" href="#id_-he-plot-functions"></a>
 </h2>
 <p>The graphical functions contained here all display multivariate model effects in variable (<strong>data</strong>) space, for one or more response variables (or contrasts among response variables in repeated measures designs).</p>
 <ul>
@@ -161,12 +163,13 @@
 </ul>
 </div>
 <div class="section level2">
-<h2 id="wrench-other-functions">🔧 Other functions<a class="anchor" aria-label="anchor" href="#wrench-other-functions"></a>
+<h2 id="id_-other-functions">🔧 Other functions<a class="anchor" aria-label="anchor" href="#id_-other-functions"></a>
 </h2>
 <ul>
 <li><p><code><a href="reference/glance.mlm.html">glance.mlm()</a></code> extends <code><a href="https://broom.tidymodels.org/reference/glance.lm.html" class="external-link">broom::glance.lm()</a></code> to multivariate response models, giving a one-line statistical summary for each response variable. <code><a href="reference/uniStats.html">uniStats()</a></code> does something similar, but formatted more like a ANOVA table.</p></li>
-<li><p><code><a href="reference/boxM.html">boxM()</a></code> Calculates Box’s <em>M</em> test for homogeneity of covariance matrices in a MANOVA design. A <code>plot</code> method displays a visual representation of the components of the test. Associated with this, <code>bartletTests()</code> and <code>levineTests()</code> give the univariate tests of homogeneity of variance for each response measure in a MLM.</p></li>
+<li><p><code><a href="reference/boxM.html">boxM()</a></code> Calculates Box’s <em>M</em> test for homogeneity of covariance matrices in a MANOVA design. A <code>plot</code> method displays a visual representation of the components of the test. Associated with this, <code><a href="reference/bartlettTests.html">bartlettTests()</a></code> and <code><a href="reference/leveneTests.html">leveneTests()</a></code> give the univariate tests of homogeneity of variance for each response measure in a MLM.</p></li>
 <li><p><code><a href="reference/covEllipses.html">covEllipses()</a></code> draw covariance (data) ellipses for one or more group, optionally including the ellipse for the pooled within-group covariance.</p></li>
+<li><p><code><a href="reference/bcProfile.html">bcProfile()</a></code>, <code><a href="reference/bcProfile.html">bcRefit()</a></code> and <code><a href="reference/bcProfile.html">bcBoxM()</a></code> help choose and apply <strong>multivariate Box-Cox transformations</strong> of the responses in a MLM. <code><a href="reference/bcProfile.html">bcProfile()</a></code> gives 1-D and 2-D profile likelihood plots for the powers estimated by <code><a href="https://rdrr.io/pkg/car/man/powerTransform.html" class="external-link">car::powerTransform()</a></code>, optionally with Box’s M for the homogeneity of covariance matrices on the same plot; <code><a href="reference/bcProfile.html">bcRefit()</a></code> refits the model with transformed responses; <code><a href="reference/bcProfile.html">bcBoxM()</a></code> finds the powers that make the covariance matrices most alike.</p></li>
 <li><p><code><a href="reference/coefplot.html">coefplot()</a></code> for an MLM object draws bivariate confidence ellipses.</p></li>
 <li><p><code><a href="reference/stdmodel.html">stdmodel()</a></code> standardizes the numeric variables in a MLM model and <code><a href="reference/stdcoef.html">stdcoef()</a></code> give you standardized (“beta”) coefficients that don’t depend on units of measurement of the variables.</p></li>
 </ul>
@@ -177,18 +180,18 @@
 </div>
 </div>
 <div class="section level2">
-<h2 id="card_file_box-datasets">🗃️ Datasets<a class="anchor" aria-label="anchor" href="#card_file_box-datasets"></a>
+<h2 id="id_️-datasets">🗃️ Datasets<a class="anchor" aria-label="anchor" href="#id_%EF%B8%8F-datasets"></a>
 </h2>
 <p>The package also provides a large collection of data sets illustrating a variety of multivariate linear models of the types listed above, together with graphical displays. The table below classifies these with method tags. Their names are linked to their documentation with graphical output on the <code>pkgdown</code> website, [<a href="https://friendly.github.io/heplots/" class="uri">https://friendly.github.io/heplots/</a>].</p>
 <table class="table">
 <colgroup>
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
-<col width="20%">
+<col width="43%">
+<col width="2%">
+<col width="2%">
+<col width="36%">
+<col width="14%">
 </colgroup>
-<thead><tr>
+<thead><tr class="header">
 <th>dataset</th>
 <th>rows</th>
 <th>cols</th>
@@ -196,245 +199,266 @@
 <th>tags</th>
 </tr></thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/AddHealth.html">AddHealth</a></td>
 <td>4344</td>
 <td>3</td>
 <td>Adolescent Health Data</td>
 <td>MANOVA ordered</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/Adopted.html">Adopted</a></td>
 <td>62</td>
 <td>6</td>
 <td>Adopted Children</td>
 <td>MMRA repeated</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/Bees.html">Bees</a></td>
 <td>246</td>
 <td>6</td>
 <td>Captive and maltreated bees</td>
 <td>MANOVA</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/Diabetes.html">Diabetes</a></td>
 <td>145</td>
 <td>6</td>
 <td>Diabetes Dataset</td>
 <td>MANOVA</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/dogfood.html">dogfood</a></td>
 <td>16</td>
 <td>3</td>
 <td>Dogfood Preferences</td>
 <td>MANOVA contrasts candisc</td>
 </tr>
-<tr>
+<tr class="even">
+<td><a href="https://friendly.github.io/heplots/reference/Dystrophy.html">Dystrophy</a></td>
+<td>73</td>
+<td>7</td>
+<td>Carriers and Noncarriers of Duchenne Muscular Dystrophy</td>
+<td>MANOVA MANCOVA robust candisc</td>
+</tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/FootHead.html">FootHead</a></td>
 <td>90</td>
 <td>7</td>
 <td>Head measurements of football players</td>
 <td>MANOVA contrasts</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/Headache.html">Headache</a></td>
 <td>98</td>
 <td>6</td>
 <td>Treatment of Headache Sufferers for Sensitivity to Noise</td>
 <td>MANOVA repeated</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/Hernior.html">Hernior</a></td>
 <td>32</td>
 <td>9</td>
 <td>Recovery from Elective Herniorrhaphy</td>
 <td>MMRA candisc</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/Iwasaki_Big_Five.html">Iwasaki_Big_Five</a></td>
 <td>203</td>
 <td>7</td>
 <td>Personality Traits of Cultural Groups</td>
 <td>MANOVA</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/LearnDis.html">LearnDis</a></td>
 <td>18</td>
 <td>5</td>
 <td>Reading and Arithmetic Achievement in Children with Learning Disabilities</td>
 <td>MANOVA MANCOVA</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/mathscore.html">mathscore</a></td>
 <td>12</td>
 <td>3</td>
 <td>Math scores for basic math and word problems</td>
 <td>MANOVA</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/MockJury.html">MockJury</a></td>
 <td>114</td>
 <td>17</td>
 <td>Effects Of Physical Attractiveness Upon Mock Jury Decisions</td>
 <td>MANOVA candisc</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/NeuroCog.html">NeuroCog</a></td>
 <td>242</td>
 <td>10</td>
 <td>Neurocognitive Measures in Psychiatric Groups</td>
 <td>MANOVA candisc</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/NLSY.html">NLSY</a></td>
 <td>243</td>
 <td>6</td>
 <td>National Longitudinal Survey of Youth Data</td>
 <td>MMRA</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/oral.html">oral</a></td>
 <td>56</td>
 <td>5</td>
 <td>Effect of Delay in Oral Practice in Second Language Learning</td>
 <td>MANOVA</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/Oslo.html">Oslo</a></td>
 <td>332</td>
 <td>14</td>
 <td>Oslo Transect Subset Data</td>
 <td>MANOVA candisc</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/Overdose.html">Overdose</a></td>
 <td>17</td>
 <td>7</td>
 <td>Overdose of Amitriptyline</td>
 <td>MMRA cancor</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/Parenting.html">Parenting</a></td>
 <td>60</td>
 <td>4</td>
 <td>Father Parenting Competence</td>
 <td>MANOVA contrasts</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/peng.html">peng</a></td>
 <td>333</td>
 <td>8</td>
 <td>Size measurements for adult foraging penguins near Palmer Station</td>
 <td>MANOVA</td>
 </tr>
-<tr>
+<tr class="odd">
+<td><a href="https://friendly.github.io/heplots/reference/Phosphate.html">Phosphate</a></td>
+<td>33</td>
+<td>9</td>
+<td>Plasma Inorganic Phosphate after a Glucose Challenge</td>
+<td>MANOVA repeated contrasts</td>
+</tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/Plastic.html">Plastic</a></td>
 <td>20</td>
 <td>5</td>
 <td>Plastic Film Data</td>
 <td>MANOVA</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/Pottery2.html">Pottery2</a></td>
 <td>48</td>
 <td>12</td>
 <td>Chemical Analysis of Romano-British Pottery</td>
 <td>MANOVA candisc</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/Probe.html">Probe</a></td>
 <td>11</td>
 <td>5</td>
 <td>Response Speed in a Probe Experiment</td>
 <td>MANOVA repeated</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/RatWeight.html">RatWeight</a></td>
 <td>27</td>
 <td>6</td>
 <td>Weight Gain in Rats Exposed to Thiouracil and Thyroxin</td>
 <td>MANOVA repeated</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/ReactTime.html">ReactTime</a></td>
 <td>10</td>
 <td>6</td>
 <td>Reaction Time Data</td>
 <td>repeated</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/ReadingDisability.html">ReadingDisability</a></td>
 <td>571</td>
 <td>7</td>
 <td>Cognitive and Achievement Test Scores by Reading Level</td>
 <td>MANOVA</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/Rohwer.html">Rohwer</a></td>
 <td>69</td>
 <td>10</td>
 <td>Rohwer Data Set</td>
 <td>MMRA MANCOVA</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/RootStock.html">RootStock</a></td>
 <td>48</td>
 <td>5</td>
 <td>Growth of Apple Trees from Different Root Stocks</td>
 <td>MANOVA contrasts</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/Sake.html">Sake</a></td>
 <td>30</td>
 <td>10</td>
 <td>Taste Ratings of Japanese Rice Wine (Sake)</td>
 <td>MMRA</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/schooldata.html">schooldata</a></td>
 <td>70</td>
 <td>8</td>
 <td>School Data</td>
 <td>MMRA robust</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/Skulls.html">Skulls</a></td>
 <td>150</td>
 <td>5</td>
 <td>Egyptian Skulls</td>
 <td>MANOVA contrasts</td>
 </tr>
-<tr>
+<tr class="odd">
+<td><a href="https://friendly.github.io/heplots/reference/SnapBeans.html">SnapBeans</a></td>
+<td>60</td>
+<td>6</td>
+<td>Snap Bean Yield and Leaf Area by Sowing Date and Variety</td>
+<td>MANOVA contrasts candisc</td>
+</tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/SocGrades.html">SocGrades</a></td>
 <td>40</td>
 <td>10</td>
 <td>Grades in a Sociology Course</td>
 <td>MANOVA candisc</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/SocialCog.html">SocialCog</a></td>
 <td>139</td>
 <td>5</td>
 <td>Social Cognitive Measures in Psychiatric Groups</td>
 <td>MANOVA candisc</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/TIPI.html">TIPI</a></td>
 <td>1799</td>
 <td>16</td>
 <td>Data on the Ten Item Personality Inventory</td>
 <td>MANOVA candisc</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><a href="https://friendly.github.io/heplots/reference/VocabGrowth.html">VocabGrowth</a></td>
 <td>64</td>
 <td>4</td>
 <td>Vocabulary growth data</td>
 <td>repeated</td>
 </tr>
-<tr>
+<tr class="even">
 <td><a href="https://friendly.github.io/heplots/reference/WeightLoss.html">WeightLoss</a></td>
 <td>34</td>
 <td>7</td>
@@ -445,18 +469,18 @@
 </table>
 </div>
 <div class="section level2">
-<h2 id="open_book-vignettes">📖 Vignettes<a class="anchor" aria-label="anchor" href="#open_book-vignettes"></a>
+<h2 id="id_-vignettes">📖 Vignettes<a class="anchor" aria-label="anchor" href="#id_-vignettes"></a>
 </h2>
 <p>Several tutorial vignettes are included, and can be browsed with <code>browseVignettes(package = "heplots")</code> once installed with <code>build_vignettes = TRUE</code>. Their rendered versions are also available as articles on the <a href="https://friendly.github.io/heplots/articles/">pkgdown site</a>:</p>
 </div>
 <div class="section level2">
-<h2 id="spiral_notepad-cheatsheet">🗒️ Cheatsheet<a class="anchor" aria-label="anchor" href="#spiral_notepad-cheatsheet"></a>
+<h2 id="id_️-cheatsheet">🗒️ Cheatsheet<a class="anchor" aria-label="anchor" href="#id_%EF%B8%8F-cheatsheet"></a>
 </h2>
 <p>A two-page cheatsheet summarizes the main functions: fitting and visualizing multivariate linear models with HE plots, then checking assumptions, customizing plots and reporting statistics.</p>
 <p><a href="https://friendly.github.io/heplots/heplots-cheatsheet.pdf"><img src="reference/figures/cheatsheet-thumbs.png" width="630" alt="heplots cheatsheet, pages 1 and 2"></a></p>
 </div>
 <div class="section level2">
-<h2 id="bar_chart-examples">📊 Examples<a class="anchor" aria-label="anchor" href="#bar_chart-examples"></a>
+<h2 id="id_-examples">📊 Examples<a class="anchor" aria-label="anchor" href="#id_-examples"></a>
 </h2>
 <p>This example illustrates HE plots using the classic <code>iris</code> data set. How do the means of the flower variables differ by <code>Species</code>? This dataset was the impetus for R. A. Fisher (1936) to propose a method of discriminant analysis using data collected by Edgar Anderson (1928). Though some may rightly deprecate Fisher for being a supporter of eugenics, Anderson’s <code>iris</code> dataset should not be blamed.</p>
 <p>A basic HE plot shows the <strong>H</strong> and <strong>E</strong> ellipses for the first two response variables (here: <code>Sepal.Length</code> and <code>Sepal.Width</code>). The multivariate test is significant (by Roy’s test) <em>iff</em> the <strong>H</strong> ellipsoid projects <em>anywhere</em> outside the <strong>E</strong> ellipsoid in the space of <em>all</em> the responses. So if <strong>H</strong> sticks out beyond <strong>E</strong> in a plot, the effect is significant; but <strong>H</strong> inside <strong>E</strong> in one view does not mean “not significant”, because the effect may lie in directions that view does not show.</p>
@@ -466,7 +490,7 @@
 <span>                 <span class="va">Species</span>, data<span class="op">=</span><span class="va">iris</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">iris.mod</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="reference/figures/README-iris1-1.png" alt="HE plot of sepal length and Sepal width for the iris data" width="70%"><p class="caption">
+<img src="reference/figures/README-iris1-1.png" alt="HE plot of sepal length and Sepal width for the iris data" width="85%"><p class="caption">
 HE plot of sepal length and Sepal width for the iris data
 </p>
 </div>
@@ -536,7 +560,7 @@ Scatterplot matrix of pairwise HE plots for the iris data.
 <code class="sourceCode R"><span><span class="co"># HE plot in canonical space</span></span>
 <span><span class="fu"><a href="reference/heplot.html">heplot</a></span><span class="op">(</span><span class="va">iris.can</span>, var.pos <span class="op">=</span> <span class="fl">1</span>, scale <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="reference/figures/README-iris-can-1.png" alt="Canonical HE plot for the iris data" width="60%"><p class="caption">
+<img src="reference/figures/README-iris-can-1.png" alt="Canonical HE plot for the iris data" width="85%"><p class="caption">
 Canonical HE plot for the iris data
 </p>
 </div>
@@ -547,7 +571,7 @@ Canonical HE plot for the iris data
 <p>MANOVA relies on the assumption that within-group covariance matrices are all equal. It is useful to visualize these in the space of some of the predictors. <code><a href="reference/covEllipses.html">covEllipses()</a></code> provides this both for classical and robust (<code>method="mve"</code>) estimates. The figure below shows these for the three Iris species and the pooled covariance matrix, which is the same as the <strong>E</strong> matrix used in MANOVA tests.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>, </span>
+<span><span class="fu"><a href="reference/covEllipses.html">covEllipses</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>,</span>
 <span>            fill<span class="op">=</span><span class="cn">TRUE</span>, method<span class="op">=</span><span class="st">"mve"</span>, add<span class="op">=</span><span class="cn">TRUE</span>, labels<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="reference/figures/README-iris4-1.png" alt="Covariance ellipses for the iris data, showing the classical and robust estimates." width="80%"><p class="caption">
@@ -555,9 +579,28 @@ Covariance ellipses for the iris data, showing the classical and robust estimate
 </p>
 </div>
 </div>
+<div class="section level3">
+<h3 id="transformations">Transformations<a class="anchor" aria-label="anchor" href="#transformations"></a>
+</h3>
+<p>When the responses are skewed, a transformation can make the residuals closer to multivariate normal, and often also makes the covariance matrices more alike. <code><a href="https://rdrr.io/pkg/car/man/powerTransform.html" class="external-link">car::powerTransform()</a></code> estimates the Box-Cox powers for a MLM; <code><a href="reference/bcProfile.html">bcProfile()</a></code> shows the profile log-likelihood for each one. The <code>Dystrophy</code> data compare four blood enzymes in carriers and noncarriers of muscular dystrophy. The plots below show that creatine kinase (<code>CK</code>) wants a power near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">-0.5</annotation></semantics></math> and hemopexin (<code>Hpx</code>) a power near 2 (it is skewed to the left), and that no transformation (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda = 1</annotation></semantics></math>, red) is far outside the 95% intervals. The green curve, Box’s M against each power, shows that these choices also make the covariance matrices of the two groups more alike.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dmd.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">CK</span>, <span class="va">Hpx</span>, <span class="va">PK</span>, <span class="va">LD</span><span class="op">)</span> <span class="op">~</span> <span class="va">group</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">month</span>, data <span class="op">=</span> <span class="va">Dystrophy</span><span class="op">)</span></span>
+<span><span class="va">dmd.pt</span> <span class="op">&lt;-</span> <span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/powerTransform.html" class="external-link">powerTransform</a></span><span class="op">(</span><span class="va">dmd.mod</span><span class="op">)</span></span>
+<span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">v</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CK"</span>, <span class="st">"Hpx"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="reference/bcProfile.html">bcProfile</a></span><span class="op">(</span><span class="va">dmd.pt</span>, <span class="va">v</span>, extend_range <span class="op">=</span> <span class="cn">TRUE</span>, group <span class="op">=</span> <span class="va">Dystrophy</span><span class="op">$</span><span class="va">group</span><span class="op">)</span>, main <span class="op">=</span> <span class="va">v</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="reference/figures/README-dystrophy-bc-1.png" alt="Profile log-likelihood (blue) and Box's M (green) for the Box-Cox powers of CK and Hpx in the Dystrophy data." width="100%"><p class="caption">
+Profile log-likelihood (blue) and Box’s M (green) for the Box-Cox powers of CK and Hpx in the Dystrophy data.
+</p>
+</div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span></span></code></pre></div>
+<p><code>bcRefit(dmd.mod, dmd.pt)</code> then refits the model with the rounded powers, for comparison with <code><a href="reference/cqplot.html">cqplot()</a></code>, <code><a href="reference/boxM.html">boxM()</a></code> and <code><a href="reference/heplot.html">heplot()</a></code>.</p>
+</div>
 </div>
 <div class="section level2">
-<h2 id="books-references">📚 References<a class="anchor" aria-label="anchor" href="#books-references"></a>
+<h2 id="id_-references">📚 References<a class="anchor" aria-label="anchor" href="#id_-references"></a>
 </h2>
 <p>Anderson, E. (1928). The Problem of Species in the Northern Blue Flags, Iris versicolor L. and Iris virginica L. <em>Annals of the Missouri Botanical Garden</em>, <strong>13</strong>, 241–313.</p>
 <p>Fisher, R. A. (1936). The Use of Multiple Measurements in Taxonomic Problems. <em>Annals of Eugenics</em>, <strong>8</strong>, 379–388.</p>

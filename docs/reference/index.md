@@ -81,6 +81,17 @@ Other plots and methods for multivariate linear models
 - [`uniStats()`](https://friendly.github.io/heplots/reference/uniStats.md)
   : Univariate Test Statistics for a Multivariate Linear Model
 
+## Transformations
+
+Multivariate Box-Cox transformations for MLMs
+
+- [`bcProfile()`](https://friendly.github.io/heplots/reference/bcProfile.md)
+  [`plot(`*`<bcProfile>`*`)`](https://friendly.github.io/heplots/reference/bcProfile.md)
+  [`print(`*`<bcProfile>`*`)`](https://friendly.github.io/heplots/reference/bcProfile.md)
+  [`bcRefit()`](https://friendly.github.io/heplots/reference/bcProfile.md)
+  [`bcBoxM()`](https://friendly.github.io/heplots/reference/bcProfile.md)
+  : Multivariate Box-Cox Transformations for Multivariate Linear Models
+
 ## Utility
 
 Utility functions
@@ -158,6 +169,8 @@ Utility functions
   Captive and maltreated bees
 - [`Diabetes`](https://friendly.github.io/heplots/reference/Diabetes.md)
   : Diabetes Dataset
+- [`Dystrophy`](https://friendly.github.io/heplots/reference/Dystrophy.md)
+  : Carriers and Noncarriers of Duchenne Muscular Dystrophy
 - [`FootHead`](https://friendly.github.io/heplots/reference/FootHead.md)
   : Head measurements of football players
 - [`Headache`](https://friendly.github.io/heplots/reference/Headache.md)
@@ -183,6 +196,8 @@ Utility functions
   : Overdose of Amitriptyline
 - [`Parenting`](https://friendly.github.io/heplots/reference/Parenting.md)
   : Father Parenting Competence
+- [`Phosphate`](https://friendly.github.io/heplots/reference/Phosphate.md)
+  : Plasma Inorganic Phosphate after a Glucose Challenge
 - [`peng`](https://friendly.github.io/heplots/reference/peng.md) : Size
   measurements for penguins near Palmer Station, Antarctica
 - [`Plastic`](https://friendly.github.io/heplots/reference/Plastic.md) :
@@ -207,6 +222,8 @@ Utility functions
   Ratings of Japanese Rice Wine (Sake)
 - [`Skulls`](https://friendly.github.io/heplots/reference/Skulls.md) :
   Egyptian Skulls
+- [`SnapBeans`](https://friendly.github.io/heplots/reference/SnapBeans.md)
+  : Snap Bean Yield and Leaf Area by Sowing Date and Variety
 - [`SocGrades`](https://friendly.github.io/heplots/reference/SocGrades.md)
   : Grades in a Sociology Course
 - [`SocialCog`](https://friendly.github.io/heplots/reference/SocialCog.md)

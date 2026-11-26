@@ -11,6 +11,82 @@
   labels, e.g., `means.pos = c(setosa = 1)`. This helps when the labels
   for two means overlap.
 
+### New functions: multivariate Box-Cox transformations
+
+[`car::powerTransform()`](https://rdrr.io/pkg/car/man/powerTransform.html)
+estimates Box-Cox powers that make the residuals of an `mlm` as close to
+multivariate normal as possible. These functions add the graphics and
+the workflow around it:
+
+- [`bcProfile()`](https://friendly.github.io/heplots/reference/bcProfile.md)
+  computes the profile log-likelihood for one or two of the powers, from
+  a `powerTransform` object or an `mlm`, and its
+  [`plot()`](https://rdrr.io/r/graphics/plot.default.html) method draws
+  a curve (1-D) or nested, lightly filled likelihood regions with the
+  Wald confidence ellipse (2-D). `extend_range = TRUE` shows how far “no
+  transformation” (all powers 1) is from the estimate. With `group =`,
+  Box’s M for the homogeneity of the covariance matrices is computed and
+  drawn too, showing whether the powers that give normality also make
+  the covariance matrices most alike.
+- [`bcRefit()`](https://friendly.github.io/heplots/reference/bcProfile.md)
+  refits an `mlm` with Box-Cox transformed responses, for comparisons
+  before and after with
+  [`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+  [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
+  and [`boxM()`](https://friendly.github.io/heplots/reference/boxM.md).
+- [`bcBoxM()`](https://friendly.github.io/heplots/reference/bcProfile.md)
+  finds the powers that minimize Box’s M.
+
+Only the `bcPower` family (positive responses) is supported for now.
+
+### New datasets
+
+Three datasets from Rencher & Christensen (2012), *Methods of
+Multivariate Analysis*, taken from the `rencher` package, with factor
+coding, contrasts, and variable names from the book:
+
+- `SnapBeans`: a balanced two-way MANOVA (sowing date × variety) in
+  which both main effects and the interaction are large, with polynomial
+  contrasts for sowing date.
+- `Dystrophy`: carriers vs noncarriers of Duchenne muscular dystrophy,
+  with age and month as covariates (MANCOVA) and skewed enzyme
+  measurements.
+- `Phosphate`: plasma phosphate in control and obese patients at 8
+  unequally spaced times after a glucose challenge; repeated measures
+  with a strong group × time interaction.
+
+### Bug fixes
+
+- [`heplot()`](https://friendly.github.io/heplots/reference/heplot.md):
+  with `hypotheses` and a vector `label.pos`, the hypothesis labels used
+  the positions meant for the first model terms, not their own. They now
+  use their own positions, so plots that combine `hypotheses` with a
+  vector `label.pos` may place those labels differently.
+
+- [`heplot()`](https://friendly.github.io/heplots/reference/heplot.md),
+  [`heplot1d()`](https://friendly.github.io/heplots/reference/heplot1d.md),
+  [`heplot3d()`](https://friendly.github.io/heplots/reference/heplot3d.md):
+  in repeated-measures plots (`idata`, `iterm`), ellipses for
+  `hypotheses` were computed from the original responses but drawn in
+  the within-S space of `iterm`, so they did not match the term and
+  error ellipses. Hypotheses are now tested with `P` for `iterm`
+  (`car::linearHypothesis(..., P = )`), i.e., as their interaction with
+  the within-S term. For example,
+  `hypotheses = list(Reg = c("AMED", "BMIQ"))` in the within-S plot for
+  `Adopted` now shows the joint test of `AMED:Age` and `BMIQ:Age`.
+  Between-S plots are unchanged.
+
+- [`heplot1d()`](https://friendly.github.io/heplots/reference/heplot1d.md)
+  failed with “… not in the model” for any model with a covariate (e.g.,
+  `Adopted`) or for repeated-measures plots, because it looked up factor
+  means for every term with
+  [`termMeans()`](https://friendly.github.io/heplots/reference/termMeans.md).
+  It now draws means only for terms made of factors, computed in the
+  space plotted (the transformed responses for `iterm`), respects
+  `factor.means`, and widens `xlim` to include cell means of interaction
+  terms, which could fall outside the plot. Hypothesis labels were also
+  drawn as `NA` when the plot had terms; fixed.
+
 ## Version 1.8.6
 
 CRAN release: 2026-10-04
@@ -391,10 +467,10 @@ This is largely a maintenance release, but adds a function to identify
   the `schooldata` dataset.
 - [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
   now prints a warning if there are missing cases and also returns the
-  upper tail p-values corresponding to Mahalanobis $`D^2`$.
+  upper tail p-values corresponding to Mahalanobis $D^{2}$.
 - Default `method.id` in
   [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
-  changed to “r”, to identify points with the largest $`D^2`$.
+  changed to “r”, to identify points with the largest $D^{2}$.
 - added `noteworthy(x, y)` as a utility to select “noteworthy”
   observations in a 2D plot, extending the ideas in
   [`car::showLabels()`](https://rdrr.io/pkg/car/man/showLabels.html)

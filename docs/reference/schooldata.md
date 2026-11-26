@@ -77,7 +77,6 @@ Program Follow Through. *Management Science*, **27**, 668-697.
 ## Examples
 
 ``` r
-
 data(schooldata)
 # initial screening
 plot(schooldata)

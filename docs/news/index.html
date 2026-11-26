@@ -46,6 +46,33 @@
 <ul><li>
 <code><a href="../reference/heplot.html">heplot()</a></code> gains a <code>means.pos</code> argument for the positions of the labels of factor means, which were always drawn above the means (<code>pos = 3</code>). It is either recycled over the levels, or named by level to move only some labels, e.g., <code>means.pos = c(setosa = 1)</code>. This helps when the labels for two means overlap.</li>
 </ul></div>
+<div class="section level3">
+<h3 id="new-functions-multivariate-box-cox-transformations-1-8-7">New functions: multivariate Box-Cox transformations<a class="anchor" aria-label="anchor" href="#new-functions-multivariate-box-cox-transformations-1-8-7"></a></h3>
+<p><code><a href="https://rdrr.io/pkg/car/man/powerTransform.html" class="external-link">car::powerTransform()</a></code> estimates Box-Cox powers that make the residuals of an <code>mlm</code> as close to multivariate normal as possible. These functions add the graphics and the workflow around it:</p>
+<ul><li>
+<code><a href="../reference/bcProfile.html">bcProfile()</a></code> computes the profile log-likelihood for one or two of the powers, from a <code>powerTransform</code> object or an <code>mlm</code>, and its <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> method draws a curve (1-D) or nested, lightly filled likelihood regions with the Wald confidence ellipse (2-D). <code>extend_range = TRUE</code> shows how far “no transformation” (all powers 1) is from the estimate. With <code>group =</code>, Box’s M for the homogeneity of the covariance matrices is computed and drawn too, showing whether the powers that give normality also make the covariance matrices most alike.</li>
+<li>
+<code><a href="../reference/bcProfile.html">bcRefit()</a></code> refits an <code>mlm</code> with Box-Cox transformed responses, for comparisons before and after with <code><a href="../reference/heplot.html">heplot()</a></code>, <code><a href="../reference/cqplot.html">cqplot()</a></code> and <code><a href="../reference/boxM.html">boxM()</a></code>.</li>
+<li>
+<code><a href="../reference/bcProfile.html">bcBoxM()</a></code> finds the powers that minimize Box’s M.</li>
+</ul><p>Only the <code>bcPower</code> family (positive responses) is supported for now.</p>
+</div>
+<div class="section level3">
+<h3 id="new-datasets-1-8-7">New datasets<a class="anchor" aria-label="anchor" href="#new-datasets-1-8-7"></a></h3>
+<p>Three datasets from Rencher &amp; Christensen (2012), <em>Methods of Multivariate Analysis</em>, taken from the <code>rencher</code> package, with factor coding, contrasts, and variable names from the book:</p>
+<ul><li>
+<code>SnapBeans</code>: a balanced two-way MANOVA (sowing date × variety) in which both main effects and the interaction are large, with polynomial contrasts for sowing date.</li>
+<li>
+<code>Dystrophy</code>: carriers vs noncarriers of Duchenne muscular dystrophy, with age and month as covariates (MANCOVA) and skewed enzyme measurements.</li>
+<li>
+<code>Phosphate</code>: plasma phosphate in control and obese patients at 8 unequally spaced times after a glucose challenge; repeated measures with a strong group × time interaction.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-1-8-7">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8-7"></a></h3>
+<ul><li><p><code><a href="../reference/heplot.html">heplot()</a></code>: with <code>hypotheses</code> and a vector <code>label.pos</code>, the hypothesis labels used the positions meant for the first model terms, not their own. They now use their own positions, so plots that combine <code>hypotheses</code> with a vector <code>label.pos</code> may place those labels differently.</p></li>
+<li><p><code><a href="../reference/heplot.html">heplot()</a></code>, <code><a href="../reference/heplot1d.html">heplot1d()</a></code>, <code><a href="../reference/heplot3d.html">heplot3d()</a></code>: in repeated-measures plots (<code>idata</code>, <code>iterm</code>), ellipses for <code>hypotheses</code> were computed from the original responses but drawn in the within-S space of <code>iterm</code>, so they did not match the term and error ellipses. Hypotheses are now tested with <code>P</code> for <code>iterm</code> (<code>car::linearHypothesis(..., P = )</code>), i.e., as their interaction with the within-S term. For example, <code>hypotheses = list(Reg = c("AMED", "BMIQ"))</code> in the within-S plot for <code>Adopted</code> now shows the joint test of <code>AMED:Age</code> and <code>BMIQ:Age</code>. Between-S plots are unchanged.</p></li>
+<li><p><code><a href="../reference/heplot1d.html">heplot1d()</a></code> failed with “… not in the model” for any model with a covariate (e.g., <code>Adopted</code>) or for repeated-measures plots, because it looked up factor means for every term with <code><a href="../reference/termMeans.html">termMeans()</a></code>. It now draws means only for terms made of factors, computed in the space plotted (the transformed responses for <code>iterm</code>), respects <code>factor.means</code>, and widens <code>xlim</code> to include cell means of interaction terms, which could fall outside the plot. Hypothesis labels were also drawn as <code>NA</code> when the plot had terms; fixed.</p></li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.8.6" id="version-186">Version 1.8.6<a class="anchor" aria-label="anchor" href="#version-186"></a></h2><p class="text-muted">CRAN release: 2026-10-04</p>

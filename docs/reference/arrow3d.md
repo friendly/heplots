@@ -71,7 +71,6 @@ Barry Rowlingson, posted to R-help, 1/10/2010
 ## Examples
 
 ``` r
-
 arrow3d(c(0,0,0), c(2,2,2), barblen=.2, lwd=3, col="black")
 arrow3d(c(0,0,0), c(-2,2,2), barblen=.2, lwd=3, col="red")
 ```

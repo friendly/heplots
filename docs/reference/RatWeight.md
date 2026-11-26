@@ -62,7 +62,6 @@ Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
 ## Examples
 
 ``` r
-
 data(RatWeight)
 contrasts(RatWeight$trt)
 #>            [,1] [,2]

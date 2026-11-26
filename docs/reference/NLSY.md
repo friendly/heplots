@@ -67,7 +67,6 @@ discover.
 ## Examples
 
 ``` r
-
 library(car)
 data(NLSY)
 

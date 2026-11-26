@@ -40,7 +40,6 @@ The scores on the response variables are discrete.
 ## Examples
 
 ``` r
-
 data(Parenting)
 require(car)
 
@@ -107,7 +106,7 @@ heplot(parenting.mod, hypotheses=hyp)
 heplot(parenting.mod, hypotheses=hyp, asp=1,
        fill=TRUE, fill.alpha=c(0.3,0.1), 
        col=c("red", "blue"), 
-       lty=c(0,0,1,1), label.pos=c(1,1,3,2),
+       lty=c(0,0,1,1), label.pos=c(1,1,3,3),
        cex=1.4, cex.lab=1.4, lwd=3)
 
 

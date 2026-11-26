@@ -84,7 +84,6 @@ Michael Friendly
 ## Examples
 
 ``` r
-
 leveneTests(iris[,1:4], iris$Species)
 #> Levene's Tests for Homogeneity of Variance (center = median)
 #> 

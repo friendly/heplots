@@ -68,7 +68,6 @@ Michael Friendly
 ## Examples
 
 ``` r
-
 data(iris)
 
 Species <- iris$Species
