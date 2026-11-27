@@ -77,6 +77,7 @@ Michael Friendly
 ## Examples
 
 ``` r
+
 GSiris <- gsorth(iris[,1:4])
 GSiris <- gsorth(iris, order=1:4)   # same, using order
 str(GSiris)

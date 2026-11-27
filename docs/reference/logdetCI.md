@@ -99,6 +99,7 @@ Michael Friendly
 ## Examples
 
 ``` r
+
 data(iris)
 iris.mod <- lm(as.matrix(iris[,1:4]) ~ iris$Species)
 iris.boxm <- boxM(iris.mod)

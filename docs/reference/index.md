@@ -90,7 +90,7 @@ Multivariate Box-Cox transformations for MLMs
   [`print(`*`<bcProfile>`*`)`](https://friendly.github.io/heplots/reference/bcProfile.md)
   [`bcRefit()`](https://friendly.github.io/heplots/reference/bcProfile.md)
   [`bcBoxM()`](https://friendly.github.io/heplots/reference/bcProfile.md)
-  : Multivariate Box-Cox Transformations for Multivariate Linear Models
+  : Multivariate Box-Cox Transformations
 
 ## Utility
 

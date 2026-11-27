@@ -112,6 +112,7 @@ Michael Friendly
 ## Examples
 
 ``` r
+
 library(car)
 data(Soils, package="carData")
 soils.mod <- lm(cbind(pH,N,Dens,P,Ca,Mg,K,Na,Conduc) ~ Block + Contour*Depth, data=Soils)

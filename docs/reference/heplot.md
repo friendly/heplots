@@ -459,7 +459,7 @@ Statistical Software*, **17**(6), 1–42. %
 
 Friendly, M. (2007). HE Plots for Multivariate Linear Models. *Journal
 of Computational and Graphical Statistics*, **16**(2) 421–444.
-<https://doi.org/10.1198/106186007X208407>
+[doi:10.1198/106186007X208407](https://doi.org/10.1198/106186007X208407)
 
 Friendly, Michael (2010). HE Plots for Repeated Measures Designs.
 *Journal of Statistical Software*, 37(4), 1-40. DOI:
@@ -506,6 +506,7 @@ Other HE plot functions:
 ## Examples
 
 ``` r
+
 ## iris data
 contrasts(iris$Species) <- matrix(c(0,-1,1, 2, -1, -1), 3,2)
 contrasts(iris$Species)

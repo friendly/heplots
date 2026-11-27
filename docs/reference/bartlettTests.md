@@ -76,6 +76,7 @@ Michael Friendly
 ## Examples
 
 ``` r
+
 bartlettTests(iris[,1:4], iris$Species)
 #> Bartlett's Tests for Homogeneity of Variance  
 #> 

@@ -95,7 +95,7 @@ tasks are described as:
 
 Friendly, M. (2007). HE Plots for Multivariate Linear Models. *Journal
 of Computational and Graphical Statistics*, **16**(2) 421–444.
-<https://doi.org/10.1198/106186007X208407>
+[doi:10.1198/106186007X208407](https://doi.org/10.1198/106186007X208407)
 
 Rohwer, W.D., Jr., & Levin, J.R. (1968). Action, meaning and stimulus
 selection in paired-associate learning. *Journal of Verbal Learning and
@@ -108,6 +108,7 @@ Educational Psychology*, **62**(5), 376-383.
 ## Examples
 
 ``` r
+
 str(Rohwer)
 #> 'data.frame':    69 obs. of  10 variables:
 #>  $ group: int  1 1 1 1 1 1 1 1 1 1 ...

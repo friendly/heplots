@@ -45,6 +45,7 @@ Wiley, Table 8.3.
 ## Examples
 
 ``` r
+
 data(FootHead)
 str(FootHead)
 #> 'data.frame':    90 obs. of  7 variables:

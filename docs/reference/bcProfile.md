@@ -1,4 +1,4 @@
-# Multivariate Box-Cox Transformations for Multivariate Linear Models
+# Multivariate Box-Cox Transformations
 
 [`car::powerTransform()`](https://rdrr.io/pkg/car/man/powerTransform.html)
 estimates Box-Cox powers \\\lambda = (\lambda_1, \dots, \lambda_p)\\
@@ -29,6 +29,12 @@ the workflow around it:
   transformed responses are most alike across groups, by minimizing
   Box's M. For a MANOVA, homogeneity of the covariance matrices is often
   a more important assumption than normality.
+
+This development is a new contribution to diagnostic methods for
+multivariate models. It stemmed from reading Rencher & Christensen's
+(2012, Section 4.5) description of the problem, and the recognition that
+[`car::powerTransform()`](https://rdrr.io/pkg/car/man/powerTransform.html)
+had already done the heavy lifting of estimation and testing.
 
 ## Usage
 
@@ -91,8 +97,7 @@ bcBoxM(Y, group, start = rep(1, ncol(Y)))
 - ...:
 
   Arguments passed to the `"powerTransform"` method (for the `"mlm"`
-  method), or to
-  [`plot()`](https://rdrr.io/r/graphics/plot.default.html)
+  method), or to [`base::plot()`](https://rdrr.io/r/base/plot.html)
 
 - variables:
 
@@ -287,8 +292,23 @@ is refitted with
 frame named in the original call, with these new columns added, so the
 call must have a `data` argument.
 
-Only the `"bcPower"` family is supported, so the responses must be
-positive.
+**Positive responses only.** Only the `"bcPower"` family is supported,
+so the responses must be positive. For responses with zeros or negative
+values,
+[`car::powerTransform()`](https://rdrr.io/pkg/car/man/powerTransform.html)
+can estimate powers with other families, though these functions do not
+yet handle them:
+
+- `family = "bcnPower"`: the Box-Cox transformation with negatives
+  (Hawkins & Weisberg, 2017), which estimates a location shift along
+  with the power
+  ([`car::bcnPower()`](https://rdrr.io/pkg/car/man/bcPower.html));
+
+- `family = "yjPower"`: the Yeo-Johnson (2000) transformation, defined
+  for all real values
+  ([`car::yjPower()`](https://rdrr.io/pkg/car/man/bcPower.html));
+
+- or add a start (shift) to each response before using `"bcPower"`.
 
 ## References
 
@@ -298,8 +318,17 @@ Transformations of multivariate data. *Biometrics*, 27, 825–840.
 Box, G. E. P., & Cox, D. R. (1964). An analysis of transformations.
 *Journal of the Royal Statistical Society, Series B*, 26, 211–252.
 
+Hawkins, D., & Weisberg, S. (2017). Combining the Box-Cox power and
+generalized log transformations to accommodate nonpositive responses in
+linear and mixed-effects linear models. *South African Statistical
+Journal*, 51, 317–328.
+
 Rencher, A. C., & Christensen, W. F. (2012). *Methods of Multivariate
 Analysis*, 3rd ed. Hoboken, NJ: Wiley. Section 4.5.
+
+Yeo, I.-K., & Johnson, R. A. (2000). A new family of power
+transformations to improve normality or symmetry. *Biometrika*, 87,
+954–959.
 
 ## See also
 

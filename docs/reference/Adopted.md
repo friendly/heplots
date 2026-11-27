@@ -64,6 +64,7 @@ Hundred Adopted Children, *Journal of Genetic Psychology* **75**:
 ## Examples
 
 ``` r
+
 # Treat as multivariate regression problem
 Adopted.mod <- lm(cbind(Age2IQ, Age4IQ, Age8IQ, Age13IQ) ~ AMED + BMIQ, 
                   data=Adopted)

@@ -240,6 +240,7 @@ John Fox; packaged by Michael Friendly
 ## Examples
 
 ``` r
+
 # Skulls data
 # -----------
 data(Skulls)
