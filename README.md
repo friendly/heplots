@@ -20,7 +20,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://git
 
 <!-- explicit version number now dynamic -->
 
-Version 1.8.7; documentation built for `pkgdown` 2026-11-26
+Version 1.9.0; documentation built for `pkgdown` 2026-11-27
 
 ## 📝 Description
 
@@ -211,6 +211,7 @@ graphical output on the `pkgdown` website,
 | [Plastic](https://friendly.github.io/heplots/reference/Plastic.html)                     | 20   | 5    | Plastic Film Data                                                         | MANOVA                        |
 | [Pottery2](https://friendly.github.io/heplots/reference/Pottery2.html)                   | 48   | 12   | Chemical Analysis of Romano-British Pottery                               | MANOVA candisc                |
 | [Probe](https://friendly.github.io/heplots/reference/Probe.html)                         | 11   | 5    | Response Speed in a Probe Experiment                                      | MANOVA repeated               |
+| [Ramus](https://friendly.github.io/heplots/reference/Ramus.html)                         | 20   | 4    | Ramus Bone Height of Boys at Four Ages                                    | repeated outliers             |
 | [RatWeight](https://friendly.github.io/heplots/reference/RatWeight.html)                 | 27   | 6    | Weight Gain in Rats Exposed to Thiouracil and Thyroxin                    | MANOVA repeated               |
 | [ReactTime](https://friendly.github.io/heplots/reference/ReactTime.html)                 | 10   | 6    | Reaction Time Data                                                        | repeated                      |
 | [ReadingDisability](https://friendly.github.io/heplots/reference/ReadingDisability.html) | 571  | 7    | Cognitive and Achievement Test Scores by Reading Level                    | MANOVA                        |
