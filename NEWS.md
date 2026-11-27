@@ -28,6 +28,16 @@
 
 ### Bug fixes
 
+* `boxM.lm()` now stops with an informative error when the model has quantitative
+  predictors (covariates), as `boxM.formula()` already did. Before, it silently formed
+  "groups" from every distinct combination of the covariate values, all with singular
+  covariance matrices, and returned `NA`. Use `boxM(Y, group)` for such models.
+
+* `boxM.lm()` failed ("undefined columns selected") for a model with two or more crossed
+  factors, such as `lm(cbind(...) ~ A * B)`, because it looked up the term `A:B` as a
+  column. It now forms the groups from the factor variables, and agrees with the formula
+  and default methods.
+
 * `cqplot()`: the `p` column of the returned data frame was the p-value of the theoretical
   quantile (just 1 - `ppoints(n)`), not of the observed distance. It is now the upper-tail
   probability of `DSQ` under the reference distribution, so these values change.

@@ -73,7 +73,15 @@ for a Gavin funding-application topic list).
 Found 2026-11-27 while drafting the blog post "Box & Cox Come to Multivariate Town"
 (friendly.github.io, `blog/drafts/BoxCox/`):
 
-- [ ] **`boxM.lm()` with numeric covariates gives silent nonsense.** `R/boxM.R` lines 188-190
+- ✔️ **FIXED** (2026-11-27, v1.9.0 devel, not yet committed): `boxM.lm()` now stops with
+  "Box's M test is not appropriate with quantitative explanatory variables: age, month. Use
+  boxM(Y, group) with the grouping factor instead." (the same message as `boxM.formula()`).
+  **Also found and fixed:** `boxM.lm()` failed for crossed factors (`~ rate*additive`,
+  Plastic: "undefined columns selected"; broken in 1.8.7), because it indexed the model frame
+  by term labels (`rate:additive`) instead of variables. Now lm, formula and default methods
+  give the same chi-square (24.01). NEWS updated.
+  Original report:
+  **`boxM.lm()` with numeric covariates gives silent nonsense.** `R/boxM.R` lines 188-190
   form `group <- interaction(Y[, colnames(factors)])` from *every* predictor, so for
   `lm(cbind(CK, Hpx, PK, LD) ~ group + age + month, data = Dystrophy)`, `boxM(mod)` makes 66
   one-person "groups" from group × age × month: all singular, a warning listing every group,

@@ -187,7 +187,15 @@ boxM.lm <- function(Y, ...) {
   Y <- model.frame(Y)
   factors <- attr(terms(Y), "factors")
   res.terms <- rownames(factors)[apply(factors, 1, sum) == 0]
-  group <- interaction(Y[, colnames(factors), drop = FALSE])
+  # as in boxM.formula(): the groups are formed from the predictors, so they must be factors
+  pred.vars <- rownames(factors)[apply(factors, 1, sum) > 0]
+  quant <- pred.vars[sapply(Y[pred.vars], is.numeric)]
+  if (length(quant) > 0)
+    stop("Box's M test is not appropriate with quantitative explanatory variables: ",
+         paste(quant, collapse = ", "),
+         ".\n  Use boxM(Y, group) with the grouping factor instead.")
+  # use the variables, not the term labels (an interaction term "A:B" is not a column)
+  group <- interaction(Y[, pred.vars, drop = FALSE])
   
   Y <- as.matrix(Y[, res.terms])
   boxM.default(Y, group, ...)
