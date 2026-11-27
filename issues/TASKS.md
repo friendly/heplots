@@ -73,7 +73,7 @@ for a Gavin funding-application topic list).
 Found 2026-11-27 while drafting the blog post "Box & Cox Come to Multivariate Town"
 (friendly.github.io, `blog/drafts/BoxCox/`):
 
-- ✔️ **FIXED** (2026-11-27, v1.9.0 devel, not yet committed): `boxM.lm()` now stops with
+- ✔️ **FIXED** (2026-11-27, v1.9.0 devel, commit 649c87e0): `boxM.lm()` now stops with
   "Box's M test is not appropriate with quantitative explanatory variables: age, month. Use
   boxM(Y, group) with the grouping factor instead." (the same message as `boxM.formula()`).
   **Also found and fixed:** `boxM.lm()` failed for crossed factors (`~ rate*additive`,
