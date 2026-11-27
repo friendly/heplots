@@ -355,5 +355,5 @@ MF: "A pairs method has to decide what to show and what to exclude to show somet
 useful." The design questions (which pairs, which variables, lower = likelihood / upper =
 Box's M, shared axes vs zoom, cost, annotation, and whether a per-variable interval plot is
 the better display) are written up in the blog notes:
-`C:\R\Projects\friendly.github.io\blog\drafts\MLM-extensions\box-cox-addendum.md`,
+`C:\R\Projects\friendly.github.io\blog\drafts\BoxCox\notes.md` (moved 2026-11-27),
 section "Next: a `pairs()` method, and what it should leave out". Read that before starting.

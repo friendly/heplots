@@ -70,6 +70,43 @@ for a Gavin funding-application topic list).
 
 ## TODOs
 
+Found 2026-11-27 while drafting the blog post "Box & Cox Come to Multivariate Town"
+(friendly.github.io, `blog/drafts/BoxCox/`):
+
+- [ ] **`boxM.lm()` with numeric covariates gives silent nonsense.** `R/boxM.R` lines 188-190
+  form `group <- interaction(Y[, colnames(factors)])` from *every* predictor, so for
+  `lm(cbind(CK, Hpx, PK, LD) ~ group + age + month, data = Dystrophy)`, `boxM(mod)` makes 66
+  one-person "groups" from group × age × month: all singular, a warning listing every group,
+  and `Chi-Sq = NA, df = -10`. The docs (`@param Y`) do say the predictors "must all be
+  factors", but nothing checks it. Fix: stop with an informative message when a predictor is
+  not a factor; or use only the factor predictors, with a message that covariates are ignored
+  (arguably better: Box's M for an ANCOVA-type model is usually wanted for the groups).
+  Workaround used in the post: `boxM(model.response(model.frame(mod)), Dystrophy$group)`.
+
+- [ ] **`plot.bcProfile()` 2-D: the legend overlaps the Box's M contours.** With
+  `extend_range = TRUE, group = ` (e.g. Dystrophy, `c("CK", "Hpx")`, the `?bcProfile`
+  example), the topright legend (7 entries) sits on top of the dashed M contours and the grey
+  deviance contours. Options: a semi-transparent legend background (`bg = adjustcolor("white",
+  0.8)`), placing it where the grid is emptiest, or a `legend =` argument (position / `FALSE`).
+
+- [ ] **Per-variable summary display: a working prototype is in the blog draft.** The TODO
+  "summary table per variable" in `R/bcProfile.R` (line 13): the post's chunks `bc-summary` and
+  `fig-bc-dotplot` (`blog/drafts/BoxCox/index.qmd`) define `bc_summary(pt, group)` (one row
+  per response from the 1-D profiles: MLE, LR interval, rounded power, Box's M minimum and
+  whether it is at the grid edge, LR chi-square for lambda_j = 1; ~6 s for both datasets) and
+  `bc_dotplot()`, a forest-style plot of that table. Reproduces the conclusions in
+  `dev/box-cox.md` (criteria agree except CK; `relwt` M flat). A start for a `summary()`
+  method and a plot for it.
+
+- [ ] **Profile vs slice: the difference shows in 1-D, not in 2-D for (`glufast`, `glutest`).**
+  Checked for the post: the 2-D profile and slice for (`glufast`, `glutest`) are nearly
+  identical, because the powers held fixed (`relwt`, `instest`, `sspg`) are nearly
+  uncorrelated with them. In 1-D, the slice for `glufast` (holding `glutest` fixed) is
+  narrower: 95% interval (-1.04, -0.50) vs the profile's (-1.08, -0.47). The rule is: a slice
+  is safe when the *held-fixed* powers are uncorrelated with the plotted ones. Worth saying in
+  the `?bcProfile` "Profile or slice" paragraph; `dev/box-cox.md` line 304 is slightly
+  misleading on this.
+
 - ✔️ **DONE** (2026-11-27, v1.9.0 devel): **`cqplot()`: exact beta reference.** `dist = "beta"`
   in `cqplot.default()` (classical method only; default stays `"chisq"`), with an
   order-statistic envelope and a Details section. Also fixed: the "missing values" warning,
