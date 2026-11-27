@@ -57,7 +57,10 @@ and `car`, version `r packageDescription("car")[["Version"]]`.
 
 > **Note**: This vignette is adapted from @Friendly:10:JSS, "HE Plots for Repeated Measures
 > Designs", *Journal of Statistical Software*, 37(4). The text and analyses follow that paper,
-> updated for current versions of `heplots` and `car`.
+> updated for current versions of `heplots` and `car`, and with the presentation rethought for
+> a modern reader: within-S effects are analyzed and plotted directly from the fitted model,
+> and a new example treats occasions that are not equally spaced. See the
+> [Discussion](#discussion) for what has changed.
 
 **Abstract**: Hypothesis Error (HE) plots, introduced in @Friendly:07:manova,
 provide graphical methods to visualize hypothesis tests in multivariate linear models,
@@ -1498,6 +1501,44 @@ responses (where mixed models do not apply), HE plots gain greater advantage.
 
 # Discussion {#discussion}
 
-*To come in commit 4.*
+Graphical methods for univariate response models are well-developed,
+but analogous methods for multivariate responses are still developing.
+Indeed, this is a fruitful area for new research [@Friendly:07:manova].
+HE plots provide one new direction, providing direct visualizations of
+effects in MLMs, in the space of response variables (or in the
+reduced-rank canonical space, with the `candisc` package, displaying maximal differences).
+
+This vignette has shown how these methods can be extended to repeated
+measures designs, by displaying effects in the transformed space of
+contrasts or linear combinations for within-S effects. As we hope to have shown, these
+plots can provide insights into the relations among effects
+and interpretations of those that are significant (or not)
+which go beyond what is available in traditional, univariate displays.
+
+**What has changed since the original paper.** When the paper was written, HE plots for
+within-S effects had to be built by hand: transforming $\mathbf{Y} \mapsto \mathbf{Y M}$
+for each within-S term, fitting a new model to the transformed responses, and relabeling
+its terms; doubly-multivariate designs had to be analyzed in stages. 
+
+Since then, `car::Anova()`,
+`car::linearHypothesis()` and the plotting functions in `heplots` have taken the
+within-S design _directly_, through `idata` and `idesign`, or `imatrix` for
+doubly-multivariate designs, with `iterm` choosing the within-S term to plot. This version
+uses these throughout, so that every analysis and HE plot comes from the one model for the
+original responses. 
+
+The transformation $\mathbf{Y} \mapsto \mathbf{Y M}$ is still shown once
+(Section \@ref(within)), because it is the clearest way to understand what an HE plot for a
+within-S effect displays. A new example (Section \@ref(unequal)) uses polynomial contrasts in
+the actual times for occasions that are not equally spaced, and shows that a 2D view of a
+significant within-S effect can miss it when the effect is spread over several dimensions.
+
+# Acknowledgments {-}
+
+I am grateful to John Fox for collaboration, advice and continued development
+of the `car` package which provides the computational infrastructure for the
+`heplots` package. The Associate Editor and one reviewer of the original paper in the
+*Journal of Statistical Software* helped considerably in clarifying the presentation of
+these methods.
 
 # References {-}
