@@ -98,16 +98,19 @@ too spread out in the upper tail at this n.
      difference is minor; ppoints is fine.
    - It **does not apply to `method = "mcd"` or `"mve"`**. For robust distances keep χ²
      (or use the Hardin & Rocke 2005 F approximation for MCD, if that's ever wanted).
+     
 2. **An envelope that matches.** The current envelope uses the χ² density with an IQR scale.
    For the beta reference, pointwise order-statistic intervals are easy: the i-th order
    statistic of n Uniforms is Beta(i, n − i + 1), so the band is
    qbeta(qbeta(c(.025, .975), i, n − i + 1), a, b) × (n − 1)²/n. This is only approximate,
    since the D²ᵢ are not independent (they sum to (n − 1)p exactly). A simulation envelope is
    the other option.
+   
 3. **Tests (lower priority).** The Yang–Lee max-F p-value could go in the returned data
    frame for the labelled points, as a Bonferroni-type exact p. A Mardia test exists
    elsewhere (e.g., **MVN**), and heplots has nothing for it now. It's probably better
    mentioned in the docs than added.
+   
 4. **Docs.** `?cqplot` could cite Gnanadesikan & Kettenring (1972) and Small (1978), and say
    that χ² is an approximation that is poor for small n relative to p.
 
