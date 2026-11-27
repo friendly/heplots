@@ -17,6 +17,11 @@ The method for `"mlm"` objects fit using
 [`stats::lm()`](https://rdrr.io/r/stats/lm.html) for a multivariate
 response applies this to the residuals from the model.
 
+The \\\chi^2_p\\ reference distribution is an approximation. With
+`dist = "beta"`, the exact (scaled) beta distribution of \\D^2\\ for a
+multivariate normal sample is used instead, which matters when \\n\\ is
+small relative to \\p\\.
+
 ## Usage
 
 ``` r
@@ -29,6 +34,7 @@ cqplot(x, ...)
 cqplot(
   x,
   method = c("classical", "mcd", "mve"),
+  dist = c("chisq", "beta"),
   detrend = FALSE,
   pch = 19,
   col = palette()[1],
@@ -74,10 +80,18 @@ cqplot(
   `"classical"` (product-moment), `"mcd"` (minimum covariance
   determinant), or `"mve"` (minimum volume ellipsoid).
 
+- dist:
+
+  reference distribution for the theoretical quantiles: `"chisq"` (the
+  default), the \\\chi^2_p\\ approximation, or `"beta"`, the exact
+  scaled beta distribution of classical \\D^2\\ for a multivariate
+  normal sample. See the section **Reference distribution** in Details.
+
 - detrend:
 
-  logical; if `FALSE`, the plot shows values of \\D^2\\ vs. \\\chi^2\\.
-  if `TRUE`, the ordinate shows values of \\D^2 - \chi^2\\
+  logical; if `FALSE`, the plot shows values of \\D^2\\ vs. the
+  theoretical quantiles. if `TRUE`, the ordinate shows values of \\D^2\\
+  minus the theoretical quantiles
 
 - pch:
 
@@ -184,9 +198,11 @@ cqplot(
 ## Value
 
 Returns invisibly a data.frame containing squared Mahalanobis distances
-(`DSQ`), their `quantile`s and `p`-values corresponding to the rows of
-`x` or the residuals of the model for the identified points, else `NULL`
-if no points are identified.
+(`DSQ`), their theoretical `quantile`s and `p`-values, for the
+identified points among the rows of `x` or the residuals of the model,
+else `NULL` if no points are identified. `p` is the upper-tail
+probability of `DSQ` under the reference distribution, `dist`. It is not
+adjusted for multiplicity.
 
 ## Details
 
@@ -200,6 +216,33 @@ points, and other graphical features.
 
 Cases with any missing values are excluded from the calculation and
 graph with a warning.
+
+### Reference distribution
+
+The \\\chi^2_p\\ distribution of \\D^2\\ is only an approximation, which
+holds as \\n \rightarrow \infty\\. It is poor when \\n\\ is small
+relative to \\p\\, and its long upper tail makes the largest distances,
+exactly where outliers are judged, look less extreme than they are.
+
+For a sample of \\n\\ observations from a multivariate normal
+distribution, with the classical estimates \\\bar{\mathbf{x}}\\ and
+\\\mathbf{S}\\ (divisor \\n-1\\), the *exact* distribution of \\D^2\\ is
+a scaled beta (Gnanadesikan & Kettenring, 1972): \$\$ \frac{n \\
+D^2}{(n-1)^2} \sim \text{Beta} \left( \frac{p}{2}, \frac{n-p-1}{2}
+\right) \\ . \$\$ So \\D^2\\ is bounded above by \\(n-1)^2 / n\\, unlike
+\\\chi^2_p\\. With `dist = "beta"`, the sorted \\D^2\\ values are
+plotted against \\(n-1)^2 / n\\ times the quantiles of this beta
+distribution at `ppoints(n)`, which keeps the plot on the scale of
+\\D^2\\, with the same reference line of unit slope. As \\n\\ grows, the
+two references agree. See Rencher & Christensen (2012), Sections 4.4.2
+and 4.6.2, and Small (1978).
+
+The beta result applies only to classical estimates of location and
+scatter, so `dist = "beta"` with `method = "mcd"` or `"mve"` gives a
+warning and uses \\\chi^2_p\\. For `"mlm"` objects, it is applied to the
+residuals as if they were a sample; this ignores their unequal variances
+(leverage) and the degrees of freedom used by the model, so it is
+approximate.
 
 ### Confidence envelope
 
@@ -227,7 +270,14 @@ The pointwise confidence envelope of coverage `conf` = \\1-\alpha\\ is
 then calculated as \\D^2\_{(i)} \pm z\_{1-\alpha/2} \text{se} (
 D^2\_{(i)} )\\
 
-Note that this confidence envelope applies only to the \\D^2\\ computed
+For `dist = "beta"`, the envelope uses the fact that the \\i\\-th order
+statistic of \\n\\ uniform values has a Beta\\(i, n-i+1)\\ distribution.
+Transforming its \\\alpha/2\\ and \\1-\alpha/2\\ quantiles by the
+quantile function of the scaled beta distribution of \\D^2\\ gives a
+pointwise interval for \\D^2\_{(i)}\\. This is approximate, because the
+\\D^2\\ values are not independent: they sum to exactly \\(n-1)p\\.
+
+Note that these confidence envelopes apply only to the \\D^2\\ computed
 using the classical estimates of location (\\\bar{\mathbf{x}}\\) and
 scatter (\\\mathbf{S}\\). The
 [`car::qqPlot()`](https://rdrr.io/pkg/car/man/qqPlot.html) function
@@ -239,8 +289,17 @@ Oldford (2016) provides a general theory and methods for QQ plots.
 J. Chambers, W. S. Cleveland, B. Kleiner, P. A. Tukey (1983). *Graphical
 methods for data analysis*, Wadsworth.
 
+R. Gnanadesikan, J. R. Kettenring (1972). Robust estimates, residuals,
+and outlier detection with multiresponse data. *Biometrics*, 28, 81-124.
+
 R. W. Oldford (2016), "Self calibrating quantile-quantile plots", *The
 American Statistician*, 70, 74-90.
+
+A. C. Rencher, W. F. Christensen (2012). *Methods of Multivariate
+Analysis*, 3rd ed. Wiley.
+
+N. J. H. Small (1978). Plotting squared radii. *Biometrika*, 65,
+657-658.
 
 ## See also
 
@@ -266,7 +325,6 @@ Michael Friendly
 
 ``` r
 
-
 cqplot(iris[, 1:4])
 
 
@@ -276,9 +334,9 @@ out <- cqplot(iris.mod, id.n=3)
 # show return value
 out
 #>          DSQ quantile           p
-#> 119 17.41948 15.77709 0.003333333
-#> 135 16.04843 13.27670 0.010000000
-#> 42  16.01501 12.09388 0.016666667
+#> 119 17.41948 15.77709 0.001601826
+#> 135 16.04843 13.27670 0.002954866
+#> 42  16.01501 12.09388 0.002999094
 
 # compare with car::qqPlot
 car::qqPlot(Mahalanobis(iris[, 1:4]), dist="chisq", df=4)
@@ -318,6 +376,15 @@ cqplot(stackloss[, 1:3], id.n=4, detrend=TRUE)
 cqplot(stackloss[, 1:3], id.n=4, method="mve")
 
 cqplot(stackloss[, 1:3], id.n=4, method="mcd")
+
+# small n: compare the chi-square and exact beta references.
+# With beta, boys 8, 12 and 20 fall outside the envelope
+data(Ramus)
+op <- par(mfrow = c(1, 2))
+cqplot(Ramus, id.n = 4, main = "chi-square")
+cqplot(Ramus, id.n = 4, dist = "beta", main = "beta")
+
+par(op)
 
 
 ```

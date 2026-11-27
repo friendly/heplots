@@ -77,7 +77,6 @@ Program Follow Through. *Management Science*, **27**, 668-697.
 ## Examples
 
 ``` r
-
 data(schooldata)
 # initial screening
 plot(schooldata)
@@ -94,12 +93,12 @@ corrgram(schooldata,
 res <- cqplot(schooldata, id.n = 5)
 
 res
-#>         DSQ quantile           p
-#> 59 44.58221 21.00172 0.007142857
-#> 44 38.82543 17.97317 0.021428571
-#> 33 27.92339 16.50356 0.035714286
-#> 66 24.01111 15.50731 0.050000000
-#> 35 21.73211 14.74557 0.064285714
+#>         DSQ quantile            p
+#> 59 44.58221 21.00172 4.415492e-07
+#> 44 38.82543 17.97317 5.295819e-06
+#> 33 27.92339 16.50356 4.890373e-04
+#> 66 24.01111 15.50731 2.281980e-03
+#> 35 21.73211 14.74557 5.437070e-03
 
 #fit the MMreg model
 school.mod <- lm(cbind(reading, mathematics, selfesteem) ~ 

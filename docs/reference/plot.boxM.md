@@ -143,7 +143,6 @@ Michael Friendly
 ## Examples
 
 ``` r
-
 # Iris data
 res <- boxM(iris[, 1:4], iris[, "Species"])
 plot(res, gplabel="Species")

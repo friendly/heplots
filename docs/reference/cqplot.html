@@ -12,7 +12,10 @@ $$
 D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} - \bar{\mathbf{x}}) \; .
 $$
 The method for "mlm" objects fit using stats::lm() for a multivariate response
-applies this to the residuals from the model.'><meta property="og:description" content='A chi square quantile-quantile plots show the relationship between
+applies this to the residuals from the model.
+The \(\chi^2_p\) reference distribution is an approximation. With dist = "beta",
+the exact (scaled) beta distribution of \(D^2\) for a multivariate normal sample
+is used instead, which matters when \(n\) is small relative to \(p\).'><meta property="og:description" content='A chi square quantile-quantile plots show the relationship between
 data-based values which should be distributed as \(\chi^2\) and
 corresponding quantiles from the \(\chi^2\) distribution.  In multivariate
 analyses, this is often used both to assess multivariate normality and check
@@ -25,7 +28,10 @@ $$
 D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} - \bar{\mathbf{x}}) \; .
 $$
 The method for "mlm" objects fit using stats::lm() for a multivariate response
-applies this to the residuals from the model.'><meta property="og:image" content="https://friendly.github.io/heplots/logo.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script></head><body>
+applies this to the residuals from the model.
+The \(\chi^2_p\) reference distribution is an approximation. With dist = "beta",
+the exact (scaled) beta distribution of \(D^2\) for a multivariate normal sample
+is used instead, which matters when \(n\) is small relative to \(p\).'><meta property="og:image" content="https://friendly.github.io/heplots/logo.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -33,7 +39,7 @@ applies this to the residuals from the model.'><meta property="og:image" content
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.9.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,6 +87,9 @@ D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} -
 $$</p>
 <p>The method for <code>"mlm"</code> objects fit using <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">stats::lm()</a></code> for a multivariate response
 applies this to the residuals from the model.</p>
+<p>The \(\chi^2_p\) reference distribution is an approximation. With <code>dist = "beta"</code>,
+the exact (scaled) beta distribution of \(D^2\) for a multivariate normal sample
+is used instead, which matters when \(n\) is small relative to \(p\).</p>
     </div>
 
     <div class="section level2">
@@ -94,6 +103,7 @@ applies this to the residuals from the model.</p>
 <span><span class="fu">cqplot</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"classical"</span>, <span class="st">"mcd"</span>, <span class="st">"mve"</span><span class="op">)</span>,</span>
+<span>  dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"chisq"</span>, <span class="st">"beta"</span><span class="op">)</span>,</span>
 <span>  detrend <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">19</span>,</span>
 <span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
@@ -141,10 +151,17 @@ the latter case, residuals from the model are plotted.</p></dd>
 determinant), or <code>"mve"</code> (minimum volume ellipsoid).</p></dd>
 
 
+<dt id="arg-dist">dist<a class="anchor" aria-label="anchor" href="#arg-dist"></a></dt>
+<dd><p>reference distribution for the theoretical quantiles: <code>"chisq"</code>
+(the default), the \(\chi^2_p\) approximation, or <code>"beta"</code>, the exact
+scaled beta distribution of classical \(D^2\) for a multivariate normal
+sample. See the section <strong>Reference distribution</strong> in Details.</p></dd>
+
+
 <dt id="arg-detrend">detrend<a class="anchor" aria-label="anchor" href="#arg-detrend"></a></dt>
 <dd><p>logical; if <code>FALSE</code>, the plot shows values of \(D^2\)
-vs. \(\chi^2\). if <code>TRUE</code>, the ordinate shows values of \(D^2 -
-\chi^2\)</p></dd>
+vs. the theoretical quantiles. if <code>TRUE</code>, the ordinate shows
+values of \(D^2\) minus the theoretical quantiles</p></dd>
 
 
 <dt id="arg-pch">pch<a class="anchor" aria-label="anchor" href="#arg-pch"></a></dt>
@@ -252,9 +269,11 @@ confidence envelope is used.</p></dd>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>Returns invisibly a data.frame containing squared Mahalanobis distances (<code>DSQ</code>),
-their <code>quantile</code>s and <code>p</code>-values
-corresponding to the rows of <code>x</code> or the residuals of the model for the identified points,
-else <code>NULL</code> if no points are identified.</p>
+their theoretical <code>quantile</code>s and <code>p</code>-values, for the identified
+points among the rows of <code>x</code> or the residuals of the model, else <code>NULL</code>
+if no points are identified. <code>p</code> is the upper-tail probability of <code>DSQ</code>
+under the reference distribution, <code>dist</code>. It is not adjusted for
+multiplicity.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -266,6 +285,32 @@ around the line of unit slope, a detrended version, where the reference line
 is horizontal, the ability to identify or label unusual points, and other
 graphical features.</p>
 <p>Cases with any missing values are excluded from the calculation and graph with a warning.</p>
+<div class="section">
+<h3 id="reference-distribution">Reference distribution<a class="anchor" aria-label="anchor" href="#reference-distribution"></a></h3>
+<p>The \(\chi^2_p\) distribution of \(D^2\) is only an approximation, which holds
+as \(n \rightarrow \infty\). It is poor when \(n\) is small relative to
+\(p\), and its long upper tail makes the largest distances, exactly where outliers
+are judged, look less extreme than they are.</p>
+<p>For a sample of \(n\) observations from a multivariate normal distribution, with
+the classical estimates \(\bar{\mathbf{x}}\) and \(\mathbf{S}\) (divisor
+\(n-1\)), the <em>exact</em> distribution of \(D^2\) is a scaled beta
+(Gnanadesikan &amp; Kettenring, 1972):
+$$
+\frac{n \, D^2}{(n-1)^2} \sim \text{Beta} \left( \frac{p}{2}, \frac{n-p-1}{2} \right) \; .
+$$
+So \(D^2\) is bounded above by \((n-1)^2 / n\), unlike \(\chi^2_p\).
+With <code>dist = "beta"</code>, the sorted \(D^2\) values are plotted against
+\((n-1)^2 / n\) times the quantiles of this beta distribution at <code>ppoints(n)</code>,
+which keeps the plot on the scale of \(D^2\), with the same reference line
+of unit slope. As \(n\) grows, the two references agree. See Rencher &amp;
+Christensen (2012), Sections 4.4.2 and 4.6.2, and Small (1978).</p>
+<p>The beta result applies only to classical estimates of location and scatter, so
+<code>dist = "beta"</code> with <code>method = "mcd"</code> or <code>"mve"</code> gives a warning and uses
+\(\chi^2_p\). For <code>"mlm"</code> objects, it is applied to the residuals as if they
+were a sample; this ignores their unequal variances (leverage) and the degrees of
+freedom used by the model, so it is approximate.</p>
+</div>
+
 <div class="section">
 <h3 id="confidence-envelope">Confidence envelope<a class="anchor" aria-label="anchor" href="#confidence-envelope"></a></h3>
 <p>In the typical use of QQ plots, it essential to have something in the nature of a confidence band
@@ -285,7 +330,13 @@ the reference line obtained from the ratio of the interquartile range of the
 \(q_i\).</p>
 <p>The pointwise confidence envelope of coverage <code>conf</code> = \(1-\alpha\) is then calculated as
 \(D^2_{(i)} \pm z_{1-\alpha/2} \text{se} ( D^2_{(i)} )\)</p>
-<p>Note that this confidence envelope applies only to the \(D^2\) computed
+<p>For <code>dist = "beta"</code>, the envelope uses the fact that the \(i\)-th order statistic
+of \(n\) uniform values has a Beta\((i, n-i+1)\) distribution. Transforming its
+\(\alpha/2\) and \(1-\alpha/2\) quantiles by the quantile function of the scaled
+beta distribution of \(D^2\) gives a pointwise interval for \(D^2_{(i)}\). This is
+approximate, because the \(D^2\) values are not independent: they sum to exactly
+\((n-1)p\).</p>
+<p>Note that these confidence envelopes apply only to the \(D^2\) computed
 using the classical estimates of location (\(\bar{\mathbf{x}}\)) and scatter (\(\mathbf{S}\)). The
 <code><a href="https://rdrr.io/pkg/car/man/qqPlot.html" class="external-link">car::qqPlot()</a></code>
 function provides for simulated envelopes, but only for
@@ -298,8 +349,13 @@ for QQ plots.</p>
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>J. Chambers, W. S. Cleveland, B. Kleiner, P. A. Tukey (1983).
 <em>Graphical methods for data analysis</em>, Wadsworth.</p>
+<p>R. Gnanadesikan, J. R. Kettenring (1972). Robust estimates, residuals, and outlier
+detection with multiresponse data. <em>Biometrics</em>, 28, 81-124.</p>
 <p>R. W. Oldford (2016), "Self calibrating quantile-quantile plots",
 <em>The American Statistician</em>, 70, 74-90.</p>
+<p>A. C. Rencher, W. F. Christensen (2012). <em>Methods of Multivariate Analysis</em>,
+3rd ed. Wiley.</p>
+<p>N. J. H. Small (1978). Plotting squared radii. <em>Biometrika</em>, 65, 657-658.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -330,9 +386,9 @@ result for Mahalanobis squared distances of data or residuals;
 <span class="r-in"><span><span class="co"># show return value</span></span></span>
 <span class="r-in"><span><span class="va">out</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          DSQ quantile           p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 119 17.41948 15.77709 0.003333333</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 135 16.04843 13.27670 0.010000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42  16.01501 12.09388 0.016666667</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 119 17.41948 15.77709 0.001601826</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 135 16.04843 13.27670 0.002954866</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42  16.01501 12.09388 0.002999094</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># compare with car::qqPlot</span></span></span>
 <span class="r-in"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/qqPlot.html" class="external-link">qqPlot</a></span><span class="op">(</span><span class="fu"><a href="Mahalanobis.html">Mahalanobis</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>, dist<span class="op">=</span><span class="st">"chisq"</span>, df<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span></span>
@@ -372,6 +428,15 @@ result for Mahalanobis squared distances of data or residuals;
 <span class="r-in"><span><span class="fu">cqplot</span><span class="op">(</span><span class="va">stackloss</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, id.n<span class="op">=</span><span class="fl">4</span>, method<span class="op">=</span><span class="st">"mve"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="cqplot-11.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu">cqplot</span><span class="op">(</span><span class="va">stackloss</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, id.n<span class="op">=</span><span class="fl">4</span>, method<span class="op">=</span><span class="st">"mcd"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># small n: compare the chi-square and exact beta references.</span></span></span>
+<span class="r-in"><span><span class="co"># With beta, boys 8, 12 and 20 fall outside the envelope</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Ramus</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">cqplot</span><span class="op">(</span><span class="va">Ramus</span>, id.n <span class="op">=</span> <span class="fl">4</span>, main <span class="op">=</span> <span class="st">"chi-square"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">cqplot</span><span class="op">(</span><span class="va">Ramus</span>, id.n <span class="op">=</span> <span class="fl">4</span>, dist <span class="op">=</span> <span class="st">"beta"</span>, main <span class="op">=</span> <span class="st">"beta"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="cqplot-12.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>

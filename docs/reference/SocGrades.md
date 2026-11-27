@@ -67,7 +67,6 @@ correlational analyses.
 ## Examples
 
 ``` r
-
 data(SocGrades)
 # basic MLM
 grades.mod <- lm(cbind(midterm1, midterm2, final, eval) ~ 

@@ -155,7 +155,6 @@ Michael Friendly
 ## Examples
 
 ``` r
-
 #################################################
 # animate an AV plot from marginal to conditional
 #################################################

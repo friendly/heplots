@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">heplots</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.9.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,25 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.7" id="version-187">Version 1.8.7<a class="anchor" aria-label="anchor" href="#version-187"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.9.0" id="version-190">Version 1.9.0<a class="anchor" aria-label="anchor" href="#version-190"></a></h2>
+<div class="section level3">
+<h3 id="enhancements-1-9-0">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-1-9-0"></a></h3>
+<ul><li>
+<code><a href="../reference/cqplot.html">cqplot()</a></code> gains a <code>dist</code> argument. <code>dist = "beta"</code> uses the exact distribution of the classical squared Mahalanobis distances for a multivariate normal sample, a scaled Beta(p/2, (n - p - 1)/2) (Gnanadesikan &amp; Kettenring, 1972), instead of the chi-square approximation, with a matching confidence envelope. This matters in small samples, where chi-square makes the largest distances look less extreme. The default, <code>dist = "chisq"</code>, is unchanged.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-datasets-1-9-0">New datasets<a class="anchor" aria-label="anchor" href="#new-datasets-1-9-0"></a></h3>
+<ul><li>
+<code>Ramus</code>: ramus bone height of 20 boys at ages 8, 8.5, 9 and 9.5 (Elston &amp; Grizzle, 1962), from Rencher &amp; Christensen (2012), Table 3.7, via the <code>rencher</code> package. A classic for growth curves, and here an example of the beta reference in <code><a href="../reference/cqplot.html">cqplot()</a></code>.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-1-9-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-9-0"></a></h3>
+<ul><li><p><code><a href="../reference/cqplot.html">cqplot()</a></code>: the <code>p</code> column of the returned data frame was the p-value of the theoretical quantile (just 1 - <code>ppoints(n)</code>), not of the observed distance. It is now the upper-tail probability of <code>DSQ</code> under the reference distribution, so these values change.</p></li>
+<li><p><code><a href="../reference/cqplot.html">cqplot()</a></code>: the warning about cases with missing values never appeared, and with missing values the default <code>ylim</code> was <code>NA</code>. Fixed. In detrended plots, the default <code>ylim</code> now includes the points as well as the envelope, so large distances are no longer cut off.</p></li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.8.7" id="version-187">Version 1.8.7<a class="anchor" aria-label="anchor" href="#version-187"></a></h2><p class="text-muted">CRAN release: 2026-11-27</p>
 <div class="section level3">
 <h3 id="enhancements-1-8-7">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-1-8-7"></a></h3>
 <ul><li>

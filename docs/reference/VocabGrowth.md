@@ -49,7 +49,6 @@ vocabulary growth", University of Chicago, 1975.
 ## Examples
 
 ``` r
-
 library(car)
 data(VocabGrowth)
 

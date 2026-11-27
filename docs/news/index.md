@@ -1,6 +1,43 @@
 # Changelog
 
+## Version 1.9.0
+
+### Enhancements
+
+- [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
+  gains a `dist` argument. `dist = "beta"` uses the exact distribution
+  of the classical squared Mahalanobis distances for a multivariate
+  normal sample, a scaled Beta(p/2, (n - p - 1)/2) (Gnanadesikan &
+  Kettenring, 1972), instead of the chi-square approximation, with a
+  matching confidence envelope. This matters in small samples, where
+  chi-square makes the largest distances look less extreme. The default,
+  `dist = "chisq"`, is unchanged.
+
+### New datasets
+
+- `Ramus`: ramus bone height of 20 boys at ages 8, 8.5, 9 and 9.5
+  (Elston & Grizzle, 1962), from Rencher & Christensen (2012), Table
+  3.7, via the `rencher` package. A classic for growth curves, and here
+  an example of the beta reference in
+  [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md).
+
+### Bug fixes
+
+- [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md):
+  the `p` column of the returned data frame was the p-value of the
+  theoretical quantile (just 1 - `ppoints(n)`), not of the observed
+  distance. It is now the upper-tail probability of `DSQ` under the
+  reference distribution, so these values change.
+
+- [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md):
+  the warning about cases with missing values never appeared, and with
+  missing values the default `ylim` was `NA`. Fixed. In detrended plots,
+  the default `ylim` now includes the points as well as the envelope, so
+  large distances are no longer cut off.
+
 ## Version 1.8.7
+
+CRAN release: 2026-11-27
 
 ### Enhancements
 
@@ -467,10 +504,10 @@ This is largely a maintenance release, but adds a function to identify
   the `schooldata` dataset.
 - [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
   now prints a warning if there are missing cases and also returns the
-  upper tail p-values corresponding to Mahalanobis $`D^2`$.
+  upper tail p-values corresponding to Mahalanobis $D^{2}$.
 - Default `method.id` in
   [`cqplot()`](https://friendly.github.io/heplots/reference/cqplot.md)
-  changed to “r”, to identify points with the largest $`D^2`$.
+  changed to “r”, to identify points with the largest $D^{2}$.
 - added `noteworthy(x, y)` as a utility to select “noteworthy”
   observations in a 2D plot, extending the ideas in
   [`car::showLabels()`](https://rdrr.io/pkg/car/man/showLabels.html)

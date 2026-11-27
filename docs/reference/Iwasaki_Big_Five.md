@@ -74,7 +74,6 @@ manual*. Psychological Assessment Resources.
 ## Examples
 
 ``` r
-
 data(Iwasaki_Big_Five)
 # use Helmert contrasts for groups
 contrasts(Iwasaki_Big_Five$Group) <- 

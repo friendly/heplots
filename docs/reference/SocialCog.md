@@ -73,7 +73,6 @@ purposes.
 ## Examples
 
 ``` r
-
 library(car)
 data(SocialCog)
 SC.mod <- lm(cbind(MgeEmotions, ToM, ExtBias, PersBias) ~ Dx, data=SocialCog)

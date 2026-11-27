@@ -208,6 +208,8 @@ Utility functions
   [`Probe1`](https://friendly.github.io/heplots/reference/Probe.md)
   [`Probe2`](https://friendly.github.io/heplots/reference/Probe.md) :
   Response Speed in a Probe Experiment
+- [`Ramus`](https://friendly.github.io/heplots/reference/Ramus.md) :
+  Ramus Bone Height of Boys at Four Ages
 - [`RatWeight`](https://friendly.github.io/heplots/reference/RatWeight.md)
   : Weight Gain in Rats Exposed to Thiouracil and Thyroxin
 - [`ReactTime`](https://friendly.github.io/heplots/reference/ReactTime.md)
