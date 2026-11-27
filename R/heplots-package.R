@@ -122,7 +122,7 @@
 #' @importFrom graphics abline arrows box dotchart lines par points polygon rect strheight strwidth text
 #' @importFrom stats .getXlevels IQR SSD aggregate alias coef coefficients complete.cases cor cov df.residual
 #'        estVar formula getCall lm.wfit lsfit mahalanobis median model.frame model.matrix model.response model.weights 
-#'        na.omit offset pchisq pf pnorm ppoints qchisq qf qnorm residuals runif update var vcov
+#'        na.omit offset pbeta pchisq pf pnorm ppoints qbeta qchisq qf qnorm residuals runif update var vcov
 NULL
 
 

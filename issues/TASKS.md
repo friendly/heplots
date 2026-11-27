@@ -67,13 +67,17 @@ for a Gavin funding-application topic list).
 
 ## TODOs
 
-- [ ] **`cqplot()`: exact beta reference, and a better `cqplot.mlm()`** (noted 2026-11-26; wait
-  until the current heplots release is accepted on CRAN). From Rencher & Christensen (2012)
-  §4.6.2: D² for a normal sample is exactly a scaled Beta(p/2, (n−p−1)/2), and χ² can be poor
-  for small n. For `mlm` residuals, qᵢᵢ/(1−hᵢᵢ) appears to be Beta(p/2, (n−r−p)/2); the
-  simulation agrees, but no reference has been found yet. Also a one-line bug: the "missing
-  values" warning in `cqplot.default()` never fires. Notes: `dev/outliers-Rencher.md`;
-  script: `dev/outliers-Rencher.R`.
+- ✔️ **DONE** (2026-11-27, v1.9.0 devel): **`cqplot()`: exact beta reference.** `dist = "beta"`
+  in `cqplot.default()` (classical method only; default stays `"chisq"`), with an
+  order-statistic envelope and a Details section. Also fixed: the "missing values" warning,
+  `ylim` with missing values, and the returned `p` (now for the observed DSQ). Test script:
+  `dev/test_cqplot_beta.R`.
+
+- [ ] **`cqplot.mlm()`: leverage-adjusted residual distances** (step 3 of
+  `dev/outliers-Rencher.md`). Plot (n−r) qᵢᵢ/(1−hᵢᵢ) against (n−r) × Beta(p/2, (n−r−p)/2)
+  quantiles. **TODO: find a literature reference for this distribution first** (the
+  simulation agrees; start with Barrett & Ling 1992). Until then, `dist = "beta"` for an
+  `mlm` treats residuals as a sample, which the docs say is approximate.
 
 - [ ] `extract_eq.mlm()` for `equatiomatic` — S3 method to make `equatiomatic::extract_eq()` work on
   `mlm` objects (currently produces garbled LaTeX). Filed as an issue upstream:
@@ -251,6 +255,10 @@ for a Gavin funding-application topic list).
     Caldicot has only 2 pots).
   Side issues: site spelled `Llanedryn` here vs `Llanedyrn` in carData (Llanedeyrn? unchecked);
   `Vis-MLM-book/working-text/exercises-test-03.qmd` loads a non-existent `heplots::Pottery`.
+
+- Repeated-measures vignette - The PDF of this was rejected by CRAN due to URL problems.
+  The source for this is in: `C:\Dropbox\R\projects\heplots-vignettes`.
+  Re-do the vignette on this as a new `.Rmd` version.
 
 ## Clean-up candidates
 

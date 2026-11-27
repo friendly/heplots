@@ -61,11 +61,14 @@ Results (n = 20, p = 4):
   the same (obs 9, 12, 20: 10.95, 10.58, 10.17 vs 11.03, 10.57, 10.09). The rencher package's
   data probably differ slightly from the printed Table 3.7. Worth checking a few values against
   the table if this becomes an example.
+  
 - **Mardia's statistics:** b₁,ₚ = 11.343 and b₂,ₚ = 28.917, against the book's 11.338 and
   28.884. Both are significant, as in the book.
+  
 - **Yang–Lee max F:** max Fᵢ = 5.79 (obs 9), with P(max F > f) = 0.097. So the single-outlier
   test doesn't reject, matching the book's conclusion that D²₍₂₀₎ = 11.03 < 11.63. The three
   largest are masking each other.
+  
 - **Plots:** the Figure 4.10 shape reproduces: three points well off the line, possibly a
   fourth (obs 8).
 

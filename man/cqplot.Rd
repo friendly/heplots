@@ -13,6 +13,7 @@ cqplot(x, ...)
 \method{cqplot}{default}(
   x,
   method = c("classical", "mcd", "mve"),
+  dist = c("chisq", "beta"),
   detrend = FALSE,
   pch = 19,
   col = palette()[1],
@@ -50,9 +51,14 @@ the latter case, residuals from the model are plotted.}
 \code{"classical"} (product-moment), \code{"mcd"} (minimum covariance
 determinant), or \code{"mve"} (minimum volume ellipsoid).}
 
+\item{dist}{reference distribution for the theoretical quantiles: \code{"chisq"}
+(the default), the \eqn{\chi^2_p} approximation, or \code{"beta"}, the exact
+scaled beta distribution of classical \eqn{D^2} for a multivariate normal
+sample. See the section \strong{Reference distribution} in Details.}
+
 \item{detrend}{logical; if \code{FALSE}, the plot shows values of \eqn{D^2}
-vs. \eqn{\chi^2}. if \code{TRUE}, the ordinate shows values of \eqn{D^2 -
-\chi^2}}
+vs. the theoretical quantiles. if \code{TRUE}, the ordinate shows
+values of \eqn{D^2} minus the theoretical quantiles}
 
 \item{pch}{plot symbol for points. Can be a vector of length equal to the
 number of rows in \code{x}.}
@@ -114,9 +120,11 @@ confidence envelope is used.}
 }
 \value{
 Returns invisibly a data.frame containing squared Mahalanobis distances (\code{DSQ}),
-their \code{quantile}s and \code{p}-values
-corresponding to the rows of \code{x} or the residuals of the model for the identified points,
-else \code{NULL} if no points are identified.
+their theoretical \code{quantile}s and \code{p}-values, for the identified
+points among the rows of \code{x} or the residuals of the model, else \code{NULL}
+if no points are identified. \code{p} is the upper-tail probability of \code{DSQ}
+under the reference distribution, \code{dist}. It is not adjusted for
+multiplicity.
 }
 \description{
 A chi square quantile-quantile plots show the relationship between
@@ -135,6 +143,10 @@ D^2 = (\mathbf{x} - \bar{\mathbf{x}})^\prime \; \mathbf{S}^{-1} \; (\mathbf{x} -
 
 The method for \code{"mlm"} objects fit using \code{\link[stats:lm]{stats::lm()}} for a multivariate response
 applies this to the residuals from the model.
+
+The \eqn{\chi^2_p} reference distribution is an approximation. With \code{dist = "beta"},
+the exact (scaled) beta distribution of \eqn{D^2} for a multivariate normal sample
+is used instead, which matters when \eqn{n} is small relative to \eqn{p}.
 }
 \details{
 \code{cqplot} is a more general version of similar functions in other
@@ -146,6 +158,33 @@ is horizontal, the ability to identify or label unusual points, and other
 graphical features.
 
 Cases with any missing values are excluded from the calculation and graph with a warning.
+
+\subsection{Reference distribution}{
+The \eqn{\chi^2_p} distribution of \eqn{D^2} is only an approximation, which holds
+as \eqn{n \rightarrow \infty}. It is poor when \eqn{n} is small relative to
+\eqn{p}, and its long upper tail makes the largest distances, exactly where outliers
+are judged, look less extreme than they are.
+
+For a sample of \eqn{n} observations from a multivariate normal distribution, with
+the classical estimates \eqn{\bar{\mathbf{x}}} and \eqn{\mathbf{S}} (divisor
+\eqn{n-1}), the \emph{exact} distribution of \eqn{D^2} is a scaled beta
+(Gnanadesikan & Kettenring, 1972):
+\deqn{
+\frac{n \, D^2}{(n-1)^2} \sim \text{Beta} \left( \frac{p}{2}, \frac{n-p-1}{2} \right) \; .
+}
+So \eqn{D^2} is bounded above by \eqn{(n-1)^2 / n}, unlike \eqn{\chi^2_p}.
+With \code{dist = "beta"}, the sorted \eqn{D^2} values are plotted against
+\eqn{(n-1)^2 / n} times the quantiles of this beta distribution at \code{ppoints(n)},
+which keeps the plot on the scale of \eqn{D^2}, with the same reference line
+of unit slope. As \eqn{n} grows, the two references agree. See Rencher &
+Christensen (2012), Sections 4.4.2 and 4.6.2, and Small (1978).
+
+The beta result applies only to classical estimates of location and scatter, so
+\code{dist = "beta"} with \code{method = "mcd"} or \code{"mve"} gives a warning and uses
+\eqn{\chi^2_p}. For \code{"mlm"} objects, it is applied to the residuals as if they
+were a sample; this ignores their unequal variances (leverage) and the degrees of
+freedom used by the model, so it is approximate.
+}
 
 \subsection{Confidence envelope}{
 In the typical use of QQ plots, it essential to have something in the nature of a confidence band
@@ -169,7 +208,14 @@ the reference line obtained from the ratio of the interquartile range of the
 The pointwise confidence envelope of coverage \code{conf} = \eqn{1-\alpha} is then calculated as
 \eqn{D^2_{(i)} \pm z_{1-\alpha/2} \text{se} ( D^2_{(i)} )}
 
-Note that this confidence envelope applies only to the \eqn{D^2} computed
+For \code{dist = "beta"}, the envelope uses the fact that the \eqn{i}-th order statistic
+of \eqn{n} uniform values has a Beta\eqn{(i, n-i+1)} distribution. Transforming its
+\eqn{\alpha/2} and \eqn{1-\alpha/2} quantiles by the quantile function of the scaled
+beta distribution of \eqn{D^2} gives a pointwise interval for \eqn{D^2_{(i)}}. This is
+approximate, because the \eqn{D^2} values are not independent: they sum to exactly
+\eqn{(n-1)p}.
+
+Note that these confidence envelopes apply only to the \eqn{D^2} computed
 using the classical estimates of location (\eqn{\bar{\mathbf{x}}}) and scatter (\eqn{\mathbf{S}}). The
 \code{\link[car:qqPlot]{car::qqPlot()}}
 function provides for simulated envelopes, but only for
@@ -216,6 +262,12 @@ cqplot(stackloss[, 1:3], id.n=4, detrend=TRUE)
 cqplot(stackloss[, 1:3], id.n=4, method="mve")
 cqplot(stackloss[, 1:3], id.n=4, method="mcd")
 
+# small n: compare the chi-square and exact beta references
+op <- par(mfrow = c(1, 2))
+cqplot(stackloss[, 1:3], id.n = 4, main = "chi-square")
+cqplot(stackloss[, 1:3], id.n = 4, dist = "beta", main = "beta")
+par(op)
+
 
 
 }
@@ -223,8 +275,16 @@ cqplot(stackloss[, 1:3], id.n=4, method="mcd")
 J. Chambers, W. S. Cleveland, B. Kleiner, P. A. Tukey (1983).
 \emph{Graphical methods for data analysis}, Wadsworth.
 
+R. Gnanadesikan, J. R. Kettenring (1972). Robust estimates, residuals, and outlier
+detection with multiresponse data. \emph{Biometrics}, 28, 81-124.
+
 R. W. Oldford (2016), "Self calibrating quantile-quantile plots",
 \emph{The American Statistician}, 70, 74-90.
+
+A. C. Rencher, W. F. Christensen (2012). \emph{Methods of Multivariate Analysis},
+3rd ed. Wiley.
+
+N. J. H. Small (1978). Plotting squared radii. \emph{Biometrika}, 65, 657-658.
 }
 \seealso{
 \code{\link[=Mahalanobis]{Mahalanobis()}} for calculation of Mahalanobis squared distance;

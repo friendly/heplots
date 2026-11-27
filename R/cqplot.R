@@ -2,6 +2,18 @@
 # 1: cqplot:  chisq QQ plot
 # 2: mvinfluence plot?
 # see: http://svitsrv25.epfl.ch/R-doc/library/snpMatrix/html/qq.chisq.html
+#
+# DONE: ✔️ `dist = "beta"`: exact scaled Beta(p/2, (n-p-1)/2) reference for classical D^2
+#       (Gnanadesikan & Kettenring 1972), with an order-statistic envelope. Default stays
+#       "chisq". Notes: dev/outliers-Rencher.md 11/27/2026
+# DONE: ✔️ The "points with missing values" warning never fired (`nrow - length(OK)` is
+#       always 0); `ylim` was NA when there were missing values 11/27/2026
+# DONE: ✔️ Returned `p` is now the upper-tail p-value of the observed DSQ, not of its
+#       theoretical quantile (which was just 1 - ppoints(n)) 11/27/2026
+# TODO: 🚩 cqplot.mlm(): leverage-adjusted residual distances, (n-r) q_ii / (1 - h_ii), against
+#       (n-r) * Beta(p/2, (n-r-p)/2) quantiles. Simulation agrees, but FIND A REFERENCE first
+#       (start with Barrett & Ling 1992). See dev/outliers-Rencher.md
+# TODO: 🚩 Maybe: Yang-Lee max-F p-value for the most extreme point; mention Mardia's test
 
 
 
@@ -25,6 +37,10 @@
 #' 
 #' The method for `"mlm"` objects fit using [stats::lm()] for a multivariate response
 #' applies this to the residuals from the model.
+#'
+#' The \eqn{\chi^2_p} reference distribution is an approximation. With `dist = "beta"`,
+#' the exact (scaled) beta distribution of \eqn{D^2} for a multivariate normal sample
+#' is used instead, which matters when \eqn{n} is small relative to \eqn{p}.
 #' 
 #' @details
 #' 
@@ -37,7 +53,34 @@
 #' graphical features.
 #' 
 #' Cases with any missing values are excluded from the calculation and graph with a warning.
-#' 
+#'
+#' \subsection{Reference distribution}{
+#' The \eqn{\chi^2_p} distribution of \eqn{D^2} is only an approximation, which holds
+#' as \eqn{n \rightarrow \infty}. It is poor when \eqn{n} is small relative to
+#' \eqn{p}, and its long upper tail makes the largest distances, exactly where outliers
+#' are judged, look less extreme than they are.
+#'
+#' For a sample of \eqn{n} observations from a multivariate normal distribution, with
+#' the classical estimates \eqn{\bar{\mathbf{x}}} and \eqn{\mathbf{S}} (divisor
+#' \eqn{n-1}), the *exact* distribution of \eqn{D^2} is a scaled beta
+#' (Gnanadesikan & Kettenring, 1972):
+#' \deqn{
+#' \frac{n \, D^2}{(n-1)^2} \sim \text{Beta} \left( \frac{p}{2}, \frac{n-p-1}{2} \right) \; .
+#' }
+#' So \eqn{D^2} is bounded above by \eqn{(n-1)^2 / n}, unlike \eqn{\chi^2_p}.
+#' With `dist = "beta"`, the sorted \eqn{D^2} values are plotted against
+#' \eqn{(n-1)^2 / n} times the quantiles of this beta distribution at `ppoints(n)`,
+#' which keeps the plot on the scale of \eqn{D^2}, with the same reference line
+#' of unit slope. As \eqn{n} grows, the two references agree. See Rencher &
+#' Christensen (2012), Sections 4.4.2 and 4.6.2, and Small (1978).
+#'
+#' The beta result applies only to classical estimates of location and scatter, so
+#' `dist = "beta"` with `method = "mcd"` or `"mve"` gives a warning and uses
+#' \eqn{\chi^2_p}. For `"mlm"` objects, it is applied to the residuals as if they
+#' were a sample; this ignores their unequal variances (leverage) and the degrees of
+#' freedom used by the model, so it is approximate.
+#' }
+#'
 #' \subsection{Confidence envelope}{
 #' In the typical use of QQ plots, it essential to have something in the nature of a confidence band
 #' around the points to be able to appreciate whether, and to what degree the observed data points
@@ -60,7 +103,14 @@
 #' The pointwise confidence envelope of coverage `conf` = \eqn{1-\alpha} is then calculated as
 #' \eqn{D^2_{(i)} \pm z_{1-\alpha/2} \text{se} ( D^2_{(i)} )}
 #' 
-#' Note that this confidence envelope applies only to the \eqn{D^2} computed
+#' For `dist = "beta"`, the envelope uses the fact that the \eqn{i}-th order statistic
+#' of \eqn{n} uniform values has a Beta\eqn{(i, n-i+1)} distribution. Transforming its
+#' \eqn{\alpha/2} and \eqn{1-\alpha/2} quantiles by the quantile function of the scaled
+#' beta distribution of \eqn{D^2} gives a pointwise interval for \eqn{D^2_{(i)}}. This is
+#' approximate, because the \eqn{D^2} values are not independent: they sum to exactly
+#' \eqn{(n-1)p}.
+#'
+#' Note that these confidence envelopes apply only to the \eqn{D^2} computed
 #' using the classical estimates of location (\eqn{\bar{\mathbf{x}}}) and scatter (\eqn{\mathbf{S}}). The
 #' [car::qqPlot()]
 #' function provides for simulated envelopes, but only for
@@ -76,9 +126,13 @@
 #' @param method estimation method used for center and covariance, one of:
 #'               `"classical"` (product-moment), `"mcd"` (minimum covariance
 #'               determinant), or `"mve"` (minimum volume ellipsoid).
+#' @param dist reference distribution for the theoretical quantiles: `"chisq"`
+#'        (the default), the \eqn{\chi^2_p} approximation, or `"beta"`, the exact
+#'        scaled beta distribution of classical \eqn{D^2} for a multivariate normal
+#'        sample. See the section **Reference distribution** in Details.
 #' @param detrend logical; if `FALSE`, the plot shows values of \eqn{D^2}
-#'                vs. \eqn{\chi^2}. if `TRUE`, the ordinate shows values of \eqn{D^2 -
-#' \chi^2}
+#'                vs. the theoretical quantiles. if `TRUE`, the ordinate shows
+#'                values of \eqn{D^2} minus the theoretical quantiles
 #' @param pch plot symbol for points. Can be a vector of length equal to the
 #'            number of rows in `x`.
 #' @param col color for points. Can be a vector of length equal to the
@@ -115,10 +169,12 @@
 #'             `main` when that is not specified.
 #' @param ylim limits for vertical axis.  If not specified, the range of the
 #'             confidence envelope is used.
-#' @return Returns invisibly a data.frame containing squared Mahalanobis distances (`DSQ`), 
-#'         their `quantile`s and `p`-values
-#'             corresponding to the rows of `x` or the residuals of the model for the identified points, 
-#'             else `NULL` if no points are identified.
+#' @return Returns invisibly a data.frame containing squared Mahalanobis distances (`DSQ`),
+#'         their theoretical `quantile`s and `p`-values, for the identified
+#'         points among the rows of `x` or the residuals of the model, else `NULL`
+#'         if no points are identified. `p` is the upper-tail probability of `DSQ`
+#'         under the reference distribution, `dist`. It is not adjusted for
+#'         multiplicity.
 #' @author Michael Friendly
 #' @seealso [Mahalanobis()] for calculation of Mahalanobis squared distance;
 #' 
@@ -129,8 +185,16 @@
 #' J. Chambers, W. S. Cleveland, B. Kleiner, P. A. Tukey (1983).
 #' *Graphical methods for data analysis*, Wadsworth.
 #' 
-#' R. W. Oldford (2016), "Self calibrating quantile-quantile plots", 
+#' R. Gnanadesikan, J. R. Kettenring (1972). Robust estimates, residuals, and outlier
+#' detection with multiresponse data. *Biometrics*, 28, 81-124.
+#'
+#' R. W. Oldford (2016), "Self calibrating quantile-quantile plots",
 #' *The American Statistician*, 70, 74-90.
+#'
+#' A. C. Rencher, W. F. Christensen (2012). *Methods of Multivariate Analysis*,
+#' 3rd ed. Wiley.
+#'
+#' N. J. H. Small (1978). Plotting squared radii. *Biometrika*, 65, 657-658.
 #' 
 #' @family diagnostic plots
 #' @keywords hplot
@@ -173,7 +237,13 @@
 #' cqplot(stackloss[, 1:3], id.n=4, detrend=TRUE)
 #' cqplot(stackloss[, 1:3], id.n=4, method="mve")
 #' cqplot(stackloss[, 1:3], id.n=4, method="mcd")
-#' 
+#'
+#' # small n: compare the chi-square and exact beta references
+#' op <- par(mfrow = c(1, 2))
+#' cqplot(stackloss[, 1:3], id.n = 4, main = "chi-square")
+#' cqplot(stackloss[, 1:3], id.n = 4, dist = "beta", main = "beta")
+#' par(op)
+#'
 #' 
 #' 
 #' @export cqplot
@@ -194,8 +264,9 @@ cqplot.mlm <-
 #' @exportS3Method cqplot default
 cqplot.default <- 
 		function(x,
-			method = c("classical", "mcd", "mve"), 
-			detrend = FALSE, 
+			method = c("classical", "mcd", "mve"),
+			dist = c("chisq", "beta"),
+			detrend = FALSE,
 			pch = 19, 
 			col  =  palette()[1], 
 			cex  =  par("cex"),
@@ -224,11 +295,19 @@ cqplot.default <-
     polygon(c(x1, x2[n:1]), c(y1, y2[n:1]), border=NA, col=col)
   }
 
+  method <- match.arg(method)
+  dist <- match.arg(dist)
+  if (dist == "beta" && method != "classical") {
+    warning(glue::glue("dist = \"beta\" applies only to method = \"classical\"; ",
+                       "using dist = \"chisq\" for method = \"{method}\""))
+    dist <- "chisq"
+  }
+
 	df <- ncol(x)
 	data <- as.matrix(x)
 	OK <- complete.cases(x)
-	miss <- nrow(data) - length(OK)
-	if (miss > 0) warning(paste(miss, "points with missing values have been excluded"))
+	miss <- sum(!OK)
+	if (miss > 0) warning(glue::glue("{miss} points with missing values have been excluded"))
 
   dsq <- Mahalanobis(data, method=method)
   ord <- order(dsq[OK])
@@ -245,50 +324,74 @@ cqplot.default <-
 	
 	n <- length(ord)
   p <- ppoints(n)
-  chi2q <- qchisq(p, df)
 
-  # approximate confidence envelope
-  g <- (chi2q ^(-1+df/2)) / (exp(chi2q/2) * gamma(df/2) * (sqrt(2)^df))
-  scale <- IQR(dsq, na.rm=TRUE) / diff(qchisq(c(.25, .75), df))
-  se <- (scale/g) * sqrt( p * (1-p) /n)
+  if (dist == "chisq") {
+    quant <- qchisq(p, df)
+    # approximate confidence envelope, Chambers et al. (1983)
+    g <- (quant ^(-1+df/2)) / (exp(quant/2) * gamma(df/2) * (sqrt(2)^df))
+    scale <- IQR(dsq, na.rm=TRUE) / diff(qchisq(c(.25, .75), df))
+    se <- (scale/g) * sqrt( p * (1-p) /n)
+    semult <- qnorm(1 - (1 - conf)/2)
+    lower <- quant - semult * se
+    upper <- quant + semult * se
+    pfun <- function(d) pchisq(d, df, lower.tail = FALSE)
+  }
+  else {
+    # exact: n D^2 / (n-1)^2 ~ Beta(p/2, (n-p-1)/2), Gnanadesikan & Kettenring (1972)
+    if (n <= df + 1)
+      stop(glue::glue("dist = \"beta\" needs n > p + 1, but n = {n} complete cases ",
+                      "and p = {df} variables"))
+    a <- df / 2
+    b <- (n - df - 1) / 2
+    k <- (n - 1)^2 / n
+    quant <- k * qbeta(p, a, b)
+    # pointwise envelope: the i-th uniform order statistic is Beta(i, n - i + 1)
+    i <- seq_len(n)
+    alpha <- 1 - conf
+    lower <- k * qbeta(qbeta(alpha/2, i, n - i + 1), a, b)
+    upper <- k * qbeta(qbeta(1 - alpha/2, i, n - i + 1), a, b)
+    pfun <- function(d) pbeta(d / k, a, b, lower.tail = FALSE)
+  }
+  if (detrend) {
+    lower <- lower - quant
+    upper <- upper - quant
+  }
 
-	semult <- qnorm(1 - (1 - conf)/2)
-  lower <- if (detrend) - semult * se else chi2q - semult * se
-  upper <- if (detrend)   semult * se else chi2q + semult * se
+  if (missing(xlab))
+      xlab <- if (dist == "chisq") bquote(~ chi[.(df)]^2 ~ " Quantile" )
+              else glue::glue("Scaled Beta({a}, {b}) Quantile")
 
-  if (missing(xlab)) 
-      xlab <- bquote(~ chi[.(df)]^2 ~ " Quantile" )
-
-  if (missing(ylab)) 
+  if (missing(ylab))
       ylab <- paste( if (detrend) "Centered" else "",
                     "Squared Mahalanobis Distance" )
 	if (missing(main))
 			main <- paste( if (detrend) "Detrended" else "",
-			 "Chi-Square Q-Q Plot of", what)
-			
-	if (missing(ylim))
-			ylim <- if(detrend) c(min(lower), max(upper))
-							else c(0, max(dsq, upper))
+			 if (dist == "chisq") "Chi-Square" else "Beta",
+			 "Q-Q Plot of", what)
 
-	y <- if (detrend) dsq.y - chi2q else dsq.y
-  plot(chi2q, y, type="n",
+	if (missing(ylim))
+			ylim <- if(detrend) range(lower, upper, dsq.y - quant)
+							else c(0, max(dsq.y, upper))
+
+	y <- if (detrend) dsq.y - quant else dsq.y
+  plot(quant, y, type="n",
 		main = main, 
     ylab = ylab, 
     xlab = xlab,
     ylim = ylim,  ...)
-  if (env.fill) shade(chi2q, upper, chi2q, lower, col=fill.color )
-  lines(chi2q, lower, col=env.col, lwd=env.lwd, lty=env.lty)
-  lines(chi2q, upper, col=env.col, lwd=env.lwd, lty=env.lty)
-  points(chi2q, y, pch = pch, col=col, cex=cex)
-  
+  if (env.fill) shade(quant, upper, quant, lower, col=fill.color )
+  lines(quant, lower, col=env.col, lwd=env.lwd, lty=env.lty)
+  lines(quant, upper, col=env.col, lwd=env.lwd, lty=env.lty)
+  points(quant, y, pch = pch, col=col, cex=cex)
+
   abline(0, if (detrend) 0 else 1, lwd = ref.lwd, col = ref.col)
   if (!missing(id.n)) {
-  	noteworthy <- car::showLabels(chi2q, y, labels=labs, id.method=id.method, 
+  	noteworthy <- car::showLabels(quant, y, labels=labs, id.method=id.method,
   		id.n=id.n,  id.cex = id.cex, id.col = id.col)
-  	
-  	res <- data.frame(DSQ = dsq.y[noteworthy], 
-  	                  quantile = chi2q[noteworthy],
-  	                  p = pchisq(chi2q[noteworthy], df, lower.tail = FALSE))
+
+  	res <- data.frame(DSQ = dsq.y[noteworthy],
+  	                  quantile = quant[noteworthy],
+  	                  p = pfun(dsq.y[noteworthy]))
   	rownames(res) <- labs[noteworthy]
   	return(invisible(res))
   }

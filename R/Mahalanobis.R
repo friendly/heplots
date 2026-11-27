@@ -38,7 +38,7 @@ Mahalanobis <- function(x, center, cov,
 	method=c("classical", "mcd", "mve"), nsamp="best", ...) {
 	
   OK <- complete.cases(x)
-  if (sum(OK) < nrow(x)) message(nrow(x) - sum(OK), "cases with missing data have been ignored.")
+  if (sum(OK) < nrow(x)) message(nrow(x) - sum(OK), " cases with missing data have been ignored.")
   res <- rep(NA, nrow(x))
 	# if center and cov are supplied, use those
 	if (! (missing(center) | missing(cov) )) {

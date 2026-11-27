@@ -1,3 +1,24 @@
+## Version 1.9.0
+
+### Enhancements
+
+* `cqplot()` gains a `dist` argument. `dist = "beta"` uses the exact distribution of the
+  classical squared Mahalanobis distances for a multivariate normal sample, a scaled
+  Beta(p/2, (n - p - 1)/2) (Gnanadesikan & Kettenring, 1972), instead of the
+  chi-square approximation, with a matching confidence envelope. This matters in small
+  samples, where chi-square makes the largest distances look less extreme. The default,
+  `dist = "chisq"`, is unchanged.
+
+### Bug fixes
+
+* `cqplot()`: the `p` column of the returned data frame was the p-value of the theoretical
+  quantile (just 1 - `ppoints(n)`), not of the observed distance. It is now the upper-tail
+  probability of `DSQ` under the reference distribution, so these values change.
+
+* `cqplot()`: the warning about cases with missing values never appeared, and with missing
+  values the default `ylim` was `NA`. Fixed. In detrended plots, the default `ylim` now
+  includes the points as well as the envelope, so large distances are no longer cut off.
+
 ## Version 1.8.7
 
 ### Enhancements
