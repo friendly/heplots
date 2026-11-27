@@ -4,6 +4,18 @@ Broken out from the cross-package working list in `C:\Users\friendly\Dropbox\R\T
 (2026-07-28). Update here as items are finished; sync back to the main list only if it's
 useful to see heplots status at a glance across packages.
 
+Updated 2026-11-27: **v1.8.7 released.** Submitted to CRAN 2026-11-27 and accepted.
+Before submission: `R CMD check` clean (0/0/0) locally (R 4.6.2) and on win-builder
+(R-devel), after switching doi.org URLs to `\doi{}` (a win-builder NOTE); 10 reverse
+dependencies checked, 0 new problems (`Guerry`'s vignette ERROR is the same with 1.8.6, and
+is to be fixed in `Guerry`; see `cran-comments.md`). GitHub release and tag `v1.8.7` (on
+`c96fac5f`): https://github.com/friendly/heplots/releases/tag/v1.8.7. Main changes:
+multivariate Box-Cox functions (`bcProfile()`, `bcRefit()`, `bcBoxM()`), `means.pos` in
+`heplot()`, the `SnapBeans`, `Dystrophy` and `Phosphate` datasets, and fixes for
+`hypotheses` in repeated-measures plots, `heplot1d()` and `heplot()` label positions (see
+`NEWS.md`). Now unblocked: candisc 1.1.3 (needs heplots >= 1.8.7), and the deferred
+`cqplot()` TODO below.
+
 Updated 2026-10-04: **v1.8.6 released.** Submitted to CRAN 2026-10-04 and accepted.
 Before submission: `R CMD check --as-cran` clean (0/0/0), after fixing two notes (`stats::ave`
 not imported in `eigstatCI()`; the re-tracked `AGENTS.md` not in `.Rbuildignore`);
