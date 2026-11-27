@@ -8,5 +8,7 @@
   Examples](https://friendly.github.io/heplots/articles/HE_manova.md):
 - [HE plot MMRA
   Examples](https://friendly.github.io/heplots/articles/HE_mmra.md):
+- [HE Plots for Repeated Measures
+  Designs](https://friendly.github.io/heplots/articles/HE_repeated.md):
 - [Robust Multivariate Linear
   Models](https://friendly.github.io/heplots/articles/Robust.md):

@@ -21,6 +21,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/datasets.html">Data sets in the heplots package</a></li>
     <li><a class="dropdown-item" href="../articles/HE_manova.html">HE plot MANOVA Examples</a></li>
     <li><a class="dropdown-item" href="../articles/HE_mmra.html">HE plot MMRA Examples</a></li>
+    <li><a class="dropdown-item" href="../articles/HE_repeated.html">HE Plots for Repeated Measures Designs</a></li>
     <li><a class="dropdown-item" href="../articles/Robust.html">Robust Multivariate Linear Models</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -45,6 +46,11 @@
 <h3 id="enhancements-1-9-0">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-1-9-0"></a></h3>
 <ul><li>
 <code><a href="../reference/cqplot.html">cqplot()</a></code> gains a <code>dist</code> argument. <code>dist = "beta"</code> uses the exact distribution of the classical squared Mahalanobis distances for a multivariate normal sample, a scaled Beta(p/2, (n - p - 1)/2) (Gnanadesikan &amp; Kettenring, 1972), instead of the chi-square approximation, with a matching confidence envelope. This matters in small samples, where chi-square makes the largest distances look less extreme. The default, <code>dist = "chisq"</code>, is unchanged.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-vignette-1-9-0">New vignette<a class="anchor" aria-label="anchor" href="#new-vignette-1-9-0"></a></h3>
+<ul><li><p>“HE Plots for Repeated Measures Designs” (<code><a href="../articles/HE_repeated.html">vignette("HE_repeated")</a></code>) returns as an R Markdown vignette. It is adapted from Friendly (2010), <em>Journal of Statistical Software</em>, 37(4), whose PDF vignette was withdrawn from the package in v1.8.4.</p></li>
+<li><p>The presentation is updated: all analyses and HE plots for within-S effects use <code>idata</code> / <code>idesign</code>, or <code>imatrix</code>, with <code>iterm</code>, directly from the model for the original responses. A new section uses the <code>Phosphate</code> data for occasions that are not equally spaced.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="new-datasets-1-9-0">New datasets<a class="anchor" aria-label="anchor" href="#new-datasets-1-9-0"></a></h3>

@@ -235,6 +235,17 @@ Several tutorial vignettes are included, and can be browsed with
 articles on the [pkgdown
 site](https://friendly.github.io/heplots/articles/):
 
+- [Data sets in the heplots
+  package](https://friendly.github.io/heplots/articles/datasets.html)
+- [HE plot MANOVA
+  Examples](https://friendly.github.io/heplots/articles/HE_manova.html)
+- [HE plot MMRA
+  Examples](https://friendly.github.io/heplots/articles/HE_mmra.html)
+- [HE Plots for Repeated Measures
+  Designs](https://friendly.github.io/heplots/articles/HE_repeated.html)
+- [Robust Multivariate Linear
+  Models](https://friendly.github.io/heplots/articles/Robust.html)
+
 ## 🗒️ Cheatsheet
 
 A two-page cheatsheet summarizes the main functions: fitting and
