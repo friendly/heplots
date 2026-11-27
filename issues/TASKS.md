@@ -4,6 +4,9 @@ Broken out from the cross-package working list in `C:\Users\friendly\Dropbox\R\T
 (2026-07-28). Update here as items are finished; sync back to the main list only if it's
 useful to see heplots status at a glance across packages.
 
+Updated 2026-11-27 (later): **v1.9.0 devel started** on master: `cqplot(dist = "beta")`, the
+`Ramus` dataset, README re-knit and pkgdown site rebuilt (see TODOs below).
+
 Updated 2026-11-27: **v1.8.7 released.** Submitted to CRAN 2026-11-27 and accepted.
 Before submission: `R CMD check` clean (0/0/0) locally (R 4.6.2) and on win-builder
 (R-devel), after switching doi.org URLs to `\doi{}` (a win-builder NOTE); 10 reverse
@@ -76,6 +79,18 @@ for a Gavin funding-application topic list).
 - ✔️ **DONE** (2026-11-27, v1.9.0 devel): **`Ramus` dataset** (Rencher Table 3.7, via
   `rencher::table3.7`), the example for `cqplot(dist = "beta")`. Values checked against the
   printed table; the book's Table 4.1 D² are slightly off (they sum to 75.5, not 76).
+
+- ✔️ **DONE** (2026-11-27, v1.9.0 devel): **README re-knit and pkgdown site rebuilt.** Full
+  `pkgdown::build_site(devel = FALSE)` (commit `ee259434`): new `Ramus` and `cqplot` pages.
+  The home page still said "Version 1.8.7" because `README.md` was stale, so README.Rmd was
+  re-knit with `devtools::build_readme()` (1.9.0; `Ramus` in the datasets table) and the home
+  page rebuilt with `pkgdown::build_home()` (commit `ee8737a8`). The re-rendered
+  `vignettes/images/` PNGs were not committed, as in earlier rebuilds.
+
+- **Standing rule: before any pkgdown build, check `README.md`** and re-knit README.Rmd if it
+  is stale (its version line doesn't match DESCRIPTION, or DESCRIPTION, README.Rmd or
+  `extra/datasets.csv` changed after it was knit). The datasets table reads
+  `extra/datasets.csv` from GitHub master, so push changes to it before knitting.
 
 - [ ] **`cqplot.mlm()`: leverage-adjusted residual distances** (step 3 of
   `dev/outliers-Rencher.md`). Plot (n−r) qᵢᵢ/(1−hᵢᵢ) against (n−r) × Beta(p/2, (n−r−p)/2)
