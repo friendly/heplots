@@ -379,9 +379,6 @@ are more general in some ways, but visualization methods for this
 approach remain primitive and the mixed model analysis does not easily accommodate
 multivariate responses.
 
-<!-- TODO (commit 2): revise this roadmap once it's decided whether the "Simplified
-interface: heplots 0.9 and car 2.0" section is kept (faithful) or folded into the
-examples (modernized). -->
 The remainder of this vignette illustrates these MLM analyses,
 shows how they may be performed in R, and how HE plots can be used to provide visual
 displays of what is summarized in the multivariate test statistics. We freely admit
@@ -390,18 +387,619 @@ vignette takes a more tutorial tone.
 We exemplify these methods in the context
 of simple, one-sample profile analysis (Section \@ref(profile)),
 designs with multiple between- and within-S effects (Section \@ref(BW)),
+including within-S factors with unequally spaced levels (Section \@ref(unequal)),
 and doubly-multivariate designs (Section \@ref(doubly)), where two or more separate
 responses (e.g., weight loss and self esteem) are *each* observed in a factorial
 structure over multiple within-S occasions. Finally (Section \@ref(compare))
 we compare these methods with visualizations based on the mixed model.
 
+In R, the within-S design is specified to `car::Anova()`, and to `heplot()` and the
+other plotting functions in `heplots`, by the arguments `idata`, a data frame giving
+the levels of the within-S factor(s), and `idesign`, a one-sided model formula for
+the within-S design. These generate the $\mathbf{M}$ matrices of
+\@ref(eq:mglt-rep). For an HE plot, `iterm` selects the within-S term to show,
+together with its interactions with the between-S terms. In the first example, we also
+carry out the transformation $\mathbf{Y} \mapsto \mathbf{Y M}$ explicitly, to show what
+these arguments do.^[In the original version of this paper [@Friendly:10:JSS], all HE
+plots for within-S effects were constructed this way, by fitting models to the
+transformed responses. The `idata`, `idesign` and `iterm` arguments were added to
+`heplot()` (heplots 0.9) and `car::Anova()` (car 2.0) while it was being written.]
+
 # One sample profile analysis {#profile}
 
-*To come in commit 2.*
+The simplest case of a repeated-measures design is illustrated by the data on
+vocabulary growth of school children from grade 8 to grade 11, in the
+data frame `VocabGrowth`, recording scores on the vocabulary section of the
+Cooperative Reading Test for a cohort of 64 students.
+(The scores are scaled to a common, but arbitrary origin and unit of measurement,
+so as to be comparable over the four grades.)
+Since these data cover an age range in which physical growth is beginning to decelerate,
+it is of interest whether a similar effect occurs in the acquisition of new vocabulary.
+Thus, attention here is arguably directed to polynomial trends in grade:
+average rate of change (slope, or linear trend) and shape of trajectories
+(quadratic and cubic components).
+
+```{r voc0}
+some(VocabGrowth, 5)
+```
+
+A boxplot of these scores (Figure \@ref(fig:voc-boxplot)) gives an initial view of the
+data. To do this, we first reshape the data from wide to long format (i.e., each 4-variate
+row becomes four rows indexed by `Grade`). We can see that vocabulary
+scores increase with age, but the trend of means appears non-linear.
+
+```{r voc-boxplot, fig.width=6, fig.height=5, out.width="70%", fig.cap="Boxplots of Vocabulary score by Grade, with linear regression line (red) and lines connecting grade means (blue)."}
+voc <- reshape(VocabGrowth, direction = "long", varying = list(grade = 1:4),
+               timevar = "Grade", v.names = "Vocabulary")
+boxplot(Vocabulary ~ Grade, data = voc, col = "bisque",
+        ylab = "Vocabulary", main = "Vocabulary Growth data")
+abline(lm(Vocabulary ~ as.numeric(Grade), data = voc), col = "red")
+means <- tapply(voc$Vocabulary, voc$Grade, mean)
+points(1:4, means, pch = 7, col = "blue")
+lines(1:4, means, col = "blue", lwd = 2)
+```
+
+The standard univariate and multivariate tests for the differences in
+vocabulary with grade can be carried out as follows. First, we fit
+the basic MLM with an intercept only on the right-hand side of the
+model, since there are no between-S effects. The intercepts estimate
+the means at each grade level, $\mu_8 , \dots , \mu_{11}$.
+
+```{r voc2}
+(Vocab.mod <- lm(cbind(grade8, grade9, grade10, grade11) ~ 1, data = VocabGrowth))
+```
+
+We could test the multivariate hypothesis that all means are simultaneously zero,
+$\mu_8 = \mu_9 = \mu_{10} = \mu_{11} = 0$. This point hypothesis is the simplest
+case of a multivariate test under \@ref(eq:mglt), with $\mathbf{L} = \mathbf{I}$.
+
+```{r voc3}
+(Vocab.aov0 <- Anova(Vocab.mod, type = "III"))
+```
+
+This hypothesis tests that the vocabulary means are all at the arbitrary origin for
+the scale. Often this test is not of direct interest, but it serves to illustrate the
+$\mathbf{H}$ and $\mathbf{E}$ matrices involved in any multivariate test, their
+representation by HE plots, and how we can extend these plots to the repeated
+measures case.
+
+The $\mathbf{H}$ and $\mathbf{E}$ matrices can be printed with `summary(Vocab.aov0)`,
+or extracted from the `Anova.mlm` object. In this case, $\mathbf{H}$
+is simply $n \overline{\mathbf{y}} \overline{\mathbf{y}}^\top$ and $\mathbf{E}$ is the sum
+of squares and crossproducts of deviations from the column means,
+$\sum_{i=1}^{n}(\mathbf{y}_i-\overline{\mathbf{y}})(\mathbf{y}_i-\overline{\mathbf{y}})^\top$.
+
+```{r voc-Anova}
+Vocab.aov0$SSP     # H matrix
+Vocab.aov0$SSPE    # E matrix
+```
+
+The HE plot for the `Vocab.mod` model shows the test for the `(Intercept)` term
+(all means = 0). To emphasize that the test is assessing the (squared)
+distance of $\bar{\mathbf{y}}$ from $\mathbf{0}$, in relation to
+the covariation of observations around the grand mean, we mark the point hypothesis
+$H_0 = (0, 0)$ with `mark.H0()`.
+
+Here we show the HE plot for the `grade8` and `grade9` variables in
+Figure \@ref(fig:voc4). The $\mathbf{E}$ ellipse reflects
+the positive correlation of vocabulary scores across these two
+grades, but also shows that variability is greater in Grade 8 than in Grade 9.
+Its position relative to (0,0) indicates that both means are
+positive, with a larger mean at Grade 9 than Grade 8.
+
+```{r voc4, out.width="70%", fig.cap="HE plot for Vocabulary data, for the MANOVA test of $H_0 : \\boldsymbol{\\mu}_y = \\mathbf{0}$. The size of the (degenerate) ellipse for the intercept term relative to that for Error gives the strength of evidence for the difference between the sample mean (marked by $+$) and the means under $H_0$ (marked by the cross-hairs and green dot). The projection of this $\\mathbf{H}$ ellipse outside the $\\mathbf{E}$ ellipse signals that this $H_0$ is clearly rejected."}
+heplot(Vocab.mod, terms = "(Intercept)", type = "III", fill = TRUE)
+mark.H0(0, 0)
+title(expression(paste("Multivariate test of ", H[0], " : ", bold(mu) == 0)))
+```
+
+The $\mathbf{H}$ ellipse plots as a degenerate line because the $\mathbf{H}$ matrix has
+rank 1 (1 df for the MANOVA test of the Intercept).
+The fact that the $\mathbf{H}$ ellipse extends outside the $\mathbf{E}$ ellipse (anywhere)
+signals that this $H_0$ is clearly rejected (for some linear combination of the
+response variables). Moreover, the projections of the $\mathbf{H}$ and $\mathbf{E}$
+ellipses on the `grade8` and `grade9` axes, showing $\mathbf{H}$ widely outside
+$\mathbf{E}$, signals that the corresponding univariate hypotheses, $\mu_8=0$ and
+$\mu_9=0$ would also be rejected.
+
+## Testing within-S effects {#within}
+
+For the `Anova()` function, the model for within-S effects, giving rise to the
+$\mathbf{M}$ matrices in \@ref(eq:mglt-rep), is specified through the arguments `idata`
+(a data frame giving the factor(s) used in the intra-subject model)
+and `idesign` (a model formula specifying the intra-subject design).
+That is, if $\mathbf{Z} = [ \mathtt{idata} ]$, the $\mathbf{M}$ matrices
+for different intra-subject terms are generated from columns of $\mathbf{Z}$
+indexed by the terms in `idesign`, with factors and interactions
+expanded to contrasts in the same way that the design matrix $\mathbf{X}$ is generated
+from the between-S design formula.
+
+Thus, to test the within-S effect of grade, we need to construct a `grade`
+variable for the levels of grade and use this as a model formula,
+`idesign = ~grade` to specify the within-S design in the call to `Anova()`.
+
+```{r voc5}
+idata <- data.frame(grade = ordered(8:11))
+(Vocab.aov <- Anova(Vocab.mod, idata = idata, idesign = ~grade, type = "III"))
+```
+
+As shown in Table \@ref(tab:BWtab), any such within-S test is effectively carried out
+using a transformation $\mathbf{Y}$ to $\mathbf{Y M}$, where the columns of
+$\mathbf{M}$ provide contrasts among the grades. For the *overall* test of `grade`,
+*any* set of 3 linearly independent contrasts will give the same
+test statistics, though, of course the interpretation of the parameters will differ.
+Specifying `grade` as an ordered factor (`grade = ordered(8:11)`) will cause `Anova()`
+to use the polynomial contrasts shown in $\mathbf{M}_{poly}$ below.
+$$
+\mathbf{M}_{poly} =
+\begin{pmatrix}
+-3 &  1 & -1 \\
+-1 & -1 &  3 \\
+ 1 & -1 & -3 \\
+ 3 &  1 &  1
+\end{pmatrix}
+\quad\quad
+\mathbf{M}_{first} =
+\begin{pmatrix}
+-1 & -1 & -1 \\
+ 1 &  0 &  0 \\
+ 0 &  1 &  0 \\
+ 0 &  0 &  1
+\end{pmatrix}
+\quad\quad
+\mathbf{M}_{last} =
+\begin{pmatrix}
+ 1 &  0 &  0 \\
+ 0 &  1 &  0 \\
+ 0 &  0 &  1 \\
+-1 & -1 & -1
+\end{pmatrix}
+$$
+Alternatively, $\mathbf{M}_{first}$ would test the gains in vocabulary
+between grade 8 (baseline) and each of grades 9--11, while
+$\mathbf{M}_{last}$ would test the difference between each of grades 8--10 from grade 11.
+(In R, these contrasts are constructed with
+`M.first <- contr.sum(factor(11:8))[4:1, 3:1]`, and
+`M.last <- contr.sum(factor(8:11))` respectively.)
+In all cases, the hypothesis of no difference among the means across grade is
+transformed to an equivalent multivariate point hypothesis,
+$\mathbf{M}^\top \boldsymbol{\mu}_y = \mathbf{0}$, such as we visualized in
+Figure \@ref(fig:voc4).
+
+To see what `idata` and `idesign` do, we can carry out this transformation explicitly,
+$\mathbf{Y} \mapsto \mathbf{Y M}$, using $\mathbf{M}_{poly}$ (in its normalized form,
+from `poly()`) to give scores for the linear, quadratic and cubic trends of each student.
+Using $\mathbf{M}_{poly}$, the MANOVA test for the `grade` effect is then testing
+$H_0 : \mathbf{M}^\top \boldsymbol{\mu}_y = \mathbf{0} \leftrightarrow
+\mu_{Lin} = \mu_{Quad} = \mu_{Cubic} = 0$.
+That is, the means across grades 8--11 are equal if and only if
+their linear, quadratic and cubic trends are simultaneously zero.
+
+```{r voc6}
+trends <- as.matrix(VocabGrowth) %*% poly(8:11, degree = 3)
+colnames(trends) <- c("Linear", "Quad", "Cubic")
+
+# test all trend means = 0 == Grade effect
+within.mod <- lm(trends ~ 1)
+Anova(within.mod, type = "III")
+```
+
+The test of the `(Intercept)` term in `within.mod` is identical to the test of `grade`
+in `Vocab.mod` above. So the within-S test of `grade` is just a test of the means of the
+transformed responses, $\mathbf{Y M}$.
+
+We can show this test visually. Figure \@ref(fig:voc8)(a)
+shows a scatterplot of the transformed linear and quadratic trend scores,
+overlaid with a 68% data ellipse.
+Figure \@ref(fig:voc8)(b) is the corresponding HE plot for the effect of `grade`.
+It is drawn directly from `Vocab.mod`: `iterm = "grade"` selects the within-S term to
+show, and `heplot()` does the transformation to $\mathbf{Y M}$ and marks the point
+$H_0$ itself. The axes are the linear (`grade.L`) and quadratic (`grade.Q`) contrasts
+for `grade`.
+Thus, we can see that the $\mathbf{E}$ ellipse is simply the data ellipse of the
+transformed vocabulary scores; its orientation indicates a
+slight tendency for those with greater slopes (gain in vocabulary)
+to have greater curvatures (leveling off earlier).
+
+```{r voc8, fig.width=10, fig.height=5, out.width="100%", fig.cap="Plots of linear and quadratic trend scores for the Vocabulary data. (a) Scatterplot with 68\\% data ellipse; (b) HE plot for the effect of Grade. As in Figure \\@ref(fig:voc4), the size of the $\\mathbf{H}$ ellipse for Grade relative to the $\\mathbf{E}$ ellipse shows the strength of evidence against $H_0$."}
+op <- par(mfrow = c(1, 2))
+dataEllipse(trends[, 1:2], xlim = c(-4, 8), ylim = c(-3, 3), levels = 0.68,
+            main = "(a) Data ellipse")
+mark.H0(0, 0)
+
+heplot(Vocab.mod, type = "III", idata = idata, idesign = ~grade, iterm = "grade",
+       col = c("red", "blue"), xlim = c(-4, 8), ylim = c(-3, 3), fill = TRUE,
+       main = "(b) HE plot for Grade effect")
+par(op)
+```
+
+We interpret Figure \@ref(fig:voc8)(b) as follows, bearing in mind that we are
+looking at the data in the transformed space ($\mathbf{Y M}$) of the linear (slopes) and
+quadratic (curvatures) of the original data ($\mathbf{Y}$).
+The mean slope is positive while the mean quadratic trend is negative.
+That is, overall, vocabulary increases with Grade, but at a decreasing rate.
+The $\mathbf{H}$ ellipse plots as a degenerate line because the $\mathbf{H}$ matrix has
+rank 1 (1 df for the MANOVA test of the Intercept).
+Its projection outside the $\mathbf{E}$ ellipse shows a highly significant rejection
+of the hypothesis of equal means over Grade.
+
+In such simple cases, traditional plots (boxplots, or plots of means with error bars)
+are easier to interpret. HE plots gain advantages in more complex designs
+(two or more between- or within-S factors, multiple responses), where they
+provide visual summaries of the information used in the multivariate hypothesis
+tests.
 
 # Between- and within-S effects {#BW}
 
-*To come in commit 2.*
+When there are both within- and between-S effects, the multivariate and
+univariate hypotheses tests can all be obtained together using `Anova()`
+with `idata` and `idesign` specifying the within-S levels
+and the within-S design, as shown above.
+`linearHypothesis()` can be used to test arbitrary contrasts in the
+within- or between-S effects.
+HE plots for between-S effects are drawn in the space of the response variables,
+just as for any MANOVA. HE plots for within-S effects and their interactions with
+between-S effects use the same `idata` and `idesign`, with `iterm` to choose the
+within-S term.
+
+To illustrate, we use the data from @OBrienKaiser:85 contained in the
+data frame `OBrienKaiser` in the `carData` package.
+The data are from an imaginary study in which 16 female and male subjects,
+who are divided into three treatments, are measured at a pretest, posttest, and a
+follow-up session; during each session, they are measured at five occasions at intervals
+of one hour. The design, therefore, has two between-subject and two within-subject factors.
+
+For simplicity here, we initially collapse over the five occasions, and consider just
+the within-S effect of session, called `session` in the analysis below.
+
+```{r obk1}
+# simplified analysis of OBrienKaiser data, collapsing over hour
+OBK <- OBrienKaiser
+OBK$pre <- rowMeans(OBK[, 3:7])
+OBK$post <- rowMeans(OBK[, 8:12])
+OBK$fup <- rowMeans(OBK[, 13:17])
+# remove separate hour scores
+OBK <- OBK[, -(3:17)]
+```
+
+Note that the between-S design is unbalanced (so tests based on Type II sum of squares
+and crossproducts are preferred, because they conform to the principle of marginality).
+
+```{r obk2}
+table(OBK$gender, OBK$treatment)
+```
+
+The factors `gender` and `treatment` were specified with
+the following contrasts, $\mathbf{L}_{gender}$, and $\mathbf{L}_{treatment}$, shown below.
+The contrasts for `treatment` are nested (Helmert) contrasts
+testing a comparison of the control group with the average of treatments A and B
+(`treatment1`) and the difference between treatments A and B (`treatment2`).
+
+```{r obk3}
+contrasts(OBK$gender)
+contrasts(OBK$treatment)
+```
+
+We first fit the general MANOVA model for the three repeated measures
+in relation to the between-S factors. As before, this just establishes
+the model for the between-S effects.
+
+```{r obk-MANOVA}
+# MANOVA model
+mod.OBK <- lm(cbind(pre, post, fup) ~ treatment * gender, data = OBK)
+mod.OBK
+```
+
+If we regarded the repeated measure effect of `session` as equally
+spaced, we could simply use polynomial contrasts to examine linear (slope)
+and quadratic (curvature) effects of time. Here, it makes more sense to
+use profile contrasts, testing (`post - pre`) and (`fup - post`).
+
+```{r obk4}
+session <- ordered(c("pretest", "posttest", "followup"),
+                   levels = c("pretest", "posttest", "followup"))
+contrasts(session) <- matrix(c(-1,  1, 0,
+                                0, -1, 1), ncol = 2)
+session
+idata <- data.frame(session)
+```
+
+The multivariate tests for all between- and within-S effects are then
+calculated as follows:
+
+```{r obk4a}
+# Multivariate tests for repeated measures
+aov.OBK <- Anova(mod.OBK, idata = idata, idesign = ~session, test = "Roy")
+aov.OBK
+```
+
+It is useful to point out here that the default `print()` method
+for `Anova.mlm` objects, as shown above, gives an optimally compact summary for
+all between- and within-S effects, using a given test statistic,
+yet all details and other test statistics are available using the `summary()`
+method. For example, using `summary(aov.OBK)` as shown below, we can display all the
+multivariate tests together with the $\mathbf{H}$ and $\mathbf{E}$ matrices,
+and/or all the univariate tests for the traditional univariate
+mixed model, under the assumption of sphericity
+and with Greenhouse-Geisser and Huynh-Feldt corrected $F$ tests.
+To conserve space the results are not shown here.
+
+```{r obk5, results='hide'}
+# All multivariate tests
+summary(aov.OBK, univariate = FALSE)
+# Univariate tests for repeated measures
+summary(aov.OBK, multivariate = FALSE)
+```
+
+OK, now it's time to understand the *nature* of these effects.
+Ordinarily, from a data-analytic point of view, I would show traditional
+plots of means and other measures (as in Figure \@ref(fig:voc-boxplot))
+or their generalizations in effect plots [@Fox:87; @effects2].
+But I'm not going to do that here. Instead, I'd like for you to understand
+how HE plots provide a compact *visual* summary of an MLM,
+mirroring the tabular presentation from `Anova(mod.OBK)` above,
+but which also reveals the nature of effects.
+Here, you have to bear in mind that between-S effects are displayed most
+naturally in the space of the response variables, while within-S effects
+are most easily seen in the contrast space of transformed responses ($\mathbf{Y M}$).
+
+HE plots for between-S effects can be displayed for any pair of
+responses with `heplot()`. Figure \@ref(fig:obk-HE1) shows this
+for `pre` and `post`. By default, $\mathbf{H}$ ellipses for all model terms (excluding
+the intercept) are displayed. Additional MLM tests can also be displayed using the
+`hypotheses` argument; here we specify the two contrasts for the `treatment` effect
+shown above as `contrasts(OBK$treatment)`.
+
+```{r obk-HE1, out.width="75%", fig.cap="HE plot for the `mod.OBK` repeated measures model, showing between-S effects and contrasts in the space of the `pre` and `post` variables. Main effect means of the `treatment` (A, B, Control) and `gender` (M, F) groups are marked by points. Contrasts among the treatment groups appear as lines labeled at one extreme. The green line of unit slope shows equality of `pre = post`."}
+# HE plots for Between-S effects
+heplot(mod.OBK, hypotheses = c("treatment1", "treatment2"),
+       col = c("red", "black", "blue", "brown", "gray40", "gray40"),
+       hyp.labels = c("(A,B)-Control", "A-B"),
+       main = "Between-S effects and contrasts")
+lines(c(3, 7), c(3, 7), col = "green")
+```
+
+In Figure \@ref(fig:obk-HE1), we see that the treatment effect is significant,
+and the large vertical extent of this $\mathbf{H}$ ellipse shows
+this is largely attributable to the differences among groups in the Post session.
+Moreover, the main component of the treatment effect is the contrast between
+the Control group and groups A & B, which outperform the Control group at Post test.
+The effect of `gender` is not significant, but the HE plot shows that
+males are higher than females at both Pre and Post tests.
+Likewise, the `treatment:gender` interaction fails significance, but
+the orientation of the $\mathbf{H}$ ellipse for this effect can be interpreted as
+showing that the differences among the treatment groups are larger for males than
+for females. Finally, the line of unit slope shows that for all effects, scores are
+greater on `post` than `pre`.
+
+Using `heplot3d(mod.OBK, ...)` gives an interactive 3D version of
+Figure \@ref(fig:obk-HE1) for `pre`, `post`, and `fup`,
+that can be rotated and zoomed, or played as an animation.
+
+```{r obk-3d, eval=FALSE}
+heplot3d(mod.OBK, hypotheses = c("treatment1", "treatment2"),
+         col = c("pink", "black", "blue", "brown", "gray40", "gray40"),
+         hyp.labels = c("(A,B)-Control", "A-B"))
+# rotate around y axis
+play3d(spin3d(axis = c(0, 1, 0)), duration = 12)
+```
+
+Alternatively, all pairwise HE plots for the session means can be shown using `pairs()`
+for the `mlm` object `mod.OBK`, with the result shown in Figure \@ref(fig:obk-HE2).
+
+```{r obk-HE2, fig.width=7, fig.height=7, out.width="80%", fig.cap="HE plot for the `mod.OBK` repeated measures model, showing between-S effects for all pairs of sessions. The panel in row 2, column 1 is identical to that shown separately in Figure \\@ref(fig:obk-HE1)."}
+pairs(mod.OBK, col = c("red", "black", "blue", "brown"))
+```
+
+Here we see that (a) the treatment effect is largest in the combination of post-test
+and follow up; (b) this 2 $df$ test is essentially 1-dimensional in this view, i.e.,
+treatment means at post-test and follow up are nearly perfectly correlated;
+(c) the superior performance of males relative to females, while not
+significant, holds up over all three sessions.
+
+The HE plot for within-S effects (Figure \@ref(fig:obk-HE3)) uses the same `idata` and
+`idesign` as `Anova()`, with `iterm = "session"`. The axes are now the two (profile)
+contrasts for `session`, `post - pre` and `fup - post`, i.e., the columns of
+$\mathbf{Y M}_{session}$. From the schematic summary in Table \@ref(tab:BWtab), the
+$\mathbf{H}$ ellipses for the between-S terms `treatment`, `gender` and
+`treatment:gender` in this space are those for their interactions with `session`, and
+the test of no change over sessions (the intercept, in this space) is that for
+`session` itself. `heplot()` labels the terms accordingly, and marks the point
+$H_0$ of no difference over sessions.
+
+```{r obk-HE3, out.width="75%", fig.cap="HE plot for the `mod.OBK` model, showing within-S effects in the space of contrasts among sessions. The point labeled $H_0$ here marks the comparison point for no difference over session in contrast space."}
+# HE plots for Within-S effects
+heplot(mod.OBK, idata = idata, idesign = ~session, iterm = "session",
+       col = c("red", "black", "blue", "brown"),
+       xlab = "Post - Pre", ylab = "Fup - Post",
+       xlim = c(-2, 4), ylim = c(-2, 3),
+       main = "Within-S effects: Session * (Treat*Gender)")
+```
+
+Figure \@ref(fig:obk-HE3) provides an interpretation of the within-S effects
+in the MANOVA table shown above for `Anova(mod.OBK)`.
+We can see that the effects of `session` and `treatment:session` are significant.
+More importantly, for both of these, but the interaction in particular,
+the significance of the effect is more attributable to the `post - pre` difference
+than to `fup - post`.
+
+## Higher-order designs {#higher-order}
+
+The scheme described above and the obvious generalization of Table \@ref(tab:BWtab)
+easily accommodates designs with two or more within-S factors.
+Any number of between-S factors are handled automatically, by
+the model formula for between-S effects specified in the `lm()` call, e.g.,
+`~ treatment * gender`.
+
+For example, for the O'Brien-Kaiser data with `session` and `hour`
+as two within-S factors, first create a data frame, `within` specifying the values of
+these factors for the $3 \times 5$ combinations.
+
+```{r obk2-1}
+session <- factor(rep(c("pretest", "posttest", "followup"), c(5, 5, 5)),
+                  levels = c("pretest", "posttest", "followup"))
+contrasts(session) <- matrix(c(-1,  1, 0,
+                                0, -1, 1), ncol = 2)
+hour <- ordered(rep(1:5, 3))
+within <- data.frame(session, hour)
+```
+
+The `within` data frame looks like this:
+
+```{r obk2-2}
+str(within)
+within
+```
+
+The repeated measures MANOVA analysis can then be carried out as follows:
+
+```{r obk2-3}
+mod.OBK2 <- lm(cbind(pre.1, pre.2, pre.3, pre.4, pre.5,
+                     post.1, post.2, post.3, post.4, post.5,
+                     fup.1, fup.2, fup.3, fup.4, fup.5) ~ treatment * gender,
+               data = OBrienKaiser)
+(aov.OBK2 <- Anova(mod.OBK2, idata = within, idesign = ~session * hour, test = "Roy"))
+```
+
+Note that the test statistics for `treatment`, `gender`, `session` and all interactions
+among them are identical to what was found in the simplified analysis above.
+Among the effects including `hour`, only the main effect is significant here.
+
+The following $\mathbf{M}$ matrices, corresponding to profile contrasts for
+`session` and polynomial contrasts for `hour` are used internally in
+`Anova()` in calculating these effects (shown here as integers,
+rather than in normalized form).
+$$
+\mathbf{M}_{session} =
+\begin{pmatrix}
+-1 &  0 \\
+ 1 & -1 \\
+ 0 &  1
+\end{pmatrix}
+\quad\quad
+\mathbf{M}_{hour} =
+\begin{pmatrix}
+-2 &  2 & -1 &  1 \\
+-1 & -1 &  2 & -4 \\
+ 0 & -2 &  0 &  6 \\
+ 1 & -1 & -2 & -4 \\
+ 2 &  2 &  1 &  1
+\end{pmatrix}
+$$
+To apply to the 15 columns of $\mathbf{Y}$, these are expanded as Kronecker
+products with the unit vector, as in \@ref(eq:Mcd),
+$$
+\mathbf{M}_s = \mathbf{M}_{session} \otimes \mathbf{1}_5 \; , \quad\quad
+\mathbf{M}_h = \mathbf{1}_3 \otimes \mathbf{M}_{hour} \; ,
+$$
+and tests involving the interaction `session:hour` use
+$\mathbf{M}_{session} \otimes \mathbf{M}_{hour}$.
+`heplot()` constructs these from `idata` and `idesign`, just as `Anova()` does.
+
+We can plot these effects for the linear and quadratic contrasts of `hour`,
+representing within-session slope and curvature, using `iterm = "hour"`.
+Figure \@ref(fig:obk2-HE1) is produced as shown below. Here we use
+`idesign = ~hour`, so that only `hour` and its interactions with the between-S terms are
+shown; with `idesign = ~session * hour`, the `session:hour` terms would be shown as well.
+As shown by the `Anova(mod.OBK2, ...)` above, all interactions with `hour` are small,
+and so these appear wholly contained within the $\mathbf{E}$ ellipse.
+In particular, there are no differences among groups (treatment $\times$ gender) in the
+slopes or curvatures over `hour`. For the main effect of `hour`,
+the linear effect is almost exactly zero, while the quadratic effect is huge.
+
+```{r obk2-HE1, out.width="75%", fig.cap="HE plot for the `mod.OBK2` repeated measures model, showing within-S effects for linear and quadratic contrasts in `hour`. As in Figure \\@ref(fig:obk-HE3), we are viewing hypothesis and error variation in the transformed space of the repeated measures contrasts, here given by $\\mathbf{M}_h$."}
+colors <- c("red", "black", "blue", "brown", "purple")
+heplot(mod.OBK2, idata = within, idesign = ~hour, iterm = "hour", col = colors)
+```
+
+The `pairs()` function shows these effects (Figure \@ref(fig:obk2-HE2)) for all contrasts
+in `hour`. All interactions with hour are small and non-significant, and stay close to
+the centroid in every panel. The main additional message here
+is that the effects of `hour` are more complex than just the large quadratic component
+we saw in Figure \@ref(fig:obk2-HE1).
+
+```{r obk2-HE2, fig.width=7, fig.height=7, out.width="80%", fig.cap="HE plot for the `mod.OBK2` repeated measures model, showing within-S effects for all pairs of contrasts in `hour`."}
+pairs(mod.OBK2, idata = within, idesign = ~hour, iterm = "hour", col = colors)
+```
+
+## Unequally spaced occasions {#unequal}
+
+When the within-S factor is time, the occasions are often not equally spaced.
+Polynomial contrasts should then use the *actual* times, so that the linear,
+quadratic, ... components refer to trends over time rather than over the order
+of the occasions. This only requires setting the contrasts for the within-S factor in
+`idata`, using `contr.poly()` with the `scores` argument.
+
+The `Phosphate` data give plasma inorganic phosphate (mg/dl) for 13 control and 20
+obese patients, measured at 8 times from 0 to 5 hours after an oral glucose challenge
+[@Zerbe:79; @RencherChristensen:12]. The times are 0, 0.5, 1, 1.5, 2, 3, 4 and 5 hours.
+Figure \@ref(fig:phos-means) shows the mean profiles. Both groups show a U-shaped curve
+over time, but the controls dip more deeply and earlier than the obese patients.
+
+```{r phos-means, fig.width=7, fig.height=5, out.width="75%", fig.cap="Mean profiles of plasma phosphate for the control and obese groups, plotted against the actual times after the glucose challenge."}
+hours <- c(0, 0.5, 1, 1.5, 2, 3, 4, 5)
+resp <- paste0("hr", hours)
+means <- aggregate(Phosphate[, resp], list(group = Phosphate$group), mean)
+matplot(hours, t(means[, resp]), type = "b", pch = 16, lty = 1, lwd = 2,
+        col = c("blue", "red"),
+        xlab = "Hours after glucose challenge",
+        ylab = "Mean plasma phosphate (mg/dl)")
+legend("top", legend = means$group, col = c("blue", "red"),
+       lty = 1, pch = 16, bty = "n")
+```
+
+The within-S design uses orthogonal polynomials in the actual hours:
+
+```{r phos1}
+idata <- data.frame(hour = ordered(hours))
+contrasts(idata$hour) <- contr.poly(8, scores = hours)
+
+phos.mod <- lm(cbind(hr0, hr0.5, hr1, hr1.5, hr2, hr3, hr4, hr5) ~ group,
+               data = Phosphate)
+Anova(phos.mod, idata = idata, idesign = ~hour)
+```
+
+The `group:hour` interaction is highly significant: the two groups have different
+profiles over time. But this is a 7 df test, in the space of the seven polynomial
+components of `hour`. Which components are responsible? A univariate look at the group
+differences in each component, the columns of $\mathbf{Y M}$, shows that the groups differ
+in the linear, cubic and quartic components, but not at all in the quadratic one.
+
+```{r phos2}
+YM <- as.matrix(Phosphate[, resp]) %*% contrasts(idata$hour)
+round(t(sapply(colnames(YM), function(k)
+  coef(summary(lm(YM[, k] ~ Phosphate$group)))[2, c("t value", "Pr(>|t|)")])), 4)
+```
+
+The curves are equally U-shaped, and differ in where and how sharply they dip.
+HE plots show this. In the space of the linear and quadratic components
+(Figure \@ref(fig:phos-HE)(a)), the line for `group:hour` is horizontal: the group
+means differ only on `hour.L`. With the linear and cubic components
+(Figure \@ref(fig:phos-HE)(b)), the group means differ on both.
+
+```{r phos-HE, fig.width=10, fig.height=5, out.width="100%", fig.cap="HE plots for within-S effects in the `Phosphate` data, in the space of polynomial contrasts for the actual times. (a) Linear and quadratic components; (b) linear and cubic components. The group means are marked."}
+op <- par(mfrow = c(1, 2))
+heplot(phos.mod, idata = idata, idesign = ~hour, iterm = "hour",
+       variables = c("hour.L", "hour.Q"), fill = TRUE, fill.alpha = 0.1,
+       main = "(a) Linear and quadratic")
+heplot(phos.mod, idata = idata, idesign = ~hour, iterm = "hour",
+       variables = c("hour.L", "hour.C"), fill = TRUE, fill.alpha = 0.1,
+       main = "(b) Linear and cubic")
+par(op)
+```
+
+Note that the $\mathbf{H}$ ellipse (a line, since `group` has 1 df) for `group:hour`
+stays well inside the $\mathbf{E}$ ellipse in (a), and only just reaches its edge in (b),
+although the test is highly significant. Roy's test rejects $H_0$ when the $\mathbf{H}$ ellipsoid extends outside the
+$\mathbf{E}$ ellipsoid in *some* direction in the full 7-dimensional space; a
+2D view shows only a projection, and here the effect is spread over several
+components, none of which is large on its own. The `pairs()` plot for the first four
+components (Figure \@ref(fig:phos-pairs)) shows more of it.
+
+```{r phos-pairs, fig.width=8, fig.height=8, out.width="85%", fig.cap="HE plot matrix for within-S effects in the `Phosphate` data, for the first four polynomial components of time."}
+pairs(phos.mod, idata = idata, idesign = ~hour, iterm = "hour",
+      variables = 1:4, fill = TRUE, fill.alpha = 0.1)
+```
 
 # Doubly-multivariate designs {#doubly}
 
