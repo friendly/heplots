@@ -9,7 +9,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![Last
 Commit](https://img.shields.io/github/last-commit/friendly/heplots)](https://github.com/friendly/heplots/)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/heplots)](https://cran.r-project.org/package=heplots)
-[![DOI](https://zenodo.org/badge/13908453.svg)](https://zenodo.org/badge/latestdoi/13908453)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7045141.svg)](https://doi.org/10.5281/zenodo.7045141)
 [![Docs](https://img.shields.io/badge/pkgdown%20site-blue)](https://friendly.github.io/heplots/)
 [![DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/friendly/heplots)
 <!-- badges: end -->

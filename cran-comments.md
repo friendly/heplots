@@ -1,9 +1,10 @@
 ## Test environments
 * local Windows 11 x64 install, R version 4.6.2 (ucrt)
-* win-builder R Under development (unstable)
+* win-builder R Under development (unstable) (2026-11-17 r90926 ucrt),
+  Windows Server 2022 x64
 
 ## R CMD check results
-0 error(s) | 0 warning(s) | 0 note(s)
+0 error(s) | 0 warning(s) | 0 note(s), both locally and on win-builder (R-devel)
 
 ## Version 1.8.7
 
