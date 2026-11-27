@@ -1,0 +1,418 @@
+---
+title: "HE Plots for Repeated Measures Designs"
+author: Michael Friendly
+date: "`r Sys.Date()`"
+package: heplots
+output:
+  bookdown::html_document2:
+    base_format: rmarkdown::html_vignette
+    fig_caption: yes
+    toc: true
+    number_sections: true
+pkgdown:
+  as_is: true
+bibliography: "repeated.bib"
+link-citations: yes
+csl: apa.csl
+vignette: >
+  %\VignetteIndexEntry{HE Plots for Repeated Measures Designs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteKeywords{data ellipse, HE plot, HE plot matrix, profile analysis, repeated measures, MANOVA, doubly-multivariate designs, mixed models}
+---
+
+<!--
+Converted from the LaTeX / knitr vignette repeated-knitr.Rnw (2016), the source for
+Friendly (2010), JSS 37(4). Old source: C:\Dropbox\R\projects\heplots-vignettes\
+Conversion plan, in four commits: (1) setup, introduction, notation; (2) profile analysis,
+between- and within-S designs; (3) doubly-multivariate designs, comparison with mixed models;
+(4) discussion, URLs, pkgdown, checks.
+-->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  fig.height = 6,
+  fig.width = 6,
+  fig.align = "center",
+  fig.path = "images/repeated-",
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>"
+  )
+```
+
+```{r setup, echo=FALSE}
+set.seed(1071)
+options(width = 80, digits = 6, continue = "  ")
+library(heplots)
+library(car)
+library(lattice)
+library(nlme)
+```
+
+Vignette built using `heplots`, version `r packageDescription("heplots")[["Version"]]`
+and `car`, version `r packageDescription("car")[["Version"]]`.
+
+> **Note**: This vignette is adapted from @Friendly:10:JSS, "HE Plots for Repeated Measures
+> Designs", *Journal of Statistical Software*, 37(4). The text and analyses follow that paper,
+> updated for current versions of `heplots` and `car`.
+
+**Abstract**: Hypothesis Error (HE) plots, introduced in @Friendly:07:manova,
+provide graphical methods to visualize hypothesis tests in multivariate linear models,
+by displaying hypothesis and error covariation as ellipsoids and providing visual
+representations of effect size and significance. These methods are implemented in
+the `heplots` package for R [@Fox-etal:07:heplots] and SAS [@Friendly:06:hesoft],
+and apply generally to designs with fixed-effect factors (MANOVA), quantitative
+regressors (multivariate multiple regression) and combined cases (MANCOVA).
+
+This vignette describes the extension of these methods to repeated measures designs
+in which the multivariate responses represent the outcomes on one or more
+"within-subject" factors. This extension is illustrated using the `heplots` package
+for R. Examples describe one-sample profile analysis, designs with multiple between-S
+and within-S factors, and doubly-multivariate designs, with multivariate responses
+observed on multiple occasions.
+
+
+# Introduction {#introduction}
+
+Hypothesis Error (HE) plots, introduced in @Friendly:07:manova,
+provide graphical methods to visualize hypothesis tests in multivariate linear models,
+by displaying hypothesis and error covariation as ellipsoids and providing visual
+representations of effect size and significance.
+The `heplots` package [@Fox-etal:07:heplots] for R [@R:2010] implements these methods
+for the general class of the multivariate linear model (MLM) including
+fixed-effect factors (MANOVA), quantitative regressors (multivariate multiple regression (MMREG))
+and combined cases (MANCOVA). Here, we describe the extension of these methods to repeated
+measures designs in which the multivariate responses represent the outcomes on one or more
+"within-subject" factors.
+
+## Multivariate linear models: Notation {#notation}
+
+To set notation, we express the MLM as
+\begin{equation}
+\underset{(n \times p)}{\mathbf{Y}} =
+\underset{(n \times q)}{\mathbf{X}} \;
+\underset{(q \times p)}{\mathbf{B}} +
+\underset{(n \times p)}{\mathbf{U}} \; ,
+(\#eq:mglm)
+\end{equation}
+where $\mathbf{Y} \equiv (\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_p)$ is the matrix of
+responses for $n$ subjects on $p$ variables, $\mathbf{X}$ is the design matrix for $q$
+regressors, $\mathbf{B}$ is the $q \times p$ matrix of regression coefficients or model
+parameters and $\mathbf{U}$ is the $n \times p$ matrix of errors,
+with $\textrm{vec}(\mathbf{U}) \sim \mathcal{N}_p ( \mathbf{0}, \mathbf{I}_n \otimes \mathbf{\Sigma} )$,
+where $\otimes$ is the Kronecker product.
+
+A convenient feature of the MLM for general multivariate responses is that
+*all* tests of linear hypotheses (for null effects) can be represented in the form of a
+general linear test,
+\begin{equation}
+H_0 : \underset{(h \times q)}{\mathbf{L}} \;
+\underset{(q \times p)}{\mathbf{B}} =
+\underset{(h \times p)}{\mathbf{0}} \; ,
+(\#eq:mglt)
+\end{equation}
+where $\mathbf{L}$ is a matrix of constants whose rows specify
+$h$ linear combinations or contrasts of the parameters to be tested simultaneously
+by a multivariate test. In R all such tests can be carried out using
+the functions `car::Anova()` and `car::linearHypothesis()` in the `car` package [@car].
+
+For *any* such hypothesis of the form \@ref(eq:mglt), the analogs of the univariate
+sums of squares for hypothesis ($SS_H$) and error ($SS_E$)
+are the $p \times p$ sum of squares and crossproducts (SSP) matrices given by
+[@Timm:75, Ch. 3, 5]:
+\begin{equation}
+\mathbf{H} \equiv \mathbf{SSP}_H =
+ (\mathbf{L} \widehat{\mathbf{B}})^\top \,
+ [\mathbf{L} (\mathbf{X}^\top \mathbf{X} )^{-} \mathbf{L}^\top]^{-1} \,
+ (\mathbf{L} \widehat{\mathbf{B}}) \; ,
+(\#eq:hmat)
+\end{equation}
+and
+\begin{equation}
+\mathbf{E} \equiv \mathbf{SSP}_E =
+ \mathbf{Y}^\top \mathbf{Y} -
+ \widehat{\mathbf{B}}^\top (\mathbf{X}^\top \mathbf{X}) \widehat{\mathbf{B}}
+ =
+ \widehat{\mathbf{U}}^\top \widehat{\mathbf{U}} \; ,
+(\#eq:emat)
+\end{equation}
+where $\widehat{\mathbf{U}} = \mathbf{Y} - \mathbf{X} \widehat{\mathbf{B}}$ is the matrix of residuals.
+Multivariate test statistics (Wilks' $\Lambda$, Pillai trace, Hotelling-Lawley trace,
+Roy's maximum root) for testing \@ref(eq:mglt) are based on the $s = \min(p, h)$ non-zero
+latent roots of $\mathbf{H} \mathbf{E}^{-1}$ and attempt to capture how "large" $\mathbf{H}$
+is, relative to $\mathbf{E}$ in $s$ dimensions. All of these statistics have transformations
+to $F$ statistics giving either exact or approximate null hypothesis $F$ distributions.
+The corresponding latent vectors give a set of $s$ orthogonal linear combinations of the
+responses that produce maximal univariate $F$ statistics for the hypothesis in \@ref(eq:mglt);
+we refer to these as the canonical discriminant dimensions.
+
+In a univariate, fixed-effects linear model, it is common to provide $F$ tests for each
+term in the model, summarized in an analysis-of-variance (ANOVA) table. The
+hypothesis sums of squares, $SS_H$, for these tests can be expressed as differences
+in the error sums of squares, $SS_E$, for nested models. For example, dropping each
+term in the model in turn and contrasting the resulting residual sum of
+squares with that for the full model produces so-called Type-III tests;
+adding terms to the model sequentially produces so-called Type-I tests; and
+testing each term after all terms in the model with the exception of those
+to which it is marginal produces so-called Type-II tests. Closely analogous
+MANOVA tables can be formed similarly by taking differences in error sum of squares
+and products matrices ($\mathbf{E}$) for such nested models.
+Type I tests are sensible only in special circumstances; in balanced designs, Type II and
+Type III tests are equivalent. Regardless, the methods illustrated here
+apply to any multivariate linear hypothesis.
+
+## Data ellipses and ellipsoids {#data-ellipses}
+
+In what follows, we make extensive use of ellipses (or ellipsoids in 3+D)
+to represent joint variation among two or more variables, so we define this here.
+The *data ellipse* (or covariance ellipse), described by @Dempster:69 and
+@Monette:90, is a device for visualizing the relationship between two variables,
+$Y_{1}$ and $Y_{2}$. Let
+$D_{M}^{2}(\mathbf{y}) = (\mathbf{y}-\overline{\mathbf{y}})^\top \mathbf{S}^{-1} (\mathbf{y}-\overline{\mathbf{y}})$
+represent the squared Mahalanobis distance of the point $\mathbf{y} = (y_{1}, y_{2})^\top$
+from the centroid of the data $\overline{\mathbf{y}} = (\overline{Y}_{1}, \overline{Y}_{2})^\top$.
+The data ellipse $\mathcal{E}_{c}$ of size $c$ is the set of all points $\mathbf{y}$
+with $D_{M}^{2}(\mathbf{y})$ less than or equal to $c^{2}$:
+\begin{equation}
+\mathcal{E}_{c}(\mathbf{y}; \mathbf{S}, \overline{\mathbf{y}}) \equiv
+\left\{ \mathbf{y} : (\mathbf{y}-\overline{\mathbf{y}})^\top \mathbf{S}^{-1}
+(\mathbf{y}-\overline{\mathbf{y}}) \leq c^{2} \right\} \; .
+(\#eq:data-ellipse)
+\end{equation}
+Here, $\mathbf{S} = \sum_{i=1}^{n}(\mathbf{y}_i-\overline{\mathbf{y}})(\mathbf{y}_i-\overline{\mathbf{y}})^\top/(n-1) = \widehat{\mathsf{Var}}(\mathbf{y})$
+is the sample covariance matrix.
+
+Many properties of the data ellipse hold regardless of the joint
+distribution of the variables, but if the variables are bivariate normal,
+then the data ellipse represents a contour of constant density in their
+joint distribution. In this case, $D_{M}^{2}(\mathbf{y})$ has a large-sample
+$\chi^{2}$ distribution with 2 degrees of freedom, and so, for example,
+taking $c^{2}=\chi_{2}^{2}(0.95)=5.99\approx6$ encloses approximately 95
+percent of the data. Taking $c^{2}=\chi_{2}^{2}(0.68)=2.28$ gives a
+bivariate analog of the univariate $\pm 1$ standard deviation interval,
+enclosing approximately 68% of the data.
+
+The generalization of the data ellipse to more than two variables is
+immediate: Applying Equation \@ref(eq:data-ellipse) to $\mathbf{y} = (y_{1},y_{2},y_{3})^\top$,
+for example, produces a data ellipsoid in three dimensions. For $p$ multivariate-normal
+variables, selecting $c^{2}=\chi_{p}^{2}(1-\alpha)$ encloses approximately
+$100(1-\alpha)$ percent of the data.^[Robust versions of data ellipses (e.g., based on
+minimum volume ellipsoid (MVE) or minimum covariance determinant (MCD) estimators of
+$\mathbf{S}$) are also available, as are small-sample approximations to the
+enclosing $c^2$ radii, but these refinements are outside the scope of this vignette.]
+
+## HE plots {#he-plots}
+
+The essential idea behind HE plots is that any multivariate hypothesis
+test \@ref(eq:mglt) can be represented visually by ellipses (or ellipsoids in 3D)
+which express the size of co-variation against a multivariate null hypothesis
+($\mathbf{H}$) relative to error covariation ($\mathbf{E}$).
+The multivariate tests, based on the latent roots of $\mathbf{H} \mathbf{E}^{-1}$,
+are thus translated directly to the sizes of the $\mathbf{H}$ ellipses for
+various hypotheses, relative to the size of the $\mathbf{E}$ ellipse.
+Moreover, the shape and orientation of these ellipses show something more: the
+directions (linear combinations of the responses) that lead to
+various effect sizes and significance.
+
+In these plots, the $\mathbf{E}$ matrix is first scaled to a covariance matrix
+($\mathbf{E}/df_e = \widehat{\mathsf{Var}}(\mathbf{U}_i)$). The ellipse drawn
+(translated to the centroid $\overline{\mathbf{y}}$ of the variables)
+is thus the data ellipse of the residuals, reflecting the size and orientation of
+residual variation. In what follows (by default), we always show these as
+"standard" ellipses of 68% coverage.
+This scaling and translation also allows the means for levels of the factors
+to be displayed in the same space, facilitating interpretation.
+
+The ellipses for $\mathbf{H}$ reflect the size and orientation of covariation
+against the null hypothesis. They are always proportional to the data ellipse
+of the fitted effects (predicted values) for a given hypothesized term.
+In relation to the $\mathbf{E}$ ellipse, the $\mathbf{H}$ ellipses
+can be scaled to show either the *effect size* or strength of
+*evidence* against $H_0$ (significance).
+
+For effect size scaling, each $\mathbf{H}$ is divided by $df_e$ to conform
+to $\mathbf{E}$. The resulting ellipses are then exactly the data ellipses
+of the fitted values, and correspond visually to multivariate analogs of
+univariate effect size measures (e.g., $(\bar{y}_1-\bar{y}_2)/s$
+where $s$ = within group standard deviation).
+That is, the sizes of the $\mathbf{H}$ ellipses
+relative to that of the $\mathbf{E}$ reflect the (squared) differences
+and correlation of the factor means relative to error covariation.
+
+For significance scaling, it turns out to be most visually convenient to
+use Roy's largest root test as the test criterion.
+In this case the $\mathbf{H}$ ellipse is scaled to $\mathbf{H}/(\lambda_\alpha df_e)$
+where $\lambda_\alpha$ is the critical value of Roy's statistic.
+Using this gives a simple visual test of $H_0$: Roy's test rejects $H_0$ at a given
+$\alpha$ level if and only if the corresponding $\alpha$-level $\mathbf{H}$ ellipse
+extends anywhere outside the $\mathbf{E}$ ellipse.^[Other multivariate tests
+(Wilks' $\Lambda$, Hotelling-Lawley trace, Pillai trace) also have geometric
+interpretations in HE plots (e.g., Wilks' $\Lambda$ is the ratio of areas (volumes)
+of the $\mathbf{H}$ and $\mathbf{E}$ ellipses (ellipsoids)), but these statistics do not
+provide such simple visual comparisons. All HE plots shown here use
+significance scaling, based on Roy's test.]
+Consequently, when the rank of $\mathbf{H} = \min(p, h) \le 2$, all significant effects
+can be observed directly in 2D HE plots; when $\textrm{rank}(\mathbf{H})=3$, some rotation
+of a 3D plot will reveal each significant effect as extending somewhere outside the
+$\mathbf{E}$ ellipsoid.
+
+In the R implementation, the basic plotting functions in the `heplots` package are
+`heplot()` and `heplot3d()` for `mlm` objects.
+These rely heavily on `Anova()` and other functions from the `car` package
+[@car] for computation.
+For more than three response variables, all pairwise HE plots can be
+shown using a `pairs()` method for `mlm` objects. Alternatively, the related
+`candisc` package [@candisc] produces HE plots in canonical discriminant space.
+This shows a low-rank 2D (or 3D) view of the effects for a given
+term in the space of maximum discrimination, based on the linear combinations
+of responses which produce maximally significant test statistics.
+See @Friendly:07:manova and @FoxFriendlyMonette:09:compstat for details
+and examples for between-S MANOVA designs, MMREG and MANCOVA models.
+
+# Repeated measures designs {#repmeas}
+
+The framework for the MLM described above pertains to the situation in which the
+response vectors (rows, $\mathbf{y}_i^\top$ of $\mathbf{Y}_{n \times p}$) are *iid*
+and the $p$ responses are separate, not necessarily commensurate variables
+observed on individual $i$.
+
+In principle, the MLM extends quite elegantly to repeated-measure
+(or within-subject) designs, in which the $p$ responses per individual
+can represent the factorial combination of one or more factors that
+structure the response variables in the same way that the between-individual
+design structures the observations. In the multivariate approach to
+repeated measure data, the same model \@ref(eq:mglm) applies, but hypotheses
+about between- and within-individual variation are tested by an extended form
+of the general linear test \@ref(eq:mglt), which becomes
+\begin{equation}
+H_0 : \underset{(h \times q)}{\mathbf{L}} \;
+\underset{(q \times p)}{\mathbf{B}} \;
+\underset{(p \times k)}{\mathbf{M}} =
+\underset{(h \times k)}{\mathbf{0}} \; ,
+(\#eq:mglt-rep)
+\end{equation}
+where $\mathbf{M}$ is a matrix of constants whose columns specify
+$k$ linear combinations or contrasts among the responses, corresponding
+to a particular within-individual effect. In this case,
+the $\mathbf{H}$ and $\mathbf{E}$ matrices for testing \@ref(eq:mglt-rep) become
+\begin{equation}
+\mathbf{H} =
+ (\mathbf{L} \widehat{\mathbf{B}} \mathbf{M})^\top \,
+ [\mathbf{L} (\mathbf{X}^\top \mathbf{X} )^{-} \mathbf{L}^\top]^{-1} \,
+ (\mathbf{L} \widehat{\mathbf{B}} \mathbf{M}) \; ,
+(\#eq:hmat-rep)
+\end{equation}
+and
+\begin{equation}
+\mathbf{E} =
+ (\mathbf{Y} \mathbf{M})^\top
+ [\mathbf{I} - \mathbf{X} (\mathbf{X}^\top \mathbf{X} )^{-} \mathbf{X}^\top] \,
+ (\mathbf{Y} \mathbf{M}) \; .
+(\#eq:emat-rep)
+\end{equation}
+This may be easily seen to be just the ordinary MLM applied to the
+transformed responses $\mathbf{Y} \mathbf{M}$ which form the basis for a
+given within-individual effect. The idea for this approach to repeated
+measures through a transformation of the responses was first suggested by
+@Hsu:38 and is discussed further by @Rencher:95 and @Timm:80.
+In what follows, we refer to hypotheses pertaining to between-individual
+effects (specified by $\mathbf{L}$) as "between-S" and hypotheses pertaining
+to within-individual effects ($\mathbf{M}$) as "within-S."
+
+In the general case, various $\mathbf{L}$ matrices provide contrasts or
+select the particular coefficients tested for between-S effects, while various
+$\mathbf{M}$ matrices specify linear combinations of responses for the within-S effects.
+This is illustrated in Table \@ref(tab:BWtab) for a three-way design
+with two between-S factors (A, B) and one within-S factor (C).
+
+Table: (\#tab:BWtab) Three-way design: Tests for between- (A, B) and within-S (C) effects
+are constructed using various $\mathbf{L}$ and $\mathbf{M}$ matrices. Table entries give the
+term actually tested via the general linear test in \@ref(eq:mglt-rep).
+
+| $\mathbf{M}$ for within-S effects | Intercept | $\mathbf{L} = \mathbf{L}_A$ | $\mathbf{L} = \mathbf{L}_B$ | $\mathbf{L} = \mathbf{L}_{AB}$ |
+|:---|:---:|:---:|:---:|:---:|
+| $\mathbf{M}_1 = \begin{pmatrix} 1 & 1 & 1 \end{pmatrix}^\top$ | $\boldsymbol{\mu}_{..}$ | `A` | `B` | `A:B` |
+| $\mathbf{M}_C = \begin{pmatrix} 1 & -1 & 0 \\ 0 & 1 & -1 \end{pmatrix}^\top$ | `C` | `A:C` | `B:C` | `A:B:C` |
+
+The between-S terms themselves are tested using the unit vector
+$\mathbf{M} = ( \mathbf{1}_p )$, giving a test based on the sums
+over the within-S effects. This simply reflects the principle of
+marginality, by which effects for any term in a linear model
+are tested by averaging over all factors not included in that term.
+Tests using a matrix $\mathbf{M}$ of contrasts
+for a within-S effect provide tests of the interactions of that effect
+with each of the between-S terms. That is, $\mathbf{L B M} = \mathbf{0}$
+tests between-S *differences* among the responses transformed by $\mathbf{M}$.
+
+For more than one within-S factor, the full
+$\mathbf{M}$ matrices for various within-S terms are generated as Kronecker products
+of the one-way $\mathbf{M}$ contrasts with the unit vector ($\mathbf{1}$) of appropriate size.
+For example, with $c$ levels of factor C and $d$ of factor D,
+\begin{equation}
+\begin{split}
+\mathbf{M}_{C\otimes D} & = (\mathbf{1}_c, \mathbf{M}_C ) \otimes (\mathbf{1}_d, \mathbf{M}_D ) \\
+ & = ( \mathbf{1}_c \otimes \mathbf{1}_d, \mathbf{1}_c \otimes \mathbf{M}_D,
+ \mathbf{M}_C \otimes \mathbf{1}_d, \mathbf{M}_C \otimes \mathbf{M}_D ) \\
+ & = ( \mathbf{M}_1, \mathbf{M}_D, \mathbf{M}_C, \mathbf{M}_{CD} ) \; .
+\end{split}
+(\#eq:Mcd)
+\end{equation}
+Each of the within-S terms combine with any between-S terms in an obvious way to
+give an extended version of Table \@ref(tab:BWtab) with additional rows for
+$\mathbf{M}_D$ and $\mathbf{M}_{CD}$.
+
+In passing, we note that *all* software (SAS, SPSS, R, etc.)
+that handles repeated measure designs through this extension of the MLM effectively
+works via the general linear test \@ref(eq:mglt), with either implicit
+or explicit specifications for the $\mathbf{L}$ and $\mathbf{M}$ matrices involved in
+testing any hypothesis for between- or within-S effects. This mathematical
+elegance is not without cost, however. The MLM approach does not allow for
+missing data (a particular problem in longitudinal designs),
+and the multivariate test statistics (Wilks' $\Lambda$, etc.)
+assume the covariance matrix of $\mathbf{U}$ is unstructured. Alternative analyses
+based on mixed (or hierarchical) models, e.g.,
+[@PinheiroBates:2000; @VerbekeMolenberghs:00]
+are more general in some ways, but visualization methods for this
+approach remain primitive and the mixed model analysis does not easily accommodate
+multivariate responses.
+
+<!-- TODO (commit 2): revise this roadmap once it's decided whether the "Simplified
+interface: heplots 0.9 and car 2.0" section is kept (faithful) or folded into the
+examples (modernized). -->
+The remainder of this vignette illustrates these MLM analyses,
+shows how they may be performed in R, and how HE plots can be used to provide visual
+displays of what is summarized in the multivariate test statistics. We freely admit
+that these displays are somewhat novel and take some getting used to, and so this
+vignette takes a more tutorial tone.
+We exemplify these methods in the context
+of simple, one-sample profile analysis (Section \@ref(profile)),
+designs with multiple between- and within-S effects (Section \@ref(BW)),
+and doubly-multivariate designs (Section \@ref(doubly)), where two or more separate
+responses (e.g., weight loss and self esteem) are *each* observed in a factorial
+structure over multiple within-S occasions. Finally (Section \@ref(compare))
+we compare these methods with visualizations based on the mixed model.
+
+# One sample profile analysis {#profile}
+
+*To come in commit 2.*
+
+# Between- and within-S effects {#BW}
+
+*To come in commit 2.*
+
+# Doubly-multivariate designs {#doubly}
+
+*To come in commit 3.*
+
+# Comparison with other approaches {#compare}
+
+*To come in commit 3.*
+
+# Discussion {#discussion}
+
+*To come in commit 4.*
+
+# References {-}
