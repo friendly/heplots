@@ -275,9 +275,28 @@ for a Gavin funding-application topic list).
   Side issues: site spelled `Llanedryn` here vs `Llanedyrn` in carData (Llanedeyrn? unchecked);
   `Vis-MLM-book/working-text/exercises-test-03.qmd` loads a non-existent `heplots::Pottery`.
 
-- Repeated-measures vignette - The PDF of this was rejected by CRAN due to URL problems.
-  The source for this is in: `C:\Dropbox\R\projects\heplots-vignettes`.
-  Re-do the vignette on this as a new `.Rmd` version.
+- ✔️ **DONE** (2026-11-27, v1.9.0 devel): **Repeated-measures vignette**, redone as
+  `vignettes/HE_repeated.Rmd`. The PDF of this was rejected by CRAN due to URL problems
+  (withdrawn in v1.8.4). Source: `repeated-knitr.Rnw` (2016) in
+  `C:\Dropbox\R\projects\heplots-vignettes`; `vignettes-old/repeated.Rmd` (2022) was
+  only a regex pass over the older `.Rnw` and wasn't used.
+
+  Modernized rather than translated: `idata` / `idesign` / `imatrix` with `iterm`
+  throughout, the Y M transformation shown once, the paper's "simplified interface"
+  section folded in. New section on unequally spaced occasions with `Phosphate`.
+  Commits `86d9860f` .. `023f1323`, then URL checks, NEWS and `R CMD check`.
+
+- [ ] **`heplot()` / `pairs.mlm()` with `iterm`: no way to show only the within-S main
+  effect** (found 2026-11-27, writing the vignette). `terms = FALSE`, `NULL` and
+  `character(0)` all give "Nothing to plot", so e.g. `pairs(mod.OBK2, idata = within,
+  idesign = ~hour, iterm = "hour")` always draws `hour` and all its interactions. The
+  2010 paper showed only `hour`.
+
+- [ ] **`heplot()` with `imatrix`: `hypotheses` labels are `NA`** (found 2026-11-27).
+  `heplot(wl.mod, imatrix = imatrix, iterm = "month", hypotheses = c("group1",
+  "group2"))` draws the contrast lines but the names of `$H` for them are `NA`, so they
+  are labeled `NA`. Check whether the same happens with `idata` / `iterm`. The vignette
+  avoids the combination.
 
 ## Clean-up candidates
 

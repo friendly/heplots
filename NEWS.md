@@ -9,6 +9,17 @@
   samples, where chi-square makes the largest distances look less extreme. The default,
   `dist = "chisq"`, is unchanged.
 
+### New vignette
+
+* "HE Plots for Repeated Measures Designs" (`vignette("HE_repeated")`) returns as an R
+  Markdown vignette. It is adapted from Friendly (2010), *Journal of Statistical
+  Software*, 37(4), whose PDF vignette was withdrawn from the package in v1.8.4.
+
+* The presentation is updated: all analyses and HE plots for within-S effects use
+  `idata` / `idesign`, or `imatrix`, with `iterm`, directly from the model for the
+  original responses. A new section uses the `Phosphate` data for occasions that are not
+  equally spaced.
+
 ### New datasets
 
 * `Ramus`: ramus bone height of 20 boys at ages 8, 8.5, 9 and 9.5 (Elston & Grizzle,
