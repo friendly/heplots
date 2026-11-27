@@ -6,12 +6,14 @@
 #   SnapBeans   <- table6.18  two-way MANOVA, sowing date x variety (Keuls et al. 1984)
 #   Dystrophy   <- table5.7   carriers vs noncarriers of muscular dystrophy (Andrews & Herzberg 1985)
 #   Phosphate   <- table6.28  plasma phosphate, control vs obese, 8 times (Zerbe 1979a)
+#   Ramus       <- table3.7   ramus bone height of 20 boys at 4 ages (Elston & Grizzle 1962)
 #
 # For each: tibble -> data.frame, numeric codes -> factors, generic y1, y2, ... -> names from
 # the book (the rencher help pages are often generic or wrong), and contrasts for the factors.
 # Problem numbers refer to the book.
 #
 # DONE: ✔️ Created from dev/Rencher-demos.R 11/26/2026
+# DONE: ✔️ Added Ramus (table3.7) 11/27/2026
 # TODO: 🚩 Dystrophy: confirm the PK / LD order in Andrews & Herzberg (1985), pp. 223-228
 
 # Run from the package root: source("data-raw/Rencher-import.R")
@@ -81,4 +83,15 @@ names(Phosphate)[-1] <- paste0("hr", hours)
 stopifnot(!anyNA(Phosphate$group))
 
 # ------------------------------------------------------------------------------------------
-usethis::use_data(SnapBeans, Dystrophy, Phosphate, overwrite = TRUE)
+# Ramus: table3.7, ramus bone height (mm) of 20 boys at 8, 8.5, 9 and 9.5 years
+# ------------------------------------------------------------------------------------------
+# Checked against the printed Table 3.7: all 80 values agree. `Individual` (1:20) is dropped;
+# the row names are the same numbers.
+ramus <- rencher_data("table3.7")
+stopifnot(identical(names(ramus), c("Individual", paste0("y", 1:4))),
+          identical(ramus$Individual, as.numeric(1:20)))
+Ramus <- ramus[, paste0("y", 1:4)]
+names(Ramus) <- c("Age8", "Age8.5", "Age9", "Age9.5")
+
+# ------------------------------------------------------------------------------------------
+usethis::use_data(SnapBeans, Dystrophy, Phosphate, Ramus, overwrite = TRUE)

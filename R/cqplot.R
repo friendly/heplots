@@ -238,10 +238,12 @@
 #' cqplot(stackloss[, 1:3], id.n=4, method="mve")
 #' cqplot(stackloss[, 1:3], id.n=4, method="mcd")
 #'
-#' # small n: compare the chi-square and exact beta references
+#' # small n: compare the chi-square and exact beta references.
+#' # With beta, boys 8, 12 and 20 fall outside the envelope
+#' data(Ramus)
 #' op <- par(mfrow = c(1, 2))
-#' cqplot(stackloss[, 1:3], id.n = 4, main = "chi-square")
-#' cqplot(stackloss[, 1:3], id.n = 4, dist = "beta", main = "beta")
+#' cqplot(Ramus, id.n = 4, main = "chi-square")
+#' cqplot(Ramus, id.n = 4, dist = "beta", main = "beta")
 #' par(op)
 #'
 #' 

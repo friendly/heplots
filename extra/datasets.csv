@@ -37,3 +37,4 @@
 37,SnapBeans,60,6,Snap Bean Yield and Leaf Area by Sowing Date and Variety,MANOVA contrasts candisc
 38,Dystrophy,73,7,Carriers and Noncarriers of Duchenne Muscular Dystrophy,MANOVA MANCOVA robust candisc
 39,Phosphate,33,9,Plasma Inorganic Phosphate after a Glucose Challenge,MANOVA repeated contrasts
+40,Ramus,20,4,Ramus Bone Height of Boys at Four Ages,repeated outliers

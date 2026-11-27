@@ -73,6 +73,10 @@ for a Gavin funding-application topic list).
   `ylim` with missing values, and the returned `p` (now for the observed DSQ). Test script:
   `dev/test_cqplot_beta.R`.
 
+- ✔️ **DONE** (2026-11-27, v1.9.0 devel): **`Ramus` dataset** (Rencher Table 3.7, via
+  `rencher::table3.7`), the example for `cqplot(dist = "beta")`. Values checked against the
+  printed table; the book's Table 4.1 D² are slightly off (they sum to 75.5, not 76).
+
 - [ ] **`cqplot.mlm()`: leverage-adjusted residual distances** (step 3 of
   `dev/outliers-Rencher.md`). Plot (n−r) qᵢᵢ/(1−hᵢᵢ) against (n−r) × Beta(p/2, (n−r−p)/2)
   quantiles. **TODO: find a literature reference for this distribution first** (the

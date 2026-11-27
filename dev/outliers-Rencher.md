@@ -58,9 +58,10 @@ Results (n = 20, p = 4):
 
 - **D² values** match Table 4.1 closely but not exactly. For example obs 7 is 4.06 here and
   4.29 in the book, obs 8 is 8.11 vs 7.99, and obs 10 is 5.85 vs 5.35. The largest three are
-  the same (obs 9, 12, 20: 10.95, 10.58, 10.17 vs 11.03, 10.57, 10.09). The rencher package's
-  data probably differ slightly from the printed Table 3.7. Worth checking a few values against
-  the table if this becomes an example.
+  the same (obs 9, 12, 20: 10.95, 10.58, 10.17 vs 11.03, 10.57, 10.09).
+  **Resolved 2026-11-27:** the rencher data agree exactly with the printed Table 3.7 (all 80
+  values). The error is in the book's Table 4.1: classical D² must sum to (n − 1)p = 76, and
+  ours do, but Table 4.1's sum to 75.50. Now in heplots as `Ramus`.
   
 - **Mardia's statistics:** b₁,ₚ = 11.343 and b₂,ₚ = 28.917, against the book's 11.338 and
   28.884. Both are significant, as in the book.

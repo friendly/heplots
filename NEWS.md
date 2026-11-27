@@ -9,6 +9,12 @@
   samples, where chi-square makes the largest distances look less extreme. The default,
   `dist = "chisq"`, is unchanged.
 
+### New datasets
+
+* `Ramus`: ramus bone height of 20 boys at ages 8, 8.5, 9 and 9.5 (Elston & Grizzle,
+  1962), from Rencher & Christensen (2012), Table 3.7, via the `rencher` package. A
+  classic for growth curves, and here an example of the beta reference in `cqplot()`.
+
 ### Bug fixes
 
 * `cqplot()`: the `p` column of the returned data frame was the p-value of the theoretical
