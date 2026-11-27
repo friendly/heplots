@@ -1003,11 +1003,498 @@ pairs(phos.mod, idata = idata, idesign = ~hour, iterm = "hour",
 
 # Doubly-multivariate designs {#doubly}
 
-*To come in commit 3.*
+In the designs discussed above the same measure is observed on all occasions.
+Sometimes, there are two or more *different* measures, $Y_1, Y_2, \dots$, observed at
+each occasion, for example response speed and accuracy. In these cases,
+researchers often carry out separate repeated measures analyses for each measure.
+However the tests of between-S effects and each within-S effect can also
+be carried out as multivariate tests of $Y_1, Y_2, \dots$ simultaneously, and these tests
+are often more powerful, particularly when the effects for the different measures are
+weak, but correlated.
+
+In the present context, such doubly-multivariate designs can be easily handled in
+principle by treating the multiple measures as an additional within-S factor, but using
+an identity matrix as the $\mathbf{M}$ matrix in forming the linear hypotheses to be
+tested via \@ref(eq:mglt-rep). For example, with two measures, $Y_1, Y_2$ observed on
+three repeated sessions, the full $\mathbf{M}$ matrix for the design is generated
+as in \@ref(eq:Mcd) as
+\begin{equation}
+\mathbf{M}_{CM} = (\mathbf{1}, \mathbf{M}_{session} ) \otimes \mathbf{I}_2
+ =
+\begin{pmatrix}
+ 1 & -1 &  0 \\
+ 1 &  1 & -1 \\
+ 1 &  0 &  1
+\end{pmatrix}
+\otimes
+\begin{pmatrix}
+ 1 & 0 \\
+ 0 & 1
+\end{pmatrix} \; .
+(\#eq:Mmc)
+\end{equation}
+
+In R, we can express this as follows, using `M.measure` to represent $Y_1, Y_2$.
+
+```{r doubly}
+M.session <- matrix(c(-1,  1, 0,
+                       0, -1, 1), ncol = 2,
+                    dimnames = list(c("pre", "post", "fup"), c("s1", "s2")))
+M.measure <- diag(2)
+rownames(M.measure) <- colnames(M.measure) <- c("Y1", "Y2")
+
+kronecker(cbind(1, M.session), M.measure, make.dimnames = TRUE)
+```
+
+In the result, the first two columns correspond to the within-S Intercept term, and are
+used to test all between-S terms for $Y_1, Y_2$ simultaneously. The remaining columns
+correspond to the session effect for both variables and all interactions with session.
+
+A doubly-multivariate design can't be described by `idata` and `idesign`, because the
+within-S model differs for the two measures. Instead, `Anova()` and `heplot()` accept
+the argument `imatrix`, a list of $\mathbf{M}$ matrices, one for each within-S term.
+The columns of each are contrasts among the response variables.
+
+## Example: Weight loss and self esteem {#weightloss}
+
+To illustrate, we consider the data frame `WeightLoss`, originally from Andrew Ainsworth,
+giving (contrived) data on weight loss and measures of self esteem after each
+of three months for 34 individuals, who were observed in one of
+three groups: Control, Diet group, Diet + Exercise group.
+The within-S factors are thus measure (`wl`, `se`) and month (`1:3`).
+
+```{r wl1}
+table(WeightLoss$group)
+some(WeightLoss)
+```
+
+Because this design is complex, and to facilitate interpretation of the effects we will
+see in HE plots, it is helpful to view traditional plots of means with standard errors
+for both variables. These plots, shown in Figure \@ref(fig:wl-means),^[These plots were
+drawn using `plotmeans()` in the `gplots` package [@gplots]. The code is in the
+source of this vignette.] show that, for all three groups,
+the amount of weight lost each month declines, but only the Diet + Exercise
+group maintains substantial weight loss through month 2.
+For self esteem, all three groups have a U-shaped pattern over months,
+and by month 3, the groups are ordered Control < Diet < Diet + Exercise.
+
+```{r wl-means, echo=FALSE, fig.width=12, fig.height=5, out.width="100%", fig.cap="Means for weight loss and self esteem by group and month. Error bars show $\\pm 1$ standard error for each mean."}
+op <- par(mfrow = c(1, 2))
+WLlong <- reshape(WeightLoss, varying = list(WeightLoss = 2:4, SelfEsteem = 5:7),
+                  direction = "long", timevar = "month",
+                  v.names = c("WeightLoss", "SelfEsteem"))
+WLlong <- WLlong[order(WLlong$id), ]
+grp.labels <- paste(rep(1:3, 3), c("", "Control", "", "", "Diet", "", "", "DietEx", ""),
+                    sep = "\n")
+
+gplots::plotmeans(WeightLoss ~ interaction(month, group), data = WLlong,
+                  ylab = "Weight Loss", xlab = "Month / Group",
+                  connect = list(1:3, 4:6, 7:9), pch = 7, p = 0.68,
+                  n.label = FALSE, main = "Weight Loss: Group x Month",
+                  legends = grp.labels)
+abline(v = c(3.5, 6.5), col = "gray")
+
+gplots::plotmeans(SelfEsteem ~ interaction(month, group), data = WLlong,
+                  ylab = "Self Esteem", xlab = "Month / Group",
+                  connect = list(1:3, 4:6, 7:9), pch = 7, p = 0.68,
+                  n.label = FALSE, main = "Self Esteem: Group x Month",
+                  legends = grp.labels)
+abline(v = c(3.5, 6.5), col = "gray")
+par(op)
+```
+
+Research interest in the differences among groups would likely be focused on the
+questions: (a) Do the two diet groups differ from the control group?
+(b) Is there an additional effect of exercise, given diet?
+These questions may be tested with the (Helmert) contrasts used below for `group`,
+which are labeled `group1` and `group2` respectively.
+
+```{r wl2}
+contrasts(WeightLoss$group) <- matrix(c(-2, 1, 1,
+                                         0, -1, 1), ncol = 2)
+(wl.mod <- lm(cbind(wl1, wl2, wl3, se1, se2, se3) ~ group, data = WeightLoss))
+```
+
+A standard between-S MANOVA, ignoring the within-S structure, shows a highly significant
+`group` effect.
+
+```{r wl3}
+Anova(wl.mod)
+```
+
+As before, it is often useful to examine HE plots for pairs of variables in
+this analysis before proceeding to the within-S analysis.
+For example, Figure \@ref(fig:wl-HE1) shows the test of `group` and the two contrasts
+for weight loss and for self esteem at months 1 and 2.
+
+```{r wl-HE1, fig.width=10, fig.height=5, out.width="100%", fig.cap="HE plot for the `wl.mod` MANOVA model, showing between-S effects for weight loss (left) and self esteem (right) at months 1 and 2."}
+op <- par(mfrow = c(1, 2))
+heplot(wl.mod, hypotheses = c("group1", "group2"),
+       xlab = "Weight Loss, month 1", ylab = "Weight Loss, month 2")
+heplot(wl.mod, hypotheses = c("group1", "group2"), variables = 4:5,
+       xlab = "Self Esteem, month 1", ylab = "Self Esteem, month 2")
+par(op)
+```
+
+This is helpful, but doesn't illuminate the *overall* `group` effect for weight loss and
+self esteem for all three months, and, of course cannot shed light on any interactions of
+group with measure or month.
+In the following discussion, we will assume that the researcher is particularly
+interested in understanding the relation between weight loss and self esteem
+as it is expressed in changes over time and differences among groups.
+
+For the doubly-multivariate analysis, we define two $\mathbf{M}$ matrices. For the
+between-S effects, `measure` uses $\mathbf{M} = \mathbf{I}_2 \otimes \mathbf{1}_3/3$,
+so that the resulting scores are the means (not sums) over months for weight loss and
+self esteem. For the within-S effects, `month` uses orthogonal polynomials for the
+linear and quadratic trends over months, separately for each measure,
+$\mathbf{I}_2 \otimes \mathbf{M}_{poly}$.
+
+```{r wl4}
+M <- kronecker(diag(2), cbind(1/3, poly(1:3, degree = 2)))[, c(1, 4, 2, 3, 5, 6)]
+dimnames(M) <- list(colnames(WeightLoss)[-1],
+                    c("WL", "SE", "WL.L", "WL.Q", "SE.L", "SE.Q"))
+round(M, 4)
+imatrix <- list(measure = M[, 1:2], month = M[, 3:6])
+```
+
+The doubly-multivariate tests for all effects are then given by a single call to
+`Anova()`, with `imatrix` in place of `idata` and `idesign`:
+
+```{r wl5}
+(wl.aov <- Anova(wl.mod, imatrix = imatrix, test = "Roy"))
+```
+
+Here, `measure` tests whether the means of weight loss and self esteem are both zero,
+which is of no interest. `group:measure` is the between-S effect of `group` on the two
+measures, averaged over months. `month` tests the linear and quadratic trends over
+months, for both measures jointly, and `group:month` tests whether these trends differ
+among groups.
+
+The between-S part of this analysis is just an ordinary MANOVA of the mean scores,
+$\mathbf{Y M}_{measure}$, and an HE plot for it is clearest in that form, using the
+contrasts for `group` as `hypotheses`. (`heplot(wl.mod, imatrix = imatrix, iterm =
+"measure")` gives the same $\mathbf{H}$ ellipse for `group:measure`, but also the one for
+`measure`, the test that both means are zero, which dominates the plot.)
+The test for `group` here is identical to that for `group:measure` above.
+
+```{r wl6}
+between <- as.matrix(WeightLoss[, -1]) %*% imatrix$measure
+between.mod <- lm(between ~ group, data = WeightLoss)
+Anova(between.mod, test = "Roy")
+```
+
+The HE plot for this component of the analysis (Figure \@ref(fig:wl-HE2))
+shows a striking effect: averaging over all three months, the means
+for the Control, Diet and DietEx groups on both weight loss and self esteem
+are highly correlated and in the expected direction. This is something that is not at
+all obvious in Figure \@ref(fig:wl-means).
+
+```{r wl-HE2, out.width="75%", fig.cap="HE plot for the between-S effects in the doubly-multivariate design, showing the overall effect of `group` for weight loss and self esteem, averaged over months."}
+heplot(between.mod, hypotheses = c("group1", "group2"),
+       xlab = "Weight Loss", ylab = "Self Esteem",
+       col = c("red", "blue", "brown"),
+       main = "Weight Loss & Self Esteem: Group Effect")
+```
+
+For the within-S effects, the HE plots use `iterm = "month"`
+(Figure \@ref(fig:wl-HE3)). The $\mathbf{H}$ and $\mathbf{E}$ matrices are all
+$4 \times 4$, for the linear and quadratic trends in weight loss and self esteem, but the
+$\mathbf{H}$ matrices for the `month` and `group:month` effects are rank 1 and 2
+respectively. We show the linear trends for the two measures together, and the quadratic
+trends together.
+
+```{r wl-HE3, fig.width=10, fig.height=5, out.width="100%", fig.cap="HE plots for the within-S effects in the doubly-multivariate design, showing the effects of `month` and the interaction `group:month` for weight loss vs. self esteem. (a) Linear effects; (b) Quadratic effects."}
+op <- par(mfrow = c(1, 2))
+heplot(wl.mod, imatrix = imatrix, iterm = "month", variables = c("WL.L", "SE.L"),
+       xlab = "Weight Loss - Linear", ylab = "Self Esteem - Linear",
+       main = "(a) Within-S Linear Effects")
+heplot(wl.mod, imatrix = imatrix, iterm = "month", variables = c("WL.Q", "SE.Q"),
+       xlab = "Weight Loss - Quadratic", ylab = "Self Esteem - Quadratic",
+       main = "(b) Within-S Quadratic Effects")
+par(op)
+```
+
+Figure \@ref(fig:wl-HE3) shows the plots for the linear and quadratic effects separately
+for weight loss vs. self esteem. The plot of linear effects (Figure \@ref(fig:wl-HE3)(a))
+shows that the effect of `month` can be described as negative slopes for weight loss
+combined with positive slopes for self esteem: all groups lose progressively less weight
+over time, but generally feel better about themselves.
+Differences among groups in the `group:month` effect are in the same direction, but with
+greater differences among groups in the slopes for self esteem. The interpretation of the
+quadratic effects (Figure \@ref(fig:wl-HE3)(b)) is similar, except here, differences in
+curvature over months are driven largely by the difference between the `DietEx`
+group and the others on weight loss.
+
+The interested reader might wish to compare the standard univariate plots of means in
+Figure \@ref(fig:wl-means) with the HE plots in Figure \@ref(fig:wl-HE2) and
+Figure \@ref(fig:wl-HE3).
+The univariate plots have the advantage of showing the data directly,
+but cannot show the sources of significant effects in multivariate
+repeated measures models. HE plots have the advantage that they show directly
+what is expressed in the multivariate tests for relevant hypotheses.
 
 # Comparison with other approaches {#compare}
 
-*To come in commit 3.*
+The principal goals of this vignette have been
+(a) to describe the extension of the classical MLM to repeated measures designs;
+(b) to explain how HE plots provide compact and understandable visual summaries of
+the effects shown in typical numerical tables of MANOVA tests; and
+(c) illustrate these in a variety of contexts ranging from single-sample designs
+to complex doubly-multivariate designs.
+
+In the context of repeated measures designs, I mentioned earlier that mixed models for
+longitudinal data provide an attractive alternative to the MLM
+(because the former easily accommodate missing or unbalanced data over intra-subject
+measurements, time-varying covariates, and often allow the residual covariation to be
+modeled with fewer parameters).
+
+Here we consider a classic data set [@PotthoffRoy:64] used in the first application of
+the MLM to growth-curve analysis. These data are often used as illustrations of
+longitudinal models, e.g., @VerbekeMolenberghs:00 [§17.4].
+
+Investigators at the University of North Carolina Dental School followed the growth of
+27 children (16 males, 11 females) from age 8 until age 14 in a study designed to
+establish typical patterns of jaw size useful for orthodontic practice.
+Every two years they measured the distance between the pituitary and the
+pterygomaxillary fissure, two points that are easily identified on x-ray exposures of
+the side of the head. The questions of interest include (a) Over this age range, can
+growth be adequately represented as linear in time, or is some more complex function
+necessary? (b) Are separate growth curves needed for boys and girls, or can both be
+described by the same growth curve?
+
+## Longitudinal, mixed model approach {#mixed}
+
+The mixed model for longitudinal data is very general and flexible for the reasons noted
+above, but it is inappropriate here to relate any more than the barest of details
+necessary for this example.
+We begin with simple plots of the data: a profile plot grouped by `Sex`
+(Figure \@ref(fig:ortho-xyplot) (left)), and also a summary plot showing fitted lines for
+each individual, together with the pooled ordinary least squares regression of `distance`
+on `age` (Figure \@ref(fig:ortho-xyplot) (right)).
+
+```{r ortho-xyplot, fig.width=12, fig.height=6, out.width="100%", fig.cap="Profile plot of `Orthodont` data, by sex (left); Pooled OLS and individual linear regressions on age, by sex (right)."}
+data("Orthodont", package = "nlme")
+p1 <- xyplot(distance ~ age | Sex, data = Orthodont, type = "b", groups = Subject,
+             pch = 15:25, col = palette(), cex = 1.3, main = "Orthodont data")
+p2 <- xyplot(distance ~ age | Sex, data = Orthodont, groups = Subject,
+             main = "Pooled OLS and Individual linear regressions ~ age",
+             type = c("g", "r"),
+             panel = function(x, y, ...) {
+               panel.xyplot(x, y, ..., col = gray(0.5))
+               panel.lmline(x, y, ..., lwd = 3, col = "red")
+             })
+print(p1, split = c(1, 1, 2, 1), more = TRUE)
+print(p2, split = c(2, 1, 2, 1))
+```
+
+From these plots, we can see that boys generally have larger jaw distances than girls,
+and the rate of growth (slopes) for boys is generally larger than for girls. It is
+difficult to discern any patterns within the sexes, except that one boy seems to stand
+out, with a lower intercept and steeper slope.
+
+With the longitudinal mixed model, contemplate fitting two models describing an
+individual's pattern of growth: a model fitting only linear growth and a model fitting
+each person's trajectory exactly by including quadratic and cubic trends in time. For
+the sake of interpretation of coefficients in these models, it is common to recenter the
+time variable so that time = 0 corresponds to initial status. Using Year = (age - 8), we
+have:
+\begin{align}
+\textrm{m1:} \quad\quad y_{it} & = \beta_{0i} + \beta_{1i} \textrm{Year}_{it} + e_{it} \\
+\textrm{m3:} \quad\quad y_{it} & = \beta_{0i} + \beta_{1i} \textrm{Year}_{it}
+  + \beta_{2i} \textrm{Year}^2_{it} + \beta_{3i} \textrm{Year}^3_{it} + e_{it} \; ,
+\end{align}
+where the vector of residuals for subject $i$ is
+$\mathbf{e}_{i \bullet} \sim N ( \mathbf{0}, \mathbf{R}_i )$.
+(For this example, we take $\mathbf{R}_i$ to be unstructured, even though other
+specifications require fewer parameters.)
+For the linear model (m1), we entertain the possibility that
+the person-level intercepts ($\beta_{0i}$) and slopes ($\beta_{1i}$) depend on Sex,
+and so specify them as random coefficients,
+\begin{align}
+\beta_{0i} & = \gamma_{00} + \gamma_{01} \textrm{Sex}_{i} + u_{0i} \; , \\
+\beta_{1i} & = \gamma_{10} + \gamma_{11} \textrm{Sex}_{i} + u_{1i} \; .
+\end{align}
+In these equations the $\gamma$s are the fixed effects, while the $u$ (along with the
+errors $e_{it}$) are random effects. Note that Sex is coded 0 = Male, 1 = Female, so
+$\gamma_{00}$ and $\gamma_{10}$ are the intercept and slope for Males; $\gamma_{01}$
+pertains to the difference in intercepts for Females relative to Males, while
+$\gamma_{11}$ is the difference in slopes.
+
+The linear growth model can be fit using `lme()` as follows:
+
+```{r Ortho-mix1}
+Ortho <- Orthodont
+Ortho$year <- Ortho$age - 8  # make intercept = initial status
+
+Ortho.mix1 <- lme(distance ~ year * Sex, data = Ortho,
+                  random = ~ 1 + year | Subject, method = "ML")
+anova(Ortho.mix1)
+```
+
+Similarly, the model (m3) allowing cubic growth at level 1 can be fit using:
+
+```{r Ortho-mix3}
+Ortho.mix3 <- lme(distance ~ year * Sex + I(year^2) + I(year^3), data = Ortho,
+                  random = ~ 1 + year | Subject, method = "ML")
+anova(Ortho.mix3)
+```
+
+A likelihood ratio test confirms that the quadratic and cubic components of
+Year do not improve the model,
+
+```{r Ortho-anova}
+anova(Ortho.mix1, Ortho.mix3)
+```
+
+To aid interpretation, we can plot the estimated fixed effects from the linear
+model (m1) as follows, using the `predict()` method for `lme` objects
+to calculate the fitted values for boys and girls over the range of
+years (0 to 6) corresponding to ages 8 to 14, as in Figure \@ref(fig:Ortho-fm) (left).
+Similar code produces a plot of the cubic model (Figure \@ref(fig:Ortho-fm) (right)).
+
+```{r Ortho-fm, fig.width=12, fig.height=6, out.width="100%", fig.cap="Fitted values showing the estimated fixed effects of `age`, `Sex`, and their interaction in the linear growth model (left) and cubic growth model (right)."}
+grid <- expand.grid(year = 0:6, Sex = c("Male", "Female"))
+grid$age <- grid$year + 8  # plot vs. age
+fm.mix1 <- cbind(grid, distance = predict(Ortho.mix1, newdata = grid, level = 0))
+fm.mix3 <- cbind(grid, distance = predict(Ortho.mix3, newdata = grid, level = 0))
+
+fm.plot <- function(data, main) {
+  xyplot(distance ~ age, data = data, groups = Sex, type = "b",
+         par.settings = list(superpose.symbol = list(cex = 1.2, pch = c(15, 16))),
+         auto.key = list(text = levels(data$Sex), points = TRUE,
+                         x = 0.05, y = 0.9, corner = c(0, 1)),
+         main = main)
+}
+print(fm.plot(fm.mix1, "Linear mixed model: predicted growth"),
+      split = c(1, 1, 2, 1), more = TRUE)
+print(fm.plot(fm.mix3, "Cubic mixed model: predicted growth"),
+      split = c(2, 1, 2, 1))
+```
+
+For this simple example with only two predictors,
+such plots provide a direct visual summary of the fitted fixed effects
+in the model, as far as they go.
+
+## MLM approach {#mlm}
+
+For the multivariate approach, the `Orthodont` data must first be reshaped to wide format
+with the distance values as separate columns.
+
+```{r ortho-prep}
+Orthowide <- reshape(Orthodont, v.names = "distance", idvar = c("Subject", "Sex"),
+                     timevar = "age", direction = "wide")
+some(Orthowide, 4)
+```
+
+The MLM is then fit as follows, with `Sex` as the between-S factor.
+Age is quantitative, so the intra-subject data frame (`idata`) is created
+with `age` as an ordered factor.
+
+```{r ortho-mlm}
+Ortho.mod <- lm(cbind(distance.8, distance.10, distance.12, distance.14) ~ Sex,
+                data = Orthowide)
+
+idata <- data.frame(age = ordered(seq(8, 14, 2)))
+Ortho.aov <- Anova(Ortho.mod, idata = idata, idesign = ~age)
+Ortho.aov
+```
+
+We see that both `Sex` and `age` are highly significant and their interaction is nearly
+significant.
+
+Figure \@ref(fig:ortho-HE) shows HE plots for the between- and within-S effects, produced
+as shown below. The left panel plots the effect of `Sex` for ages 8 and 14, with a green
+line of unit slope. Males clearly show greater growth by age 14, and the difference
+between males and females is greater at 14 than at age 8. The right panel shows the
+linear and quadratic trends with age, reflecting the overall `age` main effect and the
+`Sex:age` interaction.
+Recalling that the contributions of each displayed variable to each effect
+in an HE plot can be seen by their horizontal and vertical shadows relative to the
+$\mathbf{E}$ ellipse, we see that the main effect of `age` is essentially linear, and the
+overall `Sex:age` effect is nearly significant due to a difference in slopes, but not
+curvature.
+
+```{r ortho-HE, fig.width=10, fig.height=5, out.width="100%", fig.cap="HE plots for the `Ortho.mod` MANOVA model, showing between-S effects for distance at ages 8 and 14 (left) and the linear and quadratic within-S effects for `age` and `Sex:age` (right)."}
+op <- par(mfrow = c(1, 2))
+heplot(Ortho.mod, variables = c(1, 4), asp = 1, col = c("red", "blue"),
+       xlim = c(18, 30), ylim = c(18, 30),
+       main = "Orthodont data: Sex effect")
+abline(0, 1, col = "green")
+
+heplot(Ortho.mod, idata = idata, idesign = ~age, iterm = "age",
+       col = c("red", "blue", "brown"),
+       main = "Orthodont data: Within-S effects")
+par(op)
+```
+
+To examine the questions of interest here in more detail, we focus on the intra-subject
+design and ask if linear growth is sufficient to explain both average development over
+time and differences between boys and girls.
+This is easily answered visually from the `pairs()` plot,
+`pairs(Ortho.mod, idata = idata, idesign = ~age, iterm = "age")` (not shown here),
+and, in particular, the panel corresponding to the nonlinear (quadratic and cubic)
+components of trend, shown in Figure \@ref(fig:ortho-nonlin-HE).
+
+```{r ortho-nonlin-HE, out.width="70%", fig.cap="Nonlinear components of the within-S effects of `age` and `Sex:age`, showing that they are quite small in relation to within-S error."}
+heplot(Ortho.mod, idata = idata, idesign = ~age, iterm = "age",
+       col = c("red", "blue", "brown"), variables = c(2, 3),
+       main = "Orthodont data: Nonlinear Within-S effects")
+```
+
+We can confirm the impression that no nonlinear effects are important by testing linear
+hypotheses. To explain this, we first show the details of the test of the overall
+`Sex:age` effect, as tested with `linearHypothesis()`. The "response transformation
+matrix" shown below is equivalent to $\mathbf{M}_{poly}$ described earlier
+(Section \@ref(within)) for a 4-level factor with linear, quadratic and cubic trend
+components. The univariate tests for individual contrasts in age
+are then based on the diagonal elements of the $\mathbf{H}$ and $\mathbf{E}$ matrices.
+
+```{r ortho-lh1}
+linearHypothesis(Ortho.mod, hypothesis = "SexFemale", idata = idata, idesign = ~age,
+                 iterms = "age", title = "Sex:age effect")
+```
+
+From this, the linear and nonlinear terms can be tested by selecting the appropriate
+columns of $\mathbf{M}_{poly}$ supplied as the contrasts associated with the age effect.
+For example, for tests of the linear effect of age and the Sex:age interaction
+(differences in slopes),
+
+```{r ortho-lh2}
+linear <- idata
+contrasts(linear$age, 1) <- contrasts(linear$age)[, 1]
+print(linearHypothesis(Ortho.mod, hypothesis = "(Intercept)",
+                       idata = linear, idesign = ~age, iterms = "age",
+                       title = "Linear age"), SSP = FALSE)
+print(linearHypothesis(Ortho.mod, hypothesis = "SexFemale",
+                       idata = linear, idesign = ~age, iterms = "age",
+                       title = "Linear Sex:age"), SSP = FALSE)
+```
+
+Similarly, the nonlinear effects of `age` and the `Sex:age` interaction can be tested as
+follows, using the contrasts for quadratic and cubic trends in age.
+
+```{r ortho-lh3}
+nonlin <- idata
+contrasts(nonlin$age, 2) <- contrasts(nonlin$age)[, 2:3]
+print(linearHypothesis(Ortho.mod, hypothesis = "(Intercept)",
+                       idata = nonlin, idesign = ~age, iterms = "age",
+                       title = "Nonlinear age"), SSP = FALSE)
+print(linearHypothesis(Ortho.mod, hypothesis = "SexFemale",
+                       idata = nonlin, idesign = ~age, iterms = "age",
+                       title = "Nonlinear Sex:age"), SSP = FALSE)
+```
+
+These examples show that, in simple cases, traditional plots of fitted values from
+mixed models (Figure \@ref(fig:Ortho-fm)) have the advantage of simple visual
+interpretation in terms of slopes and intercepts, at least for linear models.
+But such profile plots are generic: comparable plots could equally well be drawn for
+the fitted values from the MLM in this section.
+HE plots for repeated measure designs have the additional advantage of showing the
+*nature* of significance tests and linear hypotheses, though the structure of the MLM
+requires separate plots of between-S and within-S effects. In more complex designs
+with multiple between-S and within-S effects, and designs with multivariate
+responses (where mixed models do not apply), HE plots gain greater advantage.
 
 # Discussion {#discussion}
 
