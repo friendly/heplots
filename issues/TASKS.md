@@ -55,6 +55,14 @@ for a Gavin funding-application topic list).
 
 ## TODOs
 
+- [ ] **`cqplot()`: exact beta reference, and a better `cqplot.mlm()`** (noted 2026-11-26; wait
+  until the current heplots release is accepted on CRAN). From Rencher & Christensen (2012)
+  §4.6.2: D² for a normal sample is exactly a scaled Beta(p/2, (n−p−1)/2), and χ² can be poor
+  for small n. For `mlm` residuals, qᵢᵢ/(1−hᵢᵢ) appears to be Beta(p/2, (n−r−p)/2); the
+  simulation agrees, but no reference has been found yet. Also a one-line bug: the "missing
+  values" warning in `cqplot.default()` never fires. Notes: `dev/outliers-Rencher.md`;
+  script: `dev/outliers-Rencher.R`.
+
 - [ ] `extract_eq.mlm()` for `equatiomatic` — S3 method to make `equatiomatic::extract_eq()` work on
   `mlm` objects (currently produces garbled LaTeX). Filed as an issue upstream:
   https://github.com/datalorax/equatiomatic/issues/243 (no response yet; code already takes
