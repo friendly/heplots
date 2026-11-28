@@ -70,6 +70,17 @@ for a Gavin funding-application topic list).
 
 ## TODOs
 
+- [ ] **`Robust.Rmd`: image paths via `here::here()` fail in revdep checks** (found 2026-11-27,
+  in candisc 1.1.3's `revdepcheck`). Lines 108 and 122 use
+  `knitr::include_graphics(here::here("man", "figures", "weight-functions.jpg"))` and
+  `... "IRWLS-flowchart.jpg"`. These work when installing or building from the source folder,
+  in heplots' own `R CMD check`, and on CRAN so far, but `revdepcheck` runs the vignette code in
+  a temp folder without `man/figures/`, giving "Cannot find the file(s)" (the same ERROR with
+  CRAN and dev candisc; noted in candisc's `cran-comments.md`). Fix: copy both images into
+  `vignettes/images/` and use relative paths, as `HE_manova.Rmd` does. Needs a version bump
+  and a NEWS entry, even though it's small: it can go into 1.9.0 (devel, already bumped for
+  the `boxM.lm()` fixes below). Guerry has the same problem (see its next release).
+
 Found 2026-11-27 while drafting the blog post "Box & Cox Come to Multivariate Town"
 (friendly.github.io, `blog/drafts/BoxCox/`):
 
