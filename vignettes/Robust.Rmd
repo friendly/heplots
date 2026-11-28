@@ -105,7 +105,7 @@ with $c = 4.685$ for `MASS::psi.bisquare()`.
 #| label: fig-weight-fns
 #| fig-align: "center"
 #| fig-cap: "Diagram ploting the function $\\rho(e_i)$ of the contributions of the residuals $e_i$ to what is minimized in various fitting methods."
-knitr::include_graphics(here::here("man", "figures", "weight-functions.jpg"))
+knitr::include_graphics("images/weight-functions.jpg")
 ```
 
 
@@ -119,7 +119,7 @@ The `robmlm()` function implements robust multivariate linear model fitting usin
 The IRLS algorithm for robust multivariate regression is shown in the figure below.
 
 ```{r echo=FALSE, fig.align='center', out.width="70%", fig.cap="Flowchart for the iteratively reweighted least squares algorithm"}
-knitr::include_graphics(here::here("man", "figures", "IRWLS-flowchart.jpg"))
+knitr::include_graphics("images/IRWLS-flowchart.jpg")
 ```
 
 The method proceeds as follows:

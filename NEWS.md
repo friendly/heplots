@@ -28,6 +28,11 @@
 
 ### Bug fixes
 
+* The `Robust` vignette found its two images with `here::here("man", "figures", ...)`,
+  which fails when the vignette code is run outside the package source, e.g., in
+  reverse-dependency checks ("Cannot find the file(s)"). The images are now in
+  `vignettes/images/` and use relative paths.
+
 * `boxM.lm()` now stops with an informative error when the model has quantitative
   predictors (covariates), as `boxM.formula()` already did. Before, it silently formed
   "groups" from every distinct combination of the covariate values, all with singular

@@ -70,7 +70,9 @@ for a Gavin funding-application topic list).
 
 ## TODOs
 
-- [ ] **`Robust.Rmd`: image paths via `here::here()` fail in revdep checks** (found 2026-11-27,
+- ✔️ **FIXED 2026-11-27 (1.9.0)**: images moved to `vignettes/images/`, relative paths, NEWS
+  entry; `R CMD check --as-cran` clean with vignettes.
+  **`Robust.Rmd`: image paths via `here::here()` fail in revdep checks** (found 2026-11-27,
   in candisc 1.1.3's `revdepcheck`). Lines 108 and 122 use
   `knitr::include_graphics(here::here("man", "figures", "weight-functions.jpg"))` and
   `... "IRWLS-flowchart.jpg"`. These work when installing or building from the source folder,
